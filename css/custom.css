@@ -1,0 +1,82 @@
+.leftRegion a.subLogo {
+  line-height: 74px;
+  padding: 0 0 0 20px;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* BODY */
+body, p, span {
+    color: #283232;
+    font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1.4em;
+    margin: 0.5em 0;
+}
+
+h1#pageTitle {
+font-family: "HelveticaNeue-Thin", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: normal;
+  font-size: 3em;
+  color: #CCC;
+}
+
+.tr-page-container.heart-page-container.heart-page-container--entry {
+border: 0px;	
+}
+
+.content_wrapper.round {
+padding: 20px;	
+}
+
+/* BUTTONS */
+.btn.btn-primary, .step-button.next-step {
+background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #de2427 0%, #c7191c 100%) repeat scroll 0 0;
+color: #ffffff;	
+border: medium none;
+font-size: 12px;
+font-weight: bold;
+padding: 1em 2em;
+margin: 0.5em 0;
+border-radius: 0;
+}
+
+/* Typography */
+
+.alpha {
+margin: 24px 0;
+/* Nice long font stack to try to get the best helvetica (ar substitute) that is available on the client. */
+font-family: "HelveticaNeue-Thin", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+font-weight: 300;
+font-size: 80px;
+line-height: 1em;
+color: #DE2427;
+}
+
+.bravo {
+margin: 12px 0;
+/* Nice long font stack to try to get the best helvetica (ar substitute) that is available on the client. */
+font-family: "HelveticaNeue-Thin", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+font-weight: 300;
+font-size: 60px;
+line-height: 1em;
+color: #1e1e23;
+}
+
+.charlie {
+font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+font-weight: bold;
+font-size: 22px;
+}
+
+.alpha + .bravo {
+/*margin-top: 0;*/
+}
