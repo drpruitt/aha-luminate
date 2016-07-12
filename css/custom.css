@@ -3,14 +3,6 @@
   padding: 0 0 0 20px;
 }
 
-html {
-  box-sizing: border-box;
-}
-
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-
 /* BODY */
 body, p, span {
     color: #283232;
@@ -27,10 +19,6 @@ font-family: "HelveticaNeue-Thin", "HelveticaNeue-Light", "Helvetica Neue Light"
   font-weight: normal;
   font-size: 3em;
   color: #CCC;
-}
-
-.tr-page-container.heart-page-container.heart-page-container--entry {
-border: 0px;	
 }
 
 .content_wrapper.round {
@@ -75,8 +63,4 @@ color: #1e1e23;
 font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 font-weight: bold;
 font-size: 22px;
-}
-
-.alpha + .bravo {
-/*margin-top: 0;*/
 }

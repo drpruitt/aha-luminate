@@ -12,3 +12,9 @@ td,
 
 a:link {
   color: #337ab7; }
+
+html {
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
