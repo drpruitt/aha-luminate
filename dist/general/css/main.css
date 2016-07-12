@@ -22,3 +22,6 @@ html {
 .container {
   padding-left: 15px;
   padding-right: 15px; }
+
+#headerWrapper {
+  margin: 0; }

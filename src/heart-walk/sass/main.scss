@@ -5,9 +5,11 @@
 @import "../../global/sass/luminate-reset.scss";
 
 @import "../../global/sass/scaffolding.scss";
+@import "scaffolding.scss";
 @import "../../global/sass/grid.scss";
 @import "../../global/sass/buttons.scss";
 
+@import "../../global/sass/header.scss";
 @import "hero.scss";
 
 @import "teamraiser-page.scss";

@@ -19,9 +19,17 @@ html {
 *, *:before, *:after {
   box-sizing: inherit; }
 
+.main {
+  background: #eeeeee; }
+  .main .container {
+    background: #ffffff; }
+
 .container {
   padding-left: 15px;
   padding-right: 15px; }
+
+#headerWrapper {
+  margin: 0; }
 
 .heart-hero {
   width: 100%;
