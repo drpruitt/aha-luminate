@@ -31,3 +31,11 @@ $padding-xs-horizontal: 5px !default;
 $btn-primary-color: #fff !default;
 $btn-primary-bg: $brand-primary !default;
 $btn-primary-border: darken($btn-primary-bg, 5%) !default;
+
+$screen-sm: 768px !default;
+$screen-sm-min: $screen-sm !default;
+
+$screen-md: 992px !default;
+$screen-md-min: $screen-md !default;
+
+$grid-gutter-width: 30px !default;

@@ -1,0 +1,4 @@
+.heart-page-container--entry {
+  margin-left: floor(($grid-gutter-width / 2));
+  margin-right: ceil(($grid-gutter-width / 2));
+}

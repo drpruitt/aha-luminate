@@ -18,3 +18,24 @@ html {
 
 *, *:before, *:after {
   box-sizing: inherit; }
+
+.container {
+  padding-left: 15px;
+  padding-right: 15px; }
+
+.heart-hero {
+  width: 100%;
+  height: 1050px; }
+  @media (min-width: 768px) {
+    .heart-hero {
+      height: 445px; } }
+  .heart-hero h1 {
+    color: #ffffff;
+    margin: 0; }
+
+.tr-page-container {
+  border: 0; }
+
+.heart-page-container--entry {
+  margin-left: 15px;
+  margin-right: 15px; }
