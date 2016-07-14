@@ -89,13 +89,18 @@ div.tr-page-container {
       padding: 95px 50px 50px;
       margin: -120px 50px 40px; } }
 
-.heart-greeting-detail__header h2 {
+.heart-greeting-detail__header {
   margin: 0 0 32px; }
   @media (min-width: 768px) {
-    .heart-greeting-detail__header h2 {
-      margin: 0 0 40px; } }
-  .heart-greeting-detail__header h2 > span {
-    color: #337ab7; }
+    .heart-greeting-detail__header {
+      margin: 0 0 70px; } }
+  .heart-greeting-detail__header h2 {
+    margin: 0 0 32px; }
+    @media (min-width: 768px) {
+      .heart-greeting-detail__header h2 {
+        margin: 0 0 40px; } }
+    .heart-greeting-detail__header h2 > span {
+      color: #337ab7; }
 
 .heart-page-progress {
   margin: 0 20px; }

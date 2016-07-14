@@ -43,6 +43,12 @@
 }
 
 .heart-greeting-detail__header {
+  margin: 0 0 32px;
+  
+  @media(min-width: $screen-sm-min) {
+    margin: 0 0 70px;
+  }
+  
   h2 {
     margin: 0 0 32px;
     
