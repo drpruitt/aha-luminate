@@ -45,8 +45,13 @@ div.tr-page-container {
   border: 0; }
 
 .heart-page-container--entry {
-  margin-left: 15px;
-  margin-right: 15px; }
+  margin-left: -15px;
+  margin-right: -15px; }
+
+.heart-hero--entry {
+  background-image: url(../aha-luminate/dist/heart-walk/image/hero-greeting.jpg);
+  background-size: cover;
+  background-position: center center; }
 
 div.donation-form-container.responsive {
   background: transparent;
