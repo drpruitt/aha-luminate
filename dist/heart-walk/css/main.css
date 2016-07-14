@@ -1,3 +1,6 @@
+/* ********** */
+/* typography */
+/* ********** */
 p,
 ol,
 ul,
@@ -11,6 +14,16 @@ div.responsive {
   font-family: inherit;
   font-size: inherit; }
 
+/* **************** */
+/* elements to hide */
+/* **************** */
+div.responsive span.header-warning-message,
+div.responsive div.ErrorMessage.page-error > span.field-error-indicator {
+  display: none; }
+
+/* ***** */
+/* links */
+/* ***** */
 a, a:link, a:visited,
 #login-div-content a,
 #login-div-content a:link,
@@ -23,19 +36,28 @@ div.responsive a:link,
 div.responsive a:visited {
   color: #de2427; }
 
+/* ******************* */
+/* warnings and errors */
+/* ****** */
+div.responsive div.ErrorMessage.page-error > span.field-error-text {
+  background: transparent;
+  border: 0; }
+
+/* **************** */
+/* responsive pages */
+/* **************** */
 div.responsive {
   color: inherit;
   width: auto !important; }
 
+/* ********** */
+/* teamraiser */
+/* ********** */
 div.tr-page-container {
   border: 0; }
 
 div.tr-page-header {
   background: transparent; }
-
-#find_participant div.participant-find-search-container {
-  width: auto !important;
-  max-width: 450px !important; }
 
 div.registration-page-container div.section-container {
   border-radius: 0; }
@@ -43,6 +65,19 @@ div.registration-page-container div.section-container {
 div.registration-page-container div.section-header {
   border-radius: 0; }
 
+#find_participant div.participant-find-search-container {
+  width: auto !important;
+  max-width: 450px !important; }
+
+.mobile div#find_participant li {
+  width: 135px !important; }
+  @media (min-width: 768px) {
+    .mobile div#find_participant li {
+      width: auto !important; } }
+
+/* ************** */
+/* donation forms */
+/* ************** */
 div.donation-form-container.responsive {
   background: transparent;
   border: 0; }
@@ -120,31 +155,36 @@ a.btn-lg:visited {
   margin: 0; }
 
 .heart-hero {
+  background-size: cover;
+  background-position: center center;
   width: 100%;
   height: 450px; }
   @media (min-width: 768px) {
     .heart-hero {
       height: 560px; } }
-  @media (min-width: 768px) {
+  @media (min-width: 992px) {
     .heart-hero {
       height: 445px; } }
   .heart-hero h1 {
     color: #ffffff;
     margin: 0; }
 
-.heart-hero--entry {
-  background-image: url(../image/hero-greeting.jpg);
-  background-size: cover;
-  background-position: center center;
+.heart-hero__mask {
+  background: #de2427;
+  background: rgba(222, 36, 39, 0.7);
+  height: 450px;
   padding: 40px 24px 0; }
   @media (min-width: 768px) {
-    .heart-hero--entry {
-      background-image: url(../image/hero-greeting.jpg);
+    .heart-hero__mask {
+      height: 560px;
       padding: 65px 40px 0; } }
   @media (min-width: 992px) {
-    .heart-hero--entry {
-      background-image: url(../image/hero-greeting.jpg);
+    .heart-hero__mask {
+      height: 445px;
       padding: 95px 50px 0; } }
+
+.heart-hero--entry {
+  background-image: url(../image/hero-greeting.jpg); }
 
 .heart-greeting-detail {
   background: #ffffff;
