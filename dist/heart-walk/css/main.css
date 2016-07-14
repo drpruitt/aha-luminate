@@ -183,8 +183,8 @@ a.btn-lg:visited {
 
 .heart-hero {
   background-color: #de2427;
-  background-size: cover;
   background-position: center center;
+  background-size: cover;
   width: 100%;
   height: 450px; }
   @media (min-width: 768px) {
@@ -213,6 +213,18 @@ a.btn-lg:visited {
 
 .heart-hero--entry {
   background-image: url(../image/hero-greeting.jpg); }
+
+.heart-greeting-main {
+  background-position: center center;
+  background-size: cover;
+  width: 100%;
+  height: 790px; }
+  @media (min-width: 768px) {
+    .heart-greeting-main {
+      height: 715px; } }
+  @media (min-width: 992px) {
+    .heart-greeting-main {
+      height: 550px; } }
 
 .heart-greeting-detail {
   background: #ffffff;
