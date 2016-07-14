@@ -71,20 +71,37 @@ div.tr-page-container {
 
 .heart-greeting-detail {
   background: #ffffff;
-  width: 280px;
   padding: 50px 28px 32px;
-  margin: -210px auto 0; }
+  margin: -210px 20px 20px; }
   @media (min-width: 768px) {
     .heart-greeting-detail {
-      width: 690px;
+      max-width: 690px;
       padding: 75px 48px 65px;
-      margin: -285px auto 0; } }
+      margin: -285px auto 40px; } }
   @media (min-width: 992px) {
     .heart-greeting-detail {
       float: right;
       width: 730px;
       padding: 95px 50px 50px;
-      margin: -120px 50px 0; } }
+      margin: -120px 50px 40px; } }
+
+.heart-page-progress {
+  margin: 0 20px; }
+  @media (min-width: 768px) {
+    .heart-page-progress {
+      width: 275px;
+      margin: 0 40px; } }
+  @media (min-width: 992px) {
+    .heart-page-progress {
+      float: left;
+      width: 292px;
+      margin: 3px 0 0 48px; } }
+  @media (min-width: 1200px) {
+    .heart-page-progress {
+      width: 292px;
+      margin: 3px 0 0 48px; } }
+  .heart-page-progress .btn {
+    width: 100%; }
 
 div.donation-form-container.responsive {
   background: transparent;

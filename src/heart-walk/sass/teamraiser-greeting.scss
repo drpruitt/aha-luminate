@@ -20,22 +20,48 @@
   }
 }
 
+.heart-greeting-main {
+}
+
 .heart-greeting-detail {
   background: #ffffff;
-  width: 280px;
   padding: 50px 28px 32px;
-  margin: -210px auto 0;
+  margin: -210px 20px 20px;
   
   @media(min-width: $screen-sm-min) {
-    width: 690px;
+    max-width: 690px;
     padding: 75px 48px 65px;
-    margin: -285px auto 0;
+    margin: -285px auto 40px;
   }
   
   @media(min-width: $screen-md-min) {
     float: right;
     width: 730px;
     padding: 95px 50px 50px;
-    margin: -120px 50px 0;
+    margin: -120px 50px 40px;
+  }
+}
+
+.heart-page-progress {
+  margin: 0 20px;
+  
+  @media(min-width: $screen-sm-min) {
+    width: 275px;
+    margin: 0 40px;
+  }
+  
+  @media(min-width: $screen-md-min) {
+    float: left;
+    width: 292px;
+    margin: 3px 0 0 48px;
+  }
+  
+  @media(min-width: $screen-lg-min) {
+    width: 292px;
+    margin: 3px 0 0 48px;
+  }
+  
+  .btn {
+    width: 100%;
   }
 }
