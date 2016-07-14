@@ -12,6 +12,13 @@ module.exports = {
       }, 
       {
         expand: true, 
+        cwd: 'dist/general/image/', 
+        src: [
+          '**/*'
+        ]
+      }, 
+      {
+        expand: true, 
         cwd: 'dist/general/css/', 
         src: [
           '**/*'
@@ -32,6 +39,13 @@ module.exports = {
       {
         expand: true, 
         cwd: 'dist/heart-walk/html/', 
+        src: [
+          '**/*'
+        ]
+      }, 
+      {
+        expand: true, 
+        cwd: 'dist/heart-walk/image/', 
         src: [
           '**/*'
         ]

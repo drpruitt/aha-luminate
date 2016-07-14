@@ -35,6 +35,9 @@ module.exports = function(grunt) {
   grunt.registerTask('html-dist', function(taskTarget) {
     runTargetedTask(['htmlmin'], taskTarget);
   });
+  grunt.registerTask('img-dist', function(taskTarget) {
+    runTargetedTask(['imagemin'], taskTarget);
+  });
   grunt.registerTask('css-dist', function(taskTarget) {
     runTargetedTask(['sass', 'cssmin'], taskTarget);
   });
