@@ -155,6 +155,7 @@ a.btn-lg:visited {
   margin: 0; }
 
 .heart-hero {
+  background-color: #de2427;
   background-size: cover;
   background-position: center center;
   width: 100%;

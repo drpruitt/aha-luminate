@@ -39,7 +39,7 @@ module.exports = function(grunt) {
     runTargetedTask(['imagemin'], taskTarget);
   });
   grunt.registerTask('css-dist', function(taskTarget) {
-    runTargetedTask(['sass', 'cssmin'], taskTarget);
+    runTargetedTask(['sass', 'postcss', 'cssmin'], taskTarget);
   });
   grunt.registerTask('js-dist', function(taskTarget) {
     runTargetedTask(['coffee', 'uglify'], taskTarget);
