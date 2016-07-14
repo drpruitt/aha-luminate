@@ -55,13 +55,16 @@ div.tr-page-container {
 .heart-hero--entry {
   background-image: url(../image/hero-greeting.jpg);
   background-size: cover;
-  background-position: center center; }
+  background-position: center center;
+  padding: 95px 50px 0; }
   @media (min-width: 768px) {
     .heart-hero--entry {
-      background-image: url(../image/hero-greeting.jpg); } }
+      background-image: url(../image/hero-greeting.jpg);
+      padding: 65px 40px 0; } }
   @media (min-width: 992px) {
     .heart-hero--entry {
-      background-image: url(../image/hero-greeting.jpg); } }
+      background-image: url(../image/hero-greeting.jpg);
+      padding: 100px 50px 0; } }
 
 div.donation-form-container.responsive {
   background: transparent;

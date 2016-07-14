@@ -7,12 +7,15 @@
   background-image: url(../image/hero-greeting.jpg);
   background-size: cover;
   background-position: center center;
+  padding: 95px 50px 0;
   
   @media(min-width: $screen-sm-min) {
     background-image: url(../image/hero-greeting.jpg);
+    padding: 65px 40px 0;
   }
   
   @media(min-width: $screen-md-min) {
     background-image: url(../image/hero-greeting.jpg);
+    padding: 100px 50px 0;
   }
 }
