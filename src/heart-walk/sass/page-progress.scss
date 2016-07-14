@@ -1,0 +1,36 @@
+.heart-page-progress {
+  margin: 0 20px;
+  
+  @media(min-width: $screen-sm-min) {
+    width: 275px;
+    margin: 0 40px;
+  }
+  
+  @media(min-width: $screen-md-min) {
+    float: left;
+    width: 292px;
+    margin: 3px 0 0 48px;
+  }
+  
+  .btn {
+    width: 100%;
+  }
+}
+
+.heart-page-progress__box {
+  background: #283233;
+  color: #ffffff;
+}
+
+.heart-page-progress__row {
+  border-top: 1px solid #353f40;
+  padding: 14px;
+  
+  @media(min-width: $screen-sm-min) {
+    padding: 20px;
+  }
+  
+  &:first-child {
+    border-top: 0;
+  }
+}

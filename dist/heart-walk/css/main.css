@@ -154,6 +154,33 @@ a.btn-lg:visited {
 #headerWrapper {
   margin: 0; }
 
+.heart-page-progress {
+  margin: 0 20px; }
+  @media (min-width: 768px) {
+    .heart-page-progress {
+      width: 275px;
+      margin: 0 40px; } }
+  @media (min-width: 992px) {
+    .heart-page-progress {
+      float: left;
+      width: 292px;
+      margin: 3px 0 0 48px; } }
+  .heart-page-progress .btn {
+    width: 100%; }
+
+.heart-page-progress__box {
+  background: #283233;
+  color: #ffffff; }
+
+.heart-page-progress__row {
+  border-top: 1px solid #353f40;
+  padding: 14px; }
+  @media (min-width: 768px) {
+    .heart-page-progress__row {
+      padding: 20px; } }
+  .heart-page-progress__row:first-child {
+    border-top: 0; }
+
 .heart-hero {
   background-color: #de2427;
   background-size: cover;
@@ -215,20 +242,6 @@ a.btn-lg:visited {
         margin: 0 0 40px; } }
     .heart-greeting-detail__header h2 > span {
       color: #de2427; }
-
-.heart-page-progress {
-  margin: 0 20px; }
-  @media (min-width: 768px) {
-    .heart-page-progress {
-      width: 275px;
-      margin: 0 40px; } }
-  @media (min-width: 992px) {
-    .heart-page-progress {
-      float: left;
-      width: 292px;
-      margin: 3px 0 0 48px; } }
-  .heart-page-progress .btn {
-    width: 100%; }
 
 .heart-greeting-leaderboards {
   margin: 0 20px; }
