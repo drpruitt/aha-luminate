@@ -6,11 +6,50 @@ table,
 tr, 
 th, 
 td, 
-.Explicit {
+.Explicit, 
+div.responsive {
   font-family: inherit;
   font-size: inherit;
 }
 
-a:link {
-  color: $link-color;
+a, 
+#login-div-content a, 
+div.responsive a, 
+div.responsive a {
+  &, 
+  &:link, 
+  &:visited {
+    color: $link-color;
+  }
+}
+
+div.responsive {
+  color: inherit;
+  width: auto !important;
+}
+
+div.tr-page-container {
+  border: 0;
+}
+
+div.tr-page-header {
+  background: transparent;
+}
+
+#find_participant div.participant-find-search-container {
+  width: auto !important;
+  max-width: 450px !important;
+}
+
+div.registration-page-container div.section-container {
+  border-radius: 0;
+}
+
+div.registration-page-container div.section-header {
+  border-radius: 0;
+}
+
+div.donation-form-container.responsive {
+  background: transparent;
+  border: 0;
 }

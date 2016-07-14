@@ -6,12 +6,46 @@ table,
 tr,
 th,
 td,
-.Explicit {
+.Explicit,
+div.responsive {
   font-family: inherit;
   font-size: inherit; }
 
-a:link {
+a, a:link, a:visited,
+#login-div-content a,
+#login-div-content a:link,
+#login-div-content a:visited,
+div.responsive a,
+div.responsive a:link,
+div.responsive a:visited,
+div.responsive a,
+div.responsive a:link,
+div.responsive a:visited {
   color: #de2427; }
+
+div.responsive {
+  color: inherit;
+  width: auto !important; }
+
+div.tr-page-container {
+  border: 0; }
+
+div.tr-page-header {
+  background: transparent; }
+
+#find_participant div.participant-find-search-container {
+  width: auto !important;
+  max-width: 450px !important; }
+
+div.registration-page-container div.section-container {
+  border-radius: 0; }
+
+div.registration-page-container div.section-header {
+  border-radius: 0; }
+
+div.donation-form-container.responsive {
+  background: transparent;
+  border: 0; }
 
 html {
   box-sizing: border-box; }
@@ -24,8 +58,7 @@ body {
   font-size: 20px; }
 
 .container {
-  padding-left: 15px;
-  padding-right: 15px; }
+  padding: 0; }
 
 .btn,
 a.btn,

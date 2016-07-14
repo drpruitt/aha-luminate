@@ -1,4 +1,0 @@
-@mixin container-fixed($gutter: $grid-gutter-width) {
-  padding-left: floor(($gutter / 2));
-  padding-right: ceil(($gutter / 2));
-}
