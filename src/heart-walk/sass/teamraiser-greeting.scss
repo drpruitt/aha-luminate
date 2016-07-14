@@ -7,7 +7,7 @@
   background-image: url(../image/hero-greeting.jpg);
   background-size: cover;
   background-position: center center;
-  padding: 95px 50px 0;
+  padding: 40px 24px 0;
   
   @media(min-width: $screen-sm-min) {
     background-image: url(../image/hero-greeting.jpg);
@@ -16,6 +16,26 @@
   
   @media(min-width: $screen-md-min) {
     background-image: url(../image/hero-greeting.jpg);
-    padding: 100px 50px 0;
+    padding: 95px 50px 0;
+  }
+}
+
+.heart-greeting-detail {
+  background: #ffffff;
+  width: 280px;
+  padding: 50px 28px 32px;
+  margin: -210px auto 0;
+  
+  @media(min-width: $screen-sm-min) {
+    width: 690px;
+    padding: 75px 48px 65px;
+    margin: -285px auto 0;
+  }
+  
+  @media(min-width: $screen-md-min) {
+    float: right;
+    width: 730px;
+    padding: 95px 50px 50px;
+    margin: -120px 50px 0;
   }
 }

@@ -1,6 +1,10 @@
 .heart-hero {
   width: 100%;
-  height: 1050px;
+  height: 450px;
+  
+  @media(min-width: $screen-sm-min) {
+    height: 560px;
+  }
   
   @media(min-width: $screen-sm-min) {
     height: 445px;
