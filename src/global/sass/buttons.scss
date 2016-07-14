@@ -1,11 +1,17 @@
 .btn, 
 a.btn, 
+a.btn:link, 
 a.btn:visited {
   @include button-size($padding-base-vertical, $padding-base-horizontal, $font-size-small);
 }
 
+a.btn-primary {
+  @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+}
+
 .btn-lg, 
 a.btn-lg, 
+a.btn-lg:link, 
 a.btn-lg:visited {
   @include button-size($padding-large-vertical, $padding-large-horizontal, $font-size-small);
 }
