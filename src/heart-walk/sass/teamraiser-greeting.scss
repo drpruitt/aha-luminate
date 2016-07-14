@@ -4,7 +4,15 @@
 }
 
 .heart-hero--entry {
-  background-image: url(../aha-luminate/dist/heart-walk/image/hero-greeting.jpg);
+  background-image: url(../image/hero-greeting.jpg);
   background-size: cover;
   background-position: center center;
+  
+  @media(min-width: $screen-sm-min) {
+    background-image: url(../image/hero-greeting.jpg);
+  }
+  
+  @media(min-width: $screen-md-min) {
+    background-image: url(../image/hero-greeting.jpg);
+  }
 }
