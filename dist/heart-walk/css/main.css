@@ -36,6 +36,18 @@ body {
   .container {
     width: 100%; } }
 
+.btn,
+a.btn,
+a.btn:visited {
+  padding: 12px 24px;
+  font-size: 14px; }
+
+.btn-lg,
+a.btn-lg,
+a.btn-lg:visited {
+  padding: 18px 24px;
+  font-size: 14px; }
+
 #headerWrapper {
   margin: 0; }
 

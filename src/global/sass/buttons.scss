@@ -1,0 +1,11 @@
+.btn, 
+a.btn, 
+a.btn:visited {
+  @include button-size($padding-base-vertical, $padding-base-horizontal, $font-size-small);
+}
+
+.btn-lg, 
+a.btn-lg, 
+a.btn-lg:visited {
+  @include button-size($padding-large-vertical, $padding-large-horizontal, $font-size-small);
+}

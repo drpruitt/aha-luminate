@@ -7,8 +7,7 @@ $font-family-sans-serif: "HelveticaNeue-Light", "Helvetica Neue Light", "Helveti
 $font-family-base: $font-family-sans-serif !default;
 
 $font-size-base: 20px !default;
-$font-size-large: ceil(($font-size-base * 1.25)) !default; // ~25px
-$font-size-small: ceil(($font-size-base * 0.85)) !default; // ~17px
+$font-size-small: ceil(($font-size-base * 0.7)) !default; // ~14px
 
 $font-size-h1: floor(($font-size-base * 2.6)) !default; // ~36px
 $font-size-h2: floor(($font-size-base * 2.15)) !default; // ~30px
@@ -17,17 +16,11 @@ $font-size-h4: ceil(($font-size-base * 1.25)) !default; // ~18px
 $font-size-h5: $font-size-base !default;
 $font-size-h6: ceil(($font-size-base * 0.85)) !default; // ~12px
 
-$padding-base-vertical: 6px !default;
-$padding-base-horizontal: 12px !default;
+$padding-base-vertical: 12px !default;
+$padding-base-horizontal: 24px !default;
 
-$padding-large-vertical: 10px !default;
-$padding-large-horizontal: 16px !default;
-
-$padding-small-vertical: 5px !default;
-$padding-small-horizontal: 10px !default;
-
-$padding-xs-vertical: 1px !default;
-$padding-xs-horizontal: 5px !default;
+$padding-large-vertical: 18px !default;
+$padding-large-horizontal: 24px !default;
 
 $btn-primary-color: #fff !default;
 $btn-primary-bg: $brand-primary !default;
