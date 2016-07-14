@@ -19,6 +19,10 @@ html {
 *, *:before, *:after {
   box-sizing: inherit; }
 
+body {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-size: 20px; }
+
 .container {
   padding-left: 15px;
   padding-right: 15px; }

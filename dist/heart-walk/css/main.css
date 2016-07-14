@@ -19,6 +19,10 @@ html {
 *, *:before, *:after {
   box-sizing: inherit; }
 
+body {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-size: 20px; }
+
 .main {
   background: #eeeeee; }
   .main .container {
@@ -85,6 +89,14 @@ div.tr-page-container {
       padding: 95px 50px 50px;
       margin: -120px 50px 40px; } }
 
+.heart-greeting-detail__header h2 {
+  margin: 0 0 32px; }
+  @media (min-width: 768px) {
+    .heart-greeting-detail__header h2 {
+      margin: 0 0 40px; } }
+  .heart-greeting-detail__header h2 > span {
+    color: #337ab7; }
+
 .heart-page-progress {
   margin: 0 20px; }
   @media (min-width: 768px) {
@@ -96,12 +108,11 @@ div.tr-page-container {
       float: left;
       width: 292px;
       margin: 3px 0 0 48px; } }
-  @media (min-width: 1200px) {
-    .heart-page-progress {
-      width: 292px;
-      margin: 3px 0 0 48px; } }
   .heart-page-progress .btn {
     width: 100%; }
+
+.heart-greeting-leaderboards {
+  margin: 0 20px; }
 
 div.donation-form-container.responsive {
   background: transparent;
