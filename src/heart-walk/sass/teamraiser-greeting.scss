@@ -3,6 +3,7 @@
 }
 
 .heart-greeting-main {
+  background-image: url(../image/greeting-main.jpg);
   background-position: center center;
   background-size: cover;
   width: 100%;
@@ -13,7 +14,7 @@
   }
   
   @media(min-width: $screen-md-min) {
-    height: 550px;
+    height: 575px;
   }
 }
 
@@ -30,9 +31,13 @@
   
   @media(min-width: $screen-md-min) {
     float: right;
-    width: 730px;
+    width: 530px;
     padding: 95px 50px 50px;
     margin: -120px 50px 40px;
+  }
+  
+  @media(min-width: $screen-lg-min) {
+    width: 730px;
   }
 }
 
@@ -52,6 +57,18 @@
     
     > span {
       color: $brand-primary;
+    }
+  }
+}
+
+.heart-greeting-detail__footer {
+  .btn {
+    width: 165px;
+    margin: 0 0 6px;
+    
+    @media(min-width: $screen-sm-min) {
+      width: auto;
+      margin: 0;
     }
   }
 }

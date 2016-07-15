@@ -215,6 +215,7 @@ a.btn-lg:visited {
   background-image: url(../image/hero-greeting.jpg); }
 
 .heart-greeting-main {
+  background-image: url(../image/greeting-main.jpg);
   background-position: center center;
   background-size: cover;
   width: 100%;
@@ -224,7 +225,7 @@ a.btn-lg:visited {
       height: 715px; } }
   @media (min-width: 992px) {
     .heart-greeting-main {
-      height: 550px; } }
+      height: 575px; } }
 
 .heart-greeting-detail {
   background: #ffffff;
@@ -238,9 +239,12 @@ a.btn-lg:visited {
   @media (min-width: 992px) {
     .heart-greeting-detail {
       float: right;
-      width: 730px;
+      width: 530px;
       padding: 95px 50px 50px;
       margin: -120px 50px 40px; } }
+  @media (min-width: 1200px) {
+    .heart-greeting-detail {
+      width: 730px; } }
 
 .heart-greeting-detail__header {
   margin: 0 0 32px; }
@@ -254,6 +258,14 @@ a.btn-lg:visited {
         margin: 0 0 40px; } }
     .heart-greeting-detail__header h2 > span {
       color: #de2427; }
+
+.heart-greeting-detail__footer .btn {
+  width: 165px;
+  margin: 0 0 6px; }
+  @media (min-width: 768px) {
+    .heart-greeting-detail__footer .btn {
+      width: auto;
+      margin: 0; } }
 
 .heart-greeting-leaderboards {
   margin: 0 20px; }
