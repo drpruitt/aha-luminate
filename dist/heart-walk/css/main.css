@@ -184,6 +184,20 @@ a.btn-lg:visited {
 .heart-page-progress__row--social {
   text-align: center; }
 
+.heart-page-progress__share-buttons {
+  margin: 20px 0 0; }
+
+.heart-page-progress__share-button, .heart-page-progress__share-button:link, .heart-page-progress__share-button:visited {
+  display: inline-block;
+  background-color: #353f40;
+  border-radius: 100%;
+  color: #d8dad9;
+  width: 60px;
+  height: 60px; }
+  .heart-page-progress__share-button > span, .heart-page-progress__share-button:link > span, .heart-page-progress__share-button:visited > span {
+    position: absolute;
+    left: -999em; }
+
 .heart-hero {
   background-color: #de2427;
   background-position: center center;
