@@ -181,6 +181,9 @@ a.btn-lg:visited {
   .heart-page-progress__row:first-child {
     border-top: 0; }
 
+.heart-page-progress__row--social {
+  text-align: center; }
+
 .heart-hero {
   background-color: #de2427;
   background-position: center center;
@@ -266,6 +269,9 @@ a.btn-lg:visited {
     .heart-greeting-detail__footer .btn {
       width: auto;
       margin: 0; } }
+
+.heart-greeting-detail__footer .manageable-content {
+  display: inline; }
 
 .heart-greeting-leaderboards {
   margin: 0 20px; }
