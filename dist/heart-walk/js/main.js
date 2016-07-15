@@ -80,8 +80,25 @@
     }
   ]);
 
+  angular.module('ahaLuminateApp').factory('TeamraiserCompanyService', [
+    'LuminateRESTService', function(LuminateRESTService) {
+      return {
+        getCompanies: function(requestData) {
+          var dataString;
+          dataString = 'method=getCompaniesByInfo';
+          if (requestData && requestData !== '') {
+            dataString += '&' + requestData;
+          }
+          return LuminateRESTService.teamraiserRequest(dataString, false, true).then(function(response) {
+            return response;
+          });
+        }
+      };
+    }
+  ]);
+
   angular.module('ahaLuminateApp').factory('TeamraiserParticipantService', [
-    '$rootScope', 'LuminateRESTService', function($rootScope, LuminateRESTService) {
+    'LuminateRESTService', function(LuminateRESTService) {
       return {
         getParticipants: function(requestData) {
           var dataString;
@@ -92,17 +109,53 @@
           return LuminateRESTService.teamraiserRequest(dataString, false, true).then(function(response) {
             return response;
           });
-        },
-        getParticipant: function() {
-          return this.getParticipants('first_name=' + encodeURIComponent('%%%') + '&list_filter_column=reg.cons_id&list_filter_text=' + $rootScope.consId);
         }
       };
     }
   ]);
 
+  angular.module('ahaLuminateApp').factory('TeamraiserTeamService', [
+    'LuminateRESTService', function(LuminateRESTService) {
+      return {
+        getTeams: function(requestData) {
+          var dataString;
+          dataString = 'method=getTeamsByInfo';
+          if (requestData && requestData !== '') {
+            dataString += '&' + requestData;
+          }
+          return LuminateRESTService.teamraiserRequest(dataString, false, true).then(function(response) {
+            return response;
+          });
+        }
+      };
+    }
+  ]);
+
+  angular.module('ahaLuminateApp').directive('topCompanyList', function() {
+    return {
+      templateUrl: '../aha-luminate/dist/heart-walk/html/directive/topCompanyList.html',
+      restrict: 'E',
+      replace: true,
+      scope: {
+        maxSize: '='
+      }
+    };
+  });
+
   angular.module('ahaLuminateApp').directive('topParticipantList', function() {
     return {
       templateUrl: '../aha-luminate/dist/heart-walk/html/directive/topParticipantList.html',
+      restrict: 'E',
+      replace: true,
+      scope: {
+        maxSize: '='
+      }
+    };
+  });
+
+  angular.module('ahaLuminateApp').directive('topTeamList', function() {
+    return {
+      templateUrl: '../aha-luminate/dist/heart-walk/html/directive/topTeamList.html',
       restrict: 'E',
       replace: true,
       scope: {
