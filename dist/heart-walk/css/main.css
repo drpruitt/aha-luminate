@@ -192,9 +192,11 @@ a.btn-lg:visited {
   background-color: #353f40;
   border-radius: 100%;
   color: #d8dad9;
+  transition: all 0.5s ease;
   width: 60px !important;
   height: 60px;
-  padding: 18px 0; }
+  padding: 18px 0;
+  margin: 0 !important; }
   .heart-page-progress__share-button > span, .heart-page-progress__share-button:link > span, .heart-page-progress__share-button:visited > span {
     position: absolute;
     left: -999em; }
