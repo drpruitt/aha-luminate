@@ -51,9 +51,9 @@
     background-color: #353f40;
     border-radius: 100%;
     color: #d8dad9;
-    
     width: 60px;
     height: 60px;
+    padding: 16px 0;
     
     > span {
       position: absolute;
@@ -65,17 +65,23 @@
 .heart-page-progress__share-button--facebook {
   &:hover, 
   &:focus {
+    background-color: #3b5998;
+    color: #ffffff;
   }
 }
 
 .heart-page-progress__share-button--twitter {
   &:hover, 
   &:focus {
+    background-color: #55acee;
+    color: #ffffff;
   }
 }
 
 .heart-page-progress__share-button--tumblr {
   &:hover, 
   &:focus {
+    background-color: #36465d;
+    color: #ffffff;
   }
 }

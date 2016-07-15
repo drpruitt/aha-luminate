@@ -193,10 +193,23 @@ a.btn-lg:visited {
   border-radius: 100%;
   color: #d8dad9;
   width: 60px;
-  height: 60px; }
+  height: 60px;
+  padding: 16px 0; }
   .heart-page-progress__share-button > span, .heart-page-progress__share-button:link > span, .heart-page-progress__share-button:visited > span {
     position: absolute;
     left: -999em; }
+
+.heart-page-progress__share-button--facebook:hover, .heart-page-progress__share-button--facebook:focus {
+  background-color: #3b5998;
+  color: #ffffff; }
+
+.heart-page-progress__share-button--twitter:hover, .heart-page-progress__share-button--twitter:focus {
+  background-color: #55acee;
+  color: #ffffff; }
+
+.heart-page-progress__share-button--tumblr:hover, .heart-page-progress__share-button--tumblr:focus {
+  background-color: #36465d;
+  color: #ffffff; }
 
 .heart-hero {
   background-color: #de2427;
