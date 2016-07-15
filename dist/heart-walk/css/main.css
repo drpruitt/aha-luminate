@@ -275,3 +275,14 @@ a.btn-lg:visited {
 
 .heart-greeting-leaderboards {
   margin: 0 20px; }
+  @media (min-width: 992px) {
+    .heart-greeting-leaderboards {
+      margin: 50px 50px 80px; } }
+  .heart-greeting-leaderboards h2 {
+    margin: 0 0 32px; }
+    @media (min-width: 992px) {
+      .heart-greeting-leaderboards h2 {
+        margin: 0 0 20px; } }
+    @media (min-width: 992px) {
+      .heart-greeting-leaderboards h2 {
+        margin: 0 0 40px; } }
