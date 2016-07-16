@@ -154,6 +154,22 @@ a.btn-lg:visited {
 #headerWrapper {
   margin: 0; }
 
+.heart-page-progress__thermometer {
+  position: relative;
+  background-color: #de2427; }
+  .heart-page-progress__thermometer .heart-page-progress__thermometer-fill {
+    background-color: #b41b1e;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 56px;
+    transition: all 0.5s ease; }
+  .heart-page-progress__thermometer a.btn, .heart-page-progress__thermometer a.btn:link, .heart-page-progress__thermometer a.btn:visited {
+    position: relative;
+    background: transparent; }
+
 .heart-page-progress {
   margin: 0 20px; }
   @media (min-width: 768px) {
@@ -183,6 +199,13 @@ a.btn-lg:visited {
 
 .heart-page-progress__row--social {
   text-align: center; }
+
+.heart-page-progress__amount {
+  float: left; }
+
+.heart-page-progress__label {
+  float: left;
+  margin-left: 12px; }
 
 .heart-page-progress__share-buttons {
   margin: 20px 0 0; }

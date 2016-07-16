@@ -1,3 +1,28 @@
+.heart-page-progress__thermometer {
+  position: relative;
+  background-color: $btn-primary-bg;
+  
+  .heart-page-progress__thermometer-fill {
+    background-color: darken($btn-primary-bg, 10%);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 56px;
+    transition: all 0.5s ease;
+  }
+  
+  a.btn {
+    &, 
+    &:link, 
+    &:visited {
+      position: relative;
+      background: transparent;
+    }
+  }
+}
+
 .heart-page-progress {
   margin: 0 20px;
   
@@ -37,6 +62,15 @@
 
 .heart-page-progress__row--social {
   text-align: center;
+}
+
+.heart-page-progress__amount {
+  float: left;
+}
+
+.heart-page-progress__label {
+  float: left;
+  margin-left: 12px;
 }
 
 .heart-page-progress__share-buttons {
