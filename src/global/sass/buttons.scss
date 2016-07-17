@@ -7,6 +7,25 @@ a.btn:visited {
 
 a.btn-primary {
   @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+  
+  &, 
+  &:link, 
+  &:visited {
+    background: linear-gradient(to bottom, $btn-primary-bg 0%, #c7191c 100%);
+  }
+  
+  &:hover, 
+  &:focus, 
+  &:active {
+    background: linear-gradient(to bottom, darken($btn-primary-bg, 10%) 0%, darken(#c7191c, 10%) 100%);
+  }
+  
+  &:active {
+    &:hover, 
+    &:focus {
+      background: linear-gradient(to bottom, darken($btn-primary-bg, 17%) 0%, darken(#c7191c, 17%) 100%);
+    }
+  }
 }
 
 .btn-lg, 

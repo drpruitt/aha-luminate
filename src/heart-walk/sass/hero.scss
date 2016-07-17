@@ -29,6 +29,13 @@
 .heart-hero__info {
   float: right;
   font-size: 14px;
+  text-align: right;
+  
+  hr {
+    float: right;
+    border-top: 6px solid $brand-primary-darker;
+    width: 20px;
+  }
   
   p {
     margin: 0 0 0;
