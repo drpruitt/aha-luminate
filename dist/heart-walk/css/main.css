@@ -325,6 +325,21 @@ a.btn-lg:visited {
     .heart-greeting-detail__header h2 > span {
       color: #de2427; }
 
+.heart-greeting-detail__body {
+  margin: 0 0 32px; }
+  @media (min-width: 768px) {
+    .heart-greeting-detail__body {
+      margin: 0 0 64px; } }
+  .heart-greeting-detail__body h2 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 16px; }
+    @media (min-width: 768px) {
+      .heart-greeting-detail__body h2 {
+        margin: 0 0 20px; } }
+  .heart-greeting-detail__body p {
+    font-size: 14px; }
+
 .heart-greeting-detail__footer .btn {
   width: 165px;
   margin: 0 0 6px; }

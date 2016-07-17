@@ -88,6 +88,28 @@
   }
 }
 
+.heart-greeting-detail__body {
+  margin: 0 0 32px;
+  
+  @media(min-width: $screen-sm-min) {
+    margin: 0 0 64px;
+  }
+  
+  h2 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 16px;
+    
+    @media(min-width: $screen-sm-min) {
+      margin: 0 0 20px;
+    }
+  }
+  
+  p {
+    font-size: 14px;
+  }
+}
+
 .heart-greeting-detail__footer {
   .btn {
     width: 165px;
