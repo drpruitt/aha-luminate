@@ -2,15 +2,12 @@
   background-color: $brand-primary;
   background-position: center center;
   background-size: cover;
+  color: #ffffff;
   width: 100%;
-  height: 450px;
+  height: 150px;
   
   @media(min-width: $screen-sm-min) {
-    height: 560px;
-  }
-  
-  @media(min-width: $screen-md-min) {
-    height: 445px;
+    height: 200px;
   }
   
   h1 {
@@ -22,16 +19,14 @@
 .heart-hero__mask {
   background: $brand-primary;
   background: rgba($brand-primary, 0.7);
-  height: 450px;
-  padding: 40px 24px 0;
+  height: 150px;
   
   @media(min-width: $screen-sm-min) {
-    height: 560px;
-    padding: 65px 40px 0;
+    height: 200px;
   }
-  
-  @media(min-width: $screen-md-min) {
-    height: 445px;
-    padding: 95px 50px 0;
-  }
+}
+
+.heart-hero__info {
+  float: right;
+  font-size: 14px;
 }

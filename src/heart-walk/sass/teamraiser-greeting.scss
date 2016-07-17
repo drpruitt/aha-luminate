@@ -1,5 +1,32 @@
 .heart-hero--entry {
   background-image: url(../image/hero-greeting.jpg);
+  height: 450px;
+  
+  @media(min-width: $screen-sm-min) {
+    height: 560px;
+  }
+  
+  @media(min-width: $screen-md-min) {
+    height: 445px;
+  }
+  
+  .heart-hero__mask {
+    height: 450px;
+    padding: 40px 24px 0;
+    
+    @media(min-width: $screen-sm-min) {
+      height: 560px;
+      padding: 65px 40px 0;
+    }
+    
+    @media(min-width: $screen-md-min) {
+      height: 445px;
+      padding: 95px 50px 0;
+    }
+  }
+  
+  .heart-hero__info {
+  }
 }
 
 .heart-greeting-main {
