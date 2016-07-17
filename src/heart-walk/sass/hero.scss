@@ -18,7 +18,7 @@
 
 .heart-hero__mask {
   background: $brand-primary;
-  background: rgba($brand-primary, 0.7);
+  background: rgba($brand-primary, 0.9);
   height: 150px;
   
   @media(min-width: $screen-sm-min) {
@@ -31,5 +31,6 @@
   font-size: 14px;
   
   p {
+    margin: 0 0 0;
   }
 }

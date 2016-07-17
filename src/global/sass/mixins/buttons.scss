@@ -5,12 +5,14 @@
     color: $color;
     background-color: $background;
     background-image: none;
+    border-width: 0;
     border-color: $border;
   }
   
   &:focus {
     color: $color;
     background-color: darken($background, 10%);
+    border-width: 0;
     border-color: darken($border, 25%);
   }
   
@@ -19,18 +21,21 @@
     background-color: darken($background, 10%);
     background-image: none;
     background-position: 0 0;
+    border-width: 0;
     border-color: darken($border, 12%);
   }
   
   &:active {
     color: $color;
     background-color: darken($background, 10%);
+    border-width: 0;
     border-color: darken($border, 12%);
     
     &:hover,
     &:focus {
       color: $color;
       background-color: darken($background, 17%);
+      border-width: 0;
       border-color: darken($border, 25%);
     }
   }
@@ -40,6 +45,7 @@
     &:hover, 
     &:focus {
       background-color: $background;
+      border-width: 0;
       border-color: $border;
     }
   }

@@ -115,11 +115,13 @@ a.btn-primary, a.btn-primary:link, a.btn-primary:visited {
   color: #fff;
   background-color: #de2427;
   background-image: none;
+  border-width: 0;
   border-color: #ca1e21; }
 
 a.btn-primary:focus {
   color: #fff;
   background-color: #b41b1e;
+  border-width: 0;
   border-color: #5b0e0f; }
 
 a.btn-primary:hover {
@@ -127,21 +129,25 @@ a.btn-primary:hover {
   background-color: #b41b1e;
   background-image: none;
   background-position: 0 0;
+  border-width: 0;
   border-color: #951618; }
 
 a.btn-primary:active {
   color: #fff;
   background-color: #b41b1e;
+  border-width: 0;
   border-color: #951618; }
   a.btn-primary:active:hover, a.btn-primary:active:focus {
     color: #fff;
     background-color: #951618;
+    border-width: 0;
     border-color: #5b0e0f; }
 
 a.btn-primary[disabled]:hover, a.btn-primary[disabled]:focus,
 fieldset[disabled] a.btn-primary:hover,
 fieldset[disabled] a.btn-primary:focus {
   background-color: #de2427;
+  border-width: 0;
   border-color: #ca1e21; }
 
 .btn-lg,
@@ -156,16 +162,18 @@ a.btn-lg:visited {
 
 .heart-page-progress__thermometer {
   position: relative;
-  background-color: #de2427; }
+  background-color: #de2427;
+  border-radius: 0;
+  height: auto;
+  margin: 0; }
   .heart-page-progress__thermometer .heart-page-progress__thermometer-fill {
     background-color: #b41b1e;
+    box-shadow: none;
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
-    width: 0;
-    height: 56px;
-    transition: all 0.5s ease; }
+    width: 0; }
   .heart-page-progress__thermometer a.btn, .heart-page-progress__thermometer a.btn:link, .heart-page-progress__thermometer a.btn:visited {
     position: relative;
     background: transparent; }
@@ -249,7 +257,7 @@ a.btn-lg:visited {
 
 .heart-hero__mask {
   background: #de2427;
-  background: rgba(222, 36, 39, 0.7);
+  background: rgba(222, 36, 39, 0.9);
   height: 150px; }
   @media (min-width: 768px) {
     .heart-hero__mask {
@@ -258,6 +266,8 @@ a.btn-lg:visited {
 .heart-hero__info {
   float: right;
   font-size: 14px; }
+  .heart-hero__info p {
+    margin: 0 0 0; }
 
 .heart-hero--entry {
   background-image: url(../image/hero-greeting.jpg);
@@ -357,6 +367,8 @@ a.btn-lg:visited {
     .heart-greeting-leaderboards {
       margin: 50px 50px 80px; } }
   .heart-greeting-leaderboards h2 {
+    font-size: 22px;
+    font-weight: 600;
     margin: 0 0 32px; }
     @media (min-width: 992px) {
       .heart-greeting-leaderboards h2 {
