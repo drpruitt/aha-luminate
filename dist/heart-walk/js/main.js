@@ -9,25 +9,22 @@
 
   angular.module('ahaLuminateApp').run([
     '$rootScope', 'APP_INFO', function($rootScope, APP_INFO) {
-      var $embedRoot, appVersion;
-      $embedRoot = angular.element('[data-embed-root]');
-      if ($embedRoot.data('app-version') !== '') {
-        appVersion = $embedRoot.data('app-version');
-      }
-      if ($embedRoot.data('api-key') !== '') {
-        $rootScope.apiKey = $embedRoot.data('api-key');
+      var $dataRoot;
+      $dataRoot = angular.element('[data-aha-luminate-root]');
+      if ($dataRoot.data('api-key') !== '') {
+        $rootScope.apiKey = $dataRoot.data('api-key');
       }
       if (!$rootScope.apiKey) {
         new Error('AHA Luminate Framework: No Luminate Online API Key is defined.');
       }
-      if ($embedRoot.data('cons-id') !== '') {
-        $rootScope.consId = $embedRoot.data('cons-id');
+      if ($dataRoot.data('cons-id') !== '') {
+        $rootScope.consId = $dataRoot.data('cons-id');
       }
-      if ($embedRoot.data('auth-token') !== '') {
-        $rootScope.authToken = $embedRoot.data('auth-token');
+      if ($dataRoot.data('auth-token') !== '') {
+        $rootScope.authToken = $dataRoot.data('auth-token');
       }
-      if ($embedRoot.data('fr-id') !== '') {
-        return $rootScope.frId = $embedRoot.data('fr-id');
+      if ($dataRoot.data('fr-id') !== '') {
+        return $rootScope.frId = $dataRoot.data('fr-id');
       }
     }
   ]);
@@ -131,12 +128,42 @@
     }
   ]);
 
+  angular.module('ahaLuminateControllers').controller('GreetingPageCtrl', [
+    '$scope', 'TeamraiserParticipantService', 'TeamraiserTeamService', 'TeamraiserCompanyService', function($scope, TeamraiserParticipantService, TeamraiserTeamService, TeamraiserCompanyService) {
+      TeamraiserParticipantService.getParticipants('fr_id=&first_name=' + encodeURIComponent('%%%') + '&list_sort_column=total&list_ascending=false').then(function(response) {
+        var topParticipants;
+        topParticipants = response.data.getParticipantsResponse.participant;
+        if (!angular.isArray(topParticipants)) {
+          topParticipants = [topParticipants];
+        }
+        return $scope.topParticipants = topParticipants;
+      });
+      TeamraiserTeamService.getTeams('fr_id=&list_sort_column=total&list_ascending=false').then(function(response) {
+        var topTeams;
+        topTeams = response.data.getTeamSearchByInfoResponse.team;
+        if (!angular.isArray(topTeams)) {
+          topTeams = [topTeams];
+        }
+        return $scope.topTeams = topTeams;
+      });
+      return TeamraiserCompanyService.getCompanies('fr_id=&list_sort_column=total&list_ascending=false').then(function(response) {
+        var topCompanies;
+        topCompanies = response.data.getCompaniesResponse.company;
+        if (!angular.isArray(topCompanies)) {
+          topCompanies = [topCompanies];
+        }
+        return $scope.topCompanies = topCompanies;
+      });
+    }
+  ]);
+
   angular.module('ahaLuminateApp').directive('topCompanyList', function() {
     return {
       templateUrl: '../aha-luminate/dist/heart-walk/html/directive/topCompanyList.html',
       restrict: 'E',
       replace: true,
       scope: {
+        companies: '=',
         maxSize: '='
       }
     };
@@ -148,6 +175,7 @@
       restrict: 'E',
       replace: true,
       scope: {
+        participants: '=',
         maxSize: '='
       }
     };
@@ -159,6 +187,7 @@
       restrict: 'E',
       replace: true,
       scope: {
+        teams: '=',
         maxSize: '='
       }
     };

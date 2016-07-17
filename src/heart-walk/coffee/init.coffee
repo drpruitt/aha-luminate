@@ -15,15 +15,14 @@ angular.module 'ahaLuminateApp'
     '$rootScope'
     'APP_INFO'
     ($rootScope, APP_INFO) ->
-      # get data from embed container
-      $embedRoot = angular.element '[data-embed-root]'
-      appVersion = $embedRoot.data('app-version') if $embedRoot.data('app-version') isnt ''
-      $rootScope.apiKey = $embedRoot.data('api-key') if $embedRoot.data('api-key') isnt ''
+      # get data from root element
+      $dataRoot = angular.element '[data-aha-luminate-root]'
+      $rootScope.apiKey = $dataRoot.data('api-key') if $dataRoot.data('api-key') isnt ''
       if not $rootScope.apiKey
         new Error 'AHA Luminate Framework: No Luminate Online API Key is defined.'
-      $rootScope.consId = $embedRoot.data('cons-id') if $embedRoot.data('cons-id') isnt ''
-      $rootScope.authToken = $embedRoot.data('auth-token') if $embedRoot.data('auth-token') isnt ''
-      $rootScope.frId = $embedRoot.data('fr-id') if $embedRoot.data('fr-id') isnt ''
+      $rootScope.consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
+      $rootScope.authToken = $dataRoot.data('auth-token') if $dataRoot.data('auth-token') isnt ''
+      $rootScope.frId = $dataRoot.data('fr-id') if $dataRoot.data('fr-id') isnt ''
   ]
 
 angular.element(document).ready ->
