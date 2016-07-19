@@ -1,1 +1,8 @@
-<ul></ul>
+<ul class="list-group">
+  <li class="list-group-item" ng-repeat="company in companies">
+    <a ng-href="TR?fr_id={{company.eventId}}&amp;pg=company&amp;company_id={{company.companyId}}">
+      {{company.companyName}}
+    </a><br>
+    {{company.amountRaised}}
+  </li>
+</ul>
