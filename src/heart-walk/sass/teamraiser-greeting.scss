@@ -16,16 +16,41 @@
     
     @media(min-width: $screen-sm-min) {
       height: 560px;
-      padding: 65px 40px 0;
+      padding: 54px 40px 0;
     }
     
     @media(min-width: $screen-md-min) {
       height: 445px;
-      padding: 95px 50px 0;
+      padding: 80px 50px 0;
+    }
+  }
+  
+  h1 {
+    float: left;
+    font-size: 52px;
+    max-width: 480px;
+    
+    @media(min-width: $screen-sm-min) {
+      font-size: 52px;
+      max-width: 480px;
+    }
+    
+    @media(min-width: $screen-md-min) {
+      font-size: 72px;
+      max-width: 690px;
     }
   }
   
   .heart-hero__info {
+    margin: 125px 0 0;
+    
+    @media(min-width: $screen-sm-min) {
+      margin: 125px 0 0;
+    }
+    
+    @media(min-width: $screen-md-min) {
+      margin: 140px 0 0;
+    }
   }
 }
 

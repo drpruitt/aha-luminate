@@ -311,11 +311,31 @@ a.btn-lg:visited {
     @media (min-width: 768px) {
       .heart-hero--entry .heart-hero__mask {
         height: 560px;
-        padding: 65px 40px 0; } }
+        padding: 54px 40px 0; } }
     @media (min-width: 992px) {
       .heart-hero--entry .heart-hero__mask {
         height: 445px;
-        padding: 95px 50px 0; } }
+        padding: 80px 50px 0; } }
+  .heart-hero--entry h1 {
+    float: left;
+    font-size: 52px;
+    max-width: 480px; }
+    @media (min-width: 768px) {
+      .heart-hero--entry h1 {
+        font-size: 52px;
+        max-width: 480px; } }
+    @media (min-width: 992px) {
+      .heart-hero--entry h1 {
+        font-size: 72px;
+        max-width: 690px; } }
+  .heart-hero--entry .heart-hero__info {
+    margin: 125px 0 0; }
+    @media (min-width: 768px) {
+      .heart-hero--entry .heart-hero__info {
+        margin: 125px 0 0; } }
+    @media (min-width: 992px) {
+      .heart-hero--entry .heart-hero__info {
+        margin: 140px 0 0; } }
 
 .heart-greeting-main {
   background-color: #cacbcd;
