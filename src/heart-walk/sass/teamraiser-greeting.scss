@@ -30,6 +30,7 @@
 }
 
 .heart-greeting-main {
+  background-color: #cacbcd;
   background-image: url(../image/greeting-main.jpg);
   background-position: center center;
   background-size: cover;
@@ -59,12 +60,14 @@
   @media(min-width: $screen-md-min) {
     float: right;
     width: 530px;
-    padding: 95px 50px 50px;
+    max-width: 530px;
+    padding: 80px 50px 50px;
     margin: -120px 50px 40px;
   }
   
   @media(min-width: $screen-lg-min) {
     width: 730px;
+    max-width: 730px;
   }
 }
 
@@ -76,6 +79,7 @@
   }
   
   h2 {
+    font-size: 42px;
     margin: 0 0 32px;
     
     @media(min-width: $screen-sm-min) {
@@ -84,6 +88,7 @@
     
     > span {
       color: $brand-primary;
+      font-weight: 600;
     }
   }
 }

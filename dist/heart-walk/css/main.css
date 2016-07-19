@@ -318,6 +318,7 @@ a.btn-lg:visited {
         padding: 95px 50px 0; } }
 
 .heart-greeting-main {
+  background-color: #cacbcd;
   background-image: url(../image/greeting-main.jpg);
   background-position: center center;
   background-size: cover;
@@ -343,11 +344,13 @@ a.btn-lg:visited {
     .heart-greeting-detail {
       float: right;
       width: 530px;
-      padding: 95px 50px 50px;
+      max-width: 530px;
+      padding: 80px 50px 50px;
       margin: -120px 50px 40px; } }
   @media (min-width: 1200px) {
     .heart-greeting-detail {
-      width: 730px; } }
+      width: 730px;
+      max-width: 730px; } }
 
 .heart-greeting-detail__header {
   margin: 0 0 32px; }
@@ -355,12 +358,14 @@ a.btn-lg:visited {
     .heart-greeting-detail__header {
       margin: 0 0 70px; } }
   .heart-greeting-detail__header h2 {
+    font-size: 42px;
     margin: 0 0 32px; }
     @media (min-width: 768px) {
       .heart-greeting-detail__header h2 {
         margin: 0 0 40px; } }
     .heart-greeting-detail__header h2 > span {
-      color: #de2427; }
+      color: #de2427;
+      font-weight: 600; }
 
 .heart-greeting-detail__body {
   margin: 0 0 32px; }
