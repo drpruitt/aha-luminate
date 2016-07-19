@@ -163,8 +163,8 @@ a.btn-primary:active:hover, a.btn-primary:active:focus {
 a.btn-lg,
 a.btn-lg:link,
 a.btn-lg:visited {
-  padding: 18px 24px;
-  font-size: 14px; }
+  padding: 24px 24px;
+  font-size: 16px; }
 
 #headerWrapper {
   margin: 0; }
@@ -174,7 +174,7 @@ a.btn-lg:visited {
   background: linear-gradient(to bottom, #de2427 0%, #c7191c 100%);
   border-radius: 0;
   height: auto;
-  margin: 0; }
+  margin: 0 0 3px; }
   .heart-page-progress__thermometer .heart-page-progress__thermometer-fill {
     background: linear-gradient(to bottom, #b41b1e 0%, #9a1316 100%);
     box-shadow: none;
@@ -419,6 +419,6 @@ a.btn-lg:visited {
     .heart-greeting-leaderboards .list-group .list-group-item {
       border-left: 0;
       border-right: 0;
-      padding: 10px 0; }
+      padding: 24px 0; }
       .heart-greeting-leaderboards .list-group .list-group-item:first-child, .heart-greeting-leaderboards .list-group .list-group-item:last-child {
         border-radius: 0; }

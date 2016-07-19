@@ -42,5 +42,5 @@ a.btn-primary {
 a.btn-lg, 
 a.btn-lg:link, 
 a.btn-lg:visited {
-  @include button-size($padding-large-vertical, $padding-large-horizontal, $font-size-small);
+  @include button-size($padding-large-horizontal, $padding-large-horizontal, 16px);
 }
