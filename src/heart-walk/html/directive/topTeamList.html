@@ -3,6 +3,6 @@
     <a ng-href="TR?fr_id={{team.EventId}}&amp;pg=team&amp;team_id={{team.id}}">
       {{team.name}}
     </a><br>
-    {{team.amountRaised | currency: "$" : 0}}
+    {{team.amountRaised / 100 | currency: "$" : 0}}
   </li>
 </ul>
