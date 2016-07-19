@@ -193,10 +193,8 @@ a.btn-lg:visited {
     position: relative;
     background: transparent; }
 
-.heart-page-progress {
+.heart-page-progress .btn {
   width: 100%; }
-  .heart-page-progress .btn {
-    width: 100%; }
 
 .heart-page-progress__caret {
   border-left: 5px solid transparent;
