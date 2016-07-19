@@ -220,15 +220,19 @@ a.btn-lg:visited {
 
 .heart-page-progress__amount {
   float: left;
-  font-size: 28px;
+  font-size: 32px;
+  line-height: 32px;
   font-weight: 600; }
 
 .heart-page-progress__label {
-  float: left;
+  float: right;
+  color: #c9cccc;
   font-size: 12px;
-  margin-left: 12px; }
+  width: 48px;
+  margin: 0 28px 0 12px; }
 
 .heart-page-progress__share-label {
+  color: #c9cccc;
   font-size: 16px;
   padding: 0 40px; }
 
