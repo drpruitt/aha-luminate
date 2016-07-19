@@ -113,7 +113,8 @@ a.btn,
 a.btn:link,
 a.btn:visited {
   padding: 12px 24px;
-  font-size: 14px; }
+  font-size: 14px;
+  border-radius: 0; }
 
 a.btn, a.btn:link, a.btn:visited, a.btn:hover, a.btn:focus {
   text-decoration: none; }
@@ -390,3 +391,11 @@ a.btn-lg:visited {
     @media (min-width: 992px) {
       .heart-greeting-leaderboards h2 {
         margin: 0 0 40px; } }
+  .heart-greeting-leaderboards .list-group {
+    font-size: 14px;
+    font-weight: 600; }
+    .heart-greeting-leaderboards .list-group .list-group-item {
+      border-left: 0;
+      border-right: 0; }
+      .heart-greeting-leaderboards .list-group .list-group-item:first-child, .heart-greeting-leaderboards .list-group .list-group-item:last-child {
+        border-radius: 0; }

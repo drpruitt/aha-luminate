@@ -104,7 +104,8 @@ a.btn,
 a.btn:link,
 a.btn:visited {
   padding: 12px 24px;
-  font-size: 14px; }
+  font-size: 14px;
+  border-radius: 0; }
 
 a.btn, a.btn:link, a.btn:visited, a.btn:hover, a.btn:focus {
   text-decoration: none; }

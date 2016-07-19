@@ -3,6 +3,7 @@ a.btn,
 a.btn:link, 
 a.btn:visited {
   @include button-size($padding-base-vertical, $padding-base-horizontal, $font-size-small);
+  border-radius: 0;
 }
 
 a.btn {

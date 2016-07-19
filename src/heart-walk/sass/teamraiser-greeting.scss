@@ -106,7 +106,7 @@
   }
   
   p {
-    font-size: 14px;
+    font-size: $font-size-small;
   }
 }
 
@@ -147,6 +147,21 @@
     
     @media(min-width: $screen-md-min) {
       margin: 0 0 40px;
+    }
+  }
+  
+  .list-group {
+    font-size: $font-size-small;
+    font-weight: 600;
+    
+    .list-group-item {
+      border-left: 0;
+      border-right: 0;
+      
+      &:first-child, 
+      &:last-child {
+        border-radius: 0;
+      }
     }
   }
 }
