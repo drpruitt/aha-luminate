@@ -193,21 +193,16 @@ a.btn-lg:visited {
     position: relative;
     background: transparent; }
 
-.heart-page-progress {
-  margin: 0 20px; }
-  @media (min-width: 768px) {
-    .heart-page-progress {
-      width: 275px;
-      margin: 0 40px; } }
-  @media (min-width: 992px) {
-    .heart-page-progress {
-      float: left;
-      margin: 3px 0 0 48px; } }
-  @media (min-width: 1200px) {
-    .heart-page-progress {
-      width: 292px; } }
-  .heart-page-progress .btn {
-    width: 100%; }
+@media (min-width: 768px) {
+  .heart-page-progress {
+    width: 275px; } }
+
+@media (min-width: 1200px) {
+  .heart-page-progress {
+    width: 292px; } }
+
+.heart-page-progress .btn {
+  width: 100%; }
 
 .heart-page-progress__caret {
   border-left: 5px solid transparent;
@@ -302,28 +297,40 @@ a.btn-lg:visited {
   @media (min-width: 768px) {
     .heart-hero {
       height: 200px; } }
-  .heart-hero h1 {
-    color: #ffffff;
-    margin: 0; }
 
 .heart-hero__mask {
   background: #de2427;
   background: rgba(222, 36, 39, 0.9);
-  height: 150px; }
+  height: 150px;
+  padding: 50px; }
   @media (min-width: 768px) {
     .heart-hero__mask {
       height: 200px; } }
 
-.heart-hero__info {
-  font-size: 14px;
-  text-align: right; }
-  .heart-hero__info hr {
+.heart-hero__event-name {
+  float: right; }
+  .heart-hero__event-name hr {
     float: right;
     border-top: 6px solid #890707;
     width: 20px;
     margin: 0 0 20px; }
+  .heart-hero__event-name p {
+    font-size: 24px; }
+
+.heart-hero__info {
+  font-size: 14px;
+  text-align: right; }
   .heart-hero__info p {
     margin: 0 0 0; }
+
+.heart-page-rail {
+  float: left;
+  border: 3px solid #ffffff;
+  width: 306px; }
+  .heart-page-rail .btn,
+  .heart-page-rail a#sidebar_donate_button {
+    padding: 24px;
+    margin-top: 3px; }
 
 .heart-hero--entry {
   background-image: url(../image/hero-greeting-xs.jpg);
@@ -347,9 +354,11 @@ a.btn-lg:visited {
         height: 445px;
         padding: 80px 50px 0; } }
   .heart-hero--entry h1 {
+    color: #ffffff;
     font-size: 34px;
     max-width: 100%;
-    min-height: 74px; }
+    min-height: 74px;
+    margin: 0; }
     @media (min-width: 414px) {
       .heart-hero--entry h1 {
         font-size: 38px;
@@ -382,6 +391,11 @@ a.btn-lg:visited {
     @media (min-width: 992px) {
       .heart-hero--entry .heart-hero__info {
         margin: 140px 0 0; } }
+    .heart-hero--entry .heart-hero__info hr {
+      float: right;
+      border-top: 6px solid #890707;
+      width: 20px;
+      margin: 0 0 20px; }
 
 .heart-greeting-main {
   background-color: #cacbcd;
@@ -485,6 +499,16 @@ a.btn-lg:visited {
 .heart-greeting-detail__footer .manageable-content {
   display: inline; }
 
+.heart-page-progress--entry {
+  margin: 0 20px; }
+  @media (min-width: 768px) {
+    .heart-page-progress--entry {
+      margin: 0 40px; } }
+  @media (min-width: 992px) {
+    .heart-page-progress--entry {
+      float: left;
+      margin: 3px 0 0 48px; } }
+
 .heart-greeting-story {
   background-color: #cacbcd;
   color: #ffffff;
@@ -518,3 +542,6 @@ a.btn-lg:visited {
       padding: 24px 0; }
       .heart-greeting-leaderboards .list-group .list-group-item:first-child, .heart-greeting-leaderboards .list-group .list-group-item:last-child {
         border-radius: 0; }
+
+.heart-page-rail--personal {
+  margin: -75px 0 0 50px; }

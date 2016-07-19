@@ -27,9 +27,11 @@
   }
   
   h1 {
+    color: #ffffff;
     font-size: 34px;
     max-width: 100%;
     min-height: 74px;
+    margin: 0;
     
     @media(min-width: 414px) {
       font-size: 38px;
@@ -71,6 +73,13 @@
     
     @media(min-width: $screen-md-min) {
       margin: 140px 0 0;
+    }
+    
+    hr {
+      float: right;
+      border-top: 6px solid $brand-primary-darker;
+      width: 20px;
+      margin: 0 0 20px;
     }
   }
 }
@@ -212,6 +221,19 @@
   
   .manageable-content {
     display: inline;
+  }
+}
+
+.heart-page-progress--entry {
+  margin: 0 20px;
+  
+  @media(min-width: $screen-sm-min) {
+    margin: 0 40px;
+  }
+  
+  @media(min-width: $screen-md-min) {
+    float: left;
+    margin: 3px 0 0 48px;
   }
 }
 

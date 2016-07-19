@@ -9,26 +9,21 @@
   @media(min-width: $screen-sm-min) {
     height: 200px;
   }
-  
-  h1 {
-    color: #ffffff;
-    margin: 0;
-  }
 }
 
 .heart-hero__mask {
   background: $brand-primary;
   background: rgba($brand-primary, 0.9);
   height: 150px;
+  padding: 50px;
   
   @media(min-width: $screen-sm-min) {
     height: 200px;
   }
 }
 
-.heart-hero__info {
-  font-size: 14px;
-  text-align: right;
+.heart-hero__event-name {
+  float: right;
   
   hr {
     float: right;
@@ -36,6 +31,15 @@
     width: 20px;
     margin: 0 0 20px;
   }
+  
+  p {
+    font-size: 24px;
+  }
+}
+
+.heart-hero__info {
+  font-size: 14px;
+  text-align: right;
   
   p {
     margin: 0 0 0;
