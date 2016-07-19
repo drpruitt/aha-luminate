@@ -101,22 +101,19 @@
   margin: -210px 20px 20px;
   
   @media(min-width: $screen-sm-min) {
-    max-width: 690px;
     padding: 75px 48px 65px;
-    margin: -285px auto 40px;
+    margin: -285px 40px 40px;
   }
   
   @media(min-width: $screen-md-min) {
     float: right;
     width: 530px;
-    max-width: 530px;
     padding: 80px 50px 50px;
     margin: -120px 50px 0;
   }
   
   @media(min-width: $screen-lg-min) {
     width: 730px;
-    max-width: 730px;
   }
 }
 
@@ -214,6 +211,11 @@
   background-color: #cacbcd;
   color: #ffffff;
   padding: 50px;
+  margin: 20px 20px 0;
+  
+  @media(min-width: $screen-sm-min) {
+    margin: 0;
+  }
 }
 
 .heart-greeting-leaderboards {

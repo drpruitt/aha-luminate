@@ -227,6 +227,14 @@ a.btn-lg:visited {
   font-size: 32px;
   line-height: 32px;
   font-weight: 600; }
+  @media (min-width: 768px) {
+    .heart-page-progress__amount {
+      font-size: 28px;
+      line-height: 28px; } }
+  @media (min-width: 992px) {
+    .heart-page-progress__amount {
+      font-size: 32px;
+      line-height: 32px; } }
 
 .heart-page-progress__label {
   float: right;
@@ -239,6 +247,12 @@ a.btn-lg:visited {
   color: #c9cccc;
   font-size: 16px;
   padding: 0 40px; }
+  @media (min-width: 768px) {
+    .heart-page-progress__share-label {
+      padding: 0 30px; } }
+  @media (min-width: 992px) {
+    .heart-page-progress__share-label {
+      padding: 0 40px; } }
 
 .heart-page-progress__share-buttons {
   margin: 20px 0 0; }
@@ -380,20 +394,17 @@ a.btn-lg:visited {
   margin: -210px 20px 20px; }
   @media (min-width: 768px) {
     .heart-greeting-detail {
-      max-width: 690px;
       padding: 75px 48px 65px;
-      margin: -285px auto 40px; } }
+      margin: -285px 40px 40px; } }
   @media (min-width: 992px) {
     .heart-greeting-detail {
       float: right;
       width: 530px;
-      max-width: 530px;
       padding: 80px 50px 50px;
       margin: -120px 50px 0; } }
   @media (min-width: 1200px) {
     .heart-greeting-detail {
-      width: 730px;
-      max-width: 730px; } }
+      width: 730px; } }
 
 .heart-greeting-detail__header {
   margin: 0 0 32px; }
@@ -459,7 +470,11 @@ a.btn-lg:visited {
 .heart-greeting-story {
   background-color: #cacbcd;
   color: #ffffff;
-  padding: 50px; }
+  padding: 50px;
+  margin: 20px 20px 0; }
+  @media (min-width: 768px) {
+    .heart-greeting-story {
+      margin: 0; } }
 
 .heart-greeting-leaderboards {
   margin: 0 20px 50px; }

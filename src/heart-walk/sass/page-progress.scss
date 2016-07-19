@@ -72,6 +72,16 @@
   font-size: 32px;
   line-height: 32px;
   font-weight: 600;
+  
+  @media(min-width: $screen-sm-min) {
+    font-size: 28px;
+    line-height: 28px;
+  }
+  
+  @media(min-width: $screen-md-min) {
+    font-size: 32px;
+    line-height: 32px;
+  }
 }
 
 .heart-page-progress__label {
@@ -86,6 +96,14 @@
   color: #c9cccc;
   font-size: 16px;
   padding: 0 40px;
+  
+  @media(min-width: $screen-sm-min) {
+    padding: 0 30px;
+  }
+  
+  @media(min-width: $screen-md-min) {
+    padding: 0 40px;
+  }
 }
 
 .heart-page-progress__share-buttons {
