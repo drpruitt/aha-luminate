@@ -2,7 +2,7 @@
   float: left;
   border: 3px solid #ffffff;
   width: 306px;
-  margin: 0 0 0 50px;
+  margin: 0 48px;
   
   .btn, 
   a#sidebar_donate_button {
@@ -13,4 +13,9 @@
 
 .heart-page-rail__image {
   margin-bottom: 3px;
+}
+
+.heart-page-main {
+  float: left;
+  width: 680px;
 }

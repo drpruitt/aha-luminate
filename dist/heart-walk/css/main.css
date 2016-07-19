@@ -322,7 +322,7 @@ a.btn-lg:visited {
   float: left;
   border: 3px solid #ffffff;
   width: 306px;
-  margin: 0 0 0 50px; }
+  margin: 0 48px; }
   .heart-page-rail .btn,
   .heart-page-rail a#sidebar_donate_button {
     padding: 24px;
@@ -330,6 +330,10 @@ a.btn-lg:visited {
 
 .heart-page-rail__image {
   margin-bottom: 3px; }
+
+.heart-page-main {
+  float: left;
+  width: 680px; }
 
 .heart-hero--entry {
   background-image: url(../image/hero-greeting-xs.jpg);
