@@ -193,16 +193,10 @@ a.btn-lg:visited {
     position: relative;
     background: transparent; }
 
-@media (min-width: 768px) {
-  .heart-page-progress {
-    width: 275px; } }
-
-@media (min-width: 1200px) {
-  .heart-page-progress {
-    width: 292px; } }
-
-.heart-page-progress .btn {
+.heart-page-progress {
   width: 100%; }
+  .heart-page-progress .btn {
+    width: 100%; }
 
 .heart-page-progress__caret {
   border-left: 5px solid transparent;
@@ -331,7 +325,10 @@ a.btn-lg:visited {
   .heart-page-rail .btn,
   .heart-page-rail a#sidebar_donate_button {
     padding: 24px;
-    margin-top: 3px; }
+    margin-bottom: 3px; }
+
+.heart-page-rail__image {
+  margin-bottom: 3px; }
 
 .heart-hero--entry {
   background-image: url(../image/hero-greeting-xs.jpg);
@@ -504,11 +501,15 @@ a.btn-lg:visited {
   margin: 0 20px; }
   @media (min-width: 768px) {
     .heart-page-progress--entry {
+      width: 275px;
       margin: 0 40px; } }
   @media (min-width: 992px) {
     .heart-page-progress--entry {
       float: left;
       margin: 3px 0 0 48px; } }
+  @media (min-width: 1200px) {
+    .heart-page-progress--entry {
+      width: 292px; } }
 
 .heart-greeting-story {
   background-color: #cacbcd;

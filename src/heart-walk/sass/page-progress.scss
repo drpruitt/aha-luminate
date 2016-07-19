@@ -28,13 +28,7 @@
 }
 
 .heart-page-progress {
-  @media(min-width: $screen-sm-min) {
-    width: 275px;
-  }
-  
-  @media(min-width: $screen-lg-min) {
-    width: 292px;
-  }
+  width: 100%;
   
   .btn {
     width: 100%;
