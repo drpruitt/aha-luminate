@@ -72,6 +72,11 @@ div.tr-page-container {
   border: 0;
 }
 
+.mobile div.tr-page-container #entry_page_custom_html {
+  max-height: none;
+  padding: 0;
+}
+
 div.tr-page-header {
   background: transparent;
 }

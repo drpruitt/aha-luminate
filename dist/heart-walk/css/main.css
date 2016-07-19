@@ -56,6 +56,10 @@ div.responsive {
 div.tr-page-container {
   border: 0; }
 
+.mobile div.tr-page-container #entry_page_custom_html {
+  max-height: none;
+  padding: 0; }
+
 div.tr-page-header {
   background: transparent; }
 
@@ -359,13 +363,16 @@ a.btn-lg:visited {
   background-position: center center;
   background-size: cover;
   width: 100%;
-  height: 790px; }
+  min-height: 790px;
+  padding-bottom: 30px;
+  margin-bottom: 0; }
   @media (min-width: 768px) {
     .heart-greeting-main {
-      height: 715px; } }
+      min-height: 715px; } }
   @media (min-width: 992px) {
     .heart-greeting-main {
-      height: 575px; } }
+      min-height: 575px;
+      padding-bottom: 40px; } }
 
 .heart-greeting-detail {
   background: #ffffff;
@@ -382,7 +389,7 @@ a.btn-lg:visited {
       width: 530px;
       max-width: 530px;
       padding: 80px 50px 50px;
-      margin: -120px 50px 40px; } }
+      margin: -120px 50px 0; } }
   @media (min-width: 1200px) {
     .heart-greeting-detail {
       width: 730px;
