@@ -326,7 +326,8 @@ a.btn-lg:visited {
 .heart-page-rail {
   float: left;
   border: 3px solid #ffffff;
-  width: 306px; }
+  width: 306px;
+  margin: 0 0 0 50px; }
   .heart-page-rail .btn,
   .heart-page-rail a#sidebar_donate_button {
     padding: 24px;
@@ -544,4 +545,4 @@ a.btn-lg:visited {
         border-radius: 0; }
 
 .heart-page-rail--personal {
-  margin: -75px 0 0 50px; }
+  margin-top: -75px; }
