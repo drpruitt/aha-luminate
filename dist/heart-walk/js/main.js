@@ -141,6 +141,73 @@
     }
   ]);
 
+  angular.module('ahaLuminateApp').directive('eqColumnHeight', [
+    '$window', '$timeout', function($window, $timeout) {
+      return {
+        restrict: 'A',
+        link: function(scope, element) {
+          var resizeColumns;
+          resizeColumns = function() {
+            var columnHeight;
+            angular.element(element).css('height', '');
+            angular.element(element).siblings('[class*="col-"]').css('height', '');
+            columnHeight = Number(angular.element(element).css('height').replace('px', ''));
+            angular.element(element).siblings('[class*="col-"]').each(function() {
+              var siblingHeight;
+              siblingHeight = Number(angular.element(this).css('height').replace('px', ''));
+              if (siblingHeight > columnHeight) {
+                return columnHeight = siblingHeight;
+              }
+            });
+            angular.element(element).css('height', columnHeight + 'px');
+            return angular.element(element).siblings('[class*="col-"]').css('height', columnHeight + 'px');
+          };
+          $timeout(resizeColumns, 500);
+          return angular.element($window).bind('resize', function() {
+            resizeColumns();
+            return scope.$digest();
+          });
+        }
+      };
+    }
+  ]);
+
+  angular.module('ahaLuminateApp').directive('topCompanyList', function() {
+    return {
+      templateUrl: '../aha-luminate/dist/heart-walk/html/directive/topCompanyList.html',
+      restrict: 'E',
+      replace: true,
+      scope: {
+        companies: '=',
+        maxSize: '='
+      }
+    };
+  });
+
+  angular.module('ahaLuminateApp').directive('topParticipantList', function() {
+    return {
+      templateUrl: '../aha-luminate/dist/heart-walk/html/directive/topParticipantList.html',
+      restrict: 'E',
+      replace: true,
+      scope: {
+        participants: '=',
+        maxSize: '='
+      }
+    };
+  });
+
+  angular.module('ahaLuminateApp').directive('topTeamList', function() {
+    return {
+      templateUrl: '../aha-luminate/dist/heart-walk/html/directive/topTeamList.html',
+      restrict: 'E',
+      replace: true,
+      scope: {
+        teams: '=',
+        maxSize: '='
+      }
+    };
+  });
+
   angular.module('ahaLuminateControllers').controller('GreetingPageCtrl', [
     '$scope', 'TeamraiserParticipantService', 'TeamraiserTeamService', 'TeamraiserCompanyService', function($scope, TeamraiserParticipantService, TeamraiserTeamService, TeamraiserCompanyService) {
       var setTopCompanies, setTopParticipants, setTopTeams;
@@ -206,41 +273,5 @@
       });
     }
   ]);
-
-  angular.module('ahaLuminateApp').directive('topCompanyList', function() {
-    return {
-      templateUrl: '../aha-luminate/dist/heart-walk/html/directive/topCompanyList.html',
-      restrict: 'E',
-      replace: true,
-      scope: {
-        companies: '=',
-        maxSize: '='
-      }
-    };
-  });
-
-  angular.module('ahaLuminateApp').directive('topParticipantList', function() {
-    return {
-      templateUrl: '../aha-luminate/dist/heart-walk/html/directive/topParticipantList.html',
-      restrict: 'E',
-      replace: true,
-      scope: {
-        participants: '=',
-        maxSize: '='
-      }
-    };
-  });
-
-  angular.module('ahaLuminateApp').directive('topTeamList', function() {
-    return {
-      templateUrl: '../aha-luminate/dist/heart-walk/html/directive/topTeamList.html',
-      restrict: 'E',
-      replace: true,
-      scope: {
-        teams: '=',
-        maxSize: '='
-      }
-    };
-  });
 
 }).call(this);

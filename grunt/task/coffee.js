@@ -19,6 +19,8 @@ module.exports = {
         'src/heart-walk/coffee/config/*.*', 
         'src/global/coffee/service/*.*', 
         'src/heart-walk/coffee/service/*.*', 
+        'src/global/coffee/directive/*.*', 
+        'src/heart-walk/coffee/directive/*.*', 
         'src/heart-walk/coffee/**/*.*'
       ]
     }

@@ -405,19 +405,38 @@ a.btn-lg:visited {
       font-weight: 600; }
 
 .heart-greeting-detail__body {
+  border-top: 1px solid #c9cccc;
+  padding: 12px 0 0;
   margin: 0 0 32px; }
   @media (min-width: 768px) {
     .heart-greeting-detail__body {
-      margin: 0 0 64px; } }
+      border-top: 0;
+      padding: 0;
+      margin: 0 0 48px; } }
+  @media (max-width: 767px) {
+    .heart-greeting-detail__body [class*="col-"] {
+      height: auto !important; } }
+  @media (min-width: 768px) {
+    .heart-greeting-detail__body [class*="col-"] {
+      border-left: 1px solid #c9cccc;
+      padding: 24px; } }
+  @media (min-width: 768px) {
+    .heart-greeting-detail__body [class*="col-"]:first-child {
+      border-left: 0;
+      padding: 24px 24px 24px 15px; } }
+  @media (min-width: 768px) {
+    .heart-greeting-detail__body [class*="col-"]:last-child {
+      padding: 24px 15px 24px 24px; } }
   .heart-greeting-detail__body h2 {
     font-size: 16px;
     font-weight: 600;
-    margin: 0 0 16px; }
+    margin: 24px 0 16px; }
     @media (min-width: 768px) {
       .heart-greeting-detail__body h2 {
         margin: 0 0 20px; } }
   .heart-greeting-detail__body p {
-    font-size: 14px; }
+    font-size: 14px;
+    margin: 0; }
 
 .heart-greeting-detail__footer .btn {
   width: 165px;
@@ -436,14 +455,14 @@ a.btn-lg:visited {
   padding: 50px; }
 
 .heart-greeting-leaderboards {
-  margin: 0 20px; }
+  margin: 0 20px 50px; }
   @media (min-width: 992px) {
     .heart-greeting-leaderboards {
       margin: 50px 50px 80px; } }
   .heart-greeting-leaderboards h2 {
     font-size: 22px;
     font-weight: 600;
-    margin: 0 0 32px; }
+    margin: 32px 0; }
     @media (min-width: 992px) {
       .heart-greeting-leaderboards h2 {
         margin: 0 0 20px; } }
