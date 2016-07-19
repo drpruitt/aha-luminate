@@ -274,4 +274,12 @@
     }
   ]);
 
+  angular.module('ahaLuminateControllers').controller('MainCtrl', [
+    '$scope', function($scope) {
+      return angular.element('body').on('click', '.addthis_button_facebook', function(e) {
+        return e.preventDefault();
+      });
+    }
+  ]);
+
 }).call(this);

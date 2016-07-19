@@ -252,7 +252,7 @@ a.btn-lg:visited {
   @media (min-width: 768px) {
     .heart-page-progress__share-label {
       padding: 0 30px; } }
-  @media (min-width: 992px) {
+  @media (min-width: 1200px) {
     .heart-page-progress__share-label {
       padding: 0 40px; } }
 
@@ -414,8 +414,14 @@ a.btn-lg:visited {
     .heart-greeting-detail__header {
       margin: 0 0 70px; } }
   .heart-greeting-detail__header h2 {
-    font-size: 30px;
+    font-size: 24px;
     margin: 0 0 32px; }
+    @media (min-width: 360px) {
+      .heart-greeting-detail__header h2 {
+        font-size: 28px; } }
+    @media (min-width: 375px) {
+      .heart-greeting-detail__header h2 {
+        font-size: 30px; } }
     @media (min-width: 768px) {
       .heart-greeting-detail__header h2 {
         font-size: 42px;
