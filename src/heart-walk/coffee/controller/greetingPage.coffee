@@ -5,33 +5,42 @@ angular.module 'ahaLuminateControllers'
     'TeamraiserTeamService'
     'TeamraiserCompanyService'
     ($scope, TeamraiserParticipantService, TeamraiserTeamService, TeamraiserCompanyService) ->
+      $scope.topParticipants = {}
+      setTopParticipants = (participants) ->
+        $scope.topParticipants.participants = participants
+        if not $scope.$$phase
+          $scope.$apply()
       TeamraiserParticipantService.getParticipants 'first_name=' + encodeURIComponent('%%%') + '&list_sort_column=total&list_ascending=false', 
         error: () ->
-          $scope.topParticipants = []
+          setTopParticipants []
         success: (response) ->
           topParticipants = response.getParticipantsResponse.participant || []
           topParticipants = [topParticipants] if not angular.isArray topParticipants
-          $scope.topParticipants = topParticipants
-          if not $scope.$$phase
-            $scope.$apply()
+          setTopParticipants topParticipants
       
+      $scope.topTeams = {}
+      setTopTeams = (teams) ->
+        $scope.topTeams.teams = teams
+        if not $scope.$$phase
+          $scope.$apply()
       TeamraiserTeamService.getTeams 'list_sort_column=total&list_ascending=false', 
         error: () ->
-          $scope.topTeams = []
+          setTopTeams []
         success: (response) ->
           topTeams = response.getTeamSearchByInfoResponse.team || []
           topTeams = [topTeams] if not angular.isArray topTeams
-          $scope.topTeams = topTeams
-          if not $scope.$$phase
-            $scope.$apply()
+          setTopTeams topTeams
       
+      $scope.topCompanies = {}
+      setTopCompanies = (companies) ->
+        $scope.topCompanies.companies = companies
+        if not $scope.$$phase
+          $scope.$apply()
       TeamraiserCompanyService.getCompanies 'list_sort_column=total&list_ascending=false', 
         error: () ->
-          $scope.topCompanies = []
+          setTopCompanies []
         success: (response) ->
           topCompanies = response.getCompaniesResponse.company || []
           topCompanies = [topCompanies] if not angular.isArray topCompanies
-          $scope.topCompanies = topCompanies
-          if not $scope.$$phase
-            $scope.$apply()
+          setTopCompanies topCompanies
   ]

@@ -143,9 +143,17 @@
 
   angular.module('ahaLuminateControllers').controller('GreetingPageCtrl', [
     '$scope', 'TeamraiserParticipantService', 'TeamraiserTeamService', 'TeamraiserCompanyService', function($scope, TeamraiserParticipantService, TeamraiserTeamService, TeamraiserCompanyService) {
+      var setTopCompanies, setTopParticipants, setTopTeams;
+      $scope.topParticipants = {};
+      setTopParticipants = function(participants) {
+        $scope.topParticipants.participants = participants;
+        if (!$scope.$$phase) {
+          return $scope.$apply();
+        }
+      };
       TeamraiserParticipantService.getParticipants('first_name=' + encodeURIComponent('%%%') + '&list_sort_column=total&list_ascending=false', {
         error: function() {
-          return $scope.topParticipants = [];
+          return setTopParticipants([]);
         },
         success: function(response) {
           var topParticipants;
@@ -153,15 +161,19 @@
           if (!angular.isArray(topParticipants)) {
             topParticipants = [topParticipants];
           }
-          $scope.topParticipants = topParticipants;
-          if (!$scope.$$phase) {
-            return $scope.$apply();
-          }
+          return setTopParticipants(topParticipants);
         }
       });
+      $scope.topTeams = {};
+      setTopTeams = function(teams) {
+        $scope.topTeams.teams = teams;
+        if (!$scope.$$phase) {
+          return $scope.$apply();
+        }
+      };
       TeamraiserTeamService.getTeams('list_sort_column=total&list_ascending=false', {
         error: function() {
-          return $scope.topTeams = [];
+          return setTopTeams([]);
         },
         success: function(response) {
           var topTeams;
@@ -169,15 +181,19 @@
           if (!angular.isArray(topTeams)) {
             topTeams = [topTeams];
           }
-          $scope.topTeams = topTeams;
-          if (!$scope.$$phase) {
-            return $scope.$apply();
-          }
+          return setTopTeams(topTeams);
         }
       });
+      $scope.topCompanies = {};
+      setTopCompanies = function(companies) {
+        $scope.topCompanies.companies = companies;
+        if (!$scope.$$phase) {
+          return $scope.$apply();
+        }
+      };
       return TeamraiserCompanyService.getCompanies('list_sort_column=total&list_ascending=false', {
         error: function() {
-          return $scope.topCompanies = [];
+          return setTopCompanies([]);
         },
         success: function(response) {
           var topCompanies;
@@ -185,10 +201,7 @@
           if (!angular.isArray(topCompanies)) {
             topCompanies = [topCompanies];
           }
-          $scope.topCompanies = topCompanies;
-          if (!$scope.$$phase) {
-            return $scope.$apply();
-          }
+          return setTopCompanies(topCompanies);
         }
       });
     }
