@@ -14,3 +14,14 @@ body {
   font-family: $font-family-base;
   font-size: $font-size-base;
 }
+
+a {
+  &, 
+  &:link, 
+  &:visited, 
+  &:hover, 
+  &:focus {
+    font-weight: 600;
+    text-decoration: underline;
+  }
+}

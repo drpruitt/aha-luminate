@@ -92,6 +92,10 @@ body {
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-size: 20px; }
 
+a, a:link, a:visited, a:hover, a:focus {
+  font-weight: 600;
+  text-decoration: underline; }
+
 .main {
   background: #eeeeee; }
   .main .container {
@@ -110,6 +114,9 @@ a.btn:link,
 a.btn:visited {
   padding: 12px 24px;
   font-size: 14px; }
+
+a.btn, a.btn:link, a.btn:visited, a.btn:hover, a.btn:focus {
+  text-decoration: none; }
 
 a.btn-primary, a.btn-primary:link, a.btn-primary:visited, a.btn-primary:hover, a.btn-primary:focus, a.btn-primary:active {
   color: #fff;

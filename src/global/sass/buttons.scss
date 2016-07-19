@@ -5,6 +5,15 @@ a.btn:visited {
   @include button-size($padding-base-vertical, $padding-base-horizontal, $font-size-small);
 }
 
+a.btn {
+  &, 
+  &:link, 
+  &:visited, 
+  &:hover, 
+  &:focus {
+    text-decoration: none;
+  }
+}
 a.btn-primary {
   @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
   
