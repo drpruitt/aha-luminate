@@ -287,7 +287,8 @@ a.btn-lg:visited {
   background-size: cover;
   color: #ffffff;
   width: 100%;
-  height: 150px; }
+  height: 150px;
+  margin: 0 0 48px; }
   @media (min-width: 768px) {
     .heart-hero {
       height: 200px; } }
@@ -332,7 +333,8 @@ a.btn-lg:visited {
 
 .heart-hero--entry {
   background-image: url(../image/hero-greeting-xs.jpg);
-  height: 422px; }
+  height: 422px;
+  margin: 0; }
   @media (min-width: 768px) {
     .heart-hero--entry {
       background-image: url(../image/hero-greeting.jpg);
@@ -544,6 +546,9 @@ a.btn-lg:visited {
       padding: 24px 0; }
       .heart-greeting-leaderboards .list-group .list-group-item:first-child, .heart-greeting-leaderboards .list-group .list-group-item:last-child {
         border-radius: 0; }
+
+.heart-hero--personal {
+  margin: 0; }
 
 .heart-page-rail--personal {
   margin-top: -75px; }
