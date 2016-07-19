@@ -1,5 +1,5 @@
 (function() {
-  angular.module('ahaLuminateApp', ['ngSanitize', 'ui.bootstrap', 'ahaLuminateControllers']);
+  angular.module('ahaLuminateApp', ['ngSanitize', 'ahaLuminateControllers']);
 
   angular.module('ahaLuminateControllers', []);
 
@@ -43,7 +43,7 @@
             if (!$rootScope.apiKey) {
 
             } else {
-              requestData += '&v=1.0&api_key=' + $rootScope.apiKey + '&response_format=json&suppress_response_codes=true&ng_tr_pc_v=' + APP_INFO.version;
+              requestData += '&v=1.0&api_key=' + $rootScope.apiKey + '&response_format=json&suppress_response_codes=true';
               if (includeAuth && !$rootScope.authToken) {
 
               } else {
@@ -52,9 +52,6 @@
                 }
                 if (includeFrId) {
                   requestData += '&fr_id=' + $rootScope.frId + '&s_trID=' + $rootScope.frId;
-                }
-                if ($rootScope.locale) {
-                  requestData += '&s_locale=' + $rootScope.locale;
                 }
                 return $http({
                   method: 'POST',
@@ -70,8 +67,30 @@
             }
           }
         },
+        luminateExtendRequest: function(apiServlet, requestData, includeAuth, includeFrId, callback) {
+          if (!luminateExtend) {
+
+          } else {
+            if (!requestData) {
+
+            } else {
+              if (includeFrId) {
+                requestData += '&fr_id=' + $rootScope.frId + '&s_trID=' + $rootScope.frId;
+              }
+              return luminateExtend.api({
+                api: apiServlet,
+                data: requestData,
+                requiresAuth: includeAuth,
+                callback: callback || angular.noop
+              });
+            }
+          }
+        },
         teamraiserRequest: function(requestData, includeAuth, includeFrId) {
           return this.request('CRTeamraiserAPI', requestData, includeAuth, includeFrId);
+        },
+        luminateExtendTeamraiserRequest: function(requestData, includeAuth, includeFrId, callback) {
+          return this.luminateExtendRequest('teamraiser', requestData, includeAuth, includeFrId, callback);
         }
       };
     }
@@ -80,15 +99,13 @@
   angular.module('ahaLuminateApp').factory('TeamraiserCompanyService', [
     'LuminateRESTService', function(LuminateRESTService) {
       return {
-        getCompanies: function(requestData) {
+        getCompanies: function(requestData, callback) {
           var dataString;
           dataString = 'method=getCompaniesByInfo';
           if (requestData && requestData !== '') {
             dataString += '&' + requestData;
           }
-          return LuminateRESTService.teamraiserRequest(dataString, false, true).then(function(response) {
-            return response;
-          });
+          return LuminateRESTService.luminateExtendTeamraiserRequest(dataString, false, true, callback);
         }
       };
     }
@@ -97,15 +114,13 @@
   angular.module('ahaLuminateApp').factory('TeamraiserParticipantService', [
     'LuminateRESTService', function(LuminateRESTService) {
       return {
-        getParticipants: function(requestData) {
+        getParticipants: function(requestData, callback) {
           var dataString;
           dataString = 'method=getParticipants';
           if (requestData && requestData !== '') {
             dataString += '&' + requestData;
           }
-          return LuminateRESTService.teamraiserRequest(dataString, false, true).then(function(response) {
-            return response;
-          });
+          return LuminateRESTService.luminateExtendTeamraiserRequest(dataString, false, true, callback);
         }
       };
     }
@@ -114,15 +129,13 @@
   angular.module('ahaLuminateApp').factory('TeamraiserTeamService', [
     'LuminateRESTService', function(LuminateRESTService) {
       return {
-        getTeams: function(requestData) {
+        getTeams: function(requestData, callback) {
           var dataString;
           dataString = 'method=getTeamsByInfo';
           if (requestData && requestData !== '') {
             dataString += '&' + requestData;
           }
-          return LuminateRESTService.teamraiserRequest(dataString, false, true).then(function(response) {
-            return response;
-          });
+          return LuminateRESTService.luminateExtendTeamraiserRequest(dataString, false, true, callback);
         }
       };
     }
@@ -130,29 +143,38 @@
 
   angular.module('ahaLuminateControllers').controller('GreetingPageCtrl', [
     '$scope', 'TeamraiserParticipantService', 'TeamraiserTeamService', 'TeamraiserCompanyService', function($scope, TeamraiserParticipantService, TeamraiserTeamService, TeamraiserCompanyService) {
-      TeamraiserParticipantService.getParticipants('fr_id=&first_name=' + encodeURIComponent('%%%') + '&list_sort_column=total&list_ascending=false').then(function(response) {
-        var topParticipants;
-        topParticipants = response.data.getParticipantsResponse.participant;
-        if (!angular.isArray(topParticipants)) {
-          topParticipants = [topParticipants];
+      TeamraiserParticipantService.getParticipants('first_name=' + encodeURIComponent('%%%') + '&list_sort_column=total&list_ascending=false', {
+        error: function() {},
+        success: function(response) {
+          var topParticipants;
+          topParticipants = response.getParticipantsResponse.participant;
+          if (!angular.isArray(topParticipants)) {
+            topParticipants = [topParticipants];
+          }
+          return $scope.topParticipants = topParticipants;
         }
-        return $scope.topParticipants = topParticipants;
       });
-      TeamraiserTeamService.getTeams('fr_id=&list_sort_column=total&list_ascending=false').then(function(response) {
-        var topTeams;
-        topTeams = response.data.getTeamSearchByInfoResponse.team;
-        if (!angular.isArray(topTeams)) {
-          topTeams = [topTeams];
+      TeamraiserTeamService.getTeams('list_sort_column=total&list_ascending=false', {
+        error: function() {},
+        success: function(response) {
+          var topTeams;
+          topTeams = response.getTeamSearchByInfoResponse.team;
+          if (!angular.isArray(topTeams)) {
+            topTeams = [topTeams];
+          }
+          return $scope.topTeams = topTeams;
         }
-        return $scope.topTeams = topTeams;
       });
-      return TeamraiserCompanyService.getCompanies('fr_id=&list_sort_column=total&list_ascending=false').then(function(response) {
-        var topCompanies;
-        topCompanies = response.data.getCompaniesResponse.company;
-        if (!angular.isArray(topCompanies)) {
-          topCompanies = [topCompanies];
+      return TeamraiserCompanyService.getCompanies('list_sort_column=total&list_ascending=false', {
+        error: function() {},
+        success: function(response) {
+          var topCompanies;
+          topCompanies = response.getCompaniesResponse.company;
+          if (!angular.isArray(topCompanies)) {
+            topCompanies = [topCompanies];
+          }
+          return $scope.topCompanies = topCompanies;
         }
-        return $scope.topCompanies = topCompanies;
       });
     }
   ]);

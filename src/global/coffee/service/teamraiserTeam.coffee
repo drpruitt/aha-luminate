@@ -2,10 +2,8 @@ angular.module 'ahaLuminateApp'
   .factory 'TeamraiserTeamService', [
     'LuminateRESTService'
     (LuminateRESTService) ->
-      getTeams: (requestData) ->
+      getTeams: (requestData, callback) ->
         dataString = 'method=getTeamsByInfo'
         dataString += '&' + requestData if requestData and requestData isnt ''
-        LuminateRESTService.teamraiserRequest dataString, false, true
-          .then (response) ->
-            response
+        LuminateRESTService.luminateExtendTeamraiserRequest dataString, false, true, callback
   ]

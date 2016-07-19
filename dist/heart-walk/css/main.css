@@ -271,7 +271,8 @@ a.btn-lg:visited {
   .heart-hero__info hr {
     float: right;
     border-top: 6px solid #890707;
-    width: 20px; }
+    width: 20px;
+    margin: 0 0 20px; }
   .heart-hero__info p {
     margin: 0 0 0; }
 

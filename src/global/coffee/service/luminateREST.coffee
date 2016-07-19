@@ -11,7 +11,7 @@ angular.module 'ahaLuminateApp'
           if not $rootScope.apiKey
             # TODO
           else
-            requestData += '&v=1.0&api_key=' + $rootScope.apiKey + '&response_format=json&suppress_response_codes=true&ng_tr_pc_v=' + APP_INFO.version
+            requestData += '&v=1.0&api_key=' + $rootScope.apiKey + '&response_format=json&suppress_response_codes=true'
             if includeAuth and not $rootScope.authToken
               # TODO
             else
@@ -19,8 +19,6 @@ angular.module 'ahaLuminateApp'
                 requestData += '&auth=' + $rootScope.authToken
               if includeFrId
                 requestData += '&fr_id=' + $rootScope.frId + '&s_trID=' + $rootScope.frId
-              if $rootScope.locale
-                requestData += '&s_locale=' + $rootScope.locale
               $http
                 method: 'POST'
                 url: apiServlet
@@ -30,6 +28,24 @@ angular.module 'ahaLuminateApp'
               .then (response) ->
                 response
       
+      luminateExtendRequest: (apiServlet, requestData, includeAuth, includeFrId, callback) ->
+        if not luminateExtend
+          # TODO
+        else
+          if not requestData
+            # TODO
+          else
+            if includeFrId
+              requestData += '&fr_id=' + $rootScope.frId + '&s_trID=' + $rootScope.frId
+            luminateExtend.api 
+              api: apiServlet
+              data: requestData
+              requiresAuth: includeAuth
+              callback: callback || angular.noop
+      
       teamraiserRequest: (requestData, includeAuth, includeFrId) ->
         this.request 'CRTeamraiserAPI', requestData, includeAuth, includeFrId
+      
+      luminateExtendTeamraiserRequest: (requestData, includeAuth, includeFrId, callback) ->
+        this.luminateExtendRequest 'teamraiser', requestData, includeAuth, includeFrId, callback
   ]
