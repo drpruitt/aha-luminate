@@ -384,6 +384,11 @@ a.btn-lg:visited {
 .heart-greeting-detail__footer .manageable-content {
   display: inline; }
 
+.heart-greeting-story {
+  background-color: #cacbcd;
+  color: #ffffff;
+  padding: 50px; }
+
 .heart-greeting-leaderboards {
   margin: 0 20px; }
   @media (min-width: 992px) {
