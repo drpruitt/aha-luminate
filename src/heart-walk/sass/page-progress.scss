@@ -64,15 +64,24 @@
 
 .heart-page-progress__row--social {
   text-align: center;
+  padding: 32px 20px;
 }
 
 .heart-page-progress__amount {
   float: left;
+  font-size: 28px;
+  font-weight: 600;
 }
 
 .heart-page-progress__label {
   float: left;
+  font-size: 12px;
   margin-left: 12px;
+}
+
+.heart-page-progress__share-label {
+  font-size: 16px;
+  padding: 0 40px;
 }
 
 .heart-page-progress__share-buttons {

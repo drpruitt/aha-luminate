@@ -215,14 +215,22 @@ a.btn-lg:visited {
     border-top: 0; }
 
 .heart-page-progress__row--social {
-  text-align: center; }
+  text-align: center;
+  padding: 32px 20px; }
 
 .heart-page-progress__amount {
-  float: left; }
+  float: left;
+  font-size: 28px;
+  font-weight: 600; }
 
 .heart-page-progress__label {
   float: left;
+  font-size: 12px;
   margin-left: 12px; }
+
+.heart-page-progress__share-label {
+  font-size: 16px;
+  padding: 0 40px; }
 
 .heart-page-progress__share-buttons {
   margin: 20px 0 0; }
@@ -396,6 +404,7 @@ a.btn-lg:visited {
     font-weight: 600; }
     .heart-greeting-leaderboards .list-group .list-group-item {
       border-left: 0;
-      border-right: 0; }
+      border-right: 0;
+      padding: 10px 0; }
       .heart-greeting-leaderboards .list-group .list-group-item:first-child, .heart-greeting-leaderboards .list-group .list-group-item:last-child {
         border-radius: 0; }
