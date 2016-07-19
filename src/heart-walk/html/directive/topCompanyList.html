@@ -3,6 +3,6 @@
     <a ng-href="TR?fr_id={{company.eventId}}&amp;pg=company&amp;company_id={{company.companyId}}">
       {{company.companyName}}
     </a><br>
-    {{company.amountRaised}}
+    {{company.amountRaised | currency: "$" : 0}}
   </li>
 </ul>
