@@ -175,11 +175,13 @@ a.btn-lg:visited {
 
 .heart-page-progress__thermometer {
   position: relative;
+  background: #de2427;
   background: linear-gradient(to bottom, #de2427 0%, #c7191c 100%);
   border-radius: 0;
   height: auto;
   margin: 0 0 3px; }
   .heart-page-progress__thermometer .heart-page-progress__thermometer-fill {
+    background: #b41b1e;
     background: linear-gradient(to bottom, #b41b1e 0%, #9a1316 100%);
     box-shadow: none;
     position: absolute;

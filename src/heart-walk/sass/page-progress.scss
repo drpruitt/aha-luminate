@@ -1,11 +1,13 @@
 .heart-page-progress__thermometer {
   position: relative;
+  background: $btn-primary-bg;
   background: linear-gradient(to bottom, $btn-primary-bg 0%, #c7191c 100%);
   border-radius: 0;
   height: auto;
   margin: 0 0 3px;
   
   .heart-page-progress__thermometer-fill {
+    background: darken($btn-primary-bg, 10%);
     background: linear-gradient(to bottom, darken($btn-primary-bg, 10%) 0%, darken(#c7191c, 10%) 100%);
     box-shadow: none;
     position: absolute;
