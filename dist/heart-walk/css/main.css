@@ -285,7 +285,6 @@ a.btn-lg:visited {
       height: 200px; } }
 
 .heart-hero__info {
-  float: right;
   font-size: 14px;
   text-align: right; }
   .heart-hero__info hr {
@@ -297,10 +296,11 @@ a.btn-lg:visited {
     margin: 0 0 0; }
 
 .heart-hero--entry {
-  background-image: url(../image/hero-greeting.jpg);
-  height: 450px; }
+  background-image: url(../image/hero-greeting-xs.jpg);
+  height: 422px; }
   @media (min-width: 768px) {
     .heart-hero--entry {
+      background-image: url(../image/hero-greeting.jpg);
       height: 560px; } }
   @media (min-width: 992px) {
     .heart-hero--entry {
@@ -317,21 +317,37 @@ a.btn-lg:visited {
         height: 445px;
         padding: 80px 50px 0; } }
   .heart-hero--entry h1 {
-    float: left;
-    font-size: 52px;
-    max-width: 480px; }
+    font-size: 34px;
+    max-width: 100%;
+    min-height: 74px; }
+    @media (min-width: 414px) {
+      .heart-hero--entry h1 {
+        font-size: 38px;
+        min-height: 82px; } }
+    @media (min-width: 480px) {
+      .heart-hero--entry h1 {
+        font-size: 40px;
+        min-height: 88px; } }
     @media (min-width: 768px) {
       .heart-hero--entry h1 {
+        float: left;
         font-size: 52px;
         max-width: 480px; } }
     @media (min-width: 992px) {
       .heart-hero--entry h1 {
         font-size: 72px;
+        max-width: 650px; } }
+    @media (min-width: 992px) {
+      .heart-hero--entry h1 {
         max-width: 690px; } }
   .heart-hero--entry .heart-hero__info {
-    margin: 125px 0 0; }
+    margin: 30px 0 0; }
+    @media (min-width: 414px) {
+      .heart-hero--entry .heart-hero__info {
+        margin: 24px 0 0; } }
     @media (min-width: 768px) {
       .heart-hero--entry .heart-hero__info {
+        float: right;
         margin: 125px 0 0; } }
     @media (min-width: 992px) {
       .heart-hero--entry .heart-hero__info {
@@ -378,10 +394,11 @@ a.btn-lg:visited {
     .heart-greeting-detail__header {
       margin: 0 0 70px; } }
   .heart-greeting-detail__header h2 {
-    font-size: 42px;
+    font-size: 30px;
     margin: 0 0 32px; }
     @media (min-width: 768px) {
       .heart-greeting-detail__header h2 {
+        font-size: 42px;
         margin: 0 0 40px; } }
     .heart-greeting-detail__header h2 > span {
       color: #de2427;

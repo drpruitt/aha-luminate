@@ -1,8 +1,9 @@
 .heart-hero--entry {
-  background-image: url(../image/hero-greeting.jpg);
-  height: 450px;
+  background-image: url(../image/hero-greeting-xs.jpg);
+  height: 422px;
   
   @media(min-width: $screen-sm-min) {
+    background-image: url(../image/hero-greeting.jpg);
     height: 560px;
   }
   
@@ -26,25 +27,45 @@
   }
   
   h1 {
-    float: left;
-    font-size: 52px;
-    max-width: 480px;
+    font-size: 34px;
+    max-width: 100%;
+    min-height: 74px;
+    
+    @media(min-width: 414px) {
+      font-size: 38px;
+      min-height: 82px;
+    }
+    
+    @media(min-width: 480px) {
+      font-size: 40px;
+      min-height: 88px;
+    }
     
     @media(min-width: $screen-sm-min) {
+      float: left;
       font-size: 52px;
       max-width: 480px;
     }
     
     @media(min-width: $screen-md-min) {
       font-size: 72px;
+      max-width: 650px;
+    }
+    
+    @media(min-width: $screen-md-min) {
       max-width: 690px;
     }
   }
   
   .heart-hero__info {
-    margin: 125px 0 0;
+    margin: 30px 0 0;
+    
+    @media(min-width: 414px) {
+      margin: 24px 0 0;
+    }
     
     @media(min-width: $screen-sm-min) {
+      float: right;
       margin: 125px 0 0;
     }
     
@@ -104,10 +125,11 @@
   }
   
   h2 {
-    font-size: 42px;
+    font-size: 30px;
     margin: 0 0 32px;
     
     @media(min-width: $screen-sm-min) {
+      font-size: 42px;
       margin: 0 0 40px;
     }
     
