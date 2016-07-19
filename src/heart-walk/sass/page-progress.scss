@@ -47,6 +47,15 @@
   }
 }
 
+.heart-page-progress__caret {
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #283233;
+  width: 0;
+  height: 0;
+  margin: -3px 0 0;
+}
+
 .heart-page-progress__box {
   background: #283233;
   color: #ffffff;
