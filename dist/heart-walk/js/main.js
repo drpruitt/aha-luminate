@@ -144,36 +144,51 @@
   angular.module('ahaLuminateControllers').controller('GreetingPageCtrl', [
     '$scope', 'TeamraiserParticipantService', 'TeamraiserTeamService', 'TeamraiserCompanyService', function($scope, TeamraiserParticipantService, TeamraiserTeamService, TeamraiserCompanyService) {
       TeamraiserParticipantService.getParticipants('first_name=' + encodeURIComponent('%%%') + '&list_sort_column=total&list_ascending=false', {
-        error: function() {},
+        error: function() {
+          return $scope.topParticipants = [];
+        },
         success: function(response) {
           var topParticipants;
-          topParticipants = response.getParticipantsResponse.participant;
+          topParticipants = response.getParticipantsResponse.participant || [];
           if (!angular.isArray(topParticipants)) {
             topParticipants = [topParticipants];
           }
-          return $scope.topParticipants = topParticipants;
+          $scope.topParticipants = topParticipants;
+          if (!$scope.$$phase) {
+            return $scope.$apply();
+          }
         }
       });
       TeamraiserTeamService.getTeams('list_sort_column=total&list_ascending=false', {
-        error: function() {},
+        error: function() {
+          return $scope.topTeams = [];
+        },
         success: function(response) {
           var topTeams;
-          topTeams = response.getTeamSearchByInfoResponse.team;
+          topTeams = response.getTeamSearchByInfoResponse.team || [];
           if (!angular.isArray(topTeams)) {
             topTeams = [topTeams];
           }
-          return $scope.topTeams = topTeams;
+          $scope.topTeams = topTeams;
+          if (!$scope.$$phase) {
+            return $scope.$apply();
+          }
         }
       });
       return TeamraiserCompanyService.getCompanies('list_sort_column=total&list_ascending=false', {
-        error: function() {},
+        error: function() {
+          return $scope.topCompanies = [];
+        },
         success: function(response) {
           var topCompanies;
-          topCompanies = response.getCompaniesResponse.company;
+          topCompanies = response.getCompaniesResponse.company || [];
           if (!angular.isArray(topCompanies)) {
             topCompanies = [topCompanies];
           }
-          return $scope.topCompanies = topCompanies;
+          $scope.topCompanies = topCompanies;
+          if (!$scope.$$phase) {
+            return $scope.$apply();
+          }
         }
       });
     }
