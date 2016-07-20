@@ -301,7 +301,11 @@ a.btn-lg:visited {
   padding: 30px 20px 0 20px; }
   @media (min-width: 768px) {
     .heart-hero__mask {
-      height: 200px; } }
+      height: 200px;
+      padding: 30px 40px 0 40px; } }
+  @media (min-width: 992px) {
+    .heart-hero__mask {
+      padding: 30px 80px 0 48px; } }
 
 .heart-hero__event-name {
   float: right;
@@ -331,11 +335,22 @@ a.btn-lg:visited {
   @media (min-width: 768px) {
     .heart-page-rail {
       float: left;
-      margin: 0 48px; } }
+      width: 36%;
+      margin: 0 0 0 40px; } }
+  @media (min-width: 830px) {
+    .heart-page-rail {
+      width: 34%; } }
+  @media (min-width: 880px) {
+    .heart-page-rail {
+      width: 32%; } }
+  @media (min-width: 940px) {
+    .heart-page-rail {
+      width: 30%; } }
   @media (min-width: 992px) {
     .heart-page-rail {
       border: 3px solid #ffffff;
-      width: 306px; } }
+      width: 306px;
+      margin: 0 0 0 48px; } }
   .heart-page-rail .btn,
   .heart-page-rail a#sidebar_donate_button {
     padding: 24px;
@@ -352,8 +367,29 @@ a.btn-lg:visited {
       margin: 0 0 3px; } }
 
 .heart-page-main {
-  float: left;
-  width: 680px; }
+  margin: 0 20px; }
+  @media (min-width: 768px) {
+    .heart-page-main {
+      float: left;
+      width: 46%;
+      margin: 0 40px 0 48px; } }
+  @media (min-width: 830px) {
+    .heart-page-main {
+      width: 50%; } }
+  @media (min-width: 880px) {
+    .heart-page-main {
+      width: 52%; } }
+  @media (min-width: 940px) {
+    .heart-page-main {
+      width: 55%; } }
+  @media (min-width: 992px) {
+    .heart-page-main {
+      width: 490px;
+      margin: 0 72px 0 48px; } }
+  @media (min-width: 1200px) {
+    .heart-page-main {
+      width: 660px;
+      margin: 0 98px 0 48px; } }
 
 .heart-hero--entry {
   background-image: url(../image/hero-greeting-xs.jpg);

@@ -3,12 +3,26 @@
   
   @media(min-width: $screen-sm-min) {
     float: left;
-    margin: 0 48px;
+    width: 36%;
+    margin: 0 0 0 40px;
+  }
+  
+  @media(min-width: 830px) {
+    width: 34%;
+  }
+  
+  @media(min-width: 880px) {
+    width: 32%;
+  }
+  
+  @media(min-width: 940px) {
+    width: 30%;
   }
   
   @media(min-width: $screen-md-min) {
     border: 3px solid #ffffff;
     width: 306px;
+    margin: 0 0 0 48px;
   }
   
   .btn, 
@@ -31,6 +45,33 @@
 }
 
 .heart-page-main {
-  float: left;
-  width: 680px;
+  margin: 0 20px;
+  
+  @media(min-width: $screen-sm-min) {
+    float: left;
+    width: 46%;
+    margin: 0 40px 0 48px;
+  }
+  
+  @media(min-width: 830px) {
+    width: 50%;
+  }
+  
+  @media(min-width: 880px) {
+    width: 52%;
+  }
+  
+  @media(min-width: 940px) {
+    width: 55%;
+  }
+  
+  @media(min-width: $screen-md-min) {
+    width: 490px;
+    margin: 0 72px 0 48px;
+  }
+  
+  @media(min-width: $screen-lg-min) {
+    width: 660px;
+    margin: 0 98px 0 48px;
+  }
 }
