@@ -170,4 +170,19 @@
 }
 
 .heart-page-story {
+  padding: 0 0 18px;
+  
+  p {
+    margin: 0 0 18px;
+  }
+}
+
+.heart-page-comments {
+  h2 {
+    margin: 0 0 24px;
+    
+    @media(min-width: $screen-sm-min) {
+      margin: 0 0 32px;
+    }
+  }
 }

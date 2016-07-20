@@ -466,6 +466,17 @@ a.btn-lg:visited {
     .heart-user-video {
       margin: 0 0 32px; } }
 
+.heart-page-story {
+  padding: 0 0 18px; }
+  .heart-page-story p {
+    margin: 0 0 18px; }
+
+.heart-page-comments h2 {
+  margin: 0 0 24px; }
+  @media (min-width: 768px) {
+    .heart-page-comments h2 {
+      margin: 0 0 32px; } }
+
 .heart-hero--entry {
   background-image: url(../image/hero-greeting-xs.jpg);
   height: 422px;
