@@ -302,24 +302,26 @@ a.btn-lg:visited {
   @media (min-width: 768px) {
     .heart-hero__mask {
       height: 200px;
-      padding: 30px 40px 0 40px; } }
+      padding: 72px 40px 0 40px; } }
   @media (min-width: 992px) {
     .heart-hero__mask {
       padding: 48px 80px 0 48px; } }
 
 .heart-hero__event-name {
-  float: right;
-  font-size: 16px; }
-  @media (min-width: 768px) {
-    .heart-hero__event-name {
-      font-size: 24px; } }
+  float: right; }
   .heart-hero__event-name hr {
     float: right;
     border-top: 6px solid #890707;
     width: 20px;
     margin: 0 0 20px; }
   .heart-hero__event-name p {
+    font-size: 16px;
     margin: 0 0 6px; }
+    @media (min-width: 768px) {
+      .heart-hero__event-name p {
+        font-size: 24px;
+        line-height: 24px;
+        margin: 0 0 12px; } }
 
 .heart-hero__info {
   font-size: 12px;
@@ -412,7 +414,7 @@ a.btn-lg:visited {
     @media (min-width: 992px) {
       .heart-page-info__related-links li {
         display: inline-block;
-        margin: 0; } }
+        margin: 0 20px 0 0; } }
     @media (min-width: 768px) {
       .heart-page-info__related-links li:last-child {
         margin: 0; } }

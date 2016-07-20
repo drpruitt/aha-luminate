@@ -24,7 +24,7 @@
   
   @media(min-width: $screen-sm-min) {
     height: 200px;
-    padding: 30px 40px 0 40px;
+    padding: 72px 40px 0 40px;
   }
   
   @media(min-width: $screen-md-min) {
@@ -34,11 +34,6 @@
 
 .heart-hero__event-name {
   float: right;
-  font-size: 16px;
-  
-  @media(min-width: $screen-sm-min) {
-    font-size: 24px;
-  }
   
   hr {
     float: right;
@@ -48,7 +43,14 @@
   }
   
   p {
+    font-size: 16px;
     margin: 0 0 6px;
+    
+    @media(min-width: $screen-sm-min) {
+      font-size: 24px;
+      line-height: 24px;
+      margin: 0 0 12px;
+    }
   }
 }
 
