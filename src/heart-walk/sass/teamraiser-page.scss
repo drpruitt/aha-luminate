@@ -78,6 +78,19 @@
     padding: 0 0 40px;
     margin: 0 0 40px;
   }
+  
+  li {
+    display: inline-block;
+    font-size: 14px;
+    
+    a {
+      display: block;
+      
+      @media(min-width: $screen-sm-min) {
+        display: inline-block;
+      }
+    }
+  }
 }
 
 .heart-page-main {

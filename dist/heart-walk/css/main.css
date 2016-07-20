@@ -393,6 +393,14 @@ a.btn-lg:visited {
     .heart-page-info__related-links {
       padding: 0 0 40px;
       margin: 0 0 40px; } }
+  .heart-page-info__related-links li {
+    display: inline-block;
+    font-size: 14px; }
+    .heart-page-info__related-links li a {
+      display: block; }
+      @media (min-width: 768px) {
+        .heart-page-info__related-links li a {
+          display: inline-block; } }
 
 .heart-page-main {
   margin: 32px 20px 0; }
