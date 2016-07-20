@@ -305,7 +305,7 @@ a.btn-lg:visited {
       padding: 30px 40px 0 40px; } }
   @media (min-width: 992px) {
     .heart-hero__mask {
-      padding: 30px 80px 0 48px; } }
+      padding: 48px 80px 0 48px; } }
 
 .heart-hero__event-name {
   float: right;
@@ -390,6 +390,10 @@ a.btn-lg:visited {
     .heart-page-main {
       width: 660px;
       margin: 0 98px 0 48px; } }
+  .heart-page-main h1 {
+    font-size: 48px;
+    line-height: 48px;
+    margin: 48px 0 0; }
 
 .heart-hero--entry {
   background-image: url(../image/hero-greeting-xs.jpg);
