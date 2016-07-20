@@ -21,3 +21,17 @@
     margin-top: -118px;
   }
 }
+
+.heart-page-info--personal {
+  h1 {
+    text-align: center;
+    
+    @media(min-width: $screen-sm-min) {
+      text-align: left;
+    }
+    
+    @media(min-width: $screen-md-min) {
+      margin: 48px 0 0;
+    }
+  }
+}

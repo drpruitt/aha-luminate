@@ -366,6 +366,34 @@ a.btn-lg:visited {
       width: auto;
       margin: 0 0 3px; } }
 
+.heart-page-info h1 {
+  font-size: 48px;
+  line-height: 48px;
+  padding: 0 0 24px;
+  margin: 24px 0 0; }
+  @media (min-width: 768px) {
+    .heart-page-info h1 {
+      padding: 0 0 30px;
+      margin: 0; } }
+  @media (min-width: 992px) {
+    .heart-page-info h1 {
+      padding: 0 0 20px; } }
+
+.heart-page-info__related-links {
+  border-top: 1px solid #c9cccc;
+  border-bottom: 1px solid #c9cccc;
+  padding: 12px 0;
+  margin: 0 0 20px; }
+  @media (min-width: 768px) {
+    .heart-page-info__related-links {
+      border-top: 0;
+      padding: 0 0 40px;
+      margin: 0 0 40px; } }
+  @media (min-width: 992px) {
+    .heart-page-info__related-links {
+      padding: 0 0 40px;
+      margin: 0 0 40px; } }
+
 .heart-page-main {
   margin: 0 20px; }
   @media (min-width: 768px) {
@@ -390,10 +418,6 @@ a.btn-lg:visited {
     .heart-page-main {
       width: 660px;
       margin: 0 98px 0 48px; } }
-  .heart-page-main h1 {
-    font-size: 48px;
-    line-height: 48px;
-    margin: 48px 0 0; }
 
 .heart-hero--entry {
   background-image: url(../image/hero-greeting-xs.jpg);
@@ -625,3 +649,12 @@ a.btn-lg:visited {
   @media (min-width: 992px) {
     .heart-page-rail--personal {
       margin-top: -118px; } }
+
+.heart-page-info--personal h1 {
+  text-align: center; }
+  @media (min-width: 768px) {
+    .heart-page-info--personal h1 {
+      text-align: left; } }
+  @media (min-width: 992px) {
+    .heart-page-info--personal h1 {
+      margin: 48px 0 0; } }

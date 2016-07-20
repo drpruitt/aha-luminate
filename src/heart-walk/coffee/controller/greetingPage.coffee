@@ -16,6 +16,7 @@ angular.module 'ahaLuminateControllers'
         success: (response) ->
           topParticipants = response.getParticipantsResponse.participant || []
           topParticipants = [topParticipants] if not angular.isArray topParticipants
+          # TODO: remove participants with null names
           setTopParticipants topParticipants
       
       $scope.topTeams = {}
