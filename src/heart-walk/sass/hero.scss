@@ -51,6 +51,19 @@
       line-height: 24px;
       margin: 0 0 12px;
     }
+    
+    a {
+      &, 
+      &:link, 
+      &:visited, 
+      &:hover, 
+      &:focus, 
+      &:active {
+        color: inherit;
+        font-weight: inherit;
+        text-decoration: none;
+      }
+    }
   }
 }
 

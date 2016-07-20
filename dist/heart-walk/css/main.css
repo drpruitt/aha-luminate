@@ -322,6 +322,10 @@ a.btn-lg:visited {
         font-size: 24px;
         line-height: 24px;
         margin: 0 0 12px; } }
+    .heart-hero__event-name p a, .heart-hero__event-name p a:link, .heart-hero__event-name p a:visited, .heart-hero__event-name p a:hover, .heart-hero__event-name p a:focus, .heart-hero__event-name p a:active {
+      color: inherit;
+      font-weight: inherit;
+      text-decoration: none; }
 
 .heart-hero__info {
   font-size: 12px;
