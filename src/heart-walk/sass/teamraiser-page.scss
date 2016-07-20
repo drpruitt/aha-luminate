@@ -1,8 +1,15 @@
 .heart-page-rail {
-  float: left;
-  border: 3px solid #ffffff;
-  width: 306px;
-  margin: 0 48px;
+  margin: 0 20px;
+  
+  @media(min-width: $screen-sm-min) {
+    float: left;
+    margin: 0 48px;
+  }
+  
+  @media(min-width: $screen-md-min) {
+    border: 3px solid #ffffff;
+    width: 306px;
+  }
   
   .btn, 
   a#sidebar_donate_button {
@@ -12,7 +19,15 @@
 }
 
 .heart-page-rail__image {
-  margin-bottom: 3px;
+  border: 3px solid #ffffff;
+  width: 140px;
+  margin: 0 auto;
+  
+  @media(min-width: $screen-sm-min) {
+    border: 0;
+    width: auto;
+    margin: 0 0 3px;
+  }
 }
 
 .heart-page-main {

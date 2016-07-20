@@ -1,7 +1,23 @@
 .heart-hero--personal {
   margin: 0;
+  
+  @media(min-width: $screen-sm-min) {
+    margin: 0 0 40px;
+  }
+  
+  @media(min-width: $screen-md-min) {
+    margin: 0;
+  }
 }
 
 .heart-page-rail--personal {
-  margin-top: -75px;
+  margin-top: -40px;
+  
+  @media(min-width: $screen-sm-min) {
+    margin-top: 0;
+  }
+  
+  @media(min-width: $screen-md-min) {
+    margin-top: -118px;
+  }
 }

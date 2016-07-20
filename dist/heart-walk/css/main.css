@@ -286,48 +286,70 @@ a.btn-lg:visited {
   color: #ffffff;
   width: 100%;
   height: 150px;
-  margin: 0 0 48px; }
+  margin: 0 0 40px; }
   @media (min-width: 768px) {
     .heart-hero {
       height: 200px; } }
+  @media (min-width: 992px) {
+    .heart-hero {
+      margin: 0 0 48px; } }
 
 .heart-hero__mask {
   background: #de2427;
   background: rgba(222, 36, 39, 0.9);
   height: 150px;
-  padding: 50px; }
+  padding: 30px 20px 0 20px; }
   @media (min-width: 768px) {
     .heart-hero__mask {
       height: 200px; } }
 
 .heart-hero__event-name {
-  float: right; }
+  float: right;
+  font-size: 16px; }
+  @media (min-width: 768px) {
+    .heart-hero__event-name {
+      font-size: 24px; } }
   .heart-hero__event-name hr {
     float: right;
     border-top: 6px solid #890707;
     width: 20px;
     margin: 0 0 20px; }
   .heart-hero__event-name p {
-    font-size: 24px; }
+    margin: 0 0 6px; }
 
 .heart-hero__info {
-  font-size: 14px;
+  font-size: 12px;
   text-align: right; }
+  @media (min-width: 768px) {
+    .heart-hero__info {
+      font-size: 14px; } }
   .heart-hero__info p {
     margin: 0 0 0; }
 
 .heart-page-rail {
-  float: left;
-  border: 3px solid #ffffff;
-  width: 306px;
-  margin: 0 48px; }
+  margin: 0 20px; }
+  @media (min-width: 768px) {
+    .heart-page-rail {
+      float: left;
+      margin: 0 48px; } }
+  @media (min-width: 992px) {
+    .heart-page-rail {
+      border: 3px solid #ffffff;
+      width: 306px; } }
   .heart-page-rail .btn,
   .heart-page-rail a#sidebar_donate_button {
     padding: 24px;
     margin-bottom: 3px; }
 
 .heart-page-rail__image {
-  margin-bottom: 3px; }
+  border: 3px solid #ffffff;
+  width: 140px;
+  margin: 0 auto; }
+  @media (min-width: 768px) {
+    .heart-page-rail__image {
+      border: 0;
+      width: auto;
+      margin: 0 0 3px; } }
 
 .heart-page-main {
   float: left;
@@ -343,10 +365,11 @@ a.btn-lg:visited {
       height: 560px; } }
   @media (min-width: 992px) {
     .heart-hero--entry {
-      height: 445px; } }
+      height: 445px;
+      margin: 0; } }
   .heart-hero--entry .heart-hero__mask {
     height: 450px;
-    padding: 40px 24px 0; }
+    padding: 36px 24px 0; }
     @media (min-width: 768px) {
       .heart-hero--entry .heart-hero__mask {
         height: 560px;
@@ -359,16 +382,12 @@ a.btn-lg:visited {
     color: #ffffff;
     font-size: 34px;
     max-width: 100%;
-    min-height: 74px;
+    min-height: 112px;
     margin: 0; }
     @media (min-width: 414px) {
       .heart-hero--entry h1 {
-        font-size: 38px;
-        min-height: 82px; } }
-    @media (min-width: 480px) {
-      .heart-hero--entry h1 {
-        font-size: 40px;
-        min-height: 88px; } }
+        font-size: 36px;
+        min-height: 118px; } }
     @media (min-width: 768px) {
       .heart-hero--entry h1 {
         float: left;
@@ -382,10 +401,10 @@ a.btn-lg:visited {
       .heart-hero--entry h1 {
         max-width: 690px; } }
   .heart-hero--entry .heart-hero__info {
-    margin: 30px 0 0; }
+    margin: 14px 0 0; }
     @media (min-width: 414px) {
       .heart-hero--entry .heart-hero__info {
-        margin: 24px 0 0; } }
+        margin: 12px 0 0; } }
     @media (min-width: 768px) {
       .heart-hero--entry .heart-hero__info {
         float: right;
@@ -551,6 +570,18 @@ a.btn-lg:visited {
 
 .heart-hero--personal {
   margin: 0; }
+  @media (min-width: 768px) {
+    .heart-hero--personal {
+      margin: 0 0 40px; } }
+  @media (min-width: 992px) {
+    .heart-hero--personal {
+      margin: 0; } }
 
 .heart-page-rail--personal {
-  margin-top: -75px; }
+  margin-top: -40px; }
+  @media (min-width: 768px) {
+    .heart-page-rail--personal {
+      margin-top: 0; } }
+  @media (min-width: 992px) {
+    .heart-page-rail--personal {
+      margin-top: -118px; } }

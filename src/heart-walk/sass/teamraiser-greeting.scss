@@ -10,11 +10,12 @@
   
   @media(min-width: $screen-md-min) {
     height: 445px;
+    margin: 0;
   }
   
   .heart-hero__mask {
     height: 450px;
-    padding: 40px 24px 0;
+    padding: 36px 24px 0;
     
     @media(min-width: $screen-sm-min) {
       height: 560px;
@@ -31,17 +32,12 @@
     color: #ffffff;
     font-size: 34px;
     max-width: 100%;
-    min-height: 74px;
+    min-height: 112px;
     margin: 0;
     
     @media(min-width: 414px) {
-      font-size: 38px;
-      min-height: 82px;
-    }
-    
-    @media(min-width: 480px) {
-      font-size: 40px;
-      min-height: 88px;
+      font-size: 36px;
+      min-height: 118px;
     }
     
     @media(min-width: $screen-sm-min) {
@@ -61,10 +57,10 @@
   }
   
   .heart-hero__info {
-    margin: 30px 0 0;
+    margin: 14px 0 0;
     
     @media(min-width: 414px) {
-      margin: 24px 0 0;
+      margin: 12px 0 0;
     }
     
     @media(min-width: $screen-sm-min) {
