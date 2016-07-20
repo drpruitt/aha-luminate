@@ -1,5 +1,20 @@
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular[[?xtruex::x[[S80:debug]]x::::.min]].js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-sanitize[[?xtruex::x[[S80:debug]]x::::.min]].js"></script>
+[[?xx::x[[S1:cons_id]]x::
+  <!-- logged out -->
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-sanitize[[?xtruex::x[[S80:debug]]x::::.min]].js"></script>
+::
+  <!-- logged in -->
+  [[?
+    [[?xpersonalx[[S1:cons_id]]x::x[[S334:pg]]x[[S334:px]]x::T::]]
+    [[?xteamx[[E48:[[S334:fr_id]]-[[S1:cons_id]]:team-id]]xTRUEx::x[[S334:pg]]x[[S334:team_id]]x[[E48:[[S334:fr_id]]-[[S1:cons_id]]:if-is-captain]]x::T::]]
+  ::T::
+    <!-- viewing own page -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.1/textAngular-sanitize.min.js"></script>
+  ::
+    <!-- viewing another participant's page -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-sanitize[[?xtruex::x[[S80:debug]]x::::.min]].js"></script>
+  ]]
+]]
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-animate[[?xtruex::x[[S80:debug]]x::::.min]].js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-touch[[?xtruex::x[[S80:debug]]x::::.min]].js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/luminateExtend/1.7.1/luminateExtend[[?xtruex::x[[S80:debug]]x::::.min]].js"></script>
@@ -13,6 +28,17 @@
   });
 </script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap[[?xtruex::x[[S80:debug]]x::::.min]].js"></script>
+[[?xx::x[[S1:cons_id]]x::::
+  <!-- logged in -->
+  [[?
+    [[?xpersonalx[[S1:cons_id]]x::x[[S334:pg]]x[[S334:px]]x::T::]]
+    [[?xteamx[[E48:[[S334:fr_id]]-[[S1:cons_id]]:team-id]]xTRUEx::x[[S334:pg]]x[[S334:team_id]]x[[E48:[[S334:fr_id]]-[[S1:cons_id]]:if-is-captain]]x::T::]]
+  ::T::
+    <!-- viewing own page -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.1/textAngular-rangy.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.1/textAngular.min.js"></script>
+  ::]]
+]]
 <script src="../aha-luminate/dist/heart-walk/js/main[[?xtruex::x[[S80:debug]]x::::.min]].js"></script>
 <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5789174373b4a027&amp;async=1"></script>
 <script>
