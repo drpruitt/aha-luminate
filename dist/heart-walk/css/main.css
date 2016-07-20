@@ -460,6 +460,12 @@ a.btn-lg:visited {
       .heart-page-main h2 {
         margin: 0 0 40px; } }
 
+.heart-user-video {
+  margin: 0 0 20px; }
+  @media (min-width: 768px) {
+    .heart-user-video {
+      margin: 0 0 32px; } }
+
 .heart-hero--entry {
   background-image: url(../image/hero-greeting-xs.jpg);
   height: 422px;
