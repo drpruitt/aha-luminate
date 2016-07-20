@@ -395,7 +395,7 @@ a.btn-lg:visited {
       margin: 0 0 40px; } }
 
 .heart-page-main {
-  margin: 0 20px; }
+  margin: 32px 20px 0; }
   @media (min-width: 768px) {
     .heart-page-main {
       float: left;
@@ -416,8 +416,15 @@ a.btn-lg:visited {
       margin: 0 72px 0 48px; } }
   @media (min-width: 1200px) {
     .heart-page-main {
-      width: 660px;
+      width: 664px;
       margin: 0 98px 0 48px; } }
+  .heart-page-main h2 {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0 0 32px; }
+    @media (min-width: 992px) {
+      .heart-page-main h2 {
+        margin: 0 0 40px; } }
 
 .heart-hero--entry {
   background-image: url(../image/hero-greeting-xs.jpg);
