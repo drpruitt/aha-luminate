@@ -32,14 +32,19 @@
   }
 }
 
-.heart-page-rail__image {
+.heart-user-image {
   border: 3px solid #ffffff;
   width: 140px;
   margin: 0 auto;
   
   @media(min-width: $screen-sm-min) {
     border: 0;
-    width: auto;
+    width: 275px;
+    margin: 0 0 40px;
+  }
+  
+  @media(min-width: $screen-md-min) {
+    width: 100%;
     margin: 0 0 3px;
   }
 }
@@ -82,7 +87,7 @@
   li {
     display: inline-block;
     font-size: 14px;
-    
+
     a {
       display: block;
       
