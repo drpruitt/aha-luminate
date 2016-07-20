@@ -377,7 +377,8 @@ a.btn-lg:visited {
       margin: 0 0 0 48px; } }
   .heart-page-rail .btn,
   .heart-page-rail a#sidebar_donate_button {
-    padding: 24px;
+    padding: 24px; }
+  .heart-page-rail .btn {
     margin-bottom: 3px; }
 
 .heart-user-image {
@@ -446,24 +447,35 @@ a.btn-lg:visited {
         .heart-page-info__related-links li a {
           display: inline-block; } }
 
+@media (min-width: 768px) {
+  .heart-page-main-sm {
+    float: left;
+    width: 46%;
+    margin: 0 40px 0 48px; } }
+
+@media (min-width: 830px) {
+  .heart-page-main-sm {
+    width: 50%; } }
+
+@media (min-width: 880px) {
+  .heart-page-main-sm {
+    width: 52%; } }
+
+@media (min-width: 940px) {
+  .heart-page-main-sm {
+    width: 55%; } }
+
+.heart-page-main-sm .heart-page-info {
+  height: 100%; }
+
 .heart-page-main {
   margin: 32px 20px 0; }
   @media (min-width: 768px) {
     .heart-page-main {
-      float: left;
-      width: 46%;
-      margin: 0 40px 0 48px; } }
-  @media (min-width: 830px) {
-    .heart-page-main {
-      width: 50%; } }
-  @media (min-width: 880px) {
-    .heart-page-main {
-      width: 52%; } }
-  @media (min-width: 940px) {
-    .heart-page-main {
-      width: 55%; } }
+      margin: 32px 40px 0; } }
   @media (min-width: 992px) {
     .heart-page-main {
+      float: left;
       width: 490px;
       margin: 0 72px 0 48px; } }
   @media (min-width: 1200px) {

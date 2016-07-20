@@ -150,9 +150,9 @@
           resizeColumns = function() {
             var columnHeight;
             angular.element(element).css('height', '');
-            angular.element(element).siblings('[class*="col-"]').css('height', '');
+            angular.element(element).siblings('[eq-column-height]').css('height', '');
             columnHeight = Number(angular.element(element).css('height').replace('px', ''));
-            angular.element(element).siblings('[class*="col-"]').each(function() {
+            angular.element(element).siblings('[eq-column-height]').each(function() {
               var siblingHeight;
               siblingHeight = Number(angular.element(this).css('height').replace('px', ''));
               if (siblingHeight > columnHeight) {
@@ -160,7 +160,7 @@
               }
             });
             angular.element(element).css('height', columnHeight + 'px');
-            return angular.element(element).siblings('[class*="col-"]').css('height', columnHeight + 'px');
+            return angular.element(element).siblings('[eq-column-height]').css('height', columnHeight + 'px');
           };
           $timeout(resizeColumns, 500);
           return angular.element($window).bind('resize', function() {
