@@ -236,11 +236,29 @@ a.btn-lg:visited {
       line-height: 32px; } }
 
 .heart-page-progress__label {
-  float: right;
+  float: left;
   color: #c9cccc;
   font-size: 12px;
   width: 48px;
   margin: 0 28px 0 12px; }
+  .heart-page-progress__label .heart-page-progress__amount {
+    float: none;
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 16px; }
+    @media (min-width: 768px) {
+      .heart-page-progress__label .heart-page-progress__amount {
+        font-size: 16px;
+        line-height: 16px; } }
+    @media (min-width: 1200px) {
+      .heart-page-progress__label .heart-page-progress__amount {
+        font-size: 16px;
+        line-height: 16px; } }
+
+.heart-page-progress__label--right {
+  float: right; }
+  .heart-page-progress__label--right .heart-page-progress__amount {
+    float: none; }
 
 .heart-page-progress__share-label {
   color: #c9cccc;

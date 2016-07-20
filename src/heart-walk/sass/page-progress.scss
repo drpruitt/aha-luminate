@@ -83,11 +83,36 @@
 }
 
 .heart-page-progress__label {
-  float: right;
+  float: left;
   color: #c9cccc;
   font-size: 12px;
   width: 48px;
   margin: 0 28px 0 12px;
+  
+  .heart-page-progress__amount {
+    float: none;
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 16px;
+    
+    @media(min-width: $screen-sm-min) {
+      font-size: 16px;
+      line-height: 16px;
+    }
+    
+    @media(min-width: $screen-lg-min) {
+      font-size: 16px;
+      line-height: 16px;
+    }
+  }
+}
+
+.heart-page-progress__label--right {
+  float: right;
+  
+  .heart-page-progress__amount {
+    float: none;
+  }
 }
 
 .heart-page-progress__share-label {
