@@ -78,6 +78,7 @@
   
   @media(min-width: $screen-sm-min) {
     border-top: 0;
+    border-bottom: 0;
     padding: 0 0 40px;
     margin: 0 0 40px;
   }
@@ -123,11 +124,10 @@
 }
 
 .heart-page-main-sm {
-  @media(min-width: $screen-sm-min) {
-    float: left;
-    width: 46%;
-    margin: 0 40px 0 48px;
-  }
+  float: left;
+  border-bottom: 1px solid #c9cccc;
+  width: 46%;
+  margin: 0 40px 0 48px;
   
   @media(min-width: 830px) {
     width: 50%;

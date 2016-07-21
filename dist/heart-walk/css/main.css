@@ -416,6 +416,7 @@ a.btn-lg:visited {
   @media (min-width: 768px) {
     .heart-page-info__related-links {
       border-top: 0;
+      border-bottom: 0;
       padding: 0 0 40px;
       margin: 0 0 40px; } }
   @media (min-width: 992px) {
@@ -447,26 +448,22 @@ a.btn-lg:visited {
         .heart-page-info__related-links li a {
           display: inline-block; } }
 
-@media (min-width: 768px) {
-  .heart-page-main-sm {
-    float: left;
-    width: 46%;
-    margin: 0 40px 0 48px; } }
-
-@media (min-width: 830px) {
-  .heart-page-main-sm {
-    width: 50%; } }
-
-@media (min-width: 880px) {
-  .heart-page-main-sm {
-    width: 52%; } }
-
-@media (min-width: 940px) {
-  .heart-page-main-sm {
-    width: 55%; } }
-
-.heart-page-main-sm .heart-page-info {
-  height: 100%; }
+.heart-page-main-sm {
+  float: left;
+  border-bottom: 1px solid #c9cccc;
+  width: 46%;
+  margin: 0 40px 0 48px; }
+  @media (min-width: 830px) {
+    .heart-page-main-sm {
+      width: 50%; } }
+  @media (min-width: 880px) {
+    .heart-page-main-sm {
+      width: 52%; } }
+  @media (min-width: 940px) {
+    .heart-page-main-sm {
+      width: 55%; } }
+  .heart-page-main-sm .heart-page-info {
+    height: 100%; }
 
 .heart-page-main {
   margin: 32px 20px 0; }
