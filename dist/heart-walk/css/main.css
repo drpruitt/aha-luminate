@@ -421,6 +421,7 @@ a.btn-lg:visited {
       margin: 0 0 40px; } }
   @media (min-width: 992px) {
     .heart-page-info__related-links {
+      border-bottom: 1px solid #c9cccc;
       padding: 0 0 40px;
       margin: 0 0 40px; } }
   .heart-page-info__related-links li {
