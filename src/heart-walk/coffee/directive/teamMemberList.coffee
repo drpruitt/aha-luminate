@@ -5,3 +5,5 @@ angular.module 'ahaLuminateApp'
     replace: true
     scope:
       teamMembers: '='
+      teamGiftsLabel: '='
+      teamGiftsAmount: '='

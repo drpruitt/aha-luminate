@@ -178,7 +178,9 @@
       restrict: 'E',
       replace: true,
       scope: {
-        teamMembers: '='
+        teamMembers: '=',
+        teamGiftsLabel: '=',
+        teamGiftsAmount: '='
       }
     };
   });
@@ -293,17 +295,20 @@
     }
   ]);
 
+  angular.module('ahaLuminateControllers').controller('PersonalPageCtrl', ['$scope', function($scope) {}]);
+
   angular.module('ahaLuminateControllers').controller('TeamPageCtrl', [
     '$scope', '$location', 'TeamraiserParticipantService', function($scope, $location, TeamraiserParticipantService) {
-      var $defaultTeamRoster, $teamGiftRow;
+      var $defaultTeamRoster, $teamGiftsRow;
       $scope.teamId = $location.absUrl().split('team_id=')[1].split('&')[0];
       $scope.teamMembers = {
         page: 1
       };
       $defaultTeamRoster = angular.element('.js--default-team-roster');
-      $teamGiftRow = $defaultTeamRoster.find('.team-roster-participant-row').last();
-      $scope.teamMembers.teamGiftLabel = $teamGiftRow.find('.team-roster-participant-name').text();
-      $scope.teamMembers.teamGiftAmount = $teamGiftRow.find('.team-roster-participant-raised').text();
+      $teamGiftsRow = $defaultTeamRoster.find('.team-roster-participant-row').last();
+      $scope.teamMembers.teamGiftsLabel = $teamGiftsRow.find('.team-roster-participant-name').text();
+      $scope.teamMembers.teamGiftsAmount = $teamGiftsRow.find('.team-roster-participant-raised').text();
+      $defaultTeamRoster.remove();
       return TeamraiserParticipantService.getParticipants('first_name=' + encodeURIComponent('%%%') + '&list_filter_column=reg.team_id&list_filter_text=' + $scope.teamId + '&list_page_size=7', {
         error: function() {
           $scope.teamMembers.members = [];
