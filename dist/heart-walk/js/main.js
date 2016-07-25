@@ -299,7 +299,7 @@
 
   angular.module('ahaLuminateControllers').controller('TeamPageCtrl', [
     '$scope', '$location', 'TeamraiserParticipantService', function($scope, $location, TeamraiserParticipantService) {
-      var $defaultTeamRoster, $teamGiftsRow;
+      var $defaultTeamRoster, $teamGiftsRow, teamGiftsAmount;
       $scope.teamId = $location.absUrl().split('team_id=')[1].split('&')[0];
       $scope.teamMembers = {
         page: 1
@@ -307,8 +307,11 @@
       $defaultTeamRoster = angular.element('.js--default-team-roster');
       $teamGiftsRow = $defaultTeamRoster.find('.team-roster-participant-row').last();
       $scope.teamMembers.teamGiftsLabel = $teamGiftsRow.find('.team-roster-participant-name').text();
-      $scope.teamMembers.teamGiftsAmount = $teamGiftsRow.find('.team-roster-participant-raised').text();
-      $defaultTeamRoster.remove();
+      teamGiftsAmount = $teamGiftsRow.find('.team-roster-participant-raised').text();
+      if (teamGiftsAmount === '') {
+        teamGiftsAmount = '0';
+      }
+      $scope.teamMembers.teamGiftsAmount = teamGiftsAmount.replace('$', '').replace(/,/g, '') * 100;
       return TeamraiserParticipantService.getParticipants('first_name=' + encodeURIComponent('%%%') + '&list_filter_column=reg.team_id&list_filter_text=' + $scope.teamId + '&list_page_size=7', {
         error: function() {
           $scope.teamMembers.members = [];
