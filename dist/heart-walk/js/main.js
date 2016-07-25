@@ -172,6 +172,14 @@
     }
   ]);
 
+  angular.module('ahaLuminateApp').directive('teamMemberList', function() {
+    return {
+      templateUrl: '../aha-luminate/dist/heart-walk/html/directive/teamMemberList.html',
+      restrict: 'E',
+      replace: true
+    };
+  });
+
   angular.module('ahaLuminateApp').directive('topCompanyList', function() {
     return {
       templateUrl: '../aha-luminate/dist/heart-walk/html/directive/topCompanyList.html',
@@ -284,7 +292,7 @@
 
   angular.module('ahaLuminateControllers').controller('TeamPageCtrl', [
     '$scope', 'TeamraiserParticipantService', function($scope, TeamraiserParticipantService) {
-      return TeamraiserParticipantService.getParticipants('team_id=').then(function(response) {});
+      return TeamraiserParticipantService.getParticipants('list_filter_column=reg.team_id&list_filter_text=').then(function(response) {});
     }
   ]);
 
