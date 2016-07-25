@@ -446,9 +446,12 @@ a.btn-lg:visited {
           height: 90px; } }
     .heart-team-member-list .heart-team-member-list__body .heart-team-member-list__column--name {
       padding: 0 15px 0 0; }
-      @media (min-width: 768px) and (max-width: 991px) {
+      @media (min-width: 768px) {
         .heart-team-member-list .heart-team-member-list__body .heart-team-member-list__column--name {
           width: 460px; } }
+      @media (min-width: 992px) {
+        .heart-team-member-list .heart-team-member-list__body .heart-team-member-list__column--name {
+          width: 250px; } }
       @media (min-width: 1200px) {
         .heart-team-member-list .heart-team-member-list__body .heart-team-member-list__column--name {
           width: 460px; } }

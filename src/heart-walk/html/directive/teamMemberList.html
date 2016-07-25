@@ -16,7 +16,7 @@
       <div class="heart-team-member-list__column heart-team-member-list__column--name">
         <strong>{{teamGiftsLabel}}</strong>
       </div>
-      <div class="heart-team-member-list__column heart-team-member-list__column--captain hidden-xs"></div>
+      <div class="heart-team-member-list__column heart-team-member-list__column--captain hidden-xs hidden-md"></div>
       <div class="heart-team-member-list__column heart-team-member-list__column--amount">
         <strong>{{teamGiftsAmount / 100 | currency}}</strong>
       </div>
@@ -25,9 +25,9 @@
     <div class="heart-team-member-list__row" ng-repeat="teamMember in teamMembers">
       <div class="heart-team-member-list__column heart-team-member-list__column--name">
         <a ng-href="TR?fr_id={{teamMember.eventId}}&amp;pg=personal&amp;px={{teamMember.consId}}">{{teamMember.name.first}} {{teamMember.name.last}}</a>
-        <div class="visible-xs" ng-if="teamMember.aTeamCaptain == 'true'">Team Captain</div>
+        <div class="visible-xs visible-md" ng-if="teamMember.aTeamCaptain == 'true'">Team Captain</div>
       </div>
-      <div class="heart-team-member-list__column heart-team-member-list__column--captain hidden-xs">
+      <div class="heart-team-member-list__column heart-team-member-list__column--captain hidden-xs hidden-md">
         <div ng-if="teamMember.aTeamCaptain == 'true'">
           Team Captain
         </div>
