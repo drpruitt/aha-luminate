@@ -1,4 +1,5 @@
 .heart-team-member-list {
+  font-size: 16px;
   margin: 0 0 30px;
   
   .heart-team-member-list__header {
@@ -34,13 +35,39 @@
       display: table-cell;
       border-bottom: 1px solid #c9cccc;
       vertical-align: middle;
+      height: 72px;
+      padding: 0 15px;
+      
+      @media(min-width: $screen-sm-min) {
+        height: 90px;
+      }
+    }
+    
+    .heart-team-member-list__column--name {
+      padding: 0 15px 0 0;
+    }
+    
+    .heart-team-member-list__column--captain {
+      @media(min-width: $screen-sm-min) {
+        text-align: center;
+        width: 160px;
+      }
+    }
+    
+    .heart-team-member-list__column--amount {
+      text-align: right;
+      padding: 0 0 0 15px;
+      
+      @media(min-width: $screen-sm-min) {
+        text-align: left;
+        padding: 0 15px;
+      }
     }
     
     .heart-team-member-list__column--donate {
       @media(min-width: $screen-sm-min) {
         width: 102px;
-        height: 90px;
-        padding: 10px 0;
+        padding: 0 0 0 15px;
       }
     }
   }

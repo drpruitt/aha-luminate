@@ -355,6 +355,7 @@ a.btn-lg:visited {
   color: #ffffff; }
 
 .heart-team-member-list {
+  font-size: 16px;
   margin: 0 0 30px; }
   .heart-team-member-list .heart-team-member-list__header {
     border-top: 1px solid #c9cccc;
@@ -378,12 +379,29 @@ a.btn-lg:visited {
     .heart-team-member-list .heart-team-member-list__body .heart-team-member-list__column {
       display: table-cell;
       border-bottom: 1px solid #c9cccc;
-      vertical-align: middle; }
+      vertical-align: middle;
+      height: 72px;
+      padding: 0 15px; }
+      @media (min-width: 768px) {
+        .heart-team-member-list .heart-team-member-list__body .heart-team-member-list__column {
+          height: 90px; } }
+    .heart-team-member-list .heart-team-member-list__body .heart-team-member-list__column--name {
+      padding: 0 15px 0 0; }
+    @media (min-width: 768px) {
+      .heart-team-member-list .heart-team-member-list__body .heart-team-member-list__column--captain {
+        text-align: center;
+        width: 160px; } }
+    .heart-team-member-list .heart-team-member-list__body .heart-team-member-list__column--amount {
+      text-align: right;
+      padding: 0 0 0 15px; }
+      @media (min-width: 768px) {
+        .heart-team-member-list .heart-team-member-list__body .heart-team-member-list__column--amount {
+          text-align: left;
+          padding: 0 15px; } }
     @media (min-width: 768px) {
       .heart-team-member-list .heart-team-member-list__body .heart-team-member-list__column--donate {
         width: 102px;
-        height: 90px;
-        padding: 10px 0; } }
+        padding: 0 0 0 15px; } }
 
 .heart-page-rail {
   margin: 0 20px; }
