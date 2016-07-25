@@ -239,7 +239,7 @@ a.btn-lg:visited {
   float: left;
   color: #c9cccc;
   font-size: 12px;
-  width: 48px;
+  width: 50px;
   margin: 0 28px 0 12px; }
   .heart-page-progress__label .heart-page-progress__amount {
     float: none;
@@ -382,23 +382,19 @@ a.btn-lg:visited {
     margin-bottom: 3px; }
 
 .heart-user-image {
-  border: 3px solid #ffffff;
-  width: 140px;
-  margin: 0 auto; }
+  width: 100%;
+  margin: 0 auto 30px; }
   @media (min-width: 768px) {
     .heart-user-image {
-      border: 0;
-      width: 275px;
       margin: 0 0 40px; } }
   @media (min-width: 992px) {
     .heart-user-image {
-      width: 100%;
-      margin: 0 0 3px; } }
+      margin: 0 0 30px; } }
 
 .heart-page-info {
   border-bottom: 1px solid #c9cccc;
   padding: 0 0 12px;
-  margin: 0 0 20px; }
+  margin: 0 0 30px; }
   @media (min-width: 768px) {
     .heart-page-info {
       border-bottom: 0;
@@ -406,9 +402,7 @@ a.btn-lg:visited {
       margin: 0 0 40px; } }
   @media (min-width: 992px) {
     .heart-page-info {
-      border-bottom: 1px solid #c9cccc;
-      padding: 0 0 40px;
-      margin: 0 0 40px; } }
+      border-bottom: 1px solid #c9cccc; } }
   .heart-page-info h1 {
     font-size: 48px;
     line-height: 48px;
@@ -745,11 +739,30 @@ a.btn-lg:visited {
     .heart-page-rail--personal {
       margin-top: -118px; } }
 
-.heart-page-info--personal h1 {
-  text-align: center; }
+.heart-user-image--personal {
+  border: 3px solid #ffffff;
+  width: 140px;
+  margin: 0 auto; }
   @media (min-width: 768px) {
-    .heart-page-info--personal h1 {
-      text-align: left; } }
+    .heart-user-image--personal {
+      border: 0;
+      width: 275px;
+      margin: 0 0 40px; } }
   @media (min-width: 992px) {
-    .heart-page-info--personal h1 {
-      margin: 48px 0 0; } }
+    .heart-user-image--personal {
+      width: 100%;
+      margin: 0 0 3px; } }
+
+.heart-page-info--personal {
+  margin: 0 0 20px; }
+  @media (min-width: 768px) {
+    .heart-page-info--personal {
+      margin: 0 0 40px; } }
+  .heart-page-info--personal h1 {
+    text-align: center; }
+    @media (min-width: 768px) {
+      .heart-page-info--personal h1 {
+        text-align: left; } }
+    @media (min-width: 992px) {
+      .heart-page-info--personal h1 {
+        margin: 48px 0 0; } }

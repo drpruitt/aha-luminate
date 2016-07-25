@@ -22,7 +22,30 @@
   }
 }
 
+.heart-user-image--personal {
+  border: 3px solid #ffffff;
+  width: 140px;
+  margin: 0 auto;
+  
+  @media(min-width: $screen-sm-min) {
+    border: 0;
+    width: 275px;
+    margin: 0 0 40px;
+  }
+  
+  @media(min-width: $screen-md-min) {
+    width: 100%;
+    margin: 0 0 3px;
+  }
+}
+
 .heart-page-info--personal {
+  margin: 0 0 20px;
+  
+  @media(min-width: $screen-sm-min) {
+    margin: 0 0 40px;
+  }
+  
   h1 {
     text-align: center;
     
