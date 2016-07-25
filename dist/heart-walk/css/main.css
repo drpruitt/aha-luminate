@@ -399,10 +399,11 @@ a.btn-lg:visited {
     .heart-page-info {
       border-bottom: 0;
       padding: 0 0 40px;
-      margin: 0 0 40px; } }
+      margin: 0; } }
   @media (min-width: 992px) {
     .heart-page-info {
-      border-bottom: 1px solid #c9cccc; } }
+      border-bottom: 1px solid #c9cccc;
+      margin: 0 0 40px; } }
   .heart-page-info h1 {
     font-size: 48px;
     line-height: 48px;
@@ -464,8 +465,6 @@ a.btn-lg:visited {
   @media (min-width: 940px) {
     .heart-page-main-sm {
       width: 55%; } }
-  .heart-page-main-sm .heart-page-info {
-    height: 100%; }
 
 .heart-page-main {
   margin: 32px 20px 0; }
@@ -766,3 +765,6 @@ a.btn-lg:visited {
     @media (min-width: 992px) {
       .heart-page-info--personal h1 {
         margin: 48px 0 0; } }
+
+.heart-page-main-sm--personal .heart-page-info {
+  height: 100%; }

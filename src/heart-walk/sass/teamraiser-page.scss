@@ -56,11 +56,12 @@
   @media(min-width: $screen-sm-min) {
     border-bottom: 0;
     padding: 0 0 40px;
-    margin: 0 0 40px;
+    margin: 0;
   }
   
   @media(min-width: $screen-md-min) {
     border-bottom: 1px solid #c9cccc;
+    margin: 0 0 40px;
   }
   
   h1 {
@@ -142,10 +143,6 @@
   
   @media(min-width: 940px) {
     width: 55%;
-  }
-  
-  .heart-page-info {
-    height: 100%;
   }
 }
 
