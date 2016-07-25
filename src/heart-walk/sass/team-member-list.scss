@@ -1,0 +1,28 @@
+.heart-team-member-list {
+  margin: 0 0 30px;
+  
+  .heart-team-member-list__header {
+    border-top: 1px solid #c9cccc;
+    border-bottom: 1px solid #c9cccc;
+    
+    @media(min-width: $screen-sm-min) {
+      border-top: 0;
+    }
+    
+    @media(min-width: $screen-md-min) {
+      border-top: 1px solid #c9cccc;
+    }
+    
+    h2 {
+      margin: 0;
+      
+      @media(min-width: $screen-md-min) {
+        margin: 0;
+      }
+    }
+  }
+  
+  .heart-team-member-list__row {
+    border-bottom: 1px solid #c9cccc;
+  }
+}

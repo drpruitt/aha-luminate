@@ -176,7 +176,10 @@
     return {
       templateUrl: '../aha-luminate/dist/heart-walk/html/directive/teamMemberList.html',
       restrict: 'E',
-      replace: true
+      replace: true,
+      scope: {
+        teamMembers: '='
+      }
     };
   });
 
@@ -292,21 +295,38 @@
 
   angular.module('ahaLuminateControllers').controller('TeamPageCtrl', [
     '$scope', '$location', 'TeamraiserParticipantService', function($scope, $location, TeamraiserParticipantService) {
+      var $defaultTeamRoster, $teamGiftRow;
       $scope.teamId = $location.absUrl().split('team_id=')[1].split('&')[0];
-      return TeamraiserParticipantService.getParticipants('first_name=' + encodeURIComponent('%%%') + '&list_filter_column=reg.team_id&list_filter_text=' + $scope.teamId, {
+      $scope.teamMembers = {
+        page: 1
+      };
+      $defaultTeamRoster = angular.element('.js--default-team-roster');
+      $teamGiftRow = $defaultTeamRoster.find('.team-roster-participant-row').last();
+      $scope.teamMembers.teamGiftLabel = $teamGiftRow.find('.team-roster-participant-name').text();
+      $scope.teamMembers.teamGiftAmount = $teamGiftRow.find('.team-roster-participant-raised').text();
+      return TeamraiserParticipantService.getParticipants('first_name=' + encodeURIComponent('%%%') + '&list_filter_column=reg.team_id&list_filter_text=' + $scope.teamId + '&list_page_size=7', {
         error: function() {
-          return $scope.teamMembers = [];
+          $scope.teamMembers.members = [];
+          return $scope.teamMembers.totalNumber = 0;
         },
         success: function(response) {
           var ref, teamMembers;
           teamMembers = (ref = response.getParticipantsResponse) != null ? ref.participant : void 0;
           if (!teamMembers) {
-            return $scope.teamMembers = [];
+            $scope.teamMembers.members = [];
+            return $scope.teamMembers.totalNumber = 0;
           } else {
+            $scope.teamMembers.members = [];
             if (!angular.isArray(teamMembers)) {
               teamMembers = [teamMembers];
             }
-            return $scope.teamMembers = teamMembers;
+            angular.forEach(teamMembers, function(teamMember) {
+              var ref1;
+              if ((ref1 = teamMember.name) != null ? ref1.first : void 0) {
+                return $scope.teamMembers.members.push(teamMember);
+              }
+            });
+            return $scope.teamMembers.totalNumber = response.getParticipantsResponse.totalNumberResults;
           }
         }
       });

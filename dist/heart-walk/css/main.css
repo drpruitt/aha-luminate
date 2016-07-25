@@ -173,6 +173,63 @@ a.btn-lg:visited {
 #headerWrapper {
   margin: 0; }
 
+.heart-hero {
+  background-color: #de2427;
+  background-position: center center;
+  background-size: cover;
+  color: #ffffff;
+  width: 100%;
+  height: 150px;
+  margin: 0 0 40px; }
+  @media (min-width: 768px) {
+    .heart-hero {
+      height: 200px; } }
+  @media (min-width: 992px) {
+    .heart-hero {
+      margin: 0 0 48px; } }
+
+.heart-hero__mask {
+  background: #de2427;
+  background: rgba(222, 36, 39, 0.9);
+  height: 150px;
+  padding: 30px 20px 0 20px; }
+  @media (min-width: 768px) {
+    .heart-hero__mask {
+      height: 200px;
+      padding: 72px 40px 0 40px; } }
+  @media (min-width: 992px) {
+    .heart-hero__mask {
+      padding: 48px 80px 0 48px; } }
+
+.heart-hero__event-name {
+  float: right; }
+  .heart-hero__event-name hr {
+    float: right;
+    border-top: 6px solid #890707;
+    width: 20px;
+    margin: 0 0 20px; }
+  .heart-hero__event-name p {
+    font-size: 16px;
+    margin: 0 0 6px; }
+    @media (min-width: 768px) {
+      .heart-hero__event-name p {
+        font-size: 24px;
+        line-height: 24px;
+        margin: 0 0 12px; } }
+    .heart-hero__event-name p a, .heart-hero__event-name p a:link, .heart-hero__event-name p a:visited, .heart-hero__event-name p a:hover, .heart-hero__event-name p a:focus, .heart-hero__event-name p a:active {
+      color: inherit;
+      font-weight: inherit;
+      text-decoration: none; }
+
+.heart-hero__info {
+  font-size: 12px;
+  text-align: right; }
+  @media (min-width: 768px) {
+    .heart-hero__info {
+      font-size: 14px; } }
+  .heart-hero__info p {
+    margin: 0 0 0; }
+
 .heart-page-progress__thermometer {
   position: relative;
   background: #de2427;
@@ -297,62 +354,24 @@ a.btn-lg:visited {
   background-color: #36465d;
   color: #ffffff; }
 
-.heart-hero {
-  background-color: #de2427;
-  background-position: center center;
-  background-size: cover;
-  color: #ffffff;
-  width: 100%;
-  height: 150px;
-  margin: 0 0 40px; }
-  @media (min-width: 768px) {
-    .heart-hero {
-      height: 200px; } }
-  @media (min-width: 992px) {
-    .heart-hero {
-      margin: 0 0 48px; } }
-
-.heart-hero__mask {
-  background: #de2427;
-  background: rgba(222, 36, 39, 0.9);
-  height: 150px;
-  padding: 30px 20px 0 20px; }
-  @media (min-width: 768px) {
-    .heart-hero__mask {
-      height: 200px;
-      padding: 72px 40px 0 40px; } }
-  @media (min-width: 992px) {
-    .heart-hero__mask {
-      padding: 48px 80px 0 48px; } }
-
-.heart-hero__event-name {
-  float: right; }
-  .heart-hero__event-name hr {
-    float: right;
-    border-top: 6px solid #890707;
-    width: 20px;
-    margin: 0 0 20px; }
-  .heart-hero__event-name p {
-    font-size: 16px;
-    margin: 0 0 6px; }
+.heart-team-member-list {
+  margin: 0 0 30px; }
+  .heart-team-member-list .heart-team-member-list__header {
+    border-top: 1px solid #c9cccc;
+    border-bottom: 1px solid #c9cccc; }
     @media (min-width: 768px) {
-      .heart-hero__event-name p {
-        font-size: 24px;
-        line-height: 24px;
-        margin: 0 0 12px; } }
-    .heart-hero__event-name p a, .heart-hero__event-name p a:link, .heart-hero__event-name p a:visited, .heart-hero__event-name p a:hover, .heart-hero__event-name p a:focus, .heart-hero__event-name p a:active {
-      color: inherit;
-      font-weight: inherit;
-      text-decoration: none; }
-
-.heart-hero__info {
-  font-size: 12px;
-  text-align: right; }
-  @media (min-width: 768px) {
-    .heart-hero__info {
-      font-size: 14px; } }
-  .heart-hero__info p {
-    margin: 0 0 0; }
+      .heart-team-member-list .heart-team-member-list__header {
+        border-top: 0; } }
+    @media (min-width: 992px) {
+      .heart-team-member-list .heart-team-member-list__header {
+        border-top: 1px solid #c9cccc; } }
+    .heart-team-member-list .heart-team-member-list__header h2 {
+      margin: 0; }
+      @media (min-width: 992px) {
+        .heart-team-member-list .heart-team-member-list__header h2 {
+          margin: 0; } }
+  .heart-team-member-list .heart-team-member-list__row {
+    border-bottom: 1px solid #c9cccc; }
 
 .heart-page-rail {
   margin: 0 20px; }
