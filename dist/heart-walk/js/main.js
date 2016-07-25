@@ -299,7 +299,7 @@
 
   angular.module('ahaLuminateControllers').controller('TeamPageCtrl', [
     '$scope', '$location', 'TeamraiserParticipantService', function($scope, $location, TeamraiserParticipantService) {
-      var $defaultTeamRoster, $teamGiftsRow, teamGiftsAmount;
+      var $defaultTeamRoster, $teamGiftsRow, setTeamMembers, setTotalTeamMembers, teamGiftsAmount;
       $scope.teamId = $location.absUrl().split('team_id=')[1].split('&')[0];
       $scope.teamMembers = {
         page: 1
@@ -312,36 +312,50 @@
         teamGiftsAmount = '0';
       }
       $scope.teamMembers.teamGiftsAmount = teamGiftsAmount.replace('$', '').replace(/,/g, '') * 100;
+      setTeamMembers = function(teamMembers) {
+        $scope.teamMembers.members = teamMembers || [];
+        if (!$scope.$$phase) {
+          return $scope.$apply();
+        }
+      };
+      setTotalTeamMembers = function(totalTeamMembers) {
+        $scope.teamMembers.totalNumber = totalTeamMembers || 0;
+        if (!$scope.$$phase) {
+          return $scope.$apply();
+        }
+      };
       $scope.getTeamMembers = function() {
         var pageNumber;
         pageNumber = $scope.teamMembers.page - 1;
-        return TeamraiserParticipantService.getParticipants('first_name=' + encodeURIComponent('%%%') + '&list_filter_column=reg.team_id&list_filter_text=' + $scope.teamId + '&list_sort_column=total&list_ascending=false&list_page_size=7&list_page_offset=' + pageNumber, {
+        return TeamraiserParticipantService.getParticipants('first_name=' + encodeURIComponent('%%%') + '&list_filter_column=reg.team_id&list_filter_text=' + $scope.teamId + '&list_sort_column=total&list_ascending=false&list_page_size=4&list_page_offset=' + pageNumber, {
           error: function() {
-            $scope.teamMembers.members = [];
-            return $scope.teamMembers.totalNumber = 0;
+            setTeamMembers();
+            return setTotalTeamMembers();
           },
           success: function(response) {
-            var ref, teamMembers;
-            teamMembers = (ref = response.getParticipantsResponse) != null ? ref.participant : void 0;
-            if (!teamMembers) {
-              $scope.teamMembers.members = [];
-              return $scope.teamMembers.totalNumber = 0;
+            var ref, teamMembers, teamParticipants;
+            teamParticipants = (ref = response.getParticipantsResponse) != null ? ref.participant : void 0;
+            if (!teamParticipants) {
+              setTeamMembers();
+              return setTotalTeamMembers();
             } else {
-              $scope.teamMembers.members = [];
-              if (!angular.isArray(teamMembers)) {
-                teamMembers = [teamMembers];
+              setTeamMembers();
+              if (!angular.isArray(teamParticipants)) {
+                teamParticipants = [teamParticipants];
               }
-              angular.forEach(teamMembers, function(teamMember) {
+              teamMembers = [];
+              angular.forEach(teamParticipants, function(teamParticipant) {
                 var donationUrl, ref1;
-                if ((ref1 = teamMember.name) != null ? ref1.first : void 0) {
-                  donationUrl = teamMember.donationUrl;
+                if ((ref1 = teamParticipant.name) != null ? ref1.first : void 0) {
+                  donationUrl = teamParticipant.donationUrl;
                   if (donationUrl) {
-                    teamMember.donationUrl = donationUrl.split('/site/')[1];
+                    teamParticipant.donationUrl = donationUrl.split('/site/')[1];
                   }
-                  return $scope.teamMembers.members.push(teamMember);
+                  return teamMembers.push(teamParticipant);
                 }
               });
-              return $scope.teamMembers.totalNumber = response.getParticipantsResponse.totalNumberResults;
+              setTeamMembers(teamMembers);
+              return setTotalTeamMembers(response.getParticipantsResponse.totalNumberResults);
             }
           }
         });

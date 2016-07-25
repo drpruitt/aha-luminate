@@ -17,26 +17,39 @@ angular.module 'ahaLuminateControllers'
         teamGiftsAmount = '0'
       $scope.teamMembers.teamGiftsAmount = teamGiftsAmount.replace('$', '').replace(/,/g, '') * 100
       
+      setTeamMembers = (teamMembers) ->
+        $scope.teamMembers.members = teamMembers or []
+        if not $scope.$$phase
+          $scope.$apply()
+      setTotalTeamMembers = (totalTeamMembers) ->
+        $scope.teamMembers.totalNumber = totalTeamMembers or 0
+        if not $scope.$$phase
+          $scope.$apply()
+      
       $scope.getTeamMembers = ->
         pageNumber = $scope.teamMembers.page - 1
-        TeamraiserParticipantService.getParticipants 'first_name=' + encodeURIComponent('%%%') + '&list_filter_column=reg.team_id&list_filter_text=' + $scope.teamId + '&list_sort_column=total&list_ascending=false&list_page_size=7&list_page_offset=' + pageNumber, 
+        TeamraiserParticipantService.getParticipants 'first_name=' + encodeURIComponent('%%%') + '&list_filter_column=reg.team_id&list_filter_text=' + $scope.teamId + '&list_sort_column=total&list_ascending=false&list_page_size=4&list_page_offset=' + pageNumber, 
           error: () ->
-            $scope.teamMembers.members = []
-            $scope.teamMembers.totalNumber = 0
+            setTeamMembers()
+            setTotalTeamMembers()
           success: (response) ->
-            teamMembers = response.getParticipantsResponse?.participant
-            if not teamMembers
-              $scope.teamMembers.members = []
-              $scope.teamMembers.totalNumber = 0
+            teamParticipants = response.getParticipantsResponse?.participant
+            if not teamParticipants
+              setTeamMembers()
+              setTotalTeamMembers()
             else
-              $scope.teamMembers.members = []
-              teamMembers = [teamMembers] if not angular.isArray teamMembers
-              angular.forEach teamMembers, (teamMember) ->
-                if teamMember.name?.first
-                  donationUrl = teamMember.donationUrl
+              setTeamMembers()
+              teamParticipants = [teamParticipants] if not angular.isArray teamParticipants
+              teamMembers = []
+              angular.forEach teamParticipants, (teamParticipant) ->
+                if teamParticipant.name?.first
+                  donationUrl = teamParticipant.donationUrl
                   if donationUrl
-                    teamMember.donationUrl = donationUrl.split('/site/')[1]
-                  $scope.teamMembers.members.push teamMember
-              $scope.teamMembers.totalNumber = response.getParticipantsResponse.totalNumberResults
+                    teamParticipant.donationUrl = donationUrl.split('/site/')[1]
+                  teamMembers.push teamParticipant
+              setTeamMembers teamMembers
+              setTotalTeamMembers response.getParticipantsResponse.totalNumberResults
       $scope.getTeamMembers()
+      
+      # TODO: search form submit
   ]
