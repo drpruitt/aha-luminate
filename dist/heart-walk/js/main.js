@@ -312,7 +312,7 @@
         teamGiftsAmount = '0';
       }
       $scope.teamMembers.teamGiftsAmount = teamGiftsAmount.replace('$', '').replace(/,/g, '') * 100;
-      return TeamraiserParticipantService.getParticipants('first_name=' + encodeURIComponent('%%%') + '&list_filter_column=reg.team_id&list_filter_text=' + $scope.teamId + '&list_page_size=7', {
+      return TeamraiserParticipantService.getParticipants('first_name=' + encodeURIComponent('%%%') + '&list_filter_column=reg.team_id&list_filter_text=' + $scope.teamId + '&list_sort_column=total&list_ascending=false&list_page_size=7', {
         error: function() {
           $scope.teamMembers.members = [];
           return $scope.teamMembers.totalNumber = 0;
