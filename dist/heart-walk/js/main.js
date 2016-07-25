@@ -1,5 +1,5 @@
 (function() {
-  angular.module('ahaLuminateApp', ['ngSanitize', 'ahaLuminateControllers']);
+  angular.module('ahaLuminateApp', ['ngSanitize', 'ui.bootstrap', 'ahaLuminateControllers']);
 
   angular.module('ahaLuminateControllers', []);
 
@@ -312,36 +312,41 @@
         teamGiftsAmount = '0';
       }
       $scope.teamMembers.teamGiftsAmount = teamGiftsAmount.replace('$', '').replace(/,/g, '') * 100;
-      return TeamraiserParticipantService.getParticipants('first_name=' + encodeURIComponent('%%%') + '&list_filter_column=reg.team_id&list_filter_text=' + $scope.teamId + '&list_sort_column=total&list_ascending=false&list_page_size=7', {
-        error: function() {
-          $scope.teamMembers.members = [];
-          return $scope.teamMembers.totalNumber = 0;
-        },
-        success: function(response) {
-          var ref, teamMembers;
-          teamMembers = (ref = response.getParticipantsResponse) != null ? ref.participant : void 0;
-          if (!teamMembers) {
+      $scope.getTeamMembers = function() {
+        var pageNumber;
+        pageNumber = $scope.teamMembers.page - 1;
+        return TeamraiserParticipantService.getParticipants('first_name=' + encodeURIComponent('%%%') + '&list_filter_column=reg.team_id&list_filter_text=' + $scope.teamId + '&list_sort_column=total&list_ascending=false&list_page_size=7&list_page_offset=' + pageNumber, {
+          error: function() {
             $scope.teamMembers.members = [];
             return $scope.teamMembers.totalNumber = 0;
-          } else {
-            $scope.teamMembers.members = [];
-            if (!angular.isArray(teamMembers)) {
-              teamMembers = [teamMembers];
-            }
-            angular.forEach(teamMembers, function(teamMember) {
-              var donationUrl, ref1;
-              if ((ref1 = teamMember.name) != null ? ref1.first : void 0) {
-                donationUrl = teamMember.donationUrl;
-                if (donationUrl) {
-                  teamMember.donationUrl = donationUrl.split('/site/')[1];
-                }
-                return $scope.teamMembers.members.push(teamMember);
+          },
+          success: function(response) {
+            var ref, teamMembers;
+            teamMembers = (ref = response.getParticipantsResponse) != null ? ref.participant : void 0;
+            if (!teamMembers) {
+              $scope.teamMembers.members = [];
+              return $scope.teamMembers.totalNumber = 0;
+            } else {
+              $scope.teamMembers.members = [];
+              if (!angular.isArray(teamMembers)) {
+                teamMembers = [teamMembers];
               }
-            });
-            return $scope.teamMembers.totalNumber = response.getParticipantsResponse.totalNumberResults;
+              angular.forEach(teamMembers, function(teamMember) {
+                var donationUrl, ref1;
+                if ((ref1 = teamMember.name) != null ? ref1.first : void 0) {
+                  donationUrl = teamMember.donationUrl;
+                  if (donationUrl) {
+                    teamMember.donationUrl = donationUrl.split('/site/')[1];
+                  }
+                  return $scope.teamMembers.members.push(teamMember);
+                }
+              });
+              return $scope.teamMembers.totalNumber = response.getParticipantsResponse.totalNumberResults;
+            }
           }
-        }
-      });
+        });
+      };
+      return $scope.getTeamMembers();
     }
   ]);
 
