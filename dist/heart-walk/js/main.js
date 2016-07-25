@@ -329,8 +329,12 @@
               teamMembers = [teamMembers];
             }
             angular.forEach(teamMembers, function(teamMember) {
-              var ref1;
+              var donationUrl, ref1;
               if ((ref1 = teamMember.name) != null ? ref1.first : void 0) {
+                donationUrl = teamMember.donationUrl;
+                if (donationUrl) {
+                  teamMember.donationUrl = donationUrl.split('/site/')[1];
+                }
                 return $scope.teamMembers.members.push(teamMember);
               }
             });

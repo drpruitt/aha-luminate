@@ -22,7 +22,26 @@
     }
   }
   
-  .heart-team-member-list__row {
-    border-bottom: 1px solid #c9cccc;
+  .heart-team-member-list__body {
+    display: table;
+    width: 100%;
+    
+    .heart-team-member-list__row {
+      display: table-row;
+    }
+    
+    .heart-team-member-list__column {
+      display: table-cell;
+      border-bottom: 1px solid #c9cccc;
+      vertical-align: middle;
+    }
+    
+    .heart-team-member-list__column--donate {
+      @media(min-width: $screen-sm-min) {
+        width: 102px;
+        height: 90px;
+        padding: 10px 0;
+      }
+    }
   }
 }

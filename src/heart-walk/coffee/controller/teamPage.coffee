@@ -31,6 +31,9 @@ angular.module 'ahaLuminateControllers'
           teamMembers = [teamMembers] if not angular.isArray teamMembers
           angular.forEach teamMembers, (teamMember) ->
             if teamMember.name?.first
+              donationUrl = teamMember.donationUrl
+              if donationUrl
+                teamMember.donationUrl = donationUrl.split('/site/')[1]
               $scope.teamMembers.members.push teamMember
           $scope.teamMembers.totalNumber = response.getParticipantsResponse.totalNumberResults
   ]

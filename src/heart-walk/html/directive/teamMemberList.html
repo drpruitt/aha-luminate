@@ -13,7 +13,7 @@
       <div class="heart-team-member-list__column heart-team-member-list__column--amount">
         {{teamGiftsAmount / 100 | currency}}
       </div>
-      <div class="heart-team-member-list__column hidden-xs"></div>
+      <div class="heart-team-member-list__column heart-team-member-list__column--donate hidden-xs"></div>
     </div>
     <div class="heart-team-member-list__row" ng-repeat="teamMember in teamMembers">
       <div class="heart-team-member-list__column heart-team-member-list__column--name">
@@ -28,7 +28,8 @@
       <div class="heart-team-member-list__column heart-team-member-list__column--amount">
         {{teamMember.amountRaised / 100 | currency}}
       </div>
-      <div class="heart-team-member-list__column hidden-xs">
+      <div class="heart-team-member-list__column heart-team-member-list__column--donate hidden-xs">
+        <a class="btn btn-lg btn-primary" ng-href="{{teamMember.donationUrl}}" ng-if="teamMember.donationUrl">Donate</a>
       </div>
     </div>
   </div>

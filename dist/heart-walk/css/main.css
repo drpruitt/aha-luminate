@@ -370,8 +370,20 @@ a.btn-lg:visited {
       @media (min-width: 992px) {
         .heart-team-member-list .heart-team-member-list__header h2 {
           margin: 0; } }
-  .heart-team-member-list .heart-team-member-list__row {
-    border-bottom: 1px solid #c9cccc; }
+  .heart-team-member-list .heart-team-member-list__body {
+    display: table;
+    width: 100%; }
+    .heart-team-member-list .heart-team-member-list__body .heart-team-member-list__row {
+      display: table-row; }
+    .heart-team-member-list .heart-team-member-list__body .heart-team-member-list__column {
+      display: table-cell;
+      border-bottom: 1px solid #c9cccc;
+      vertical-align: middle; }
+    @media (min-width: 768px) {
+      .heart-team-member-list .heart-team-member-list__body .heart-team-member-list__column--donate {
+        width: 102px;
+        height: 90px;
+        padding: 10px 0; } }
 
 .heart-page-rail {
   margin: 0 20px; }
