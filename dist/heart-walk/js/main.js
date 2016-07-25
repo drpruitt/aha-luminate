@@ -291,8 +291,25 @@
   ]);
 
   angular.module('ahaLuminateControllers').controller('TeamPageCtrl', [
-    '$scope', 'TeamraiserParticipantService', function($scope, TeamraiserParticipantService) {
-      return TeamraiserParticipantService.getParticipants('list_filter_column=reg.team_id&list_filter_text=').then(function(response) {});
+    '$scope', '$location', 'TeamraiserParticipantService', function($scope, $location, TeamraiserParticipantService) {
+      $scope.teamId = $location.absUrl().split('team_id=')[1].split('&')[0];
+      return TeamraiserParticipantService.getParticipants('first_name=' + encodeURIComponent('%%%') + '&list_filter_column=reg.team_id&list_filter_text=' + $scope.teamId, {
+        error: function() {
+          return $scope.teamMembers = [];
+        },
+        success: function(response) {
+          var ref, teamMembers;
+          teamMembers = (ref = response.getParticipantsResponse) != null ? ref.participant : void 0;
+          if (!teamMembers) {
+            return $scope.teamMembers = [];
+          } else {
+            if (!angular.isArray(teamMembers)) {
+              teamMembers = [teamMembers];
+            }
+            return $scope.teamMembers = teamMembers;
+          }
+        }
+      });
     }
   ]);
 
