@@ -1,8 +1,15 @@
 <div class="heart-team-member-list">
-  <div class="heart-team-member-list__header">
+  <div class="heart-team-member-list__header clearfix">
     <h2>
       Members
     </h2>
+    <form class="form-inline" method="POST">
+      <label class="sr-only">
+        Search for a team member:
+      </label>
+      <input type="text" class="form-control" placeholder="Search for a team member"> 
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
   </div>
   <div class="heart-team-member-list__body">
     <div class="heart-team-member-list__row" ng-if="teamGiftsLabel">

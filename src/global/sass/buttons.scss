@@ -4,6 +4,7 @@ a.btn:link,
 a.btn:visited {
   @include button-size($padding-base-vertical, $padding-base-horizontal, $font-size-small);
   border-radius: 0;
+  font-weight: 600;
 }
 
 a.btn {
@@ -15,6 +16,8 @@ a.btn {
     text-decoration: none;
   }
 }
+
+.btn-primary, 
 a.btn-primary {
   @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
   

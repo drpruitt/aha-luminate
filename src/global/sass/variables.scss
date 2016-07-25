@@ -23,9 +23,13 @@ $padding-base-horizontal: 24px !default;
 $padding-large-vertical: 18px !default;
 $padding-large-horizontal: 24px !default;
 
+$border-radius-base: 4px !default;
+
 $btn-primary-color: #fff !default;
 $btn-primary-bg: $brand-primary !default;
 $btn-primary-border: darken($btn-primary-bg, 5%) !default;
+
+$input-border-radius: 0 !default;
 
 $screen-sm: 768px !default;
 $screen-sm-min: $screen-sm !default;

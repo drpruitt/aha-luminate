@@ -103,55 +103,91 @@ a, a:link, a:visited, a:hover, a:focus {
 .container {
   padding: 0; }
 
+.form-control {
+  border-radius: 0;
+  height: 44px; }
+
 .btn,
 a.btn,
 a.btn:link,
 a.btn:visited {
   padding: 12px 24px;
   font-size: 14px;
-  border-radius: 0; }
+  border-radius: 0;
+  font-weight: 600; }
 
 a.btn, a.btn:link, a.btn:visited, a.btn:hover, a.btn:focus {
   text-decoration: none; }
 
-a.btn-primary, a.btn-primary:link, a.btn-primary:visited, a.btn-primary:hover, a.btn-primary:focus, a.btn-primary:active {
+.btn-primary, .btn-primary:link, .btn-primary:visited, .btn-primary:hover, .btn-primary:focus, .btn-primary:active,
+a.btn-primary,
+a.btn-primary:link,
+a.btn-primary:visited,
+a.btn-primary:hover,
+a.btn-primary:focus,
+a.btn-primary:active {
   color: #fff;
   background-image: none;
   border-width: 0; }
 
-a.btn-primary, a.btn-primary:link, a.btn-primary:visited {
+.btn-primary, .btn-primary:link, .btn-primary:visited,
+a.btn-primary,
+a.btn-primary:link,
+a.btn-primary:visited {
   background-color: #de2427;
   border-color: #ca1e21; }
 
-a.btn-primary:hover, a.btn-primary:focus, a.btn-primary:active {
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active,
+a.btn-primary:hover,
+a.btn-primary:focus,
+a.btn-primary:active {
   background-color: #b41b1e; }
 
+.btn-primary:hover,
 a.btn-primary:hover {
   background-position: 0 0;
   border-color: #951618; }
 
+.btn-primary:focus,
 a.btn-primary:focus {
   border-color: #5b0e0f; }
 
+.btn-primary:active,
 a.btn-primary:active {
   border-color: #951618; }
-  a.btn-primary:active:hover, a.btn-primary:active:focus {
+  .btn-primary:active:hover, .btn-primary:active:focus,
+  a.btn-primary:active:hover,
+  a.btn-primary:active:focus {
     background-color: #951618;
     border-color: #5b0e0f; }
 
-a.btn-primary[disabled]:hover, a.btn-primary[disabled]:focus,
-fieldset[disabled] a.btn-primary:hover,
-fieldset[disabled] a.btn-primary:focus {
+.btn-primary[disabled]:hover, .btn-primary[disabled]:focus,
+fieldset[disabled] .btn-primary:hover,
+fieldset[disabled] .btn-primary:focus,
+a.btn-primary[disabled]:hover,
+a.btn-primary[disabled]:focus,
+fieldset[disabled]
+a.btn-primary:hover,
+fieldset[disabled]
+a.btn-primary:focus {
   background-color: #de2427;
   border-color: #ca1e21; }
 
-a.btn-primary, a.btn-primary:link, a.btn-primary:visited {
+.btn-primary, .btn-primary:link, .btn-primary:visited,
+a.btn-primary,
+a.btn-primary:link,
+a.btn-primary:visited {
   background: linear-gradient(to bottom, #de2427 0%, #c7191c 100%); }
 
-a.btn-primary:hover, a.btn-primary:focus, a.btn-primary:active {
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active,
+a.btn-primary:hover,
+a.btn-primary:focus,
+a.btn-primary:active {
   background: linear-gradient(to bottom, #b41b1e 0%, #9a1316 100%); }
 
-a.btn-primary:active:hover, a.btn-primary:active:focus {
+.btn-primary:active:hover, .btn-primary:active:focus,
+a.btn-primary:active:hover,
+a.btn-primary:active:focus {
   background: linear-gradient(to bottom, #951618 0%, #7a0f11 100%); }
 
 .btn-lg,
