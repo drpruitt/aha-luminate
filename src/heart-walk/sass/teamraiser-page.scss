@@ -117,7 +117,8 @@
       }
     }
     
-    a {
+    .heart-page-info__related-item, 
+    a.heart-page-info__related-item {
       display: block;
       
       @media(min-width: $screen-sm-min) {

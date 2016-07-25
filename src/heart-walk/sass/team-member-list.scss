@@ -20,7 +20,7 @@
     h2 {
       margin: 0 0 30px;
       
-      @media(min-width: $screen-sm-min) {
+      @media(min-width: 500px) {
         float: left;
         margin: 10px 0;
       }
@@ -31,15 +31,24 @@
     }
     
     form {
-      @media(min-width: $screen-sm-min) {
+      @media(min-width: 500px) {
         float: right;
       }
       
       .form-control {
         display: inline-block;
-        width: 220px;
+        vertical-align: middle;
+        width: 180px;
         
-        @media(min-width: $screen-sm-min) {
+        @media(min-width: 360px) {
+          width: 220px;
+        }
+        
+        @media(min-width: 375px) {
+          width: 235px;
+        }
+        
+        @media(min-width: 380px) {
           width: 240px;
         }
       }

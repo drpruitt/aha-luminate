@@ -407,20 +407,27 @@ a.btn-lg:visited {
         padding: 30px 0; } }
     .heart-team-member-list .heart-team-member-list__header h2 {
       margin: 0 0 30px; }
-      @media (min-width: 768px) {
+      @media (min-width: 500px) {
         .heart-team-member-list .heart-team-member-list__header h2 {
           float: left;
           margin: 10px 0; } }
       @media (min-width: 992px) {
         .heart-team-member-list .heart-team-member-list__header h2 {
           margin: 10px 0; } }
-    @media (min-width: 768px) {
+    @media (min-width: 500px) {
       .heart-team-member-list .heart-team-member-list__header form {
         float: right; } }
     .heart-team-member-list .heart-team-member-list__header form .form-control {
       display: inline-block;
-      width: 220px; }
-      @media (min-width: 768px) {
+      vertical-align: middle;
+      width: 180px; }
+      @media (min-width: 360px) {
+        .heart-team-member-list .heart-team-member-list__header form .form-control {
+          width: 220px; } }
+      @media (min-width: 375px) {
+        .heart-team-member-list .heart-team-member-list__header form .form-control {
+          width: 235px; } }
+      @media (min-width: 380px) {
         .heart-team-member-list .heart-team-member-list__header form .form-control {
           width: 240px; } }
   .heart-team-member-list .heart-team-member-list__body {
@@ -552,10 +559,12 @@ a.btn-lg:visited {
     @media (min-width: 768px) {
       .heart-page-info__related-links li:last-child {
         margin: 0; } }
-    .heart-page-info__related-links li a {
+    .heart-page-info__related-links li .heart-page-info__related-item,
+    .heart-page-info__related-links li a.heart-page-info__related-item {
       display: block; }
       @media (min-width: 768px) {
-        .heart-page-info__related-links li a {
+        .heart-page-info__related-links li .heart-page-info__related-item,
+        .heart-page-info__related-links li a.heart-page-info__related-item {
           display: inline-block; } }
 
 .heart-page-main-sm {
