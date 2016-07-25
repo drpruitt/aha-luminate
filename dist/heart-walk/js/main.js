@@ -282,4 +282,10 @@
     }
   ]);
 
+  angular.module('ahaLuminateControllers').controller('TeamPageCtrl', [
+    '$scope', 'TeamraiserParticipantService', function($scope, TeamraiserParticipantService) {
+      return TeamraiserParticipantService.getParticipants('team_id=').then(function(response) {});
+    }
+  ]);
+
 }).call(this);
