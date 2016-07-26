@@ -233,23 +233,38 @@
   });
 
   angular.module('ahaLuminateControllers').controller('CompanyPageCtrl', [
-    '$scope', '$location', function($scope, $location) {
-      var $defaultCompanySummary, companyAmountRaised, companyGiftCount;
+    '$scope', '$location', 'TeamraiserCompanyService', function($scope, $location, TeamraiserCompanyService) {
+      var $defaultCompanySummary, companyGiftCount, setCompanyProgress;
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0];
       $defaultCompanySummary = angular.element('.js--default-company-summary');
-      companyAmountRaised = $defaultCompanySummary.find('.company-tally-container--amount .company-tally-ammount').text();
-      if (companyAmountRaised === '') {
-        companyAmountRaised = '0';
-      }
       companyGiftCount = $defaultCompanySummary.find('.company-tally-container--gift-count .company-tally-ammount').text();
       if (companyGiftCount === '') {
         companyGiftCount = '0';
       }
-      return $scope.companyProgress = {
-        amountRaised: companyAmountRaised,
-        goal: 0,
+      $scope.companyProgress = {
         numDonations: companyGiftCount
       };
+      setCompanyProgress = function(amountRaised, goal) {
+        $scope.companyProgress.amountRaised = amountRaised || '0';
+        $scope.companyProgress.goal = goal || '0';
+        if (!$scope.$$phase) {
+          return $scope.$apply();
+        }
+      };
+      return TeamraiserCompanyService.getCompanies('company_id=' + $scope.companyId, {
+        error: function() {
+          return setCompanyProgress();
+        },
+        success: function(response) {
+          var companyInfo, ref;
+          companyInfo = (ref = response.getCompaniesResponse) != null ? ref.company : void 0;
+          if (!companyInfo) {
+            return setCompanyProgress();
+          } else {
+            return setCompanyProgress(companyInfo.amountRaised, companyInfo.goal);
+          }
+        }
+      });
     }
   ]);
 
