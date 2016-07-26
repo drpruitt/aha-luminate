@@ -3,7 +3,9 @@ angular.module 'ahaLuminateControllers'
     '$scope'
     '$location'
     'TeamraiserCompanyService'
-    ($scope, $location, TeamraiserCompanyService) ->
+    'TeamraiserTeamService'
+    'TeamraiserParticipantService'
+    ($scope, $location, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService) ->
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0]
       
       $defaultCompanySummary = angular.element '.js--default-company-summary'
@@ -28,4 +30,25 @@ angular.module 'ahaLuminateControllers'
             setCompanyProgress()
           else
             setCompanyProgress companyInfo.amountRaised, companyInfo.goal
+      
+      $defaultCompanyHierarchy = angular.element '.js--default-company-hierarchy'
+      $childCompanyLinks = $defaultCompanyHierarchy.find('.trr-td a')
+      childCompanyIds = []
+      angular.forEach $childCompanyLinks, (childCompanyLink) ->
+        childCompanyUrl = angular.element(childCompanyLink).attr('href')
+        if childCompanyUrl.indexOf('company_id=') isnt -1
+          childCompanyIds.push childCompanyUrl.split('company_id=')[1].split('&')[0]
+      
+      TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId, 
+        error: ->
+          # TODO
+        success: ->
+          # TODO
+      
+      angular.forEach childCompanyIds, (childCompanyId) ->
+        TeamraiserTeamService.getTeams 'team_company_id=' + childCompanyId, 
+          error: ->
+            # TODO
+          success: ->
+            # TODO
   ]

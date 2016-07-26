@@ -244,8 +244,8 @@
   });
 
   angular.module('ahaLuminateControllers').controller('CompanyPageCtrl', [
-    '$scope', '$location', 'TeamraiserCompanyService', function($scope, $location, TeamraiserCompanyService) {
-      var $defaultCompanySummary, companyGiftCount, setCompanyProgress;
+    '$scope', '$location', 'TeamraiserCompanyService', 'TeamraiserTeamService', 'TeamraiserParticipantService', function($scope, $location, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService) {
+      var $childCompanyLinks, $defaultCompanyHierarchy, $defaultCompanySummary, childCompanyIds, companyGiftCount, setCompanyProgress;
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0];
       $defaultCompanySummary = angular.element('.js--default-company-summary');
       companyGiftCount = $defaultCompanySummary.find('.company-tally-container--gift-count .company-tally-ammount').text();
@@ -262,7 +262,7 @@
           return $scope.$apply();
         }
       };
-      return TeamraiserCompanyService.getCompanies('company_id=' + $scope.companyId, {
+      TeamraiserCompanyService.getCompanies('company_id=' + $scope.companyId, {
         error: function() {
           return setCompanyProgress();
         },
@@ -275,6 +275,26 @@
             return setCompanyProgress(companyInfo.amountRaised, companyInfo.goal);
           }
         }
+      });
+      $defaultCompanyHierarchy = angular.element('.js--default-company-hierarchy');
+      $childCompanyLinks = $defaultCompanyHierarchy.find('.trr-td a');
+      childCompanyIds = [];
+      angular.forEach($childCompanyLinks, function(childCompanyLink) {
+        var childCompanyUrl;
+        childCompanyUrl = angular.element(childCompanyLink).attr('href');
+        if (childCompanyUrl.indexOf('company_id=') !== -1) {
+          return childCompanyIds.push(childCompanyUrl.split('company_id=')[1].split('&')[0]);
+        }
+      });
+      TeamraiserTeamService.getTeams('team_company_id=' + $scope.companyId, {
+        error: function() {},
+        success: function() {}
+      });
+      return angular.forEach(childCompanyIds, function(childCompanyId) {
+        return TeamraiserTeamService.getTeams('team_company_id=' + childCompanyId, {
+          error: function() {},
+          success: function() {}
+        });
       });
     }
   ]);

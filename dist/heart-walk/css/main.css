@@ -423,7 +423,7 @@ a.btn-lg:visited {
   text-align: center;
   margin: 0; }
   .heart-list-pagination .pagination {
-    margin: 0 0 20px; }
+    margin: 0; }
     .heart-list-pagination .pagination .pagination-page > a, .heart-list-pagination .pagination .pagination-page > a:focus, .heart-list-pagination .pagination .pagination-page > a:hover,
     .heart-list-pagination .pagination .pagination-page > span,
     .heart-list-pagination .pagination .pagination-page > span:focus,
