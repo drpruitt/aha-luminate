@@ -232,7 +232,26 @@
     };
   });
 
-  angular.module('ahaLuminateControllers').controller('CompanyPageCtrl', ['$scope', 'TeamraiserTeamService', function($scope, TeamraiserTeamService) {}]);
+  angular.module('ahaLuminateControllers').controller('CompanyPageCtrl', [
+    '$scope', '$location', function($scope, $location) {
+      var $defaultCompanySummary, companyAmountRaised, companyGiftCount;
+      $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0];
+      $defaultCompanySummary = angular.element('.js--default-company-summary');
+      companyAmountRaised = $defaultCompanySummary.find('.company-tally-container--amount .company-tally-ammount').text();
+      if (companyAmountRaised === '') {
+        companyAmountRaised = '0';
+      }
+      companyGiftCount = $defaultCompanySummary.find('.company-tally-container--gift-count .company-tally-ammount').text();
+      if (companyGiftCount === '') {
+        companyGiftCount = '0';
+      }
+      return $scope.companyProgress = {
+        amountRaised: companyAmountRaised,
+        goal: 0,
+        numDonations: companyGiftCount
+      };
+    }
+  ]);
 
   angular.module('ahaLuminateControllers').controller('GreetingPageCtrl', [
     '$scope', 'TeamraiserParticipantService', 'TeamraiserTeamService', 'TeamraiserCompanyService', function($scope, TeamraiserParticipantService, TeamraiserTeamService, TeamraiserCompanyService) {
