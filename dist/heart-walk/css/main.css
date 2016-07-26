@@ -493,6 +493,168 @@ a.btn-lg:visited {
         width: 102px;
         padding: 0 0 0 15px; } }
 
+.heart-company-team-list {
+  font-size: 16px;
+  margin: 0 0 30px; }
+  .heart-company-team-list .heart-company-team-list__header {
+    border-top: 1px solid #c9cccc;
+    border-bottom: 1px solid #c9cccc;
+    padding: 30px 0 20px; }
+    @media (min-width: 768px) {
+      .heart-company-team-list .heart-company-team-list__header {
+        border-top: 0;
+        padding: 0 0 30px; } }
+    @media (min-width: 992px) {
+      .heart-company-team-list .heart-company-team-list__header {
+        border-top: 1px solid #c9cccc;
+        padding: 30px 0; } }
+    .heart-company-team-list .heart-company-team-list__header h2 {
+      margin: 0 0 30px; }
+      @media (min-width: 500px) {
+        .heart-company-team-list .heart-company-team-list__header h2 {
+          float: left;
+          margin: 10px 0; } }
+      @media (min-width: 992px) {
+        .heart-company-team-list .heart-company-team-list__header h2 {
+          margin: 10px 0; } }
+    @media (min-width: 500px) {
+      .heart-company-team-list .heart-company-team-list__header form {
+        float: right; } }
+    .heart-company-team-list .heart-company-team-list__header form .form-control {
+      display: inline-block;
+      vertical-align: middle;
+      width: 180px; }
+      @media (min-width: 360px) {
+        .heart-company-team-list .heart-company-team-list__header form .form-control {
+          width: 220px; } }
+      @media (min-width: 375px) {
+        .heart-company-team-list .heart-company-team-list__header form .form-control {
+          width: 235px; } }
+      @media (min-width: 380px) {
+        .heart-company-team-list .heart-company-team-list__header form .form-control {
+          width: 240px; } }
+  .heart-company-team-list .heart-company-team-list__body {
+    display: table;
+    width: 100%; }
+    .heart-company-team-list .heart-company-team-list__body .heart-company-team-list__row {
+      display: table-row; }
+    .heart-company-team-list .heart-company-team-list__body .heart-company-team-list__column {
+      display: table-cell;
+      border-bottom: 1px solid #c9cccc;
+      vertical-align: middle;
+      height: 72px;
+      padding: 0 15px; }
+      @media (min-width: 768px) {
+        .heart-company-team-list .heart-company-team-list__body .heart-company-team-list__column {
+          height: 90px; } }
+    .heart-company-team-list .heart-company-team-list__body .heart-company-team-list__column--name {
+      padding: 0 15px 0 0; }
+      @media (min-width: 768px) {
+        .heart-company-team-list .heart-company-team-list__body .heart-company-team-list__column--name {
+          width: 460px; } }
+      @media (min-width: 992px) {
+        .heart-company-team-list .heart-company-team-list__body .heart-company-team-list__column--name {
+          width: 250px; } }
+      @media (min-width: 1200px) {
+        .heart-company-team-list .heart-company-team-list__body .heart-company-team-list__column--name {
+          width: 460px; } }
+    @media (min-width: 768px) {
+      .heart-company-team-list .heart-company-team-list__body .heart-company-team-list__column--captain {
+        text-align: center;
+        width: 160px; } }
+    .heart-company-team-list .heart-company-team-list__body .heart-company-team-list__column--amount {
+      text-align: right;
+      padding: 0 0 0 15px; }
+      @media (min-width: 768px) {
+        .heart-company-team-list .heart-company-team-list__body .heart-company-team-list__column--amount {
+          text-align: left;
+          padding: 0 15px; } }
+    @media (min-width: 768px) {
+      .heart-company-team-list .heart-company-team-list__body .heart-company-team-list__column--cta {
+        width: 102px;
+        padding: 0 0 0 15px; } }
+
+.heart-company-participant-list {
+  font-size: 16px;
+  margin: 0 0 30px; }
+  .heart-company-participant-list .heart-company-participant-list__header {
+    border-top: 1px solid #c9cccc;
+    border-bottom: 1px solid #c9cccc;
+    padding: 30px 0 20px; }
+    @media (min-width: 768px) {
+      .heart-company-participant-list .heart-company-participant-list__header {
+        border-top: 0;
+        padding: 0 0 30px; } }
+    @media (min-width: 992px) {
+      .heart-company-participant-list .heart-company-participant-list__header {
+        border-top: 1px solid #c9cccc;
+        padding: 30px 0; } }
+    .heart-company-participant-list .heart-company-participant-list__header h2 {
+      margin: 0 0 30px; }
+      @media (min-width: 500px) {
+        .heart-company-participant-list .heart-company-participant-list__header h2 {
+          float: left;
+          margin: 10px 0; } }
+      @media (min-width: 992px) {
+        .heart-company-participant-list .heart-company-participant-list__header h2 {
+          margin: 10px 0; } }
+    @media (min-width: 500px) {
+      .heart-company-participant-list .heart-company-participant-list__header form {
+        float: right; } }
+    .heart-company-participant-list .heart-company-participant-list__header form .form-control {
+      display: inline-block;
+      vertical-align: middle;
+      width: 180px; }
+      @media (min-width: 360px) {
+        .heart-company-participant-list .heart-company-participant-list__header form .form-control {
+          width: 220px; } }
+      @media (min-width: 375px) {
+        .heart-company-participant-list .heart-company-participant-list__header form .form-control {
+          width: 235px; } }
+      @media (min-width: 380px) {
+        .heart-company-participant-list .heart-company-participant-list__header form .form-control {
+          width: 240px; } }
+  .heart-company-participant-list .heart-company-participant-list__body {
+    display: table;
+    width: 100%; }
+    .heart-company-participant-list .heart-company-participant-list__body .heart-company-participant-list__row {
+      display: table-row; }
+    .heart-company-participant-list .heart-company-participant-list__body .heart-company-participant-list__column {
+      display: table-cell;
+      border-bottom: 1px solid #c9cccc;
+      vertical-align: middle;
+      height: 72px;
+      padding: 0 15px; }
+      @media (min-width: 768px) {
+        .heart-company-participant-list .heart-company-participant-list__body .heart-company-participant-list__column {
+          height: 90px; } }
+    .heart-company-participant-list .heart-company-participant-list__body .heart-company-participant-list__column--name {
+      padding: 0 15px 0 0; }
+      @media (min-width: 768px) {
+        .heart-company-participant-list .heart-company-participant-list__body .heart-company-participant-list__column--name {
+          width: 460px; } }
+      @media (min-width: 992px) {
+        .heart-company-participant-list .heart-company-participant-list__body .heart-company-participant-list__column--name {
+          width: 250px; } }
+      @media (min-width: 1200px) {
+        .heart-company-participant-list .heart-company-participant-list__body .heart-company-participant-list__column--name {
+          width: 460px; } }
+    @media (min-width: 768px) {
+      .heart-company-participant-list .heart-company-participant-list__body .heart-company-participant-list__column--captain {
+        text-align: center;
+        width: 160px; } }
+    .heart-company-participant-list .heart-company-participant-list__body .heart-company-participant-list__column--amount {
+      text-align: right;
+      padding: 0 0 0 15px; }
+      @media (min-width: 768px) {
+        .heart-company-participant-list .heart-company-participant-list__body .heart-company-participant-list__column--amount {
+          text-align: left;
+          padding: 0 15px; } }
+    @media (min-width: 768px) {
+      .heart-company-participant-list .heart-company-participant-list__body .heart-company-participant-list__column--cta {
+        width: 102px;
+        padding: 0 0 0 15px; } }
+
 .heart-page-rail {
   margin: 0 20px; }
   @media (min-width: 768px) {
