@@ -3,11 +3,11 @@
     <h2>
       Members
     </h2>
-    <form class="form-inline" method="POST">
+    <form class="form-inline" name="teamMemberSearchForm" method="POST">
       <label class="sr-only">
         Search for a team member:
       </label>
-      <input type="text" class="form-control" placeholder="Search for a team member"> 
+      <input type="text" class="form-control" placeholder="Search for a team member" ng-model="teamMemberSearch.member_name"> 
       <button type="submit" class="btn btn-primary">Search</button>
     </form>
   </div>
@@ -20,7 +20,7 @@
       <div class="heart-team-member-list__column heart-team-member-list__column--amount">
         <strong>{{teamGiftsAmount / 100 | currency}}</strong>
       </div>
-      <div class="heart-team-member-list__column heart-team-member-list__column--donate hidden-xs"></div>
+      <div class="heart-team-member-list__column heart-team-member-list__column--cta hidden-xs"></div>
     </div>
     <div class="heart-team-member-list__row" ng-repeat="teamMember in teamMembers">
       <div class="heart-team-member-list__column heart-team-member-list__column--name">
@@ -35,7 +35,7 @@
       <div class="heart-team-member-list__column heart-team-member-list__column--amount">
         <strong>{{teamMember.amountRaised / 100 | currency}}</strong>
       </div>
-      <div class="heart-team-member-list__column heart-team-member-list__column--donate hidden-xs">
+      <div class="heart-team-member-list__column heart-team-member-list__column--cta hidden-xs">
         <a class="btn btn-lg btn-primary" ng-href="{{teamMember.donationUrl}}" ng-if="teamMember.donationUrl">Donate</a>
       </div>
     </div>
