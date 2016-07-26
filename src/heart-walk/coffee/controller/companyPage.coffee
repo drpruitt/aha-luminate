@@ -39,14 +39,27 @@ angular.module 'ahaLuminateControllers'
         if childCompanyUrl.indexOf('company_id=') isnt -1
           childCompanyIds.push childCompanyUrl.split('company_id=')[1].split('&')[0]
       
-      TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId, 
+      TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId + '&list_page_size=5', 
         error: ->
           # TODO
         success: ->
           # TODO
       
       angular.forEach childCompanyIds, (childCompanyId) ->
-        TeamraiserTeamService.getTeams 'team_company_id=' + childCompanyId, 
+        TeamraiserTeamService.getTeams 'team_company_id=' + childCompanyId + '&list_page_size=5', 
+          error: ->
+            # TODO
+          success: ->
+            # TODO
+      
+      TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_page_size=5', 
+        error: ->
+          # TODO
+        success: ->
+          # TODO
+      
+      angular.forEach childCompanyIds, (childCompanyId) ->
+        TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%') + '&list_filter_column=team.company_id&list_filter_text=' + childCompanyId + '&list_page_size=5', 
           error: ->
             # TODO
           success: ->

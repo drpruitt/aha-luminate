@@ -286,12 +286,22 @@
           return childCompanyIds.push(childCompanyUrl.split('company_id=')[1].split('&')[0]);
         }
       });
-      TeamraiserTeamService.getTeams('team_company_id=' + $scope.companyId, {
+      TeamraiserTeamService.getTeams('team_company_id=' + $scope.companyId + '&list_page_size=5', {
+        error: function() {},
+        success: function() {}
+      });
+      angular.forEach(childCompanyIds, function(childCompanyId) {
+        return TeamraiserTeamService.getTeams('team_company_id=' + childCompanyId + '&list_page_size=5', {
+          error: function() {},
+          success: function() {}
+        });
+      });
+      TeamraiserParticipantService.getParticipants('team_name=' + encodeURIComponent('%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_page_size=5', {
         error: function() {},
         success: function() {}
       });
       return angular.forEach(childCompanyIds, function(childCompanyId) {
-        return TeamraiserTeamService.getTeams('team_company_id=' + childCompanyId, {
+        return TeamraiserParticipantService.getParticipants('team_name=' + encodeURIComponent('%') + '&list_filter_column=team.company_id&list_filter_text=' + childCompanyId + '&list_page_size=5', {
           error: function() {},
           success: function() {}
         });
