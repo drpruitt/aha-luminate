@@ -206,6 +206,35 @@ a.btn-lg:visited {
   padding: 24px 24px;
   font-size: 16px; }
 
+.nav-tabs {
+  border: 0; }
+  .nav-tabs > li {
+    background: linear-gradient(to bottom, #e6e6e6 0%, #dcdcdc 100%);
+    border: 1px solid #c9cccc;
+    border-right: 0;
+    border-bottom: 0;
+    width: 50%;
+    margin-bottom: 0; }
+    .nav-tabs > li:last-child {
+      border-right: 1px solid #c9cccc; }
+    .nav-tabs > li > a, .nav-tabs > li > a:link, .nav-tabs > li > a:visited, .nav-tabs > li > a:hover, .nav-tabs > li > a:focus, .nav-tabs > li > a:active {
+      border: 0;
+      border-radius: 0;
+      color: inherit;
+      font-size: 14px;
+      line-height: 1;
+      text-decoration: none;
+      padding: 24px 32px;
+      margin-right: 0; }
+    .nav-tabs > li.active {
+      background: #ffffff;
+      border-left: 0; }
+      .nav-tabs > li.active a, .nav-tabs > li.active a:link, .nav-tabs > li.active a:visited, .nav-tabs > li.active a:hover, .nav-tabs > li.active a:focus, .nav-tabs > li.active a:active {
+        border: 0;
+        border-left: 6px solid #de2427;
+        color: #de2427;
+        padding: 24px 32px 24px 27px; }
+
 #headerWrapper {
   margin: 0; }
 

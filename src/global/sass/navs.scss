@@ -1,0 +1,53 @@
+.nav-tabs {
+  border: 0;
+  
+  > li {
+    background: linear-gradient(to bottom, #e6e6e6 0%, #dcdcdc 100%);
+    border: 1px solid #c9cccc;
+    border-right: 0;
+    border-bottom: 0;
+    width: 50%;
+    margin-bottom: 0;
+    
+    &:last-child {
+      border-right: 1px solid #c9cccc;
+    }
+    
+    > a {
+      &, 
+      &:link, 
+      &:visited, 
+      &:hover, 
+      &:focus, 
+      &:active {
+        border: 0;
+        border-radius: 0;
+        color: inherit;
+        font-size: 14px;
+        line-height: 1;
+        text-decoration: none;
+        padding: 24px 32px;
+        margin-right: 0;
+      }
+    }
+    
+    &.active {
+      background: #ffffff;
+      border-left: 0;
+      
+      a {
+        &, 
+        &:link, 
+        &:visited, 
+        &:hover, 
+        &:focus, 
+        &:active {
+          border: 0;
+          border-left: 6px solid $brand-primary;
+          color: $brand-primary;
+          padding: 24px 32px 24px 27px;
+        }
+      }
+    }
+  }
+}
