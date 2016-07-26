@@ -172,6 +172,17 @@
     }
   ]);
 
+  angular.module('ahaLuminateApp').directive('companyParticipantList', function() {
+    return {
+      templateUrl: '../aha-luminate/dist/heart-walk/html/directive/companyParticipantList.html',
+      restrict: 'E',
+      replace: true,
+      scope: {
+        participants: '='
+      }
+    };
+  });
+
   angular.module('ahaLuminateApp').directive('companyTeamList', function() {
     return {
       templateUrl: '../aha-luminate/dist/heart-walk/html/directive/companyTeamList.html',
