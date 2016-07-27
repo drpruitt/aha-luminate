@@ -91,6 +91,10 @@ angular.module 'ahaLuminateControllers'
             companyTeams = response.getTeamSearchByInfoResponse?.team
             if companyTeams
               companyTeams = [companyTeams] if not angular.isArray companyTeams
+              angular.forEach companyTeams, (companyTeam) ->
+                joinTeamURL = companyTeam.joinTeamURL
+                if joinTeamURL
+                  companyTeam.joinTeamURL = joinTeamURL.split('/site/')[1]
               totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults
               addChildCompanyTeams companyTeams[0].companyId, companyTeams[0].companyName, companyTeams, totalNumberTeams
               numTeams += Number totalNumberTeams
@@ -130,6 +134,10 @@ angular.module 'ahaLuminateControllers'
           companyParticipants = response.getParticipantsResponse?.participant
           if companyParticipants
             companyParticipants = [companyParticipants] if not angular.isArray companyParticipants
+            angular.forEach companyParticipants, (companyParticipant) ->
+              donationUrl = companyParticipant.donationUrl
+              if donationUrl
+                companyParticipant.donationUrl = donationUrl.split('/site/')[1]
             totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
             setCompanyParticipants companyParticipants, totalNumberParticipants
             numParticipants += Number totalNumberParticipants

@@ -366,6 +366,13 @@
               if (!angular.isArray(companyTeams)) {
                 companyTeams = [companyTeams];
               }
+              angular.forEach(companyTeams, function(companyTeam) {
+                var joinTeamURL;
+                joinTeamURL = companyTeam.joinTeamURL;
+                if (joinTeamURL) {
+                  return companyTeam.joinTeamURL = joinTeamURL.split('/site/')[1];
+                }
+              });
               totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults;
               addChildCompanyTeams(companyTeams[0].companyId, companyTeams[0].companyName, companyTeams, totalNumberTeams);
               numTeams += Number(totalNumberTeams);
@@ -422,6 +429,13 @@
             if (!angular.isArray(companyParticipants)) {
               companyParticipants = [companyParticipants];
             }
+            angular.forEach(companyParticipants, function(companyParticipant) {
+              var donationUrl;
+              donationUrl = companyParticipant.donationUrl;
+              if (donationUrl) {
+                return companyParticipant.donationUrl = donationUrl.split('/site/')[1];
+              }
+            });
             totalNumberParticipants = response.getParticipantsResponse.totalNumberResults;
             setCompanyParticipants(companyParticipants, totalNumberParticipants);
             numParticipants += Number(totalNumberParticipants);
