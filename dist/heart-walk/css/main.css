@@ -604,8 +604,7 @@ a.btn-lg:visited {
         padding: 0 0 0 15px; } }
 
 .heart-company-participant-list {
-  font-size: 16px;
-  margin: 0 0 30px; }
+  font-size: 16px; }
   .heart-company-participant-list .heart-company-participant-list__header {
     border-bottom: 1px solid #c9cccc;
     padding: 30px 0 20px; }
@@ -1106,4 +1105,6 @@ a.btn-lg:visited {
   margin: 0 0 20px; }
 
 .heart-page-lists--company {
-  margin: 0 0 20px; }
+  margin: 0 0 30px; }
+  .heart-page-lists--company .heart-list-pagination {
+    margin: 20px 0 0; }

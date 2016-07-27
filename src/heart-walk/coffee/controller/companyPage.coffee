@@ -51,8 +51,8 @@ angular.module 'ahaLuminateControllers'
           $scope.$apply()
       $scope.childCompanyTeams = 
         companies: []
-      addChildCompanyTeams = (companyId, companyName, teams, totalNumber) ->
-        $scope.childCompanyTeams.companies.push 
+      addChildCompanyTeams = (companyIndex, companyId, companyName, teams, totalNumber) ->
+        $scope.childCompanyTeams.companies[companyIndex] = 
           companyId: companyId or ''
           companyName: companyName or ''
           teams: teams or []
@@ -84,24 +84,27 @@ angular.module 'ahaLuminateControllers'
           numCompaniesTeamRequestComplete++
           if numCompaniesTeamRequestComplete is numCompanies
             setCompanyNumTeams numTeams
-      angular.forEach childCompanies, (childCompany) ->
+      angular.forEach childCompanies, (childCompany, childCompanyIndex) ->
         childCompanyId = childCompany.id
         childCompanyName = childCompany.name
         TeamraiserTeamService.getTeams 'team_company_id=' + childCompanyId + '&list_sort_column=total&list_ascending=false&list_page_size=5', 
           error: ->
+            addChildCompanyTeams childCompanyIndex, childCompanyId, childCompanyName
             numCompaniesTeamRequestComplete++
             if numCompaniesTeamRequestComplete is numCompanies
               setCompanyNumTeams numTeams
           success: (response) ->
             companyTeams = response.getTeamSearchByInfoResponse?.team
-            if companyTeams
+            if not companyTeams
+              addChildCompanyTeams childCompanyIndex, childCompanyId, childCompanyName
+            else
               companyTeams = [companyTeams] if not angular.isArray companyTeams
               angular.forEach companyTeams, (companyTeam) ->
                 joinTeamURL = companyTeam.joinTeamURL
                 if joinTeamURL
                   companyTeam.joinTeamURL = joinTeamURL.split('/site/')[1]
               totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults
-              addChildCompanyTeams childCompanyId, childCompanyName, companyTeams, totalNumberTeams
+              addChildCompanyTeams childCompanyIndex, childCompanyId, childCompanyName, companyTeams, totalNumberTeams
               numTeams += Number totalNumberTeams
             numCompaniesTeamRequestComplete++
             if numCompaniesTeamRequestComplete is numCompanies
@@ -116,8 +119,8 @@ angular.module 'ahaLuminateControllers'
           $scope.$apply()
       $scope.childCompanyParticipants = 
         companies: []
-      addChildCompanyParticipants = (companyId, companyName, participants, totalNumber) ->
-        $scope.childCompanyParticipants.companies.push 
+      addChildCompanyParticipants = (companyIndex, companyId, companyName, participants, totalNumber) ->
+        $scope.childCompanyParticipants.companies[companyIndex] = 
           companyId: companyId or ''
           companyName: companyName or ''
           participants: participants or []
@@ -138,6 +141,7 @@ angular.module 'ahaLuminateControllers'
           setCompanyParticipants()
           companyParticipants = response.getParticipantsResponse?.participant
           if companyParticipants
+            # TODO: only include participants with a first name
             companyParticipants = [companyParticipants] if not angular.isArray companyParticipants
             angular.forEach companyParticipants, (companyParticipant) ->
               donationUrl = companyParticipant.donationUrl
@@ -149,20 +153,28 @@ angular.module 'ahaLuminateControllers'
           numCompaniesParticipantRequestComplete++
           if numCompaniesParticipantRequestComplete is numCompanies
             setCompanyNumParticipants numParticipants
-      angular.forEach childCompanies, (childCompany) ->
+      angular.forEach childCompanies, (childCompany, childCompanyIndex) ->
         childCompanyId = childCompany.id
         childCompanyName = childCompany.name
         TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%') + '&list_filter_column=team.company_id&list_filter_text=' + childCompanyId + '&list_sort_column=total&list_ascending=false&list_page_size=5', 
           error: ->
+            addChildCompanyParticipants childCompanyIndex, childCompanyId, childCompanyName
             numCompaniesParticipantRequestComplete++
             if numCompaniesParticipantRequestComplete is numCompanies
               setCompanyNumParticipants numParticipants
           success: (response) ->
             companyParticipants = response.getParticipantsResponse?.participant
-            if companyParticipants
+            if not companyParticipants
+              addChildCompanyParticipants childCompanyIndex, childCompanyId, childCompanyName
+            else
+              # TODO: only include participants with a first name
               companyParticipants = [companyParticipants] if not angular.isArray companyParticipants
+              angular.forEach companyParticipants, (companyParticipant) ->
+                donationUrl = companyParticipant.donationUrl
+                if donationUrl
+                  companyParticipant.donationUrl = donationUrl.split('/site/')[1]
               totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
-              addChildCompanyParticipants childCompanyId, childCompanyName, companyParticipants, totalNumberParticipants
+              addChildCompanyParticipants childCompanyIndex, childCompanyId, childCompanyName, companyParticipants, totalNumberParticipants
               numParticipants += Number totalNumberParticipants
             numCompaniesParticipantRequestComplete++
             if numCompaniesParticipantRequestComplete is numCompanies

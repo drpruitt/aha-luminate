@@ -308,13 +308,13 @@
       $scope.childCompanyTeams = {
         companies: []
       };
-      addChildCompanyTeams = function(companyId, companyName, teams, totalNumber) {
-        return $scope.childCompanyTeams.companies.push({
+      addChildCompanyTeams = function(companyIndex, companyId, companyName, teams, totalNumber) {
+        return $scope.childCompanyTeams.companies[companyIndex] = {
           companyId: companyId || '',
           companyName: companyName || '',
           teams: teams || [],
           totalNumber: totalNumber || 0
-        });
+        };
       };
       setCompanyNumTeams = function(numTeams) {
         $scope.companyProgress.numTeams = numTeams || 0;
@@ -357,12 +357,13 @@
           }
         }
       });
-      angular.forEach(childCompanies, function(childCompany) {
+      angular.forEach(childCompanies, function(childCompany, childCompanyIndex) {
         var childCompanyId, childCompanyName;
         childCompanyId = childCompany.id;
         childCompanyName = childCompany.name;
         return TeamraiserTeamService.getTeams('team_company_id=' + childCompanyId + '&list_sort_column=total&list_ascending=false&list_page_size=5', {
           error: function() {
+            addChildCompanyTeams(childCompanyIndex, childCompanyId, childCompanyName);
             numCompaniesTeamRequestComplete++;
             if (numCompaniesTeamRequestComplete === numCompanies) {
               return setCompanyNumTeams(numTeams);
@@ -371,7 +372,9 @@
           success: function(response) {
             var companyTeams, ref, totalNumberTeams;
             companyTeams = (ref = response.getTeamSearchByInfoResponse) != null ? ref.team : void 0;
-            if (companyTeams) {
+            if (!companyTeams) {
+              addChildCompanyTeams(childCompanyIndex, childCompanyId, childCompanyName);
+            } else {
               if (!angular.isArray(companyTeams)) {
                 companyTeams = [companyTeams];
               }
@@ -383,7 +386,7 @@
                 }
               });
               totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults;
-              addChildCompanyTeams(childCompanyId, childCompanyName, companyTeams, totalNumberTeams);
+              addChildCompanyTeams(childCompanyIndex, childCompanyId, childCompanyName, companyTeams, totalNumberTeams);
               numTeams += Number(totalNumberTeams);
             }
             numCompaniesTeamRequestComplete++;
@@ -406,13 +409,13 @@
       $scope.childCompanyParticipants = {
         companies: []
       };
-      addChildCompanyParticipants = function(companyId, companyName, participants, totalNumber) {
-        return $scope.childCompanyParticipants.companies.push({
+      addChildCompanyParticipants = function(companyIndex, companyId, companyName, participants, totalNumber) {
+        return $scope.childCompanyParticipants.companies[companyIndex] = {
           companyId: companyId || '',
           companyName: companyName || '',
           participants: participants || [],
           totalNumber: totalNumber || 0
-        });
+        };
       };
       setCompanyNumParticipants = function(numParticipants) {
         $scope.companyProgress.numParticipants = numParticipants || 0;
@@ -455,12 +458,13 @@
           }
         }
       });
-      return angular.forEach(childCompanies, function(childCompany) {
+      return angular.forEach(childCompanies, function(childCompany, childCompanyIndex) {
         var childCompanyId, childCompanyName;
         childCompanyId = childCompany.id;
         childCompanyName = childCompany.name;
         return TeamraiserParticipantService.getParticipants('team_name=' + encodeURIComponent('%') + '&list_filter_column=team.company_id&list_filter_text=' + childCompanyId + '&list_sort_column=total&list_ascending=false&list_page_size=5', {
           error: function() {
+            addChildCompanyParticipants(childCompanyIndex, childCompanyId, childCompanyName);
             numCompaniesParticipantRequestComplete++;
             if (numCompaniesParticipantRequestComplete === numCompanies) {
               return setCompanyNumParticipants(numParticipants);
@@ -469,12 +473,21 @@
           success: function(response) {
             var companyParticipants, ref, totalNumberParticipants;
             companyParticipants = (ref = response.getParticipantsResponse) != null ? ref.participant : void 0;
-            if (companyParticipants) {
+            if (!companyParticipants) {
+              addChildCompanyParticipants(childCompanyIndex, childCompanyId, childCompanyName);
+            } else {
               if (!angular.isArray(companyParticipants)) {
                 companyParticipants = [companyParticipants];
               }
+              angular.forEach(companyParticipants, function(companyParticipant) {
+                var donationUrl;
+                donationUrl = companyParticipant.donationUrl;
+                if (donationUrl) {
+                  return companyParticipant.donationUrl = donationUrl.split('/site/')[1];
+                }
+              });
               totalNumberParticipants = response.getParticipantsResponse.totalNumberResults;
-              addChildCompanyParticipants(childCompanyId, childCompanyName, companyParticipants, totalNumberParticipants);
+              addChildCompanyParticipants(childCompanyIndex, childCompanyId, childCompanyName, companyParticipants, totalNumberParticipants);
               numParticipants += Number(totalNumberParticipants);
             }
             numCompaniesParticipantRequestComplete++;
