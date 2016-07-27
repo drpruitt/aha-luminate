@@ -39,6 +39,21 @@ angular.module 'ahaLuminateControllers'
           childCompanyIds.push childCompanyUrl.split('company_id=')[1].split('&')[0]
       numCompanies = childCompanyIds.length + 1
       
+      $scope.companyTeams = 
+        page: 1
+      setCompanyTeams = (teams, totalNumber) ->
+        $scope.companyTeams.teams = teams or []
+        $scope.companyTeams.totalNumber = totalNumber or 0
+        if not $scope.$$phase
+          $scope.$apply()
+      $scope.childCompanyTeams = 
+        companies: []
+      addChildCompanyTeams = (companyId, companyName, teams, totalNumber) ->
+        $scope.childCompanyTeams.companies.push 
+          companyId: companyId or ''
+          companyName: companyName or ''
+          teams: teams or []
+          totalNumber: totalNumber or 0
       setCompanyNumTeams = (numTeams) ->
         $scope.companyProgress.numTeams = numTeams or 0
         if not $scope.$$phase
@@ -47,14 +62,18 @@ angular.module 'ahaLuminateControllers'
       numTeams = 0
       TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId + '&list_page_size=5', 
         error: ->
+          setCompanyTeams()
           numCompaniesTeamRequestComplete++
           if numCompaniesTeamRequestComplete is numCompanies
             setCompanyNumTeams numTeams
         success: (response) ->
+          setCompanyTeams()
           companyTeams = response.getTeamSearchByInfoResponse?.team
           if companyTeams
             companyTeams = [companyTeams] if not angular.isArray companyTeams
-            numTeams += Number response.getTeamSearchByInfoResponse.totalNumberResults
+            totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults
+            setCompanyTeams companyTeams, totalNumberTeams
+            numTeams += Number totalNumberTeams
           numCompaniesTeamRequestComplete++
           if numCompaniesTeamRequestComplete is numCompanies
             setCompanyNumTeams numTeams
@@ -68,7 +87,9 @@ angular.module 'ahaLuminateControllers'
             companyTeams = response.getTeamSearchByInfoResponse?.team
             if companyTeams
               companyTeams = [companyTeams] if not angular.isArray companyTeams
-              numTeams += Number response.getTeamSearchByInfoResponse.totalNumberResults
+              totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults
+              addChildCompanyTeams companyTeams[0].companyId, companyTeams[0].companyName, companyTeams, totalNumberTeams
+              numTeams += Number totalNumberTeams
             numCompaniesTeamRequestComplete++
             if numCompaniesTeamRequestComplete is numCompanies
               setCompanyNumTeams numTeams

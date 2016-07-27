@@ -17,12 +17,9 @@ angular.module 'ahaLuminateControllers'
         teamGiftsAmount = '0'
       $scope.teamMembers.teamGiftsAmount = teamGiftsAmount.replace('$', '').replace(/,/g, '') * 100
       
-      setTeamMembers = (teamMembers) ->
+      setTeamMembers = (teamMembers, totalNumber) ->
         $scope.teamMembers.members = teamMembers or []
-        if not $scope.$$phase
-          $scope.$apply()
-      setTotalTeamMembers = (totalTeamMembers) ->
-        $scope.teamMembers.totalNumber = totalTeamMembers or 0
+        $scope.teamMembers.totalNumber = totalNumber or 0
         if not $scope.$$phase
           $scope.$apply()
       
@@ -32,14 +29,10 @@ angular.module 'ahaLuminateControllers'
         TeamraiserParticipantService.getParticipants 'first_name=' + encodeURIComponent('%%%') + '&list_filter_column=reg.team_id&list_filter_text=' + $scope.teamId + '&list_sort_column=total&list_ascending=false&list_page_size=4&list_page_offset=' + pageNumber, 
           error: () ->
             setTeamMembers()
-            setTotalTeamMembers()
           success: (response) ->
+            setTeamMembers()
             teamParticipants = response.getParticipantsResponse?.participant
-            if not teamParticipants
-              setTeamMembers()
-              setTotalTeamMembers()
-            else
-              setTeamMembers()
+            if teamParticipants
               teamParticipants = [teamParticipants] if not angular.isArray teamParticipants
               teamMembers = []
               angular.forEach teamParticipants, (teamParticipant) ->
@@ -48,8 +41,7 @@ angular.module 'ahaLuminateControllers'
                   if donationUrl
                     teamParticipant.donationUrl = donationUrl.split('/site/')[1]
                   teamMembers.push teamParticipant
-              setTeamMembers teamMembers
-              setTotalTeamMembers response.getParticipantsResponse.totalNumberResults
+              setTeamMembers teamMembers, response.getParticipantsResponse.totalNumberResults
       $scope.getTeamMembers()
       
       # TODO: search form submit

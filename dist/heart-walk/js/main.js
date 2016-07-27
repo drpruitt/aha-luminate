@@ -189,6 +189,7 @@
       restrict: 'E',
       replace: true,
       scope: {
+        isChildCompany: '=',
         teams: '='
       }
     };
@@ -245,7 +246,7 @@
 
   angular.module('ahaLuminateControllers').controller('CompanyPageCtrl', [
     '$scope', '$location', 'TeamraiserCompanyService', 'TeamraiserTeamService', 'TeamraiserParticipantService', function($scope, $location, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService) {
-      var $childCompanyLinks, $defaultCompanyHierarchy, $defaultCompanySummary, childCompanyIds, companyGiftCount, numCompanies, numCompaniesParticipantRequestComplete, numCompaniesTeamRequestComplete, numParticipants, numTeams, setCompanyFundraisingProgress, setCompanyNumParticipants, setCompanyNumTeams;
+      var $childCompanyLinks, $defaultCompanyHierarchy, $defaultCompanySummary, addChildCompanyTeams, childCompanyIds, companyGiftCount, numCompanies, numCompaniesParticipantRequestComplete, numCompaniesTeamRequestComplete, numParticipants, numTeams, setCompanyFundraisingProgress, setCompanyNumParticipants, setCompanyNumTeams, setCompanyTeams;
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0];
       $defaultCompanySummary = angular.element('.js--default-company-summary');
       companyGiftCount = $defaultCompanySummary.find('.company-tally-container--gift-count .company-tally-ammount').text();
@@ -287,6 +288,27 @@
         }
       });
       numCompanies = childCompanyIds.length + 1;
+      $scope.companyTeams = {
+        page: 1
+      };
+      setCompanyTeams = function(teams, totalNumber) {
+        $scope.companyTeams.teams = teams || [];
+        $scope.companyTeams.totalNumber = totalNumber || 0;
+        if (!$scope.$$phase) {
+          return $scope.$apply();
+        }
+      };
+      $scope.childCompanyTeams = {
+        companies: []
+      };
+      addChildCompanyTeams = function(companyId, companyName, teams, totalNumber) {
+        return $scope.childCompanyTeams.companies.push({
+          companyId: companyId || '',
+          companyName: companyName || '',
+          teams: teams || [],
+          totalNumber: totalNumber || 0
+        });
+      };
       setCompanyNumTeams = function(numTeams) {
         $scope.companyProgress.numTeams = numTeams || 0;
         if (!$scope.$$phase) {
@@ -297,19 +319,23 @@
       numTeams = 0;
       TeamraiserTeamService.getTeams('team_company_id=' + $scope.companyId + '&list_page_size=5', {
         error: function() {
+          setCompanyTeams();
           numCompaniesTeamRequestComplete++;
           if (numCompaniesTeamRequestComplete === numCompanies) {
             return setCompanyNumTeams(numTeams);
           }
         },
         success: function(response) {
-          var companyTeams, ref;
+          var companyTeams, ref, totalNumberTeams;
+          setCompanyTeams();
           companyTeams = (ref = response.getTeamSearchByInfoResponse) != null ? ref.team : void 0;
           if (companyTeams) {
             if (!angular.isArray(companyTeams)) {
               companyTeams = [companyTeams];
             }
-            numTeams += Number(response.getTeamSearchByInfoResponse.totalNumberResults);
+            totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults;
+            setCompanyTeams(companyTeams, totalNumberTeams);
+            numTeams += Number(totalNumberTeams);
           }
           numCompaniesTeamRequestComplete++;
           if (numCompaniesTeamRequestComplete === numCompanies) {
@@ -326,13 +352,15 @@
             }
           },
           success: function(response) {
-            var companyTeams, ref;
+            var companyTeams, ref, totalNumberTeams;
             companyTeams = (ref = response.getTeamSearchByInfoResponse) != null ? ref.team : void 0;
             if (companyTeams) {
               if (!angular.isArray(companyTeams)) {
                 companyTeams = [companyTeams];
               }
-              numTeams += Number(response.getTeamSearchByInfoResponse.totalNumberResults);
+              totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults;
+              addChildCompanyTeams(companyTeams[0].companyId, companyTeams[0].companyName, companyTeams, totalNumberTeams);
+              numTeams += Number(totalNumberTeams);
             }
             numCompaniesTeamRequestComplete++;
             if (numCompaniesTeamRequestComplete === numCompanies) {
@@ -476,7 +504,7 @@
 
   angular.module('ahaLuminateControllers').controller('TeamPageCtrl', [
     '$scope', '$location', 'TeamraiserParticipantService', function($scope, $location, TeamraiserParticipantService) {
-      var $defaultTeamRoster, $teamGiftsRow, setTeamMembers, setTotalTeamMembers, teamGiftsAmount;
+      var $defaultTeamRoster, $teamGiftsRow, setTeamMembers, teamGiftsAmount;
       $scope.teamId = $location.absUrl().split('team_id=')[1].split('&')[0];
       $scope.teamMembers = {
         page: 1
@@ -489,14 +517,9 @@
         teamGiftsAmount = '0';
       }
       $scope.teamMembers.teamGiftsAmount = teamGiftsAmount.replace('$', '').replace(/,/g, '') * 100;
-      setTeamMembers = function(teamMembers) {
+      setTeamMembers = function(teamMembers, totalNumber) {
         $scope.teamMembers.members = teamMembers || [];
-        if (!$scope.$$phase) {
-          return $scope.$apply();
-        }
-      };
-      setTotalTeamMembers = function(totalTeamMembers) {
-        $scope.teamMembers.totalNumber = totalTeamMembers || 0;
+        $scope.teamMembers.totalNumber = totalNumber || 0;
         if (!$scope.$$phase) {
           return $scope.$apply();
         }
@@ -506,17 +529,13 @@
         pageNumber = $scope.teamMembers.page - 1;
         return TeamraiserParticipantService.getParticipants('first_name=' + encodeURIComponent('%%%') + '&list_filter_column=reg.team_id&list_filter_text=' + $scope.teamId + '&list_sort_column=total&list_ascending=false&list_page_size=4&list_page_offset=' + pageNumber, {
           error: function() {
-            setTeamMembers();
-            return setTotalTeamMembers();
+            return setTeamMembers();
           },
           success: function(response) {
             var ref, teamMembers, teamParticipants;
+            setTeamMembers();
             teamParticipants = (ref = response.getParticipantsResponse) != null ? ref.participant : void 0;
-            if (!teamParticipants) {
-              setTeamMembers();
-              return setTotalTeamMembers();
-            } else {
-              setTeamMembers();
+            if (teamParticipants) {
               if (!angular.isArray(teamParticipants)) {
                 teamParticipants = [teamParticipants];
               }
@@ -531,8 +550,7 @@
                   return teamMembers.push(teamParticipant);
                 }
               });
-              setTeamMembers(teamMembers);
-              return setTotalTeamMembers(response.getParticipantsResponse.totalNumberResults);
+              return setTeamMembers(teamMembers, response.getParticipantsResponse.totalNumberResults);
             }
           }
         });
