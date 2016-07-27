@@ -318,7 +318,7 @@
       };
       numCompaniesTeamRequestComplete = 0;
       numTeams = 0;
-      TeamraiserTeamService.getTeams('team_company_id=' + $scope.companyId + '&list_page_size=5', {
+      TeamraiserTeamService.getTeams('team_company_id=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=5', {
         error: function() {
           setCompanyTeams();
           numCompaniesTeamRequestComplete++;
@@ -352,7 +352,7 @@
         }
       });
       angular.forEach(childCompanyIds, function(childCompanyId) {
-        return TeamraiserTeamService.getTeams('team_company_id=' + childCompanyId + '&list_page_size=5', {
+        return TeamraiserTeamService.getTeams('team_company_id=' + childCompanyId + '&list_sort_column=total&list_ascending=false&list_page_size=5', {
           error: function() {
             numCompaniesTeamRequestComplete++;
             if (numCompaniesTeamRequestComplete === numCompanies) {
@@ -413,7 +413,7 @@
       };
       numCompaniesParticipantRequestComplete = 0;
       numParticipants = 0;
-      TeamraiserParticipantService.getParticipants('team_name=' + encodeURIComponent('%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_page_size=5', {
+      TeamraiserParticipantService.getParticipants('team_name=' + encodeURIComponent('%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=5', {
         error: function() {
           setCompanyParticipants();
           numCompaniesParticipantRequestComplete++;
@@ -447,7 +447,7 @@
         }
       });
       return angular.forEach(childCompanyIds, function(childCompanyId) {
-        return TeamraiserParticipantService.getParticipants('team_name=' + encodeURIComponent('%') + '&list_filter_column=team.company_id&list_filter_text=' + childCompanyId + '&list_page_size=5', {
+        return TeamraiserParticipantService.getParticipants('team_name=' + encodeURIComponent('%') + '&list_filter_column=team.company_id&list_filter_text=' + childCompanyId + '&list_sort_column=total&list_ascending=false&list_page_size=5', {
           error: function() {
             numCompaniesParticipantRequestComplete++;
             if (numCompaniesParticipantRequestComplete === numCompanies) {

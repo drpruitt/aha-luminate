@@ -60,7 +60,7 @@ angular.module 'ahaLuminateControllers'
           $scope.$apply()
       numCompaniesTeamRequestComplete = 0
       numTeams = 0
-      TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId + '&list_page_size=5', 
+      TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=5', 
         error: ->
           setCompanyTeams()
           numCompaniesTeamRequestComplete++
@@ -82,7 +82,7 @@ angular.module 'ahaLuminateControllers'
           if numCompaniesTeamRequestComplete is numCompanies
             setCompanyNumTeams numTeams
       angular.forEach childCompanyIds, (childCompanyId) ->
-        TeamraiserTeamService.getTeams 'team_company_id=' + childCompanyId + '&list_page_size=5', 
+        TeamraiserTeamService.getTeams 'team_company_id=' + childCompanyId + '&list_sort_column=total&list_ascending=false&list_page_size=5', 
           error: ->
             numCompaniesTeamRequestComplete++
             if numCompaniesTeamRequestComplete is numCompanies
@@ -123,7 +123,7 @@ angular.module 'ahaLuminateControllers'
           $scope.$apply()
       numCompaniesParticipantRequestComplete = 0
       numParticipants = 0
-      TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_page_size=5', 
+      TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=5', 
         error: ->
           setCompanyParticipants()
           numCompaniesParticipantRequestComplete++
@@ -145,7 +145,7 @@ angular.module 'ahaLuminateControllers'
           if numCompaniesParticipantRequestComplete is numCompanies
             setCompanyNumParticipants numParticipants
       angular.forEach childCompanyIds, (childCompanyId) ->
-        TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%') + '&list_filter_column=team.company_id&list_filter_text=' + childCompanyId + '&list_page_size=5', 
+        TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%') + '&list_filter_column=team.company_id&list_filter_text=' + childCompanyId + '&list_sort_column=total&list_ascending=false&list_page_size=5', 
           error: ->
             numCompaniesParticipantRequestComplete++
             if numCompaniesParticipantRequestComplete is numCompanies
