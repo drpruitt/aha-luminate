@@ -334,6 +334,13 @@
             if (!angular.isArray(companyTeams)) {
               companyTeams = [companyTeams];
             }
+            angular.forEach(companyTeams, function(companyTeam) {
+              var joinTeamURL;
+              joinTeamURL = companyTeam.joinTeamURL;
+              if (joinTeamURL) {
+                return companyTeam.joinTeamURL = joinTeamURL.split('/site/')[1];
+              }
+            });
             totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults;
             setCompanyTeams(companyTeams, totalNumberTeams);
             numTeams += Number(totalNumberTeams);

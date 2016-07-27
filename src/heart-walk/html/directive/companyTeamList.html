@@ -11,6 +11,7 @@
       <button type="submit" class="btn btn-primary">Search</button>
     </form>
   </div>
+  <!-- TODO: company name -->
   <div class="heart-company-team-list__body">
     <div class="heart-company-team-list__row" ng-repeat="team in teams">
       <div class="heart-company-team-list__column heart-company-team-list__column--name">
@@ -26,7 +27,7 @@
         <strong>{{team.amountRaised / 100 | currency}}</strong>
       </div>
       <div class="heart-company-team-list__column heart-company-team-list__column--cta hidden-xs">
-        <a class="btn btn-lg btn-primary" ng-href="" ng-if="">Join</a>
+        <a class="btn btn-lg btn-primary" ng-href="{{team.joinTeamURL}}" ng-if="team.joinTeamURL">Join</a>
       </div>
     </div>
   </div>
