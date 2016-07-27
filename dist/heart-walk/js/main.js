@@ -245,7 +245,7 @@
 
   angular.module('ahaLuminateControllers').controller('CompanyPageCtrl', [
     '$scope', '$location', 'TeamraiserCompanyService', 'TeamraiserTeamService', 'TeamraiserParticipantService', function($scope, $location, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService) {
-      var $childCompanyLinks, $defaultCompanyHierarchy, $defaultCompanySummary, childCompanyIds, companyGiftCount, setCompanyProgress;
+      var $childCompanyLinks, $defaultCompanyHierarchy, $defaultCompanySummary, childCompanyIds, companyGiftCount, numCompanies, numCompaniesParticipantRequestComplete, numCompaniesTeamRequestComplete, numParticipants, numTeams, setCompanyFundraisingProgress, setCompanyNumParticipants, setCompanyNumTeams;
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0];
       $defaultCompanySummary = angular.element('.js--default-company-summary');
       companyGiftCount = $defaultCompanySummary.find('.company-tally-container--gift-count .company-tally-ammount').text();
@@ -255,7 +255,7 @@
       $scope.companyProgress = {
         numDonations: companyGiftCount
       };
-      setCompanyProgress = function(amountRaised, goal) {
+      setCompanyFundraisingProgress = function(amountRaised, goal) {
         $scope.companyProgress.amountRaised = amountRaised || '0';
         $scope.companyProgress.goal = goal || '0';
         if (!$scope.$$phase) {
@@ -264,15 +264,15 @@
       };
       TeamraiserCompanyService.getCompanies('company_id=' + $scope.companyId, {
         error: function() {
-          return setCompanyProgress();
+          return setCompanyFundraisingProgress();
         },
         success: function(response) {
           var companyInfo, ref;
           companyInfo = (ref = response.getCompaniesResponse) != null ? ref.company : void 0;
           if (!companyInfo) {
-            return setCompanyProgress();
+            return setCompanyFundraisingProgress();
           } else {
-            return setCompanyProgress(companyInfo.amountRaised, companyInfo.goal);
+            return setCompanyFundraisingProgress(companyInfo.amountRaised, companyInfo.goal);
           }
         }
       });
@@ -286,24 +286,113 @@
           return childCompanyIds.push(childCompanyUrl.split('company_id=')[1].split('&')[0]);
         }
       });
+      numCompanies = childCompanyIds.length + 1;
+      setCompanyNumTeams = function(numTeams) {
+        $scope.companyProgress.numTeams = numTeams || 0;
+        if (!$scope.$$phase) {
+          return $scope.$apply();
+        }
+      };
+      numCompaniesTeamRequestComplete = 0;
+      numTeams = 0;
       TeamraiserTeamService.getTeams('team_company_id=' + $scope.companyId + '&list_page_size=5', {
-        error: function() {},
-        success: function() {}
+        error: function() {
+          numCompaniesTeamRequestComplete++;
+          if (numCompaniesTeamRequestComplete === numCompanies) {
+            return setCompanyNumTeams(numTeams);
+          }
+        },
+        success: function(response) {
+          var companyTeams, ref;
+          companyTeams = (ref = response.getTeamSearchByInfoResponse) != null ? ref.team : void 0;
+          if (companyTeams) {
+            if (!angular.isArray(companyTeams)) {
+              companyTeams = [companyTeams];
+            }
+            numTeams += Number(response.getTeamSearchByInfoResponse.totalNumberResults);
+          }
+          numCompaniesTeamRequestComplete++;
+          if (numCompaniesTeamRequestComplete === numCompanies) {
+            return setCompanyNumTeams(numTeams);
+          }
+        }
       });
       angular.forEach(childCompanyIds, function(childCompanyId) {
         return TeamraiserTeamService.getTeams('team_company_id=' + childCompanyId + '&list_page_size=5', {
-          error: function() {},
-          success: function() {}
+          error: function() {
+            numCompaniesTeamRequestComplete++;
+            if (numCompaniesTeamRequestComplete === numCompanies) {
+              return setCompanyNumTeams(numTeams);
+            }
+          },
+          success: function(response) {
+            var companyTeams, ref;
+            companyTeams = (ref = response.getTeamSearchByInfoResponse) != null ? ref.team : void 0;
+            if (companyTeams) {
+              if (!angular.isArray(companyTeams)) {
+                companyTeams = [companyTeams];
+              }
+              numTeams += Number(response.getTeamSearchByInfoResponse.totalNumberResults);
+            }
+            numCompaniesTeamRequestComplete++;
+            if (numCompaniesTeamRequestComplete === numCompanies) {
+              return setCompanyNumTeams(numTeams);
+            }
+          }
         });
       });
+      setCompanyNumParticipants = function(numParticipants) {
+        $scope.companyProgress.numParticipants = numParticipants || 0;
+        if (!$scope.$$phase) {
+          return $scope.$apply();
+        }
+      };
+      numCompaniesParticipantRequestComplete = 0;
+      numParticipants = 0;
       TeamraiserParticipantService.getParticipants('team_name=' + encodeURIComponent('%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_page_size=5', {
-        error: function() {},
-        success: function() {}
+        error: function() {
+          numCompaniesParticipantRequestComplete++;
+          if (numCompaniesParticipantRequestComplete === numCompanies) {
+            return setCompanyNumParticipants(numParticipants);
+          }
+        },
+        success: function(response) {
+          var companyParticipants, ref;
+          companyParticipants = (ref = response.getParticipantsResponse) != null ? ref.participant : void 0;
+          if (companyParticipants) {
+            if (!angular.isArray(companyParticipants)) {
+              companyParticipants = [companyParticipants];
+            }
+            numParticipants += Number(response.getParticipantsResponse.totalNumberResults);
+          }
+          numCompaniesParticipantRequestComplete++;
+          if (numCompaniesParticipantRequestComplete === numCompanies) {
+            return setCompanyNumParticipants(numParticipants);
+          }
+        }
       });
       return angular.forEach(childCompanyIds, function(childCompanyId) {
         return TeamraiserParticipantService.getParticipants('team_name=' + encodeURIComponent('%') + '&list_filter_column=team.company_id&list_filter_text=' + childCompanyId + '&list_page_size=5', {
-          error: function() {},
-          success: function() {}
+          error: function() {
+            numCompaniesParticipantRequestComplete++;
+            if (numCompaniesParticipantRequestComplete === numCompanies) {
+              return setCompanyNumParticipants(numParticipants);
+            }
+          },
+          success: function(response) {
+            var companyParticipants, ref;
+            companyParticipants = (ref = response.getParticipantsResponse) != null ? ref.participant : void 0;
+            if (companyParticipants) {
+              if (!angular.isArray(companyParticipants)) {
+                companyParticipants = [companyParticipants];
+              }
+              numParticipants += Number(response.getParticipantsResponse.totalNumberResults);
+            }
+            numCompaniesParticipantRequestComplete++;
+            if (numCompaniesParticipantRequestComplete === numCompanies) {
+              return setCompanyNumParticipants(numParticipants);
+            }
+          }
         });
       });
     }
