@@ -179,6 +179,7 @@
       replace: true,
       scope: {
         isChildCompany: '=',
+        companyName: '=',
         participants: '='
       }
     };
@@ -191,6 +192,7 @@
       replace: true,
       scope: {
         isChildCompany: '=',
+        companyName: '=',
         teams: '='
       }
     };
@@ -247,7 +249,7 @@
 
   angular.module('ahaLuminateControllers').controller('CompanyPageCtrl', [
     '$scope', '$location', 'TeamraiserCompanyService', 'TeamraiserTeamService', 'TeamraiserParticipantService', function($scope, $location, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService) {
-      var $childCompanyLinks, $defaultCompanyHierarchy, $defaultCompanySummary, addChildCompanyParticipants, addChildCompanyTeams, childCompanyIds, companyGiftCount, numCompanies, numCompaniesParticipantRequestComplete, numCompaniesTeamRequestComplete, numParticipants, numTeams, setCompanyFundraisingProgress, setCompanyNumParticipants, setCompanyNumTeams, setCompanyParticipants, setCompanyTeams;
+      var $childCompanyLinks, $defaultCompanyHierarchy, $defaultCompanySummary, addChildCompanyParticipants, addChildCompanyTeams, childCompanies, companyGiftCount, numCompanies, numCompaniesParticipantRequestComplete, numCompaniesTeamRequestComplete, numParticipants, numTeams, setCompanyFundraisingProgress, setCompanyNumParticipants, setCompanyNumTeams, setCompanyParticipants, setCompanyTeams;
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0];
       $defaultCompanySummary = angular.element('.js--default-company-summary');
       companyGiftCount = $defaultCompanySummary.find('.company-tally-container--gift-count .company-tally-ammount').text();
@@ -280,15 +282,19 @@
       });
       $defaultCompanyHierarchy = angular.element('.js--default-company-hierarchy');
       $childCompanyLinks = $defaultCompanyHierarchy.find('.trr-td a');
-      childCompanyIds = [];
+      childCompanies = [];
       angular.forEach($childCompanyLinks, function(childCompanyLink) {
-        var childCompanyUrl;
+        var childCompanyName, childCompanyUrl;
         childCompanyUrl = angular.element(childCompanyLink).attr('href');
+        childCompanyName = angular.element(childCompanyLink).text();
         if (childCompanyUrl.indexOf('company_id=') !== -1) {
-          return childCompanyIds.push(childCompanyUrl.split('company_id=')[1].split('&')[0]);
+          return childCompanies.push({
+            id: childCompanyUrl.split('company_id=')[1].split('&')[0],
+            name: childCompanyName
+          });
         }
       });
-      numCompanies = childCompanyIds.length + 1;
+      numCompanies = childCompanies.length + 1;
       $scope.companyTeams = {
         page: 1
       };
@@ -351,7 +357,10 @@
           }
         }
       });
-      angular.forEach(childCompanyIds, function(childCompanyId) {
+      angular.forEach(childCompanies, function(childCompany) {
+        var childCompanyId, childCompanyName;
+        childCompanyId = childCompany.id;
+        childCompanyName = childCompany.name;
         return TeamraiserTeamService.getTeams('team_company_id=' + childCompanyId + '&list_sort_column=total&list_ascending=false&list_page_size=5', {
           error: function() {
             numCompaniesTeamRequestComplete++;
@@ -374,7 +383,7 @@
                 }
               });
               totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults;
-              addChildCompanyTeams(companyTeams[0].companyId, companyTeams[0].companyName, companyTeams, totalNumberTeams);
+              addChildCompanyTeams(childCompanyId, childCompanyName, companyTeams, totalNumberTeams);
               numTeams += Number(totalNumberTeams);
             }
             numCompaniesTeamRequestComplete++;
@@ -446,7 +455,10 @@
           }
         }
       });
-      return angular.forEach(childCompanyIds, function(childCompanyId) {
+      return angular.forEach(childCompanies, function(childCompany) {
+        var childCompanyId, childCompanyName;
+        childCompanyId = childCompany.id;
+        childCompanyName = childCompany.name;
         return TeamraiserParticipantService.getParticipants('team_name=' + encodeURIComponent('%') + '&list_filter_column=team.company_id&list_filter_text=' + childCompanyId + '&list_sort_column=total&list_ascending=false&list_page_size=5', {
           error: function() {
             numCompaniesParticipantRequestComplete++;
@@ -462,7 +474,7 @@
                 companyParticipants = [companyParticipants];
               }
               totalNumberParticipants = response.getParticipantsResponse.totalNumberResults;
-              addChildCompanyParticipants('', '', companyParticipants, totalNumberParticipants);
+              addChildCompanyParticipants(childCompanyId, childCompanyName, companyParticipants, totalNumberParticipants);
               numParticipants += Number(totalNumberParticipants);
             }
             numCompaniesParticipantRequestComplete++;

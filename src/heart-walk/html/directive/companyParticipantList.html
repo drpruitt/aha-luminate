@@ -11,7 +11,9 @@
       <button type="submit" class="btn btn-primary">Search</button>
     </form>
   </div>
-  <!-- TODO: company name -->
+  <div class="heart-company-participant-list__company-name" ng-if="participants.length > 0">
+    {{companyName}}
+  </div>
   <div class="heart-company-participant-list__body" ng-if="participants.length > 0">
     <div class="heart-company-participant-list__row" ng-repeat="participant in participants">
       <div class="heart-company-participant-list__column heart-company-participant-list__column--name">

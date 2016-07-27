@@ -32,12 +32,15 @@ angular.module 'ahaLuminateControllers'
       
       $defaultCompanyHierarchy = angular.element '.js--default-company-hierarchy'
       $childCompanyLinks = $defaultCompanyHierarchy.find('.trr-td a')
-      childCompanyIds = []
+      childCompanies = []
       angular.forEach $childCompanyLinks, (childCompanyLink) ->
         childCompanyUrl = angular.element(childCompanyLink).attr('href')
+        childCompanyName = angular.element(childCompanyLink).text()
         if childCompanyUrl.indexOf('company_id=') isnt -1
-          childCompanyIds.push childCompanyUrl.split('company_id=')[1].split('&')[0]
-      numCompanies = childCompanyIds.length + 1
+          childCompanies.push 
+            id: childCompanyUrl.split('company_id=')[1].split('&')[0]
+            name: childCompanyName
+      numCompanies = childCompanies.length + 1
       
       $scope.companyTeams = 
         page: 1
@@ -81,7 +84,9 @@ angular.module 'ahaLuminateControllers'
           numCompaniesTeamRequestComplete++
           if numCompaniesTeamRequestComplete is numCompanies
             setCompanyNumTeams numTeams
-      angular.forEach childCompanyIds, (childCompanyId) ->
+      angular.forEach childCompanies, (childCompany) ->
+        childCompanyId = childCompany.id
+        childCompanyName = childCompany.name
         TeamraiserTeamService.getTeams 'team_company_id=' + childCompanyId + '&list_sort_column=total&list_ascending=false&list_page_size=5', 
           error: ->
             numCompaniesTeamRequestComplete++
@@ -96,7 +101,7 @@ angular.module 'ahaLuminateControllers'
                 if joinTeamURL
                   companyTeam.joinTeamURL = joinTeamURL.split('/site/')[1]
               totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults
-              addChildCompanyTeams companyTeams[0].companyId, companyTeams[0].companyName, companyTeams, totalNumberTeams
+              addChildCompanyTeams childCompanyId, childCompanyName, companyTeams, totalNumberTeams
               numTeams += Number totalNumberTeams
             numCompaniesTeamRequestComplete++
             if numCompaniesTeamRequestComplete is numCompanies
@@ -144,7 +149,9 @@ angular.module 'ahaLuminateControllers'
           numCompaniesParticipantRequestComplete++
           if numCompaniesParticipantRequestComplete is numCompanies
             setCompanyNumParticipants numParticipants
-      angular.forEach childCompanyIds, (childCompanyId) ->
+      angular.forEach childCompanies, (childCompany) ->
+        childCompanyId = childCompany.id
+        childCompanyName = childCompany.name
         TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%') + '&list_filter_column=team.company_id&list_filter_text=' + childCompanyId + '&list_sort_column=total&list_ascending=false&list_page_size=5', 
           error: ->
             numCompaniesParticipantRequestComplete++
@@ -155,7 +162,7 @@ angular.module 'ahaLuminateControllers'
             if companyParticipants
               companyParticipants = [companyParticipants] if not angular.isArray companyParticipants
               totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
-              addChildCompanyParticipants '', '', companyParticipants, totalNumberParticipants
+              addChildCompanyParticipants childCompanyId, childCompanyName, companyParticipants, totalNumberParticipants
               numParticipants += Number totalNumberParticipants
             numCompaniesParticipantRequestComplete++
             if numCompaniesParticipantRequestComplete is numCompanies

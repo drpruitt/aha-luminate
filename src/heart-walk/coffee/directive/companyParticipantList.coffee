@@ -5,4 +5,5 @@ angular.module 'ahaLuminateApp'
     replace: true
     scope:
       isChildCompany: '='
+      companyName: '='
       participants: '='
