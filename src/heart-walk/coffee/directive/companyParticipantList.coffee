@@ -4,4 +4,5 @@ angular.module 'ahaLuminateApp'
     restrict: 'E'
     replace: true
     scope:
+      isChildCompany: '='
       participants: '='

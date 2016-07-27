@@ -94,6 +94,21 @@ angular.module 'ahaLuminateControllers'
             if numCompaniesTeamRequestComplete is numCompanies
               setCompanyNumTeams numTeams
       
+      $scope.companyParticipants = 
+        page: 1
+      setCompanyParticipants = (participants, totalNumber) ->
+        $scope.companyParticipants.participants = participants or []
+        $scope.companyParticipants.totalNumber = totalNumber or 0
+        if not $scope.$$phase
+          $scope.$apply()
+      $scope.childCompanyParticipants = 
+        companies: []
+      addChildCompanyParticipants = (companyId, companyName, participants, totalNumber) ->
+        $scope.childCompanyParticipants.companies.push 
+          companyId: companyId or ''
+          companyName: companyName or ''
+          participants: participants or []
+          totalNumber: totalNumber or 0
       setCompanyNumParticipants = (numParticipants) ->
         $scope.companyProgress.numParticipants = numParticipants or 0
         if not $scope.$$phase
@@ -102,14 +117,18 @@ angular.module 'ahaLuminateControllers'
       numParticipants = 0
       TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_page_size=5', 
         error: ->
+          setCompanyParticipants()
           numCompaniesParticipantRequestComplete++
           if numCompaniesParticipantRequestComplete is numCompanies
             setCompanyNumParticipants numParticipants
         success: (response) ->
+          setCompanyParticipants()
           companyParticipants = response.getParticipantsResponse?.participant
           if companyParticipants
             companyParticipants = [companyParticipants] if not angular.isArray companyParticipants
-            numParticipants += Number response.getParticipantsResponse.totalNumberResults
+            totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
+            setCompanyParticipants companyParticipants, totalNumberParticipants
+            numParticipants += Number totalNumberParticipants
           numCompaniesParticipantRequestComplete++
           if numCompaniesParticipantRequestComplete is numCompanies
             setCompanyNumParticipants numParticipants
@@ -123,7 +142,9 @@ angular.module 'ahaLuminateControllers'
             companyParticipants = response.getParticipantsResponse?.participant
             if companyParticipants
               companyParticipants = [companyParticipants] if not angular.isArray companyParticipants
-              numParticipants += Number response.getParticipantsResponse.totalNumberResults
+              totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
+              addChildCompanyParticipants '', '', companyParticipants, totalNumberParticipants
+              numParticipants += Number totalNumberParticipants
             numCompaniesParticipantRequestComplete++
             if numCompaniesParticipantRequestComplete is numCompanies
               setCompanyNumParticipants numParticipants

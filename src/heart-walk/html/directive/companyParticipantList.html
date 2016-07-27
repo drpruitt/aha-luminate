@@ -1,5 +1,5 @@
 <div class="heart-company-participant-list">
-  <div class="heart-company-participant__header clearfix">
+  <div class="heart-company-participant-list__header clearfix" ng-if="!isChildCompany">
     <h2>
       Participants
     </h2>
@@ -14,7 +14,7 @@
   <div class="heart-company-participant-list__body">
     <div class="heart-company-participant-list__row" ng-repeat="participant in participants">
       <div class="heart-company-participant-list__column heart-company-participant-list__column--name">
-        <a ng-href="TR?fr_id=&amp;pg=personal&amp;px="></a>
+        <a ng-href="TR?fr_id={{participant.eventId}}&amp;pg=personal&amp;px={{participant.consId}}">{{participant.name.first + ' ' + participant.name.last}}</a>
         <div class="visible-xs visible-md" ng-if=""></div>
       </div>
       <div class="heart-company-participant-list__column heart-company-participant-list__column--captain hidden-xs hidden-md">
@@ -22,7 +22,7 @@
         </div>
       </div>
       <div class="heart-company-participant-list__column heart-company-participant-list__column--amount">
-        <strong></strong>
+        <strong>{{participant.amountRaised / 100 | currency}}</strong>
       </div>
       <div class="heart-company-participant-list__column heart-company-participant-list__column--cta hidden-xs">
         <a class="btn btn-lg btn-primary" ng-href="" ng-if="">Donate</a>

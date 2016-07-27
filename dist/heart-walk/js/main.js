@@ -178,6 +178,7 @@
       restrict: 'E',
       replace: true,
       scope: {
+        isChildCompany: '=',
         participants: '='
       }
     };
@@ -246,7 +247,7 @@
 
   angular.module('ahaLuminateControllers').controller('CompanyPageCtrl', [
     '$scope', '$location', 'TeamraiserCompanyService', 'TeamraiserTeamService', 'TeamraiserParticipantService', function($scope, $location, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService) {
-      var $childCompanyLinks, $defaultCompanyHierarchy, $defaultCompanySummary, addChildCompanyTeams, childCompanyIds, companyGiftCount, numCompanies, numCompaniesParticipantRequestComplete, numCompaniesTeamRequestComplete, numParticipants, numTeams, setCompanyFundraisingProgress, setCompanyNumParticipants, setCompanyNumTeams, setCompanyTeams;
+      var $childCompanyLinks, $defaultCompanyHierarchy, $defaultCompanySummary, addChildCompanyParticipants, addChildCompanyTeams, childCompanyIds, companyGiftCount, numCompanies, numCompaniesParticipantRequestComplete, numCompaniesTeamRequestComplete, numParticipants, numTeams, setCompanyFundraisingProgress, setCompanyNumParticipants, setCompanyNumTeams, setCompanyParticipants, setCompanyTeams;
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0];
       $defaultCompanySummary = angular.element('.js--default-company-summary');
       companyGiftCount = $defaultCompanySummary.find('.company-tally-container--gift-count .company-tally-ammount').text();
@@ -369,6 +370,27 @@
           }
         });
       });
+      $scope.companyParticipants = {
+        page: 1
+      };
+      setCompanyParticipants = function(participants, totalNumber) {
+        $scope.companyParticipants.participants = participants || [];
+        $scope.companyParticipants.totalNumber = totalNumber || 0;
+        if (!$scope.$$phase) {
+          return $scope.$apply();
+        }
+      };
+      $scope.childCompanyParticipants = {
+        companies: []
+      };
+      addChildCompanyParticipants = function(companyId, companyName, participants, totalNumber) {
+        return $scope.childCompanyParticipants.companies.push({
+          companyId: companyId || '',
+          companyName: companyName || '',
+          participants: participants || [],
+          totalNumber: totalNumber || 0
+        });
+      };
       setCompanyNumParticipants = function(numParticipants) {
         $scope.companyProgress.numParticipants = numParticipants || 0;
         if (!$scope.$$phase) {
@@ -379,19 +401,23 @@
       numParticipants = 0;
       TeamraiserParticipantService.getParticipants('team_name=' + encodeURIComponent('%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_page_size=5', {
         error: function() {
+          setCompanyParticipants();
           numCompaniesParticipantRequestComplete++;
           if (numCompaniesParticipantRequestComplete === numCompanies) {
             return setCompanyNumParticipants(numParticipants);
           }
         },
         success: function(response) {
-          var companyParticipants, ref;
+          var companyParticipants, ref, totalNumberParticipants;
+          setCompanyParticipants();
           companyParticipants = (ref = response.getParticipantsResponse) != null ? ref.participant : void 0;
           if (companyParticipants) {
             if (!angular.isArray(companyParticipants)) {
               companyParticipants = [companyParticipants];
             }
-            numParticipants += Number(response.getParticipantsResponse.totalNumberResults);
+            totalNumberParticipants = response.getParticipantsResponse.totalNumberResults;
+            setCompanyParticipants(companyParticipants, totalNumberParticipants);
+            numParticipants += Number(totalNumberParticipants);
           }
           numCompaniesParticipantRequestComplete++;
           if (numCompaniesParticipantRequestComplete === numCompanies) {
@@ -408,13 +434,15 @@
             }
           },
           success: function(response) {
-            var companyParticipants, ref;
+            var companyParticipants, ref, totalNumberParticipants;
             companyParticipants = (ref = response.getParticipantsResponse) != null ? ref.participant : void 0;
             if (companyParticipants) {
               if (!angular.isArray(companyParticipants)) {
                 companyParticipants = [companyParticipants];
               }
-              numParticipants += Number(response.getParticipantsResponse.totalNumberResults);
+              totalNumberParticipants = response.getParticipantsResponse.totalNumberResults;
+              addChildCompanyParticipants('', '', companyParticipants, totalNumberParticipants);
+              numParticipants += Number(totalNumberParticipants);
             }
             numCompaniesParticipantRequestComplete++;
             if (numCompaniesParticipantRequestComplete === numCompanies) {
