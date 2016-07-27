@@ -3,17 +3,14 @@
   margin: 0 0 30px;
   
   .heart-company-team-list__header {
-    border-top: 1px solid #c9cccc;
     border-bottom: 1px solid #c9cccc;
     padding: 30px 0 20px;
     
     @media(min-width: $screen-sm-min) {
-      border-top: 0;
       padding: 0 0 30px;
     }
     
     @media(min-width: $screen-md-min) {
-      border-top: 1px solid #c9cccc;
       padding: 30px 0;
     }
     
@@ -57,6 +54,7 @@
   
   .heart-company-team-list__body {
     display: table;
+    border-top: 1px solid #c9cccc;
     width: 100%;
     
     .heart-company-team-list__row {
@@ -76,7 +74,8 @@
     }
     
     .heart-company-team-list__column--name {
-      padding: 0 15px 0 0;
+      border-left: 1px solid #c9cccc;
+      padding: 0 15px 0 20px;
       
       @media(min-width: $screen-sm-min) {
         width: 460px;

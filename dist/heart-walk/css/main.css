@@ -526,16 +526,13 @@ a.btn-lg:visited {
   font-size: 16px;
   margin: 0 0 30px; }
   .heart-company-team-list .heart-company-team-list__header {
-    border-top: 1px solid #c9cccc;
     border-bottom: 1px solid #c9cccc;
     padding: 30px 0 20px; }
     @media (min-width: 768px) {
       .heart-company-team-list .heart-company-team-list__header {
-        border-top: 0;
         padding: 0 0 30px; } }
     @media (min-width: 992px) {
       .heart-company-team-list .heart-company-team-list__header {
-        border-top: 1px solid #c9cccc;
         padding: 30px 0; } }
     .heart-company-team-list .heart-company-team-list__header h2 {
       margin: 0 0 30px; }
@@ -564,6 +561,7 @@ a.btn-lg:visited {
           width: 240px; } }
   .heart-company-team-list .heart-company-team-list__body {
     display: table;
+    border-top: 1px solid #c9cccc;
     width: 100%; }
     .heart-company-team-list .heart-company-team-list__body .heart-company-team-list__row {
       display: table-row; }
@@ -577,7 +575,8 @@ a.btn-lg:visited {
         .heart-company-team-list .heart-company-team-list__body .heart-company-team-list__column {
           height: 90px; } }
     .heart-company-team-list .heart-company-team-list__body .heart-company-team-list__column--name {
-      padding: 0 15px 0 0; }
+      border-left: 1px solid #c9cccc;
+      padding: 0 15px 0 20px; }
       @media (min-width: 768px) {
         .heart-company-team-list .heart-company-team-list__body .heart-company-team-list__column--name {
           width: 460px; } }
@@ -607,16 +606,13 @@ a.btn-lg:visited {
   font-size: 16px;
   margin: 0 0 30px; }
   .heart-company-participant-list .heart-company-participant-list__header {
-    border-top: 1px solid #c9cccc;
     border-bottom: 1px solid #c9cccc;
     padding: 30px 0 20px; }
     @media (min-width: 768px) {
       .heart-company-participant-list .heart-company-participant-list__header {
-        border-top: 0;
         padding: 0 0 30px; } }
     @media (min-width: 992px) {
       .heart-company-participant-list .heart-company-participant-list__header {
-        border-top: 1px solid #c9cccc;
         padding: 30px 0; } }
     .heart-company-participant-list .heart-company-participant-list__header h2 {
       margin: 0 0 30px; }
@@ -645,6 +641,7 @@ a.btn-lg:visited {
           width: 240px; } }
   .heart-company-participant-list .heart-company-participant-list__body {
     display: table;
+    border-top: 1px solid #c9cccc;
     width: 100%; }
     .heart-company-participant-list .heart-company-participant-list__body .heart-company-participant-list__row {
       display: table-row; }
@@ -658,7 +655,8 @@ a.btn-lg:visited {
         .heart-company-participant-list .heart-company-participant-list__body .heart-company-participant-list__column {
           height: 90px; } }
     .heart-company-participant-list .heart-company-participant-list__body .heart-company-participant-list__column--name {
-      padding: 0 15px 0 0; }
+      border-left: 1px solid #c9cccc;
+      padding: 0 15px 0 20px; }
       @media (min-width: 768px) {
         .heart-company-participant-list .heart-company-participant-list__body .heart-company-participant-list__column--name {
           width: 460px; } }

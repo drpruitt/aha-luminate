@@ -12,7 +12,7 @@
     </form>
   </div>
   <!-- TODO: company name -->
-  <div class="heart-company-participant-list__body">
+  <div class="heart-company-participant-list__body" ng-if="participants.length > 0">
     <div class="heart-company-participant-list__row" ng-repeat="participant in participants">
       <div class="heart-company-participant-list__column heart-company-participant-list__column--name">
         <a ng-href="TR?fr_id={{participant.eventId}}&amp;pg=personal&amp;px={{participant.consId}}">{{participant.name.first + ' ' + participant.name.last}}</a>
