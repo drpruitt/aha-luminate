@@ -23,13 +23,13 @@ $padding-base-horizontal: 24px !default;
 $padding-large-vertical: 18px !default;
 $padding-large-horizontal: 24px !default;
 
-$border-radius-base: 4px !default;
+$border-radius-base: 0 !default;
 
 $btn-primary-color: #fff !default;
 $btn-primary-bg: $brand-primary !default;
 $btn-primary-border: darken($btn-primary-bg, 5%) !default;
 
-$input-border-radius: 0 !default;
+$input-border-radius: $border-radius-base !default;
 
 $screen-sm: 768px !default;
 $screen-sm-min: $screen-sm !default;
@@ -45,3 +45,7 @@ $screen-sm-max: ($screen-md-min - 1) !default;
 $screen-md-max: ($screen-lg-min - 1) !default;
 
 $grid-gutter-width: 30px !default;
+
+$alert-border-radius: $border-radius-base !default;
+
+$panel-border-radius: $border-radius-base !default;

@@ -34,6 +34,22 @@
     
     .alert {
       font-size: 16px;
+      padding: 15px 25px;
+      
+      @media(min-width: $screen-sm-min) {
+        padding: 15px 30px;
+      }
+    }
+    
+    form {
+      .form-control {
+        height: 60px;
+        padding: 6px 25px;
+        
+        @media(min-width: $screen-sm-min) {
+          padding: 6px 30px;
+        }
+      }
     }
   }
   
