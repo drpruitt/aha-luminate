@@ -199,6 +199,13 @@ a.btn-primary:active:hover,
 a.btn-primary:active:focus {
   background: linear-gradient(to bottom, #951618 0%, #7a0f11 100%); }
 
+.btn-md,
+a.btn-md,
+a.btn-md:link,
+a.btn-md:visited {
+  padding: 18px 24px;
+  font-size: 16px; }
+
 .btn-lg,
 a.btn-lg,
 a.btn-lg:link,

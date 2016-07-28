@@ -41,6 +41,13 @@ a.btn-primary {
   }
 }
 
+.btn-md, 
+a.btn-md, 
+a.btn-md:link, 
+a.btn-md:visited {
+  @include button-size($padding-large-vertical, $padding-large-horizontal, 16px);
+}
+
 .btn-lg, 
 a.btn-lg, 
 a.btn-lg:link, 
