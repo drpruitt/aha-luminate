@@ -47,3 +47,7 @@ a.btn-lg:link,
 a.btn-lg:visited {
   @include button-size($padding-large-horizontal, $padding-large-horizontal, 16px);
 }
+
+.btn--full-width {
+  width: 100%;
+}

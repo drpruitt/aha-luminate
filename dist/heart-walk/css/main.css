@@ -206,6 +206,9 @@ a.btn-lg:visited {
   padding: 24px 24px;
   font-size: 16px; }
 
+.btn--full-width {
+  width: 100%; }
+
 .nav-tabs {
   border: 0; }
   .nav-tabs > li {
