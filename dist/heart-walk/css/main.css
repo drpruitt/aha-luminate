@@ -116,6 +116,11 @@ a, a:link, a:visited, a:hover, a:focus {
   border-radius: 0;
   height: 44px; }
 
+.checkbox label,
+.radio label {
+  font-size: 14px;
+  white-space: normal; }
+
 .btn,
 a.btn,
 a.btn:link,

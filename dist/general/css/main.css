@@ -116,6 +116,11 @@ a, a:link, a:visited, a:hover, a:focus {
   border-radius: 0;
   height: 44px; }
 
+.checkbox label,
+.radio label {
+  font-size: 14px;
+  white-space: normal; }
+
 .btn,
 a.btn,
 a.btn:link,
@@ -255,6 +260,11 @@ a.btn-lg:visited {
       @media (min-width: 768px) {
         .heart-panel--login > .panel-body .alert {
           padding: 15px 30px; } }
+    .heart-panel--login > .panel-body form .form-group {
+      margin: 0 0 8px; }
+    .heart-panel--login > .panel-body form .checkbox,
+    .heart-panel--login > .panel-body form .radio {
+      margin: 8px 0; }
     .heart-panel--login > .panel-body form .form-control {
       height: 60px;
       padding: 6px 25px; }
