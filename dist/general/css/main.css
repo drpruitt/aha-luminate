@@ -206,5 +206,17 @@ a.btn-lg:visited {
   padding: 24px 24px;
   font-size: 16px; }
 
+.panel {
+  border-radius: 0; }
+
 #headerWrapper {
   margin: 0; }
+
+.heart-panel--login > .panel-heading {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  text-align: center; }
+
+.heart-panel--login > .panel-footer {
+  text-align: center; }

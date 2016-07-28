@@ -7,7 +7,16 @@ module.exports = {
   
   "general": {
     files: {
-      'dist/general/js/main.js': []
+      'dist/general/js/main.js': [
+        'src/general/coffee/init.coffee', 
+        'src/global/coffee/config/*.*', 
+        'src/general/coffee/config/*.*', 
+        'src/global/coffee/service/*.*', 
+        'src/general/coffee/service/*.*', 
+        'src/global/coffee/directive/*.*', 
+        'src/general/coffee/directive/*.*', 
+        'src/general/coffee/**/*.*'
+      ]
     }
   }, 
   

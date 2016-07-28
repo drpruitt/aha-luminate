@@ -1,0 +1,12 @@
+.heart-panel--login {
+  > .panel-heading {
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    text-align: center;
+  }
+  
+  > .panel-footer {
+    text-align: center;
+  }
+}
