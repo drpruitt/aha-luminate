@@ -256,3 +256,8 @@ a.btn-lg:visited {
         padding: 32px 48px 48px; } }
     .heart-panel--login > .panel-footer .btn {
       margin: 10px 0 0; }
+
+.heart-login-forgot-password {
+  font-size: 12px;
+  text-align: center;
+  margin: 8px 0 0; }
