@@ -216,21 +216,36 @@ a.btn-lg:visited {
   margin: 0; }
 
 .heart-page-container--login {
-  padding: 80px 0 48px; }
+  padding: 20px 20px 72px; }
+  @media (min-width: 992px) {
+    .heart-page-container--login {
+      padding: 80px 20px 48px; } }
 
-.heart-panel--login > .panel-heading {
-  background: transparent;
-  border: 0;
-  border-radius: 0;
-  text-align: center;
-  padding: 42px 48px 0 48px; }
-
-.heart-panel--login .panel-title {
-  font-size: inherit; }
-
-.heart-panel--login > .panel-body {
-  padding: 32px 48px 28px; }
-
-.heart-panel--login > .panel-footer {
-  text-align: center;
-  padding: 32px 48px 48px; }
+.heart-panel--login {
+  margin: 0; }
+  .heart-panel--login > .panel-heading {
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    text-align: center;
+    padding: 32px 28px 0 28px; }
+    @media (min-width: 768px) {
+      .heart-panel--login > .panel-heading {
+        padding: 42px 48px 0 48px; } }
+  .heart-panel--login .panel-title {
+    font-size: inherit; }
+  .heart-panel--login > .panel-body {
+    padding: 32px 28px 20px; }
+    @media (min-width: 768px) {
+      .heart-panel--login > .panel-body {
+        padding: 32px 48px 28px; } }
+    .heart-panel--login > .panel-body .alert {
+      font-size: 16px; }
+  .heart-panel--login > .panel-footer {
+    text-align: center;
+    padding: 32px 28px; }
+    @media (min-width: 768px) {
+      .heart-panel--login > .panel-footer {
+        padding: 32px 48px 48px; } }
+    .heart-panel--login > .panel-footer .btn {
+      margin: 10px 0 0; }
