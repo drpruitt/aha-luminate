@@ -1047,6 +1047,12 @@ a.btn-lg:visited {
   @media (min-width: 992px) {
     .heart-greeting-leaderboards {
       margin: 50px 50px 80px; } }
+  @media (max-width: 767px) {
+    .heart-greeting-leaderboards [class*="col-"] {
+      height: auto !important; } }
+  @media (min-width: 768px) {
+    .heart-greeting-leaderboards [class*="col-"] {
+      padding-bottom: 44px; } }
   .heart-greeting-leaderboards h2 {
     font-size: 22px;
     font-weight: 600;
@@ -1066,6 +1072,10 @@ a.btn-lg:visited {
       padding: 24px 0; }
       .heart-greeting-leaderboards .list-group .list-group-item:first-child, .heart-greeting-leaderboards .list-group .list-group-item:last-child {
         border-radius: 0; }
+  @media (min-width: 768px) {
+    .heart-greeting-leaderboards .btn {
+      position: absolute;
+      bottom: 0; } }
 
 .heart-hero--personal {
   margin: 0; }

@@ -257,6 +257,16 @@
     margin: 50px 50px 80px;
   }
   
+  [class*="col-"] {
+    @media(max-width: $screen-xs-max) {
+      height: auto !important;
+    }
+    
+    @media(min-width: $screen-sm-min) {
+      padding-bottom: 44px;
+    }
+  }
+  
   h2 {
     font-size: 22px;
     font-weight: 600;
@@ -284,6 +294,13 @@
       &:last-child {
         border-radius: 0;
       }
+    }
+  }
+  
+  .btn {
+    @media(min-width: $screen-sm-min) {
+      position: absolute;
+      bottom: 0;
     }
   }
 }
