@@ -250,8 +250,8 @@ a.btn-lg:visited {
         color: #de2427;
         padding: 24px 32px 24px 27px; }
 
-#headerWrapper {
-  margin: 0; }
+footer .container {
+  padding: 0 15px; }
 
 .heart-hero {
   background-color: #de2427;

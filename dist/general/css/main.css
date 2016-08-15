@@ -227,8 +227,8 @@ a.btn-lg:visited {
 .panel {
   border-radius: 0; }
 
-#headerWrapper {
-  margin: 0; }
+footer .container {
+  padding: 0 15px; }
 
 .heart-page-container--login {
   padding: 20px 20px 72px; }
