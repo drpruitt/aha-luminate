@@ -6,4 +6,9 @@ angular.module 'ahaLuminateApp'
         dataString = 'method=getCompaniesByInfo'
         dataString += '&' + requestData if requestData and requestData isnt ''
         LuminateRESTService.luminateExtendTeamraiserRequest dataString, false, true, callback
+      
+      getCompanyList: (requestData, callback) ->
+        dataString = 'method=getCompanyList'
+        dataString += '&' + requestData if requestData and requestData isnt ''
+        LuminateRESTService.luminateExtendTeamraiserRequest dataString, false, true, callback
   ]

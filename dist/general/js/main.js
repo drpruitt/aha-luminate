@@ -103,6 +103,14 @@
             dataString += '&' + requestData;
           }
           return LuminateRESTService.luminateExtendTeamraiserRequest(dataString, false, true, callback);
+        },
+        getCompanyList: function(requestData, callback) {
+          var dataString;
+          dataString = 'method=getCompanyList';
+          if (requestData && requestData !== '') {
+            dataString += '&' + requestData;
+          }
+          return LuminateRESTService.luminateExtendTeamraiserRequest(dataString, false, true, callback);
         }
       };
     }

@@ -37,11 +37,28 @@ angular.module 'ahaLuminateControllers'
         $scope.topCompanies.companies = companies
         if not $scope.$$phase
           $scope.$apply()
-      TeamraiserCompanyService.getCompanies 'list_sort_column=total&list_ascending=false', 
+      TeamraiserCompanyService.getCompanyList 'include_all_companies=true', 
         error: () ->
           setTopCompanies []
         success: (response) ->
-          topCompanies = response.getCompaniesResponse.company || []
-          topCompanies = [topCompanies] if not angular.isArray topCompanies
-          setTopCompanies topCompanies
+          companyItems = response.getCompanyListResponse.companyItem || []
+          companyItems = [companyItems] if not angular.isArray companyItems
+          rootAncestorCompanyIds = []
+          angular.forEach companyItems, (companyItem) ->
+            if companyItem.parentOrgEventId is '0'
+              rootAncestorCompanyIds.push companyItem.companyId
+          
+          TeamraiserCompanyService.getCompanies 'list_sort_column=total&list_ascending=false&list_page_size=500', 
+            error: () ->
+              setTopCompanies []
+            success: (response) ->
+              companies = response.getCompaniesResponse.company || []
+              companies = [companies] if not angular.isArray companies
+              topCompanies = []
+              angular.forEach companies, (company) ->
+                if rootAncestorCompanyIds.indexOf(company.companyId) > -1
+                  topCompanies.push company
+              topCompanies.sort (a, b) ->
+                Number(b.amountRaised) - Number(a.amountRaised)
+              setTopCompanies topCompanies
   ]

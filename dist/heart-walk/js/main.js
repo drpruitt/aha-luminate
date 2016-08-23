@@ -106,6 +106,14 @@
             dataString += '&' + requestData;
           }
           return LuminateRESTService.luminateExtendTeamraiserRequest(dataString, false, true, callback);
+        },
+        getCompanyList: function(requestData, callback) {
+          var dataString;
+          dataString = 'method=getCompanyList';
+          if (requestData && requestData !== '') {
+            dataString += '&' + requestData;
+          }
+          return LuminateRESTService.luminateExtendTeamraiserRequest(dataString, false, true, callback);
         }
       };
     }
@@ -594,17 +602,44 @@
           return $scope.$apply();
         }
       };
-      return TeamraiserCompanyService.getCompanies('list_sort_column=total&list_ascending=false', {
+      return TeamraiserCompanyService.getCompanyList('include_all_companies=true', {
         error: function() {
           return setTopCompanies([]);
         },
         success: function(response) {
-          var topCompanies;
-          topCompanies = response.getCompaniesResponse.company || [];
-          if (!angular.isArray(topCompanies)) {
-            topCompanies = [topCompanies];
+          var companyItems, rootAncestorCompanyIds;
+          companyItems = response.getCompanyListResponse.companyItem || [];
+          if (!angular.isArray(companyItems)) {
+            companyItems = [companyItems];
           }
-          return setTopCompanies(topCompanies);
+          rootAncestorCompanyIds = [];
+          angular.forEach(companyItems, function(companyItem) {
+            if (companyItem.parentOrgEventId === '0') {
+              return rootAncestorCompanyIds.push(companyItem.companyId);
+            }
+          });
+          return TeamraiserCompanyService.getCompanies('list_sort_column=total&list_ascending=false&list_page_size=500', {
+            error: function() {
+              return setTopCompanies([]);
+            },
+            success: function(response) {
+              var companies, topCompanies;
+              companies = response.getCompaniesResponse.company || [];
+              if (!angular.isArray(companies)) {
+                companies = [companies];
+              }
+              topCompanies = [];
+              angular.forEach(companies, function(company) {
+                if (rootAncestorCompanyIds.indexOf(company.companyId) > -1) {
+                  return topCompanies.push(company);
+                }
+              });
+              topCompanies.sort(function(a, b) {
+                return Number(b.amountRaised) - Number(a.amountRaised);
+              });
+              return setTopCompanies(topCompanies);
+            }
+          });
         }
       });
     }
