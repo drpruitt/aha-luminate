@@ -53,3 +53,10 @@ font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 font-weight: bold;
 font-size: 22px;
 }
+
+#search_participant {
+ font-size:10px;
+ font-family: verdana;
+ text-decoration: underline;
+}
+}
