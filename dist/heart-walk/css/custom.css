@@ -1,0 +1,93 @@
+/* header styles */
+#headerWrapper .container {
+	position:relative;
+}
+#headerWrapper .container .row {
+	margin:0;
+}
+
+.ahalogo {
+	border-right: 1px solid #b0b0b0;
+	padding: 3px;
+}
+.hwlogo {
+	padding: 0 10px;
+	position: absolute;
+}
+.partname {
+	font-size:14px;
+}
+.button {
+	background-color: #e21b21;
+	border: none;
+	color: white;
+	padding: 10px 20px 10px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	position: relative;
+	right:0;
+	margin-left:20px;
+	line-height:10px;
+}
+.button a {
+	color: white;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 12px;
+	vertical-align:top;
+}
+.loggedin,
+.loggedout {
+  margin-top: -20px;
+}
+.btn-group {
+	margin-left: 0;
+	font-size: 40px;
+	background: none;
+	color: #e21b21;
+}
+.additionalHeaderLinks {
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+	margin-top:20px;
+}
+.additionalHeaderLinks a {
+	text-decoration: none;
+	display:block;
+}
+.additionalHeaderLinks a > div {
+	color: #555555;
+	font-size: 10px;
+	font-weight: normal;
+}
+.additionalHeaderLinks-mobile {
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+	max-height: 50px;
+}
+.dropdown-menu {
+  background-color: #e21b21;
+  border: medium none;
+  color: white;
+  display: block;
+  float: none;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  text-decoration: none;
+  overflow:hidden;
+  -moz-transition: all 0.3s ease 0s;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+.aha-mobile-header.open .dropdown-menu {
+	height:auto;
+  -moz-transition: all 0.3s ease 0s;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+#headerWrapper {
+	padding: 20px 0;
+}
