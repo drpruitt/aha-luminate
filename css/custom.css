@@ -1,61 +1,93 @@
-.leftRegion a.subLogo {
-  line-height: 74px;
-  padding: 0 0 0 20px;
+/* header styles */
+#headerWrapper .container {
+	position:relative;
+}
+#headerWrapper .container .row {
+	margin:0;
 }
 
-/* BODY */
-body, p, span {
-    font-style: normal;
-    font-weight: 300;
-    line-height: 1.4em;
+.ahalogo {
+	border-right: 1px solid #b0b0b0;
+	padding: 3px;
 }
-
-h1#pageTitle {
-font-family: "HelveticaNeue-Thin", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  font-weight: normal;
-  font-size: 3em;
-  color: #CCC;
+.hwlogo {
+	padding: 0 10px;
+	position: absolute;
 }
-
-.content_wrapper.round {
-padding: 20px;	
+.partname {
+	font-size:14px;
 }
-
-/* BUTTONS */
-.btn.btn-primary, .step-button.next-step {
-border-radius: 0;
+.button {
+	background-color: #e21b21;
+	border: none;
+	color: white;
+	padding: 10px 20px 10px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	position: relative;
+	right:0;
+	margin-left:20px;
+	line-height:10px;
 }
-
-/* Typography */
-
-.alpha {
-margin: 24px 0;
-/* Nice long font stack to try to get the best helvetica (ar substitute) that is available on the client. */
-font-family: "HelveticaNeue-Thin", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-font-weight: 300;
-font-size: 80px;
-line-height: 1em;
-color: #DE2427;
+.button a {
+	color: white;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 12px;
+	vertical-align:top;
 }
-
-.bravo {
-margin: 12px 0;
-/* Nice long font stack to try to get the best helvetica (ar substitute) that is available on the client. */
-font-family: "HelveticaNeue-Thin", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-font-weight: 300;
-font-size: 60px;
-line-height: 1em;
-color: #1e1e23;
+.loggedin,
+.loggedout {
+  margin-top: -20px;
 }
-
-.charlie {
-font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-font-weight: bold;
-font-size: 22px;
+.btn-group {
+	margin-left: 0;
+	font-size: 40px;
+	background: none;
+	color: #e21b21;
 }
-
-#search_participant {
- font-size:10px;
- font-family: verdana;
- text-decoration: underline;
+.additionalHeaderLinks {
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+	margin-top:20px;
+}
+.additionalHeaderLinks a {
+	text-decoration: none;
+	display:block;
+}
+.additionalHeaderLinks a > div {
+	color: #555555;
+	font-size: 10px;
+	font-weight: normal;
+}
+.additionalHeaderLinks-mobile {
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+	max-height: 50px;
+}
+.dropdown-menu {
+  background-color: #e21b21;
+  border: medium none;
+  color: white;
+  display: block;
+  float: none;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  text-decoration: none;
+  overflow:hidden;
+  -moz-transition: all 0.3s ease 0s;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+.aha-mobile-header.open .dropdown-menu {
+	height:auto;
+  -moz-transition: all 0.3s ease 0s;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+#headerWrapper {
+	padding: 20px 0;
 }
