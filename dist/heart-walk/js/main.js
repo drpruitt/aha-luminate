@@ -30,7 +30,21 @@
   ]);
 
   angular.element(document).ready(function() {
-    return angular.bootstrap(document, ['ahaLuminateApp']);
+    var appModules, error, error1, error2;
+    appModules = ['ahaLuminateApp'];
+    try {
+      angular.module('trPcApp');
+      appModules.push('trPcApp');
+    } catch (error1) {
+      error = error1;
+    }
+    try {
+      angular.module('trPageEditApp');
+      appModules.push('trPageEditApp');
+    } catch (error2) {
+      error = error2;
+    }
+    return angular.bootstrap(document, appModules);
   });
 
   angular.module('ahaLuminateApp').factory('LuminateRESTService', [

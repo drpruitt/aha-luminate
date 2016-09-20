@@ -26,4 +26,18 @@ angular.module 'ahaLuminateApp'
   ]
 
 angular.element(document).ready ->
-  angular.bootstrap document, ['ahaLuminateApp']
+  appModules = [
+    'ahaLuminateApp'
+  ]
+  
+  try
+    angular.module 'trPcApp'
+    appModules.push 'trPcApp'
+  catch error
+  
+  try
+    angular.module 'trPageEditApp'
+    appModules.push 'trPageEditApp'
+  catch error
+  
+  angular.bootstrap document, appModules
