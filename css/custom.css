@@ -82,6 +82,13 @@
   -webkit-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
 }
+
+.dropdown-menu li {
+  background-color: #e21b21;
+  color: #fff;
+  font-size:14px;
+  font-weight:normal;
+}
 .aha-mobile-header.open .dropdown-menu {
 	height:auto;
   -moz-transition: all 0.3s ease 0s;
