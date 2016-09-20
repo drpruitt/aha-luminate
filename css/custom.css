@@ -67,9 +67,9 @@
 	max-height: 50px;
 }
 .dropdown-menu {
-  background-color: #e21b21;
+  background-color: #fff;
   border: medium none;
-  color: white;
+  color: #e21b21;
   display: block;
   float: none;
   height: 0;
@@ -84,8 +84,8 @@
 }
 
 .dropdown-menu li {
-  background-color: #e21b21;
-  color: #fff;
+  background-color: #fff;
+  color: #e21b21;
   font-size:14px;
   font-weight:normal;
 }
