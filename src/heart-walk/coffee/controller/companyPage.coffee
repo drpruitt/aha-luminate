@@ -157,7 +157,7 @@ angular.module 'ahaLuminateControllers'
       $scope.getCompanyParticipants = ->
         # TODO: scroll to top of list
         pageNumber = $scope.companyParticipants.page - 1
-        TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=5&list_page_offset=' + pageNumber, 
+        TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%%%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=5&list_page_offset=' + pageNumber, 
           error: ->
             setCompanyParticipants()
             numCompaniesParticipantRequestComplete++
@@ -190,7 +190,7 @@ angular.module 'ahaLuminateControllers'
           pageNumber = 0
         else
           pageNumber--
-        TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%') + '&list_filter_column=team.company_id&list_filter_text=' + childCompanyId + '&list_sort_column=total&list_ascending=false&list_page_size=5&list_page_offset=' + pageNumber, 
+        TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%%%') + '&list_filter_column=team.company_id&list_filter_text=' + childCompanyId + '&list_sort_column=total&list_ascending=false&list_page_size=5&list_page_offset=' + pageNumber, 
           error: ->
             addChildCompanyParticipants childCompanyIndex, childCompanyId, childCompanyName
             numCompaniesParticipantRequestComplete++
