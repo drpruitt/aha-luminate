@@ -237,3 +237,12 @@ div.donation-level-row-decoration-container {
     display: inline !important;
     margin: 10px !important;
 }
+
+div.campaign-banner-container {
+    margin: 15px;
+    font-weight: bold !important;
+}
+
+div.registration-page-container div.section-footer {
+background-color: #fff !important;
+}
