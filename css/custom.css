@@ -84,7 +84,7 @@
 }
 
 .dropdown-menu li {
-  background-color: #fff;
+  background-color: #e6e6e6;
   color: #e21b21;
   font-size:14px;
   font-weight:normal;
@@ -99,6 +99,11 @@
     white-space: nowrap;
     text-decoration: none;
     font-size: 16px;
+}
+.dropdown-menu > li > a:hover {
+    color: #262626;
+    text-decoration: none;
+    background-color: #fff;
 }
 .aha-mobile-header.open .dropdown-menu {
 	height:auto;
