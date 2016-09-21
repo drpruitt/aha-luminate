@@ -212,15 +212,11 @@ div.registration-page-container div.section-container {
 #login-div-content a, #login-div-content a:link, #login-div-content a:visited, a, a:link, a:visited, div.responsive a, div.responsive a:link, div.responsive a:visited {
 margin: 10px; 
 font-size: 16px !important;
-font-weight: normal !important;
+font-weight: normal; 
 }
 
 div#team_find_search_results_container div.list-component-cell span.list-component-cell-title-text {
     display: inline-block  !important;
     font-size: 16px     !important;
-}
-
-div#team_find_search_results_container div.list-component-cell span.list-component-cell-title-text {
-    display: block;
     font-style: normal !important;
 }
