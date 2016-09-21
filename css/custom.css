@@ -89,6 +89,17 @@
   font-size:14px;
   font-weight:normal;
 }
+.dropdown-menu > li > a {
+    display: block;
+    padding: 10px 20px;
+    clear: both;
+    font-weight: bold;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+    text-decoration: none;
+    font-size: 16px;
+}
 .aha-mobile-header.open .dropdown-menu {
 	height:auto;
   -moz-transition: all 0.3s ease 0s;
