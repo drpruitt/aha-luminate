@@ -117,7 +117,6 @@
 #search_part_team div.ui-tabs-panel {
     border-top: 3px solid #e0e0e0 !important;
     background-color:#fff; !important;
-    border-radius: 1px;
     padding: 20px 5px 10px 10px;
     margin-top: -1px;
 }
@@ -142,6 +141,7 @@
 
 #search_part_team ul li.ui-tabs-selected {
 background-color: #e6e6e6 !important;
+border-radius: 1px; 
 color: #898d8c;
 }
 
