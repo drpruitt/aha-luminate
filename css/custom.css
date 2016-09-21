@@ -224,6 +224,8 @@ div.responsive button.next-step {
     border: 1px solid #b5cbd9  !important;
     background-color: #d4e8f3  !important;
     background-image: -moz-linear-gradient(top, #e51c22, #cd181d)  !important;
+    color: #fff;
+    font-weight: bold;
 }
 div.part-type-container.selected {
 border-radius: 1px !important;
