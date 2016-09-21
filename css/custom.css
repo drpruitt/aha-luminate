@@ -197,7 +197,7 @@ div.registration-page-container div.section-container {
 }
 
 #login-div-content a, #login-div-content a:link, #login-div-content a:visited, a, a:link, a:visited, div.responsive a, div.responsive a:link, div.responsive a:visited {
-font-size: 16px  !important;
+margin: 10px; 
 }
 
 div#team_find_search_results_container div.list-component-cell span.list-component-cell-title-text {
