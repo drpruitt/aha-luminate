@@ -179,13 +179,18 @@ div.responsive button.action-button {
     border: 1px solid #b5cbd9  !important;
     background-color: #d4e8f3  !important;
     background-image: -moz-linear-gradient(top, #e51c22, #cd181d)  !important;
+    background: -webkit-gradient(linear, left top, left bottom, from(#e51c22), to(#cd181d));
+    background-image: -ms-linear-gradient(top, #E51C22 0%, #CD181D 100%);
     color: #fff;
     background-color: #890707  !important;
     border-color: #890707  !important;
 }
 
 div.responsive a.step-button:hover, div.responsive button.step-button:hover, div.responsive input.step-button:hover {
-background-image: -moz-linear-gradient(top, #e51c22, #cd181d)  !important;
+    background-image: -moz-linear-gradient(top, #e51c22, #cd181d)  !important;
+    background: -webkit-gradient(linear, left top, left bottom, from(#e51c22), to(#cd181d));
+    background-image: -ms-linear-gradient(top, #E51C22 0%, #CD181D 100%);
+    background-color: #d4e8f3  !important;
 }
 
 div#team_find_search_results_container div.list-component-cell-column-join-link a {
@@ -193,6 +198,8 @@ div#team_find_search_results_container div.list-component-cell-column-join-link 
     border: 1px solid #b5cbd9  !important;
    background-color: #d4e8f3  !important;
    background-image: -moz-linear-gradient(top, #e51c22, #cd181d)  !important;
+   background: -webkit-gradient(linear, left top, left bottom, from(#e51c22), to(#cd181d));
+    background-image: -ms-linear-gradient(top, #E51C22 0%, #CD181D 100%);
     color: #fff  !important;
     text-align: center;
     font-weight: bold;
@@ -201,6 +208,8 @@ div#team_find_search_results_container div.list-component-cell-column-join-link 
 #team_find_page div.list-component-row {
 border-radius: 1px  !important;
 background-image: -moz-linear-gradient(top, #ffffff, #fff)  !important;
+   background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#fff));
+    background-image: -ms-linear-gradient(top, #ffffff 0%, #fff 100%);
 border-top: 1px solid #e0e0e0  !important;
 }
 
@@ -224,6 +233,8 @@ div.responsive button.next-step {
     border: 1px solid #b5cbd9  !important;
     background-color: #d4e8f3  !important;
     background-image: -moz-linear-gradient(top, #e51c22, #cd181d)  !important;
+       background: -webkit-gradient(linear, left top, left bottom, from(#e51c22), to(#cd181d));
+    background-image: -ms-linear-gradient(top, #E51C22 0%, #CD181D 100%);
     color: #fff !important;
     font-weight: bold; !important;
 }
