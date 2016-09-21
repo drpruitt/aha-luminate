@@ -191,6 +191,8 @@ div.responsive a.step-button:hover, div.responsive button.step-button:hover, div
     background: -webkit-gradient(linear, left top, left bottom, from(#e51c22), to(#cd181d));
     background-image: -ms-linear-gradient(top, #E51C22 0%, #CD181D 100%);
     background-color: #d4e8f3  !important;
+    color: #fff;
+    text-decoration: none;
 }
 
 div#team_find_search_results_container div.list-component-cell-column-join-link a {
