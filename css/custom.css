@@ -163,6 +163,18 @@ div.progress-bar-step-container {
     padding-left: 20px;  !important;
 }
 
+#fr_find_search {
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    font-weight: bold !important;
+}
+div.responsive input[type="text"], div.responsive input[type="number"], div.responsive input[type="password"], div.responsive textarea {
+border: 1px solid #d9d6cf !important;
+border-radius: 1px !important;
+box-shadow: none !important;
+}
+
 div.responsive button.action-button {
     border: 1px solid #b5cbd9  !important;
     background-color: #d4e8f3  !important;
