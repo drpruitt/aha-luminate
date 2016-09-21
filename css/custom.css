@@ -227,6 +227,9 @@ div.responsive button.next-step {
     color: #fff !important;
     font-weight: bold; !important;
 }
+div.responsive a.step-button, div.responsive button.step-button, div.responsive input.step-button {
+    font-weight: bold;
+}
 div.part-type-container.selected {
 border-radius: 1px !important;
 border-color: #eb1c24 !important;
