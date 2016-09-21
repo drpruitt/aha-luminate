@@ -1,5 +1,9 @@
+$brand-success: #5cb85c !default;
+
 $brand-primary: #de2427 !default;
 $brand-primary-darker: #890707;
+
+$brand-white: #ffffff;
 
 $link-color: $brand-primary !default;
 $link-hover-color: $brand-primary-darker !default;
@@ -25,7 +29,11 @@ $padding-large-horizontal: 24px !default;
 
 $border-radius-base: 0 !default;
 
-$btn-primary-color: #fff !default;
+$btn-success-color: $brand-white !default;
+$btn-success-bg: $brand-success !default;
+$btn-success-border: darken($btn-success-bg, 5%) !default;
+
+$btn-primary-color: $brand-white !default;
 $btn-primary-bg: $brand-primary !default;
 $btn-primary-border: darken($btn-primary-bg, 5%) !default;
 

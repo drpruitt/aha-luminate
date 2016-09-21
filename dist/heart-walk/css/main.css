@@ -133,6 +133,60 @@ a.btn:visited {
 a.btn, a.btn:link, a.btn:visited, a.btn:hover, a.btn:focus {
   text-decoration: none; }
 
+.btn-success, .btn-success:link, .btn-success:visited, .btn-success:hover, .btn-success:focus, .btn-success:active,
+a.btn-success,
+a.btn-success:link,
+a.btn-success:visited,
+a.btn-success:hover,
+a.btn-success:focus,
+a.btn-success:active {
+  color: #ffffff;
+  background-image: none;
+  border-width: 0; }
+
+.btn-success, .btn-success:link, .btn-success:visited,
+a.btn-success,
+a.btn-success:link,
+a.btn-success:visited {
+  background-color: #5cb85c;
+  border-color: #4cae4c; }
+
+.btn-success:hover, .btn-success:focus, .btn-success:active,
+a.btn-success:hover,
+a.btn-success:focus,
+a.btn-success:active {
+  background-color: #449d44; }
+
+.btn-success:hover,
+a.btn-success:hover {
+  background-position: 0 0;
+  border-color: #398439; }
+
+.btn-success:focus,
+a.btn-success:focus {
+  border-color: #255625; }
+
+.btn-success:active,
+a.btn-success:active {
+  border-color: #398439; }
+  .btn-success:active:hover, .btn-success:active:focus,
+  a.btn-success:active:hover,
+  a.btn-success:active:focus {
+    background-color: #398439;
+    border-color: #255625; }
+
+.btn-success[disabled]:hover, .btn-success[disabled]:focus,
+fieldset[disabled] .btn-success:hover,
+fieldset[disabled] .btn-success:focus,
+a.btn-success[disabled]:hover,
+a.btn-success[disabled]:focus,
+fieldset[disabled]
+a.btn-success:hover,
+fieldset[disabled]
+a.btn-success:focus {
+  background-color: #5cb85c;
+  border-color: #4cae4c; }
+
 .btn-primary, .btn-primary:link, .btn-primary:visited, .btn-primary:hover, .btn-primary:focus, .btn-primary:active,
 a.btn-primary,
 a.btn-primary:link,
@@ -140,7 +194,7 @@ a.btn-primary:visited,
 a.btn-primary:hover,
 a.btn-primary:focus,
 a.btn-primary:active {
-  color: #fff;
+  color: #ffffff;
   background-image: none;
   border-width: 0; }
 
