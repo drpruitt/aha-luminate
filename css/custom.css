@@ -116,7 +116,8 @@
 }
 #search_part_team div.ui-tabs-panel {
     border-top: 3px solid #e0e0e0 !important;
-    background-color:#fff; !important
+    background-color:#fff; !important;
+    border-radius: 1px;
     padding: 20px 5px 10px 10px;
     margin-top: -1px;
 }
