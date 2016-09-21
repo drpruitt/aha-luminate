@@ -205,7 +205,7 @@ border-top: 1px solid #e0e0e0  !important;
 }
 
 div.registration-page-container div.section-container {
-    color: #000;  !important;
+    color: #333;  !important;
     font-size:16px  !important;
 }
 
@@ -219,4 +219,19 @@ div#team_find_search_results_container div.list-component-cell span.list-compone
     display: inline-block  !important;
     font-size: 16px     !important;
     font-style: normal !important;
+}
+div.responsive button.next-step {
+    border: 1px solid #d9d6cf !important;
+    background-color: #d4e8f3  !important;
+    color: #fff;
+}
+div.part-type-container.selected {
+border-radius: 1px !important;
+border-color: #eb1c24 !important;
+
+}
+
+div.donation-level-row-decoration-container {
+    display: inline !important;
+    margin: 10px !important;
 }
