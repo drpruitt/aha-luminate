@@ -260,3 +260,6 @@ div.campaign-banner-container {
 div.registration-page-container div.section-footer {
 background-color: #fff !important;
 }
+div.responsive div.form-content {
+display: inline-block !important;
+}
