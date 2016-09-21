@@ -1,63 +1,51 @@
 .btn, 
-a.btn, 
-a.btn:link, 
-a.btn:visited {
-  @include button-size($padding-base-vertical, $padding-base-horizontal, $font-size-small);
-  border-radius: 0;
-  font-weight: 600;
-}
-
 a.btn {
+  @include button-size($padding-base-vertical, $padding-base-horizontal, 14px);
+  
   &, 
   &:link, 
   &:visited, 
   &:hover, 
   &:focus {
+    border-radius: 0;
+    border-width: 0;
+    font-family: inherit;
+    font-weight: 600;
     text-decoration: none;
   }
 }
 
 .btn-success, 
 a.btn-success {
-  @include button-variant($btn-success-color, $btn-success-bg, $btn-success-border);
+  @include button-variant($btn-success-color, $btn-success-bg, $btn-success-border, $btn-success-color, darken($btn-success-bg, 10%), darken($btn-success-border, 10%));
 }
 
 .btn-primary, 
 a.btn-primary {
-  @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
-  
-  &, 
-  &:link, 
-  &:visited {
-    background: linear-gradient(to bottom, $btn-primary-bg 0%, #c7191c 100%);
-  }
-  
-  &:hover, 
-  &:focus, 
-  &:active {
-    background: linear-gradient(to bottom, darken($btn-primary-bg, 10%) 0%, darken(#c7191c, 10%) 100%);
-  }
-  
-  &:active {
-    &:hover, 
-    &:focus {
-      background: linear-gradient(to bottom, darken($btn-primary-bg, 17%) 0%, darken(#c7191c, 17%) 100%);
-    }
-  }
+  @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border, $btn-primary-color, $btn-primary-darker-bg, $btn-primary-darker-border);
+}
+
+.btn-primary-inverted, 
+a.btn-primary-inverted {
+  @include button-variant($btn-primary-bg, transparent, $btn-primary-border, $btn-primary-color, $btn-primary-bg, $btn-primary-border);
 }
 
 .btn-md, 
-a.btn-md, 
-a.btn-md:link, 
-a.btn-md:visited {
-  @include button-size($padding-large-vertical, $padding-large-horizontal, 16px);
+a.btn-md {
+  &, 
+  &:link, 
+  &:visited {
+    @include button-size($padding-large-vertical, $padding-large-horizontal, 16px);
+  }
 }
 
 .btn-lg, 
-a.btn-lg, 
-a.btn-lg:link, 
-a.btn-lg:visited {
-  @include button-size($padding-large-horizontal, $padding-large-horizontal, 16px);
+a.btn-lg {
+  &, 
+  &:link, 
+  &:visited {
+    @include button-size($padding-large-horizontal, $padding-large-horizontal, 16px);
+  }
 }
 
 .btn--full-width {

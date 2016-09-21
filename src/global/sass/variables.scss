@@ -37,6 +37,10 @@ $btn-primary-color: $brand-white !default;
 $btn-primary-bg: $brand-primary !default;
 $btn-primary-border: darken($btn-primary-bg, 5%) !default;
 
+$btn-primary-darker-color: $brand-white !default;
+$btn-primary-darker-bg: $brand-primary-darker !default;
+$btn-primary-darker-border: $btn-primary-darker-bg !default;
+
 $input-border-radius: $border-radius-base !default;
 
 $screen-sm: 768px !default;
