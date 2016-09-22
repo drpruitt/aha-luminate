@@ -274,9 +274,7 @@ div.progress-bar-step-current div.progress-bar-step-number-container {
 }
 
 div.donation-level-input-container, div.generic-repeat-label-checkbox-container {
-    display: inline-block;
-    zoom: 1;
-    *display: inline;
+    display: inline !important;
     vertical-align: top !important;
     padding: 0 !important;
     font-size: 15px !important;
