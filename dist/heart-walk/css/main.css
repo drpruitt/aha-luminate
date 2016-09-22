@@ -374,7 +374,7 @@ footer .container {
   float: right; }
   .heart-hero__event-name hr {
     float: right;
-    border-top: 6px solid #890707;
+    border-top: 6px solid transparent;
     width: 20px;
     margin: 0 0 20px; }
   .heart-hero__event-name p {
