@@ -264,10 +264,6 @@ div.registration-page-container div.section-footer {
 background-color: #fff !important;
 }
 
-div.responsive div.form-content {
-display: inline-block !important;
-}
-
 
 div.progress-bar-step-current div.progress-bar-step-number-container {
     background: #dd1c21 !important;
@@ -282,14 +278,11 @@ div.donation-level-input-container, div.generic-repeat-label-checkbox-container 
 
 div.form-row div.form-content {
     display: inline !important;
+    font-size: 15px !important;
 }
 
 div.responsive a.next-step, div.responsive button.next-step {
  border: 1px solid #b5cbd9  !important;
 background-color: #d4e8f3  !important;
 color: #fff;
-}
-
-div.form-row {
-    font-size: 15px !important;
 }
