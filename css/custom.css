@@ -286,3 +286,8 @@ div.responsive a.next-step, div.responsive button.next-step {
 background-color: #d4e8f3  !important;
 color: #fff;
 }
+div.donation-form-container.responsive {
+    font-size: 15px !important;
+    padding: 0;
+    display: inline;
+}
