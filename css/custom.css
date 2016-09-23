@@ -312,6 +312,8 @@ div.donation-level-input-container, div.generic-repeat-label-checkbox-container 
 div.form-row div.form-content {
     display: inline !important;
     font-size: 15px !important;
+    padding-left: 10px;
+    padding-bottom: 5px;
 }
 
 div.responsive a.next-step, div.responsive button.next-step {
@@ -321,6 +323,6 @@ color: #fff;
 }
 div.donation-form-container.responsive {
     font-size: 15px !important;
-    padding: 0;
+    padding-left: 10px;
     display: inline;
 }
