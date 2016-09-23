@@ -155,11 +155,10 @@ div#find_participant input[type="text"], div#find_participant select {
 }
 div#find_participant div.list-component-body div.list-component-cell span.list-component-cell-title-text {
     font-weight: normal !important;
+    display: inline-block;
+    font-style: normal !important;
 }
 
-div#find_participant div.list-component-body div.list-component-cell span.list-component-cell-title-text {
-    display: inline-block;
-}
 div.progress-bar-step-current div.progress-bar-step-number-container {
     background: #dd1c21 !important;
 }
