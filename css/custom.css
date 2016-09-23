@@ -188,10 +188,10 @@ div.progress-bar-step-container {
     font-weight: bold !important;
 }
 div#find_participant button.search-button {
-background: url("../aha-luminate/css/search-button.png") no-repeat top left !important;
+/*background: url("../aha-luminate/css/search-button.png") no-repeat top left !important;
 width: 69px;
 height: 33px;
-background-color: #e51c22;
+background-color: #e51c22;*/
 border-color: #890707 !important;
 
 
