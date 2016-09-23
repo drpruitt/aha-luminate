@@ -186,6 +186,10 @@ div.progress-bar-step-container {
     *display: inline;
     font-weight: bold !important;
 }
+div#find_participant button.search-button {
+background: url("../images/content/pagebuilder/search-button.png") no-repeat top left !important;
+
+}
 div.responsive input[type="text"], div.responsive input[type="number"], div.responsive input[type="password"], div.responsive textarea {
 border: 1px solid #d9d6cf !important;
 border-radius: 1px !important;
