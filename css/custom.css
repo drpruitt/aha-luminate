@@ -147,11 +147,10 @@
     color: #eb1c24; !important;
 }
 #search_part_team ul li.ui-tabs-selected {
-/*background-color: #e6e6e6 !important;*/
 
-color: #878b8a !important;
+color: #de2427; /*#878b8a !important;*/
 background-color: #fff !important;
-border-left: 5px solid #eb1c24;
+border-left: 6px solid #de2427;
 }
 
 div#find_participant input[type="text"], div#find_participant select {
