@@ -150,9 +150,16 @@ div#find_participant input[type="text"], div#find_participant select {
     float: left;
 }
 #find_participant div.participant-find-search-results {
-	font-size: 16px !important;
+    font-size: 16px !important;
+    font-style: normal !important;
+}
+div#find_participant div.list-component-body div.list-component-cell span.list-component-cell-title-text {
+    font-weight: normal !important;
 }
 
+div#find_participant div.list-component-body div.list-component-cell span.list-component-cell-title-text {
+    display: inline-block;
+}
 div.progress-bar-step-current div.progress-bar-step-number-container {
     background: #dd1c21 !important;
 }
