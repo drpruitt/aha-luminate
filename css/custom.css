@@ -138,11 +138,13 @@
     background-color: #fff !important;
 /*    border-left: 4px solid #eb1c24;*/
 }
-
+#search_part_team ul li.ui-tabs-selected a {
+    color: #eb1c24; !important;
+}
 #search_part_team ul li.ui-tabs-selected {
 /*background-color: #e6e6e6 !important;*/
 border-radius: 1px; 
-color: #eb1c24 !important;
+/*color: #eb1c24 !important;*/
 background-color: #fff !important;
 border-left: 4px solid #eb1c24;
 }
