@@ -189,7 +189,7 @@ div.progress-bar-step-container {
     font-weight: bold !important;
 }
 div#find_participant button.search-button {
-background: url("../aha-luminate/dist/heart-walk/image/search-button.png") no-repeat top left !important;
+background: url("../aha-luminate/css/search-button.png") no-repeat top left !important;
 width: 69px;
 height: 33px;
 background-color: #e51c22;
