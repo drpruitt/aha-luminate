@@ -317,7 +317,10 @@ div.form-row div.form-content {
     padding-left: 10px;
     padding-bottom: 5px;
 }
-
+div#find_participant div.search-content {
+    padding: 10px;
+    font-size: 16px;
+}
 div.responsive a.next-step, div.responsive button.next-step {
  border: 1px solid #b5cbd9  !important;
 background-color: #d4e8f3  !important;
