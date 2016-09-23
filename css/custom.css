@@ -188,6 +188,11 @@ div.progress-bar-step-container {
 }
 div#find_participant button.search-button {
 background: url("../images/content/pagebuilder/search-button.png") no-repeat top left !important;
+width: 69px;
+height: 33px;
+background-color: #e51c22;
+border-color: #890707 !important;
+
 
 }
 div.responsive input[type="text"], div.responsive input[type="number"], div.responsive input[type="password"], div.responsive textarea {
