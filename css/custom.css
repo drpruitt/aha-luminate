@@ -117,7 +117,8 @@
 #search_part_team div.ui-tabs-panel {
     border-top: 3px solid #e0e0e0 !important;
     background-color:#fff; !important;
-    padding: 25px 10px 20px 20px;
+    display: block;
+    padding-bottom: 10px;
     font-size: 15px;
 }
 
