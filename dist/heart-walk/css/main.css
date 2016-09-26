@@ -317,7 +317,6 @@ a.btn-lg:visited:visited {
     border: 1px solid #c9cccc;
     border-right: 0;
     border-bottom: 0;
-    width: 50%;
     margin-bottom: 0; }
     .nav-tabs > li:last-child {
       border-right: 1px solid #c9cccc; }
@@ -1227,5 +1226,7 @@ footer .container {
 
 .heart-page-lists--company {
   margin: 0 0 30px; }
+  .heart-page-lists--company .nav-tabs > li {
+    width: 50%; }
   .heart-page-lists--company .heart-list-pagination {
     margin: 20px 0 0; }

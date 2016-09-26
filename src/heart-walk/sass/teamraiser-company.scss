@@ -5,6 +5,12 @@
 .heart-page-lists--company {
   margin: 0 0 30px;
   
+  .nav-tabs {
+    > li {
+      width: 50%;
+    }
+  }
+  
   .heart-list-pagination {
     margin: 20px 0 0;
   }
