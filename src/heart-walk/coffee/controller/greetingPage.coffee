@@ -14,9 +14,10 @@ angular.module 'ahaLuminateControllers'
         error: () ->
           setTopParticipants []
         success: (response) ->
-          topParticipants = response.getParticipantsResponse.participant || []
+          topParticipants = response.getParticipantsResponse?.participant or []
           topParticipants = [topParticipants] if not angular.isArray topParticipants
-          # TODO: remove participants with null names
+          # TODO: don't include participants with null names
+          # TODO: don't include participants with $0 raised
           setTopParticipants topParticipants
       
       $scope.topTeams = {}
@@ -28,8 +29,9 @@ angular.module 'ahaLuminateControllers'
         error: () ->
           setTopTeams []
         success: (response) ->
-          topTeams = response.getTeamSearchByInfoResponse.team || []
+          topTeams = response.getTeamSearchByInfoResponse?.team or []
           topTeams = [topTeams] if not angular.isArray topTeams
+          # TODO: don't include teams with $0 raised
           setTopTeams topTeams
       
       $scope.topCompanies = {}
@@ -41,7 +43,7 @@ angular.module 'ahaLuminateControllers'
         error: () ->
           setTopCompanies []
         success: (response) ->
-          companyItems = response.getCompanyListResponse.companyItem || []
+          companyItems = response.getCompanyListResponse?.companyItem or []
           companyItems = [companyItems] if not angular.isArray companyItems
           rootAncestorCompanyIds = []
           angular.forEach companyItems, (companyItem) ->
@@ -52,11 +54,12 @@ angular.module 'ahaLuminateControllers'
             error: () ->
               setTopCompanies []
             success: (response) ->
-              companies = response.getCompaniesResponse.company || []
+              companies = response.getCompaniesResponse?.company or []
               companies = [companies] if not angular.isArray companies
               topCompanies = []
               angular.forEach companies, (company) ->
                 if rootAncestorCompanyIds.indexOf(company.companyId) > -1
+                  # TODO: don't include companies with $0 raised
                   topCompanies.push company
               topCompanies.sort (a, b) ->
                 Number(b.amountRaised) - Number(a.amountRaised)

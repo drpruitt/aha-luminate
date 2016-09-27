@@ -35,7 +35,10 @@ div.responsive a,
 div.responsive a {
   &, 
   &:link, 
-  &:visited {
+  &:visited, 
+  &:hover, 
+  &:focus, 
+  &:active {
     color: $link-color;
   }
 }

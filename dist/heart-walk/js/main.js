@@ -581,8 +581,8 @@
           return setTopParticipants([]);
         },
         success: function(response) {
-          var topParticipants;
-          topParticipants = response.getParticipantsResponse.participant || [];
+          var ref, topParticipants;
+          topParticipants = ((ref = response.getParticipantsResponse) != null ? ref.participant : void 0) || [];
           if (!angular.isArray(topParticipants)) {
             topParticipants = [topParticipants];
           }
@@ -601,8 +601,8 @@
           return setTopTeams([]);
         },
         success: function(response) {
-          var topTeams;
-          topTeams = response.getTeamSearchByInfoResponse.team || [];
+          var ref, topTeams;
+          topTeams = ((ref = response.getTeamSearchByInfoResponse) != null ? ref.team : void 0) || [];
           if (!angular.isArray(topTeams)) {
             topTeams = [topTeams];
           }
@@ -621,8 +621,8 @@
           return setTopCompanies([]);
         },
         success: function(response) {
-          var companyItems, rootAncestorCompanyIds;
-          companyItems = response.getCompanyListResponse.companyItem || [];
+          var companyItems, ref, rootAncestorCompanyIds;
+          companyItems = ((ref = response.getCompanyListResponse) != null ? ref.companyItem : void 0) || [];
           if (!angular.isArray(companyItems)) {
             companyItems = [companyItems];
           }
@@ -637,8 +637,8 @@
               return setTopCompanies([]);
             },
             success: function(response) {
-              var companies, topCompanies;
-              companies = response.getCompaniesResponse.company || [];
+              var companies, ref1, topCompanies;
+              companies = ((ref1 = response.getCompaniesResponse) != null ? ref1.company : void 0) || [];
               if (!angular.isArray(companies)) {
                 companies = [companies];
               }

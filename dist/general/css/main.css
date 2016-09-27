@@ -24,16 +24,25 @@ div.responsive div.ErrorMessage.page-error > span.field-error-indicator {
 /* ***** */
 /* links */
 /* ***** */
-a, a:link, a:visited,
+a, a:link, a:visited, a:hover, a:focus, a:active,
 #login-div-content a,
 #login-div-content a:link,
 #login-div-content a:visited,
+#login-div-content a:hover,
+#login-div-content a:focus,
+#login-div-content a:active,
 div.responsive a,
 div.responsive a:link,
 div.responsive a:visited,
+div.responsive a:hover,
+div.responsive a:focus,
+div.responsive a:active,
 div.responsive a,
 div.responsive a:link,
-div.responsive a:visited {
+div.responsive a:visited,
+div.responsive a:hover,
+div.responsive a:focus,
+div.responsive a:active {
   color: #de2427; }
 
 /* ******************* */
@@ -99,6 +108,9 @@ body {
 a, a:link, a:visited, a:hover, a:focus {
   font-weight: 600;
   text-decoration: underline; }
+
+a {
+  cursor: pointer; }
 
 .main {
   background: #eeeeee; }
