@@ -1,7 +1,7 @@
 <ul class="list-group">
   <li class="list-group-item" ng-repeat="company in companies | limitTo:maxSize">
     <a ng-href="TR?fr_id={{company.eventId}}&amp;pg=company&amp;company_id={{company.companyId}}">
-      {{company.companyName}}
+      <span ng-bind-html="company.companyName"></span>
     </a><br>
     {{company.amountRaised / 100 | currency}}
   </li>

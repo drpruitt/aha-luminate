@@ -1,7 +1,7 @@
 <ul class="list-group">
   <li class="list-group-item" ng-repeat="team in teams | limitTo:maxSize">
     <a ng-href="TR?fr_id={{team.EventId}}&amp;pg=team&amp;team_id={{team.id}}">
-      {{team.name}}
+      <span ng-bind-html="team.name"></span>
     </a><br>
     {{team.amountRaised / 100 | currency}}
   </li>

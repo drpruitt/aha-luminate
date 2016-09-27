@@ -24,7 +24,7 @@
     </div>
     <div class="heart-team-member-list__row" ng-repeat="teamMember in teamMembers">
       <div class="heart-team-member-list__column heart-team-member-list__column--name">
-        <a ng-href="TR?fr_id={{teamMember.eventId}}&amp;pg=personal&amp;px={{teamMember.consId}}">{{teamMember.name.first}} {{teamMember.name.last}}</a>
+        <a ng-href="TR?fr_id={{teamMember.eventId}}&amp;pg=personal&amp;px={{teamMember.consId}}"><span ng-bind-html="teamMember.name.first"></span> <span ng-bind-html="teamMember.name.last"></span></a>
         <div class="visible-xs visible-md" ng-if="teamMember.aTeamCaptain == 'true'">Team Captain</div>
       </div>
       <div class="heart-team-member-list__column heart-team-member-list__column--captain hidden-xs hidden-md">
