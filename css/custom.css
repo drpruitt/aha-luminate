@@ -83,11 +83,17 @@
   transition: all 0.3s ease 0s;
 }
 .registration-options__item {
-  /*  padding: 10px 15px;
+    padding: 10px 15px;
     margin-bottom: 20px;
     background-color: #f6f6f6;
-    border: 1px solid #e3e3e3;*/
+    border: 1px solid #e3e3e3;
     transition: all .3s;
+}
+.registration-options__item:hover {
+    background-color: #eee;
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+transform: scale(1.1);
 }
 .registration-options__description {
     color: #58595b;
