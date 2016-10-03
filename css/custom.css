@@ -219,16 +219,16 @@ border-radius: 1px !important;
 box-shadow: none !important;
 }
 
-div.responsive button.action-button {
-    border: 1px solid #b5cbd9  !important;
+/*div.responsive button.action-button {
+    border: 1px solid #b5cbd9  !important; */
     /*background-color: #d4e8f3  !important;*/
-    background-image: -moz-linear-gradient(top, #e51c22, #cd181d)  !important;
+  /*  background-image: -moz-linear-gradient(top, #e51c22, #cd181d)  !important;
     background: -webkit-gradient(linear, left top, left bottom, from(#e51c22), to(#cd181d));
     background-image: -ms-linear-gradient(top, #E51C22 0%, #CD181D 100%);
     color: #fff;
     background-color: #890707  !important;
     border-color: #890707  !important;
-}
+}*/
 
 div.responsive a.step-button:hover, div.responsive button.step-button:hover, div.responsive input.step-button:hover {
     background-image: -moz-linear-gradient(top, #e51c22, #cd181d)  !important;
