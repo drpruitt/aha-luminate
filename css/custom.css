@@ -301,6 +301,13 @@ border-color: #eb1c24 !important;
 
 }
 
+div.tr-page-container div.section-sub-header {
+    background-color: none !important;
+    border-top-style: none !important;
+    border-top-width: none !important;
+    border-top-color: none !important;
+}
+
 div.donation-level-row-decoration-container {
     display: inline !important;
     margin: 10px !important;
