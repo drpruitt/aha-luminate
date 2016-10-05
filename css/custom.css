@@ -5,15 +5,7 @@
 #headerWrapper .container .row {
 	margin:0;
 }
-.heart-hero__mask{
-	background-image: url(../image/hero-greeting.jpg);
-    background: #ED8B00; /* For browsers that do not support gradients */    
-    background: -webkit-linear-gradient(left top, #ED8B00, #F1B828); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom right, #ED8B00, #F1B828); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom right, #ED8B00, #F1B828); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to bottom right, #ED8B00, #F1B828); /* Standard syntax (must be last) */
 
-}
 .ahalogo {
 	border-right: 1px solid #b0b0b0;
 	padding: 3px;
