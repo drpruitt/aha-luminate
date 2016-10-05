@@ -642,10 +642,11 @@ body:not(.donation-form-two-columns).donation-form-right [class^='column__row'] 
 }
 .donation label {
 	color: #4a4f53;
-	display: block;
+	display: inline-block;
 	/*font-size: 0.88889rem;*/
-  line-height: 1.33333rem;
+	line-height: 1.33333rem;
 	text-transform: uppercase;
+	margin:4px 5px;
 }
 label + div.donation-level-expanded-label, div.donation-level-user-entered + div.donation-level-expanded-label {
 	margin-left: 0px;
