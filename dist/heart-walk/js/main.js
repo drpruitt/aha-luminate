@@ -488,18 +488,22 @@
             }
           },
           success: function(response) {
-            var companyParticipants, ref, totalNumberParticipants;
+            var companyParticipants, participants, ref, totalNumberParticipants;
             setCompanyParticipants();
-            companyParticipants = (ref = response.getParticipantsResponse) != null ? ref.participant : void 0;
-            if (companyParticipants) {
-              if (!angular.isArray(companyParticipants)) {
-                companyParticipants = [companyParticipants];
+            participants = (ref = response.getParticipantsResponse) != null ? ref.participant : void 0;
+            if (participants) {
+              if (!angular.isArray(participants)) {
+                participants = [participants];
               }
-              angular.forEach(companyParticipants, function(companyParticipant) {
-                var donationUrl;
-                donationUrl = companyParticipant.donationUrl;
-                if (donationUrl) {
-                  return companyParticipant.donationUrl = donationUrl.split('/site/')[1];
+              companyParticipants = [];
+              angular.forEach(participants, function(participant) {
+                var donationUrl, ref1;
+                if ((ref1 = participant.name) != null ? ref1.first : void 0) {
+                  donationUrl = participant.donationUrl;
+                  if (donationUrl) {
+                    participant.donationUrl = donationUrl.split('/site/')[1];
+                  }
+                  return companyParticipants.push(participant);
                 }
               });
               totalNumberParticipants = response.getParticipantsResponse.totalNumberResults;
@@ -534,19 +538,23 @@
             }
           },
           success: function(response) {
-            var companyParticipants, ref1, totalNumberParticipants;
-            companyParticipants = (ref1 = response.getParticipantsResponse) != null ? ref1.participant : void 0;
-            if (!companyParticipants) {
+            var companyParticipants, participants, ref1, totalNumberParticipants;
+            participants = (ref1 = response.getParticipantsResponse) != null ? ref1.participant : void 0;
+            if (!participants) {
               addChildCompanyParticipants(childCompanyIndex, childCompanyId, childCompanyName);
             } else {
-              if (!angular.isArray(companyParticipants)) {
-                companyParticipants = [companyParticipants];
+              if (!angular.isArray(participants)) {
+                participants = [participants];
               }
-              angular.forEach(companyParticipants, function(companyParticipant) {
-                var donationUrl;
-                donationUrl = companyParticipant.donationUrl;
-                if (donationUrl) {
-                  return companyParticipant.donationUrl = donationUrl.split('/site/')[1];
+              companyParticipants = [];
+              angular.forEach(participants, function(participant) {
+                var donationUrl, ref2;
+                if ((ref2 = participant.name) != null ? ref2.first : void 0) {
+                  donationUrl = participant.donationUrl;
+                  if (donationUrl) {
+                    participant.donationUrl = donationUrl.split('/site/')[1];
+                  }
+                  return companyParticipants.push(participant);
                 }
               });
               totalNumberParticipants = response.getParticipantsResponse.totalNumberResults;

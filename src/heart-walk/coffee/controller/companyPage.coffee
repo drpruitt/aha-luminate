@@ -165,14 +165,16 @@ angular.module 'ahaLuminateControllers'
               setCompanyNumParticipants numParticipants
           success: (response) ->
             setCompanyParticipants()
-            companyParticipants = response.getParticipantsResponse?.participant
-            if companyParticipants
-              # TODO: only include participants with a first name
-              companyParticipants = [companyParticipants] if not angular.isArray companyParticipants
-              angular.forEach companyParticipants, (companyParticipant) ->
-                donationUrl = companyParticipant.donationUrl
-                if donationUrl
-                  companyParticipant.donationUrl = donationUrl.split('/site/')[1]
+            participants = response.getParticipantsResponse?.participant
+            if participants
+              participants = [participants] if not angular.isArray participants
+              companyParticipants = []
+              angular.forEach participants, (participant) ->
+                if participant.name?.first
+                  donationUrl = participant.donationUrl
+                  if donationUrl
+                    participant.donationUrl = donationUrl.split('/site/')[1]
+                  companyParticipants.push participant
               totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
               setCompanyParticipants companyParticipants, totalNumberParticipants
               numParticipants += Number totalNumberParticipants
@@ -197,16 +199,18 @@ angular.module 'ahaLuminateControllers'
             if numCompaniesParticipantRequestComplete is numCompanies
               setCompanyNumParticipants numParticipants
           success: (response) ->
-            companyParticipants = response.getParticipantsResponse?.participant
-            if not companyParticipants
+            participants = response.getParticipantsResponse?.participant
+            if not participants
               addChildCompanyParticipants childCompanyIndex, childCompanyId, childCompanyName
             else
-              # TODO: only include participants with a first name
-              companyParticipants = [companyParticipants] if not angular.isArray companyParticipants
-              angular.forEach companyParticipants, (companyParticipant) ->
-                donationUrl = companyParticipant.donationUrl
-                if donationUrl
-                  companyParticipant.donationUrl = donationUrl.split('/site/')[1]
+              participants = [participants] if not angular.isArray participants
+              companyParticipants = []
+              angular.forEach participants, (participant) ->
+                if participant.name?.first
+                  donationUrl = participant.donationUrl
+                  if donationUrl
+                    participant.donationUrl = donationUrl.split('/site/')[1]
+                  companyParticipants.push participant
               totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
               addChildCompanyParticipants childCompanyIndex, childCompanyId, childCompanyName, companyParticipants, totalNumberParticipants
               numParticipants += Number totalNumberParticipants
