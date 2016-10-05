@@ -622,12 +622,6 @@ body:not(.donation-form-two-columns).donation-form-right [class^='column__row'] 
 
 .donation-level-input-container,
 .donation-levels {
-  -webkit-align-content: space-around;
-      -ms-flex-line-pack: distribute;
-          align-content: space-around;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -1035,7 +1029,7 @@ span.field-required {
 .donation label {
   color: #4a4f53;
   display: block;
-  font-size: 0.88889rem;
+  /*font-size: 0.88889rem;*/
   line-height: 1.33333rem;
   text-transform: uppercase;
 }
