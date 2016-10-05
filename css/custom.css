@@ -5,6 +5,10 @@
 #headerWrapper .container .row {
 	margin:0;
 }
+.heart-hero__mask{
+	background: #ed8a00 !important;
+background: rgba(237,138,0,1) !important;
+}
 .ahalogo {
 	border-right: 1px solid #b0b0b0;
 	padding: 3px;
