@@ -270,7 +270,7 @@
   });
 
   angular.module('ahaLuminateControllers').controller('CompanyPageCtrl', [
-    '$scope', '$location', 'TeamraiserCompanyService', 'TeamraiserTeamService', 'TeamraiserParticipantService', function($scope, $location, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService) {
+    '$scope', '$location', '$filter', 'TeamraiserCompanyService', 'TeamraiserTeamService', 'TeamraiserParticipantService', function($scope, $location, $filter, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService) {
       var $childCompanyLinks, $defaultCompanyHierarchy, $defaultCompanySummary, addChildCompanyParticipants, addChildCompanyTeams, companyGiftCount, numCompanies, numCompaniesParticipantRequestComplete, numCompaniesTeamRequestComplete, numParticipants, numTeams, setCompanyFundraisingProgress, setCompanyNumParticipants, setCompanyNumTeams, setCompanyParticipants, setCompanyTeams;
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0];
       $defaultCompanySummary = angular.element('.js--default-company-summary');
@@ -282,8 +282,12 @@
         numDonations: companyGiftCount
       };
       setCompanyFundraisingProgress = function(amountRaised, goal) {
-        $scope.companyProgress.amountRaised = amountRaised || '0';
-        $scope.companyProgress.goal = goal || '0';
+        $scope.companyProgress.amountRaised = amountRaised || 0;
+        $scope.companyProgress.amountRaised = Number($scope.companyProgress.amountRaised);
+        $scope.companyProgress.amountRaisedFormatted = $filter('currency')($scope.companyProgress.amountRaised / 100, '$').replace('.00', '');
+        $scope.companyProgress.goal = goal || 0;
+        $scope.companyProgress.goal = Number($scope.companyProgress.goal);
+        $scope.companyProgress.goalFormatted = $filter('currency')($scope.companyProgress.goal / 100, '$').replace('.00', '');
         if (!$scope.$$phase) {
           return $scope.$apply();
         }
@@ -374,6 +378,8 @@
               }
               angular.forEach(companyTeams, function(companyTeam) {
                 var joinTeamURL;
+                companyTeam.amountRaised = Number(companyTeam.amountRaised);
+                companyTeam.amountRaisedFormatted = $filter('currency')(companyTeam.amountRaised / 100, '$').replace('.00', '');
                 joinTeamURL = companyTeam.joinTeamURL;
                 if (joinTeamURL) {
                   return companyTeam.joinTeamURL = joinTeamURL.split('/site/')[1];
@@ -421,6 +427,8 @@
               }
               angular.forEach(companyTeams, function(companyTeam) {
                 var joinTeamURL;
+                companyTeam.amountRaised = Number(companyTeam.amountRaised);
+                companyTeam.amountRaisedFormatted = $filter('currency')(companyTeam.amountRaised / 100, '$').replace('.00', '');
                 joinTeamURL = companyTeam.joinTeamURL;
                 if (joinTeamURL) {
                   return companyTeam.joinTeamURL = joinTeamURL.split('/site/')[1];
@@ -499,6 +507,8 @@
               angular.forEach(participants, function(participant) {
                 var donationUrl, ref1;
                 if ((ref1 = participant.name) != null ? ref1.first : void 0) {
+                  participant.amountRaised = Number(participant.amountRaised);
+                  participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace('.00', '');
                   donationUrl = participant.donationUrl;
                   if (donationUrl) {
                     participant.donationUrl = donationUrl.split('/site/')[1];
@@ -550,6 +560,8 @@
               angular.forEach(participants, function(participant) {
                 var donationUrl, ref2;
                 if ((ref2 = participant.name) != null ? ref2.first : void 0) {
+                  participant.amountRaised = Number(participant.amountRaised);
+                  participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace('.00', '');
                   donationUrl = participant.donationUrl;
                   if (donationUrl) {
                     participant.donationUrl = donationUrl.split('/site/')[1];

@@ -26,7 +26,7 @@
         </div>
       </div>
       <div class="heart-company-participant-list__column heart-company-participant-list__column--amount">
-        <strong>{{participant.amountRaised / 100 | currency}}</strong>
+        <strong>{{participant.amountRaisedFormatted}}</strong>
       </div>
       <div class="heart-company-participant-list__column heart-company-participant-list__column--cta hidden-xs">
         <a class="btn btn-lg btn-primary" ng-href="{{participant.donationUrl}}" ng-if="participant.donationUrl">Donate</a>

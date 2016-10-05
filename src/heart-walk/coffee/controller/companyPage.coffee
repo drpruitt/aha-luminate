@@ -2,10 +2,11 @@ angular.module 'ahaLuminateControllers'
   .controller 'CompanyPageCtrl', [
     '$scope'
     '$location'
+    '$filter'
     'TeamraiserCompanyService'
     'TeamraiserTeamService'
     'TeamraiserParticipantService'
-    ($scope, $location, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService) ->
+    ($scope, $location, $filter, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService) ->
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0]
       
       $defaultCompanySummary = angular.element '.js--default-company-summary'
@@ -16,8 +17,12 @@ angular.module 'ahaLuminateControllers'
         numDonations: companyGiftCount
       
       setCompanyFundraisingProgress = (amountRaised, goal) ->
-        $scope.companyProgress.amountRaised = amountRaised or '0'
-        $scope.companyProgress.goal = goal or '0'
+        $scope.companyProgress.amountRaised = amountRaised or 0
+        $scope.companyProgress.amountRaised = Number $scope.companyProgress.amountRaised
+        $scope.companyProgress.amountRaisedFormatted = $filter('currency')($scope.companyProgress.amountRaised / 100, '$').replace '.00', ''
+        $scope.companyProgress.goal = goal or 0
+        $scope.companyProgress.goal = Number $scope.companyProgress.goal
+        $scope.companyProgress.goalFormatted = $filter('currency')($scope.companyProgress.goal / 100, '$').replace '.00', ''
         if not $scope.$$phase
           $scope.$apply()
       TeamraiserCompanyService.getCompanies 'company_id=' + $scope.companyId, 
@@ -83,6 +88,8 @@ angular.module 'ahaLuminateControllers'
             if companyTeams
               companyTeams = [companyTeams] if not angular.isArray companyTeams
               angular.forEach companyTeams, (companyTeam) ->
+                companyTeam.amountRaised = Number companyTeam.amountRaised
+                companyTeam.amountRaisedFormatted = $filter('currency')(companyTeam.amountRaised / 100, '$').replace '.00', ''
                 joinTeamURL = companyTeam.joinTeamURL
                 if joinTeamURL
                   companyTeam.joinTeamURL = joinTeamURL.split('/site/')[1]
@@ -116,6 +123,8 @@ angular.module 'ahaLuminateControllers'
             else
               companyTeams = [companyTeams] if not angular.isArray companyTeams
               angular.forEach companyTeams, (companyTeam) ->
+                companyTeam.amountRaised = Number companyTeam.amountRaised
+                companyTeam.amountRaisedFormatted = $filter('currency')(companyTeam.amountRaised / 100, '$').replace '.00', ''
                 joinTeamURL = companyTeam.joinTeamURL
                 if joinTeamURL
                   companyTeam.joinTeamURL = joinTeamURL.split('/site/')[1]
@@ -171,6 +180,8 @@ angular.module 'ahaLuminateControllers'
               companyParticipants = []
               angular.forEach participants, (participant) ->
                 if participant.name?.first
+                  participant.amountRaised = Number participant.amountRaised
+                  participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
                   donationUrl = participant.donationUrl
                   if donationUrl
                     participant.donationUrl = donationUrl.split('/site/')[1]
@@ -207,6 +218,8 @@ angular.module 'ahaLuminateControllers'
               companyParticipants = []
               angular.forEach participants, (participant) ->
                 if participant.name?.first
+                  participant.amountRaised = Number participant.amountRaised
+                  participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
                   donationUrl = participant.donationUrl
                   if donationUrl
                     participant.donationUrl = donationUrl.split('/site/')[1]
