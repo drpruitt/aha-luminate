@@ -5,6 +5,13 @@
     });
     if (jQuery('body').hasClass('donation') && !jQuery('body').hasClass('donation-thank-you')) {
     //Change donation level active style
+    $radioCheckbox = jQuery('body').find('input[type="checkbox"], input[type="radio"]');
+    $radioCheckbox.replaceCheckRadio();
+    setActiveDonationLevel();
+  }
+  });
+})(jQuery);
+
 function setActiveDonationLevel() {
   var $donationLevels = jQuery('body').find('.donation-levels');
   var $donationLevelsRadio = $donationLevels.find('input[type="radio"]');
@@ -62,9 +69,3 @@ jQuery.fn.replaceCheckRadio = function () {
 
   return $inputs;
 };
-$radioCheckbox = jQuery('body').find('input[type="checkbox"], input[type="radio"]');
-$radioCheckbox.replaceCheckRadio();
-setActiveDonationLevel();
-  }
-  });
-})(jQuery);
