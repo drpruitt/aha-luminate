@@ -1039,3 +1039,6 @@ span.field-required {
   line-height: 1.33333rem;
   text-transform: uppercase;
 }
+label + div.donation-level-expanded-label, div.donation-level-user-entered + div.donation-level-expanded-label {
+  margin-left: 0px;
+}
