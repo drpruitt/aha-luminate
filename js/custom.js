@@ -3,9 +3,9 @@
     $('.aha-mobile-header button.btn').click(function() {
       $('.aha-mobile-header').toggleClass("open");
     });
-   	if (location.href.indexOf("Donation2") > 0) {
-  		jQuery('body').addClass("registration donation");
-    }
+   	//if (location.href.indexOf("Donation2") > 0) {
+  	//	jQuery('body').addClass("registration donation");
+    //}
     if (jQuery('body').hasClass('donation') && !jQuery('body').hasClass('donation-thank-you')) {
       //Change donation level active style
       //$radioCheckbox = jQuery('body').find('input[type="checkbox"], input[type="radio"]');
