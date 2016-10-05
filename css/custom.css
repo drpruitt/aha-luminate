@@ -581,6 +581,16 @@ body:not(.donation-form-two-columns).donation-form-right [class^='column__row'] 
 	width: 25%;
 }
  @media (max-width: 599px) {
+
+.ahalogo {
+width: 65%;
+}
+
+.hwlogo {
+margin-top: 10px;
+width: 50%;
+}	 
+	 
 .donation-level-container {
 	width: 50%;
 }
