@@ -2,8 +2,9 @@ angular.module 'ahaLuminateControllers'
   .controller 'TeamPageCtrl', [
     '$scope'
     '$location'
+    '$filter'
     'TeamraiserParticipantService'
-    ($scope, $location, TeamraiserParticipantService) ->
+    ($scope, $location, $filter, TeamraiserParticipantService) ->
       $scope.teamId = $location.absUrl().split('team_id=')[1].split('&')[0]
       
       $scope.teamMembers = 
@@ -16,6 +17,8 @@ angular.module 'ahaLuminateControllers'
       if teamGiftsAmount is ''
         teamGiftsAmount = '0'
       $scope.teamMembers.teamGiftsAmount = teamGiftsAmount.replace('$', '').replace(/,/g, '') * 100
+      $scope.teamMembers.teamGiftsAmount = Number $scope.teamMembers.teamGiftsAmount
+      $scope.teamMembers.teamGiftsAmountFormatted = $filter('currency')($scope.teamMembers.teamGiftsAmount / 100, '$').replace '.00', ''
       
       setTeamMembers = (teamMembers, totalNumber) ->
         $scope.teamMembers.members = teamMembers or []
@@ -37,6 +40,8 @@ angular.module 'ahaLuminateControllers'
               teamMembers = []
               angular.forEach teamParticipants, (teamParticipant) ->
                 if teamParticipant.name?.first
+                  teamParticipant.amountRaised = Number teamParticipant.amountRaised
+                  teamParticipant.amountRaisedFormatted = $filter('currency')(teamParticipant.amountRaised / 100, '$').replace '.00', ''
                   donationUrl = teamParticipant.donationUrl
                   if donationUrl
                     teamParticipant.donationUrl = donationUrl.split('/site/')[1]

@@ -228,7 +228,8 @@
       scope: {
         teamMembers: '=',
         teamGiftsLabel: '=',
-        teamGiftsAmount: '='
+        teamGiftsAmount: '=',
+        teamGiftsAmountFormatted: '='
       }
     };
   });
@@ -690,7 +691,7 @@
   angular.module('ahaLuminateControllers').controller('PersonalPageCtrl', ['$scope', function($scope) {}]);
 
   angular.module('ahaLuminateControllers').controller('TeamPageCtrl', [
-    '$scope', '$location', 'TeamraiserParticipantService', function($scope, $location, TeamraiserParticipantService) {
+    '$scope', '$location', '$filter', 'TeamraiserParticipantService', function($scope, $location, $filter, TeamraiserParticipantService) {
       var $defaultTeamRoster, $teamGiftsRow, setTeamMembers, teamGiftsAmount;
       $scope.teamId = $location.absUrl().split('team_id=')[1].split('&')[0];
       $scope.teamMembers = {
@@ -704,6 +705,8 @@
         teamGiftsAmount = '0';
       }
       $scope.teamMembers.teamGiftsAmount = teamGiftsAmount.replace('$', '').replace(/,/g, '') * 100;
+      $scope.teamMembers.teamGiftsAmount = Number($scope.teamMembers.teamGiftsAmount);
+      $scope.teamMembers.teamGiftsAmountFormatted = $filter('currency')($scope.teamMembers.teamGiftsAmount / 100, '$').replace('.00', '');
       setTeamMembers = function(teamMembers, totalNumber) {
         $scope.teamMembers.members = teamMembers || [];
         $scope.teamMembers.totalNumber = totalNumber || 0;
@@ -730,6 +733,8 @@
               angular.forEach(teamParticipants, function(teamParticipant) {
                 var donationUrl, ref1;
                 if ((ref1 = teamParticipant.name) != null ? ref1.first : void 0) {
+                  teamParticipant.amountRaised = Number(teamParticipant.amountRaised);
+                  teamParticipant.amountRaisedFormatted = $filter('currency')(teamParticipant.amountRaised / 100, '$').replace('.00', '');
                   donationUrl = teamParticipant.donationUrl;
                   if (donationUrl) {
                     teamParticipant.donationUrl = donationUrl.split('/site/')[1];

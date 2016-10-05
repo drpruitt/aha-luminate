@@ -18,7 +18,7 @@
       </div>
       <div class="heart-team-member-list__column heart-team-member-list__column--captain hidden-xs hidden-md"></div>
       <div class="heart-team-member-list__column heart-team-member-list__column--amount">
-        <strong>{{teamGiftsAmount / 100 | currency}}</strong>
+        <strong>{{teamGiftsAmountFormatted}}</strong>
       </div>
       <div class="heart-team-member-list__column heart-team-member-list__column--cta hidden-xs"></div>
     </div>
@@ -33,7 +33,7 @@
         </div>
       </div>
       <div class="heart-team-member-list__column heart-team-member-list__column--amount">
-        <strong>{{teamMember.amountRaised / 100 | currency}}</strong>
+        <strong>{{teamMember.amountRaisedFormatted}}</strong>
       </div>
       <div class="heart-team-member-list__column heart-team-member-list__column--cta hidden-xs">
         <a class="btn btn-lg btn-primary" ng-href="{{teamMember.donationUrl}}" ng-if="teamMember.donationUrl">Donate</a>
