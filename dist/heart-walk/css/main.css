@@ -358,6 +358,37 @@ a.btn-lg:visited:visited {
         color: #de2427;
         padding: 24px 32px 24px 27px; }
 
+.tooltip.in {
+  opacity: 1; }
+
+.tooltip-inner {
+  background-color: #de2427;
+  color: #ffffff; }
+
+.tooltip.top .tooltip-arrow {
+  border-top-color: #de2427; }
+
+.tooltip.top-left .tooltip-arrow {
+  border-top-color: #de2427; }
+
+.tooltip.top-right .tooltip-arrow {
+  border-top-color: #de2427; }
+
+.tooltip.right .tooltip-arrow {
+  border-right-color: #de2427; }
+
+.tooltip.left .tooltip-arrow {
+  border-left-color: #de2427; }
+
+.tooltip.bottom .tooltip-arrow {
+  border-bottom-color: #de2427; }
+
+.tooltip.bottom-left .tooltip-arrow {
+  border-bottom-color: #de2427; }
+
+.tooltip.bottom-right .tooltip-arrow {
+  border-bottom-color: #de2427; }
+
 footer .container {
   padding: 0 15px; }
 
