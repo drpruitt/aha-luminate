@@ -6,12 +6,24 @@ a.btn {
   &:link, 
   &:visited, 
   &:hover, 
-  &:focus {
+  &:focus, 
+  &:active {
     border-radius: 0;
     border-width: 0;
     font-family: inherit;
     font-weight: 600;
     text-decoration: none;
+  }
+}
+
+span.btn {
+  &, 
+  &:link, 
+  &:visited, 
+  &:hover, 
+  &:focus, 
+  &:active {
+    cursor: default;
   }
 }
 
@@ -23,6 +35,18 @@ a.btn-success {
 .btn-primary, 
 a.btn-primary {
   @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border, $btn-primary-color, $btn-primary-darker-bg, $btn-primary-darker-border);
+}
+
+span.btn-primary {
+  &, 
+  &:link, 
+  &:visited, 
+  &:hover, 
+  &:focus, 
+  &:active {
+    background-color: $btn-primary-bg;
+    border-color: $btn-primary-border;
+  }
 }
 
 .btn-primary-inverted, 

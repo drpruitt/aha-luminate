@@ -140,17 +140,21 @@ a.btn:visited {
   padding: 12px 24px;
   font-size: 14px; }
 
-.btn, .btn:link, .btn:visited, .btn:hover, .btn:focus,
+.btn, .btn:link, .btn:visited, .btn:hover, .btn:focus, .btn:active,
 a.btn,
 a.btn:link,
 a.btn:visited,
 a.btn:hover,
-a.btn:focus {
+a.btn:focus,
+a.btn:active {
   border-radius: 0;
   border-width: 0;
   font-family: inherit;
   font-weight: 600;
   text-decoration: none; }
+
+span.btn, span.btn:link, span.btn:visited, span.btn:hover, span.btn:focus, span.btn:active {
+  cursor: default; }
 
 .btn-success, .btn-success:link, .btn-success:visited, .btn-success:hover, .btn-success:focus, .btn-success:active,
 a.btn-success,
@@ -243,6 +247,10 @@ fieldset[disabled]
 a.btn-primary:hover,
 fieldset[disabled]
 a.btn-primary:focus {
+  background-color: #de2427;
+  border-color: #ca1e21; }
+
+span.btn-primary, span.btn-primary:link, span.btn-primary:visited, span.btn-primary:hover, span.btn-primary:focus, span.btn-primary:active {
   background-color: #de2427;
   border-color: #ca1e21; }
 
