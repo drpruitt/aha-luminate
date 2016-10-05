@@ -588,7 +588,7 @@
   ]);
 
   angular.module('ahaLuminateControllers').controller('GreetingPageCtrl', [
-    '$scope', 'TeamraiserParticipantService', 'TeamraiserTeamService', 'TeamraiserCompanyService', function($scope, TeamraiserParticipantService, TeamraiserTeamService, TeamraiserCompanyService) {
+    '$scope', '$filter', 'TeamraiserParticipantService', 'TeamraiserTeamService', 'TeamraiserCompanyService', function($scope, $filter, TeamraiserParticipantService, TeamraiserTeamService, TeamraiserCompanyService) {
       var setTopCompanies, setTopParticipants, setTopTeams;
       $scope.topParticipants = {};
       setTopParticipants = function(participants) {
@@ -602,12 +602,25 @@
           return setTopParticipants([]);
         },
         success: function(response) {
-          var ref, topParticipants;
-          topParticipants = ((ref = response.getParticipantsResponse) != null ? ref.participant : void 0) || [];
-          if (!angular.isArray(topParticipants)) {
-            topParticipants = [topParticipants];
+          var participants, ref, topParticipants;
+          participants = ((ref = response.getParticipantsResponse) != null ? ref.participant : void 0) || [];
+          if (!participants) {
+            return setTopParticipants([]);
+          } else {
+            if (!angular.isArray(participants)) {
+              participants = [participants];
+            }
+            topParticipants = [];
+            angular.forEach(participants, function(participant) {
+              var ref1;
+              if ((ref1 = participant.name) != null ? ref1.first : void 0) {
+                participant.amountRaised = Number(participant.amountRaised);
+                participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace('.00', '');
+                return topParticipants.push(participant);
+              }
+            });
+            return setTopParticipants(topParticipants);
           }
-          return setTopParticipants(topParticipants);
         }
       });
       $scope.topTeams = {};
@@ -622,12 +635,22 @@
           return setTopTeams([]);
         },
         success: function(response) {
-          var ref, topTeams;
-          topTeams = ((ref = response.getTeamSearchByInfoResponse) != null ? ref.team : void 0) || [];
-          if (!angular.isArray(topTeams)) {
-            topTeams = [topTeams];
+          var ref, teams, topTeams;
+          teams = ((ref = response.getTeamSearchByInfoResponse) != null ? ref.team : void 0) || [];
+          if (!teams) {
+            return setTopTeams([]);
+          } else {
+            if (!angular.isArray(teams)) {
+              teams = [teams];
+            }
+            topTeams = [];
+            angular.forEach(teams, function(team) {
+              team.amountRaised = Number(team.amountRaised);
+              team.amountRaisedFormatted = $filter('currency')(team.amountRaised / 100, '$').replace('.00', '');
+              return topTeams.push(team);
+            });
+            return setTopTeams(topTeams);
           }
-          return setTopTeams(topTeams);
         }
       });
       $scope.topCompanies = {};
@@ -666,6 +689,8 @@
               topCompanies = [];
               angular.forEach(companies, function(company) {
                 if (rootAncestorCompanyIds.indexOf(company.companyId) > -1) {
+                  company.amountRaised = Number(company.amountRaised);
+                  company.amountRaisedFormatted = $filter('currency')(company.amountRaised / 100, '$').replace('.00', '');
                   return topCompanies.push(company);
                 }
               });

@@ -3,6 +3,6 @@
     <a ng-href="TR?fr_id={{participant.eventId}}&amp;pg=personal&amp;px={{participant.consId}}">
       <span ng-bind-html="participant.name.first"></span> <span ng-bind-html="participant.name.last"></span>
     </a><br>
-    {{participant.amountRaised / 100 | currency}}
+    <span ng-bind-html="participant.amountRaisedFormatted"></span>
   </li>
 </ul>

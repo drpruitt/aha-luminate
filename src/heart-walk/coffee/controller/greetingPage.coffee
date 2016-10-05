@@ -1,10 +1,11 @@
 angular.module 'ahaLuminateControllers'
   .controller 'GreetingPageCtrl', [
     '$scope'
+    '$filter'
     'TeamraiserParticipantService'
     'TeamraiserTeamService'
     'TeamraiserCompanyService'
-    ($scope, TeamraiserParticipantService, TeamraiserTeamService, TeamraiserCompanyService) ->
+    ($scope, $filter, TeamraiserParticipantService, TeamraiserTeamService, TeamraiserCompanyService) ->
       $scope.topParticipants = {}
       setTopParticipants = (participants) ->
         $scope.topParticipants.participants = participants
@@ -14,11 +15,19 @@ angular.module 'ahaLuminateControllers'
         error: () ->
           setTopParticipants []
         success: (response) ->
-          topParticipants = response.getParticipantsResponse?.participant or []
-          topParticipants = [topParticipants] if not angular.isArray topParticipants
-          # TODO: don't include participants with null names
-          # TODO: don't include participants with $0 raised
-          setTopParticipants topParticipants
+          participants = response.getParticipantsResponse?.participant or []
+          if not participants
+            setTopParticipants []
+          else
+            participants = [participants] if not angular.isArray participants
+            topParticipants = []
+            # TODO: don't include participants with $0 raised
+            angular.forEach participants, (participant) ->
+              if participant.name?.first
+                participant.amountRaised = Number participant.amountRaised
+                participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
+                topParticipants.push participant
+            setTopParticipants topParticipants
       
       $scope.topTeams = {}
       setTopTeams = (teams) ->
@@ -29,10 +38,18 @@ angular.module 'ahaLuminateControllers'
         error: () ->
           setTopTeams []
         success: (response) ->
-          topTeams = response.getTeamSearchByInfoResponse?.team or []
-          topTeams = [topTeams] if not angular.isArray topTeams
-          # TODO: don't include teams with $0 raised
-          setTopTeams topTeams
+          teams = response.getTeamSearchByInfoResponse?.team or []
+          if not teams
+            setTopTeams []
+          else
+            teams = [teams] if not angular.isArray teams
+            topTeams = []
+            # TODO: don't include teams with $0 raised
+            angular.forEach teams, (team) ->
+              team.amountRaised = Number team.amountRaised
+              team.amountRaisedFormatted = $filter('currency')(team.amountRaised / 100, '$').replace '.00', ''
+              topTeams.push team
+            setTopTeams topTeams
       
       $scope.topCompanies = {}
       setTopCompanies = (companies) ->
@@ -57,9 +74,11 @@ angular.module 'ahaLuminateControllers'
               companies = response.getCompaniesResponse?.company or []
               companies = [companies] if not angular.isArray companies
               topCompanies = []
+              # TODO: don't include companies with $0 raised
               angular.forEach companies, (company) ->
                 if rootAncestorCompanyIds.indexOf(company.companyId) > -1
-                  # TODO: don't include companies with $0 raised
+                  company.amountRaised = Number company.amountRaised
+                  company.amountRaisedFormatted = $filter('currency')(company.amountRaised / 100, '$').replace '.00', ''
                   topCompanies.push company
               topCompanies.sort (a, b) ->
                 Number(b.amountRaised) - Number(a.amountRaised)
