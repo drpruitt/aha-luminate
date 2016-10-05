@@ -603,10 +603,12 @@ body:not(.donation-form-two-columns).donation-form-right [class^='column__row'] 
 	-ms-flex-pack: justify;
 	justify-content: space-between;
 }
-.donation-level-user-entered {
-	position: relative;
-	width: 65.75%;
+label + div.donation-level-user-entered {
+  margin-left: 10px;
+  position: relative;
+  width: 65.75%;
 }
+/*
 .donation-level-user-entered::before {
 	font-size: 24px;
 	font-size: 1.33333rem;
@@ -620,6 +622,7 @@ body:not(.donation-form-two-columns).donation-form-right [class^='column__row'] 
 	position: absolute;
 	top: 12px;
 }
+*/
  @media (max-width: 599px) {
 .donation-level-user-entered {
 	width: 60%;
