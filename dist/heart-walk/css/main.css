@@ -1272,6 +1272,27 @@ footer .container {
 .heart-hero--team {
   background-image: url(../image/team-cover.png); }
 
+.heart-user-image-wrap--team .heart-user-image-wrap-inner {
+  position: relative; }
+
+.heart-user-image-wrap--team .btn, .heart-user-image-wrap--team .btn:link, .heart-user-image-wrap--team .btn:visited {
+  text-transform: uppercase;
+  padding: 12px;
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 100; }
+  .heart-user-image-wrap--team .btn .glyphicon, .heart-user-image-wrap--team .btn:link .glyphicon, .heart-user-image-wrap--team .btn:visited .glyphicon {
+    display: inline-block;
+    margin: 0 3px 0 0; }
+
+.heart-user-image-wrap--team .btn-primary-inverted, .heart-user-image-wrap--team .btn-primary-inverted:link, .heart-user-image-wrap--team .btn-primary-inverted:visited {
+  background: #ffffff;
+  border: 1px solid #de2427; }
+
+.heart-user-image-wrap--team .btn-primary-inverted:hover, .heart-user-image-wrap--team .btn-primary-inverted:focus, .heart-user-image-wrap--team .btn-primary-inverted:active {
+  background: #de2427; }
+
 .heart-page-lists--team {
   margin: 0 0 20px; }
 
