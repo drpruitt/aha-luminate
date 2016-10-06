@@ -779,3 +779,67 @@ input[type="date"], input[type="datetime"], input[type="email"], input[type="fil
 #donor_email_opt_in_Row input[type="checkbox"] {
   width: auto;
 }
+.progress-bar-container {
+     overflow: hidden;
+}
+
+.progress-bar-container .progress-bar-step-container {
+     display: inline-block;
+     font-size: 16px;
+     margin-right: 0px;
+     text-align: center;
+     vertical-align: top;
+     width: 17%;
+}
+
+.progress-bar-container .progress-bar-step-number-container, .progress-bar-container .progress-bar-step-current .progress-bar-step-number-container {
+     background-color: inherit;
+     border-radius: 50px;
+     border: 2px solid #9a3324;
+     color: #7e7e7e;
+     display: block;
+     font-size: 30px;
+     font-weight: normal;
+     height: 65px;
+     line-height: normal;
+     margin: 0px auto;
+     padding: 14px 0px;
+     width: 65px;
+}
+
+.progress-bar-container .progress-bar-step-text-container {
+     color: #7e7e7e;
+     margin-top: 0px;
+     max-width: none;
+     padding-left: 0px;
+}
+
+.progress-bar-container .progress-bar-step-current .progress-bar-step-number-container {
+     background: #9a3324 none repeat scroll 0px 0px content-box;
+     color: white;
+     height: 67px;
+     margin: 0px auto;
+     padding: 3px;
+     text-align: center;
+     width: 67px;
+}
+
+.progress-bar-container .progress-bar-step-selectable .progress-bar-step-number-container {
+     background: #7e7e7e none repeat scroll 0px 0px content-box;
+     color: white;
+     height: 67px;
+     margin: 0px auto;
+     padding: 3px;
+     text-align: center;
+     width: 67px;
+}
+
+.progress-bar-container .progress-bar-step-current .progress-bar-step-text-container {
+     color: #9a3324;
+}
+
+.progress-bar-container .progress-bar-step-current .progress-bar-step-number-container::before, .progress-bar-container .progress-bar-step-selectable .progress-bar-step-number-container::before {
+     content: " ";
+     display: block;
+     padding-top: 10px;
+}
