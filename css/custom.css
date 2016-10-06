@@ -88,7 +88,7 @@
 	border: 1px solid #e3e3e3;
 	transition: all .3s;
 }
-.registration-options__item:hover {
+.registration-options__item:hover, .registration-options__item:focus {
 	background-color: #eee;
 	-webkit-transform: scale(1.1);
 	-ms-transform: scale(1.1);
