@@ -26,10 +26,10 @@
       jQuery.getJSON("https://secure3.convio.net/heart/site/SPageNavigator/heartwalk_tr_info.html?pgwrap=n&fr_id="+eid+"&team_id="+tid+"&cons_id="+pid+"&callback=?",function(data2){
         //$('.campaign-banner-container h1').html(data2.event_title).each(divTitleWords);
         if (data2.team_name != "") {
-          jQuery('.donation-form-content').before('<div class="custom-wysiwyg-html"><strong>Donating to Team Name:</strong><br/>'+data2.team_name+'</div>');
+          jQuery('.donation-form-content').before('<div class="donation-detail"><strong>Donating to Team Name:</strong><br/>'+data2.team_name+'</div>');
         }
         if (data2.part_name != " ") {
-          jQuery('.donation-form-content').before('<div class="custom-wysiwyg-html"><strong>Donating to Participant:</strong><br/>'+data2.part_name+'</div>');
+          jQuery('.donation-form-content').before('<div class="donation-detail"><strong>Donating to Participant:</strong><br/>'+data2.part_name+'</div>');
         }
       });
     }
