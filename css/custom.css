@@ -138,7 +138,11 @@ background: #f7921e !important;
 #give_hdr_container{
 	text-decoration: none;
 }
-
+#basic_team_search_container{
+	display: inline-block;
+	padding-right: 10px;
+	text-decoration: none;
+}
 #advanced_team_search_container{
 	text-decoration: none;
 	display: inline-block;
