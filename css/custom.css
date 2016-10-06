@@ -717,3 +717,6 @@ input[type="date"], input[type="datetime"], input[type="email"], input[type="fil
 .cardExpGroup select {
     width: 44%;
 }
+#donor_email_opt_in_Row input[type="checkbox"] {
+  width: auto;
+}
