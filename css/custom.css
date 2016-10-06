@@ -92,6 +92,7 @@ background: #f7921e !important;
 	background-color: #f6f6f6;
 	border: 1px solid #e3e3e3;
 	transition: all .3s;
+	overflow:hidden;
 }
 .registration-options__item:hover, .registration-options__item:focus {
 	background-color: #eee;
