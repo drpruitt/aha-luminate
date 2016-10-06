@@ -845,3 +845,9 @@ input[type="date"], input[type="datetime"], input[type="email"], input[type="fil
      display: block;
      padding-top: 10px;
 }
+.donation-detail {
+  background-color: #f1f0eb;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  padding: 13px;
+}
