@@ -37,6 +37,11 @@
 	font-size: 12px;
 	vertical-align:top;
 }
+
+.entry-text-link.secondary-step.step-button.sidebar-button.btn.btn-lg.btn-primary {
+background: #f7921e !important;	
+}
+
 .loggedin, .loggedout {
 	margin-top: -20px;
 }
