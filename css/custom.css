@@ -130,6 +130,21 @@
 #headerWrapper {
 	padding: 20px 0;
 }
+#give_hdr_container{
+	text-decoration: none;
+}
+#advanced_search_container {
+	text-decoration: none;
+	display: inline-block;
+}
+
+#advanced_search_container a {
+	text-decoration: none;
+}
+#search_mode_link_basic{
+	display: inline-block;
+	text-decoration: none;
+}
 #search_part_team div.ui-tabs-panel {
 	border-top: 3px solid #e0e0e0 !important;
 	background-color:#fff;
