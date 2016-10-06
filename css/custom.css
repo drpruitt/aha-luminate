@@ -273,6 +273,18 @@ font-size: 30px;
 background: none !important;
 }
 
+div.registration-page-container div.section-body {
+padding: 0px;
+}
+
+#user_type_section_body > div {
+border: 0px;
+}
+
+.section-sub-header.empty {
+border: 0px !important;
+}
+
 /*#login-div-content a, #login-div-content a:link, #login-div-content a:visited, a, a:link, a:visited, div.responsive a, div.responsive a:link, div.responsive a:visited {
 margin: 10px; 
 font-size: 16px !important;
