@@ -507,7 +507,7 @@ body:not(.donation-form-two-columns).donation-form-right [class^='column__row'] 
 }
 }
 #billing_first_name_row {
-	width: 75%;
+	width: 74%;
 }
  @media (max-width: 799px) {
 #billing_first_name_row {
