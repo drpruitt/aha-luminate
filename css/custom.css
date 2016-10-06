@@ -188,6 +188,7 @@ background: #f7921e !important;
 	color: #333 !important;
 	font-size: 16px;
 	font-weight: normal;/*    border-left: 4px solid #eb1c24;*/
+	padding-left: 70px;
 }
 #search_part_team ul li.ui-tabs-selected a {
 	color: #eb1c24;
@@ -197,6 +198,7 @@ background: #f7921e !important;
 	color: #de2427; /*#878b8a !important;*/
 	background-color: #fff !important;
 	border-left: 6px solid #de2427;
+	padding-left: 70px;
 }
 div#find_participant input[type="text"], div#find_participant select {
 	display: table;
