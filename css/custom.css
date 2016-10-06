@@ -690,3 +690,24 @@ label + div.donation-level-expanded-label, div.donation-level-user-entered + div
 .donation-level-user-entered + .donation-level-expanded-label {
   display: none !important;
 }
+.donation-form-container input, .donation-form-container select {
+     width: 100%;
+}
+.donation-form-container select {
+     max-height: 30px;
+}
+
+LABEL.FormLabel {
+     font-weight: bold;
+     min-width: auto;
+     width: auto;
+}
+input[type="date"], input[type="datetime"], input[type="email"], input[type="file"], input[type="number"], input[type="range"], input[type="password"], input[type="search"], input[type="text"], input[type="tel"], input[type="time"], input[type="url"], select, textarea {
+  border: 2px solid #d1ccbd;
+  border-radius: 6px;
+  color: #4a4f53;
+  font-size: 1rem;
+  line-height: 1.33333rem;
+  min-height: 40px;
+  padding: 11px;
+}
