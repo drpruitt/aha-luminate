@@ -730,7 +730,7 @@ label + div.donation-level-expanded-label, div.donation-level-user-entered + div
 .donation-form-container input, .donation-form-container select {
      width: 100%;
 }
-.donation-form-container select {
+select {
      max-height: 30px;
 }
 
