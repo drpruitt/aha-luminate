@@ -732,7 +732,8 @@ label + div.donation-level-expanded-label, div.donation-level-user-entered + div
      width: 100%;
 }
 select {
-     max-height: 30px;
+  max-height: 30px;
+  padding: 7px !important;
 }
 
 LABEL.FormLabel {
