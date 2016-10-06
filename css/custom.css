@@ -263,6 +263,16 @@ div.registration-page-container div.section-container {
 !important;
 	font-size:16px !important;
 }
+
+.registration-page-container .section-header-text {
+color: #555555;
+font-size: 30px;
+}
+
+.registration-page-container .section-header, .section-sub-header.empty {
+background: none !important;
+}
+
 /*#login-div-content a, #login-div-content a:link, #login-div-content a:visited, a, a:link, a:visited, div.responsive a, div.responsive a:link, div.responsive a:visited {
 margin: 10px; 
 font-size: 16px !important;
