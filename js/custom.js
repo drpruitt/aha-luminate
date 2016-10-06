@@ -12,6 +12,27 @@
       //$radioCheckbox.replaceCheckRadio();
       //setActiveDonationLevel();
     }
+    if (location.href.indexOf("Donation2") > 0) {
+      //$('body').addClass("registration donation"); 
+      //$('form#ProcessForm').before('<div class="header-container col-xs-12 col-sm-12 col-md-5 col-lg-6"><div class="campaign-banner-container"><h1 class="text--staggered"></h1></div></div>');
+      //$('form#ProcessForm').addClass("col-xs-12 col-sm-12 col-md-7 col-lg-6");
+      //$('.donation-form-content').before($('.form-progress-bar')).addClass("section-container");		
+
+      var eid = jQuery('input[name=FR_ID]').val();
+      var dtype = (jQuery('input[name=PROXY_TYPE]').val() == 20) ? "p" : "t";
+      var pid = (dtype == "p") ? jQuery('input[name=PROXY_ID]').val() : "";
+      var tid = (dtype == "t") ? jQuery('input[name=PROXY_ID]').val() : "";
+
+      jQuery.getJSON("https://secure3.convio.net/heart/site/SPageNavigator/heartwalk_tr_info.html?pgwrap=n&fr_id="+eid+"&team_id="+tid+"&cons_id="+pid+"&callback=?",function(data2){
+        //$('.campaign-banner-container h1').html(data2.event_title).each(divTitleWords);
+        if (data2.team_name != "") {
+          jQuery('.donation-form-content').before('<div class="custom-wysiwyg-html"><strong>Donating to Team Name:</strong><br/>'+data2.team_name+'</div>');
+        }
+        if (data2.part_name != " ") {
+          jQuery('.donation-form-content').before('<div class="custom-wysiwyg-html"><strong>Donating to Participant:</strong><br/>'+data2.part_name+'</div>');
+        }
+      });
+    }
   });
 })(jQuery);
 
