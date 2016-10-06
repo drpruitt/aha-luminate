@@ -640,6 +640,7 @@ label + div.donation-level-user-entered {
   margin-left: 10px;
   position: relative;
   width: 65.75%;
+	margin-top:0px;
 }
 /*
 .donation-level-user-entered::before {
