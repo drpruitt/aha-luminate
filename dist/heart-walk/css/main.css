@@ -672,7 +672,6 @@ footer .container {
       padding: 0 0 0 15px; }
       @media (min-width: 768px) {
         .heart-team-member-list .heart-team-member-list__body .heart-team-member-list__column--amount {
-          text-align: left;
           padding: 0 15px; } }
     @media (min-width: 768px) {
       .heart-team-member-list .heart-team-member-list__body .heart-team-member-list__column--cta {
