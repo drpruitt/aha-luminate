@@ -39,7 +39,7 @@
 }
 
 .entry-text-link.secondary-step.step-button.sidebar-button.btn.btn-lg.btn-primary, .btn.btn-lg.btn-primary {
-background: #f7921e !important;	
+/* background: #f7921e !important;	*/
 }
 
 .loggedin, .loggedout {
