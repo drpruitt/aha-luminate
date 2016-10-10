@@ -465,12 +465,16 @@ footer .container {
     bottom: 0;
     left: 0;
     width: 0; }
-  .heart-page-progress__thermometer span.btn, .heart-page-progress__thermometer span.btn:link, .heart-page-progress__thermometer span.btn:visited,
+  .heart-page-progress__thermometer span.btn, .heart-page-progress__thermometer span.btn:link, .heart-page-progress__thermometer span.btn:visited, .heart-page-progress__thermometer span.btn:hover, .heart-page-progress__thermometer span.btn:focus, .heart-page-progress__thermometer span.btn:active,
   .heart-page-progress__thermometer a.btn,
   .heart-page-progress__thermometer a.btn:link,
-  .heart-page-progress__thermometer a.btn:visited {
+  .heart-page-progress__thermometer a.btn:visited,
+  .heart-page-progress__thermometer a.btn:hover,
+  .heart-page-progress__thermometer a.btn:focus,
+  .heart-page-progress__thermometer a.btn:active {
     position: relative;
-    background: transparent; }
+    background: transparent;
+    margin-bottom: 0; }
 
 .heart-page-progress .btn {
   width: 100%; }

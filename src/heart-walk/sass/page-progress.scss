@@ -21,9 +21,13 @@
   a.btn {
     &, 
     &:link, 
-    &:visited {
+    &:visited, 
+    &:hover, 
+    &:focus, 
+    &:active {
       position: relative;
       background: transparent;
+      margin-bottom: 0;
     }
   }
 }
