@@ -449,6 +449,9 @@ footer .container {
   .heart-hero__info p {
     margin: 0 0 0; }
 
+.heart-page-progress .btn {
+  width: 100%; }
+
 .heart-page-progress__thermometer {
   position: relative;
   background: #de2427;
@@ -476,9 +479,6 @@ footer .container {
     background: transparent;
     margin-bottom: 0; }
 
-.heart-page-progress .btn {
-  width: 100%; }
-
 .heart-page-progress__caret {
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
@@ -490,6 +490,14 @@ footer .container {
 .heart-page-progress__box {
   background: #283233;
   color: #ffffff; }
+
+.heart-page-progress--no-donate .heart-page-progress__caret {
+  margin: -36px 0 0;
+  position: relative; }
+
+.heart-page-progress--no-donate .heart-page-progress__box {
+  margin: 0;
+  position: relative; }
 
 .heart-page-progress__row {
   border-top: 1px solid #353f40;
