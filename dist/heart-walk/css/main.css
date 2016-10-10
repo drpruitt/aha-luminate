@@ -745,7 +745,7 @@ footer .container {
           width: 460px; } }
     @media (min-width: 768px) {
       .heart-company-team-list .heart-company-team-list__body .heart-company-team-list__column--captain {
-        text-align: center;
+        text-align: right;
         width: 160px; } }
     .heart-company-team-list .heart-company-team-list__body .heart-company-team-list__column--amount {
       text-align: right;
@@ -833,7 +833,6 @@ footer .container {
       padding: 0 0 0 15px; }
       @media (min-width: 768px) {
         .heart-company-participant-list .heart-company-participant-list__body .heart-company-participant-list__column--amount {
-          text-align: left;
           padding: 0 15px; } }
     @media (min-width: 768px) {
       .heart-company-participant-list .heart-company-participant-list__body .heart-company-participant-list__column--cta {
