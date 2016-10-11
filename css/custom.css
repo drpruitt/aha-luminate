@@ -86,6 +86,9 @@
 	-webkit-transition: all 0.3s ease 0s;
 	transition: all 0.3s ease 0s;
 }
+.open > .dropdown-menu {
+  overflow: unset;
+}
 .registration-options__item {
 	padding: 10px 15px;
 	margin-bottom: 20px;
