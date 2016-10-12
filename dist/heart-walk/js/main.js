@@ -810,9 +810,50 @@
   ]);
 
   angular.module('ahaLuminateControllers').controller('TeamPageCtrl', [
-    '$scope', '$location', '$filter', 'TeamraiserParticipantService', function($scope, $location, $filter, TeamraiserParticipantService) {
-      var $defaultTeamRoster, $teamGiftsRow, setTeamMembers, teamGiftsAmount;
+    '$scope', '$location', '$timeout', '$filter', 'TeamraiserTeamService', 'TeamraiserParticipantService', function($scope, $location, $timeout, $filter, TeamraiserTeamService, TeamraiserParticipantService) {
+      var $defaultTeamRoster, $teamGiftsRow, setTeamFundraisingProgress, setTeamMembers, teamGiftsAmount;
       $scope.teamId = $location.absUrl().split('team_id=')[1].split('&')[0];
+      $scope.teamProgress = {};
+      setTeamFundraisingProgress = function(amountRaised, goal) {
+        $scope.teamProgress.amountRaised = amountRaised || 0;
+        $scope.teamProgress.amountRaised = Number($scope.teamProgress.amountRaised);
+        $scope.teamProgress.goal = goal || 0;
+        $scope.teamProgress.percent = 2;
+        $timeout(function() {
+          var percent;
+          percent = $scope.teamProgress.percent;
+          if ($scope.teamProgress.goal !== 0) {
+            percent = Math.ceil(($scope.teamProgress.amountRaised / $scope.teamProgress.goal) * 100);
+          }
+          if (percent < 2) {
+            percent = 2;
+          }
+          if (percent > 98) {
+            percent = 98;
+          }
+          $scope.teamProgress.percent = percent;
+          if (!$scope.$$phase) {
+            return $scope.$apply();
+          }
+        }, 500);
+        if (!$scope.$$phase) {
+          return $scope.$apply();
+        }
+      };
+      TeamraiserTeamService.getTeams('team_id=' + $scope.teamId, {
+        error: function() {
+          return setTeamFundraisingProgress();
+        },
+        success: function(response) {
+          var ref, teamInfo;
+          teamInfo = (ref = response.getTeamSearchByInfoResponse) != null ? ref.team : void 0;
+          if (!teamInfo) {
+            return setTeamFundraisingProgress();
+          } else {
+            return setTeamFundraisingProgress(teamInfo.amountRaised, teamInfo.goal);
+          }
+        }
+      });
       $scope.teamMembers = {
         page: 1
       };
