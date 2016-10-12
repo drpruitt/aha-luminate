@@ -438,8 +438,8 @@ div#find_participant div.search-content {
 	font-size: 16px;
 }
 div.responsive a.next-step, div.responsive button.next-step {
-	border: 1px solid #b5cbd9 !important;
-	background-color: #d4e8f3 !important;
+	border: 1px solid #fff !important;
+	background-color: #dd1c21 !important;
 	color: #fff;
 }
 div.donation-form-container.responsive {
