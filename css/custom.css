@@ -14,11 +14,12 @@
 	padding: 0 10px;
 	position: absolute;
 }
-#another-button.step-button.secondary-step{
+div.responsive a.secondary-step, div.responsive button.secondary-step {
+         border: none;
+         background-color: #d4e8f3 !important;
 	background-image: -moz-linear-gradient(top, #e51c22, #cd181d) !important;
 	background: -webkit-gradient(linear, left top, left bottom, from(#e51c22), to(#cd181d));
 	background-image: -ms-linear-gradient(top, #E51C22 0%, #CD181D 100%);
-	background-color: #d4e8f3 !important;
 	color: #fff;
 	text-decoration: none;
 }
