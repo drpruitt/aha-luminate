@@ -289,6 +289,14 @@
         $scope.companyProgress.goal = goal || 0;
         $scope.companyProgress.goal = Number($scope.companyProgress.goal);
         $scope.companyProgress.goalFormatted = $filter('currency')($scope.companyProgress.goal / 100, '$').replace('.00', '');
+        if ($scope.companyProgress.goal === 0) {
+          $scope.companyProgress.percent = 0;
+        } else {
+          $scope.companyProgress.percent = Math.ceil(($scope.companyProgress.amountRaised / $scope.companyProgress.goal) * 100);
+        }
+        if ($scope.companyProgress.percent > 100) {
+          $scope.companyProgress.percent = 100;
+        }
         if (!$scope.$$phase) {
           return $scope.$apply();
         }
