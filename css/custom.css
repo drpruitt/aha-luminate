@@ -438,8 +438,11 @@ div#find_participant div.search-content {
 	font-size: 16px;
 }
 div.responsive a.next-step, div.responsive button.next-step {
-	border: 1px solid #fff !important;
-	background-color: #dd1c21 !important;
+        border: none;
+        background-color: #d4e8f3 !important;
+	background-image: -moz-linear-gradient(top, #e51c22, #cd181d) !important;
+	background: -webkit-gradient(linear, left top, left bottom, from(#e51c22), to(#cd181d));
+	background-image: -ms-linear-gradient(top, #E51C22 0%, #CD181D 100%);
 	color: #fff;
 }
 div.donation-form-container.responsive {
