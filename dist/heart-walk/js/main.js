@@ -133,6 +133,8 @@
     }
   ]);
 
+  angular.module('ahaLuminateApp').factory('TeamraiserEventService', ['LuminateRESTService', function(LuminateRESTService) {}]);
+
   angular.module('ahaLuminateApp').factory('TeamraiserParticipantService', [
     'LuminateRESTService', function(LuminateRESTService) {
       return {
@@ -292,6 +294,7 @@
         $scope.companyProgress.percent = 2;
         $timeout(function() {
           var percent;
+          percent = $scope.companyProgress.percent;
           if ($scope.companyProgress.goal !== 0) {
             percent = Math.ceil(($scope.companyProgress.amountRaised / $scope.companyProgress.goal) * 100);
           }
@@ -605,8 +608,38 @@
   ]);
 
   angular.module('ahaLuminateControllers').controller('GreetingPageCtrl', [
-    '$scope', '$filter', 'TeamraiserParticipantService', 'TeamraiserTeamService', 'TeamraiserCompanyService', function($scope, $filter, TeamraiserParticipantService, TeamraiserTeamService, TeamraiserCompanyService) {
+    '$scope', '$http', '$timeout', '$filter', 'TeamraiserParticipantService', 'TeamraiserTeamService', 'TeamraiserCompanyService', function($scope, $http, $timeout, $filter, TeamraiserParticipantService, TeamraiserTeamService, TeamraiserCompanyService) {
       var setTopCompanies, setTopParticipants, setTopTeams;
+      $http.get('PageServer?pagename=getTeamraiserInfo&fr_id=' + $scope.frId + '&response_format=json&pgwrap=n').then(function(response) {
+        var teamraiserInfo;
+        teamraiserInfo = response.data.getTeamraiserInfo;
+        if (!teamraiserInfo) {
+          $scope.eventProgress = {
+            amountRaised: 0,
+            goal: 0
+          };
+        } else {
+          $scope.eventProgress = {
+            amountRaised: teamraiserInfo.amountRaised,
+            goal: teamraiserInfo.goal
+          };
+        }
+        $scope.eventProgress.percent = 2;
+        return $timeout(function() {
+          var percent;
+          percent = $scope.eventProgress.percent;
+          if ($scope.eventProgress.goal !== 0) {
+            percent = Math.ceil(($scope.eventProgress.amountRaised / $scope.eventProgress.goal) * 100);
+          }
+          if (percent < 2) {
+            percent = 2;
+          }
+          if (percent > 98) {
+            percent = 98.5;
+          }
+          return $scope.eventProgress.percent = percent;
+        }, 500);
+      });
       $scope.topParticipants = {};
       setTopParticipants = function(participants) {
         $scope.topParticipants.participants = participants;

@@ -116,6 +116,8 @@
     }
   ]);
 
+  angular.module('ahaLuminateApp').factory('TeamraiserEventService', ['LuminateRESTService', function(LuminateRESTService) {}]);
+
   angular.module('ahaLuminateApp').factory('TeamraiserParticipantService', [
     'LuminateRESTService', function(LuminateRESTService) {
       return {

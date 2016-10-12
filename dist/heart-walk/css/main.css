@@ -485,8 +485,9 @@ footer .container {
   border-bottom: 5px solid #283233;
   width: 0;
   height: 0;
-  left: 2%;
   margin: -3px 0 0 -5px;
+  position: relative;
+  left: 2%;
   transition: all 0.5s ease; }
 
 .heart-page-progress__box {
@@ -494,8 +495,7 @@ footer .container {
   color: #ffffff; }
 
 .heart-page-progress--no-donate .heart-page-progress__caret {
-  margin-top: -36px;
-  position: relative; }
+  margin-top: -36px; }
 
 .heart-page-progress--no-donate .heart-page-progress__box {
   margin: 0;

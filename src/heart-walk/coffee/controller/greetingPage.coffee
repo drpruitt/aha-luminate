@@ -1,11 +1,36 @@
 angular.module 'ahaLuminateControllers'
   .controller 'GreetingPageCtrl', [
     '$scope'
+    '$http'
+    '$timeout'
     '$filter'
     'TeamraiserParticipantService'
     'TeamraiserTeamService'
     'TeamraiserCompanyService'
-    ($scope, $filter, TeamraiserParticipantService, TeamraiserTeamService, TeamraiserCompanyService) ->
+    ($scope, $http, $timeout, $filter, TeamraiserParticipantService, TeamraiserTeamService, TeamraiserCompanyService) ->
+      $http.get 'PageServer?pagename=getTeamraiserInfo&fr_id=' + $scope.frId + '&response_format=json&pgwrap=n'
+        .then (response) ->
+          teamraiserInfo = response.data.getTeamraiserInfo
+          if not teamraiserInfo
+            $scope.eventProgress = 
+              amountRaised: 0
+              goal: 0
+          else
+            $scope.eventProgress = 
+              amountRaised: teamraiserInfo.amountRaised
+              goal: teamraiserInfo.goal
+          $scope.eventProgress.percent = 2
+          $timeout ->
+            percent = $scope.eventProgress.percent
+            if $scope.eventProgress.goal isnt 0
+              percent = Math.ceil(($scope.eventProgress.amountRaised / $scope.eventProgress.goal) * 100)
+            if percent < 2
+              percent = 2
+            if percent > 98
+              percent = 98.5
+            $scope.eventProgress.percent = percent
+          , 500
+      
       $scope.topParticipants = {}
       setTopParticipants = (participants) ->
         $scope.topParticipants.participants = participants

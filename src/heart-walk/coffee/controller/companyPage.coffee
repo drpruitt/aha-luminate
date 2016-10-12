@@ -26,6 +26,7 @@ angular.module 'ahaLuminateControllers'
         $scope.companyProgress.goalFormatted = $filter('currency')($scope.companyProgress.goal / 100, '$').replace '.00', ''
         $scope.companyProgress.percent = 2
         $timeout ->
+          percent = $scope.companyProgress.percent
           if $scope.companyProgress.goal isnt 0
             percent = Math.ceil(($scope.companyProgress.amountRaised / $scope.companyProgress.goal) * 100)
           if percent < 2
