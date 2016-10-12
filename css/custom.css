@@ -14,6 +14,14 @@
 	padding: 0 10px;
 	position: absolute;
 }
+#part_ctr_container_step.next-step{
+	background-image: -moz-linear-gradient(top, #e51c22, #cd181d) !important;
+	background: -webkit-gradient(linear, left top, left bottom, from(#e51c22), to(#cd181d));
+	background-image: -ms-linear-gradient(top, #E51C22 0%, #CD181D 100%);
+	background-color: #d4e8f3 !important;
+	color: #fff;
+	text-decoration: none;
+}
 #part_ctr_container_step.step-button{
 	background-image: -moz-linear-gradient(top, #e51c22, #cd181d) !important;
 	background: -webkit-gradient(linear, left top, left bottom, from(#e51c22), to(#cd181d));
