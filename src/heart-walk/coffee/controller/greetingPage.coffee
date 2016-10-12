@@ -27,7 +27,7 @@ angular.module 'ahaLuminateControllers'
             if percent < 2
               percent = 2
             if percent > 98
-              percent = 98.5
+              percent = 98
             $scope.eventProgress.percent = percent
           , 500
       

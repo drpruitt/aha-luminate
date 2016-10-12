@@ -133,8 +133,6 @@
     }
   ]);
 
-  angular.module('ahaLuminateApp').factory('TeamraiserEventService', ['LuminateRESTService', function(LuminateRESTService) {}]);
-
   angular.module('ahaLuminateApp').factory('TeamraiserParticipantService', [
     'LuminateRESTService', function(LuminateRESTService) {
       return {
@@ -302,7 +300,7 @@
             percent = 2;
           }
           if (percent > 98) {
-            percent = 98.5;
+            percent = 98;
           }
           $scope.companyProgress.percent = percent;
           if (!$scope.$$phase) {
@@ -635,7 +633,7 @@
             percent = 2;
           }
           if (percent > 98) {
-            percent = 98.5;
+            percent = 98;
           }
           return $scope.eventProgress.percent = percent;
         }, 500);
@@ -763,7 +761,53 @@
     }
   ]);
 
-  angular.module('ahaLuminateControllers').controller('PersonalPageCtrl', ['$scope', function($scope) {}]);
+  angular.module('ahaLuminateControllers').controller('PersonalPageCtrl', [
+    '$scope', '$location', '$timeout', 'TeamraiserParticipantService', function($scope, $location, $timeout, TeamraiserParticipantService) {
+      var setParticipantFundraisingProgress;
+      $scope.participantId = $location.absUrl().split('px=')[1].split('&')[0];
+      $scope.participantProgress = {};
+      setParticipantFundraisingProgress = function(amountRaised, goal) {
+        $scope.participantProgress.amountRaised = amountRaised || 0;
+        $scope.participantProgress.amountRaised = Number($scope.participantProgress.amountRaised);
+        $scope.participantProgress.goal = goal || 0;
+        $scope.participantProgress.percent = 2;
+        $timeout(function() {
+          var percent;
+          percent = $scope.participantProgress.percent;
+          if ($scope.participantProgress.goal !== 0) {
+            percent = Math.ceil(($scope.participantProgress.amountRaised / $scope.participantProgress.goal) * 100);
+          }
+          if (percent < 2) {
+            percent = 2;
+          }
+          if (percent > 98) {
+            percent = 98;
+          }
+          $scope.participantProgress.percent = percent;
+          if (!$scope.$$phase) {
+            return $scope.$apply();
+          }
+        }, 500);
+        if (!$scope.$$phase) {
+          return $scope.$apply();
+        }
+      };
+      return TeamraiserParticipantService.getParticipants('first_name=' + encodeURIComponent('%%%') + '&list_filter_column=reg.cons_id&list_filter_text=' + $scope.participantId, {
+        error: function() {
+          return setParticipantFundraisingProgress();
+        },
+        success: function(response) {
+          var participantInfo, ref;
+          participantInfo = (ref = response.getParticipantsResponse) != null ? ref.participant : void 0;
+          if (!participantInfo) {
+            return setParticipantFundraisingProgress();
+          } else {
+            return setParticipantFundraisingProgress(participantInfo.amountRaised, participantInfo.goal);
+          }
+        }
+      });
+    }
+  ]);
 
   angular.module('ahaLuminateControllers').controller('TeamPageCtrl', [
     '$scope', '$location', '$filter', 'TeamraiserParticipantService', function($scope, $location, $filter, TeamraiserParticipantService) {

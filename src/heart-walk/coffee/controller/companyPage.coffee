@@ -32,7 +32,7 @@ angular.module 'ahaLuminateControllers'
           if percent < 2
             percent = 2
           if percent > 98
-            percent = 98.5
+            percent = 98
           $scope.companyProgress.percent = percent
           if not $scope.$$phase
             $scope.$apply()
