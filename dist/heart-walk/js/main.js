@@ -271,7 +271,7 @@
   });
 
   angular.module('ahaLuminateControllers').controller('CompanyPageCtrl', [
-    '$scope', '$location', '$filter', 'TeamraiserCompanyService', 'TeamraiserTeamService', 'TeamraiserParticipantService', function($scope, $location, $filter, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService) {
+    '$scope', '$location', '$filter', '$timeout', 'TeamraiserCompanyService', 'TeamraiserTeamService', 'TeamraiserParticipantService', function($scope, $location, $filter, $timeout, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService) {
       var $childCompanyLinks, $defaultCompanyHierarchy, $defaultCompanySummary, addChildCompanyParticipants, addChildCompanyTeams, companyGiftCount, numCompanies, numCompaniesParticipantRequestComplete, numCompaniesTeamRequestComplete, numParticipants, numTeams, setCompanyFundraisingProgress, setCompanyNumParticipants, setCompanyNumTeams, setCompanyParticipants, setCompanyTeams;
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0];
       $defaultCompanySummary = angular.element('.js--default-company-summary');
@@ -289,14 +289,23 @@
         $scope.companyProgress.goal = goal || 0;
         $scope.companyProgress.goal = Number($scope.companyProgress.goal);
         $scope.companyProgress.goalFormatted = $filter('currency')($scope.companyProgress.goal / 100, '$').replace('.00', '');
-        if ($scope.companyProgress.goal === 0) {
-          $scope.companyProgress.percent = 0;
-        } else {
-          $scope.companyProgress.percent = Math.ceil(($scope.companyProgress.amountRaised / $scope.companyProgress.goal) * 100);
-        }
-        if ($scope.companyProgress.percent > 100) {
-          $scope.companyProgress.percent = 100;
-        }
+        $scope.companyProgress.percent = 2;
+        $timeout(function() {
+          var percent;
+          if ($scope.companyProgress.goal !== 0) {
+            percent = Math.ceil(($scope.companyProgress.amountRaised / $scope.companyProgress.goal) * 100);
+          }
+          if (percent < 2) {
+            percent = 2;
+          }
+          if (percent > 98) {
+            percent = 98.5;
+          }
+          $scope.companyProgress.percent = percent;
+          if (!$scope.$$phase) {
+            return $scope.$apply();
+          }
+        }, 500);
         if (!$scope.$$phase) {
           return $scope.$apply();
         }

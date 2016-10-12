@@ -3,10 +3,11 @@ angular.module 'ahaLuminateControllers'
     '$scope'
     '$location'
     '$filter'
+    '$timeout'
     'TeamraiserCompanyService'
     'TeamraiserTeamService'
     'TeamraiserParticipantService'
-    ($scope, $location, $filter, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService) ->
+    ($scope, $location, $filter, $timeout, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService) ->
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0]
       
       $defaultCompanySummary = angular.element '.js--default-company-summary'
@@ -23,12 +24,18 @@ angular.module 'ahaLuminateControllers'
         $scope.companyProgress.goal = goal or 0
         $scope.companyProgress.goal = Number $scope.companyProgress.goal
         $scope.companyProgress.goalFormatted = $filter('currency')($scope.companyProgress.goal / 100, '$').replace '.00', ''
-        if $scope.companyProgress.goal is 0
-          $scope.companyProgress.percent = 0
-        else
-          $scope.companyProgress.percent = Math.ceil(($scope.companyProgress.amountRaised / $scope.companyProgress.goal) * 100)
-        if $scope.companyProgress.percent > 100
-          $scope.companyProgress.percent = 100
+        $scope.companyProgress.percent = 2
+        $timeout ->
+          if $scope.companyProgress.goal isnt 0
+            percent = Math.ceil(($scope.companyProgress.amountRaised / $scope.companyProgress.goal) * 100)
+          if percent < 2
+            percent = 2
+          if percent > 98
+            percent = 98.5
+          $scope.companyProgress.percent = percent
+          if not $scope.$$phase
+            $scope.$apply()
+        , 500
         if not $scope.$$phase
           $scope.$apply()
       TeamraiserCompanyService.getCompanies 'company_id=' + $scope.companyId, 

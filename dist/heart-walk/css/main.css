@@ -467,7 +467,7 @@ footer .container {
     top: 0;
     bottom: 0;
     left: 0;
-    width: 0; }
+    width: 2%; }
   .heart-page-progress__thermometer span.btn, .heart-page-progress__thermometer span.btn:link, .heart-page-progress__thermometer span.btn:visited, .heart-page-progress__thermometer span.btn:hover, .heart-page-progress__thermometer span.btn:focus, .heart-page-progress__thermometer span.btn:active,
   .heart-page-progress__thermometer a.btn,
   .heart-page-progress__thermometer a.btn:link,
@@ -485,14 +485,16 @@ footer .container {
   border-bottom: 5px solid #283233;
   width: 0;
   height: 0;
-  margin: -3px 0 0; }
+  left: 2%;
+  margin: -3px 0 0 -5px;
+  transition: all 0.5s ease; }
 
 .heart-page-progress__box {
   background: #283233;
   color: #ffffff; }
 
 .heart-page-progress--no-donate .heart-page-progress__caret {
-  margin: -36px 0 0;
+  margin-top: -36px;
   position: relative; }
 
 .heart-page-progress--no-donate .heart-page-progress__box {
