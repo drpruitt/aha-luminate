@@ -201,7 +201,7 @@
 	color: #de2427; /*#878b8a !important;*/
 	background-color: #fff !important;
 	border-left: 6px solid #de2427;
-	padding: 25px;
+	padding: 15px 25px;
 }
 div#find_participant input[type="text"], div#find_participant select {
 	display: table;
