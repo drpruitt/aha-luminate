@@ -8,9 +8,13 @@ angular.module 'ahaLuminateApp'
       isChildCompany: '='
       companyName: '='
       participants: '='
+      searchCompanyParticipants: '='
     controller: [
       '$scope'
       ($scope) ->
+        $scope.companyParticipantSearch = 
+          participant_name: ''
+        
         $scope.toggleCompanyParticipantList = ->
           $scope.isOpen = !$scope.isOpen
     ]

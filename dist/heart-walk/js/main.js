@@ -203,10 +203,14 @@
         isOpen: '=',
         isChildCompany: '=',
         companyName: '=',
-        participants: '='
+        participants: '=',
+        searchCompanyParticipants: '='
       },
       controller: [
         '$scope', function($scope) {
+          $scope.companyParticipantSearch = {
+            participant_name: ''
+          };
           return $scope.toggleCompanyParticipantList = function() {
             return $scope.isOpen = !$scope.isOpen;
           };
@@ -224,10 +228,14 @@
         isOpen: '=',
         isChildCompany: '=',
         companyName: '=',
-        teams: '='
+        teams: '=',
+        searchCompanyTeams: '='
       },
       controller: [
         '$scope', function($scope) {
+          $scope.companyTeamSearch = {
+            team_name: ''
+          };
           return $scope.toggleCompanyTeamList = function() {
             return $scope.isOpen = !$scope.isOpen;
           };
@@ -485,6 +493,7 @@
       angular.forEach($scope.childCompanies, function(childCompany, childCompanyIndex) {
         return $scope.getChildCompanyTeams(childCompanyIndex);
       });
+      $scope.searchCompanyTeams = function(companyTeamSearch) {};
       $scope.companyParticipants = {
         isOpen: true,
         page: 1
@@ -619,9 +628,10 @@
           }
         });
       };
-      return angular.forEach($scope.childCompanies, function(childCompany, childCompanyIndex) {
+      angular.forEach($scope.childCompanies, function(childCompany, childCompanyIndex) {
         return $scope.getChildCompanyParticipants(childCompanyIndex);
       });
+      return $scope.searchCompanyParticipants = function(companyParticipantSearch) {};
     }
   ]);
 
