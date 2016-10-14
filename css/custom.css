@@ -450,6 +450,12 @@ div.donation-form-container.responsive {
 	padding-left: 10px;
 	display: inline;
 }
+
+/* User Profile Record Styling */
+#cons_profile .appArea.cons-prof.cons-pers {
+width: 100%;
+}
+
 /* donation form styling */
 .hidden, .js-hidden {
 	display: none;
