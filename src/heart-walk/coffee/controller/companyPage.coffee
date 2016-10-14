@@ -61,6 +61,8 @@ angular.module 'ahaLuminateControllers'
             name: childCompanyName
       numCompanies = $scope.childCompanies.length + 1
       
+      $scope.companyTeamSearch = 
+        team_name: ''
       $scope.companyTeams = 
         isOpen: true
         page: 1
@@ -87,75 +89,85 @@ angular.module 'ahaLuminateControllers'
         $scope.companyProgress.numTeams = numTeams or 0
         if not $scope.$$phase
           $scope.$apply()
-      numCompaniesTeamRequestComplete = 0
-      numTeams = 0
-      $scope.getCompanyTeams = ->
-        # TODO: scroll to top of list
-        pageNumber = $scope.companyTeams.page - 1
-        TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=5&list_page_offset=' + pageNumber, 
-          error: ->
-            setCompanyTeams()
-            numCompaniesTeamRequestComplete++
-            if numCompaniesTeamRequestComplete is numCompanies
-              setCompanyNumTeams numTeams
-          success: (response) ->
-            setCompanyTeams()
-            companyTeams = response.getTeamSearchByInfoResponse?.team
-            if companyTeams
-              companyTeams = [companyTeams] if not angular.isArray companyTeams
-              angular.forEach companyTeams, (companyTeam) ->
-                companyTeam.amountRaised = Number companyTeam.amountRaised
-                companyTeam.amountRaisedFormatted = $filter('currency')(companyTeam.amountRaised / 100, '$').replace '.00', ''
-                joinTeamURL = companyTeam.joinTeamURL
-                if joinTeamURL
-                  companyTeam.joinTeamURL = joinTeamURL.split('/site/')[1]
-              totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults
-              setCompanyTeams companyTeams, totalNumberTeams
-              numTeams += Number totalNumberTeams
-            numCompaniesTeamRequestComplete++
-            if numCompaniesTeamRequestComplete is numCompanies
-              setCompanyNumTeams numTeams
-      $scope.getCompanyTeams()
-      $scope.getChildCompanyTeams = (childCompanyIndex) ->
-        # TODO: scroll to top of list
-        childCompany = $scope.childCompanies[childCompanyIndex]
-        childCompanyId = childCompany.id
-        childCompanyName = childCompany.name
-        pageNumber = $scope.childCompanyTeams.companies[childCompanyIndex]?.page
-        if not pageNumber
-          pageNumber = 0
-        else
-          pageNumber--
-        TeamraiserTeamService.getTeams 'team_company_id=' + childCompanyId + '&list_sort_column=total&list_ascending=false&list_page_size=5&list_page_offset=' + pageNumber, 
-          error: ->
-            addChildCompanyTeams childCompanyIndex, childCompanyId, childCompanyName
-            numCompaniesTeamRequestComplete++
-            if numCompaniesTeamRequestComplete is numCompanies
-              setCompanyNumTeams numTeams
-          success: (response) ->
-            companyTeams = response.getTeamSearchByInfoResponse?.team
-            if not companyTeams
+      $scope.getCompanyTeamLists = ->
+        numCompaniesTeamRequestComplete = 0
+        numTeams = 0
+        $scope.getCompanyTeams = ->
+          # TODO: scroll to top of list
+          pageNumber = $scope.companyTeams.page - 1
+          TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId + '&team_name=' + $scope.companyTeamSearch.team_name + '&list_sort_column=total&list_ascending=false&list_page_size=5&list_page_offset=' + pageNumber, 
+            error: ->
+              setCompanyTeams()
+              numCompaniesTeamRequestComplete++
+              if numCompaniesTeamRequestComplete is numCompanies
+                setCompanyNumTeams numTeams
+            success: (response) ->
+              setCompanyTeams()
+              companyTeams = response.getTeamSearchByInfoResponse?.team
+              if companyTeams
+                companyTeams = [companyTeams] if not angular.isArray companyTeams
+                angular.forEach companyTeams, (companyTeam) ->
+                  companyTeam.amountRaised = Number companyTeam.amountRaised
+                  companyTeam.amountRaisedFormatted = $filter('currency')(companyTeam.amountRaised / 100, '$').replace '.00', ''
+                  joinTeamURL = companyTeam.joinTeamURL
+                  if joinTeamURL
+                    companyTeam.joinTeamURL = joinTeamURL.split('/site/')[1]
+                totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults
+                setCompanyTeams companyTeams, totalNumberTeams
+                numTeams += Number totalNumberTeams
+              numCompaniesTeamRequestComplete++
+              if numCompaniesTeamRequestComplete is numCompanies
+                setCompanyNumTeams numTeams
+        $scope.getCompanyTeams()
+        $scope.getChildCompanyTeams = (childCompanyIndex) ->
+          # TODO: scroll to top of list
+          childCompany = $scope.childCompanies[childCompanyIndex]
+          childCompanyId = childCompany.id
+          childCompanyName = childCompany.name
+          pageNumber = $scope.childCompanyTeams.companies[childCompanyIndex]?.page
+          if not pageNumber
+            pageNumber = 0
+          else
+            pageNumber--
+          TeamraiserTeamService.getTeams 'team_company_id=' + childCompanyId + '&team_name=' + $scope.companyTeamSearch.team_name + '&list_sort_column=total&list_ascending=false&list_page_size=5&list_page_offset=' + pageNumber, 
+            error: ->
               addChildCompanyTeams childCompanyIndex, childCompanyId, childCompanyName
-            else
-              companyTeams = [companyTeams] if not angular.isArray companyTeams
-              angular.forEach companyTeams, (companyTeam) ->
-                companyTeam.amountRaised = Number companyTeam.amountRaised
-                companyTeam.amountRaisedFormatted = $filter('currency')(companyTeam.amountRaised / 100, '$').replace '.00', ''
-                joinTeamURL = companyTeam.joinTeamURL
-                if joinTeamURL
-                  companyTeam.joinTeamURL = joinTeamURL.split('/site/')[1]
-              totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults
-              addChildCompanyTeams childCompanyIndex, childCompanyId, childCompanyName, companyTeams, totalNumberTeams
-              numTeams += Number totalNumberTeams
-            numCompaniesTeamRequestComplete++
-            if numCompaniesTeamRequestComplete is numCompanies
-              setCompanyNumTeams numTeams
-      angular.forEach $scope.childCompanies, (childCompany, childCompanyIndex) ->
-        $scope.getChildCompanyTeams childCompanyIndex
+              numCompaniesTeamRequestComplete++
+              if numCompaniesTeamRequestComplete is numCompanies
+                setCompanyNumTeams numTeams
+            success: (response) ->
+              companyTeams = response.getTeamSearchByInfoResponse?.team
+              if not companyTeams
+                addChildCompanyTeams childCompanyIndex, childCompanyId, childCompanyName
+              else
+                companyTeams = [companyTeams] if not angular.isArray companyTeams
+                angular.forEach companyTeams, (companyTeam) ->
+                  companyTeam.amountRaised = Number companyTeam.amountRaised
+                  companyTeam.amountRaisedFormatted = $filter('currency')(companyTeam.amountRaised / 100, '$').replace '.00', ''
+                  joinTeamURL = companyTeam.joinTeamURL
+                  if joinTeamURL
+                    companyTeam.joinTeamURL = joinTeamURL.split('/site/')[1]
+                totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults
+                addChildCompanyTeams childCompanyIndex, childCompanyId, childCompanyName, companyTeams, totalNumberTeams
+                numTeams += Number totalNumberTeams
+              numCompaniesTeamRequestComplete++
+              if numCompaniesTeamRequestComplete is numCompanies
+                setCompanyNumTeams numTeams
+        angular.forEach $scope.childCompanies, (childCompany, childCompanyIndex) ->
+          $scope.getChildCompanyTeams childCompanyIndex
+      $scope.getCompanyTeamLists()
       
       $scope.searchCompanyTeams = (companyTeamSearch) ->
-        # TODO
+        $scope.companyTeamSearch.team_name = companyTeamSearch?.team_name or ''
+        $scope.companyTeams.isOpen = true
+        $scope.companyTeams.page = 1
+        angular.forEach $scope.childCompanyTeams.companies, (company, companyIndex) ->
+          $scope.childCompanyTeams.companies[companyIndex].isOpen = true
+          $scope.childCompanyTeams.companies[companyIndex].page = 1
+        $scope.getCompanyTeamLists()
       
+      $scope.companyParticipantSearch = 
+        participant_name: ''
       $scope.companyParticipants = 
         isOpen: true
         page: 1
@@ -182,78 +194,86 @@ angular.module 'ahaLuminateControllers'
         $scope.companyProgress.numParticipants = numParticipants or 0
         if not $scope.$$phase
           $scope.$apply()
-      numCompaniesParticipantRequestComplete = 0
-      numParticipants = 0
-      $scope.getCompanyParticipants = ->
-        # TODO: scroll to top of list
-        pageNumber = $scope.companyParticipants.page - 1
-        TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%%%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=5&list_page_offset=' + pageNumber, 
-          error: ->
-            setCompanyParticipants()
-            numCompaniesParticipantRequestComplete++
-            if numCompaniesParticipantRequestComplete is numCompanies
-              setCompanyNumParticipants numParticipants
-          success: (response) ->
-            setCompanyParticipants()
-            participants = response.getParticipantsResponse?.participant
-            if participants
-              participants = [participants] if not angular.isArray participants
-              companyParticipants = []
-              angular.forEach participants, (participant) ->
-                if participant.name?.first
-                  participant.amountRaised = Number participant.amountRaised
-                  participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
-                  donationUrl = participant.donationUrl
-                  if donationUrl
-                    participant.donationUrl = donationUrl.split('/site/')[1]
-                  companyParticipants.push participant
-              totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
-              setCompanyParticipants companyParticipants, totalNumberParticipants
-              numParticipants += Number totalNumberParticipants
-            numCompaniesParticipantRequestComplete++
-            if numCompaniesParticipantRequestComplete is numCompanies
-              setCompanyNumParticipants numParticipants
-      $scope.getCompanyParticipants()
-      $scope.getChildCompanyParticipants = (childCompanyIndex) ->
-        # TODO: scroll to top of list
-        childCompany = $scope.childCompanies[childCompanyIndex]
-        childCompanyId = childCompany.id
-        childCompanyName = childCompany.name
-        pageNumber = $scope.childCompanyParticipants.companies[childCompanyIndex]?.page
-        if not pageNumber
-          pageNumber = 0
-        else
-          pageNumber--
-        TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%%%') + '&list_filter_column=team.company_id&list_filter_text=' + childCompanyId + '&list_sort_column=total&list_ascending=false&list_page_size=5&list_page_offset=' + pageNumber, 
-          error: ->
-            addChildCompanyParticipants childCompanyIndex, childCompanyId, childCompanyName
-            numCompaniesParticipantRequestComplete++
-            if numCompaniesParticipantRequestComplete is numCompanies
-              setCompanyNumParticipants numParticipants
-          success: (response) ->
-            participants = response.getParticipantsResponse?.participant
-            if not participants
+      $scope.getCompanyParticipantLists = ->
+        numCompaniesParticipantRequestComplete = 0
+        numParticipants = 0
+        $scope.getCompanyParticipants = ->
+          # TODO: scroll to top of list
+          pageNumber = $scope.companyParticipants.page - 1
+          TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%%%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=5&list_page_offset=' + pageNumber, 
+            error: ->
+              setCompanyParticipants()
+              numCompaniesParticipantRequestComplete++
+              if numCompaniesParticipantRequestComplete is numCompanies
+                setCompanyNumParticipants numParticipants
+            success: (response) ->
+              setCompanyParticipants()
+              participants = response.getParticipantsResponse?.participant
+              if participants
+                participants = [participants] if not angular.isArray participants
+                companyParticipants = []
+                angular.forEach participants, (participant) ->
+                  if participant.name?.first
+                    participant.amountRaised = Number participant.amountRaised
+                    participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
+                    donationUrl = participant.donationUrl
+                    if donationUrl
+                      participant.donationUrl = donationUrl.split('/site/')[1]
+                    companyParticipants.push participant
+                totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
+                setCompanyParticipants companyParticipants, totalNumberParticipants
+                numParticipants += Number totalNumberParticipants
+              numCompaniesParticipantRequestComplete++
+              if numCompaniesParticipantRequestComplete is numCompanies
+                setCompanyNumParticipants numParticipants
+        $scope.getCompanyParticipants()
+        $scope.getChildCompanyParticipants = (childCompanyIndex) ->
+          # TODO: scroll to top of list
+          childCompany = $scope.childCompanies[childCompanyIndex]
+          childCompanyId = childCompany.id
+          childCompanyName = childCompany.name
+          pageNumber = $scope.childCompanyParticipants.companies[childCompanyIndex]?.page
+          if not pageNumber
+            pageNumber = 0
+          else
+            pageNumber--
+          TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%%%') + '&list_filter_column=team.company_id&list_filter_text=' + childCompanyId + '&list_sort_column=total&list_ascending=false&list_page_size=5&list_page_offset=' + pageNumber, 
+            error: ->
               addChildCompanyParticipants childCompanyIndex, childCompanyId, childCompanyName
-            else
-              participants = [participants] if not angular.isArray participants
-              companyParticipants = []
-              angular.forEach participants, (participant) ->
-                if participant.name?.first
-                  participant.amountRaised = Number participant.amountRaised
-                  participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
-                  donationUrl = participant.donationUrl
-                  if donationUrl
-                    participant.donationUrl = donationUrl.split('/site/')[1]
-                  companyParticipants.push participant
-              totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
-              addChildCompanyParticipants childCompanyIndex, childCompanyId, childCompanyName, companyParticipants, totalNumberParticipants
-              numParticipants += Number totalNumberParticipants
-            numCompaniesParticipantRequestComplete++
-            if numCompaniesParticipantRequestComplete is numCompanies
-              setCompanyNumParticipants numParticipants
-      angular.forEach $scope.childCompanies, (childCompany, childCompanyIndex) ->
-        $scope.getChildCompanyParticipants childCompanyIndex
+              numCompaniesParticipantRequestComplete++
+              if numCompaniesParticipantRequestComplete is numCompanies
+                setCompanyNumParticipants numParticipants
+            success: (response) ->
+              participants = response.getParticipantsResponse?.participant
+              if not participants
+                addChildCompanyParticipants childCompanyIndex, childCompanyId, childCompanyName
+              else
+                participants = [participants] if not angular.isArray participants
+                companyParticipants = []
+                angular.forEach participants, (participant) ->
+                  if participant.name?.first
+                    participant.amountRaised = Number participant.amountRaised
+                    participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
+                    donationUrl = participant.donationUrl
+                    if donationUrl
+                      participant.donationUrl = donationUrl.split('/site/')[1]
+                    companyParticipants.push participant
+                totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
+                addChildCompanyParticipants childCompanyIndex, childCompanyId, childCompanyName, companyParticipants, totalNumberParticipants
+                numParticipants += Number totalNumberParticipants
+              numCompaniesParticipantRequestComplete++
+              if numCompaniesParticipantRequestComplete is numCompanies
+                setCompanyNumParticipants numParticipants
+        angular.forEach $scope.childCompanies, (childCompany, childCompanyIndex) ->
+          $scope.getChildCompanyParticipants childCompanyIndex
+      $scope.getCompanyParticipantLists()
       
       $scope.searchCompanyParticipants = (companyParticipantSearch) ->
-        # TODO
+        $scope.companyParticipantSearch.participant_name = companyParticipantSearch?.participant_name or ''
+        $scope.companyParticipants.isOpen = true
+        $scope.companyParticipants.page = 1
+        angular.forEach $scope.childCompanyParticipants.companies, (company, companyIndex) ->
+          $scope.childCompanyParticipants.companies[companyIndex].isOpen = true
+          $scope.childCompanyParticipants.companies[companyIndex].page = 1
+        $scope.getCompanyParticipantLists()
   ]
