@@ -729,7 +729,7 @@ footer .container {
         .heart-company-team-list .heart-company-team-list__header form .form-control {
           width: 240px; } }
   .heart-company-team-list .heart-company-team-list__company-name {
-    padding: 30px 0; }
+    padding: 30px 3px 30px 0; }
   .heart-company-team-list .heart-company-team-list__body {
     display: table;
     border-top: 1px solid #c9cccc;
@@ -810,7 +810,7 @@ footer .container {
         .heart-company-participant-list .heart-company-participant-list__header form .form-control {
           width: 240px; } }
   .heart-company-participant-list .heart-company-participant-list__company-name {
-    padding: 30px 0; }
+    padding: 30px 3px 30px 0; }
   .heart-company-participant-list .heart-company-participant-list__body {
     display: table;
     border-top: 1px solid #c9cccc;

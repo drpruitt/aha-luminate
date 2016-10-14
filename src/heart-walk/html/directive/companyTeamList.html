@@ -12,9 +12,16 @@
     </form>
   </div>
   <div class="heart-company-team-list__company-name" ng-if="teams.length > 0">
-    {{companyName}}
+    <div class="clearfix">
+      <div class="pull-left">
+        {{companyName}}
+      </div>
+      <a class="pull-right" ng-click="toggleCompanyTeamList()">
+        <i class="glyphicon ng-scope" ng-class="{'glyphicon-triangle-bottom': isOpen, 'glyphicon-triangle-left': !isOpen}"></i>
+      </a>
+    </div>
   </div>
-  <div class="heart-company-team-list__body" ng-if="teams.length > 0">
+  <div class="heart-company-team-list__body" ng-if="teams.length > 0 && isOpen">
     <div class="heart-company-team-list__row" ng-repeat="team in teams">
       <div class="heart-company-team-list__column heart-company-team-list__column--name">
         <a ng-href="TR?fr_id={{team.EventId}}&amp;pg=team&amp;team_id={{team.id}}">{{team.name}}</a>

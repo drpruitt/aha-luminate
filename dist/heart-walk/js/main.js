@@ -200,10 +200,18 @@
       restrict: 'E',
       replace: true,
       scope: {
+        isOpen: '=',
         isChildCompany: '=',
         companyName: '=',
         participants: '='
-      }
+      },
+      controller: [
+        '$scope', function($scope) {
+          return $scope.toggleCompanyParticipantList = function() {
+            return $scope.isOpen = !$scope.isOpen;
+          };
+        }
+      ]
     };
   });
 
@@ -213,10 +221,18 @@
       restrict: 'E',
       replace: true,
       scope: {
+        isOpen: '=',
         isChildCompany: '=',
         companyName: '=',
         teams: '='
-      }
+      },
+      controller: [
+        '$scope', function($scope) {
+          return $scope.toggleCompanyTeamList = function() {
+            return $scope.isOpen = !$scope.isOpen;
+          };
+        }
+      ]
     };
   });
 
@@ -341,6 +357,7 @@
       });
       numCompanies = $scope.childCompanies.length + 1;
       $scope.companyTeams = {
+        isOpen: true,
         page: 1
       };
       setCompanyTeams = function(teams, totalNumber) {
@@ -357,6 +374,7 @@
         var pageNumber, ref;
         pageNumber = ((ref = $scope.childCompanyTeams.companies[companyIndex]) != null ? ref.page : void 0) || 0;
         $scope.childCompanyTeams.companies[companyIndex] = {
+          isOpen: true,
           page: pageNumber,
           companyIndex: companyIndex,
           companyId: companyId || '',
@@ -468,6 +486,7 @@
         return $scope.getChildCompanyTeams(childCompanyIndex);
       });
       $scope.companyParticipants = {
+        isOpen: true,
         page: 1
       };
       setCompanyParticipants = function(participants, totalNumber) {
@@ -484,6 +503,7 @@
         var pageNumber, ref;
         pageNumber = ((ref = $scope.childCompanyParticipants.companies[companyIndex]) != null ? ref.page : void 0) || 0;
         $scope.childCompanyParticipants.companies[companyIndex] = {
+          isOpen: true,
           page: pageNumber,
           companyIndex: companyIndex,
           companyId: companyId || '',

@@ -4,6 +4,13 @@ angular.module 'ahaLuminateApp'
     restrict: 'E'
     replace: true
     scope:
+      isOpen: '='
       isChildCompany: '='
       companyName: '='
       participants: '='
+    controller: [
+      '$scope'
+      ($scope) ->
+        $scope.toggleCompanyParticipantList = ->
+          $scope.isOpen = !$scope.isOpen
+    ]

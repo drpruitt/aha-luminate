@@ -62,6 +62,7 @@ angular.module 'ahaLuminateControllers'
       numCompanies = $scope.childCompanies.length + 1
       
       $scope.companyTeams = 
+        isOpen: true
         page: 1
       setCompanyTeams = (teams, totalNumber) ->
         $scope.companyTeams.teams = teams or []
@@ -73,6 +74,7 @@ angular.module 'ahaLuminateControllers'
       addChildCompanyTeams = (companyIndex, companyId, companyName, teams, totalNumber) ->
         pageNumber = $scope.childCompanyTeams.companies[companyIndex]?.page or 0
         $scope.childCompanyTeams.companies[companyIndex] = 
+          isOpen: true
           page: pageNumber
           companyIndex: companyIndex
           companyId: companyId or ''
@@ -152,6 +154,7 @@ angular.module 'ahaLuminateControllers'
         $scope.getChildCompanyTeams childCompanyIndex
       
       $scope.companyParticipants = 
+        isOpen: true
         page: 1
       setCompanyParticipants = (participants, totalNumber) ->
         $scope.companyParticipants.participants = participants or []
@@ -163,6 +166,7 @@ angular.module 'ahaLuminateControllers'
       addChildCompanyParticipants = (companyIndex, companyId, companyName, participants, totalNumber) ->
         pageNumber = $scope.childCompanyParticipants.companies[companyIndex]?.page or 0
         $scope.childCompanyParticipants.companies[companyIndex] = 
+          isOpen: true
           page: pageNumber
           companyIndex: companyIndex
           companyId: companyId or ''
