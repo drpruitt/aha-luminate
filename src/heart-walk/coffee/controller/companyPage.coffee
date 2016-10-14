@@ -200,8 +200,13 @@ angular.module 'ahaLuminateControllers'
         numParticipants = 0
         $scope.getCompanyParticipants = ->
           # TODO: scroll to top of list
+          firstName = $scope.companyParticipantSearch.participant_name
+          lastName = ''
+          if $scope.companyParticipantSearch.participant_name.indexOf(' ') isnt -1
+            firstName = $scope.companyParticipantSearch.participant_name.split(' ')[0]
+            lastName = $scope.companyParticipantSearch.participant_name.split(' ')[1]
           pageNumber = $scope.companyParticipants.page - 1
-          TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%%%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=5&list_page_offset=' + pageNumber, 
+          TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%%%') + '&first_name=' + firstName + '&last_name=' + lastName + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=5&list_page_offset=' + pageNumber, 
             error: ->
               setCompanyParticipants()
               numCompaniesParticipantRequestComplete++
@@ -233,12 +238,17 @@ angular.module 'ahaLuminateControllers'
           childCompany = $scope.childCompanies[childCompanyIndex]
           childCompanyId = childCompany.id
           childCompanyName = childCompany.name
+          firstName = $scope.companyParticipantSearch.participant_name
+          lastName = ''
+          if $scope.companyParticipantSearch.participant_name.indexOf(' ') isnt -1
+            firstName = $scope.companyParticipantSearch.participant_name.split(' ')[0]
+            lastName = $scope.companyParticipantSearch.participant_name.split(' ')[1]
           pageNumber = $scope.childCompanyParticipants.companies[childCompanyIndex]?.page
           if not pageNumber
             pageNumber = 0
           else
             pageNumber--
-          TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%%%') + '&list_filter_column=team.company_id&list_filter_text=' + childCompanyId + '&list_sort_column=total&list_ascending=false&list_page_size=5&list_page_offset=' + pageNumber, 
+          TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%%%') + '&first_name=' + firstName + '&last_name=' + lastName + '&list_filter_column=team.company_id&list_filter_text=' + childCompanyId + '&list_sort_column=total&list_ascending=false&list_page_size=5&list_page_offset=' + pageNumber, 
             error: ->
               addChildCompanyParticipants childCompanyIndex, childCompanyId, childCompanyName
               numCompaniesParticipantRequestComplete++

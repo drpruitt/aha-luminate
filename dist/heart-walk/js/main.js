@@ -556,9 +556,15 @@
         numCompaniesParticipantRequestComplete = 0;
         numParticipants = 0;
         $scope.getCompanyParticipants = function() {
-          var pageNumber;
+          var firstName, lastName, pageNumber;
+          firstName = $scope.companyParticipantSearch.participant_name;
+          lastName = '';
+          if ($scope.companyParticipantSearch.participant_name.indexOf(' ') !== -1) {
+            firstName = $scope.companyParticipantSearch.participant_name.split(' ')[0];
+            lastName = $scope.companyParticipantSearch.participant_name.split(' ')[1];
+          }
           pageNumber = $scope.companyParticipants.page - 1;
-          return TeamraiserParticipantService.getParticipants('team_name=' + encodeURIComponent('%%%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=5&list_page_offset=' + pageNumber, {
+          return TeamraiserParticipantService.getParticipants('team_name=' + encodeURIComponent('%%%') + '&first_name=' + firstName + '&last_name=' + lastName + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=5&list_page_offset=' + pageNumber, {
             error: function() {
               setCompanyParticipants();
               numCompaniesParticipantRequestComplete++;
@@ -600,17 +606,23 @@
         };
         $scope.getCompanyParticipants();
         $scope.getChildCompanyParticipants = function(childCompanyIndex) {
-          var childCompany, childCompanyId, childCompanyName, pageNumber, ref;
+          var childCompany, childCompanyId, childCompanyName, firstName, lastName, pageNumber, ref;
           childCompany = $scope.childCompanies[childCompanyIndex];
           childCompanyId = childCompany.id;
           childCompanyName = childCompany.name;
+          firstName = $scope.companyParticipantSearch.participant_name;
+          lastName = '';
+          if ($scope.companyParticipantSearch.participant_name.indexOf(' ') !== -1) {
+            firstName = $scope.companyParticipantSearch.participant_name.split(' ')[0];
+            lastName = $scope.companyParticipantSearch.participant_name.split(' ')[1];
+          }
           pageNumber = (ref = $scope.childCompanyParticipants.companies[childCompanyIndex]) != null ? ref.page : void 0;
           if (!pageNumber) {
             pageNumber = 0;
           } else {
             pageNumber--;
           }
-          return TeamraiserParticipantService.getParticipants('team_name=' + encodeURIComponent('%%%') + '&list_filter_column=team.company_id&list_filter_text=' + childCompanyId + '&list_sort_column=total&list_ascending=false&list_page_size=5&list_page_offset=' + pageNumber, {
+          return TeamraiserParticipantService.getParticipants('team_name=' + encodeURIComponent('%%%') + '&first_name=' + firstName + '&last_name=' + lastName + '&list_filter_column=team.company_id&list_filter_text=' + childCompanyId + '&list_sort_column=total&list_ascending=false&list_page_size=5&list_page_offset=' + pageNumber, {
             error: function() {
               addChildCompanyParticipants(childCompanyIndex, childCompanyId, childCompanyName);
               numCompaniesParticipantRequestComplete++;
