@@ -86,7 +86,8 @@ angular.module 'ahaLuminateControllers'
         if not $scope.$$phase
           $scope.$apply()
       setCompanyNumTeams = (numTeams) ->
-        $scope.companyProgress.numTeams = numTeams or 0
+        if not $scope.companyProgress.numTeams
+          $scope.companyProgress.numTeams = numTeams or 0
         if not $scope.$$phase
           $scope.$apply()
       $scope.getCompanyTeamLists = ->

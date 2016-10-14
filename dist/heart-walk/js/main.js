@@ -398,7 +398,9 @@
         }
       };
       setCompanyNumTeams = function(numTeams) {
-        $scope.companyProgress.numTeams = numTeams || 0;
+        if (!$scope.companyProgress.numTeams) {
+          $scope.companyProgress.numTeams = numTeams || 0;
+        }
         if (!$scope.$$phase) {
           return $scope.$apply();
         }
