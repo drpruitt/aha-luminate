@@ -427,6 +427,13 @@ div.donation-level-input-container, div.generic-repeat-label-checkbox-container 
 	padding: 0 !important;
 	font-size: 15px !important;
 }
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+div.donation-level-label-input-container {
+display: block;	
+}
+}
+
 div.form-row div.form-content {
 	display: inline !important;
 	font-size: 15px !important;
