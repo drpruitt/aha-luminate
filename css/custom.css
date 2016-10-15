@@ -431,6 +431,8 @@ div.donation-level-input-container, div.generic-repeat-label-checkbox-container 
 @media screen and (-webkit-min-device-pixel-ratio:0) {
 div.donation-level-label-input-container {
 display: block;	
+float: left;
+width: 20px;
 }
 }
 
