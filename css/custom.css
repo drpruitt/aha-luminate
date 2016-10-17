@@ -6,6 +6,10 @@
 	margin:0;
 }
 
+.heart-hero__info hr {
+display: none;	
+}
+
 .ahalogo {
 	border-right: 1px solid #b0b0b0;
 	padding: 3px;
