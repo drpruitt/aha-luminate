@@ -202,7 +202,7 @@ div.responsive a.secondary-step, div.responsive button.secondary-step {
 }
 
 /* change company name text size */
-.trr-td .trr-company-list-name {
+.trr-td.trr-company-list-name {
 font-size: 12px;	
 }
 
