@@ -206,6 +206,10 @@ div.responsive a.secondary-step, div.responsive button.secondary-step {
 font-size: 12px;	
 }
 
+.donor-list-indicator-container {
+display: none;	
+}
+
 #basic_team_search_container{
 	display: inline-block;
 	padding-right: 10px;
