@@ -203,16 +203,11 @@ div.responsive a.secondary-step, div.responsive button.secondary-step {
 
 /* change company name text size */
 .trr-td.trr-company-list-name {
-font-size: 12px;	
+font-size: 11px;	
 }
 
 .donor-list-indicator-container, .tr-status-indicator-container {
 display: none;	
-}
-
-table.trr-table {
-width: auto;
-word-wrap: break-word;
 }
 
 #basic_team_search_container{
