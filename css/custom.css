@@ -200,6 +200,12 @@ div.responsive a.secondary-step, div.responsive button.secondary-step {
 	background-color: #d61d1d !important;
 	color: #fff;
 }
+
+/* change company name text size */
+.trr-td .trr-company-list-name {
+font-size: 12px;	
+}
+
 #basic_team_search_container{
 	display: inline-block;
 	padding-right: 10px;
