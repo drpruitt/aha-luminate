@@ -982,6 +982,7 @@ input[type="date"], input[type="datetime"], input[type="email"], input[type="fil
   left: 20px;
   z-index: 2;
   cursor: pointer;
+	display:none;
 }
 .unslider-arrow.next {
   left: auto;
