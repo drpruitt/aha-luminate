@@ -1008,3 +1008,7 @@ input[type="date"], input[type="datetime"], input[type="email"], input[type="fil
   background: #fff;
   cursor: default;
 }
+
+.tr_sponsorship_logo {
+  margin: 10px 0;
+}
