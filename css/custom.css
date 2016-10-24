@@ -206,7 +206,7 @@ div.responsive a.secondary-step, div.responsive button.secondary-step {
 font-size: 12px;	
 }
 
-.donor-list-indicator-container {
+.donor-list-indicator-container, .tr-status-indicator-container {
 display: none;	
 }
 
