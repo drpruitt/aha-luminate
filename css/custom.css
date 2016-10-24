@@ -211,7 +211,8 @@ display: none;
 }
 
 table.trr-table {
-	
+width: auto;
+word-wrap: break-word;
 }
 
 #basic_team_search_container{
