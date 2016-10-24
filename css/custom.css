@@ -210,6 +210,10 @@ font-size: 12px;
 display: none;	
 }
 
+table.trr-table {
+table-layout: auto;	
+}
+
 #basic_team_search_container{
 	display: inline-block;
 	padding-right: 10px;
