@@ -1022,7 +1022,7 @@ input[type="date"], input[type="datetime"], input[type="email"], input[type="fil
 }
 .local_sponsors {
   display:inline-block;
-  max-width: 100px;
+  width: 100px;
   border-right: 2px solid #eee;
   vertical-align:top;
 }
