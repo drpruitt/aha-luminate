@@ -1,7 +1,7 @@
 (function($) {
   $(document).ready(function() {
     //sponsor slider
-    jQuery('.sponsor_slider').unslider({
+    jQuery('.sponsor_slider .local_sponsors').unslider({
       selectors: {
         container: 'div.tr_sponsorship_logos',
         slides: 'div.tr_sponsorship_logo'
