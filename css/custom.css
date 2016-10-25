@@ -940,9 +940,11 @@ input[type="date"], input[type="datetime"], input[type="email"], input[type="fil
 }
 /* slider css */
 .unslider {
-  overflow: auto;
+  display: inline-block;
   margin: 0;
+  overflow: auto;
   padding: 0;
+  width: 100px;
 }
 .unslider-wrap {
   position: relative;
@@ -1021,8 +1023,6 @@ input[type="date"], input[type="datetime"], input[type="email"], input[type="fil
   border-top: 2px solid #eee;
 }
 .local_sponsors {
-  display:inline-block;
-  width: 100px;
   border-right: 2px solid #eee;
   vertical-align:top;
 }
