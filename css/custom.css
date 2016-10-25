@@ -988,7 +988,9 @@ input[type="date"], input[type="datetime"], input[type="email"], input[type="fil
   left: auto;
   right: 20px;
 }
-
+.unslider-nav {
+  display:none;
+}
 .unslider-nav ol {
   list-style: none;
   text-align: center;
@@ -1013,10 +1015,22 @@ input[type="date"], input[type="datetime"], input[type="email"], input[type="fil
 .tr_sponsorship_logo {
   margin: 10px 0;
 }
-.sponsor_subway {
-	text-align:center;
+.sponsor_slider {
+  background: #fff none repeat scroll 0 0;
+  border-bottom: 2px solid #eee;
+  border-top: 2px solid #eee;
 }
-.sponsor_subway > img {
+.local_sponsors {
+  display:inline-block;
+  max-width: 100px;
+  border-right: 2px solid #eee;
+  vertical-align:top;
+}
+.national_sponsor {
+  display:inline-block;
+  vertical-align:top;
+}
+.national_sponsor > img {
   margin-top: 10px;
   max-width: 200px;
 }
