@@ -944,7 +944,7 @@ input[type="date"], input[type="datetime"], input[type="email"], input[type="fil
   margin: 0;
   overflow: auto;
   padding: 0;
-  width: 100px;
+  width: 150px;
 }
 .unslider-wrap {
   position: relative;
