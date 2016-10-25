@@ -1023,14 +1023,14 @@ input[type="date"], input[type="datetime"], input[type="email"], input[type="fil
   border-top: 2px solid #eee;
 }
 .local_sponsors {
-  border-right: 2px solid #eee;
   vertical-align:top;
 }
 .national_sponsor {
+  border-left: 2px solid #eee;
   display:inline-block;
   vertical-align:top;
 }
 .national_sponsor > img {
   margin-top: 10px;
-  max-width: 200px;
+  max-width: 130px;
 }
