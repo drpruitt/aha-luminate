@@ -18,6 +18,7 @@ display: none;
 .heart-hero--entry {
     height: 270px;
     margin: 0;
+background-position: top;
 }
 
 .heart-hero--entry h1 {
