@@ -520,7 +520,12 @@ width: 100%;
 @media (min-width: 320px) {
 .heart-greeting-detail {
     margin: -130px 20px 20px;
-} 
+}
+
+.heart-hero--entry h1 {
+text-align: right;		
+}
+	
 }
 
 
