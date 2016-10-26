@@ -516,7 +516,7 @@ width: 100%;
 	width: 48%;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 600px) {
 .heart-greeting-detail {
     margin: -130px 20px 20px;
 } 
@@ -529,11 +529,7 @@ width: 100%;
 	margin-right: 2.66667%;
 	width: 23%;
 }
-	 
-.heart-greeting-detail {
-margin: -130px 40px 40px;
-}
-	 
+	 	 
 }
 .country:nth-child(odd) {
 	margin-right: 4%;
