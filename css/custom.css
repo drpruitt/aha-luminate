@@ -10,6 +10,29 @@
 display: none;	
 }
 
+hero--entry .heart-hero__mask {
+    height: 270px;
+    padding: 40px 50px 0;
+}
+
+.heart-hero--entry {
+    height: 270px;
+    margin: 0;
+}
+
+.heart-hero--entry h1 {
+    font-size: 24px;
+    float: right;
+    min-height: 30px;
+}
+
+
+.heart-hero--entry .heart-hero__info {
+    clear: both !important;
+    float: right !important;
+    margin: 0;
+}
+
 .heart-greeting-story {
 background: #575757;
 }
