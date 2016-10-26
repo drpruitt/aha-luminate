@@ -515,6 +515,14 @@ width: 100%;
 	position: relative;
 	width: 48%;
 }
+
+@media (min-width: 992px) {
+.heart-greeting-detail {
+    margin: -130px 20px 20px;
+} 
+}
+
+
  @media (min-width: 768px) {
 .country {
 	margin-bottom: 2.67vw;
