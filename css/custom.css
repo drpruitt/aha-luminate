@@ -10,7 +10,7 @@
 display: none;	
 }
 
-hero--entry .heart-hero__mask {
+.heart-hero--entry .heart-hero__mask {
     height: 270px;
     padding: 40px 50px 0;
 }
