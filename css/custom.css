@@ -470,6 +470,11 @@ div.donation-level-input-container, div.generic-repeat-label-checkbox-container 
 	font-size: 15px !important;
 }
 
+/* Find Events Map */
+#restbl a:link, #restbl {
+font-size: 12px;
+}
+
 @media screen and (-webkit-min-device-pixel-ratio:0) {
 div.donation-level-label-input-container {
 display: block;	
