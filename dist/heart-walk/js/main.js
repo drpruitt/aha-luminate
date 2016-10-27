@@ -296,8 +296,20 @@
 
   angular.module('ahaLuminateControllers').controller('CompanyPageCtrl', [
     '$scope', '$location', '$filter', '$timeout', 'TeamraiserCompanyService', 'TeamraiserTeamService', 'TeamraiserParticipantService', function($scope, $location, $filter, $timeout, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService) {
-      var $childCompanyLinks, $defaultCompanyHierarchy, $defaultCompanySummary, addChildCompanyParticipants, addChildCompanyTeams, companyGiftCount, numCompanies, setCompanyFundraisingProgress, setCompanyNumParticipants, setCompanyNumTeams, setCompanyParticipants, setCompanyTeams;
+      var $childCompanyAmounts, $childCompanyLinks, $defaultCompanyHierarchy, $defaultCompanySummary, addChildCompanyParticipants, addChildCompanyTeams, companyGiftCount, numCompanies, setCompanyFundraisingProgress, setCompanyNumParticipants, setCompanyNumTeams, setCompanyParticipants, setCompanyTeams, totalCompanyAmountRaised;
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0];
+      $defaultCompanyHierarchy = angular.element('.js--default-company-hierarchy');
+      $childCompanyAmounts = $defaultCompanyHierarchy.find('.trr-td p.righted');
+      totalCompanyAmountRaised = 0;
+      angular.forEach($childCompanyAmounts, function(childCompanyAmount) {
+        var amountRaised;
+        amountRaised = angular.element(childCompanyAmount).text();
+        if (amountRaised) {
+          amountRaised = amountRaised.replace('$', '').replace(/,/g, '');
+          amountRaised = Number(amountRaised) * 100;
+          return totalCompanyAmountRaised += amountRaised;
+        }
+      });
       $defaultCompanySummary = angular.element('.js--default-company-summary');
       companyGiftCount = $defaultCompanySummary.find('.company-tally-container--gift-count .company-tally-ammount').text();
       if (companyGiftCount === '') {
@@ -345,11 +357,10 @@
           if (!companyInfo) {
             return setCompanyFundraisingProgress();
           } else {
-            return setCompanyFundraisingProgress(companyInfo.amountRaised, companyInfo.goal);
+            return setCompanyFundraisingProgress(totalCompanyAmountRaised, companyInfo.goal);
           }
         }
       });
-      $defaultCompanyHierarchy = angular.element('.js--default-company-hierarchy');
       $childCompanyLinks = $defaultCompanyHierarchy.find('.trr-td a');
       $scope.childCompanies = [];
       angular.forEach($childCompanyLinks, function(childCompanyLink) {

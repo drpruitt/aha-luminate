@@ -10,6 +10,16 @@ angular.module 'ahaLuminateControllers'
     ($scope, $location, $filter, $timeout, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService) ->
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0]
       
+      $defaultCompanyHierarchy = angular.element '.js--default-company-hierarchy'
+      $childCompanyAmounts = $defaultCompanyHierarchy.find('.trr-td p.righted')
+      totalCompanyAmountRaised = 0
+      angular.forEach $childCompanyAmounts, (childCompanyAmount) ->
+        amountRaised = angular.element(childCompanyAmount).text()
+        if amountRaised
+          amountRaised = amountRaised.replace('$', '').replace(/,/g, '')
+          amountRaised = Number(amountRaised) * 100
+          totalCompanyAmountRaised += amountRaised
+      
       $defaultCompanySummary = angular.element '.js--default-company-summary'
       companyGiftCount = $defaultCompanySummary.find('.company-tally-container--gift-count .company-tally-ammount').text()
       if companyGiftCount is ''
@@ -47,9 +57,8 @@ angular.module 'ahaLuminateControllers'
           if not companyInfo
             setCompanyFundraisingProgress()
           else
-            setCompanyFundraisingProgress companyInfo.amountRaised, companyInfo.goal
+            setCompanyFundraisingProgress totalCompanyAmountRaised, companyInfo.goal
       
-      $defaultCompanyHierarchy = angular.element '.js--default-company-hierarchy'
       $childCompanyLinks = $defaultCompanyHierarchy.find('.trr-td a')
       $scope.childCompanies = []
       angular.forEach $childCompanyLinks, (childCompanyLink) ->
