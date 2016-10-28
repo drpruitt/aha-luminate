@@ -14,7 +14,7 @@
   <div class="heart-company-team-list__company-name" ng-if="teams.length > 0">
     <div class="clearfix">
       <div class="pull-left">
-        {{companyName}}
+        <a href="TR?fr_id={{frId}}&pg=company&company_id={{companyId}}">{{companyName}}</a>
       </div>
       <a class="pull-right" ng-click="toggleCompanyTeamList()">
         <i class="glyphicon ng-scope" ng-class="{'glyphicon-triangle-bottom': isOpen, 'glyphicon-triangle-left': !isOpen}"></i>
