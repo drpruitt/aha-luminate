@@ -7,6 +7,8 @@ angular.module 'ahaLuminateApp'
       isOpen: '='
       isChildCompany: '='
       companyName: '='
+      companyId: '='
+      frId: '='
       teams: '='
       searchCompanyTeams: '='
     controller: [
