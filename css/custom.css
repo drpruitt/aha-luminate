@@ -517,6 +517,14 @@ div.donation-form-container.responsive {
 width: 100%;
 }
 
+#EditCons input {
+font-size: 20px;
+}
+
+#EditCons input[type=checkbox], .checkbox {
+display: inline-block;
+}
+
 /* donation form styling */
 .hidden, .js-hidden {
 	display: none;
