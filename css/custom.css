@@ -163,6 +163,7 @@ div.responsive a.secondary-step, div.responsive button.secondary-step {
 }
 .open > .dropdown-menu {
   overflow: unset;
+  height: auto;
 }
 .registration-options__item {
 	padding: 10px 15px;
