@@ -6,7 +6,7 @@
 	margin:0;
 }
 
-.heart-hero__info hr {
+.heart-hero__info hr 
 display: none;	
 }
 
@@ -517,7 +517,7 @@ div.donation-form-container.responsive {
 width: 100%;
 }
 
-#EditCons input {
+#EditCons input, #EditCons select {
 font-size: 20px;
 }
 
