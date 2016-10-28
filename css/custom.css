@@ -226,8 +226,8 @@ div.responsive a.secondary-step, div.responsive button.secondary-step {
 }
 
 /* change company name text size */
-.trr-td.trr-company-list-name {
-font-size: 11px;	
+td.trr-td {
+    white-space: inherit;
 }
 
 .donor-list-indicator-container, .tr-status-indicator-container {
