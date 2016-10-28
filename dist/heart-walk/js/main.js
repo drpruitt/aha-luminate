@@ -203,6 +203,8 @@
         isOpen: '=',
         isChildCompany: '=',
         companyName: '=',
+        companyId: '=',
+        frId: '=',
         participants: '=',
         searchCompanyParticipants: '='
       },
