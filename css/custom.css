@@ -512,6 +512,13 @@ div.donation-form-container.responsive {
 	display: inline;
 }
 
+/* AHA LANDING - DEFAULT PAGE WHEN PEOPLE ARE LOGGED OUT */
+.well.well-lg.landing {
+border: 0px;
+background: #FFF;
+box-shadow: none !important;
+}
+
 /* User Profile Record Styling */
 #cons_profile .appArea.cons-prof.cons-pers {
 width: 100%;
