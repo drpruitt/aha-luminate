@@ -89,7 +89,7 @@ div.responsive a.secondary-step, div.responsive button.secondary-step {
 	color: #fff;
 	text-decoration: none;
 }
-.partname {
+.partname, #non_mobile_company_list {
 	font-size:14px;
 }
 .button {
