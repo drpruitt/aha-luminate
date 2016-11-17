@@ -77,7 +77,8 @@ angular.module 'ahaLuminateControllers'
         page: 1
       setCompanyTeams = (teams, totalNumber) ->
         $scope.companyTeams.teams = teams or []
-        $scope.companyTeams.totalNumber = totalNumber or 0
+        totalNumber = totalNumber or 0
+        $scope.companyTeams.totalNumber = Number totalNumber
         if not $scope.$$phase
           $scope.$apply()
       $scope.childCompanyTeams = 
@@ -91,7 +92,8 @@ angular.module 'ahaLuminateControllers'
           companyId: companyId or ''
           companyName: companyName or ''
           teams: teams or []
-          totalNumber: totalNumber or 0
+        totalNumber = totalNumber or 0
+        $scope.childCompanyTeams.companies[companyIndex].totalNumber = Number totalNumber
         if not $scope.$$phase
           $scope.$apply()
       setCompanyNumTeams = (numTeams) ->
@@ -183,7 +185,8 @@ angular.module 'ahaLuminateControllers'
         page: 1
       setCompanyParticipants = (participants, totalNumber) ->
         $scope.companyParticipants.participants = participants or []
-        $scope.companyParticipants.totalNumber = totalNumber or 0
+        totalNumber = totalNumber or 0
+        $scope.companyParticipants.totalNumber = Number totalNumber
         if not $scope.$$phase
           $scope.$apply()
       $scope.childCompanyParticipants = 
@@ -197,7 +200,8 @@ angular.module 'ahaLuminateControllers'
           companyId: companyId or ''
           companyName: companyName or ''
           participants: participants or []
-          totalNumber: totalNumber or 0
+        totalNumber = totalNumber or 0
+        $scope.childCompanyParticipants.companies[companyIndex].totalNumber = Number totalNumber
         if not $scope.$$phase
           $scope.$apply()
       setCompanyNumParticipants = (numParticipants) ->

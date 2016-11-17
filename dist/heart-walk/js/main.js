@@ -388,7 +388,8 @@
       };
       setCompanyTeams = function(teams, totalNumber) {
         $scope.companyTeams.teams = teams || [];
-        $scope.companyTeams.totalNumber = totalNumber || 0;
+        totalNumber = totalNumber || 0;
+        $scope.companyTeams.totalNumber = Number(totalNumber);
         if (!$scope.$$phase) {
           return $scope.$apply();
         }
@@ -405,9 +406,10 @@
           companyIndex: companyIndex,
           companyId: companyId || '',
           companyName: companyName || '',
-          teams: teams || [],
-          totalNumber: totalNumber || 0
+          teams: teams || []
         };
+        totalNumber = totalNumber || 0;
+        $scope.childCompanyTeams.companies[companyIndex].totalNumber = Number(totalNumber);
         if (!$scope.$$phase) {
           return $scope.$apply();
         }
@@ -536,7 +538,8 @@
       };
       setCompanyParticipants = function(participants, totalNumber) {
         $scope.companyParticipants.participants = participants || [];
-        $scope.companyParticipants.totalNumber = totalNumber || 0;
+        totalNumber = totalNumber || 0;
+        $scope.companyParticipants.totalNumber = Number(totalNumber);
         if (!$scope.$$phase) {
           return $scope.$apply();
         }
@@ -553,9 +556,10 @@
           companyIndex: companyIndex,
           companyId: companyId || '',
           companyName: companyName || '',
-          participants: participants || [],
-          totalNumber: totalNumber || 0
+          participants: participants || []
         };
+        totalNumber = totalNumber || 0;
+        $scope.childCompanyParticipants.companies[companyIndex].totalNumber = Number(totalNumber);
         if (!$scope.$$phase) {
           return $scope.$apply();
         }
