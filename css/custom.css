@@ -491,6 +491,9 @@ float: left;
 width: 20px;
 }
 }
+#tr_recognition_namerec_name_row input{
+	width: auto;
+}
 #tr_recognition_nameanonymous_row input{
 	width: auto;
 
