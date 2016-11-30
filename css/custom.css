@@ -495,7 +495,8 @@ width: 20px;
 	width: auto;
 
 }
-#tr_show_gift_to_publicname input{
+
+#tr_show_gift_to_publicsubmit input{
 	width: auto;
 }
 div.form-row div.form-content {
