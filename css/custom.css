@@ -491,7 +491,10 @@ float: left;
 width: 20px;
 }
 }
+#tr_recognition_nameanonymous_row input{
+	width: auto;
 
+}
 div.form-row div.form-content {
 	display: inline !important;
 	font-size: 15px !important;
