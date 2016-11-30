@@ -230,6 +230,10 @@ div.responsive a.secondary-step, div.responsive button.secondary-step {
 td.trr-td {
     white-space: inherit;
 }
+/* Hide sidebar on View All Companies Page */
+#company_list_page .side-bar {
+display: none;	
+}
 
 .donor-list-indicator-container, .tr-status-indicator-container {
 display: none;	
