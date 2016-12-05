@@ -33,7 +33,14 @@ background-position: top;
     float: right !important;
     margin: 0;
 }
- 
+
+.volunteer-survey p{
+	color: #ffff;
+	font-size: inherit;
+	font-family: inherit;
+	text-decoration: none;
+}
+
 .heart-greeting-story {
 background: #575757;
 }
