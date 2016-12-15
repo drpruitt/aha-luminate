@@ -253,6 +253,11 @@ display: none;
 display: none;	
 }
 
+/* Unhide Honor Roll for Personal Pages */
+#frStatus2 .donor-list-indicator-container {
+display: block !important;	
+}
+
 #basic_team_search_container{
 	display: inline-block;
 	padding-right: 10px;
