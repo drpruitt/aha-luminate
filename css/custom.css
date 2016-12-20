@@ -40,6 +40,12 @@ background-position: top;
 label {
 	font-weight: 100 !important;
 }
+input[type="checkbox"], input[type="radio"] {
+	margin: 4px 4px 4px !important;
+	display: inline;
+	font-size: inherit;
+}
+
 .volunteer-survey p{
 	color: #fff;
 	font-size: inherit;
