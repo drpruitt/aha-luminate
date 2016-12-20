@@ -34,10 +34,10 @@ background-position: top;
     margin: 0;
 }
 .appArea {
-	max-width: 100%;
+	max-width: 100% !important;
 }
 label {
-	font-weight: 0 !important;
+	font-weight: 100 !important;
 }
 .volunteer-survey p{
 	color: #fff;
