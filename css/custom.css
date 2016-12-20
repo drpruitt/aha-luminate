@@ -33,7 +33,12 @@ background-position: top;
     float: right !important;
     margin: 0;
 }
-
+.appArea {
+	max-width: 100%;
+}
+label {
+	font-weight: 0 !important;
+}
 .volunteer-survey p{
 	color: #fff;
 	font-size: inherit;
