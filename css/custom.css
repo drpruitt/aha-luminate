@@ -38,7 +38,7 @@ background-position: top;
 	width: 100% !important;
 }
 label {
-	font-weight: 100 !important;
+	font-weight: bold !important;
 }
 
 input[type="checkbox"], input[type="radio"] {
