@@ -61,11 +61,10 @@ input[type="checkbox"], input[type="radio"] {
 	text-decoration: underline;
 }
 .Explicit, div.responsive, li, ol, p, table, td, th, tr, ul {
-	font-weight:inherit;
+	font-weight: inherit;
 }
 div.appArea {
-   
-    width: 100% !important;
+  width: 100% !important;
 }
 .heart-greeting-story {
 background: #575757;
