@@ -61,7 +61,7 @@ input[type="checkbox"], input[type="radio"] {
 	text-decoration: underline;
 }
 .Explicit, div.responsive, li, ol, p, table, td, th, tr, ul {
-	font-weight:bold;
+	font-weight:inherit;
 }
 div.appArea {
    
