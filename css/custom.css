@@ -56,6 +56,9 @@ input[type="checkbox"], input[type="radio"] {
 	font-size: inherit;
 }
 
+.checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
+	position: relative !important;
+}
 .volunteer-survey p{
 	color: #fff;
 	font-size: inherit;
