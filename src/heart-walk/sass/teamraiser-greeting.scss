@@ -297,7 +297,7 @@
     }
   }
   
-  .btn {
+  .btn:not(.btn--no-list) {
     @media(min-width: $screen-sm-min) {
       position: absolute;
       bottom: 0;

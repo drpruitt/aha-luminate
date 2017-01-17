@@ -1227,7 +1227,7 @@ footer .container {
       .heart-greeting-leaderboards .list-group .list-group-item:first-child, .heart-greeting-leaderboards .list-group .list-group-item:last-child {
         border-radius: 0; }
   @media (min-width: 768px) {
-    .heart-greeting-leaderboards .btn {
+    .heart-greeting-leaderboards .btn:not(.btn--no-list) {
       position: absolute;
       bottom: 0; } }
 
