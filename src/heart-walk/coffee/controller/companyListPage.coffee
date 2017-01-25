@@ -31,7 +31,7 @@ angular.module 'ahaLuminateControllers'
             # TODO: don't include companies with $0 raised
             angular.forEach companies, (company) ->
               if company isnt ''
-                companyData = csvToArray company
+                companyData = csvToArray(company)[0]
                 topCompanies.push
                   "eventId": $scope.frId
                   "companyId": companyData[0]

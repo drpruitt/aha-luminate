@@ -103,8 +103,7 @@ angular.module 'ahaLuminateControllers'
             # TODO: don't include companies with $0 raised
             angular.forEach companies, (company) ->
               if company isnt ''
-                companyData = csvToArray company
-                console.log 'companyData', companyData
+                companyData = csvToArray(company)[0]
                 topCompanies.push
                   "eventId": $scope.frId
                   "companyId": companyData[0]
@@ -113,7 +112,5 @@ angular.module 'ahaLuminateControllers'
                   "teamCount": companyData[4]
                   "amountRaised": Number(companyData[2]) * 100
                   "amountRaisedFormatted": $filter('currency')(Number(companyData[2]), '$').replace '.00', ''
-            console.log 'topCompanies', topCompanies
             $scope.topCompanies.companies = $filter('orderBy') topCompanies, 'amountRaised', true
-            console.log '$scope.topCompanies.companies', $scope.topCompanies.companies
   ]

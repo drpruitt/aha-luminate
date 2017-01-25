@@ -344,7 +344,7 @@
           angular.forEach(companies, function(company) {
             var companyData;
             if (company !== '') {
-              companyData = csvToArray(company);
+              companyData = csvToArray(company)[0];
               return topCompanies.push({
                 "eventId": $scope.frId,
                 "companyId": companyData[0],
@@ -892,8 +892,7 @@
           angular.forEach(companies, function(company) {
             var companyData;
             if (company !== '') {
-              companyData = csvToArray(company);
-              console.log('companyData', companyData);
+              companyData = csvToArray(company)[0];
               return topCompanies.push({
                 "eventId": $scope.frId,
                 "companyId": companyData[0],
@@ -905,9 +904,7 @@
               });
             }
           });
-          console.log('topCompanies', topCompanies);
-          $scope.topCompanies.companies = $filter('orderBy')(topCompanies, 'amountRaised', true);
-          return console.log('$scope.topCompanies.companies', $scope.topCompanies.companies);
+          return $scope.topCompanies.companies = $filter('orderBy')(topCompanies, 'amountRaised', true);
         }
       });
     }
