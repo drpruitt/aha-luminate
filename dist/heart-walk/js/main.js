@@ -163,6 +163,25 @@
     }
   ]);
 
+  angular.module('ahaLuminateApp').factory('TeamraiserCompanyDataService', [
+    '$http', function(LuminateRESTService) {
+      return {
+        getCompanyData: function() {
+          return $http({
+            method: 'GET',
+            url: 'PageServer',
+            data: 'pagename=getHeartwalkCompanyData&pgwrap=n&response_format=json&fr_id=' + $rootScope.frId,
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+            }
+          }).then(function(response) {
+            return response;
+          });
+        }
+      };
+    }
+  ]);
+
   angular.module('ahaLuminateApp').directive('eqColumnHeight', [
     '$window', '$timeout', function($window, $timeout) {
       return {
@@ -701,8 +720,8 @@
   ]);
 
   angular.module('ahaLuminateControllers').controller('GreetingPageCtrl', [
-    '$scope', '$http', '$timeout', '$filter', 'TeamraiserParticipantService', 'TeamraiserTeamService', 'TeamraiserCompanyService', function($scope, $http, $timeout, $filter, TeamraiserParticipantService, TeamraiserTeamService, TeamraiserCompanyService) {
-      var setTopCompanies, setTopParticipants, setTopTeams;
+    '$scope', '$http', '$timeout', '$filter', 'TeamraiserParticipantService', 'TeamraiserTeamService', 'TeamraiserCompanyDataService', function($scope, $http, $timeout, $filter, TeamraiserParticipantService, TeamraiserTeamService, TeamraiserCompanyDataService) {
+      var setTopParticipants, setTopTeams;
       $http.get('PageServer?pagename=getTeamraiserInfo&fr_id=' + $scope.frId + '&response_format=json&pgwrap=n').then(function(response) {
         var teamraiserInfo;
         teamraiserInfo = response.data.getTeamraiserInfo;
@@ -797,52 +816,50 @@
         }
       });
       $scope.topCompanies = {};
-      setTopCompanies = function(companies) {
-        $scope.topCompanies.companies = companies;
-        if (!$scope.$$phase) {
-          return $scope.$apply();
-        }
-      };
-      return TeamraiserCompanyService.getCompanyList('include_all_companies=true', {
-        error: function() {
-          return setTopCompanies([]);
-        },
-        success: function(response) {
-          var companyItems, ref, rootAncestorCompanyIds;
-          companyItems = ((ref = response.getCompanyListResponse) != null ? ref.companyItem : void 0) || [];
-          if (!angular.isArray(companyItems)) {
-            companyItems = [companyItems];
-          }
-          rootAncestorCompanyIds = [];
-          angular.forEach(companyItems, function(companyItem) {
-            if (companyItem.parentOrgEventId === '0') {
-              return rootAncestorCompanyIds.push(companyItem.companyId);
-            }
-          });
-          return TeamraiserCompanyService.getCompanies('list_sort_column=total&list_ascending=false&list_page_size=500', {
-            error: function() {
-              return setTopCompanies([]);
-            },
-            success: function(response) {
-              var companies, ref1, topCompanies;
-              companies = ((ref1 = response.getCompaniesResponse) != null ? ref1.company : void 0) || [];
-              if (!angular.isArray(companies)) {
-                companies = [companies];
+      return TeamraiserCompanyDataService.getCompanyData().then(function(response) {
+        var companies, csvToArray, ref, topCompanies;
+        companies = (ref = response.data.getCompanyDataResponse) != null ? ref.company : void 0;
+        if (!companies) {
+          return $scope.topCompanies.companies = [];
+        } else {
+          topCompanies = [];
+          csvToArray = function(strData) {
+            var arrData, arrMatches, objPattern, strDelimiter, strMatchedDelimiter, strMatchedValue;
+            strDelimiter = ',';
+            objPattern = new RegExp("(\\" + strDelimiter + "|\\r?\\n|\\r|^)" + "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" + "([^\"\\" + strDelimiter + "\\r\\n]*))", "gi");
+            arrData = [[]];
+            arrMatches = null;
+            while (arrMatches = objPattern.exec(strData)) {
+              strMatchedDelimiter = arrMatches[1];
+              strMatchedValue = void 0;
+              if (strMatchedDelimiter.length && strMatchedDelimiter !== strDelimiter) {
+                arrData.push([]);
               }
-              topCompanies = [];
-              angular.forEach(companies, function(company) {
-                if (rootAncestorCompanyIds.indexOf(company.companyId) > -1) {
-                  company.amountRaised = Number(company.amountRaised);
-                  company.amountRaisedFormatted = $filter('currency')(company.amountRaised / 100, '$').replace('.00', '');
-                  return topCompanies.push(company);
-                }
+              if (arrMatches[2]) {
+                strMatchedValue = arrMatches[2].replace(new RegExp("\"\"", "g"), "\"");
+              } else {
+                strMatchedValue = arrMatches[3];
+              }
+              arrData[arrData.length - 1].push(strMatchedValue);
+            }
+            return arrData;
+          };
+          angular.forEach(companies, function(company) {
+            var companyData;
+            if (company !== '') {
+              companyData = csvToArray(company);
+              return topCompanies.push({
+                "eventId": $scope.frId,
+                "companyId": companyData[0],
+                "participantCount": companyData[3],
+                "companyName": companyData[1],
+                "teamCount": companyData[4],
+                "amountRaised": Number(companyData[2]),
+                "amountRaisedFormatted": $filter('currency')(Number(companyData[2]) / 100, '$').replace('.00', '')
               });
-              topCompanies.sort(function(a, b) {
-                return Number(b.amountRaised) - Number(a.amountRaised);
-              });
-              return setTopCompanies(topCompanies);
             }
           });
+          return $scope.topCompanies.companies = topCompanies;
         }
       });
     }
