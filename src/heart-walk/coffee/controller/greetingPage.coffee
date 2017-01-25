@@ -112,5 +112,6 @@ angular.module 'ahaLuminateControllers'
                   "teamCount": companyData[4]
                   "amountRaised": Number companyData[2]
                   "amountRaisedFormatted": $filter('currency')(Number(companyData[2]) / 100, '$').replace '.00', ''
+            # TODO: sort topCompanies by amount raised
             $scope.topCompanies.companies = topCompanies
   ]

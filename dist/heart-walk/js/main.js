@@ -164,7 +164,7 @@
   ]);
 
   angular.module('ahaLuminateApp').factory('TeamraiserCompanyDataService', [
-    '$http', function(LuminateRESTService) {
+    '$http', function($http) {
       return {
         getCompanyData: function() {
           return $http({
@@ -316,6 +316,58 @@
       }
     };
   });
+
+  angular.module('ahaLuminateControllers').controller('CompanyListPageCtrl', [
+    '$scope', '$filter', 'TeamraiserCompanyDataService', function($scope, $filter, TeamraiserCompanyDataService) {
+      $scope.topCompanies = {};
+      return TeamraiserCompanyDataService.getCompanyData().then(function(response) {
+        var companies, csvToArray, ref, topCompanies;
+        companies = (ref = response.data.getCompanyDataResponse) != null ? ref.company : void 0;
+        if (!companies) {
+          return $scope.topCompanies.companies = [];
+        } else {
+          topCompanies = [];
+          csvToArray = function(strData) {
+            var arrData, arrMatches, objPattern, strDelimiter, strMatchedDelimiter, strMatchedValue;
+            strDelimiter = ',';
+            objPattern = new RegExp("(\\" + strDelimiter + "|\\r?\\n|\\r|^)" + "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" + "([^\"\\" + strDelimiter + "\\r\\n]*))", "gi");
+            arrData = [[]];
+            arrMatches = null;
+            while (arrMatches = objPattern.exec(strData)) {
+              strMatchedDelimiter = arrMatches[1];
+              strMatchedValue = void 0;
+              if (strMatchedDelimiter.length && strMatchedDelimiter !== strDelimiter) {
+                arrData.push([]);
+              }
+              if (arrMatches[2]) {
+                strMatchedValue = arrMatches[2].replace(new RegExp("\"\"", "g"), "\"");
+              } else {
+                strMatchedValue = arrMatches[3];
+              }
+              arrData[arrData.length - 1].push(strMatchedValue);
+            }
+            return arrData;
+          };
+          angular.forEach(companies, function(company) {
+            var companyData;
+            if (company !== '') {
+              companyData = csvToArray(company);
+              return topCompanies.push({
+                "eventId": $scope.frId,
+                "companyId": companyData[0],
+                "participantCount": companyData[3],
+                "companyName": companyData[1],
+                "teamCount": companyData[4],
+                "amountRaised": Number(companyData[2]),
+                "amountRaisedFormatted": $filter('currency')(Number(companyData[2]) / 100, '$').replace('.00', '')
+              });
+            }
+          });
+          return $scope.topCompanies.companies = topCompanies;
+        }
+      });
+    }
+  ]);
 
   angular.module('ahaLuminateControllers').controller('CompanyPageCtrl', [
     '$scope', '$location', '$filter', '$timeout', 'TeamraiserCompanyService', 'TeamraiserTeamService', 'TeamraiserParticipantService', function($scope, $location, $filter, $timeout, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService) {
