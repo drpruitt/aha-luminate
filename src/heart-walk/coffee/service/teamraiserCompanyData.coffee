@@ -1,7 +1,8 @@
 angular.module 'ahaLuminateApp'
   .factory 'TeamraiserCompanyDataService', [
+    '$rootScope'
     '$http'
-    ($http) ->
+    ($rootScope, $http) ->
       getCompanyData: ->
         $http
           method: 'GET'

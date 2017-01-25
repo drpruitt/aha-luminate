@@ -164,7 +164,7 @@
   ]);
 
   angular.module('ahaLuminateApp').factory('TeamraiserCompanyDataService', [
-    '$http', function($http) {
+    '$rootScope', '$http', function($rootScope, $http) {
       return {
         getCompanyData: function() {
           return $http({
@@ -363,7 +363,7 @@
               });
             }
           });
-          return $scope.topCompanies.companies = topCompanies;
+          return $scope.topCompanies.companies = $filter('orderBy')(topCompanies, 'amountRaised', true);
         }
       });
     }
@@ -911,7 +911,7 @@
               });
             }
           });
-          return $scope.topCompanies.companies = topCompanies;
+          return $scope.topCompanies.companies = $filter('orderBy')(topCompanies, 'amountRaised', true);
         }
       });
     }
