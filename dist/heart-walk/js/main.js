@@ -167,14 +167,7 @@
     '$rootScope', '$http', function($rootScope, $http) {
       return {
         getCompanyData: function() {
-          return $http({
-            method: 'GET',
-            url: 'PageServer',
-            data: 'pagename=getHeartwalkCompanyData&pgwrap=n&response_format=json&fr_id=' + $rootScope.frId,
-            headers: {
-              'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-            }
-          }).then(function(response) {
+          return $http.get('PageServer?pagename=getHeartwalkCompanyData&pgwrap=n&response_format=json&fr_id=' + $rootScope.frId).then(function(response) {
             return response;
           });
         }
