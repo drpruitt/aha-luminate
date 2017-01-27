@@ -312,10 +312,19 @@
 
   angular.module('ahaLuminateControllers').controller('CompanyListPageCtrl', [
     '$scope', '$filter', 'TeamraiserCompanyDataService', function($scope, $filter, TeamraiserCompanyDataService) {
-      $scope.sortCompanyList = function(column) {
-        return $scope.topCompanies.companies = $filter('orderBy')($scope.topCompanies.companies, column, false);
+      $scope.topCompanies = {
+        'ng_sort_column': null,
+        'ng_sort_reverse': null
       };
-      $scope.topCompanies = {};
+      $scope.sortCompanyList = function(column) {
+        if ($scope.topCompanies.ng_sort_column === column && $scope.topCompanies.ng_sort_reverse === false) {
+          $scope.topCompanies.ng_sort_reverse = true;
+        } else {
+          $scope.topCompanies.ng_sort_reverse = false;
+        }
+        $scope.topCompanies.companies = $filter('orderBy')($scope.topCompanies.companies, column, $scope.topCompanies.ng_sort_reverse);
+        return $scope.topCompanies.ng_sort_column = column;
+      };
       return TeamraiserCompanyDataService.getCompanyData().then(function(response) {
         var companies, csvToArray, ref, topCompanies;
         companies = (ref = response.data.getCompanyDataResponse) != null ? ref.company : void 0;

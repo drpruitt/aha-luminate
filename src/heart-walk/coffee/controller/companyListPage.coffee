@@ -4,10 +4,18 @@ angular.module 'ahaLuminateControllers'
     '$filter'
     'TeamraiserCompanyDataService'
     ($scope, $filter, TeamraiserCompanyDataService) ->
-      $scope.sortCompanyList = (column) ->
-        $scope.topCompanies.companies = $filter('orderBy') $scope.topCompanies.companies, column, false
+      $scope.topCompanies = 
+        'ng_sort_column': null
+        'ng_sort_reverse': null
       
-      $scope.topCompanies = {}
+      $scope.sortCompanyList = (column) ->
+        if $scope.topCompanies.ng_sort_column is column and $scope.topCompanies.ng_sort_reverse is false
+          $scope.topCompanies.ng_sort_reverse = true
+        else
+          $scope.topCompanies.ng_sort_reverse = false
+        $scope.topCompanies.companies = $filter('orderBy') $scope.topCompanies.companies, column, $scope.topCompanies.ng_sort_reverse
+        $scope.topCompanies.ng_sort_column = column
+      
       TeamraiserCompanyDataService.getCompanyData()
         .then (response) ->
           companies = response.data.getCompanyDataResponse?.company
