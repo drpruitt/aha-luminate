@@ -615,7 +615,11 @@ body.Fall .heart-hero__mask {
       border-color: #de2427;
       color: #ffffff; }
 
-#company_list_page .trr-table th.trr-Heading {
+@media only screen and (max-width: 767px) {
+  .mobile #company_list_page div#non_mobile_company_list {
+    display: block; } }
+
+.mobile #company_list_page .trr-table th.trr-Heading {
   cursor: pointer; }
 
 .heart-team-member-list {

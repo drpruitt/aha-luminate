@@ -1,4 +1,10 @@
-#company_list_page {
+.mobile #company_list_page {
+  div#non_mobile_company_list {
+    @media only screen and (max-width: 767px) {
+      display: block;
+    }
+  }
+  
   .trr-table {
     th.trr-Heading {
       cursor: pointer;
