@@ -4,6 +4,9 @@ angular.module 'ahaLuminateControllers'
     '$filter'
     'TeamraiserCompanyDataService'
     ($scope, $filter, TeamraiserCompanyDataService) ->
+      $scope.sortCompanyList = (column) ->
+        $scope.topCompanies.companies = $filter('orderBy') $scope.topCompanies.companies, column, false
+      
       $scope.topCompanies = {}
       TeamraiserCompanyDataService.getCompanyData()
         .then (response) ->
@@ -40,5 +43,6 @@ angular.module 'ahaLuminateControllers'
                   "teamCount": companyData[4]
                   "amountRaised": Number(companyData[2]) * 100
                   "amountRaisedFormatted": $filter('currency')(Number(companyData[2]), '$').replace '.00', ''
-            $scope.topCompanies.companies = $filter('orderBy') topCompanies, 'companyName', true
+            $scope.topCompanies.companies = topCompanies
+            $scope.sortCompanyList 'companyName'
   ]

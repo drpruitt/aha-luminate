@@ -312,6 +312,9 @@
 
   angular.module('ahaLuminateControllers').controller('CompanyListPageCtrl', [
     '$scope', '$filter', 'TeamraiserCompanyDataService', function($scope, $filter, TeamraiserCompanyDataService) {
+      $scope.sortCompanyList = function(column) {
+        return $scope.topCompanies.companies = $filter('orderBy')($scope.topCompanies.companies, column, false);
+      };
       $scope.topCompanies = {};
       return TeamraiserCompanyDataService.getCompanyData().then(function(response) {
         var companies, csvToArray, ref, topCompanies;
@@ -356,7 +359,8 @@
               });
             }
           });
-          return $scope.topCompanies.companies = $filter('orderBy')(topCompanies, 'companyName', true);
+          $scope.topCompanies.companies = topCompanies;
+          return $scope.sortCompanyList('companyName');
         }
       });
     }
