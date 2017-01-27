@@ -356,7 +356,7 @@
               });
             }
           });
-          return $scope.topCompanies.companies = $filter('orderBy')(topCompanies, 'amountRaised', true);
+          return $scope.topCompanies.companies = $filter('orderBy')(topCompanies, 'companyName', true);
         }
       });
     }
