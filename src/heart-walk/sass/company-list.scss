@@ -11,6 +11,7 @@
   
   .trr-table {
     th.trr-Heading {
+      word-wrap: normal;
       cursor: pointer;
       user-select: none;
     }
@@ -20,11 +21,11 @@
     }
     
     th.trr-table-number-amount {
-      width: 15%;
+      width: 14%;
     }
     
     th.trr-table-participant-amount {
-      width: 15%;
+      width: 16%;
     }
     
     th.trr-table-monetary-amount {

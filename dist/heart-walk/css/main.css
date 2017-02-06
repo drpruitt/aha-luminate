@@ -623,6 +623,7 @@ body.Fall .heart-hero__mask {
     display: block; } }
 
 .mobile #company_list_page .trr-table th.trr-Heading {
+  word-wrap: normal;
   cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -633,10 +634,10 @@ body.Fall .heart-hero__mask {
   width: 40%; }
 
 .mobile #company_list_page .trr-table th.trr-table-number-amount {
-  width: 15%; }
+  width: 14%; }
 
 .mobile #company_list_page .trr-table th.trr-table-participant-amount {
-  width: 15%; }
+  width: 16%; }
 
 .mobile #company_list_page .trr-table th.trr-table-monetary-amount {
   width: 30%; }
