@@ -1,5 +1,7 @@
 /* jshint strict:false */
 
+require('events').EventEmitter.prototype._maxListeners = 100;
+
 module.exports = {
   "grunt-config": {
     files: [
@@ -61,6 +63,27 @@ module.exports = {
       'css-dist:heart-walk', 
       'js-dist:heart-walk', 
       'notify:heart-walk'
+    ]
+  }, 
+  
+  "jump-hoops": {
+    files: [
+      'src/youth-markets/html/**/*', 
+      'src/youth-markets/image/**/*', 
+      'src/youth-markets/sass/**/*', 
+      'src/youth-markets/coffee/**/*', 
+      'src/jump-hoops/html/**/*', 
+      'src/jump-hoops/image/**/*', 
+      'src/jump-hoops/sass/**/*', 
+      'src/jump-hoops/coffee/**/*'
+    ], 
+    tasks: [
+      'clean:jump-hoops', 
+      'html-dist:jump-hoops', 
+      'img-dist:jump-hoops', 
+      'css-dist:jump-hoops', 
+      'js-dist:jump-hoops', 
+      'notify:jump-hoops'
     ]
   }
 }
