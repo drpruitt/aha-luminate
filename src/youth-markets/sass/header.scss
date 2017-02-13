@@ -8,6 +8,17 @@ header {
   .ym-header-pre-text {
     font-size: 12px;
     margin: 0 0 16px;
+    
+    a {
+      &, 
+      &:link, 
+      &:visited, 
+      &:hover, 
+      &:focus, 
+      &:active {
+        color: inherit;
+      }
+    }
   }
   
   .ym-header-logos {
@@ -46,6 +57,8 @@ header {
       float: left;
       font-size: 20px;
       list-style: none;
+      padding: 0;
+      margin: 0;
       
       li {
         float: left;
@@ -54,6 +67,11 @@ header {
     
     .ym-header-login {
       float: left;
+      position: relative;
+      
+      @media only screen and (min-width: $screen-sm-min) {
+        float: right;
+      }
     }
     
     .ym-header-login-toggle {
@@ -61,6 +79,7 @@ header {
     }
     
     .ym-header-login-dropdown {
+      display: none;
       position: absolute;
       top: 100%;
       left: 0;
@@ -77,6 +96,7 @@ header {
     
     .ym-site-menu {
       float: right;
+      position: relative;
     }
     
     .ym-site-menu-toggle {
@@ -95,6 +115,7 @@ header {
     }
     
     .ym-site-menu-dropdown {
+      display: none;
       position: absolute;
       top: 100%;
       left: 0;

@@ -32,6 +32,8 @@ header {
   header .ym-header-pre-text {
     font-size: 12px;
     margin: 0 0 16px; }
+    header .ym-header-pre-text a, header .ym-header-pre-text a:link, header .ym-header-pre-text a:visited, header .ym-header-pre-text a:hover, header .ym-header-pre-text a:focus, header .ym-header-pre-text a:active {
+      color: inherit; }
   header .ym-header-logos {
     margin: 0 0 18px; }
   header .ym-header-logo {
@@ -56,14 +58,21 @@ header {
       color: #ed1c24;
       float: left;
       font-size: 20px;
-      list-style: none; }
+      list-style: none;
+      padding: 0;
+      margin: 0; }
       header nav ul.ym-site-nav li {
         float: left; }
     header nav .ym-header-login {
-      float: left; }
+      float: left;
+      position: relative; }
+      @media only screen and (min-width: 768px) {
+        header nav .ym-header-login {
+          float: right; } }
     header nav .ym-header-login-toggle {
       font-size: 16px; }
     header nav .ym-header-login-dropdown {
+      display: none;
       position: absolute;
       top: 100%;
       left: 0;
@@ -75,7 +84,8 @@ header {
     header nav .ym-header-login-form {
       border-left: 6px solid #ec1c24; }
     header nav .ym-site-menu {
-      float: right; }
+      float: right;
+      position: relative; }
     header nav .ym-site-menu-toggle {
       color: #ed1c24; }
       header nav .ym-site-menu-toggle .ym-site-menu-bar {
@@ -86,6 +96,7 @@ header {
         header nav .ym-site-menu-toggle .ym-site-menu-bar:last-child {
           margin: 0; }
     header nav .ym-site-menu-dropdown {
+      display: none;
       position: absolute;
       top: 100%;
       left: 0;
