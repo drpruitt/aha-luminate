@@ -49,6 +49,7 @@
           return $scope.toggleLoginMenu();
         }
       });
+      $scope.submitHeaderLogin = function() {};
       $scope.toggleSiteMenu = function() {
         if ($scope.siteMenuOpen) {
           return delete $scope.siteMenuOpen;
@@ -58,7 +59,7 @@
       };
       return angular.element('body').on('click', function(event) {
         if ($scope.siteMenuOpen && angular.element(event.target).closest('.ym-site-menu').length === 0) {
-          return $scope.toggleLoginMenu();
+          return $scope.toggleSiteMenu();
         }
       });
     }

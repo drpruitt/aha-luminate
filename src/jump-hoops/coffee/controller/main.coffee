@@ -12,6 +12,9 @@ angular.module 'ahaLuminateControllers'
         if $scope.loginMenuOpen and angular.element(event.target).closest('.ym-header-login').length is 0
           $scope.toggleLoginMenu()
       
+      $scope.submitHeaderLogin = ->
+        # TODO
+      
       $scope.toggleSiteMenu = ->
         if $scope.siteMenuOpen
           delete $scope.siteMenuOpen
@@ -20,5 +23,5 @@ angular.module 'ahaLuminateControllers'
       
       angular.element('body').on 'click', (event) ->
         if $scope.siteMenuOpen and angular.element(event.target).closest('.ym-site-menu').length is 0
-          $scope.toggleLoginMenu()
+          $scope.toggleSiteMenu()
   ]
