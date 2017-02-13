@@ -7,6 +7,7 @@ header {
   
   .ym-header-pre-text {
     font-size: 12px;
+    font-weight: 500;
     margin: 0 0 16px;
     
     a {
@@ -45,6 +46,7 @@ header {
   
   .ym-header-post-text {
     font-size: 10px;
+    font-weight: 500;
     margin: 0 0 16px;
   }
   
@@ -68,8 +70,9 @@ header {
       
       li {
         float: left;
+        padding: 16px 0;
         margin: 0 75px 0 0;
-
+        
         a {
           &, 
           &:link, 
@@ -77,6 +80,7 @@ header {
           &:hover, 
           &:focus, 
           &:active {
+            display: inline-block;
             font-weight: 700;
             text-decoration: none;
           }

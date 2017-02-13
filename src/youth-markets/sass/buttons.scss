@@ -1,0 +1,51 @@
+.btn, 
+a.btn {
+  @include button-size($padding-base-vertical, $padding-base-horizontal, 14px);
+  
+  &, 
+  &:link, 
+  &:visited, 
+  &:hover, 
+  &:focus, 
+  &:active {
+    border-radius: 0;
+    border-width: 0;
+    font-family: inherit;
+    font-weight: 600;
+    text-decoration: none;
+  }
+}
+
+span.btn {
+  &, 
+  &:link, 
+  &:visited, 
+  &:hover, 
+  &:focus, 
+  &:active {
+    cursor: default;
+  }
+}
+
+.btn-primary, 
+a.btn-primary {
+  @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border, $btn-primary-color, $btn-primary-darker-bg, $btn-primary-darker-border);
+}
+
+.btn-md, 
+a.btn-md {
+  &, 
+  &:link, 
+  &:visited {
+    @include button-size($padding-large-vertical, $padding-large-horizontal, 16px);
+  }
+}
+
+.btn-lg, 
+a.btn-lg {
+  &, 
+  &:link, 
+  &:visited {
+    @include button-size($padding-large-horizontal, $padding-large-horizontal, 16px);
+  }
+}

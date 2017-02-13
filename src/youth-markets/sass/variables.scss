@@ -1,6 +1,23 @@
 $brand-primary: #ed1c24 !default;
+$brand-primary-darker: #890707;
+
+$brand-white: #ffffff;
 
 $link-color: $brand-primary !default;
+
+$padding-base-vertical: 12px !default;
+$padding-base-horizontal: 24px !default;
+
+$padding-large-vertical: 18px !default;
+$padding-large-horizontal: 24px !default;
+
+$btn-primary-color: $brand-white !default;
+$btn-primary-bg: $brand-primary !default;
+$btn-primary-border: darken($btn-primary-bg, 5%) !default;
+
+$btn-primary-darker-color: $brand-white !default;
+$btn-primary-darker-bg: $brand-primary-darker !default;
+$btn-primary-darker-border: $btn-primary-darker-bg !default;
 
 $screen-sm: 768px !default;
 $screen-sm-min: $screen-sm !default;
