@@ -7,8 +7,9 @@ header {
   .ym-header-logos {
     margin: 0 0 18px;
   }
-
+  
   .ym-header-logo {
+    float: left;
     border-left: 1px solid #838181;
   }
   
@@ -45,6 +46,29 @@ header {
     
     .ym-header-login {
       float: left;
+    }
+    
+    .ym-header-login-toggle {
+      font-size: 16px;
+    }
+    
+    .ym-site-menu {
+      float: right;
+    }
+    
+    .ym-site-menu-toggle {
+      color: #ed1c24;
+      
+      .ym-site-menu-bar {
+        display: block;
+        width: 36px;
+        height: 6px;
+        margin: 0 0 3px;
+        
+        &:last-child {
+          margin: 0;
+        }
+      }
     }
   }
 }

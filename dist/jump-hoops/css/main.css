@@ -6,6 +6,7 @@ header .ym-header-logos {
   margin: 0 0 18px; }
 
 header .ym-header-logo {
+  float: left;
   border-left: 1px solid #838181; }
 
 header .ym-header-logo--aha {
@@ -33,3 +34,16 @@ header nav {
       float: left; }
   header nav .ym-header-login {
     float: left; }
+  header nav .ym-header-login-toggle {
+    font-size: 16px; }
+  header nav .ym-site-menu {
+    float: right; }
+  header nav .ym-site-menu-toggle {
+    color: #ed1c24; }
+    header nav .ym-site-menu-toggle .ym-site-menu-bar {
+      display: block;
+      width: 36px;
+      height: 6px;
+      margin: 0 0 3px; }
+      header nav .ym-site-menu-toggle .ym-site-menu-bar:last-child {
+        margin: 0; }
