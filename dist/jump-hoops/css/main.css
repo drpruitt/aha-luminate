@@ -138,10 +138,16 @@ header {
     margin: 0 0 18px; }
   header .ym-header-logo {
     float: left;
-    border-left: 1px solid #838181; }
-  header .ym-header-logo--aha {
-    border-left: 0;
+    display: inline-block;
+    border-left: 1px solid #838181;
+    height: 54px; }
+    header .ym-header-logo:first-child {
+      border-left: 0; }
+  header .ym-header-logo--aha img {
     width: 125px; }
+    @media (min-width: 768px) {
+      header .ym-header-logo--aha img {
+        width: auto; } }
   header .ym-header-title {
     color: #6153a3;
     font-family: 'Luckiest Guy', cursive;

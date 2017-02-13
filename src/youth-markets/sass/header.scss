@@ -34,12 +34,23 @@ header {
   
   .ym-header-logo {
     float: left;
+    display: inline-block;
     border-left: 1px solid #838181;
+    height: 54px;
+    
+    &:first-child {
+      border-left: 0;
+    }
   }
   
   .ym-header-logo--aha {
-    border-left: 0;
-    width: 125px;
+    img {
+      width: 125px;
+      
+      @media (min-width: $screen-sm-min) {
+        width: auto;
+      }
+    }
   }
   
   .ym-header-title {
