@@ -122,7 +122,7 @@ a.btn-lg:visited:visited {
 
 header {
   padding: 10px 0 0; }
-  @media only screen and (min-width: 768px) {
+  @media (min-width: 768px) {
     header {
       padding: 20px 0 0; } }
   header .ym-header-pre-text {
@@ -152,9 +152,13 @@ header {
   header nav {
     border-top: 1px solid #e8e8e8;
     border-bottom: 1px solid #e8e8e8; }
-    @media only screen and (max-width: 767px) {
+    @media (max-width: 767px) {
       header nav > .container {
         padding: 0; } }
+    @media (min-width: 768px) and (max-width: 991px) {
+      header nav > .container {
+        width: auto;
+        padding-right: 0; } }
     header nav ul.ym-site-nav {
       color: #ed1c24;
       float: left;
@@ -175,7 +179,7 @@ header {
     header nav .ym-header-login {
       float: left;
       position: relative; }
-      @media only screen and (min-width: 768px) {
+      @media (min-width: 768px) {
         header nav .ym-header-login {
           float: right; } }
     header nav .ym-header-login-toggle, header nav .ym-header-login-toggle:link, header nav .ym-header-login-toggle:visited, header nav .ym-header-login-toggle:hover, header nav .ym-header-login-toggle:focus, header nav .ym-header-login-toggle:active {
@@ -190,11 +194,11 @@ header {
       font-size: 14px;
       padding: 0;
       z-index: 1000; }
-      @media only screen and (max-width: 767px) {
+      @media (max-width: 767px) {
         header nav .ym-header-login-dropdown {
           left: 0;
           border-left: 0; } }
-      @media only screen and (min-width: 768px) {
+      @media (min-width: 768px) {
         header nav .ym-header-login-dropdown {
           right: 0; } }
       header nav .ym-header-login-dropdown.open {
@@ -211,8 +215,9 @@ header {
       border-radius: 0;
       padding: 10px;
       margin: 0 10px 0 0; }
-      header nav .ym-site-menu-toggle, header nav .ym-site-menu-toggle:link, header nav .ym-site-menu-toggle:visited, header nav .ym-site-menu-toggle:hover, header nav .ym-site-menu-toggle:focus, header nav .ym-site-menu-toggle:active {
+      header nav .ym-site-menu-toggle, header nav .ym-site-menu-toggle:link, header nav .ym-site-menu-toggle:visited, header nav .ym-site-menu-toggle:hover, header nav .ym-site-menu-toggle:focus, header nav .ym-site-menu-toggle:active, header nav .ym-site-menu-toggle:active:hover, header nav .ym-site-menu-toggle:active:focus {
         background: transparent;
+        box-shadow: none;
         outline: 0; }
       header nav .ym-site-menu-toggle .ym-site-menu-bar {
         display: block;
