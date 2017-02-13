@@ -42,7 +42,7 @@
         <div class="ym-header-login">
           [[?xx[[S8]]::xxhttps::
             <button type="button" class="btn btn-primary ym-header-login-toggle" ng-click="toggleLoginMenu()">
-              Log In to Fundraise <i class="fa fa-chevron-down"></i>
+              Log In to Fundraise <i class="fa fa-chevron-down" ng-class="{'fa-chevron-down': !loginMenuOpen, 'fa-chevron-up': loginMenuOpen}"></i>
             </button>
             <div class="ym-header-login-dropdown" ng-class="{'open': loginMenuOpen}" ng-cloak>
               <div class="ym-header-login-form">

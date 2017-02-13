@@ -119,12 +119,20 @@ header {
       display: none;
       position: absolute;
       top: 100%;
-      right: 0;
       background: #ffffff;
       border: 1px solid #c9cccc;
       font-size: 14px;
       padding: 0;
       z-index: 1000;
+      
+      @media only screen and (max-width: $screen-xs-max) {
+        left: 0;
+        border-left: 0;
+      }
+      
+      @media only screen and (min-width: $screen-sm-min) {
+        right: 0;
+      }
       
       &.open {
         display: block;
@@ -147,6 +155,16 @@ header {
       border-radius: 0;
       padding: 10px;
       margin: 0 10px 0 0;
+      
+      &, 
+      &:link, 
+      &:visited, 
+      &:hover, 
+      &:focus, 
+      &:active {
+        background: transparent;
+        outline: 0;
+      }
       
       .ym-site-menu-bar {
         display: block;
