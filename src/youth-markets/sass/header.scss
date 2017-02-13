@@ -207,6 +207,10 @@ header {
       border-left: 6px solid $brand-primary;
       padding: 30px 20px;
       
+      .form-group {
+        margin: 0 0 10px;
+      }
+      
       a {
         &, 
         &:link, 

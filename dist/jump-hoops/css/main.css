@@ -252,6 +252,8 @@ header {
     header nav .ym-header-login-form {
       border-left: 6px solid #ed1c24;
       padding: 30px 20px; }
+      header nav .ym-header-login-form .form-group {
+        margin: 0 0 10px; }
       header nav .ym-header-login-form a, header nav .ym-header-login-form a:link, header nav .ym-header-login-form a:visited, header nav .ym-header-login-form a:hover, header nav .ym-header-login-form a:focus, header nav .ym-header-login-form a:active {
         font-weight: 700;
         text-decoration: underline;
@@ -351,3 +353,7 @@ header {
           margin: 0 0 30px; }
           header nav .ym-site-menu-dropdown ul li:last-child {
             margin: 0; }
+
+@media (min-width: 768px) and (max-width: 991px) {
+  main > .container {
+    width: auto; } }
