@@ -1,5 +1,5 @@
 (function() {
-  angular.module('ahaLuminateApp', ['ngSanitize', 'ui.bootstrap', 'ahaLuminateControllers']);
+  angular.module('ahaLuminateApp', ['ngSanitize', 'ngTouch', 'ui.bootstrap', 'ahaLuminateControllers']);
 
   angular.module('ahaLuminateControllers', []);
 
