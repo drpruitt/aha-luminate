@@ -239,6 +239,18 @@ header {
     header nav .ym-header-login-form {
       border-left: 6px solid #ed1c24;
       padding: 30px 20px; }
+    header nav .ym-header-logged-in {
+      float: left; }
+      @media (min-width: 768px) {
+        header nav .ym-header-logged-in {
+          float: right; } }
+    header nav .ym-header-welcome {
+      float: left; }
+    header nav .ym-header-welcome-dropdown {
+      display: none; }
+    header nav .ym-header-hq-btn {
+      float: left;
+      height: 50px; }
     header nav .ym-site-menu {
       float: right;
       position: relative; }

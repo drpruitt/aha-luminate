@@ -207,6 +207,27 @@ header {
       padding: 30px 20px;
     }
     
+    .ym-header-logged-in {
+      float: left;
+      
+      @media (min-width: $screen-sm-min) {
+        float: right;
+      }
+    }
+    
+    .ym-header-welcome {
+      float: left;
+    }
+    
+    .ym-header-welcome-dropdown {
+      display: none;
+    }
+    
+    .ym-header-hq-btn {
+      float: left;
+      height: 50px;
+    }
+    
     .ym-site-menu {
       float: right;
       position: relative;
