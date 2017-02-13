@@ -331,12 +331,23 @@ header {
       .ym-site-menu-bar {
         display: block;
         background: $brand-primary;
+        border-radius: 2px;
         width: 36px;
         height: 6px;
         margin: 0 0 3px;
         
         &:last-child {
           margin: 0;
+        }
+      }
+      
+      &:hover, 
+      &:focus, 
+      &:active, 
+      &:active:hover, 
+      &:active:focus {
+        .ym-site-menu-bar {
+          background: #353535;
         }
       }
     }
