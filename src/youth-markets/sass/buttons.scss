@@ -30,6 +30,18 @@ span.btn {
 .btn-primary, 
 a.btn-primary {
   @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border, $btn-primary-color, $btn-primary-darker-bg, $btn-primary-darker-border);
+  
+  &, 
+  &:link, 
+  &:visited {
+    background: linear-gradient(0deg, #c7191c 0%, #ec1c24 100%);
+  }
+  
+  &:hover, 
+  &:focus, 
+  &:active {
+    background: linear-gradient(0deg, #c7191c 0%, #ec1c24 100%);
+  }
 }
 
 .btn-md, 
