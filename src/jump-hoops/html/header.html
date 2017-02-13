@@ -44,19 +44,21 @@
             Log In to Fundraise <i class="fa fa-chevron-down"></i>
           </a>
           <div class="ym-header-login-dropdown">
-            <form>
-              <div class="form-group">
-                <label class="sr-only">Username:</label>
-                <input type="text" class="form-control" placeholder="Username">
-              </div>
-              <div class="form-group">
-                <label class="sr-only">Password:</label>
-                <input type="password" class="form-control" placeholder="Password">
-              </div>
-              <button type="submit" class="btn btn-primary">
-                Log In
-              </button>
-            </form>
+            <div class="ym-header-login-form">
+              <form method="POST" ng-submit="">
+                <div class="form-group">
+                  <label class="sr-only">Username:</label>
+                  <input type="text" class="form-control" placeholder="Username">
+                </div>
+                <div class="form-group">
+                  <label class="sr-only">Password:</label>
+                  <input type="password" class="form-control" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-primary">
+                  Log In
+                </button>
+              </form>
+            </div>
           </div>
         </div>
         <div class="ym-site-menu visible-xs">

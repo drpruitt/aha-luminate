@@ -26,6 +26,9 @@ body {
 
 header {
   padding: 10px 0 0; }
+  @media only screen and (min-width: 768px) {
+    header {
+      padding: 20px 0 0; } }
   header .ym-header-pre-text {
     font-size: 12px;
     margin: 0 0 16px; }
@@ -69,6 +72,8 @@ header {
       font-size: 14px;
       padding: 0;
       z-index: 1000; }
+    header nav .ym-header-login-form {
+      border-left: 6px solid #ec1c24; }
     header nav .ym-site-menu {
       float: right; }
     header nav .ym-site-menu-toggle {
