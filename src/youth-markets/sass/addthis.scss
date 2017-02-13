@@ -1,4 +1,6 @@
 body.aha-luminate #at4-share, 
 body.aha-luminate #at4-soc {
-  top: 250px !important;
+  @media (min-width: 980px) {
+    top: 250px !important;
+  }
 }

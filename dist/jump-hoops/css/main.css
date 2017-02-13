@@ -360,9 +360,13 @@ header {
   main > .container {
     width: auto; } }
 
-body.aha-luminate #at4-share,
-body.aha-luminate #at4-soc {
-  top: 250px !important; }
+@media (min-width: 980px) {
+  body.aha-luminate #at4-share,
+  body.aha-luminate #at4-soc {
+    top: 250px !important; } }
 
 body.luminate .SnapABug_Button {
-  top: 414px !important; }
+  top: 250px !important; }
+  @media (min-width: 980px) {
+    body.luminate .SnapABug_Button {
+      top: 414px !important; } }

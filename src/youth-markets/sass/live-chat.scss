@@ -1,3 +1,7 @@
 body.luminate .SnapABug_Button {
-  top: 414px !important;
+  top: 250px !important;
+  
+  @media (min-width: 980px) {
+    top: 414px !important;
+  }
 }
