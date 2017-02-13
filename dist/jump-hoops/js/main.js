@@ -35,4 +35,6 @@
     return angular.bootstrap(document, appModules);
   });
 
+  angular.module('ahaLuminateControllers').controller('MainCtrl', ['$scope', function($scope) {}]);
+
 }).call(this);
