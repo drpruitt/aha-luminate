@@ -146,20 +146,27 @@ header {
     height: 54px; }
     header .ym-header-logo:first-child {
       border-left: 0; }
-    header .ym-header-logo a {
+    header .ym-header-logo > a,
+    header .ym-header-logo > span {
       display: block; }
-  header .ym-header-logo--aha a {
+  header .ym-header-logo--aha > a,
+  header .ym-header-logo--aha > span {
     margin: 0 10px 0 0; }
-    header .ym-header-logo--aha a img {
+    header .ym-header-logo--aha > a img,
+    header .ym-header-logo--aha > span img {
       width: 125px; }
       @media (min-width: 768px) {
-        header .ym-header-logo--aha a img {
+        header .ym-header-logo--aha > a img,
+        header .ym-header-logo--aha > span img {
           width: auto; } }
-  header .ym-header-logo--jump a {
+  header .ym-header-logo--jump > a,
+  header .ym-header-logo--jump > span {
     margin: -8px 8px 0; }
-  header .ym-header-logo--hoops a {
+  header .ym-header-logo--hoops > a,
+  header .ym-header-logo--hoops > span {
     margin: 10px 8px 0; }
-  header .ym-header-logo--shape-america a {
+  header .ym-header-logo--shape-america > a,
+  header .ym-header-logo--shape-america > span {
     margin: 6px 18px 0; }
   header .ym-header-title {
     color: #6153a3;

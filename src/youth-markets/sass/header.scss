@@ -46,13 +46,15 @@ header {
       border-left: 0;
     }
     
-    a {
+    > a, 
+    > span {
       display: block;
     }
   }
   
   .ym-header-logo--aha {
-    a {
+    > a, 
+    > span {
       margin: 0 10px 0 0;
       
       img {
@@ -66,19 +68,22 @@ header {
   }
   
   .ym-header-logo--jump {
-    a {
+    > a, 
+    > span {
       margin: -8px 8px 0;
     }
   }
   
   .ym-header-logo--hoops {
-    a {
+    > a, 
+    > span {
       margin: 10px 8px 0;
     }
   }
   
   .ym-header-logo--shape-america {
-    a {
+    > a, 
+    > span {
       margin: 6px 18px 0;
     }
   }
