@@ -1,5 +1,15 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap[[?xtruex::x[[S80:debug]]x::::.min]].js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls[[?xtruex::x[[S80:debug]]x::::.min]].js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/luminateExtend/1.7.1/luminateExtend[[?xtruex::x[[S80:debug]]x::::.min]].js"></script>
+<script>
+  luminateExtend({
+    apiKey: '[[S0:CONVIO_API_KEY]]', 
+    path: {
+      nonsecure: 'http://[[S29:DOMAIN]][[S29:PATH]]', 
+      secure: 'https://[[S29:SECURE_DOMAIN]][[S29:SECURE_PATH]]'
+    }
+  });
+</script>
 <script src="../aha-luminate/dist/jump-hoops/js/main[[?xtruex::x[[S80:debug]]x::::.min]].js"></script>
 <script>
   (function() {

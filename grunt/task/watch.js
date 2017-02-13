@@ -82,6 +82,7 @@ module.exports = {
   "jump-hoops": {
     files: [
       'src/youth-markets/sass/**/*', 
+      'src/global/coffee/**/*', 
       'src/youth-markets/coffee/**/*', 
       'src/jump-hoops/html/**/*', 
       'src/jump-hoops/image/**/*', 

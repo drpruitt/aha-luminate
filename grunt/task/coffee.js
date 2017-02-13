@@ -39,6 +39,7 @@ module.exports = {
     files: {
       'dist/jump-hoops/js/main.js': [
         'src/jump-hoops/coffee/init.coffee', 
+        'src/global/coffee/service/*.*', 
         'src/jump-hoops/coffee/**/*.*'
       ]
     }

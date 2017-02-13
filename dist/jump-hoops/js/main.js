@@ -35,6 +35,122 @@
     return angular.bootstrap(document, appModules);
   });
 
+  angular.module('ahaLuminateApp').factory('LuminateRESTService', [
+    '$rootScope', '$http', 'APP_INFO', function($rootScope, $http, APP_INFO) {
+      return {
+        request: function(apiServlet, requestData, includeAuth, includeFrId) {
+          if (!requestData) {
+
+          } else {
+            if (!$rootScope.apiKey) {
+
+            } else {
+              requestData += '&v=1.0&api_key=' + $rootScope.apiKey + '&response_format=json&suppress_response_codes=true';
+              if (includeAuth && !$rootScope.authToken) {
+
+              } else {
+                if (includeAuth) {
+                  requestData += '&auth=' + $rootScope.authToken;
+                }
+                if (includeFrId) {
+                  requestData += '&fr_id=' + $rootScope.frId + '&s_trID=' + $rootScope.frId;
+                }
+                return $http({
+                  method: 'POST',
+                  url: apiServlet,
+                  data: requestData,
+                  headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                  }
+                }).then(function(response) {
+                  return response;
+                });
+              }
+            }
+          }
+        },
+        luminateExtendRequest: function(apiServlet, requestData, includeAuth, includeFrId, callback) {
+          if (!luminateExtend) {
+
+          } else {
+            if (!requestData) {
+
+            } else {
+              if (includeFrId) {
+                requestData += '&fr_id=' + $rootScope.frId + '&s_trID=' + $rootScope.frId;
+              }
+              return luminateExtend.api({
+                api: apiServlet,
+                data: requestData,
+                requiresAuth: includeAuth,
+                callback: callback || angular.noop
+              });
+            }
+          }
+        },
+        teamraiserRequest: function(requestData, includeAuth, includeFrId) {
+          return this.request('CRTeamraiserAPI', requestData, includeAuth, includeFrId);
+        },
+        luminateExtendTeamraiserRequest: function(requestData, includeAuth, includeFrId, callback) {
+          return this.luminateExtendRequest('teamraiser', requestData, includeAuth, includeFrId, callback);
+        }
+      };
+    }
+  ]);
+
+  angular.module('ahaLuminateApp').factory('TeamraiserCompanyService', [
+    'LuminateRESTService', function(LuminateRESTService) {
+      return {
+        getCompanies: function(requestData, callback) {
+          var dataString;
+          dataString = 'method=getCompaniesByInfo';
+          if (requestData && requestData !== '') {
+            dataString += '&' + requestData;
+          }
+          return LuminateRESTService.luminateExtendTeamraiserRequest(dataString, false, true, callback);
+        },
+        getCompanyList: function(requestData, callback) {
+          var dataString;
+          dataString = 'method=getCompanyList';
+          if (requestData && requestData !== '') {
+            dataString += '&' + requestData;
+          }
+          return LuminateRESTService.luminateExtendTeamraiserRequest(dataString, false, true, callback);
+        }
+      };
+    }
+  ]);
+
+  angular.module('ahaLuminateApp').factory('TeamraiserParticipantService', [
+    'LuminateRESTService', function(LuminateRESTService) {
+      return {
+        getParticipants: function(requestData, callback) {
+          var dataString;
+          dataString = 'method=getParticipants';
+          if (requestData && requestData !== '') {
+            dataString += '&' + requestData;
+          }
+          return LuminateRESTService.luminateExtendTeamraiserRequest(dataString, false, true, callback);
+        }
+      };
+    }
+  ]);
+
+  angular.module('ahaLuminateApp').factory('TeamraiserTeamService', [
+    'LuminateRESTService', function(LuminateRESTService) {
+      return {
+        getTeams: function(requestData, callback) {
+          var dataString;
+          dataString = 'method=getTeamsByInfo';
+          if (requestData && requestData !== '') {
+            dataString += '&' + requestData;
+          }
+          return LuminateRESTService.luminateExtendTeamraiserRequest(dataString, false, true, callback);
+        }
+      };
+    }
+  ]);
+
   angular.module('ahaLuminateControllers').controller('MainCtrl', [
     '$scope', function($scope) {
       $scope.toggleLoginMenu = function() {
