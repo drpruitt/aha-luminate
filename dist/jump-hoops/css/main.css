@@ -54,6 +54,9 @@ header {
   header nav {
     border-top: 1px solid #e8e8e8;
     border-bottom: 1px solid #e8e8e8; }
+    @media only screen and (max-width: 767px) {
+      header nav > .container {
+        padding: 0; } }
     header nav ul.ym-site-nav {
       color: #ed1c24;
       float: left;
@@ -85,11 +88,14 @@ header {
       border-left: 6px solid #ec1c24; }
     header nav .ym-site-menu {
       float: right;
-      position: relative; }
+      position: relative;
+      margin: 0 10px 0 0; }
     header nav .ym-site-menu-toggle {
-      color: #ed1c24; }
+      display: block;
+      padding: 10px; }
       header nav .ym-site-menu-toggle .ym-site-menu-bar {
         display: block;
+        background: #ed1c24;
         width: 36px;
         height: 6px;
         margin: 0 0 3px; }

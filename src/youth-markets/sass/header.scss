@@ -52,6 +52,12 @@ header {
     border-top: 1px solid #e8e8e8;
     border-bottom: 1px solid #e8e8e8;
     
+    > .container {
+      @media only screen and (max-width: $screen-xs-max) {
+        padding: 0;
+      }
+    }
+    
     ul.ym-site-nav {
       color: #ed1c24;
       float: left;
@@ -97,13 +103,16 @@ header {
     .ym-site-menu {
       float: right;
       position: relative;
+      margin: 0 10px 0 0;
     }
     
     .ym-site-menu-toggle {
-      color: #ed1c24;
+      display: block;
+      padding: 10px;
       
       .ym-site-menu-bar {
         display: block;
+        background: #ed1c24;
         width: 36px;
         height: 6px;
         margin: 0 0 3px;
