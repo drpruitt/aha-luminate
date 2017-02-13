@@ -65,15 +65,20 @@ header {
       padding: 0;
       margin: 0; }
       header nav ul.ym-site-nav li {
-        float: left; }
+        float: left;
+        margin: 0 75px 0 0; }
+        header nav ul.ym-site-nav li a, header nav ul.ym-site-nav li a:link, header nav ul.ym-site-nav li a:visited, header nav ul.ym-site-nav li a:hover, header nav ul.ym-site-nav li a:focus, header nav ul.ym-site-nav li a:active {
+          font-weight: 700;
+          text-decoration: none; }
     header nav .ym-header-login {
       float: left;
       position: relative; }
       @media only screen and (min-width: 768px) {
         header nav .ym-header-login {
           float: right; } }
-    header nav .ym-header-login-toggle {
-      font-size: 16px; }
+    header nav .ym-header-login-toggle, header nav .ym-header-login-toggle:link, header nav .ym-header-login-toggle:visited, header nav .ym-header-login-toggle:hover, header nav .ym-header-login-toggle:focus, header nav .ym-header-login-toggle:active {
+      font-size: 16px;
+      font-weight: 700; }
     header nav .ym-header-login-dropdown {
       display: none;
       position: absolute;
@@ -92,6 +97,7 @@ header {
       margin: 0 10px 0 0; }
     header nav .ym-site-menu-toggle {
       display: block;
+      border: 0;
       padding: 10px; }
       header nav .ym-site-menu-toggle .ym-site-menu-bar {
         display: block;

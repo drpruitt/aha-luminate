@@ -68,6 +68,19 @@ header {
       
       li {
         float: left;
+        margin: 0 75px 0 0;
+
+        a {
+          &, 
+          &:link, 
+          &:visited, 
+          &:hover, 
+          &:focus, 
+          &:active {
+            font-weight: 700;
+            text-decoration: none;
+          }
+        }
       }
     }
     
@@ -81,7 +94,15 @@ header {
     }
     
     .ym-header-login-toggle {
-      font-size: 16px;
+      &, 
+      &:link, 
+      &:visited, 
+      &:hover, 
+      &:focus, 
+      &:active {
+        font-size: 16px;
+        font-weight: 700;
+      }
     }
     
     .ym-header-login-dropdown {
@@ -108,6 +129,7 @@ header {
     
     .ym-site-menu-toggle {
       display: block;
+      border: 0;
       padding: 10px;
       
       .ym-site-menu-bar {
