@@ -192,12 +192,13 @@ header {
       color: #ed1c24;
       float: left;
       font-size: 20px;
+      line-height: 20px;
       list-style: none;
       padding: 0;
       margin: 0; }
       header nav ul.ym-site-nav li {
         float: left;
-        padding: 16px 0;
+        padding: 15px 0;
         margin: 0 75px 0 0; }
         header nav ul.ym-site-nav li:last-child {
           margin: 0; }
@@ -213,9 +214,10 @@ header {
       @media (min-width: 768px) {
         header nav .ym-header-login {
           float: right; } }
-    header nav .ym-header-login-toggle, header nav .ym-header-login-toggle:link, header nav .ym-header-login-toggle:visited, header nav .ym-header-login-toggle:hover, header nav .ym-header-login-toggle:focus, header nav .ym-header-login-toggle:active {
+    header nav .btn.ym-header-login-toggle, header nav .btn.ym-header-login-toggle:link, header nav .btn.ym-header-login-toggle:visited, header nav .btn.ym-header-login-toggle:hover, header nav .btn.ym-header-login-toggle:focus, header nav .btn.ym-header-login-toggle:active {
       font-size: 16px;
-      font-weight: 500; }
+      font-weight: 500;
+      height: 50px; }
     header nav .ym-header-login-dropdown {
       display: none;
       position: absolute;
@@ -240,23 +242,23 @@ header {
     header nav .ym-site-menu {
       float: right;
       position: relative; }
-    header nav .ym-site-menu-toggle {
+    header nav .btn.ym-site-menu-toggle {
       display: block;
       border: 0;
       border-radius: 0;
       padding: 10px;
       margin: 0 10px 0 0; }
-      header nav .ym-site-menu-toggle, header nav .ym-site-menu-toggle:link, header nav .ym-site-menu-toggle:visited, header nav .ym-site-menu-toggle:hover, header nav .ym-site-menu-toggle:focus, header nav .ym-site-menu-toggle:active, header nav .ym-site-menu-toggle:active:hover, header nav .ym-site-menu-toggle:active:focus {
+      header nav .btn.ym-site-menu-toggle, header nav .btn.ym-site-menu-toggle:link, header nav .btn.ym-site-menu-toggle:visited, header nav .btn.ym-site-menu-toggle:hover, header nav .btn.ym-site-menu-toggle:focus, header nav .btn.ym-site-menu-toggle:active, header nav .btn.ym-site-menu-toggle:active:hover, header nav .btn.ym-site-menu-toggle:active:focus {
         background: transparent;
         box-shadow: none;
         outline: 0; }
-      header nav .ym-site-menu-toggle .ym-site-menu-bar {
+      header nav .btn.ym-site-menu-toggle .ym-site-menu-bar {
         display: block;
         background: #ed1c24;
         width: 36px;
         height: 6px;
         margin: 0 0 3px; }
-        header nav .ym-site-menu-toggle .ym-site-menu-bar:last-child {
+        header nav .btn.ym-site-menu-toggle .ym-site-menu-bar:last-child {
           margin: 0; }
     header nav .ym-site-menu-dropdown {
       display: none;
