@@ -48,31 +48,38 @@
           </li>
         </ul>
         <div class="ym-header-login">
-          [[?xx[[S8]]::xxhttps::
-            <button type="button" class="btn btn-primary ym-header-login-toggle" ng-click="toggleLoginMenu()">
-              Log In to Fundraise <i class="fa fa-chevron-down" ng-class="{'fa-chevron-down': !loginMenuOpen, 'fa-chevron-up': loginMenuOpen}"></i>
-            </button>
-            <div class="ym-header-login-dropdown" ng-class="{'open': loginMenuOpen}" ng-cloak>
-              <div class="ym-header-login-form">
-                <form method="POST" ng-submit="submitHeaderLogin()">
-                  <div class="form-group">
-                    <label class="sr-only">Username:</label>
-                    <input type="text" class="form-control" placeholder="Username">
-                  </div>
-                  <div class="form-group">
-                    <label class="sr-only">Password:</label>
-                    <input type="password" class="form-control" placeholder="Password">
-                  </div>
-                  <button type="submit" class="btn btn-primary">
-                    Log In
-                  </button>
-                </form>
+          [[?xx::x[[S1:cons_id]]x::
+            <!-- logged out -->
+            [[?xx[[S8]]::xxhttps::
+              <!-- secure page -->
+              <button type="button" class="btn btn-primary ym-header-login-toggle" ng-click="toggleLoginMenu()">
+                Log In to Fundraise <i class="fa fa-chevron-down" ng-class="{'fa-chevron-down': !loginMenuOpen, 'fa-chevron-up': loginMenuOpen}"></i>
+              </button>
+              <div class="ym-header-login-dropdown" ng-class="{'open': loginMenuOpen}" ng-cloak>
+                <div class="ym-header-login-form">
+                  <form method="POST" ng-submit="submitHeaderLogin()">
+                    <div class="form-group">
+                      <label class="sr-only">Username:</label>
+                      <input type="text" class="form-control" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                      <label class="sr-only">Password:</label>
+                      <input type="password" class="form-control" placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                      Log In
+                    </button>
+                  </form>
+                </div>
               </div>
-            </div>
+            ::
+              <!-- non-secure page -->
+              <a class="btn btn-primary ym-header-login-toggle" href="UserLogin?NEXTURL=[[T1:[[S8]]]]">
+                Log In to Fundraise
+              </a>
+            ]]
           ::
-            <a class="btn btn-primary ym-header-login-toggle" href="UserLogin?NEXTURL=[[T1:[[S8]]]]">
-              Log In to Fundraise
-            </a>
+            <!-- logged in -->
           ]]
         </div>
         <div class="ym-site-menu visible-xs">
