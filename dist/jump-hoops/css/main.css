@@ -21,10 +21,12 @@ header .ym-header-title {
   color: #6153a3;
   font-family: 'Luckiest Guy', cursive;
   font-size: 26px;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  margin: 0 0 16px; }
 
 header .ym-header-post-text {
-  font-size: 10px; }
+  font-size: 10px;
+  margin: 0 0 16px; }
 
 header nav {
   border-top: 1px solid #e8e8e8;
@@ -40,6 +42,15 @@ header nav {
     float: left; }
   header nav .ym-header-login-toggle {
     font-size: 16px; }
+  header nav .ym-header-login-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #ffffff;
+    border: 1px solid #c9cccc;
+    font-size: 14px;
+    padding: 0;
+    z-index: 1000; }
   header nav .ym-site-menu {
     float: right; }
   header nav .ym-site-menu-toggle {
@@ -58,8 +69,7 @@ header nav {
     background: #ffffff;
     border: 1px solid #c9cccc;
     font-size: 14px;
-    padding: 5px 0;
-    margin: 2px 0 0;
+    padding: 0;
     z-index: 1000; }
     header nav .ym-site-menu-dropdown ul {
       border-left: 6px solid #ec1c24;

@@ -23,10 +23,12 @@ header {
     font-family: 'Luckiest Guy', cursive;
     font-size: 26px;
     text-transform: uppercase;
+    margin: 0 0 16px;
   }
   
   .ym-header-post-text {
     font-size: 10px;
+    margin: 0 0 16px;
   }
   
   nav {
@@ -50,6 +52,17 @@ header {
     
     .ym-header-login-toggle {
       font-size: 16px;
+    }
+    
+    .ym-header-login-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #ffffff;
+      border: 1px solid #c9cccc;
+      font-size: 14px;
+      padding: 0;
+      z-index: 1000;
     }
     
     .ym-site-menu {
@@ -78,8 +91,7 @@ header {
       background: #ffffff;
       border: 1px solid #c9cccc;
       font-size: 14px;
-      padding: 5px 0;
-      margin: 2px 0 0;
+      padding: 0;
       z-index: 1000;
       
       ul {
