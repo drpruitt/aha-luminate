@@ -362,10 +362,9 @@ main {
     main > .container {
       width: auto; } }
 
-@media (min-width: 980px) {
-  body.aha-luminate #at4-share,
-  body.aha-luminate #at4-soc {
-    top: 250px !important; } }
+body.aha-luminate #at4-share,
+body.aha-luminate #at4-soc {
+  top: 250px !important; }
 
 @media (max-width: 979px) {
   body.aha-luminate .SnapABug_Button {
