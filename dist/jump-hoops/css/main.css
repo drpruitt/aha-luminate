@@ -16,3 +16,14 @@ header .ym-header-title {
 
 header .ym-header-post-text {
   font-size: 10px; }
+
+header nav {
+  border-top: 1px solid #e8e8e8;
+  border-bottom: 1px solid #e8e8e8; }
+  header nav ul.ym-site-nav {
+    color: #ed1c24;
+    float: left;
+    font-size: 20px;
+    list-style: none; }
+    header nav ul.ym-site-nav li {
+      float: left; }

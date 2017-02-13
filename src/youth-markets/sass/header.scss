@@ -22,4 +22,20 @@ header {
   .ym-header-post-text {
     font-size: 10px;
   }
+  
+  nav {
+    border-top: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8;
+    
+    ul.ym-site-nav {
+      color: #ed1c24;
+      float: left;
+      font-size: 20px;
+      list-style: none;
+      
+      li {
+        float: left;
+      }
+    }
+  }
 }
