@@ -35,6 +35,16 @@
     return angular.bootstrap(document, appModules);
   });
 
-  angular.module('ahaLuminateControllers').controller('MainCtrl', ['$scope', function($scope) {}]);
+  angular.module('ahaLuminateControllers').controller('MainCtrl', [
+    '$scope', function($scope) {
+      return $scope.toggleLoginMenu = function() {
+        if ($scope.loginMenuOpen) {
+          return delete $scope.loginMenuOpen;
+        } else {
+          return $scope.loginMenuOpen = true;
+        }
+      };
+    }
+  ]);
 
 }).call(this);

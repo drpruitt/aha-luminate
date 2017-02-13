@@ -189,8 +189,11 @@ header {
       font-size: 14px;
       padding: 0;
       z-index: 1000; }
+      header nav .ym-header-login-dropdown.open {
+        display: block; }
     header nav .ym-header-login-form {
-      border-left: 6px solid #ec1c24; }
+      border-left: 6px solid #ec1c24;
+      padding: 30px 20px; }
     header nav .ym-site-menu {
       float: right;
       position: relative;

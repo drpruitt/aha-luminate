@@ -2,5 +2,9 @@ angular.module 'ahaLuminateControllers'
   .controller 'MainCtrl', [
     '$scope'
     ($scope) ->
-      # TODO
+      $scope.toggleLoginMenu = ->
+        if $scope.loginMenuOpen
+          delete $scope.loginMenuOpen
+        else
+          $scope.loginMenuOpen = true
   ]

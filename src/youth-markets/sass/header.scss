@@ -119,10 +119,15 @@ header {
       font-size: 14px;
       padding: 0;
       z-index: 1000;
+      
+      &.open {
+        display: block;
+      }
     }
     
     .ym-header-login-form {
       border-left: 6px solid #ec1c24;
+      padding: 30px 20px;
     }
     
     .ym-site-menu {
