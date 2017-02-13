@@ -225,6 +225,7 @@ header {
       background: #ffffff;
       border: 1px solid #c9cccc;
       font-size: 14px;
+      width: 266px;
       padding: 0;
       z-index: 1000; }
       @media (max-width: 767px) {

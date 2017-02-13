@@ -67,9 +67,12 @@
                       <label class="sr-only">Password:</label>
                       <input type="password" class="form-control" name="password" ng-model="headerLoginInfo.password" placeholder="Password">
                     </div>
-                    <button type="submit" class="btn btn-primary">
-                      Log In
-                    </button>
+                    <div class="clearfix">
+                      <button type="submit" class="btn btn-primary pull-left">
+                        Log In
+                      </button>
+                      <a class="pull-right" href="UserLogin?CMD=ForgotLogin">Need Help?</a>
+                    </div>
                   </form>
                   <form class="hidden js--default-header-login-form" action="UserLogin" method="POST">
                     <input type="hidden" name="NEXTURL" value="{{headerLoginInfo.ng_nexturl}}">
