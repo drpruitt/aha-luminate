@@ -65,5 +65,38 @@ module.exports = {
         ]
       }
     ]
+  }, 
+  
+  "jump-hoops": {
+    files: [
+      {
+        expand: true, 
+        cwd: 'dist/jump-hoops/html/', 
+        src: [
+          '**/*'
+        ]
+      }, 
+      {
+        expand: true, 
+        cwd: 'dist/jump-hoops/image/', 
+        src: [
+          '**/*'
+        ]
+      }, 
+      {
+        expand: true, 
+        cwd: 'dist/jump-hoops/css/', 
+        src: [
+          '**/*'
+        ]
+      }, 
+      {
+        expand: true, 
+        cwd: 'dist/jump-hoops/js/', 
+        src: [
+          '**/*'
+        ]
+      }
+    ]
   }
 }

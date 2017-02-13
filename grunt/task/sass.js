@@ -15,5 +15,13 @@ module.exports = {
         'src/heart-walk/sass/main.scss'
       ]
     }
+  }, 
+  
+  "jump-hoops": {
+    files: {
+      'dist/jump-hoops/css/main.css': [
+        'src/jump-hoops/sass/main.scss'
+      ]
+    }
   }
 }

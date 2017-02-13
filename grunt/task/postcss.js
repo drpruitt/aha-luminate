@@ -34,5 +34,16 @@ module.exports = {
       ], 
       dest: 'dist/heart-walk/css/'
     }]
+  }, 
+  
+  "jump-hoops": {
+    files: [{
+      expand: true, 
+      cwd: 'dist/jump-hoops/css/', 
+      src: [
+        'main.css'
+      ], 
+      dest: 'dist/jump-hoops/css/'
+    }]
   }
 }

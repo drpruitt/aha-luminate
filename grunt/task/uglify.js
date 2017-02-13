@@ -21,5 +21,16 @@ module.exports = {
         dest: 'dist/heart-walk/js/main.min.js'
       }
     ]
+  }, 
+  
+  "jump-hoops": {
+    files: [
+      {
+        src: [
+          'dist/jump-hoops/js/main.js'
+        ], 
+        dest: 'dist/jump-hoops/js/main.min.js'
+      }
+    ]
   }
 }

@@ -13,5 +13,10 @@ module.exports = {
   "heart-walk": {
     src: 'dist/heart-walk/css/main.css', 
     dest: 'dist/heart-walk/css/main.min.css'
+  }, 
+  
+  "jump-hoops": {
+    src: 'dist/jump-hoops/css/main.css', 
+    dest: 'dist/jump-hoops/css/main.min.css'
   }
 }

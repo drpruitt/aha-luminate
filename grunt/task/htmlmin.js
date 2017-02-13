@@ -36,5 +36,18 @@ module.exports = {
         dest: "dist/heart-walk/html/"
       }
     ]
+  }, 
+  
+  "jump-hoops": {
+    files: [
+      {
+        expand: true, 
+        cwd: 'src/jump-hoops/html/', 
+        src: [
+          '**/*.*'
+        ], 
+        dest: "dist/jump-hoops/html/"
+      }
+    ]
   }
 }

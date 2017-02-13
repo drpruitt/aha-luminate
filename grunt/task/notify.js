@@ -27,5 +27,12 @@ module.exports = {
       title: 'AHA Luminate Framework', 
       message: 'Heart Walk files updated.'
     }
+  }, 
+  
+  "jump-hoops": {
+    options: {
+      title: 'AHA Luminate Framework', 
+      message: 'Jump/Hoops files updated.'
+    }
   }
 }
