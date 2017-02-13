@@ -29,7 +29,12 @@ header {
   }
   
   .ym-header-logos {
+    height: 70px;
     margin: 0 0 18px;
+    
+    @media (min-width: $screen-sm-min) {
+      height: 76px;
+    }
   }
   
   .ym-header-logo {
@@ -40,15 +45,41 @@ header {
     &:first-child {
       border-left: 0;
     }
+    
+    a {
+      display: block;
+    }
   }
   
   .ym-header-logo--aha {
-    img {
-      width: 125px;
+    a {
+      margin: 0 10px 0 0;
       
-      @media (min-width: $screen-sm-min) {
-        width: auto;
+      img {
+        width: 125px;
+        
+        @media (min-width: $screen-sm-min) {
+          width: auto;
+        }
       }
+    }
+  }
+  
+  .ym-header-logo--jump {
+    a {
+      margin: -8px 8px 0;
+    }
+  }
+  
+  .ym-header-logo--hoops {
+    a {
+      margin: 10px 8px 0;
+    }
+  }
+  
+  .ym-header-logo--shape-america {
+    a {
+      margin: 6px 18px 0;
     }
   }
   

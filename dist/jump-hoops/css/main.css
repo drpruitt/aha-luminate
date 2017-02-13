@@ -135,18 +135,32 @@ header {
     header .ym-header-pre-text a, header .ym-header-pre-text a:link, header .ym-header-pre-text a:visited, header .ym-header-pre-text a:hover, header .ym-header-pre-text a:focus, header .ym-header-pre-text a:active {
       color: inherit; }
   header .ym-header-logos {
+    height: 70px;
     margin: 0 0 18px; }
+    @media (min-width: 768px) {
+      header .ym-header-logos {
+        height: 76px; } }
   header .ym-header-logo {
     float: left;
     border-left: 1px solid #838181;
     height: 54px; }
     header .ym-header-logo:first-child {
       border-left: 0; }
-  header .ym-header-logo--aha img {
-    width: 125px; }
-    @media (min-width: 768px) {
-      header .ym-header-logo--aha img {
-        width: auto; } }
+    header .ym-header-logo a {
+      display: block; }
+  header .ym-header-logo--aha a {
+    margin: 0 10px 0 0; }
+    header .ym-header-logo--aha a img {
+      width: 125px; }
+      @media (min-width: 768px) {
+        header .ym-header-logo--aha a img {
+          width: auto; } }
+  header .ym-header-logo--jump a {
+    margin: -8px 8px 0; }
+  header .ym-header-logo--hoops a {
+    margin: 10px 8px 0; }
+  header .ym-header-logo--shape-america a {
+    margin: 6px 18px 0; }
   header .ym-header-title {
     color: #6153a3;
     font-family: 'Luckiest Guy', cursive;
