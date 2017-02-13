@@ -221,7 +221,26 @@ header {
     }
     
     .ym-header-welcome-toggle {
-      height: 50px;
+      &, 
+      &:link, 
+      &:visited, 
+      &:hover, 
+      &:focus, 
+      &:active, 
+      &:active:hover, 
+      &:active:focus {
+        color: $brand-primary;
+        height: 50px;
+        outline: 0;
+      }
+      
+      &:hover, 
+      &:focus, 
+      &:active, 
+      &:active:hover, 
+      &:active:focus {
+        color: $brand-primary-darker;
+      }
     }
     
     .ym-header-welcome-dropdown {

@@ -247,8 +247,12 @@ header {
     header nav .ym-header-welcome {
       float: left;
       position: relative; }
-    header nav .ym-header-welcome-toggle {
-      height: 50px; }
+    header nav .ym-header-welcome-toggle, header nav .ym-header-welcome-toggle:link, header nav .ym-header-welcome-toggle:visited, header nav .ym-header-welcome-toggle:hover, header nav .ym-header-welcome-toggle:focus, header nav .ym-header-welcome-toggle:active, header nav .ym-header-welcome-toggle:active:hover, header nav .ym-header-welcome-toggle:active:focus {
+      color: #ed1c24;
+      height: 50px;
+      outline: 0; }
+    header nav .ym-header-welcome-toggle:hover, header nav .ym-header-welcome-toggle:focus, header nav .ym-header-welcome-toggle:active, header nav .ym-header-welcome-toggle:active:hover, header nav .ym-header-welcome-toggle:active:focus {
+      color: #890707; }
     header nav .ym-header-welcome-dropdown {
       display: none;
       position: absolute;
