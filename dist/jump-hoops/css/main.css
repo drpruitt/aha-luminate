@@ -245,9 +245,28 @@ header {
         header nav .ym-header-logged-in {
           float: right; } }
     header nav .ym-header-welcome {
-      float: left; }
+      float: left;
+      position: relative; }
+    header nav .ym-header-welcome-toggle {
+      height: 50px; }
     header nav .ym-header-welcome-dropdown {
-      display: none; }
+      display: none;
+      position: absolute;
+      top: 100%;
+      background: #ffffff;
+      border: 1px solid #c9cccc;
+      font-size: 14px;
+      padding: 0;
+      z-index: 1000; }
+      @media (max-width: 767px) {
+        header nav .ym-header-welcome-dropdown {
+          left: 0;
+          border-left: 0; } }
+      @media (min-width: 768px) {
+        header nav .ym-header-welcome-dropdown {
+          right: 0; } }
+      header nav .ym-header-welcome-dropdown.open {
+        display: block; }
     header nav .ym-header-hq-btn {
       float: left;
       height: 50px; }

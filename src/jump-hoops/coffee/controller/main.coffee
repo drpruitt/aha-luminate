@@ -17,6 +17,18 @@ angular.module 'ahaLuminateControllers'
       $scope.submitHeaderLogin = ->
         # TODO
       
+      $scope.toggleWelcomeMenu = ->
+        if $scope.welcomeMenuOpen
+          delete $scope.welcomeMenuOpen
+        else
+          $scope.welcomeMenuOpen = true
+      
+      angular.element('body').on 'click', (event) ->
+        if $scope.welcomeMenuOpen and angular.element(event.target).closest('.ym-header-welcome').length is 0
+          $scope.toggleWelcomeMenu()
+        if not $scope.$$phase
+          $scope.$apply()
+      
       $scope.toggleSiteMenu = ->
         if $scope.siteMenuOpen
           delete $scope.siteMenuOpen

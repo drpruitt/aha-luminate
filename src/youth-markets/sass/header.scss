@@ -118,7 +118,7 @@ header {
     }
     
     ul.ym-site-nav {
-      color: #ed1c24;
+      color: $brand-primary;
       float: left;
       font-size: 20px;
       line-height: 20px;
@@ -217,10 +217,35 @@ header {
     
     .ym-header-welcome {
       float: left;
+      position: relative;
+    }
+    
+    .ym-header-welcome-toggle {
+      height: 50px;
     }
     
     .ym-header-welcome-dropdown {
       display: none;
+      position: absolute;
+      top: 100%;
+      background: #ffffff;
+      border: 1px solid #c9cccc;
+      font-size: 14px;
+      padding: 0;
+      z-index: 1000;
+      
+      @media (max-width: $screen-xs-max) {
+        left: 0;
+        border-left: 0;
+      }
+      
+      @media (min-width: $screen-sm-min) {
+        right: 0;
+      }
+      
+      &.open {
+        display: block;
+      }
     }
     
     .ym-header-hq-btn {
@@ -255,7 +280,7 @@ header {
       
       .ym-site-menu-bar {
         display: block;
-        background: #ed1c24;
+        background: $brand-primary;
         width: 36px;
         height: 6px;
         margin: 0 0 3px;

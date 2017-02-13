@@ -53,6 +53,21 @@
         }
       });
       $scope.submitHeaderLogin = function() {};
+      $scope.toggleWelcomeMenu = function() {
+        if ($scope.welcomeMenuOpen) {
+          return delete $scope.welcomeMenuOpen;
+        } else {
+          return $scope.welcomeMenuOpen = true;
+        }
+      };
+      angular.element('body').on('click', function(event) {
+        if ($scope.welcomeMenuOpen && angular.element(event.target).closest('.ym-header-welcome').length === 0) {
+          $scope.toggleWelcomeMenu();
+        }
+        if (!$scope.$$phase) {
+          return $scope.$apply();
+        }
+      });
       $scope.toggleSiteMenu = function() {
         if ($scope.siteMenuOpen) {
           return delete $scope.siteMenuOpen;

@@ -84,10 +84,10 @@
           <div class="ym-header-logged-in">
             <div class="clearfix">
               <div class="ym-header-welcome">
-                <button type="button" class="btn btn-default ym-header-welcome-toggle">
-                  Welcome[[?xx::x[[S1:first_name]]x::::, [[S1:first_name]]]]! <i class="fa fa-chevron-down"></i>
+                <button type="button" class="btn btn-default ym-header-welcome-toggle" ng-click="toggleWelcomeMenu()">
+                  Welcome[[?xx::x[[S1:first_name]]x::::, [[S1:first_name]]]]! <i class="fa fa-chevron-down" ng-class="{'fa-chevron-down': !welcomeMenuOpen, 'fa-chevron-up': welcomeMenuOpen}"></i>
                 </button>
-                <div class="ym-header-welcome-dropdown" ng-cloak>
+                <div class="ym-header-welcome-dropdown" ng-class="{'open': welcomeMenuOpen}" ng-cloak>
                   <ul>
                     <li>
                       <a href="ConsProfile?dispMode=edit">
@@ -102,7 +102,7 @@
                   </ul>
                 </div>
               </div>
-              <a class="btn btn-primary ym-header-hq-btn">
+              <a class="btn btn-primary ym-header-hq-btn" href="[[S8]]#">
                 <span class="visible-xs">My HQ</span>
                 <span class="hidden-xs">My Headquarters</span>
               </a>
