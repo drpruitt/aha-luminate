@@ -367,8 +367,10 @@ main {
   body.aha-luminate #at4-soc {
     top: 250px !important; } }
 
-body.aha-luminate .SnapABug_Button {
-  top: 250px !important; }
-  @media (min-width: 980px) {
-    body.aha-luminate .SnapABug_Button {
-      top: 414px !important; } }
+@media (max-width: 979px) {
+  body.aha-luminate .SnapABug_Button {
+    display: none !important; } }
+
+@media (min-width: 980px) {
+  body.aha-luminate .SnapABug_Button {
+    top: 414px !important; } }

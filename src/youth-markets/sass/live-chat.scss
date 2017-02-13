@@ -1,6 +1,8 @@
 body.aha-luminate .SnapABug_Button {
-  top: 250px !important;
-
+  @media (max-width: 979px) {
+    display: none !important;
+  }
+  
   @media (min-width: 980px) {
     top: 414px !important;
   }
