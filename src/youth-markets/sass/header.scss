@@ -206,6 +206,19 @@ header {
     .ym-header-login-form {
       border-left: 6px solid $brand-primary;
       padding: 30px 20px;
+      
+      a {
+        &, 
+        &:link, 
+        &:visited, 
+        &:hover, 
+        &:focus, 
+        &:active {
+          font-weight: 700;
+          text-decoration: underline;
+          margin: 12px 0 0;
+        }
+      }
     }
     
     .ym-header-logged-in {

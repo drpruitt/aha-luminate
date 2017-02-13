@@ -240,6 +240,10 @@ header {
     header nav .ym-header-login-form {
       border-left: 6px solid #ed1c24;
       padding: 30px 20px; }
+      header nav .ym-header-login-form a, header nav .ym-header-login-form a:link, header nav .ym-header-login-form a:visited, header nav .ym-header-login-form a:hover, header nav .ym-header-login-form a:focus, header nav .ym-header-login-form a:active {
+        font-weight: 700;
+        text-decoration: underline;
+        margin: 12px 0 0; }
     header nav .ym-header-logged-in {
       float: left; }
       @media (min-width: 768px) {
