@@ -38,6 +38,7 @@
   angular.module('ahaLuminateControllers').controller('MainCtrl', [
     '$scope', function($scope) {
       $scope.toggleLoginMenu = function() {
+        console.log('toggleLoginMenu()');
         if ($scope.loginMenuOpen) {
           return delete $scope.loginMenuOpen;
         } else {
@@ -45,9 +46,11 @@
         }
       };
       angular.element('body').on('click', function(event) {
+        console.log($scope.loginMenuOpen, event.target);
         if ($scope.loginMenuOpen && angular.element(event.target).closest('.ym-header-login').length === 0) {
-          return $scope.toggleLoginMenu();
+          $scope.toggleLoginMenu();
         }
+        return console.log($scope.loginMenuOpen);
       });
       $scope.submitHeaderLogin = function() {};
       $scope.toggleSiteMenu = function() {
