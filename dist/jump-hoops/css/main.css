@@ -267,6 +267,17 @@ header {
           right: 0; } }
       header nav .ym-header-welcome-dropdown.open {
         display: block; }
+      header nav .ym-header-welcome-dropdown ul {
+        border-left: 6px solid #ed1c24;
+        color: #ed1c24;
+        list-style: none;
+        padding: 30px 20px;
+        margin: 0; }
+        header nav .ym-header-welcome-dropdown ul li {
+          font-weight: 700;
+          margin: 0 0 30px; }
+          header nav .ym-header-welcome-dropdown ul li:last-child {
+            margin: 0; }
     header nav .ym-header-hq-btn {
       float: left;
       height: 50px; }

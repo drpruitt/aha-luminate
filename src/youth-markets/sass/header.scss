@@ -246,6 +246,23 @@ header {
       &.open {
         display: block;
       }
+      
+      ul {
+        border-left: 6px solid $brand-primary;
+        color: $brand-primary;
+        list-style: none;
+        padding: 30px 20px;
+        margin: 0;
+        
+        li {
+          font-weight: 700;
+          margin: 0 0 30px;
+          
+          &:last-child {
+            margin: 0;
+          }
+        }
+      }
     }
     
     .ym-header-hq-btn {
