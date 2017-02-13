@@ -98,6 +98,7 @@ header {
     header nav .ym-site-menu-toggle {
       display: block;
       border: 0;
+      border-radius: 0;
       padding: 10px; }
       header nav .ym-site-menu-toggle .ym-site-menu-bar {
         display: block;
