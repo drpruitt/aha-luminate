@@ -254,6 +254,8 @@ header {
       padding: 30px 20px; }
       header nav .ym-header-login-form .form-group {
         margin: 0 0 10px; }
+      header nav .ym-header-login-form .ym-header-login-footer {
+        padding: 10px 0 0; }
       header nav .ym-header-login-form a, header nav .ym-header-login-form a:link, header nav .ym-header-login-form a:visited, header nav .ym-header-login-form a:hover, header nav .ym-header-login-form a:focus, header nav .ym-header-login-form a:active {
         font-weight: 700;
         text-decoration: underline;
