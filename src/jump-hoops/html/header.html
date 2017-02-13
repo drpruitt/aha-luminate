@@ -40,34 +40,40 @@
           </li>
         </ul>
         <div class="ym-header-login">
-          <a class="btn btn-primary ym-header-login-toggle">
-            Log In to Fundraise <i class="fa fa-chevron-down"></i>
-          </a>
-          <div class="ym-header-login-dropdown">
-            <div class="ym-header-login-form">
-              <form method="POST" ng-submit="">
-                <div class="form-group">
-                  <label class="sr-only">Username:</label>
-                  <input type="text" class="form-control" placeholder="Username">
-                </div>
-                <div class="form-group">
-                  <label class="sr-only">Password:</label>
-                  <input type="password" class="form-control" placeholder="Password">
-                </div>
-                <button type="submit" class="btn btn-primary">
-                  Log In
-                </button>
-              </form>
+          [[?xx[[S8]]::xxhttps::
+            <button type="button" class="btn btn-primary ym-header-login-toggle">
+              Log In to Fundraise <i class="fa fa-chevron-down"></i>
+            </button>
+            <div class="ym-header-login-dropdown">
+              <div class="ym-header-login-form">
+                <form method="POST" ng-submit="">
+                  <div class="form-group">
+                    <label class="sr-only">Username:</label>
+                    <input type="text" class="form-control" placeholder="Username">
+                  </div>
+                  <div class="form-group">
+                    <label class="sr-only">Password:</label>
+                    <input type="password" class="form-control" placeholder="Password">
+                  </div>
+                  <button type="submit" class="btn btn-primary">
+                    Log In
+                  </button>
+                </form>
+              </div>
             </div>
-          </div>
+          ::
+            <a class="btn btn-primary ym-header-login-toggle" href="UserLogin?NEXTURL=[[T1:[[S8]]]]">
+              Log In to Fundraise
+            </a>
+          ]]
         </div>
         <div class="ym-site-menu visible-xs">
-          <a class="ym-site-menu-toggle">
+          <button type="button" class="ym-site-menu-toggle">
             <i class="ym-site-menu-bar"></i>
             <i class="ym-site-menu-bar"></i>
             <i class="ym-site-menu-bar"></i>
             <i class="ym-site-menu-bar"></i>
-          </a>
+          </button>
           <div class="ym-site-menu-dropdown">
             <ul>
               <li>
