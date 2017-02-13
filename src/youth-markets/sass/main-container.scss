@@ -1,4 +1,6 @@
 main {
+  padding: 15px 0;
+  
   > .container {
     @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
       width: auto;

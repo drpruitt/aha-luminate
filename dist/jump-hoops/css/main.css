@@ -356,17 +356,19 @@ header {
           header nav .ym-site-menu-dropdown ul li:last-child {
             margin: 0; }
 
-@media (min-width: 768px) and (max-width: 991px) {
-  main > .container {
-    width: auto; } }
+main {
+  padding: 15px 0; }
+  @media (min-width: 768px) and (max-width: 991px) {
+    main > .container {
+      width: auto; } }
 
 @media (min-width: 980px) {
   body.aha-luminate #at4-share,
   body.aha-luminate #at4-soc {
     top: 250px !important; } }
 
-body.luminate .SnapABug_Button {
+body.aha-luminate .SnapABug_Button {
   top: 250px !important; }
   @media (min-width: 980px) {
-    body.luminate .SnapABug_Button {
+    body.aha-luminate .SnapABug_Button {
       top: 414px !important; } }
