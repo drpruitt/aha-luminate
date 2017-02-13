@@ -23,7 +23,7 @@ angular.module 'ahaLuminateControllers'
       $scope.submitHeaderLogin = ->
         AuthService.login $httpParamSerializer($scope.headerLoginInfo), 
           error: ->
-            # TODO
+            angular.element('.js--default-header-login-form').submit()
           success: ->
             if not $scope.headerLoginInfo.ng_nexturl or $scope.headerLoginInfo.ng_nexturl is ''
               window.location = window.location.href

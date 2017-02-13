@@ -58,7 +58,7 @@
               <div class="ym-header-login-dropdown" ng-class="{'open': loginMenuOpen}" ng-cloak>
                 <div class="ym-header-login-form">
                   <form method="POST" name="headerLoginForm" ng-submit="submitHeaderLogin()" novalidate>
-                    <input type="hidden" name="ng_nexturl" ng-model="headerLoginInfo.ng_nexturl" value="[[T1:[[E130:[[T8:[[S8]]]] [[T8:&amp;]] [[T8:&]] replaceall]]]]">
+                    <input type="hidden" name="ng_nexturl" ng-model="headerLoginInfo.ng_nexturl" value="[[E130:[[T8:[[S8]]]] [[T8:&amp;]] [[T8:&]] replaceall]]">
                     <div class="form-group">
                       <label class="sr-only">Username:</label>
                       <input type="text" class="form-control" name="user_name" ng-model="headerLoginInfo.user_name" placeholder="Username">
@@ -72,9 +72,9 @@
                     </button>
                   </form>
                   <form class="hidden js--default-header-login-form" action="UserLogin" method="POST">
-                    <input type="NEXTURL" name="NEXTURL" ng-model="headerLoginInfo.ng_nexturl">
-                    <input type="hidden" name="USERNAME" ng-model="headerLoginInfo.user_name">
-                    <input type="hidden" name="Password" ng-model="headerLoginInfo.password">
+                    <input type="hidden" name="NEXTURL" value="{{headerLoginInfo.ng_nexturl}}">
+                    <input type="hidden" name="USERNAME" value="{{headerLoginInfo.user_name}}">
+                    <input type="hidden" name="Password" value="{{headerLoginInfo.password}}">
                   </form>
                 </div>
               </div>

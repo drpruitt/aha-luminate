@@ -195,7 +195,9 @@
       };
       $scope.submitHeaderLogin = function() {
         return AuthService.login($httpParamSerializer($scope.headerLoginInfo), {
-          error: function() {},
+          error: function() {
+            return angular.element('.js--default-header-login-form').submit();
+          },
           success: function() {
             if (!$scope.headerLoginInfo.ng_nexturl || $scope.headerLoginInfo.ng_nexturl === '') {
               return window.location = window.location.href;
