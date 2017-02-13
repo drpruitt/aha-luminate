@@ -1,3 +1,7 @@
+body {
+  color: #2d2d2d;
+  font-family: Raleway; }
+
 header .ym-header-pre-text {
   font-size: 12px;
   margin: 0 0 16px; }
@@ -47,3 +51,17 @@ header nav {
       margin: 0 0 3px; }
       header nav .ym-site-menu-toggle .ym-site-menu-bar:last-child {
         margin: 0; }
+  header nav .ym-site-menu-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #ffffff;
+    border: 1px solid #c9cccc;
+    font-size: 14px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    z-index: 1000; }
+    header nav .ym-site-menu-dropdown ul {
+      border-left: 6px solid #ec1c24;
+      color: #ec1c24;
+      list-style: none; }
