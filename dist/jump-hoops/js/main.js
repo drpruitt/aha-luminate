@@ -44,13 +44,23 @@
           return $scope.loginMenuOpen = true;
         }
       };
-      return $scope.toggleSiteMenu = function() {
+      angular.element('body').on('click', function(event) {
+        if ($scope.loginMenuOpen && angular.element(event.target).closest('.ym-header-login').length === 0) {
+          return $scope.toggleLoginMenu();
+        }
+      });
+      $scope.toggleSiteMenu = function() {
         if ($scope.siteMenuOpen) {
           return delete $scope.siteMenuOpen;
         } else {
           return $scope.siteMenuOpen = true;
         }
       };
+      return angular.element('body').on('click', function(event) {
+        if ($scope.siteMenuOpen && angular.element(event.target).closest('.ym-site-menu').length === 0) {
+          return $scope.toggleLoginMenu();
+        }
+      });
     }
   ]);
 

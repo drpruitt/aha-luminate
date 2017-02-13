@@ -246,8 +246,8 @@ header {
       display: block;
       border: 0;
       border-radius: 0;
-      padding: 10px;
-      margin: 0 10px 0 0; }
+      padding: 8px 10px;
+      margin: 1px 10px 0 0; }
       header nav .btn.ym-site-menu-toggle, header nav .btn.ym-site-menu-toggle:link, header nav .btn.ym-site-menu-toggle:visited, header nav .btn.ym-site-menu-toggle:hover, header nav .btn.ym-site-menu-toggle:focus, header nav .btn.ym-site-menu-toggle:active, header nav .btn.ym-site-menu-toggle:active:hover, header nav .btn.ym-site-menu-toggle:active:focus {
         background: transparent;
         box-shadow: none;
