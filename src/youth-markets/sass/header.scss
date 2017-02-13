@@ -1,4 +1,8 @@
 header {
+  .ym-header-pre-text {
+    font-size: 12px;
+  }
+  
   .ym-header-logo {
     border-left: 1px solid #838181;
   }
@@ -13,5 +17,9 @@ header {
     font-family: 'Luckiest Guy', cursive;
     font-size: 26px;
     text-transform: uppercase;
+  }
+  
+  .ym-header-post-text {
+    font-size: 10px;
   }
 }
