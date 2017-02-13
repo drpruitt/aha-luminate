@@ -1,77 +1,95 @@
+p,
+ol,
+ul,
+li,
+table,
+tr,
+th,
+td,
+.Explicit,
+div.responsive {
+  font-family: inherit;
+  font-size: inherit; }
+
+a, a:link, a:visited, a:hover, a:focus, a:active,
+div.responsive a,
+div.responsive a:link,
+div.responsive a:visited,
+div.responsive a:hover,
+div.responsive a:focus,
+div.responsive a:active {
+  color: #ed1c24; }
+
 body {
   color: #2d2d2d;
   font-family: Raleway; }
 
-header .ym-header-pre-text {
-  font-size: 12px;
-  margin: 0 0 16px; }
-
-header .ym-header-logos {
-  margin: 0 0 18px; }
-
-header .ym-header-logo {
-  float: left;
-  border-left: 1px solid #838181; }
-
-header .ym-header-logo--aha {
-  border-left: 0;
-  width: 125px; }
-
-header .ym-header-title {
-  color: #6153a3;
-  font-family: 'Luckiest Guy', cursive;
-  font-size: 26px;
-  text-transform: uppercase;
-  margin: 0 0 16px; }
-
-header .ym-header-post-text {
-  font-size: 10px;
-  margin: 0 0 16px; }
-
-header nav {
-  border-top: 1px solid #e8e8e8;
-  border-bottom: 1px solid #e8e8e8; }
-  header nav ul.ym-site-nav {
-    color: #ed1c24;
+header {
+  padding: 10px 0 0; }
+  header .ym-header-pre-text {
+    font-size: 12px;
+    margin: 0 0 16px; }
+  header .ym-header-logos {
+    margin: 0 0 18px; }
+  header .ym-header-logo {
     float: left;
-    font-size: 20px;
-    list-style: none; }
-    header nav ul.ym-site-nav li {
-      float: left; }
-  header nav .ym-header-login {
-    float: left; }
-  header nav .ym-header-login-toggle {
-    font-size: 16px; }
-  header nav .ym-header-login-dropdown {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: #ffffff;
-    border: 1px solid #c9cccc;
-    font-size: 14px;
-    padding: 0;
-    z-index: 1000; }
-  header nav .ym-site-menu {
-    float: right; }
-  header nav .ym-site-menu-toggle {
-    color: #ed1c24; }
-    header nav .ym-site-menu-toggle .ym-site-menu-bar {
-      display: block;
-      width: 36px;
-      height: 6px;
-      margin: 0 0 3px; }
-      header nav .ym-site-menu-toggle .ym-site-menu-bar:last-child {
-        margin: 0; }
-  header nav .ym-site-menu-dropdown {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: #ffffff;
-    border: 1px solid #c9cccc;
-    font-size: 14px;
-    padding: 0;
-    z-index: 1000; }
-    header nav .ym-site-menu-dropdown ul {
-      border-left: 6px solid #ec1c24;
-      color: #ec1c24;
+    border-left: 1px solid #838181; }
+  header .ym-header-logo--aha {
+    border-left: 0;
+    width: 125px; }
+  header .ym-header-title {
+    color: #6153a3;
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 26px;
+    text-transform: uppercase;
+    margin: 0 0 16px; }
+  header .ym-header-post-text {
+    font-size: 10px;
+    margin: 0 0 16px; }
+  header nav {
+    border-top: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8; }
+    header nav ul.ym-site-nav {
+      color: #ed1c24;
+      float: left;
+      font-size: 20px;
       list-style: none; }
+      header nav ul.ym-site-nav li {
+        float: left; }
+    header nav .ym-header-login {
+      float: left; }
+    header nav .ym-header-login-toggle {
+      font-size: 16px; }
+    header nav .ym-header-login-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #ffffff;
+      border: 1px solid #c9cccc;
+      font-size: 14px;
+      padding: 0;
+      z-index: 1000; }
+    header nav .ym-site-menu {
+      float: right; }
+    header nav .ym-site-menu-toggle {
+      color: #ed1c24; }
+      header nav .ym-site-menu-toggle .ym-site-menu-bar {
+        display: block;
+        width: 36px;
+        height: 6px;
+        margin: 0 0 3px; }
+        header nav .ym-site-menu-toggle .ym-site-menu-bar:last-child {
+          margin: 0; }
+    header nav .ym-site-menu-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #ffffff;
+      border: 1px solid #c9cccc;
+      font-size: 14px;
+      padding: 0;
+      z-index: 1000; }
+      header nav .ym-site-menu-dropdown ul {
+        border-left: 6px solid #ec1c24;
+        color: #ec1c24;
+        list-style: none; }

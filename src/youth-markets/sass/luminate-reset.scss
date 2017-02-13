@@ -1,0 +1,25 @@
+p, 
+ol, 
+ul, 
+li, 
+table, 
+tr, 
+th, 
+td, 
+.Explicit, 
+div.responsive {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+a, 
+div.responsive a {
+  &, 
+  &:link, 
+  &:visited, 
+  &:hover, 
+  &:focus, 
+  &:active {
+    color: $link-color;
+  }
+}
