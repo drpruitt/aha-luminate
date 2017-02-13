@@ -125,6 +125,9 @@ header {
   @media (min-width: 768px) {
     header {
       padding: 20px 0 0; } }
+  @media (min-width: 768px) and (max-width: 991px) {
+    header > .container {
+      width: auto; } }
   header .ym-header-pre-text {
     font-size: 12px;
     font-weight: 500;
@@ -170,6 +173,8 @@ header {
         float: left;
         padding: 16px 0;
         margin: 0 75px 0 0; }
+        header nav ul.ym-site-nav li:last-child {
+          margin: 0; }
         header nav ul.ym-site-nav li a, header nav ul.ym-site-nav li a:link, header nav ul.ym-site-nav li a:visited, header nav ul.ym-site-nav li a:hover, header nav ul.ym-site-nav li a:focus, header nav ul.ym-site-nav li a:active {
           display: inline-block;
           font-weight: 700;
