@@ -16,12 +16,19 @@ angular.module 'ahaLuminateControllers'
         if not $scope.$$phase
           $scope.$apply()
       
+      $scope.headerLoginInfo = 
+        user_name: ''
+        password: ''
+      
       $scope.submitHeaderLogin = ->
-        AuthService.login '', 
+        AuthService.login $httpParamSerializer($scope.headerLoginInfo), 
           error: ->
             # TODO
           success: ->
-            # TODO
+            if not $scope.headerLoginInfo.ng_nexturl or $scope.headerLoginInfo.ng_nexturl is ''
+              window.location = window.location.href
+            else
+              window.location = $scope.headerLoginInfo.ng_nexturl
       
       $scope.toggleWelcomeMenu = ->
         if $scope.welcomeMenuOpen

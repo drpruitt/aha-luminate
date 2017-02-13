@@ -189,10 +189,20 @@
           return $scope.$apply();
         }
       });
+      $scope.headerLoginInfo = {
+        user_name: '',
+        password: ''
+      };
       $scope.submitHeaderLogin = function() {
-        return AuthService.login('', {
+        return AuthService.login($httpParamSerializer($scope.headerLoginInfo), {
           error: function() {},
-          success: function() {}
+          success: function() {
+            if (!$scope.headerLoginInfo.ng_nexturl || $scope.headerLoginInfo.ng_nexturl === '') {
+              return window.location = window.location.href;
+            } else {
+              return window.location = $scope.headerLoginInfo.ng_nexturl;
+            }
+          }
         });
       };
       $scope.toggleWelcomeMenu = function() {
