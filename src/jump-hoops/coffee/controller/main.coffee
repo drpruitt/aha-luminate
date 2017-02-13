@@ -1,7 +1,9 @@
 angular.module 'ahaLuminateControllers'
   .controller 'MainCtrl', [
     '$scope'
-    ($scope) ->
+    '$httpParamSerializer'
+    'AuthService'
+    ($scope, $httpParamSerializer, AuthService) ->
       $scope.toggleLoginMenu = ->
         if $scope.loginMenuOpen
           delete $scope.loginMenuOpen
@@ -15,7 +17,11 @@ angular.module 'ahaLuminateControllers'
           $scope.$apply()
       
       $scope.submitHeaderLogin = ->
-        # TODO
+        AuthService.login '', 
+          error: ->
+            # TODO
+          success: ->
+            # TODO
       
       $scope.toggleWelcomeMenu = ->
         if $scope.welcomeMenuOpen

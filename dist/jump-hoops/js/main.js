@@ -35,6 +35,21 @@
     return angular.bootstrap(document, appModules);
   });
 
+  angular.module('ahaLuminateApp').factory('AuthService', [
+    'LuminateRESTService', function(LuminateRESTService) {
+      return {
+        login: function(requestData, callback) {
+          var dataString;
+          dataString = 'method=login';
+          if (requestData && requestData !== '') {
+            dataString += '&' + requestData;
+          }
+          return LuminateRESTService.luminateExtendConsRequest(dataString, false, callback);
+        }
+      };
+    }
+  ]);
+
   angular.module('ahaLuminateApp').factory('LuminateRESTService', [
     '$rootScope', '$http', 'APP_INFO', function($rootScope, $http, APP_INFO) {
       return {
@@ -93,6 +108,12 @@
         },
         luminateExtendTeamraiserRequest: function(requestData, includeAuth, includeFrId, callback) {
           return this.luminateExtendRequest('teamraiser', requestData, includeAuth, includeFrId, callback);
+        },
+        consRequest: function(requestData, includeAuth) {
+          return this.request('CRConsAPI', requestData, includeAuth, false);
+        },
+        luminateExtendConsRequest: function(requestData, includeAuth, callback) {
+          return this.luminateExtendRequest('cons', requestData, includeAuth, false, callback);
         }
       };
     }
@@ -152,7 +173,7 @@
   ]);
 
   angular.module('ahaLuminateControllers').controller('MainCtrl', [
-    '$scope', function($scope) {
+    '$scope', '$httpParamSerializer', 'AuthService', function($scope, $httpParamSerializer, AuthService) {
       $scope.toggleLoginMenu = function() {
         if ($scope.loginMenuOpen) {
           return delete $scope.loginMenuOpen;
@@ -168,7 +189,12 @@
           return $scope.$apply();
         }
       });
-      $scope.submitHeaderLogin = function() {};
+      $scope.submitHeaderLogin = function() {
+        return AuthService.login('', {
+          error: function() {},
+          success: function() {}
+        });
+      };
       $scope.toggleWelcomeMenu = function() {
         if ($scope.welcomeMenuOpen) {
           return delete $scope.welcomeMenuOpen;

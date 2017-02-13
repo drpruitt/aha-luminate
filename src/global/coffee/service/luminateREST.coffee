@@ -48,4 +48,10 @@ angular.module 'ahaLuminateApp'
       
       luminateExtendTeamraiserRequest: (requestData, includeAuth, includeFrId, callback) ->
         this.luminateExtendRequest 'teamraiser', requestData, includeAuth, includeFrId, callback
+      
+      consRequest: (requestData, includeAuth) ->
+        this.request 'CRConsAPI', requestData, includeAuth, false
+      
+      luminateExtendConsRequest: (requestData, includeAuth, callback) ->
+        this.luminateExtendRequest 'cons', requestData, includeAuth, false, callback
   ]
