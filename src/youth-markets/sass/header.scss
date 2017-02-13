@@ -111,7 +111,7 @@ header {
       &:focus, 
       &:active {
         font-size: 16px;
-        font-weight: 700;
+        font-weight: 500;
       }
     }
     
@@ -119,7 +119,7 @@ header {
       display: none;
       position: absolute;
       top: 100%;
-      left: 0;
+      right: 0;
       background: #ffffff;
       border: 1px solid #c9cccc;
       font-size: 14px;
@@ -139,7 +139,6 @@ header {
     .ym-site-menu {
       float: right;
       position: relative;
-      margin: 0 10px 0 0;
     }
     
     .ym-site-menu-toggle {
@@ -147,6 +146,7 @@ header {
       border: 0;
       border-radius: 0;
       padding: 10px;
+      margin: 0 10px 0 0;
       
       .ym-site-menu-bar {
         display: block;
@@ -165,10 +165,12 @@ header {
       display: none;
       position: absolute;
       top: 100%;
-      left: 0;
+      right: 0;
       background: #ffffff;
       border: 1px solid #c9cccc;
+      border-right: 0;
       font-size: 14px;
+      width: 140px;
       padding: 0;
       z-index: 1000;
       
@@ -184,6 +186,7 @@ header {
         margin: 0;
         
         li {
+          font-weight: 700;
           margin: 0 0 30px;
           
           &:last-child {

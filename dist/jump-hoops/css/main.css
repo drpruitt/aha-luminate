@@ -180,12 +180,12 @@ header {
           float: right; } }
     header nav .ym-header-login-toggle, header nav .ym-header-login-toggle:link, header nav .ym-header-login-toggle:visited, header nav .ym-header-login-toggle:hover, header nav .ym-header-login-toggle:focus, header nav .ym-header-login-toggle:active {
       font-size: 16px;
-      font-weight: 700; }
+      font-weight: 500; }
     header nav .ym-header-login-dropdown {
       display: none;
       position: absolute;
       top: 100%;
-      left: 0;
+      right: 0;
       background: #ffffff;
       border: 1px solid #c9cccc;
       font-size: 14px;
@@ -198,13 +198,13 @@ header {
       padding: 30px 20px; }
     header nav .ym-site-menu {
       float: right;
-      position: relative;
-      margin: 0 10px 0 0; }
+      position: relative; }
     header nav .ym-site-menu-toggle {
       display: block;
       border: 0;
       border-radius: 0;
-      padding: 10px; }
+      padding: 10px;
+      margin: 0 10px 0 0; }
       header nav .ym-site-menu-toggle .ym-site-menu-bar {
         display: block;
         background: #ed1c24;
@@ -217,10 +217,12 @@ header {
       display: none;
       position: absolute;
       top: 100%;
-      left: 0;
+      right: 0;
       background: #ffffff;
       border: 1px solid #c9cccc;
+      border-right: 0;
       font-size: 14px;
+      width: 140px;
       padding: 0;
       z-index: 1000; }
       header nav .ym-site-menu-dropdown.open {
@@ -232,6 +234,7 @@ header {
         padding: 30px 20px;
         margin: 0; }
         header nav .ym-site-menu-dropdown ul li {
+          font-weight: 700;
           margin: 0 0 30px; }
           header nav .ym-site-menu-dropdown ul li:last-child {
             margin: 0; }
