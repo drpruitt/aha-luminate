@@ -37,11 +37,18 @@
 
   angular.module('ahaLuminateControllers').controller('MainCtrl', [
     '$scope', function($scope) {
-      return $scope.toggleLoginMenu = function() {
+      $scope.toggleLoginMenu = function() {
         if ($scope.loginMenuOpen) {
           return delete $scope.loginMenuOpen;
         } else {
           return $scope.loginMenuOpen = true;
+        }
+      };
+      return $scope.toggleSiteMenu = function() {
+        if ($scope.siteMenuOpen) {
+          return delete $scope.siteMenuOpen;
+        } else {
+          return $scope.siteMenuOpen = true;
         }
       };
     }

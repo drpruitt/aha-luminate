@@ -7,4 +7,10 @@ angular.module 'ahaLuminateControllers'
           delete $scope.loginMenuOpen
         else
           $scope.loginMenuOpen = true
+      
+      $scope.toggleSiteMenu = ->
+        if $scope.siteMenuOpen
+          delete $scope.siteMenuOpen
+        else
+          $scope.siteMenuOpen = true
   ]

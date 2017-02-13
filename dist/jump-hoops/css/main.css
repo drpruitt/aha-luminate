@@ -170,6 +170,8 @@ header {
           display: inline-block;
           font-weight: 700;
           text-decoration: none; }
+        header nav ul.ym-site-nav li a:hover, header nav ul.ym-site-nav li a:focus, header nav ul.ym-site-nav li a:active {
+          color: #890707; }
     header nav .ym-header-login {
       float: left;
       position: relative; }
@@ -192,7 +194,7 @@ header {
       header nav .ym-header-login-dropdown.open {
         display: block; }
     header nav .ym-header-login-form {
-      border-left: 6px solid #ec1c24;
+      border-left: 6px solid #ed1c24;
       padding: 30px 20px; }
     header nav .ym-site-menu {
       float: right;
@@ -221,7 +223,15 @@ header {
       font-size: 14px;
       padding: 0;
       z-index: 1000; }
+      header nav .ym-site-menu-dropdown.open {
+        display: block; }
       header nav .ym-site-menu-dropdown ul {
-        border-left: 6px solid #ec1c24;
-        color: #ec1c24;
-        list-style: none; }
+        border-left: 6px solid #ed1c24;
+        color: #ed1c24;
+        list-style: none;
+        padding: 30px 20px;
+        margin: 0; }
+        header nav .ym-site-menu-dropdown ul li {
+          margin: 0 0 30px; }
+          header nav .ym-site-menu-dropdown ul li:last-child {
+            margin: 0; }
