@@ -29,6 +29,13 @@ module.exports = {
     }
   }, 
   
+  "youth-markets": {
+    options: {
+      title: 'AHA Luminate Framework', 
+      message: 'Youth Markets files updated.'
+    }
+  }, 
+  
   "jump-hoops": {
     options: {
       title: 'AHA Luminate Framework', 

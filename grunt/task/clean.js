@@ -67,6 +67,25 @@ module.exports = {
     ]
   }, 
   
+  "youth-markets": {
+    files: [
+      {
+        expand: true, 
+        cwd: 'dist/youth-markets/html/', 
+        src: [
+          '**/*'
+        ]
+      }, 
+      {
+        expand: true, 
+        cwd: 'dist/youth-markets/image/', 
+        src: [
+          '**/*'
+        ]
+      }
+    ]
+  }, 
+  
   "jump-hoops": {
     files: [
       {

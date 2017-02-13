@@ -27,6 +27,17 @@ module.exports = {
     }]
   }, 
   
+  "youth-markets": {
+    files: [{
+      expand: true, 
+      cwd: 'src/youth-markets/image/', 
+      src: [
+        '*.{gif,GIF,jpg,JPG,png,PNG,svg,SVG}'
+      ], 
+      dest: 'dist/youth-markets/image/'
+    }]
+  }, 
+  
   "jump-hoops": {
     files: [{
       expand: true, 

@@ -66,10 +66,21 @@ module.exports = {
     ]
   }, 
   
-  "jump-hoops": {
+  "youth-markets": {
     files: [
       'src/youth-markets/html/**/*', 
-      'src/youth-markets/image/**/*', 
+      'src/youth-markets/image/**/*'
+    ], 
+    tasks: [
+      'clean:youth-markets', 
+      'html-dist:youth-markets', 
+      'img-dist:youth-markets', 
+      'notify:youth-markets'
+    ]
+  }, 
+  
+  "jump-hoops": {
+    files: [
       'src/youth-markets/sass/**/*', 
       'src/youth-markets/coffee/**/*', 
       'src/jump-hoops/html/**/*', 

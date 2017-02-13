@@ -38,6 +38,19 @@ module.exports = {
     ]
   }, 
   
+  "youth-markets": {
+    files: [
+      {
+        expand: true, 
+        cwd: 'src/youth-markets/html/', 
+        src: [
+          '**/*.*'
+        ], 
+        dest: "dist/youth-markets/html/"
+      }
+    ]
+  }, 
+  
   "jump-hoops": {
     files: [
       {
