@@ -104,7 +104,7 @@ a.btn-primary:visited {
 a.btn-primary:hover,
 a.btn-primary:focus,
 a.btn-primary:active {
-  background: linear-gradient(0deg, #c7191c 0%, #ec1c24 100%); }
+  background: #870a0f; }
 
 .btn-md, .btn-md:link, .btn-md:visited, .btn-md:link, .btn-md:link:link, .btn-md:link:visited, .btn-md:visited, .btn-md:visited:link, .btn-md:visited:visited,
 a.btn-md,
