@@ -365,6 +365,12 @@ main {
     main > .container {
       width: auto; } }
 
+main {
+  background: #bddd98; }
+  @media (min-width: 992px) {
+    main {
+      background: repeating-linear-gradient(135deg, transparent, transparent 10px, #bddd98 10px, #bddd98 20px), linear-gradient(to bottom, #c2bfd7, #c2bfd7); } }
+
 body.aha-luminate #at4-share,
 body.aha-luminate #at4-soc {
   top: 250px !important; }
