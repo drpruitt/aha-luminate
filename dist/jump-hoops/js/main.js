@@ -172,6 +172,12 @@
     }
   ]);
 
+  angular.module('ahaLuminateControllers').controller('CompanyPageCtrl', [
+    '$scope', '$location', function($scope, $location) {
+      return $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0];
+    }
+  ]);
+
   angular.module('ahaLuminateControllers').controller('MainCtrl', [
     '$scope', '$httpParamSerializer', 'AuthService', function($scope, $httpParamSerializer, AuthService) {
       $scope.toggleLoginMenu = function() {
@@ -237,6 +243,18 @@
           return $scope.$apply();
         }
       });
+    }
+  ]);
+
+  angular.module('ahaLuminateControllers').controller('PersonalPageCtrl', [
+    '$scope', '$location', function($scope, $location) {
+      return $scope.participantId = $location.absUrl().split('px=')[1].split('&')[0];
+    }
+  ]);
+
+  angular.module('ahaLuminateControllers').controller('TeamPageCtrl', [
+    '$scope', '$location', function($scope, $location) {
+      return $scope.teamId = $location.absUrl().split('team_id=')[1].split('&')[0];
     }
   ]);
 
