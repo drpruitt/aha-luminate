@@ -1,0 +1,9 @@
+.ym-page-content {
+  padding: 10px;
+  margin: 12px 0 0;
+  
+  @media (min-width: $screen-sm-min) {
+    padding: 28px;
+    margin: -50px 0 0;
+  }
+}

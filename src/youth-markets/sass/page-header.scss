@@ -1,16 +1,25 @@
 .ym-page-header {
-  background: #bddd98;
   padding: 18px 0 0;
   margin: -18px 0 0;
   
   @media (min-width: $screen-sm-min) {
-    padding: 22px 0 0;
+    padding: 22px 0 50px;
     margin: -22px 0 0;
   }
   
   > .container {
     @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
       width: auto;
+    }
+  }
+  
+  h1 {
+    font-size: 32px;
+    margin: 0 0 24px;
+    
+    @media (min-width: $screen-sm-min) {
+      font-size: 60px;
+      margin: 0 0 30px;
     }
   }
 }
