@@ -181,8 +181,6 @@ header {
   header .ym-header-logo--shape-america > span {
     margin: 6px 18px 0; }
   header .ym-header-title {
-    color: #6153a3;
-    font-family: 'Luckiest Guy', cursive;
     font-size: 26px;
     text-transform: uppercase;
     margin: 0 0 16px; }
@@ -356,6 +354,10 @@ header {
           header nav .ym-site-menu-dropdown ul li:last-child {
             margin: 0; }
 
+header .ym-header-title {
+  color: #6153a3;
+  font-family: 'Luckiest Guy', cursive; }
+
 main {
   padding: 18px 0; }
   @media (min-width: 768px) {
@@ -401,5 +403,6 @@ body.aha-luminate #at4-soc {
   background: #bddd98; }
   .ym-page-header h1 {
     color: #ffffff;
+    font-family: 'Luckiest Guy', cursive;
     text-shadow: 2px 2px 1px black;
     text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.85); }
