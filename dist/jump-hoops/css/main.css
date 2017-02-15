@@ -390,19 +390,31 @@ body.aha-luminate #at4-soc {
   margin: -18px 0 0; }
   @media (min-width: 768px) {
     .ym-page-header {
-      padding: 22px 0 0;
+      padding: 22px 0 50px;
       margin: -22px 0 0; } }
   @media (min-width: 768px) and (max-width: 991px) {
     .ym-page-header > .container {
       width: auto; } }
   .ym-page-header h1 {
-    font-size: 60px;
-    margin: 0; }
+    font-size: 32px;
+    margin: 0 0 24px; }
+    @media (min-width: 768px) {
+      .ym-page-header h1 {
+        font-size: 60px;
+        margin: 0 0 30px; } }
 
 .ym-page-header {
-  background: #bddd98; }
+  background: #91c855; }
   .ym-page-header h1 {
     color: #ffffff;
     font-family: 'Luckiest Guy', cursive;
     text-shadow: 2px 2px 1px black;
     text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.85); }
+
+@media (min-width: 768px) {
+  .ym-page-content {
+    margin: -50px 0 0; } }
+
+@media (min-width: 768px) {
+  .ym-page-content {
+    background: #ffffff; } }
