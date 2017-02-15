@@ -384,7 +384,6 @@ body.aha-luminate #at4-soc {
     top: 414px !important; } }
 
 .ym-page-header {
-  background: #bddd98;
   padding: 18px 0 0;
   margin: -18px 0 0; }
   @media (min-width: 768px) {
@@ -394,3 +393,13 @@ body.aha-luminate #at4-soc {
   @media (min-width: 768px) and (max-width: 991px) {
     .ym-page-header > .container {
       width: auto; } }
+  .ym-page-header h1 {
+    font-size: 60px;
+    margin: 0; }
+
+.ym-page-header {
+  background: #bddd98; }
+  .ym-page-header h1 {
+    color: #ffffff;
+    text-shadow: 2px 2px 1px black;
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.85); }
