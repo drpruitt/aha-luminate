@@ -382,3 +382,12 @@ body.aha-luminate #at4-soc {
 @media (min-width: 980px) {
   body.aha-luminate .SnapABug_Button {
     top: 414px !important; } }
+
+.ym-page-header {
+  background: #bddd98;
+  padding: 18px 0 0;
+  margin: -18px 0 0; }
+  @media (min-width: 768px) {
+    .ym-page-header {
+      padding: 22px 0 0;
+      margin: -22px 0 0; } }
