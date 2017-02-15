@@ -15,11 +15,11 @@
   
   h1 {
     font-size: 32px;
-    margin: 0 0 24px;
+    margin: 0 0 18px;
     
     @media (min-width: $screen-sm-min) {
       font-size: 60px;
-      margin: 0 0 30px;
+      margin: 0 0 22px;
     }
   }
 }
