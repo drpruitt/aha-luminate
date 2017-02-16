@@ -1,3 +1,7 @@
+.ym-page-section__top {
+  background: $brand-secondary-light;
+  display: flex;
+}
 
 .ym-page-content, .ym-page-section__middle {
   background: #ffffff;
@@ -9,4 +13,13 @@
 .ym-progress, .ym-my-challenge {
     background: $brand-secondary-light;
     text-align: center;
+}
+
+.ym-user-image {
+  position: relative;
+  .caption {
+    position: absolute;
+    bottom: 0;
+    background: rgba(255,255,255, .5);
+  }
 }
