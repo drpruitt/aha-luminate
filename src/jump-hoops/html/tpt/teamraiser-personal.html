@@ -1,39 +1,35 @@
 <div ng-controller="PersonalPageCtrl">
   <div class="ym-page-section__top">
-    <div class="col-md-6">
-      [[?xx::x[[C4:graphic_upload]]x::
-        <img class="heart-user-image heart-user-image--personal" src="../aha-luminate/dist/heart-walk/image/default-personal.png" alt="">
-      ::
-        <img class="img-responsive ym-user-image" src="[[C4:graphic_upload]]" alt="">
-      ]]
+    <div class="col-md-6 ym-user-image">
+      <img class="img-responsive" src="[[C4:graphic_upload]]" alt="[[E48:[[S80:trID]]-[[S334:px]]:cons.first_name]]'s Photo">
     </div>
-    <div class="col-md-6 ym-page-progress ym-page-progress--personal">
+    <div class="col-md-6 ym-progress">
       <h3 class="ym-page-progress__title"></h3>
       <a class="btn btn-lg btn-primary" href="Donation2?df_id=[[E42:[[S80:trID:form-id]]&FR_ID=[[S80:trID]]&PROXY_ID=[[S334:px]]&PROXY_TYPE=20">
         Donate
       </a>
-      <div class="progress ym-page-progress__thermometer">
-        <div class="progress-bar ym-page-progress__thermometer-fill"></div>
+      <div class="progress ym-progress__thermometer">
+        <div class="progress-bar ym-progress__thermometer--fill"></div>
       </div>
-      <div class="ym-page-progress__row clearfix">
-        <div class="ym-page-progress__amount">
+      <div class="ym-progress__row clearfix">
+        <div class="ym-progress__amount">
           I've raised [[E130:"[[E48:[[A2]]-[[A13]]:dollars]]" ".00" "" replaceall]]
         </div>
         [[?xx$0.00x::x[[E48:[[A2]]-[[A13]]:goal]]x::::
-          <div class="ym-page-progress__goal">
+          <div class="ym-progress__goal">
             My goal is [[E130:"[[E48:[[A2]]-[[A13]]:goal]]" ".00" "" replaceall]]
           </div>
         ]]
       </div>
       <div class="ym-page-progress__row clearfix">
-        <div class="ym-page-progress__date">
+        <div class="ym-progress__date">
           My event date is 
         </div>
       </div>
     </div>
   </div>
   <div class="ym-page-section__middle">
-    <div class="col-md-6">
+    <div class="col-md-6 ym-story">
       <h1>My Story</h1>
 
     </div>
