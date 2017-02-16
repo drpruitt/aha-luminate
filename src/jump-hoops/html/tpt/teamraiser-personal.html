@@ -1,33 +1,47 @@
 <div ng-controller="PersonalPageCtrl">
-  <div class="col-md-6">
-    [[?xx::x[[C4:graphic_upload]]x::
-      <img class="img-responsive heart-user-image heart-user-image--personal" src="../aha-luminate/dist/heart-walk/image/default-personal.png" alt="">
-    ::
-      <img class="img-responsive heart-user-image heart-user-image--personal" src="[[C4:graphic_upload]]" alt="" itemprop="image">
-    ]]
-  </div>
-  <div class="col-md-6 heart-page-progress heart-page-progress--personal">
-    <h3>[[A7]]</h3>
-    <a class="entry-text-link next-step step-button btn btn-lg btn-primary" id="sidebar_donate_button" href="[[A11]]">
-      [[M1:friendraiser:donate_now]]
-    </a>
-    <div class="progress heart-page-progress__thermometer">
-      <div class="progress-bar heart-page-progress__thermometer-fill"></div>
+  <div class="ym-page-section--top">
+    <div class="col-md-6">
+      <img class="img-responsive ym-user-image ym-user-image--personal" src="[[C4:graphic_upload]]" alt="" itemprop="image">
     </div>
-    <div class="heart-page-progress__row clearfix">
-      <div class="heart-page-progress__amount">
-        I've raised [[E130:"[[E48:[[A2]]-[[A13]]:dollars]]" ".00" "" replaceall]]
+    <div class="col-md-6 ym-page-progress ym-page-progress--personal">
+      <h3 class="ym-page-progress__title"></h3>
+      <a class="btn btn-lg btn-primary" href="Donation2?df_id=[[E42:[[S80:trID:form-id]]&FR_ID=[[S80:trID]]&PROXY_ID=[[S334:px]]&PROXY_TYPE=20">
+        Donate
+      </a>
+      <div class="progress ym-page-progress__thermometer">
+        <div class="progress-bar ym-page-progress__thermometer-fill"></div>
       </div>
-      [[?xx$0.00x::x[[E48:[[A2]]-[[A13]]:goal]]x::::
-        <div class="heart-page-progress__label heart-page-progress__label--right">
-          My goal is [[E130:"[[E48:[[A2]]-[[A13]]:goal]]" ".00" "" replaceall]]
+      <div class="ym-page-progress__row clearfix">
+        <div class="ym-page-progress__amount">
+          I've raised [[E130:"[[E48:[[A2]]-[[A13]]:dollars]]" ".00" "" replaceall]]
         </div>
-      ]]
-    </div>
-    <div class="heart-page-progress__row clearfix">
-      <div class="heart-page-progress__amount">
-        My event date is 
+        [[?xx$0.00x::x[[E48:[[A2]]-[[A13]]:goal]]x::::
+          <div class="ym-page-progress__label ym-page-progress__label--right">
+            My goal is [[E130:"[[E48:[[A2]]-[[A13]]:goal]]" ".00" "" replaceall]]
+          </div>
+        ]]
       </div>
+      <div class="ym-page-progress__row clearfix">
+        <div class="ym-page-progress__amount">
+          My event date is 
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ym-page-section--middle">
+    <div class="col-md-6">
+
+    </div>
+    <div class="col-md-6">
+
+    </div>
+  </div>
+  <div class="ym-page-section--bottom">
+    <div class="col-md-6">
+
+    </div>
+    <div class="col-md-6">
+
     </div>
   </div>
 </div>
