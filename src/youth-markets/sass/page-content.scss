@@ -7,3 +7,23 @@
     margin: -50px 0 0;
   }
 }
+
+.ym-page-section__top {
+  display: flex;
+}
+
+.ym-progress, .ym-my-challenge {
+    text-align: center;
+}
+
+.ym-user-image {
+  position: relative;
+
+  .caption {
+    position: absolute;
+    bottom: 0;
+    background: rgba(255,255,255, .5);
+    text-align: center;
+    font-weight: bold;
+  }
+}

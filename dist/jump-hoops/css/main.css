@@ -438,10 +438,24 @@ body.aha-luminate #at4-soc {
       margin: -50px 0 0; } }
 
 .ym-page-section__top {
-  background: #d7d4e8;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex; }
+
+.ym-progress, .ym-my-challenge {
+  text-align: center; }
+
+.ym-user-image {
+  position: relative; }
+  .ym-user-image .caption {
+    position: absolute;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    font-weight: bold; }
+
+.ym-page-section__top {
+  background: #d7d4e8; }
 
 .ym-page-content, .ym-page-section__middle {
   background: #ffffff; }
@@ -450,12 +464,4 @@ body.aha-luminate #at4-soc {
   background: #91c855; }
 
 .ym-progress, .ym-my-challenge {
-  background: #d7d4e8;
-  text-align: center; }
-
-.ym-user-image {
-  position: relative; }
-  .ym-user-image .caption {
-    position: absolute;
-    bottom: 0;
-    background: rgba(255, 255, 255, 0.5); }
+  background: #d7d4e8; }
