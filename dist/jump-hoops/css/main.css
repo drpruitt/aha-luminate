@@ -434,5 +434,8 @@ body.aha-luminate #at4-soc {
       padding: 28px;
       margin: -50px 0 0; } }
 
-.ym-page-content {
+.ym-page-content, .ym-page-section__middle {
   background: #ffffff; }
+
+.ym-page-section__bottom {
+  background: #91c855; }
