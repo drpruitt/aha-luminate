@@ -25,6 +25,9 @@ body {
   font-family: Raleway;
   font-size: 16px; }
 
+h2 {
+  font-size: 36px; }
+
 .btn, .btn:link, .btn:visited,
 a.btn,
 a.btn:link,
@@ -439,3 +442,7 @@ body.aha-luminate #at4-soc {
 
 .ym-page-section__bottom {
   background: #91c855; }
+
+.ym-progress, .ym-my-challenge {
+  background: #d7d4e8;
+  text-align: center; }

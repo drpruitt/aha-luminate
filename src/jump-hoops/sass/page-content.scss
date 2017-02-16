@@ -1,6 +1,12 @@
+
 .ym-page-content, .ym-page-section__middle {
   background: #ffffff;
 }
 .ym-page-section__bottom{
   background: $brand-accent;
+}
+
+.ym-progress, .ym-my-challenge {
+    background: $brand-secondary-light;
+    text-align: center;
 }
