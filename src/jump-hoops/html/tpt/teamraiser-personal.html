@@ -24,6 +24,34 @@
 36  -->
 
 <div ng-controller="PersonalPageCtrl">
+  <div class="ym-page-section__top">
+    <div class="col-md-6 ym-user-image">
+    </div>
+    <div class="col-md-6 ym-progress">
+      <h3 class="ym-page-progress__title">Title</h3>
+      <a class="btn btn-lg btn-primary" href="">
+        Donate
+      </a>
+      <div class="progress ym-progress__thermometer">
+        <div class="progress-bar ym-progress__thermometer--fill"></div>
+      </div>
+      <div class="ym-progress__row clearfix">
+        <div class="ym-progress__amount">
+          I've raised [[E130:"[[E48:[[A2]]-[[A13]]:dollars]]" ".00" "" replaceall]]
+        </div>
+        [[?xx$0.00x::x[[E48:[[A2]]-[[A13]]:goal]]x::::
+          <div class="ym-progress__goal">
+            My goal is [[E130:"[[E48:[[A2]]-[[A13]]:goal]]" ".00" "" replaceall]]
+          </div>
+        ]]
+      </div>
+      <div class="ym-page-progress__row clearfix">
+        <div class="ym-progress__date">
+          My event date is 
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="ym-page-section__middle">
     <div class="col-md-6 ym-story">
       <h1>My Story</h1>
