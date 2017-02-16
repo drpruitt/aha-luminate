@@ -3,7 +3,7 @@
   margin: -18px 0 0;
   
   @media (min-width: $screen-sm-min) {
-    padding: 22px 0 50px;
+    padding: 22px 0 30px;
     margin: -22px 0 0;
   }
   
@@ -20,6 +20,23 @@
     @media (min-width: $screen-sm-min) {
       font-size: 60px;
       margin: 0 0 22px;
+    }
+  }
+
+  p {
+    font-weight: 600;
+
+    &:last-child {
+      margin:0;
+    }
+
+    a, a:visited, a:link {
+      text-decoration: underline;
+      color: #fff;
+    }
+
+    a:hover{
+      text-decoration: none;
     }
   }
 }

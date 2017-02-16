@@ -22,7 +22,8 @@ div.responsive a:active {
 
 body {
   color: #2d2d2d;
-  font-family: Raleway; }
+  font-family: Raleway;
+  font-size: 16px; }
 
 .btn, .btn:link, .btn:visited,
 a.btn,
@@ -395,7 +396,7 @@ body.aha-luminate #at4-soc {
   margin: -18px 0 0; }
   @media (min-width: 768px) {
     .ym-page-header {
-      padding: 22px 0 50px;
+      padding: 22px 0 30px;
       margin: -22px 0 0; } }
   @media (min-width: 768px) and (max-width: 991px) {
     .ym-page-header > .container {
@@ -407,6 +408,15 @@ body.aha-luminate #at4-soc {
       .ym-page-header h1 {
         font-size: 60px;
         margin: 0 0 22px; } }
+  .ym-page-header p {
+    font-weight: 600; }
+    .ym-page-header p:last-child {
+      margin: 0; }
+    .ym-page-header p a, .ym-page-header p a:visited, .ym-page-header p a:link {
+      text-decoration: underline;
+      color: #fff; }
+    .ym-page-header p a:hover {
+      text-decoration: none; }
 
 .ym-page-header {
   background: #91c855; }
