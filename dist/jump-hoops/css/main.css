@@ -34,20 +34,28 @@ h2 {
 h2.ym-headline {
   color: #6153a3; }
 
+h3.ym-page-progress__title {
+  margin: 30px 0;
+  font-weight: 600; }
+
 .ym-progress__thermometer {
   width: 500px;
   height: 50px;
   border-radius: 10px;
-  box-shadow: inset 10px 10px 40px 0px rgba(0, 0, 0, 0.35);
+  box-shadow: inset 2px 2px 10px 0px rgba(0, 0, 0, 0.35);
   background: #fff;
-  margin: 20px auto; }
+  margin: 30px auto; }
+
+h3.ym-page-progress__title {
+  color: #6153a3; }
 
 .ym-progress__thermometer {
-  border: 5px solid #38b5bd; }
+  border: 8px solid #38b5bd; }
 
 .ym-progress__thermometer--fill {
-  background-image: url("../aha-luminate/dist/jump-hoops/image/hj_thermometer-full.png");
-  width: 10%; }
+  background: url("/aha-luminate/dist/jump-hoops/image/hj_thermometer-full.png") no-repeat top left;
+  width: 10%;
+  height: 35px; }
 
 .btn, .btn:link, .btn:visited,
 a.btn,
