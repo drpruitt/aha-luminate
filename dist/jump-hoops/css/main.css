@@ -203,7 +203,8 @@ a.btn {
       background: #a41752; }
 
 .ym-badges {
-  text-align: center; }
+  text-align: center;
+  margin: 0 0 30px; }
   .ym-badges h2 {
     margin: 0 0 30px; }
   .ym-badges img {
@@ -521,9 +522,6 @@ body.aha-luminate #at4-soc {
 .ym-page-section__top .col-md-6 {
   padding: 0; }
 
-.ym-my-challenge {
-  text-align: center; }
-
 .ym-user-image {
   position: relative; }
   .ym-user-image .caption {
@@ -537,6 +535,11 @@ body.aha-luminate #at4-soc {
     padding: 15px 0;
     font-size: 14px;
     width: 100%; }
+
+.ym-page-section__bottom {
+  padding: 40px; }
+  .ym-page-section__bottom > div {
+    text-align: center; }
 
 .ym-page-content, .ym-page-section__middle {
   background: #ffffff; }
@@ -554,4 +557,5 @@ body.aha-luminate #at4-soc {
   background: #d7d4e8;
   padding: 20px 30px; }
   .ym-my-challenge h2 {
-    margin: 0 0 20px; }
+    margin: 0 0 20px;
+    text-align: center; }

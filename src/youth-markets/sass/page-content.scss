@@ -19,10 +19,6 @@
   
 }
 
-.ym-my-challenge {
-    text-align: center;
-}
-
 .ym-user-image {
   position: relative;
 
@@ -37,5 +33,13 @@
     padding: 15px 0;
     font-size: $font-size-sm;
     width: 100%;
+  }
+}
+
+.ym-page-section__bottom {
+  padding: 40px;
+
+  > div {
+    text-align: center;
   }
 }
