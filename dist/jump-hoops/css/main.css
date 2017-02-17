@@ -57,63 +57,63 @@ a.btn:active {
 span.btn, span.btn:link, span.btn:visited, span.btn:hover, span.btn:focus, span.btn:active {
   cursor: default; }
 
-.btn-primary, .btn-primary:link, .btn-primary:visited, .btn-primary:hover, .btn-primary:focus, .btn-primary:active,
-a.btn-primary,
-a.btn-primary:link,
-a.btn-primary:visited,
-a.btn-primary:hover,
-a.btn-primary:focus,
-a.btn-primary:active {
+.btn-global-primary, .btn-global-primary:link, .btn-global-primary:visited, .btn-global-primary:hover, .btn-global-primary:focus, .btn-global-primary:active,
+a.btn-global-primary,
+a.btn-global-primary:link,
+a.btn-global-primary:visited,
+a.btn-global-primary:hover,
+a.btn-global-primary:focus,
+a.btn-global-primary:active {
   background-image: none; }
 
-.btn-primary, .btn-primary:link, .btn-primary:visited,
-a.btn-primary,
-a.btn-primary:link,
-a.btn-primary:visited {
+.btn-global-primary, .btn-global-primary:link, .btn-global-primary:visited,
+a.btn-global-primary,
+a.btn-global-primary:link,
+a.btn-global-primary:visited {
   background-color: #ed1c24;
   border-color: #de1219;
   color: #ffffff; }
 
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active,
-a.btn-primary:hover,
-a.btn-primary:focus,
-a.btn-primary:active {
+.btn-global-primary:hover, .btn-global-primary:focus, .btn-global-primary:active,
+a.btn-global-primary:hover,
+a.btn-global-primary:focus,
+a.btn-global-primary:active {
   background-color: #890707;
   border-color: #890707;
   color: #ffffff; }
 
-.btn-primary:hover,
-a.btn-primary:hover {
+.btn-global-primary:hover,
+a.btn-global-primary:hover {
   background-position: 0 0; }
 
-.btn-primary:active:hover, .btn-primary:active:focus,
-a.btn-primary:active:hover,
-a.btn-primary:active:focus {
+.btn-global-primary:active:hover, .btn-global-primary:active:focus,
+a.btn-global-primary:active:hover,
+a.btn-global-primary:active:focus {
   background-color: #890707;
   border-color: #890707; }
 
-.btn-primary[disabled]:hover, .btn-primary[disabled]:focus,
-fieldset[disabled] .btn-primary:hover,
-fieldset[disabled] .btn-primary:focus,
-a.btn-primary[disabled]:hover,
-a.btn-primary[disabled]:focus,
+.btn-global-primary[disabled]:hover, .btn-global-primary[disabled]:focus,
+fieldset[disabled] .btn-global-primary:hover,
+fieldset[disabled] .btn-global-primary:focus,
+a.btn-global-primary[disabled]:hover,
+a.btn-global-primary[disabled]:focus,
 fieldset[disabled]
-a.btn-primary:hover,
+a.btn-global-primary:hover,
 fieldset[disabled]
-a.btn-primary:focus {
+a.btn-global-primary:focus {
   background-color: #ed1c24;
   border-color: #de1219; }
 
-.btn-primary, .btn-primary:link, .btn-primary:visited,
-a.btn-primary,
-a.btn-primary:link,
-a.btn-primary:visited {
+.btn-global-primary, .btn-global-primary:link, .btn-global-primary:visited,
+a.btn-global-primary,
+a.btn-global-primary:link,
+a.btn-global-primary:visited {
   background: linear-gradient(0deg, #c7191c 0%, #ec1c24 100%); }
 
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active,
-a.btn-primary:hover,
-a.btn-primary:focus,
-a.btn-primary:active {
+.btn-global-primary:hover, .btn-global-primary:focus, .btn-global-primary:active,
+a.btn-global-primary:hover,
+a.btn-global-primary:focus,
+a.btn-global-primary:active {
   background: #870a0f; }
 
 .btn-md, .btn-md:link, .btn-md:visited, .btn-md:link, .btn-md:link:link, .btn-md:link:visited, .btn-md:visited, .btn-md:visited:link, .btn-md:visited:visited,
@@ -142,11 +142,18 @@ a.btn-lg:visited:visited {
   padding: 24px 24px;
   font-size: 16px; }
 
-.btn-primary {
+.btn-primary,
+a.btn-primary {
   border-radius: 10px; }
-  .btn-primary, .btn-primary:link, .btn-primary:visited {
+  .btn-primary, .btn-primary:link, .btn-primary:visited,
+  a.btn-primary,
+  a.btn-primary:link,
+  a.btn-primary:visited {
     background: #cd1d67; }
-  .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+  .btn-primary:hover, .btn-primary:focus, .btn-primary:active,
+  a.btn-primary:hover,
+  a.btn-primary:focus,
+  a.btn-primary:active {
     background: #a41752; }
 
 header {

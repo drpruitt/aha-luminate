@@ -27,8 +27,8 @@ span.btn {
   }
 }
 
-.btn-primary, 
-a.btn-primary {
+.btn-global-primary, 
+a.btn-global-primary {
   @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border, $btn-primary-color, $btn-primary-darker-bg, $btn-primary-darker-border);
   
   &, 
