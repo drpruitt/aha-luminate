@@ -1,17 +1,26 @@
-.btn-primary {
-  border-radius: 10px;
+.btn, 
+a.btn {
+  font-weight: 500;
   
-  @include button-size($padding-base-vertical, $padding-base-horizontal, 20px);
-  
-  &, 
-  &:link, 
-  &:visited {
-    background: $event-primary;
-  }
-  
-  &:hover, 
-  &:focus, 
-  &:active {
-    background: $event-primary-dark;
+  &.btn-primary {
+    @include button-size($padding-base-vertical, $padding-base-horizontal, 20px);
+
+    border-radius: 10px;
+    color: #fff;
+    min-width:180px;
+    text-align: center;
+    
+    &, 
+    &:link, 
+    &:visited {
+      background: $event-primary;
+    }
+    
+    &:hover, 
+    &:focus, 
+    &:active {
+      background: $event-primary-dark;
+    } 
   }
 }
+

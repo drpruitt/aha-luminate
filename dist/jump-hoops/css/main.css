@@ -142,15 +142,31 @@ a.btn-lg:visited:visited {
   padding: 24px 24px;
   font-size: 16px; }
 
-.btn-primary {
-  border-radius: 10px; }
-  .btn-primary, .btn-primary:link, .btn-primary:visited {
-    padding: 12px 24px;
-    font-size: 20px; }
-  .btn-primary, .btn-primary:link, .btn-primary:visited {
-    background: #cd1d67; }
-  .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
-    background: #a41752; }
+.btn,
+a.btn {
+  font-weight: 500; }
+  .btn.btn-primary,
+  a.btn.btn-primary {
+    border-radius: 10px;
+    color: #fff;
+    min-width: 180px;
+    text-align: center; }
+    .btn.btn-primary, .btn.btn-primary:link, .btn.btn-primary:visited,
+    a.btn.btn-primary,
+    a.btn.btn-primary:link,
+    a.btn.btn-primary:visited {
+      padding: 12px 24px;
+      font-size: 20px; }
+    .btn.btn-primary, .btn.btn-primary:link, .btn.btn-primary:visited,
+    a.btn.btn-primary,
+    a.btn.btn-primary:link,
+    a.btn.btn-primary:visited {
+      background: #cd1d67; }
+    .btn.btn-primary:hover, .btn.btn-primary:focus, .btn.btn-primary:active,
+    a.btn.btn-primary:hover,
+    a.btn.btn-primary:focus,
+    a.btn.btn-primary:active {
+      background: #a41752; }
 
 header {
   padding: 10px 0 0; }
