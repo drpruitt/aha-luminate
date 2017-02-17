@@ -9,7 +9,9 @@
 }
 
 .ym-page-section__top {
-  display: flex;
+  @media (min-width: $screen-md-min) {
+    display: flex;
+  }
 
   .col-md-6 {
     padding: 0;
