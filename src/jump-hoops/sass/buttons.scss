@@ -1,12 +1,14 @@
 .btn-primary {
   border-radius: 10px;
+  
   @include button-size($padding-base-vertical, $padding-base-horizontal, 20px);
+  
   &, 
   &:link, 
   &:visited {
     background: $event-primary;
   }
-
+  
   &:hover, 
   &:focus, 
   &:active {

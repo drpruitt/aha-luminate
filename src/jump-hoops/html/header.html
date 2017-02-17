@@ -52,7 +52,7 @@
           <div class="ym-header-login">
             [[?xx[[S8]]::xxhttps::
               <!-- secure page -->
-              <button type="button" class="btn btn-primary ym-header-login-toggle" ng-click="toggleLoginMenu()">
+              <button type="button" class="btn btn-global-primary ym-header-login-toggle" ng-click="toggleLoginMenu()">
                 Log In to Fundraise <i class="fa fa-chevron-down" ng-class="{'fa-chevron-down': !loginMenuOpen, 'fa-chevron-up': loginMenuOpen}"></i>
               </button>
               <div class="ym-header-login-dropdown" ng-class="{'open': loginMenuOpen}" ng-cloak>
@@ -68,7 +68,7 @@
                       <input type="password" class="form-control" name="password" ng-model="headerLoginInfo.password" placeholder="Password" maxlength="[[S0:USER_MAX_PASSWD_LEN]]" autocorrect="off" autocapitalize="off" spellcheck="false" required>
                     </div>
                     <div class="ym-header-login-footer clearfix">
-                      <button type="submit" class="btn btn-primary pull-left">
+                      <button type="submit" class="btn btn-global-primary pull-left">
                         Log In
                       </button>
                       <a class="pull-right" href="UserLogin?CMD=ForgotLogin">Need Help?</a>
@@ -83,7 +83,7 @@
               </div>
             ::
               <!-- non-secure page -->
-              <a class="btn btn-primary ym-header-login-toggle" href="[[T7:https://[[S29:SECURE_DOMAIN]][[S29:SECURE_PATH]]UserLogin?NEXTURL=[[T1:[[E130:[[T8:[[S8]]]] [[T8:&amp;]] [[T8:&]] replaceall]]]]]]">
+              <a class="btn btn-global-primary ym-header-login-toggle" href="[[T7:https://[[S29:SECURE_DOMAIN]][[S29:SECURE_PATH]]UserLogin?NEXTURL=[[T1:[[E130:[[T8:[[S8]]]] [[T8:&amp;]] [[T8:&]] replaceall]]]]]]">
                 Log In to Fundraise <i class="fa fa-chevron-down"></i>
               </a>
             ]]
@@ -111,7 +111,7 @@
                   </ul>
                 </div>
               </div>
-              <!-- <a class="btn btn-primary ym-header-hq-btn" href="[[S8]]#">
+              <!-- <a class="btn btn-global-primary ym-header-hq-btn" href="[[S8]]#">
                 <span class="visible-xs visible-sm">My HQ</span>
                 <span class="hidden-xs hidden-sm">My Headquarters</span>
               </a> -->
