@@ -34,6 +34,21 @@ h2 {
 h2.ym-headline {
   color: #6153a3; }
 
+.ym-progress__thermometer {
+  width: 500px;
+  height: 50px;
+  border-radius: 10px;
+  box-shadow: inset 10px 10px 40px 0px rgba(0, 0, 0, 0.35);
+  background: #fff;
+  margin: 20px auto; }
+
+.ym-progress__thermometer {
+  border: 5px solid #38b5bd; }
+
+.ym-progress__thermometer--fill {
+  background-image: url("../aha-luminate/dist/jump-hoops/image/hj_thermometer-full.png");
+  width: 10%; }
+
 .btn, .btn:link, .btn:visited,
 a.btn,
 a.btn:link,
