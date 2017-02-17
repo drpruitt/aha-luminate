@@ -47,6 +47,10 @@ h3.ym-page-progress__title {
   background: #fff;
   margin: 30px auto; }
 
+.ym-progress__stats {
+  max-width: 370px;
+  margin: auto; }
+
 h3.ym-page-progress__title {
   color: #6153a3; }
 
@@ -518,9 +522,6 @@ body.aha-luminate #at4-soc {
     padding: 15px 0;
     font-size: 14px;
     width: 100%; }
-
-.ym-page-section__top {
-  background: #d7d4e8; }
 
 .ym-page-content, .ym-page-section__middle {
   background: #ffffff; }
