@@ -43,12 +43,16 @@ h3.ym-page-progress__title {
 
 .ym-progress__thermometer {
   max-width: 500px;
-  width: 90%;
-  height: 50px;
   border-radius: 10px;
   box-shadow: inset 2px 2px 10px 0px rgba(0, 0, 0, 0.35);
   background: #fff;
   margin: 30px auto; }
+
+.ym-progress__thermometer--fill {
+  box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.35); }
+
+.app-26 .ym-progress__thermometer {
+  max-width: 430px; }
 
 .ym-progress__stats {
   max-width: 370px;
@@ -210,7 +214,9 @@ a.btn {
   .ym-badges img {
     margin: 0 auto 10px; }
   .ym-badges span {
-    font-size: 14px; }
+    font-size: 14px;
+    display: block;
+    line-height: 1.2; }
 
 header {
   padding: 10px 0 0; }
@@ -559,3 +565,19 @@ body.aha-luminate #at4-soc {
   .ym-my-challenge h2 {
     margin: 0 0 20px;
     text-align: center; }
+  .ym-my-challenge .col-xs-8 {
+    padding: 0; }
+
+.ym_my_challenge__stats span {
+  font-weight: bold; }
+  @media (min-width: 768px) {
+    .ym_my_challenge__stats span {
+      display: inline-block;
+      font-size: 40px;
+      border-radius: 7px;
+      padding: 0 4px;
+      vertical-align: middle;
+      color: #6153a3;
+      height: 50px;
+      line-height: 40px;
+      background: #fff; } }

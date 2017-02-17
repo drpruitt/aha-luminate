@@ -14,11 +14,34 @@
 
 }
 .ym-my-challenge {
-    background: $event-secondary-light;
-    padding: 20px 30px;
+  background: $event-secondary-light;
+  padding: 20px 30px;
 
-    h2 {
-      margin: 0 0 20px;
-      text-align: center;
+  h2 {
+    margin: 0 0 20px;
+    text-align: center;
+  }
+
+  .col-xs-8 {
+    padding: 0;
+  }
+
+}
+
+.ym_my_challenge__stats {
+  span {
+    font-weight: bold;
+
+    @media (min-width: $screen-sm-min) {
+      display: inline-block;
+      font-size:40px;    
+      border-radius: 7px;
+      padding: 0 4px;  
+      vertical-align: middle;
+      color: $event-secondary;
+      height: 50px;
+      line-height: 40px;
+      background: #fff;
     }
+  }
 }
