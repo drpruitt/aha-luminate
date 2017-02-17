@@ -10,6 +10,10 @@
 
 .ym-page-section__top {
   display: flex;
+
+  .col-md-6 {
+    padding: 0;
+  }
 }
 
 .ym-progress, .ym-my-challenge {
@@ -22,12 +26,13 @@
   .caption {
     position: absolute;
     bottom: 0;
-    background: rgba(255,255,255, .5);
+    background: rgba(255,255,255, .8);
     text-align: center;
     font-weight: bold;
     margin: 0;
     line-height: 1.2;
     padding: 15px 0;
     font-size: $font-size-sm;
+    width: 100%;
   }
 }
