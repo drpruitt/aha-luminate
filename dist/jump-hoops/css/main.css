@@ -28,6 +28,12 @@ body {
 h2 {
   font-size: 36px; }
 
+.ym-headline {
+  font-family: 'Luckiest Guy', cursive; }
+
+h2.ym-headline {
+  color: #6153a3; }
+
 .btn, .btn:link, .btn:visited,
 a.btn,
 a.btn:link,
@@ -135,6 +141,13 @@ a.btn-lg:visited:link,
 a.btn-lg:visited:visited {
   padding: 24px 24px;
   font-size: 16px; }
+
+.btn-primary {
+  border-radius: 10px; }
+  .btn-primary, .btn-primary:link, .btn-primary:visited {
+    background: #cd1d67; }
+  .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+    background: #a41752; }
 
 header {
   padding: 10px 0 0; }

@@ -1,0 +1,14 @@
+.btn-primary {
+  border-radius: 10px;
+  &, 
+  &:link, 
+  &:visited {
+    background: $event-primary;
+  }
+
+  &:hover, 
+  &:focus, 
+  &:active {
+    background: $event-primary-dark;
+  }
+}
