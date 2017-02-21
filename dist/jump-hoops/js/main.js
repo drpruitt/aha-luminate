@@ -126,7 +126,7 @@
   ]);
 
   angular.module('ahaLuminateApp').factory('TeamraiserCompanyService', [
-    'LuminateRESTService', function(LuminateRESTService) {
+    'LuminateRESTService', '$http', function(LuminateRESTService, $http) {
       return {
         getCompanies: function(requestData, callback) {
           var dataString;
@@ -143,6 +143,14 @@
             dataString += '&' + requestData;
           }
           return LuminateRESTService.luminateExtendTeamraiserRequest(dataString, false, true, callback);
+        },
+        getCoordinatorQuestion: function(consId, frId) {
+          return $http({
+            method: 'GET',
+            url: 'SPageServer?pagename=ym_coordinator_data&pgwrap=n&consId=' + consId + 'frId=' + frId
+          }).then(function(response) {
+            return response;
+          });
         }
       };
     }
@@ -253,10 +261,23 @@
   ]);
 
   angular.module('ahaLuminateControllers').controller('PersonalPageCtrl', [
-    '$scope', '$location', '$filter', '$timeout', 'TeamraiserParticipantService', function($scope, $location, $filter, $timeout, TeamraiserParticipantService) {
+    '$scope', '$location', '$filter', '$timeout', 'TeamraiserParticipantService', 'TeamraiserCompanyService', function($scope, $location, $filter, $timeout, TeamraiserParticipantService, TeamraiserCompanyService) {
       var $defaultPersonalDonors, $defaultResponsivePersonalDonors, setParticipantProgress;
       $scope.participantId = $location.absUrl().split('px=')[1].split('&')[0];
-      console.log($scope.companyId);
+      TeamraiserCompanyService.getCompanies('company_id=' + $scope.companyId, {
+        error: function() {
+          return console.log('error');
+        },
+        success: function(response) {
+          var coordinatorId, ref;
+          coordinatorId = (ref = response.getCompaniesResponse) != null ? ref.company.coordinatorId : void 0;
+          console.log(coordinatorId);
+          console.log(eventId);
+          return TeamraiserCompanyService.getCoordinatorQuestion(coordinatorId(eventId)).then(function(response) {
+            return console.log(response);
+          });
+        }
+      });
       setParticipantProgress = function(amountRaised, goal) {
         var rawPercent;
         $scope.personalProgress = {
@@ -299,7 +320,6 @@
         },
         success: function(response) {
           var participantInfo, ref;
-          console.log(response);
           participantInfo = (ref = response.getParticipantsResponse) != null ? ref.participant : void 0;
           if (!participantInfo) {
             return setParticipantProgress();

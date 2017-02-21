@@ -5,10 +5,23 @@ angular.module 'ahaLuminateControllers'
     '$filter'
     '$timeout'
     'TeamraiserParticipantService'
-    ($scope, $location, $filter, $timeout, TeamraiserParticipantService) ->
+    'TeamraiserCompanyService'
+    ($scope, $location, $filter, $timeout, TeamraiserParticipantService, TeamraiserCompanyService) ->
       $scope.participantId = $location.absUrl().split('px=')[1].split('&')[0]
 
-      console.log $scope.companyId
+      TeamraiserCompanyService.getCompanies 'company_id=' + $scope.companyId, 
+        error: ->
+          console.log 'error'
+        success: (response) ->
+          #console.log response
+          coordinatorId = response.getCompaniesResponse?.company.coordinatorId
+
+          console.log coordinatorId
+          console.log eventId
+
+          TeamraiserCompanyService.getCoordinatorQuestion coordinatorId eventId
+            .then (response) ->
+              console.log response
 
       setParticipantProgress = (amountRaised, goal) ->
         $scope.personalProgress = 
@@ -41,7 +54,6 @@ angular.module 'ahaLuminateControllers'
         error: ->
           setParticipantProgress()
         success: (response) ->
-          console.log response
           participantInfo = response.getParticipantsResponse?.participant
           if not participantInfo
             setParticipantProgress()
