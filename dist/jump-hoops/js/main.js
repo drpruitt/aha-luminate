@@ -24,7 +24,13 @@
         $rootScope.authToken = $dataRoot.data('auth-token');
       }
       if ($dataRoot.data('fr-id') !== '') {
-        return $rootScope.frId = $dataRoot.data('fr-id');
+        $rootScope.frId = $dataRoot.data('fr-id');
+      }
+      if ($dataRoot.data('company-id') !== '') {
+        $rootScope.companyId = $dataRoot.data('company-id');
+      }
+      if ($dataRoot.data('team-id') !== '') {
+        return $rootScope.teamId = $dataRoot.data('team-id');
       }
     }
   ]);
@@ -250,6 +256,7 @@
     '$scope', '$location', '$filter', '$timeout', 'TeamraiserParticipantService', function($scope, $location, $filter, $timeout, TeamraiserParticipantService) {
       var $defaultPersonalDonors, $defaultResponsivePersonalDonors, setParticipantProgress;
       $scope.participantId = $location.absUrl().split('px=')[1].split('&')[0];
+      console.log($scope.companyId);
       setParticipantProgress = function(amountRaised, goal) {
         var rawPercent;
         $scope.personalProgress = {
