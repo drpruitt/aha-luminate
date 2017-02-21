@@ -235,7 +235,7 @@
           return $scope.siteMenuOpen = true;
         }
       };
-      angular.element('body').on('click', function(event) {
+      return angular.element('body').on('click', function(event) {
         if ($scope.siteMenuOpen && angular.element(event.target).closest('.ym-site-menu').length === 0) {
           $scope.toggleSiteMenu();
         }
@@ -243,12 +243,11 @@
           return $scope.$apply();
         }
       });
-      return console.log('test');
     }
   ]);
 
   angular.module('ahaLuminateControllers').controller('PersonalPageCtrl', [
-    '$scope', '$location', function($scope, $location) {
+    '$scope', '$location', '$filter', '$timeout', 'TeamraiserParticipantService', function($scope, $location, $filter, $timeout, TeamraiserParticipantService) {
       var setParticipantProgress;
       $scope.participantId = $location.absUrl().split('px=')[1].split('&')[0];
       setParticipantProgress = function(amountRaised, goal) {

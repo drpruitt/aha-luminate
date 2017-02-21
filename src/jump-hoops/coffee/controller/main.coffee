@@ -54,5 +54,4 @@ angular.module 'ahaLuminateControllers'
         if not $scope.$$phase
           $scope.$apply()
 
-      console.log 'test'
   ]

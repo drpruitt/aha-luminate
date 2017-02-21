@@ -2,7 +2,10 @@ angular.module 'ahaLuminateControllers'
   .controller 'PersonalPageCtrl', [
     '$scope'
     '$location'
-    ($scope, $location) ->
+    '$filter'
+    '$timeout'
+    'TeamraiserParticipantService'
+    ($scope, $location, $filter, $timeout, TeamraiserParticipantService) ->
       $scope.participantId = $location.absUrl().split('px=')[1].split('&')[0]
 
       setParticipantProgress = (amountRaised, goal) ->
