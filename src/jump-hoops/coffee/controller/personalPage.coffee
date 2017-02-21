@@ -13,15 +13,18 @@ angular.module 'ahaLuminateControllers'
         error: ->
           console.log 'error'
         success: (response) ->
-          #console.log response
+          console.log response
           coordinatorId = response.getCompaniesResponse?.company.coordinatorId
+          eventId = response.getCompaniesResponse?.company.eventId
 
-          console.log coordinatorId
-          console.log eventId
+          console.log eventId+' '+coordinatorId
 
-          TeamraiserCompanyService.getCoordinatorQuestion coordinatorId eventId
+      
+          TeamraiserCompanyService.getCoordinatorQuestion coordinatorId
             .then (response) ->
+              console.log 'success'
               console.log response
+        
 
       setParticipantProgress = (amountRaised, goal) ->
         $scope.personalProgress = 

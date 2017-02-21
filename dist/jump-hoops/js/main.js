@@ -144,10 +144,10 @@
           }
           return LuminateRESTService.luminateExtendTeamraiserRequest(dataString, false, true, callback);
         },
-        getCoordinatorQuestion: function(consId, frId) {
+        getCoordinatorQuestion: function(coordinatorId) {
           return $http({
             method: 'GET',
-            url: 'SPageServer?pagename=ym_coordinator_data&pgwrap=n&consId=' + consId + 'frId=' + frId
+            url: 'PageServer?pagename=ym_coordinator_data&pgwrap=n&consId=' + coordinatorId + 'frId=2520'
           }).then(function(response) {
             return response;
           });
@@ -269,11 +269,13 @@
           return console.log('error');
         },
         success: function(response) {
-          var coordinatorId, ref;
+          var coordinatorId, eventId, ref, ref1;
+          console.log(response);
           coordinatorId = (ref = response.getCompaniesResponse) != null ? ref.company.coordinatorId : void 0;
-          console.log(coordinatorId);
-          console.log(eventId);
-          return TeamraiserCompanyService.getCoordinatorQuestion(coordinatorId(eventId)).then(function(response) {
+          eventId = (ref1 = response.getCompaniesResponse) != null ? ref1.company.eventId : void 0;
+          console.log(eventId + ' ' + coordinatorId);
+          return TeamraiserCompanyService.getCoordinatorQuestion(coordinatorId).then(function(response) {
+            console.log('success');
             return console.log(response);
           });
         }

@@ -13,10 +13,10 @@ angular.module 'ahaLuminateApp'
         dataString += '&' + requestData if requestData and requestData isnt ''
         LuminateRESTService.luminateExtendTeamraiserRequest dataString, false, true, callback
 
-      getCoordinatorQuestion: (consId, frId) ->
+      getCoordinatorQuestion: (coordinatorId) ->
         $http
           method: 'GET'
-          url: 'SPageServer?pagename=ym_coordinator_data&pgwrap=n&consId='+consId+'frId='+frId
+          url: 'PageServer?pagename=ym_coordinator_data&pgwrap=n&consId='+coordinatorId+'frId=2520'
         .then (response) ->
           response
   ]
