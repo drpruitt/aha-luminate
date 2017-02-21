@@ -250,6 +250,7 @@
     '$scope', '$location', '$filter', '$timeout', 'TeamraiserParticipantService', function($scope, $location, $filter, $timeout, TeamraiserParticipantService) {
       var $defaultPersonalDonors, $defaultResponsivePersonalDonors, setParticipantProgress;
       $scope.participantId = $location.absUrl().split('px=')[1].split('&')[0];
+      console.log($scope.companyId);
       setParticipantProgress = function(amountRaised, goal) {
         var rawPercent;
         $scope.personalProgress = {

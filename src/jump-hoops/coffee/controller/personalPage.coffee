@@ -8,6 +8,8 @@ angular.module 'ahaLuminateControllers'
     ($scope, $location, $filter, $timeout, TeamraiserParticipantService) ->
       $scope.participantId = $location.absUrl().split('px=')[1].split('&')[0]
 
+      console.log $scope.companyId
+
       setParticipantProgress = (amountRaised, goal) ->
         $scope.personalProgress = 
           amountRaised: amountRaised or 0
