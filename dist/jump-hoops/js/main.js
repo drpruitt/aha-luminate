@@ -248,7 +248,7 @@
 
   angular.module('ahaLuminateControllers').controller('PersonalPageCtrl', [
     '$scope', '$location', '$filter', '$timeout', 'TeamraiserParticipantService', function($scope, $location, $filter, $timeout, TeamraiserParticipantService) {
-      var setParticipantProgress;
+      var $defaultPersonalDonors, $defaultResponsivePersonalDonors, setParticipantProgress;
       $scope.participantId = $location.absUrl().split('px=')[1].split('&')[0];
       setParticipantProgress = function(amountRaised, goal) {
         var rawPercent;
@@ -286,7 +286,7 @@
           }
         }, 500);
       };
-      return TeamraiserParticipantService.getParticipants('fr_id=' + $scope.frId + '&first_name=' + encodeURIComponent('%%') + '&last_name=' + encodeURIComponent('%') + '&list_filter_column=reg.cons_id&list_filter_text=' + $scope.participantId, {
+      TeamraiserParticipantService.getParticipants('fr_id=' + $scope.frId + '&first_name=' + encodeURIComponent('%%') + '&last_name=' + encodeURIComponent('%') + '&list_filter_column=reg.cons_id&list_filter_text=' + $scope.participantId, {
         error: function() {
           return setParticipantProgress();
         },
@@ -301,6 +301,62 @@
           }
         }
       });
+      $scope.personalDonors = {
+        page: 1
+      };
+      $defaultResponsivePersonalDonors = angular.element('.js--personal-donors .team-honor-list-row');
+      if ($defaultResponsivePersonalDonors && $defaultResponsivePersonalDonors.length !== 0) {
+        if ($defaultResponsivePersonalDonors.length === 1 && $defaultResponsivePersonalDonors.eq(0).find('.team-honor-list-name').length === 0) {
+          $scope.personalDonors.donors = [];
+          return $scope.personalDonors.totalNumber = 0;
+        } else {
+          angular.forEach($defaultResponsivePersonalDonors, function(personalDonor, personalDonorIndex) {
+            var donorAmount, donorName;
+            donorName = angular.element(personalDonor).find('.team-honor-list-name').text();
+            donorAmount = angular.element(personalDonor).find('.team-honor-list-value').text();
+            if (!donorAmount || donorAmount.indexOf('$') === -1) {
+              donorAmount = -1;
+            } else {
+              donorAmount = Number(donorAmount.replace('$', '').replace(/,/g, '')) * 100;
+            }
+            if (!$scope.personalDonors.donors) {
+              $scope.personalDonors.donors = [];
+            }
+            return $scope.personalDonors.donors.push({
+              name: donorName,
+              amount: donorAmount,
+              amountFormatted: donorAmount === -1 ? '' : $filter('currency')(donorAmount / 100, '$').replace('.00', '')
+            });
+          });
+          return $scope.personalDonors.totalNumber = $defaultResponsivePersonalDonors.length;
+        }
+      } else {
+        $defaultPersonalDonors = angular.element('.js--personal-donors .scrollContent p');
+        if (!$defaultPersonalDonors || $defaultPersonalDonors.length === 0) {
+          $scope.personalDonors.donors = [];
+          return $scope.personalDonors.totalNumber = 0;
+        } else {
+          angular.forEach($defaultPersonalDonors, function(personalDonor, personalDonorIndex) {
+            var donorAmount, donorName;
+            donorName = jQuery.trim(angular.element(personalDonor).html().split('<')[0]);
+            donorAmount = jQuery.trim(angular.element(personalDonor).html().split('>')[1]);
+            if (!donorAmount || donorAmount.indexOf('$') === -1) {
+              donorAmount = -1;
+            } else {
+              donorAmount = Number(donorAmount.replace('$', '').replace(/,/g, '')) * 100;
+            }
+            if (!$scope.personalDonors.donors) {
+              $scope.personalDonors.donors = [];
+            }
+            return $scope.personalDonors.donors.push({
+              name: donorName,
+              amount: donorAmount,
+              amountFormatted: donorAmount === -1 ? '' : $filter('currency')(donorAmount / 100, '$').replace('.00', '')
+            });
+          });
+          return $scope.personalDonors.totalNumber = $defaultPersonalDonors.length;
+        }
+      }
     }
   ]);
 

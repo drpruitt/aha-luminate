@@ -45,4 +45,47 @@ angular.module 'ahaLuminateControllers'
             setParticipantProgress()
           else
             setParticipantProgress Number(participantInfo.amountRaised), Number(participantInfo.goal)
+
+      $scope.personalDonors = 
+        page: 1
+      $defaultResponsivePersonalDonors = angular.element '.js--personal-donors .team-honor-list-row'
+      if $defaultResponsivePersonalDonors and $defaultResponsivePersonalDonors.length isnt 0
+        if $defaultResponsivePersonalDonors.length is 1 and $defaultResponsivePersonalDonors.eq(0).find('.team-honor-list-name').length is 0
+          $scope.personalDonors.donors = []
+          $scope.personalDonors.totalNumber = 0
+        else
+          angular.forEach $defaultResponsivePersonalDonors, (personalDonor, personalDonorIndex) ->
+            donorName = angular.element(personalDonor).find('.team-honor-list-name').text()
+            donorAmount = angular.element(personalDonor).find('.team-honor-list-value').text()
+            if not donorAmount or donorAmount.indexOf('$') is -1
+              donorAmount = -1
+            else
+              donorAmount = Number(donorAmount.replace('$', '').replace(/,/g, '')) * 100
+            if not $scope.personalDonors.donors
+              $scope.personalDonors.donors = []
+            $scope.personalDonors.donors.push 
+              name: donorName
+              amount: donorAmount
+              amountFormatted: if donorAmount is -1 then '' else $filter('currency')(donorAmount / 100, '$').replace '.00', ''
+          $scope.personalDonors.totalNumber = $defaultResponsivePersonalDonors.length
+      else
+        $defaultPersonalDonors = angular.element '.js--personal-donors .scrollContent p'
+        if not $defaultPersonalDonors or $defaultPersonalDonors.length is 0
+          $scope.personalDonors.donors = []
+          $scope.personalDonors.totalNumber = 0
+        else
+          angular.forEach $defaultPersonalDonors, (personalDonor, personalDonorIndex) ->
+            donorName = jQuery.trim angular.element(personalDonor).html().split('<')[0]
+            donorAmount = jQuery.trim angular.element(personalDonor).html().split('>')[1]
+            if not donorAmount or donorAmount.indexOf('$') is -1
+              donorAmount = -1
+            else
+              donorAmount = Number(donorAmount.replace('$', '').replace(/,/g, '')) * 100
+            if not $scope.personalDonors.donors
+              $scope.personalDonors.donors = []
+            $scope.personalDonors.donors.push 
+              name: donorName
+              amount: donorAmount
+              amountFormatted: if donorAmount is -1 then '' else $filter('currency')(donorAmount / 100, '$').replace '.00', ''
+          $scope.personalDonors.totalNumber = $defaultPersonalDonors.length
   ]
