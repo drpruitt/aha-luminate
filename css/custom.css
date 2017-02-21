@@ -1,4 +1,7 @@
 /* company detail style overrides */
+.heart-leaderboard.heart-leaderboard--company {
+	display:none;
+}
 .heart-greeting-leaderboards ul.topCompanies {
 	/*display:none;*/
 }
