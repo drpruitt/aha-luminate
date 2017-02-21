@@ -53,4 +53,6 @@ angular.module 'ahaLuminateControllers'
           $scope.toggleSiteMenu()
         if not $scope.$$phase
           $scope.$apply()
+
+      console.log 'test'
   ]

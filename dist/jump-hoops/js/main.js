@@ -235,7 +235,7 @@
           return $scope.siteMenuOpen = true;
         }
       };
-      return angular.element('body').on('click', function(event) {
+      angular.element('body').on('click', function(event) {
         if ($scope.siteMenuOpen && angular.element(event.target).closest('.ym-site-menu').length === 0) {
           $scope.toggleSiteMenu();
         }
@@ -243,12 +243,65 @@
           return $scope.$apply();
         }
       });
+      return console.log('test');
     }
   ]);
 
   angular.module('ahaLuminateControllers').controller('PersonalPageCtrl', [
     '$scope', '$location', function($scope, $location) {
-      return $scope.participantId = $location.absUrl().split('px=')[1].split('&')[0];
+      var setParticipantProgress;
+      $scope.participantId = $location.absUrl().split('px=')[1].split('&')[0];
+      setParticipantProgress = function(amountRaised, goal) {
+        var rawPercent;
+        $scope.personalProgress = {
+          amountRaised: amountRaised || 0,
+          goal: goal || 0
+        };
+        $scope.personalProgress.amountRaisedFormatted = $filter('currency')($scope.personalProgress.amountRaised / 100, '$').replace('.00', '');
+        $scope.personalProgress.goalFormatted = $filter('currency')($scope.personalProgress.goal / 100, '$').replace('.00', '');
+        if ($scope.personalProgress.goal === 0) {
+          $scope.personalProgress.rawPercent = 0;
+        } else {
+          rawPercent = Math.ceil(($scope.personalProgress.amountRaised / $scope.personalProgress.goal) * 100);
+          if (rawPercent > 100) {
+            rawPercent = 100;
+          }
+          $scope.personalProgress.rawPercent = rawPercent;
+        }
+        $scope.personalProgress.percent = 0;
+        if (!$scope.$$phase) {
+          $scope.$apply();
+        }
+        return $timeout(function() {
+          var percent;
+          percent = $scope.personalProgress.percent;
+          if ($scope.personalProgress.goal !== 0) {
+            percent = Math.ceil(($scope.personalProgress.amountRaised / $scope.personalProgress.goal) * 100);
+          }
+          if (percent > 100) {
+            percent = 100;
+          }
+          $scope.personalProgress.percent = percent;
+          if (!$scope.$$phase) {
+            return $scope.$apply();
+          }
+        }, 500);
+      };
+      return TeamraiserParticipantService.getParticipants('fr_id=' + $scope.frId + '&first_name=' + encodeURIComponent('%%') + '&last_name=' + encodeURIComponent('%') + '&list_filter_column=reg.cons_id&list_filter_text=' + $scope.participantId, {
+        error: function() {
+          return setParticipantProgress();
+        },
+        success: function(response) {
+          var participantInfo, ref;
+          console.log(response);
+          participantInfo = (ref = response.getParticipantsResponse) != null ? ref.participant : void 0;
+          if (!participantInfo) {
+            return setParticipantProgress();
+          } else {
+            return setParticipantProgress(Number(participantInfo.amountRaised), Number(participantInfo.goal));
+          }
+        }
+      });
     }
   ]);
 
