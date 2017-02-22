@@ -30,6 +30,12 @@ module.exports = {
           'dist/jump-hoops/js/main.js'
         ], 
         dest: 'dist/jump-hoops/js/main.min.js'
+      }, 
+      {
+        src: [
+          'dist/jump-hoops/js/participant.js'
+        ], 
+        dest: 'dist/jump-hoops/js/participant.min.js'
       }
     ]
   }
