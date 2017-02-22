@@ -475,16 +475,14 @@ main {
     main {
       padding: 22px 0; } }
   main > .container {
-    padding: 0 10px; }
+    padding: 0 10px;
+    margin: -50px auto 0; }
     @media (min-width: 768px) and (max-width: 991px) {
       main > .container {
         width: auto; } }
     @media (min-width: 768px) {
       main > .container {
         padding: 0 15px; } }
-
-.pg-personal main > .container, .pg-team main > .container, .pg-company main > .container {
-  margin: -50px auto 0; }
 
 main {
   background: #bddd98; }

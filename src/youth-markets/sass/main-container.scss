@@ -7,6 +7,7 @@ main {
   
   > .container {
     padding: 0 10px;
+    margin: -50px auto 0;
 
     @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
       width: auto;
@@ -15,11 +16,5 @@ main {
     @media (min-width: $screen-sm-min) {
       padding: 0 15px;
     }
-  }
-}
-
-.pg-personal, .pg-team, .pg-company {
-  main > .container {
-    margin: -50px auto 0;
   }
 }
