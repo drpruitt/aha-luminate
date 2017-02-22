@@ -36,8 +36,14 @@
   ]);
 
   angular.element(document).ready(function() {
-    var appModules;
+    var appModules, error, error1;
     appModules = ['ahaLuminateApp'];
+    try {
+      angular.module('trPcApp');
+      appModules.push('trPcApp');
+    } catch (error1) {
+      error = error1;
+    }
     return angular.bootstrap(document, appModules);
   });
 
@@ -394,5 +400,26 @@
       return $scope.teamId = $location.absUrl().split('team_id=')[1].split('&')[0];
     }
   ]);
+
+  angular.module('trPcApp', ['ngRoute', 'ngSanitize', 'ui.bootstrap', 'textAngular', 'trPcControllers']);
+
+  angular.module('trPcControllers', []);
+
+  angular.module('trPcApp').constant('NG_PC_APP_INFO', {
+    version: '0.1.0'
+  });
+
+  angular.module('trPcApp').run([
+    '$rootScope', function($rootScope) {
+      var $embedRoot;
+      return $embedRoot = angular.element('[data-embed-root]');
+    }
+  ]);
+
+  angular.element(document).ready(function() {
+    if (!angular.element(document).injector()) {
+      return angular.bootstrap(document, ['trPcApp']);
+    }
+  });
 
 }).call(this);
