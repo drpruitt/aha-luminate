@@ -20,6 +20,11 @@ div.responsive a:focus,
 div.responsive a:active {
   color: #ed1c24; }
 
+@media (min-width: 992px) {
+  .container {
+    width: 100%;
+    max-width: 1170px; } }
+
 body {
   color: #2d2d2d;
   font-family: Raleway;
@@ -471,10 +476,6 @@ main {
       padding: 22px 0; } }
   main > .container {
     padding: 0 10px; }
-    @media (min-width: 992px) {
-      main > .container {
-        width: 100%;
-        max-width: 1170px; } }
     @media (min-width: 768px) and (max-width: 991px) {
       main > .container {
         width: auto; } }
