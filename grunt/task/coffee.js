@@ -40,7 +40,8 @@ module.exports = {
       'dist/jump-hoops/js/main.js': [
         'src/jump-hoops/coffee/init.coffee', 
         'src/global/coffee/service/*.*', 
-        'src/jump-hoops/coffee/**/*.*'
+        'src/jump-hoops/coffee/**/*.*', 
+        '!src/jump-hoops/coffee/**/trpc-*.*'
       ], 
       'dist/jump-hoops/js/participant.js': [
         'src/jump-hoops/coffee/trpc-init.coffee', 
