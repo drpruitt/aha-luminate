@@ -1,3 +1,7 @@
+.ym-page-content, .ym-page-section__middle  {
+  background: #ffffff;
+}
+
 .ym-page-content {
   padding: 10px;
   margin: 18px 0 0;
@@ -16,11 +20,29 @@
   .col-md-6 {
     padding: 0;
   }
+
+  .col-md-6:first-child {
+    background: #fff;
+  }
   
+}
+
+.ym-page-section__middle {
+  padding: 50px 0;
+
+  > .col-md-6 {
+    padding: 0 40px;
+  }
+
 }
 
 .ym-user-image {
   position: relative;
+
+  @media (max-width: $screen-md) {
+    margin: auto;
+    max-width: 585px;
+  }
 
   .caption {
     position: absolute;
@@ -37,9 +59,29 @@
 }
 
 .ym-page-section__bottom {
-  padding: 40px;
+  padding: 40px 0;
 
-  > div {
+  > .col-md-6 {
+    padding: 0 40px;
     text-align: center;
+  }
+
+  .col-md-6:first-child{
+    margin-top: 40px;
+  }
+
+  .col-md-6:nth-child(2) {
+    h3 {
+      margin: 0 0 20px;
+    }
+  }
+
+  h3 {
+    color: #fff;
+    font-weight: bold;
+  }
+
+  .btn-primary {
+    margin-top: 20px;
   }
 }

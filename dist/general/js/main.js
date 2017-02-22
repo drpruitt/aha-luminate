@@ -115,7 +115,7 @@
   ]);
 
   angular.module('ahaLuminateApp').factory('TeamraiserCompanyService', [
-    'LuminateRESTService', function(LuminateRESTService) {
+    'LuminateRESTService', '$http', function(LuminateRESTService, $http) {
       return {
         getCompanies: function(requestData, callback) {
           var dataString;
@@ -132,6 +132,14 @@
             dataString += '&' + requestData;
           }
           return LuminateRESTService.luminateExtendTeamraiserRequest(dataString, false, true, callback);
+        },
+        getCoordinatorQuestion: function(coordinatorId) {
+          return $http({
+            method: 'GET',
+            url: 'PageServer?pagename=ym_coordinator_data&pgwrap=n&consId=' + coordinatorId + 'frId=2520'
+          }).then(function(response) {
+            return response;
+          });
         }
       };
     }

@@ -20,6 +20,11 @@ div.responsive a:focus,
 div.responsive a:active {
   color: #ed1c24; }
 
+@media (min-width: 992px) {
+  .container {
+    width: 100%;
+    max-width: 1170px; } }
+
 body {
   color: #2d2d2d;
   font-family: Raleway;
@@ -204,6 +209,27 @@ a.btn {
     a.btn.btn-primary:focus,
     a.btn.btn-primary:active {
       background: #a41752; }
+
+.ym-donor-list {
+  background: #fff;
+  max-width: 490px;
+  max-height: 200px;
+  overflow: auto;
+  margin: auto;
+  padding: 30px 30px 0;
+  text-align: left; }
+
+.ym-donor-list__donor {
+  margin: 0 0 20px; }
+  .ym-donor-list__donor span {
+    display: inline-block; }
+
+.ym-donor-list__donor--name {
+  width: 85%; }
+
+.ym-donor-list__donor--amount {
+  width: 10%;
+  text-align: right; }
 
 .ym-badges {
   text-align: center;
@@ -449,7 +475,8 @@ main {
     main {
       padding: 22px 0; } }
   main > .container {
-    padding: 0 10px; }
+    padding: 0 10px;
+    margin: -50px auto 0; }
     @media (min-width: 768px) and (max-width: 991px) {
       main > .container {
         width: auto; } }
@@ -480,7 +507,7 @@ body.aha-luminate #at4-soc {
   margin: -18px 0 0; }
   @media (min-width: 768px) {
     .ym-page-header {
-      padding: 22px 0 30px;
+      padding: 22px 0 80px;
       margin: -22px 0 0; } }
   @media (min-width: 768px) and (max-width: 991px) {
     .ym-page-header > .container {
@@ -510,6 +537,9 @@ body.aha-luminate #at4-soc {
     text-shadow: 2px 2px 1px black;
     text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.85); }
 
+.ym-page-content, .ym-page-section__middle {
+  background: #ffffff; }
+
 .ym-page-content {
   padding: 10px;
   margin: 18px 0 0; }
@@ -527,8 +557,20 @@ body.aha-luminate #at4-soc {
 .ym-page-section__top .col-md-6 {
   padding: 0; }
 
+.ym-page-section__top .col-md-6:first-child {
+  background: #fff; }
+
+.ym-page-section__middle {
+  padding: 50px 0; }
+  .ym-page-section__middle > .col-md-6 {
+    padding: 0 40px; }
+
 .ym-user-image {
   position: relative; }
+  @media (max-width: 992px) {
+    .ym-user-image {
+      margin: auto;
+      max-width: 585px; } }
   .ym-user-image .caption {
     position: absolute;
     bottom: 0;
@@ -542,21 +584,22 @@ body.aha-luminate #at4-soc {
     width: 100%; }
 
 .ym-page-section__bottom {
-  padding: 40px; }
-  .ym-page-section__bottom > div {
+  padding: 40px 0; }
+  .ym-page-section__bottom > .col-md-6 {
+    padding: 0 40px;
     text-align: center; }
-
-.ym-page-content, .ym-page-section__middle {
-  background: #ffffff; }
-
-.ym-page-section__middle {
-  padding: 50px 40px; }
-
-.ym-page-section__bottom {
-  background: #91c855; }
+  .ym-page-section__bottom .col-md-6:first-child {
+    margin-top: 40px; }
+  .ym-page-section__bottom .col-md-6:nth-child(2) h3 {
+    margin: 0 0 20px; }
   .ym-page-section__bottom h3 {
     color: #fff;
     font-weight: bold; }
+  .ym-page-section__bottom .btn-primary {
+    margin-top: 20px; }
+
+.ym-page-section__bottom {
+  background: #91c855; }
 
 .ym-my-challenge {
   background: #d7d4e8;
@@ -564,7 +607,7 @@ body.aha-luminate #at4-soc {
   .ym-my-challenge h2 {
     margin: 0 0 20px;
     text-align: center; }
-  .ym-my-challenge .col-xs-8 {
+  .ym-my-challenge .col-xs-8, .ym-my-challenge .col-xs-4 {
     padding: 0; }
 
 .ym_my_challenge__stats span {

@@ -1,0 +1,26 @@
+.ym-donor-list {
+  background: #fff;
+  max-width: 490px;
+  max-height: 200px;
+  overflow: auto;
+  margin: auto;
+  padding: 30px 30px 0;
+  text-align: left;
+}
+
+.ym-donor-list__donor {
+  margin: 0 0 20px;
+
+  span {
+    display: inline-block; 
+  }
+}
+
+.ym-donor-list__donor--name {
+  width: 85%;
+}
+
+.ym-donor-list__donor--amount {
+  width: 10%;
+  text-align: right;
+}

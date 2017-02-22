@@ -1,18 +1,7 @@
-.ym-page-content, .ym-page-section__middle  {
-  background: #ffffff;
-}
-.ym-page-section__middle {
-  padding: 50px 40px;
-}
 .ym-page-section__bottom {
   background: $event-accent;
-
-  h3{
-    color: #fff;
-    font-weight: bold;
-  }
-
 }
+
 .ym-my-challenge {
   background: $event-secondary-light;
   padding: 20px 30px;
@@ -22,10 +11,9 @@
     text-align: center;
   }
 
-  .col-xs-8 {
+  .col-xs-8, .col-xs-4 {
     padding: 0;
   }
-
 }
 
 .ym_my_challenge__stats {
