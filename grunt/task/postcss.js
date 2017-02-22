@@ -15,35 +15,49 @@ module.exports = {
   }, 
   
   "general": {
-    files: [{
-      expand: true, 
-      cwd: 'dist/general/css/', 
-      src: [
-        'main.css'
-      ], 
-      dest: 'dist/general/css/'
-    }]
+    files: [
+      {
+        expand: true, 
+        cwd: 'dist/general/css/', 
+        src: [
+          'main.css'
+        ], 
+        dest: 'dist/general/css/'
+      }
+    ]
   }, 
   
   "heart-walk": {
-    files: [{
-      expand: true, 
-      cwd: 'dist/heart-walk/css/', 
-      src: [
-        'main.css'
-      ], 
-      dest: 'dist/heart-walk/css/'
-    }]
+    files: [
+      {
+        expand: true, 
+        cwd: 'dist/heart-walk/css/', 
+        src: [
+          'main.css'
+        ], 
+        dest: 'dist/heart-walk/css/'
+      }
+    ]
   }, 
   
   "jump-hoops": {
-    files: [{
-      expand: true, 
-      cwd: 'dist/jump-hoops/css/', 
-      src: [
-        'main.css'
-      ], 
-      dest: 'dist/jump-hoops/css/'
-    }]
+    files: [
+      {
+        expand: true, 
+        cwd: 'dist/jump-hoops/css/', 
+        src: [
+          'main.css'
+        ], 
+        dest: 'dist/jump-hoops/css/'
+      }, 
+      {
+        expand: true, 
+        cwd: 'dist/jump-hoops/css/', 
+        src: [
+          'participant.css'
+        ], 
+        dest: 'dist/jump-hoops/css/'
+      }
+    ]
   }
 }

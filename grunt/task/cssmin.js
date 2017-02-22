@@ -6,17 +6,29 @@ module.exports = {
   }, 
   
   "general": {
-    src: 'dist/general/css/main.css', 
-    dest: 'dist/general/css/main.min.css'
+    files: {
+      'dist/general/css/main.min.css': [
+        'dist/general/css/main.css'
+      ]
+    }
   }, 
   
   "heart-walk": {
-    src: 'dist/heart-walk/css/main.css', 
-    dest: 'dist/heart-walk/css/main.min.css'
+    files: {
+      'dist/heart-walk/css/main.min.css': [
+        'dist/heart-walk/css/main.css'
+      ]
+    }
   }, 
   
   "jump-hoops": {
-    src: 'dist/jump-hoops/css/main.css', 
-    dest: 'dist/jump-hoops/css/main.min.css'
+    files: {
+      'dist/jump-hoops/css/main.min.css': [
+        'dist/jump-hoops/css/main.css'
+      ], 
+      'dist/jump-hoops/css/participant.min.css': [
+        'dist/jump-hoops/css/participant.css'
+      ]
+    }
   }
 }

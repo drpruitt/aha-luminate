@@ -36,8 +36,14 @@
   ]);
 
   angular.element(document).ready(function() {
-    var appModules;
+    var appModules, error, error1;
     appModules = ['ahaLuminateApp'];
+    try {
+      angular.module('trPcApp');
+      appModules.push('trPcApp');
+    } catch (error1) {
+      error = error1;
+    }
     return angular.bootstrap(document, appModules);
   });
 

@@ -33,4 +33,9 @@ angular.element(document).ready ->
     'ahaLuminateApp'
   ]
   
+  try
+    angular.module 'trPcApp'
+    appModules.push 'trPcApp'
+  catch error
+  
   angular.bootstrap document, appModules
