@@ -24,7 +24,13 @@
         $rootScope.authToken = $dataRoot.data('auth-token');
       }
       if ($dataRoot.data('fr-id') !== '') {
-        return $rootScope.frId = $dataRoot.data('fr-id');
+        $rootScope.frId = $dataRoot.data('fr-id');
+      }
+      if ($dataRoot.data('company-id') !== '') {
+        $rootScope.companyId = $dataRoot.data('company-id');
+      }
+      if ($dataRoot.data('team-id') !== '') {
+        return $rootScope.teamId = $dataRoot.data('team-id');
       }
     }
   ]);
@@ -255,15 +261,9 @@
   ]);
 
   angular.module('ahaLuminateControllers').controller('PersonalPageCtrl', [
-    '$scope', '$dataRoot', '$location', '$filter', '$timeout', 'TeamraiserParticipantService', 'TeamraiserCompanyService', function($scope, $dataRoot, $location, $filter, $timeout, TeamraiserParticipantService, TeamraiserCompanyService) {
+    '$scope', '$location', '$filter', '$timeout', 'TeamraiserParticipantService', 'TeamraiserCompanyService', function($scope, $location, $filter, $timeout, TeamraiserParticipantService, TeamraiserCompanyService) {
       var $defaultPersonalDonors, $defaultResponsivePersonalDonors, setParticipantProgress;
       $scope.participantId = $location.absUrl().split('px=')[1].split('&')[0];
-      if ($dataRoot.data('company-id') !== '') {
-        $scope.companyId = $dataRoot.data('company-id');
-      }
-      if ($dataRoot.data('team-id') !== '') {
-        $scope.teamId = $dataRoot.data('team-id');
-      }
       TeamraiserCompanyService.getCompanies('company_id=' + $scope.companyId, {
         error: function() {
           return console.log('error');
