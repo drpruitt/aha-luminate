@@ -24,8 +24,6 @@ angular.module 'ahaLuminateApp'
       $rootScope.consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
       $rootScope.authToken = $dataRoot.data('auth-token') if $dataRoot.data('auth-token') isnt ''
       $rootScope.frId = $dataRoot.data('fr-id') if $dataRoot.data('fr-id') isnt ''
-      $rootScope.companyId = $dataRoot.data('company-id') if $dataRoot.data('company-id') isnt ''
-      $rootScope.teamId = $dataRoot.data('team-id') if $dataRoot.data('team-id') isnt ''
   ]
 
 angular.element(document).ready ->
