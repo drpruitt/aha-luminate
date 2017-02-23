@@ -24,13 +24,7 @@
         $rootScope.authToken = $dataRoot.data('auth-token');
       }
       if ($dataRoot.data('fr-id') !== '') {
-        $rootScope.frId = $dataRoot.data('fr-id');
-      }
-      if ($dataRoot.data('company-id') !== '') {
-        $rootScope.companyId = $dataRoot.data('company-id');
-      }
-      if ($dataRoot.data('team-id') !== '') {
-        return $rootScope.teamId = $dataRoot.data('team-id');
+        return $rootScope.frId = $dataRoot.data('fr-id');
       }
     }
   ]);
@@ -268,8 +262,15 @@
 
   angular.module('ahaLuminateControllers').controller('PersonalPageCtrl', [
     '$scope', '$location', '$filter', '$timeout', 'TeamraiserParticipantService', 'TeamraiserCompanyService', function($scope, $location, $filter, $timeout, TeamraiserParticipantService, TeamraiserCompanyService) {
-      var $defaultPersonalDonors, $defaultResponsivePersonalDonors, setParticipantProgress;
+      var $dataRoot, $defaultPersonalDonors, $defaultResponsivePersonalDonors, setParticipantProgress;
+      $dataRoot = angular.element('[data-aha-luminate-root]');
       $scope.participantId = $location.absUrl().split('px=')[1].split('&')[0];
+      if ($dataRoot.data('company-id') !== '') {
+        $scope.companyId = $dataRoot.data('company-id');
+      }
+      if ($dataRoot.data('team-id') !== '') {
+        $scope.teamId = $dataRoot.data('team-id');
+      }
       TeamraiserCompanyService.getCompanies('company_id=' + $scope.companyId, {
         error: function() {
           return console.log('error');
@@ -279,9 +280,7 @@
           console.log(response);
           coordinatorId = (ref = response.getCompaniesResponse) != null ? ref.company.coordinatorId : void 0;
           eventId = (ref1 = response.getCompaniesResponse) != null ? ref1.company.eventId : void 0;
-          console.log(eventId + ' ' + coordinatorId);
           return TeamraiserCompanyService.getCoordinatorQuestion(coordinatorId).then(function(response) {
-            console.log('success');
             return console.log(response);
           });
         }
