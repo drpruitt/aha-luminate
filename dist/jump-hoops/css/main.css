@@ -244,10 +244,10 @@ a.btn {
 
 .ym-badges {
   text-align: center;
-  margin: 0 0 30px; }
+  margin: 0 0 15px; }
   @media (max-width: 992px) {
     .ym-badges {
-      margin: 0 0 40px; } }
+      margin: 0 0 25px; } }
   .ym-badges h2 {
     margin: 0 0 30px; }
     @media (max-width: 992px) {
@@ -526,12 +526,8 @@ body.aha-luminate #at4-soc {
     top: 414px !important; } }
 
 .ym-page-header {
-  padding: 18px 0 0;
-  margin: -18px 0 0; }
-  @media (min-width: 768px) {
-    .ym-page-header {
-      padding: 22px 0 80px;
-      margin: -22px 0 0; } }
+  padding: 22px 0 80px;
+  margin: -22px 0 0; }
   @media (min-width: 768px) and (max-width: 991px) {
     .ym-page-header > .container {
       width: auto; } }
@@ -583,8 +579,15 @@ body.aha-luminate #at4-soc {
     .ym-page-section__top .col-md-6 {
       padding: 0; } }
 
+.ym-page-section__top .ym-progress {
+  padding: 20px; }
+
 .ym-page-section__top .col-md-6:first-child {
-  background: #fff; }
+  padding: 0; }
+  @media (min-width: 630px) {
+    .ym-page-section__top .col-md-6:first-child {
+      background: #fff;
+      padding: 20px 0; } }
 
 .ym-user-image {
   position: relative; }
@@ -592,6 +595,9 @@ body.aha-luminate #at4-soc {
     .ym-user-image {
       margin: auto;
       max-width: 585px; } }
+  @media (max-width: 992px) {
+    .ym-user-image img {
+      max-width: 100%; } }
   .ym-user-image .caption {
     position: absolute;
     bottom: 0;
@@ -609,11 +615,17 @@ body.aha-luminate #at4-soc {
   @media (max-width: 992px) {
     .ym-page-section__main {
       padding: 40px 0; } }
+  @media (max-width: 768px) {
+    .ym-page-section__main {
+      padding: 30px 0; } }
   .ym-page-section__main > .col-md-6 {
     padding: 0 40px; }
     @media (max-width: 992px) {
       .ym-page-section__main > .col-md-6 {
         padding: 0 60px; } }
+    @media (max-width: 768px) {
+      .ym-page-section__main > .col-md-6 {
+        padding: 0 20px; } }
   @media (max-width: 992px) {
     .ym-page-section__main .ym-story {
       margin-bottom: 30px; }
@@ -622,9 +634,15 @@ body.aha-luminate #at4-soc {
       margin: auto; }
     .ym-page-section__main .ym-my-challenge {
       margin-top: 35px; } }
+  @media (max-width: 768px) {
+    .ym-page-section__main .ym-my-challenge {
+      margin-top: 15px; } }
 
 .ym-page-section__list {
   padding: 40px 0; }
+  @media (max-width: 768px) {
+    .ym-page-section__list {
+      padding: 30px 0; } }
   .ym-page-section__list h3 {
     color: #fff;
     font-weight: bold; }
@@ -634,6 +652,9 @@ body.aha-luminate #at4-soc {
     @media (max-width: 992px) {
       .ym-page-section__list > .col-sm-6 {
         padding: 0 60px; } }
+    @media (max-width: 768px) {
+      .ym-page-section__list > .col-sm-6 {
+        padding: 0 20px; } }
   .ym-page-section__list .ym-donate-cta {
     margin-top: 40px; }
     .ym-page-section__list .ym-donate-cta p {

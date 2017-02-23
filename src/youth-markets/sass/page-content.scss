@@ -25,8 +25,16 @@
     }
   }
 
+  .ym-progress {
+    padding: 20px;
+  }
+
   .col-md-6:first-child {
-    background: #fff;
+    padding: 0;
+    @media (min-width: 630px){
+      background: #fff;
+      padding:20px 0;
+    } 
   }
 }
 
@@ -38,6 +46,11 @@
     max-width: 585px;
   }
 
+  img {
+    @media (max-width: $screen-md) {
+      max-width: 100%;
+    }
+  }
   .caption {
     position: absolute;
     bottom: 0;
@@ -55,19 +68,27 @@
 .ym-page-section__main {
   padding: 50px 0;
 
-  @media (max-width: $screen-md-min){
+  @media (max-width: $screen-md){
    padding: 40px 0; 
+  }
+
+  @media (max-width: $screen-sm){
+    padding: 30px 0; 
   }
   
   > .col-md-6 {
     padding: 0 40px;
 
-    @media (max-width: $screen-md-min){
+    @media (max-width: $screen-md){
       padding: 0 60px;
+    }
+
+    @media (max-width: $screen-sm){
+      padding: 0 20px;
     }
   }  
 
-  @media (max-width: $screen-md-min){
+  @media (max-width: $screen-md){
     .ym-story {
       margin-bottom: 30px;
     }
@@ -80,10 +101,21 @@
       margin-top: 35px;
     }
   }
+
+  @media (max-width: $screen-sm){
+    .ym-my-challenge {
+      margin-top: 15px;
+    }
+
+  }
 }
 
 .ym-page-section__list {
   padding: 40px 0;
+
+  @media (max-width: $screen-sm-min){
+    padding: 30px 0; 
+  }
 
   h3 {
     color: #fff;
@@ -96,6 +128,10 @@
 
     @media (max-width: $screen-md-min){
       padding: 0 60px;
+    }
+
+    @media (max-width: $screen-sm-min){
+      padding: 0 20px;
     }
   }
 
