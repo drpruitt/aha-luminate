@@ -588,17 +588,17 @@ body.aha-luminate #at4-soc {
   .ym-page-section__list > .col-md-6 {
     padding: 0 40px;
     text-align: center; }
-  .ym-page-section__list .col-md-6:first-child {
+  .ym-page-section__list .ym-donate-cta {
     margin-top: 40px; }
-  .ym-page-section__list .col-md-6:nth-child(2) h3 {
+    .ym-page-section__list .ym-donate-cta h3 {
+      color: #fff;
+      font-weight: bold; }
+    .ym-page-section__list .ym-donate-cta p {
+      margin-bottom: 30px; }
+  .ym-page-section__list .ym-list h3 {
     margin: 0 0 20px; }
-  .ym-page-section__list h3 {
-    color: #fff;
-    font-weight: bold; }
-  .ym-page-section__list p {
-    margin-bottom: 30px; }
 
-.ym-page-section__bottom {
+.ym-page-section__list {
   background: #91c855; }
 
 .ym-my-challenge {

@@ -64,22 +64,24 @@
     text-align: center;
   }
 
-  .col-md-6:first-child{
+  .ym-donate-cta {
     margin-top: 40px;
+
+    h3 {
+      color: #fff;
+      font-weight: bold;
+    }
+
+    p {
+      margin-bottom: 30px;
+    }
   }
 
-  .col-md-6:nth-child(2) {
+  .ym-list {
     h3 {
       margin: 0 0 20px;
     }
   }
 
-  h3 {
-    color: #fff;
-    font-weight: bold;
-  }
 
-  p {
-    margin-bottom: 30px;
-  }
 }
