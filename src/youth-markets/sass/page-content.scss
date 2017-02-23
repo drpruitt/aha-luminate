@@ -1,4 +1,4 @@
-.ym-page-content, .ym-page-section__middle  {
+.ym-page-content, .ym-page-section__main  {
   background: #ffffff;
 }
 
@@ -24,16 +24,6 @@
   .col-md-6:first-child {
     background: #fff;
   }
-  
-}
-
-.ym-page-section__middle {
-  padding: 50px 0;
-
-  > .col-md-6 {
-    padding: 0 40px;
-  }
-
 }
 
 .ym-user-image {
@@ -58,7 +48,15 @@
   }
 }
 
-.ym-page-section__bottom {
+.ym-page-section__main {
+  padding: 50px 0;
+
+  > .col-md-6 {
+    padding: 0 40px;
+  }
+}
+
+.ym-page-section__list {
   padding: 40px 0;
 
   > .col-md-6 {
@@ -81,7 +79,7 @@
     font-weight: bold;
   }
 
-  .btn-primary {
-    margin-top: 20px;
+  p {
+    margin-bottom: 30px;
   }
 }

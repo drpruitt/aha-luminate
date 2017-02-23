@@ -537,7 +537,7 @@ body.aha-luminate #at4-soc {
     text-shadow: 2px 2px 1px black;
     text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.85); }
 
-.ym-page-content, .ym-page-section__middle {
+.ym-page-content, .ym-page-section__main {
   background: #ffffff; }
 
 .ym-page-content {
@@ -560,11 +560,6 @@ body.aha-luminate #at4-soc {
 .ym-page-section__top .col-md-6:first-child {
   background: #fff; }
 
-.ym-page-section__middle {
-  padding: 50px 0; }
-  .ym-page-section__middle > .col-md-6 {
-    padding: 0 40px; }
-
 .ym-user-image {
   position: relative; }
   @media (max-width: 992px) {
@@ -583,20 +578,25 @@ body.aha-luminate #at4-soc {
     font-size: 14px;
     width: 100%; }
 
-.ym-page-section__bottom {
+.ym-page-section__main {
+  padding: 50px 0; }
+  .ym-page-section__main > .col-md-6 {
+    padding: 0 40px; }
+
+.ym-page-section__list {
   padding: 40px 0; }
-  .ym-page-section__bottom > .col-md-6 {
+  .ym-page-section__list > .col-md-6 {
     padding: 0 40px;
     text-align: center; }
-  .ym-page-section__bottom .col-md-6:first-child {
+  .ym-page-section__list .col-md-6:first-child {
     margin-top: 40px; }
-  .ym-page-section__bottom .col-md-6:nth-child(2) h3 {
+  .ym-page-section__list .col-md-6:nth-child(2) h3 {
     margin: 0 0 20px; }
-  .ym-page-section__bottom h3 {
+  .ym-page-section__list h3 {
     color: #fff;
     font-weight: bold; }
-  .ym-page-section__bottom .btn-primary {
-    margin-top: 20px; }
+  .ym-page-section__list p {
+    margin-bottom: 30px; }
 
 .ym-page-section__bottom {
   background: #91c855; }
