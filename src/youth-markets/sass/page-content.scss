@@ -75,6 +75,10 @@
       max-width: 485px;
       margin: auto;
     }
+
+    .ym-my-challenge {
+      margin-top: 35px;
+    }
   }
 }
 
@@ -86,7 +90,7 @@
     font-weight: bold;
   }
 
-  > .col-md-6 {
+  > .col-sm-6 {
     padding: 0 40px;
     text-align: center;
 
@@ -97,7 +101,6 @@
 
   .ym-donate-cta {
     margin-top: 40px;
-
     p {
       margin-bottom: 30px;
     }
@@ -106,6 +109,10 @@
   .ym-list {
     img {
       margin: 0 auto 15px;
+
+      @media (max-width: $screen-md-min){
+        max-width: 275px;
+      }
     }
   }
 }

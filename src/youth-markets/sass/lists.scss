@@ -6,6 +6,12 @@
   margin: auto;
   padding: 30px 30px 0;
   text-align: left;
+
+  @media (max-width: $screen-md-min){
+    padding: 20px 20px 0;
+    max-width: 250px;
+    max-height: 190px;
+  }
 }
 
 .ym-donor-list__donor {
