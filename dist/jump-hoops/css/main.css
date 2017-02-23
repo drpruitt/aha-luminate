@@ -260,6 +260,12 @@ a.btn {
     display: block;
     line-height: 1.2; }
 
+.ym-badges__item {
+  display: inline-block;
+  max-width: 125px;
+  vertical-align: top;
+  margin: 0 15px 15px; }
+
 header {
   padding: 10px 0 0; }
   @media (min-width: 768px) {
