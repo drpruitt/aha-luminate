@@ -8,6 +8,10 @@
 
   h2{
     margin: 0 0 30px;
+
+    @media (max-width: $screen-md-min){
+      margin: 0 0 15px;
+    }
   }
 
   img {
