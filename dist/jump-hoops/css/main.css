@@ -33,6 +33,9 @@ body {
 h2 {
   font-size: 36px; }
 
+p {
+  line-height: 1.5; }
+
 .ym-headline {
   font-family: 'Luckiest Guy', cursive; }
 
@@ -43,8 +46,11 @@ h2.ym-headline {
   text-align: center; }
 
 h3.ym-page-progress__title {
-  margin: 30px 0;
+  margin: 0 0 30px;
   font-weight: 600; }
+  @media (min-width: 992px) {
+    h3.ym-page-progress__title {
+      margin: 30px 0; } }
 
 .ym-progress__thermometer {
   max-width: 500px;
@@ -555,7 +561,10 @@ body.aha-luminate #at4-soc {
     display: flex; } }
 
 .ym-page-section__top .col-md-6 {
-  padding: 0; }
+  padding: 20px 0; }
+  @media (min-width: 992px) {
+    .ym-page-section__top .col-md-6 {
+      padding: 0; } }
 
 .ym-page-section__top .col-md-6:first-child {
   background: #fff; }
