@@ -8,9 +8,12 @@
   text-align: left;
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-md){
-    padding: 20px 20px 0;
     max-width: 250px;
     max-height: 190px;
+  }
+
+  @media (max-width: $screen-md) {
+    padding: 20px 20px 0;
   }
 }
 

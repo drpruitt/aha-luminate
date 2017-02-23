@@ -6,8 +6,22 @@ body {
 
 h2 {
   font-size: 36px;
+
+  @media (max-width: $screen-sm){
+    font-size: 28px;
+  }
 } 
+
+h3 {
+  @media (max-width: $screen-sm){
+    font-size: 21px;
+  }
+}
 
 p {
   line-height: 1.5;
+
+  @media (max-width: $screen-sm){
+    font-size: 14px;
+  }
 }

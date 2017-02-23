@@ -32,9 +32,19 @@ body {
 
 h2 {
   font-size: 36px; }
+  @media (max-width: 768px) {
+    h2 {
+      font-size: 28px; } }
+
+@media (max-width: 768px) {
+  h3 {
+    font-size: 21px; } }
 
 p {
   line-height: 1.5; }
+  @media (max-width: 768px) {
+    p {
+      font-size: 14px; } }
 
 .ym-headline {
   font-family: 'Luckiest Guy', cursive; }
@@ -205,6 +215,16 @@ a.btn {
     a.btn.btn-primary:visited {
       padding: 12px 24px;
       font-size: 20px; }
+    @media (max-width: 768px) {
+      .btn.btn-primary,
+      a.btn.btn-primary {
+        min-width: 180px; }
+        .btn.btn-primary, .btn.btn-primary:link, .btn.btn-primary:visited,
+        a.btn.btn-primary,
+        a.btn.btn-primary:link,
+        a.btn.btn-primary:visited {
+          padding: 10px 24px;
+          font-size: 14px; } }
     .btn.btn-primary, .btn.btn-primary:link, .btn.btn-primary:visited,
     a.btn.btn-primary,
     a.btn.btn-primary:link,
@@ -226,9 +246,11 @@ a.btn {
   text-align: left; }
   @media (min-width: 768px) and (max-width: 992px) {
     .ym-donor-list {
-      padding: 20px 20px 0;
       max-width: 250px;
       max-height: 190px; } }
+  @media (max-width: 992px) {
+    .ym-donor-list {
+      padding: 20px 20px 0; } }
 
 .ym-donor-list__donor {
   margin: 0 0 20px; }
@@ -626,6 +648,8 @@ body.aha-luminate #at4-soc {
     @media (max-width: 768px) {
       .ym-page-section__main > .col-md-6 {
         padding: 0 20px; } }
+    .ym-page-section__main > .col-md-6 .ym-my-challenge > div {
+      padding: 0; }
   @media (max-width: 992px) {
     .ym-page-section__main .ym-story {
       margin-bottom: 30px; }
@@ -636,7 +660,11 @@ body.aha-luminate #at4-soc {
       margin-top: 35px; } }
   @media (max-width: 768px) {
     .ym-page-section__main .ym-my-challenge {
-      margin-top: 15px; } }
+      margin-top: 15px; }
+      .ym-page-section__main .ym-my-challenge img {
+        margin: 0 auto 20px; }
+      .ym-page-section__main .ym-my-challenge p {
+        text-align: center; } }
 
 .ym-page-section__list {
   padding: 40px 0; }
@@ -656,14 +684,23 @@ body.aha-luminate #at4-soc {
       .ym-page-section__list > .col-sm-6 {
         padding: 0 20px; } }
   .ym-page-section__list .ym-donate-cta {
-    margin-top: 40px; }
+    margin: 40px 0 0; }
+    @media (max-width: 768px) {
+      .ym-page-section__list .ym-donate-cta {
+        margin: 0 0 30px; } }
     .ym-page-section__list .ym-donate-cta p {
-      margin-bottom: 30px; }
+      margin-bottom: 20px; }
+      @media (min-width: 992px) {
+        .ym-page-section__list .ym-donate-cta p {
+          margin-bottom: 30px; } }
   .ym-page-section__list .ym-list img {
     margin: 0 auto 15px; }
     @media (max-width: 992px) {
       .ym-page-section__list .ym-list img {
         max-width: 275px; } }
+    @media (max-width: 480px) {
+      .ym-page-section__list .ym-list img {
+        max-width: 250px; } }
 
 .ym-page-section__list {
   background: #91c855; }
@@ -671,6 +708,9 @@ body.aha-luminate #at4-soc {
 .ym-my-challenge {
   background: #d7d4e8;
   padding: 20px 30px; }
+  @media (max-width: 768px) {
+    .ym-my-challenge {
+      padding: 20px; } }
   .ym-my-challenge h2 {
     margin: 0 0 20px;
     text-align: center; }

@@ -6,6 +6,10 @@
   background: $event-secondary-light;
   padding: 20px 30px;
 
+  @media (max-width: $screen-sm) {
+    padding: 20px;
+  }
+
   h2 {
     margin: 0 0 20px;
     text-align: center;

@@ -86,6 +86,10 @@
     @media (max-width: $screen-sm){
       padding: 0 20px;
     }
+
+    .ym-my-challenge > div {
+        padding: 0;
+    }
   }  
 
   @media (max-width: $screen-md){
@@ -105,8 +109,15 @@
   @media (max-width: $screen-sm){
     .ym-my-challenge {
       margin-top: 15px;
-    }
 
+      img {
+        margin: 0 auto 20px;
+      }
+
+      p {
+        text-align: center;
+      }
+    }
   }
 }
 
@@ -136,9 +147,18 @@
   }
 
   .ym-donate-cta {
-    margin-top: 40px;
+    margin: 40px 0 0;
+
+    @media (max-width: $screen-sm){
+      margin: 0 0 30px;
+    }
+
     p {
-      margin-bottom: 30px;
+      margin-bottom: 20px; 
+      
+      @media (min-width: $screen-md){
+        margin-bottom: 30px;
+      }
     }
   }
 
@@ -146,8 +166,12 @@
     img {
       margin: 0 auto 15px;
 
-      @media (max-width: $screen-md-min){
+      @media (max-width: $screen-md){
         max-width: 275px;
+      }
+
+      @media (max-width: $screen-xs){
+        max-width: 250px;
       }
     }
   }
