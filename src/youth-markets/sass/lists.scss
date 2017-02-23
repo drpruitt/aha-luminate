@@ -7,7 +7,7 @@
   padding: 30px 30px 0;
   text-align: left;
 
-  @media (max-width: $screen-md-min){
+  @media (min-width: $screen-sm-min) and (max-width: $screen-md){
     padding: 20px 20px 0;
     max-width: 250px;
     max-height: 190px;
