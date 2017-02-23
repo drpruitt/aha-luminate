@@ -59,6 +59,11 @@
 .ym-page-section__list {
   padding: 40px 0;
 
+  h3 {
+    color: #fff;
+    font-weight: bold;
+  }
+
   > .col-md-6 {
     padding: 0 40px;
     text-align: center;
@@ -66,11 +71,6 @@
 
   .ym-donate-cta {
     margin-top: 40px;
-
-    h3 {
-      color: #fff;
-      font-weight: bold;
-    }
 
     p {
       margin-bottom: 30px;
@@ -82,6 +82,4 @@
       margin: 0 0 20px;
     }
   }
-
-
 }

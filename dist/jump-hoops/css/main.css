@@ -585,14 +585,14 @@ body.aha-luminate #at4-soc {
 
 .ym-page-section__list {
   padding: 40px 0; }
+  .ym-page-section__list h3 {
+    color: #fff;
+    font-weight: bold; }
   .ym-page-section__list > .col-md-6 {
     padding: 0 40px;
     text-align: center; }
   .ym-page-section__list .ym-donate-cta {
     margin-top: 40px; }
-    .ym-page-section__list .ym-donate-cta h3 {
-      color: #fff;
-      font-weight: bold; }
     .ym-page-section__list .ym-donate-cta p {
       margin-bottom: 30px; }
   .ym-page-section__list .ym-list h3 {
