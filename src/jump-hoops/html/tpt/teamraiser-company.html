@@ -1,2 +1,67 @@
 <div ng-controller="CompanyPageCtrl">
+  <div class="ym-page-section ym-page-section__top">
+    <div class="col-md-6">
+      <div class="ym-user-image">
+        <img src="[[C4:graphic_upload]]" alt="[[C1:graphic_caption]]" />
+        [[?xx::x[[C1:graphic_caption]]x::
+        ::
+          <div class="caption">
+            [[C1:graphic_caption]]
+          </div>
+        ]]
+      </div>
+    </div>
+    <div class="col-md-6 ym-progress">
+      <h3 class="ym-page-progress__title">[[C1:title_field]]</h3>
+      <a class="btn btn-primary" href="Donation2?df_id=[[E42:[[S334:fr_id]]:form-id]]&FR_ID=[[S334:fr_id]]&PROXY_ID=[[S334:px]]&PROXY_TYPE=20">
+        Donate
+      </a>
+      <div class="ym-progress__thermometer">
+        <div class="ym-progress__thermometer--fill"></div>
+      </div>
+      <div class="ym-progress__stats">
+        <div class="ym-progress__amount col-sm-6">
+          <p>I've raised <strong>[[E130:"[[E48:[[A2]]-[[A13]]:dollars]]" ".00" "" replaceall]]</strong></p>
+        </div>
+        [[?xx$0.00x::x[[E48:[[A2]]-[[A13]]:goal]]x::::
+          <div class="ym-progress__goal col-sm-6">
+            <p>My goal is <strong>[[E130:"[[E48:[[A2]]-[[A13]]:goal]]" ".00" "" replaceall]]</strong></p>
+          </div>
+        ]]
+        <div class="clearfix"></div>
+        <div class="ym-progress__date">
+          <p>My event date is <strong></strong></p> 
+        </div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="ym-page-section ym-page-section__main">
+    <div class="ym-our-stats">
+      <h2 class="ym-headline">Our Stats</h2>
+    </div>
+    <div class="ym-zuri-animation">
+      <h3>Lorem Ipsum</h3>
+      <p>Placeholder for animation</p>
+    </div>
+  </div>
+  <div class="ym-page-section ym-page-section__list">
+    <div class="col-md-6 ym-story">
+      <h2 class="ym-headline">Our School is Heart Healthy</h2>
+      [[C6:fr_rich_text]]
+    </div>
+    <div class="col-md-6 ym-list">
+      <img class="img-responsive" src="../aha-luminate/dist/jump-hoops/image/hj-fundraisers-graphic.png">
+      <div class="ym-donor-list">
+        <div class="ym-donor-list__donor">
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="ym-page-section ym-page-section__roster">
+    <h3>Our Teams</h3>
+    
+  </div>
 </div>
