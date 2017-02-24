@@ -10,6 +10,8 @@ angular.module 'ahaLuminateControllers'
     ($scope, $location, $filter, $timeout, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService) ->
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0]
 
+      console.log 'text'
+
       $defaultCompanyHierarchy = angular.element '.js--default-company-hierarchy'
       $childCompanyAmounts = $defaultCompanyHierarchy.find('.trr-td p.righted')
       totalCompanyAmountRaised = 0
@@ -114,6 +116,7 @@ angular.module 'ahaLuminateControllers'
               if numCompaniesTeamRequestComplete is numCompanies
                 setCompanyNumTeams numTeams
             success: (response) ->
+              console.log response
               setCompanyTeams()
               companyTeams = response.getTeamSearchByInfoResponse?.team
               if companyTeams

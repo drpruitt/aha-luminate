@@ -190,6 +190,7 @@
     '$scope', '$location', '$filter', '$timeout', 'TeamraiserCompanyService', 'TeamraiserTeamService', 'TeamraiserParticipantService', function($scope, $location, $filter, $timeout, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService) {
       var $childCompanyAmounts, $childCompanyLinks, $defaultCompanyHierarchy, $defaultCompanySummary, addChildCompanyParticipants, addChildCompanyTeams, companyGiftCount, numCompanies, setCompanyFundraisingProgress, setCompanyNumParticipants, setCompanyNumTeams, setCompanyParticipants, setCompanyTeams, totalCompanyAmountRaised;
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0];
+      console.log('text');
       $defaultCompanyHierarchy = angular.element('.js--default-company-hierarchy');
       $childCompanyAmounts = $defaultCompanyHierarchy.find('.trr-td p.righted');
       totalCompanyAmountRaised = 0;
@@ -327,6 +328,7 @@
             },
             success: function(response) {
               var companyTeams, ref, totalNumberTeams;
+              console.log(response);
               setCompanyTeams();
               companyTeams = (ref = response.getTeamSearchByInfoResponse) != null ? ref.team : void 0;
               if (companyTeams) {
