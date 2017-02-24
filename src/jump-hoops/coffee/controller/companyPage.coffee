@@ -44,10 +44,12 @@ angular.module 'ahaLuminateControllers'
       getCompanyTotals()
 
 
+      getCompanyTeams = ->
         TeamraiserTeamService.getTeams 'company_id=' + $scope.companyId,
           success: (response) ->
             console.log response
 
+      getCompanyTeams()
 
 
 
