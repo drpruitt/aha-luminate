@@ -43,13 +43,38 @@ angular.module 'ahaLuminateControllers'
 
       getCompanyTotals()
 
+      $scope.companyTeams = []
+
+      setCompanyTeams = (teams, totalNumber) ->
+        $scope.companyTeams.teams = teams or []
+        totalNumber = totalNumber or 0
+        $scope.companyTeams.totalNumber = Number totalNumber
+
+        if not $scope.$$phase
+          $scope.$apply()
 
       getCompanyTeams = ->
-        TeamraiserTeamService.getTeams 'company_id=' + $scope.companyId,
+        TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId,
           success: (response) ->
-            console.log response
+            #console.log response
+            totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults
+            companyTeams = response.getTeamSearchByInfoResponse?.team
+            companyTeams = [companyTeams] if not angular.isArray companyTeams            
+            
+            angular.forEach companyTeams, (companyTeam) ->
+              
+              #companyTeam.name = response.getTeamSearchByInfoResponse.team.name
+              companyTeam.amountRaised = Number companyTeam.amountRaised
+              companyTeam.amountRaisedFormatted = $filter('currency')(companyTeam.amountRaised / 100, '$').replace '.00', ''
+              joinTeamURL = companyTeam.joinTeamURL
+              if joinTeamURL
+                companyTeam.joinTeamURL = joinTeamURL.split('/site/')[1]
+            
+              setCompanyTeams companyTeams, totalNumberTeams
 
       getCompanyTeams()
+
+      console.log $scope.companyTeams
 
 
 

@@ -188,7 +188,7 @@
 
   angular.module('ahaLuminateControllers').controller('CompanyPageCtrl', [
     '$scope', '$location', '$filter', '$timeout', 'TeamraiserCompanyService', 'TeamraiserTeamService', 'TeamraiserParticipantService', function($scope, $location, $filter, $timeout, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService) {
-      var getCompanyTeams, getCompanyTotals, setCompanyFundraisingProgress;
+      var getCompanyTeams, getCompanyTotals, setCompanyFundraisingProgress, setCompanyTeams;
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0];
       $scope.companyProgress = [];
       setCompanyFundraisingProgress = function(amountRaised, goal) {
@@ -231,14 +231,39 @@
         });
       };
       getCompanyTotals();
+      $scope.companyTeams = [];
+      setCompanyTeams = function(teams, totalNumber) {
+        $scope.companyTeams.teams = teams || [];
+        totalNumber = totalNumber || 0;
+        $scope.companyTeams.totalNumber = Number(totalNumber);
+        if (!$scope.$$phase) {
+          return $scope.$apply();
+        }
+      };
       getCompanyTeams = function() {
-        return TeamraiserTeamService.getTeams('company_id=' + $scope.companyId, {
+        return TeamraiserTeamService.getTeams('team_company_id=' + $scope.companyId, {
           success: function(response) {
-            return console.log(response);
+            var companyTeams, ref, totalNumberTeams;
+            totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults;
+            companyTeams = (ref = response.getTeamSearchByInfoResponse) != null ? ref.team : void 0;
+            if (!angular.isArray(companyTeams)) {
+              companyTeams = [companyTeams];
+            }
+            return angular.forEach(companyTeams, function(companyTeam) {
+              var joinTeamURL;
+              companyTeam.amountRaised = Number(companyTeam.amountRaised);
+              companyTeam.amountRaisedFormatted = $filter('currency')(companyTeam.amountRaised / 100, '$').replace('.00', '');
+              joinTeamURL = companyTeam.joinTeamURL;
+              if (joinTeamURL) {
+                companyTeam.joinTeamURL = joinTeamURL.split('/site/')[1];
+              }
+              return setCompanyTeams(companyTeams, totalNumberTeams);
+            });
           }
         });
       };
-      return getCompanyTeams();
+      getCompanyTeams();
+      return console.log($scope.companyTeams);
     }
   ]);
 

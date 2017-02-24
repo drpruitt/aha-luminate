@@ -61,7 +61,10 @@
     <div class="clearfix"></div>
   </div>
   <div class="ym-page-section ym-page-section__roster">
-    <h3>Our Teams</h3>    
+    <h3>Our Teams</h3>
+    <div class="ym-team-list__row" ng-repeat="team in teams">
+      {{team.name}}
+    </div>    
   </div>
 </div>
 <div class="hidden js--default-company-hierarchy">
