@@ -187,8 +187,8 @@
   ]);
 
   angular.module('ahaLuminateControllers').controller('CompanyPageCtrl', [
-    '$scope', '$rootScope', '$location', '$filter', '$timeout', 'TeamraiserCompanyService', 'TeamraiserTeamService', 'TeamraiserParticipantService', function($scope, $location, $filter, $timeout, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService) {
-      var getCompanyTotals, setCompanyFundraisingProgress;
+    '$scope', '$location', '$filter', '$timeout', 'TeamraiserCompanyService', 'TeamraiserTeamService', 'TeamraiserParticipantService', function($scope, $location, $filter, $timeout, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService) {
+      var getCompanyTeams, getCompanyTotals, setCompanyFundraisingProgress;
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0];
       $scope.companyProgress = [];
       setCompanyFundraisingProgress = function(amountRaised, goal) {
@@ -230,7 +230,15 @@
           }
         });
       };
-      return getCompanyTotals();
+      getCompanyTotals();
+      getCompanyTeams = function() {
+        return TeamraiserTeamService.getTeams('company_id=' + $scope.companyId, {
+          success: function(response) {
+            return console.log(response);
+          }
+        });
+      };
+      return getCompanyTeams();
     }
   ]);
 

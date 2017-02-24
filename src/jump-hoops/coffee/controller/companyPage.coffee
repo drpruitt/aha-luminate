@@ -1,7 +1,6 @@
 angular.module 'ahaLuminateControllers'
   .controller 'CompanyPageCtrl', [
     '$scope'
-    '$rootScope'
     '$location'
     '$filter'
     '$timeout'
@@ -43,6 +42,12 @@ angular.module 'ahaLuminateControllers'
               setCompanyFundraisingProgress amountRaised, goal
 
       getCompanyTotals()
+
+
+        TeamraiserTeamService.getTeams 'company_id=' + $scope.companyId,
+          success: (response) ->
+            console.log response
+
 
 
 
