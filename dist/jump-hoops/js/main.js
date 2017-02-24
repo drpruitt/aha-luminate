@@ -187,8 +187,38 @@
   ]);
 
   angular.module('ahaLuminateControllers').controller('CompanyPageCtrl', [
-    '$scope', '$location', function($scope, $location) {
-      return $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0];
+    '$scope', '$location', '$filter', '$timeout', 'TeamraiserCompanyService', 'TeamraiserTeamService', 'TeamraiserParticipantService', function($scope, $location, $filter, $timeout, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService) {
+      var setCompanyFundraisingProgress;
+      $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0];
+      return setCompanyFundraisingProgress = function(amountRaised, goal) {
+        $scope.companyProgress.amountRaised = amountRaised || 0;
+        $scope.companyProgress.amountRaised = Number($scope.companyProgress.amountRaised);
+        $scope.companyProgress.amountRaisedFormatted = $filter('currency')($scope.companyProgress.amountRaised / 100, '$').replace('.00', '');
+        $scope.companyProgress.goal = goal || 0;
+        $scope.companyProgress.goal = Number($scope.companyProgress.goal);
+        $scope.companyProgress.goalFormatted = $filter('currency')($scope.companyProgress.goal / 100, '$').replace('.00', '');
+        $scope.companyProgress.percent = 2;
+        $timeout(function() {
+          var percent;
+          percent = $scope.companyProgress.percent;
+          if ($scope.companyProgress.goal !== 0) {
+            percent = Math.ceil(($scope.companyProgress.amountRaised / $scope.companyProgress.goal) * 100);
+          }
+          if (percent < 2) {
+            percent = 2;
+          }
+          if (percent > 98) {
+            percent = 98;
+          }
+          $scope.companyProgress.percent = percent;
+          if (!$scope.$$phase) {
+            return $scope.$apply();
+          }
+        }, 500);
+        if (!$scope.$$phase) {
+          return $scope.$apply();
+        }
+      };
     }
   ]);
 
