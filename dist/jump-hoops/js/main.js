@@ -244,21 +244,24 @@
         return TeamraiserTeamService.getTeams('team_company_id=' + $scope.companyId, {
           success: function(response) {
             var companyTeams, ref, totalNumberTeams;
-            totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults;
+            setCompanyTeams();
             companyTeams = (ref = response.getTeamSearchByInfoResponse) != null ? ref.team : void 0;
-            if (!angular.isArray(companyTeams)) {
-              companyTeams = [companyTeams];
-            }
-            return angular.forEach(companyTeams, function(companyTeam) {
-              var joinTeamURL;
-              companyTeam.amountRaised = Number(companyTeam.amountRaised);
-              companyTeam.amountRaisedFormatted = $filter('currency')(companyTeam.amountRaised / 100, '$').replace('.00', '');
-              joinTeamURL = companyTeam.joinTeamURL;
-              if (joinTeamURL) {
-                companyTeam.joinTeamURL = joinTeamURL.split('/site/')[1];
+            if (companyTeams) {
+              if (!angular.isArray(companyTeams)) {
+                companyTeams = [companyTeams];
               }
+              angular.forEach(companyTeams, function(companyTeam) {
+                var joinTeamURL;
+                companyTeam.amountRaised = Number(companyTeam.amountRaised);
+                companyTeam.amountRaisedFormatted = $filter('currency')(companyTeam.amountRaised / 100, '$').replace('.00', '');
+                joinTeamURL = companyTeam.joinTeamURL;
+                if (joinTeamURL) {
+                  return companyTeam.joinTeamURL = joinTeamURL.split('/site/')[1];
+                }
+              });
+              totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults;
               return setCompanyTeams(companyTeams, totalNumberTeams);
-            });
+            }
           }
         });
       };
