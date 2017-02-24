@@ -1,33 +1,13 @@
-<!--
-         [[A0]]  = header
-         [[A1]]  = servlet URL
-         [[A2]]  = friendraiser ID
-         [[A3]]  = friendraiser name
-          [[A7]]  = page name
-          [[A8]]  = permissions
-          [[A9]]  = friendraiser title
-          [[A10]] = banner image
-          [[A13]] = Company internal/administrative name
-          [[A14]] = Team list (obsolete)
-      [[A16]] = Company display name
--->
-
-
 <div ng-controller="CompanyPageCtrl">
+  [[C1:title]]
   <div class="ym-page-section ym-page-section__top">
     <div class="col-md-6">
       <div class="ym-user-image">
-        <img src="[[C4:graphic_upload]]" alt="[[C1:graphic_caption]]" />
-        [[?xx::x[[C1:graphic_caption]]x::
-        ::
-          <div class="caption">
-            [[C1:graphic_caption]]
-          </div>
-        ]]
+        <img src="[[C4:responsive_company_logo]]" alt="[[C1:photo1_text]]" />
       </div>
     </div>
     <div class="col-md-6 ym-progress">
-      <h3 class="ym-page-progress__title">[[C1:title_field]]</h3>
+      <h3 class="ym-page-progress__title"></h3>
       <a class="btn btn-primary" href="Donation2?df_id=[[E42:[[S334:fr_id]]:form-id]]&FR_ID=[[S334:fr_id]]&PROXY_ID=[[S334:px]]&PROXY_TYPE=20">
         Donate
       </a>
@@ -36,16 +16,15 @@
       </div>
       <div class="ym-progress__stats">
         <div class="ym-progress__amount col-sm-6">
-          <p>I've raised <strong>[[E130:"[[E48:[[A2]]-[[A13]]:dollars]]" ".00" "" replaceall]]</strong></p>
+          <p>We've raised <strong></strong></p>
         </div>
-        [[?xx$0.00x::x[[E48:[[A2]]-[[A13]]:goal]]x::::
-          <div class="ym-progress__goal col-sm-6">
-            <p>My goal is <strong>[[E130:"[[E48:[[A2]]-[[A13]]:goal]]" ".00" "" replaceall]]</strong></p>
-          </div>
-        ]]
+        <div class="ym-progress__goal col-sm-6">
+          <p>My goal is <strong></strong></p>
+        </div>
+        
         <div class="clearfix"></div>
         <div class="ym-progress__date">
-          <p>My event date is <strong></strong></p> 
+          <p>Our event date is <strong></strong></p> 
         </div>
       </div>
     </div>
@@ -64,11 +43,19 @@
     <div class="col-md-6 ym-story">
       <h2 class="ym-headline">Our School is Heart Healthy</h2>
       [[C6:fr_rich_text]]
+      
     </div>
     <div class="col-md-6 ym-list">
       <img class="img-responsive" src="../aha-luminate/dist/jump-hoops/image/hj-fundraisers-graphic.png">
       <div class="ym-donor-list">
         <div class="ym-donor-list__donor">
+
+          [[C1:top_participants_title]]
+          [[?xx::x[[S345:*:participants:TRUE]]x::
+            [[M0:friendraiser:no_gifts]]
+          ::
+            <convio:session name="345" param="*:participants:TRUE"></convio:session>
+          ]]
           <div class="clearfix"></div>
         </div>
       </div>
@@ -77,6 +64,7 @@
   </div>
   <div class="ym-page-section ym-page-section__roster">
     <h3>Our Teams</h3>
+    [[C652:team_list]]
     
   </div>
 </div>
