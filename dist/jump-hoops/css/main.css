@@ -606,7 +606,7 @@ body.aha-luminate #at4-soc {
 
 .ym-page-section__top .col-md-6:first-child {
   padding: 0; }
-  @media (min-width: 630px) {
+  @media (min-width: 630px) and (max-width: 992px) {
     .ym-page-section__top .col-md-6:first-child {
       background: #fff;
       padding: 20px 0; } }

@@ -31,7 +31,7 @@
 
   .col-md-6:first-child {
     padding: 0;
-    @media (min-width: 630px){
+    @media (min-width: 630px) and (max-width: $screen-md-min){
       background: #fff;
       padding:20px 0;
     } 
