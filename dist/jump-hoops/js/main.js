@@ -224,7 +224,6 @@
         return TeamraiserCompanyService.getCompanies('company_id=' + $scope.companyId, {
           success: function(response) {
             var amountRaised, goal;
-            $rootScope.schoolName = response.getCompaniesResponse.company.companyName;
             amountRaised = response.getCompaniesResponse.company.amountRaised;
             goal = response.getCompaniesResponse.company.goal;
             return setCompanyFundraisingProgress(amountRaised, goal);

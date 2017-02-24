@@ -38,7 +38,6 @@ angular.module 'ahaLuminateControllers'
       getCompanyTotals = ->
         TeamraiserCompanyService.getCompanies 'company_id=' + $scope.companyId, 
             success: (response) ->
-              $rootScope.schoolName = response.getCompaniesResponse.company.companyName
               amountRaised = response.getCompaniesResponse.company.amountRaised
               goal = response.getCompaniesResponse.company.goal
               setCompanyFundraisingProgress amountRaised, goal
