@@ -188,9 +188,29 @@
 
   angular.module('ahaLuminateControllers').controller('CompanyPageCtrl', [
     '$scope', '$location', '$filter', '$timeout', 'TeamraiserCompanyService', 'TeamraiserTeamService', 'TeamraiserParticipantService', function($scope, $location, $filter, $timeout, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService) {
-      var setCompanyFundraisingProgress;
+      var $childCompanyAmounts, $childCompanyLinks, $defaultCompanyHierarchy, $defaultCompanySummary, addChildCompanyParticipants, addChildCompanyTeams, companyGiftCount, numCompanies, setCompanyFundraisingProgress, setCompanyNumParticipants, setCompanyNumTeams, setCompanyParticipants, setCompanyTeams, totalCompanyAmountRaised;
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0];
-      return setCompanyFundraisingProgress = function(amountRaised, goal) {
+      $defaultCompanyHierarchy = angular.element('.js--default-company-hierarchy');
+      $childCompanyAmounts = $defaultCompanyHierarchy.find('.trr-td p.righted');
+      totalCompanyAmountRaised = 0;
+      angular.forEach($childCompanyAmounts, function(childCompanyAmount) {
+        var amountRaised;
+        amountRaised = angular.element(childCompanyAmount).text();
+        if (amountRaised) {
+          amountRaised = amountRaised.replace('$', '').replace(/,/g, '');
+          amountRaised = Number(amountRaised) * 100;
+          return totalCompanyAmountRaised += amountRaised;
+        }
+      });
+      $defaultCompanySummary = angular.element('.js--default-company-summary');
+      companyGiftCount = $defaultCompanySummary.find('.company-tally-container--gift-count .company-tally-ammount').text();
+      if (companyGiftCount === '') {
+        companyGiftCount = '0';
+      }
+      $scope.companyProgress = {
+        numDonations: companyGiftCount
+      };
+      setCompanyFundraisingProgress = function(amountRaised, goal) {
         $scope.companyProgress.amountRaised = amountRaised || 0;
         $scope.companyProgress.amountRaised = Number($scope.companyProgress.amountRaised);
         $scope.companyProgress.amountRaisedFormatted = $filter('currency')($scope.companyProgress.amountRaised / 100, '$').replace('.00', '');
@@ -218,6 +238,352 @@
         if (!$scope.$$phase) {
           return $scope.$apply();
         }
+      };
+      TeamraiserCompanyService.getCompanies('company_id=' + $scope.companyId, {
+        error: function() {
+          return setCompanyFundraisingProgress();
+        },
+        success: function(response) {
+          var companyInfo, ref;
+          companyInfo = (ref = response.getCompaniesResponse) != null ? ref.company : void 0;
+          if (!companyInfo) {
+            return setCompanyFundraisingProgress();
+          } else {
+            return setCompanyFundraisingProgress(totalCompanyAmountRaised, companyInfo.goal);
+          }
+        }
+      });
+      $childCompanyLinks = $defaultCompanyHierarchy.find('.trr-td a');
+      $scope.childCompanies = [];
+      angular.forEach($childCompanyLinks, function(childCompanyLink) {
+        var childCompanyName, childCompanyUrl;
+        childCompanyUrl = angular.element(childCompanyLink).attr('href');
+        childCompanyName = angular.element(childCompanyLink).text();
+        if (childCompanyUrl.indexOf('company_id=') !== -1) {
+          return $scope.childCompanies.push({
+            id: childCompanyUrl.split('company_id=')[1].split('&')[0],
+            name: childCompanyName
+          });
+        }
+      });
+      numCompanies = $scope.childCompanies.length + 1;
+      $scope.companyTeamSearch = {
+        team_name: ''
+      };
+      $scope.companyTeams = {
+        isOpen: true,
+        page: 1
+      };
+      setCompanyTeams = function(teams, totalNumber) {
+        $scope.companyTeams.teams = teams || [];
+        totalNumber = totalNumber || 0;
+        $scope.companyTeams.totalNumber = Number(totalNumber);
+        if (!$scope.$$phase) {
+          return $scope.$apply();
+        }
+      };
+      $scope.childCompanyTeams = {
+        companies: []
+      };
+      addChildCompanyTeams = function(companyIndex, companyId, companyName, teams, totalNumber) {
+        var pageNumber, ref;
+        pageNumber = ((ref = $scope.childCompanyTeams.companies[companyIndex]) != null ? ref.page : void 0) || 0;
+        $scope.childCompanyTeams.companies[companyIndex] = {
+          isOpen: true,
+          page: pageNumber,
+          companyIndex: companyIndex,
+          companyId: companyId || '',
+          companyName: companyName || '',
+          teams: teams || []
+        };
+        totalNumber = totalNumber || 0;
+        $scope.childCompanyTeams.companies[companyIndex].totalNumber = Number(totalNumber);
+        if (!$scope.$$phase) {
+          return $scope.$apply();
+        }
+      };
+      setCompanyNumTeams = function(numTeams) {
+        if (!$scope.companyProgress.numTeams) {
+          $scope.companyProgress.numTeams = numTeams || 0;
+        }
+        if (!$scope.$$phase) {
+          return $scope.$apply();
+        }
+      };
+      $scope.getCompanyTeamLists = function() {
+        var numCompaniesTeamRequestComplete, numTeams;
+        numCompaniesTeamRequestComplete = 0;
+        numTeams = 0;
+        $scope.getCompanyTeams = function() {
+          var pageNumber;
+          pageNumber = $scope.companyTeams.page - 1;
+          return TeamraiserTeamService.getTeams('team_company_id=' + $scope.companyId + '&team_name=' + $scope.companyTeamSearch.team_name + '&list_sort_column=total&list_ascending=false&list_page_size=5&list_page_offset=' + pageNumber, {
+            error: function() {
+              setCompanyTeams();
+              numCompaniesTeamRequestComplete++;
+              if (numCompaniesTeamRequestComplete === numCompanies) {
+                return setCompanyNumTeams(numTeams);
+              }
+            },
+            success: function(response) {
+              var companyTeams, ref, totalNumberTeams;
+              setCompanyTeams();
+              companyTeams = (ref = response.getTeamSearchByInfoResponse) != null ? ref.team : void 0;
+              if (companyTeams) {
+                if (!angular.isArray(companyTeams)) {
+                  companyTeams = [companyTeams];
+                }
+                angular.forEach(companyTeams, function(companyTeam) {
+                  var joinTeamURL;
+                  companyTeam.amountRaised = Number(companyTeam.amountRaised);
+                  companyTeam.amountRaisedFormatted = $filter('currency')(companyTeam.amountRaised / 100, '$').replace('.00', '');
+                  joinTeamURL = companyTeam.joinTeamURL;
+                  if (joinTeamURL) {
+                    return companyTeam.joinTeamURL = joinTeamURL.split('/site/')[1];
+                  }
+                });
+                totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults;
+                setCompanyTeams(companyTeams, totalNumberTeams);
+                numTeams += Number(totalNumberTeams);
+              }
+              numCompaniesTeamRequestComplete++;
+              if (numCompaniesTeamRequestComplete === numCompanies) {
+                return setCompanyNumTeams(numTeams);
+              }
+            }
+          });
+        };
+        $scope.getCompanyTeams();
+        $scope.getChildCompanyTeams = function(childCompanyIndex) {
+          var childCompany, childCompanyId, childCompanyName, pageNumber, ref;
+          childCompany = $scope.childCompanies[childCompanyIndex];
+          childCompanyId = childCompany.id;
+          childCompanyName = childCompany.name;
+          pageNumber = (ref = $scope.childCompanyTeams.companies[childCompanyIndex]) != null ? ref.page : void 0;
+          if (!pageNumber) {
+            pageNumber = 0;
+          } else {
+            pageNumber--;
+          }
+          return TeamraiserTeamService.getTeams('team_company_id=' + childCompanyId + '&team_name=' + $scope.companyTeamSearch.team_name + '&list_sort_column=total&list_ascending=false&list_page_size=5&list_page_offset=' + pageNumber, {
+            error: function() {
+              addChildCompanyTeams(childCompanyIndex, childCompanyId, childCompanyName);
+              numCompaniesTeamRequestComplete++;
+              if (numCompaniesTeamRequestComplete === numCompanies) {
+                return setCompanyNumTeams(numTeams);
+              }
+            },
+            success: function(response) {
+              var companyTeams, ref1, totalNumberTeams;
+              companyTeams = (ref1 = response.getTeamSearchByInfoResponse) != null ? ref1.team : void 0;
+              if (!companyTeams) {
+                addChildCompanyTeams(childCompanyIndex, childCompanyId, childCompanyName);
+              } else {
+                if (!angular.isArray(companyTeams)) {
+                  companyTeams = [companyTeams];
+                }
+                angular.forEach(companyTeams, function(companyTeam) {
+                  var joinTeamURL;
+                  companyTeam.amountRaised = Number(companyTeam.amountRaised);
+                  companyTeam.amountRaisedFormatted = $filter('currency')(companyTeam.amountRaised / 100, '$').replace('.00', '');
+                  joinTeamURL = companyTeam.joinTeamURL;
+                  if (joinTeamURL) {
+                    return companyTeam.joinTeamURL = joinTeamURL.split('/site/')[1];
+                  }
+                });
+                totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults;
+                addChildCompanyTeams(childCompanyIndex, childCompanyId, childCompanyName, companyTeams, totalNumberTeams);
+                numTeams += Number(totalNumberTeams);
+              }
+              numCompaniesTeamRequestComplete++;
+              if (numCompaniesTeamRequestComplete === numCompanies) {
+                return setCompanyNumTeams(numTeams);
+              }
+            }
+          });
+        };
+        return angular.forEach($scope.childCompanies, function(childCompany, childCompanyIndex) {
+          return $scope.getChildCompanyTeams(childCompanyIndex);
+        });
+      };
+      $scope.getCompanyTeamLists();
+      $scope.searchCompanyTeams = function(companyTeamSearch) {
+        $scope.companyTeamSearch.team_name = (companyTeamSearch != null ? companyTeamSearch.team_name : void 0) || '';
+        $scope.companyTeams.isOpen = true;
+        $scope.companyTeams.page = 1;
+        angular.forEach($scope.childCompanyTeams.companies, function(company, companyIndex) {
+          $scope.childCompanyTeams.companies[companyIndex].isOpen = true;
+          return $scope.childCompanyTeams.companies[companyIndex].page = 1;
+        });
+        return $scope.getCompanyTeamLists();
+      };
+      $scope.companyParticipantSearch = {
+        participant_name: ''
+      };
+      $scope.companyParticipants = {
+        isOpen: true,
+        page: 1
+      };
+      setCompanyParticipants = function(participants, totalNumber) {
+        $scope.companyParticipants.participants = participants || [];
+        totalNumber = totalNumber || 0;
+        $scope.companyParticipants.totalNumber = Number(totalNumber);
+        if (!$scope.$$phase) {
+          return $scope.$apply();
+        }
+      };
+      $scope.childCompanyParticipants = {
+        companies: []
+      };
+      addChildCompanyParticipants = function(companyIndex, companyId, companyName, participants, totalNumber) {
+        var pageNumber, ref;
+        pageNumber = ((ref = $scope.childCompanyParticipants.companies[companyIndex]) != null ? ref.page : void 0) || 0;
+        $scope.childCompanyParticipants.companies[companyIndex] = {
+          isOpen: true,
+          page: pageNumber,
+          companyIndex: companyIndex,
+          companyId: companyId || '',
+          companyName: companyName || '',
+          participants: participants || []
+        };
+        totalNumber = totalNumber || 0;
+        $scope.childCompanyParticipants.companies[companyIndex].totalNumber = Number(totalNumber);
+        if (!$scope.$$phase) {
+          return $scope.$apply();
+        }
+      };
+      setCompanyNumParticipants = function(numParticipants) {
+        $scope.companyProgress.numParticipants = numParticipants || 0;
+        if (!$scope.$$phase) {
+          return $scope.$apply();
+        }
+      };
+      $scope.getCompanyParticipantLists = function() {
+        var numCompaniesParticipantRequestComplete, numParticipants;
+        numCompaniesParticipantRequestComplete = 0;
+        numParticipants = 0;
+        $scope.getCompanyParticipants = function() {
+          var firstName, lastName, pageNumber;
+          firstName = $scope.companyParticipantSearch.participant_name;
+          lastName = '';
+          if ($scope.companyParticipantSearch.participant_name.indexOf(' ') !== -1) {
+            firstName = $scope.companyParticipantSearch.participant_name.split(' ')[0];
+            lastName = $scope.companyParticipantSearch.participant_name.split(' ')[1];
+          }
+          pageNumber = $scope.companyParticipants.page - 1;
+          return TeamraiserParticipantService.getParticipants('team_name=' + encodeURIComponent('%%%') + '&first_name=' + firstName + '&last_name=' + lastName + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=5&list_page_offset=' + pageNumber, {
+            error: function() {
+              setCompanyParticipants();
+              numCompaniesParticipantRequestComplete++;
+              if (numCompaniesParticipantRequestComplete === numCompanies) {
+                return setCompanyNumParticipants(numParticipants);
+              }
+            },
+            success: function(response) {
+              var companyParticipants, participants, ref, totalNumberParticipants;
+              setCompanyParticipants();
+              participants = (ref = response.getParticipantsResponse) != null ? ref.participant : void 0;
+              if (participants) {
+                if (!angular.isArray(participants)) {
+                  participants = [participants];
+                }
+                companyParticipants = [];
+                angular.forEach(participants, function(participant) {
+                  var donationUrl, ref1;
+                  if ((ref1 = participant.name) != null ? ref1.first : void 0) {
+                    participant.amountRaised = Number(participant.amountRaised);
+                    participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace('.00', '');
+                    donationUrl = participant.donationUrl;
+                    if (donationUrl) {
+                      participant.donationUrl = donationUrl.split('/site/')[1];
+                    }
+                    return companyParticipants.push(participant);
+                  }
+                });
+                totalNumberParticipants = response.getParticipantsResponse.totalNumberResults;
+                setCompanyParticipants(companyParticipants, totalNumberParticipants);
+                numParticipants += Number(totalNumberParticipants);
+              }
+              numCompaniesParticipantRequestComplete++;
+              if (numCompaniesParticipantRequestComplete === numCompanies) {
+                return setCompanyNumParticipants(numParticipants);
+              }
+            }
+          });
+        };
+        $scope.getCompanyParticipants();
+        $scope.getChildCompanyParticipants = function(childCompanyIndex) {
+          var childCompany, childCompanyId, childCompanyName, firstName, lastName, pageNumber, ref;
+          childCompany = $scope.childCompanies[childCompanyIndex];
+          childCompanyId = childCompany.id;
+          childCompanyName = childCompany.name;
+          firstName = $scope.companyParticipantSearch.participant_name;
+          lastName = '';
+          if ($scope.companyParticipantSearch.participant_name.indexOf(' ') !== -1) {
+            firstName = $scope.companyParticipantSearch.participant_name.split(' ')[0];
+            lastName = $scope.companyParticipantSearch.participant_name.split(' ')[1];
+          }
+          pageNumber = (ref = $scope.childCompanyParticipants.companies[childCompanyIndex]) != null ? ref.page : void 0;
+          if (!pageNumber) {
+            pageNumber = 0;
+          } else {
+            pageNumber--;
+          }
+          return TeamraiserParticipantService.getParticipants('team_name=' + encodeURIComponent('%%%') + '&first_name=' + firstName + '&last_name=' + lastName + '&list_filter_column=team.company_id&list_filter_text=' + childCompanyId + '&list_sort_column=total&list_ascending=false&list_page_size=5&list_page_offset=' + pageNumber, {
+            error: function() {
+              addChildCompanyParticipants(childCompanyIndex, childCompanyId, childCompanyName);
+              numCompaniesParticipantRequestComplete++;
+              if (numCompaniesParticipantRequestComplete === numCompanies) {
+                return setCompanyNumParticipants(numParticipants);
+              }
+            },
+            success: function(response) {
+              var companyParticipants, participants, ref1, totalNumberParticipants;
+              participants = (ref1 = response.getParticipantsResponse) != null ? ref1.participant : void 0;
+              if (!participants) {
+                addChildCompanyParticipants(childCompanyIndex, childCompanyId, childCompanyName);
+              } else {
+                if (!angular.isArray(participants)) {
+                  participants = [participants];
+                }
+                companyParticipants = [];
+                angular.forEach(participants, function(participant) {
+                  var donationUrl, ref2;
+                  if ((ref2 = participant.name) != null ? ref2.first : void 0) {
+                    participant.amountRaised = Number(participant.amountRaised);
+                    participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace('.00', '');
+                    donationUrl = participant.donationUrl;
+                    if (donationUrl) {
+                      participant.donationUrl = donationUrl.split('/site/')[1];
+                    }
+                    return companyParticipants.push(participant);
+                  }
+                });
+                totalNumberParticipants = response.getParticipantsResponse.totalNumberResults;
+                addChildCompanyParticipants(childCompanyIndex, childCompanyId, childCompanyName, companyParticipants, totalNumberParticipants);
+                numParticipants += Number(totalNumberParticipants);
+              }
+              numCompaniesParticipantRequestComplete++;
+              if (numCompaniesParticipantRequestComplete === numCompanies) {
+                return setCompanyNumParticipants(numParticipants);
+              }
+            }
+          });
+        };
+        return angular.forEach($scope.childCompanies, function(childCompany, childCompanyIndex) {
+          return $scope.getChildCompanyParticipants(childCompanyIndex);
+        });
+      };
+      $scope.getCompanyParticipantLists();
+      return $scope.searchCompanyParticipants = function(companyParticipantSearch) {
+        $scope.companyParticipantSearch.participant_name = (companyParticipantSearch != null ? companyParticipantSearch.participant_name : void 0) || '';
+        $scope.companyParticipants.isOpen = true;
+        $scope.companyParticipants.page = 1;
+        angular.forEach($scope.childCompanyParticipants.companies, function(company, companyIndex) {
+          $scope.childCompanyParticipants.companies[companyIndex].isOpen = true;
+          return $scope.childCompanyParticipants.companies[companyIndex].page = 1;
+        });
+        return $scope.getCompanyParticipantLists();
       };
     }
   ]);
