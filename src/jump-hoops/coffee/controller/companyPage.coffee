@@ -49,7 +49,7 @@ angular.module 'ahaLuminateControllers'
         $scope.companyTeams.teams = teams or []
         totalNumber = totalNumber or 0
         $scope.companyTeams.totalNumber = Number totalNumber
-
+        #console.log $scope.companyTeams.teams
         if not $scope.$$phase
           $scope.$apply()
 
@@ -57,7 +57,7 @@ angular.module 'ahaLuminateControllers'
         TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId,
           success: (response) ->
             setCompanyTeams()
-            companyTeams = response.getTeamSearchByInfoResponse?.team
+            companyTeams = response.getTeamSearchByInfoResponse.team
             if companyTeams
               companyTeams = [companyTeams] if not angular.isArray companyTeams          
               angular.forEach companyTeams, (companyTeam) ->

@@ -243,9 +243,9 @@
       getCompanyTeams = function() {
         return TeamraiserTeamService.getTeams('team_company_id=' + $scope.companyId, {
           success: function(response) {
-            var companyTeams, ref, totalNumberTeams;
+            var companyTeams, totalNumberTeams;
             setCompanyTeams();
-            companyTeams = (ref = response.getTeamSearchByInfoResponse) != null ? ref.team : void 0;
+            companyTeams = response.getTeamSearchByInfoResponse.team;
             if (companyTeams) {
               if (!angular.isArray(companyTeams)) {
                 companyTeams = [companyTeams];
@@ -477,5 +477,29 @@
       return $scope.teamId = $location.absUrl().split('team_id=')[1].split('&')[0];
     }
   ]);
+
+  angular.module('ahaLuminateApp').directive('companyTeamList', function() {
+    return {
+      templateUrl: '../aha-luminate/dist/jump-hoops/html/directive/companyTeamList.html',
+      restrict: 'E',
+      replace: true,
+      scope: {
+        companyName: '=',
+        companyId: '=',
+        frId: '=',
+        teams: '='
+      },
+      controller: [
+        '$scope', function($scope) {
+          $scope.companyTeamSearch = {
+            team_name: ''
+          };
+          return $scope.toggleCompanyTeamList = function() {
+            return $scope.isOpen = !$scope.isOpen;
+          };
+        }
+      ]
+    };
+  });
 
 }).call(this);
