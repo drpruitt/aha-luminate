@@ -188,9 +188,8 @@
 
   angular.module('ahaLuminateControllers').controller('CompanyPageCtrl', [
     '$scope', '$location', '$filter', '$timeout', 'TeamraiserCompanyService', 'TeamraiserTeamService', 'TeamraiserParticipantService', function($scope, $location, $filter, $timeout, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService) {
-      var $childCompanyAmounts, $childCompanyLinks, $defaultCompanyHierarchy, $defaultCompanySummary, addChildCompanyParticipants, addChildCompanyTeams, companyGiftCount, numCompanies, setCompanyFundraisingProgress, setCompanyNumParticipants, setCompanyNumTeams, setCompanyParticipants, setCompanyTeams, totalCompanyAmountRaised;
+      var $childCompanyAmounts, $childCompanyLinks, $defaultCompanyHierarchy, addChildCompanyParticipants, addChildCompanyTeams, numCompanies, setCompanyFundraisingProgress, setCompanyNumParticipants, setCompanyNumTeams, setCompanyParticipants, setCompanyTeams, totalCompanyAmountRaised;
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0];
-      console.log('text');
       $defaultCompanyHierarchy = angular.element('.js--default-company-hierarchy');
       $childCompanyAmounts = $defaultCompanyHierarchy.find('.trr-td p.righted');
       totalCompanyAmountRaised = 0;
@@ -203,14 +202,7 @@
           return totalCompanyAmountRaised += amountRaised;
         }
       });
-      $defaultCompanySummary = angular.element('.js--default-company-summary');
-      companyGiftCount = $defaultCompanySummary.find('.company-tally-container--gift-count .company-tally-ammount').text();
-      if (companyGiftCount === '') {
-        companyGiftCount = '0';
-      }
-      $scope.companyProgress = {
-        numDonations: companyGiftCount
-      };
+      console.log('total=' + totalCompanyAmountRaised);
       setCompanyFundraisingProgress = function(amountRaised, goal) {
         $scope.companyProgress.amountRaised = amountRaised || 0;
         $scope.companyProgress.amountRaised = Number($scope.companyProgress.amountRaised);
