@@ -188,7 +188,7 @@
 
   angular.module('ahaLuminateControllers').controller('CompanyPageCtrl', [
     '$scope', '$location', '$filter', '$timeout', 'TeamraiserCompanyService', 'TeamraiserTeamService', 'TeamraiserParticipantService', function($scope, $location, $filter, $timeout, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService) {
-      var getCompanyTeams, getCompanyTotals, setCompanyFundraisingProgress, setCompanyTeams;
+      var getCompanyParticipants, getCompanyTeams, getCompanyTotals, setCompanyFundraisingProgress, setCompanyParticipants, setCompanyTeams;
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0];
       $scope.companyProgress = [];
       setCompanyFundraisingProgress = function(amountRaised, goal) {
@@ -266,7 +266,53 @@
         });
       };
       getCompanyTeams();
-      return console.log($scope.companyTeams);
+      $scope.companyParticipants = [];
+      setCompanyParticipants = function(participants, totalNumber) {
+        $scope.companyParticipants.participants = participants || [];
+        totalNumber = totalNumber || 0;
+        $scope.companyParticipants.totalNumber = Number(totalNumber);
+        if (!$scope.$$phase) {
+          return $scope.$apply();
+        }
+      };
+      getCompanyParticipants = function() {
+        return TeamraiserParticipantService.getParticipants('team_name=' + encodeURIComponent('%%%') + '&first_name=' + encodeURIComponent('%%%') + '&last_name=' + encodeURIComponent('%%%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_sort_column=total&list_ascending=false', {
+          error: function() {
+            setCompanyParticipants();
+            numCompaniesParticipantRequestComplete++;
+            if (numCompaniesParticipantRequestComplete === numCompanies) {
+              return setCompanyNumParticipants(numParticipants);
+            }
+          },
+          success: function(response) {
+            var companyParticipants, participants, ref, totalNumberParticipants;
+            console.log(response);
+            setCompanyParticipants();
+            participants = (ref = response.getParticipantsResponse) != null ? ref.participant : void 0;
+            if (participants) {
+              if (!angular.isArray(participants)) {
+                participants = [participants];
+              }
+              companyParticipants = [];
+              angular.forEach(participants, function(participant) {
+                var donationUrl, ref1;
+                if ((ref1 = participant.name) != null ? ref1.first : void 0) {
+                  participant.amountRaised = Number(participant.amountRaised);
+                  participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace('.00', '');
+                  donationUrl = participant.donationUrl;
+                  if (donationUrl) {
+                    participant.donationUrl = donationUrl.split('/site/')[1];
+                  }
+                  return companyParticipants.push(participant);
+                }
+              });
+              totalNumberParticipants = response.getParticipantsResponse.totalNumberResults;
+              return setCompanyParticipants(companyParticipants, totalNumberParticipants);
+            }
+          }
+        });
+      };
+      return getCompanyParticipants();
     }
   ]);
 

@@ -252,9 +252,9 @@ a.btn {
     .ym-donor-list {
       padding: 20px 20px 0; } }
 
-.ym-donor-list__donor {
+.ym-donor-list__row {
   margin: 0 0 20px; }
-  .ym-donor-list__donor span {
+  .ym-donor-list__row span {
     display: inline-block; }
 
 .ym-donor-list__donor--name {

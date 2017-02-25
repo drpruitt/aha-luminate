@@ -87,9 +87,9 @@
     <div class="col-sm-6 ym-list">
       <img class="img-responsive" src="../aha-luminate/dist/jump-hoops/image/hj-fundraisers-graphic.png">
       <div class="ym-donor-list">
-        <div class="ym-donor-list__donor" ng-repeat="personalDonor in personalDonors.donors" ng-if="personalDonors.donors.length > 0">
-          <span class="ym-donor-list__donor--name">{{personalDonor.name}}</span>
-          <span class="ym-donor-list__donor--amount">{{personalDonor.amountFormatted}}</span>
+        <div class="ym-donor-list__row" ng-repeat="personalDonor in personalDonors.donors" ng-if="personalDonors.donors.length > 0">
+          <span class="ym-donor-list__row--name">{{personalDonor.name}}</span>
+          <span class="ym-donor-list__row--amount">{{personalDonor.amountFormatted}}</span>
           <div class="clearfix"></div>
         </div>
       </div>

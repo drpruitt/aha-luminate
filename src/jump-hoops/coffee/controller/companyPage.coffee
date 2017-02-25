@@ -44,12 +44,10 @@ angular.module 'ahaLuminateControllers'
       getCompanyTotals()
 
       $scope.companyTeams = []
-
       setCompanyTeams = (teams, totalNumber) ->
         $scope.companyTeams.teams = teams or []
         totalNumber = totalNumber or 0
         $scope.companyTeams.totalNumber = Number totalNumber
-        #console.log $scope.companyTeams.teams
         if not $scope.$$phase
           $scope.$apply()
 
@@ -71,8 +69,39 @@ angular.module 'ahaLuminateControllers'
 
       getCompanyTeams()
 
-      console.log $scope.companyTeams
 
+      $scope.companyParticipants = []
+      setCompanyParticipants = (participants, totalNumber) ->
+        $scope.companyParticipants.participants = participants or []
+        totalNumber = totalNumber or 0
+        $scope.companyParticipants.totalNumber = Number totalNumber
+        if not $scope.$$phase
+          $scope.$apply()
 
+      getCompanyParticipants = ->
+        TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%%%') + '&first_name=' + encodeURIComponent('%%%') + '&last_name=' + encodeURIComponent('%%%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_sort_column=total&list_ascending=false', 
+            error: ->
+              setCompanyParticipants()
+              numCompaniesParticipantRequestComplete++
+              if numCompaniesParticipantRequestComplete is numCompanies
+                setCompanyNumParticipants numParticipants
+            success: (response) ->
+              console.log response
+              setCompanyParticipants()
+              participants = response.getParticipantsResponse?.participant
+              if participants
+                participants = [participants] if not angular.isArray participants
+                companyParticipants = []
+                angular.forEach participants, (participant) ->
+                  if participant.name?.first
+                    participant.amountRaised = Number participant.amountRaised
+                    participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
+                    donationUrl = participant.donationUrl
+                    if donationUrl
+                      participant.donationUrl = donationUrl.split('/site/')[1]
+                    companyParticipants.push participant
+                totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
+                setCompanyParticipants companyParticipants, totalNumberParticipants
+      getCompanyParticipants()
 
   ]
