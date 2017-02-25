@@ -478,6 +478,30 @@
     }
   ]);
 
+  angular.module('ahaLuminateApp').directive('companyParticipantList', function() {
+    return {
+      templateUrl: '../aha-luminate/dist/jump-hoops/html/directive/companyParticipantList.html',
+      restrict: 'E',
+      replace: true,
+      scope: {
+        companyName: '=',
+        companyId: '=',
+        frId: '=',
+        participants: '='
+      },
+      controller: [
+        '$scope', function($scope) {
+          $scope.companyParticipantSearch = {
+            participant_name: ''
+          };
+          return $scope.toggleCompanyParticipantList = function() {
+            return $scope.isOpen = !$scope.isOpen;
+          };
+        }
+      ]
+    };
+  });
+
   angular.module('ahaLuminateApp').directive('companyTeamList', function() {
     return {
       templateUrl: '../aha-luminate/dist/jump-hoops/html/directive/companyTeamList.html',

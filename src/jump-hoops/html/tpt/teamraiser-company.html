@@ -46,27 +46,14 @@
     <div class="col-md-6 ym-list">
       <img class="img-responsive" src="../aha-luminate/dist/jump-hoops/image/hj-fundraisers-graphic.png">
       <div class="ym-donor-list">
-        <div class="ym-donor-list__donor">
-
-          [[C1:top_participants_title]]
-          [[?xx::x[[S345:*:participants:TRUE]]x::
-            [[M0:friendraiser:no_gifts]]
-          ::
-            <convio:session name="345" param="*:participants:TRUE"></convio:session>
-          ]]
-          <div class="clearfix"></div>
-        </div>
+        <company-participant-list fr-id="'[[T6:[[A2]]]]'" company-id="'[[T6:[[S334:company_id]]]]'" company-name="'[[T6:[[A16]]]]'" participants="companyParticipants.participants"></company-participant-list>
       </div>
     </div>
     <div class="clearfix"></div>
   </div>
   <div class="ym-page-section ym-page-section__roster">
     <h3>Our Teams</h3>
-    <company-team-list fr-id="'[[T6:[[A2]]]]'" company-id="'[[T6:[[S334:company_id]]]]'" company-name="'[[T6:[[A16]]]]'" teams="companyTeams.teams"></company-team-list>
-    
-    <div class="ym-team-list__row" ng-repeat="team in teams">
-      {{team.name}}
-    </div>     
+    <company-team-list fr-id="'[[T6:[[A2]]]]'" company-id="'[[T6:[[S334:company_id]]]]'" company-name="'[[T6:[[A16]]]]'" teams="companyTeams.teams"></company-team-list>     
   </div>
 </div>
 <div class="hidden js--default-company-hierarchy">
