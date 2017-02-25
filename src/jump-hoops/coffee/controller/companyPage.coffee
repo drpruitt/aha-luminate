@@ -86,7 +86,6 @@ angular.module 'ahaLuminateControllers'
               if numCompaniesParticipantRequestComplete is numCompanies
                 setCompanyNumParticipants numParticipants
             success: (response) ->
-              console.log response
               setCompanyParticipants()
               participants = response.getParticipantsResponse?.participant
               if participants

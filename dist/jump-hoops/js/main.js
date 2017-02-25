@@ -286,7 +286,6 @@
           },
           success: function(response) {
             var companyParticipants, participants, ref, totalNumberParticipants;
-            console.log(response);
             setCompanyParticipants();
             participants = (ref = response.getParticipantsResponse) != null ? ref.participant : void 0;
             if (participants) {
