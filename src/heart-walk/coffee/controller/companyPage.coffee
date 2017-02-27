@@ -54,7 +54,7 @@ angular.module 'ahaLuminateControllers'
           setCompanyFundraisingProgress()
         success: (response) ->
           companyInfo = response.getCompaniesResponse?.company
-          if not companyInfo
+          if not companyInfo?
             setCompanyFundraisingProgress()
           else
             setCompanyFundraisingProgress totalCompanyAmountRaised, companyInfo.goal
@@ -116,13 +116,13 @@ angular.module 'ahaLuminateControllers'
             success: (response) ->
               setCompanyTeams()
               companyTeams = response.getTeamSearchByInfoResponse?.team
-              if companyTeams
+              if companyTeams?
                 companyTeams = [companyTeams] if not angular.isArray companyTeams
                 angular.forEach companyTeams, (companyTeam) ->
                   companyTeam.amountRaised = Number companyTeam.amountRaised
                   companyTeam.amountRaisedFormatted = $filter('currency')(companyTeam.amountRaised / 100, '$', 0)
                   joinTeamURL = companyTeam.joinTeamURL
-                  if joinTeamURL
+                  if joinTeamURL?
                     companyTeam.joinTeamURL = joinTeamURL.split('/site/')[1]
                 totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults
                 setCompanyTeams companyTeams, totalNumberTeams
@@ -149,7 +149,7 @@ angular.module 'ahaLuminateControllers'
                 setCompanyNumTeams numTeams
             success: (response) ->
               companyTeams = response.getTeamSearchByInfoResponse?.team
-              if not companyTeams
+              if not companyTeams?
                 addChildCompanyTeams childCompanyIndex, childCompanyId, childCompanyName
               else
                 companyTeams = [companyTeams] if not angular.isArray companyTeams
@@ -157,7 +157,7 @@ angular.module 'ahaLuminateControllers'
                   companyTeam.amountRaised = Number companyTeam.amountRaised
                   companyTeam.amountRaisedFormatted = $filter('currency')(companyTeam.amountRaised / 100, '$', 0)
                   joinTeamURL = companyTeam.joinTeamURL
-                  if joinTeamURL
+                  if joinTeamURL?
                     companyTeam.joinTeamURL = joinTeamURL.split('/site/')[1]
                 totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults
                 addChildCompanyTeams childCompanyIndex, childCompanyId, childCompanyName, companyTeams, totalNumberTeams
@@ -228,7 +228,7 @@ angular.module 'ahaLuminateControllers'
             success: (response) ->
               setCompanyParticipants()
               participants = response.getParticipantsResponse?.participant
-              if participants
+              if participants?
                 participants = [participants] if not angular.isArray participants
                 companyParticipants = []
                 angular.forEach participants, (participant) ->
@@ -236,7 +236,7 @@ angular.module 'ahaLuminateControllers'
                     participant.amountRaised = Number participant.amountRaised
                     participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$', 0)
                     donationUrl = participant.donationUrl
-                    if donationUrl
+                    if donationUrl?
                       participant.donationUrl = donationUrl.split('/site/')[1]
                     companyParticipants.push participant
                 totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
@@ -269,7 +269,7 @@ angular.module 'ahaLuminateControllers'
                 setCompanyNumParticipants numParticipants
             success: (response) ->
               participants = response.getParticipantsResponse?.participant
-              if not participants
+              if not participants?
                 addChildCompanyParticipants childCompanyIndex, childCompanyId, childCompanyName
               else
                 participants = [participants] if not angular.isArray participants
@@ -279,7 +279,7 @@ angular.module 'ahaLuminateControllers'
                     participant.amountRaised = Number participant.amountRaised
                     participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$', 0)
                     donationUrl = participant.donationUrl
-                    if donationUrl
+                    if donationUrl?
                       participant.donationUrl = donationUrl.split('/site/')[1]
                     companyParticipants.push participant
                 totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
