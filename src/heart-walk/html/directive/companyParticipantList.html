@@ -22,7 +22,7 @@
     </div>
   </div>
   <div class="heart-company-participant-list__body" ng-if="participants.length > 0 && isOpen">
-    <div class="heart-company-participant-list__row" ng-repeat="participant in participants">
+    <div class="heart-company-participant-list__row" ng-repeat="participant in participants track by $index">
       <div class="heart-company-participant-list__column heart-company-participant-list__column--name">
         <a ng-href="TR?fr_id={{participant.eventId}}&amp;pg=personal&amp;px={{participant.consId}}">{{participant.name.first + ' ' + participant.name.last}}</a>
         <div class="visible-xs visible-md" ng-if="participant.aTeamCaptain == 'true'">Team Captain</div>
