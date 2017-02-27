@@ -576,6 +576,12 @@ body.aha-luminate #at4-soc {
     font-family: 'Luckiest Guy', cursive;
     text-shadow: 2px 2px 1px black;
     text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.85); }
+  .ym-page-header > .container {
+    position: relative; }
+  .ym-page-header .masthead-monster {
+    position: absolute;
+    right: 15px;
+    bottom: -20px; }
 
 .ym-page-content, .ym-page-section__main, .ym-page-section__roster {
   background: #ffffff; }
