@@ -132,7 +132,7 @@
   ]);
 
   angular.module('ahaLuminateApp').factory('TeamraiserCompanyService', [
-    'LuminateRESTService', function(LuminateRESTService) {
+    'LuminateRESTService', '$http', function(LuminateRESTService, $http) {
       return {
         getCompanies: function(requestData, callback) {
           var dataString;
@@ -149,6 +149,14 @@
             dataString += '&' + requestData;
           }
           return LuminateRESTService.luminateExtendTeamraiserRequest(dataString, false, true, callback);
+        },
+        getCoordinatorQuestion: function(coordinatorId) {
+          return $http({
+            method: 'GET',
+            url: 'PageServer?pagename=ym_coordinator_data&pgwrap=n&consId=' + coordinatorId + 'frId=2520'
+          }).then(function(response) {
+            return response;
+          });
         }
       };
     }
@@ -385,7 +393,7 @@
                 "companyName": companyData[1],
                 "teamCount": Number(companyData[4]),
                 "amountRaised": Number(companyData[2]) * 100,
-                "amountRaisedFormatted": $filter('currency')(Number(companyData[2]), '$').replace('.00', '')
+                "amountRaisedFormatted": $filter('currency')(Number(companyData[2]), '$', 0)
               });
             }
           });
@@ -423,10 +431,10 @@
       setCompanyFundraisingProgress = function(amountRaised, goal) {
         $scope.companyProgress.amountRaised = amountRaised || 0;
         $scope.companyProgress.amountRaised = Number($scope.companyProgress.amountRaised);
-        $scope.companyProgress.amountRaisedFormatted = $filter('currency')($scope.companyProgress.amountRaised / 100, '$').replace('.00', '');
+        $scope.companyProgress.amountRaisedFormatted = $filter('currency')($scope.companyProgress.amountRaised / 100, '$', 0);
         $scope.companyProgress.goal = goal || 0;
         $scope.companyProgress.goal = Number($scope.companyProgress.goal);
-        $scope.companyProgress.goalFormatted = $filter('currency')($scope.companyProgress.goal / 100, '$').replace('.00', '');
+        $scope.companyProgress.goalFormatted = $filter('currency')($scope.companyProgress.goal / 100, '$', 0);
         $scope.companyProgress.percent = 2;
         $timeout(function() {
           var percent;
@@ -546,7 +554,7 @@
                 angular.forEach(companyTeams, function(companyTeam) {
                   var joinTeamURL;
                   companyTeam.amountRaised = Number(companyTeam.amountRaised);
-                  companyTeam.amountRaisedFormatted = $filter('currency')(companyTeam.amountRaised / 100, '$').replace('.00', '');
+                  companyTeam.amountRaisedFormatted = $filter('currency')(companyTeam.amountRaised / 100, '$', 0);
                   joinTeamURL = companyTeam.joinTeamURL;
                   if (joinTeamURL) {
                     return companyTeam.joinTeamURL = joinTeamURL.split('/site/')[1];
@@ -595,7 +603,7 @@
                 angular.forEach(companyTeams, function(companyTeam) {
                   var joinTeamURL;
                   companyTeam.amountRaised = Number(companyTeam.amountRaised);
-                  companyTeam.amountRaisedFormatted = $filter('currency')(companyTeam.amountRaised / 100, '$').replace('.00', '');
+                  companyTeam.amountRaisedFormatted = $filter('currency')(companyTeam.amountRaised / 100, '$', 0);
                   joinTeamURL = companyTeam.joinTeamURL;
                   if (joinTeamURL) {
                     return companyTeam.joinTeamURL = joinTeamURL.split('/site/')[1];
@@ -702,7 +710,7 @@
                   var donationUrl, ref1;
                   if ((ref1 = participant.name) != null ? ref1.first : void 0) {
                     participant.amountRaised = Number(participant.amountRaised);
-                    participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace('.00', '');
+                    participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$', 0);
                     donationUrl = participant.donationUrl;
                     if (donationUrl) {
                       participant.donationUrl = donationUrl.split('/site/')[1];
@@ -761,7 +769,7 @@
                   var donationUrl, ref2;
                   if ((ref2 = participant.name) != null ? ref2.first : void 0) {
                     participant.amountRaised = Number(participant.amountRaised);
-                    participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace('.00', '');
+                    participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$', 0);
                     donationUrl = participant.donationUrl;
                     if (donationUrl) {
                       participant.donationUrl = donationUrl.split('/site/')[1];
@@ -856,7 +864,7 @@
               var ref1;
               if ((ref1 = participant.name) != null ? ref1.first : void 0) {
                 participant.amountRaised = Number(participant.amountRaised);
-                participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace('.00', '');
+                participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$', 0);
                 return topParticipants.push(participant);
               }
             });
@@ -887,7 +895,7 @@
             topTeams = [];
             angular.forEach(teams, function(team) {
               team.amountRaised = Number(team.amountRaised);
-              team.amountRaisedFormatted = $filter('currency')(team.amountRaised / 100, '$').replace('.00', '');
+              team.amountRaisedFormatted = $filter('currency')(team.amountRaised / 100, '$', 0);
               return topTeams.push(team);
             });
             return setTopTeams(topTeams);
@@ -934,7 +942,7 @@
                 "companyName": companyData[1],
                 "teamCount": companyData[4],
                 "amountRaised": Number(companyData[2]) * 100,
-                "amountRaisedFormatted": $filter('currency')(Number(companyData[2]), '$').replace('.00', '')
+                "amountRaisedFormatted": $filter('currency')(Number(companyData[2]), '$', 0)
               });
             }
           });
@@ -1057,7 +1065,7 @@
       }
       $scope.teamMembers.teamGiftsAmount = teamGiftsAmount.replace('$', '').replace(/,/g, '') * 100;
       $scope.teamMembers.teamGiftsAmount = Number($scope.teamMembers.teamGiftsAmount);
-      $scope.teamMembers.teamGiftsAmountFormatted = $filter('currency')($scope.teamMembers.teamGiftsAmount / 100, '$').replace('.00', '');
+      $scope.teamMembers.teamGiftsAmountFormatted = $filter('currency')($scope.teamMembers.teamGiftsAmount / 100, '$', 0);
       setTeamMembers = function(teamMembers, totalNumber) {
         $scope.teamMembers.members = teamMembers || [];
         $scope.teamMembers.totalNumber = totalNumber || 0;
@@ -1085,7 +1093,7 @@
                 var donationUrl, ref1;
                 if ((ref1 = teamParticipant.name) != null ? ref1.first : void 0) {
                   teamParticipant.amountRaised = Number(teamParticipant.amountRaised);
-                  teamParticipant.amountRaisedFormatted = $filter('currency')(teamParticipant.amountRaised / 100, '$').replace('.00', '');
+                  teamParticipant.amountRaisedFormatted = $filter('currency')(teamParticipant.amountRaised / 100, '$', 0);
                   donationUrl = teamParticipant.donationUrl;
                   if (donationUrl) {
                     teamParticipant.donationUrl = donationUrl.split('/site/')[1];

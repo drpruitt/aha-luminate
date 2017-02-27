@@ -50,7 +50,7 @@ angular.module 'ahaLuminateControllers'
             angular.forEach participants, (participant) ->
               if participant.name?.first
                 participant.amountRaised = Number participant.amountRaised
-                participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
+                participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$', 0)
                 topParticipants.push participant
             setTopParticipants topParticipants
       
@@ -72,7 +72,7 @@ angular.module 'ahaLuminateControllers'
             # TODO: don't include teams with $0 raised
             angular.forEach teams, (team) ->
               team.amountRaised = Number team.amountRaised
-              team.amountRaisedFormatted = $filter('currency')(team.amountRaised / 100, '$').replace '.00', ''
+              team.amountRaisedFormatted = $filter('currency')(team.amountRaised / 100, '$', 0)
               topTeams.push team
             setTopTeams topTeams
       
@@ -111,6 +111,6 @@ angular.module 'ahaLuminateControllers'
                   "companyName": companyData[1]
                   "teamCount": companyData[4]
                   "amountRaised": Number(companyData[2]) * 100
-                  "amountRaisedFormatted": $filter('currency')(Number(companyData[2]), '$').replace '.00', ''
+                  "amountRaisedFormatted": $filter('currency')(Number(companyData[2]), '$', 0)
             $scope.topCompanies.companies = $filter('orderBy') topCompanies, 'amountRaised', true
   ]
