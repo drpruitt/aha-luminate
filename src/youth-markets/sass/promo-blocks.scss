@@ -1,8 +1,19 @@
 .ym-promo-block{
-  max-width: 970px;
+  max-width: 996px;
+  margin:auto;
+  
+  @media (max-width: $screen-md){
+    max-width: 475px;
+  }
+
+  @media (max-width: $screen-sm){
+    max-width:100%;
+    display:block;
+  }
 
   > h2 {
     text-align: center;
+    margin: 0 0 25px;
   }
 }
 
@@ -11,13 +22,26 @@
   width: 225px;
   height: 225px;
   text-align: center;
-  margin:0 12px 10px;
+  margin:0 25px 25px 0;
+  vertical-align: middle;
+
+  &.ym-promo-block__item:last-child {
+    margin-right: 0;
+  }
+
+  &:nth-child(3) {
+    @media (max-width: $screen-md){
+      margin-right: 0;
+    }
+  }
 
   h2 {
     color:#fff;
     font-size: 68px;
     margin:50px 0 10px;
     line-height: .75;
+
+
   }
   p{
     color: #fff;
@@ -30,5 +54,7 @@
 
 .ym-promo-block--circle {
   border-radius: 100%;
-  box-shadow:  0px 10px 0px 0px rgba(50, 50, 50, 1);
+  @media (min-width: $screen-md-min){
+    box-shadow:  0px 10px 0px 0px rgba(50, 50, 50, 1);
+  }
 }

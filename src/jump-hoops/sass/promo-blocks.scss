@@ -1,3 +1,30 @@
-.ym-promo-block {
+.ym-promo-block__item {
   background: $event-secondary;
+
+  @media (max-width: $screen-sm){ 
+    background: transparent;
+    width: 100%;
+    height: auto;
+    margin: 0 auto 25px;
+
+    h2 {
+      color:$event-secondary;
+      margin:0;
+      line-height: 1;
+    }
+
+    p{
+      color: inherit;
+      margin:0 auto;
+      font-weight: bold;
+      max-width: 100%;
+    }
+  }
+
+  &:nth-child {
+    @media (max-width: $screen-sm){
+      margin: 0 auto 25px;
+    }
+  }
 }
+

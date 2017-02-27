@@ -239,15 +239,14 @@ a.btn {
 .ym-donor-list {
   background: #fff;
   max-width: 490px;
-  max-height: 200px;
+  height: 200px;
   overflow: auto;
   margin: auto;
   padding: 30px 30px 0;
   text-align: left; }
   @media (min-width: 768px) and (max-width: 992px) {
     .ym-donor-list {
-      max-width: 250px;
-      max-height: 190px; } }
+      max-width: 250px; } }
   @media (max-width: 992px) {
     .ym-donor-list {
       padding: 20px 20px 0; } }
@@ -257,10 +256,10 @@ a.btn {
   .ym-donor-list__row span {
     display: inline-block; }
 
-.ym-donor-list__donor--name {
+.ym-donor-list__row--name {
   width: 85%; }
 
-.ym-donor-list__donor--amount {
+.ym-donor-list__row--amount {
   width: 10%;
   text-align: right; }
 
@@ -732,17 +731,39 @@ body.aha-luminate #at4-soc {
       line-height: 40px;
       background: #fff; } }
 
+.ym-zuri-animation > p {
+  text-align: center; }
+
+.ym-zuri-animation h2 {
+  color: #6153a3;
+  text-align: center; }
+
 .ym-promo-block {
-  max-width: 970px; }
+  max-width: 996px;
+  margin: auto; }
+  @media (max-width: 992px) {
+    .ym-promo-block {
+      max-width: 475px; } }
+  @media (max-width: 768px) {
+    .ym-promo-block {
+      max-width: 100%;
+      display: block; } }
   .ym-promo-block > h2 {
-    text-align: center; }
+    text-align: center;
+    margin: 0 0 25px; }
 
 .ym-promo-block__item {
   display: inline-block;
   width: 225px;
   height: 225px;
   text-align: center;
-  margin: 0 12px 10px; }
+  margin: 0 25px 25px 0;
+  vertical-align: middle; }
+  .ym-promo-block__item.ym-promo-block__item:last-child {
+    margin-right: 0; }
+  @media (max-width: 992px) {
+    .ym-promo-block__item:nth-child(3) {
+      margin-right: 0; } }
   .ym-promo-block__item h2 {
     color: #fff;
     font-size: 68px;
@@ -756,8 +777,28 @@ body.aha-luminate #at4-soc {
     line-height: 1.25; }
 
 .ym-promo-block--circle {
-  border-radius: 100%;
-  box-shadow: 0px 10px 0px 0px #323232; }
+  border-radius: 100%; }
+  @media (min-width: 992px) {
+    .ym-promo-block--circle {
+      box-shadow: 0px 10px 0px 0px #323232; } }
 
-.ym-promo-block {
+.ym-promo-block__item {
   background: #6153a3; }
+  @media (max-width: 768px) {
+    .ym-promo-block__item {
+      background: transparent;
+      width: 100%;
+      height: auto;
+      margin: 0 auto 25px; }
+      .ym-promo-block__item h2 {
+        color: #6153a3;
+        margin: 0;
+        line-height: 1; }
+      .ym-promo-block__item p {
+        color: inherit;
+        margin: 0 auto;
+        font-weight: bold;
+        max-width: 100%; } }
+  @media (max-width: 768px) {
+    .ym-promo-block__item:nth-child {
+      margin: 0 auto 25px; } }
