@@ -46,6 +46,12 @@ p {
     p {
       font-size: 14px; } }
 
+a:link {
+  text-decoration: underline; }
+
+a:hover {
+  text-decoration: none; }
+
 .ym-headline {
   font-family: 'Luckiest Guy', cursive; }
 
@@ -189,21 +195,8 @@ a.btn-sm:visited {
   a.btn-sm:visited,
   a.btn-sm:visited:link,
   a.btn-sm:visited:visited {
-    padding: 4px 24px;
-    font-size: 16px; }
-  @media (max-width: 768px) {
-    .btn-sm, .btn-sm:link, .btn-sm:visited, .btn-sm:link, .btn-sm:link:link, .btn-sm:link:visited, .btn-sm:visited, .btn-sm:visited:link, .btn-sm:visited:visited,
-    a.btn-sm,
-    a.btn-sm:link,
-    a.btn-sm:visited,
-    a.btn-sm:link,
-    a.btn-sm:link:link,
-    a.btn-sm:link:visited,
-    a.btn-sm:visited,
-    a.btn-sm:visited:link,
-    a.btn-sm:visited:visited {
-      padding: 4px 24px;
-      font-size: 14px; } }
+    padding: 4px 12px;
+    font-size: 14px; }
 
 .btn-md, .btn-md:link, .btn-md:visited,
 a.btn-md,
@@ -318,8 +311,19 @@ a.btn {
   width: 10%;
   text-align: right; }
 
+.ym-stripe-list {
+  max-width: 970px;
+  margin: auto;
+  display: table; }
+
+.ym-stripe-list__row {
+  display: table-row; }
+
 .ym-stripe-list__column {
-  display: inline-block; }
+  display: table-cell; }
+
+.ym-stripe-list__header {
+  border-bottom: 7px solid #6153a3; }
 
 .ym-badges {
   text-align: center;

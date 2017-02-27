@@ -50,11 +50,8 @@ a.btn-sm {
   &:link, 
   &:visited {
     border-radius: 10px;
-    @include button-size(4px, $padding-base-horizontal, 16px);
+    @include button-size(4px, 12px, 14px);
 
-    @media (max-width: $screen-sm){
-      @include button-size(4px, $padding-base-horizontal, 14px);
-    }
   }
 }
 

@@ -25,3 +25,11 @@ p {
     font-size: 14px;
   }
 }
+
+a:link {
+  text-decoration: underline;
+}
+
+a:hover {
+  text-decoration: none;
+}
