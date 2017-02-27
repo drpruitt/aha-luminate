@@ -733,15 +733,22 @@ body.aha-luminate #at4-soc {
       background: #fff; } }
 
 .ym-promo-block {
+  max-width: 970px; }
+  .ym-promo-block > h2 {
+    text-align: center; }
+
+.ym-promo-block__item {
   display: inline-block;
   width: 225px;
   height: 225px;
-  text-align: center; }
-  .ym-promo-block h2 {
+  text-align: center;
+  margin: 0 12px 10px; }
+  .ym-promo-block__item h2 {
     color: #fff;
     font-size: 68px;
-    margin: 50px 0 10px; }
-  .ym-promo-block p {
+    margin: 50px 0 10px;
+    line-height: .75; }
+  .ym-promo-block__item p {
     color: #fff;
     margin: 0 auto;
     font-weight: bold;
@@ -750,7 +757,7 @@ body.aha-luminate #at4-soc {
 
 .ym-promo-block--circle {
   border-radius: 100%;
-  box-shadow: 0px 10px 5px 0px #323232; }
+  box-shadow: 0px 10px 0px 0px #323232; }
 
 .ym-promo-block {
   background: #6153a3; }

@@ -1,13 +1,23 @@
-.ym-promo-block {
+.ym-promo-block{
+  max-width: 970px;
+
+  > h2 {
+    text-align: center;
+  }
+}
+
+.ym-promo-block__item {
   display: inline-block;
   width: 225px;
   height: 225px;
   text-align: center;
+  margin:0 12px 10px;
 
   h2 {
     color:#fff;
     font-size: 68px;
     margin:50px 0 10px;
+    line-height: .75;
   }
   p{
     color: #fff;
@@ -20,5 +30,5 @@
 
 .ym-promo-block--circle {
   border-radius: 100%;
-  box-shadow:  0px 10px 5px 0px rgba(50, 50, 50, 1);
+  box-shadow:  0px 10px 0px 0px rgba(50, 50, 50, 1);
 }
