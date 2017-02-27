@@ -757,10 +757,12 @@ body.aha-luminate #at4-soc {
       .ym-page-section__list .ym-list img {
         max-width: 250px; } }
 
-.ym-page-section__roster h3 {
-  font-weight: bold;
-  text-align: center;
-  margin: 0 0 30px; }
+.ym-page-section__roster {
+  padding: 50px 0; }
+  .ym-page-section__roster h3 {
+    font-weight: bold;
+    text-align: center;
+    margin: 0 0 30px; }
 
 .ym-page-section__list {
   background: #91c855; }
