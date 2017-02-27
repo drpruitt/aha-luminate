@@ -464,7 +464,7 @@
         success: function(response) {
           var companyInfo, ref;
           companyInfo = (ref = response.getCompaniesResponse) != null ? ref.company : void 0;
-          if (!companyInfo) {
+          if (companyInfo == null) {
             return setCompanyFundraisingProgress();
           } else {
             return setCompanyFundraisingProgress(totalCompanyAmountRaised, companyInfo.goal);
@@ -547,7 +547,7 @@
               var companyTeams, ref, totalNumberTeams;
               setCompanyTeams();
               companyTeams = (ref = response.getTeamSearchByInfoResponse) != null ? ref.team : void 0;
-              if (companyTeams) {
+              if (companyTeams != null) {
                 if (!angular.isArray(companyTeams)) {
                   companyTeams = [companyTeams];
                 }
@@ -556,7 +556,7 @@
                   companyTeam.amountRaised = Number(companyTeam.amountRaised);
                   companyTeam.amountRaisedFormatted = $filter('currency')(companyTeam.amountRaised / 100, '$', 0);
                   joinTeamURL = companyTeam.joinTeamURL;
-                  if (joinTeamURL) {
+                  if (joinTeamURL != null) {
                     return companyTeam.joinTeamURL = joinTeamURL.split('/site/')[1];
                   }
                 });
@@ -594,7 +594,7 @@
             success: function(response) {
               var companyTeams, ref1, totalNumberTeams;
               companyTeams = (ref1 = response.getTeamSearchByInfoResponse) != null ? ref1.team : void 0;
-              if (!companyTeams) {
+              if (companyTeams == null) {
                 addChildCompanyTeams(childCompanyIndex, childCompanyId, childCompanyName);
               } else {
                 if (!angular.isArray(companyTeams)) {
@@ -605,7 +605,7 @@
                   companyTeam.amountRaised = Number(companyTeam.amountRaised);
                   companyTeam.amountRaisedFormatted = $filter('currency')(companyTeam.amountRaised / 100, '$', 0);
                   joinTeamURL = companyTeam.joinTeamURL;
-                  if (joinTeamURL) {
+                  if (joinTeamURL != null) {
                     return companyTeam.joinTeamURL = joinTeamURL.split('/site/')[1];
                   }
                 });
@@ -701,7 +701,7 @@
               var companyParticipants, participants, ref, totalNumberParticipants;
               setCompanyParticipants();
               participants = (ref = response.getParticipantsResponse) != null ? ref.participant : void 0;
-              if (participants) {
+              if (participants != null) {
                 if (!angular.isArray(participants)) {
                   participants = [participants];
                 }
@@ -712,7 +712,7 @@
                     participant.amountRaised = Number(participant.amountRaised);
                     participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$', 0);
                     donationUrl = participant.donationUrl;
-                    if (donationUrl) {
+                    if (donationUrl != null) {
                       participant.donationUrl = donationUrl.split('/site/')[1];
                     }
                     return companyParticipants.push(participant);
@@ -758,7 +758,7 @@
             success: function(response) {
               var companyParticipants, participants, ref1, totalNumberParticipants;
               participants = (ref1 = response.getParticipantsResponse) != null ? ref1.participant : void 0;
-              if (!participants) {
+              if (participants == null) {
                 addChildCompanyParticipants(childCompanyIndex, childCompanyId, childCompanyName);
               } else {
                 if (!angular.isArray(participants)) {
@@ -771,7 +771,7 @@
                     participant.amountRaised = Number(participant.amountRaised);
                     participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$', 0);
                     donationUrl = participant.donationUrl;
-                    if (donationUrl) {
+                    if (donationUrl != null) {
                       participant.donationUrl = donationUrl.split('/site/')[1];
                     }
                     return companyParticipants.push(participant);
@@ -1084,7 +1084,7 @@
             var ref, teamMembers, teamParticipants;
             setTeamMembers();
             teamParticipants = (ref = response.getParticipantsResponse) != null ? ref.participant : void 0;
-            if (teamParticipants) {
+            if (teamParticipants != null) {
               if (!angular.isArray(teamParticipants)) {
                 teamParticipants = [teamParticipants];
               }
@@ -1095,7 +1095,7 @@
                   teamParticipant.amountRaised = Number(teamParticipant.amountRaised);
                   teamParticipant.amountRaisedFormatted = $filter('currency')(teamParticipant.amountRaised / 100, '$', 0);
                   donationUrl = teamParticipant.donationUrl;
-                  if (donationUrl) {
+                  if (donationUrl != null) {
                     teamParticipant.donationUrl = donationUrl.split('/site/')[1];
                   }
                   return teamMembers.push(teamParticipant);
