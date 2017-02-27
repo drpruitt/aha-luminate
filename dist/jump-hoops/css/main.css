@@ -678,7 +678,7 @@ body.aha-luminate #at4-soc {
 
 .ym-page-section__list {
   padding: 40px 0; }
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     .ym-page-section__list {
       padding: 30px 0; } }
   .ym-page-section__list h3 {
@@ -687,10 +687,10 @@ body.aha-luminate #at4-soc {
   .ym-page-section__list > .col-sm-6 {
     text-align: center;
     padding: 0 40px; }
-    @media (max-width: 992px) {
+    @media (max-width: 991px) {
       .ym-page-section__list > .col-sm-6 {
         padding: 0 60px; } }
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
       .ym-page-section__list > .col-sm-6 {
         padding: 0 20px; } }
   .ym-page-section__list .ym-donate-cta {

@@ -139,7 +139,7 @@
 .ym-page-section__list {
   padding: 40px 0;
   
-  @media (max-width: $screen-sm-min) {
+  @media (max-width: $screen-xs-max) {
     padding: 30px 0;
   }
   
@@ -152,11 +152,11 @@
     text-align: center;
     padding: 0 40px;
     
-    @media (max-width: $screen-md-min) {
+    @media (max-width: $screen-sm-max) {
       padding: 0 60px;
     }
     
-    @media (max-width: $screen-sm-min) {
+    @media (max-width: $screen-xs-max) {
       padding: 0 20px;
     }
   }
