@@ -731,3 +731,19 @@ body.aha-luminate #at4-soc {
       height: 50px;
       line-height: 40px;
       background: #fff; } }
+
+.ym-promo-block {
+  display: inline-block; }
+  .ym-promo-block h2 {
+    color: #fff;
+    font-size: 68px;
+    margin-top: 0; }
+  .ym-promo-block p {
+    color: #fff;
+    margin: 0; }
+
+.ym-promo-block--circle {
+  border-radius: 50%; }
+
+.ym-promo-block {
+  background: #6153a3; }
