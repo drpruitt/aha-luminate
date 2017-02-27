@@ -191,6 +191,9 @@
       var getCompanyParticipants, getCompanyTeams, getCompanyTotals, setCompanyFundraisingProgress, setCompanyParticipants, setCompanyTeams;
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0];
       $scope.companyProgress = [];
+      $scope.companyName = '';
+      $scope.companyEventDate = '';
+      $scope.totalTeams = '';
       setCompanyFundraisingProgress = function(amountRaised, goal) {
         $scope.companyProgress.amountRaised = amountRaised;
         $scope.companyProgress.amountRaised = Number($scope.companyProgress.amountRaised);
@@ -223,10 +226,26 @@
       getCompanyTotals = function() {
         return TeamraiserCompanyService.getCompanies('company_id=' + $scope.companyId, {
           success: function(response) {
-            var amountRaised, goal;
+            var amountRaised, coordinatorId, goal, name;
+            console.log(response);
+            $scope.totalTeams = response.getCompaniesResponse.company.teamCount;
             amountRaised = response.getCompaniesResponse.company.amountRaised;
             goal = response.getCompaniesResponse.company.goal;
-            return setCompanyFundraisingProgress(amountRaised, goal);
+            name = response.getCompaniesResponse.company.companyName;
+            coordinatorId = response.getCompaniesResponse.company.coordinatorId;
+            $scope.companyName = name;
+            setCompanyFundraisingProgress(amountRaised, goal);
+            TeamraiserParticipantService.getParticipants('first_name=' + encodeURIComponent('%%%') + '&last_name=' + encodeURIComponent('%%%') + '&list_filter_column=reg.cons_id&list_filter_text=' + coordinatorId, {
+              error: function(response) {
+                console.log('error');
+                return console.log(response);
+              },
+              success: function(response) {
+                console.log('sucess');
+                return console.log(response);
+              }
+            });
+            return console.log('test=' + $scope.companyName);
           }
         });
       };

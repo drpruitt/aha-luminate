@@ -668,9 +668,6 @@ body.aha-luminate #at4-soc {
   @media (max-width: 768px) {
     .ym-page-section__list {
       padding: 30px 0; } }
-  .ym-page-section__list h3 {
-    color: #fff;
-    font-weight: bold; }
   .ym-page-section__list > .col-sm-6 {
     padding: 0 40px;
     text-align: center; }
@@ -680,6 +677,10 @@ body.aha-luminate #at4-soc {
     @media (max-width: 768px) {
       .ym-page-section__list > .col-sm-6 {
         padding: 0 20px; } }
+  .ym-page-section__list h3, .ym-page-section__list h2 {
+    color: #fff;
+    font-weight: bold;
+    margin-top: 0; }
   .ym-page-section__list .ym-donate-cta {
     margin: 40px 0 0; }
     @media (max-width: 768px) {

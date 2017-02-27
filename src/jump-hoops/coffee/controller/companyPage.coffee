@@ -10,6 +10,9 @@ angular.module 'ahaLuminateControllers'
     ($scope, $location, $filter, $timeout, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService) ->
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0]
       $scope.companyProgress = []
+      $scope.companyName = ''
+      $scope.companyEventDate = ''
+      $scope.totalTeams = ''
 
       setCompanyFundraisingProgress = (amountRaised, goal) ->
         $scope.companyProgress.amountRaised = amountRaised
@@ -37,11 +40,30 @@ angular.module 'ahaLuminateControllers'
       getCompanyTotals = ->
         TeamraiserCompanyService.getCompanies 'company_id=' + $scope.companyId, 
             success: (response) ->
+              console.log response
+              $scope.totalTeams = response.getCompaniesResponse.company.teamCount
               amountRaised = response.getCompaniesResponse.company.amountRaised
               goal = response.getCompaniesResponse.company.goal
+              name = response.getCompaniesResponse.company.companyName
+              coordinatorId = response.getCompaniesResponse.company.coordinatorId
+              $scope.companyName = name
               setCompanyFundraisingProgress amountRaised, goal
 
+              TeamraiserParticipantService.getParticipants 'first_name=' + encodeURIComponent('%%%') + '&last_name=' + encodeURIComponent('%%%') + '&list_filter_column=reg.cons_id&list_filter_text=' + coordinatorId,
+                error: (response) ->
+                  console.log 'error'
+                  console.log response
+                success: (response) ->
+                  console.log 'sucess'
+                  console.log response
+                  #$scope.companyEventDate
+
+
+              console.log 'test='+$scope.companyName
+
       getCompanyTotals()
+
+
 
       $scope.companyTeams = []
       setCompanyTeams = (teams, totalNumber) ->
@@ -102,5 +124,8 @@ angular.module 'ahaLuminateControllers'
                 totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
                 setCompanyParticipants companyParticipants, totalNumberParticipants
       getCompanyParticipants()
+
+
+
 
   ]
