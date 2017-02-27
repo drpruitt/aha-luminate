@@ -40,6 +40,7 @@
 
 .ym-user-image {
   position: relative;
+  background-size: cover;
 
   @media (max-width: $screen-md) {
     margin: auto;

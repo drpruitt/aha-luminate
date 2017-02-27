@@ -612,7 +612,8 @@ body.aha-luminate #at4-soc {
       padding: 20px 0; } }
 
 .ym-user-image {
-  position: relative; }
+  position: relative;
+  background-size: cover; }
   @media (max-width: 992px) {
     .ym-user-image {
       margin: auto;
