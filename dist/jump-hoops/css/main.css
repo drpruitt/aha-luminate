@@ -578,7 +578,7 @@ body.aha-luminate #at4-soc {
     text-shadow: 2px 2px 1px black;
     text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.85); }
 
-.ym-page-content, .ym-page-section__main {
+.ym-page-content, .ym-page-section__main, .ym-page-section__roster {
   background: #ffffff; }
 
 .ym-page-content {
@@ -604,23 +604,22 @@ body.aha-luminate #at4-soc {
 .ym-page-section__top .ym-progress {
   padding: 20px; }
 
-.ym-page-section__top .col-md-6:first-child {
-  padding: 0; }
-  @media (min-width: 630px) and (max-width: 992px) {
-    .ym-page-section__top .col-md-6:first-child {
-      background: #fff;
-      padding: 20px 0; } }
-
 .ym-user-image {
   position: relative;
-  background-size: cover; }
-  @media (max-width: 992px) {
+  padding: 0; }
+  @media (min-width: 630px) and (max-width: 992px) {
     .ym-user-image {
-      margin: auto;
-      max-width: 585px; } }
-  @media (max-width: 992px) {
-    .ym-user-image img {
-      max-width: 100%; } }
+      background: #fff;
+      padding: 20px 0; } }
+  @media (min-width: 992px) {
+    .ym-user-image {
+      background-size: cover; } }
+  .ym-user-image img {
+    margin: auto; }
+    @media (max-width: 992px) {
+      .ym-user-image img {
+        max-width: 100%;
+        display: block; } }
   .ym-user-image .caption {
     position: absolute;
     bottom: 0;
