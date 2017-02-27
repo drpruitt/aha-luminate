@@ -30,10 +30,10 @@ angular.module 'ahaLuminateControllers'
       setCompanyFundraisingProgress = (amountRaised, goal) ->
         $scope.companyProgress.amountRaised = amountRaised or 0
         $scope.companyProgress.amountRaised = Number $scope.companyProgress.amountRaised
-        $scope.companyProgress.amountRaisedFormatted = $filter('currency')($scope.companyProgress.amountRaised / 100, '$').replace '.00', ''
+        $scope.companyProgress.amountRaisedFormatted = $filter('currency')($scope.companyProgress.amountRaised / 100, '$', 0)
         $scope.companyProgress.goal = goal or 0
         $scope.companyProgress.goal = Number $scope.companyProgress.goal
-        $scope.companyProgress.goalFormatted = $filter('currency')($scope.companyProgress.goal / 100, '$').replace '.00', ''
+        $scope.companyProgress.goalFormatted = $filter('currency')($scope.companyProgress.goal / 100, '$', 0)
         $scope.companyProgress.percent = 2
         $timeout ->
           percent = $scope.companyProgress.percent
@@ -120,7 +120,7 @@ angular.module 'ahaLuminateControllers'
                 companyTeams = [companyTeams] if not angular.isArray companyTeams
                 angular.forEach companyTeams, (companyTeam) ->
                   companyTeam.amountRaised = Number companyTeam.amountRaised
-                  companyTeam.amountRaisedFormatted = $filter('currency')(companyTeam.amountRaised / 100, '$').replace '.00', ''
+                  companyTeam.amountRaisedFormatted = $filter('currency')(companyTeam.amountRaised / 100, '$', 0)
                   joinTeamURL = companyTeam.joinTeamURL
                   if joinTeamURL
                     companyTeam.joinTeamURL = joinTeamURL.split('/site/')[1]
@@ -155,7 +155,7 @@ angular.module 'ahaLuminateControllers'
                 companyTeams = [companyTeams] if not angular.isArray companyTeams
                 angular.forEach companyTeams, (companyTeam) ->
                   companyTeam.amountRaised = Number companyTeam.amountRaised
-                  companyTeam.amountRaisedFormatted = $filter('currency')(companyTeam.amountRaised / 100, '$').replace '.00', ''
+                  companyTeam.amountRaisedFormatted = $filter('currency')(companyTeam.amountRaised / 100, '$', 0)
                   joinTeamURL = companyTeam.joinTeamURL
                   if joinTeamURL
                     companyTeam.joinTeamURL = joinTeamURL.split('/site/')[1]
@@ -234,7 +234,7 @@ angular.module 'ahaLuminateControllers'
                 angular.forEach participants, (participant) ->
                   if participant.name?.first
                     participant.amountRaised = Number participant.amountRaised
-                    participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
+                    participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$', 0)
                     donationUrl = participant.donationUrl
                     if donationUrl
                       participant.donationUrl = donationUrl.split('/site/')[1]
@@ -277,7 +277,7 @@ angular.module 'ahaLuminateControllers'
                 angular.forEach participants, (participant) ->
                   if participant.name?.first
                     participant.amountRaised = Number participant.amountRaised
-                    participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
+                    participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$', 0)
                     donationUrl = participant.donationUrl
                     if donationUrl
                       participant.donationUrl = donationUrl.split('/site/')[1]
