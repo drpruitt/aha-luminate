@@ -123,9 +123,8 @@
     padding: 30px 0; 
   }
 
-  > .col-sm-6 {
+  > div {
     padding: 0 40px;
-    text-align: center;
 
     @media (max-width: $screen-md-min){
       padding: 0 60px;
@@ -142,8 +141,14 @@
     margin-top: 0;
   }
 
+  h2 {
+    text-shadow: 2px 2px 1px rgb(0, 0, 0);
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.85);
+  }
+
   .ym-donate-cta {
     margin: 40px 0 0;
+    text-align: center;
 
     @media (max-width: $screen-sm){
       margin: 0 0 30px;
