@@ -8,7 +8,7 @@ a.btn {
   &:hover, 
   &:focus, 
   &:active {
-    border-radius: 10px;
+    border-radius: 0;
     border-width: 0;
     font-family: inherit;
     font-weight: 600;
@@ -49,6 +49,7 @@ a.btn-sm {
   &, 
   &:link, 
   &:visited {
+    border-radius: 10px;
     @include button-size(4px, $padding-base-horizontal, 16px);
 
     @media (max-width: $screen-sm){
@@ -62,6 +63,7 @@ a.btn-md {
   &, 
   &:link, 
   &:visited {
+    border-radius: 10px;
     @include button-size(6px, $padding-base-horizontal, 16px);
 
     @media (max-width: $screen-sm){
@@ -75,7 +77,7 @@ a.btn-lg {
   &, 
   &:link, 
   &:visited {
-
+    border-radius: 10px;
     @include button-size($padding-base-vertical, $padding-base-horizontal, 20px);
     
     min-width:180px;
