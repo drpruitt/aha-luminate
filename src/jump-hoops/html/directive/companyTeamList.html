@@ -1,15 +1,15 @@
-<div class="ym-strip-list ym-strip-list--team-list">
-  <div class="ym-strip-list__header">
+<div class="ym-stripe-list ym-stripe-list--team-list">
+  <div class="ym-stripe-list__header">
 
   </div>
-  <div class="ym-strip-list__row" ng-repeat="team in teams">
-    <div class="ym-strip-list__column ym-strip-list__column--name">
+  <div class="ym-stripe-list__row" ng-repeat="team in teams">
+    <div class="ym-stripe-list__column ym-stripe-list__column--name">
       <a ng-href="TR?fr_id={{team.EventId}}&amp;pg=team&amp;team_id={{team.id}}">{{team.name}}</a>
     </div>
-    <div class="ym-strip-list__column ym-strip-list__column--amount hidden-xs">
+    <div class="ym-stripe-list__column ym-stripe-list__column--amount hidden-xs">
       <strong>{{team.amountRaisedFormatted}}</strong>
     </div>
-    <div class="ym-strip-list__column ym-strip-list__column--cta hidden-xs">
+    <div class="ym-stripe-list__column ym-stripe-list__column--cta hidden-xs">
       <a class="btn btn-primary btn-md" ng-href="{{team.joinTeamURL}}" ng-if="team.joinTeamURL">Join Team</a>
     </div>
   </div>
