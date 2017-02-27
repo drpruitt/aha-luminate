@@ -1,4 +1,5 @@
-.ym-page-content, .ym-page-section__main  {
+.ym-page-content, 
+.ym-page-section__main  {
   background: #ffffff;
 }
 
@@ -16,105 +17,110 @@
   @media (min-width: $screen-md-min) {
     display: flex;
   }
-
+  
   .col-md-6 {
     padding: 20px 0;
-  
+    
     @media (min-width: $screen-md-min) {
       padding: 0;
     }
+    
+    &:first-child {
+      padding: 0;
+      
+      @media (min-width: 630px) and (max-width: $screen-sm-max) {
+        background: #ffffff;
+        padding: 20px 0;
+      }
+    }
   }
-
+  
   .ym-progress {
     padding: 20px;
-  }
-
-  .col-md-6:first-child {
-    padding: 0;
-    @media (min-width: 630px) and (max-width: $screen-md-min){
-      background: #fff;
-      padding:20px 0;
-    } 
   }
 }
 
 .ym-user-image {
   position: relative;
   background-size: cover;
-
-  @media (max-width: $screen-md) {
+  
+  @media (max-width: $screen-sm-max) {
     margin: auto;
     max-width: 585px;
   }
-
+  
   img {
-    @media (max-width: $screen-md) {
+    @media (max-width: $screen-sm-max) {
       max-width: 100%;
     }
   }
+  
   .caption {
     position: absolute;
     bottom: 0;
-    background: rgba(255,255,255, .8);
-    text-align: center;
-    font-weight: bold;
-    margin: 0;
-    line-height: 1.2;
-    padding: 15px 0;
+    background: rgb(255, 255, 255);
+    background: rgba(255, 255, 255, 0.8);
     font-size: $font-size-sm;
+    font-weight: bold;
+    line-height: 1.2;
+    text-align: center;
     width: 100%;
+    padding: 15px 0;
+    margin: 0;
   }
 }
 
 .ym-page-section__main {
   padding: 50px 0;
-
-  @media (max-width: $screen-md){
-   padding: 40px 0; 
+  
+  @media (max-width: $screen-sm-max) {
+   padding: 40px 0;
   }
-
-  @media (max-width: $screen-sm){
-    padding: 30px 0; 
+  
+  @media (max-width: $screen-xs-max) {
+    padding: 30px 0;
   }
   
   > .col-md-6 {
     padding: 0 40px;
-
-    @media (max-width: $screen-md){
+    
+    @media (max-width: $screen-sm-max) {
       padding: 0 60px;
     }
-
-    @media (max-width: $screen-sm){
+    
+    @media (max-width: $screen-xs-max) {
       padding: 0 20px;
     }
-
+    
     .ym-my-challenge > div {
         padding: 0;
     }
-  }  
-
-  @media (max-width: $screen-md){
+  }
+  
+  @media (max-width: $screen-sm-max) {
     .ym-story {
       margin-bottom: 30px;
     }
-    .ym-badges, .ym-my-challenge {
+    
+    .ym-badges, 
+    .ym-my-challenge {
       max-width: 485px;
       margin: auto;
     }
-
+    
     .ym-my-challenge {
       margin-top: 35px;
     }
   }
-
-  @media (max-width: $screen-sm){
+  
+  @media (max-width: $screen-xs-max) {
     .ym-my-challenge {
       margin-top: 15px;
-
+      
       img {
         margin: 0 auto 20px;
       }
-
+      
       p {
         text-align: center;
       }
@@ -124,54 +130,54 @@
 
 .ym-page-section__list {
   padding: 40px 0;
-
-  @media (max-width: $screen-sm-min){
-    padding: 30px 0; 
+  
+  @media (max-width: $screen-sm-min) {
+    padding: 30px 0;
   }
-
+  
   h3 {
     color: #fff;
     font-weight: bold;
   }
-
+  
   > .col-sm-6 {
-    padding: 0 40px;
     text-align: center;
-
-    @media (max-width: $screen-md-min){
+    padding: 0 40px;
+    
+    @media (max-width: $screen-md-min) {
       padding: 0 60px;
     }
-
-    @media (max-width: $screen-sm-min){
+    
+    @media (max-width: $screen-sm-min) {
       padding: 0 20px;
     }
   }
-
+  
   .ym-donate-cta {
     margin: 40px 0 0;
-
-    @media (max-width: $screen-sm){
+    
+    @media (max-width: $screen-xs-max) {
       margin: 0 0 30px;
     }
-
+    
     p {
-      margin-bottom: 20px; 
+      margin-bottom: 20px;
       
-      @media (min-width: $screen-md){
+      @media (min-width: $screen-md-min) {
         margin-bottom: 30px;
       }
     }
   }
-
+  
   .ym-list {
     img {
       margin: 0 auto 15px;
-
-      @media (max-width: $screen-md){
+      
+      @media (max-width: $screen-sm-max) {
         max-width: 275px;
       }
-
-      @media (max-width: $screen-xs){
+      
+      @media (max-width: 479px) {
         max-width: 250px;
       }
     }
