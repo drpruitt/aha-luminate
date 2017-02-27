@@ -17,14 +17,6 @@
     display: flex;
   }
 
-  .col-md-6 {
-    padding: 20px 0;
-  
-    @media (min-width: $screen-md-min) {
-      padding: 0;
-    }
-  }
-
   .ym-progress {
     padding: 20px;
   }
@@ -33,6 +25,10 @@
 .ym-user-image {
   position: relative;
   padding: 0;
+
+  @media (max-width: $screen-md) {
+    background-image: none !important;
+  }
 
   @media (min-width: 630px) and (max-width: $screen-md-min){
     background: #fff;
