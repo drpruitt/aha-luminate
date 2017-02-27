@@ -106,7 +106,7 @@ a.btn:visited,
 a.btn:hover,
 a.btn:focus,
 a.btn:active {
-  border-radius: 0;
+  border-radius: 10px;
   border-width: 0;
   font-family: inherit;
   font-weight: 600;
@@ -174,6 +174,33 @@ a.btn-global-primary:focus,
 a.btn-global-primary:active {
   background: #870a0f; }
 
+.btn-sm, .btn-sm:link, .btn-sm:visited, .btn-sm:link, .btn-sm:link:link, .btn-sm:link:visited, .btn-sm:visited, .btn-sm:visited:link, .btn-sm:visited:visited,
+a.btn-sm,
+a.btn-sm:link,
+a.btn-sm:visited,
+a.btn-sm:link,
+a.btn-sm:link:link,
+a.btn-sm:link:visited,
+a.btn-sm:visited,
+a.btn-sm:visited:link,
+a.btn-sm:visited:visited {
+  padding: 4px 24px;
+  font-size: 16px; }
+
+@media (max-width: 768px) {
+  .btn-sm, .btn-sm:link, .btn-sm:visited, .btn-sm:link, .btn-sm:link:link, .btn-sm:link:visited, .btn-sm:visited, .btn-sm:visited:link, .btn-sm:visited:visited,
+  a.btn-sm,
+  a.btn-sm:link,
+  a.btn-sm:visited,
+  a.btn-sm:link,
+  a.btn-sm:link:link,
+  a.btn-sm:link:visited,
+  a.btn-sm:visited,
+  a.btn-sm:visited:link,
+  a.btn-sm:visited:visited {
+    padding: 4px 24px;
+    font-size: 14px; } }
+
 .btn-md, .btn-md:link, .btn-md:visited, .btn-md:link, .btn-md:link:link, .btn-md:link:visited, .btn-md:visited, .btn-md:visited:link, .btn-md:visited:visited,
 a.btn-md,
 a.btn-md:link,
@@ -184,47 +211,66 @@ a.btn-md:link:visited,
 a.btn-md:visited,
 a.btn-md:visited:link,
 a.btn-md:visited:visited {
-  padding: 18px 24px;
+  padding: 6px 24px;
   font-size: 16px; }
 
-.btn-lg, .btn-lg:link, .btn-lg:visited, .btn-lg:link, .btn-lg:link:link, .btn-lg:link:visited, .btn-lg:visited, .btn-lg:visited:link, .btn-lg:visited:visited,
+@media (max-width: 768px) {
+  .btn-md, .btn-md:link, .btn-md:visited, .btn-md:link, .btn-md:link:link, .btn-md:link:visited, .btn-md:visited, .btn-md:visited:link, .btn-md:visited:visited,
+  a.btn-md,
+  a.btn-md:link,
+  a.btn-md:visited,
+  a.btn-md:link,
+  a.btn-md:link:link,
+  a.btn-md:link:visited,
+  a.btn-md:visited,
+  a.btn-md:visited:link,
+  a.btn-md:visited:visited {
+    padding: 6px 24px;
+    font-size: 14px; } }
+
+.btn-lg, .btn-lg:link, .btn-lg:visited,
 a.btn-lg,
 a.btn-lg:link,
-a.btn-lg:visited,
-a.btn-lg:link,
-a.btn-lg:link:link,
-a.btn-lg:link:visited,
-a.btn-lg:visited,
-a.btn-lg:visited:link,
-a.btn-lg:visited:visited {
-  padding: 24px 24px;
-  font-size: 16px; }
+a.btn-lg:visited {
+  min-width: 180px;
+  text-align: center; }
+  .btn-lg, .btn-lg:link, .btn-lg:visited, .btn-lg:link, .btn-lg:link:link, .btn-lg:link:visited, .btn-lg:visited, .btn-lg:visited:link, .btn-lg:visited:visited,
+  a.btn-lg,
+  a.btn-lg:link,
+  a.btn-lg:visited,
+  a.btn-lg:link,
+  a.btn-lg:link:link,
+  a.btn-lg:link:visited,
+  a.btn-lg:visited,
+  a.btn-lg:visited:link,
+  a.btn-lg:visited:visited {
+    padding: 12px 24px;
+    font-size: 20px; }
+  @media (max-width: 768px) {
+    .btn-lg, .btn-lg:link, .btn-lg:visited,
+    a.btn-lg,
+    a.btn-lg:link,
+    a.btn-lg:visited {
+      min-width: 180px; }
+      .btn-lg, .btn-lg:link, .btn-lg:visited, .btn-lg:link, .btn-lg:link:link, .btn-lg:link:visited, .btn-lg:visited, .btn-lg:visited:link, .btn-lg:visited:visited,
+      a.btn-lg,
+      a.btn-lg:link,
+      a.btn-lg:visited,
+      a.btn-lg:link,
+      a.btn-lg:link:link,
+      a.btn-lg:link:visited,
+      a.btn-lg:visited,
+      a.btn-lg:visited:link,
+      a.btn-lg:visited:visited {
+        padding: 10px 24px;
+        font-size: 14px; } }
 
 .btn,
 a.btn {
   font-weight: 500; }
   .btn.btn-primary,
   a.btn.btn-primary {
-    border-radius: 10px;
-    color: #fff;
-    min-width: 180px;
-    text-align: center; }
-    .btn.btn-primary, .btn.btn-primary:link, .btn.btn-primary:visited,
-    a.btn.btn-primary,
-    a.btn.btn-primary:link,
-    a.btn.btn-primary:visited {
-      padding: 12px 24px;
-      font-size: 20px; }
-    @media (max-width: 768px) {
-      .btn.btn-primary,
-      a.btn.btn-primary {
-        min-width: 180px; }
-        .btn.btn-primary, .btn.btn-primary:link, .btn.btn-primary:visited,
-        a.btn.btn-primary,
-        a.btn.btn-primary:link,
-        a.btn.btn-primary:visited {
-          padding: 10px 24px;
-          font-size: 14px; } }
+    color: #fff; }
     .btn.btn-primary, .btn.btn-primary:link, .btn.btn-primary:visited,
     a.btn.btn-primary,
     a.btn.btn-primary:link,
@@ -571,17 +617,17 @@ body.aha-luminate #at4-soc {
 
 .ym-page-header {
   background: #91c855; }
-  .ym-page-header h1 {
-    color: #ffffff;
-    font-family: 'Luckiest Guy', cursive;
-    text-shadow: 2px 2px 1px black;
-    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.85); }
   .ym-page-header > .container {
     position: relative; }
   .ym-page-header .masthead-monster {
     position: absolute;
     right: 15px;
     bottom: -20px; }
+  .ym-page-header h1 {
+    color: #ffffff;
+    font-family: 'Luckiest Guy', cursive;
+    text-shadow: 2px 2px 1px black;
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.85); }
 
 .ym-page-content, .ym-page-section__main, .ym-page-section__roster {
   background: #ffffff; }

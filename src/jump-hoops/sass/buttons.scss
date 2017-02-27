@@ -3,22 +3,13 @@ a.btn {
   font-weight: 500;
   
   &.btn-primary {
-    @include button-size($padding-base-vertical, $padding-base-horizontal, 20px);
-
-    border-radius: 10px;
     color: #fff;
-    min-width:180px;
-    text-align: center;
-
-    @media (max-width: $screen-sm){
-      @include button-size(10px, $padding-base-horizontal, 14px);
-      min-width: 180px;
-    }
-    
+        
     &, 
     &:link, 
     &:visited {
       background: $event-primary;
+
     }
     
     &:hover, 

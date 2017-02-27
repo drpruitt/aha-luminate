@@ -8,7 +8,7 @@ a.btn {
   &:hover, 
   &:focus, 
   &:active {
-    border-radius: 0;
+    border-radius: 10px;
     border-width: 0;
     font-family: inherit;
     font-weight: 600;
@@ -44,12 +44,29 @@ a.btn-global-primary {
   }
 }
 
+.btn-sm, 
+a.btn-sm {
+  &, 
+  &:link, 
+  &:visited {
+    @include button-size(4px, $padding-base-horizontal, 16px);
+
+    @media (max-width: $screen-sm){
+      @include button-size(4px, $padding-base-horizontal, 14px);
+    }
+  }
+}
+
 .btn-md, 
 a.btn-md {
   &, 
   &:link, 
   &:visited {
-    @include button-size($padding-large-vertical, $padding-large-horizontal, 16px);
+    @include button-size(6px, $padding-base-horizontal, 16px);
+
+    @media (max-width: $screen-sm){
+      @include button-size(6px, $padding-base-horizontal, 14px);
+    }
   }
 }
 
@@ -58,6 +75,15 @@ a.btn-lg {
   &, 
   &:link, 
   &:visited {
-    @include button-size($padding-large-horizontal, $padding-large-horizontal, 16px);
+
+    @include button-size($padding-base-vertical, $padding-base-horizontal, 20px);
+    
+    min-width:180px;
+    text-align: center;
+
+    @media (max-width: $screen-sm){
+      @include button-size(10px, $padding-base-horizontal, 14px);
+      min-width: 180px;
+    }
   }
 }
