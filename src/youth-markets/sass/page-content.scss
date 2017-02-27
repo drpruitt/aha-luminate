@@ -1,5 +1,6 @@
 .ym-page-content, 
-.ym-page-section__main  {
+.ym-page-section__main, 
+.ym-page-section__roster {
   background: #ffffff;
 }
 
@@ -42,15 +43,22 @@
 
 .ym-user-image {
   position: relative;
-  background-size: cover;
+  padding: 0;
   
-  @media (max-width: $screen-sm-max) {
-    margin: auto;
-    max-width: 585px;
+  @media (min-width: 630px) and (max-width: $screen-sm-max) {
+    background: #ffffff;
+    padding: 20px 0;
+  }
+  
+  @media (min-width: $screen-md-min) {
+    background-size: cover;
   }
   
   img {
+    margin: auto;
+    
     @media (max-width: $screen-sm-max) {
+      display: block;
       max-width: 100%;
     }
   }
