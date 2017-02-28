@@ -213,8 +213,8 @@ a.btn-md:visited {
   a.btn-md:visited,
   a.btn-md:visited:link,
   a.btn-md:visited:visited {
-    padding: 7px 24px;
-    font-size: 16px; }
+    padding: 6px 12px;
+    font-size: 14px; }
   @media (max-width: 768px) {
     .btn-md, .btn-md:link, .btn-md:visited, .btn-md:link, .btn-md:link:link, .btn-md:link:visited, .btn-md:visited, .btn-md:visited:link, .btn-md:visited:visited,
     a.btn-md,
@@ -226,7 +226,7 @@ a.btn-md:visited {
     a.btn-md:visited,
     a.btn-md:visited:link,
     a.btn-md:visited:visited {
-      padding: 7px 24px;
+      padding: 6px 6px;
       font-size: 14px; } }
 
 .btn-lg, .btn-lg:link, .btn-lg:visited,
@@ -317,14 +317,25 @@ a.btn {
 
 .pg-company .ym-list__column--name {
   width: 43%; }
+  @media (max-width: 768px) {
+    .pg-company .ym-list__column--name {
+      width: 80%; } }
 
-.pg-company td.ym-list__column--cta {
+.pg-company .ym-list__column--amount {
+  width: 120px;
+  text-align: center;
+  padding-left: 0;
+  padding-right: 0; }
+
+.pg-company .ym-list__column--cta {
   text-align: right;
-  padding: 18px 15px 18px 0; }
+  padding-right: 15px; }
 
-.table-striped tbody tr td {
-  vertical-align: middle;
-  padding: 18px 0 18px 15px; }
+.table-striped {
+  border: 0 none; }
+  .table-striped tbody tr td {
+    vertical-align: middle;
+    padding: 18px 0 18px 15px; }
 
 .table-striped thead tr th {
   border-bottom: 7px solid #6153a3; }
@@ -782,11 +793,17 @@ body.aha-luminate #at4-soc {
         max-width: 250px; } }
 
 .ym-page-section__roster {
-  padding: 50px 0; }
+  padding: 50px; }
+  @media (max-width: 480px) {
+    .ym-page-section__roster {
+      padding: 25px; } }
   .ym-page-section__roster h3 {
     font-weight: bold;
     text-align: center;
     margin: 0 0 30px; }
+    @media (max-width: 480px) {
+      .ym-page-section__roster h3 {
+        margin: 0 0 15px; } }
 
 .ym-page-section__list {
   background: #91c855; }

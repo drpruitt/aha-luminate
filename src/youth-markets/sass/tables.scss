@@ -5,14 +5,24 @@
   }
   .ym-list__column--name {
     width: 43%;
+    @media(max-width: $screen-sm){
+      width: 80%;
+    }
   }
-  td.ym-list__column--cta {
+  .ym-list__column--amount {
+    width: 120px;   
+    text-align: center;
+    padding-left:0;
+    padding-right: 0;
+  }
+  .ym-list__column--cta {
     text-align: right;
-    padding: 18px 15px 18px 0;
+    padding-right: 15px;
   }
 }
 
 .table-striped {
+  border: 0 none;
   tbody {
     tr{
       td{
