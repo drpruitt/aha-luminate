@@ -12,7 +12,7 @@ angular.module 'ahaLuminateControllers'
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0]
       $scope.companyProgress = []
       $rootScope.companyName = ''
-      $scope.companyEventDate = ''
+      $scope.eventDate = ''
       $scope.totalTeams = ''
 
       setCompanyFundraisingProgress = (amountRaised, goal) ->
@@ -41,8 +41,9 @@ angular.module 'ahaLuminateControllers'
       getCompanyTotals = ->
         TeamraiserCompanyService.getCompanies 'company_id=' + $scope.companyId, 
             success: (response) ->
-              #console.log response
+              console.log response
               $scope.totalTeams = response.getCompaniesResponse.company.teamCount
+              eventId = response.getCompaniesResponse.company.eventId
               amountRaised = response.getCompaniesResponse.company.amountRaised
               goal = response.getCompaniesResponse.company.goal
               name = response.getCompaniesResponse.company.companyName
@@ -50,17 +51,11 @@ angular.module 'ahaLuminateControllers'
               $rootScope.companyName = name
               setCompanyFundraisingProgress amountRaised, goal
 
-              TeamraiserParticipantService.getParticipants 'first_name=' + encodeURIComponent('%%%') + '&last_name=' + encodeURIComponent('%%%') + '&list_filter_column=reg.cons_id&list_filter_text=' + coordinatorId,
-                error: (response) ->
-                  console.log 'error'
-                  console.log response
-                success: (response) ->
-                  console.log response
-                  #$scope.companyEventDate
+              TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
+                .then (response) ->
+                  $scope.eventDate = response.data.coordinator.event_date
 
       getCompanyTotals()
-
-
 
       $scope.companyTeams = []
       setCompanyTeams = (teams, totalNumber) ->
