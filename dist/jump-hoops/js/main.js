@@ -144,10 +144,10 @@
           }
           return LuminateRESTService.luminateExtendTeamraiserRequest(dataString, false, true, callback);
         },
-        getCoordinatorQuestion: function(coordinatorId, eventId) {
+        getCoordinatorQuestion: function(coordinatorId) {
           return $http({
             method: 'GET',
-            url: 'PageServer?pagename=ym_coordinator_data&pgwrap=n&consId=' + coordinatorId + '&frId=' + eventId
+            url: 'PageServer?pagename=ym_coordinator_data&pgwrap=n&consId=' + coordinatorId + '&frId=2520'
           }).then(function(response) {
             return response;
           });
@@ -192,7 +192,7 @@
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0];
       $scope.companyProgress = [];
       $rootScope.companyName = '';
-      $scope.eventDate = '';
+      $scope.companyEventDate = '';
       $scope.totalTeams = '';
       setCompanyFundraisingProgress = function(amountRaised, goal) {
         $scope.companyProgress.amountRaised = amountRaised;
@@ -226,18 +226,22 @@
       getCompanyTotals = function() {
         return TeamraiserCompanyService.getCompanies('company_id=' + $scope.companyId, {
           success: function(response) {
-            var amountRaised, coordinatorId, eventId, goal, name;
-            console.log(response);
+            var amountRaised, coordinatorId, goal, name;
             $scope.totalTeams = response.getCompaniesResponse.company.teamCount;
-            eventId = response.getCompaniesResponse.company.eventId;
             amountRaised = response.getCompaniesResponse.company.amountRaised;
             goal = response.getCompaniesResponse.company.goal;
             name = response.getCompaniesResponse.company.companyName;
             coordinatorId = response.getCompaniesResponse.company.coordinatorId;
             $rootScope.companyName = name;
             setCompanyFundraisingProgress(amountRaised, goal);
-            return TeamraiserCompanyService.getCoordinatorQuestion(coordinatorId, eventId).then(function(response) {
-              return $scope.eventDate = response.data.coordinator.event_date;
+            return TeamraiserParticipantService.getParticipants('first_name=' + encodeURIComponent('%%%') + '&last_name=' + encodeURIComponent('%%%') + '&list_filter_column=reg.cons_id&list_filter_text=' + coordinatorId, {
+              error: function(response) {
+                console.log('error');
+                return console.log(response);
+              },
+              success: function(response) {
+                return console.log(response);
+              }
             });
           }
         });
@@ -397,22 +401,15 @@
 
   angular.module('ahaLuminateControllers').controller('PersonalPageCtrl', [
     '$scope', '$location', '$filter', '$timeout', 'TeamraiserParticipantService', 'TeamraiserCompanyService', function($scope, $location, $filter, $timeout, TeamraiserParticipantService, TeamraiserCompanyService) {
-      var $dataRoot, $defaultPersonalDonors, $defaultResponsivePersonalDonors, setParticipantProgress;
-      $dataRoot = angular.element('[data-aha-luminate-root]');
+      var $defaultPersonalDonors, $defaultResponsivePersonalDonors, setParticipantProgress;
       $scope.participantId = $location.absUrl().split('px=')[1].split('&')[0];
-      if ($dataRoot.data('company-id') !== '') {
-        $scope.companyId = $dataRoot.data('company-id');
-      }
-      if ($dataRoot.data('team-id') !== '') {
-        $scope.teamId = $dataRoot.data('team-id');
-      }
       $scope.eventDate = '';
       TeamraiserCompanyService.getCompanies('company_id=' + $scope.companyId, {
         success: function(response) {
           var coordinatorId, eventId, ref, ref1;
           coordinatorId = (ref = response.getCompaniesResponse) != null ? ref.company.coordinatorId : void 0;
           eventId = (ref1 = response.getCompaniesResponse) != null ? ref1.company.eventId : void 0;
-          return TeamraiserCompanyService.getCoordinatorQuestion(coordinatorId, eventId).then(function(response) {
+          return TeamraiserCompanyService.getCoordinatorQuestion(coordinatorId).then(function(response) {
             return $scope.eventDate = response.data.coordinator.event_date;
           });
         }

@@ -133,10 +133,10 @@
           }
           return LuminateRESTService.luminateExtendTeamraiserRequest(dataString, false, true, callback);
         },
-        getCoordinatorQuestion: function(coordinatorId, eventId) {
+        getCoordinatorQuestion: function(coordinatorId) {
           return $http({
             method: 'GET',
-            url: 'PageServer?pagename=ym_coordinator_data&pgwrap=n&consId=' + coordinatorId + '&frId=' + eventId
+            url: 'PageServer?pagename=ym_coordinator_data&pgwrap=n&consId=' + coordinatorId + '&frId=2520'
           }).then(function(response) {
             return response;
           });
