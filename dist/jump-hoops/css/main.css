@@ -31,14 +31,18 @@ body {
   font-size: 16px; }
 
 h2 {
-  font-size: 36px; }
+  font-size: 36px;
+  margin-top: 0; }
   @media (max-width: 768px) {
     h2 {
       font-size: 28px; } }
 
-@media (max-width: 768px) {
-  h3 {
-    font-size: 21px; } }
+h3 {
+  font-weight: bold;
+  margin-top: 0; }
+  @media (max-width: 768px) {
+    h3 {
+      font-size: 21px; } }
 
 p {
   line-height: 1.5; }
@@ -766,9 +770,7 @@ body.aha-luminate #at4-soc {
       .ym-page-section__list > div {
         padding: 0 20px; } }
   .ym-page-section__list h3, .ym-page-section__list h2 {
-    color: #fff;
-    font-weight: bold;
-    margin-top: 0; }
+    color: #fff; }
   .ym-page-section__list h2 {
     text-shadow: 2px 2px 1px black;
     text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.85); }
@@ -798,12 +800,22 @@ body.aha-luminate #at4-soc {
     .ym-page-section__roster {
       padding: 25px; } }
   .ym-page-section__roster h3 {
-    font-weight: bold;
     text-align: center;
     margin: 0 0 30px; }
     @media (max-width: 480px) {
       .ym-page-section__roster h3 {
         margin: 0 0 15px; } }
+
+.ym-page-section__sponsor {
+  background: #fff;
+  padding: 0 0 50px;
+  text-align: center; }
+  .ym-page-section__sponsor hr {
+    margin: 0 0 50px; }
+  .ym-page-section__sponsor img {
+    max-width: 100%;
+    margin: auto;
+    display: inline-block; }
 
 .ym-page-section__list {
   background: #91c855; }
