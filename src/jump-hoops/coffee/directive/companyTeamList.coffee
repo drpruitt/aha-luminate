@@ -8,12 +8,3 @@ angular.module 'ahaLuminateApp'
       companyId: '='
       frId: '='
       teams: '='
-    controller: [
-      '$scope'
-      ($scope) ->
-        $scope.companyTeamSearch = 
-          team_name: ''
-        
-        $scope.toggleCompanyTeamList = ->
-          $scope.isOpen = !$scope.isOpen
-    ]

@@ -572,17 +572,7 @@
         companyId: '=',
         frId: '=',
         teams: '='
-      },
-      controller: [
-        '$scope', function($scope) {
-          $scope.companyTeamSearch = {
-            team_name: ''
-          };
-          return $scope.toggleCompanyTeamList = function() {
-            return $scope.isOpen = !$scope.isOpen;
-          };
-        }
-      ]
+      }
     };
   });
 
