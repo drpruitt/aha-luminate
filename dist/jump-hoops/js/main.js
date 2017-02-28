@@ -187,11 +187,11 @@
   ]);
 
   angular.module('ahaLuminateControllers').controller('CompanyPageCtrl', [
-    '$scope', '$location', '$filter', '$timeout', 'TeamraiserCompanyService', 'TeamraiserTeamService', 'TeamraiserParticipantService', function($scope, $location, $filter, $timeout, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService) {
+    '$scope', '$rootScope', '$location', '$filter', '$timeout', 'TeamraiserCompanyService', 'TeamraiserTeamService', 'TeamraiserParticipantService', function($scope, $location, $filter, $timeout, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService) {
       var getCompanyParticipants, getCompanyTeams, getCompanyTotals, setCompanyFundraisingProgress, setCompanyParticipants, setCompanyTeams;
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0];
       $scope.companyProgress = [];
-      $scope.companyName = '';
+      $rootScope.companyName = '';
       $scope.companyEventDate = '';
       $scope.totalTeams = '';
       setCompanyFundraisingProgress = function(amountRaised, goal) {
@@ -233,7 +233,7 @@
             goal = response.getCompaniesResponse.company.goal;
             name = response.getCompaniesResponse.company.companyName;
             coordinatorId = response.getCompaniesResponse.company.coordinatorId;
-            $scope.companyName = name;
+            $rootScope.companyName = name;
             setCompanyFundraisingProgress(amountRaised, goal);
             TeamraiserParticipantService.getParticipants('first_name=' + encodeURIComponent('%%%') + '&last_name=' + encodeURIComponent('%%%') + '&list_filter_column=reg.cons_id&list_filter_text=' + coordinatorId, {
               error: function(response) {
@@ -245,7 +245,7 @@
                 return console.log(response);
               }
             });
-            return console.log('test=' + $scope.companyName);
+            return console.log('test=' + $rootScope.companyName);
           }
         });
       };
