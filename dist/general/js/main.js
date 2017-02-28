@@ -136,7 +136,7 @@
         getCoordinatorQuestion: function(coordinatorId) {
           return $http({
             method: 'GET',
-            url: 'PageServer?pagename=ym_coordinator_data&pgwrap=n&consId=' + coordinatorId + 'frId=2520'
+            url: 'PageServer?pagename=ym_coordinator_data&pgwrap=n&consId=' + coordinatorId + '&frId=2520'
           }).then(function(response) {
             return response;
           });

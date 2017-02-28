@@ -147,7 +147,7 @@
         getCoordinatorQuestion: function(coordinatorId) {
           return $http({
             method: 'GET',
-            url: 'PageServer?pagename=ym_coordinator_data&pgwrap=n&consId=' + coordinatorId + 'frId=2520'
+            url: 'PageServer?pagename=ym_coordinator_data&pgwrap=n&consId=' + coordinatorId + '&frId=2520'
           }).then(function(response) {
             return response;
           });
@@ -401,26 +401,16 @@
 
   angular.module('ahaLuminateControllers').controller('PersonalPageCtrl', [
     '$scope', '$location', '$filter', '$timeout', 'TeamraiserParticipantService', 'TeamraiserCompanyService', function($scope, $location, $filter, $timeout, TeamraiserParticipantService, TeamraiserCompanyService) {
-      var $dataRoot, $defaultPersonalDonors, $defaultResponsivePersonalDonors, setParticipantProgress;
-      $dataRoot = angular.element('[data-aha-luminate-root]');
+      var $defaultPersonalDonors, $defaultResponsivePersonalDonors, setParticipantProgress;
       $scope.participantId = $location.absUrl().split('px=')[1].split('&')[0];
-      if ($dataRoot.data('company-id') !== '') {
-        $scope.companyId = $dataRoot.data('company-id');
-      }
-      if ($dataRoot.data('team-id') !== '') {
-        $scope.teamId = $dataRoot.data('team-id');
-      }
+      $scope.eventDate = '';
       TeamraiserCompanyService.getCompanies('company_id=' + $scope.companyId, {
-        error: function() {
-          return console.log('error');
-        },
         success: function(response) {
           var coordinatorId, eventId, ref, ref1;
-          console.log(response);
           coordinatorId = (ref = response.getCompaniesResponse) != null ? ref.company.coordinatorId : void 0;
           eventId = (ref1 = response.getCompaniesResponse) != null ? ref1.company.eventId : void 0;
           return TeamraiserCompanyService.getCoordinatorQuestion(coordinatorId).then(function(response) {
-            return console.log(response);
+            return $scope.eventDate = response.data.coordinator.event_date;
           });
         }
       });

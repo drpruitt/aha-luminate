@@ -16,7 +16,7 @@ angular.module 'ahaLuminateApp'
       getCoordinatorQuestion: (coordinatorId) ->
         $http
           method: 'GET'
-          url: 'PageServer?pagename=ym_coordinator_data&pgwrap=n&consId='+coordinatorId+'frId=2520'
+          url: 'PageServer?pagename=ym_coordinator_data&pgwrap=n&consId='+coordinatorId+'&frId=2520'
         .then (response) ->
           response
   ]
