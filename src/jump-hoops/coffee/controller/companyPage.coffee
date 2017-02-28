@@ -8,7 +8,7 @@ angular.module 'ahaLuminateControllers'
     'TeamraiserCompanyService'
     'TeamraiserTeamService'
     'TeamraiserParticipantService'
-    ($scope, $location, $filter, $timeout, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService) ->
+    ($scope, $rootScope, $location, $filter, $timeout, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService) ->
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0]
       $scope.companyProgress = []
       $rootScope.companyName = ''
@@ -41,7 +41,7 @@ angular.module 'ahaLuminateControllers'
       getCompanyTotals = ->
         TeamraiserCompanyService.getCompanies 'company_id=' + $scope.companyId, 
             success: (response) ->
-              console.log response
+              #console.log response
               $scope.totalTeams = response.getCompaniesResponse.company.teamCount
               amountRaised = response.getCompaniesResponse.company.amountRaised
               goal = response.getCompaniesResponse.company.goal
@@ -55,8 +55,7 @@ angular.module 'ahaLuminateControllers'
                   console.log 'error'
                   console.log response
                 success: (response) ->
-                  console.log 'sucess'
-                  console.log response
+                  #console.log response
                   #$scope.companyEventDate
 
 
