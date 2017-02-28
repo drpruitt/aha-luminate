@@ -308,15 +308,32 @@ a.btn {
   width: 10%;
   text-align: right; }
 
-.ym-stripe-list {
+.ym-stripe-list__header {
+  border-bottom: 7px solid #6153a3; }
+
+.pg-company .table {
   max-width: 970px;
   margin: auto; }
 
-.ym-stripe-list__column {
-  display: table-cell; }
+.pg-company .ym-list__column--name {
+  width: 43%; }
 
-.ym-stripe-list__header {
-  border-bottom: 7px solid #6153a3; }
+.pg-company .ym-list__column--amount {
+  text-align: center; }
+
+.pg-company .ym-list__column--cta {
+  text-align: right; }
+
+.table-striped tbody tr td {
+  vertical-align: middle;
+  padding: 18px 5px; }
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #d3e9bb; }
+
+.table-striped tbody td {
+  border-top: 0;
+  border-bottom: 1px solid #91c855; }
 
 .ym-badges {
   text-align: center;

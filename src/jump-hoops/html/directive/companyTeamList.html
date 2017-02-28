@@ -1,24 +1,24 @@
-<table class="table table-responsive table-striped ym-stripe-list ym-stripe-list--team-list">
-  <thead class="ym-stripe-list__header">
-    <th class="ym-stripe-list__column ym-stripe-list__column--name">
+<table class="table table-responsive table-striped ym-list ym-list--team-list">
+  <thead class="ym-list__header">
+    <th class="ym-list__column ym-list__column--name">
       Name
     </th>
-    <th class="ym-stripe-list__column ym-stripe-list__column--amount">
+    <th class="ym-list__column ym-list__column--amount hidden-xs">
       Amount Raised
     </th>
-    <th class="ym-stripe-list__column ym-stripe-list__column--cta">
+    <th class="ym-list__column ym-list__column--cta">
       Action
     </th>
   </thead>
   <tbody>
-    <tr class="ym-stripe-list__row" ng-repeat="team in teams">
-      <td class="ym-stripe-list__column ym-stripe-list__column--name">
+    <tr class="ym-list__row" ng-repeat="team in teams">
+      <td class="ym-list__column ym-list__column--name">
         <a ng-href="TR?fr_id={{team.EventId}}&amp;pg=team&amp;team_id={{team.id}}">{{team.name}}</a>
       </td>
-      <td class="ym-stripe-list__column ym-stripe-list__column--amount hidden-xs">
+      <td class="ym-list__column ym-list__column--amount hidden-xs">
         <strong>{{team.amountRaisedFormatted}}</strong>
       </td>
-      <td class="ym-stripe-list__column ym-stripe-list__column--cta">
+      <td class="ym-list__column ym-list__column--cta">
         <a class="btn btn-primary btn-sm" ng-href="{{team.joinTeamURL}}" ng-if="team.joinTeamURL">Join Team</a>
       </td>
     </tr>
