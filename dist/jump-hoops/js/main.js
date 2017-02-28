@@ -234,14 +234,15 @@
             coordinatorId = response.getCompaniesResponse.company.coordinatorId;
             $rootScope.companyName = name;
             setCompanyFundraisingProgress(amountRaised, goal);
-            TeamraiserParticipantService.getParticipants('first_name=' + encodeURIComponent('%%%') + '&last_name=' + encodeURIComponent('%%%') + '&list_filter_column=reg.cons_id&list_filter_text=' + coordinatorId, {
+            return TeamraiserParticipantService.getParticipants('first_name=' + encodeURIComponent('%%%') + '&last_name=' + encodeURIComponent('%%%') + '&list_filter_column=reg.cons_id&list_filter_text=' + coordinatorId, {
               error: function(response) {
                 console.log('error');
                 return console.log(response);
               },
-              success: function(response) {}
+              success: function(response) {
+                return console.log(response);
+              }
             });
-            return console.log('test=' + $rootScope.companyName);
           }
         });
       };

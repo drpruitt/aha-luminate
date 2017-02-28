@@ -55,11 +55,8 @@ angular.module 'ahaLuminateControllers'
                   console.log 'error'
                   console.log response
                 success: (response) ->
-                  #console.log response
+                  console.log response
                   #$scope.companyEventDate
-
-
-              console.log 'test='+$rootScope.companyName
 
       getCompanyTotals()
 
