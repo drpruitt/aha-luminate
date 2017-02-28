@@ -1,4 +1,9 @@
 .table-striped {
+  thead {
+    tr th {
+      border-bottom: 7px solid $event-secondary;
+    }
+  }
   tbody {
     tr:nth-of-type(odd) {
       background-color: $event-accent-light;

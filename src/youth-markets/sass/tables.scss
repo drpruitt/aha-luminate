@@ -6,11 +6,9 @@
   .ym-list__column--name {
     width: 43%;
   }
-  .ym-list__column--amount {
-    text-align: center;
-  }
-  .ym-list__column--cta {
+  td.ym-list__column--cta {
     text-align: right;
+    padding: 18px 15px 18px 0;
   }
 }
 
@@ -19,7 +17,7 @@
     tr{
       td{
         vertical-align: middle;
-        padding: 18px 5px;
+        padding: 18px 0 18px 15px;
       }
     }
   }

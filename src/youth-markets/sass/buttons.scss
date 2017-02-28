@@ -61,10 +61,10 @@ a.btn-md {
   &:link, 
   &:visited {
     border-radius: 10px;
-    @include button-size(6px, $padding-base-horizontal, 16px);
+    @include button-size(7px, $padding-base-horizontal, 16px);
 
     @media (max-width: $screen-sm){
-      @include button-size(6px, $padding-base-horizontal, 14px);
+      @include button-size(7px, $padding-base-horizontal, 14px);
     }
   }
 }

@@ -213,7 +213,7 @@ a.btn-md:visited {
   a.btn-md:visited,
   a.btn-md:visited:link,
   a.btn-md:visited:visited {
-    padding: 6px 24px;
+    padding: 7px 24px;
     font-size: 16px; }
   @media (max-width: 768px) {
     .btn-md, .btn-md:link, .btn-md:visited, .btn-md:link, .btn-md:link:link, .btn-md:link:visited, .btn-md:visited, .btn-md:visited:link, .btn-md:visited:visited,
@@ -226,7 +226,7 @@ a.btn-md:visited {
     a.btn-md:visited,
     a.btn-md:visited:link,
     a.btn-md:visited:visited {
-      padding: 6px 24px;
+      padding: 7px 24px;
       font-size: 14px; } }
 
 .btn-lg, .btn-lg:link, .btn-lg:visited,
@@ -318,15 +318,16 @@ a.btn {
 .pg-company .ym-list__column--name {
   width: 43%; }
 
-.pg-company .ym-list__column--amount {
-  text-align: center; }
-
-.pg-company .ym-list__column--cta {
-  text-align: right; }
+.pg-company td.ym-list__column--cta {
+  text-align: right;
+  padding: 18px 15px 18px 0; }
 
 .table-striped tbody tr td {
   vertical-align: middle;
-  padding: 18px 5px; }
+  padding: 18px 0 18px 15px; }
+
+.table-striped thead tr th {
+  border-bottom: 7px solid #6153a3; }
 
 .table-striped tbody tr:nth-of-type(odd) {
   background-color: #d3e9bb; }
