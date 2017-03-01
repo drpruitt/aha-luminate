@@ -396,7 +396,7 @@
   ]);
 
   angular.module('ahaLuminateControllers').controller('PersonalPageCtrl', [
-    '$scope', '$location', '$filter', '$timeout', 'TeamraiserParticipantService', 'TeamraiserCompanyService', function($scope, $location, $filter, $timeout, TeamraiserParticipantService, TeamraiserCompanyService) {
+    '$scope', '$rootScope', '$location', '$filter', '$timeout', 'TeamraiserParticipantService', 'TeamraiserCompanyService', function($scope, $rootScope, $location, $filter, $timeout, TeamraiserParticipantService, TeamraiserCompanyService) {
       var $dataRoot, $defaultPersonalDonors, $defaultResponsivePersonalDonors, setParticipantProgress;
       $dataRoot = angular.element('[data-aha-luminate-root]');
       $scope.participantId = $location.absUrl().split('px=')[1].split('&')[0];
@@ -407,11 +407,14 @@
         $scope.teamId = $dataRoot.data('team-id');
       }
       $scope.eventDate = '';
+      $rootScope.numTeams = '';
       TeamraiserCompanyService.getCompanies('company_id=' + $scope.companyId, {
         success: function(response) {
           var coordinatorId, eventId, ref, ref1;
           coordinatorId = (ref = response.getCompaniesResponse) != null ? ref.company.coordinatorId : void 0;
           eventId = (ref1 = response.getCompaniesResponse) != null ? ref1.company.eventId : void 0;
+          $rootScope.numTeams = response.getCompaniesResponse.company.teamCount;
+          console.log($rootScope.numTeams);
           return TeamraiserCompanyService.getCoordinatorQuestion(coordinatorId, eventId).then(function(response) {
             return $scope.eventDate = response.data.coordinator.event_date;
           });

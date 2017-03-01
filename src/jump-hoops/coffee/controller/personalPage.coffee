@@ -1,22 +1,27 @@
 angular.module 'ahaLuminateControllers'
   .controller 'PersonalPageCtrl', [
     '$scope'
+    '$rootScope'
     '$location'
     '$filter'
     '$timeout'
     'TeamraiserParticipantService'
     'TeamraiserCompanyService'
-    ($scope, $location, $filter, $timeout, TeamraiserParticipantService, TeamraiserCompanyService) ->
+    ($scope, $rootScope, $location, $filter, $timeout, TeamraiserParticipantService, TeamraiserCompanyService) ->
       $dataRoot = angular.element '[data-aha-luminate-root]'
       $scope.participantId = $location.absUrl().split('px=')[1].split('&')[0]
       $scope.companyId = $dataRoot.data('company-id') if $dataRoot.data('company-id') isnt ''
       $scope.teamId = $dataRoot.data('team-id') if $dataRoot.data('team-id') isnt ''
       $scope.eventDate =''
+      $rootScope.numTeams = ''
 
       TeamraiserCompanyService.getCompanies 'company_id=' + $scope.companyId, 
         success: (response) ->
           coordinatorId = response.getCompaniesResponse?.company.coordinatorId
           eventId = response.getCompaniesResponse?.company.eventId
+          $rootScope.numTeams = response.getCompaniesResponse.company.teamCount
+
+          console.log $rootScope.numTeams
 
           TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
             .then (response) ->
