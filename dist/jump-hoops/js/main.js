@@ -194,6 +194,7 @@
       $rootScope.companyName = '';
       $scope.eventDate = '';
       $scope.totalTeams = '';
+      $scope.teamId = '';
       setCompanyFundraisingProgress = function(amountRaised, goal) {
         $scope.companyProgress.amountRaised = amountRaised;
         $scope.companyProgress.amountRaised = Number($scope.companyProgress.amountRaised);
@@ -235,13 +236,14 @@
             coordinatorId = response.getCompaniesResponse.company.coordinatorId;
             $rootScope.companyName = name;
             setCompanyFundraisingProgress(amountRaised, goal);
-            TeamraiserCompanyService.getCoordinatorQuestion(coordinatorId, eventId).then(function(response) {
-              return $scope.eventDate = response.data.coordinator.event_date;
+            return TeamraiserCompanyService.getCoordinatorQuestion(coordinatorId, eventId).then(function(response) {
+              console.log(response);
+              $scope.eventDate = response.data.coordinator.event_date;
+              if ($scope.totalTeams = 1) {
+                $scope.teamId = response.data.coordinator.team_id;
+                return console.log('teamid' + $scope.teamId);
+              }
             });
-            console.log($scope.totalTeams);
-            if ($scope.totalTeams === 1) {
-              return console.log('only 1 team');
-            }
           }
         });
       };

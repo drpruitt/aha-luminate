@@ -12,7 +12,7 @@
           </a>
         </div>
         <div ng-if="totalTeams == 1">
-          <a class="btn btn-primary btn-lg" ng-href="TRR?fr_id=[[S334:fr_id]]&pg=tfind&fr_tm_opt=existing&fr_team_id=177756&company_id=[[S334:company_id]]">
+          <a class="btn btn-primary btn-lg" ng-href="TRR?fr_id=[[S334:fr_id]]&pg=tfind&fr_tm_opt=existing&fr_team_id={{teamId}}&company_id=[[S334:company_id]]">
             Join Team
           </a>
           <a class="btn btn-primary btn-lg" ng-href="#" data-toggle="modal" data-target="#schoolDonation">
@@ -93,7 +93,9 @@
           <h3 class="modal-title">Donate</h3>
           <p>If you'd like to donate directly to an individual, ask them (or their parent/guardian) to send you a donation request email containing a link to their secure personal fundraising page.</p>
           <p>You can also make a general donation to a school:</p>
-          <button type="submit" class="btn btn-primary btn-lg" href="donate-participant.html">Donate to Our School</button>
+          <span ng-bind-html="teamId"></span>
+          <p>{{teamId}}</p>
+          <button type="submit" class="btn btn-primary btn-lg" ng-href="Donation2?df_id=[[E42:[[S334:fr_id]]:form-id]]&FR_ID=[[S334:fr_id]]&PROXY_ID={{teamId}}&PROXY_TYPE=22">Donate to Our School</button>
         </div>
       </div>
     </div>
