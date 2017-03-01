@@ -8,7 +8,6 @@ a.btn {
   &:hover, 
   &:focus, 
   &:active {
-    border-radius: 0;
     border-width: 0;
     font-family: inherit;
     font-weight: 600;
@@ -29,6 +28,7 @@ span.btn {
 
 .btn-global-primary, 
 a.btn-global-primary {
+  border-radius: 0;
   @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border, $btn-primary-color, $btn-primary-darker-bg, $btn-primary-darker-border);
   
   &, 

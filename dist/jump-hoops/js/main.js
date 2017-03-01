@@ -227,7 +227,6 @@
         return TeamraiserCompanyService.getCompanies('company_id=' + $scope.companyId, {
           success: function(response) {
             var amountRaised, coordinatorId, eventId, goal, name;
-            console.log(response);
             $scope.totalTeams = response.getCompaniesResponse.company.teamCount;
             eventId = response.getCompaniesResponse.company.eventId;
             amountRaised = response.getCompaniesResponse.company.amountRaised;
@@ -239,6 +238,7 @@
             TeamraiserCompanyService.getCoordinatorQuestion(coordinatorId, eventId).then(function(response) {
               return $scope.eventDate = response.data.coordinator.event_date;
             });
+            console.log($scope.totalTeams);
             if ($scope.totalTeams === 1) {
               return console.log('only 1 team');
             }

@@ -41,7 +41,7 @@ angular.module 'ahaLuminateControllers'
       getCompanyTotals = ->
         TeamraiserCompanyService.getCompanies 'company_id=' + $scope.companyId, 
             success: (response) ->
-              console.log response
+              #console.log response
               $scope.totalTeams = response.getCompaniesResponse.company.teamCount
               eventId = response.getCompaniesResponse.company.eventId
               amountRaised = response.getCompaniesResponse.company.amountRaised
@@ -55,6 +55,7 @@ angular.module 'ahaLuminateControllers'
                 .then (response) ->
                   $scope.eventDate = response.data.coordinator.event_date
 
+              console.log $scope.totalTeams
               if $scope.totalTeams == 1
                 console.log 'only 1 team'
                 
