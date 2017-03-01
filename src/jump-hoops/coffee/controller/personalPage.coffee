@@ -21,8 +21,6 @@ angular.module 'ahaLuminateControllers'
           eventId = response.getCompaniesResponse?.company.eventId
           $rootScope.numTeams = response.getCompaniesResponse.company.teamCount
 
-          console.log $rootScope.numTeams
-
           TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
             .then (response) ->
               $scope.eventDate = response.data.coordinator.event_date

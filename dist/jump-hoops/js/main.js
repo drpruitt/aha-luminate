@@ -414,7 +414,6 @@
           coordinatorId = (ref = response.getCompaniesResponse) != null ? ref.company.coordinatorId : void 0;
           eventId = (ref1 = response.getCompaniesResponse) != null ? ref1.company.eventId : void 0;
           $rootScope.numTeams = response.getCompaniesResponse.company.teamCount;
-          console.log($rootScope.numTeams);
           return TeamraiserCompanyService.getCoordinatorQuestion(coordinatorId, eventId).then(function(response) {
             return $scope.eventDate = response.data.coordinator.event_date;
           });
