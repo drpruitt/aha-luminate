@@ -11,8 +11,8 @@
             Join Team
           </a>
         </div>
-        <div ng-if="totalTeams === 1">
-          <a class="btn btn-primary btn-lg" ng-href="TRR?fr_id=[[S334:fr_id]]&pg=tfind&fr_tm_opt=existing&fr_team_id=&company_id=[[S334:company_id]]">
+        <div ng-if="totalTeams == 1">
+          <a class="btn btn-primary btn-lg" ng-href="TRR?fr_id=[[S334:fr_id]]&pg=tfind&fr_tm_opt=existing&fr_team_id=177756&company_id=[[S334:company_id]]">
             Join Team
           </a>
           <a class="btn btn-primary btn-lg" ng-href="#" data-toggle="modal" data-target="#schoolDonation">
@@ -85,7 +85,7 @@
     <h3>Our Teams</h3>
     <company-team-list company-id="'[[T6:[[S334:company_id]]]]'" teams="companyTeams.teams"></company-team-list>     
   </div>
-  <div ng-if="totalTeams === 1" class="modal fade" id="schoolDonation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div ng-if="totalTeams == 1" class="modal fade" id="schoolDonation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
       <div class="modal-content">                    
         <div class="modal-body text-center">
