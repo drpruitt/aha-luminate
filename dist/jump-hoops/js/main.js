@@ -237,11 +237,9 @@
             $rootScope.companyName = name;
             setCompanyFundraisingProgress(amountRaised, goal);
             return TeamraiserCompanyService.getCoordinatorQuestion(coordinatorId, eventId).then(function(response) {
-              console.log(response);
               $scope.eventDate = response.data.coordinator.event_date;
               if ($scope.totalTeams = 1) {
-                $scope.teamId = response.data.coordinator.team_id;
-                return console.log('teamid' + $scope.teamId);
+                return $scope.teamId = response.data.coordinator.team_id;
               }
             });
           }

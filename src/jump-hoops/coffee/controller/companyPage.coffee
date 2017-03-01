@@ -53,16 +53,12 @@ angular.module 'ahaLuminateControllers'
 
               TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
                 .then (response) ->
-                  console.log response
                   $scope.eventDate = response.data.coordinator.event_date
 
                   if $scope.totalTeams = 1
                     $scope.teamId = response.data.coordinator.team_id
-                    console.log 'teamid'+$scope.teamId 
 
       getCompanyTotals()
-
-           
 
       $scope.companyTeams = []
       setCompanyTeams = (teams, totalNumber) ->
