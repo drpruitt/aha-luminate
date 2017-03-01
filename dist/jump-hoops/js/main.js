@@ -236,9 +236,12 @@
             coordinatorId = response.getCompaniesResponse.company.coordinatorId;
             $rootScope.companyName = name;
             setCompanyFundraisingProgress(amountRaised, goal);
-            return TeamraiserCompanyService.getCoordinatorQuestion(coordinatorId, eventId).then(function(response) {
+            TeamraiserCompanyService.getCoordinatorQuestion(coordinatorId, eventId).then(function(response) {
               return $scope.eventDate = response.data.coordinator.event_date;
             });
+            if ($scope.totalTeams === 1) {
+              return console.log('only 1 team');
+            }
           }
         });
       };
