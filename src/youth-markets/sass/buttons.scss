@@ -81,8 +81,8 @@ a.btn-lg {
     text-align: center;
 
     @media (max-width: $screen-sm){
-      @include button-size(10px, $padding-base-horizontal, 14px);
-      min-width: 180px;
+      @include button-size(10px, 12px, 14px);
+      min-width: 120px;
     }
   }
 }
