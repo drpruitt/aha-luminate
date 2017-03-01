@@ -42,8 +42,8 @@
       });
     }
     if (typeof tr_status != "undefined") {
-       if (tr_status == 1) {
-         jQuery('[href*=heartwalk_register]').hide();
+       if (tr_status != 2) {
+         jQuery('[href*=heartwalk_register], a#personal_page_join_team_button, a[href*=fr_tjoin]').hide();
        }
     }
   });
