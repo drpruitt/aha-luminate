@@ -259,6 +259,7 @@
         return TeamraiserTeamService.getTeams('team_company_id=' + $scope.companyId, {
           success: function(response) {
             var companyTeams, totalNumberTeams;
+            console.log(response);
             setCompanyTeams();
             companyTeams = response.getTeamSearchByInfoResponse.team;
             if (companyTeams) {
@@ -275,6 +276,7 @@
                 }
               });
               totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults;
+              console.log(totalNumberTeams);
               return setCompanyTeams(companyTeams, totalNumberTeams);
             }
           }
@@ -326,7 +328,8 @@
           }
         });
       };
-      return getCompanyParticipants();
+      getCompanyParticipants();
+      return console.log('totalteams=' + $scope.totalTeams);
     }
   ]);
 

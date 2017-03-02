@@ -71,6 +71,7 @@ angular.module 'ahaLuminateControllers'
       getCompanyTeams = ->
         TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId,
           success: (response) ->
+            console.log response
             setCompanyTeams()
             companyTeams = response.getTeamSearchByInfoResponse.team
             if companyTeams
@@ -82,6 +83,7 @@ angular.module 'ahaLuminateControllers'
                 if joinTeamURL
                   companyTeam.joinTeamURL = joinTeamURL.split('/site/')[1]
               totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults
+              console.log totalNumberTeams
               setCompanyTeams companyTeams, totalNumberTeams
 
       getCompanyTeams()
@@ -119,6 +121,9 @@ angular.module 'ahaLuminateControllers'
                 totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
                 setCompanyParticipants companyParticipants, totalNumberParticipants
       getCompanyParticipants()
+
+
+      console.log 'totalteams='+$scope.totalTeams
 
 
 
