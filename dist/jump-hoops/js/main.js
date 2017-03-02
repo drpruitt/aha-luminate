@@ -532,6 +532,12 @@
     }
   ]);
 
+  angular.module('ahaLuminateControllers').controller('SchoolSearchCtrl', [
+    '$scope', '$location', function($scope, $location) {
+      return console.log('hello');
+    }
+  ]);
+
   angular.module('ahaLuminateControllers').controller('TeamPageCtrl', [
     '$scope', '$location', function($scope, $location) {
       return $scope.teamId = $location.absUrl().split('team_id=')[1].split('&')[0];
