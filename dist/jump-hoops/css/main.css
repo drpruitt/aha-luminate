@@ -677,6 +677,19 @@ body.aha-luminate #at4-soc {
       padding: 28px;
       margin: -50px 0 0; } }
 
+.cms .ym-page-content {
+  padding: 0;
+  margin: 18px 0 0; }
+  @media (min-width: 768px) {
+    .cms .ym-page-content {
+      padding: 0;
+      margin: -35px 0 0; } }
+  .cms .ym-page-content > .container {
+    padding: 10px; }
+    @media (min-width: 768px) {
+      .cms .ym-page-content > .container {
+        padding: 28px; } }
+
 @media (min-width: 992px) {
   .ym-page-section__top {
     display: -webkit-flex;

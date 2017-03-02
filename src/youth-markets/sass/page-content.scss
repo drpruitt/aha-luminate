@@ -12,6 +12,27 @@
   }
 }
 
+.cms {
+  .ym-page-content {
+    padding: 0;
+    margin: 18px 0 0;
+
+    @media (min-width:$screen-sm-min){
+      padding: 0;
+      margin: -35px 0 0;
+    }
+  
+    > .container {
+      padding: 10px;
+
+      @media (min-width: $screen-sm-min){
+        padding: 28px;
+      }
+    }
+  }
+
+}
+
 .ym-page-section__top {
   @media (min-width: $screen-md-min) {
     display: flex;
