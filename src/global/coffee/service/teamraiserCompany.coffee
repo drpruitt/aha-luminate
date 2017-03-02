@@ -19,4 +19,11 @@ angular.module 'ahaLuminateApp'
           url: 'PageServer?pagename=ym_coordinator_data&pgwrap=n&consId='+coordinatorId+'&frId='+eventId
         .then (response) ->
           response
+
+      getSchools: (name) ->
+        $http
+          method: 'GET'
+          url: 'PageServer?pagename=jump_hoops_school_search&pgwrap=n&name='+name
+        .then (response) ->
+          response
   ]

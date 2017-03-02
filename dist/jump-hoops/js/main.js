@@ -151,6 +151,14 @@
           }).then(function(response) {
             return response;
           });
+        },
+        getSchools: function(name) {
+          return $http({
+            method: 'GET',
+            url: 'PageServer?pagename=jump_hoops_school_search&pgwrap=n&name=' + name
+          }).then(function(response) {
+            return response;
+          });
         }
       };
     }
@@ -534,7 +542,13 @@
 
   angular.module('ahaLuminateControllers').controller('SchoolSearchCtrl', [
     '$scope', '$rootScope', '$location', function($scope, $rootScope, $location) {
-      return console.log('hello');
+      var name;
+      console.log('hello');
+      name = 'BB';
+      return TeamraiserCompanyService.getSchools(name).then(function(response) {
+        console.log('get school');
+        return console.log(response);
+      });
     }
   ]);
 
