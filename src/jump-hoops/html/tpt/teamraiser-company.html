@@ -6,14 +6,13 @@
     <div class="col-md-6 ym-progress">
       <h3 class="ym-progress__title">[[C1:title]]</h3>
       <div class="ym-progress__cta"> 
-        {{totalTeams}}
-        {{companyTeams.totalNumber}}
-        <div ng-if="totalTeams > 1">
+        
+        <div ng-if="companyTeams.totalNumber > 1">
           <a class="btn btn-primary btn-lg" ng-href="TRR?fr_id=[[S334:fr_id]]&pg=tfind&fr_tm_opt=existing&company_id=[[S334:company_id]]">
             Join Team
           </a>
         </div>
-        <div ng-if="totalTeams == 1">
+        <div ng-if="companyTeams.totalNumber == 1">
           <a class="btn btn-primary btn-lg" ng-href="TRR?fr_id=[[S334:fr_id]]&pg=tfind&fr_tm_opt=existing&fr_team_id={{teamId}}&company_id=[[S334:company_id]]">
             Join Team
           </a>
@@ -83,11 +82,11 @@
     </div>
     <div class="clearfix"></div>
   </div>
-  <div class="ym-page-section ym-page-section__roster" ng-if="totalTeams > 1">
+  <div class="ym-page-section ym-page-section__roster" ng-if="companyTeams.totalNumber > 1">
     <h3>Our Teams</h3>
     <company-team-list company-id="'[[T6:[[S334:company_id]]]]'" teams="companyTeams.teams"></company-team-list>     
   </div>
-  <div ng-if="totalTeams == 1" class="modal fade" id="schoolDonation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div ng-if="companyTeams.totalNumber == 1" class="modal fade" id="schoolDonation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
       <div class="modal-content">                    
         <div class="modal-body text-center">
