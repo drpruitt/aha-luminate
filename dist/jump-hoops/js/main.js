@@ -155,7 +155,7 @@
         getSchools: function(name) {
           return $http({
             method: 'GET',
-            url: 'PageServer?pagename=jump_hoops_school_search&pgwrap=n&name=' + name
+            url: 'http://heart.pub30.convio.net/jump-hoops/school-search.html?name=' + name
           }).then(function(response) {
             return response;
           });
@@ -541,9 +541,9 @@
   ]);
 
   angular.module('ahaLuminateControllers').controller('SchoolSearchCtrl', [
-    '$scope', '$rootScope', 'TeamraiserCompanyService', function($scope, $rootScope, $TeamraiserCompanyService) {
+    '$scope', '$rootScope', 'TeamraiserCompanyService', function($scope, $rootScope, TeamraiserCompanyService) {
       var name;
-      console.log('hello');
+      console.log('hello oooo');
       name = 'BB';
       return TeamraiserCompanyService.getSchools(name).then(function(response) {
         console.log('get school');

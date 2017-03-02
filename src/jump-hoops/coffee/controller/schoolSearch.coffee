@@ -3,8 +3,8 @@ angular.module 'ahaLuminateControllers'
     '$scope'
     '$rootScope'
     'TeamraiserCompanyService'
-    ($scope, $rootScope, $TeamraiserCompanyService) ->
-      console.log 'hello'
+    ($scope, $rootScope, TeamraiserCompanyService) ->
+      console.log 'hello oooo'
 
       name = 'BB'
 

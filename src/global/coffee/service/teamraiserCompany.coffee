@@ -23,7 +23,7 @@ angular.module 'ahaLuminateApp'
       getSchools: (name) ->
         $http
           method: 'GET'
-          url: 'PageServer?pagename=jump_hoops_school_search&pgwrap=n&name='+name
+          url: 'http://heart.pub30.convio.net/jump-hoops/school-search.html?name='+name
         .then (response) ->
           response
   ]
