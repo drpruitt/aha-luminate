@@ -65,6 +65,7 @@ angular.module 'ahaLuminateControllers'
         $scope.companyTeams.teams = teams or []
         totalNumber = totalNumber or 0
         $scope.companyTeams.totalNumber = Number totalNumber
+        $scope.totalTeams = totalNumber
         if not $scope.$$phase
           $scope.$apply()
 
@@ -83,8 +84,8 @@ angular.module 'ahaLuminateControllers'
                 if joinTeamURL
                   companyTeam.joinTeamURL = joinTeamURL.split('/site/')[1]
               totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults
-              console.log totalNumberTeams
               setCompanyTeams companyTeams, totalNumberTeams
+              console.log 'totalteams'+$scope.totalTeams
 
       getCompanyTeams()
 
@@ -123,7 +124,7 @@ angular.module 'ahaLuminateControllers'
       getCompanyParticipants()
 
 
-      console.log 'totalteams='+$scope.totalTeams
+      
 
 
 

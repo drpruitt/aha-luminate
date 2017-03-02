@@ -1,12 +1,13 @@
 <div ng-controller="CompanyPageCtrl">
   <div class="ym-page-section ym-page-section__top">
     <div class="col-md-6 ym-user-image" style="background-image:url('[[C4:responsive_company_logo]]');">
-        <img class="hidden-md" src="[[C4:responsive_company_logo]]" alt="[[C1:photo1_text]]" />
+        <img class="hidden-md hidden-lg" src="[[C4:responsive_company_logo]]" alt="[[C1:photo1_text]]" />
     </div>
     <div class="col-md-6 ym-progress">
       <h3 class="ym-progress__title">[[C1:title]]</h3>
       <div class="ym-progress__cta"> 
         {{totalTeams}}
+        {{companyTeams.totalNumber}}
         <div ng-if="totalTeams > 1">
           <a class="btn btn-primary btn-lg" ng-href="TRR?fr_id=[[S334:fr_id]]&pg=tfind&fr_tm_opt=existing&company_id=[[S334:company_id]]">
             Join Team

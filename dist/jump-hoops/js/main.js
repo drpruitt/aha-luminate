@@ -251,6 +251,7 @@
         $scope.companyTeams.teams = teams || [];
         totalNumber = totalNumber || 0;
         $scope.companyTeams.totalNumber = Number(totalNumber);
+        $scope.totalTeams = totalNumber;
         if (!$scope.$$phase) {
           return $scope.$apply();
         }
@@ -276,8 +277,8 @@
                 }
               });
               totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults;
-              console.log(totalNumberTeams);
-              return setCompanyTeams(companyTeams, totalNumberTeams);
+              setCompanyTeams(companyTeams, totalNumberTeams);
+              return console.log('totalteams' + $scope.totalTeams);
             }
           }
         });
@@ -328,8 +329,7 @@
           }
         });
       };
-      getCompanyParticipants();
-      return console.log('totalteams=' + $scope.totalTeams);
+      return getCompanyParticipants();
     }
   ]);
 
