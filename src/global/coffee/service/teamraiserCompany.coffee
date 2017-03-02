@@ -2,7 +2,8 @@ angular.module 'ahaLuminateApp'
   .factory 'TeamraiserCompanyService', [
     'LuminateRESTService'
     '$http'
-    (LuminateRESTService, $http) ->
+    '$sce'
+    (LuminateRESTService, $http, $sce) ->
       getCompanies: (requestData, callback) ->
         dataString = 'method=getCompaniesByInfo'
         dataString += '&' + requestData if requestData and requestData isnt ''
@@ -21,9 +22,9 @@ angular.module 'ahaLuminateApp'
           response
 
       getSchools: (name) ->
-        $http
-          method: 'GET'
-          url: 'http://heart.pub30.convio.net/jump-hoops/school-search.html?name='+name
+        url = 'http://www2.heart.org/site/PageServer?pagename=jump_hoops_school_search&pgwrap=n&name='+name
+        urlSCE = $sce.trustAsResourceUrl(url)
+        $http.jsonp urlSCE, {jsonpCallbackParam: 'callback'}
         .then (response) ->
           response
   ]

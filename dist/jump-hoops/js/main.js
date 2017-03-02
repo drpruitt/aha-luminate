@@ -126,7 +126,7 @@
   ]);
 
   angular.module('ahaLuminateApp').factory('TeamraiserCompanyService', [
-    'LuminateRESTService', '$http', function(LuminateRESTService, $http) {
+    'LuminateRESTService', '$http', '$sce', function(LuminateRESTService, $http, $sce) {
       return {
         getCompanies: function(requestData, callback) {
           var dataString;
@@ -153,9 +153,11 @@
           });
         },
         getSchools: function(name) {
-          return $http({
-            method: 'GET',
-            url: 'http://heart.pub30.convio.net/jump-hoops/school-search.html?name=' + name
+          var url, urlSCE;
+          url = 'http://www2.heart.org/site/PageServer?pagename=jump_hoops_school_search&pgwrap=n&name=' + name;
+          urlSCE = $sce.trustAsResourceUrl(url);
+          return $http.jsonp(urlSCE, {
+            jsonpCallbackParam: 'callback'
           }).then(function(response) {
             return response;
           });
@@ -543,8 +545,8 @@
   angular.module('ahaLuminateControllers').controller('SchoolSearchCtrl', [
     '$scope', '$rootScope', 'TeamraiserCompanyService', function($scope, $rootScope, TeamraiserCompanyService) {
       var name;
-      console.log('hello oooo');
-      name = 'BB';
+      name = 'Black';
+      console.log(name);
       return TeamraiserCompanyService.getSchools(name).then(function(response) {
         console.log('get school');
         return console.log(response);
