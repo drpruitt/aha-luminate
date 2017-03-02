@@ -541,7 +541,7 @@
   ]);
 
   angular.module('ahaLuminateControllers').controller('SchoolSearchCtrl', [
-    '$scope', '$rootScope', '$location', function($scope, $rootScope, $location) {
+    '$scope', '$rootScope', 'TeamraiserCompanyService', function($scope, $rootScope, $TeamraiserCompanyService) {
       var name;
       console.log('hello');
       name = 'BB';

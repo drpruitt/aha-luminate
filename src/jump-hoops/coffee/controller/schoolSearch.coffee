@@ -2,8 +2,8 @@ angular.module 'ahaLuminateControllers'
   .controller 'SchoolSearchCtrl', [
     '$scope'
     '$rootScope'
-    '$location'
-    ($scope, $rootScope, $location) ->
+    'TeamraiserCompanyService'
+    ($scope, $rootScope, $TeamraiserCompanyService) ->
       console.log 'hello'
 
       name = 'BB'
