@@ -1,7 +1,9 @@
 angular.module 'ahaLuminateControllers'
   .controller 'SchoolSearchCtrl', [
     '$scope'
+    '$rootScope'
     '$location'
-    ($scope, $location) ->
+    ($scope, $rootScope, $location) ->
       console.log 'hello'
+
   ]

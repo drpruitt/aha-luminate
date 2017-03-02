@@ -533,7 +533,7 @@
   ]);
 
   angular.module('ahaLuminateControllers').controller('SchoolSearchCtrl', [
-    '$scope', '$location', function($scope, $location) {
+    '$scope', '$rootScope', '$location', function($scope, $rootScope, $location) {
       return console.log('hello');
     }
   ]);
