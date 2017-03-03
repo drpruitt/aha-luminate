@@ -1,0 +1,16 @@
+div.responsive {
+  input[type="text"],
+  select {
+    border-color: $event-secondary;
+  }
+}
+
+[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before {
+  border-color: $event-secondary;
+}
+
+[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after {
+  color: $event-primary;
+}

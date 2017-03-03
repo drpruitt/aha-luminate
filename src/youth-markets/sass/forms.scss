@@ -1,0 +1,56 @@
+div.responsive {
+  input[type="text"],
+  select {
+    padding: 10px;
+    border-radius: 7px;
+  }
+}
+label {
+  font-weight: 500;
+}
+
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px;
+}
+[type="checkbox"]:not(:checked) + label,
+[type="checkbox"]:checked + label {
+  position: relative;
+  padding-left: 25px;
+  cursor: pointer;
+}
+
+[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before {
+  content: '';
+  position: absolute;
+  left: 0; 
+  top: 0;
+  width: 20px; 
+  height: 20px;
+  border: 1px solid;
+  background: #fff;
+  border-radius: 3px;
+}
+
+[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after {
+  content: '\f00c';
+  font-family: 'FontAwesome';
+  position: absolute;
+  top: .15em; 
+  left: .1em;
+  font-size: 1.1em;
+  line-height: 0.8;
+  transition: all .2s;
+}
+
+[type="checkbox"]:not(:checked) + label:after {
+  opacity: 0;
+  transform: scale(0);
+}
+[type="checkbox"]:checked + label:after {
+  opacity: 1;
+  transform: scale(1);
+}

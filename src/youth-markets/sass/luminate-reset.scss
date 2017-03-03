@@ -28,5 +28,20 @@ div.responsive {
   width: auto;
   padding:0;
   border: 0 none;
-  background: transparent;  
+  background: transparent;
+
+  input[type="text"], 
+  input[type="number"],
+  input[type="password"],
+  textarea {
+    box-shadow: none;
+  }
+
+}
+
+div.donation-form-container.responsive {
+  padding:0;
+  background: transparent;
+  border: 0 none;
+  border-radius: 0;
 }

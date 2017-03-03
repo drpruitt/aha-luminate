@@ -341,6 +341,12 @@
     }
   ]);
 
+  angular.module('ahaLuminateControllers').controller('DonationCtrl', [
+    '$scope', '$rootScope', function($scope, $rootScope) {
+      return console.log('hello donation form');
+    }
+  ]);
+
   angular.module('ahaLuminateControllers').controller('MainCtrl', [
     '$scope', '$httpParamSerializer', 'AuthService', function($scope, $httpParamSerializer, AuthService) {
       $scope.toggleLoginMenu = function() {
