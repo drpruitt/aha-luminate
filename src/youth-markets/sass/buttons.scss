@@ -86,3 +86,21 @@ a.btn-lg {
     }
   }
 }
+
+div.responsive {
+  .step-button, 
+  button.step-button {
+    border-radius: 10px;
+    background-image: none;
+    filter:none;
+    border: 0 none;
+
+    @include button-size($padding-base-vertical, $padding-base-horizontal, 20px);
+    min-width: 180px;
+
+    @media (max-width: $screen-sm){
+      @include button-size(10px, 12px, 14px);
+      min-width: 120px;
+    }
+  }
+}

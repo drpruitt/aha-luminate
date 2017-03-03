@@ -1,5 +1,6 @@
 .donation-form-container {
-  .form-progress-bar {
+  .form-progress-bar, 
+  .field-required {
     display: none;
   }
   .section-header-container {
@@ -9,9 +10,27 @@
     padding:0;
     font-weight: bold;
   }
+  div.button-container{
+    padding: 20px;
+    border: 0 none;
+
+    button.finish-step {
+      display: block;
+      margin: auto;
+      float: none;
+    }
+  }
 }
 
+#payment_cc_container {
+  h3, .responsive_payment_typecc_type_row{
+    display: none;
+  }
+}
 .ym-donation-sidebar {
+  max-width: 270px;
+  margin: auto;
+  
   h3 {
     color:#fff;
     font-weight: bold;

@@ -1,3 +1,11 @@
+.donation-form-container {
+  .section-header-container {
+    color: $event-secondary;
+  }
+  div.button-container{
+    background: $event-secondary-light; 
+  }
+}
 .ym-donation-sidebar {
   background: $event-accent;
 }

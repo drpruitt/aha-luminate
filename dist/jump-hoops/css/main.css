@@ -283,6 +283,31 @@ a.btn-lg:visited {
         padding: 10px 12px;
         font-size: 14px; } }
 
+div.responsive .step-button,
+div.responsive button.step-button {
+  border-radius: 10px;
+  background-image: none;
+  -webkit-filter: none;
+          filter: none;
+  border: 0 none;
+  min-width: 180px; }
+  div.responsive .step-button, div.responsive .step-button:link, div.responsive .step-button:visited,
+  div.responsive button.step-button,
+  div.responsive button.step-button:link,
+  div.responsive button.step-button:visited {
+    padding: 12px 24px;
+    font-size: 20px; }
+  @media (max-width: 768px) {
+    div.responsive .step-button,
+    div.responsive button.step-button {
+      min-width: 120px; }
+      div.responsive .step-button, div.responsive .step-button:link, div.responsive .step-button:visited,
+      div.responsive button.step-button,
+      div.responsive button.step-button:link,
+      div.responsive button.step-button:visited {
+        padding: 10px 12px;
+        font-size: 14px; } }
+
 .btn,
 a.btn {
   font-weight: 500; }
@@ -299,6 +324,20 @@ a.btn {
     a.btn.btn-primary:focus,
     a.btn.btn-primary:active {
       background: #a41752; }
+
+div.responsive .step-button,
+div.responsive button.step-button {
+  color: #fff; }
+  div.responsive .step-button, div.responsive .step-button:link, div.responsive .step-button:visited,
+  div.responsive button.step-button,
+  div.responsive button.step-button:link,
+  div.responsive button.step-button:visited {
+    background: #cd1d67; }
+  div.responsive .step-button:hover, div.responsive .step-button:focus, div.responsive .step-button:active,
+  div.responsive button.step-button:hover,
+  div.responsive button.step-button:focus,
+  div.responsive button.step-button:active {
+    background: #a41752; }
 
 .ym-donor-list {
   background: #fff;
@@ -954,7 +993,8 @@ body.aha-luminate #at4-soc {
   color: #6153a3;
   text-align: center; }
 
-.donation-form-container .form-progress-bar {
+.donation-form-container .form-progress-bar,
+.donation-form-container .field-required {
   display: none; }
 
 .donation-form-container .section-header-container {
@@ -964,9 +1004,29 @@ body.aha-luminate #at4-soc {
   padding: 0;
   font-weight: bold; }
 
-.ym-donation-sidebar h3 {
-  color: #fff;
-  font-weight: bold; }
+.donation-form-container div.button-container {
+  padding: 20px;
+  border: 0 none; }
+  .donation-form-container div.button-container button.finish-step {
+    display: block;
+    margin: auto;
+    float: none; }
+
+#payment_cc_container h3, #payment_cc_container .responsive_payment_typecc_type_row {
+  display: none; }
+
+.ym-donation-sidebar {
+  max-width: 270px;
+  margin: auto; }
+  .ym-donation-sidebar h3 {
+    color: #fff;
+    font-weight: bold; }
+
+.donation-form-container .section-header-container {
+  color: #6153a3; }
+
+.donation-form-container div.button-container {
+  background: #ebe9f3; }
 
 .ym-donation-sidebar {
   background: #91c855; }

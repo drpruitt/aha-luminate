@@ -20,3 +20,23 @@ a.btn {
   }
 }
 
+div.responsive {
+  .step-button, 
+  button.step-button {
+    color: #fff;
+
+    &, 
+    &:link, 
+    &:visited {
+      background: $event-primary;
+
+    }
+    
+    &:hover, 
+    &:focus, 
+    &:active {
+      background: $event-primary-dark;
+    } 
+    
+  }
+}
