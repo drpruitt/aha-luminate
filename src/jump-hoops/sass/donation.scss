@@ -1,6 +1,7 @@
 .donation-form-container {
-  .section-header-container {
+  .section-header-container, h2 {
     color: $event-secondary;
+    border-color: $event-secondary;
   }
   div.button-container{
     background: $event-secondary-light; 

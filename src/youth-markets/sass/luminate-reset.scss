@@ -39,6 +39,10 @@ div.responsive {
 
 }
 
+.mobile div.responsive {
+  width: auto;
+}
+
 div.donation-form-container.responsive {
   padding:0;
   background: transparent;
