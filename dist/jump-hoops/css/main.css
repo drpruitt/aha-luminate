@@ -690,6 +690,12 @@ body.aha-luminate #at4-soc {
       .cms .ym-page-content > .container {
         padding: 30px; } }
 
+.app-9 .ym-page-content {
+  padding: 50px 100px;
+  margin: 0; }
+  .app-9 .ym-page-content > div {
+    padding: 0; }
+
 @media (min-width: 992px) {
   .ym-page-section__top {
     display: -webkit-flex;
@@ -864,6 +870,13 @@ body.aha-luminate #at4-soc {
 .ym-zuri-animation h2 {
   color: #6153a3;
   text-align: center; }
+
+.ym-donation-sidebar h3 {
+  color: #fff;
+  font-weight: bold; }
+
+.ym-donation-sidebar {
+  background: #91c855; }
 
 .ym-promo-block {
   max-width: 960px;

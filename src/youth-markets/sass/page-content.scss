@@ -32,6 +32,17 @@
   }
 }
 
+.app-9 {
+  .ym-page-content {
+    padding: 50px 100px;
+    margin: 0;
+
+    > div {
+        padding: 0;
+    }
+  }
+}
+
 .ym-page-section__top {
   @media (min-width: $screen-md-min) {
     display: flex;
