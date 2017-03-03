@@ -23,3 +23,10 @@ div.responsive a {
     color: $link-color;
   }
 }
+
+div.responsive {
+  width: auto;
+  padding:0;
+  border: 0 none;
+  background: transparent;  
+}

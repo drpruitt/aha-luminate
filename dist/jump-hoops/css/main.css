@@ -20,6 +20,12 @@ div.responsive a:focus,
 div.responsive a:active {
   color: #ed1c24; }
 
+div.responsive {
+  width: auto;
+  padding: 0;
+  border: 0 none;
+  background: transparent; }
+
 @media (min-width: 992px) {
   .container {
     width: 100%;
