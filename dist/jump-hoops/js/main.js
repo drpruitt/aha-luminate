@@ -192,9 +192,9 @@
             return response;
           });
         },
-        getSchools: function(name) {
+        getSchools: function() {
           var url, urlSCE;
-          url = 'http://www2.heart.org/site/PageServer?pagename=jump_hoops_school_search&pgwrap=n&name=' + name;
+          url = 'http://www2.heart.org/site/PageServer?pagename=jump_hoops_school_search&pgwrap=n';
           urlSCE = $sce.trustAsResourceUrl(url);
           return $http.jsonp(urlSCE, {
             jsonpCallbackParam: 'callback'
@@ -599,12 +599,11 @@
 
   angular.module('ahaLuminateControllers').controller('SchoolSearchCtrl', [
     '$scope', '$rootScope', 'TeamraiserCompanyService', function($scope, $rootScope, TeamraiserCompanyService) {
-      var name;
-      name = 'Black';
-      console.log(name);
-      return TeamraiserCompanyService.getSchools(name).then(function(response) {
-        console.log('get school');
-        return console.log(response);
+      return TeamraiserCompanyService.getSchools({
+        success: function(response) {
+          console.log('get school');
+          return console.log(response);
+        }
       });
     }
   ]);

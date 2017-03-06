@@ -6,11 +6,8 @@ angular.module 'ahaLuminateControllers'
     ($scope, $rootScope, TeamraiserCompanyService) ->
   
 
-      name = 'Black'
-      console.log name
-
-      TeamraiserCompanyService.getSchools name
-        .then (response) ->
+      TeamraiserCompanyService.getSchools
+        success: (response) ->
           console.log 'get school'
           console.log response
 

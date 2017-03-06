@@ -21,8 +21,8 @@ angular.module 'ahaLuminateApp'
         .then (response) ->
           response
 
-      getSchools: (name) ->
-        url = 'http://www2.heart.org/site/PageServer?pagename=jump_hoops_school_search&pgwrap=n&name='+name
+      getSchools: ->
+        url = 'http://www2.heart.org/site/PageServer?pagename=jump_hoops_school_search&pgwrap=n'
         urlSCE = $sce.trustAsResourceUrl(url)
         $http.jsonp urlSCE, {jsonpCallbackParam: 'callback'}
         .then (response) ->
