@@ -155,6 +155,9 @@
         consRequest: function(requestData, includeAuth) {
           return this.request('CRConsAPI', requestData, includeAuth, false);
         },
+        donationRequest: function(requestData) {
+          return this.request('CRDonationAPI', requestData);
+        },
         luminateExtendConsRequest: function(requestData, includeAuth, callback) {
           return this.luminateExtendRequest('cons', requestData, includeAuth, false, callback);
         }
@@ -379,7 +382,7 @@
   ]);
 
   angular.module('ahaLuminateControllers').controller('DonationCtrl', [
-    '$scope', '$rootScope', 'donationService', function($scope, $rootScope, donationService) {
+    '$scope', '$rootScope', 'DonationService', function($scope, $rootScope, DonationService) {
       var $donationFormRoot;
       $donationFormRoot = angular.element('[data-donation-form-root]');
       $scope.donationInfo = {

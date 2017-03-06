@@ -2,8 +2,8 @@ angular.module 'ahaLuminateControllers'
   .controller 'DonationCtrl', [
     '$scope'
     '$rootScope'
-    'donationService'
-    ($scope, $rootScope, donationService) ->
+    'DonationService'
+    ($scope, $rootScope, DonationService) ->
       $donationFormRoot = angular.element '[data-donation-form-root]'
 
       $scope.donationInfo = 

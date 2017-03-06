@@ -161,6 +161,9 @@
         consRequest: function(requestData, includeAuth) {
           return this.request('CRConsAPI', requestData, includeAuth, false);
         },
+        donationRequest: function(requestData) {
+          return this.request('CRDonationAPI', requestData);
+        },
         luminateExtendConsRequest: function(requestData, includeAuth, callback) {
           return this.luminateExtendRequest('cons', requestData, includeAuth, false, callback);
         }

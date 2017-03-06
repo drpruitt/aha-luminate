@@ -51,6 +51,9 @@ angular.module 'ahaLuminateApp'
       
       consRequest: (requestData, includeAuth) ->
         this.request 'CRConsAPI', requestData, includeAuth, false
+
+      donationRequest: (requestData) ->
+        this.request 'CRDonationAPI', requestData
       
       luminateExtendConsRequest: (requestData, includeAuth, callback) ->
         this.luminateExtendRequest 'cons', requestData, includeAuth, false, callback
