@@ -1038,7 +1038,8 @@ body.aha-luminate #at4-soc {
   font-size: 32px;
   margin: 50px 0 40px;
   padding: 50px 0 0;
-  font-weight: bold; }
+  font-weight: bold;
+  font-family: 'Raleway'; }
 
 .donation-form-container div.button-container {
   padding: 20px;
