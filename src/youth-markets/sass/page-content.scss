@@ -170,15 +170,6 @@
     }
   }
 
-  h3, h2 {
-    color: #fff;
-  }
-
-  h2 {
-    text-shadow: 2px 2px 1px rgb(0, 0, 0);
-    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.85);
-  }
-
   .ym-donate-cta {
     margin: 40px 0 0;
     text-align: center;
@@ -217,7 +208,7 @@
   @media (max-width: $screen-xs) {
     padding: 25px;
   }
-  h3 {
+  h5 {
     text-align: center;
     margin: 0 0 30px;
     

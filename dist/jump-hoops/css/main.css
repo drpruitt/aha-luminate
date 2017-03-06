@@ -153,9 +153,6 @@ h3.ym-progress__title {
 .ym-progress {
   background: #d7d4e8; }
 
-h3.ym-progress__title {
-  color: #6153a3; }
-
 .ym-progress__thermometer {
   border: 8px solid #38b5bd; }
 
@@ -946,11 +943,6 @@ body.aha-luminate #at4-soc {
     @media (max-width: 768px) {
       .ym-page-section__list > div {
         padding: 0 20px; } }
-  .ym-page-section__list h3, .ym-page-section__list h2 {
-    color: #fff; }
-  .ym-page-section__list h2 {
-    text-shadow: 2px 2px 1px black;
-    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.85); }
   .ym-page-section__list .ym-donate-cta {
     margin: 40px 0 0;
     text-align: center; }
@@ -976,11 +968,11 @@ body.aha-luminate #at4-soc {
   @media (max-width: 480px) {
     .ym-page-section__roster {
       padding: 25px; } }
-  .ym-page-section__roster h3 {
+  .ym-page-section__roster h5 {
     text-align: center;
     margin: 0 0 30px; }
     @media (max-width: 480px) {
-      .ym-page-section__roster h3 {
+      .ym-page-section__roster h5 {
         margin: 0 0 15px; } }
 
 .ym-page-section__sponsor {
@@ -1005,7 +997,7 @@ body.aha-luminate #at4-soc {
   @media (max-width: 768px) {
     .ym-my-challenge {
       padding: 20px; } }
-  .ym-my-challenge h2 {
+  .ym-my-challenge h3 {
     margin: 0 0 20px;
     text-align: center; }
   .ym-my-challenge .col-xs-8, .ym-my-challenge .col-xs-4 {
@@ -1028,7 +1020,7 @@ body.aha-luminate #at4-soc {
 .ym-zuri-animation > p {
   text-align: center; }
 
-.ym-zuri-animation h2 {
+.ym-zuri-animation h4 {
   color: #6153a3;
   text-align: center; }
 
