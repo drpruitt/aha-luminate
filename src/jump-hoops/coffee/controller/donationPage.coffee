@@ -2,7 +2,17 @@ angular.module 'ahaLuminateControllers'
   .controller 'DonationCtrl', [
     '$scope'
     '$rootScope'
-    ($scope, $rootScope) ->
-      console.log 'hello donation form'
+    'donationService'
+    ($scope, $rootScope, donationService) ->
+      $donationFormRoot = angular.element '[data-donation-form-root]'
+
+      $scope.donationInfo = 
+        validate: 'true'
+        form_id: $donationFormRoot.data 'formid'
+        fr_id: $donationFormRoot.data 'frid'
+
+      DonationService.getDonationFormInfo 'form_id=' + $scope.donationInfo.form_id + '&fr_id=' + $scope.donationInfo.fr_id
+        .then (response) ->
+          console.log response
 
   ]

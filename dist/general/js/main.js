@@ -45,6 +45,43 @@
     }
   ]);
 
+  angular.module('ahaLuminateApp').factory('DonationService', [
+    'LuminateRESTService', function(LuminateRESTService) {
+      return {
+        getDonationFormInfo: function(requestData) {
+          var dataString;
+          dataString = 'method=getDonationFormInfo';
+          if (requestData && requestData !== '') {
+            dataString += '&' + requestData;
+          }
+          return LuminateRESTService.donationRequest(dataString).then(function(response) {
+            return response;
+          });
+        },
+        donate: function(requestData) {
+          var dataString;
+          dataString = 'method=donate';
+          if (requestData && requestData !== '') {
+            dataString += '&' + requestData;
+          }
+          return LuminateRESTService.donationRequest(dataString).then(function(response) {
+            return response;
+          });
+        },
+        startDonation: function(requestData) {
+          var dataString;
+          dataString = 'method=startDonation';
+          if (requestData && requestData !== '') {
+            dataString += '&' + requestData;
+          }
+          return LuminateRESTService.donationRequest(dataString).then(function(response) {
+            return response;
+          });
+        }
+      };
+    }
+  ]);
+
   angular.module('ahaLuminateApp').factory('LuminateRESTService', [
     '$rootScope', '$http', 'APP_INFO', function($rootScope, $http, APP_INFO) {
       return {

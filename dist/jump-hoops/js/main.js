@@ -56,6 +56,43 @@
     }
   ]);
 
+  angular.module('ahaLuminateApp').factory('DonationService', [
+    'LuminateRESTService', function(LuminateRESTService) {
+      return {
+        getDonationFormInfo: function(requestData) {
+          var dataString;
+          dataString = 'method=getDonationFormInfo';
+          if (requestData && requestData !== '') {
+            dataString += '&' + requestData;
+          }
+          return LuminateRESTService.donationRequest(dataString).then(function(response) {
+            return response;
+          });
+        },
+        donate: function(requestData) {
+          var dataString;
+          dataString = 'method=donate';
+          if (requestData && requestData !== '') {
+            dataString += '&' + requestData;
+          }
+          return LuminateRESTService.donationRequest(dataString).then(function(response) {
+            return response;
+          });
+        },
+        startDonation: function(requestData) {
+          var dataString;
+          dataString = 'method=startDonation';
+          if (requestData && requestData !== '') {
+            dataString += '&' + requestData;
+          }
+          return LuminateRESTService.donationRequest(dataString).then(function(response) {
+            return response;
+          });
+        }
+      };
+    }
+  ]);
+
   angular.module('ahaLuminateApp').factory('LuminateRESTService', [
     '$rootScope', '$http', 'APP_INFO', function($rootScope, $http, APP_INFO) {
       return {
@@ -342,8 +379,17 @@
   ]);
 
   angular.module('ahaLuminateControllers').controller('DonationCtrl', [
-    '$scope', '$rootScope', function($scope, $rootScope) {
-      return console.log('hello donation form');
+    '$scope', '$rootScope', 'donationService', function($scope, $rootScope, donationService) {
+      var $donationFormRoot;
+      $donationFormRoot = angular.element('[data-donation-form-root]');
+      $scope.donationInfo = {
+        validate: 'true',
+        form_id: $donationFormRoot.data('formid'),
+        fr_id: $donationFormRoot.data('frid')
+      };
+      return DonationService.getDonationFormInfo('form_id=' + $scope.donationInfo.form_id + '&fr_id=' + $scope.donationInfo.fr_id).then(function(response) {
+        return console.log(response);
+      });
     }
   ]);
 
