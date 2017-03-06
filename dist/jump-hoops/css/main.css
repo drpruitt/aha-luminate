@@ -1083,7 +1083,7 @@ body.aha-luminate #at4-soc {
     .ym-promo-block {
       max-width: 100%;
       display: block; } }
-  .ym-promo-block > h2 {
+  .ym-promo-block > .ym-headline {
     text-align: center;
     margin: 0 0 25px; }
 
