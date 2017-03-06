@@ -106,9 +106,6 @@ h1 {
 .ym-headline {
   font-family: 'Luckiest Guy', cursive; }
 
-h2.ym-headline {
-  color: #6153a3; }
-
 h2, h3 {
   font-family: 'Luckiest Guy', cursive;
   color: #6153a3; }
@@ -1038,8 +1035,7 @@ body.aha-luminate #at4-soc {
   font-size: 32px;
   margin: 50px 0 40px;
   padding: 50px 0 0;
-  font-weight: bold;
-  font-family: 'Raleway'; }
+  font-weight: bold; }
 
 .donation-form-container div.button-container {
   padding: 20px;
@@ -1065,7 +1061,8 @@ body.aha-luminate #at4-soc {
 
 .donation-form-container .section-header-container, .donation-form-container h2 {
   color: #6153a3;
-  border-color: #6153a3; }
+  border-color: #6153a3;
+  font-family: "Raleway"; }
 
 .donation-form-container div.button-container {
   background: #ebe9f3; }

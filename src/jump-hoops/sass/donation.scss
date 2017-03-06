@@ -2,6 +2,8 @@
   .section-header-container, h2 {
     color: $event-secondary;
     border-color: $event-secondary;
+    font-family: $event-font;
+
   }
   div.button-container{
     background: $event-secondary-light; 
