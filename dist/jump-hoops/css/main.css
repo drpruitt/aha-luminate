@@ -45,6 +45,27 @@ div.donation-form-container.responsive {
     width: 100%;
     max-width: 1170px; } }
 
+.event-primary {
+  background: #cd1d67; }
+
+.event-primary-dark {
+  background: #a41752; }
+
+.event-secondary {
+  background: #6153a3; }
+
+.event-secondary-medium {
+  background: #d7d4e8; }
+
+.event-secondary-light {
+  background: #ebe9f3; }
+
+.event-accent {
+  background: secondary-accent; }
+
+.event-accent-light {
+  background: secondary-accent-light; }
+
 body {
   color: #2d2d2d;
   font-family: Raleway;
