@@ -383,15 +383,17 @@
 
   angular.module('ahaLuminateControllers').controller('DonationCtrl', [
     '$scope', '$rootScope', 'DonationService', function($scope, $rootScope, DonationService) {
-      var $donationFormRoot, employerMatchFields;
+      var $donationFormRoot, billingAddressFields, employerMatchFields;
       $donationFormRoot = angular.element('[data-donation-form-root]');
       $scope.donationInfo = {
         validate: 'true',
         form_id: $donationFormRoot.data('formid'),
-        fr_id: $donationFormRoot.data('frid')
+        fr_id: $donationFormRoot.data('frid'),
+        billing_text: angular.element('#billing_info_same_as_donor_row label').text()
       };
       DonationService.getDonationFormInfo('form_id=' + $scope.donationInfo.form_id + '&fr_id=' + $scope.donationInfo.fr_id).then(function(response) {
         var levels;
+        console.log(response);
         levels = response.data.getDonationFormInfoResponse.donationLevels.donationLevel;
         return angular.forEach(levels, function(level) {
           var amount, classLevel, inputId, levelLabel, level_id, userSpecified;
@@ -414,8 +416,30 @@
         return angular.element('.employer-match').addClass('hidden');
       };
       employerMatchFields();
-      return $scope.toggleEmployerMatch = function() {
+      $scope.toggleEmployerMatch = function() {
         return angular.element('.employer-match').toggleClass('hidden');
+      };
+      billingAddressFields = function() {
+        angular.element('#billing_first_name_row').addClass('billing-info');
+        angular.element('#billing_last_name_row').addClass('billing-info');
+        angular.element('#billing_addr_street1_row').addClass('billing-info');
+        angular.element('#billing_addr_street2_row').addClass('billing-info');
+        angular.element('#billing_addr_city_row').addClass('billing-info');
+        angular.element('#billing_addr_state_row').addClass('billing-info');
+        angular.element('#billing_addr_zip_row').addClass('billing-info');
+        angular.element('#billing_addr_country_row').addClass('billing-info');
+        return angular.element('.billing-info').addClass('hidden');
+      };
+      billingAddressFields();
+      return $scope.toggleBillingInfo = function() {
+        var inputStatus;
+        angular.element('.billing-info').toggleClass('hidden');
+        inputStatus = angular.element('#billing_info').prop('checked');
+        if (inputStatus === true) {
+          return angular.element('#billing_info_same_as_donorname').prop('checked', 'true');
+        } else {
+          return angular.element('#billing_info_same_as_donorname').prop('checked', 'false');
+        }
       };
     }
   ]);

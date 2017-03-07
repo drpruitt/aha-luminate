@@ -10,9 +10,11 @@ angular.module 'ahaLuminateControllers'
         validate: 'true'
         form_id: $donationFormRoot.data 'formid'
         fr_id: $donationFormRoot.data 'frid'
+        billing_text: angular.element('#billing_info_same_as_donor_row label').text() 
 
       DonationService.getDonationFormInfo 'form_id=' + $scope.donationInfo.form_id + '&fr_id=' + $scope.donationInfo.fr_id
         .then (response) ->
+          console.log response
           levels = response.data.getDonationFormInfoResponse.donationLevels.donationLevel
           
           angular.forEach levels, (level) ->
@@ -40,4 +42,25 @@ angular.module 'ahaLuminateControllers'
       $scope.toggleEmployerMatch = ->
         angular.element('.employer-match').toggleClass('hidden')
 
+      billingAddressFields = ->
+        angular.element('#billing_first_name_row').addClass('billing-info')
+        angular.element('#billing_last_name_row').addClass('billing-info')
+        angular.element('#billing_addr_street1_row').addClass('billing-info')
+        angular.element('#billing_addr_street2_row').addClass('billing-info')
+        angular.element('#billing_addr_city_row').addClass('billing-info')
+        angular.element('#billing_addr_state_row').addClass('billing-info')
+        angular.element('#billing_addr_zip_row').addClass('billing-info')
+        angular.element('#billing_addr_country_row').addClass('billing-info')
+        angular.element('.billing-info').addClass('hidden')
+
+      billingAddressFields()
+
+      $scope.toggleBillingInfo = ->
+        angular.element('.billing-info').toggleClass('hidden');
+        inputStatus = angular.element('#billing_info').prop('checked')
+
+        if inputStatus == true
+          angular.element('#billing_info_same_as_donorname').prop('checked', 'true')
+        else
+          angular.element('#billing_info_same_as_donorname').prop('checked', 'false')
   ]
