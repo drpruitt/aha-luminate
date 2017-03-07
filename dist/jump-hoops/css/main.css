@@ -874,12 +874,10 @@ body.aha-luminate #at4-soc {
   margin: 0; }
   .app-9 .ym-page-content > div {
     padding: 0; }
-  @media (min-width: 768px) {
+  @media (min-width: 992px) {
     .app-9 .ym-page-content .col-sm-4 {
       width: 270px;
-      float: right; }
-    .app-9 .ym-page-content .col-sm-8 {
-      width: 670px; } }
+      float: right; } }
 
 @media (min-width: 992px) {
   .ym-page-section__top {
@@ -1078,26 +1076,39 @@ body.aha-luminate #at4-soc {
 .donation-form-container #donor_addr_state_row,
 .donation-form-container #donor_addr_zip_row,
 .donation-form-container #donor_addr_country_row {
-  width: 270px; }
+  width: 49%; }
 
 .donation-form-container #donor_first_name_row,
 .donation-form-container #donor_email_address_row,
-.donation-form-container #donor_addr_city_row,
+.donation-form-container #donor_addr_city_row {
+  padding: 0 30px 30px 50px; }
+
+.donation-form-container #donor_last_name_row,
+.donation-form-container #donor_phone_row,
+.donation-form-container #donor_addr_state_row {
+  padding: 0 50px 30px 0; }
+
+.donation-form-container #donor_addr_country_row {
+  padding: 0 50px 0 0; }
+
 .donation-form-container #donor_addr_zip_row {
-  margin: 0 30px 0 50px; }
+  padding: 0 30px 0 50px; }
 
 .donation-form-container #donor_email_opt_in_Row,
 .donation-form-container #donor_addr_street1_row,
 .donation-form-container #donor_addr_street2_row {
-  margin: 0 50px; }
+  padding: 0 50px 30px; }
 
 .donation-form-container #donor_addr_street1_row,
 .donation-form-container #donor_addr_street2_row {
-  width: 100%;
-  max-width: 575px; }
+  width: 100%; }
   .donation-form-container #donor_addr_street1_row input,
   .donation-form-container #donor_addr_street2_row input {
     width: 100%; }
+
+@media (min-width: 768px) {
+  .donation-form-container div.donation-level-general-ask, .donation-form-container div.html-caption-container {
+    width: 670px; } }
 
 .donation-form-container div.form-row {
   display: inline-block;

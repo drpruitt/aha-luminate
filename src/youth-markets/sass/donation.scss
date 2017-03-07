@@ -30,30 +30,50 @@
   #donor_addr_state_row,
   #donor_addr_zip_row,
   #donor_addr_country_row {
-    width: 270px;
+    width: 49%;
   }
 
   #donor_first_name_row,
   #donor_email_address_row,
-  #donor_addr_city_row,
-  #donor_addr_zip_row  {
-    margin: 0 30px 0 50px;
+  #donor_addr_city_row {
+    padding: 0 30px 30px 50px;
   }
+
+
+  #donor_last_name_row,
+  #donor_phone_row,
+  #donor_addr_state_row{
+    padding: 0 50px 30px 0;
+  }
+
+  #donor_addr_country_row {
+    padding: 0 50px 0 0;
+  }
+
+  #donor_addr_zip_row {
+    padding: 0 30px 0 50px;
+  } 
 
   #donor_email_opt_in_Row,
   #donor_addr_street1_row,
   #donor_addr_street2_row {
-    margin: 0 50px;
+    padding: 0 50px 30px;
   }
 
   #donor_addr_street1_row,
   #donor_addr_street2_row {
     width: 100%;
-    max-width: 575px;
       input{
         width: 100%;
       }
   }
+
+  div.donation-level-general-ask, div.html-caption-container {
+    @media (min-width: $screen-sm-min){
+      width: 670px;
+    }
+  }
+
 
   div.form-row {
     display: inline-block;

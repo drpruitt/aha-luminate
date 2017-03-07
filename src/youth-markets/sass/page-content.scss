@@ -40,14 +40,11 @@
     > div {
         padding: 0;
     }
-
-    @media (min-width: $screen-sm-min) {
+    
+    @media (min-width: $screen-md-min) {
       .col-sm-4 {
         width: 270px;
         float: right;
-      }
-      .col-sm-8 {
-        width: 670px;
       }
     }
   }
