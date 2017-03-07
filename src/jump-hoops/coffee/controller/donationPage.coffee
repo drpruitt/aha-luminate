@@ -6,6 +6,8 @@ angular.module 'ahaLuminateControllers'
     ($scope, $rootScope, DonationService) ->
       $donationFormRoot = angular.element '[data-donation-form-root]'
 
+      console.log 'tesdt'
+
       $scope.donationInfo = 
         validate: 'true'
         form_id: $donationFormRoot.data 'formid'

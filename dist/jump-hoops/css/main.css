@@ -792,6 +792,9 @@ main {
       main > .container {
         padding: 0 15px; } }
 
+.app-9 main > .container {
+  padding: 0; }
+
 main {
   background: #bddd98; }
   @media (min-width: 992px) {
@@ -871,6 +874,12 @@ body.aha-luminate #at4-soc {
   margin: 0; }
   .app-9 .ym-page-content > div {
     padding: 0; }
+  @media (min-width: 768px) {
+    .app-9 .ym-page-content .col-sm-4 {
+      width: 270px;
+      float: right; }
+    .app-9 .ym-page-content .col-sm-8 {
+      width: 670px; } }
 
 @media (min-width: 992px) {
   .ym-page-section__top {
@@ -1057,6 +1066,49 @@ body.aha-luminate #at4-soc {
   margin: 50px 0 40px;
   padding: 50px 0 0;
   font-weight: bold; }
+
+.donation-form-container label {
+  margin: 0; }
+
+.donation-form-container #donor_first_name_row,
+.donation-form-container #donor_last_name_row,
+.donation-form-container #donor_email_address_row,
+.donation-form-container #donor_phone_row,
+.donation-form-container #donor_addr_city_row,
+.donation-form-container #donor_addr_state_row,
+.donation-form-container #donor_addr_zip_row,
+.donation-form-container #donor_addr_country_row {
+  width: 270px; }
+
+.donation-form-container #donor_first_name_row,
+.donation-form-container #donor_email_address_row,
+.donation-form-container #donor_addr_city_row,
+.donation-form-container #donor_addr_zip_row {
+  margin: 0 30px 0 50px; }
+
+.donation-form-container #donor_email_opt_in_Row,
+.donation-form-container #donor_addr_street1_row,
+.donation-form-container #donor_addr_street2_row {
+  margin: 0 50px; }
+
+.donation-form-container #donor_addr_street1_row,
+.donation-form-container #donor_addr_street2_row {
+  width: 100%;
+  max-width: 575px; }
+  .donation-form-container #donor_addr_street1_row input,
+  .donation-form-container #donor_addr_street2_row input {
+    width: 100%; }
+
+.donation-form-container div.form-row {
+  display: inline-block;
+  margin: 0 auto; }
+  .donation-form-container div.form-row .form-content {
+    width: 100%;
+    margin: 0; }
+    .donation-form-container div.form-row .form-content input,
+    .donation-form-container div.form-row .form-content select {
+      width: 100%;
+      max-width: 100%; }
 
 .donation-form-container div.button-container {
   padding: 20px;

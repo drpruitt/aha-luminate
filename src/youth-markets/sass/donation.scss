@@ -17,6 +17,61 @@
     padding:50px 0 0;
     font-weight: bold;
   }
+
+  label {
+    margin: 0;
+  }
+
+  #donor_first_name_row,
+  #donor_last_name_row,
+  #donor_email_address_row,
+  #donor_phone_row,
+  #donor_addr_city_row,
+  #donor_addr_state_row,
+  #donor_addr_zip_row,
+  #donor_addr_country_row {
+    width: 270px;
+  }
+
+  #donor_first_name_row,
+  #donor_email_address_row,
+  #donor_addr_city_row,
+  #donor_addr_zip_row  {
+    margin: 0 30px 0 50px;
+  }
+
+  #donor_email_opt_in_Row,
+  #donor_addr_street1_row,
+  #donor_addr_street2_row {
+    margin: 0 50px;
+  }
+
+  #donor_addr_street1_row,
+  #donor_addr_street2_row {
+    width: 100%;
+    max-width: 575px;
+      input{
+        width: 100%;
+      }
+  }
+
+  div.form-row {
+    display: inline-block;
+    margin: 0 auto;  
+
+    .form-content {
+      width: 100%;
+      margin: 0;
+
+      input,
+      select  {
+        width: 100%;
+        max-width: 100%;
+      }
+
+    }
+
+  }
   div.button-container{
     padding: 20px;
     border: 0 none;
