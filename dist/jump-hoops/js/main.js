@@ -433,7 +433,11 @@
         }
       };
       $scope.selectLevel = function(level) {
-        return console.log('click' + level);
+        angular.element('.ym-donation-levels__amounts .btn-toggle.btn-toggle--selected').removeClass('btn-toggle--selected');
+        angular.element('.ym-donation-levels__amounts .btn-toggle.level' + level).addClass('btn-toggle--selected');
+        angular.element('.ym-donation-levels__message').addClass('hidden');
+        angular.element('.ym-donation-levels__message.level' + level).removeClass('hidden');
+        return angular.element('.donation-level-container.level' + level + ' input').click();
       };
       employerMatchFields = function() {
         angular.element('#employer_name_row').parent().addClass('employer-match');

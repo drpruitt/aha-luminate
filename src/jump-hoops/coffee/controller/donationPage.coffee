@@ -57,10 +57,12 @@ angular.module 'ahaLuminateControllers'
 
 
       $scope.selectLevel = (level) ->
-        console.log 'click'+level
+        angular.element('.ym-donation-levels__amounts .btn-toggle.btn-toggle--selected').removeClass('btn-toggle--selected')
+        angular.element('.ym-donation-levels__amounts .btn-toggle.level'+level).addClass('btn-toggle--selected')
+        angular.element('.ym-donation-levels__message').addClass('hidden')
+        angular.element('.ym-donation-levels__message.level'+level).removeClass('hidden')
+        angular.element('.donation-level-container.level'+level+' input').click()
 
-
-        
 
 
       employerMatchFields = ->
