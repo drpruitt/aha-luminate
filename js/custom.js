@@ -46,6 +46,13 @@
          jQuery('[href*=heartwalk_register], a#personal_page_join_team_button, a[href*=fr_tjoin]').hide();
        }
     }
+    
+    if (jQuery('.heart-page-progress__label:contains(Days Remaining)').length) {
+       var amt = jQuery('.heart-page-progress__label:contains(Days Remaining)').prev('div.heart-page-progress__amount').html();
+       if(parseInt(amt) < 0) {
+          jQuery('.heart-page-progress__label:contains(Days Remaining)').prev('div.heart-page-progress__amount').closest('div.heart-page-progress__row').hide();
+       }
+    }
   });
 })(jQuery);
 
