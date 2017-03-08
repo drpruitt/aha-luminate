@@ -22,13 +22,15 @@ a.btn {
 
 div.responsive {
   .step-button, 
-  button.step-button {
+  button.step-button,
+  .btn {
     color: #fff;
 
     &, 
     &:link, 
     &:visited {
       background: $event-primary;
+      color: #fff;
 
     }
     
@@ -36,6 +38,7 @@ div.responsive {
     &:focus, 
     &:active {
       background: $event-primary-dark;
+      color: #fff;
     } 
     
   }

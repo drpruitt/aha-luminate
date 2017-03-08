@@ -12,10 +12,14 @@
 }
 .event-secondary-light{
   background: $event-secondary-light;
+
+  hr {
+    color: $event-secondary;
+  }
 }
 .event-accent{
-  background: secondary-accent;
+  background: $event-accent;
 }
 .event-accent-light{
-  background: secondary-accent-light;
+  background: $event-accent-light;
 }

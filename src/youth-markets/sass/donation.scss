@@ -22,6 +22,16 @@
     margin: 0;
   }
 
+  .ym-donation-levels {
+    padding: 30px 20px;
+
+    p {
+      font-weight: bold;
+      font-size: 18px;
+      text-align: center;
+    }
+  }
+
   #donor_first_name_row,
   #donor_last_name_row,
   #donor_email_address_row,

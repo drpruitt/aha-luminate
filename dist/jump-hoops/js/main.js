@@ -385,28 +385,35 @@
     '$scope', '$rootScope', 'DonationService', function($scope, $rootScope, DonationService) {
       var $donationFormRoot, billingAddressFields, employerMatchFields;
       $donationFormRoot = angular.element('[data-donation-form-root]');
-      console.log('tesdt');
       $scope.donationInfo = {
         validate: 'true',
         form_id: $donationFormRoot.data('formid'),
         fr_id: $donationFormRoot.data('frid'),
         billing_text: angular.element('#billing_info_same_as_donor_row label').text()
       };
+      $scope.donationLevels = [];
       DonationService.getDonationFormInfo('form_id=' + $scope.donationInfo.form_id + '&fr_id=' + $scope.donationInfo.fr_id).then(function(response) {
         var levels;
         console.log(response);
         levels = response.data.getDonationFormInfoResponse.donationLevels.donationLevel;
         return angular.forEach(levels, function(level) {
-          var amount, classLevel, inputId, levelLabel, level_id, userSpecified;
-          level_id = level.level_id;
+          var amount, classLevel, inputId, levelId, levelLabel, userSpecified;
+          levelId = level.level_id;
           amount = level.amount.formatted;
           userSpecified = level.userSpecified;
-          inputId = '#level_standardexpanded' + level_id;
-          classLevel = 'level' + level_id;
+          inputId = '#level_standardexpanded' + levelId;
+          classLevel = 'level' + levelId;
           angular.element(inputId).parent().parent().parent().parent().addClass(classLevel);
-          return levelLabel = angular.element('.' + classLevel).find('.donation-level-expanded-label p').text();
+          levelLabel = angular.element('.' + classLevel).find('.donation-level-expanded-label p').text();
+          return $scope.donationLevels.push({
+            levelId: levelId,
+            amount: amount,
+            userSpecified: userSpecified,
+            levelLabel: levelLabel
+          });
         });
       });
+      console.log($scope.donationLevels);
       employerMatchFields = function() {
         angular.element('#employer_name_row').parent().addClass('employer-match');
         angular.element('#employer_street_row').parent().addClass('employer-match');

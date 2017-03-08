@@ -6,13 +6,13 @@ angular.module 'ahaLuminateControllers'
     ($scope, $rootScope, DonationService) ->
       $donationFormRoot = angular.element '[data-donation-form-root]'
 
-      console.log 'tesdt'
-
       $scope.donationInfo = 
         validate: 'true'
         form_id: $donationFormRoot.data 'formid'
         fr_id: $donationFormRoot.data 'frid'
         billing_text: angular.element('#billing_info_same_as_donor_row label').text() 
+
+      $scope.donationLevels = []
 
       DonationService.getDonationFormInfo 'form_id=' + $scope.donationInfo.form_id + '&fr_id=' + $scope.donationInfo.fr_id
         .then (response) ->
@@ -20,15 +20,24 @@ angular.module 'ahaLuminateControllers'
           levels = response.data.getDonationFormInfoResponse.donationLevels.donationLevel
           
           angular.forEach levels, (level) ->
-            level_id = level.level_id
+            levelId = level.level_id
             amount = level.amount.formatted
             userSpecified = level.userSpecified
-            inputId = '#level_standardexpanded'+level_id
-            classLevel = 'level'+level_id
+            inputId = '#level_standardexpanded'+levelId
+            classLevel = 'level'+levelId
 
             angular.element(inputId).parent().parent().parent().parent().addClass(classLevel)
 
             levelLabel = angular.element('.'+classLevel).find('.donation-level-expanded-label p').text()
+
+            $scope.donationLevels.push
+              levelId: levelId
+              amount: amount
+              userSpecified: userSpecified
+              levelLabel: levelLabel
+
+      console.log $scope.donationLevels
+
 
       employerMatchFields = ->
         angular.element('#employer_name_row').parent().addClass('employer-match')
