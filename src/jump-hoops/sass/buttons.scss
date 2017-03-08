@@ -43,3 +43,30 @@ div.responsive {
     
   }
 }
+
+div.responsive .btn-toggle,
+.btn-toggle {
+  border: 1px solid $event-primary;
+  background: #fff;
+  color: $event-primary;
+  text-decoration: none;
+
+  &:hover {
+    background: $event-primary;
+    color: #fff;
+    cursor: pointer;
+  }
+}
+
+div.responsive .btn-toggle--selected,
+.btn-toggle--selected {
+  background: $event-primary;
+  color: #fff;
+
+  &, 
+  &:link, 
+  &:visited {
+    color: #fff;
+  }
+
+}

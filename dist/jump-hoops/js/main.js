@@ -394,10 +394,9 @@
       $scope.donationLevels = [];
       DonationService.getDonationFormInfo('form_id=' + $scope.donationInfo.form_id + '&fr_id=' + $scope.donationInfo.fr_id).then(function(response) {
         var levels;
-        console.log(response);
         levels = response.data.getDonationFormInfoResponse.donationLevels.donationLevel;
         return angular.forEach(levels, function(level) {
-          var amount, classLevel, inputId, levelId, levelLabel, userSpecified;
+          var amount, classLevel, inputId, levelChecked, levelId, levelLabel, userSpecified;
           levelId = level.level_id;
           amount = level.amount.formatted;
           userSpecified = level.userSpecified;
@@ -405,15 +404,37 @@
           classLevel = 'level' + levelId;
           angular.element(inputId).parent().parent().parent().parent().addClass(classLevel);
           levelLabel = angular.element('.' + classLevel).find('.donation-level-expanded-label p').text();
+          levelChecked = angular.element('.' + classLevel + ' .donation-level-label-input-container input').prop('checked');
           return $scope.donationLevels.push({
             levelId: levelId,
+            classLevel: classLevel,
             amount: amount,
             userSpecified: userSpecified,
-            levelLabel: levelLabel
+            levelLabel: levelLabel,
+            levelChecked: levelChecked
           });
         });
       });
-      console.log($scope.donationLevels);
+      $scope.giftType = function(type) {
+        var checkBox;
+        checkBox = angular.element('.generic-repeat-label-checkbox-container input').prop('checked');
+        if (type === 'monthly') {
+          if (checkBox === false) {
+            angular.element('.generic-repeat-label-checkbox-container input').click();
+          }
+          angular.element('.ym-donation-levels__type--onetime').removeClass('btn-toggle--selected');
+          return angular.element('.ym-donation-levels__type--monthly').addClass('btn-toggle--selected');
+        } else {
+          if (checkBox === true) {
+            angular.element('.generic-repeat-label-checkbox-container input').click();
+          }
+          angular.element('.ym-donation-levels__type--onetime').addClass('btn-toggle--selected');
+          return angular.element('.ym-donation-levels__type--monthly').removeClass('btn-toggle--selected');
+        }
+      };
+      $scope.selectLevel = function(level) {
+        return console.log('click' + level);
+      };
       employerMatchFields = function() {
         angular.element('#employer_name_row').parent().addClass('employer-match');
         angular.element('#employer_street_row').parent().addClass('employer-match');

@@ -104,3 +104,10 @@ div.responsive {
     }
   }
 }
+
+.btn-toggle {
+  font-weight: bold; 
+  border-radius: 10px;
+  @include button-size($padding-base-vertical, $padding-base-horizontal, 20px);
+  text-decoration: none;
+}

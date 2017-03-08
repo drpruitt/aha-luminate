@@ -16,7 +16,7 @@ angular.module 'ahaLuminateControllers'
 
       DonationService.getDonationFormInfo 'form_id=' + $scope.donationInfo.form_id + '&fr_id=' + $scope.donationInfo.fr_id
         .then (response) ->
-          console.log response
+          #console.log response
           levels = response.data.getDonationFormInfoResponse.donationLevels.donationLevel
           
           angular.forEach levels, (level) ->
@@ -30,13 +30,37 @@ angular.module 'ahaLuminateControllers'
 
             levelLabel = angular.element('.'+classLevel).find('.donation-level-expanded-label p').text()
 
+            levelChecked = angular.element('.'+classLevel+' .donation-level-label-input-container input').prop('checked')
+
             $scope.donationLevels.push
               levelId: levelId
+              classLevel: classLevel
               amount: amount
               userSpecified: userSpecified
               levelLabel: levelLabel
+              levelChecked: levelChecked
 
-      console.log $scope.donationLevels
+
+      $scope.giftType = (type) ->
+        checkBox = angular.element('.generic-repeat-label-checkbox-container input').prop('checked')
+
+        if type is 'monthly'
+          if checkBox == false
+            angular.element('.generic-repeat-label-checkbox-container input').click()
+          angular.element('.ym-donation-levels__type--onetime').removeClass('btn-toggle--selected')
+          angular.element('.ym-donation-levels__type--monthly').addClass('btn-toggle--selected')
+        else
+          if checkBox == true
+            angular.element('.generic-repeat-label-checkbox-container input').click()
+          angular.element('.ym-donation-levels__type--onetime').addClass('btn-toggle--selected')
+          angular.element('.ym-donation-levels__type--monthly').removeClass('btn-toggle--selected')
+
+
+      $scope.selectLevel = (level) ->
+        console.log 'click'+level
+
+
+        
 
 
       employerMatchFields = ->

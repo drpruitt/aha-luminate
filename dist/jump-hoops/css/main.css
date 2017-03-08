@@ -369,6 +369,14 @@ div.responsive button.step-button {
         padding: 10px 12px;
         font-size: 14px; } }
 
+.btn-toggle {
+  font-weight: bold;
+  border-radius: 10px;
+  text-decoration: none; }
+  .btn-toggle, .btn-toggle:link, .btn-toggle:visited {
+    padding: 12px 24px;
+    font-size: 20px; }
+
 .btn,
 a.btn {
   font-weight: 500; }
@@ -407,6 +415,28 @@ div.responsive .btn {
   div.responsive .btn:focus,
   div.responsive .btn:active {
     background: #a41752;
+    color: #fff; }
+
+div.responsive .btn-toggle,
+.btn-toggle {
+  border: 1px solid #cd1d67;
+  background: #fff;
+  color: #cd1d67;
+  text-decoration: none; }
+  div.responsive .btn-toggle:hover,
+  .btn-toggle:hover {
+    background: #cd1d67;
+    color: #fff;
+    cursor: pointer; }
+
+div.responsive .btn-toggle--selected,
+.btn-toggle--selected {
+  background: #cd1d67;
+  color: #fff; }
+  div.responsive .btn-toggle--selected, div.responsive .btn-toggle--selected:link, div.responsive .btn-toggle--selected:visited,
+  .btn-toggle--selected,
+  .btn-toggle--selected:link,
+  .btn-toggle--selected:visited {
     color: #fff; }
 
 .ym-donor-list {
