@@ -47,14 +47,20 @@
        }
     }
     
+    removeNegDaysRemaining();
+  });
+})(jQuery);
+
+function removeNegDaysRemaining() {
     if (jQuery('.heart-page-progress__label:contains(Days Remaining)').length) {
        var amt = jQuery('.heart-page-progress__label:contains(Days Remaining)').prev('div.heart-page-progress__amount').html();
        if(parseInt(amt) < 0) {
           jQuery('.heart-page-progress__label:contains(Days Remaining)').prev('div.heart-page-progress__amount').closest('div.heart-page-progress__row').hide();
        }
+    } else {
+      if (location.href.indexOf("heartwalk_participant_center") > 0) setTimeout(function(){removeNegDaysRemaining();},500);
     }
-  });
-})(jQuery);
+}
 
 function setActiveDonationLevel() {
   var $donationLevels = jQuery('body').find('.donation-levels');
