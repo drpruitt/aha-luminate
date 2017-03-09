@@ -4,7 +4,9 @@
       display: none;
     }
   }
-  .form-progress-bar {
+  .form-progress-bar,
+  div.form-row.don-standard-levels,
+  div.donation-level-container-generic-repeat {
     display: none;
   }
   h2 {

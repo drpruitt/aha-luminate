@@ -59,7 +59,7 @@ angular.module 'ahaLuminateControllers'
         angular.element('#pstep_finish span').remove()        
         if type is 'level'          
           amt = amount.split('.');
-          levelAmt = ' <span>'+amt[0]+' ></span>'
+          levelAmt = ' <span>'+amt[0]+' <i class="fa fa-chevron-right" aria-hidden="true"></i></span>'
           console.log levelAmt
           angular.element('#pstep_finish').append(levelAmt)
         else 

@@ -1119,7 +1119,9 @@ body.aha-luminate #at4-soc {
 .donation-form-container.responsive span.field-required {
   display: none; }
 
-.donation-form-container .form-progress-bar {
+.donation-form-container .form-progress-bar,
+.donation-form-container div.form-row.don-standard-levels,
+.donation-form-container div.donation-level-container-generic-repeat {
   display: none; }
 
 .donation-form-container h2 {
