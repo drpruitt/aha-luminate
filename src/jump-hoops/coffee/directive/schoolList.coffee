@@ -1,6 +1,6 @@
 angular.module 'ahaLuminateApp'
   .directive 'schoolList', ->
-    templateUrl: '../aha-luminate/dist/jump-hoops/html/directive/schoolList.html'
+    templateUrl: 'http://www2.heart.org/aha-luminate/dist/jump-hoops/html/directive/schoolList.html'
     restrict: 'E'
     replace: true
     require: 'ngModel'
