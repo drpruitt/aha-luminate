@@ -16,7 +16,6 @@ angular.module 'ahaLuminateControllers'
 
       DonationService.getDonationFormInfo 'form_id=' + $scope.donationInfo.form_id + '&fr_id=' + $scope.donationInfo.fr_id
         .then (response) ->
-          #console.log response
           levels = response.data.getDonationFormInfoResponse.donationLevels.donationLevel
           
           angular.forEach levels, (level) ->
@@ -56,10 +55,11 @@ angular.module 'ahaLuminateControllers'
           angular.element('.ym-donation-levels__type--monthly').removeClass('btn-toggle--selected')
 
 
-      $scope.selectLevel = (level, amount) ->
-        levelAmt = '<span>$'+amount+' ></span>'
+      $scope.selectLevel = (level) ->
+        amt = angular.element('.donation-level-container.level'+level+' .donation-level-amount-container').text()
+        amt = amt.split('.');
+        levelAmt = '<span>'+amt[0]+' ></span>'
         angular.element('#pstep_finish span').remove()
-        console.log 'level'+levelAmt
         angular.element('.ym-donation-levels__amounts .btn-toggle.btn-toggle--selected').removeClass('btn-toggle--selected')
         angular.element('.ym-donation-levels__amounts .btn-toggle.level'+level).addClass('btn-toggle--selected')
         angular.element('.ym-donation-levels__message').addClass('hidden')
