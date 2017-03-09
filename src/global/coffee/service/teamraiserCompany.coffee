@@ -8,7 +8,7 @@ angular.module 'ahaLuminateApp'
         dataString = 'method=getCompaniesByInfo'
         dataString += '&' + requestData if requestData and requestData isnt ''
         LuminateRESTService.luminateExtendTeamraiserRequest dataString, false, true, callback
-      
+
       getCompanyList: (requestData, callback) ->
         dataString = 'method=getCompanyList'
         dataString += '&' + requestData if requestData and requestData isnt ''
@@ -21,10 +21,13 @@ angular.module 'ahaLuminateApp'
         .then (response) ->
           response
 
-      getSchools: ->
+      getSchools: (callback) ->
         url = 'http://www2.heart.org/site/PageServer?pagename=jump_hoops_school_search&pgwrap=n'
         urlSCE = $sce.trustAsResourceUrl(url)
-        $http.jsonp urlSCE, {jsonpCallbackParam: 'callback'}
-        .then (response) ->
-          response
+        $http.jsonp(urlSCE, jsonpCallbackParam: 'callback').then (response) ->
+          if response.data.success
+            callback.success(decodeURIComponent(response.data.success.schools))
+          else
+            callback.failure(response)
+
   ]

@@ -62,6 +62,54 @@
     }
   ]);
 
+  angular.module('ahaLuminateApp').factory('CsvService', function() {
+    return {
+      toJson: function(csvStr) {
+        var currentline, headers, i, j, lines, obj, result;
+        lines = this.toArray(csvStr);
+        result = [];
+        headers = lines[0];
+        lines.splice(0, 1);
+        i = 0;
+        while (i < lines.length) {
+          currentline = lines[i];
+          obj = {};
+          if (currentline.length === headers.length) {
+            j = 0;
+            while (j < headers.length) {
+              obj[headers[j]] = currentline[j];
+              j++;
+            }
+            result.push(obj);
+          }
+          i++;
+        }
+        return result;
+      },
+      toArray: function(csvStr) {
+        var arrData, arrMatches, objPattern, strDelimiter, strMatchedDelimiter, strMatchedValue;
+        strDelimiter = ',';
+        objPattern = new RegExp('(\\' + strDelimiter + '|\\r?\\n|\\r|^)' + '(?:"([^"]*(?:""[^"]*)*)"|' + '([^"\\' + strDelimiter + '\\r\\n]*))', 'gi');
+        arrData = [[]];
+        arrMatches = null;
+        while (arrMatches = objPattern.exec(csvStr)) {
+          strMatchedDelimiter = arrMatches[1];
+          strMatchedValue = void 0;
+          if (strMatchedDelimiter.length && strMatchedDelimiter !== strDelimiter) {
+            arrData.push([]);
+          }
+          if (arrMatches[2]) {
+            strMatchedValue = arrMatches[2].replace(new RegExp('""', 'g'), '"');
+          } else {
+            strMatchedValue = arrMatches[3];
+          }
+          arrData[arrData.length - 1].push(strMatchedValue);
+        }
+        return arrData;
+      }
+    };
+  });
+
   angular.module('ahaLuminateApp').factory('DonationService', [
     'LuminateRESTService', function(LuminateRESTService) {
       return {
@@ -198,14 +246,18 @@
             return response;
           });
         },
-        getSchools: function() {
+        getSchools: function(callback) {
           var url, urlSCE;
           url = 'http://www2.heart.org/site/PageServer?pagename=jump_hoops_school_search&pgwrap=n';
           urlSCE = $sce.trustAsResourceUrl(url);
           return $http.jsonp(urlSCE, {
             jsonpCallbackParam: 'callback'
           }).then(function(response) {
-            return response;
+            if (response.data.success) {
+              return callback.success(decodeURIComponent(response.data.success.schools));
+            } else {
+              return callback.failure(response);
+            }
           });
         }
       };
@@ -241,6 +293,25 @@
       };
     }
   ]);
+
+  angular.module('ahaLuminateApp').factory('UtilsService', function() {
+    return {
+      unique: function(arr) {
+        var i, n, r;
+        n = {};
+        r = [];
+        i = 0;
+        while (i < arr.length) {
+          if (!n[arr[i]]) {
+            n[arr[i]] = true;
+            r.push(arr[i]);
+          }
+          i++;
+        }
+        return r;
+      }
+    };
+  });
 
   angular.module('ahaLuminateApp').factory('TeamraiserCompanyDataService', [
     '$rootScope', '$http', function($rootScope, $http) {

@@ -56,6 +56,54 @@
     }
   ]);
 
+  angular.module('ahaLuminateApp').factory('CsvService', function() {
+    return {
+      toJson: function(csvStr) {
+        var currentline, headers, i, j, lines, obj, result;
+        lines = this.toArray(csvStr);
+        result = [];
+        headers = lines[0];
+        lines.splice(0, 1);
+        i = 0;
+        while (i < lines.length) {
+          currentline = lines[i];
+          obj = {};
+          if (currentline.length === headers.length) {
+            j = 0;
+            while (j < headers.length) {
+              obj[headers[j]] = currentline[j];
+              j++;
+            }
+            result.push(obj);
+          }
+          i++;
+        }
+        return result;
+      },
+      toArray: function(csvStr) {
+        var arrData, arrMatches, objPattern, strDelimiter, strMatchedDelimiter, strMatchedValue;
+        strDelimiter = ',';
+        objPattern = new RegExp('(\\' + strDelimiter + '|\\r?\\n|\\r|^)' + '(?:"([^"]*(?:""[^"]*)*)"|' + '([^"\\' + strDelimiter + '\\r\\n]*))', 'gi');
+        arrData = [[]];
+        arrMatches = null;
+        while (arrMatches = objPattern.exec(csvStr)) {
+          strMatchedDelimiter = arrMatches[1];
+          strMatchedValue = void 0;
+          if (strMatchedDelimiter.length && strMatchedDelimiter !== strDelimiter) {
+            arrData.push([]);
+          }
+          if (arrMatches[2]) {
+            strMatchedValue = arrMatches[2].replace(new RegExp('""', 'g'), '"');
+          } else {
+            strMatchedValue = arrMatches[3];
+          }
+          arrData[arrData.length - 1].push(strMatchedValue);
+        }
+        return arrData;
+      }
+    };
+  });
+
   angular.module('ahaLuminateApp').factory('DonationService', [
     'LuminateRESTService', function(LuminateRESTService) {
       return {
@@ -192,14 +240,18 @@
             return response;
           });
         },
-        getSchools: function() {
+        getSchools: function(callback) {
           var url, urlSCE;
           url = 'http://www2.heart.org/site/PageServer?pagename=jump_hoops_school_search&pgwrap=n';
           urlSCE = $sce.trustAsResourceUrl(url);
           return $http.jsonp(urlSCE, {
             jsonpCallbackParam: 'callback'
           }).then(function(response) {
-            return response;
+            if (response.data.success) {
+              return callback.success(decodeURIComponent(response.data.success.schools));
+            } else {
+              return callback.failure(response);
+            }
           });
         }
       };
@@ -235,6 +287,25 @@
       };
     }
   ]);
+
+  angular.module('ahaLuminateApp').factory('UtilsService', function() {
+    return {
+      unique: function(arr) {
+        var i, n, r;
+        n = {};
+        r = [];
+        i = 0;
+        while (i < arr.length) {
+          if (!n[arr[i]]) {
+            n[arr[i]] = true;
+            r.push(arr[i]);
+          }
+          i++;
+        }
+        return r;
+      }
+    };
+  });
 
   angular.module('ahaLuminateControllers').controller('CompanyPageCtrl', [
     '$scope', '$rootScope', '$location', '$filter', '$timeout', 'TeamraiserCompanyService', 'TeamraiserTeamService', 'TeamraiserParticipantService', function($scope, $rootScope, $location, $filter, $timeout, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService) {
@@ -679,12 +750,40 @@
   ]);
 
   angular.module('ahaLuminateControllers').controller('SchoolSearchCtrl', [
-    '$scope', '$rootScope', 'TeamraiserCompanyService', function($scope, $rootScope, TeamraiserCompanyService) {
-      return TeamraiserCompanyService.getSchools({
-        success: function(response) {
-          console.log('get school');
-          return console.log(response);
+    '$scope', '$rootScope', 'CsvService', 'UtilsService', 'TeamraiserCompanyService', function($scope, $rootScope, Csv, Utils, TeamraiserCompanyService) {
+      $scope.states = [];
+      $scope.schools = [];
+      $scope.schoolList = {};
+      $scope.setStates = function() {
+        var i, list, school, schools, states;
+        list = {};
+        states = [];
+        states.push({
+          'id': '?',
+          'label': 'Filter Results by State'
+        });
+        schools = $scope.schools;
+        i = 0;
+        while (i < schools.length) {
+          school = schools[i];
+          if (school.SCHOOL_STATE && school.SCHOOL_STATE !== '' && angular.isUndefined(list[school.SCHOOL_STATE])) {
+            list[school.SCHOOL_STATE] = school.SCHOOL_STATE;
+            states.push({
+              'id': school.SCHOOL_STATE,
+              'label': school.SCHOOL_STATE
+            });
+          }
+          i++;
+          $scope.states = states;
+          $scope.schoolList.stateFilter = states[0];
         }
+      };
+      TeamraiserCompanyService.getSchools({
+        success: function(csv) {
+          $scope.schools = Csv.toJson(csv);
+          $scope.setStates();
+        },
+        failure: function(response) {}
       });
     }
   ]);
@@ -729,6 +828,20 @@
         companyId: '=',
         frId: '=',
         teams: '='
+      }
+    };
+  });
+
+  angular.module('ahaLuminateApp').directive('schoolList', function() {
+    return {
+      templateUrl: '../aha-luminate/dist/jump-hoops/html/directive/schoolList.html',
+      restrict: 'E',
+      replace: true,
+      require: 'ngModel',
+      scope: {
+        schools: '=',
+        nameFilter: '=',
+        stateFilter: '='
       }
     };
   });
