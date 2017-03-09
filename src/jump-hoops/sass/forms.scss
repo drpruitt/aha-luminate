@@ -1,6 +1,7 @@
 div.responsive {
   input[type="text"],
-  select {
+  select,
+  text-area {
     border-color: $event-secondary;
   }
 }

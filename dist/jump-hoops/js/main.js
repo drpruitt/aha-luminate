@@ -536,7 +536,7 @@
       };
       employerMatchFields();
       $scope.toggleEmployerMatch = function() {
-        return angular.element('.employer-match').toggleClass('hidden');
+        return angular.element('.ym-employer-match').toggleClass('hidden');
       };
       billingAddressFields = function() {
         angular.element('#billing_first_name_row').addClass('billing-info');

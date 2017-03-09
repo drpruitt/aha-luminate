@@ -581,7 +581,8 @@ label {
           transform: scale(1); }
 
 div.responsive input[type="text"],
-div.responsive select {
+div.responsive select,
+div.responsive text-area {
   border-color: #6153a3; }
 
 [type="checkbox"]:not(:checked) + label:before,
@@ -1160,6 +1161,12 @@ body.aha-luminate #at4-soc {
 
 .donation-form-container .ym-donation-levels__message {
   margin-top: 20px; }
+
+.donation-form-container .ym-employer-match {
+  padding: 50px; }
+
+.donation-form-container .ym-employer-match__message {
+  padding: 25px; }
 
 .donation-form-container #donor_first_name_row,
 .donation-form-container #donor_last_name_row,

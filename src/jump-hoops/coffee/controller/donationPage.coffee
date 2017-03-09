@@ -92,7 +92,7 @@ angular.module 'ahaLuminateControllers'
       employerMatchFields()
 
       $scope.toggleEmployerMatch = ->
-        angular.element('.employer-match').toggleClass('hidden')
+        angular.element('.ym-employer-match').toggleClass('hidden')
 
       billingAddressFields = ->
         angular.element('#billing_first_name_row').addClass('billing-info')
