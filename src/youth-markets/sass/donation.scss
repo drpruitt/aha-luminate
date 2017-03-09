@@ -19,11 +19,9 @@
     padding:50px 0 0;
     font-weight: bold;
   }
-
   label {
     margin: 0;
   }
-
   .ym-donation-levels {
     padding: 30px 20px;
 
@@ -33,6 +31,32 @@
       text-align: center;
     }
   }
+
+  .ym-donation-levels__type {
+    text-align: center;
+
+    .btn-toggle:first-child {
+      margin-right: 30px;
+    }
+  }
+
+  .ym-donation-levels__amount {
+    display: inline-block;
+    margin-left: 20px;
+
+    .btn-toggle {
+      width: 110px;
+      display: block;
+    }
+  }
+
+  .ym-donation-levels__amount:first-child {
+    margin-left: 0;
+  }
+
+   .ym-donation-levels__message {
+      margin-top: 20px;
+   }
 
   #donor_first_name_row,
   #donor_last_name_row,

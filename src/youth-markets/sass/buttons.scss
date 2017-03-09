@@ -109,7 +109,7 @@ div.responsive {
 .btn-toggle {
     font-weight: bold; 
     border-radius: 10px;
-    @include button-size($padding-base-vertical, $padding-base-horizontal, 20px);
+    @include button-size($padding-base-vertical, $padding-base-horizontal, 18px);
     text-decoration: none;
     text-align: center;
 }
@@ -117,7 +117,7 @@ div.responsive {
 div.responsive input[type="text"].btn-enter,
 input[type="text"].btn-enter {
   border-radius: 10px;
-  @include button-size($padding-base-vertical, $padding-base-horizontal, 20px);
+  @include button-size($padding-base-vertical, $padding-base-horizontal, 18px);
   text-decoration: none;
   text-align: center;
 }

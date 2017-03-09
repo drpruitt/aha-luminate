@@ -470,6 +470,7 @@
           var amount, classLevel, inputId, levelChecked, levelId, levelLabel, userSpecified;
           levelId = level.level_id;
           amount = level.amount.formatted;
+          amount = amount.split('.')[0];
           userSpecified = level.userSpecified;
           inputId = '#level_standardexpanded' + levelId;
           classLevel = 'level' + levelId;
@@ -504,11 +505,10 @@
         }
       };
       $scope.selectLevel = function(type, level, amount) {
-        var amt, levelAmt;
+        var levelAmt;
         angular.element('#pstep_finish span').remove();
         if (type === 'level') {
-          amt = amount.split('.');
-          levelAmt = ' <span>' + amt[0] + ' <i class="fa fa-chevron-right" aria-hidden="true"></i></span>';
+          levelAmt = ' <span>' + amount + ' <i class="fa fa-chevron-right" aria-hidden="true"></i></span>';
           console.log(levelAmt);
           angular.element('#pstep_finish').append(levelAmt);
         } else {

@@ -21,6 +21,7 @@ angular.module 'ahaLuminateControllers'
           angular.forEach levels, (level) ->
             levelId = level.level_id
             amount = level.amount.formatted
+            amount = amount.split('.')[0]
             userSpecified = level.userSpecified
             inputId = '#level_standardexpanded'+levelId
             classLevel = 'level'+levelId
@@ -58,8 +59,8 @@ angular.module 'ahaLuminateControllers'
       $scope.selectLevel = (type, level, amount) ->
         angular.element('#pstep_finish span').remove()        
         if type is 'level'          
-          amt = amount.split('.');
-          levelAmt = ' <span>'+amt[0]+' <i class="fa fa-chevron-right" aria-hidden="true"></i></span>'
+          #amt = amount.split('.');
+          levelAmt = ' <span>'+amount+' <i class="fa fa-chevron-right" aria-hidden="true"></i></span>'
           console.log levelAmt
           angular.element('#pstep_finish').append(levelAmt)
         else 

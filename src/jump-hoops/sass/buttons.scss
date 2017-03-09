@@ -78,9 +78,7 @@ input[type="text"].btn-enter {
   &::-moz-placeholder,
   &::-ms-input-placeholder {
     color: $event-primary;
+    opacity: 1;
   }
 }
 
-::webkit-input-placeholder {
-  color: $event-primary;
-}

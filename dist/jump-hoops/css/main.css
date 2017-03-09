@@ -60,7 +60,7 @@ div.donation-form-container.responsive {
 .event-secondary-light {
   background: #ebe9f3; }
   .event-secondary-light hr {
-    color: #6153a3; }
+    border-color: #d7d4e8; }
 
 .event-accent {
   background: #91c855; }
@@ -377,7 +377,7 @@ div.responsive button.step-button {
   text-align: center; }
   .btn-toggle, .btn-toggle:link, .btn-toggle:visited {
     padding: 12px 24px;
-    font-size: 20px; }
+    font-size: 18px; }
 
 div.responsive input[type="text"].btn-enter,
 input[type="text"].btn-enter {
@@ -389,7 +389,7 @@ input[type="text"].btn-enter {
   input[type="text"].btn-enter:link,
   input[type="text"].btn-enter:visited {
     padding: 12px 24px;
-    font-size: 20px; }
+    font-size: 18px; }
 
 .btn,
 a.btn {
@@ -460,10 +460,8 @@ input[type="text"].btn-enter {
   input[type="text"].btn-enter::webkit-input-placeholder,
   input[type="text"].btn-enter::-moz-placeholder,
   input[type="text"].btn-enter::-ms-input-placeholder {
-    color: #cd1d67; }
-
-::webkit-input-placeholder {
-  color: #cd1d67; }
+    color: #cd1d67;
+    opacity: 1; }
 
 .ym-donor-list {
   background: #fff;
@@ -1143,6 +1141,24 @@ body.aha-luminate #at4-soc {
     font-weight: bold;
     font-size: 18px;
     text-align: center; }
+
+.donation-form-container .ym-donation-levels__type {
+  text-align: center; }
+  .donation-form-container .ym-donation-levels__type .btn-toggle:first-child {
+    margin-right: 30px; }
+
+.donation-form-container .ym-donation-levels__amount {
+  display: inline-block;
+  margin-left: 20px; }
+  .donation-form-container .ym-donation-levels__amount .btn-toggle {
+    width: 110px;
+    display: block; }
+
+.donation-form-container .ym-donation-levels__amount:first-child {
+  margin-left: 0; }
+
+.donation-form-container .ym-donation-levels__message {
+  margin-top: 20px; }
 
 .donation-form-container #donor_first_name_row,
 .donation-form-container #donor_last_name_row,
