@@ -56,14 +56,20 @@ angular.module 'ahaLuminateControllers'
           angular.element('.ym-donation-levels__type--monthly').removeClass('btn-toggle--selected')
 
 
-      $scope.selectLevel = (level) ->
+      $scope.selectLevel = (level, amount) ->
+        levelAmt = '<span>$'+amount+' ></span>'
+        angular.element('#pstep_finish span').remove()
+        console.log 'level'+levelAmt
         angular.element('.ym-donation-levels__amounts .btn-toggle.btn-toggle--selected').removeClass('btn-toggle--selected')
         angular.element('.ym-donation-levels__amounts .btn-toggle.level'+level).addClass('btn-toggle--selected')
         angular.element('.ym-donation-levels__message').addClass('hidden')
         angular.element('.ym-donation-levels__message.level'+level).removeClass('hidden')
         angular.element('.donation-level-container.level'+level+' input').click()
+        angular.element('#pstep_finish').append(levelAmt)
 
 
+      $scope.enterAmount = ->
+        console.log 'enter'
 
       employerMatchFields = ->
         angular.element('#employer_name_row').parent().addClass('employer-match')

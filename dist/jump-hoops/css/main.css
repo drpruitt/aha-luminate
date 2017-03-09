@@ -351,6 +351,7 @@ div.responsive button.step-button {
   -webkit-filter: none;
           filter: none;
   border: 0 none;
+  max-width: none;
   min-width: 180px; }
   div.responsive .step-button, div.responsive .step-button:link, div.responsive .step-button:visited,
   div.responsive button.step-button,

@@ -5,7 +5,7 @@
   </div>
   <hr />
   <div class="ym-donation-levels__amounts" ng-repeat="donationLevel in donationLevels">
-    <a class="btn-toggle {{donationLevel.classLevel}}" ng-class="{'btn-toggle--selected': donationLevel.levelChecked == true}" ng-if="donationLevel.userSpecified == 'false'" ng-click="selectLevel(donationLevel.levelId);">
+    <a class="btn-toggle {{donationLevel.classLevel}}" ng-class="{'btn-toggle--selected': donationLevel.levelChecked == true}" ng-if="donationLevel.userSpecified == 'false'" ng-click="selectLevel(donationLevel.levelId, donationLevel.amount);">
       {{donationLevel.amount}}
     </a>
     <input type="text" class="btn-toggle btn-enter" ng-if="donationLevel.userSpecified == 'true'" placeholder="Other" ng-keyup="enterAmount();">
