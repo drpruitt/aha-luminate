@@ -43,6 +43,7 @@
   .ym-donation-levels__amount {
     display: inline-block;
     margin-left: 20px;
+    vertical-align: middle;
 
     .btn-toggle {
       width: 110px;
@@ -54,9 +55,9 @@
     margin-left: 0;
   }
 
-   .ym-donation-levels__message {
-      margin-top: 20px;
-   }
+ .ym-donation-levels__message {
+    margin-top: 20px;
+ }
 
   #donor_first_name_row,
   #donor_last_name_row,
@@ -67,6 +68,8 @@
   #donor_addr_zip_row,
   #donor_addr_country_row {
     width: 49%;
+    vertical-align: middle;
+    display: inline-block;
   }
 
   #donor_first_name_row,
@@ -112,7 +115,6 @@
 
 
   div.form-row {
-    display: inline-block;
     margin: 0 auto;  
 
     .form-content {
@@ -124,9 +126,7 @@
         width: 100%;
         max-width: 100%;
       }
-
     }
-
   }
   div.button-container{
     padding: 20px;

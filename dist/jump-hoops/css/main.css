@@ -1149,7 +1149,8 @@ body.aha-luminate #at4-soc {
 
 .donation-form-container .ym-donation-levels__amount {
   display: inline-block;
-  margin-left: 20px; }
+  margin-left: 20px;
+  vertical-align: middle; }
   .donation-form-container .ym-donation-levels__amount .btn-toggle {
     width: 110px;
     display: block; }
@@ -1168,7 +1169,9 @@ body.aha-luminate #at4-soc {
 .donation-form-container #donor_addr_state_row,
 .donation-form-container #donor_addr_zip_row,
 .donation-form-container #donor_addr_country_row {
-  width: 49%; }
+  width: 49%;
+  vertical-align: middle;
+  display: inline-block; }
 
 .donation-form-container #donor_first_name_row,
 .donation-form-container #donor_email_address_row,
@@ -1203,7 +1206,6 @@ body.aha-luminate #at4-soc {
     width: 670px; } }
 
 .donation-form-container div.form-row {
-  display: inline-block;
   margin: 0 auto; }
   .donation-form-container div.form-row .form-content {
     width: 100%;
