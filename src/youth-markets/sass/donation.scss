@@ -9,19 +9,23 @@
   div.donation-level-container-generic-repeat {
     display: none;
   }
+
   h2 {
     font-size: 32px;
     font-weight: bold;
   }
+
   .section-header-container {
     font-size: 32px;
     margin:50px 0 40px;
     padding:50px 0 0;
     font-weight: bold;
   }
+
   label {
     margin: 0;
   }
+
   .ym-donation-levels {
     padding: 30px 20px;
 
@@ -60,11 +64,15 @@
  }
 
  .ym-employer-match {
-    padding: 50px;
+    padding: 50px 50px 0;
+ }
+ 
+ .employer-address-container {
+    padding: 0 50px;
  }
 
  .ym-employer-match__message {
-    padding: 25px;
+    padding: 25px 25px 0;
  }
 
   #donor_first_name_row,
