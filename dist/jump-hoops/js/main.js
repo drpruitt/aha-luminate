@@ -834,7 +834,7 @@
 
   angular.module('ahaLuminateApp').directive('schoolList', function() {
     return {
-      templateUrl: 'http://www2.heart.org/aha-luminate/dist/jump-hoops/html/directive/schoolList.html',
+      templateUrl: 'https://www2.heart.org/aha-luminate/dist/jump-hoops/html/directive/schoolList.html',
       restrict: 'E',
       replace: true,
       require: 'ngModel',
