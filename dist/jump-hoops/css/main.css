@@ -372,8 +372,21 @@ div.responsive button.step-button {
 .btn-toggle {
   font-weight: bold;
   border-radius: 10px;
-  text-decoration: none; }
+  text-decoration: none;
+  text-align: center; }
   .btn-toggle, .btn-toggle:link, .btn-toggle:visited {
+    padding: 12px 24px;
+    font-size: 20px; }
+
+div.responsive input[type="text"].btn-enter,
+input[type="text"].btn-enter {
+  border-radius: 10px;
+  text-decoration: none;
+  text-align: center; }
+  div.responsive input[type="text"].btn-enter, div.responsive input[type="text"].btn-enter:link, div.responsive input[type="text"].btn-enter:visited,
+  input[type="text"].btn-enter,
+  input[type="text"].btn-enter:link,
+  input[type="text"].btn-enter:visited {
     padding: 12px 24px;
     font-size: 20px; }
 
@@ -438,6 +451,18 @@ div.responsive .btn-toggle--selected,
   .btn-toggle--selected:link,
   .btn-toggle--selected:visited {
     color: #fff; }
+
+div.responsive input[type="text"].btn-enter,
+input[type="text"].btn-enter {
+  border-color: #cd1d67; }
+  div.responsive input[type="text"].btn-enter::webkit-input-placeholder, div.responsive input[type="text"].btn-enter::-moz-placeholder, div.responsive input[type="text"].btn-enter::-ms-input-placeholder,
+  input[type="text"].btn-enter::webkit-input-placeholder,
+  input[type="text"].btn-enter::-moz-placeholder,
+  input[type="text"].btn-enter::-ms-input-placeholder {
+    color: #cd1d67; }
+
+::webkit-input-placeholder {
+  color: #cd1d67; }
 
 .ym-donor-list {
   background: #fff;

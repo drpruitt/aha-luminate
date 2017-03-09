@@ -68,5 +68,19 @@ div.responsive .btn-toggle--selected,
   &:visited {
     color: #fff;
   }
+}
 
+div.responsive input[type="text"].btn-enter,
+input[type="text"].btn-enter {
+  border-color: $event-primary;
+
+  &::webkit-input-placeholder,
+  &::-moz-placeholder,
+  &::-ms-input-placeholder {
+    color: $event-primary;
+  }
+}
+
+::webkit-input-placeholder {
+  color: $event-primary;
 }
