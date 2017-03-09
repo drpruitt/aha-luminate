@@ -55,21 +55,29 @@ angular.module 'ahaLuminateControllers'
           angular.element('.ym-donation-levels__type--monthly').removeClass('btn-toggle--selected')
 
 
-      $scope.selectLevel = (level) ->
-        amt = angular.element('.donation-level-container.level'+level+' .donation-level-amount-container').text()
-        amt = amt.split('.');
-        levelAmt = '<span>'+amt[0]+' ></span>'
-        angular.element('#pstep_finish span').remove()
+      $scope.selectLevel = (type, level, amount) ->
+        angular.element('#pstep_finish span').remove()        
+        if type is 'level'          
+          amt = amount.split('.');
+          levelAmt = ' <span>'+amt[0]+' ></span>'
+          console.log levelAmt
+          angular.element('#pstep_finish').append(levelAmt)
+        else 
+          angular.element('#pstep_finish').append('<span></span>')
+          
+
         angular.element('.ym-donation-levels__amounts .btn-toggle.btn-toggle--selected').removeClass('btn-toggle--selected')
         angular.element('.ym-donation-levels__amounts .btn-toggle.level'+level).addClass('btn-toggle--selected')
         angular.element('.ym-donation-levels__message').addClass('hidden')
         angular.element('.ym-donation-levels__message.level'+level).removeClass('hidden')
         angular.element('.donation-level-container.level'+level+' input').click()
-        angular.element('#pstep_finish').append(levelAmt)
+        
 
 
-      $scope.enterAmount = ->
-        console.log 'enter'
+      $scope.enterAmount = (amount) ->
+        angular.element('#pstep_finish span').text('')
+        angular.element('#pstep_finish span').prepend('$'+amount)
+        angular.element('.donation-level-user-entered input').val(amount)
 
       employerMatchFields = ->
         angular.element('#employer_name_row').parent().addClass('employer-match')
