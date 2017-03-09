@@ -8,7 +8,9 @@
     <a class="btn-toggle {{donationLevel.classLevel}}" ng-class="{'btn-toggle--selected': donationLevel.levelChecked == true}" ng-if="donationLevel.userSpecified == 'false'" ng-click="selectLevel(donationLevel.levelId);">
       {{donationLevel.amount}}
     </a>
-    <input type="text" class="btn-toggle btn-enter" ng-if="donationLevel.userSpecified == 'true'" ng-keyup="enterAmount()" placeholder="Other">
+    <div ng-if="donationLevel.userSpecified == 'true'">
+      <input type="text" class="btn-toggle btn-enter" ng-keyup="enterAmount()" ng-click="enterAmount()" placeholder="Other">
+    </div>
   </div>
   <div class="ym-donation-levels__message level{{donationLevel.levelId}}" ng-repeat="donationLevel in donationLevels" ng-class="{'hidden': donationLevel.levelChecked != true}">
     <p>
