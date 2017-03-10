@@ -74,7 +74,7 @@ div.responsive input[type="text"].btn-enter,
 input[type="text"].btn-enter {
   border-color: $event-primary;
 
-  &::webkit-input-placeholder,
+  &::-webkit-input-placeholder,
   &::-moz-placeholder,
   &::-ms-input-placeholder {
     color: $event-primary;

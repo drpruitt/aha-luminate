@@ -456,8 +456,8 @@ div.responsive .btn-toggle--selected,
 div.responsive input[type="text"].btn-enter,
 input[type="text"].btn-enter {
   border-color: #cd1d67; }
-  div.responsive input[type="text"].btn-enter::webkit-input-placeholder, div.responsive input[type="text"].btn-enter::-moz-placeholder, div.responsive input[type="text"].btn-enter::-ms-input-placeholder,
-  input[type="text"].btn-enter::webkit-input-placeholder,
+  div.responsive input[type="text"].btn-enter::-webkit-input-placeholder, div.responsive input[type="text"].btn-enter::-moz-placeholder, div.responsive input[type="text"].btn-enter::-ms-input-placeholder,
+  input[type="text"].btn-enter::-webkit-input-placeholder,
   input[type="text"].btn-enter::-moz-placeholder,
   input[type="text"].btn-enter::-ms-input-placeholder {
     color: #cd1d67;
