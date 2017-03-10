@@ -2,3 +2,123 @@
    NOT PART OF DEPLOYMENT PROCESS. MUST BE MANUALLY COPIED TO PAGEBUILDER.
 ]]
 
+[[?xTx::x[[A8]]x::
+  <script>
+    var myHtmlEditor = 'Gfr_htmltextarea';
+  </script>
+  <script src="../js/ajax_mce.js"></script>
+::]]
+<script>
+  var submitted = false;
+  function submitCheck() {
+    if(submitted) {
+      alert('[[T6:[[M0:donations:pc_alert_already_submitted]]]]');
+      return false;
+    }
+    else {
+      submitted = true;
+      return true;
+    }
+  }
+</script>
+<div class="registration-page-container responsive" id="reg_payment_page">
+  <div class="header-container" id="reg_payment_header_container">
+    [[?xxnullx::x[[A0]]x::::
+      <div class="ErrorMessage page-error">
+        <span class="field-error-indicator"></span>
+        <span class="field-error-text">
+          [[A0]]
+        </span>
+      </div>
+    ]]
+  </div>
+  <form id="fr_payment_form" name="fr_payment_form" action="[[A1]]" method="POST" onsubmit="return submitCheck()">
+    <input type="hidden" name="pg" id="pg" value="[[A5]]">
+    <input type="hidden" name="fr_id" id="fr_id" value="[[A2]]">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="manageable-content" data-container="edit_title_container">
+          <h3 class="ObjTitle" id="title_container">
+            [[C1:fr_reg_payment_page_title]]
+          </h3>
+        </div>
+      </div>
+      <div class="section-sub-header empty"></div>
+      <div class="section-body" id="reg_payment_body_container">
+        <div id="reg_total_block" class="label-value-block-container clearfix">
+          <p class="clearfix">
+            <span id="reg_total_label" class="option-label">
+              [[?xx::x[[A10]]x::
+                [[M0:trreg:submit_payment_total_label]]
+              ::
+                [[M0:friendraiser:reg_payment_page_dsp_current_amount_title]]
+              ]]
+            </span>
+            <span id="reg_total_amt" class="option-amount">[[A9]]</span>
+          </p>
+          [[?xx::x[[A10]]x::::
+            <p class="clearfix">
+              <span id="dsp_future_label" class="option-label">[[M0:friendraiser:reg_payment_page_dsp_future_amount_title]]</span>
+              <span id="dsp_future_amt" class="option-amount">[[A10]]</span>
+            </p>
+          ]]
+        </div>
+        <div id="reg_payment_info_block">
+          [[?xx::x[[C:payment-type-element:responsive_payment_type]]x::
+            [[C:payment-type-element:payment_type]]
+          ::
+            [[C:payment-type-element:responsive_payment_type]]
+          ]]
+        </div>
+        <div id="reg_billing_info_block">
+          <h3>
+            [[M0:friendraiser:reg_payment_page_billing_header]]
+          </h3>
+          <div id="billing_info_name">
+            [[C:selectlist-title-element:billing_title]]
+            [[C:text-element:billing_first_name]]
+            [[C:text-element:billing_last_name]]
+            [[C:selectlist-suffix-element:billing_suffix]]
+          </div>
+          <div id="billing_info_address">
+            [[C:text-element:billing_addr_street1]]
+            [[C:text-element:billing_addr_street2]]
+            [[C:text-element:billing_addr_city]]
+            [[C:selectlist-state-element:billing_addr_state]]
+            [[C:text-element:billing_addr_zip]]
+            [[C:selectlist-country-element:billing_addr_country]]
+          </div>
+        </div>
+      </div>
+      <div id="external_payment_wait_dlg" class="yui-panel-container">
+        <div class="hd">
+          [[M0:friendraiser:reg_payment_page_lightbox_title]]
+        </div>
+        <div class="bd">
+          <p>[[M0:friendraiser:reg_payment_page_lightbox_title]]</p>
+        </div>
+      </div>
+      <div class="section-footer clearfix">
+        <button class="next-step step-button" id="btn_next" name="btn_next" value="[[M0:friendraiser:reg_payment_page_next_button_label]]" type="[[?xTx::x[[A7]]x::button::submit]]">
+          <span>[[M0:friendraiser:reg_payment_page_next_button_label]]</span>
+        </button>
+        <button class="step-button prev-step" id="btn_prev" name="btn_prev" value="[[M0:friendraiser:reg_payment_page_prev_button_label]]" type="[[?xTx::x[[A7]]x::button::submit]]">
+          <span>[[M0:friendraiser:reg_payment_page_prev_button_label]]</span>
+        </button>
+        <script>
+          preEnhance('external_payment_wait_dlg');
+          Y.use('jquery-ui', 'boxinator', function(Y) {
+            jQuery(function() {
+              jQuery('body').addClass('yui-skin-convio');
+              jQuery(document).bind('redirect-external', function() {
+                var wait_dlg = new Y.Convio.widget.Boxinator('#external_payment_wait_dlg', Y.Convio.widget.Boxinator.USER_LIGHTBOX);
+                postEnhance('external_payment_wait_dlg');
+                wait_dlg.show();
+              });
+            });
+          });
+        </script>
+      </div>
+    </div>
+  </form>
+</div>
