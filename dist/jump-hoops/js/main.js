@@ -454,7 +454,7 @@
 
   angular.module('ahaLuminateControllers').controller('DonationCtrl', [
     '$scope', '$rootScope', 'DonationService', function($scope, $rootScope, DonationService) {
-      var $donationFormRoot, billingAddressFields, donorRecognitionFields, employerMatchFields;
+      var $donationFormRoot, billingAddressFields, donorRecognitionFields, employerMatchFields, loadForm;
       $donationFormRoot = angular.element('[data-donation-form-root]');
       $scope.donationInfo = {
         validate: 'true',
@@ -463,30 +463,6 @@
         billing_text: angular.element('#billing_info_same_as_donor_row label').text()
       };
       $scope.donationLevels = [];
-      DonationService.getDonationFormInfo('form_id=' + $scope.donationInfo.form_id + '&fr_id=' + $scope.donationInfo.fr_id).then(function(response) {
-        var levels;
-        levels = response.data.getDonationFormInfoResponse.donationLevels.donationLevel;
-        return angular.forEach(levels, function(level) {
-          var amount, classLevel, inputId, levelChecked, levelId, levelLabel, userSpecified;
-          levelId = level.level_id;
-          amount = level.amount.formatted;
-          amount = amount.split('.')[0];
-          userSpecified = level.userSpecified;
-          inputId = '#level_standardexpanded' + levelId;
-          classLevel = 'level' + levelId;
-          angular.element(inputId).parent().parent().parent().parent().addClass(classLevel);
-          levelLabel = angular.element('.' + classLevel).find('.donation-level-expanded-label p').text();
-          levelChecked = angular.element('.' + classLevel + ' .donation-level-label-input-container input').prop('checked');
-          return $scope.donationLevels.push({
-            levelId: levelId,
-            classLevel: classLevel,
-            amount: amount,
-            userSpecified: userSpecified,
-            levelLabel: levelLabel,
-            levelChecked: levelChecked
-          });
-        });
-      });
       $scope.giftType = function(type) {
         var checkBox;
         checkBox = angular.element('.generic-repeat-label-checkbox-container input').prop('checked');
@@ -533,7 +509,6 @@
         angular.element('#employer_phone_row').parent().addClass('ym-employer-match__fields');
         return angular.element('.employer-address-container').addClass('hidden');
       };
-      employerMatchFields();
       $scope.toggleEmployerMatch = function() {
         angular.element('.ym-employer-match__message').toggleClass('hidden');
         return angular.element('.employer-address-container').toggleClass('hidden');
@@ -543,9 +518,38 @@
         angular.element('#tr_recognition_nameanonymous_row').addClass('hidden ym-donor-recognition__fields');
         return angular.element('#tr_recognition_namerec_name_row').addClass('hidden ym-donor-recognition__fields');
       };
-      donorRecognitionFields();
       $scope.toggleDonorRecognition = function() {
         return angular.element('.ym-donor-recognition__fields').toggleClass('hidden');
+      };
+      $scope.togglePersonalNote = function() {
+        return angular.element('#tr_message_to_participant_row').toggleClass('hidden ym-border');
+      };
+      $scope.tributeGift = function(type) {
+        if (type === 'honor') {
+          angular.element('.btn-toggle--honor').toggleClass('btn-toggle--selected');
+          if (angular.element('.btn-toggle--honor').hasClass('btn-toggle--selected')) {
+            angular.element('.btn-toggle--memory').removeClass('btn-toggle--selected');
+            angular.element('#tribute_type').val('tribute_type_value2');
+            angular.element('#tribute_show_honor_fieldsname').prop('checked', true);
+            return angular.element('#tribute_honoree_name_row').show();
+          } else {
+            angular.element('#tribute_type').val('');
+            angular.element('#tribute_show_honor_fieldsname').prop('checked', false);
+            return angular.element('#tribute_honoree_name_row').hide();
+          }
+        } else {
+          angular.element('.btn-toggle--memory').toggleClass('btn-toggle--selected');
+          if (angular.element('.btn-toggle--memory').hasClass('btn-toggle--selected')) {
+            angular.element('.btn-toggle--honor').removeClass('btn-toggle--selected');
+            angular.element('#tribute_type').val('tribute_type_value1');
+            angular.element('#tribute_show_honor_fieldsname').prop('checked', true);
+            return angular.element('#tribute_honoree_name_row').show();
+          } else {
+            angular.element('#tribute_type').val('');
+            angular.element('#tribute_show_honor_fieldsname').prop('checked', false);
+            return angular.element('#tribute_honoree_name_row').hide();
+          }
+        }
       };
       billingAddressFields = function() {
         angular.element('#billing_first_name_row').addClass('billing-info');
@@ -558,8 +562,7 @@
         angular.element('#billing_addr_country_row').addClass('billing-info');
         return angular.element('.billing-info').addClass('hidden');
       };
-      billingAddressFields();
-      return $scope.toggleBillingInfo = function() {
+      $scope.toggleBillingInfo = function() {
         var inputStatus;
         angular.element('.billing-info').toggleClass('hidden');
         inputStatus = angular.element('#billing_info').prop('checked');
@@ -569,6 +572,37 @@
           return angular.element('#billing_info_same_as_donorname').prop('checked', 'false');
         }
       };
+      loadForm = function() {
+        DonationService.getDonationFormInfo('form_id=' + $scope.donationInfo.form_id + '&fr_id=' + $scope.donationInfo.fr_id).then(function(response) {
+          var levels;
+          levels = response.data.getDonationFormInfoResponse.donationLevels.donationLevel;
+          return angular.forEach(levels, function(level) {
+            var amount, classLevel, inputId, levelChecked, levelId, levelLabel, userSpecified;
+            levelId = level.level_id;
+            amount = level.amount.formatted;
+            amount = amount.split('.')[0];
+            userSpecified = level.userSpecified;
+            inputId = '#level_standardexpanded' + levelId;
+            classLevel = 'level' + levelId;
+            angular.element(inputId).parent().parent().parent().parent().addClass(classLevel);
+            levelLabel = angular.element('.' + classLevel).find('.donation-level-expanded-label p').text();
+            levelChecked = angular.element('.' + classLevel + ' .donation-level-label-input-container input').prop('checked');
+            return $scope.donationLevels.push({
+              levelId: levelId,
+              classLevel: classLevel,
+              amount: amount,
+              userSpecified: userSpecified,
+              levelLabel: levelLabel,
+              levelChecked: levelChecked
+            });
+          });
+        });
+        angular.element('#tr_message_to_participant_row').addClass('hidden');
+        employerMatchFields();
+        billingAddressFields();
+        return donorRecognitionFields();
+      };
+      return loadForm();
     }
   ]);
 

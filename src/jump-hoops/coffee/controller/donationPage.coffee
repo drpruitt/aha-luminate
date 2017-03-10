@@ -14,33 +14,6 @@ angular.module 'ahaLuminateControllers'
 
       $scope.donationLevels = []
 
-      DonationService.getDonationFormInfo 'form_id=' + $scope.donationInfo.form_id + '&fr_id=' + $scope.donationInfo.fr_id
-        .then (response) ->
-          levels = response.data.getDonationFormInfoResponse.donationLevels.donationLevel
-          
-          angular.forEach levels, (level) ->
-            levelId = level.level_id
-            amount = level.amount.formatted
-            amount = amount.split('.')[0]
-            userSpecified = level.userSpecified
-            inputId = '#level_standardexpanded'+levelId
-            classLevel = 'level'+levelId
-
-            angular.element(inputId).parent().parent().parent().parent().addClass(classLevel)
-
-            levelLabel = angular.element('.'+classLevel).find('.donation-level-expanded-label p').text()
-
-            levelChecked = angular.element('.'+classLevel+' .donation-level-label-input-container input').prop('checked')
-
-            $scope.donationLevels.push
-              levelId: levelId
-              classLevel: classLevel
-              amount: amount
-              userSpecified: userSpecified
-              levelLabel: levelLabel
-              levelChecked: levelChecked
-
-
       $scope.giftType = (type) ->
         checkBox = angular.element('.generic-repeat-label-checkbox-container input').prop('checked')
 
@@ -84,8 +57,6 @@ angular.module 'ahaLuminateControllers'
         angular.element('#employer_phone_row').parent().addClass('ym-employer-match__fields')
         angular.element('.employer-address-container').addClass('hidden')
 
-      employerMatchFields()
-
       $scope.toggleEmployerMatch = ->
         angular.element('.ym-employer-match__message').toggleClass('hidden')
         angular.element('.employer-address-container').toggleClass('hidden')
@@ -96,11 +67,38 @@ angular.module 'ahaLuminateControllers'
         angular.element('#tr_recognition_nameanonymous_row').addClass('hidden ym-donor-recognition__fields')
         angular.element('#tr_recognition_namerec_name_row').addClass('hidden ym-donor-recognition__fields')
 
-      donorRecognitionFields()
-
       $scope.toggleDonorRecognition = ->
         angular.element('.ym-donor-recognition__fields').toggleClass('hidden')
 
+      $scope.togglePersonalNote = ->
+        angular.element('#tr_message_to_participant_row').toggleClass('hidden ym-border')
+
+
+      $scope.tributeGift = (type) ->
+        if type is 'honor'
+          angular.element('.btn-toggle--honor').toggleClass('btn-toggle--selected')
+          
+          if angular.element('.btn-toggle--honor').hasClass('btn-toggle--selected')
+            angular.element('.btn-toggle--memory').removeClass('btn-toggle--selected')
+            angular.element('#tribute_type').val('tribute_type_value2')
+            angular.element('#tribute_show_honor_fieldsname').prop('checked', true)
+            angular.element('#tribute_honoree_name_row').show()
+          else
+            angular.element('#tribute_type').val('')
+            angular.element('#tribute_show_honor_fieldsname').prop('checked', false)
+            angular.element('#tribute_honoree_name_row').hide()
+        else
+          angular.element('.btn-toggle--memory').toggleClass('btn-toggle--selected')
+
+          if angular.element('.btn-toggle--memory').hasClass('btn-toggle--selected')
+            angular.element('.btn-toggle--honor').removeClass('btn-toggle--selected')
+            angular.element('#tribute_type').val('tribute_type_value1')
+            angular.element('#tribute_show_honor_fieldsname').prop('checked', true)
+            angular.element('#tribute_honoree_name_row').show()
+          else
+            angular.element('#tribute_type').val('')
+            angular.element('#tribute_show_honor_fieldsname').prop('checked', false)
+            angular.element('#tribute_honoree_name_row').hide()
 
       billingAddressFields = ->
         angular.element('#billing_first_name_row').addClass('billing-info')
@@ -113,8 +111,6 @@ angular.module 'ahaLuminateControllers'
         angular.element('#billing_addr_country_row').addClass('billing-info')
         angular.element('.billing-info').addClass('hidden')
 
-      billingAddressFields()
-
       $scope.toggleBillingInfo = ->
         angular.element('.billing-info').toggleClass('hidden');
         inputStatus = angular.element('#billing_info').prop('checked')
@@ -123,6 +119,41 @@ angular.module 'ahaLuminateControllers'
           angular.element('#billing_info_same_as_donorname').prop('checked', 'true')
         else
           angular.element('#billing_info_same_as_donorname').prop('checked', 'false')
+
+      loadForm = ->
+        DonationService.getDonationFormInfo 'form_id=' + $scope.donationInfo.form_id + '&fr_id=' + $scope.donationInfo.fr_id
+          .then (response) ->
+            levels = response.data.getDonationFormInfoResponse.donationLevels.donationLevel
+            
+            angular.forEach levels, (level) ->
+              levelId = level.level_id
+              amount = level.amount.formatted
+              amount = amount.split('.')[0]
+              userSpecified = level.userSpecified
+              inputId = '#level_standardexpanded'+levelId
+              classLevel = 'level'+levelId
+
+              angular.element(inputId).parent().parent().parent().parent().addClass(classLevel)
+
+              levelLabel = angular.element('.'+classLevel).find('.donation-level-expanded-label p').text()
+
+              levelChecked = angular.element('.'+classLevel+' .donation-level-label-input-container input').prop('checked')
+
+              $scope.donationLevels.push
+                levelId: levelId
+                classLevel: classLevel
+                amount: amount
+                userSpecified: userSpecified
+                levelLabel: levelLabel
+                levelChecked: levelChecked
+
+
+        angular.element('#tr_message_to_participant_row').addClass('hidden')
+        employerMatchFields()
+        billingAddressFields()
+        donorRecognitionFields()
+
+      loadForm()
 
 
   ]

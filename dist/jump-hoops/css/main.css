@@ -60,7 +60,7 @@ div.donation-form-container.responsive {
 .event-secondary-light {
   background: #ebe9f3; }
   .event-secondary-light hr {
-    border-color: #d7d4e8; }
+    border-color: #6153a3; }
 
 .event-accent {
   background: #91c855; }
@@ -378,6 +378,9 @@ div.responsive button.step-button {
   .btn-toggle, .btn-toggle:link, .btn-toggle:visited {
     padding: 12px 24px;
     font-size: 18px; }
+
+.donation-form-container .btn-toggle {
+  display: inline-block; }
 
 div.responsive input[type="text"].btn-enter,
 input[type="text"].btn-enter {
@@ -1138,7 +1141,8 @@ body.aha-luminate #at4-soc {
 
 .donation-form-container .form-progress-bar,
 .donation-form-container div.form-row.don-standard-levels,
-.donation-form-container div.donation-level-container-generic-repeat {
+.donation-form-container div.donation-level-container-generic-repeat,
+.donation-form-container #tribute_show_honor_fields_row {
   display: none; }
 
 .donation-form-container h2 {
@@ -1153,6 +1157,9 @@ body.aha-luminate #at4-soc {
 
 .donation-form-container label {
   margin: 0; }
+
+.donation-form-container .ym-border {
+  border-bottom: 1px solid #6153a3; }
 
 .donation-form-container .ym-donation-levels {
   padding: 30px 20px; }
@@ -1190,10 +1197,6 @@ body.aha-luminate #at4-soc {
   .donation-form-container .ym-personal-note h5 {
     padding: 25px 25px 15px; }
 
-.donation-form-container .ym-tribute-gift {
-  padding: 20px 100px 0;
-  text-align: center; }
-
 .donation-form-container .employer-address-container {
   padding: 0 50px; }
 
@@ -1212,13 +1215,21 @@ body.aha-luminate #at4-soc {
 .donation-form-container #tr_message_to_participant_row,
 .donation-form-container #tr_recognition_namerec_name_row {
   padding: 25px 75px; }
+  .donation-form-container #tr_message_to_participant_row.ym-border,
+  .donation-form-container #tr_recognition_namerec_name_row.ym-border {
+    padding-bottom: 40px; }
   .donation-form-container #tr_message_to_participant_row textarea,
   .donation-form-container #tr_recognition_namerec_name_row textarea {
     width: 100%; }
 
+.donation-form-container .ym-tribute-gift {
+  padding: 20px 100px 0; }
+  .donation-form-container .ym-tribute-gift h5 {
+    text-align: center; }
+
 .donation-form-container .ym-tribute-gift__type {
   max-width: 470px;
-  margin: 30px auto; }
+  margin: auto; }
   .donation-form-container .ym-tribute-gift__type .btn-toggle {
     width: 200px; }
   .donation-form-container .ym-tribute-gift__type .btn-toggle:first-child {

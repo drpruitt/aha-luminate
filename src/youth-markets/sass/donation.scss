@@ -4,9 +4,11 @@
       display: none;
     }
   }
+
   .form-progress-bar,
   div.form-row.don-standard-levels,
-  div.donation-level-container-generic-repeat {
+  div.donation-level-container-generic-repeat,
+  #tribute_show_honor_fields_row {
     display: none;
   }
 
@@ -24,6 +26,10 @@
 
   label {
     margin: 0;
+  }
+
+  .ym-border {
+    border-bottom: 1px solid $event-secondary;
   }
 
   .ym-donation-levels {
@@ -76,11 +82,6 @@
     }
   }
 
-  .ym-tribute-gift {
-    padding: 20px 100px 0;
-    text-align: center;
-  }
-
   .employer-address-container {
     padding: 0 50px;
   }
@@ -104,15 +105,24 @@
   #tr_message_to_participant_row,
   #tr_recognition_namerec_name_row {
     padding: 25px 75px;
-
+    &.ym-border {
+      padding-bottom: 40px;
+    }
     textarea {
       width: 100%;
+    }
+  }
+  .ym-tribute-gift {
+    padding: 20px 100px 0;
+
+    h5{
+      text-align: center;
     }
   }
 
   .ym-tribute-gift__type {
     max-width: 470px;
-    margin: 30px auto;
+    margin: auto;
 
     .btn-toggle {
       width: 200px;

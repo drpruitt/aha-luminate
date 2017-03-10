@@ -107,11 +107,15 @@ div.responsive {
 }
 
 .btn-toggle {
-    font-weight: bold; 
-    border-radius: 10px;
-    @include button-size($padding-base-vertical, $padding-base-horizontal, 18px);
-    text-decoration: none;
-    text-align: center;
+  font-weight: bold; 
+  border-radius: 10px;
+  @include button-size($padding-base-vertical, $padding-base-horizontal, 18px);
+  text-decoration: none;
+  text-align: center;
+}
+
+.donation-form-container .btn-toggle {
+  display: inline-block;
 }
 
 div.responsive input[type="text"].btn-enter,
