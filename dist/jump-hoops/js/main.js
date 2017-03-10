@@ -248,7 +248,7 @@
             jsonpCallbackParam: 'callback'
           }).then(function(response) {
             if (response.data.success) {
-              return callback.success(decodeURIComponent(response.data.success.schools));
+              return callback.success(decodeURIComponent(response.data.success.schools.replace(/\+/g, ' ')));
             } else {
               return callback.failure(response);
             }
@@ -777,13 +777,19 @@
     '$scope', '$rootScope', 'CsvService', 'UtilsService', 'TeamraiserCompanyService', function($scope, $rootScope, Csv, Utils, TeamraiserCompanyService) {
       $scope.states = [];
       $scope.schools = [];
-      $scope.schoolList = {};
+      $scope.schoolList = {
+        sortProp: 'SCHOOL_NAME',
+        sortDesc: false,
+        totalItems: 0,
+        currentPage: 1,
+        numPerPage: 5
+      };
       $scope.setStates = function() {
         var i, list, school, schools, states;
         list = {};
         states = [];
         states.push({
-          'id': '?',
+          'id': '0',
           'label': 'Filter Results by State'
         });
         schools = $scope.schools;
@@ -794,7 +800,8 @@
             list[school.SCHOOL_STATE] = school.SCHOOL_STATE;
             states.push({
               'id': school.SCHOOL_STATE,
-              'label': school.SCHOOL_STATE
+              'label': school.SCHOOL_STATE,
+              'SCHOOL_STATE': school.SCHOOL_STATE
             });
           }
           i++;
@@ -802,9 +809,19 @@
           $scope.schoolList.stateFilter = states[0];
         }
       };
+      $scope.paginate = function(value) {
+        var begin, end, index;
+        begin = ($scope.schoolList.currentPage - 1) * $scope.schoolList.numPerPage;
+        end = begin + $scope.schoolList.numPerPage;
+        index = $scope.schools.indexOf(value);
+        return begin <= index && index < end;
+      };
       TeamraiserCompanyService.getSchools({
         success: function(csv) {
-          $scope.schools = Csv.toJson(csv);
+          var schools;
+          schools = Csv.toJson(csv);
+          $scope.schools = schools;
+          $scope.schoolList.totalItems = schools.length;
           $scope.setStates();
         },
         failure: function(response) {}

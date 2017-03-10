@@ -26,7 +26,7 @@ angular.module 'ahaLuminateApp'
         urlSCE = $sce.trustAsResourceUrl(url)
         $http.jsonp(urlSCE, jsonpCallbackParam: 'callback').then (response) ->
           if response.data.success
-            callback.success(decodeURIComponent(response.data.success.schools))
+            callback.success(decodeURIComponent(response.data.success.schools.replace(/\+/g, ' ')))
           else
             callback.failure(response)
 
