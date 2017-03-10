@@ -2,125 +2,19 @@
    NOT PART OF DEPLOYMENT PROCESS. MUST BE MANUALLY COPIED TO PAGEBUILDER.
 ]]
 
-[[?xTx::x[[A17]]x::
-  <script>
-    var myHtmlEditor = 'Gfr_htmltextarea';
-  </script>
-  <script src="../js/ajax_mce.js"></script>
-::]]
-<div class="registration-page-container responsive" id="fr_waiver_page">
-  <div class="header-container" id="waiver_header_container">
-    [[?xxnullx::x[[A5]]x::::
-      <div class="SuccessMessage">
-        [[A5]]
-      </div>
-    ]]
-    [[?xyz.xnullynullz.xynullz.xnullyz::x[[A4]]y[[A6]]z::::
-      <div class="ErrorMessage page-error">
-        <span class="field-error-indicator"></span>
-        <span class="field-error-text">
-          [[?xy.xnully::x[[A4]]y::
-            [[M0:friendraiser:generic_error]]
-          ::
-            [[A4]]
-          ]]
-        </span>
-      </div>
-    ]]
-  </div>
-  <form id="FriendraiserUserWaiver" name="FriendraiserUserWaiver" method="POST" action="[[A1]]">
+[[?[[S8]]::/admin/::::
+  <style>
+    body {
+      display: none;
+    }
+  </style>
+]]
+<div class="ym-registration-page-container" ng-controller="RegistrationWaiverCtrl">
+  <form class="js--registration-waiver-form" name="FriendraiserUserWaiver" method="POST" action="[[A1]]">
     <input type="hidden" name="pg" id="pg" value="[[A7]]">
     <input type="hidden" name="fr_id" id="fr_id" value="[[A2]]">
     <input type="hidden" name="extra_person" value="[[A15]]">
-    <div class="section-container">
-      <div class="section-header">
-        <div class="manageable-content" data-container="edit_title_container">
-          <h3 class="ObjTitle" id="title_container">
-            [[C1:fr_waiver_title]]
-          </h3>
-        </div>
-      </div>
-      <div class="section-sub-header empty"></div>
-      <div class="section-body" id="waiver_body_container">
-        <div class="printable-link-block">
-          <a href="[[A14]]" class="printable-link" onclick="return cv_new_win_from_link_handler(event, 'Print', 670, 500);" onkeypress="return cv_new_win_from_link_handler(event, 'Print', 670, 500);" title="[[M0:friendraiser:printable_version_link_title]]. [[M0:uicontrols:new_window_508]]">
-            <span class="printable-link-text">[[M0:friendraiser:printable_version]]</span>
-            <img class="printable-link-icon" src="../images/Action_buttons/print-icon.png" alt="[[M0:friendraiser:printable_version_link_title]] [[M0:uicontrols:new_window_508]]">
-          </a>
-        </div>
-        [[?xxnullx::x[[A16]]x::::
-          <span class="secondary-waiver-header">[[M0:friendraiser:secondary_reg_waiver_header]] [[A16]]</span>
-        ]]
-        <div class="manageable-content" data-container="edit_instruction_container">
-          <span id="instruction_container">[[C1:fr_waiver_instruction]]</span>
-        </div>
-        <div class="waiver-text">
-          [[A13]]
-        </div>
-        <div class="agree-block">
-          <input type="checkbox" name="fr_accept" id="fr_accept">
-          <span class="manageable-content" data-container="edit_agree_container">
-            <label for="fr_accept"><span class="Explicit" id="agree_container">[[C1:fr_agree]]</span></label>
-          </span>
-        </div>
-      </div>
-      <div class="section-footer clearfix">
-        <input type="submit" class="default-submit-hack" name="fuw_next.x" value="Default Action" tabindex="-1">
-        <button class="step-button next-step" id="fuw_next" name="fuw_next.x" title="[[M1:friendraiser:join_team_step_next_button]]" disabled="disabled" value="[[M1:friendraiser:join_team_step_next_button]]" type="[[?xTx::x[[A12]]x::button::submit]]">
-          <span>[[M1:friendraiser:join_team_step_next_button]]</span>
-        </button>
-        <button class="step-button cancel-step" id="fuw_cancel" name="fuw_cancel.x" title="[[M1:friendraiser:join_team_step_cancel_button]]" value="[[M1:friendraiser:join_team_step_cancel_button]]" type="[[?xTx::x[[A12]]x::button::submit]]">
-          <span>[[M1:friendraiser:join_team_step_cancel_button]]</span>
-        </button>
-      </div>
-    </div>
+    <input type="hidden" name="fr_accept" value="on">
+    <input type="hidden" name="fuw_next.x" value="[[M1:friendraiser:join_team_step_next_button]]">
   </form>
-  <script>
-    Y.use('jquery-ui', function(Y) {
-      jQuery(function() {
-        jQuery('#fr_accept').each(function() {
-          var syncAction = function(obj) {
-            if(obj.is(':checked')) {
-              jQuery('#fuw_next').removeAttr('disabled');
-            }
-            else {
-              jQuery('#fuw_next').attr('disabled', 'disabled');
-            }
-            return arguments.callee;
-          }(jQuery(this));
-          jQuery(this).click(function() {
-            syncAction(jQuery(this));
-          });
-        });
-      });
-    });
-  </script>
-  [[?xTx::x[[A17]]x::
-    <div id="edit_title_container" class="EditContainer" style="display: none;">
-      [[C:ajax-custompage-edit-component:edit_title_container]]
-    </div>
-    <div id="edit_instruction_container" class="EditContainer" style="display: none;">
-      [[C:ajax-custompage-edit-component:edit_instruction_container]]
-    </div>
-    <div id="edit_agree_container" class="EditContainer" style="display: none;">
-      [[C:ajax-custompage-edit-component:edit_agree_container]]
-    </div>
-    <div id="edit_photo_allowed_container" class="EditContainer" style="display: none;">
-      [[C:ajax-custompage-edit-component:edit_photo_allowed_container]]
-    </div>
-    <div id="edit_fr_html_container" class="EditContainer">
-      [[C:ajax-custompage-edit-component:edit_fr_html_container]]
-    </div>
-    <input id="edit_btn_title" type="hidden" value="[[M0:friendraiser_emgmt:preview_edit_link]]">
-    <script>
-      hide_element('edit_fr_html_container');
-      Y.use('emc-reg-editor', function(Y) {
-        jQuery(function() {
-          jQuery('.registration-page-container').manageEMCEditable({
-            windowTitle: '[[T6:[[M0:friendraiser_emgmt:editor_window_title]]]]'
-          });
-        });
-      });
-    </script>
-  ::]]
 </div>

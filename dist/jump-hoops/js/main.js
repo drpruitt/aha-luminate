@@ -773,6 +773,12 @@
     }
   ]);
 
+  angular.module('ahaLuminateControllers').controller('RegistrationWaiverCtrl', [
+    '$scope', function($scope) {
+      return angular.element('.js--registration-waiver-form').submit();
+    }
+  ]);
+
   angular.module('ahaLuminateControllers').controller('SchoolSearchCtrl', [
     '$scope', '$rootScope', 'CsvService', 'UtilsService', 'TeamraiserCompanyService', function($scope, $rootScope, Csv, Utils, TeamraiserCompanyService) {
       $scope.states = [];
