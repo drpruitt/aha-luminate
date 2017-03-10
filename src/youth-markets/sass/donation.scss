@@ -59,21 +59,74 @@
     margin-left: 0;
   }
 
- .ym-donation-levels__message {
+  .ym-donation-levels__message {
     margin-top: 20px;
- }
+  }
 
- .ym-employer-match {
+  .ym-employer-match {
     padding: 50px 50px 0;
- }
- 
- .employer-address-container {
-    padding: 0 50px;
- }
+  }
 
- .ym-employer-match__message {
+  .ym-donor-recognition,
+  .ym-personal-note {
+    padding: 20px 50px 0;
+
+    h5 {
+      padding: 25px 25px 15px;
+    }
+  }
+
+  .ym-tribute-gift {
+    padding: 20px 100px 0;
+    text-align: center;
+  }
+
+  .employer-address-container {
+    padding: 0 50px;
+  }
+
+  .ym-employer-match__message {
     padding: 25px 25px 0;
- }
+  }
+
+  .ym-employer-match__fields {
+    padding: 5px 15px;
+  }
+
+  #tr_show_gift_to_public_row{
+    padding: 0 75px 25px;
+  }
+
+  #tr_recognition_nameanonymous_row {
+    padding: 0 75px;
+  }
+
+  #tr_message_to_participant_row,
+  #tr_recognition_namerec_name_row {
+    padding: 25px 75px;
+
+    textarea {
+      width: 100%;
+    }
+  }
+
+  .ym-tribute-gift__type {
+    max-width: 470px;
+    margin: 30px auto;
+
+    .btn-toggle {
+      width: 200px;
+    }
+
+    .btn-toggle:first-child {
+      margin-right: 30px;
+    }
+  }
+
+  #tribute_honoree_name_row {
+    max-width: 470px;
+    margin: 30px auto 0;
+  }
 
   #donor_first_name_row,
   #donor_last_name_row,
@@ -82,7 +135,8 @@
   #donor_addr_city_row,
   #donor_addr_state_row,
   #donor_addr_zip_row,
-  #donor_addr_country_row {
+  #donor_addr_country_row,
+  .ym-employer-match__fields {
     width: 49%;
     vertical-align: middle;
     display: inline-block;
@@ -128,7 +182,6 @@
       width: 670px;
     }
   }
-
 
   div.form-row {
     margin: 0 auto;  

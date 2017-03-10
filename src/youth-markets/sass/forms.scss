@@ -9,6 +9,13 @@ label {
   font-weight: 500;
 }
 
+.ym-optional {
+  font-size: 14px; 
+  font-style: italic;
+  color: $event-secondary;
+  font-weight: normal;
+}
+
 [type="checkbox"]:not(:checked),
 [type="checkbox"]:checked {
   position: absolute;

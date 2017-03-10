@@ -534,6 +534,12 @@ div.responsive select {
 label {
   font-weight: 500; }
 
+.ym-optional {
+  font-size: 14px;
+  font-style: italic;
+  color: #6153a3;
+  font-weight: normal; }
+
 [type="checkbox"]:not(:checked),
 [type="checkbox"]:checked {
   position: absolute;
@@ -582,7 +588,7 @@ label {
 
 div.responsive input[type="text"],
 div.responsive select,
-div.responsive text-area {
+div.responsive textarea {
   border: 1px solid #6153a3; }
 
 [type="checkbox"]:not(:checked) + label:before,
@@ -596,10 +602,14 @@ div.responsive text-area {
 select {
   -moz-appearance: none;
   -webkit-appearance: none;
+  -o-appearance: none;
   appearance: none;
   padding-right: .75rem\9;
   background-image: none\9;
   background: url("../image/ym-select-carot.png") right 0.75rem center no-repeat #fff; }
+
+select::-ms-expand {
+  display: none; }
 
 .ym-badges {
   text-align: center;
@@ -1173,11 +1183,50 @@ body.aha-luminate #at4-soc {
 .donation-form-container .ym-employer-match {
   padding: 50px 50px 0; }
 
+.donation-form-container .ym-donor-recognition,
+.donation-form-container .ym-personal-note {
+  padding: 20px 50px 0; }
+  .donation-form-container .ym-donor-recognition h5,
+  .donation-form-container .ym-personal-note h5 {
+    padding: 25px 25px 15px; }
+
+.donation-form-container .ym-tribute-gift {
+  padding: 20px 100px 0;
+  text-align: center; }
+
 .donation-form-container .employer-address-container {
   padding: 0 50px; }
 
 .donation-form-container .ym-employer-match__message {
   padding: 25px 25px 0; }
+
+.donation-form-container .ym-employer-match__fields {
+  padding: 5px 15px; }
+
+.donation-form-container #tr_show_gift_to_public_row {
+  padding: 0 75px 25px; }
+
+.donation-form-container #tr_recognition_nameanonymous_row {
+  padding: 0 75px; }
+
+.donation-form-container #tr_message_to_participant_row,
+.donation-form-container #tr_recognition_namerec_name_row {
+  padding: 25px 75px; }
+  .donation-form-container #tr_message_to_participant_row textarea,
+  .donation-form-container #tr_recognition_namerec_name_row textarea {
+    width: 100%; }
+
+.donation-form-container .ym-tribute-gift__type {
+  max-width: 470px;
+  margin: 30px auto; }
+  .donation-form-container .ym-tribute-gift__type .btn-toggle {
+    width: 200px; }
+  .donation-form-container .ym-tribute-gift__type .btn-toggle:first-child {
+    margin-right: 30px; }
+
+.donation-form-container #tribute_honoree_name_row {
+  max-width: 470px;
+  margin: 30px auto 0; }
 
 .donation-form-container #donor_first_name_row,
 .donation-form-container #donor_last_name_row,
@@ -1186,7 +1235,8 @@ body.aha-luminate #at4-soc {
 .donation-form-container #donor_addr_city_row,
 .donation-form-container #donor_addr_state_row,
 .donation-form-container #donor_addr_zip_row,
-.donation-form-container #donor_addr_country_row {
+.donation-form-container #donor_addr_country_row,
+.donation-form-container .ym-employer-match__fields {
   width: 49%;
   vertical-align: middle;
   display: inline-block; }
