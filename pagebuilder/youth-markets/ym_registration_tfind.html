@@ -2,3 +2,151 @@
    NOT PART OF DEPLOYMENT PROCESS. MUST BE MANUALLY COPIED TO PAGEBUILDER.
 ]]
 
+[[?[[A13]]::new::
+  <style>
+    body {
+      display: none;
+    }
+  </style>
+  <script>
+    window.location = 'https://[[S29:SECURE_DOMAIN]][[S29:SECURE_PATH]]TRR?fr_id=[[A2]]&pg=tfind&fr_tm_opt=existing';
+  </script>
+::
+  [[?xTx::x[[A26]]x::
+    <script>
+      var myHtmlEditor = 'Gfr_wysiwygtextarea';
+    </script>
+    <script src="../js/ajax_mce.js"></script>
+  ::]]
+  <div class="registration-page-container responsive" id="team_find_page">
+    <div class="header-container" id="team_find_header_container">
+      [[?xxnullx::x[[A5]]x::::
+        <div class="SuccessMessage">
+          [[A5]]
+        </div>
+      ]]
+      [[?xyz.xnullynullz.xynullz.xnullyz::x[[A4]]y[[A6]]z::::
+        <div class="ErrorMessage page-error">
+          <span class="field-error-indicator"></span>
+          <span class="field-error-text">
+            [[?xy.xnully::x[[A4]]y::
+              [[M0:friendraiser:generic_error]]
+            ::
+              [[A4]]
+            ]]
+          </span>
+        </div>
+      ]]
+    </div>
+    <form name="FriendraiserFind" method="POST" action="[[A1]]">
+      <input type="hidden" name="fr_id" value="[[A2]]">
+      <input type="hidden" name="pg" value="[[A7]]">
+      <input type="hidden" name="fr_cstm_tm" value="t">
+      <input type="hidden" name="fr_tm_opt" value="[[A13]]">
+      <input type="hidden" name="company_id" value="[[A36]]">
+      <div class="section-container" id="team_find_section_container">
+        <div class="section-header" id="team_find_section_header">
+          <div class="manageable-editor" data-container="edit_title_container">
+            <span class="section-header-text" id="title_container">[[C1:fr_team_title]]</span>
+          </div>
+        </div>
+        <div class="section-sub-header empty" id="part_type_instruction_sub_header"></div>
+        <div class="section-body" id="team_find_section_body">
+          [[?[[A13]]::new::::
+            <div id="team_find_existing">
+              <div class="input-container" id="team_find_existing_team_search_container">
+                <div class="manageable-editor" data-container="edit_team_label_container">
+                  <span class="field-required" id="team_find_search_team_name_required"></span>
+                  <label class="input-label" for="fr_team_name" id="team_label_container">[[?xx::x[[C1:fr_team_field]]x::[[M0:friendraiser:team_field]]::[[C1:fr_team_field]]]]</label>
+                </div>
+                <input type="text" size="20" name="fr_team_name" id="fr_team_name" value="[[A16]]"/>
+              </div>
+              <div id="team_find_search_button_container">
+                <button class="step-button action-button" id="fr_find_search" name="fr_find_search.x" value="[[C1:fr_team_search_button]]" title="[[C1:fr_team_search_button]]" type="submit">
+                  <span>[[C1:fr_team_search_button]]</span>
+                </button>
+              </div>
+              <div class="parent-justify-filler" id="team_find_existing_filler"></div>
+            </div>
+          ]]
+          [[?[[A13]]::new::::
+            [[?xxnullx::x[[A15]]x::::
+              <div id="team_find_search_results_container">
+                <span id="team_find_search_results_header_text">[[C1:fr_search_results]]</span>
+                [[A15]]
+              </div>
+            ]]
+          ]]
+        </div>
+        <div class="section-footer clearfix"  id="team_find_section_footer">
+          [[?[[A13]]::new::::
+            <input type="submit" class="default-submit-hack" name="fr_find_search.x" value="Default Action" tabindex="-1">
+          ]]
+        </div>
+      </div>
+      [[S66:util/SpamControlComponentResponsive.tpt]]
+    </form>
+  </div>
+
+  [[?xTx::x[[A26]]x::
+    <div id="edit_title_container" class="EditContainer" style="display: none;">
+      [[C:ajax-custompage-edit-component:edit_title_container]]
+    </div>
+    <div id="edit_table_hdr_container" class="EditContainer" style="display: none;">
+      [[C:ajax-custompage-edit-component:edit_table_hdr_container]]
+    </div>
+    <div id="edit_team_instr_container" class="EditContainer" style="display: none;">
+      [[C:ajax-custompage-edit-component:edit_team_instr_container]]
+    </div>
+    <div id="edit_existing_team_hdr_container" class="EditContainer" style="display: none;">
+      [[C:ajax-custompage-edit-component:edit_existing_team_hdr_container]]
+    </div>
+    <div id="edit_new_team_hdr_container" class="EditContainer" style="display: none;">
+      [[C:ajax-custompage-edit-component:edit_new_team_hdr_container]]
+    </div>
+    <div id="edit_team_form_container" class="EditContainer" style="display: none;">
+      [[C:ajax-custompage-edit-component:edit_team_form_container]]
+    </div>
+    <div id="edit_team_join_container" class="EditContainer" style="display: none;">
+      [[C:ajax-custompage-edit-component:edit_team_join_container]]
+    </div>
+    <div id="edit_new_team_container" class="EditContainer" style="display: none;">
+      [[C:ajax-custompage-edit-component:edit_new_team_container]]
+    </div>
+    <div id="edit_existing_team_container" class="EditContainer" style="display: none;">
+      [[C:ajax-custompage-edit-component:edit_existing_team_container]]
+    </div>
+    <div id="edit_individual_container" class="EditContainer" style="display: none;">
+      [[C:ajax-custompage-edit-component:edit_individual_container]]
+    </div>
+    <div id="edit_existing_team_instr_container" class="EditContainer" style="display: none;">
+      [[C:ajax-custompage-edit-component:edit_existing_team_instr_container]]
+    </div>
+    <div id="edit_new_team_instr_container" class="EditContainer" style="display: none;">
+      [[C:ajax-custompage-edit-component:edit_new_team_instr_container]]
+    </div>
+    <div id="edit_team_label_container" class="EditContainer" style="display: none;">
+      [[C:ajax-custompage-edit-component:edit_team_label_container]]
+    </div>
+    <div id="edit_company_label_container" class="EditContainer" style="display: none;">
+      [[C:ajax-custompage-edit-component:edit_company_label_container]]
+    </div>
+    <div id="edit_division_label_container" class="EditContainer" style="display: none;">
+      [[C:ajax-custompage-edit-component:edit_division_label_container]]
+    </div>
+    <div id="edit_fr_wysiwyg_container" class="EditContainer">
+      [[C:ajax-custompage-edit-component:edit_fr_wysiwyg_container]]
+    </div>
+    <input id="edit_btn_title" type="hidden" value="[[M0:friendraiser_emgmt:preview_edit_link]]">
+    <script>
+      hide_element('edit_fr_wysiwyg_container');
+      Y.use('emc-reg-editor', function(Y) {
+        jQuery(function() {
+          jQuery('.registration-page-container').manageEMCEditable({
+            windowTitle: '[[T6:[[M0:friendraiser_emgmt:editor_window_title]]]]'
+          });
+        });
+      });
+    </script>
+  ::]]
+]]

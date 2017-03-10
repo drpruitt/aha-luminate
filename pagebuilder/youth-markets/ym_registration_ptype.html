@@ -2,3 +2,344 @@
    NOT PART OF DEPLOYMENT PROCESS. MUST BE MANUALLY COPIED TO PAGEBUILDER.
 ]]
 
+[[?xTx::x[[A24]]x::
+  <script>
+    var myHtmlEditor = 'Gfr_htmltextarea';
+  </script>
+  <script src="../js/ajax_mce.js"></script>
+::]]
+<script>
+  document.show_addons = new Array();
+  document.hide_addons = new Array();
+</script>
+<script>
+  function selectType(_i) {
+    document.F2fRegPartType.fr_part_radio[_i].checked = true;
+  }
+</script>
+<div class="registration-page-container responsive" id="participation_options_page">
+  <div class="header-container" id="part_type_header_container">
+    [[?xxnullx::x[[A5]]x::::
+      <div class="SuccessMessage">
+        [[A5]]
+      </div>
+    ]]
+    [[?xyz.xnullynullz.xynullz.xnullyz::x[[A4]]y[[A6]]z::::
+      <div class="ErrorMessage page-error">
+        <span class="field-error-indicator"></span>
+        <span class="field-error-text">
+          [[?xy.xnully::x[[A4]]y::
+            [[M0:friendraiser:generic_error]]
+          ::
+            [[A4]]
+          ]]
+        </span>
+      </div>
+    ]]
+  </div>
+  <form id="F2fRegPartType" name="F2fRegPartType" action="[[A1]]" method="POST">
+    <input type="hidden" name="pg" value="[[A7]]">
+    <input type="hidden" name="fr_id" value="[[A2]]">
+    <input type="hidden" name="extra_person" value="[[A21]]">
+    <input type="hidden" name="company_id" value="[[A42]]">
+    <div class="section-container" id="part_type_section_container">
+      <div class="section-header" id="part_type_section_header">
+        <div class="manageable-content" data-container="edit_pt_title_container">
+          <span class="section-header-text" id="pt_title_container">[[C1:fr_pt_title]]</span>
+        </div>
+      </div>
+      <div class="section-sub-header" id="part_type_instruction_sub_header">
+        [[?xxnullx::x[[A22]]x::
+          <div class="manageable-content" data-container="edit_pt_instruction_container">
+            <span id="pt_instruction_container">[[C1:fr_pt_instruction]]</span>
+          </div>
+        ::
+          [[M0:friendraiser:secondary_reg_participation_types_header]] [[A22]]
+        ]]
+      </div>
+      <div class="section-body" id="part_type_section_body">
+        <div id="part_type_selection_container">
+          <div class="manageable-content" data-container="edit_sel_type_container">
+            <span class="field-required"></span>
+            <span id="sel_type_container">[[C1:fr_sel_type]]</span>
+          </div>
+          [[?xTx::x[[A38]]x::
+            <div class="fr_reg_limited_types">
+              [[M0:friendraiser:participation_types_limited]]
+            </div>
+          ::]]
+          [[?[[A6]]::ERR_NO_TYPE::
+            <div class="ErrorMessage">
+              [[M0:friendraiser:error_no_type]]
+            </div>
+          ::]]
+          [[?[[A6]]::ERR_TRANS_TOO_MUCH::
+            <div class="ErrorMessage">
+              [[M0:friendraiser:error_transaction_too_much]]
+            </div>
+          ::]]
+          [[?xx::x[[A13]]x::
+            <div class="part-type-container part-type-unavailable">
+              [[M0:friendraiser:participation_types_unavailable]]
+            </div>
+          ::
+            [[A13]]
+          ]]
+        </div>
+        [[?xTx::x[[A17]]x::
+          <div id="part_type_fundraising_goal_container" [[?[[A6]]::ERR_BAD_GOAL::class="form-error"::]]>
+            [[?[[A6]]::ERR_BAD_GOAL::
+              <div class="ErrorMessage">
+                <span class="field-error-indicator"></span>
+                <span class="field-error-text">[[M0:friendraiser:error_invalid_goal_amt]]</span>
+              </div>
+            ::]]
+            <div class="form-content">
+              <div class="input-container" id="part_type_fundraising_goal_input_container">
+                <div class="manageable-content" data-container="edit_fund_goal_container">
+                  <label for="fr_goal" id="fund_goal_container">[[?xx::x[[C1:fr_your_fundraising_goal_field]]x::[[M0:friendraiser:your_fundraising_goal_field]]::[[C1:fr_your_fundraising_goal_field]]]]</label>
+                </div>
+                <input type="text" name="fr_goal" id="fr_goal" value="[[?xx::x[[A15]]x::[[?zz::z[[A18]]z::::[[A18]]]]::[[A15]]]]" size="15" maxlength="15">
+              </div>
+              [[?xxnullxBASELINEx::x[[S0:TPV_FR_CSTM_PT_STANDARD_SUGGESTEDGOAL]]x::
+                [[?zz::z[[A18]]z::::
+                  <div class="manageable-content" data-container="edit_suggested_goal_container">
+                    <span id="suggested_goal_container">[[?xx::x[[C1:fr_suggested_goal_field]]x::[[M0:friendraiser:suggested_goal_field]]::[[C1:fr_suggested_goal_field]]]]&nbsp;[[A18]]</span>
+                  </div>
+                ]]
+              ::
+                <div class="manageable-content" data-container="edit_suggested_goal_container">
+                  <span id="suggested_goal_container">[[C1:fr_suggested_goal_field]]</span>
+                </div>
+              ]]
+            </div>
+          </div>
+        ::]]
+        [[?xTx::x[[A16]]x::
+          <div id="part_type_additional_gift_container" [[?[[A6]]::ERR_BAD_GIFT::class="form-error"::]]>
+            [[?[[A6]]::ERR_BAD_GIFT::
+              <div class="ErrorMessage">
+                <span class="field-error-indicator"></span>
+                <span class="field-error-text">[[M0:friendraiser:error_invalid_amt_user]]</span>
+              </div>
+            ::]]
+            <div class="form-content">
+              <div class="manageable-content" data-container="edit_part_type_additional_gift_section_header">
+                <div id="part_type_additional_gift_section_header">
+                  [[C1:fr_gift_hdr]]
+                </div>
+              </div>
+              [[?xx::x[[A33]]x::
+                <div class="input-container" id="part_type_additional_gift_input_container">
+                  <div class="manageable-content" data-container="edit_addl_gift_container">
+                    <label for="fr_gift" id="addl_gift_container">[[?xx::x[[C1:fr_additional_gift_field]]x::[[M0:friendraiser:additional_gift_field]]::[[C1:fr_additional_gift_field]]]]</label>
+                  </div>
+                  <input type="text" name="fr_gift" id="fr_gift" value="[[A14]]" size="15" maxlength="15">
+                </div>
+              ::
+                <div class="input-container" id="part_type_donation_level_input_container">
+                  [[A33]]
+                </div>
+              ]]
+            </div>
+          </div>
+        ::]]
+      </div>
+      <div class="section-footer clearfix" id="part_type_section_footer">
+        <input type="submit" class="default-submit-hack" name="next_step.x" value="Default Action" tabindex="-1">
+        [[?xTx::x[[A45]]x::::
+          <button class="step-button next-step" id="next_step" name="next_step.x" value="[[M1:friendraiser:join_team_step_next_button]]" type="[[?xTx::x[[A12]]x::button::submit]]">
+            <span>[[M1:friendraiser:join_team_step_next_button]]</span>
+          </button>
+        ]]
+        [[?xxnullx::x[[A21]]x::
+          [[?xTx::x[[A47]]x::::
+            <button class="step-button previous-step" id="previous_step" name="previous_step.x" value="[[M1:friendraiser:join_team_step_prev_button]]" type="[[?xTx::x[[A12]]x::button::submit]]">
+              <span>[[M1:friendraiser:join_team_step_prev_button]]</span>
+            </button>
+          ]]
+        ::]]
+        [[?xx::x[[A13]]x::
+          <button class="step-button cancel-step" id="cancel" name="cancel.x" value="[[M1:friendraiser:join_team_step_cancel_button]]" type="[[?xTx::x[[A12]]x::button::submit]]">
+            <span>[[M1:friendraiser:join_team_step_cancel_button]]</span>
+          </button>
+        ::]]
+      </div>
+    </div>
+    <script>
+      function fr_part_radio_select(elem, useFlair) {
+        useFlair = useFlair === false ? false : true;
+        var idx = 0;
+        var any = 0;
+        if(document.show_addons[elem] != null && document.show_addons[elem] != undefined) {
+          while(idx < document.show_addons[elem].length) {
+            showElementWithEffects('addon_container_' + document.show_addons[elem][idx], useFlair);
+            any = 1;
+            idx++;
+          }
+          idx = 0;
+          while(idx < document.hide_addons[elem].length) {
+            hideElementWithEffects('addon_container_' + document.hide_addons[elem][idx], useFlair);
+            idx++;
+          }
+          if(any > 0) {
+            showElementWithEffects('addon_section_header', useFlair);
+            showElementWithEffects('addon_section_message', useFlair);
+          }
+          else {
+            hideElementWithEffects('addon_section_header', useFlair);
+            hideElementWithEffects('addon_section_message', useFlair);
+          }
+          selectType(elem);
+        }
+      }
+      Y.use('jquery-noconflict', function (Y) {
+        jQuery('input[name="fr_part_radio"]').click(function() {
+          var id = jQuery(this).val();
+          var pname = 'part_type_goal_' + id;
+          var currencyLocale = '[[S72:currency_locale]]'
+          var minFundGoal = jQuery('input[name="'+pname+'"]').val();
+          minFundGoal = parseCurrency(minFundGoal, currencyLocale);
+          var suggGoalContainer = jQuery('#suggested_goal_container').text().split(':');
+          var suggGoal = parseCurrency(suggGoalContainer[1], currencyLocale);
+          if(isNaN(suggGoal)) {
+            var newGoal = formatCurrency(minFundGoal, currencyLocale);
+            jQuery('#fr_goal').val(newGoal);
+          }
+          else {
+            if(minFundGoal > suggGoal) {
+              var newGoal = formatCurrency(minFundGoal, currencyLocale);
+              jQuery('#fr_goal').val(newGoal);
+            }
+            else {
+              var oldGoal = formatCurrency(suggGoal, currencyLocale);
+              jQuery('#fr_goal').val(oldGoal);
+            }
+          }
+        });
+      });
+      var idx = 0;
+      var radio = document.F2fRegPartType.fr_part_radio;
+      if(radio != null && radio.length != undefined) {
+        while(idx < radio.length) {
+          if(radio[idx].checked) {
+            fr_part_radio_select(idx, false);
+          }
+          idx++;
+        }
+      }
+      else {
+        fr_part_radio_select(0, false);
+      }
+      function showElementWithEffects(elementId, useFlair) {
+        if(useFlair) {
+          Y.use('jquery-ui', function() {
+            jQuery('#' + elementId).slideDown(); // show
+          });
+        }
+        else {
+          show_element(elementId);
+        }
+      }
+      function hideElementWithEffects(elementId, useFlair) {
+        if(useFlair) {
+          Y.use('jquery-ui', function() {
+            jQuery('#' + elementId).slideUp(); // hide
+          });
+        }
+        else {
+          hide_element(elementId);
+        }
+      }
+      Y.use('jquery-ui', function(Y) {
+        jQuery(function() {
+          jQuery('#part_type_company_selection').each(function() {
+            var syncAction = function(obj) {
+              if(obj.is(':checked')) {
+                jQuery('#part_type_individual_company_input_container').removeClass('hidden');
+              }
+              else {
+                jQuery('#part_type_individual_company_input_container').addClass('hidden');
+              };
+              return arguments.callee;
+            }(jQuery(this));
+            jQuery(this).click(function() {
+              syncAction(jQuery(this));
+            });
+          });
+          jQuery('#part_type_selection_container').find('input[type="radio"]').each(function() {
+            var syncAction = function(obj) {
+              if(obj.is(':checked')) {
+                obj.closest('div.part-type-container').addClass('selected');
+              }
+              else {
+                obj.closest('div.part-type-container').removeClass('selected');
+              };
+              return arguments.callee;
+            }(jQuery(this));
+            jQuery(this).click(function() {
+              jQuery('div.part-type-container').removeClass('selected');
+              syncAction(jQuery(this));
+            });
+          });
+        });
+      });
+    </script>
+    [[S66:util/SpamControlComponentResponsive.tpt]]
+  </form>
+  [[?xTx::x[[A24]]x::
+    <div id="edit_pt_title_container" class="EditContainer" style="display: none;">
+      [[C:ajax-custompage-edit-component:edit_pt_title_container]]
+    </div>
+    <div id="edit_pt_instruction_container" class="EditContainer" style="display: none;">
+      [[C:ajax-custompage-edit-component:edit_pt_instruction_container]]
+    </div>
+    <div id="edit_sel_type_container" class="EditContainer" style="display: none;">
+      [[C:ajax-custompage-edit-component:edit_sel_type_container]]
+    </div>
+    <div id="edit_disc_hdr_container" class="EditContainer" style="display: none;">
+      [[C:ajax-custompage-edit-component:edit_disc_hdr_container]]
+    </div>
+    <div id="edit_disc_code_container" class="EditContainer" style="display: none;">
+      [[C:ajax-custompage-edit-component:edit_disc_code_container]]
+    </div>
+    <div id="edit_addl_gift_container" class="EditContainer" style="display: none;">
+      [[C:ajax-custompage-edit-component:edit_addl_gift_container]]
+    </div>
+    <div id="edit_fund_goal_container" class="EditContainer" style="display: none;">
+      [[C:ajax-custompage-edit-component:edit_fund_goal_container]]
+    </div>
+    <div id="edit_goal_hdr_container" class="EditContainer" style="display: none;">
+      [[C:ajax-custompage-edit-component:edit_goal_hdr_container]]
+    </div>
+    <div id="edit_suggested_goal_container" class="EditContainer" style="display: none;">
+      [[C:ajax-custompage-edit-component:edit_suggested_goal_container]]
+    </div>
+    <div id="edit_addons_hdr_container" class="EditContainer" style="display: none;">
+      [[C:ajax-custompage-edit-component:edit_addons_hdr_container]]
+    </div>
+    <div id="edit_individual_company_hdr_container" class="EditContainer" style="display: none;">
+      [[C:ajax-custompage-edit-component:edit_individual_company_hdr_container]]
+    </div>
+    <div id="edit_individual_company_label_container" class="EditContainer" style="display: none;">
+      [[C:ajax-custompage-edit-component:edit_individual_company_label_container]]
+    </div>
+    <div id="edit_part_type_additional_gift_section_header" class="EditContainer" style="display: none;">
+      [[C:ajax-custompage-edit-component:edit_part_type_additional_gift_section_header]]
+    </div>
+    <div id="edit_fr_html_container" class="EditContainer">
+      [[C:ajax-custompage-edit-component:edit_fr_html_container]]
+    </div>
+    <input id="edit_btn_title" type="hidden" value="[[M0:friendraiser_emgmt:preview_edit_link]]">
+    <script>
+      hide_element('edit_fr_html_container');
+      Y.use('emc-reg-editor', function(Y) {
+        jQuery(function() {
+          jQuery('.registration-page-container').manageEMCEditable({
+            windowTitle: '[[T6:[[M0:friendraiser_emgmt:editor_window_title]]]]'
+          });
+        });
+      });
+    </script>
+  ::]]
+</div>

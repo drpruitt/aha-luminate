@@ -2,3 +2,182 @@
    NOT PART OF DEPLOYMENT PROCESS. MUST BE MANUALLY COPIED TO PAGEBUILDER.
 ]]
 
+[[?xTx::x[[A24]]x::
+  <script>
+    var myHtmlEditor = 'Gfr_htmltextarea';
+  </script>
+  <script src="../js/ajax_mce.js"></script>
+::]]
+
+<div class="registration-page-container responsive" id="registration_options_page">
+  <div class="header-container">
+    [[?xxnullx::x[[A5]]x::::
+      <div class="SuccessMessage">
+        [[A5]]
+      </div>
+    ]]
+    [[?xyz.xnullynullz.xynullz.xnullyz::x[[A4]]y[[A6]]z::::
+      <div class="ErrorMessage page-error">
+        <span class="field-error-indicator"></span>
+        <span class="field-error-text">
+          [[?xy.xnully::x[[A4]]y::
+            [[M0:friendraiser:generic_error]]
+          ::
+            [[A4]]
+          ]]
+        </span>
+      </div>
+    ]]
+  </div>
+  <form id="F2fRegContact" name="F2fRegContact" action="[[A1=form action]]" method="POST">
+    <input type="hidden" name="pg" id="pg" value="[[A7]]">
+    <input type="hidden" name="fr_id" id="fr_id" value="[[A2]]">
+    <input type="hidden" name="fr_cstm_reg" id="fr_cstm_reg" value="t">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="manageable-content" data-container="edit_title_container">
+          <span id="title_container">[[C1:fr_reg_title]]</span>
+        </div>
+      </div>
+      <div class="section-sub-header empty"></div>
+      <div class="section-body">
+        <div class="manageable-content" data-container="edit_reg_instr_container">
+          <div id="reg_instr_container">
+            [[C1:fr_reg_instruction]]
+          </div>
+        </div>
+        [[A13]]
+        <div class="sub-section-container" id="reg_options_cons_info_extension">
+          <div class="sub-section-body" id="reg_options_cons_info_extension_body">
+            [[?xxnullx::x[[A20]]x::::
+              [[?xxnullxBASELINEx::x[[S0:TPV_FR_CSTM_REG_OPTIN]]x:: 
+                <div id="gift_notice_optin">
+                  <input type="checkbox" name="fr_email_opt_in" id="fr_email_opt_in" [[?[[A20]]::T::checked="checked" ::]]>
+                  <label for="fr_email_opt_in" class="wrapable">
+                    <span class="manageable-content" data-container="edit_opt_in_container">
+                      <span id="opt_in_label">
+                        [[?xx::x[[C1:fr_gift_notice_opt_in_checkbox]]x::
+                          [[M0:friendraiser:gift_notice_opt_in_checkbox]]
+                        ::
+                          [[C1:fr_gift_notice_opt_in_checkbox]]
+                        ]]
+                      </span>
+                    </span>
+                  </label>
+                </div>
+              :: 
+                [[?xOPTINx::x[[S0:TPV_FR_CSTM_REG_OPTIN]]x:: 
+                  <input type="hidden" name="fr_email_opt_in" id="fr_email_opt_in" value="on">
+                ::]]
+              ]]
+            ]]
+            [[?xxnullx::x[[A23]]x::::
+              <div id="email_optin">
+                [[A23]]
+              </div>
+            ]]
+          </div>
+        </div>
+        [[??xy::x[[A16]]y::
+          <div class="clearfix"></div>
+        ::
+          <div class="sub-section-container" id="participant_info_container">
+            <div class="sub-section-header">
+              <div class="manageable-content" data-container="edit_password_hdr_container">
+                <span id="password_hdr_container">[[C1:fr_password_hdr]]</span>
+              </div>
+            </div>
+            <div class="sub-section-body clearfix" id="participant_info_body_container">
+              [[?xxnullx::x[[A16]]x::::
+                <div id="user_name_pword_container">
+                  <div id="password_component_container">
+                    [[A16]]
+                  </div>
+                </div>
+              ]]
+            </div>
+          </div>
+        ]]
+        [[?xTx::x[[A24]]x::
+          <div class="sub-section-container">
+            <div class="sub-section-header">
+              <div class="manageable-content" data-container="edit_questions_hdr_container">
+                <span id="questions_hdr_container">[[C1:fr_questions_hdr]]</span>
+              </div>
+            </div>
+          </div>
+        ::
+          [[?xxnullx::x[[A19]]x::::
+            [[?xtruex::x[[A29]]x::
+              <div class="sub-section-container">
+                <div class="sub-section-header">
+                  [[C1:fr_questions_hdr]]
+                </div>
+                <div class="sub-section-body" id="additional_questions_container">
+                  [[A19]]
+                </div>
+              </div>
+            ::
+              <div class="sub-section-body" id="additional_questions_container">
+                [[A19]]
+              </div>
+            ]]
+          ]]
+        ]]
+        <div class="section-footer clearfix">
+          <input type="submit" class="default-submit-hack" name="next_step.x" value="Default Action" tabindex="-1">
+          <button class="step-button next-step" id="next_step" name="next_step.x" value="[[M1:friendraiser:join_team_step_next_button]]" type="[[?xTx::x[[A12]]x::button::submit]]">
+            <span>[[M1:friendraiser:join_team_step_next_button]]</span>
+          </button>
+          <button class="step-button previous-step" id="previous_step" name="previous_step.x" value="[[M1:friendraiser:join_team_step_prev_button]]" type="[[?xTx::x[[A12]]x::button::submit]]">
+            <span>[[M1:friendraiser:join_team_step_prev_button]]</span>
+          </button>
+        </div>
+        [[S66:util/SpamControlComponentResponsive.tpt]]
+      </div>
+    </div>
+  </form>
+  [[?xTx::x[[A24]]x::
+    <div id="edit_title_container" class="EditContainer" style="display: none;">
+      [[C:ajax-custompage-edit-component:edit_title_container]]
+    </div>
+    <div id="edit_reg_instr_container" class="EditContainer" style="display: none;">
+      [[C:ajax-custompage-edit-component:edit_reg_instr_container]]
+    </div>
+    <div id="edit_contact_hdr_container" class="EditContainer" style="display: none;">
+      [[C:ajax-custompage-edit-component:edit_contact_hdr_container]]
+    </div>
+    <div id="edit_contact_info_hdr_container" class="EditContainer" style="display: none;">
+      [[C:ajax-custompage-edit-component:edit_contact_info_hdr_container]]
+    </div>
+    <div id="edit_opt_in_container" class="EditContainer" style="display: none;">
+      [[C:ajax-custompage-edit-component:edit_opt_in_container]]
+    </div>
+    <div id="edit_password_hdr_container" class="EditContainer" style="display: none;">
+      [[C:ajax-custompage-edit-component:edit_password_hdr_container]]
+    </div>
+    <div id="edit_questions_hdr_container" class="EditContainer" style="display: none;">
+      [[C:ajax-custompage-edit-component:edit_questions_hdr_container]]
+    </div>
+    <div id="edit_privacy_options_hdr_container" class="EditContainer" style="display: none;">
+      [[C:ajax-custompage-edit-component:edit_privacy_options_hdr_container]]
+    </div>
+    <div id="edit_privacy_options_hint_container" class="EditContainer" style="display: none;">
+      [[C:ajax-custompage-edit-component:edit_privacy_options_hint_container]]
+    </div>
+    <div id="edit_fr_html_container" class="EditContainer">
+      [[C:ajax-custompage-edit-component:edit_fr_html_container]]
+    </div>
+    <input id="edit_btn_title" type="hidden" value="[[M0:friendraiser_emgmt:preview_edit_link]]">
+    <script>
+      hide_element('edit_fr_html_container');
+      Y.use('emc-reg-editor', function(Y) {
+        jQuery(function() {
+          jQuery('.registration-page-container').manageEMCEditable({
+            windowTitle: '[[T6:[[M0:friendraiser_emgmt:editor_window_title]]]]'
+          });
+        });
+      });
+    </script>
+  ::]]
+</div>

@@ -2,3 +2,168 @@
    NOT PART OF DEPLOYMENT PROCESS. MUST BE MANUALLY COPIED TO PAGEBUILDER.
 ]]
 
+[[?xTx::x[[A24]]x::
+  <script>
+    var myHtmlEditor = 'Gfr_htmltextarea';
+  </script>
+  <script src="../js/ajax_mce.js"></script>
+::]]
+<div class="registration-page-container responsive" id="user_type_page">
+  <div class="header-container" id="user_type_header_container">
+    [[?xxnullx::x[[A5]]x::::
+      <div class="SuccessMessage">
+        [[A5]]
+      </div>
+    ]]
+    [[?xyz.xnullynullz.xynullz.xnullyz::x[[A4]]y[[A6]]z::::
+      <div class="ErrorMessage page-error">
+        <span class="field-error-indicator"></span>
+        <span class="field-error-text">
+          [[?xy.xnully::x[[A4]]y::
+            [[M0:friendraiser:generic_error]]
+          ::
+            [[A4]]
+          ]]
+        </span>
+      </div>
+    ]]
+  </div>
+  <div class="section-container" id="user_type_section_container">
+    <div class="section-header" id="user_type_section_header">
+      <div class="manageable-content" data-container="edit_ut_title_container">
+        <span class="section-header-text" id="ut_title_container">[[C1:fr_ut_title]]</span>
+      </div>
+    </div>
+    <div class="section-sub-header empty" id="user_type_section_sub_header"></div>
+    <div class="section-body clearfix" id="user_type_section_body">
+      <div id="user_type_new_participant_registration_container">
+        <div class="manageable-content" data-container="edit_fr_new_user_container">
+          <span id="fr_new_user_container">[[C1:fr_new_user]]</span>
+        </div>
+        <form id="f2fRegPartType" name="f2fRegPartType" action="[[A1]]" method="POST">
+          <input type="hidden" name="pg" value="[[A7]]">
+          <input type="hidden" name="fr_id" value="[[A2]]">
+          <div class="manageable-content" data-container="edit_fr_responsive_register_new_participant">
+            <button class="step-button next-step" id="next_step" type="submit" name="next_step.x" value="[[M1:friendraiser:join_team_step_next_button]]" type="[[?xTx::x[[A12]]x::button::submit]]">
+              <span id="fr_responsive_register_new_participant_container">[[C1:fr_responsive_register_new_participant]]</span>
+            </button>
+          </div>
+        </form>
+      </div>
+      <div id="user_type_login_container">
+        <div class="manageable-content" data-container="edit_fr_returning_user_container">
+          <span id="fr_returning_user_container">[[C1:fr_returning_user]]</span>
+        </div>
+        <form id="f2fLoginForm" name="f2fLoginForm" action="[[A1]]" method="POST">
+          <input type="hidden" name="pg" value="[[A7]]">
+          <input type="hidden" name="fr_id" value="[[A2]]">
+          <div id="user_type_login_login_container" [[?xx::x[[A20]]x::::class="form-error"]]>
+            [[?xx::x[[A20]]x::::
+              <div class="ErrorMessage">
+                <span class="field-error-indicator"></span>
+                <span class="field-error-text">[[A20]]</span>
+              </div>
+            ]]
+            <div class="form-content">
+              <div class="input-container" id="user_type_user_name_input_container">
+                <span class="field-required"></span>
+                <label for="[[A13]]_1">[[M0:global:user_name_field]]</label>
+                <input type="text" name="[[A13]]" id="[[A13]]_1" value="[[A23]]" maxlength="[[S0:USER_MAX_LOGIN_LEN]]">
+              </div>
+              <div class="input-container" id="user_type_password_input_container">
+                <span class="field-required"></span>
+                <label for="[[A14]]">[[M0:global:user_password_field]]</label>
+                <input type="password" name="[[A14]]" id="[[A14]]" maxlength="[[S0:USER_MAX_PASSWD_LEN]]">
+              </div>
+              <button class="step-button next-step" id="user_type_login_login_button" name="[[A16]]" id="[[A16]]" value="[[M0:global:login_button]]" type="[[?xTx::x[[A12]]x::button::submit]]">
+                <span>[[M0:global:login_button]]</span>
+              </button>
+            </div>
+          </div>
+        </form>
+        <form id="f2fSendUserNameForm" name="f2fSendUserNameForm" action="[[A1]]" method="POST">
+          <input type="hidden" name="pg" value="[[A7]]">
+          <input type="hidden" name="fr_id" value="[[A2]]">
+          <div id="user_type_email_login_info_link_container">
+            <a href="javascript:void(0)" id="user_type_email_login_info_link">[[M0:global:email_login_title]]</a>
+          </div>
+          <div class="SuccessMessage">[[A25]]</div>
+          <div id="user_type_login_email_container" class="[[?xx::x[[A26]]x::hidden::form-error]]" >
+            [[?xx::x[[A26]]x::::
+              <div class="ErrorMessage">
+                <span class="field-error-indicator"></span>
+                <span class="field-error-text">[[A26]]</span>
+              </div>
+            ]]
+            <div class="form-content">
+              <div class="input-container" id="user_type_login_email_input_container">
+                <span class="field-required"></span>
+                <label for="[[A17]]_2">[[M0:global:email_reg_field]]</label>
+                <input type="text" name="[[A17]]" id="[[A17]]_2" maxlength="100">
+              </div>
+              <input type="hidden" name="[[A18]]" value="[[M0:global:send_user_name_button]]">
+              <button class="step-button action-button" id="user_type_login_email_button" name="[[A18]]" id="[[A18]]" value="[[M0:global:send_user_name_button]]" type="[[?xTx::x[[A12]]x::button::submit]]">
+                <span>[[M0:global:send_user_name_button]]</span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script>
+    Y.use('jquery-ui', function(Y) {
+      jQuery(function() {
+        jQuery('#user_type_email_login_info_link').click(function() {
+          if(jQuery('#user_type_login_email_container').hasClass('hidden')) {
+            jQuery('#user_type_login_email_container').removeClass('hidden');
+          }
+          else {
+            jQuery('#user_type_login_email_container').addClass('hidden');
+          }
+        });
+      });
+    });
+  </script>
+  [[S66:util/SpamControlComponentResponsive.tpt]]
+</div>
+[[?xTx::x[[A24]]x::
+  <div id="edit_ut_title_container" class="EditContainer" style="display: none;">
+    [[C:ajax-custompage-edit-component:edit_ut_title_container]]
+  </div>
+  <div id="edit_ut_title_hint_container" class="EditContainer" style="display: none;">
+    [[C:ajax-custompage-edit-component:edit_ut_title_hint_container]]
+  </div>
+  <div id="edit_ut_instruction_container" class="EditContainer" style="display: none;">
+    [[C:ajax-custompage-edit-component:edit_ut_instruction_container]]
+  </div>
+  <div id="edit_sel_user_type_container" class="EditContainer" style="display: none;">
+    [[C:ajax-custompage-edit-component:edit_sel_user_type_container]]
+  </div>
+  <div id="edit_fr_new_user_container" class="EditContainer" style="display: none;">
+    [[C:ajax-custompage-edit-component:edit_fr_new_user_container]]
+  </div>
+  <div id="edit_fr_returning_user_container" class="EditContainer" style="display: none;">
+    [[C:ajax-custompage-edit-component:edit_fr_returning_user_container]]
+  </div>
+  <div id="edit_fr_html_container" class="EditContainer">
+    [[C:ajax-custompage-edit-component:edit_fr_html_container]]
+  </div>
+  <div id="edit_fr_responsive_register_new_participant" class="EditContainer" style="display: none;">
+    [[C:ajax-custompage-edit-component:edit_fr_responsive_register_new_participant]]
+  </div>
+  <div id="edit_fr_responsive_social_login" class="EditContainer" style="display: none;">
+    [[C:ajax-custompage-edit-component:edit_fr_responsive_social_login]]
+  </div>
+  <input id="edit_btn_title" type="hidden" value="[[M0:friendraiser_emgmt:preview_edit_link]]">
+  <script>
+    hide_element('edit_fr_html_container');
+    Y.use('emc-reg-editor', function(Y) {
+      jQuery(function() {
+        jQuery('.registration-page-container').manageEMCEditable({
+          windowTitle: '[[T6:[[M0:friendraiser_emgmt:editor_window_title]]]]'
+        });
+      });
+    });
+  </script>
+::]]
