@@ -116,9 +116,9 @@ angular.module 'ahaLuminateControllers'
         inputStatus = angular.element('#billing_info').prop('checked')
 
         if inputStatus == true
-          angular.element('#billing_info_same_as_donorname').prop('checked', 'true')
+          angular.element('#billing_info_same_as_donorname').prop('checked', true)
         else
-          angular.element('#billing_info_same_as_donorname').prop('checked', 'false')
+          angular.element('#billing_info_same_as_donorname').prop('checked', false)
 
       loadForm = ->
         DonationService.getDonationFormInfo 'form_id=' + $scope.donationInfo.form_id + '&fr_id=' + $scope.donationInfo.fr_id
@@ -146,7 +146,6 @@ angular.module 'ahaLuminateControllers'
                 userSpecified: userSpecified
                 levelLabel: levelLabel
                 levelChecked: levelChecked
-
 
         angular.element('#tr_message_to_participant_row').addClass('hidden')
         employerMatchFields()
