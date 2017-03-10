@@ -17,7 +17,7 @@
     document.F2fRegPartType.fr_part_radio[_i].checked = true;
   }
 </script>
-<div class="registration-page-container responsive" id="participation_options_page">
+<div cclass="ym-registration-page-container" ng-controller="RegistrationPtypeCtrl">
   <div class="header-container" id="part_type_header_container">
     [[?xxnullx::x[[A5]]x::::
       <div class="SuccessMessage">
@@ -36,6 +36,11 @@
         </span>
       </div>
     ]]
+    [[?[[A6]]::ERR_TRANS_TOO_MUCH::
+      <div class="ErrorMessage">
+        [[M0:friendraiser:error_transaction_too_much]]
+      </div>
+    ::]]
   </div>
   <form id="F2fRegPartType" name="F2fRegPartType" action="[[A1]]" method="POST">
     <input type="hidden" name="pg" value="[[A7]]">
@@ -48,43 +53,9 @@
           <span class="section-header-text" id="pt_title_container">[[C1:fr_pt_title]]</span>
         </div>
       </div>
-      <div class="section-sub-header" id="part_type_instruction_sub_header">
-        [[?xxnullx::x[[A22]]x::
-          <div class="manageable-content" data-container="edit_pt_instruction_container">
-            <span id="pt_instruction_container">[[C1:fr_pt_instruction]]</span>
-          </div>
-        ::
-          [[M0:friendraiser:secondary_reg_participation_types_header]] [[A22]]
-        ]]
-      </div>
       <div class="section-body" id="part_type_section_body">
-        <div id="part_type_selection_container">
-          <div class="manageable-content" data-container="edit_sel_type_container">
-            <span class="field-required"></span>
-            <span id="sel_type_container">[[C1:fr_sel_type]]</span>
-          </div>
-          [[?xTx::x[[A38]]x::
-            <div class="fr_reg_limited_types">
-              [[M0:friendraiser:participation_types_limited]]
-            </div>
-          ::]]
-          [[?[[A6]]::ERR_NO_TYPE::
-            <div class="ErrorMessage">
-              [[M0:friendraiser:error_no_type]]
-            </div>
-          ::]]
-          [[?[[A6]]::ERR_TRANS_TOO_MUCH::
-            <div class="ErrorMessage">
-              [[M0:friendraiser:error_transaction_too_much]]
-            </div>
-          ::]]
-          [[?xx::x[[A13]]x::
-            <div class="part-type-container part-type-unavailable">
-              [[M0:friendraiser:participation_types_unavailable]]
-            </div>
-          ::
-            [[A13]]
-          ]]
+        <div class="hidden js--registration-ptype-part-types">
+          [[A13]]
         </div>
         [[?xTx::x[[A17]]x::
           <div id="part_type_fundraising_goal_container" [[?[[A6]]::ERR_BAD_GOAL::class="form-error"::]]>
