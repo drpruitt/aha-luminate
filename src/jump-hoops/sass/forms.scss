@@ -2,7 +2,7 @@ div.responsive {
   input[type="text"],
   select,
   text-area {
-    border-color: $event-secondary;
+    border: 1px solid $event-secondary;
   }
 }
 
@@ -14,4 +14,13 @@ div.responsive {
 [type="checkbox"]:not(:checked) + label:after,
 [type="checkbox"]:checked + label:after {
   color: $event-primary;
+}
+
+select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  padding-right: .75rem\9;
+  background-image: none\9;
+  background: url('../image/ym-select-carot.png') right .75rem center no-repeat #fff;
 }

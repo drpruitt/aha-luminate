@@ -583,7 +583,7 @@ label {
 div.responsive input[type="text"],
 div.responsive select,
 div.responsive text-area {
-  border-color: #6153a3; }
+  border: 1px solid #6153a3; }
 
 [type="checkbox"]:not(:checked) + label:before,
 [type="checkbox"]:checked + label:before {
@@ -592,6 +592,14 @@ div.responsive text-area {
 [type="checkbox"]:not(:checked) + label:after,
 [type="checkbox"]:checked + label:after {
   color: #cd1d67; }
+
+select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  padding-right: .75rem\9;
+  background-image: none\9;
+  background: url("../image/ym-select-carot.png") right 0.75rem center no-repeat #fff; }
 
 .ym-badges {
   text-align: center;
