@@ -21,7 +21,7 @@
     }
   }
 </script>
-<div class="registration-page-container reg-summary-thanks-common-container responsive" id="fr_reg_summary_page">
+<div class="ym-registration-page-container" ng-controller="RegistrationRegSummaryCtrl">
   <div class="header-container" id="reg_summary_header_container">
     [[?xxnullx::x[[A5]]x::::
       <div class="SuccessMessage">
@@ -85,9 +85,6 @@
             </button>
           ]]
         </div>
-        <button class="step-button cancel-step" id="cancel_button" name="cancel_button" value="[[M1:friendraiser:join_team_step_cancel_button]]" type="[[?xTx::x[[A12]]x::button::submit]]">
-          <span>[[M1:friendraiser:join_team_step_cancel_button]]</span>
-        </button>
       </div>
     </div>
     [[S66:util/SpamControlComponentResponsive.tpt]]

@@ -809,6 +809,12 @@
 
   angular.module('ahaLuminateControllers').controller('RegistrationPtypeCtrl', ['$scope', function($scope) {}]);
 
+  angular.module('ahaLuminateControllers').controller('RegistrationRegCtrl', ['$scope', function($scope) {}]);
+
+  angular.module('ahaLuminateControllers').controller('RegistrationRegSummaryCtrl', ['$scope', function($scope) {}]);
+
+  angular.module('ahaLuminateControllers').controller('RegistrationUtypeCtrl', ['$scope', function($scope) {}]);
+
   angular.module('ahaLuminateControllers').controller('RegistrationWaiverCtrl', [
     '$scope', function($scope) {
       return angular.element('.js--registration-waiver-form').submit();
