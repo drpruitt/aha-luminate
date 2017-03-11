@@ -567,9 +567,9 @@
         angular.element('.billing-info').toggleClass('hidden');
         inputStatus = angular.element('#billing_info').prop('checked');
         if (inputStatus === true) {
-          return angular.element('#billing_info_same_as_donorname').prop('checked', 'true');
+          return angular.element('#billing_info_same_as_donorname').prop('checked', true);
         } else {
-          return angular.element('#billing_info_same_as_donorname').prop('checked', 'false');
+          return angular.element('#billing_info_same_as_donorname').prop('checked', false);
         }
       };
       loadForm = function() {

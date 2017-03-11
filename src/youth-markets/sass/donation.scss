@@ -8,7 +8,8 @@
   .form-progress-bar,
   div.form-row.don-standard-levels,
   div.donation-level-container-generic-repeat,
-  #tribute_show_honor_fields_row {
+  #tribute_show_honor_fields_row,
+  #billing_info_same_as_donor_row {
     display: none;
   }
 
@@ -26,6 +27,21 @@
 
   label {
     margin: 0;
+  }
+
+  div.form-row {
+    margin: 0 auto;  
+
+    .form-content {
+      width: 100%;
+      margin: 0;
+
+      input,
+      select  {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
   }
 
   .ym-border {
@@ -146,10 +162,23 @@
   #donor_addr_state_row,
   #donor_addr_zip_row,
   #donor_addr_country_row,
-  .ym-employer-match__fields {
+  .ym-employer-match__fields,
+  #billing_first_name_row,
+  #billing_last_name_row,
+  #billing_addr_city_row,
+  #billing_addr_state_row,
+  #billing_addr_zip_row,
+  #billing_addr_country_row {
     width: 49%;
     vertical-align: middle;
     display: inline-block;
+  }
+
+  #billing_addr_street1_row,
+  #billing_addr_street2_row {
+    input {
+      width: 100%;
+    }
   }
 
   #donor_first_name_row,
@@ -193,20 +222,7 @@
     }
   }
 
-  div.form-row {
-    margin: 0 auto;  
 
-    .form-content {
-      width: 100%;
-      margin: 0;
-
-      input,
-      select  {
-        width: 100%;
-        max-width: 100%;
-      }
-    }
-  }
   div.button-container{
     padding: 20px;
     border: 0 none;

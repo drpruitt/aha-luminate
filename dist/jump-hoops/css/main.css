@@ -459,12 +459,12 @@ div.responsive .btn-toggle--selected,
 div.responsive input[type="text"].btn-enter,
 input[type="text"].btn-enter {
   border-color: #cd1d67; }
-  div.responsive input[type="text"].btn-enter::-webkit-input-placeholder, div.responsive input[type="text"].btn-enter::-moz-placeholder, div.responsive input[type="text"].btn-enter::-ms-input-placeholder,
-  input[type="text"].btn-enter::-webkit-input-placeholder,
-  input[type="text"].btn-enter::-moz-placeholder,
-  input[type="text"].btn-enter::-ms-input-placeholder {
-    color: #cd1d67;
-    opacity: 1; }
+
+.btn-enter::-webkit-input-placeholder,
+.btn-enter::-moz-placeholder,
+.btn-enter::-ms-input-placeholder {
+  color: #cd1d67 !important;
+  opacity: 1 !important; }
 
 .ym-donor-list {
   background: #fff;
@@ -1142,7 +1142,8 @@ body.aha-luminate #at4-soc {
 .donation-form-container .form-progress-bar,
 .donation-form-container div.form-row.don-standard-levels,
 .donation-form-container div.donation-level-container-generic-repeat,
-.donation-form-container #tribute_show_honor_fields_row {
+.donation-form-container #tribute_show_honor_fields_row,
+.donation-form-container #billing_info_same_as_donor_row {
   display: none; }
 
 .donation-form-container h2 {
@@ -1157,6 +1158,16 @@ body.aha-luminate #at4-soc {
 
 .donation-form-container label {
   margin: 0; }
+
+.donation-form-container div.form-row {
+  margin: 0 auto; }
+  .donation-form-container div.form-row .form-content {
+    width: 100%;
+    margin: 0; }
+    .donation-form-container div.form-row .form-content input,
+    .donation-form-container div.form-row .form-content select {
+      width: 100%;
+      max-width: 100%; }
 
 .donation-form-container .ym-border {
   border-bottom: 1px solid #6153a3; }
@@ -1247,10 +1258,20 @@ body.aha-luminate #at4-soc {
 .donation-form-container #donor_addr_state_row,
 .donation-form-container #donor_addr_zip_row,
 .donation-form-container #donor_addr_country_row,
-.donation-form-container .ym-employer-match__fields {
+.donation-form-container .ym-employer-match__fields,
+.donation-form-container #billing_first_name_row,
+.donation-form-container #billing_last_name_row,
+.donation-form-container #billing_addr_city_row,
+.donation-form-container #billing_addr_state_row,
+.donation-form-container #billing_addr_zip_row,
+.donation-form-container #billing_addr_country_row {
   width: 49%;
   vertical-align: middle;
   display: inline-block; }
+
+.donation-form-container #billing_addr_street1_row input,
+.donation-form-container #billing_addr_street2_row input {
+  width: 100%; }
 
 .donation-form-container #donor_first_name_row,
 .donation-form-container #donor_email_address_row,
@@ -1283,16 +1304,6 @@ body.aha-luminate #at4-soc {
 @media (min-width: 768px) {
   .donation-form-container div.donation-level-general-ask, .donation-form-container div.html-caption-container {
     width: 670px; } }
-
-.donation-form-container div.form-row {
-  margin: 0 auto; }
-  .donation-form-container div.form-row .form-content {
-    width: 100%;
-    margin: 0; }
-    .donation-form-container div.form-row .form-content input,
-    .donation-form-container div.form-row .form-content select {
-      width: 100%;
-      max-width: 100%; }
 
 .donation-form-container div.button-container {
   padding: 20px;
