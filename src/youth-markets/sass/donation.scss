@@ -227,7 +227,7 @@
       }
   }
 
-  #billing_info {
+  .billing_info_toggle {
     margin-bottom: 30px;
     padding: 0 50px;
   }
@@ -257,15 +257,25 @@
     select {
       width: 170px;
 
-      &#responsive_payment_typecc_exp_date_MONTH{
+      &#responsive_payment_typecc_exp_date_MONTH {
         margin-right: 30px;
       }
+    }
+  }
+
+  #responsive_payment_typecc_cvv_row {
+    float: right;
+
+    input {
+      width: auto;
+      max-width: 170px;
     }
   }
 
   div.button-container{
     padding: 20px;
     border: 0 none;
+    clear: both;
 
     button.finish-step {
       display: block;

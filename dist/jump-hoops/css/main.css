@@ -1343,7 +1343,7 @@ body.aha-luminate #at4-soc {
   .donation-form-container #billing_addr_street2_row input {
     width: 100%; }
 
-.donation-form-container #billing_info {
+.donation-form-container .billing_info_toggle {
   margin-bottom: 30px;
   padding: 0 50px; }
 
@@ -1365,9 +1365,16 @@ body.aha-luminate #at4-soc {
     .donation-form-container #responsive_payment_typecc_exp_date_row select#responsive_payment_typecc_exp_date_MONTH {
       margin-right: 30px; }
 
+.donation-form-container #responsive_payment_typecc_cvv_row {
+  float: right; }
+  .donation-form-container #responsive_payment_typecc_cvv_row input {
+    width: auto;
+    max-width: 170px; }
+
 .donation-form-container div.button-container {
   padding: 20px;
-  border: 0 none; }
+  border: 0 none;
+  clear: both; }
   .donation-form-container div.button-container button.finish-step {
     display: block;
     margin: auto;

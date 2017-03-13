@@ -148,6 +148,7 @@ angular.module 'ahaLuminateControllers'
                 levelChecked: levelChecked
 
         angular.element('#tr_message_to_participant_row').addClass('hidden')
+        angular.element('#billing_info').parent().addClass('billing_info_toggle')
         employerMatchFields()
         billingAddressFields()
         donorRecognitionFields()
