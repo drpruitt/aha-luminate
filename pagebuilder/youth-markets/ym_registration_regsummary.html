@@ -21,26 +21,21 @@
     }
   }
 </script>
-<div class="ym-registration-page-container" ng-controller="RegistrationRegSummaryCtrl">
-  <div class="header-container" id="reg_summary_header_container">
-    [[?xxnullx::x[[A5]]x::::
-      <div class="SuccessMessage">
-        [[A5]]
-      </div>
-    ]]
-    [[?xyz.xnullynullz.xynullz.xnullyz::x[[A4]]y[[A6]]z::::
-      <div class="ErrorMessage page-error">
-        <span class="field-error-indicator"></span>
-        <span class="field-error-text">
-          [[?xy.xnully::x[[A4]]y::
-            [[M0:friendraiser:generic_error]]
-          ::
-            [[A4]]
-          ]]
-        </span>
-      </div>
-    ]]
-  </div>
+<div class="ym-registration-page-container ym-registration-page-container--regsummary" ng-controller="RegistrationRegSummaryCtrl">
+  [[?xxnullx::x[[A5]]x::::
+    <div class="alert alert-success">
+      [[A5]]
+    </div>
+  ]]
+  [[?xyz.xnullynullz.xynullz.xnullyz::x[[A4]]y[[A6]]z::::
+    <div class="alert alert-danger">
+      [[?xy.xnully::x[[A4]]y::
+        [[M0:friendraiser:generic_error]]
+      ::
+        [[A4]]
+      ]]
+    </div>
+  ]]
   <form id="FriendraiserUserWaiver" name="FriendraiserUserWaiver" method="POST" action="[[A1]]" onsubmit="return submitCheck()">
     <input type="hidden" name="pg" id="pg" value="[[A7]]">
     <input type="hidden" name="fr_id" id="fr_id" value="[[A2]]">
@@ -48,12 +43,10 @@
     <input type="hidden" name="delete_reg" id="delete_reg" value="-1">
     <input type="hidden" name="previous_button.x" id="previous_button.x" value="">
     <div class="section-container">
-      <div class="section-header">
-        <div class="manageable-content" data-container="edit_title_container">
-          <h3 class="ObjTitle" id="title_container">
-            [[C1:fr_reg_summary_page_title]]
-          </h3>
-        </div>
+      <div class="manageable-content" data-container="edit_title_container">
+        <h2 class="h5" id="title_container">
+          [[C1:fr_reg_summary_page_title]]
+        </h2>
       </div>
       <div class="section-sub-header empty"></div>
       <div class="section-body" id="reg_summary_body_container">
@@ -81,7 +74,7 @@
         <div class="action-button-container clearfix">
           [[?xTx::x[[A26]]x::::
             <button class="step-button next-step" id="next_button" name="next_button" value="[[M1:friendraiser:page_tr_summary_complete_reg_button]]" type="[[?xTx::x[[A12]]x::button::submit]]">
-              <span>[[M1:friendraiser:page_tr_summary_complete_reg_button]]</span>
+              <span>[[M1:friendraiser:join_team_step_next_button]]</span>
             </button>
           ]]
         </div>
