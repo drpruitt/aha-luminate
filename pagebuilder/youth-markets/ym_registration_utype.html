@@ -9,30 +9,25 @@
   <script src="../js/ajax_mce.js"></script>
 ::]]
 <div class="ym-registration-page-container" ng-controller="RegistrationUtypeCtrl">
-  <div class="header-container" id="user_type_header_container">
-    [[?xxnullx::x[[A5]]x::::
-      <div class="SuccessMessage">
-        [[A5]]
-      </div>
-    ]]
-    [[?xyz.xnullynullz.xynullz.xnullyz::x[[A4]]y[[A6]]z::::
-      <div class="ErrorMessage page-error">
-        <span class="field-error-indicator"></span>
-        <span class="field-error-text">
-          [[?xy.xnully::x[[A4]]y::
-            [[M0:friendraiser:generic_error]]
-          ::
-            [[A4]]
-          ]]
-        </span>
-      </div>
-    ]]
-  </div>
+  [[?xxnullx::x[[A5]]x::::
+    <div class="alert alert-success">
+      [[A5]]
+    </div>
+  ]]
+  [[?xyz.xnullynullz.xynullz.xnullyz::x[[A4]]y[[A6]]z::::
+    <div class="alert alert-danger">
+      [[?xy.xnully::x[[A4]]y::
+        [[M0:friendraiser:generic_error]]
+      ::
+        [[A4]]
+      ]]
+    </div>
+  ]]
   <div class="section-container" id="user_type_section_container">
-    <div class="section-header" id="user_type_section_header">
-      <div class="manageable-content" data-container="edit_ut_title_container">
-        <span class="section-header-text" id="ut_title_container">[[C1:fr_ut_title]]</span>
-      </div>
+    <div class="manageable-content" data-container="edit_ut_title_container">
+      <h2 class="h5" id="ut_title_container">
+        [[C1:fr_ut_title]]
+      </h2>
     </div>
     <div class="section-sub-header empty" id="user_type_section_sub_header"></div>
     <div class="section-body clearfix" id="user_type_section_body">
@@ -59,9 +54,8 @@
           <input type="hidden" name="fr_id" value="[[A2]]">
           <div id="user_type_login_login_container" [[?xx::x[[A20]]x::::class="form-error"]]>
             [[?xx::x[[A20]]x::::
-              <div class="ErrorMessage">
-                <span class="field-error-indicator"></span>
-                <span class="field-error-text">[[A20]]</span>
+              <div class="alert alert-danger">
+                [[A20]]
               </div>
             ]]
             <div class="form-content">
@@ -90,9 +84,8 @@
           <div class="SuccessMessage">[[A25]]</div>
           <div id="user_type_login_email_container" class="[[?xx::x[[A26]]x::hidden::form-error]]" >
             [[?xx::x[[A26]]x::::
-              <div class="ErrorMessage">
-                <span class="field-error-indicator"></span>
-                <span class="field-error-text">[[A26]]</span>
+              <div class="alert alert-danger">
+                [[A26]]
               </div>
             ]]
             <div class="form-content">

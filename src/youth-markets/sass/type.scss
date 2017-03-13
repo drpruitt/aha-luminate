@@ -4,55 +4,59 @@ body {
   font-size: $font-size-reg;
 }
 
-h2 {
-  margin-top: 0;
+h2, 
+.h2 {
   font-size: 48px;
-
-  @media (max-width: $screen-md){
+  margin-top: 0;
+  
+  @media (max-width: $screen-sm-max) {
     font-size: 42px;
   }
-  @media (max-width: $screen-sm){
+  
+  @media (max-width: $screen-xs-max) {
     font-size: 32px;
   }
-
 }
 
-h3 {
+h3, 
+.h3 {
   font-size: 36px;
   margin-top:0;
-
-  @media (max-width: $screen-md){
+  
+  @media (max-width: $screen-sm-max) {
     font-size: 32px;
   }
-  @media (max-width: $screen-sm){
-    font-size: 28px;
-  }
-} 
-
-h4 {
-  font-weight:  bold;
-  margin-top: 0;
-  font-size: 32px;
-
-  @media (max-width: $screen-md){
+  
+  @media (max-width: $screen-xs-max) {
     font-size: 28px;
   }
 }
 
-h5 {
-  font-weight: bold;
-  font-size: 24px;
+h4, 
+.h4 {
+  font-size: 32px;
+  font-weight:  bold;
+  margin-top: 0;
+  
+  @media (max-width: $screen-sm-max){
+    font-size: 28px;
+  }
+}
 
-  @media (max-width: $screen-md){
+h5, 
+.h5 {
+  font-size: 24px;
+  font-weight: bold;
+  
+  @media (max-width: $screen-sm-max) {
     font-size: 21px;
   }
-
 }
 
 p {
   line-height: 1.5;
-
-  @media (max-width: $screen-md){
+  
+  @media (max-width: $screen-sm-max) {
     font-size: 14px;
   }
 }
