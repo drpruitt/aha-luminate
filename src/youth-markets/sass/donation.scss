@@ -50,13 +50,14 @@
   }
 
   div.donation-level-general-ask, div.html-caption-container {
-    @media (min-width: $screen-sm-min){
-      width: 670px;
+    @media (min-width: $screen-lg-min){
+      max-width: 670px;
     }
   }
 
   .ym-donation-levels {
     padding: 30px 20px;
+    max-width: 670px;
 
     p {
       font-weight: bold;
@@ -145,7 +146,7 @@
 
   .ym-tribute-gift__type {
     max-width: 470px;
-    margin: auto;
+    margin: 20px auto 0;
 
     .btn-toggle {
       width: 200px;
@@ -178,7 +179,10 @@
   #billing_addr_country_row {
     width: 49%;
     vertical-align: middle;
-    max-width: 300px;
+    
+    @media(min-width: $screen-md-min){
+      max-width: 320px;
+    }
   }
 
   #donor_first_name_row,
@@ -259,11 +263,11 @@
 
     #responsive_payment_typecc_cvv_row {
       float: right;
+      width: 170px;
 
       input {
         width: auto;
         max-width: 170px;
-        margin: 0 0 0 30px;
       }
     }
   }

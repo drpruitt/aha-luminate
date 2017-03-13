@@ -987,12 +987,26 @@ body.aha-luminate #at4-soc {
 .app-9 .ym-page-content {
   padding: 50px 100px;
   margin: 0; }
+  @media (max-width: 1200px) {
+    .app-9 .ym-page-content {
+      padding: 50px; } }
   .app-9 .ym-page-content > div {
     padding: 0; }
+  .app-9 .ym-page-content .col-md-8 {
+    margin: auto;
+    padding: 0;
+    max-width: 670px; }
   @media (min-width: 992px) {
-    .app-9 .ym-page-content .col-sm-4 {
-      width: 270px;
-      float: right; } }
+    .app-9 .ym-page-content .col-md-4 {
+      width: calc(100% - 700px);
+      float: right; }
+    .app-9 .ym-page-content .col-md-8 {
+      width: 670px;
+      margin: auto;
+      padding: 0; } }
+  @media (max-width: 992px) {
+    .app-9 .ym-page-content .col-md-8 {
+      float: none; } }
 
 @media (min-width: 992px) {
   .ym-page-section__top {
@@ -1204,12 +1218,13 @@ body.aha-luminate #at4-soc {
 .donation-form-container .ym-border {
   border-bottom: 1px solid #6153a3; }
 
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
   .donation-form-container div.donation-level-general-ask, .donation-form-container div.html-caption-container {
-    width: 670px; } }
+    max-width: 670px; } }
 
 .donation-form-container .ym-donation-levels {
-  padding: 30px 20px; }
+  padding: 30px 20px;
+  max-width: 670px; }
   .donation-form-container .ym-donation-levels p {
     font-weight: bold;
     font-size: 18px;
@@ -1276,7 +1291,7 @@ body.aha-luminate #at4-soc {
 
 .donation-form-container .ym-tribute-gift__type {
   max-width: 470px;
-  margin: auto; }
+  margin: 20px auto 0; }
   .donation-form-container .ym-tribute-gift__type .btn-toggle {
     width: 200px; }
   .donation-form-container .ym-tribute-gift__type .btn-toggle:first-child {
@@ -1302,8 +1317,24 @@ body.aha-luminate #at4-soc {
 .donation-form-container #billing_addr_zip_row,
 .donation-form-container #billing_addr_country_row {
   width: 49%;
-  vertical-align: middle;
-  max-width: 300px; }
+  vertical-align: middle; }
+  @media (min-width: 992px) {
+    .donation-form-container #donor_first_name_row,
+    .donation-form-container #donor_last_name_row,
+    .donation-form-container #donor_email_address_row,
+    .donation-form-container #donor_phone_row,
+    .donation-form-container #donor_addr_city_row,
+    .donation-form-container #donor_addr_state_row,
+    .donation-form-container #donor_addr_zip_row,
+    .donation-form-container #donor_addr_country_row,
+    .donation-form-container .ym-employer-match__fields,
+    .donation-form-container #billing_first_name_row,
+    .donation-form-container #billing_last_name_row,
+    .donation-form-container #billing_addr_city_row,
+    .donation-form-container #billing_addr_state_row,
+    .donation-form-container #billing_addr_zip_row,
+    .donation-form-container #billing_addr_country_row {
+      max-width: 320px; } }
 
 .donation-form-container #donor_first_name_row,
 .donation-form-container #donor_email_address_row,
@@ -1366,11 +1397,11 @@ body.aha-luminate #at4-soc {
       .donation-form-container div.payment-type-element-container #responsive_payment_typecc_exp_date_row select#responsive_payment_typecc_exp_date_MONTH {
         margin-right: 30px; }
   .donation-form-container div.payment-type-element-container #responsive_payment_typecc_cvv_row {
-    float: right; }
+    float: right;
+    width: 170px; }
     .donation-form-container div.payment-type-element-container #responsive_payment_typecc_cvv_row input {
       width: auto;
-      max-width: 170px;
-      margin: 0 0 0 30px; }
+      max-width: 170px; }
 
 .donation-form-container #payment_cc_container h3, .donation-form-container #payment_cc_container #responsive_payment_typecc_type_row {
   display: none; }

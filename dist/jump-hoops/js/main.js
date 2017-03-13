@@ -573,6 +573,7 @@
         }
       };
       loadForm = function() {
+        var optional;
         DonationService.getDonationFormInfo('form_id=' + $scope.donationInfo.form_id + '&fr_id=' + $scope.donationInfo.fr_id).then(function(response) {
           var levels;
           levels = response.data.getDonationFormInfoResponse.donationLevels.donationLevel;
@@ -597,9 +598,12 @@
             });
           });
         });
+        optional = '<span class="ym-optional">Optional</span>';
+        angular.element('#donor_phone_row').append(optional);
         angular.element('#tr_message_to_participant_row').addClass('hidden');
         angular.element('#billing_info').parent().addClass('billing_info_toggle');
         angular.element('#payment_cc_container').append('<div class="clearfix"></div>');
+        angular.element('#responsive_payment_typecc_cvv_row .FormLabelText').text('CVV:');
         employerMatchFields();
         billingAddressFields();
         return donorRecognitionFields();
