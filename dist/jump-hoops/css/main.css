@@ -112,7 +112,7 @@ h4,
 h5,
 .h5 {
   font-size: 24px;
-  font-weight: bold; }
+  font-weight: 700; }
   @media (max-width: 991px) {
     h5,
     .h5 {
@@ -139,17 +139,31 @@ h1 {
 .ym-headline {
   font-family: 'Luckiest Guy', cursive; }
 
-h2, h3 {
+h2,
+.h2,
+h3,
+.h3 {
   font-family: 'Luckiest Guy', cursive;
   color: #6153a3; }
 
-h4 {
+h4,
+.h4 {
   color: #6153a3; }
 
-.ym-accent-color h2, .ym-accent-color h3, .ym-accent-color h4, .ym-accent-color h5 {
-  color: #fff; }
+.ym-accent-color h2,
+.ym-accent-color .h2,
+.ym-accent-color h3,
+.ym-accent-color .h3,
+.ym-accent-color h4,
+.ym-accent-color .h4,
+.ym-accent-color h5,
+.ym-accent-color .h5 {
+  color: #ffffff; }
 
-.ym-accent-color h2, .ym-accent-color h3 {
+.ym-accent-color h2,
+.ym-accent-color .h2,
+.ym-accent-color h3,
+.ym-accent-color .h3 {
   text-shadow: 2px 2px 1px black;
   text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.85); }
 
@@ -1144,6 +1158,9 @@ body.aha-luminate #at4-soc {
 
 .ym-zuri-animation h4 {
   color: #6153a3;
+  text-align: center; }
+
+.ym-registration-page-container--utype {
   text-align: center; }
 
 .donation-form-container.responsive span.field-required {
