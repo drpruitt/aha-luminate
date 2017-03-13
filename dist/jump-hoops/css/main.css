@@ -142,12 +142,18 @@ h1 {
 h2,
 .h2,
 h3,
-.h3 {
-  font-family: 'Luckiest Guy', cursive;
+.h3,
+h4,
+.h4,
+h5,
+.h5 {
   color: #6153a3; }
 
-h4,
-.h4 {
+h2,
+.h2,
+h3,
+.h3 {
+  font-family: 'Luckiest Guy', cursive;
   color: #6153a3; }
 
 .ym-accent-color h2,
@@ -1160,7 +1166,7 @@ body.aha-luminate #at4-soc {
   color: #6153a3;
   text-align: center; }
 
-.ym-registration-page-container--utype {
+.ym-registration-page-container {
   text-align: center; }
 
 .donation-form-container.responsive span.field-required {
@@ -1359,7 +1365,8 @@ body.aha-luminate #at4-soc {
   display: none; }
 
 .donation-form-container #responsive_payment_typecc_exp_date_row {
-  float: left; }
+  float: left;
+  padding-left: 50px; }
   .donation-form-container #responsive_payment_typecc_exp_date_row select {
     width: 170px; }
     .donation-form-container #responsive_payment_typecc_exp_date_row select#responsive_payment_typecc_exp_date_MONTH {
@@ -1369,7 +1376,8 @@ body.aha-luminate #at4-soc {
   float: right; }
   .donation-form-container #responsive_payment_typecc_cvv_row input {
     width: auto;
-    max-width: 170px; }
+    max-width: 170px;
+    margin: 0 0 0 30px; }
 
 .donation-form-container div.button-container {
   padding: 20px;

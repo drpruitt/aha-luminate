@@ -17,41 +17,36 @@
     document.F2fRegPartType.fr_part_radio[_i].checked = true;
   }
 </script>
-<div class="ym-registration-page-container" ng-controller="RegistrationPtypeCtrl">
-  <div class="header-container" id="part_type_header_container">
-    [[?xxnullx::x[[A5]]x::::
-      <div class="SuccessMessage">
-        [[A5]]
-      </div>
-    ]]
-    [[?xyz.xnullynullz.xynullz.xnullyz::x[[A4]]y[[A6]]z::::
-      <div class="ErrorMessage page-error">
-        <span class="field-error-indicator"></span>
-        <span class="field-error-text">
-          [[?xy.xnully::x[[A4]]y::
-            [[M0:friendraiser:generic_error]]
-          ::
-            [[A4]]
-          ]]
-        </span>
-      </div>
-    ]]
-    [[?[[A6]]::ERR_TRANS_TOO_MUCH::
-      <div class="ErrorMessage">
-        [[M0:friendraiser:error_transaction_too_much]]
-      </div>
-    ::]]
-  </div>
+<div class="ym-registration-page-container ym-registration-page-container--ptype" ng-controller="RegistrationPtypeCtrl">
+  [[?xxnullx::x[[A5]]x::::
+    <div class="alert alert-success">
+      [[A5]]
+    </div>
+  ]]
+  [[?xyz.xnullynullz.xynullz.xnullyz::x[[A4]]y[[A6]]z::::
+    <div class="alert alert-danger">
+      [[?xy.xnully::x[[A4]]y::
+        [[M0:friendraiser:generic_error]]
+      ::
+        [[A4]]
+      ]]
+    </div>
+  ]]
+  [[?[[A6]]::ERR_TRANS_TOO_MUCH::
+    <div class="alert alert-danger">
+      [[M0:friendraiser:error_transaction_too_much]]
+    </div>
+  ::]]
   <form id="F2fRegPartType" name="F2fRegPartType" action="[[A1]]" method="POST">
     <input type="hidden" name="pg" value="[[A7]]">
     <input type="hidden" name="fr_id" value="[[A2]]">
     <input type="hidden" name="extra_person" value="[[A21]]">
     <input type="hidden" name="company_id" value="[[A42]]">
     <div class="section-container" id="part_type_section_container">
-      <div class="section-header" id="part_type_section_header">
-        <div class="manageable-content" data-container="edit_pt_title_container">
-          <span class="section-header-text" id="pt_title_container">[[C1:fr_pt_title]]</span>
-        </div>
+      <div class="manageable-content" data-container="edit_pt_title_container">
+        <h2 class="h5" id="pt_title_container">
+          [[C1:fr_pt_title]]
+        </h2>
       </div>
       <div class="section-body" id="part_type_section_body">
         <div class="hidden js--registration-ptype-part-types">
@@ -60,9 +55,8 @@
         [[?xTx::x[[A17]]x::
           <div id="part_type_fundraising_goal_container" [[?[[A6]]::ERR_BAD_GOAL::class="form-error"::]]>
             [[?[[A6]]::ERR_BAD_GOAL::
-              <div class="ErrorMessage">
-                <span class="field-error-indicator"></span>
-                <span class="field-error-text">[[M0:friendraiser:error_invalid_goal_amt]]</span>
+              <div class="alert alert-danger">
+                [[M0:friendraiser:error_invalid_goal_amt]]
               </div>
             ::]]
             <div class="form-content">
@@ -70,7 +64,7 @@
                 <div class="manageable-content" data-container="edit_fund_goal_container">
                   <label for="fr_goal" id="fund_goal_container">[[?xx::x[[C1:fr_your_fundraising_goal_field]]x::[[M0:friendraiser:your_fundraising_goal_field]]::[[C1:fr_your_fundraising_goal_field]]]]</label>
                 </div>
-                <input type="text" name="fr_goal" id="fr_goal" value="[[?xx::x[[A15]]x::[[?zz::z[[A18]]z::::[[A18]]]]::[[A15]]]]" size="15" maxlength="15">
+                <input type="text" name="fr_goal" id="fr_goal" value="[[?xx::x[[A15]]x::[[?zz::z[[A18]]z::::[[A18]]]]::[[A15]]]]" maxlength="15">
               </div>
               [[?xxnullxBASELINEx::x[[S0:TPV_FR_CSTM_PT_STANDARD_SUGGESTEDGOAL]]x::
                 [[?zz::z[[A18]]z::::
@@ -89,9 +83,8 @@
         [[?xTx::x[[A16]]x::
           <div id="part_type_additional_gift_container" [[?[[A6]]::ERR_BAD_GIFT::class="form-error"::]]>
             [[?[[A6]]::ERR_BAD_GIFT::
-              <div class="ErrorMessage">
-                <span class="field-error-indicator"></span>
-                <span class="field-error-text">[[M0:friendraiser:error_invalid_amt_user]]</span>
+              <div class="alert alert-danger">
+                [[M0:friendraiser:error_invalid_amt_user]]
               </div>
             ::]]
             <div class="form-content">
@@ -105,7 +98,7 @@
                   <div class="manageable-content" data-container="edit_addl_gift_container">
                     <label for="fr_gift" id="addl_gift_container">[[?xx::x[[C1:fr_additional_gift_field]]x::[[M0:friendraiser:additional_gift_field]]::[[C1:fr_additional_gift_field]]]]</label>
                   </div>
-                  <input type="text" name="fr_gift" id="fr_gift" value="[[A14]]" size="15" maxlength="15">
+                  <input type="text" name="fr_gift" id="fr_gift" value="[[A14]]" maxlength="15">
                 </div>
               ::
                 <div class="input-container" id="part_type_donation_level_input_container">

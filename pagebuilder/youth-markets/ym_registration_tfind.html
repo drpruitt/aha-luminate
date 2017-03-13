@@ -40,10 +40,10 @@
       <input type="hidden" name="fr_tm_opt" value="[[A13]]">
       <input type="hidden" name="company_id" value="[[A36]]">
       <div class="section-container" id="team_find_section_container">
-        <div class="section-header" id="team_find_section_header">
-          <div class="manageable-editor" data-container="edit_title_container">
-            <span class="section-header-text" id="title_container">[[C1:fr_team_title]]</span>
-          </div>
+        <div class="manageable-editor" data-container="edit_title_container">
+          <h2 class="h5" id="title_container">
+            [[C1:fr_team_title]]
+          </h2>
         </div>
         <div class="section-sub-header empty" id="part_type_instruction_sub_header"></div>
         <div class="section-body" id="team_find_section_body">
@@ -51,10 +51,11 @@
             <div id="team_find_existing">
               <div class="input-container" id="team_find_existing_team_search_container">
                 <div class="manageable-editor" data-container="edit_team_label_container">
-                  <span class="field-required" id="team_find_search_team_name_required"></span>
-                  <label class="input-label" for="fr_team_name" id="team_label_container">[[?xx::x[[C1:fr_team_field]]x::[[M0:friendraiser:team_field]]::[[C1:fr_team_field]]]]</label>
+                  <label class="input-label" for="fr_team_name" id="team_label_container">
+                    [[?xx::x[[C1:fr_team_field]]x::[[M0:friendraiser:team_field]]::[[C1:fr_team_field]]]]
+                  </label>
                 </div>
-                <input type="text" size="20" name="fr_team_name" id="fr_team_name" value="[[A16]]"/>
+                <input type="text" name="fr_team_name" id="fr_team_name" value="[[A16]]">
               </div>
               <div id="team_find_search_button_container">
                 <button class="step-button action-button" id="fr_find_search" name="fr_find_search.x" value="[[C1:fr_team_search_button]]" title="[[C1:fr_team_search_button]]" type="submit">
