@@ -149,6 +149,7 @@ angular.module 'ahaLuminateControllers'
 
         angular.element('#tr_message_to_participant_row').addClass('hidden')
         angular.element('#billing_info').parent().addClass('billing_info_toggle')
+        angular.element('#payment_cc_container').append('<div class="clearfix"></div>')
         employerMatchFields()
         billingAddressFields()
         donorRecognitionFields()
