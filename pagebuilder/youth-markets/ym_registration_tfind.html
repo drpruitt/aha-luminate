@@ -18,26 +18,21 @@
     </script>
     <script src="../js/ajax_mce.js"></script>
   ::]]
-  <div class="registration-page-container responsive" id="team_find_page">
-    <div class="header-container" id="team_find_header_container">
-      [[?xxnullx::x[[A5]]x::::
-        <div class="SuccessMessage">
-          [[A5]]
-        </div>
-      ]]
-      [[?xyz.xnullynullz.xynullz.xnullyz::x[[A4]]y[[A6]]z::::
-        <div class="ErrorMessage page-error">
-          <span class="field-error-indicator"></span>
-          <span class="field-error-text">
-            [[?xy.xnully::x[[A4]]y::
-              [[M0:friendraiser:generic_error]]
-            ::
-              [[A4]]
-            ]]
-          </span>
-        </div>
-      ]]
-    </div>
+  <div class="ym-registration-page-container ym-registration-page-container--tfind" ng-controller="RegistrationTfindCtrl">
+    [[?xxnullx::x[[A5]]x::::
+      <div class="alert alert-success">
+        [[A5]]
+      </div>
+    ]]
+    [[?xyz.xnullynullz.xynullz.xnullyz::x[[A4]]y[[A6]]z::::
+      <div class="alert alert-danger">
+        [[?xy.xnully::x[[A4]]y::
+          [[M0:friendraiser:generic_error]]
+        ::
+          [[A4]]
+        ]]
+      </div>
+    ]]
     <form name="FriendraiserFind" method="POST" action="[[A1]]">
       <input type="hidden" name="fr_id" value="[[A2]]">
       <input type="hidden" name="pg" value="[[A7]]">

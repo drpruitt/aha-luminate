@@ -813,6 +813,8 @@
 
   angular.module('ahaLuminateControllers').controller('RegistrationRegSummaryCtrl', ['$scope', function($scope) {}]);
 
+  angular.module('ahaLuminateControllers').controller('RegistrationTfindCtrl', ['$scope', function($scope) {}]);
+
   angular.module('ahaLuminateControllers').controller('RegistrationUtypeCtrl', ['$scope', function($scope) {}]);
 
   angular.module('ahaLuminateControllers').controller('RegistrationWaiverCtrl', [
