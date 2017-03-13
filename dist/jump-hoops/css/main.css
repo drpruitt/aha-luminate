@@ -142,12 +142,18 @@ h1 {
 h2,
 .h2,
 h3,
-.h3 {
-  font-family: 'Luckiest Guy', cursive;
+.h3,
+h4,
+.h4,
+h5,
+.h5 {
   color: #6153a3; }
 
-h4,
-.h4 {
+h2,
+.h2,
+h3,
+.h3 {
+  font-family: 'Luckiest Guy', cursive;
   color: #6153a3; }
 
 .ym-accent-color h2,
@@ -1160,7 +1166,7 @@ body.aha-luminate #at4-soc {
   color: #6153a3;
   text-align: center; }
 
-.ym-registration-page-container--utype {
+.ym-registration-page-container {
   text-align: center; }
 
 .donation-form-container.responsive span.field-required {

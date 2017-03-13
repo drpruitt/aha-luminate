@@ -12,13 +12,19 @@ h1 {
 h2, 
 .h2, 
 h3, 
-.h3 {
-  font-family: 'Luckiest Guy', cursive;
+.h3, 
+h4, 
+.h4, 
+h5, 
+.h5 {
   color: $event-secondary;
 }
 
-h4, 
-.h4 {
+h2, 
+.h2, 
+h3, 
+.h3 {
+  font-family: 'Luckiest Guy', cursive;
   color: $event-secondary;
 }
 
