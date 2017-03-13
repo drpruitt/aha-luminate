@@ -1187,7 +1187,8 @@ body.aha-luminate #at4-soc {
   font-size: 32px;
   margin: 50px 0 40px;
   padding: 50px 0 0;
-  font-weight: bold; }
+  font-weight: bold;
+  clear: both; }
 
 .donation-form-container label {
   margin: 0; }
@@ -1204,6 +1205,10 @@ body.aha-luminate #at4-soc {
 
 .donation-form-container .ym-border {
   border-bottom: 1px solid #6153a3; }
+
+@media (min-width: 768px) {
+  .donation-form-container div.donation-level-general-ask, .donation-form-container div.html-caption-container {
+    width: 670px; } }
 
 .donation-form-container .ym-donation-levels {
   padding: 30px 20px; }
@@ -1300,43 +1305,71 @@ body.aha-luminate #at4-soc {
 .donation-form-container #billing_addr_country_row {
   width: 49%;
   vertical-align: middle;
-  display: inline-block; }
-
-.donation-form-container #billing_addr_street1_row input,
-.donation-form-container #billing_addr_street2_row input {
-  width: 100%; }
+  max-width: 300px; }
 
 .donation-form-container #donor_first_name_row,
 .donation-form-container #donor_email_address_row,
-.donation-form-container #donor_addr_city_row {
-  padding: 0 30px 30px 50px; }
+.donation-form-container #donor_addr_city_row,
+.donation-form-container #donor_addr_zip_row,
+.donation-form-container #billing_first_name_row,
+.donation-form-container #billing_addr_city_row,
+.donation-form-container #billing_addr_zip_row {
+  padding: 0 0 30px 50px;
+  float: left; }
 
 .donation-form-container #donor_last_name_row,
 .donation-form-container #donor_phone_row,
-.donation-form-container #donor_addr_state_row {
-  padding: 0 50px 30px 0; }
+.donation-form-container #donor_addr_state_row,
+.donation-form-container #donor_addr_country_row,
+.donation-form-container #billing_last_name_row,
+.donation-form-container #billing_addr_state_row,
+.donation-form-container #billing_addr_country_row {
+  padding: 0 50px 30px 0;
+  float: right; }
 
 .donation-form-container #donor_addr_country_row {
-  padding: 0 50px 0 0; }
-
-.donation-form-container #donor_addr_zip_row {
-  padding: 0 30px 0 50px; }
+  padding-bottom: 50px; }
 
 .donation-form-container #donor_email_opt_in_Row,
 .donation-form-container #donor_addr_street1_row,
-.donation-form-container #donor_addr_street2_row {
-  padding: 0 50px 30px; }
+.donation-form-container #donor_addr_street2_row,
+.donation-form-container #billing_addr_street1_row,
+.donation-form-container #billing_addr_street2_row {
+  padding: 0 50px 30px;
+  clear: both; }
 
 .donation-form-container #donor_addr_street1_row,
-.donation-form-container #donor_addr_street2_row {
+.donation-form-container #donor_addr_street2_row,
+.donation-form-container #billing_addr_street1_row,
+.donation-form-container #billing_addr_street2_row {
   width: 100%; }
   .donation-form-container #donor_addr_street1_row input,
-  .donation-form-container #donor_addr_street2_row input {
+  .donation-form-container #donor_addr_street2_row input,
+  .donation-form-container #billing_addr_street1_row input,
+  .donation-form-container #billing_addr_street2_row input {
     width: 100%; }
 
-@media (min-width: 768px) {
-  .donation-form-container div.donation-level-general-ask, .donation-form-container div.html-caption-container {
-    width: 670px; } }
+.donation-form-container #billing_info {
+  margin-bottom: 30px;
+  padding: 0 50px; }
+
+.donation-form-container div.payment-type-element-container {
+  clear: both; }
+  .donation-form-container div.payment-type-element-container #responsive_payment_typecc_number_row {
+    max-width: 470px;
+    margin-bottom: 30px; }
+    .donation-form-container div.payment-type-element-container #responsive_payment_typecc_number_row input {
+      width: 100%; }
+
+.donation-form-container #payment_cc_container h3, .donation-form-container #payment_cc_container #responsive_payment_typecc_type_row {
+  display: none; }
+
+.donation-form-container #responsive_payment_typecc_exp_date_row {
+  float: left; }
+  .donation-form-container #responsive_payment_typecc_exp_date_row select {
+    width: 170px; }
+    .donation-form-container #responsive_payment_typecc_exp_date_row select#responsive_payment_typecc_exp_date_MONTH {
+      margin-right: 30px; }
 
 .donation-form-container div.button-container {
   padding: 20px;
@@ -1345,9 +1378,6 @@ body.aha-luminate #at4-soc {
     display: block;
     margin: auto;
     float: none; }
-
-#payment_cc_container h3, #payment_cc_container #responsive_payment_typecc_type_row {
-  display: none; }
 
 .ym-donation-sidebar {
   max-width: 270px;
