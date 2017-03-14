@@ -56,18 +56,17 @@
         </div>
         <div class="clearfix"></div>
       </div>
-      {{myChallenge.challenge}}
-      <div class="ym-my-challenge ym-secondary-medium-color" ng-if="myChallenge.challenge != null">
+      <div class="ym-my-challenge ym-secondary-medium-color">
         <h3 class="ym-headline">My Challenge</h3>
         <div class="col-sm-4">
           <img class="img-responsive" src="../aha-luminate/dist/jump-hoops/image/my-challenge-water.png" alt="{{myChallenge.challenge}}" />
         </div>
         <div class="col-sm-8">
           <p class="ym_my_challenge__description">  
-            <strong>{{myChallenge.challenge}}</strong>
+            <strong>{{challengeName}}</strong>
           </p>
           <p class="ym_my_challenge__stats">
-            I've met my challenge <span>{{myChallenge.challenge}}</span> days!
+            I've met my challenge <span>{{challengeCompleted}}</span> days!
           </p>
         </div>
         <div class="clearfix"></div>

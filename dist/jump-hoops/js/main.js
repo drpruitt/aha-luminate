@@ -728,23 +728,17 @@
       }
       $scope.eventDate = '';
       $rootScope.numTeams = '';
-      $scope.myChallenge = [];
+      $scope.challengeName = '';
+      $scope.challengeCompleted = '';
       ZuriService.getZooStudent('1/1', {
         success: function(response) {
-          var challenge, completed;
-          challenge = response.data.challenges.current;
-          completed = response.data.challenges.completed;
-          return $scope.myChallenge.push({
-            challenge: challenge,
-            completed: completed
-          });
+          $scope.challengeName = response.data.challenges.current;
+          return $scope.challengeCompleted = response.data.challenges.completed;
         },
         error: function(response) {
-          return $scope.myChallenge.push({
-            challenge: null
-          });
+          return $scope.challengeName = null;
         }
-      }, console.log($scope.myChallenge));
+      });
       TeamraiserCompanyService.getCompanies('company_id=' + $scope.companyId, {
         success: function(response) {
           var coordinatorId, eventId, ref, ref1;
