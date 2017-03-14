@@ -744,7 +744,7 @@
             challenge: null
           });
         }
-      });
+      }, console.log($scope.myChallenge));
       TeamraiserCompanyService.getCompanies('company_id=' + $scope.companyId, {
         success: function(response) {
           var coordinatorId, eventId, ref, ref1;

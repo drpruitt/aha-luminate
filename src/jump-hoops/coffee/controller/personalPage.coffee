@@ -30,6 +30,8 @@ angular.module 'ahaLuminateControllers'
           $scope.myChallenge.push
             challenge: null
 
+        console.log $scope.myChallenge
+
       TeamraiserCompanyService.getCompanies 'company_id=' + $scope.companyId, 
         success: (response) ->
           coordinatorId = response.getCompaniesResponse?.company.coordinatorId
