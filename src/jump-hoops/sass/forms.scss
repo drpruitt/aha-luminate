@@ -1,31 +1,38 @@
-div.responsive {
-  input[type="text"],
-  select,
-  textarea {
-    border: 1px solid $event-secondary;
+.form-control, 
+div.responsive input[type="text"], 
+div.responsive select, 
+div.responsive textarea {
+  border: 1px solid $event-secondary;
+}
+
+[type="checkbox"] {
+  &:not(:checked), 
+  &:checked {
+    + label {
+      &:before {
+        border-color: $event-secondary;
+      }
+      
+      &:after {
+        color: $event-primary;
+      }
+    }
   }
 }
 
-[type="checkbox"]:not(:checked) + label:before,
-[type="checkbox"]:checked + label:before {
-  border-color: $event-secondary;
-}
-
-[type="checkbox"]:not(:checked) + label:after,
-[type="checkbox"]:checked + label:after {
-  color: $event-primary;
-}
-
 select {
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  -o-appearance: none;
-  appearance: none;
-  padding-right: .75rem\9;
-  background-image: none\9;
-  background: url('../image/ym-select-carot.png') right .75rem center no-repeat #fff;
-}
-
-select::-ms-expand {
-  display: none;
+  &, 
+  &.form-control {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    padding-right: 0.75rem\9;
+    background-image: none\9;
+    background: url('../image/ym-select-carot.png') right 0.75rem center no-repeat #ffffff;
+    
+    &::-ms-expand {
+      display: none;
+    }
+  }
 }
