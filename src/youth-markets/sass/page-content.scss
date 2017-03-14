@@ -37,14 +37,39 @@
     padding: 50px 100px;
     margin: 0;
 
+    @media(max-width: $screen-lg){
+      padding: 50px;
+    }
+
+    @media(max-width: $screen-md){
+      padding: 30px;
+    }
+
     > div {
         padding: 0;
     }
-    
-    @media (min-width: $screen-md-min) {
-      .col-sm-4 {
-        width: 270px;
+
+    .col-md-8 {
+      margin: auto;
+      padding: 0;
+      max-width: 670px;
+    }
+
+    @media (min-width: $screen-md-min){
+      .col-md-4 {
+        width: calc(100% - 700px);
         float: right;
+      }
+      .col-md-8 {
+        width: 670px;
+        margin: auto;
+        padding: 0;
+      }
+    }
+
+    @media(max-width: $screen-md){
+      .col-md-8 {
+        float: none;
       }
     }
   }

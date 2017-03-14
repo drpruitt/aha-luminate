@@ -50,13 +50,14 @@
   }
 
   div.donation-level-general-ask, div.html-caption-container {
-    @media (min-width: $screen-sm-min){
-      width: 670px;
+    @media (min-width: $screen-lg-min){
+      max-width: 670px;
     }
   }
 
   .ym-donation-levels {
     padding: 30px 20px;
+    max-width: 670px;
 
     p {
       font-weight: bold;
@@ -145,7 +146,7 @@
 
   .ym-tribute-gift__type {
     max-width: 470px;
-    margin: auto;
+    margin: 20px auto 0;
 
     .btn-toggle {
       width: 200px;
@@ -178,7 +179,10 @@
   #billing_addr_country_row {
     width: 49%;
     vertical-align: middle;
-    max-width: 300px;
+    
+    @media(min-width: $screen-md-min){
+      max-width: 320px;
+    }
   }
 
   #donor_first_name_row,
@@ -243,6 +247,36 @@
         width: 100%;
       }
     }
+
+    #responsive_payment_typecc_exp_date_row {
+      padding-left: 50px;
+
+      select {
+        width: 170px;
+        margin-right: 30px;
+      }
+
+      .date-input-container{
+        margin-top: 2px;
+      }
+    }
+
+    #responsive_payment_typecc_cvv_row {
+      width: 170px;
+
+      input {
+        width: auto;
+        max-width: 170px;
+      }
+    }
+
+    #responsive_payment_typecc_exp_date_row,
+    #responsive_payment_typecc_cvv_row {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+
   }
 
   #payment_cc_container {
@@ -251,28 +285,7 @@
     }
   }
 
-  #responsive_payment_typecc_exp_date_row {
-    float: left;
-    padding-left: 50px;
 
-    select {
-      width: 170px;
-
-      &#responsive_payment_typecc_exp_date_MONTH {
-        margin-right: 30px;
-      }
-    }
-  }
-
-  #responsive_payment_typecc_cvv_row {
-    float: right;
-
-    input {
-      width: auto;
-      max-width: 170px;
-      margin: 0 0 0 30px;
-    }
-  }
 
   div.button-container{
     padding: 20px;
@@ -300,4 +313,8 @@
     color:#fff;
     font-weight: bold;
   }
+}
+
+.mobile div.html-caption-container {
+  width: auto;
 }
