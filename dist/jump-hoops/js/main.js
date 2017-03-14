@@ -397,6 +397,7 @@
         return TeamraiserCompanyService.getCompanies('company_id=' + $scope.companyId, {
           success: function(response) {
             var amountRaised, coordinatorId, eventId, goal, name;
+            $scope.participantCount = response.getCompaniesResponse.company.participantCount;
             $scope.totalTeams = response.getCompaniesResponse.company.teamCount;
             eventId = response.getCompaniesResponse.company.eventId;
             amountRaised = response.getCompaniesResponse.company.amountRaised;
