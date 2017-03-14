@@ -557,53 +557,47 @@ input[type="text"].btn-enter {
   border-top: 0;
   border-bottom: 1px solid #91c855; }
 
+.form-control,
 div.responsive input[type="text"],
 div.responsive select {
-  padding: 10px;
-  border-radius: 7px; }
+  border-radius: 7px;
+  padding: 10px; }
 
 label {
   font-weight: 500; }
 
 .ym-optional {
+  color: #6153a3;
   font-size: 14px;
   font-style: italic;
-  color: #6153a3;
   font-weight: normal; }
 
-[type="checkbox"]:not(:checked),
-[type="checkbox"]:checked {
+[type="checkbox"]:not(:checked), [type="checkbox"]:checked {
   position: absolute;
   left: -9999px; }
-
-[type="checkbox"]:not(:checked) + label,
-[type="checkbox"]:checked + label {
-  position: relative;
-  padding-left: 25px;
-  cursor: pointer; }
-
-[type="checkbox"]:not(:checked) + label:before,
-[type="checkbox"]:checked + label:before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 20px;
-  height: 20px;
-  border: 1px solid;
-  background: #fff;
-  border-radius: 3px; }
-
-[type="checkbox"]:not(:checked) + label:after,
-[type="checkbox"]:checked + label:after {
-  content: '\f00c';
-  font-family: 'FontAwesome';
-  position: absolute;
-  top: .15em;
-  left: .1em;
-  font-size: 1.1em;
-  line-height: 0.8;
-  transition: all .2s; }
+  [type="checkbox"]:not(:checked) + label, [type="checkbox"]:checked + label {
+    position: relative;
+    padding-left: 25px;
+    cursor: pointer; }
+    [type="checkbox"]:not(:checked) + label:before, [type="checkbox"]:checked + label:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      border: 1px solid;
+      background: #fff;
+      border-radius: 3px; }
+    [type="checkbox"]:not(:checked) + label:after, [type="checkbox"]:checked + label:after {
+      content: '\f00c';
+      font-family: 'FontAwesome';
+      position: absolute;
+      top: 0.15em;
+      left: 0.1em;
+      font-size: 1.1em;
+      line-height: 0.8;
+      transition: all 0.2s; }
 
 [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
@@ -617,30 +611,28 @@ label {
       -ms-transform: scale(1);
           transform: scale(1); }
 
+.form-control,
 div.responsive input[type="text"],
 div.responsive select,
 div.responsive textarea {
   border: 1px solid #6153a3; }
 
-[type="checkbox"]:not(:checked) + label:before,
-[type="checkbox"]:checked + label:before {
+[type="checkbox"]:not(:checked) + label:before, [type="checkbox"]:checked + label:before {
   border-color: #6153a3; }
 
-[type="checkbox"]:not(:checked) + label:after,
-[type="checkbox"]:checked + label:after {
+[type="checkbox"]:not(:checked) + label:after, [type="checkbox"]:checked + label:after {
   color: #cd1d67; }
 
-select {
+select, select.form-control {
   -moz-appearance: none;
   -webkit-appearance: none;
   -o-appearance: none;
   appearance: none;
-  padding-right: .75rem\9;
+  padding-right: 0.75rem\9;
   background-image: none\9;
-  background: url("../image/ym-select-carot.png") right 0.75rem center no-repeat #fff; }
-
-select::-ms-expand {
-  display: none; }
+  background: url("../image/ym-select-carot.png") right 0.75rem center no-repeat #ffffff; }
+  select::-ms-expand, select.form-control::-ms-expand {
+    display: none; }
 
 .ym-badges {
   text-align: center;
