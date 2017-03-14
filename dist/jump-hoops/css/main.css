@@ -564,7 +564,8 @@ div.responsive select {
   padding: 10px; }
 
 label {
-  font-weight: 500; }
+  font-weight: 500;
+  white-space: normal; }
 
 .ym-optional {
   color: #6153a3;
