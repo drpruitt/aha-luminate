@@ -1,4 +1,4 @@
-<div ng-controller="PersonalPageCtrl">
+<div ng-controller="PersonalPageCtrl" ng-cloak>
   <div class="ym-page-section ym-page-section__top">
     <div class="col-md-6 ym-user-image" style="background-image:url('[[C4:graphic_upload]]');">
       <img class="hidden-md hidden-lg" src="[[C4:graphic_upload]]" alt="[[C1:graphic_caption]]" />
@@ -56,16 +56,21 @@
         </div>
         <div class="clearfix"></div>
       </div>
-      <div class="ym-my-challenge ym-secondary-medium-color">
+      <div class="ym-my-challenge ym-secondary-medium-color" ng-if="challengeName != null">
         <h3 class="ym-headline">My Challenge</h3>
         <div class="col-sm-4">
-          <img class="img-responsive" src="../aha-luminate/dist/jump-hoops/image/my-challenge-water.png" alt="{{myChallenge.challenge}}" />
+          <img class="img-responsive" ng-if="challengeName == 'Choose water over sugar drinks'" src="../aha-luminate/dist/jump-hoops/image/my-challenge-water.png" alt="{{challengeName}}" />
+          <img class="img-responsive" ng-else-if="challengeName == 'Be physically active for 60 minutes everyday'" src="../aha-luminate/dist/jump-hoops/image/my-challenge-excercise.png" alt="{{challengeName}}" />
+          <img class="img-responsive" ng-else src="../aha-luminate/dist/jump-hoops/image/my-challenge-food.png" alt="{{challengeName}}" />
         </div>
         <div class="col-sm-8">
           <p class="ym_my_challenge__description">  
             <strong>{{challengeName}}</strong>
           </p>
-          <p class="ym_my_challenge__stats">
+          <p class="ym_my_challenge__stats" ng-if="challengeCompleted == 1">
+            I've met my challenge <span>1</span> day!
+          </p>
+          <p class="ym_my_challenge__stats" ng-if="challengeCompleted != 1">
             I've met my challenge <span>{{challengeCompleted}}</span> days!
           </p>
         </div>
