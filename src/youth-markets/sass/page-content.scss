@@ -41,6 +41,10 @@
       padding: 50px;
     }
 
+    @media(max-width: $screen-md){
+      padding: 30px;
+    }
+
     > div {
         padding: 0;
     }
