@@ -8,13 +8,25 @@ angular.module 'ahaLuminateControllers'
     'TeamraiserCompanyService'
     'TeamraiserTeamService'
     'TeamraiserParticipantService'
-    ($scope, $rootScope, $location, $filter, $timeout, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService) ->
+    'ZuriService'
+    ($scope, $rootScope, $location, $filter, $timeout, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService, ZuriService) ->
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0]
       $scope.companyProgress = []
       $rootScope.companyName = ''
       $scope.eventDate = ''
       $scope.totalTeams = ''
       $scope.teamId = ''
+      $scope.studentsPledgedTotal = ''
+      $scope.studentsPledgedActivityTypes = []
+
+      ZuriService.getZooSchool '1/1',
+        success: (response) ->
+          console.log response
+          $scope.studentsPledgedTotal = response.data.studentsPledged
+          studentsPledgedActivities = response.data.studentsPledgedByActivity
+
+          angular.forEach studentsPledgedActivities, (activity) ->
+            console.log activity
 
       setCompanyFundraisingProgress = (amountRaised, goal) ->
         $scope.companyProgress.amountRaised = amountRaised
@@ -97,7 +109,7 @@ angular.module 'ahaLuminateControllers'
           $scope.$apply()
 
       getCompanyParticipants = ->
-        TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%%%') + '&first_name=' + encodeURIComponent('%%%') + '&last_name=' + encodeURIComponent('%%%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_sort_column=total&list_ascending=false', 
+        TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%%%') + '&first_name=' + encodeURIComponent('%%%') + '&last_name=' + encodeURIComponent('%%%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=50', 
             error: ->
               setCompanyParticipants()
               numCompaniesParticipantRequestComplete++
@@ -120,5 +132,7 @@ angular.module 'ahaLuminateControllers'
                 totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
                 setCompanyParticipants companyParticipants, totalNumberParticipants
       getCompanyParticipants()
+
+      
 
   ]

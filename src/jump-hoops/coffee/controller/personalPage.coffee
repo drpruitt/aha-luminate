@@ -18,7 +18,7 @@ angular.module 'ahaLuminateControllers'
       $scope.challengeName = ''
       $scope.challengeCompleted = ''
 
-      ZuriService.getZooStudent '1/1',
+      ZuriService.getZooStudent '1/2',
         success: (response) ->
           $scope.challengeName = response.data.challenges.current
           $scope.challengeCompleted = response.data.challenges.completed

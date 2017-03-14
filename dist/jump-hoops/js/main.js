@@ -312,7 +312,7 @@
       return {
         getZooStudent: function(requestData, callback) {
           var url, urlSCE;
-          url = 'http://hearttools.heart.org/zoocrew-api/student/1/1?key=6Mwqh5dFV39HLDq7';
+          url = 'http://hearttools.heart.org/zoocrew-api/student/' + requestData + '?key=6Mwqh5dFV39HLDq7';
           urlSCE = $sce.trustAsResourceUrl(url);
           return $http.jsonp(urlSCE, {
             jsonpCallbackParam: 'callback'
@@ -324,9 +324,9 @@
             }
           });
         },
-        getZooSchool: function(callback) {
+        getZooSchool: function(requestData, callback) {
           var url, urlSCE;
-          url = 'http://hearttools.heart.org/zoocrew-api/program/1?key=6Mwqh5dFV39HLDq7';
+          url = 'http://hearttools.heart.org/zoocrew-api/program/' + requestData + '?key=6Mwqh5dFV39HLDq7';
           urlSCE = $sce.trustAsResourceUrl(url);
           return $http.jsonp(urlSCE, {
             jsonpCallbackParam: 'callback'
@@ -343,7 +343,7 @@
   ]);
 
   angular.module('ahaLuminateControllers').controller('CompanyPageCtrl', [
-    '$scope', '$rootScope', '$location', '$filter', '$timeout', 'TeamraiserCompanyService', 'TeamraiserTeamService', 'TeamraiserParticipantService', function($scope, $rootScope, $location, $filter, $timeout, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService) {
+    '$scope', '$rootScope', '$location', '$filter', '$timeout', 'TeamraiserCompanyService', 'TeamraiserTeamService', 'TeamraiserParticipantService', 'ZuriService', function($scope, $rootScope, $location, $filter, $timeout, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService, ZuriService) {
       var getCompanyParticipants, getCompanyTeams, getCompanyTotals, setCompanyFundraisingProgress, setCompanyParticipants, setCompanyTeams;
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0];
       $scope.companyProgress = [];
@@ -351,6 +351,19 @@
       $scope.eventDate = '';
       $scope.totalTeams = '';
       $scope.teamId = '';
+      $scope.studentsPledgedTotal = '';
+      $scope.studentsPledgedActivityTypes = [];
+      ZuriService.getZooSchool('1/1', {
+        success: function(response) {
+          var studentsPledgedActivities;
+          console.log(response);
+          $scope.studentsPledgedTotal = response.data.studentsPledged;
+          studentsPledgedActivities = response.data.studentsPledgedByActivity;
+          return angular.forEach(studentsPledgedActivities, function(activity) {
+            return console.log(activity);
+          });
+        }
+      });
       setCompanyFundraisingProgress = function(amountRaised, goal) {
         $scope.companyProgress.amountRaised = amountRaised;
         $scope.companyProgress.amountRaised = Number($scope.companyProgress.amountRaised);
@@ -448,7 +461,7 @@
         }
       };
       getCompanyParticipants = function() {
-        return TeamraiserParticipantService.getParticipants('team_name=' + encodeURIComponent('%%%') + '&first_name=' + encodeURIComponent('%%%') + '&last_name=' + encodeURIComponent('%%%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_sort_column=total&list_ascending=false', {
+        return TeamraiserParticipantService.getParticipants('team_name=' + encodeURIComponent('%%%') + '&first_name=' + encodeURIComponent('%%%') + '&last_name=' + encodeURIComponent('%%%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=50', {
           error: function() {
             setCompanyParticipants();
             numCompaniesParticipantRequestComplete++;
@@ -730,7 +743,7 @@
       $rootScope.numTeams = '';
       $scope.challengeName = '';
       $scope.challengeCompleted = '';
-      ZuriService.getZooStudent('1/1', {
+      ZuriService.getZooStudent('1/2', {
         success: function(response) {
           $scope.challengeName = response.data.challenges.current;
           return $scope.challengeCompleted = response.data.challenges.completed;

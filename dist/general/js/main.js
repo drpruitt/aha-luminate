@@ -301,7 +301,7 @@
       return {
         getZooStudent: function(requestData, callback) {
           var url, urlSCE;
-          url = 'http://hearttools.heart.org/zoocrew-api/student/1/1?key=6Mwqh5dFV39HLDq7';
+          url = 'http://hearttools.heart.org/zoocrew-api/student/' + requestData + '?key=6Mwqh5dFV39HLDq7';
           urlSCE = $sce.trustAsResourceUrl(url);
           return $http.jsonp(urlSCE, {
             jsonpCallbackParam: 'callback'
@@ -313,9 +313,9 @@
             }
           });
         },
-        getZooSchool: function(callback) {
+        getZooSchool: function(requestData, callback) {
           var url, urlSCE;
-          url = 'http://hearttools.heart.org/zoocrew-api/program/1?key=6Mwqh5dFV39HLDq7';
+          url = 'http://hearttools.heart.org/zoocrew-api/program/' + requestData + '?key=6Mwqh5dFV39HLDq7';
           urlSCE = $sce.trustAsResourceUrl(url);
           return $http.jsonp(urlSCE, {
             jsonpCallbackParam: 'callback'
