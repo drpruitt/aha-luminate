@@ -7,13 +7,28 @@ angular.module 'ahaLuminateControllers'
     '$timeout'
     'TeamraiserParticipantService'
     'TeamraiserCompanyService'
-    ($scope, $rootScope, $location, $filter, $timeout, TeamraiserParticipantService, TeamraiserCompanyService) ->
+    'ZuriService'
+    ($scope, $rootScope, $location, $filter, $timeout, TeamraiserParticipantService, TeamraiserCompanyService, ZuriService) ->
       $dataRoot = angular.element '[data-aha-luminate-root]'
       $scope.participantId = $location.absUrl().split('px=')[1].split('&')[0]
       $scope.companyId = $dataRoot.data('company-id') if $dataRoot.data('company-id') isnt ''
       $scope.teamId = $dataRoot.data('team-id') if $dataRoot.data('team-id') isnt ''
       $scope.eventDate =''
       $rootScope.numTeams = ''
+      $scope.myChallenge = []
+
+      ZuriService.getZooStudent '1/1',
+        success: (response) ->
+          challenge = response.data.challenges.current
+          completed = response.data.challenges.completed
+
+          $scope.myChallenge.push
+            challenge: challenge
+            completed: completed
+
+        error: (response) ->
+          $scope.myChallenge.push
+            challenge: null
 
       TeamraiserCompanyService.getCompanies 'company_id=' + $scope.companyId, 
         success: (response) ->

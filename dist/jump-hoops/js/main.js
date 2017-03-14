@@ -307,6 +307,41 @@
     };
   });
 
+  angular.module('ahaLuminateApp').factory('ZuriService', [
+    '$rootScope', '$http', '$sce', function($rootScope, $http, $sce) {
+      return {
+        getZooStudent: function(requestData, callback) {
+          var url, urlSCE;
+          url = 'http://hearttools.heart.org/zoocrew-api/student/1/1?key=6Mwqh5dFV39HLDq7';
+          urlSCE = $sce.trustAsResourceUrl(url);
+          return $http.jsonp(urlSCE, {
+            jsonpCallbackParam: 'callback'
+          }).then(function(response) {
+            if (response.data.success === false) {
+              return callback.error(response);
+            } else {
+              return callback.success(response);
+            }
+          });
+        },
+        getZooSchool: function(callback) {
+          var url, urlSCE;
+          url = 'http://hearttools.heart.org/zoocrew-api/program/1?key=6Mwqh5dFV39HLDq7';
+          urlSCE = $sce.trustAsResourceUrl(url);
+          return $http.jsonp(urlSCE, {
+            jsonpCallbackParam: 'callback'
+          }).then(function(response) {
+            if (response.data.success === false) {
+              return callback.error(response);
+            } else {
+              return callback.success(response);
+            }
+          });
+        }
+      };
+    }
+  ]);
+
   angular.module('ahaLuminateControllers').controller('CompanyPageCtrl', [
     '$scope', '$rootScope', '$location', '$filter', '$timeout', 'TeamraiserCompanyService', 'TeamraiserTeamService', 'TeamraiserParticipantService', function($scope, $rootScope, $location, $filter, $timeout, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService) {
       var getCompanyParticipants, getCompanyTeams, getCompanyTotals, setCompanyFundraisingProgress, setCompanyParticipants, setCompanyTeams;
@@ -681,7 +716,7 @@
   ]);
 
   angular.module('ahaLuminateControllers').controller('PersonalPageCtrl', [
-    '$scope', '$rootScope', '$location', '$filter', '$timeout', 'TeamraiserParticipantService', 'TeamraiserCompanyService', function($scope, $rootScope, $location, $filter, $timeout, TeamraiserParticipantService, TeamraiserCompanyService) {
+    '$scope', '$rootScope', '$location', '$filter', '$timeout', 'TeamraiserParticipantService', 'TeamraiserCompanyService', 'ZuriService', function($scope, $rootScope, $location, $filter, $timeout, TeamraiserParticipantService, TeamraiserCompanyService, ZuriService) {
       var $dataRoot, $defaultPersonalDonors, $defaultResponsivePersonalDonors, setParticipantProgress;
       $dataRoot = angular.element('[data-aha-luminate-root]');
       $scope.participantId = $location.absUrl().split('px=')[1].split('&')[0];
@@ -693,6 +728,23 @@
       }
       $scope.eventDate = '';
       $rootScope.numTeams = '';
+      $scope.myChallenge = [];
+      ZuriService.getZooStudent('1/1', {
+        success: function(response) {
+          var challenge, completed;
+          challenge = response.data.challenges.current;
+          completed = response.data.challenges.completed;
+          return $scope.myChallenge.push({
+            challenge: challenge,
+            completed: completed
+          });
+        },
+        error: function(response) {
+          return $scope.myChallenge.push({
+            challenge: null
+          });
+        }
+      });
       TeamraiserCompanyService.getCompanies('company_id=' + $scope.companyId, {
         success: function(response) {
           var coordinatorId, eventId, ref, ref1;

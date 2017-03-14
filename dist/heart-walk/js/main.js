@@ -254,7 +254,7 @@
             jsonpCallbackParam: 'callback'
           }).then(function(response) {
             if (response.data.success) {
-              return callback.success(decodeURIComponent(response.data.success.schools));
+              return callback.success(decodeURIComponent(response.data.success.schools.replace(/\+/g, ' ')));
             } else {
               return callback.failure(response);
             }
@@ -312,6 +312,41 @@
       }
     };
   });
+
+  angular.module('ahaLuminateApp').factory('ZuriService', [
+    '$rootScope', '$http', '$sce', function($rootScope, $http, $sce) {
+      return {
+        getZooStudent: function(requestData, callback) {
+          var url, urlSCE;
+          url = 'http://hearttools.heart.org/zoocrew-api/student/1/1?key=6Mwqh5dFV39HLDq7';
+          urlSCE = $sce.trustAsResourceUrl(url);
+          return $http.jsonp(urlSCE, {
+            jsonpCallbackParam: 'callback'
+          }).then(function(response) {
+            if (response.data.success === false) {
+              return callback.error(response);
+            } else {
+              return callback.success(response);
+            }
+          });
+        },
+        getZooSchool: function(callback) {
+          var url, urlSCE;
+          url = 'http://hearttools.heart.org/zoocrew-api/program/1?key=6Mwqh5dFV39HLDq7';
+          urlSCE = $sce.trustAsResourceUrl(url);
+          return $http.jsonp(urlSCE, {
+            jsonpCallbackParam: 'callback'
+          }).then(function(response) {
+            if (response.data.success === false) {
+              return callback.error(response);
+            } else {
+              return callback.success(response);
+            }
+          });
+        }
+      };
+    }
+  ]);
 
   angular.module('ahaLuminateApp').factory('TeamraiserCompanyDataService', [
     '$rootScope', '$http', function($rootScope, $http) {
