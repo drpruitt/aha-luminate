@@ -4,7 +4,16 @@
   angular.module('ahaLuminateControllers', []);
 
   angular.module('ahaLuminateApp').constant('APP_INFO', {
-    version: '1.0.0'
+    version: '1.0.0',
+    rootPath: (function() {
+      var devBranch, rootPath;
+      rootPath = '../';
+      devBranch = luminateExtend.global.devBranch;
+      if (devBranch && devBranch !== '') {
+        rootPath += devBranch + '/';
+      }
+      return rootPath += 'aha-luminate/';
+    })()
   });
 
   angular.module('ahaLuminateApp').run([
@@ -391,109 +400,121 @@
     }
   ]);
 
-  angular.module('ahaLuminateApp').directive('companyParticipantList', function() {
-    return {
-      templateUrl: '../aha-luminate/dist/heart-walk/html/directive/companyParticipantList.html',
-      restrict: 'E',
-      replace: true,
-      scope: {
-        isOpen: '=',
-        isChildCompany: '=',
-        companyName: '=',
-        companyId: '=',
-        frId: '=',
-        participants: '=',
-        searchCompanyParticipants: '='
-      },
-      controller: [
-        '$scope', function($scope) {
-          $scope.companyParticipantSearch = {
-            participant_name: ''
-          };
-          return $scope.toggleCompanyParticipantList = function() {
-            return $scope.isOpen = !$scope.isOpen;
-          };
+  angular.module('ahaLuminateApp').directive('companyParticipantList', [
+    'APP_INFO', function(APP_INFO) {
+      return {
+        templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/directive/companyParticipantList.html',
+        restrict: 'E',
+        replace: true,
+        scope: {
+          isOpen: '=',
+          isChildCompany: '=',
+          companyName: '=',
+          companyId: '=',
+          frId: '=',
+          participants: '=',
+          searchCompanyParticipants: '='
+        },
+        controller: [
+          '$scope', function($scope) {
+            $scope.companyParticipantSearch = {
+              participant_name: ''
+            };
+            return $scope.toggleCompanyParticipantList = function() {
+              return $scope.isOpen = !$scope.isOpen;
+            };
+          }
+        ]
+      };
+    }
+  ]);
+
+  angular.module('ahaLuminateApp').directive('companyTeamList', [
+    'APP_INFO', function(APP_INFO) {
+      return {
+        templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/directive/companyTeamList.html',
+        restrict: 'E',
+        replace: true,
+        scope: {
+          isOpen: '=',
+          isChildCompany: '=',
+          companyName: '=',
+          companyId: '=',
+          frId: '=',
+          teams: '=',
+          searchCompanyTeams: '='
+        },
+        controller: [
+          '$scope', function($scope) {
+            $scope.companyTeamSearch = {
+              team_name: ''
+            };
+            return $scope.toggleCompanyTeamList = function() {
+              return $scope.isOpen = !$scope.isOpen;
+            };
+          }
+        ]
+      };
+    }
+  ]);
+
+  angular.module('ahaLuminateApp').directive('teamMemberList', [
+    'APP_INFO', function(APP_INFO) {
+      return {
+        templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/directive/teamMemberList.html',
+        restrict: 'E',
+        replace: true,
+        scope: {
+          teamMembers: '=',
+          teamGiftsLabel: '=',
+          teamGiftsAmount: '=',
+          teamGiftsAmountFormatted: '='
         }
-      ]
-    };
-  });
+      };
+    }
+  ]);
 
-  angular.module('ahaLuminateApp').directive('companyTeamList', function() {
-    return {
-      templateUrl: '../aha-luminate/dist/heart-walk/html/directive/companyTeamList.html',
-      restrict: 'E',
-      replace: true,
-      scope: {
-        isOpen: '=',
-        isChildCompany: '=',
-        companyName: '=',
-        companyId: '=',
-        frId: '=',
-        teams: '=',
-        searchCompanyTeams: '='
-      },
-      controller: [
-        '$scope', function($scope) {
-          $scope.companyTeamSearch = {
-            team_name: ''
-          };
-          return $scope.toggleCompanyTeamList = function() {
-            return $scope.isOpen = !$scope.isOpen;
-          };
+  angular.module('ahaLuminateApp').directive('topCompanyList', [
+    'APP_INFO', function(APP_INFO) {
+      return {
+        templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/directive/topCompanyList.html',
+        restrict: 'E',
+        replace: true,
+        scope: {
+          companies: '=',
+          maxSize: '='
         }
-      ]
-    };
-  });
+      };
+    }
+  ]);
 
-  angular.module('ahaLuminateApp').directive('teamMemberList', function() {
-    return {
-      templateUrl: '../aha-luminate/dist/heart-walk/html/directive/teamMemberList.html',
-      restrict: 'E',
-      replace: true,
-      scope: {
-        teamMembers: '=',
-        teamGiftsLabel: '=',
-        teamGiftsAmount: '=',
-        teamGiftsAmountFormatted: '='
-      }
-    };
-  });
+  angular.module('ahaLuminateApp').directive('topParticipantList', [
+    'APP_INFO', function(APP_INFO) {
+      return {
+        templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/directive/topParticipantList.html',
+        restrict: 'E',
+        replace: true,
+        scope: {
+          participants: '=',
+          maxSize: '='
+        }
+      };
+    }
+  ]);
 
-  angular.module('ahaLuminateApp').directive('topCompanyList', function() {
-    return {
-      templateUrl: '../aha-luminate/dist/heart-walk/html/directive/topCompanyList.html',
-      restrict: 'E',
-      replace: true,
-      scope: {
-        companies: '=',
-        maxSize: '='
-      }
-    };
-  });
-
-  angular.module('ahaLuminateApp').directive('topParticipantList', function() {
-    return {
-      templateUrl: '../aha-luminate/dist/heart-walk/html/directive/topParticipantList.html',
-      restrict: 'E',
-      replace: true,
-      scope: {
-        participants: '=',
-        maxSize: '='
-      }
-    };
-  });
-
-  angular.module('ahaLuminateApp').directive('topTeamList', function() {
-    return {
-      templateUrl: '../aha-luminate/dist/heart-walk/html/directive/topTeamList.html',
-      restrict: 'E',
-      replace: true,
-      scope: {
-        teams: '=',
-        maxSize: '='
-      }
-    };
-  });
+  angular.module('ahaLuminateApp').directive('topTeamList', [
+    'APP_INFO', function(APP_INFO) {
+      return {
+        templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/directive/topTeamList.html',
+        restrict: 'E',
+        replace: true,
+        scope: {
+          teams: '=',
+          maxSize: '='
+        }
+      };
+    }
+  ]);
 
   angular.module('ahaLuminateControllers').controller('CompanyListPageCtrl', [
     '$scope', '$filter', 'TeamraiserCompanyDataService', function($scope, $filter, TeamraiserCompanyDataService) {

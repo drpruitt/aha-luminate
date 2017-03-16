@@ -1,22 +1,25 @@
 angular.module 'ahaLuminateApp'
-  .directive 'companyTeamList', ->
-    templateUrl: '../aha-luminate/dist/heart-walk/html/directive/companyTeamList.html'
-    restrict: 'E'
-    replace: true
-    scope:
-      isOpen: '='
-      isChildCompany: '='
-      companyName: '='
-      companyId: '='
-      frId: '='
-      teams: '='
-      searchCompanyTeams: '='
-    controller: [
-      '$scope'
-      ($scope) ->
-        $scope.companyTeamSearch = 
-          team_name: ''
-        
-        $scope.toggleCompanyTeamList = ->
-          $scope.isOpen = !$scope.isOpen
-    ]
+  .directive 'companyTeamList', [
+    'APP_INFO'
+    (APP_INFO) ->
+      templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/directive/companyTeamList.html'
+      restrict: 'E'
+      replace: true
+      scope:
+        isOpen: '='
+        isChildCompany: '='
+        companyName: '='
+        companyId: '='
+        frId: '='
+        teams: '='
+        searchCompanyTeams: '='
+      controller: [
+        '$scope'
+        ($scope) ->
+          $scope.companyTeamSearch = 
+            team_name: ''
+          
+          $scope.toggleCompanyTeamList = ->
+            $scope.isOpen = !$scope.isOpen
+      ]
+  ]
