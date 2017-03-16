@@ -4,7 +4,16 @@
   angular.module('ahaLuminateControllers', []);
 
   angular.module('ahaLuminateApp').constant('APP_INFO', {
-    version: '1.0.0'
+    version: '1.0.0',
+    rootPath: (function() {
+      var devBranch, rootPath;
+      rootPath = '../';
+      devBranch = luminateExtend.global.devBranch;
+      if (devBranch && devBranch !== '') {
+        rootPath += devBranch + '/';
+      }
+      return rootPath += 'aha-luminate/';
+    })()
   });
 
   angular.module('ahaLuminateApp').run([
@@ -951,43 +960,47 @@
     }
   ]);
 
-  angular.module('ahaLuminateApp').directive('companyParticipantList', function() {
-    return {
-      templateUrl: '../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/html/directive/companyParticipantList.html',
-      restrict: 'E',
-      replace: true,
-      scope: {
-        companyName: '=',
-        companyId: '=',
-        frId: '=',
-        participants: '='
-      },
-      controller: [
-        '$scope', function($scope) {
-          $scope.companyParticipantSearch = {
-            participant_name: ''
-          };
-          return $scope.toggleCompanyParticipantList = function() {
-            return $scope.isOpen = !$scope.isOpen;
-          };
-        }
-      ]
-    };
-  });
+  angular.module('ahaLuminateApp').directive('companyParticipantList', [
+    'APP_INFO', function(APP_INFO) {
+      return {
+        templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/directive/companyParticipantList.html',
+        restrict: 'E',
+        replace: true,
+        scope: {
+          companyName: '=',
+          companyId: '=',
+          frId: '=',
+          participants: '='
+        },
+        controller: [
+          '$scope', function($scope) {
+            $scope.companyParticipantSearch = {
+              participant_name: ''
+            };
+            return $scope.toggleCompanyParticipantList = function() {
+              return $scope.isOpen = !$scope.isOpen;
+            };
+          }
+        ]
+      };
+    }
+  ]);
 
-  angular.module('ahaLuminateApp').directive('companyTeamList', function() {
-    return {
-      templateUrl: '../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/html/directive/companyTeamList.html',
-      restrict: 'E',
-      replace: true,
-      scope: {
-        companyName: '=',
-        companyId: '=',
-        frId: '=',
-        teams: '='
-      }
-    };
-  });
+  angular.module('ahaLuminateApp').directive('companyTeamList', [
+    'APP_INFO', function(APP_INFO) {
+      return {
+        templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/directive/companyTeamList.html',
+        restrict: 'E',
+        replace: true,
+        scope: {
+          companyName: '=',
+          companyId: '=',
+          frId: '=',
+          teams: '='
+        }
+      };
+    }
+  ]);
 
   angular.module('ahaLuminateApp').directive('schoolList', function() {
     return {
