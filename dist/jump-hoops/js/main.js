@@ -964,8 +964,8 @@
     }
   ]);
 
-  angular.module('ahaLuminateApp').directive('companyParticipantList', function() {
-    return {
+  angular.module('ahaLuminateApp').directive('companyParticipantList', [
+    'APP_INFO', function(APP_INFO) {}, {
       templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/directive/companyParticipantList.html',
       restrict: 'E',
       replace: true,
@@ -985,11 +985,11 @@
           };
         }
       ]
-    };
-  });
+    }
+  ]);
 
-  angular.module('ahaLuminateApp').directive('companyTeamList', function() {
-    return {
+  angular.module('ahaLuminateApp').directive('companyTeamList', [
+    'APP_INFO', function(APP_INFO) {}, {
       templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/directive/companyTeamList.html',
       restrict: 'E',
       replace: true,
@@ -999,8 +999,8 @@
         frId: '=',
         teams: '='
       }
-    };
-  });
+    }
+  ]);
 
   angular.module('ahaLuminateApp').directive('schoolList', function() {
     return {
