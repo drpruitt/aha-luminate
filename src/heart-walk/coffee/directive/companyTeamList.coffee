@@ -1,6 +1,6 @@
 angular.module 'ahaLuminateApp'
   .directive 'companyTeamList', ->
-    templateUrl: '../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/heart-walk/html/directive/companyTeamList.html'
+    templateUrl: '../aha-luminate/dist/heart-walk/html/directive/companyTeamList.html'
     restrict: 'E'
     replace: true
     scope:

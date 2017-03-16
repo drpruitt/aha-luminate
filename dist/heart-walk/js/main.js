@@ -393,7 +393,7 @@
 
   angular.module('ahaLuminateApp').directive('companyParticipantList', function() {
     return {
-      templateUrl: '../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/heart-walk/html/directive/companyParticipantList.html',
+      templateUrl: '../aha-luminate/dist/heart-walk/html/directive/companyParticipantList.html',
       restrict: 'E',
       replace: true,
       scope: {
@@ -420,7 +420,7 @@
 
   angular.module('ahaLuminateApp').directive('companyTeamList', function() {
     return {
-      templateUrl: '../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/heart-walk/html/directive/companyTeamList.html',
+      templateUrl: '../aha-luminate/dist/heart-walk/html/directive/companyTeamList.html',
       restrict: 'E',
       replace: true,
       scope: {
@@ -447,7 +447,7 @@
 
   angular.module('ahaLuminateApp').directive('teamMemberList', function() {
     return {
-      templateUrl: '../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/heart-walk/html/directive/teamMemberList.html',
+      templateUrl: '../aha-luminate/dist/heart-walk/html/directive/teamMemberList.html',
       restrict: 'E',
       replace: true,
       scope: {
@@ -461,7 +461,7 @@
 
   angular.module('ahaLuminateApp').directive('topCompanyList', function() {
     return {
-      templateUrl: '../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/heart-walk/html/directive/topCompanyList.html',
+      templateUrl: '../aha-luminate/dist/heart-walk/html/directive/topCompanyList.html',
       restrict: 'E',
       replace: true,
       scope: {
@@ -473,7 +473,7 @@
 
   angular.module('ahaLuminateApp').directive('topParticipantList', function() {
     return {
-      templateUrl: '../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/heart-walk/html/directive/topParticipantList.html',
+      templateUrl: '../aha-luminate/dist/heart-walk/html/directive/topParticipantList.html',
       restrict: 'E',
       replace: true,
       scope: {
@@ -485,7 +485,7 @@
 
   angular.module('ahaLuminateApp').directive('topTeamList', function() {
     return {
-      templateUrl: '../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/heart-walk/html/directive/topTeamList.html',
+      templateUrl: '../aha-luminate/dist/heart-walk/html/directive/topTeamList.html',
       restrict: 'E',
       replace: true,
       scope: {
