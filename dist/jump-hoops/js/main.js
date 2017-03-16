@@ -4,10 +4,6 @@
   angular.module('ahaLuminateControllers', []);
 
   angular.module('ahaLuminateApp').constant('APP_INFO', {
-    version: '1.0.0'
-  });
-
-  angular.module('ahaLuminateApp').constant('APP_INFO', {
     version: '1.0.0',
     rootPath: (function() {
       var devBranch, rootPath;
