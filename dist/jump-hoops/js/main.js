@@ -961,40 +961,44 @@
   ]);
 
   angular.module('ahaLuminateApp').directive('companyParticipantList', [
-    'APP_INFO', function(APP_INFO) {}, {
-      templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/directive/companyParticipantList.html',
-      restrict: 'E',
-      replace: true,
-      scope: {
-        companyName: '=',
-        companyId: '=',
-        frId: '=',
-        participants: '='
-      },
-      controller: [
-        '$scope', function($scope) {
-          $scope.companyParticipantSearch = {
-            participant_name: ''
-          };
-          return $scope.toggleCompanyParticipantList = function() {
-            return $scope.isOpen = !$scope.isOpen;
-          };
-        }
-      ]
+    'APP_INFO', function(APP_INFO) {
+      return {
+        templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/directive/companyParticipantList.html',
+        restrict: 'E',
+        replace: true,
+        scope: {
+          companyName: '=',
+          companyId: '=',
+          frId: '=',
+          participants: '='
+        },
+        controller: [
+          '$scope', function($scope) {
+            $scope.companyParticipantSearch = {
+              participant_name: ''
+            };
+            return $scope.toggleCompanyParticipantList = function() {
+              return $scope.isOpen = !$scope.isOpen;
+            };
+          }
+        ]
+      };
     }
   ]);
 
   angular.module('ahaLuminateApp').directive('companyTeamList', [
-    'APP_INFO', function(APP_INFO) {}, {
-      templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/directive/companyTeamList.html',
-      restrict: 'E',
-      replace: true,
-      scope: {
-        companyName: '=',
-        companyId: '=',
-        frId: '=',
-        teams: '='
-      }
+    'APP_INFO', function(APP_INFO) {
+      return {
+        templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/directive/companyTeamList.html',
+        restrict: 'E',
+        replace: true,
+        scope: {
+          companyName: '=',
+          companyId: '=',
+          frId: '=',
+          teams: '='
+        }
+      };
     }
   ]);
 
