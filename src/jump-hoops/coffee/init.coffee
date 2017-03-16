@@ -12,6 +12,16 @@ angular.module 'ahaLuminateApp'
     version: '1.0.0'
 
 angular.module 'ahaLuminateApp'
+  .constant 'APP_INFO', 
+    version: '1.0.0'
+    rootPath: do ->
+      rootPath = '../'
+      devBranch = luminateExtend.global.devBranch
+      if devBranch and devBranch isnt ''
+        rootPath += devBranch + '/'
+      rootPath += 'aha-luminate/'
+
+angular.module 'ahaLuminateApp'
   .run [
     '$rootScope'
     'APP_INFO'
