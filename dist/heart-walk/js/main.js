@@ -12,7 +12,7 @@
       if (devBranch && devBranch !== '') {
         return rootPath += devBranch + '/';
       } else {
-        return rootPath += 'aha-luminate';
+        return rootPath += 'aha-luminate/';
       }
     })()
   });
