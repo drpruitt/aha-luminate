@@ -10,9 +10,10 @@
       rootPath = '../';
       devBranch = luminateExtend.global.devBranch;
       if (devBranch && devBranch !== '') {
-        rootPath += devBranch + '/';
+        return rootPath += devBranch + '/';
+      } else {
+        return rootPath += 'aha-luminate';
       }
-      return rootPath += 'aha-luminate/';
     })()
   });
 
