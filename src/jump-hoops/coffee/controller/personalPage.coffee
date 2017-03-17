@@ -58,6 +58,8 @@ angular.module 'ahaLuminateControllers'
             percent = Math.ceil(($scope.personalProgress.amountRaised / $scope.personalProgress.goal) * 100)
           if percent > 100
             percent = 100
+          else if percent < 2
+            percent = 2
           $scope.personalProgress.percent = percent
           if not $scope.$$phase
             $scope.$apply()
