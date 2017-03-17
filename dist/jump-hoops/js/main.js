@@ -10,9 +10,10 @@
       rootPath = '../';
       devBranch = luminateExtend.global.devBranch;
       if (devBranch && devBranch !== '') {
-        rootPath += devBranch + '/';
+        return rootPath += devBranch + '/';
+      } else {
+        return rootPath += 'aha-luminate';
       }
-      return rootPath += 'aha-luminate/';
     })()
   });
 
@@ -390,8 +391,8 @@
           if (percent < 2) {
             percent = 2;
           }
-          if (percent > 98) {
-            percent = 98;
+          if (percent > 100) {
+            percent = 100;
           }
           $scope.companyProgress.percent = percent;
           if (!$scope.$$phase) {
@@ -802,6 +803,8 @@
           }
           if (percent > 100) {
             percent = 100;
+          } else if (percent < 2) {
+            percent = 2;
           }
           $scope.personalProgress.percent = percent;
           if (!$scope.$$phase) {
