@@ -1334,7 +1334,7 @@ body.Fall .heart-hero__mask {
   padding: 12px;
   position: absolute;
   top: 12px;
-  left: 12px;
+  right: 12px;
   z-index: 100; }
   .heart-user-video--personal .btn .glyphicon, .heart-user-video--personal .btn:link .glyphicon, .heart-user-video--personal .btn:visited .glyphicon {
     display: inline-block;
