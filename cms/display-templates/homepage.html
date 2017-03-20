@@ -1,0 +1,87 @@
+<div class="ym-hero">
+  ${banner_image}
+  <div class="ym-hero__text ym-hero__text--right">
+    <h1>${banner_image.title}</h1>
+    <p>${banner_image.description}</p>
+  </div>
+</div>
+<div class="ym-school-search" ng-controller="SchoolSearchCtrl">
+  <div class="form-group">
+    <div class="form-inline text-center">
+      <br>
+      <label for="school-name-filter">Start typing your shcool's name:</label>
+      <input type="text" id="school-name-filter" name="school-name-filter" class="form-control" maxlength="40"
+        ng-model="schoolList.nameFilter"
+        ng-minlength="3"
+        >
+    </div>
+  </div>
+  <div class="ym-page-section ym-page-section__roster">
+    <div class="pos-r">
+      <h5>Results Matching Your School's Name</h5>
+      <select id="school-state-filter" name="school-state-filter"
+        ng-model="schoolList.stateFilter"
+        ng-options="state as state.label for state in states | orderBy:'id' track by state.id"
+        >
+      </select>
+    </div>
+    <!-- <school-list schools="schools" name-filter="schoolList.nameFilter" state-filter="schoolList.stateFilter"></school-list> -->
+    <table class="table table-responsive table-striped ym-list ym-list--school-list">
+      <thead class="ym-list__header">
+        <th class="ym-list__column ym-list__column--school">
+          <a href="" ng-click="schoolList.sortProp = 'SCHOOL_NAME'; schoolList.sortDesc = !schoolList.sortDesc">
+          School
+          <span ng-show="schoolList.sortProp == 'SCHOOL_NAME' && !schoolList.sortDesc" class="fa fa-caret-down"></span>
+          <span ng-show="schoolList.sortProp == 'SCHOOL_NAME' && schoolList.sortDesc" class="fa fa-caret-up"></span>
+          </a>
+          </td>
+        </th>
+        <th class="ym-list__column ym-list__column--city">
+          <a href="" ng-click="schoolList.sortProp = 'SCHOOL_CITY'; schoolList.sortDesc = !schoolList.sortDesc">
+          City
+          <span ng-show="schoolList.sortProp == 'SCHOOL_CITY' && !schoolList.sortDesc" class="fa fa-caret-down"></span>
+          <span ng-show="schoolList.sortProp == 'SCHOOL_CITY' && schoolList.sortDesc" class="fa fa-caret-up"></span>
+          </a>
+        </th>
+        <th class="ym-list__column ym-list__column--state">
+          <a href="" ng-click="schoolList.sortProp = 'SCHOOL_STATE'; schoolList.sortDesc = !schoolList.sortDesc">
+          State
+          <span ng-show="schoolList.sortProp == 'SCHOOL_STATE' && !schoolList.sortDesc" class="fa fa-caret-down"></span>
+          <span ng-show="schoolList.sortProp == 'SCHOOL_STATE' && schoolList.sortDesc" class="fa fa-caret-up"></span>
+          </a>
+        </th>
+        <th class="ym-list__column ym-list__column--team-leader">
+          <a href="" ng-click="schoolList.sortProp = 'COORDINATOR_LAST_NAME'; schoolList.sortDesc = !schoolList.sortDesc">
+          Team Leader
+          <span ng-show="schoolList.sortProp == 'COORDINATOR_LAST_NAME' && !schoolList.sortDesc" class="fa fa-caret-down"></span>
+          <span ng-show="schoolList.sortProp == 'COORDINATOR_LAST_NAME' && schoolList.sortDesc" class="fa fa-caret-up"></span>
+          </a>
+        </th>
+      </thead>
+      <tbody>
+        <tr class="ym-list__row"
+          ng-repeat="school in schools | orderBy:schoolList.sortProp:schoolList.sortDesc | filter:{SCHOOL_NAME:schoolList.nameFilter} | filter:{SCHOOL_STATE:schoolList.stateFilter.SCHOOL_STATE} | filter:paginate"
+          >
+          <td class="ym-list__column ym-list__column--school">
+            {{school.SCHOOL_NAME}}<br />
+            <a class="btn btn-primary btn-md" ng-href="http://www2.heart.org/site/TR?pg=company&fr_id={{school.FR_ID}}&company_id={{school.COMPANY_ID}}">Sign Up</a>
+          </td>
+          <td class="ym-list__column ym-list__column--city">
+            {{school.SCHOOL_CITY}}
+          </td>
+          <td class="ym-list__column ym-list__column--state">
+            {{school.SCHOOL_STATE}}
+          </td>
+          <td class="ym-list__column ym-list__column--team-leader">
+            {{school.COORDINATOR_LAST_NAME}}, {{school.COORDINATOR_FIRST_NAME}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <ul uib-pagination total-items="schoolList.totalItems" items-per-page="schoolList.numPerPage" ng-model="schoolList.currentPage"></ul>
+  </div>
+</div>
+<div class="ym-heart-heros event-accent">
+  <h1>${section_title}</h1>
+  <p>${section_intro_text}</p>
+</div>
