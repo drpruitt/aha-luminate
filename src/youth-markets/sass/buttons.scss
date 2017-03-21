@@ -46,7 +46,7 @@ a.btn-md {
   &:link, 
   &:visited {
     border-radius: 10px;
-    @include button-size(6px, 12px, 14px);
+    @include button-size(7px, 14px, 14px);
     
     @media (max-width: $screen-xs-max) {
       @include button-size(6px, 6px, 14px);
