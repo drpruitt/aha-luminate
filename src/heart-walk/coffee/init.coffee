@@ -6,16 +6,18 @@ angular.module 'ahaLuminateApp', [
 
 angular.module 'ahaLuminateControllers', []
 
+
 angular.module 'ahaLuminateApp'
   .constant 'APP_INFO', 
     version: '1.0.0'
     rootPath: do ->
-      rootPath = '../'
+      rootPath = ''
       devBranch = luminateExtend.global.devBranch
       if devBranch and devBranch isnt ''
-        rootPath += devBranch + '/'
+        rootPath = '../'+ devBranch + '/aha-luminate/'
       else
-        rootPath += 'aha-luminate/'
+        rootPath = '../aha-luminate/'
+        
 
 angular.module 'ahaLuminateApp'
   .run [
