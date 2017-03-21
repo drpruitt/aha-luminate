@@ -53,7 +53,7 @@ display: none;
     margin: 0;
 }
 /* hiding donate link in footer */
-.menu-item menu-item-donate{
+.menu-item-donate{
 	display: none;
 }
 .appArea {
