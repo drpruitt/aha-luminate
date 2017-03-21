@@ -3,7 +3,9 @@ module.exports = function(grunt) {
   
   require('time-grunt')(grunt);
   
-  var config = {}, 
+  var config = {
+    timestamp: new Date().getTime()
+  }, 
   loadConfig = function(path) {
     var glob = require('glob'), 
     object = {}, 
