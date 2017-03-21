@@ -7,12 +7,12 @@
     version: '1.0.0',
     rootPath: (function() {
       var devBranch, rootPath;
-      rootPath = '../';
+      rootPath = '';
       devBranch = luminateExtend.global.devBranch;
       if (devBranch && devBranch !== '') {
-        return rootPath += devBranch + '/';
+        return rootPath = '../' + devBranch + '/aha-luminate/';
       } else {
-        return rootPath += 'aha-luminate/';
+        return rootPath = '../aha-luminate/';
       }
     })()
   });

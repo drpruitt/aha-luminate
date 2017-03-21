@@ -171,6 +171,41 @@ h3,
   text-shadow: 2px 2px 1px black;
   text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.85); }
 
+.ym-hero {
+  position: relative; }
+  .ym-hero img {
+    max-width: 100%; }
+
+.ym-hero__text {
+  background: rgba(255, 255, 255, 0.9);
+  position: absolute;
+  bottom: 20px;
+  padding: 20px;
+  width: 430px; }
+  .ym-hero__text.ym-hero__text--right {
+    right: 50px; }
+  .ym-hero__text.ym-hero__text--left {
+    left: 50px; }
+  .ym-hero__text h1 {
+    color: #6153a3;
+    text-shadow: none;
+    margin-top: 0; }
+  .ym-hero__text p {
+    margin: 0; }
+
+.ym-school-search .pos-r {
+  position: relative; }
+
+.ym-school-search #school-state-filter {
+  position: absolute;
+  top: 0;
+  right: 0; }
+
+.ym-school-search a[ng-click]:link {
+  color: #2d2d2d;
+  cursor: pointer;
+  text-decoration: none; }
+
 .ym-progress {
   text-align: center; }
 
