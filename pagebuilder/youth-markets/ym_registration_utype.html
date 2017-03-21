@@ -94,11 +94,9 @@
   <form id="f2fRegPartType" name="f2fRegPartType" action="[[A1]]" method="POST">
     <input type="hidden" name="pg" value="[[A7]]">
     <input type="hidden" name="fr_id" value="[[A2]]">
-    <div class="manageable-content" data-container="edit_fr_responsive_register_new_participant">
-      <button class="step-button next-step" id="next_step" type="submit" name="next_step.x" value="[[M1:friendraiser:join_team_step_next_button]]" type="[[?xTx::x[[A12]]x::button::submit]]">
-        <span id="fr_responsive_register_new_participant_container">[[C1:fr_responsive_register_new_participant]]</span>
-      </button>
-    </div>
+    <button class="step-button next-step" id="next_step" type="submit" name="next_step.x" value="[[M1:friendraiser:join_team_step_next_button]]" type="[[?xTx::x[[A12]]x::button::submit]]">
+      <span id="fr_responsive_register_new_participant_container">[[C1:fr_responsive_register_new_participant]]</span>
+    </button>
   </form>
   <script>
     Y.use('jquery-ui', function(Y) {
@@ -124,9 +122,6 @@
   </div>
   <div id="edit_fr_returning_user_container" class="EditContainer" style="display: none;">
     [[C:ajax-custompage-edit-component:edit_fr_returning_user_container]]
-  </div>
-  <div id="edit_fr_responsive_register_new_participant" class="EditContainer" style="display: none;">
-    [[C:ajax-custompage-edit-component:edit_fr_responsive_register_new_participant]]
   </div>
   <input id="edit_btn_title" type="hidden" value="[[M0:friendraiser_emgmt:preview_edit_link]]">
   <script>
