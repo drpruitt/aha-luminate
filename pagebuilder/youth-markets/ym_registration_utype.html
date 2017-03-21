@@ -32,7 +32,9 @@
     Did you participate last year?
   </p>
   <div class="manageable-content" data-container="edit_fr_returning_user_container">
-    <span id="fr_returning_user_container">[[C1:fr_returning_user]]</span>
+    <button type="button" class="btn btn-toggle">
+      <span id="fr_returning_user_container">[[C1:fr_returning_user]]</span>
+    </button>
   </div>
   <form id="f2fLoginForm" name="f2fLoginForm" action="[[A1]]" method="POST">
     <input type="hidden" name="pg" value="[[A7]]">
@@ -85,16 +87,16 @@
     </div>
   </form>
   <div class="manageable-content" data-container="edit_fr_new_user_container">
-    <span id="fr_new_user_container">[[C1:fr_new_user]]</span>
+    <button type="button" class="btn btn-toggle">
+      <span id="fr_new_user_container">[[C1:fr_new_user]]</span>
+    </button>
   </div>
   <form id="f2fRegPartType" name="f2fRegPartType" action="[[A1]]" method="POST">
     <input type="hidden" name="pg" value="[[A7]]">
     <input type="hidden" name="fr_id" value="[[A2]]">
-    <div class="manageable-content" data-container="edit_fr_responsive_register_new_participant">
-      <button class="step-button next-step" id="next_step" type="submit" name="next_step.x" value="[[M1:friendraiser:join_team_step_next_button]]" type="[[?xTx::x[[A12]]x::button::submit]]">
-        <span id="fr_responsive_register_new_participant_container">[[C1:fr_responsive_register_new_participant]]</span>
-      </button>
-    </div>
+    <button class="step-button next-step" id="next_step" type="submit" name="next_step.x" value="[[M1:friendraiser:join_team_step_next_button]]" type="[[?xTx::x[[A12]]x::button::submit]]">
+      <span id="fr_responsive_register_new_participant_container">[[C1:fr_responsive_register_new_participant]]</span>
+    </button>
   </form>
   <script>
     Y.use('jquery-ui', function(Y) {
@@ -120,9 +122,6 @@
   </div>
   <div id="edit_fr_returning_user_container" class="EditContainer" style="display: none;">
     [[C:ajax-custompage-edit-component:edit_fr_returning_user_container]]
-  </div>
-  <div id="edit_fr_responsive_register_new_participant" class="EditContainer" style="display: none;">
-    [[C:ajax-custompage-edit-component:edit_fr_responsive_register_new_participant]]
   </div>
   <input id="edit_btn_title" type="hidden" value="[[M0:friendraiser_emgmt:preview_edit_link]]">
   <script>

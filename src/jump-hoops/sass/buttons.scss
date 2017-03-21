@@ -3,20 +3,19 @@ a.btn {
   font-weight: 500;
   
   &.btn-primary {
-    color: #fff;
-        
+    color: #ffffff;
+    
     &, 
     &:link, 
     &:visited {
       background: $event-primary;
-
     }
     
     &:hover, 
     &:focus, 
     &:active {
       background: $event-primary-dark;
-    } 
+    }
   }
 
   &.btn-secondary {
@@ -41,60 +40,60 @@ div.responsive {
   .step-button, 
   button.step-button,
   .btn {
-    color: #fff;
-
+    color: #ffffff;
+    
     &, 
     &:link, 
     &:visited {
       background: $event-primary;
-      color: #fff;
-
+      color: #ffffff;
     }
     
     &:hover, 
     &:focus, 
     &:active {
       background: $event-primary-dark;
-      color: #fff;
-    } 
-    
+      color: #ffffff;
+    }
   }
 }
 
-div.responsive .btn-toggle,
-.btn-toggle {
+.btn-toggle, 
+div.responsive .btn-toggle {
+  background: #ffffff;
   border: 1px solid $event-primary;
-  background: #fff;
   color: $event-primary;
   text-decoration: none;
-
+  
   &:hover {
     background: $event-primary;
-    color: #fff;
+    color: #ffffff;
     cursor: pointer;
   }
 }
 
-div.responsive .btn-toggle--selected,
-.btn-toggle--selected {
+.btn-toggle--selected, 
+div.responsive .btn-toggle--selected {
   background: $event-primary;
-  color: #fff;
-
+  color: #ffffff;
+  
   &, 
   &:link, 
   &:visited {
-    color: #fff;
+    color: #ffffff;
   }
 }
 
-div.responsive input[type="text"].btn-enter,
-input[type="text"].btn-enter {
+input[type="text"].btn-enter, 
+div.responsive input[type="text"].btn-enter {
   border-color: $event-primary;
 }
 
-.btn-enter::-webkit-input-placeholder,
-.btn-enter::-moz-placeholder,
-.btn-enter::-ms-input-placeholder {
-  color: $event-primary !important;
-  opacity: 1 !important;
+.btn-enter {
+  &::-webkit-input-placeholder, 
+  &::-moz-placeholder, 
+  &::-ms-input-placeholder {
+    color: $event-primary !important;
+    opacity: 1 !important;
+  }
 }
