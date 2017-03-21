@@ -193,13 +193,25 @@ h3,
   .ym-hero__text p {
     margin: 0; }
 
+.ym-school-search .img-responsive {
+  margin: 50px auto 10px; }
+
 .ym-school-search .pos-r {
   position: relative; }
+
+.ym-school-search #school-name-filter {
+  height: 60px;
+  width: 100%;
+  max-width: 390px;
+  font-size: 16px;
+  text-align: center; }
 
 .ym-school-search #school-state-filter {
   position: absolute;
   top: 0;
-  right: 0; }
+  right: 0;
+  width: 200px;
+  background-image: url("../../youth-markets/image/ym-select-carot.png") right 0.75rem center no-repeat #6153a3; }
 
 .ym-school-search a[ng-click]:link {
   color: #2d2d2d;
@@ -473,6 +485,19 @@ a.btn {
     a.btn.btn-primary:focus,
     a.btn.btn-primary:active {
       background: #a41752; }
+  .btn.btn-secondary,
+  a.btn.btn-secondary {
+    color: #fff; }
+    .btn.btn-secondary, .btn.btn-secondary:link, .btn.btn-secondary:visited,
+    a.btn.btn-secondary,
+    a.btn.btn-secondary:link,
+    a.btn.btn-secondary:visited {
+      background: #6153a3; }
+    .btn.btn-secondary:hover, .btn.btn-secondary:focus, .btn.btn-secondary:active,
+    a.btn.btn-secondary:hover,
+    a.btn.btn-secondary:focus,
+    a.btn.btn-secondary:active {
+      background: #4e4282; }
 
 div.responsive .step-button,
 div.responsive button.step-button,

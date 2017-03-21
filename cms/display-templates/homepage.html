@@ -7,19 +7,20 @@
 </div>
 <div class="ym-school-search" ng-controller="SchoolSearchCtrl">
   <div class="form-group">
+    <img class="img-responsive hidden-xs" src="http://heart.pub30.convio.net/assets/images/hoops-jump-search-graphic.png" alt="Find your school" />
+    <img class="img-responsive hidden-sm hidden-md hidden-lg" src="http://heart.pub30.convio.net/assets/images/hoops-jump-search-graphic-mobile.jpg" alt="Find your school" />
     <div class="form-inline text-center">
-      <br>
-      <label for="school-name-filter">Start typing your shcool's name:</label>
+      <label for="school-name-filter" class="sr-only">Start typing your shcool's name:</label>
       <input type="text" id="school-name-filter" name="school-name-filter" class="form-control" maxlength="40"
         ng-model="schoolList.nameFilter"
-        ng-minlength="3"
+        ng-minlength="3" placeholder="Start typing your school's name"
         >
     </div>
   </div>
   <div class="ym-page-section ym-page-section__roster">
     <div class="pos-r">
       <h5>Results Matching Your School's Name</h5>
-      <select id="school-state-filter" name="school-state-filter"
+      <select id="school-state-filter" class="btn btn-sm btn-secondary" name="school-state-filter"
         ng-model="schoolList.stateFilter"
         ng-options="state as state.label for state in states | orderBy:'id' track by state.id"
         >

@@ -31,15 +31,31 @@
   }
 }
 
-.ym-school-search{
+.ym-school-search {
+  .img-responsive {
+    margin: 50px auto 10px;
+  }
+
   .pos-r {
     position: relative;
   }
+
+  #school-name-filter {
+    height: 60px;
+    width: 100%;
+    max-width: 390px;
+    font-size: $font-size-reg;
+    text-align: center;
+  }
+
   #school-state-filter {
     position: absolute;
     top: 0;
     right: 0;
+    width: 200px;
+    background-image: url("../../youth-markets/image/ym-select-carot.png") right 0.75rem center no-repeat $event-secondary;
   }
+
   a[ng-click]:link {
     color: #2d2d2d;
     cursor: pointer;
