@@ -44,5 +44,11 @@ module.exports = function(grunt) {
   grunt.registerTask('js-dist', function(taskTarget) {
     runTargetedTask(['coffee', 'uglify'], taskTarget);
   });
+  grunt.registerTask('js-dist', function(taskTarget) {
+    runTargetedTask(['coffee', 'uglify'], taskTarget);
+  });
+  grunt.registerTask('inject', function(taskTarget) {
+    runTargetedTask(['injector'], taskTarget);
+  });
   grunt.registerTask('default', ['watch']);
 };
