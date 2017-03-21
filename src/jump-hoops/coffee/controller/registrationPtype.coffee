@@ -2,5 +2,7 @@ angular.module 'ahaLuminateControllers'
   .controller 'RegistrationPtypeCtrl', [
     '$scope'
     ($scope) ->
-      # TODO
+      $scope.submitPtype = ->
+        angular.element('.js--default-ptype-form').submit()
+        false
   ]
