@@ -887,6 +887,12 @@
 
   angular.module('ahaLuminateControllers').controller('RegistrationPtypeCtrl', [
     '$scope', function($scope) {
+      var $participationType;
+      if (!$scope.participationOptions) {
+        $scope.participationOptions = {};
+      }
+      $participationType = angular.element('.js--registration-ptype-part-types input[name="fr_part_radio"]').eq(0);
+      $scope.participationOptions.fr_part_radio = $participationType.val();
       return $scope.submitPtype = function() {
         angular.element('.js--default-ptype-form').submit();
         return false;
