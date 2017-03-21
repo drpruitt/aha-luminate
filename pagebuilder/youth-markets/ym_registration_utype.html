@@ -31,6 +31,11 @@
             ]]
           </div>
         ]]
+        [[?xx::x[[A20]]x::::
+          <div class="alert alert-danger">
+            [[A20]]
+          </div>
+        ]]
         <div class="manageable-content" data-container="edit_ut_title_container">
           <h2 class="h5" id="ut_title_container">
             [[C1:fr_ut_title]]
@@ -50,24 +55,19 @@
           </div>
         </div>
         <div ng-class="{'hidden': userType != 'existing'}" ng-cloak>
-          [[?xx::x[[A20]]x::::
-            <div class="alert alert-danger">
-              [[A20]]
-            </div>
-          ]]
           <form method="POST" ng-submit="submitUtypeLogin()">
             <div class="row">
               <div class="col-sm-6">
                 <label>
                   [[M0:global:user_name_field]]
                 </label>
-                <input type="text" class="form-control" maxlength="[[S0:USER_MAX_LOGIN_LEN]]">
+                <input type="text" class="form-control" name="USERNAME" id="existingUser_username" ng-model="existingUser.username" maxlength="[[S0:USER_MAX_LOGIN_LEN]]">
               </div>
               <div class="col-sm-6">
                 <label>
                   [[M0:global:user_password_field]]
                 </label>
-                <input type="password" class="form-control" maxlength="[[S0:USER_MAX_PASSWD_LEN]]">
+                <input type="password" class="form-control" name="Password" id="existingUser_password" ng-model="existingUser.password" maxlength="[[S0:USER_MAX_PASSWD_LEN]]">
               </div>
             </div>
             <div class="">
@@ -96,7 +96,7 @@
           <label>
             [[M0:global:email_reg_field]]
           </label>
-          <input type="text" class="form-control" maxlength="100">
+          <input type="text" class="form-control" name="email" id="existingUser_email" ng-model="existingUser.email" maxlength="100">
           <button type="submit" class="btn btn-primary">
             Submit
           </button>
@@ -108,14 +108,14 @@
     <form class="js--default-utype-existing-form" action="[[A1]]" method="POST">
       <input type="hidden" name="fr_id" value="[[A2]]">
       <input type="hidden" name="pg" value="[[A7]]">
-      <input type="hidden" name="[[A13]]" value="">
-      <input type="hidden" name="[[A14]]" value="">
+      <input type="text" name="[[A13]]" ng-model="existingUser.username">
+      <input type="password" name="[[A14]]" ng-model="existingUser.password">
       <input type="hidden" name="[[A16]]" value="[[M0:global:login_button]]">
     </form>
     <form class="js--default-utype-send-username-form" action="[[A1]]" method="POST">
       <input type="hidden" name="fr_id" value="[[A2]]">
       <input type="hidden" name="pg" value="[[A7]]">
-      <input type="hidden" name="[[A17]]" value="">
+      <input type="text" name="[[A17]]" ng-model="existingUser.email">
       <input type="hidden" name="[[A18]]" value="[[M0:global:send_user_name_button]]">
     </form>
     <form class="js--default-utype-new-form" action="[[A1]]" method="POST">
