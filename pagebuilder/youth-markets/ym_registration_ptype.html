@@ -38,10 +38,6 @@
     </div>
   ::]]
   <form method="POST" ng-submit="submitPtype()">
-    <input type="hidden" name="fr_id" value="[[A2]]">
-    <input type="hidden" name="pg" value="[[A7]]">
-    <input type="hidden" name="extra_person" value="[[A21]]">
-    <input type="hidden" name="company_id" value="[[A42]]">
     <div class="section-container" id="part_type_section_container">
       <div class="manageable-content" data-container="edit_pt_title_container">
         <h2 class="h5" id="pt_title_container">
@@ -64,7 +60,7 @@
                 <div class="manageable-content" data-container="edit_fund_goal_container">
                   <label for="fr_goal" id="fund_goal_container">[[?xx::x[[C1:fr_your_fundraising_goal_field]]x::[[M0:friendraiser:your_fundraising_goal_field]]::[[C1:fr_your_fundraising_goal_field]]]]</label>
                 </div>
-                <input type="text" name="fr_goal" id="fr_goal" value="[[?xx::x[[A15]]x::[[?zz::z[[A18]]z::::[[A18]]]]::[[A15]]]]" maxlength="15">
+                <input type="text" class="form-control" maxlength="15">
               </div>
               [[?xxnullxBASELINEx::x[[S0:TPV_FR_CSTM_PT_STANDARD_SUGGESTEDGOAL]]x::
                 [[?zz::z[[A18]]z::::
@@ -98,7 +94,7 @@
                   <div class="manageable-content" data-container="edit_addl_gift_container">
                     <label for="fr_gift" id="addl_gift_container">[[?xx::x[[C1:fr_additional_gift_field]]x::[[M0:friendraiser:additional_gift_field]]::[[C1:fr_additional_gift_field]]]]</label>
                   </div>
-                  <input type="text" name="fr_gift" id="fr_gift" value="[[A14]]" maxlength="15">
+                  <input type="text" class="form-control" maxlength="15">
                 </div>
               ::
                 <div class="input-container" id="part_type_donation_level_input_container">
@@ -110,25 +106,31 @@
         ::]]
       </div>
       <div class="section-footer clearfix" id="part_type_section_footer">
-        <input type="submit" class="default-submit-hack" name="next_step.x" value="Default Action" tabindex="-1">
+        [[?xxnullx::x[[A21]]x::
+          [[?xTx::x[[A47]]x::::
+            <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-toggle">
+              <span>[[M1:friendraiser:join_team_step_prev_button]]</span>
+            </button> 
+          ]]
+        ::]]
         [[?xTx::x[[A45]]x::::
-          <button class="step-button next-step" id="next_step" name="next_step.x" value="[[M1:friendraiser:join_team_step_next_button]]" type="[[?xTx::x[[A12]]x::button::submit]]">
+          <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-primary">
             <span>[[M1:friendraiser:join_team_step_next_button]]</span>
           </button>
         ]]
-        [[?xxnullx::x[[A21]]x::
-          [[?xTx::x[[A47]]x::::
-            <button class="step-button previous-step" id="previous_step" name="previous_step.x" value="[[M1:friendraiser:join_team_step_prev_button]]" type="[[?xTx::x[[A12]]x::button::submit]]">
-              <span>[[M1:friendraiser:join_team_step_prev_button]]</span>
-            </button>
-          ]]
-        ::]]
       </div>
     </div>
     [[S66:util/SpamControlComponentResponsive.tpt]]
   </form>
   <div class="hidden">
     <form class="js--default-ptype-form" action="[[A1]]" method="POST">
+      <input type="hidden" name="fr_id" value="[[A2]]">
+      <input type="hidden" name="pg" value="[[A7]]">
+      <input type="hidden" name="extra_person" value="[[A21]]">
+      <input type="hidden" name="company_id" value="[[A42]]">
+      <input type="hidden" name="fr_goal" value="">
+      <input type="hidden" name="fr_gift" value="">
+      <input type="hidden" name="next_step.x" value="[[M1:friendraiser:join_team_step_next_button]]">
     </form>
   </div>
   <script>

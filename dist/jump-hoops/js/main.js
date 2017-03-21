@@ -885,7 +885,14 @@
     }
   ]);
 
-  angular.module('ahaLuminateControllers').controller('RegistrationPtypeCtrl', ['$scope', function($scope) {}]);
+  angular.module('ahaLuminateControllers').controller('RegistrationPtypeCtrl', [
+    '$scope', function($scope) {
+      return $scope.submitPtype = function() {
+        angular.element('.js--default-ptype-form').submit();
+        return false;
+      };
+    }
+  ]);
 
   angular.module('ahaLuminateControllers').controller('RegistrationRegCtrl', ['$scope', function($scope) {}]);
 
