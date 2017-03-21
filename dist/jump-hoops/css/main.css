@@ -1239,6 +1239,9 @@ body.aha-luminate #at4-soc {
 .ym-registration-page-container {
   text-align: center; }
 
+#fr_new_user_container {
+  margin: 0; }
+
 .donation-form-container.responsive span.field-required {
   display: none; }
 

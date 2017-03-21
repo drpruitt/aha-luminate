@@ -893,7 +893,28 @@
 
   angular.module('ahaLuminateControllers').controller('RegistrationTfindCtrl', ['$scope', function($scope) {}]);
 
-  angular.module('ahaLuminateControllers').controller('RegistrationUtypeCtrl', ['$scope', function($scope) {}]);
+  angular.module('ahaLuminateControllers').controller('RegistrationUtypeCtrl', [
+    '$scope', function($scope) {
+      $scope.toggleUserType = function(userType) {
+        $scope.userType = userType;
+        if (userType === 'new') {
+          angular.element('.js--default-utype-new-form').submit();
+          return false;
+        }
+      };
+      $scope.submitUtypeLogin = function() {
+        angular.element('.js--default-utype-existing-form').submit();
+        return false;
+      };
+      $scope.toggleForgotUsername = function(showHide) {
+        return $scope.showForgotUsername = showHide === 'show';
+      };
+      return $scope.submitForgotUsername = function() {
+        angular.element('.js--default-utype-send-username-form').submit();
+        return false;
+      };
+    }
+  ]);
 
   angular.module('ahaLuminateControllers').controller('RegistrationWaiverCtrl', [
     '$scope', function($scope) {
