@@ -32,3 +32,10 @@
     }
   }
 }
+
+.ym-list__column {
+  a[ng-click]:link {
+    text-decoration: none;
+    cursor: pointer;
+  }
+}

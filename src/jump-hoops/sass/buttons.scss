@@ -17,6 +17,23 @@ a.btn {
       background: $event-primary-dark;
     }
   }
+
+  &.btn-secondary {
+    color:#fff;
+
+    &, 
+    &:link, 
+    &:visited {
+      background: $event-secondary;
+
+    }
+    
+    &:hover, 
+    &:focus, 
+    &:active {
+      background: $event-secondary-dark;
+    } 
+  }
 }
 
 div.responsive {
