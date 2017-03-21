@@ -262,8 +262,99 @@ a.btn:active {
   font-weight: 600;
   text-decoration: none; }
 
+.btn > *,
+a.btn > * {
+  color: inherit !important; }
+
 span.btn, span.btn:link, span.btn:visited, span.btn:hover, span.btn:focus, span.btn:active {
   cursor: default; }
+
+.btn-sm, .btn-sm:link, .btn-sm:visited,
+a.btn-sm,
+a.btn-sm:link,
+a.btn-sm:visited {
+  border-radius: 10px; }
+  .btn-sm, .btn-sm:link, .btn-sm:visited, .btn-sm:link, .btn-sm:link:link, .btn-sm:link:visited, .btn-sm:visited, .btn-sm:visited:link, .btn-sm:visited:visited,
+  a.btn-sm,
+  a.btn-sm:link,
+  a.btn-sm:visited,
+  a.btn-sm:link,
+  a.btn-sm:link:link,
+  a.btn-sm:link:visited,
+  a.btn-sm:visited,
+  a.btn-sm:visited:link,
+  a.btn-sm:visited:visited {
+    padding: 4px 12px;
+    font-size: 14px; }
+
+.btn-md, .btn-md:link, .btn-md:visited,
+a.btn-md,
+a.btn-md:link,
+a.btn-md:visited {
+  border-radius: 10px; }
+  .btn-md, .btn-md:link, .btn-md:visited, .btn-md:link, .btn-md:link:link, .btn-md:link:visited, .btn-md:visited, .btn-md:visited:link, .btn-md:visited:visited,
+  a.btn-md,
+  a.btn-md:link,
+  a.btn-md:visited,
+  a.btn-md:link,
+  a.btn-md:link:link,
+  a.btn-md:link:visited,
+  a.btn-md:visited,
+  a.btn-md:visited:link,
+  a.btn-md:visited:visited {
+    padding: 6px 12px;
+    font-size: 14px; }
+  @media (max-width: 767px) {
+    .btn-md, .btn-md:link, .btn-md:visited, .btn-md:link, .btn-md:link:link, .btn-md:link:visited, .btn-md:visited, .btn-md:visited:link, .btn-md:visited:visited,
+    a.btn-md,
+    a.btn-md:link,
+    a.btn-md:visited,
+    a.btn-md:link,
+    a.btn-md:link:link,
+    a.btn-md:link:visited,
+    a.btn-md:visited,
+    a.btn-md:visited:link,
+    a.btn-md:visited:visited {
+      padding: 6px 6px;
+      font-size: 14px; } }
+
+.btn-lg, .btn-lg:link, .btn-lg:visited,
+a.btn-lg,
+a.btn-lg:link,
+a.btn-lg:visited {
+  border-radius: 10px;
+  min-width: 180px;
+  text-align: center; }
+  .btn-lg, .btn-lg:link, .btn-lg:visited, .btn-lg:link, .btn-lg:link:link, .btn-lg:link:visited, .btn-lg:visited, .btn-lg:visited:link, .btn-lg:visited:visited,
+  a.btn-lg,
+  a.btn-lg:link,
+  a.btn-lg:visited,
+  a.btn-lg:link,
+  a.btn-lg:link:link,
+  a.btn-lg:link:visited,
+  a.btn-lg:visited,
+  a.btn-lg:visited:link,
+  a.btn-lg:visited:visited {
+    padding: 12px 24px;
+    font-size: 20px; }
+  @media (max-width: 767px) {
+    .btn-lg, .btn-lg:link, .btn-lg:visited,
+    a.btn-lg,
+    a.btn-lg:link,
+    a.btn-lg:visited {
+      min-width: 120px; }
+      .btn-lg, .btn-lg:link, .btn-lg:visited, .btn-lg:link, .btn-lg:link:link, .btn-lg:link:visited, .btn-lg:visited, .btn-lg:visited:link, .btn-lg:visited:visited,
+      a.btn-lg,
+      a.btn-lg:link,
+      a.btn-lg:visited,
+      a.btn-lg:link,
+      a.btn-lg:link:link,
+      a.btn-lg:link:visited,
+      a.btn-lg:visited,
+      a.btn-lg:visited:link,
+      a.btn-lg:visited:visited {
+        padding: 10px 12px;
+        font-size: 14px; } }
 
 .btn-global-primary,
 a.btn-global-primary {
@@ -320,109 +411,22 @@ a.btn-global-primary {
   a.btn-global-primary:active {
     background: #870a0f; }
 
-.btn-sm, .btn-sm:link, .btn-sm:visited,
-a.btn-sm,
-a.btn-sm:link,
-a.btn-sm:visited {
-  border-radius: 10px; }
-  .btn-sm, .btn-sm:link, .btn-sm:visited, .btn-sm:link, .btn-sm:link:link, .btn-sm:link:visited, .btn-sm:visited, .btn-sm:visited:link, .btn-sm:visited:visited,
-  a.btn-sm,
-  a.btn-sm:link,
-  a.btn-sm:visited,
-  a.btn-sm:link,
-  a.btn-sm:link:link,
-  a.btn-sm:link:visited,
-  a.btn-sm:visited,
-  a.btn-sm:visited:link,
-  a.btn-sm:visited:visited {
-    padding: 4px 12px;
-    font-size: 14px; }
-
-.btn-md, .btn-md:link, .btn-md:visited,
-a.btn-md,
-a.btn-md:link,
-a.btn-md:visited {
-  border-radius: 10px; }
-  .btn-md, .btn-md:link, .btn-md:visited, .btn-md:link, .btn-md:link:link, .btn-md:link:visited, .btn-md:visited, .btn-md:visited:link, .btn-md:visited:visited,
-  a.btn-md,
-  a.btn-md:link,
-  a.btn-md:visited,
-  a.btn-md:link,
-  a.btn-md:link:link,
-  a.btn-md:link:visited,
-  a.btn-md:visited,
-  a.btn-md:visited:link,
-  a.btn-md:visited:visited {
-    padding: 6px 12px;
-    font-size: 14px; }
-  @media (max-width: 768px) {
-    .btn-md, .btn-md:link, .btn-md:visited, .btn-md:link, .btn-md:link:link, .btn-md:link:visited, .btn-md:visited, .btn-md:visited:link, .btn-md:visited:visited,
-    a.btn-md,
-    a.btn-md:link,
-    a.btn-md:visited,
-    a.btn-md:link,
-    a.btn-md:link:link,
-    a.btn-md:link:visited,
-    a.btn-md:visited,
-    a.btn-md:visited:link,
-    a.btn-md:visited:visited {
-      padding: 6px 6px;
-      font-size: 14px; } }
-
-.btn-lg, .btn-lg:link, .btn-lg:visited,
-a.btn-lg,
-a.btn-lg:link,
-a.btn-lg:visited {
-  border-radius: 10px;
-  min-width: 180px;
-  text-align: center; }
-  .btn-lg, .btn-lg:link, .btn-lg:visited, .btn-lg:link, .btn-lg:link:link, .btn-lg:link:visited, .btn-lg:visited, .btn-lg:visited:link, .btn-lg:visited:visited,
-  a.btn-lg,
-  a.btn-lg:link,
-  a.btn-lg:visited,
-  a.btn-lg:link,
-  a.btn-lg:link:link,
-  a.btn-lg:link:visited,
-  a.btn-lg:visited,
-  a.btn-lg:visited:link,
-  a.btn-lg:visited:visited {
-    padding: 12px 24px;
-    font-size: 20px; }
-  @media (max-width: 768px) {
-    .btn-lg, .btn-lg:link, .btn-lg:visited,
-    a.btn-lg,
-    a.btn-lg:link,
-    a.btn-lg:visited {
-      min-width: 120px; }
-      .btn-lg, .btn-lg:link, .btn-lg:visited, .btn-lg:link, .btn-lg:link:link, .btn-lg:link:visited, .btn-lg:visited, .btn-lg:visited:link, .btn-lg:visited:visited,
-      a.btn-lg,
-      a.btn-lg:link,
-      a.btn-lg:visited,
-      a.btn-lg:link,
-      a.btn-lg:link:link,
-      a.btn-lg:link:visited,
-      a.btn-lg:visited,
-      a.btn-lg:visited:link,
-      a.btn-lg:visited:visited {
-        padding: 10px 12px;
-        font-size: 14px; } }
-
 div.responsive .step-button,
 div.responsive button.step-button {
-  border-radius: 10px;
   background-image: none;
+  border-radius: 10px;
   -webkit-filter: none;
           filter: none;
-  border: 0 none;
-  max-width: none;
-  min-width: 180px; }
+  border: 0;
+  min-width: 180px;
+  max-width: none; }
   div.responsive .step-button, div.responsive .step-button:link, div.responsive .step-button:visited,
   div.responsive button.step-button,
   div.responsive button.step-button:link,
   div.responsive button.step-button:visited {
     padding: 12px 24px;
     font-size: 20px; }
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     div.responsive .step-button,
     div.responsive button.step-button {
       min-width: 120px; }
@@ -434,8 +438,8 @@ div.responsive button.step-button {
         font-size: 14px; } }
 
 .btn-toggle {
-  font-weight: bold;
   border-radius: 10px;
+  font-weight: 700;
   text-decoration: none;
   text-align: center; }
   .btn-toggle, .btn-toggle:link, .btn-toggle:visited {
@@ -462,7 +466,7 @@ a.btn {
   font-weight: 500; }
   .btn.btn-primary,
   a.btn.btn-primary {
-    color: #fff; }
+    color: #ffffff; }
     .btn.btn-primary, .btn.btn-primary:link, .btn.btn-primary:visited,
     a.btn.btn-primary,
     a.btn.btn-primary:link,
@@ -477,7 +481,7 @@ a.btn {
 div.responsive .step-button,
 div.responsive button.step-button,
 div.responsive .btn {
-  color: #fff; }
+  color: #ffffff; }
   div.responsive .step-button, div.responsive .step-button:link, div.responsive .step-button:visited,
   div.responsive button.step-button,
   div.responsive button.step-button:link,
@@ -486,7 +490,7 @@ div.responsive .btn {
   div.responsive .btn:link,
   div.responsive .btn:visited {
     background: #cd1d67;
-    color: #fff; }
+    color: #ffffff; }
   div.responsive .step-button:hover, div.responsive .step-button:focus, div.responsive .step-button:active,
   div.responsive button.step-button:hover,
   div.responsive button.step-button:focus,
@@ -495,37 +499,35 @@ div.responsive .btn {
   div.responsive .btn:focus,
   div.responsive .btn:active {
     background: #a41752;
-    color: #fff; }
+    color: #ffffff; }
 
-div.responsive .btn-toggle,
-.btn-toggle {
+.btn-toggle,
+div.responsive .btn-toggle {
+  background: #ffffff;
   border: 1px solid #cd1d67;
-  background: #fff;
   color: #cd1d67;
   text-decoration: none; }
-  div.responsive .btn-toggle:hover,
-  .btn-toggle:hover {
+  .btn-toggle:hover,
+  div.responsive .btn-toggle:hover {
     background: #cd1d67;
-    color: #fff;
+    color: #ffffff;
     cursor: pointer; }
 
-div.responsive .btn-toggle--selected,
-.btn-toggle--selected {
+.btn-toggle--selected,
+div.responsive .btn-toggle--selected {
   background: #cd1d67;
-  color: #fff; }
-  div.responsive .btn-toggle--selected, div.responsive .btn-toggle--selected:link, div.responsive .btn-toggle--selected:visited,
-  .btn-toggle--selected,
-  .btn-toggle--selected:link,
-  .btn-toggle--selected:visited {
-    color: #fff; }
+  color: #ffffff; }
+  .btn-toggle--selected, .btn-toggle--selected:link, .btn-toggle--selected:visited,
+  div.responsive .btn-toggle--selected,
+  div.responsive .btn-toggle--selected:link,
+  div.responsive .btn-toggle--selected:visited {
+    color: #ffffff; }
 
-div.responsive input[type="text"].btn-enter,
-input[type="text"].btn-enter {
+input[type="text"].btn-enter,
+div.responsive input[type="text"].btn-enter {
   border-color: #cd1d67; }
 
-.btn-enter::-webkit-input-placeholder,
-.btn-enter::-moz-placeholder,
-.btn-enter::-ms-input-placeholder {
+.btn-enter::-webkit-input-placeholder, .btn-enter::-moz-placeholder, .btn-enter::-ms-input-placeholder {
   color: #cd1d67 !important;
   opacity: 1 !important; }
 
