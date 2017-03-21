@@ -79,7 +79,12 @@
         </tr>
       </tbody>
     </table>
-    <ul uib-pagination total-items="schoolList.totalItems" items-per-page="schoolList.numPerPage" ng-model="schoolList.currentPage"></ul>
+    <div class="ym-pagination text-center">
+      <ul uib-pagination total-items="schoolList.totalItems" items-per-page="schoolList.numPerPage" ng-model="schoolList.currentPage"></ul>
+    </div>
+    <div class="text-center">
+      <a href="#" class="btn btn-md btn-secondary">Can't Find Your School?</a>
+    </div>
   </div>
 </div>
 <div class="ym-heart-heros event-accent">

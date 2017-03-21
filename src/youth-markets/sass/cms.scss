@@ -53,12 +53,7 @@
     top: 0;
     right: 0;
     width: 200px;
-    background-image: url("../../youth-markets/image/ym-select-carot.png") right 0.75rem center no-repeat $event-secondary;
-  }
-
-  a[ng-click]:link {
-    color: #2d2d2d;
-    cursor: pointer;
-    text-decoration: none;
+    background: url("../../youth-markets/image/ym-select-carot.png") right 0.75rem center no-repeat $event-secondary;
+    font-weight: bold;
   }
 }
