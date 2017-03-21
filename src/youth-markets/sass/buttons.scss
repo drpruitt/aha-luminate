@@ -13,6 +13,10 @@ a.btn {
     font-weight: 600;
     text-decoration: none;
   }
+  
+  > * {
+    color: inherit !important;
+  }
 }
 
 span.btn {
@@ -23,6 +27,48 @@ span.btn {
   &:focus, 
   &:active {
     cursor: default;
+  }
+}
+
+.btn-sm, 
+a.btn-sm {
+  &, 
+  &:link, 
+  &:visited {
+    border-radius: 10px;
+    @include button-size(4px, 12px, 14px);
+  }
+}
+
+.btn-md, 
+a.btn-md {
+  &, 
+  &:link, 
+  &:visited {
+    border-radius: 10px;
+    @include button-size(6px, 12px, 14px);
+    
+    @media (max-width: $screen-xs-max) {
+      @include button-size(6px, 6px, 14px);
+    }
+  }
+}
+
+.btn-lg, 
+a.btn-lg {
+  &, 
+  &:link, 
+  &:visited {
+    border-radius: 10px;
+    @include button-size($padding-base-vertical, $padding-base-horizontal, 20px);
+    
+    min-width:180px;
+    text-align: center;
+    
+    @media (max-width: $screen-xs-max) {
+      @include button-size(10px, 12px, 14px);
+      min-width: 120px;
+    }
   }
 }
 
@@ -44,62 +90,18 @@ a.btn-global-primary {
   }
 }
 
-.btn-sm, 
-a.btn-sm {
-  &, 
-  &:link, 
-  &:visited {
-    border-radius: 10px;
-    @include button-size(4px, 12px, 14px);
-
-  }
-}
-
-.btn-md, 
-a.btn-md {
-  &, 
-  &:link, 
-  &:visited {
-    border-radius: 10px;
-    @include button-size(6px, 12px, 14px);
-    
-    @media (max-width: $screen-sm){
-      @include button-size(6px, 6px, 14px);
-    }
-  }
-}
-
-.btn-lg, 
-a.btn-lg {
-  &, 
-  &:link, 
-  &:visited {
-    border-radius: 10px;
-    @include button-size($padding-base-vertical, $padding-base-horizontal, 20px);
-    
-    min-width:180px;
-    text-align: center;
-
-    @media (max-width: $screen-sm){
-      @include button-size(10px, 12px, 14px);
-      min-width: 120px;
-    }
-  }
-}
-
 div.responsive {
   .step-button, 
   button.step-button {
-    border-radius: 10px;
-    background-image: none;
-    filter:none;
-    border: 0 none;
-    max-width: none;
-
     @include button-size($padding-base-vertical, $padding-base-horizontal, 20px);
+    background-image: none;
+    border-radius: 10px;
+    filter: none;
+    border: 0;
     min-width: 180px;
-
-    @media (max-width: $screen-sm){
+    max-width: none;
+    
+    @media (max-width: $screen-xs-max) {
       @include button-size(10px, 12px, 14px);
       min-width: 120px;
     }
@@ -107,9 +109,9 @@ div.responsive {
 }
 
 .btn-toggle {
-  font-weight: bold; 
-  border-radius: 10px;
   @include button-size($padding-base-vertical, $padding-base-horizontal, 18px);
+  border-radius: 10px;
+  font-weight: 700;
   text-decoration: none;
   text-align: center;
 }
@@ -120,8 +122,8 @@ div.responsive {
 
 div.responsive input[type="text"].btn-enter,
 input[type="text"].btn-enter {
-  border-radius: 10px;
   @include button-size($padding-base-vertical, $padding-base-horizontal, 18px);
+  border-radius: 10px;
   text-decoration: none;
   text-align: center;
 }
