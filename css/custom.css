@@ -52,6 +52,10 @@ display: none;
     float: right !important;
     margin: 0;
 }
+/* hiding donate link in footer */
+.menu-item-donate{
+	display: none;
+}
 .appArea {
 	max-width: 100% !important;
 	width: 100% !important;

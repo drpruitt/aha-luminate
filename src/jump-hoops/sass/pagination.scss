@@ -1,0 +1,58 @@
+.pagination {
+  > li {
+    > a, 
+    > span {
+      border: 0 none;
+      color: $event-primary;
+      font-weight: bold;
+      margin-left: 10px;
+
+      &:hover,
+      &:focus {
+        color: $event-primary;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .disabled {
+    > a {
+      &,
+      &:focus,
+      &:hover {
+        color: $event-primary;
+        font-weight: bold;
+        text-decoration: none;
+      }
+    }
+
+    > span {
+      &,
+      &:focus,
+      &:hover {
+        color: $event-primary;
+        font-weight: bold;
+      }
+    } 
+  }
+
+  .active {
+    > a {
+      &,
+      &:focus,
+      &:hover {
+        background-color: $event-primary;
+        border-color: $event-primary;
+      }
+    }
+
+    > span {
+      &,
+      &:focus,
+      &:hover {
+        background-color: $event-primary;
+        border-color: $event-primary;
+      }
+    } 
+  }
+}

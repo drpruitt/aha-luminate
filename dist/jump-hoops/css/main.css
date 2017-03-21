@@ -193,18 +193,26 @@ h3,
   .ym-hero__text p {
     margin: 0; }
 
+.ym-school-search .img-responsive {
+  margin: 50px auto 10px; }
+
 .ym-school-search .pos-r {
   position: relative; }
+
+.ym-school-search #school-name-filter {
+  height: 60px;
+  width: 100%;
+  max-width: 390px;
+  font-size: 16px;
+  text-align: center; }
 
 .ym-school-search #school-state-filter {
   position: absolute;
   top: 0;
-  right: 0; }
-
-.ym-school-search a[ng-click]:link {
-  color: #2d2d2d;
-  cursor: pointer;
-  text-decoration: none; }
+  right: 0;
+  width: 200px;
+  background: url("../../youth-markets/image/ym-select-carot.png") right 0.75rem center no-repeat #6153a3;
+  font-weight: bold; }
 
 .ym-progress {
   text-align: center; }
@@ -302,7 +310,7 @@ a.btn-md:visited {
   a.btn-md:visited,
   a.btn-md:visited:link,
   a.btn-md:visited:visited {
-    padding: 6px 12px;
+    padding: 7px 14px;
     font-size: 14px; }
   @media (max-width: 767px) {
     .btn-md, .btn-md:link, .btn-md:visited, .btn-md:link, .btn-md:link:link, .btn-md:link:visited, .btn-md:visited, .btn-md:visited:link, .btn-md:visited:visited,
@@ -477,6 +485,19 @@ a.btn {
     a.btn.btn-primary:focus,
     a.btn.btn-primary:active {
       background: #a41752; }
+  .btn.btn-secondary,
+  a.btn.btn-secondary {
+    color: #fff; }
+    .btn.btn-secondary, .btn.btn-secondary:link, .btn.btn-secondary:visited,
+    a.btn.btn-secondary,
+    a.btn.btn-secondary:link,
+    a.btn.btn-secondary:visited {
+      background: #6153a3; }
+    .btn.btn-secondary:hover, .btn.btn-secondary:focus, .btn.btn-secondary:active,
+    a.btn.btn-secondary:hover,
+    a.btn.btn-secondary:focus,
+    a.btn.btn-secondary:active {
+      background: #4e4282; }
 
 div.responsive .step-button,
 div.responsive button.step-button,
@@ -583,6 +604,10 @@ div.responsive input[type="text"].btn-enter {
   .table-striped tbody tr td {
     vertical-align: middle;
     padding: 18px 0 18px 15px; }
+
+.ym-list__column a[ng-click]:link {
+  text-decoration: none;
+  cursor: pointer; }
 
 .table-striped thead tr th {
   border-bottom: 7px solid #6153a3; }
@@ -1549,3 +1574,32 @@ body.aha-luminate #at4-soc {
   @media (max-width: 768px) {
     .ym-promo-block__item:nth-child {
       margin: 0 auto 25px; } }
+
+.pagination > li > a,
+.pagination > li > span {
+  border: 0 none;
+  color: #cd1d67;
+  font-weight: bold;
+  margin-left: 10px; }
+  .pagination > li > a:hover, .pagination > li > a:focus,
+  .pagination > li > span:hover,
+  .pagination > li > span:focus {
+    color: #cd1d67;
+    text-decoration: underline; }
+
+.pagination .disabled > a, .pagination .disabled > a:focus, .pagination .disabled > a:hover {
+  color: #cd1d67;
+  font-weight: bold;
+  text-decoration: none; }
+
+.pagination .disabled > span, .pagination .disabled > span:focus, .pagination .disabled > span:hover {
+  color: #cd1d67;
+  font-weight: bold; }
+
+.pagination .active > a, .pagination .active > a:focus, .pagination .active > a:hover {
+  background-color: #cd1d67;
+  border-color: #cd1d67; }
+
+.pagination .active > span, .pagination .active > span:focus, .pagination .active > span:hover {
+  background-color: #cd1d67;
+  border-color: #cd1d67; }
