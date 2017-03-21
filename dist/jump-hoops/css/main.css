@@ -427,7 +427,7 @@ a.btn {
   font-weight: 500; }
   .btn.btn-primary,
   a.btn.btn-primary {
-    color: #fff; }
+    color: #ffffff; }
     .btn.btn-primary, .btn.btn-primary:link, .btn.btn-primary:visited,
     a.btn.btn-primary,
     a.btn.btn-primary:link,
@@ -438,11 +438,14 @@ a.btn {
     a.btn.btn-primary:focus,
     a.btn.btn-primary:active {
       background: #a41752; }
+  .btn > *,
+  a.btn > * {
+    color: inherit; }
 
 div.responsive .step-button,
 div.responsive button.step-button,
 div.responsive .btn {
-  color: #fff; }
+  color: #ffffff; }
   div.responsive .step-button, div.responsive .step-button:link, div.responsive .step-button:visited,
   div.responsive button.step-button,
   div.responsive button.step-button:link,
@@ -451,7 +454,7 @@ div.responsive .btn {
   div.responsive .btn:link,
   div.responsive .btn:visited {
     background: #cd1d67;
-    color: #fff; }
+    color: #ffffff; }
   div.responsive .step-button:hover, div.responsive .step-button:focus, div.responsive .step-button:active,
   div.responsive button.step-button:hover,
   div.responsive button.step-button:focus,
@@ -460,37 +463,35 @@ div.responsive .btn {
   div.responsive .btn:focus,
   div.responsive .btn:active {
     background: #a41752;
-    color: #fff; }
+    color: #ffffff; }
 
-div.responsive .btn-toggle,
-.btn-toggle {
+.btn-toggle,
+div.responsive .btn-toggle {
+  background: #ffffff;
   border: 1px solid #cd1d67;
-  background: #fff;
   color: #cd1d67;
   text-decoration: none; }
-  div.responsive .btn-toggle:hover,
-  .btn-toggle:hover {
+  .btn-toggle:hover,
+  div.responsive .btn-toggle:hover {
     background: #cd1d67;
-    color: #fff;
+    color: #ffffff;
     cursor: pointer; }
 
-div.responsive .btn-toggle--selected,
-.btn-toggle--selected {
+.btn-toggle--selected,
+div.responsive .btn-toggle--selected {
   background: #cd1d67;
-  color: #fff; }
-  div.responsive .btn-toggle--selected, div.responsive .btn-toggle--selected:link, div.responsive .btn-toggle--selected:visited,
-  .btn-toggle--selected,
-  .btn-toggle--selected:link,
-  .btn-toggle--selected:visited {
-    color: #fff; }
+  color: #ffffff; }
+  .btn-toggle--selected, .btn-toggle--selected:link, .btn-toggle--selected:visited,
+  div.responsive .btn-toggle--selected,
+  div.responsive .btn-toggle--selected:link,
+  div.responsive .btn-toggle--selected:visited {
+    color: #ffffff; }
 
-div.responsive input[type="text"].btn-enter,
-input[type="text"].btn-enter {
+input[type="text"].btn-enter,
+div.responsive input[type="text"].btn-enter {
   border-color: #cd1d67; }
 
-.btn-enter::-webkit-input-placeholder,
-.btn-enter::-moz-placeholder,
-.btn-enter::-ms-input-placeholder {
+.btn-enter::-webkit-input-placeholder, .btn-enter::-moz-placeholder, .btn-enter::-ms-input-placeholder {
   color: #cd1d67 !important;
   opacity: 1 !important; }
 
