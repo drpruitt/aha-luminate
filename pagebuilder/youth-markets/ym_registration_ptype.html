@@ -37,9 +37,9 @@
       [[M0:friendraiser:error_transaction_too_much]]
     </div>
   ::]]
-  <form id="F2fRegPartType" name="F2fRegPartType" action="[[A1]]" method="POST">
-    <input type="hidden" name="pg" value="[[A7]]">
+  <form method="POST" ng-submit="submitPtype()">
     <input type="hidden" name="fr_id" value="[[A2]]">
+    <input type="hidden" name="pg" value="[[A7]]">
     <input type="hidden" name="extra_person" value="[[A21]]">
     <input type="hidden" name="company_id" value="[[A42]]">
     <div class="section-container" id="part_type_section_container">
@@ -125,127 +125,131 @@
         ::]]
       </div>
     </div>
-    <script>
-      function fr_part_radio_select(elem, useFlair) {
-        useFlair = useFlair === false ? false : true;
-        var idx = 0;
-        var any = 0;
-        if(document.show_addons[elem] != null && document.show_addons[elem] != undefined) {
-          while(idx < document.show_addons[elem].length) {
-            showElementWithEffects('addon_container_' + document.show_addons[elem][idx], useFlair);
-            any = 1;
-            idx++;
-          }
-          idx = 0;
-          while(idx < document.hide_addons[elem].length) {
-            hideElementWithEffects('addon_container_' + document.hide_addons[elem][idx], useFlair);
-            idx++;
-          }
-          if(any > 0) {
-            showElementWithEffects('addon_section_header', useFlair);
-            showElementWithEffects('addon_section_message', useFlair);
-          }
-          else {
-            hideElementWithEffects('addon_section_header', useFlair);
-            hideElementWithEffects('addon_section_message', useFlair);
-          }
-          selectType(elem);
+    [[S66:util/SpamControlComponentResponsive.tpt]]
+  </form>
+  <div class="hidden">
+    <form class="js--default-ptype-form" action="[[A1]]" method="POST">
+    </form>
+  </div>
+  <script>
+    function fr_part_radio_select(elem, useFlair) {
+      useFlair = useFlair === false ? false : true;
+      var idx = 0;
+      var any = 0;
+      if(document.show_addons[elem] != null && document.show_addons[elem] != undefined) {
+        while(idx < document.show_addons[elem].length) {
+          showElementWithEffects('addon_container_' + document.show_addons[elem][idx], useFlair);
+          any = 1;
+          idx++;
         }
+        idx = 0;
+        while(idx < document.hide_addons[elem].length) {
+          hideElementWithEffects('addon_container_' + document.hide_addons[elem][idx], useFlair);
+          idx++;
+        }
+        if(any > 0) {
+          showElementWithEffects('addon_section_header', useFlair);
+          showElementWithEffects('addon_section_message', useFlair);
+        }
+        else {
+          hideElementWithEffects('addon_section_header', useFlair);
+          hideElementWithEffects('addon_section_message', useFlair);
+        }
+        selectType(elem);
       }
-      Y.use('jquery-noconflict', function (Y) {
-        jQuery('input[name="fr_part_radio"]').click(function() {
-          var id = jQuery(this).val();
-          var pname = 'part_type_goal_' + id;
-          var currencyLocale = '[[S72:currency_locale]]'
-          var minFundGoal = jQuery('input[name="'+pname+'"]').val();
-          minFundGoal = parseCurrency(minFundGoal, currencyLocale);
-          var suggGoalContainer = jQuery('#suggested_goal_container').text().split(':');
-          var suggGoal = parseCurrency(suggGoalContainer[1], currencyLocale);
-          if(isNaN(suggGoal)) {
+    }
+    Y.use('jquery-noconflict', function (Y) {
+      jQuery('input[name="fr_part_radio"]').click(function() {
+        var id = jQuery(this).val();
+        var pname = 'part_type_goal_' + id;
+        var currencyLocale = '[[S72:currency_locale]]'
+        var minFundGoal = jQuery('input[name="'+pname+'"]').val();
+        minFundGoal = parseCurrency(minFundGoal, currencyLocale);
+        var suggGoalContainer = jQuery('#suggested_goal_container').text().split(':');
+        var suggGoal = parseCurrency(suggGoalContainer[1], currencyLocale);
+        if(isNaN(suggGoal)) {
+          var newGoal = formatCurrency(minFundGoal, currencyLocale);
+          jQuery('#fr_goal').val(newGoal);
+        }
+        else {
+          if(minFundGoal > suggGoal) {
             var newGoal = formatCurrency(minFundGoal, currencyLocale);
             jQuery('#fr_goal').val(newGoal);
           }
           else {
-            if(minFundGoal > suggGoal) {
-              var newGoal = formatCurrency(minFundGoal, currencyLocale);
-              jQuery('#fr_goal').val(newGoal);
-            }
-            else {
-              var oldGoal = formatCurrency(suggGoal, currencyLocale);
-              jQuery('#fr_goal').val(oldGoal);
-            }
+            var oldGoal = formatCurrency(suggGoal, currencyLocale);
+            jQuery('#fr_goal').val(oldGoal);
           }
-        });
-      });
-      var idx = 0;
-      var radio = document.F2fRegPartType.fr_part_radio;
-      if(radio != null && radio.length != undefined) {
-        while(idx < radio.length) {
-          if(radio[idx].checked) {
-            fr_part_radio_select(idx, false);
-          }
-          idx++;
         }
+      });
+    });
+    var idx = 0;
+    var radio = document.F2fRegPartType.fr_part_radio;
+    if(radio != null && radio.length != undefined) {
+      while(idx < radio.length) {
+        if(radio[idx].checked) {
+          fr_part_radio_select(idx, false);
+        }
+        idx++;
+      }
+    }
+    else {
+      fr_part_radio_select(0, false);
+    }
+    function showElementWithEffects(elementId, useFlair) {
+      if(useFlair) {
+        Y.use('jquery-ui', function() {
+          jQuery('#' + elementId).slideDown(); // show
+        });
       }
       else {
-        fr_part_radio_select(0, false);
+        show_element(elementId);
       }
-      function showElementWithEffects(elementId, useFlair) {
-        if(useFlair) {
-          Y.use('jquery-ui', function() {
-            jQuery('#' + elementId).slideDown(); // show
-          });
-        }
-        else {
-          show_element(elementId);
-        }
+    }
+    function hideElementWithEffects(elementId, useFlair) {
+      if(useFlair) {
+        Y.use('jquery-ui', function() {
+          jQuery('#' + elementId).slideUp(); // hide
+        });
       }
-      function hideElementWithEffects(elementId, useFlair) {
-        if(useFlair) {
-          Y.use('jquery-ui', function() {
-            jQuery('#' + elementId).slideUp(); // hide
-          });
-        }
-        else {
-          hide_element(elementId);
-        }
+      else {
+        hide_element(elementId);
       }
-      Y.use('jquery-ui', function(Y) {
-        jQuery(function() {
-          jQuery('#part_type_company_selection').each(function() {
-            var syncAction = function(obj) {
-              if(obj.is(':checked')) {
-                jQuery('#part_type_individual_company_input_container').removeClass('hidden');
-              }
-              else {
-                jQuery('#part_type_individual_company_input_container').addClass('hidden');
-              };
-              return arguments.callee;
-            }(jQuery(this));
-            jQuery(this).click(function() {
-              syncAction(jQuery(this));
-            });
+    }
+    Y.use('jquery-ui', function(Y) {
+      jQuery(function() {
+        jQuery('#part_type_company_selection').each(function() {
+          var syncAction = function(obj) {
+            if(obj.is(':checked')) {
+              jQuery('#part_type_individual_company_input_container').removeClass('hidden');
+            }
+            else {
+              jQuery('#part_type_individual_company_input_container').addClass('hidden');
+            };
+            return arguments.callee;
+          }(jQuery(this));
+          jQuery(this).click(function() {
+            syncAction(jQuery(this));
           });
-          jQuery('#part_type_selection_container').find('input[type="radio"]').each(function() {
-            var syncAction = function(obj) {
-              if(obj.is(':checked')) {
-                obj.closest('div.part-type-container').addClass('selected');
-              }
-              else {
-                obj.closest('div.part-type-container').removeClass('selected');
-              };
-              return arguments.callee;
-            }(jQuery(this));
-            jQuery(this).click(function() {
-              jQuery('div.part-type-container').removeClass('selected');
-              syncAction(jQuery(this));
-            });
+        });
+        jQuery('#part_type_selection_container').find('input[type="radio"]').each(function() {
+          var syncAction = function(obj) {
+            if(obj.is(':checked')) {
+              obj.closest('div.part-type-container').addClass('selected');
+            }
+            else {
+              obj.closest('div.part-type-container').removeClass('selected');
+            };
+            return arguments.callee;
+          }(jQuery(this));
+          jQuery(this).click(function() {
+            jQuery('div.part-type-container').removeClass('selected');
+            syncAction(jQuery(this));
           });
         });
       });
-    </script>
-    [[S66:util/SpamControlComponentResponsive.tpt]]
-  </form>
+    });
+  </script>
   [[?xTx::x[[A24]]x::
     <div id="edit_pt_title_container" class="EditContainer" style="display: none;">
       [[C:ajax-custompage-edit-component:edit_pt_title_container]]

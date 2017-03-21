@@ -9,109 +9,115 @@
   <script src="../js/ajax_mce.js"></script>
 ::]]
 <div class="ym-registration-page-container ym-registration-page-container--utype" ng-controller="RegistrationUtypeCtrl">
-  [[?xxnullx::x[[A5]]x::::
-    <div class="alert alert-success">
-      [[A5]]
-    </div>
-  ]]
-  [[?xyz.xnullynullz.xynullz.xnullyz::x[[A4]]y[[A6]]z::::
-    <div class="alert alert-danger">
-      [[?xy.xnully::x[[A4]]y::
-        [[M0:friendraiser:generic_error]]
-      ::
-        [[A4]]
-      ]]
-    </div>
-  ]]
-  <div class="manageable-content" data-container="edit_ut_title_container">
-    <h2 class="h5" id="ut_title_container">
-      [[C1:fr_ut_title]]
-    </h2>
-  </div>
-  <p>
-    Did you participate last year?
-  </p>
-  <div class="manageable-content" data-container="edit_fr_returning_user_container">
-    <button type="button" class="btn btn-toggle">
-      <span id="fr_returning_user_container">[[C1:fr_returning_user]]</span>
-    </button>
-  </div>
-  <form id="f2fLoginForm" name="f2fLoginForm" action="[[A1]]" method="POST">
-    <input type="hidden" name="pg" value="[[A7]]">
-    <input type="hidden" name="fr_id" value="[[A2]]">
-    <input type="hidden" name="[[A16]]" value="[[M0:global:login_button]]">
-    [[?xx::x[[A20]]x::::
-      <div class="alert alert-danger">
-        [[A20]]
+  <div ng-class="{'hidden': showForgotUsername}" ng-cloak>
+    [[?xxnullx::x[[A5]]x::::
+      <div class="alert alert-success">
+        [[A5]]
       </div>
     ]]
+    [[?xyz.xnullynullz.xynullz.xnullyz::x[[A4]]y[[A6]]z::::
+      <div class="alert alert-danger">
+        [[?xy.xnully::x[[A4]]y::
+          [[M0:friendraiser:generic_error]]
+        ::
+          [[A4]]
+        ]]
+      </div>
+    ]]
+    <div class="manageable-content" data-container="edit_ut_title_container">
+      <h2 class="h5" id="ut_title_container">
+        [[C1:fr_ut_title]]
+      </h2>
+    </div>
+    <p>
+      Did you participate last year?
+    </p>
     <div class="row">
-      <div class="col-sm-6">
-        <label for="[[A13]]_1">
-          [[M0:global:user_name_field]]
-        </label>
-        <input type="text" class="form-control" name="[[A13]]" id="[[A13]]_1" value="[[A23]]" maxlength="[[S0:USER_MAX_LOGIN_LEN]]">
+      <div class="col-xs-6">
+        <div class="manageable-content" data-container="edit_fr_returning_user_container">
+          <button type="button" class="btn btn-toggle" ng-class="{'btn-toggle--selected': userType == 'existing'}" ng-click="toggleUserType('existing')">
+            <span id="fr_returning_user_container">[[C1:fr_returning_user]]</span>
+          </button>
+        </div>
       </div>
-      <div class="col-sm-6">
-        <label for="[[A14]]">
-          [[M0:global:user_password_field]]
-        </label>
-        <input type="password" class="form-control" name="[[A14]]" id="[[A14]]" maxlength="[[S0:USER_MAX_PASSWD_LEN]]">
+      <div class="col-xs-6">
+        <div class="manageable-content" data-container="edit_fr_new_user_container">
+          <button type="button" class="btn btn-toggle" ng-click="toggleUserType('new')">
+            <span id="fr_new_user_container">[[C1:fr_new_user]]</span>
+          </button>
+        </div>
       </div>
     </div>
-  </form>
-  <form id="f2fSendUserNameForm" name="f2fSendUserNameForm" action="[[A1]]" method="POST">
-    <input type="hidden" name="pg" value="[[A7]]">
-    <input type="hidden" name="fr_id" value="[[A2]]">
-    <input type="hidden" name="[[A18]]" value="[[M0:global:send_user_name_button]]">
-    <a href="javascript:void(0)" id="user_type_email_login_info_link">Forgot Username or Password?</a>
-    <div id="user_type_login_email_container" class="[[?xx::x[[A26]]x::hidden::form-error]]" >
-      [[?xx::x[[A25]]x::::
-        <div class="alert alert-success">
-          [[A25]]
-        </div>
-      ]]
-      [[?xx::x[[A26]]x::::
+    <div class="hidden" ng-class="{'hidden': userType != 'existing'}" ng-cloak>
+      [[?xx::x[[A20]]x::::
         <div class="alert alert-danger">
-          [[A26]]
+          [[A20]]
         </div>
       ]]
-      <div class="form-content">
-        <div class="input-container" id="user_type_login_email_input_container">
-          <label for="[[A17]]_2">
-            [[M0:global:email_reg_field]]
-          </label>
-          <input type="text" class="form-control" name="[[A17]]" id="[[A17]]_2" maxlength="100">
+      <form method="POST" ng-submit="submitUtypeLogin()">
+        <div class="row">
+          <div class="col-sm-6">
+            <label>
+              [[M0:global:user_name_field]]
+            </label>
+            <input type="text" class="form-control" maxlength="[[S0:USER_MAX_LOGIN_LEN]]">
+          </div>
+          <div class="col-sm-6">
+            <label>
+              [[M0:global:user_password_field]]
+            </label>
+            <input type="password" class="form-control" maxlength="[[S0:USER_MAX_PASSWD_LEN]]">
+          </div>
         </div>
-      </div>
+        <div class="">
+          <a ng-click="toggleForgotUsername('show')">Forgot Username or Password?</a>
+        </div>
+        <div class="">
+          <button type="submit">
+            Next
+          </button>
+        </div>
+      </form>
     </div>
-  </form>
-  <div class="manageable-content" data-container="edit_fr_new_user_container">
-    <button type="button" class="btn btn-toggle">
-      <span id="fr_new_user_container">[[C1:fr_new_user]]</span>
-    </button>
   </div>
-  <form id="f2fRegPartType" name="f2fRegPartType" action="[[A1]]" method="POST">
-    <input type="hidden" name="pg" value="[[A7]]">
-    <input type="hidden" name="fr_id" value="[[A2]]">
-    <button class="step-button next-step" id="next_step" type="submit" name="next_step.x" value="[[M1:friendraiser:join_team_step_next_button]]" type="[[?xTx::x[[A12]]x::button::submit]]">
-      <span id="fr_responsive_register_new_participant_container">[[C1:fr_responsive_register_new_participant]]</span>
-    </button>
-  </form>
-  <script>
-    Y.use('jquery-ui', function(Y) {
-      jQuery(function() {
-        jQuery('#user_type_email_login_info_link').click(function() {
-          if(jQuery('#user_type_login_email_container').hasClass('hidden')) {
-            jQuery('#user_type_login_email_container').removeClass('hidden');
-          }
-          else {
-            jQuery('#user_type_login_email_container').addClass('hidden');
-          }
-        });
-      });
-    });
-  </script>
+  <div class="hidden" ng-class="{'hidden': !showForgotUsername}" ng-cloak>
+    [[?xx::x[[A25]]x::::
+      <div class="alert alert-success">
+        [[A25]]
+      </div>
+    ]]
+    [[?xx::x[[A26]]x::::
+      <div class="alert alert-danger">
+        [[A26]]
+      </div>
+    ]]
+    <form method="POST" ng-submit="submitForgotUsername()">
+      <label>
+        [[M0:global:email_reg_field]]
+      </label>
+      <input type="text" class="form-control" maxlength="100">
+    </form>
+  </div>
+  <div class="hidden">
+    <form class="js--default-utype-existing-form" action="[[A1]]" method="POST">
+      <input type="hidden" name="fr_id" value="[[A2]]">
+      <input type="hidden" name="pg" value="[[A7]]">
+      <input type="hidden" name="[[A13]]" value="[[A23]]">
+      <input type="hidden" name="[[A14]]" value="">
+      <input type="hidden" name="[[A16]]" value="[[M0:global:login_button]]">
+    </form>
+    <form id="js--default-utype-send-username-form" action="[[A1]]" method="POST">
+      <input type="hidden" name="fr_id" value="[[A2]]">
+      <input type="hidden" name="pg" value="[[A7]]">
+      <input type="hidden" name="[[A17]]" value="">
+      <input type="hidden" name="[[A18]]" value="[[M0:global:send_user_name_button]]">
+    </form>
+    <form class="js--default-utype-new-form" action="[[A1]]" method="POST">
+      <input type="hidden" name="fr_id" value="[[A2]]">
+      <input type="hidden" name="pg" value="[[A7]]">
+      <input type="hidden" name="next_step.x" value="[[M1:friendraiser:join_team_step_next_button]]">
+    </form>
+  </div>
 </div>
 [[?xTx::x[[A24]]x::
   <div id="edit_ut_title_container" class="EditContainer" style="display: none;">
