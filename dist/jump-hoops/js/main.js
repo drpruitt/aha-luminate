@@ -978,14 +978,25 @@
 
   angular.module('ahaLuminateControllers').controller('RegistrationTfindCtrl', [
     '$scope', 'TeamraiserTeamService', function($scope, TeamraiserTeamService) {
-      return TeamraiserTeamService.getTeams('team_company_id=&list_page_size=500', {
-        error: function() {},
-        success: function(response) {
-          var teams;
-          teams = response.getTeamSearchByInfoResponse.team;
-          if (!angular.isArray(teams)) {
-            return teams = [teams];
+      var getTeams;
+      getTeams = function() {
+        return TeamraiserTeamService.getTeams('team_company_id=' + $scope.companyId + '&list_page_size=500', {
+          error: function() {},
+          success: function(response) {
+            var teams;
+            teams = response.getTeamSearchByInfoResponse.team;
+            if (!angular.isArray(teams)) {
+              return teams = [teams];
+            }
           }
+        });
+      };
+      if ($scope.companyId && $scope.companyId !== '') {
+        getTeams();
+      }
+      return $scope.$watch('companyId', function(newValue) {
+        if (newValue && newValue !== '') {
+          return getTeams();
         }
       });
     }
