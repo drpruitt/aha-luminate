@@ -46,11 +46,20 @@ module.exports = function(grunt) {
   grunt.registerTask('js-dist', function(taskTarget) {
     runTargetedTask(['coffee', 'uglify'], taskTarget);
   });
-  grunt.registerTask('js-dist', function(taskTarget) {
-    runTargetedTask(['coffee', 'uglify'], taskTarget);
-  });
   grunt.registerTask('inject', function(taskTarget) {
     runTargetedTask(['injector'], taskTarget);
+  });
+  grunt.registerTask('build', function() {
+    runTargetedTask(['clean', 'sass', 'postcss', 'cssmin', 'coffee', 'uglify'], 'general');
+    runTargetedTask(['htmlmin', 'imagemin'], 'general');
+    runTargetedTask(['clean', 'sass', 'postcss', 'cssmin', 'coffee', 'uglify'], 'heart-walk');
+    runTargetedTask(['htmlmin', 'imagemin'], 'heart-walk');
+    runTargetedTask(['clean'], 'youth-markets');
+    runTargetedTask(['htmlmin', 'imagemin'], 'youth-markets');
+    runTargetedTask(['clean', 'sass', 'postcss', 'cssmin', 'coffee', 'uglify'], 'jump-hoops');
+    runTargetedTask(['injector'], 'jump-hoops-css-main');
+    runTargetedTask(['injector'], 'jump-hoops-css-participant');
+    runTargetedTask(['htmlmin', 'imagemin'], 'jump-hoops');
   });
   grunt.registerTask('default', ['watch']);
 };
