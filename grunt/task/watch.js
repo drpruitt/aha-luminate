@@ -40,6 +40,8 @@ module.exports = {
       'clean:general', 
       'css-dist:general', 
       'js-dist:general', 
+      'inject:general-css-main', 
+      'inject:general-js-main', 
       'html-dist:general', 
       'img-dist:general', 
       'notify:general'
@@ -92,13 +94,13 @@ module.exports = {
     tasks: [
       'clean:jump-hoops',  
       'css-dist:jump-hoops', 
-      'inject:jump-hoops-css-main',
-      'inject:jump-hoops-css-participant',
       'js-dist:jump-hoops', 
-      'inject:jump-hoops-js-main',
-      'inject:jump-hoops-js-participant',
+      'inject:jump-hoops-css-main', 
+      'inject:jump-hoops-css-participant', 
+      'inject:jump-hoops-js-main', 
+      'inject:jump-hoops-js-participant', 
       'html-dist:jump-hoops', 
-      'img-dist:jump-hoops',
+      'img-dist:jump-hoops', 
       'notify:jump-hoops'
     ]
   }

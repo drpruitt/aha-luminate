@@ -7,7 +7,7 @@ module.exports = {
         src: [
           'dist/general/js/main.js'
         ], 
-        dest: 'dist/general/js/main.min.js'
+        dest: 'dist/general/js/main.' + '<%= timestamp %>' + '.min.js'
       }
     ]
   }, 

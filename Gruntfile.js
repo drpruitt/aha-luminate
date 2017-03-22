@@ -51,6 +51,8 @@ module.exports = function(grunt) {
   });
   grunt.registerTask('build', function() {
     runTargetedTask(['clean', 'sass', 'postcss', 'cssmin', 'coffee', 'uglify'], 'general');
+    runTargetedTask(['injector'], 'general-css-main');
+    runTargetedTask(['injector'], 'general-js-main');
     runTargetedTask(['htmlmin', 'imagemin'], 'general');
     runTargetedTask(['clean', 'sass', 'postcss', 'cssmin', 'coffee', 'uglify'], 'heart-walk');
     runTargetedTask(['htmlmin', 'imagemin'], 'heart-walk');
@@ -59,6 +61,8 @@ module.exports = function(grunt) {
     runTargetedTask(['clean', 'sass', 'postcss', 'cssmin', 'coffee', 'uglify'], 'jump-hoops');
     runTargetedTask(['injector'], 'jump-hoops-css-main');
     runTargetedTask(['injector'], 'jump-hoops-css-participant');
+    runTargetedTask(['injector'], 'jump-hoops-js-main');
+    runTargetedTask(['injector'], 'jump-hoops-js-participant');
     runTargetedTask(['htmlmin', 'imagemin'], 'jump-hoops');
   });
   grunt.registerTask('default', ['watch']);

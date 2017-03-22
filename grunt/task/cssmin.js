@@ -20,25 +20,17 @@ module.exports = {
       ]
     }
   }, 
-
-  "jump-hoops-main": {
-    src: 'dist/jump-hoops/css/main.css',
-    dest: 'dist/jump-hoops/css/main.'+ '<%= timestamp %>' +'.min.css'
-  },
-
-  "jump-hoops-participant" : {
-    src: 'dist/jump-hoops/css/participant.css',
-    dest: 'dist/jump-hoops/css/participant.'+'<%= timestamp %>'+'.min.css'
-  }
   
-  /*"jump-hoops": {
-    files: {
-      'dist/jump-hoops/css/main.'+ <%= timestamp %> +'.min.css': [
-        'dist/jump-hoops/css/main.css'
-      ], 
-      'dist/jump-hoops/css/participant.'+'<%= timestamp %>'+'.min.css': [
-        'dist/jump-hoops/css/participant.css'
-      ]
-    }
-  }*/
+  "jump-hoops": {
+    files: [
+      {
+        src: 'dist/jump-hoops/css/main.css', 
+        dest: 'dist/jump-hoops/css/main.'+ '<%= timestamp %>' +'.min.css'
+      }, 
+      {
+        src: 'dist/jump-hoops/css/participant.css', 
+        dest: 'dist/jump-hoops/css/participant.'+'<%= timestamp %>'+'.min.css'
+      }
+    ]
+  }
 }
