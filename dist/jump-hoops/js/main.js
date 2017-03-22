@@ -886,7 +886,7 @@
   ]);
 
   angular.module('ahaLuminateControllers').controller('RegistrationPtypeCtrl', [
-    '$scope', '$timeout', function($scope, $timeout) {
+    '$scope', '$filter', '$timeout', function($scope, $filter, $timeout) {
       var $donationLevels, $participationType;
       if (!$scope.participationOptions) {
         $scope.participationOptions = {};
@@ -898,11 +898,16 @@
       };
       $donationLevels = angular.element('.js--registration-ptype-donation-levels .donation-level-row-container');
       angular.forEach($donationLevels, function($donationLevel) {
-        var levelAmount;
+        var levelAmount, levelAmountFormatted;
         $donationLevel = angular.element($donationLevel);
         levelAmount = $donationLevel.find('input[type="radio"][name^="donation_level_form_"]').val();
+        levelAmountFormatted = null;
+        if (levelAmount !== '-1' && levelAmount !== '$0.00') {
+          levelAmountFormatted = $filter('currency')(levelAmount, '$').replace('.00', '');
+        }
         return $scope.donationLevels.levels.push({
           amount: levelAmount,
+          amountFormatted: levelAmountFormatted,
           isOtherAmount: levelAmount === '-1',
           isNoDonation: levelAmount === '$0.00',
           askMessage: $donationLevel.find('.donation-level-description-text').text()
