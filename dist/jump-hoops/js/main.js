@@ -938,7 +938,11 @@
 
   angular.module('ahaLuminateControllers').controller('RegistrationWaiverCtrl', [
     '$scope', function($scope) {
-      return angular.element('.js--registration-waiver-form').submit();
+      $scope.submitWaiver = function() {
+        angular.element('.js--registration-waiver-form').submit();
+        return false;
+      };
+      return $scope.submitWaiver();
     }
   ]);
 
