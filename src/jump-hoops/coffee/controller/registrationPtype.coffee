@@ -18,7 +18,7 @@ angular.module 'ahaLuminateControllers'
         levelAmount = $donationLevel.find('input[type="radio"][name^="donation_level_form_"]').val()
         levelAmountFormatted = null
         if levelAmount isnt '-1' and levelAmount isnt '$0.00'
-          levelAmountFormatted = $filter('currency')(levelAmount, '$').replace '.00', ''
+          levelAmountFormatted = $filter('currency')(Number(levelAmount.replace('$', '').replace(/,/g, '')), '$').replace '.00', ''
         $scope.donationLevels.levels.push
           amount: levelAmount
           amountFormatted: levelAmountFormatted
