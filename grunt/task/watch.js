@@ -62,6 +62,8 @@ module.exports = {
       'clean:heart-walk', 
       'css-dist:heart-walk', 
       'js-dist:heart-walk', 
+      'inject:heart-walk-css-main', 
+      'inject:heart-walk-js-main', 
       'html-dist:heart-walk', 
       'img-dist:heart-walk', 
       'notify:heart-walk'

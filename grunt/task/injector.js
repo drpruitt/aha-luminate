@@ -40,6 +40,41 @@ module.exports = {
     }
   }, 
   
+  "heart-walk-css-main": {
+    options: {
+      template: 'src/heart-walk/html/page-wrapper/head-styles.html', 
+      starttag: '<!-- heart-walk-css-injector:{{ext}} -->', 
+      endtag: '<!-- heart-walk-css-endinjector -->', 
+      transform: function(filepath) {
+        var timestamp = filepath.split('.')[1]; // Get the timestamp out of the filename
+        return '<link rel="stylesheet" href="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/heart-walk/css/main.' + timestamp + '[[?xtruex::x[[S80:debug]]x::::.min]].css">';
+      }
+    }, 
+    files: {
+      'src/heart-walk/html/page-wrapper/head-styles.html': [
+        'dist/heart-walk/css/main.' + '<%= timestamp %>' + '.min.css'
+      ]
+    }
+  }, 
+  
+  "heart-walk-js-main": {
+    options: {
+      template: 'src/heart-walk/html/page-wrapper/body-scripts.html', 
+      starttag: '<!-- heart-walk-js-injector:{{ext}} -->', 
+      endtag: '<!-- heart-walk-js-endinjector -->', 
+      transform: function(filepath) {
+        var timestamp = filepath.split('.')[1]; // Get the timestamp out of the filename
+        return '<script src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/heart-walk/js/main.' + timestamp + '[[?xtruex::x[[S80:debug]]x::::.min]].js"></script>';
+      }
+    }, 
+    
+    files: {
+      'src/heart-walk/html/page-wrapper/body-scripts.html': [
+        'dist/heart-walk/js/main.' + '<%= timestamp %>' + '.min.js'
+      ]
+    }
+  }, 
+  
   "jump-hoops-css-main": {
     options: {
       template: 'src/jump-hoops/html/page-wrapper/head-styles.html', 

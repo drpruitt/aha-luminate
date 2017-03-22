@@ -55,6 +55,8 @@ module.exports = function(grunt) {
     runTargetedTask(['injector'], 'general-js-main');
     runTargetedTask(['htmlmin', 'imagemin'], 'general');
     runTargetedTask(['clean', 'sass', 'postcss', 'cssmin', 'coffee', 'uglify'], 'heart-walk');
+    runTargetedTask(['injector'], 'heart-walk-css-main');
+    runTargetedTask(['injector'], 'heart-walk-js-main');
     runTargetedTask(['htmlmin', 'imagemin'], 'heart-walk');
     runTargetedTask(['clean'], 'youth-markets');
     runTargetedTask(['htmlmin', 'imagemin'], 'youth-markets');
