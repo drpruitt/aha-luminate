@@ -14,8 +14,11 @@ angular.module 'ahaLuminateControllers'
       $donationLevels = angular.element('.js--registration-ptype-donation-levels .donation-level-row-container')
       angular.forEach $donationLevels, ($donationLevel) ->
         $donationLevel = angular.element $donationLevel
+        levelAmount = $donationLevel.find('input[type="radio"][name^="donation_level_form_"]').val()
         $scope.donationLevels.levels.push
-          amount: $donationLevel.find('input[type="radio"][name*=".donation_level_form_"]').val()
+          amount: levelAmount
+          isOtherAmount: levelAmount is '-1'
+          isNoDonation: levelAmount is '$0.00'
           askMessage: $donationLevel.find('.donation-level-description-text').text()
       
       $scope.toggleDonationLevel = (levelAmount) ->

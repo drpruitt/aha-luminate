@@ -66,7 +66,9 @@
                 </div>
                 <div class="">
                   <button type="button" class="btn btn-toggle" ng-repeat="donationLevel in donationLevels.levels" ng-class="{'btn-toggle--selected': donationLevels.activeLevel.amount == donationLevel.amount}" ng-click="toggleDonationLevel(donationLevel.amount)" ng-cloak>
-                    <span ng-bind-html="donationLevel.amount"></span>
+                    <span ng-bind-html="donationLevel.amount" ng-if="!donationLevel.isOtherAmount && !donationLevel.isNoDonation"></span>
+                    <span ng-if="donationLevel.isOtherAmount">Other</span>
+                    <span ng-if="donationLevel.isNoDonation">No, Thanks</span>
                   </button> 
                   <div class="">
                     <span ng-bind-html="donationLevels.activeLevel.askMessage"></span>
@@ -103,21 +105,19 @@
               </div>
             </div>
           ::]]
-          <div class="section-footer clearfix" id="part_type_section_footer">
-            <div class="ym-registration-form-footer">
-              [[?xxnullx::x[[A21]]x::
-                [[?xTx::x[[A47]]x::::
-                  <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-toggle" ng-click="previousStep()">
-                    <i class="fa fa-chevron-left"></i> <span>[[M1:friendraiser:join_team_step_prev_button]]</span>
-                  </button> 
-                ]]
-              ::]]
-              [[?xTx::x[[A45]]x::::
-                <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-primary">
-                  <span>[[M1:friendraiser:join_team_step_next_button]]</span> <i class="fa fa-chevron-right"></i>
-                </button>
+          <div class="ym-registration-form-footer">
+            [[?xxnullx::x[[A21]]x::
+              [[?xTx::x[[A47]]x::::
+                <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-toggle" ng-click="previousStep()">
+                  <i class="fa fa-chevron-left"></i> <span>[[M1:friendraiser:join_team_step_prev_button]]</span>
+                </button> 
               ]]
-            </div>
+            ::]]
+            [[?xTx::x[[A45]]x::::
+              <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-primary">
+                <span>[[M1:friendraiser:join_team_step_next_button]]</span> <i class="fa fa-chevron-right"></i>
+              </button>
+            ]]
           </div>
         </div>
         [[S66:util/SpamControlComponentResponsive.tpt]]
