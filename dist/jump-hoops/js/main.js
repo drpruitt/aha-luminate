@@ -886,13 +886,39 @@
   ]);
 
   angular.module('ahaLuminateControllers').controller('RegistrationPtypeCtrl', [
-    '$scope', function($scope) {
-      var $participationType;
+    '$scope', '$timeout', function($scope, $timeout) {
+      var $donationLevels, $participationType;
       if (!$scope.participationOptions) {
         $scope.participationOptions = {};
       }
       $participationType = angular.element('.js--registration-ptype-part-types input[name="fr_part_radio"]').eq(0);
       $scope.participationOptions.fr_part_radio = $participationType.val();
+      $scope.donationLevels = {
+        levels: []
+      };
+      $donationLevels = angular.element('.js--registration-ptype-donation-levels .donation-level-row-container');
+      angular.forEach($donationLevels, function($donationLevel) {
+        $donationLevel = angular.element($donationLevel);
+        return $scope.donationLevels.levels.push({
+          amount: $donationLevel.find('input[type="radio"][name*=".donation_level_form_"]').val(),
+          askMessage: $donationLevel.find('.donation-level-description-text').text()
+        });
+      });
+      $scope.toggleDonationLevel = function(levelAmount) {
+        $scope.participationOptions.ng_donation_level = levelAmount;
+        return angular.forEach($scope.donationLevels.levels, function(donationLevel, donationLevelIndex) {
+          if (donationLevel.amount === levelAmount) {
+            return $scope.donationLevels.activeLevel = donationLevel;
+          }
+        });
+      };
+      $scope.previousStep = function() {
+        $scope.ng_go_back = true;
+        $timeout(function() {
+          return $scope.submitPtype();
+        }, 500);
+        return false;
+      };
       return $scope.submitPtype = function() {
         angular.element('.js--default-ptype-form').submit();
         return false;
