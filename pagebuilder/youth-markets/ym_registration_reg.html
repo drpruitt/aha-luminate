@@ -23,9 +23,9 @@
       ]]
     </div>
   ]]
-  <form id="F2fRegContact" name="F2fRegContact" action="[[A1=form action]]" method="POST">
-    <input type="hidden" name="pg" id="pg" value="[[A7]]">
+  <form action="[[A1]]" method="POST">
     <input type="hidden" name="fr_id" id="fr_id" value="[[A2]]">
+    <input type="hidden" name="pg" id="pg" value="[[A7]]">
     <input type="hidden" name="fr_cstm_reg" id="fr_cstm_reg" value="t">
     <div class="section-container">
       <div class="manageable-content" data-container="edit_title_container">
@@ -67,7 +67,7 @@
             ]]
           </div>
         </div>
-        [[??xy::x[[A16]]y::
+        [[?xy::x[[A16]]y::
           <div class="clearfix"></div>
         ::
           <div class="sub-section-container" id="participant_info_container">
@@ -126,6 +126,13 @@
       </div>
     </div>
   </form>
+  <div class="hidden">
+    <form class="js--default-reg-form" action="[[A1]]" method="POST">
+      <input type="hidden" name="fr_id" id="fr_id" value="[[A2]]">
+      <input type="hidden" name="pg" id="pg" value="[[A7]]">
+      <input type="hidden" name="fr_cstm_reg" id="fr_cstm_reg" value="t">
+    </form>
+  </div>
   [[?xTx::x[[A24]]x::
     <div id="edit_title_container" class="EditContainer" style="display: none;">
       [[C:ajax-custompage-edit-component:edit_title_container]]
