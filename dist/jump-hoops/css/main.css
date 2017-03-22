@@ -18,27 +18,24 @@ div.responsive a:visited,
 div.responsive a:hover,
 div.responsive a:focus,
 div.responsive a:active {
-  color: #ed1c24; }
+  color: #ed1c24;
+  cursor: pointer; }
 
-div.responsive {
+div.responsive, div.responsive.donation-form-container {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
   width: auto;
-  padding: 0;
-  border: 0 none;
-  background: transparent; }
-  div.responsive input[type="text"],
-  div.responsive input[type="number"],
-  div.responsive input[type="password"],
-  div.responsive textarea {
-    box-shadow: none; }
+  padding: 0; }
+
+div.responsive input[type="text"],
+div.responsive input[type="number"],
+div.responsive input[type="password"],
+div.responsive textarea {
+  box-shadow: none; }
 
 .mobile div.responsive {
   width: auto; }
-
-div.donation-form-container.responsive {
-  padding: 0;
-  background: transparent;
-  border: 0 none;
-  border-radius: 0; }
 
 @media (min-width: 992px) {
   .container {
@@ -1240,6 +1237,7 @@ body.aha-luminate #at4-soc {
   text-align: center; }
 
 #fr_new_user_container {
+  display: inline-block;
   margin: 0; }
 
 .donation-form-container.responsive span.field-required {
