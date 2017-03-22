@@ -52,6 +52,8 @@ module.exports = function(grunt) {
   grunt.registerTask('build', function() {
     runTargetedTask(['clean', 'htmlmin', 'imagemin', 'sass', 'postcss', 'cssmin', 'coffee', 'uglify'], 'general');
     runTargetedTask(['clean', 'htmlmin', 'imagemin', 'sass', 'postcss', 'cssmin', 'coffee', 'uglify'], 'heart-walk');
+    runTargetedTask(['injector'], 'jump-hoops-css-main');
+    runTargetedTask(['injector'], 'jump-hoops-css-participant');
     runTargetedTask(['clean', 'htmlmin', 'imagemin'], 'youth-markets');
     runTargetedTask(['clean', 'htmlmin', 'imagemin', 'sass', 'postcss', 'cssmin', 'coffee', 'uglify'], 'jump-hoops');
   });
