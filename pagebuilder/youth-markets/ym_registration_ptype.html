@@ -42,6 +42,9 @@
               [[C1:fr_pt_title]]
             </h2>
           </div>
+          <div class="manageable-content" data-container="edit_pt_instruction_container">
+            <span id="pt_instruction_container">[[C1:fr_pt_instruction]]</span>
+          </div>
           <div class="hidden js--registration-ptype-part-types">
             [[A13]]
           </div>
@@ -52,25 +55,24 @@
                   [[M0:friendraiser:error_invalid_amt_user]]
                 </div>
               ::]]
-              <div class="form-content">
-                <div class="manageable-content" data-container="edit_part_type_additional_gift_section_header">
-                  <div id="part_type_additional_gift_section_header">
-                    [[C1:fr_gift_hdr]]
+              <div class="manageable-content" data-container="edit_part_type_additional_gift_section_header">
+                <div id="part_type_additional_gift_section_header">
+                  [[C1:fr_gift_hdr]]
+                </div>
+              </div>
+              [[?xx::x[[A33]]x::::
+                <div class="hidden js--registration-ptype-donation-levels">
+                  [[A33]]
+                </div>
+                <div class="">
+                  <button type="button" class="btn btn-toggle" ng-repeat="donationLevel in donationLevels.levels" ng-class="{'btn-toggle--selected': donationLevels.activeLevel.amount == donationLevel.amount}" ng-click="toggleDonationLevel(donationLevel.amount)" ng-cloak>
+                    <span ng-bind-html="donationLevel.amount"></span>
+                  </button> 
+                  <div class="">
+                    <span ng-bind-html="donationLevels.activeLevel.askMessage"></span>
                   </div>
                 </div>
-                [[?xx::x[[A33]]x::
-                  <div class="input-container" id="part_type_additional_gift_input_container">
-                    <div class="manageable-content" data-container="edit_addl_gift_container">
-                      <label for="fr_gift" id="addl_gift_container">[[?xx::x[[C1:fr_additional_gift_field]]x::[[M0:friendraiser:additional_gift_field]]::[[C1:fr_additional_gift_field]]]]</label>
-                    </div>
-                    <input type="text" class="form-control" name="fr_gift" id="participationOptions-fr_gift" ng-model="participationOptions.fr_gift" maxlength="15">
-                  </div>
-                ::
-                  <div class="input-container" id="part_type_donation_level_input_container">
-                    [[A33]]
-                  </div>
-                ]]
-              </div>
+              ]]
             </div>
           ::]]
           [[?xTx::x[[A17]]x::
@@ -102,18 +104,20 @@
             </div>
           ::]]
           <div class="section-footer clearfix" id="part_type_section_footer">
-            [[?xxnullx::x[[A21]]x::
-              [[?xTx::x[[A47]]x::::
-                <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-toggle">
-                  <span>[[M1:friendraiser:join_team_step_prev_button]]</span>
-                </button> 
+            <div class="ym-registration-form-footer">
+              [[?xxnullx::x[[A21]]x::
+                [[?xTx::x[[A47]]x::::
+                  <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-toggle" ng-click="previousStep()">
+                    <i class="fa fa-chevron-left"></i> <span>[[M1:friendraiser:join_team_step_prev_button]]</span>
+                  </button> 
+                ]]
+              ::]]
+              [[?xTx::x[[A45]]x::::
+                <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-primary">
+                  <span>[[M1:friendraiser:join_team_step_next_button]]</span> <i class="fa fa-chevron-right"></i>
+                </button>
               ]]
-            ::]]
-            [[?xTx::x[[A45]]x::::
-              <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-primary">
-                <span>[[M1:friendraiser:join_team_step_next_button]]</span>
-              </button>
-            ]]
+            </div>
           </div>
         </div>
         [[S66:util/SpamControlComponentResponsive.tpt]]
@@ -127,9 +131,12 @@
       <input type="hidden" name="extra_person" value="[[A21]]">
       <input type="hidden" name="company_id" value="[[A42]]">
       <input type="text" name="fr_part_radio" ng-model="participationOptions.fr_part_radio">
+      <input type="text" name="donation_level_form_[[A2]]" ng-model="participationOptions.ng_donation_level">
+      <input type="hidden" name="donation_level_custom_idsubmitted" value="true">
+      <input type="hidden" name="donation_level_custom_id_donation_levels_submit" value="true">
       <input type="text" name="fr_goal" ng-model="participationOptions.fr_goal">
-      <input type="text" name="fr_gift" ng-model="participationOptions.fr_gift">
-      <input type="hidden" name="next_step.x" value="[[M1:friendraiser:join_team_step_next_button]]">
+      <input type="hidden" name="next_step.x" value="[[M1:friendraiser:join_team_step_next_button]]" ng-if="!ng_go_back">
+      <input type="hidden" name="previous_step.x" value="[[M1:friendraiser:join_team_step_prev_button]]" ng-if="ng_go_back">
     </form>
   </div>
   [[?xTx::x[[A24]]x::
