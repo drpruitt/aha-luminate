@@ -262,6 +262,21 @@
     }
   ]);
 
+  angular.module('ahaLuminateApp').factory('TeamraiserRegistrationService', [
+    'LuminateRESTService', function(LuminateRESTService) {
+      return {
+        getRegistrationDocument: function(requestData, callback) {
+          var dataString;
+          dataString = 'method=getRegistrationDocument';
+          if (requestData && requestData !== '') {
+            dataString += '&' + requestData;
+          }
+          return LuminateRESTService.luminateExtendTeamraiserRequest(dataString, false, true, callback);
+        }
+      };
+    }
+  ]);
+
   angular.module('ahaLuminateApp').factory('TeamraiserTeamService', [
     'LuminateRESTService', function(LuminateRESTService) {
       return {

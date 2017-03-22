@@ -283,6 +283,21 @@
     }
   ]);
 
+  angular.module('ahaLuminateApp').factory('TeamraiserRegistrationService', [
+    'LuminateRESTService', function(LuminateRESTService) {
+      return {
+        getRegistrationDocument: function(requestData, callback) {
+          var dataString;
+          dataString = 'method=getRegistrationDocument';
+          if (requestData && requestData !== '') {
+            dataString += '&' + requestData;
+          }
+          return LuminateRESTService.luminateExtendTeamraiserRequest(dataString, false, true, callback);
+        }
+      };
+    }
+  ]);
+
   angular.module('ahaLuminateApp').factory('TeamraiserTeamService', [
     'LuminateRESTService', function(LuminateRESTService) {
       return {
@@ -903,7 +918,7 @@
         levelAmount = $donationLevel.find('input[type="radio"][name^="donation_level_form_"]').val();
         levelAmountFormatted = null;
         if (levelAmount !== '-1' && levelAmount !== '$0.00') {
-          levelAmountFormatted = $filter('currency')(levelAmount, '$').replace('.00', '');
+          levelAmountFormatted = $filter('currency')(Number(levelAmount.replace('$', '').replace(/,/g, '')), '$').replace('.00', '');
         }
         return $scope.donationLevels.levels.push({
           amount: levelAmount,
@@ -936,7 +951,7 @@
   ]);
 
   angular.module('ahaLuminateControllers').controller('RegistrationRegCtrl', [
-    '$scope', function($scope) {
+    '$scope', 'TeamraiserRegistrationService', function($scope, TeamraiserRegistrationService) {
       return $scope.submitReg = function() {
         angular.element('.js--default-reg-form').submit();
         return false;
