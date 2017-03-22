@@ -58,13 +58,13 @@
           <form method="POST" ng-submit="submitUtypeLogin()">
             <div class="row">
               <div class="col-sm-6">
-                <label>
+                <label for="existingUser_username">
                   [[M0:global:user_name_field]]
                 </label>
                 <input type="text" class="form-control" name="USERNAME" id="existingUser_username" ng-model="existingUser.username" maxlength="[[S0:USER_MAX_LOGIN_LEN]]">
               </div>
               <div class="col-sm-6">
-                <label>
+                <label for="existingUser_password">
                   [[M0:global:user_password_field]]
                 </label>
                 <input type="password" class="form-control" name="Password" id="existingUser_password" ng-model="existingUser.password" maxlength="[[S0:USER_MAX_PASSWD_LEN]]">
@@ -73,7 +73,7 @@
             <div class="">
               <a ng-click="toggleForgotUsername('show')">Forgot Username or Password?</a>
             </div>
-            <div class="">
+            <div class="ym-registration-form-footer">
               <button type="submit" class="btn btn-primary">
                 Next <i class="fa fa-chevron-right"></i>
               </button>
@@ -96,7 +96,7 @@
           </div>
         ]]
         <form method="POST" ng-submit="submitForgotUsername()">
-          <label>
+          <label for="existingUser_email">
             [[M0:global:email_reg_field]]
           </label>
           <input type="text" class="form-control" name="email" id="existingUser_email" ng-model="existingUser.email" maxlength="100">
