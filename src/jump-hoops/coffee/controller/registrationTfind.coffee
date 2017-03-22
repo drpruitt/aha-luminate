@@ -15,4 +15,6 @@ angular.module 'ahaLuminateControllers'
       $scope.$watch 'companyId', (newValue) ->
         if newValue and newValue isnt ''
           getTeams()
+      
+      console.log 'test'
   ]

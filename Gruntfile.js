@@ -44,5 +44,11 @@ module.exports = function(grunt) {
   grunt.registerTask('js-dist', function(taskTarget) {
     runTargetedTask(['coffee', 'uglify'], taskTarget);
   });
+  grunt.registerTask('build', function() {
+    runTargetedTask(['clean', 'htmlmin', 'imagemin', 'sass', 'postcss', 'cssmin', 'coffee', 'uglify'], 'general');
+    runTargetedTask(['clean', 'htmlmin', 'imagemin', 'sass', 'postcss', 'cssmin', 'coffee', 'uglify'], 'heart-walk');
+    runTargetedTask(['clean', 'htmlmin', 'imagemin'], 'youth-markets');
+    runTargetedTask(['clean', 'htmlmin', 'imagemin', 'sass', 'postcss', 'cssmin', 'coffee', 'uglify'], 'jump-hoops');
+  });
   grunt.registerTask('default', ['watch']);
 };
