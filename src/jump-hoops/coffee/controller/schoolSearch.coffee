@@ -1,12 +1,14 @@
 angular.module('ahaLuminateControllers').controller 'SchoolSearchCtrl', [
   '$scope'
   '$rootScope'
+  '$filter'
   'CsvService'
   'UtilsService'
   'TeamraiserCompanyService'
-  ($scope, $rootScope, Csv, Utils, TeamraiserCompanyService) ->
+  ($scope, $rootScope, $filter, Csv, Utils, TeamraiserCompanyService) ->
     $scope.states = []
     $scope.schools = []
+    $scope.filtered = []
     $scope.schoolList =
       sortProp: 'SCHOOL_NAME'
       sortDesc: false
@@ -35,17 +37,42 @@ angular.module('ahaLuminateControllers').controller 'SchoolSearchCtrl', [
         $scope.schoolList.stateFilter = states[0]
       return
 
+    $scope.filterSchools = () ->
+      filter = $filter 'filter'
+      schools = $scope.schools
+      filtered = false
+      if schools.length and $scope.schoolList.nameFilter
+        filtered = true
+        schools = filter(schools, SCHOOL_NAME: $scope.schoolList.nameFilter)
+      if schools.length and $scope.schoolList.stateFilter.SCHOOL_STATE
+        filtered = true
+        schools = filter(schools, SCHOOL_STATE: $scope.schoolList.stateFilter.SCHOOL_STATE)
+      if filtered == false
+        schools = []
+      $scope.schoolList.totalItems = schools.length
+      $scope.filtered = schools
+      $scope.orderSchools $scope.schoolList.sortProp
+
+    $scope.orderSchools = (sortProp) ->
+      schools = $scope.filtered
+      if schools.length
+        orderBy = $filter 'orderBy'
+        $scope.schoolList.sortProp = sortProp
+        $scope.schoolList.sortDesc = !$scope.schoolList.sortDesc
+        schools = orderBy(schools, sortProp, $scope.schoolList.sortDesc)
+        $scope.filtered = schools
+        $scope.schoolList.currentPage = 1 # reset pagination back to first page
+
     $scope.paginate = (value) ->
       begin = ($scope.schoolList.currentPage - 1) * $scope.schoolList.numPerPage
       end = begin + $scope.schoolList.numPerPage
-      index = $scope.schools.indexOf(value)
+      index = $scope.filtered.indexOf(value)
       begin <= index and index < end
 
     TeamraiserCompanyService.getSchools
       success: (csv) ->
         schools = Csv.toJson(csv)
         $scope.schools = schools
-        $scope.schoolList.totalItems = schools.length
         $scope.setStates()
         return
       failure: (response) ->
