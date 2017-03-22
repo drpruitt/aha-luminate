@@ -18,27 +18,24 @@ div.responsive a:visited,
 div.responsive a:hover,
 div.responsive a:focus,
 div.responsive a:active {
-  color: #ed1c24; }
+  color: #ed1c24;
+  cursor: pointer; }
 
-div.responsive {
+div.responsive, div.responsive.donation-form-container {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
   width: auto;
-  padding: 0;
-  border: 0 none;
-  background: transparent; }
-  div.responsive input[type="text"],
-  div.responsive input[type="number"],
-  div.responsive input[type="password"],
-  div.responsive textarea {
-    box-shadow: none; }
+  padding: 0; }
+
+div.responsive input[type="text"],
+div.responsive input[type="number"],
+div.responsive input[type="password"],
+div.responsive textarea {
+  box-shadow: none; }
 
 .mobile div.responsive {
   width: auto; }
-
-div.donation-form-container.responsive {
-  padding: 0;
-  background: transparent;
-  border: 0 none;
-  border-radius: 0; }
 
 @media (min-width: 992px) {
   .container {
@@ -487,7 +484,7 @@ a.btn {
       background: #a41752; }
   .btn.btn-secondary,
   a.btn.btn-secondary {
-    color: #fff; }
+    color: #ffffff; }
     .btn.btn-secondary, .btn.btn-secondary:link, .btn.btn-secondary:visited,
     a.btn.btn-secondary,
     a.btn.btn-secondary:link,
@@ -499,50 +496,62 @@ a.btn {
     a.btn.btn-secondary:active {
       background: #4e4282; }
 
+div.responsive .btn,
+div.responsive a.btn,
 div.responsive .step-button,
-div.responsive button.step-button,
-div.responsive .btn {
+div.responsive button.step-button {
   color: #ffffff; }
-  div.responsive .step-button, div.responsive .step-button:link, div.responsive .step-button:visited,
+  div.responsive .btn, div.responsive .btn:link, div.responsive .btn:visited,
+  div.responsive a.btn,
+  div.responsive a.btn:link,
+  div.responsive a.btn:visited,
+  div.responsive .step-button,
+  div.responsive .step-button:link,
+  div.responsive .step-button:visited,
   div.responsive button.step-button,
   div.responsive button.step-button:link,
-  div.responsive button.step-button:visited,
-  div.responsive .btn,
-  div.responsive .btn:link,
-  div.responsive .btn:visited {
+  div.responsive button.step-button:visited {
     background: #cd1d67;
     color: #ffffff; }
-  div.responsive .step-button:hover, div.responsive .step-button:focus, div.responsive .step-button:active,
+  div.responsive .btn:hover, div.responsive .btn:focus, div.responsive .btn:active,
+  div.responsive a.btn:hover,
+  div.responsive a.btn:focus,
+  div.responsive a.btn:active,
+  div.responsive .step-button:hover,
+  div.responsive .step-button:focus,
+  div.responsive .step-button:active,
   div.responsive button.step-button:hover,
   div.responsive button.step-button:focus,
-  div.responsive button.step-button:active,
-  div.responsive .btn:hover,
-  div.responsive .btn:focus,
-  div.responsive .btn:active {
+  div.responsive button.step-button:active {
     background: #a41752;
     color: #ffffff; }
 
-.btn-toggle,
-div.responsive .btn-toggle {
+.btn-toggle, .btn-toggle:link, .btn-toggle:visited,
+div.responsive .btn-toggle,
+div.responsive .btn-toggle:link,
+div.responsive .btn-toggle:visited {
   background: #ffffff;
   border: 1px solid #cd1d67;
   color: #cd1d67;
   text-decoration: none; }
-  .btn-toggle:hover,
-  div.responsive .btn-toggle:hover {
-    background: #cd1d67;
-    color: #ffffff;
-    cursor: pointer; }
 
-.btn-toggle--selected,
-div.responsive .btn-toggle--selected {
+.btn-toggle:hover, .btn-toggle:focus, .btn-toggle:active,
+div.responsive .btn-toggle:hover,
+div.responsive .btn-toggle:focus,
+div.responsive .btn-toggle:active {
+  background: #cd1d67;
+  color: #ffffff;
+  cursor: pointer; }
+
+.btn-toggle--selected, .btn-toggle--selected:link, .btn-toggle--selected:visited, .btn-toggle--selected:hover, .btn-toggle--selected:focus, .btn-toggle--selected:active,
+div.responsive .btn-toggle--selected,
+div.responsive .btn-toggle--selected:link,
+div.responsive .btn-toggle--selected:visited,
+div.responsive .btn-toggle--selected:hover,
+div.responsive .btn-toggle--selected:focus,
+div.responsive .btn-toggle--selected:active {
   background: #cd1d67;
   color: #ffffff; }
-  .btn-toggle--selected, .btn-toggle--selected:link, .btn-toggle--selected:visited,
-  div.responsive .btn-toggle--selected,
-  div.responsive .btn-toggle--selected:link,
-  div.responsive .btn-toggle--selected:visited {
-    color: #ffffff; }
 
 input[type="text"].btn-enter,
 div.responsive input[type="text"].btn-enter {
@@ -1238,6 +1247,23 @@ body.aha-luminate #at4-soc {
 
 .ym-registration-page-container {
   text-align: center; }
+
+#fr_new_user_container {
+  display: inline-block;
+  margin: 0; }
+
+.ym-registration-form-footer {
+  padding: 18px; }
+  @media (min-width: 768px) {
+    .ym-registration-form-footer {
+      padding: 20px; } }
+
+.ym-registration-page-container h5,
+.ym-registration-page-container .h5 {
+  color: #6153a3; }
+
+.ym-registration-form-footer {
+  background: #ebe9f3; }
 
 .donation-form-container.responsive span.field-required {
   display: none; }

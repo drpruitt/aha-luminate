@@ -17,29 +17,29 @@ a.btn {
       background: $event-primary-dark;
     }
   }
-
+  
   &.btn-secondary {
-    color:#fff;
-
+    color: #ffffff;
+    
     &, 
     &:link, 
     &:visited {
       background: $event-secondary;
-
     }
     
     &:hover, 
     &:focus, 
     &:active {
       background: $event-secondary-dark;
-    } 
+    }
   }
 }
 
 div.responsive {
+  .btn, 
+  a.btn, 
   .step-button, 
-  button.step-button,
-  .btn {
+  button.step-button {
     color: #ffffff;
     
     &, 
@@ -60,12 +60,18 @@ div.responsive {
 
 .btn-toggle, 
 div.responsive .btn-toggle {
-  background: #ffffff;
-  border: 1px solid $event-primary;
-  color: $event-primary;
-  text-decoration: none;
+  &, 
+  &:link, 
+  &:visited {
+    background: #ffffff;
+    border: 1px solid $event-primary;
+    color: $event-primary;
+    text-decoration: none;
+  }
   
-  &:hover {
+  &:hover, 
+  &:focus, 
+  &:active {
     background: $event-primary;
     color: #ffffff;
     cursor: pointer;
@@ -74,12 +80,13 @@ div.responsive .btn-toggle {
 
 .btn-toggle--selected, 
 div.responsive .btn-toggle--selected {
-  background: $event-primary;
-  color: #ffffff;
-  
   &, 
   &:link, 
-  &:visited {
+  &:visited, 
+  &:hover, 
+  &:focus, 
+  &:active {
+    background: $event-primary;
     color: #ffffff;
   }
 }

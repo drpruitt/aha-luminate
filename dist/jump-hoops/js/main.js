@@ -283,6 +283,21 @@
     }
   ]);
 
+  angular.module('ahaLuminateApp').factory('TeamraiserRegistrationService', [
+    'LuminateRESTService', function(LuminateRESTService) {
+      return {
+        getRegistrationDocument: function(requestData, callback) {
+          var dataString;
+          dataString = 'method=getRegistrationDocument';
+          if (requestData && requestData !== '') {
+            dataString += '&' + requestData;
+          }
+          return LuminateRESTService.luminateExtendTeamraiserRequest(dataString, false, true, callback);
+        }
+      };
+    }
+  ]);
+
   angular.module('ahaLuminateApp').factory('TeamraiserTeamService', [
     'LuminateRESTService', function(LuminateRESTService) {
       return {
@@ -885,19 +900,99 @@
     }
   ]);
 
-  angular.module('ahaLuminateControllers').controller('RegistrationPtypeCtrl', ['$scope', function($scope) {}]);
+  angular.module('ahaLuminateControllers').controller('RegistrationPtypeCtrl', [
+    '$scope', '$filter', '$timeout', function($scope, $filter, $timeout) {
+      var $donationLevels, $participationType;
+      if (!$scope.participationOptions) {
+        $scope.participationOptions = {};
+      }
+      $participationType = angular.element('.js--registration-ptype-part-types input[name="fr_part_radio"]').eq(0);
+      $scope.participationOptions.fr_part_radio = $participationType.val();
+      $scope.donationLevels = {
+        levels: []
+      };
+      $donationLevels = angular.element('.js--registration-ptype-donation-levels .donation-level-row-container');
+      angular.forEach($donationLevels, function($donationLevel) {
+        var levelAmount, levelAmountFormatted;
+        $donationLevel = angular.element($donationLevel);
+        levelAmount = $donationLevel.find('input[type="radio"][name^="donation_level_form_"]').val();
+        levelAmountFormatted = null;
+        if (levelAmount !== '-1' && levelAmount !== '$0.00') {
+          levelAmountFormatted = $filter('currency')(Number(levelAmount.replace('$', '').replace(/,/g, '')), '$').replace('.00', '');
+        }
+        return $scope.donationLevels.levels.push({
+          amount: levelAmount,
+          amountFormatted: levelAmountFormatted,
+          isOtherAmount: levelAmount === '-1',
+          isNoDonation: levelAmount === '$0.00',
+          askMessage: $donationLevel.find('.donation-level-description-text').text()
+        });
+      });
+      $scope.toggleDonationLevel = function(levelAmount) {
+        $scope.participationOptions.ng_donation_level = levelAmount;
+        return angular.forEach($scope.donationLevels.levels, function(donationLevel, donationLevelIndex) {
+          if (donationLevel.amount === levelAmount) {
+            return $scope.donationLevels.activeLevel = donationLevel;
+          }
+        });
+      };
+      $scope.previousStep = function() {
+        $scope.ng_go_back = true;
+        $timeout(function() {
+          return $scope.submitPtype();
+        }, 500);
+        return false;
+      };
+      return $scope.submitPtype = function() {
+        angular.element('.js--default-ptype-form').submit();
+        return false;
+      };
+    }
+  ]);
 
-  angular.module('ahaLuminateControllers').controller('RegistrationRegCtrl', ['$scope', function($scope) {}]);
+  angular.module('ahaLuminateControllers').controller('RegistrationRegCtrl', [
+    '$scope', 'TeamraiserRegistrationService', function($scope, TeamraiserRegistrationService) {
+      return $scope.submitReg = function() {
+        angular.element('.js--default-reg-form').submit();
+        return false;
+      };
+    }
+  ]);
 
   angular.module('ahaLuminateControllers').controller('RegistrationRegSummaryCtrl', ['$scope', function($scope) {}]);
 
   angular.module('ahaLuminateControllers').controller('RegistrationTfindCtrl', ['$scope', function($scope) {}]);
 
-  angular.module('ahaLuminateControllers').controller('RegistrationUtypeCtrl', ['$scope', function($scope) {}]);
+  angular.module('ahaLuminateControllers').controller('RegistrationUtypeCtrl', [
+    '$scope', function($scope) {
+      $scope.toggleUserType = function(userType) {
+        $scope.userType = userType;
+        if (userType === 'new') {
+          angular.element('.js--default-utype-new-form').submit();
+          return false;
+        }
+      };
+      $scope.submitUtypeLogin = function() {
+        angular.element('.js--default-utype-existing-form').submit();
+        return false;
+      };
+      $scope.toggleForgotUsername = function(showHide) {
+        return $scope.showForgotUsername = showHide === 'show';
+      };
+      return $scope.submitForgotUsername = function() {
+        angular.element('.js--default-utype-send-username-form').submit();
+        return false;
+      };
+    }
+  ]);
 
   angular.module('ahaLuminateControllers').controller('RegistrationWaiverCtrl', [
     '$scope', function($scope) {
-      return angular.element('.js--registration-waiver-form').submit();
+      $scope.submitWaiver = function() {
+        angular.element('.js--registration-waiver-form').submit();
+        return false;
+      };
+      return $scope.submitWaiver();
     }
   ]);
 

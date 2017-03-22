@@ -18,7 +18,7 @@ module.exports = {
         src: [
           'dist/heart-walk/js/main.js'
         ], 
-        dest: 'dist/heart-walk/js/main.min.js'
+        dest: 'dist/heart-walk/js/main-v2.min.js'
       }
     ]
   }, 
