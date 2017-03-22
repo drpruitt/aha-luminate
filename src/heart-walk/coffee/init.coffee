@@ -17,7 +17,6 @@ angular.module 'ahaLuminateApp'
         rootPath = '../'+ devBranch + '/aha-luminate/'
       else
         rootPath = '../aha-luminate/'
-        
 
 angular.module 'ahaLuminateApp'
   .run [

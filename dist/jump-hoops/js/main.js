@@ -976,7 +976,20 @@
 
   angular.module('ahaLuminateControllers').controller('RegistrationRegSummaryCtrl', ['$scope', function($scope) {}]);
 
-  angular.module('ahaLuminateControllers').controller('RegistrationTfindCtrl', ['$scope', function($scope) {}]);
+  angular.module('ahaLuminateControllers').controller('RegistrationTfindCtrl', [
+    '$scope', 'TeamraiserTeamService', function($scope, TeamraiserTeamService) {
+      return TeamraiserTeamService.getTeams('team_company_id=&list_page_size=500', {
+        error: function() {},
+        success: function(response) {
+          var teams;
+          teams = response.getTeamSearchByInfoResponse.team;
+          if (!angular.isArray(teams)) {
+            return teams = [teams];
+          }
+        }
+      });
+    }
+  ]);
 
   angular.module('ahaLuminateControllers').controller('RegistrationUtypeCtrl', [
     '$scope', function($scope) {
