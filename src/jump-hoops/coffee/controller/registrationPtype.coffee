@@ -1,8 +1,9 @@
 angular.module 'ahaLuminateControllers'
   .controller 'RegistrationPtypeCtrl', [
     '$scope'
+    '$filter'
     '$timeout'
-    ($scope, $timeout) ->
+    ($scope, $filter, $timeout) ->
       if not $scope.participationOptions
         $scope.participationOptions = {}
       
@@ -15,8 +16,12 @@ angular.module 'ahaLuminateControllers'
       angular.forEach $donationLevels, ($donationLevel) ->
         $donationLevel = angular.element $donationLevel
         levelAmount = $donationLevel.find('input[type="radio"][name^="donation_level_form_"]').val()
+        levelAmountFormatted = null
+        if levelAmount isnt '-1' and levelAmount isnt '$0.00'
+          levelAmountFormatted = $filter('currency')(levelAmount, '$').replace '.00', ''
         $scope.donationLevels.levels.push
           amount: levelAmount
+          amountFormatted: levelAmountFormatted
           isOtherAmount: levelAmount is '-1'
           isNoDonation: levelAmount is '$0.00'
           askMessage: $donationLevel.find('.donation-level-description-text').text()
