@@ -90,15 +90,15 @@ module.exports = {
       'src/jump-hoops/coffee/**/*'
     ], 
     tasks: [
-      'clean:jump-hoops', 
-      'html-dist:jump-hoops', 
-      'img-dist:jump-hoops', 
+      'clean:jump-hoops',  
       'css-dist:jump-hoops', 
       'inject:jump-hoops-css-main',
       'inject:jump-hoops-css-participant',
       'js-dist:jump-hoops', 
       'inject:jump-hoops-js-main',
       'inject:jump-hoops-js-participant',
+      'html-dist:jump-hoops', 
+      'img-dist:jump-hoops',
       'notify:jump-hoops'
     ]
   }

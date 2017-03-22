@@ -106,14 +106,24 @@ module.exports = {
         expand: true, 
         cwd: 'dist/jump-hoops/css/', 
         src: [
-          '**/*'
+          'main.*', 
+          '!main.css', 
+          '!main.' + '<%= timestamp %>' + '.*',
+          'participant.*', 
+          '!participant.css', 
+          '!participant.' + '<%= timestamp %>' + '.*'
         ]
       }, 
       {
         expand: true, 
         cwd: 'dist/jump-hoops/js/', 
         src: [
-          '**/*'
+          'main.*', 
+          '!main.js', 
+          '!main.' + '<%= timestamp %>' + '.*',
+          'participant.*', 
+          '!participant.js', 
+          '!participant.' + '<%= timestamp %>' + '.*'
         ]
       }
     ]
