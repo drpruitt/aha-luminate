@@ -286,6 +286,11 @@
   angular.module('ahaLuminateApp').factory('TeamraiserRegistrationService', [
     'LuminateRESTService', function(LuminateRESTService) {
       return {
+        getParticipationTypes: function(callback) {
+          var dataString;
+          dataString = 'method=getRegistrationDocument';
+          return LuminateRESTService.luminateExtendTeamraiserRequest(dataString, false, true, callback);
+        },
         getRegistrationDocument: function(requestData, callback) {
           var dataString;
           dataString = 'method=getRegistrationDocument';
@@ -952,6 +957,16 @@
 
   angular.module('ahaLuminateControllers').controller('RegistrationRegCtrl', [
     '$scope', 'TeamraiserRegistrationService', function($scope, TeamraiserRegistrationService) {
+      TeamraiserRegistrationService.getParticipationTypes({
+        error: function() {},
+        success: function(response) {
+          var participationTypes;
+          participationTypes = response.getParticipationTypesResponse.participationType;
+          if (!angular.isArray(participationTypes)) {
+            return participationTypes = [participationTypes];
+          }
+        }
+      });
       return $scope.submitReg = function() {
         angular.element('.js--default-reg-form').submit();
         return false;
@@ -961,7 +976,31 @@
 
   angular.module('ahaLuminateControllers').controller('RegistrationRegSummaryCtrl', ['$scope', function($scope) {}]);
 
-  angular.module('ahaLuminateControllers').controller('RegistrationTfindCtrl', ['$scope', function($scope) {}]);
+  angular.module('ahaLuminateControllers').controller('RegistrationTfindCtrl', [
+    '$scope', 'TeamraiserTeamService', function($scope, TeamraiserTeamService) {
+      var getTeams;
+      getTeams = function() {
+        return TeamraiserTeamService.getTeams('team_company_id=' + $scope.companyId + '&list_page_size=500', {
+          error: function() {},
+          success: function(response) {
+            var teams;
+            teams = response.getTeamSearchByInfoResponse.team;
+            if (!angular.isArray(teams)) {
+              return teams = [teams];
+            }
+          }
+        });
+      };
+      if ($scope.companyId && $scope.companyId !== '') {
+        getTeams();
+      }
+      return $scope.$watch('companyId', function(newValue) {
+        if (newValue && newValue !== '') {
+          return getTeams();
+        }
+      });
+    }
+  ]);
 
   angular.module('ahaLuminateControllers').controller('RegistrationUtypeCtrl', [
     '$scope', function($scope) {

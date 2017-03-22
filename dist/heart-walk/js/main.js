@@ -292,6 +292,11 @@
   angular.module('ahaLuminateApp').factory('TeamraiserRegistrationService', [
     'LuminateRESTService', function(LuminateRESTService) {
       return {
+        getParticipationTypes: function(callback) {
+          var dataString;
+          dataString = 'method=getRegistrationDocument';
+          return LuminateRESTService.luminateExtendTeamraiserRequest(dataString, false, true, callback);
+        },
         getRegistrationDocument: function(requestData, callback) {
           var dataString;
           dataString = 'method=getRegistrationDocument';
