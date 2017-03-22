@@ -286,6 +286,11 @@
   angular.module('ahaLuminateApp').factory('TeamraiserRegistrationService', [
     'LuminateRESTService', function(LuminateRESTService) {
       return {
+        getParticipationTypes: function(callback) {
+          var dataString;
+          dataString = 'method=getRegistrationDocument';
+          return LuminateRESTService.luminateExtendTeamraiserRequest(dataString, false, true, callback);
+        },
         getRegistrationDocument: function(requestData, callback) {
           var dataString;
           dataString = 'method=getRegistrationDocument';
@@ -952,6 +957,16 @@
 
   angular.module('ahaLuminateControllers').controller('RegistrationRegCtrl', [
     '$scope', 'TeamraiserRegistrationService', function($scope, TeamraiserRegistrationService) {
+      TeamraiserRegistrationService.getParticipationTypes({
+        error: function() {},
+        success: function(response) {
+          var participationTypes;
+          participationTypes = response.getParticipationTypesResponse.participationType;
+          if (!angular.isArray(participationTypes)) {
+            return participationTypes = [participationTypes];
+          }
+        }
+      });
       return $scope.submitReg = function() {
         angular.element('.js--default-reg-form').submit();
         return false;
