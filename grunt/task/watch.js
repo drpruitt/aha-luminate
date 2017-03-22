@@ -38,10 +38,10 @@ module.exports = {
     ], 
     tasks: [
       'clean:general', 
-      'html-dist:general', 
-      'img-dist:general', 
       'css-dist:general', 
       'js-dist:general', 
+      'html-dist:general', 
+      'img-dist:general', 
       'notify:general'
     ]
   }, 
@@ -58,10 +58,10 @@ module.exports = {
     ], 
     tasks: [
       'clean:heart-walk', 
-      'html-dist:heart-walk', 
-      'img-dist:heart-walk', 
       'css-dist:heart-walk', 
       'js-dist:heart-walk', 
+      'html-dist:heart-walk', 
+      'img-dist:heart-walk', 
       'notify:heart-walk'
     ]
   }, 
