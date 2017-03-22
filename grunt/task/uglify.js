@@ -29,13 +29,13 @@ module.exports = {
         src: [
           'dist/jump-hoops/js/main.js'
         ], 
-        dest: 'dist/jump-hoops/js/main.min.js'
+        dest: 'dist/jump-hoops/js/main.' + '<%= timestamp %>' + '.min.js'
       }, 
       {
         src: [
           'dist/jump-hoops/js/participant.js'
         ], 
-        dest: 'dist/jump-hoops/js/participant.min.js'
+        dest: 'dist/jump-hoops/js/participant.' + '<%= timestamp %>' + '.min.js'
       }
     ]
   }

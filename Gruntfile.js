@@ -3,7 +3,9 @@ module.exports = function(grunt) {
   
   require('time-grunt')(grunt);
   
-  var config = {}, 
+  var config = {
+    timestamp: new Date().getTime()
+  }, 
   loadConfig = function(path) {
     var glob = require('glob'), 
     object = {}, 
@@ -43,6 +45,12 @@ module.exports = function(grunt) {
   });
   grunt.registerTask('js-dist', function(taskTarget) {
     runTargetedTask(['coffee', 'uglify'], taskTarget);
+  });
+  grunt.registerTask('js-dist', function(taskTarget) {
+    runTargetedTask(['coffee', 'uglify'], taskTarget);
+  });
+  grunt.registerTask('inject', function(taskTarget) {
+    runTargetedTask(['injector'], taskTarget);
   });
   grunt.registerTask('default', ['watch']);
 };
