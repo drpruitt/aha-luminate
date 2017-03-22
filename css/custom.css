@@ -1227,3 +1227,8 @@ input.error, select.error {
     border-color: #ff0000 !important;
     box-shadow: none !important;
 }
+label.error {
+    color: #ff0000;
+    font-weight: normal;
+    white-space: nowrap;
+}
