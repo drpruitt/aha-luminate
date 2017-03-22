@@ -902,9 +902,10 @@
   ]);
 
   angular.module('ahaLuminateControllers').controller('SchoolSearchCtrl', [
-    '$scope', '$rootScope', 'CsvService', 'UtilsService', 'TeamraiserCompanyService', function($scope, $rootScope, Csv, Utils, TeamraiserCompanyService) {
+    '$scope', '$rootScope', '$filter', 'CsvService', 'UtilsService', 'TeamraiserCompanyService', function($scope, $rootScope, $filter, Csv, Utils, TeamraiserCompanyService) {
       $scope.states = [];
       $scope.schools = [];
+      $scope.filtered = [];
       $scope.schoolList = {
         sortProp: 'SCHOOL_NAME',
         sortDesc: false,
@@ -937,11 +938,47 @@
           $scope.schoolList.stateFilter = states[0];
         }
       };
+      $scope.filterSchools = function() {
+        var filter, filtered, schools;
+        filter = $filter('filter');
+        schools = $scope.schools;
+        filtered = false;
+        if (schools.length && $scope.schoolList.nameFilter) {
+          filtered = true;
+          schools = filter(schools, {
+            SCHOOL_NAME: $scope.schoolList.nameFilter
+          });
+        }
+        if (schools.length && $scope.schoolList.stateFilter.SCHOOL_STATE) {
+          filtered = true;
+          schools = filter(schools, {
+            SCHOOL_STATE: $scope.schoolList.stateFilter.SCHOOL_STATE
+          });
+        }
+        if (filtered === false) {
+          schools = [];
+        }
+        $scope.schoolList.totalItems = schools.length;
+        $scope.filtered = schools;
+        return $scope.orderSchools($scope.schoolList.sortProp);
+      };
+      $scope.orderSchools = function(sortProp) {
+        var orderBy, schools;
+        schools = $scope.filtered;
+        if (schools.length) {
+          orderBy = $filter('orderBy');
+          $scope.schoolList.sortProp = sortProp;
+          $scope.schoolList.sortDesc = !$scope.schoolList.sortDesc;
+          schools = orderBy(schools, sortProp, $scope.schoolList.sortDesc);
+          $scope.filtered = schools;
+          return $scope.schoolList.currentPage = 1;
+        }
+      };
       $scope.paginate = function(value) {
         var begin, end, index;
         begin = ($scope.schoolList.currentPage - 1) * $scope.schoolList.numPerPage;
         end = begin + $scope.schoolList.numPerPage;
-        index = $scope.schools.indexOf(value);
+        index = $scope.filtered.indexOf(value);
         return begin <= index && index < end;
       };
       TeamraiserCompanyService.getSchools({
@@ -949,7 +986,6 @@
           var schools;
           schools = Csv.toJson(csv);
           $scope.schools = schools;
-          $scope.schoolList.totalItems = schools.length;
           $scope.setStates();
         },
         failure: function(response) {}
