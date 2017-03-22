@@ -6,29 +6,33 @@ module.exports = {
   }, 
   
   "general": {
-    files: {
-      'dist/general/css/main.min.css': [
-        'dist/general/css/main.css'
-      ]
-    }
+    files: [
+      {
+        src: 'dist/general/css/main.css', 
+        dest: 'dist/general/css/main.'+ '<%= timestamp %>' +'.min.css'
+      }
+    ]
   }, 
   
   "heart-walk": {
-    files: {
-      'dist/heart-walk/css/main.min.css': [
-        'dist/heart-walk/css/main.css'
-      ]
-    }
+    files: [
+      {
+        src: 'dist/heart-walk/css/main.css', 
+        dest: 'dist/heart-walk/css/main.'+ '<%= timestamp %>' +'.min.css'
+      }
+    ]
   }, 
   
   "jump-hoops": {
-    files: {
-      'dist/jump-hoops/css/main.min.css': [
-        'dist/jump-hoops/css/main.css'
-      ], 
-      'dist/jump-hoops/css/participant.min.css': [
-        'dist/jump-hoops/css/participant.css'
-      ]
-    }
+    files: [
+      {
+        src: 'dist/jump-hoops/css/main.css', 
+        dest: 'dist/jump-hoops/css/main.'+ '<%= timestamp %>' +'.min.css'
+      }, 
+      {
+        src: 'dist/jump-hoops/css/participant.css', 
+        dest: 'dist/jump-hoops/css/participant.'+'<%= timestamp %>'+'.min.css'
+      }
+    ]
   }
 }

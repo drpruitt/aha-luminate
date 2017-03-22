@@ -38,10 +38,12 @@ module.exports = {
     ], 
     tasks: [
       'clean:general', 
-      'html-dist:general', 
-      'img-dist:general', 
       'css-dist:general', 
       'js-dist:general', 
+      'inject:general-css-main', 
+      'inject:general-js-main', 
+      'html-dist:general', 
+      'img-dist:general', 
       'notify:general'
     ]
   }, 
@@ -58,10 +60,12 @@ module.exports = {
     ], 
     tasks: [
       'clean:heart-walk', 
-      'html-dist:heart-walk', 
-      'img-dist:heart-walk', 
       'css-dist:heart-walk', 
       'js-dist:heart-walk', 
+      'inject:heart-walk-css-main', 
+      'inject:heart-walk-js-main', 
+      'html-dist:heart-walk', 
+      'img-dist:heart-walk', 
       'notify:heart-walk'
     ]
   }, 
@@ -90,11 +94,15 @@ module.exports = {
       'src/jump-hoops/coffee/**/*'
     ], 
     tasks: [
-      'clean:jump-hoops', 
-      'html-dist:jump-hoops', 
-      'img-dist:jump-hoops', 
+      'clean:jump-hoops',  
       'css-dist:jump-hoops', 
       'js-dist:jump-hoops', 
+      'inject:jump-hoops-css-main', 
+      'inject:jump-hoops-css-participant', 
+      'inject:jump-hoops-js-main', 
+      'inject:jump-hoops-js-participant', 
+      'html-dist:jump-hoops', 
+      'img-dist:jump-hoops', 
       'notify:jump-hoops'
     ]
   }
