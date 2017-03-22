@@ -50,7 +50,7 @@
               <span id="fr_returning_user_container">[[C1:fr_returning_user]]</span>
             </button> 
             <button type="button" class="btn btn-toggle" ng-click="toggleUserType('new')">
-              <span id="fr_new_user_container">[[C1:fr_new_user]]</span>
+              <span id="fr_new_user_container">[[C1:fr_new_user]]</span> <i class="fa fa-chevron-right"></i>
             </button>
           </div>
         </div>
@@ -75,7 +75,7 @@
             </div>
             <div class="">
               <button type="submit" class="btn btn-primary">
-                Next
+                Next <i class="fa fa-chevron-right"></i>
               </button>
             </div>
           </form>
@@ -87,6 +87,9 @@
     <div class="row clearfix">
       <div class="col-sm-6 col-sm-offset-3">
         <a ng-click="toggleForgotUsername('hide')">Back</a>
+        <h2 class="h5" id="ut_title_container">
+          Forgot Username or Password
+        </h2>
         [[?xx::x[[A26]]x::::
           <div class="alert alert-danger">
             [[A26]]

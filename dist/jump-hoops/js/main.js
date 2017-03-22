@@ -900,7 +900,14 @@
     }
   ]);
 
-  angular.module('ahaLuminateControllers').controller('RegistrationRegCtrl', ['$scope', function($scope) {}]);
+  angular.module('ahaLuminateControllers').controller('RegistrationRegCtrl', [
+    '$scope', function($scope) {
+      return $scope.submitReg = function() {
+        angular.element('.js--default-reg-form').submit();
+        return false;
+      };
+    }
+  ]);
 
   angular.module('ahaLuminateControllers').controller('RegistrationRegSummaryCtrl', ['$scope', function($scope) {}]);
 

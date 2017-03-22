@@ -2,5 +2,7 @@ angular.module 'ahaLuminateControllers'
   .controller 'RegistrationRegCtrl', [
     '$scope'
     ($scope) ->
-      # TODO
+      $scope.submitReg = ->
+        angular.element('.js--default-reg-form').submit()
+        false
   ]

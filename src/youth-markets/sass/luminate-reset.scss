@@ -21,31 +21,28 @@ div.responsive a {
   &:focus, 
   &:active {
     color: $link-color;
+    cursor: pointer;
   }
 }
 
 div.responsive {
-  width: auto;
-  padding:0;
-  border: 0 none;
-  background: transparent;
-
+  &, 
+  &.donation-form-container {
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    width: auto;
+    padding: 0;
+  }
+  
   input[type="text"], 
-  input[type="number"],
-  input[type="password"],
+  input[type="number"], 
+  input[type="password"], 
   textarea {
     box-shadow: none;
   }
-
 }
 
 .mobile div.responsive {
   width: auto;
-}
-
-div.donation-form-container.responsive {
-  padding:0;
-  background: transparent;
-  border: 0 none;
-  border-radius: 0;
 }
