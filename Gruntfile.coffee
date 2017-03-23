@@ -100,7 +100,14 @@ module.exports = (grunt) ->
       'imagemin'
     ], 'jump-hoops'
     return
+  grunt.registerTask 'dev', ->
+    grunt.task.run [
+      'configureProxies:dev'
+      'connect'
+      'watch'
+    ]
+    return
   grunt.registerTask 'default', [
-    'watch'
+    'dev'
   ]
   return
