@@ -74,7 +74,7 @@
             <div class="" ng-if="(teamList.teams|filter:{name: teamSearch.teamName}).length > 0">
               <div class="" ng-repeat="team in teamList.teams|filter:{name: teamSearch.teamName}">
                 <div class="">
-                  <a ng-href="TR?fr_id={{team.EventId}}&amp;pg=team&amp;team_id={{team.id}}" target="_blank"><span ng-bind-html="team.name"></span></a>
+                  <a ng-href="TR?fr_id={{team.EventId}}&amp;pg=team&amp;team_id={{team.id}}"><span ng-bind-html="team.name"></span></a>
                 </div>
                 <div class="">
                   <a class="btn btn-primary" ng-href="TRR?fr_id={{team.EventId}}&amp;pg=tfind&amp;fr_tm_opt=existing&amp;fr_tjoin={{team.id}}&amp;skip_login_page=true">
