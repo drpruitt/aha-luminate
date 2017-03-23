@@ -54,6 +54,8 @@ Developing Locally
 ------------------
 
 When developing locally, you can use an HTTP proxy tool to reroute requests to the aha-luminate directory on the Luminate Online filesystem to your 
-machine. One simple tool available for both Windows and Mac is [Fiddler for Chrome](https://chrome.google.com/webstore/detail/fiddler/hkknfnifmbannmgkdliadghepbneplka?hl=en). With the Fiddler extension, you can add an Auto Response rule to replace the String "http://heartdev.convio.net/aha-luminate/" with the Path "http://localhost:8000/".
+machine. One simple tool available for both Windows and Mac is [Fiddler for Chrome](https://chrome.google.com/webstore/detail/fiddler/hkknfnifmbannmgkdliadghepbneplka?hl=en). With the Fiddler extension, you can add Auto Response rules to replace the String 
+"http://heartdev.convio.net/aha-luminate/" with the Path "http://localhost:8000/", and "https://secure3.convio.net/heartdev/aha-luminate/" with 
+"http://localhost:8000/".
 
 You should always use debug mode when developing locally.
