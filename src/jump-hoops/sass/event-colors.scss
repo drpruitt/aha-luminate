@@ -1,25 +1,31 @@
 .event-primary {
   background: $event-primary;
 }
-.event-primary-dark{
+
+.event-primary-dark {
   background: $event-primary-dark;
 }
-.event-secondary{
+
+.event-secondary {
   background: $event-secondary;
 }
-.event-secondary-medium{
+
+.event-secondary-medium {
   background: $event-secondary-medium;
 }
-.event-secondary-light{
-  background: $event-secondary-light;
 
+.event-secondary-light {
+  background: $event-secondary-light;
+  
   hr {
     border-color: $event-secondary;
   }
 }
-.event-accent{
+
+.event-accent {
   background: $event-accent;
 }
-.event-accent-light{
+
+.event-accent-light {
   background: $event-accent-light;
 }

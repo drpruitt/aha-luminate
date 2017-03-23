@@ -1,3 +1,16 @@
 .ym-registration-page-container {
   text-align: center;
 }
+
+#fr_new_user_container {
+  display: inline-block;
+  margin: 0;
+}
+
+.ym-registration-form-footer {
+  padding: 18px;
+  
+  @media (min-width: $screen-sm-min) {
+    padding: 20px;
+  }
+}

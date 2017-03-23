@@ -3,103 +3,111 @@
 ]]
 
 [[?[[A13]]::new::
+  <!-- new team -->
   <style>
     body {
       display: none;
     }
   </style>
   <script>
-    window.location = 'https://[[S29:SECURE_DOMAIN]][[S29:SECURE_PATH]]TRR?fr_id=[[A2]]&pg=tfind&fr_tm_opt=existing';
+    window.location = 'https://[[S29:SECURE_DOMAIN]][[S29:SECURE_PATH]]TRR?fr_id=[[A2]]&pg=tfind&fr_tm_opt=existing&company_id=[[?x-1x::x[[A36]]x::::[[A36]]]]';
   </script>
 ::
-  [[?xTx::x[[A26]]x::
-    <script>
-      var myHtmlEditor = 'Gfr_wysiwygtextarea';
-    </script>
-    <script src="../js/ajax_mce.js"></script>
-  ::]]
-  <div class="ym-registration-page-container ym-registration-page-container--tfind" ng-controller="RegistrationTfindCtrl">
-    [[?xxnullx::x[[A5]]x::::
-      <div class="alert alert-success">
-        [[A5]]
-      </div>
-    ]]
-    [[?xyz.xnullynullz.xynullz.xnullyz::x[[A4]]y[[A6]]z::::
-      <div class="alert alert-danger">
-        [[?xy.xnully::x[[A4]]y::
-          [[M0:friendraiser:generic_error]]
-        ::
-          [[A4]]
-        ]]
-      </div>
-    ]]
-    <form name="FriendraiserFind" method="POST" action="[[A1]]">
-      <input type="hidden" name="fr_id" value="[[A2]]">
-      <input type="hidden" name="pg" value="[[A7]]">
-      <input type="hidden" name="fr_cstm_tm" value="t">
-      <input type="hidden" name="fr_tm_opt" value="[[A13]]">
-      <input type="hidden" name="company_id" value="[[A36]]">
-      <div class="section-container" id="team_find_section_container">
-        <div class="manageable-editor" data-container="edit_title_container">
-          <h2 class="h5" id="title_container">
-            [[C1:fr_team_title]]
-          </h2>
-        </div>
-        <div class="section-sub-header empty" id="part_type_instruction_sub_header"></div>
-        <div class="section-body" id="team_find_section_body">
-          [[?[[A13]]::new::::
-            <div id="team_find_existing">
-              <div class="input-container" id="team_find_existing_team_search_container">
-                <div class="manageable-editor" data-container="edit_team_label_container">
-                  <label class="input-label" for="fr_team_name" id="team_label_container">
-                    [[?xx::x[[C1:fr_team_field]]x::[[M0:friendraiser:team_field]]::[[C1:fr_team_field]]]]
-                  </label>
-                </div>
-                <input type="text" class="form-control" name="fr_team_name" id="fr_team_name" value="[[A16]]">
-              </div>
-              <div id="team_find_search_button_container">
-                <button type="submit" class="btn btn-primary" name="fr_find_search.x" value="[[C1:fr_team_search_button]]">
-                  [[C1:fr_team_search_button]]
-                </button>
-              </div>
-              <div class="parent-justify-filler" id="team_find_existing_filler"></div>
+  <!-- existing team -->
+  [[?xx-1x::x[[A36]]x::
+    <!-- company_id is null -->
+  ::
+    <!-- company_id is not null -->
+    [[?xTx::x[[A26]]x::
+      <script>
+        var myHtmlEditor = 'Gfr_wysiwygtextarea';
+      </script>
+      <script src="../js/ajax_mce.js"></script>
+    ::]]
+    <div class="ym-registration-page-container ym-registration-page-container--tfind" ng-controller="RegistrationTfindCtrl" ng-init="companyId='[[T6:[[A36]]]]'">
+      <div class="row clearfix">
+        <div class="col-sm-6 col-sm-offset-3">
+          [[?xxnullx::x[[A5]]x::::
+            <div class="alert alert-success">
+              [[A5]]
             </div>
           ]]
-          [[?[[A13]]::new::::
-            [[?xxnullx::x[[A15]]x::::
-              <div id="team_find_search_results_container">
-                <span id="team_find_search_results_header_text">[[C1:fr_search_results]]</span>
-                [[A15]]
+          [[?xyz.xnullynullz.xynullz.xnullyz::x[[A4]]y[[A6]]z::::
+            <div class="alert alert-danger">
+              [[?xy.xnully::x[[A4]]y::
+                [[M0:friendraiser:generic_error]]
+              ::
+                [[A4]]
+              ]]
+            </div>
+          ]]
+          <form name="FriendraiserFind" method="POST" action="[[A1]]">
+            <input type="hidden" name="fr_id" value="[[A2]]">
+            <input type="hidden" name="pg" value="[[A7]]">
+            <input type="hidden" name="fr_cstm_tm" value="t">
+            <input type="hidden" name="fr_tm_opt" value="[[A13]]">
+            <input type="hidden" name="company_id" value="[[A36]]">
+            <div class="section-container" id="team_find_section_container">
+              <div class="manageable-editor" data-container="edit_title_container">
+                <h2 class="h5" id="title_container">
+                  [[C1:fr_team_title]]
+                </h2>
               </div>
-            ]]
-          ]]
-        </div>
-        <div class="section-footer clearfix"  id="team_find_section_footer">
-          [[?[[A13]]::new::::
-            <input type="submit" class="default-submit-hack" name="fr_find_search.x" value="Default Action" tabindex="-1">
-          ]]
+              <p>
+                Find your team in the list below or search:
+              </p>
+              <div class="section-body" id="team_find_section_body">
+                [[?[[A13]]::new::::
+                  <div class="manageable-editor" data-container="edit_team_label_container">
+                    <label for="fr_team_name" id="team_label_container">
+                      [[?xx::x[[C1:fr_team_field]]x::[[M0:friendraiser:team_field]]::[[C1:fr_team_field]]]]
+                    </label>
+                  </div>
+                  <input type="text" class="form-control" name="fr_team_name" id="fr_team_name" value="[[A16]]">
+                  <div id="team_find_search_button_container">
+                    <button type="submit" class="btn btn-primary" name="fr_find_search.x" value="[[C1:fr_team_search_button]]">
+                      [[C1:fr_team_search_button]]
+                    </button>
+                  </div>
+                ]]
+                [[?[[A13]]::new::::
+                  [[?xxnullx::x[[A15]]x::::
+                    <div id="team_find_search_results_container">
+                      <span id="team_find_search_results_header_text">[[C1:fr_search_results]]</span>
+                      [[A15]]
+                    </div>
+                  ]]
+                ]]
+              </div>
+              <div class="section-footer clearfix"  id="team_find_section_footer">
+                [[?[[A13]]::new::::
+                  <input type="submit" class="default-submit-hack" name="fr_find_search.x" value="Default Action" tabindex="-1">
+                ]]
+              </div>
+            </div>
+            [[S66:util/SpamControlComponentResponsive.tpt]]
+          </form>
         </div>
       </div>
-      [[S66:util/SpamControlComponentResponsive.tpt]]
-    </form>
-  </div>
-  [[?xTx::x[[A26]]x::
-    <div id="edit_title_container" class="EditContainer" style="display: none;">
-      [[C:ajax-custompage-edit-component:edit_title_container]]
     </div>
-    <div id="edit_team_label_container" class="EditContainer" style="display: none;">
-      [[C:ajax-custompage-edit-component:edit_team_label_container]]
-    </div>
-    <input id="edit_btn_title" type="hidden" value="[[M0:friendraiser_emgmt:preview_edit_link]]">
-    <script>
-      hide_element('edit_fr_wysiwyg_container');
-      Y.use('emc-reg-editor', function(Y) {
-        jQuery(function() {
-          jQuery('.registration-page-container').manageEMCEditable({
-            windowTitle: '[[T6:[[M0:friendraiser_emgmt:editor_window_title]]]]'
+    [[?xTx::x[[A26]]x::
+      <div id="edit_title_container" class="EditContainer" style="display: none;">
+        [[C:ajax-custompage-edit-component:edit_title_container]]
+      </div>
+      <div id="edit_team_label_container" class="EditContainer" style="display: none;">
+        [[C:ajax-custompage-edit-component:edit_team_label_container]]
+      </div>
+      <input id="edit_btn_title" type="hidden" value="[[M0:friendraiser_emgmt:preview_edit_link]]">
+      <script>
+        hide_element('edit_fr_wysiwyg_container');
+        Y.use('emc-reg-editor', function(Y) {
+          jQuery(function() {
+            jQuery('.registration-page-container').manageEMCEditable({
+              windowTitle: '[[T6:[[M0:friendraiser_emgmt:editor_window_title]]]]'
+            });
           });
         });
-      });
-    </script>
-  ::]]
+      </script>
+    ::]]
+  ]]
 ]]
