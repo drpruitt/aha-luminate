@@ -41,50 +41,39 @@
               ]]
             </div>
           ]]
-          <form name="FriendraiserFind" method="POST" action="[[A1]]">
+          <form action="[[A1]]" method="POST">
             <input type="hidden" name="fr_id" value="[[A2]]">
             <input type="hidden" name="pg" value="[[A7]]">
             <input type="hidden" name="fr_cstm_tm" value="t">
             <input type="hidden" name="fr_tm_opt" value="[[A13]]">
             <input type="hidden" name="company_id" value="[[A36]]">
-            <div class="section-container" id="team_find_section_container">
-              <div class="manageable-editor" data-container="edit_title_container">
-                <h2 class="h5" id="title_container">
-                  [[C1:fr_team_title]]
-                </h2>
-              </div>
-              <p>
-                Find your team in the list below or search:
-              </p>
-              <div class="section-body" id="team_find_section_body">
-                [[?[[A13]]::new::::
-                  <div class="manageable-editor" data-container="edit_team_label_container">
-                    <label for="fr_team_name" id="team_label_container">
-                      [[?xx::x[[C1:fr_team_field]]x::[[M0:friendraiser:team_field]]::[[C1:fr_team_field]]]]
-                    </label>
-                  </div>
-                  <input type="text" class="form-control" name="fr_team_name" id="fr_team_name" value="[[A16]]">
-                  <div id="team_find_search_button_container">
-                    <button type="submit" class="btn btn-primary" name="fr_find_search.x" value="[[C1:fr_team_search_button]]">
-                      [[C1:fr_team_search_button]]
-                    </button>
-                  </div>
-                ]]
-                [[?[[A13]]::new::::
-                  [[?xxnullx::x[[A15]]x::::
-                    <div id="team_find_search_results_container">
-                      <span id="team_find_search_results_header_text">[[C1:fr_search_results]]</span>
-                      [[A15]]
-                    </div>
-                  ]]
-                ]]
-              </div>
-              <div class="section-footer clearfix"  id="team_find_section_footer">
-                [[?[[A13]]::new::::
-                  <input type="submit" class="default-submit-hack" name="fr_find_search.x" value="Default Action" tabindex="-1">
-                ]]
-              </div>
+            <div class="manageable-editor" data-container="edit_title_container">
+              <h2 class="h5" id="title_container">
+                [[C1:fr_team_title]]
+              </h2>
             </div>
+            <p>
+              Find your team in the list below or search:
+            </p>
+            <div class="manageable-editor" data-container="edit_team_label_container">
+              <label for="fr_team_name" id="team_label_container">
+                [[?xx::x[[C1:fr_team_field]]x::
+                  [[M0:friendraiser:team_field]]
+                ::
+                  [[C1:fr_team_field]]
+                ]]
+              </label>
+            </div>
+            <input type="text" class="form-control" name="fr_team_name" id="fr_team_name" value="[[A16]]">
+            <button type="submit" class="btn btn-primary" name="fr_find_search.x" value="[[C1:fr_team_search_button]]">
+              [[C1:fr_team_search_button]]
+            </button>
+            [[?xxnullx::x[[A15]]x::::
+              <div id="team_find_search_results_container">
+                <span id="team_find_search_results_header_text">[[C1:fr_search_results]]</span>
+                [[A15]]
+              </div>
+            ]]
             [[S66:util/SpamControlComponentResponsive.tpt]]
           </form>
         </div>
