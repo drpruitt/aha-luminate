@@ -31,6 +31,20 @@
       var pid = (dtype == "p") ? jQuery('input[name=PROXY_ID]').val() : "";
       var tid = (dtype == "t") ? jQuery('input[name=PROXY_ID]').val() : "";
 
+      if (eid == "1090") {
+        jQuery('span.field-required').each(function(){
+          jQuery(this).closest('.form-content').find('> select').addClass("required");
+          jQuery(this).closest('.form-content').find('> input').addClass("required");
+          jQuery('input#donor_email_addressname').addClass("email");
+        });
+        jQuery('button#pstep_next').click(function(e){
+          e.preventDefault();
+          if(jQuery('form#ProcessForm').valid()) {
+            jQuery('form#ProcessForm').submit();
+          }
+        });
+      }
+      
       jQuery.getJSON("https://secure3.convio.net/heart/site/SPageNavigator/heartwalk_tr_info.html?pgwrap=n&fr_id="+eid+"&team_id="+tid+"&cons_id="+pid+"&callback=?",function(data2){
         //$('.campaign-banner-container h1').html(data2.event_title).each(divTitleWords);
         if (data2.team_name != "") {
