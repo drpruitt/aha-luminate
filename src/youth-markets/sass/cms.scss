@@ -56,4 +56,32 @@
     background: url("../../youth-markets/image/ym-select-carot.png") right 0.75rem center no-repeat $event-secondary;
     font-weight: bold;
   }
+  
+  .ym-page-section__header {
+    position: relative;
+  }
+  
+  @media (max-width: $screen-sm-max) {
+    .ym-page-section__header {
+      text-align: center;
+    }
+    .ym-school-search #school-state-filter {
+      position: relative;
+      margin-bottom: 30px;
+    }
+  }
+  
+  @media (max-width: $screen-xs-max) {
+    .ym-list__school-list-wrpr {
+      overflow-y: scroll;
+    }
+    .ym-list--school-list {
+      min-width: 600px;
+    }
+    .ym-school-search {
+      #school-name-filter {
+        display: inline-block;
+      }
+    }
+  }
 }

@@ -19,7 +19,7 @@
     </div>
   </div>
   <div class="ym-page-section ym-page-section__roster">
-    <div class="pos-r">
+    <div class="ym-page-section__header">
       <h5>Results Matching Your School's Name</h5>
       <select id="school-state-filter" class="btn btn-sm btn-secondary" name="school-state-filter"
         ng-model="schoolList.stateFilter"
@@ -27,6 +27,9 @@
         ng-options="state as state.label for state in states | orderBy:'id' track by state.id"
         >
       </select>
+    </div>
+    <div class="text-center pb-lg visible-xs-block">
+      <em>Scroll right to view all information</em>
     </div>
     <!-- <school-list schools="schools" name-filter="schoolList.nameFilter" state-filter="schoolList.stateFilter"></school-list> -->
     <table class="table table-responsive table-striped ym-list ym-list--school-list">
