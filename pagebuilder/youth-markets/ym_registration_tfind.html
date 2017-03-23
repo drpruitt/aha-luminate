@@ -24,7 +24,7 @@
       </script>
       <script src="../js/ajax_mce.js"></script>
     ::]]
-    <div class="ym-registration-page-container ym-registration-page-container--tfind" ng-controller="RegistrationTfindCtrl" ng-init="companyId='[[T6:[[A36]]]]'">
+    <div class="ym-registration-page-container ym-registration-page-container--tfind" ng-controller="RegistrationTfindCtrl" ng-init="teamSearch.companyId='[[T6:[[A36]]]]';ng_team_name='[[T6:[[A16]]]]';teamSearch.teamName='[[T6:[[A16]]]]';">
       <div class="row clearfix">
         <div class="col-sm-6 col-sm-offset-3">
           [[?xxnullx::x[[A5]]x::::
@@ -41,7 +41,7 @@
               ]]
             </div>
           ]]
-          <form method="POST">
+          <form method="POST" ng-submit="submitTfindSearch()">
             <div class="manageable-editor" data-container="edit_title_container">
               <h2 class="h5" id="title_container">
                 [[C1:fr_team_title]]
@@ -59,20 +59,28 @@
                 ]]
               </label>
             </div>
-            <input type="text" class="form-control" name="fr_team_name" id="fr_team_name" value="[[A16]]">
-            <button type="submit" class="btn btn-secondary" name="fr_find_search.x" value="[[C1:fr_team_search_button]]">
+            <input type="text" class="form-control" name="ng_team_name" ng-model="ng_team_name">
+            <button type="submit" class="btn btn-secondary">
               [[C1:fr_team_search_button]]
             </button>
           </form>
-          <div class="" ng-if="teamList.teams && teamList.teams.length > 0" ng-cloak>
-            <div class="" ng-repeat="team in teamList.teams">
-              <div class="">
-                <a ng-href="TR?fr_id={{team.EventId}}&amp;pg=team&amp;team_id={{team.id}}" target="_blank"><span ng-bind-html="team.name"></span></a>
-              </div>
-              <div class="">
-                <a class="btn btn-primary" ng-href="TRR?fr_id={{team.EventId}}&amp;pg=tfind&amp;fr_tm_opt=existing&amp;fr_tjoin={{team.id}}&amp;skip_login_page=true">
-                  Join Team <i class="fa fa-chevron-right"></i>
-                </a>
+          <div ng-if="teamList.teams && teamList.teams.length == 0" ng-cloak>
+            No teams to display.
+          </div>
+          <div ng-if="teamList.teams && teamList.teams.length > 0" ng-cloak>
+            <div class="" ng-if="(teamList.teams|filter:{name: teamSearch.teamName}).length == 0">
+              No teams found matching "<span ng-bind-html="teamSearch.teamName"></span>".
+            </div>
+            <div class="" ng-if="(teamList.teams|filter:{name: teamSearch.teamName}).length > 0">
+              <div class="" ng-repeat="team in teamList.teams|filter:{name: teamSearch.teamName}">
+                <div class="">
+                  <a ng-href="TR?fr_id={{team.EventId}}&amp;pg=team&amp;team_id={{team.id}}" target="_blank"><span ng-bind-html="team.name"></span></a>
+                </div>
+                <div class="">
+                  <a class="btn btn-primary" ng-href="TRR?fr_id={{team.EventId}}&amp;pg=tfind&amp;fr_tm_opt=existing&amp;fr_tjoin={{team.id}}&amp;skip_login_page=true">
+                    Join Team <i class="fa fa-chevron-right"></i>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
