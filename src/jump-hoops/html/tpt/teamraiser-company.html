@@ -1,4 +1,4 @@
-<div ng-controller="CompanyPageCtrl">
+<div ng-controller="CompanyPageCtrl" ng-cloak>
   <div class="ym-page-section ym-page-section__top">
     <div class="col-md-6 ym-user-image" style="background-image:url('[[C4:responsive_company_logo]]');">
         <img class="hidden-md hidden-lg" src="[[C4:responsive_company_logo]]" alt="[[C1:photo1_text]]" />
@@ -48,15 +48,15 @@
           <p>team members registered.</p>
         </div>
         <div class="ym-promo-block__item ym-promo-block__item--exercise ym-promo-block--circle">
-          <h2 class="ym-headline">{{$scope.studentsPledgedActivityTypes[0].amount}}</h2>
+          <h2 class="ym-headline">{{studentsPledgedActivityTypes[0].amount}}</h2>
           <p>daily challenges of excersing 60 minutes a day!</p>
         </div>
         <div class="ym-promo-block__item ym-promo-block__item--water ym-promo-block--circle">
-          <h2 class="ym-headline">{{$scope.studentsPledgedActivityTypes[1].amount}}</h2>
+          <h2 class="ym-headline">{{studentsPledgedActivityTypes[1].amount}}</h2>
           <p>daily challenges of choosing water over sugar drinks</p>
         </div>
         <div class="ym-promo-block__item ym-promo-block__item--food ym-promo-block--circle">
-          <h2 class="ym-headline">{{$scope.studentsPledgedActivityTypes[2].amount}}</h2>
+          <h2 class="ym-headline">{{studentsPledgedActivityTypes[2].amount}}</h2>
           <p>daily challenges of fruits and veggies at every meal</p>
         </div>
       </div>
