@@ -43,7 +43,7 @@ module.exports = {
       'inject:general-css-main', 
       'inject:general-js-main', 
       'html-dist:general', 
-      'img-dist:general', 
+      'img-copy:general-images', 
       'notify:general'
     ]
   }, 
@@ -65,7 +65,7 @@ module.exports = {
       'inject:heart-walk-css-main', 
       'inject:heart-walk-js-main', 
       'html-dist:heart-walk', 
-      'img-dist:heart-walk', 
+      'img-copy:heart-walk-images', 
       'notify:heart-walk'
     ]
   }, 
@@ -78,7 +78,7 @@ module.exports = {
     tasks: [
       'clean:youth-markets', 
       'html-dist:youth-markets', 
-      'img-dist:youth-markets', 
+      'img-copy:youth-markets-images', 
       'notify:youth-markets'
     ]
   }, 
@@ -102,7 +102,7 @@ module.exports = {
       'inject:jump-hoops-js-main', 
       'inject:jump-hoops-js-participant', 
       'html-dist:jump-hoops', 
-      'img-dist:jump-hoops', 
+      'img-copy:jump-hoops-images', 
       'notify:jump-hoops'
     ]
   }
