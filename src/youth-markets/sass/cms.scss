@@ -7,7 +7,7 @@
 }
 
 .ym-hero__text {
-  background: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.88);
   position: absolute;
   bottom: 20px;
   padding: 20px;
@@ -53,7 +53,33 @@
     top: 0;
     right: 0;
     width: 200px;
-    background: url("../../youth-markets/image/ym-select-carot.png") right 0.75rem center no-repeat $event-secondary;
+    background: url("../../youth-markets/image/ym-select-carrot.png") right 0.75rem center no-repeat $event-secondary;
     font-weight: bold;
+  }
+  
+  .ym-page-section__header {
+    position: relative;
+  }
+  
+  @media (max-width: $screen-sm-max) {
+    .ym-page-section__header {
+      text-align: center;
+    }
+    #school-state-filter {
+      position: relative;
+      margin-bottom: 30px;
+    }
+  }
+  
+  @media (max-width: $screen-xs-max) {
+    .ym-list__school-list-wrpr {
+      overflow-x: scroll;
+    }
+    .ym-list--school-list {
+      min-width: 600px;
+    }
+    #school-name-filter {
+      display: inline-block;
+    }
   }
 }
