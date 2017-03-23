@@ -41,7 +41,7 @@
               ]]
             </div>
           ]]
-          <form method="POST" ng-submit="submitTfindSearch()">
+          <form class="form-inline" method="POST" ng-submit="submitTfindSearch()">
             <div class="manageable-editor" data-container="edit_title_container">
               <h2 class="h5" id="title_container">
                 [[C1:fr_team_title]]
@@ -59,7 +59,9 @@
                 ]]
               </label>
             </div>
-            <input type="text" class="form-control" name="ng_team_name" ng-model="ng_team_name">
+            <div class="form-group">
+              <input type="text" class="form-control" name="ng_team_name" ng-model="ng_team_name">
+            </div>
             <button type="submit" class="btn btn-secondary">
               [[C1:fr_team_search_button]]
             </button>
@@ -71,15 +73,17 @@
             <div class="" ng-if="(teamList.teams|filter:{name: teamSearch.teamName}).length == 0">
               No teams found matching "<span ng-bind-html="teamSearch.teamName"></span>".
             </div>
-            <div class="" ng-if="(teamList.teams|filter:{name: teamSearch.teamName}).length > 0">
-              <div class="" ng-repeat="team in teamList.teams|filter:{name: teamSearch.teamName}">
-                <div class="">
-                  <a ng-href="TR?fr_id={{team.EventId}}&amp;pg=team&amp;team_id={{team.id}}"><span ng-bind-html="team.name"></span></a>
-                </div>
-                <div class="">
-                  <a class="btn btn-primary" ng-href="TRR?fr_id={{team.EventId}}&amp;pg=tfind&amp;fr_tm_opt=existing&amp;fr_tjoin={{team.id}}&amp;skip_login_page=true">
-                    Join Team <i class="fa fa-chevron-right"></i>
-                  </a>
+            <div class="table table-striped" ng-if="(teamList.teams|filter:{name: teamSearch.teamName}).length > 0">
+              <div class="table-body">
+                <div class="table-row" ng-repeat="team in teamList.teams|filter:{name: teamSearch.teamName}">
+                  <div class="table-cell">
+                    <a ng-href="TR?fr_id={{team.EventId}}&amp;pg=team&amp;team_id={{team.id}}"><span ng-bind-html="team.name"></span></a>
+                  </div>
+                  <div class="table-cell">
+                    <a class="btn btn-primary" ng-href="TRR?fr_id={{team.EventId}}&amp;pg=tfind&amp;fr_tm_opt=existing&amp;fr_tjoin={{team.id}}&amp;skip_login_page=true">
+                      Join Team <i class="fa fa-chevron-right"></i>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
