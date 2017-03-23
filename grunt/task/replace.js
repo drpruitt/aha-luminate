@@ -2,21 +2,19 @@
 
 module.exports = {
   options: {
-    collapseBooleanAttributes: true, 
-    collapseWhitespace: true, 
-    minifyCSS: true, 
-    minifyJS: true, 
-    removeComments: true, 
-    removeEmptyAttributes: true, 
-    removeScriptTypeAttributes: true, 
-    removeStyleLinkTypeAttributes: true
+    patterns: [
+      {
+        match: 'buildTimestamp',
+        replacement: '<%= timestamp %>'
+      }
+    ]
   }, 
   
   "general": {
     files: [
       {
         expand: true, 
-        cwd: 'dist/general/html/', 
+        cwd: 'src/general/html/', 
         src: [
           '**/*.*'
         ], 
@@ -29,7 +27,7 @@ module.exports = {
     files: [
       {
         expand: true, 
-        cwd: 'dist/heart-walk/html/', 
+        cwd: 'src/heart-walk/html/', 
         src: [
           '**/*.*'
         ], 
@@ -42,7 +40,7 @@ module.exports = {
     files: [
       {
         expand: true, 
-        cwd: 'dist/youth-markets/html/', 
+        cwd: 'src/youth-markets/html/', 
         src: [
           '**/*.*'
         ], 
@@ -55,7 +53,7 @@ module.exports = {
     files: [
       {
         expand: true, 
-        cwd: 'dist/jump-hoops/html/', 
+        cwd: 'src/jump-hoops/html/', 
         src: [
           '**/*.*'
         ], 
