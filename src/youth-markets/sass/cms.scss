@@ -65,7 +65,7 @@
     .ym-page-section__header {
       text-align: center;
     }
-    .ym-school-search #school-state-filter {
+    #school-state-filter {
       position: relative;
       margin-bottom: 30px;
     }
@@ -78,10 +78,8 @@
     .ym-list--school-list {
       min-width: 600px;
     }
-    .ym-school-search {
-      #school-name-filter {
-        display: inline-block;
-      }
+    #school-name-filter {
+      display: inline-block;
     }
   }
 }

@@ -217,7 +217,7 @@ h3,
 @media (max-width: 991px) {
   .ym-school-search .ym-page-section__header {
     text-align: center; }
-  .ym-school-search .ym-school-search #school-state-filter {
+  .ym-school-search #school-state-filter {
     position: relative;
     margin-bottom: 30px; } }
 
@@ -226,7 +226,7 @@ h3,
     overflow-y: scroll; }
   .ym-school-search .ym-list--school-list {
     min-width: 600px; }
-  .ym-school-search .ym-school-search #school-name-filter {
+  .ym-school-search #school-name-filter {
     display: inline-block; } }
 
 .ym-progress {
