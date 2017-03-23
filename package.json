@@ -1,6 +1,6 @@
 {
   "name": "aha-luminate",
-  "description": "",
+  "description": "The framework used on American Heart Association's Luminate Online web properties.",
   "version": "1.0.0",
   "repository": [
     {
@@ -13,8 +13,10 @@
     "glob": "^7.1.1",
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
+    "grunt-connect-proxy": "git+https://github.com/drewzboto/grunt-connect-proxy.git",
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-coffee": "^1.0.0",
+    "grunt-contrib-connect": "^1.0.2",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-cssmin": "^2.0.0",
     "grunt-contrib-htmlmin": "^2.3.0",
