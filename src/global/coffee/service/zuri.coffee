@@ -32,7 +32,16 @@ angular.module 'ahaLuminateApp'
             callback.success(response)
 
       getZooProgram: (requestData, callback) ->
-        url = 'http://hearttools.heart.org/aha_ym18/api/program?key=6Mwqh5dFV39HLDq7'
+        url = 'http://hearttools.heart.org/aha_ym18/api/program/'+requestData+'?key=6Mwqh5dFV39HLDq7'
+        urlSCE = $sce.trustAsResourceUrl(url)
+        $http.jsonp(urlSCE, jsonpCallbackParam: 'callback').then (response) ->
+          if response.data.success == false
+            callback.error(response)
+          else
+            callback.success(response)
+
+      getZooTest: (callback) ->
+        url = 'http://hearttools.heart.org/aha_ym18/api/program/event/1163033?key=6Mwqh5dFV39HLDq7'
         urlSCE = $sce.trustAsResourceUrl(url)
         $http.jsonp(urlSCE, jsonpCallbackParam: 'callback').then (response) ->
           if response.data.success == false

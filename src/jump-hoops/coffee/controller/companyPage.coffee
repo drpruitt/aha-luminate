@@ -19,14 +19,37 @@ angular.module 'ahaLuminateControllers'
       $scope.studentsPledgedTotal = ''
       $scope.studentsPledgedActivityTypes = []
 
-      ZuriService.getZooSchool '1/1',
+      ###hide company and using test until we have school data in zuri
+      ZuriService.getZooSchool $scope.companyId,
+        success: (response) ->
+          console.log response
+          #$scope.studentsPledgedTotal = response.data.studentsPledged
+          studentsPledgedActivities = response.data.studentsPledgedByActivity
+          angular.forEach studentsPledgedActivities, (activity) ->
+            console.log activity
+        error: (response) ->
+          $scope.studentsPledgedTotal = 0
+      ###
+
+      ZuriService.getZooTest
         success: (response) ->
           console.log response
           $scope.studentsPledgedTotal = response.data.studentsPledged
           studentsPledgedActivities = response.data.studentsPledgedByActivity
 
-          angular.forEach studentsPledgedActivities, (activity) ->
-            console.log activity
+          i=0
+          angular.forEach studentsPledgedActivities, (amount) ->
+            i++
+            $scope.studentsPledgedActivityTypes.push
+              id: i,
+              amount: amount
+
+          console.log $scope.studentsPledgedActivityTypes
+
+
+        error: (response) ->
+          $scope.studentsPledgedTotal = 0
+
 
       setCompanyFundraisingProgress = (amountRaised, goal) ->
         $scope.companyProgress.amountRaised = amountRaised
