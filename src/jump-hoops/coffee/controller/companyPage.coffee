@@ -21,27 +21,51 @@ angular.module 'ahaLuminateControllers'
       $scope.activity2amt = ''
       $scope.activity3amt = ''
 
+      
       ###hide company and using test until we have school data in zuri
-
       ZuriService.getZooSchool $scope.companyId,
         success: (response) ->
           console.log response
-          #$scope.studentsPledgedTotal = response.data.studentsPledged
+          $scope.studentsPledgedTotal = response.data.studentsPledged
           studentsPledgedActivities = response.data.studentsPledgedByActivity
-          angular.forEach studentsPledgedActivities, (activity) ->
-            console.log activity
+          if studentsPledgedActivities['1'] 
+            $scope.activity1amt = studentsPledgedActivities['1']
+          else 
+            $scope.activity1amt = 0
+          if studentsPledgedActivities['2']
+            $scope.activity2amt = studentsPledgedActivities['2']
+          else
+            $scope.activity2amt = 0
+          if studentsPledgedActivities['3']
+            $scope.activity3amt = studentsPledgedActivities['3']
+          else
+            $scope.activity3amt = 0
+
         error: (response) ->
           $scope.studentsPledgedTotal = 0
+          $scope.activity1amt = 0
+          $scope.activity2amt = 0
+          $scope.activity3amt = 0
       ###
 
       #Using test to populate until school data ready in Zuri
       ZuriService.getZooTest
         success: (response) ->
+          console.log response
           $scope.studentsPledgedTotal = response.data.studentsPledged
           studentsPledgedActivities = response.data.studentsPledgedByActivity
-          $scope.activity1amt = studentsPledgedActivities['1']
-          $scope.activity2amt = studentsPledgedActivities['2']
-          $scope.activity3amt = studentsPledgedActivities['3']
+          if studentsPledgedActivities['1'] 
+            $scope.activity1amt = studentsPledgedActivities['1']
+          else 
+            $scope.activity1amt = 0
+          if studentsPledgedActivities['2']
+            $scope.activity2amt = studentsPledgedActivities['2']
+          else
+            $scope.activity2amt = 0
+          if studentsPledgedActivities['3']
+            $scope.activity3amt = studentsPledgedActivities['3']
+          else
+            $scope.activity3amt = 0
 
         error: (response) ->
           $scope.studentsPledgedTotal = 0
@@ -139,6 +163,7 @@ angular.module 'ahaLuminateControllers'
               if numCompaniesParticipantRequestComplete is numCompanies
                 setCompanyNumParticipants numParticipants
             success: (response) ->
+              console.log response
               setCompanyParticipants()
               participants = response.getParticipantsResponse?.participant
               if participants
@@ -148,9 +173,6 @@ angular.module 'ahaLuminateControllers'
                   if participant.name?.first
                     participant.amountRaised = Number participant.amountRaised
                     participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
-                    donationUrl = participant.donationUrl
-                    if donationUrl
-                      participant.donationUrl = donationUrl.split('/site/')[1]
                     companyParticipants.push participant
                 totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
                 setCompanyParticipants companyParticipants, totalNumberParticipants
