@@ -59,9 +59,9 @@
       <div class="ym-my-challenge ym-secondary-medium-color" ng-if="challengeId != null">
         <h3 class="ym-headline">My Challenge</h3>
         <div class="col-sm-4">
-          <img class="img-responsive" ng-if="challengeId = 1" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/my-challenge-water.png" alt="{{challengeName}}" />
-          <img class="img-responsive" ng-if="challengeId = 2" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/my-challenge-exercise.png" alt="{{challengeName}}" />
-          <img class="img-responsive" ng-if="challengeId = 3" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/my-challenge-food.png" alt="{{challengeName}}" />
+          <img class="img-responsive" ng-if="challengeId == 1" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/my-challenge-water.png" alt="{{challengeName}}" />
+          <img class="img-responsive" ng-if="challengeId == 2" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/my-challenge-exercise.png" alt="{{challengeName}}" />
+          <img class="img-responsive" ng-if="challengeId == 3" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/my-challenge-food.png" alt="{{challengeName}}" />
         </div>
         <div class="col-sm-8">
           <p class="ym_my_challenge__description">  
@@ -94,6 +94,7 @@
         <div class="clearfix"></div>
       </div>
       ]]
+      <div class="clearfix"></div>
     </div>
     <div class="clearfix"></div>
   </div>
