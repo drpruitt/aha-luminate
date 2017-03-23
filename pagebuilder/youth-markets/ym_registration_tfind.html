@@ -10,7 +10,7 @@
     }
   </style>
   <script>
-    window.location = 'https://[[S29:SECURE_DOMAIN]][[S29:SECURE_PATH]]TRR?fr_id=[[A2]]&pg=tfind&fr_tm_opt=existing&company_id=[[?x-1x::x[[A36]]x::::[[A36]]]]';
+    window.location = 'https://[[S29:SECURE_DOMAIN]][[S29:SECURE_PATH]]TRR?fr_id=[[A2]]&pg=tfind&fr_tm_opt=existing&company_id=[[?x-1x::x[[A36]]x::::[[A36]]]]&skip_login_page=true';
   </script>
 ::
   <!-- existing team -->
@@ -41,12 +41,7 @@
               ]]
             </div>
           ]]
-          <form action="[[A1]]" method="POST">
-            <input type="hidden" name="fr_id" value="[[A2]]">
-            <input type="hidden" name="pg" value="[[A7]]">
-            <input type="hidden" name="fr_cstm_tm" value="t">
-            <input type="hidden" name="fr_tm_opt" value="[[A13]]">
-            <input type="hidden" name="company_id" value="[[A36]]">
+          <form method="POST">
             <div class="manageable-editor" data-container="edit_title_container">
               <h2 class="h5" id="title_container">
                 [[C1:fr_team_title]]
@@ -65,17 +60,22 @@
               </label>
             </div>
             <input type="text" class="form-control" name="fr_team_name" id="fr_team_name" value="[[A16]]">
-            <button type="submit" class="btn btn-primary" name="fr_find_search.x" value="[[C1:fr_team_search_button]]">
+            <button type="submit" class="btn btn-secondary" name="fr_find_search.x" value="[[C1:fr_team_search_button]]">
               [[C1:fr_team_search_button]]
             </button>
-            [[?xxnullx::x[[A15]]x::::
-              <div id="team_find_search_results_container">
-                <span id="team_find_search_results_header_text">[[C1:fr_search_results]]</span>
-                [[A15]]
-              </div>
-            ]]
-            [[S66:util/SpamControlComponentResponsive.tpt]]
           </form>
+          <div class="" ng-if="teamList.teams && teamList.teams.length > 0" ng-cloak>
+            <div class="" ng-repeat="team in teamList.teams">
+              <div class="">
+                <a ng-href="TR?fr_id={{team.EventId}}&amp;pg=team&amp;team_id={{team.id}}" target="_blank"><span ng-bind-html="team.name"></span></a>
+              </div>
+              <div class="">
+                <a class="btn btn-primary" ng-href="TRR?fr_id={{team.EventId}}&amp;pg=tfind&amp;fr_tm_opt=existing&amp;fr_tjoin={{team.id}}&amp;skip_login_page=true">
+                  Join Team <i class="fa fa-chevron-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
