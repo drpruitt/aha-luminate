@@ -12,7 +12,7 @@ module.exports = {
       endtag: '<!-- general-css-endinjector -->', 
       transform: function(filepath) {
         var timestamp = filepath.split('.')[1]; // Get the timestamp out of the filename
-        return '<link rel="stylesheet" href="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/general/css/main.' + timestamp + '[[?xtruex::x[[S80:debug]]x::::.min]].css">';
+        return '<link rel="stylesheet" href="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/general/css/main[[?xtruex::x[[S80:debug]]x::::.' + timestamp + '.min]].css">';
       }
     }, 
     files: {
@@ -29,7 +29,7 @@ module.exports = {
       endtag: '<!-- general-js-endinjector -->', 
       transform: function(filepath) {
         var timestamp = filepath.split('.')[1]; // Get the timestamp out of the filename
-        return '<script src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/general/js/main.' + timestamp + '[[?xtruex::x[[S80:debug]]x::::.min]].js"></script>';
+        return '<script src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/general/js/main[[?xtruex::x[[S80:debug]]x::::.' + timestamp + '.min]].js"></script>';
       }
     }, 
     
@@ -47,7 +47,7 @@ module.exports = {
       endtag: '<!-- heart-walk-css-endinjector -->', 
       transform: function(filepath) {
         var timestamp = filepath.split('.')[1]; // Get the timestamp out of the filename
-        return '<link rel="stylesheet" href="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/heart-walk/css/main.' + timestamp + '[[?xtruex::x[[S80:debug]]x::::.min]].css">';
+        return '<link rel="stylesheet" href="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/heart-walk/css/main[[?xtruex::x[[S80:debug]]x::::.' + timestamp + '.min]].css">';
       }
     }, 
     files: {
@@ -64,7 +64,7 @@ module.exports = {
       endtag: '<!-- heart-walk-js-endinjector -->', 
       transform: function(filepath) {
         var timestamp = filepath.split('.')[1]; // Get the timestamp out of the filename
-        return '<script src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/heart-walk/js/main.' + timestamp + '[[?xtruex::x[[S80:debug]]x::::.min]].js"></script>';
+        return '<script src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/heart-walk/js/main[[?xtruex::x[[S80:debug]]x::::.' + timestamp + '.min]].js"></script>';
       }
     }, 
     
@@ -82,7 +82,7 @@ module.exports = {
       endtag: '<!-- jump-hoops-css-endinjector -->', 
       transform: function(filepath) {
         var timestamp = filepath.split('.')[1]; // Get the timestamp out of the filename
-        return '<link rel="stylesheet" href="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/css/main.' + timestamp + '[[?xtruex::x[[S80:debug]]x::::.min]].css">';
+        return '<link rel="stylesheet" href="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/css/main[[?xtruex::x[[S80:debug]]x::::.' + timestamp + '.min]].css">';
       }
     }, 
     files: {
@@ -99,7 +99,7 @@ module.exports = {
       endtag: '<!-- jump-hoops-participant-css-endinjector -->', 
       transform: function(filepath) {
         var timestamp = filepath.split('.')[1]; // Get the timestamp out of the filename
-        return '<link rel="stylesheet" href="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/css/participant.' + timestamp + '[[?xtruex::x[[S80:debug]]x::::.min]].css">';
+        return '<link rel="stylesheet" href="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/css/participant[[?xtruex::x[[S80:debug]]x::::.' + timestamp + '.min]].css">';
       }
     }, 
     files: {
@@ -116,7 +116,7 @@ module.exports = {
       endtag: '<!-- jump-hoops-js-endinjector -->', 
       transform: function(filepath) {
         var timestamp = filepath.split('.')[1]; // Get the timestamp out of the filename
-        return '<script src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/js/main.' + timestamp + '[[?xtruex::x[[S80:debug]]x::::.min]].js"></script>';
+        return '<script src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/js/main[[?xtruex::x[[S80:debug]]x::::.' + timestamp + '.min]].js"></script>';
       }
     }, 
     
@@ -134,7 +134,7 @@ module.exports = {
       endtag: '<!-- jump-hoops-participant-js-endinjector -->', 
       transform: function(filepath) {
         var timestamp = filepath.split('.')[1]; // Get the timestamp out of the filename
-        return '<script src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/js/participant.' + timestamp + '[[?xtruex::x[[S80:debug]]x::::.min]].js"></script>';
+        return '<script src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/js/participant[[?xtruex::x[[S80:debug]]x::::.' + timestamp + '.min]].js"></script>';
       }
     }, 
     files: {
