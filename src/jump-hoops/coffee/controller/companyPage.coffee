@@ -17,9 +17,12 @@ angular.module 'ahaLuminateControllers'
       $scope.totalTeams = ''
       $scope.teamId = ''
       $scope.studentsPledgedTotal = ''
-      $scope.studentsPledgedActivityTypes = []
+      $scope.activity1amt = ''
+      $scope.activity2amt = ''
+      $scope.activity3amt = ''
 
       ###hide company and using test until we have school data in zuri
+
       ZuriService.getZooSchool $scope.companyId,
         success: (response) ->
           console.log response
@@ -31,24 +34,20 @@ angular.module 'ahaLuminateControllers'
           $scope.studentsPledgedTotal = 0
       ###
 
+      #Using test to populate until school data ready in Zuri
       ZuriService.getZooTest
         success: (response) ->
-          console.log response
           $scope.studentsPledgedTotal = response.data.studentsPledged
           studentsPledgedActivities = response.data.studentsPledgedByActivity
-
-          i=0
-          angular.forEach studentsPledgedActivities, (amount) ->
-            i++
-            $scope.studentsPledgedActivityTypes.push
-              id: i,
-              amount: amount
-
-          console.log $scope.studentsPledgedActivityTypes
-
+          $scope.activity1amt = studentsPledgedActivities['1']
+          $scope.activity2amt = studentsPledgedActivities['2']
+          $scope.activity3amt = studentsPledgedActivities['3']
 
         error: (response) ->
           $scope.studentsPledgedTotal = 0
+          $scope.activity1amt = 0
+          $scope.activity2amt = 0
+          $scope.activity3amt = 0
 
 
       setCompanyFundraisingProgress = (amountRaised, goal) ->
