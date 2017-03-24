@@ -1,31 +1,38 @@
-.pg-company {
-  .table {
-    max-width: 970px;
-    margin: auto;
+div.table {
+  display: table;
+  
+  .table-header {
+    display: table-header-group;
   }
-  .ym-list__column--name {
-    width: 43%;
-    @media(max-width: $screen-sm){
-      width: 80%;
+  
+  .table-body {
+    display: table-row-group;
+  }
+  
+  .table-row {
+    display: table-row;
+    
+    .table-cell {
+      display: table-cell;
     }
-  }
-  .ym-list__column--amount {
-    width: 120px;   
-    text-align: center;
-    padding-left:0;
-    padding-right: 0;
-  }
-  .ym-list__column--cta {
-    text-align: right;
-    padding-right: 15px;
   }
 }
 
 .table-striped {
-  border: 0 none;
+  border: 0;
+  
   tbody {
-    tr{
-      td{
+    tr {
+      td {
+        vertical-align: middle;
+        padding: 18px 0 18px 15px;
+      }
+    }
+  }
+  
+  .table-body {
+    .table-row {
+      .table-cell {
         vertical-align: middle;
         padding: 18px 0 18px 15px;
       }
@@ -37,5 +44,32 @@
   a[ng-click]:link {
     text-decoration: none;
     cursor: pointer;
+  }
+}
+
+.pg-company {
+  .table {
+    max-width: 970px;
+    margin: auto;
+  }
+  
+  .ym-list__column--name {
+    width: 43%;
+    
+    @media(max-width: $screen-xs-max) {
+      width: 80%;
+    }
+  }
+  
+  .ym-list__column--amount {
+    text-align: center;
+    width: 120px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  
+  .ym-list__column--cta {
+    text-align: right;
+    padding-right: 15px;
   }
 }

@@ -40,8 +40,6 @@ module.exports = {
       'clean:general', 
       'css-dist:general', 
       'js-dist:general', 
-      'inject:general-css-main', 
-      'inject:general-js-main', 
       'html-dist:general', 
       'img-copy:general-images', 
       'notify:general'
@@ -62,8 +60,6 @@ module.exports = {
       'clean:heart-walk', 
       'css-dist:heart-walk', 
       'js-dist:heart-walk', 
-      'inject:heart-walk-css-main', 
-      'inject:heart-walk-js-main', 
       'html-dist:heart-walk', 
       'img-copy:heart-walk-images', 
       'notify:heart-walk'
@@ -97,10 +93,6 @@ module.exports = {
       'clean:jump-hoops',  
       'css-dist:jump-hoops', 
       'js-dist:jump-hoops', 
-      'inject:jump-hoops-css-main', 
-      'inject:jump-hoops-css-participant', 
-      'inject:jump-hoops-js-main', 
-      'inject:jump-hoops-js-participant', 
       'html-dist:jump-hoops', 
       'img-copy:jump-hoops-images', 
       'notify:jump-hoops'

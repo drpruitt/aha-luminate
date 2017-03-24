@@ -3,16 +3,31 @@ angular.module 'ahaLuminateControllers'
     '$scope'
     'TeamraiserTeamService'
     ($scope, TeamraiserTeamService) ->
+      if not $scope.teamSearch
+        $scope.teamSearch = {}
+      
+      $scope.teamList = {}
       getTeams = ->
-        TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId + '&list_page_size=500',
+        setTeams = (teams) ->
+          $scope.teamList.teams = teams or []
+          if not $scope.$$phase
+            $scope.$apply()
+        TeamraiserTeamService.getTeams 'team_company_id=' + $scope.teamSearch.companyId + '&list_page_size=500',
           error: ->
-            # TODO
+            setTeams()
           success: (response) ->
             teams = response.getTeamSearchByInfoResponse.team
-            teams = [teams] if not angular.isArray teams
-      if $scope.companyId and $scope.companyId isnt ''
+            if not teams
+              setTeams()
+            else
+              teams = [teams] if not angular.isArray teams
+              setTeams teams
+      if $scope.teamSearch.companyId and $scope.teamSearch.companyId isnt ''
         getTeams()
-      $scope.$watch 'companyId', (newValue) ->
+      $scope.$watch 'teamSearch.companyId', (newValue) ->
         if newValue and newValue isnt ''
           getTeams()
+      
+      $scope.submitTfindSearch = ->
+        $scope.teamSearch.teamName = $scope.ng_team_name
   ]

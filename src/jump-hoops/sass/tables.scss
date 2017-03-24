@@ -1,16 +1,43 @@
 .table-striped {
   thead {
-    tr th {
-      border-bottom: 7px solid $event-secondary;
+    tr {
+      th {
+        border-bottom: 7px solid $event-secondary;
+      }
     }
   }
-  tbody {
-    tr:nth-of-type(odd) {
-      background-color: $event-accent-light;
+  
+  .table-header {
+    .table-row {
+      .table-cell {
+        border-bottom: 7px solid $event-secondary;
+      }
     }
-    td {
-      border-top: 0;
-      border-bottom: 1px solid $event-accent;
+  }
+  
+  tbody {
+    tr {
+      &:nth-of-type(odd) {
+        background-color: $event-accent-light;
+      }
+      
+      td {
+        border-top: 0;
+        border-bottom: 1px solid $event-accent;
+      }
+    }
+  }
+  
+  .table-body {
+    .table-row {
+      &:nth-of-type(odd) {
+        background-color: $event-accent-light;
+      }
+      
+      .table-cell {
+        border-top: 0;
+        border-bottom: 1px solid $event-accent;
+      }
     }
   }
 }
