@@ -66,3 +66,16 @@
     box-shadow:  0px 10px 0px 0px rgba(50, 50, 50, 1);
   }
 }
+
+
+.cms {
+  .ym-promo-block {
+    max-width: 830px;
+  }
+  .ym-promo-block__item {
+    margin: 20px 20px 20px 0;
+    @media(min-width: $screen-md-min){
+      margin-right: 73px;
+    }
+  }
+}
