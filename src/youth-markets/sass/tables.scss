@@ -18,6 +18,21 @@ div.table {
   }
 }
 
+.table-responsive {
+  > .table {
+    > .table-header, 
+    > .table-body {
+      > .table-row {
+        > .table-cell {
+          @media(max-width: $screen-xs-max) {
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+  }
+}
+
 .table-striped {
   border: 0;
   
@@ -25,7 +40,7 @@ div.table {
     tr {
       td {
         vertical-align: middle;
-        padding: 18px 0 18px 15px;
+        padding: 10px;
       }
     }
   }
@@ -34,6 +49,24 @@ div.table {
     .table-row {
       .table-cell {
         vertical-align: middle;
+        padding: 10px;
+      }
+    }
+  }
+}
+
+.table--padded {
+  tbody {
+    tr {
+      td {
+        padding: 18px 0 18px 15px;
+      }
+    }
+  }
+  
+  .table-body {
+    .table-row {
+      .table-cell {
         padding: 18px 0 18px 15px;
       }
     }
@@ -54,10 +87,10 @@ div.table {
   }
   
   .ym-list__column--name {
-    width: 43%;
+    width: 80%;
     
-    @media(max-width: $screen-xs-max) {
-      width: 80%;
+    @media(min-width: $screen-sm-min) {
+      width: 43%;
     }
   }
   
