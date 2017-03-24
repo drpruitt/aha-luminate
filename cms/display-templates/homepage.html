@@ -1,10 +1,13 @@
 <div ng-controller="CmsCtrl">
-  <div class="ym-hero">
-    ${banner_image}
-    <div class="ym-hero__text ym-hero__text--right">
+  <div class="ym-hero" style="background-image:url(${banner_image.url});">
+    <div class="ym-hero__text ym-hero__text--right hidden-xs">
       <h1>${banner_image.title}</h1>
       <p>${banner_image.description}</p>
     </div>
+  </div>
+  <div class="ym-hero__text hidden-sm hidden-md hidden-lg">
+    <h1>${banner_image.title}</h1>
+    <p>${banner_image.description}</p>
   </div>
   <div class="ym-school-search" ng-controller="SchoolSearchCtrl">
     <div class="form-group">
