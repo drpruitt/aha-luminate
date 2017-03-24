@@ -1,20 +1,4 @@
 .table-striped {
-  thead {
-    tr {
-      th {
-        border-bottom: 7px solid $event-secondary;
-      }
-    }
-  }
-  
-  .table-header {
-    .table-row {
-      .table-cell {
-        border-bottom: 7px solid $event-secondary;
-      }
-    }
-  }
-  
   tbody {
     tr {
       &:nth-of-type(odd) {
@@ -24,6 +8,12 @@
       td {
         border-top: 0;
         border-bottom: 1px solid $event-accent;
+      }
+      
+      &:first-child {
+        td {
+          border-top: 7px solid $event-secondary;
+        }
       }
     }
   }
@@ -37,6 +27,12 @@
       .table-cell {
         border-top: 0;
         border-bottom: 1px solid $event-accent;
+      }
+      
+      &:first-child {
+        .table-cell {
+          border-top: 7px solid $event-secondary;
+        }
       }
     }
   }
