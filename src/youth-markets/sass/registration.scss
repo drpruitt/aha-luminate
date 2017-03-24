@@ -2,15 +2,23 @@
   text-align: center;
 }
 
-#fr_new_user_container {
-  display: inline-block;
-  margin: 0;
-}
-
 .ym-registration-form-footer {
   padding: 18px;
   
   @media (min-width: $screen-sm-min) {
     padding: 20px;
+  }
+}
+
+#fr_new_user_container {
+  display: inline-block;
+  margin: 0;
+}
+
+.ym-registration-tfind-results {
+  margin: 28px 0 0;
+  
+  @media (min-width: $screen-sm-min) {
+    margin: 32px 0 0;
   }
 }
