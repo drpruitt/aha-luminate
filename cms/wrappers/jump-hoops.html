@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <div class="templateComponent" id="convio-content-793432473" style="display: inline;"></div>
   <title><t:value id="title">title</t:value></title>
   <t:value id="meta.keywords">meta.keywords</t:value>
   <t:value id="meta.description">meta.description</t:value>
+  <t:include id="convio-content-793432473" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
 </head>
 <body class="aha-luminate cms" ng-controller="MainCtrl">
 <div id="convio-content-793245938" class="templateComponent" style="display: inline;"></div>
-<main>
+<main ng-controller="CmsCtrl">
   <div class="ym-page-header">
     <div class="container">
     </div>
