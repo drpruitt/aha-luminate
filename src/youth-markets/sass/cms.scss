@@ -10,9 +10,17 @@
     position: relative;
   }
 
+  > .form-group {
+    margin-bottom: 50px;
+  }
+
+  .ym-page-section__roster {
+    padding-top: 0;
+  }
+
   #school-name-filter {
     height: 60px;
-    width: 100%;
+    width: 90%;
     max-width: 390px;
     font-size: $font-size-reg;
     text-align: center;
@@ -29,6 +37,10 @@
   
   .ym-page-section__header {
     position: relative;
+  }
+
+  .pagination {
+    margin: 30px 0;
   }
   
   @media (max-width: $screen-sm-max) {
@@ -51,5 +63,19 @@
     #school-name-filter {
       display: inline-block;
     }
+  }
+}
+
+
+.ym-home-feature {
+  padding: 50px 0;
+
+  @media (max-width: $screen-sm-max) {
+    padding: 30px 0;
+  }
+
+  > .container {
+    max-width: 970px;
+    padding: 20px;
   }
 }
