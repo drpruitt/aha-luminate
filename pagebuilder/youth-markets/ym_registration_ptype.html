@@ -49,61 +49,42 @@
             [[A13]]
           </div>
           [[?xTx::x[[A16]]x::
-            <div id="part_type_additional_gift_container" [[?[[A6]]::ERR_BAD_GIFT::class="form-error"::]]>
-              [[?[[A6]]::ERR_BAD_GIFT::
-                <div class="alert alert-danger">
-                  [[M0:friendraiser:error_invalid_amt_user]]
-                </div>
-              ::]]
-              <div class="manageable-content" data-container="edit_part_type_additional_gift_section_header">
-                <div id="part_type_additional_gift_section_header">
-                  [[C1:fr_gift_hdr]]
+            [[?[[A6]]::ERR_BAD_GIFT::
+              <div class="alert alert-danger">
+                [[M0:friendraiser:error_invalid_amt_user]]
+              </div>
+            ::]]
+            <div class="manageable-content" data-container="edit_part_type_additional_gift_section_header">
+              <div id="part_type_additional_gift_section_header">
+                [[C1:fr_gift_hdr]]
+              </div>
+            </div>
+            [[?xx::x[[A33]]x::::
+              <div class="hidden js--registration-ptype-donation-levels">
+                [[A33]]
+              </div>
+              <div class="ym-registration-ptype-donation-levels">
+                <button type="button" class="btn btn-toggle" ng-repeat="donationLevel in donationLevels.levels" ng-class="{'btn-toggle--selected': donationLevels.activeLevel.amount == donationLevel.amount}" ng-click="toggleDonationLevel(donationLevel.amount)" ng-cloak>
+                  <span ng-bind-html="donationLevel.amountFormatted" ng-if="!donationLevel.isOtherAmount && !donationLevel.isNoDonation"></span>
+                  <span ng-if="donationLevel.isOtherAmount">Other</span>
+                  <span ng-if="donationLevel.isNoDonation">No, Thanks</span>
+                </button> 
+                <div class="ym-registration-ptype-donation-message">
+                  <span ng-bind-html="donationLevels.activeLevel.askMessage"></span>
                 </div>
               </div>
-              [[?xx::x[[A33]]x::::
-                <div class="hidden js--registration-ptype-donation-levels">
-                  [[A33]]
-                </div>
-                <div class="">
-                  <button type="button" class="btn btn-toggle" ng-repeat="donationLevel in donationLevels.levels" ng-class="{'btn-toggle--selected': donationLevels.activeLevel.amount == donationLevel.amount}" ng-click="toggleDonationLevel(donationLevel.amount)" ng-cloak>
-                    <span ng-bind-html="donationLevel.amountFormatted" ng-if="!donationLevel.isOtherAmount && !donationLevel.isNoDonation"></span>
-                    <span ng-if="donationLevel.isOtherAmount">Other</span>
-                    <span ng-if="donationLevel.isNoDonation">No, Thanks</span>
-                  </button> 
-                  <div class="">
-                    <span ng-bind-html="donationLevels.activeLevel.askMessage"></span>
-                  </div>
-                </div>
-              ]]
-            </div>
+            ]]
           ::]]
           [[?xTx::x[[A17]]x::
-            <div id="part_type_fundraising_goal_container" [[?[[A6]]::ERR_BAD_GOAL::class="form-error"::]]>
-              [[?[[A6]]::ERR_BAD_GOAL::
-                <div class="alert alert-danger">
-                  [[M0:friendraiser:error_invalid_goal_amt]]
-                </div>
-              ::]]
-              <div class="form-content">
-                <div class="input-container" id="part_type_fundraising_goal_input_container">
-                  <div class="manageable-content" data-container="edit_fund_goal_container">
-                    <label for="fr_goal" id="fund_goal_container">[[?xx::x[[C1:fr_your_fundraising_goal_field]]x::[[M0:friendraiser:your_fundraising_goal_field]]::[[C1:fr_your_fundraising_goal_field]]]]</label>
-                  </div>
-                  <input type="text" class="form-control" name="fr_goal" id="participationOptions-fr_goal" ng-model="participationOptions.fr_goal" maxlength="15">
-                </div>
-                [[?xxnullxBASELINEx::x[[S0:TPV_FR_CSTM_PT_STANDARD_SUGGESTEDGOAL]]x::
-                  [[?zz::z[[A18]]z::::
-                    <div class="manageable-content" data-container="edit_suggested_goal_container">
-                      <span id="suggested_goal_container">[[?xx::x[[C1:fr_suggested_goal_field]]x::[[M0:friendraiser:suggested_goal_field]]::[[C1:fr_suggested_goal_field]]]]&nbsp;[[A18]]</span>
-                    </div>
-                  ]]
-                ::
-                  <div class="manageable-content" data-container="edit_suggested_goal_container">
-                    <span id="suggested_goal_container">[[C1:fr_suggested_goal_field]]</span>
-                  </div>
-                ]]
+            [[?[[A6]]::ERR_BAD_GOAL::
+              <div class="alert alert-danger">
+                [[M0:friendraiser:error_invalid_goal_amt]]
               </div>
+            ::]]
+            <div class="manageable-content" data-container="edit_fund_goal_container">
+              <label for="fr_goal" id="fund_goal_container">[[?xx::x[[C1:fr_your_fundraising_goal_field]]x::[[M0:friendraiser:your_fundraising_goal_field]]::[[C1:fr_your_fundraising_goal_field]]]]</label>
             </div>
+            <input type="text" class="form-control" name="fr_goal" id="participationOptions-fr_goal" ng-model="participationOptions.fr_goal" placeholder="[[?xx::x[[A18]]x::::[[?xx::x[[C1:fr_suggested_goal_field]]x::[[M0:friendraiser:suggested_goal_field]]::[[C1:fr_suggested_goal_field]]]] [[A18]]]]" maxlength="15">
           ::]]
           <div class="ym-registration-form-footer">
             <div class="clearfix">
@@ -152,15 +133,6 @@
     <div id="edit_pt_instruction_container" class="EditContainer" style="display: none;">
       [[C:ajax-custompage-edit-component:edit_pt_instruction_container]]
     </div>
-    <div id="edit_sel_type_container" class="EditContainer" style="display: none;">
-      [[C:ajax-custompage-edit-component:edit_sel_type_container]]
-    </div>
-    <div id="edit_disc_hdr_container" class="EditContainer" style="display: none;">
-      [[C:ajax-custompage-edit-component:edit_disc_hdr_container]]
-    </div>
-    <div id="edit_disc_code_container" class="EditContainer" style="display: none;">
-      [[C:ajax-custompage-edit-component:edit_disc_code_container]]
-    </div>
     <div id="edit_addl_gift_container" class="EditContainer" style="display: none;">
       [[C:ajax-custompage-edit-component:edit_addl_gift_container]]
     </div>
@@ -169,18 +141,6 @@
     </div>
     <div id="edit_goal_hdr_container" class="EditContainer" style="display: none;">
       [[C:ajax-custompage-edit-component:edit_goal_hdr_container]]
-    </div>
-    <div id="edit_suggested_goal_container" class="EditContainer" style="display: none;">
-      [[C:ajax-custompage-edit-component:edit_suggested_goal_container]]
-    </div>
-    <div id="edit_addons_hdr_container" class="EditContainer" style="display: none;">
-      [[C:ajax-custompage-edit-component:edit_addons_hdr_container]]
-    </div>
-    <div id="edit_individual_company_hdr_container" class="EditContainer" style="display: none;">
-      [[C:ajax-custompage-edit-component:edit_individual_company_hdr_container]]
-    </div>
-    <div id="edit_individual_company_label_container" class="EditContainer" style="display: none;">
-      [[C:ajax-custompage-edit-component:edit_individual_company_label_container]]
     </div>
     <div id="edit_part_type_additional_gift_section_header" class="EditContainer" style="display: none;">
       [[C:ajax-custompage-edit-component:edit_part_type_additional_gift_section_header]]
@@ -193,7 +153,7 @@
       hide_element('edit_fr_html_container');
       Y.use('emc-reg-editor', function(Y) {
         jQuery(function() {
-          jQuery('.registration-page-container').manageEMCEditable({
+          jQuery('.ym-registration-page-container').manageEMCEditable({
             windowTitle: '[[T6:[[M0:friendraiser_emgmt:editor_window_title]]]]'
           });
         });
