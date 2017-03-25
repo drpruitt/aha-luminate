@@ -82,7 +82,7 @@
                         <a ng-href="TR?fr_id={{team.EventId}}&amp;pg=team&amp;team_id={{team.id}}"><span ng-bind-html="team.name"></span></a>
                       </div>
                       <div class="table-cell">
-                        <a class="btn btn-primary" ng-href="TRR?fr_id={{team.EventId}}&amp;pg=tfind&amp;fr_tm_opt=existing&amp;fr_tjoin={{team.id}}&amp;skip_login_page=true">
+                        <a class="btn btn-md btn-primary" ng-href="TRR?fr_id={{team.EventId}}&amp;pg=tfind&amp;fr_tm_opt=existing&amp;fr_tjoin={{team.id}}&amp;skip_login_page=true">
                           Join Team <i class="fa fa-chevron-right"></i>
                         </a>
                       </div>
@@ -107,7 +107,7 @@
         hide_element('edit_fr_wysiwyg_container');
         Y.use('emc-reg-editor', function(Y) {
           jQuery(function() {
-            jQuery('.registration-page-container').manageEMCEditable({
+            jQuery('.ym-registration-page-container').manageEMCEditable({
               windowTitle: '[[T6:[[M0:friendraiser_emgmt:editor_window_title]]]]'
             });
           });

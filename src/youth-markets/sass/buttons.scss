@@ -8,10 +8,17 @@ a.btn {
   &:hover, 
   &:focus, 
   &:active {
+    border-radius: 10px;
     border-width: 0;
     font-family: inherit;
     font-weight: 600;
     text-decoration: none;
+  }
+  
+  &:focus, 
+  &:active, 
+  &:focus:active {
+    outline: none;
   }
   
   > * {
@@ -35,7 +42,6 @@ a.btn-sm {
   &, 
   &:link, 
   &:visited {
-    border-radius: 10px;
     @include button-size(4px, 12px, 14px);
   }
 }
@@ -45,7 +51,6 @@ a.btn-md {
   &, 
   &:link, 
   &:visited {
-    border-radius: 10px;
     @include button-size(7px, 14px, 14px);
     
     @media (max-width: $screen-xs-max) {
@@ -59,7 +64,6 @@ a.btn-lg {
   &, 
   &:link, 
   &:visited {
-    border-radius: 10px;
     @include button-size($padding-base-vertical, $padding-base-horizontal, 20px);
     
     min-width:180px;
@@ -110,7 +114,6 @@ div.responsive {
 
 .btn-toggle {
   @include button-size($padding-base-vertical, $padding-base-horizontal, 18px);
-  border-radius: 10px;
   font-weight: 700;
   text-decoration: none;
   text-align: center;
@@ -123,7 +126,6 @@ div.responsive {
 div.responsive input[type="text"].btn-enter,
 input[type="text"].btn-enter {
   @include button-size($padding-base-vertical, $padding-base-horizontal, 18px);
-  border-radius: 10px;
   text-decoration: none;
   text-align: center;
 }
