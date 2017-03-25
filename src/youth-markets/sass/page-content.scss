@@ -1,4 +1,6 @@
-.ym-page-content, .ym-page-section__main, .ym-page-section__roster  {
+.ym-page-content, 
+.ym-page-section__main, 
+.ym-page-section__roster  {
   background: #ffffff;
 }
 
@@ -16,16 +18,16 @@
   .ym-page-content {
     padding: 0;
     margin: 18px 0 0;
-
-    @media (min-width:$screen-sm-min){
+    
+    @media (min-width:$screen-sm-min) {
       padding: 0;
       margin: -30px 0 0;
     }
-  
+    
     > .container {
       padding: 10px;
-
-      @media (min-width: $screen-sm-min){
+      
+      @media (min-width: $screen-sm-min) {
         padding: 30px;
       }
     }
@@ -36,26 +38,26 @@
   .ym-page-content {
     padding: 50px 100px;
     margin: 0;
-
-    @media(max-width: $screen-lg){
+    
+    @media(max-width: $screen-md-max) {
       padding: 50px;
     }
-
-    @media(max-width: $screen-md){
+    
+    @media(max-width: $screen-sm-max) {
       padding: 30px;
     }
-
+    
     > div {
         padding: 0;
     }
-
+    
     .col-md-8 {
       margin: auto;
       padding: 0;
       max-width: 670px;
     }
-
-    @media (min-width: $screen-md-min){
+    
+    @media (min-width: $screen-md-min) {
       .col-md-4 {
         width: calc(100% - 700px);
         float: right;
@@ -66,8 +68,8 @@
         padding: 0;
       }
     }
-
-    @media(max-width: $screen-md){
+    
+    @media(max-width: $screen-sm-max) {
       .col-md-8 {
         float: none;
       }
@@ -79,10 +81,10 @@
   @media (min-width: $screen-md-min) {
     display: flex;
   }
-
+  
   .ym-progress {
     padding: 20px;
-
+    
     .ym-progress__cta .btn {
       margin: 0 10px 10px;
     }
@@ -92,21 +94,21 @@
 .ym-user-image {
   position: relative;
   padding: 0;
-
+  
   @media (max-width: $screen-md) {
     background-image: none !important;
   }
-
-  @media (min-width: 630px) and (max-width: $screen-md-min){
-    background: #fff;
+  
+  @media (min-width: 630px) and (max-width: $screen-md-min) {
+    background: #ffffff;
     padding: 20px 0;
-  } 
+  }
   
   @media (min-width: $screen-md) {
     background-size: cover;
     min-height: 360px;
   }
-
+  
   img {
     margin: auto;
     @media (max-width: $screen-md) {
@@ -114,6 +116,7 @@
       display: block;
     }
   }
+
   .caption {
     position: absolute;
     bottom: 0;
@@ -130,53 +133,55 @@
 
 .ym-page-section__main {
   padding: 50px 0;
-
-  @media (max-width: $screen-md){
-   padding: 40px 0; 
+  
+  @media (max-width: $screen-sm-max) {
+   padding: 40px 0;
   }
-
-  @media (max-width: $screen-sm){
-    padding: 30px 0; 
+  
+  @media (max-width: $screen-xs-max) {
+    padding: 30px 0;
   }
   
   > .col-md-6 {
     padding: 0 40px;
-
-    @media (max-width: $screen-md){
+    
+    @media (max-width: $screen-sm-max) {
       padding: 0 60px;
     }
-
-    @media (max-width: $screen-sm){
+    
+    @media (max-width: $screen-xs-max) {
       padding: 0 20px;
     }
-
+    
     .ym-my-challenge > div {
         padding: 0;
     }
-  }  
-
-  @media (max-width: $screen-md){
+  }
+  
+  @media (max-width: $screen-sm-max) {
     .ym-story {
       margin-bottom: 30px;
     }
-    .ym-badges, .ym-my-challenge {
+    
+    .ym-badges, 
+    .ym-my-challenge {
       max-width: 485px;
       margin: auto;
     }
-
+    
     .ym-my-challenge {
       margin-top: 35px;
     }
   }
-
-  @media (max-width: $screen-sm){
+  
+  @media (max-width: $screen-xs-max) {
     .ym-my-challenge {
       margin-top: 15px;
-
+      
       img {
         margin: 0 auto 20px;
       }
-
+      
       p {
         text-align: center;
       }
@@ -186,49 +191,49 @@
 
 .ym-page-section__list {
   padding: 40px 0;
-
-  @media (max-width: $screen-sm-min){
-    padding: 30px 0; 
+  
+  @media (max-width: $screen-xs-max) {
+    padding: 30px 0;
   }
-
+  
   > div {
     padding: 0 40px;
-
-    @media (max-width: $screen-md-min){
+    
+    @media (max-width: $screen-sm-max) {
       padding: 0 60px;
     }
-
-    @media (max-width: $screen-sm-min){
+    
+    @media (max-width: $screen-xs-max) {
       padding: 0 20px;
     }
   }
-
+  
   .ym-donate-cta {
     margin: 40px 0 0;
     text-align: center;
-
-    @media (max-width: $screen-sm){
+    
+    @media (max-width: $screen-xs-max) {
       margin: 0 0 30px;
     }
-
+    
     p {
-      margin-bottom: 20px; 
+      margin-bottom: 20px;
       
-      @media (min-width: $screen-md){
+      @media (min-width: $screen-md-min) {
         margin-bottom: 30px;
       }
     }
   }
-
+  
   .ym-list {
     img {
       margin: 0 auto 15px;
-
-      @media (max-width: $screen-md){
+      
+      @media (max-width: $screen-sm-max) {
         max-width: 275px;
       }
-
-      @media (max-width: $screen-xs){
+      
+      @media (max-width: $screen-xs) {
         max-width: 250px;
       }
     }
@@ -237,10 +242,11 @@
 
 .ym-page-section__roster {
   padding: 50px;
-
+  
   @media (max-width: $screen-xs) {
     padding: 25px;
   }
+  
   h5 {
     text-align: center;
     margin: 0 0 30px;
@@ -252,16 +258,17 @@
 }
 
 .ym-page-section__sponsor {
-  background: #fff;
+  background: #ffffff;
   padding: 0 0 50px;
   text-align: center;
   
   hr {
     margin: 0 0 50px;
   }
+  
   img {
+    display: inline-block;
     max-width: 100%;
     margin: auto;
-    display: inline-block;
   }
 }

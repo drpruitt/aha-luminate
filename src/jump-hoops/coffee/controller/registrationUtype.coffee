@@ -12,10 +12,10 @@ angular.module 'ahaLuminateControllers'
         angular.element('.js--default-utype-existing-form').submit()
         false
       
-      $scope.toggleForgotUsername = (showHide) ->
-        $scope.showForgotUsername = showHide is 'show'
+      $scope.toggleForgotLogin = (showHide) ->
+        $scope.showForgotLogin = showHide is 'show'
       
-      $scope.submitForgotUsername = ->
+      $scope.submitForgotLogin = ->
         angular.element('.js--default-utype-send-username-form').submit()
         false
   ]
