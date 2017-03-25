@@ -71,12 +71,45 @@
 .cms {
   .ym-promo-block {
     max-width: 830px;
-  }
-  .ym-promo-block__item {
-    margin: 20px 20px 20px 0;
-    
-    @media(min-width: $screen-md-min){
-      margin-right: 73px;
+
+    @media(max-width: $screen-md){
+      max-width: 650px
     }
+  
+    .ym-promo-block__item {
+      margin-right: 73px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      @media(max-width: $screen-md){
+        margin: 20px 20px 20px 0;
+        width: 200px;
+        height: 200px;
+      }
+
+      &,
+      &:last-child {
+        @media(max-width: $screen-sm){
+          margin: 0 auto 20px;
+          display: block;
+        }
+      }
+
+      h2 {
+        line-height: .75;
+        color:#fff;
+        margin: 50px 0 10px;
+      }
+
+      p {
+        color: #fff;
+      }
+    }
+  }
+
+  .ym-promo-block--circle {
+    box-shadow:  0px 10px 0px 0px rgba(50, 50, 50, 1);
   }
 }
