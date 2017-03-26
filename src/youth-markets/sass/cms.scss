@@ -33,6 +33,11 @@
     width: 200px;
     background: url("../../youth-markets/image/ym-select-carrot.png") right 0.75rem center no-repeat $event-secondary;
     font-weight: bold;
+
+    option {
+      background: #fff;
+      color: $event-grey !important;
+    }
   }
   
   .ym-page-section__header {
