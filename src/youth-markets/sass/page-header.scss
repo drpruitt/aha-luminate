@@ -17,21 +17,25 @@
       margin: 0 0 22px;
     }
   }
-
+  
   p {
     font-weight: 600;
-
+    
     &:last-child {
       margin:0;
     }
-
-    a, a:visited, a:link {
-      text-decoration: underline;
-      color: #fff;
-    }
-
-    a:hover{
-      text-decoration: none;
+    
+    a {
+      &, 
+      &:link, 
+      &:visited {
+        text-decoration: underline;
+        color: #ffffff;
+      }
+      
+      &:hover {
+        text-decoration: none;
+      }
     }
   }
 }

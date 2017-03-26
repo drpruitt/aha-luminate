@@ -3,6 +3,7 @@
 ]]
 
 [[?xTx::x[[A24]]x::
+  <!-- manage mode -->
   <script>
     var myHtmlEditor = 'Gfr_htmltextarea';
   </script>
@@ -14,122 +15,101 @@
   document.hide_addons = [];
 </script>
 <div class="ym-registration-page-container ym-registration-page-container--ptype" ng-controller="RegistrationPtypeCtrl">
-  <div class="row clearfix">
-    <div class="col-sm-6 col-sm-offset-3">
-      [[?xxnullx::x[[A5]]x::::
-        <div class="alert alert-success">
-          [[A5]]
-        </div>
-      ]]
-      [[?xyz.xnullynullz.xynullz.xnullyz::x[[A4]]y[[A6]]z::::
-        <div class="alert alert-danger">
-          [[?xy.xnully::x[[A4]]y::
-            [[M0:friendraiser:generic_error]]
-          ::
-            [[A4]]
-          ]]
-        </div>
-      ]]
-      [[?[[A6]]::ERR_TRANS_TOO_MUCH::
-        <div class="alert alert-danger">
-          [[M0:friendraiser:error_transaction_too_much]]
-        </div>
-      ::]]
-      <form method="POST" ng-submit="submitPtype()">
-        <div class="section-container" id="part_type_section_container">
-          <div class="manageable-content" data-container="edit_pt_title_container">
-            <h2 class="h5" id="pt_title_container">
-              [[C1:fr_pt_title]]
-            </h2>
-          </div>
-          <div class="manageable-content" data-container="edit_pt_instruction_container">
-            <span id="pt_instruction_container">[[C1:fr_pt_instruction]]</span>
-          </div>
-          <div class="hidden js--registration-ptype-part-types">
-            [[A13]]
-          </div>
-          [[?xTx::x[[A16]]x::
-            <div id="part_type_additional_gift_container" [[?[[A6]]::ERR_BAD_GIFT::class="form-error"::]]>
-              [[?[[A6]]::ERR_BAD_GIFT::
-                <div class="alert alert-danger">
-                  [[M0:friendraiser:error_invalid_amt_user]]
-                </div>
-              ::]]
-              <div class="manageable-content" data-container="edit_part_type_additional_gift_section_header">
-                <div id="part_type_additional_gift_section_header">
-                  [[C1:fr_gift_hdr]]
-                </div>
-              </div>
-              [[?xx::x[[A33]]x::::
-                <div class="hidden js--registration-ptype-donation-levels">
-                  [[A33]]
-                </div>
-                <div class="">
-                  <button type="button" class="btn btn-toggle" ng-repeat="donationLevel in donationLevels.levels" ng-class="{'btn-toggle--selected': donationLevels.activeLevel.amount == donationLevel.amount}" ng-click="toggleDonationLevel(donationLevel.amount)" ng-cloak>
-                    <span ng-bind-html="donationLevel.amountFormatted" ng-if="!donationLevel.isOtherAmount && !donationLevel.isNoDonation"></span>
-                    <span ng-if="donationLevel.isOtherAmount">Other</span>
-                    <span ng-if="donationLevel.isNoDonation">No, Thanks</span>
-                  </button> 
-                  <div class="">
-                    <span ng-bind-html="donationLevels.activeLevel.askMessage"></span>
-                  </div>
-                </div>
-              ]]
-            </div>
-          ::]]
-          [[?xTx::x[[A17]]x::
-            <div id="part_type_fundraising_goal_container" [[?[[A6]]::ERR_BAD_GOAL::class="form-error"::]]>
-              [[?[[A6]]::ERR_BAD_GOAL::
-                <div class="alert alert-danger">
-                  [[M0:friendraiser:error_invalid_goal_amt]]
-                </div>
-              ::]]
-              <div class="form-content">
-                <div class="input-container" id="part_type_fundraising_goal_input_container">
-                  <div class="manageable-content" data-container="edit_fund_goal_container">
-                    <label for="fr_goal" id="fund_goal_container">[[?xx::x[[C1:fr_your_fundraising_goal_field]]x::[[M0:friendraiser:your_fundraising_goal_field]]::[[C1:fr_your_fundraising_goal_field]]]]</label>
-                  </div>
-                  <input type="text" class="form-control" name="fr_goal" id="participationOptions-fr_goal" ng-model="participationOptions.fr_goal" maxlength="15">
-                </div>
-                [[?xxnullxBASELINEx::x[[S0:TPV_FR_CSTM_PT_STANDARD_SUGGESTEDGOAL]]x::
-                  [[?zz::z[[A18]]z::::
-                    <div class="manageable-content" data-container="edit_suggested_goal_container">
-                      <span id="suggested_goal_container">[[?xx::x[[C1:fr_suggested_goal_field]]x::[[M0:friendraiser:suggested_goal_field]]::[[C1:fr_suggested_goal_field]]]]&nbsp;[[A18]]</span>
-                    </div>
-                  ]]
-                ::
-                  <div class="manageable-content" data-container="edit_suggested_goal_container">
-                    <span id="suggested_goal_container">[[C1:fr_suggested_goal_field]]</span>
-                  </div>
-                ]]
-              </div>
-            </div>
-          ::]]
-          <div class="ym-registration-form-footer">
-            <div class="clearfix">
-              [[?xTx::x[[A45]]x::::
-                <div class="pull-right">
-                  <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-primary">
-                    <span>[[M1:friendraiser:join_team_step_next_button]]</span> <i class="fa fa-chevron-right"></i>
-                  </button>
-                </div>
-              ]]
-              [[?xxnullx::x[[A21]]x::
-                [[?xTx::x[[A47]]x::::
-                  <div class="pull-left">
-                    <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-toggle" ng-click="previousStep()">
-                      <i class="fa fa-chevron-left"></i> <span>[[M1:friendraiser:join_team_step_prev_button]]</span>
-                    </button>
-                  </div>
-                ]]
-              ::]]
-            </div>
-          </div>
-        </div>
-        [[S66:util/SpamControlComponentResponsive.tpt]]
-      </form>
+  <div class="ym-registration-page-header">
+    <div class="manageable-content" data-container="edit_pt_title_container">
+      <h2 class="h5" id="pt_title_container">
+        [[C1:fr_pt_title]]
+      </h2>
+    </div>
+    [[?xxnullx::x[[A5]]x::::
+      <div class="alert alert-success">
+        [[A5]]
+      </div>
+    ]]
+    [[?xyz.xnullynullz.xynullz.xnullyz::x[[A4]]y[[A6]]z::::
+      <div class="alert alert-danger">
+        [[?xy.xnully::x[[A4]]y::
+          [[M0:friendraiser:generic_error]]
+        ::
+          [[A4]]
+        ]]
+      </div>
+    ]]
+    [[?[[A6]]::ERR_TRANS_TOO_MUCH::
+      <div class="alert alert-danger">
+        [[M0:friendraiser:error_transaction_too_much]]
+      </div>
+    ::]]
+    <div class="manageable-content" data-container="edit_pt_instruction_container">
+      <span id="pt_instruction_container">[[C1:fr_pt_instruction]]</span>
     </div>
   </div>
+  <form class="ym-registration-ptype-form" method="POST" ng-submit="submitPtype()">
+    <div class="hidden js--registration-ptype-part-types">
+      [[A13]]
+    </div>
+    [[?xTx::x[[A16]]x::
+      [[?[[A6]]::ERR_BAD_GIFT::
+        <div class="alert alert-danger">
+          [[M0:friendraiser:error_invalid_amt_user]]
+        </div>
+      ::]]
+      <div class="manageable-content" data-container="edit_part_type_additional_gift_section_header">
+        <div id="part_type_additional_gift_section_header">
+          [[C1:fr_gift_hdr]]
+        </div>
+      </div>
+      [[?xx::x[[A33]]x::::
+        <div class="hidden js--registration-ptype-donation-levels">
+          [[A33]]
+        </div>
+        <div class="ym-registration-ptype-donation-levels">
+          <button type="button" class="btn btn-toggle" ng-repeat="donationLevel in donationLevels.levels" ng-class="{'btn-toggle--selected': donationLevels.activeLevel.amount == donationLevel.amount}" ng-click="toggleDonationLevel(donationLevel.amount)" ng-cloak>
+            <span ng-bind-html="donationLevel.amountFormatted" ng-if="!donationLevel.isOtherAmount && !donationLevel.isNoDonation"></span>
+            <span ng-if="donationLevel.isOtherAmount">Other</span>
+            <span ng-if="donationLevel.isNoDonation">No, Thanks</span>
+          </button> 
+          <div class="ym-registration-ptype-donation-message">
+            <span ng-bind-html="donationLevels.activeLevel.askMessage"></span>
+          </div>
+        </div>
+      ]]
+    ::]]
+    [[?xTx::x[[A17]]x::
+      [[?[[A6]]::ERR_BAD_GOAL::
+        <div class="alert alert-danger">
+          [[M0:friendraiser:error_invalid_goal_amt]]
+        </div>
+      ::]]
+      <div class="manageable-content" data-container="edit_fund_goal_container">
+        <label for="fr_goal" id="fund_goal_container">
+          [[?xx::x[[C1:fr_your_fundraising_goal_field]]x::[[M0:friendraiser:your_fundraising_goal_field]]::[[C1:fr_your_fundraising_goal_field]]]]
+        </label>
+      </div>
+      <input type="text" class="form-control" name="fr_goal" id="participationOptions-fr_goal" ng-model="participationOptions.fr_goal" placeholder="[[?xx::x[[A18]]x::::[[?xx::x[[C1:fr_suggested_goal_field]]x::[[M0:friendraiser:suggested_goal_field]]::[[C1:fr_suggested_goal_field]]]] [[A18]]]]" maxlength="15">
+    ::]]
+    <div class="ym-registration-form-footer">
+      <div class="clearfix">
+        [[?xTx::x[[A45]]x::::
+          <div class="pull-right">
+            <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-primary">
+              <span>[[M1:friendraiser:join_team_step_next_button]]</span> <i class="fa fa-chevron-right"></i>
+            </button>
+          </div>
+        ]]
+        [[?xxnullx::x[[A21]]x::
+          [[?xTx::x[[A47]]x::::
+            <div class="pull-left">
+              <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-toggle" ng-click="previousStep()">
+                <i class="fa fa-chevron-left"></i> <span>[[M1:friendraiser:join_team_step_prev_button]]</span>
+              </button>
+            </div>
+          ]]
+        ::]]
+      </div>
+    </div>
+    [[S66:util/SpamControlComponentResponsive.tpt]]
+  </form>
   <div class="hidden">
     <form class="js--default-ptype-form" action="[[A1]]" method="POST">
       <input type="hidden" name="fr_id" value="[[A2]]">
@@ -145,59 +125,39 @@
       <input type="hidden" name="previous_step.x" value="[[M1:friendraiser:join_team_step_prev_button]]" ng-if="ng_go_back">
     </form>
   </div>
-  [[?xTx::x[[A24]]x::
-    <div id="edit_pt_title_container" class="EditContainer" style="display: none;">
-      [[C:ajax-custompage-edit-component:edit_pt_title_container]]
-    </div>
-    <div id="edit_pt_instruction_container" class="EditContainer" style="display: none;">
-      [[C:ajax-custompage-edit-component:edit_pt_instruction_container]]
-    </div>
-    <div id="edit_sel_type_container" class="EditContainer" style="display: none;">
-      [[C:ajax-custompage-edit-component:edit_sel_type_container]]
-    </div>
-    <div id="edit_disc_hdr_container" class="EditContainer" style="display: none;">
-      [[C:ajax-custompage-edit-component:edit_disc_hdr_container]]
-    </div>
-    <div id="edit_disc_code_container" class="EditContainer" style="display: none;">
-      [[C:ajax-custompage-edit-component:edit_disc_code_container]]
-    </div>
-    <div id="edit_addl_gift_container" class="EditContainer" style="display: none;">
-      [[C:ajax-custompage-edit-component:edit_addl_gift_container]]
-    </div>
-    <div id="edit_fund_goal_container" class="EditContainer" style="display: none;">
-      [[C:ajax-custompage-edit-component:edit_fund_goal_container]]
-    </div>
-    <div id="edit_goal_hdr_container" class="EditContainer" style="display: none;">
-      [[C:ajax-custompage-edit-component:edit_goal_hdr_container]]
-    </div>
-    <div id="edit_suggested_goal_container" class="EditContainer" style="display: none;">
-      [[C:ajax-custompage-edit-component:edit_suggested_goal_container]]
-    </div>
-    <div id="edit_addons_hdr_container" class="EditContainer" style="display: none;">
-      [[C:ajax-custompage-edit-component:edit_addons_hdr_container]]
-    </div>
-    <div id="edit_individual_company_hdr_container" class="EditContainer" style="display: none;">
-      [[C:ajax-custompage-edit-component:edit_individual_company_hdr_container]]
-    </div>
-    <div id="edit_individual_company_label_container" class="EditContainer" style="display: none;">
-      [[C:ajax-custompage-edit-component:edit_individual_company_label_container]]
-    </div>
-    <div id="edit_part_type_additional_gift_section_header" class="EditContainer" style="display: none;">
-      [[C:ajax-custompage-edit-component:edit_part_type_additional_gift_section_header]]
-    </div>
-    <div id="edit_fr_html_container" class="EditContainer">
-      [[C:ajax-custompage-edit-component:edit_fr_html_container]]
-    </div>
-    <input id="edit_btn_title" type="hidden" value="[[M0:friendraiser_emgmt:preview_edit_link]]">
-    <script>
-      hide_element('edit_fr_html_container');
-      Y.use('emc-reg-editor', function(Y) {
-        jQuery(function() {
-          jQuery('.registration-page-container').manageEMCEditable({
-            windowTitle: '[[T6:[[M0:friendraiser_emgmt:editor_window_title]]]]'
-          });
+</div>
+[[?xTx::x[[A24]]x::
+  <!-- manage mode -->
+  <div id="edit_pt_title_container" class="EditContainer" style="display: none;">
+    [[C:ajax-custompage-edit-component:edit_pt_title_container]]
+  </div>
+  <div id="edit_pt_instruction_container" class="EditContainer" style="display: none;">
+    [[C:ajax-custompage-edit-component:edit_pt_instruction_container]]
+  </div>
+  <div id="edit_addl_gift_container" class="EditContainer" style="display: none;">
+    [[C:ajax-custompage-edit-component:edit_addl_gift_container]]
+  </div>
+  <div id="edit_fund_goal_container" class="EditContainer" style="display: none;">
+    [[C:ajax-custompage-edit-component:edit_fund_goal_container]]
+  </div>
+  <div id="edit_goal_hdr_container" class="EditContainer" style="display: none;">
+    [[C:ajax-custompage-edit-component:edit_goal_hdr_container]]
+  </div>
+  <div id="edit_part_type_additional_gift_section_header" class="EditContainer" style="display: none;">
+    [[C:ajax-custompage-edit-component:edit_part_type_additional_gift_section_header]]
+  </div>
+  <div id="edit_fr_html_container" class="EditContainer">
+    [[C:ajax-custompage-edit-component:edit_fr_html_container]]
+  </div>
+  <input id="edit_btn_title" type="hidden" value="[[M0:friendraiser_emgmt:preview_edit_link]]">
+  <script>
+    hide_element('edit_fr_html_container');
+    Y.use('emc-reg-editor', function(Y) {
+      jQuery(function() {
+        jQuery('.ym-registration-page-container').manageEMCEditable({
+          windowTitle: '[[T6:[[M0:friendraiser_emgmt:editor_window_title]]]]'
         });
       });
-    </script>
-  ::]]
-</div>
+    });
+  </script>
+::]]

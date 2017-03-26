@@ -1,5 +1,31 @@
 .ym-registration-page-container {
   text-align: center;
+  max-width: 630px;
+  margin: 0 auto;
+}
+
+.ym-registration-page-header {
+  margin: 0 0 24px;
+  
+  @media (min-width: $screen-sm-min) {
+    margin: 0 0 26px;
+  }
+  
+  p {
+    @media (min-width: $screen-sm-min) {
+      font-size: 18px;
+    }
+  }
+}
+
+.ym-registration-form-footer {
+  padding: 18px;
+  margin: 26px 0 0;
+  
+  @media (min-width: $screen-sm-min) {
+    padding: 20px;
+    margin: 56px 0 0;
+  }
 }
 
 #fr_new_user_container {
@@ -7,10 +33,43 @@
   margin: 0;
 }
 
-.ym-registration-form-footer {
+.ym-registration-page-container--utype .ym-registration-page-header {
+  margin: 0 0 36px;
+}
+
+.ym-registration-utype-login-form {
+  text-align: left;
+  
+  @media (min-width: $screen-sm-min) {
+    margin: 56px 0 0;
+  }
+}
+
+.ym-registration-utype-forgot-toggle {
+  text-align: center;
+  margin: 24px 0 0;
+  
+  @media (min-width: $screen-sm-min) {
+    margin: 28px 0 0;
+  }
+}
+
+.ym-registration-tfind-results {
+  text-align: left;
+  margin: 28px 0 0;
+  
+  @media (min-width: $screen-sm-min) {
+    margin: 32px 0 0;
+  }
+}
+
+.ym-registration-ptype-donation-levels {
   padding: 18px;
   
   @media (min-width: $screen-sm-min) {
     padding: 20px;
   }
+}
+
+.ym-registration-ptype-donation-message {
 }

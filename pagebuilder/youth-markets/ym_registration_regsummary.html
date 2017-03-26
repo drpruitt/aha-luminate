@@ -3,119 +3,119 @@
 ]]
 
 [[?xTx::x[[A20]]x::
+  <!-- manage mode -->
   <script>
     var myHtmlEditor = 'Gfr_htmltextarea';
   </script>
   <script src="../js/ajax_mce.js"></script>
 ::]]
 <div class="ym-registration-page-container ym-registration-page-container--regsummary" ng-controller="RegistrationRegSummaryCtrl">
-  <div class="row clearfix">
-    <div class="col-sm-6 col-sm-offset-3">
-      [[?xxnullx::x[[A5]]x::::
-        <div class="alert alert-success">
-          [[A5]]
-        </div>
-      ]]
-      [[?xyz.xnullynullz.xynullz.xnullyz::x[[A4]]y[[A6]]z::::
-        <div class="alert alert-danger">
-          [[?xy.xnully::x[[A4]]y::
-            [[M0:friendraiser:generic_error]]
-          ::
-            [[A4]]
-          ]]
-        </div>
-      ]]
-      <form action="[[A1]]" method="POST">
-        <input type="hidden" name="fr_id" id="fr_id" value="[[A2]]">
-        <input type="hidden" name="pg" id="pg" value="[[A7]]">
-        <input type="hidden" name="edit_reg" id="edit_reg" value="-1">
-        <input type="hidden" name="delete_reg" id="delete_reg" value="-1">
-        <input type="hidden" name="previous_button.x" id="previous_button.x" value="">
-        <div class="manageable-content" data-container="edit_title_container">
-          <h2 class="h5" id="title_container">
-            [[C1:fr_reg_summary_page_title]]
-          </h2>
-        </div>
-        <div class="section-body" id="reg_summary_body_container">
-          <div class="manageable-content" data-container="edit_page_info1_container">
-            <span id="page_info1_container">[[?xxnullx::x[[C1:fr_reg_summary_page_info1]]x::[[M0:friendraiser:reg_summary_page_table_title1]]::[[C1:fr_reg_summary_page_info1]]]]</span>
-            <span id="page_info1_reg_num">[[A15]]</span> 
-          </div>
-          [[?xx::x[[A27]]x::::
-            <div class="manageable-content" data-container="edit_page_info3_container">
-              <span id="page_info3_container">[[?xxnullx::x[[C1:fr_reg_summary_page_info3]]x::[[M0:friendraiser:reg_summary_page_table_title3]]::[[C1:fr_reg_summary_page_info3]]]]</span>
-              <span id="page_info3_fee_due">[[A27]]</span>
-            </div>
-          ]]
-          <div class="reg-summary-participant-info-container">
-            [[A13]]
-          </div>
-          <div class="label-value-block-container clearfix">
-            <div class="manageable-content" data-container="edit_page_info2_container">
-              <span id="page_info2_container">[[?xxnullx::x[[C1:fr_reg_summary_page_info2]]x::[[M0:friendraiser:reg_summary_page_total_price_footer]]::[[C1:fr_reg_summary_page_info2]]]]</span>
-              <span id="reg_total_amt" class="option-amount">[[A16]]</span>
-            </div>
-          </div>
-        </div>
-        <div class="ym-registration-form-footer">
-          <div class="clearfix">
-            <div class="pull-right">
-              [[?xTx::x[[A26]]x::::
-                <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-primary" name="next_button" value="[[M1:friendraiser:page_tr_summary_complete_reg_button]]">
-                  <span>[[M1:friendraiser:join_team_step_next_button]]</span> <i class="fa fa-chevron-right"></i>
-                </button>
-              ]]
-            </div>
-          </div>
-        </div>
-        [[S66:util/SpamControlComponentResponsive.tpt]]
-      </form>
+  <div class="ym-registration-page-header">
+    <div class="manageable-content" data-container="edit_title_container">
+      <h2 class="h5" id="title_container">
+        [[C1:fr_reg_summary_page_title]]
+      </h2>
     </div>
+    [[?xxnullx::x[[A5]]x::::
+      <div class="alert alert-success">
+        [[A5]]
+      </div>
+    ]]
+    [[?xyz.xnullynullz.xynullz.xnullyz::x[[A4]]y[[A6]]z::::
+      <div class="alert alert-danger">
+        [[?xy.xnully::x[[A4]]y::
+          [[M0:friendraiser:generic_error]]
+        ::
+          [[A4]]
+        ]]
+      </div>
+    ]]
   </div>
+  <form class="ym-registration-regsummary-form" action="[[A1]]" method="POST">
+    <input type="hidden" name="fr_id" value="[[A2]]">
+    <input type="hidden" name="pg" value="[[A7]]">
+    <input type="hidden" name="edit_reg" value="-1">
+    <input type="hidden" name="delete_reg" value="-1">
+    <input type="hidden" name="previous_button.x" value="">
+    <div class="section-body" id="reg_summary_body_container">
+      <div class="manageable-content" data-container="edit_page_info1_container">
+        <span id="page_info1_container">[[?xxnullx::x[[C1:fr_reg_summary_page_info1]]x::[[M0:friendraiser:reg_summary_page_table_title1]]::[[C1:fr_reg_summary_page_info1]]]]</span>
+        <span id="page_info1_reg_num">[[A15]]</span> 
+      </div>
+      [[?xx::x[[A27]]x::::
+        <div class="manageable-content" data-container="edit_page_info3_container">
+          <span id="page_info3_container">[[?xxnullx::x[[C1:fr_reg_summary_page_info3]]x::[[M0:friendraiser:reg_summary_page_table_title3]]::[[C1:fr_reg_summary_page_info3]]]]</span>
+          <span id="page_info3_fee_due">[[A27]]</span>
+        </div>
+      ]]
+      <div class="reg-summary-participant-info-container">
+        [[A13]]
+      </div>
+      <div class="label-value-block-container clearfix">
+        <div class="manageable-content" data-container="edit_page_info2_container">
+          <span id="page_info2_container">[[?xxnullx::x[[C1:fr_reg_summary_page_info2]]x::[[M0:friendraiser:reg_summary_page_total_price_footer]]::[[C1:fr_reg_summary_page_info2]]]]</span>
+          <span id="reg_total_amt" class="option-amount">[[A16]]</span>
+        </div>
+      </div>
+    </div>
+    <div class="ym-registration-form-footer">
+      <div class="clearfix">
+        <div class="pull-right">
+          [[?xTx::x[[A26]]x::::
+            <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-primary" name="next_button" value="[[M1:friendraiser:page_tr_summary_complete_reg_button]]">
+              <span>[[M1:friendraiser:join_team_step_next_button]]</span> <i class="fa fa-chevron-right"></i>
+            </button>
+          ]]
+        </div>
+      </div>
+    </div>
+    [[S66:util/SpamControlComponentResponsive.tpt]]
+  </form>
   <div class="hidden">
     <form class="js--default-regsummary-form" action="[[A1]]" method="POST">
-      <input type="hidden" name="fr_id" id="fr_id" value="[[A2]]">
-      <input type="hidden" name="pg" id="pg" value="[[A7]]">
-      <input type="hidden" name="edit_reg" id="edit_reg" value="-1">
-      <input type="hidden" name="delete_reg" id="delete_reg" value="-1">
-      <input type="hidden" name="previous_button.x" id="previous_button.x" value="">
+      <input type="hidden" name="fr_id" value="[[A2]]">
+      <input type="hidden" name="pg" value="[[A7]]">
+      <input type="hidden" name="edit_reg" value="-1">
+      <input type="hidden" name="delete_reg" value="-1">
+      <input type="hidden" name="previous_button.x" value="">
     </form>
   </div>
-  [[?xTx::x[[A20]]x::
-    <div id="edit_title_container" class="EditContainer" style="display: none;">
-      [[C:ajax-custompage-edit-component:edit_title_container]]
-    </div>
-    <div id="edit_page_info1_container" class="EditContainer" style="display: none;">
-      [[C:ajax-custompage-edit-component:edit_page_info1_container]]
-    </div>
-    <div id="edit_page_info2_container" class="EditContainer" style="display: none;">
-      [[C:ajax-custompage-edit-component:edit_page_info2_container]]
-    </div>
-    <div id="edit_page_info3_container" class="EditContainer" style="display: none;">
-      [[C:ajax-custompage-edit-component:edit_page_info3_container]]
-    </div>
-    <div id="edit_reg_another_container" class="EditContainer" style="display: none;">
-      [[C:ajax-custompage-edit-component:edit_reg_another_container]]
-    </div>
-    <div id="edit_fname_hdr_container" class="EditContainer" style="display: none;">
-      [[C:ajax-custompage-edit-component:edit_fname_hdr_container]]
-    </div>
-    <div id="edit_lname_hdr_container" class="EditContainer" style="display: none;">
-      [[C:ajax-custompage-edit-component:edit_lname_hdr_container]]
-    </div>
-    <div id="edit_fr_html_container" class="EditContainer">
-      [[C:ajax-custompage-edit-component:edit_fr_html_container]]
-    </div>
-    <input id="edit_btn_title" type="hidden" value="[[M0:friendraiser_emgmt:preview_edit_link]]">
-    <script>
-      hide_element('edit_fr_html_container');
-      Y.use('emc-reg-editor', function(Y) {
-        jQuery(function() {
-          jQuery('.registration-page-container').manageEMCEditable({
-            windowTitle: '[[M0:friendraiser_emgmt:editor_window_title]]'
-          });
+</div>
+[[?xTx::x[[A20]]x::
+  <!-- manage mode -->
+  <div id="edit_title_container" class="EditContainer" style="display: none;">
+    [[C:ajax-custompage-edit-component:edit_title_container]]
+  </div>
+  <div id="edit_page_info1_container" class="EditContainer" style="display: none;">
+    [[C:ajax-custompage-edit-component:edit_page_info1_container]]
+  </div>
+  <div id="edit_page_info2_container" class="EditContainer" style="display: none;">
+    [[C:ajax-custompage-edit-component:edit_page_info2_container]]
+  </div>
+  <div id="edit_page_info3_container" class="EditContainer" style="display: none;">
+    [[C:ajax-custompage-edit-component:edit_page_info3_container]]
+  </div>
+  <div id="edit_reg_another_container" class="EditContainer" style="display: none;">
+    [[C:ajax-custompage-edit-component:edit_reg_another_container]]
+  </div>
+  <div id="edit_fname_hdr_container" class="EditContainer" style="display: none;">
+    [[C:ajax-custompage-edit-component:edit_fname_hdr_container]]
+  </div>
+  <div id="edit_lname_hdr_container" class="EditContainer" style="display: none;">
+    [[C:ajax-custompage-edit-component:edit_lname_hdr_container]]
+  </div>
+  <div id="edit_fr_html_container" class="EditContainer">
+    [[C:ajax-custompage-edit-component:edit_fr_html_container]]
+  </div>
+  <input id="edit_btn_title" type="hidden" value="[[M0:friendraiser_emgmt:preview_edit_link]]">
+  <script>
+    hide_element('edit_fr_html_container');
+    Y.use('emc-reg-editor', function(Y) {
+      jQuery(function() {
+        jQuery('.ym-registration-page-container').manageEMCEditable({
+          windowTitle: '[[M0:friendraiser_emgmt:editor_window_title]]'
         });
       });
-    </script>
-  ::]]
-</div>
+    });
+  </script>
+::]]

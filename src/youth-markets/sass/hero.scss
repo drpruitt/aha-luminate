@@ -1,57 +1,60 @@
 .ym-hero {
   position: relative;
-  padding-top: 45.2991452%;
   background-size: cover;
-
+  padding-top: 45.2991452%;
+  
   @media(min-width: $screen-md-min) {
-    height: 430px;
     background-position: 0 center;
+    height: 430px;
     padding: 0;
   }
 }
 
 .ym-hero__text {
-  background: #fff;
-  padding:20px 20px 0;
-
+  background: #ffffff;
+  padding: 20px 20px 0;
+  
   @media(min-width: $screen-sm-min) {
-    background: rgba(255,255,255,0.88);
     position: absolute;
     bottom: 20px;
-    padding: 15px;
+    background: rgb(255, 255, 255);
+    background: rgba(255, 255, 255, 0.88);
     width: 300px;
+    padding: 15px;
   }
-
+  
   @media(min-width: $screen-md-min) {
     width: 430px;
     padding: 20px;
   }
-
+  
   &.ym-hero__text--right {
-    right:20px;
-
+    right: 20px;
+    
     @media(min-width: $screen-md-min) {
       right: 50px;
     }
   }
-  &.ym-hero__text--left{
-    left:20px;
-
+  
+  &.ym-hero__text--left {
+    left: 20px;
+    
     @media(min-width: $screen-md-min) {
       left: 50px;
     }
   }
+  
   h1 {
     color: $event-secondary;
     text-shadow: none;
     margin-top: 0;
-
-    @media(max-width: $screen-md) {
-      font-size: 30x;
+    
+    @media(max-width: $screen-sm-max) {
+      font-size: 30px;
     }
   }
+  
   p {
     margin: 0;
   }
 }
-

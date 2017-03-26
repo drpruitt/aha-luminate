@@ -3,113 +3,114 @@
 ]]
 
 [[?xTx::x[[A24]]x::
+  <!-- manage mode -->
   <script>
     var myHtmlEditor = 'Gfr_htmltextarea';
   </script>
   <script src="../js/ajax_mce.js"></script>
 ::]]
-<div class="ym-registration-page-container ym-registration-page-container--utype" ng-controller="RegistrationUtypeCtrl" ng-init="[[?xTx::x[[A21]]x::userType='existing';::]][[?xx::x[[A26]]x::::showForgotUsername=true;]]">
-  <div ng-class="{'hidden': showForgotUsername}" ng-cloak>
-    <div class="row clearfix">
-      <div class="col-sm-6 col-sm-offset-3">
-        [[?xxnullx::x[[A5]]x::::
-          <div class="alert alert-success">
-            [[A5]]
-          </div>
-        ]]
-        [[?xx::x[[A25]]x::::
-          <div class="alert alert-success">
-            [[A25]]
-          </div>
-        ]]
-        [[?xyz.xnullynullz.xynullz.xnullyz::x[[A4]]y[[A6]]z::::
-          <div class="alert alert-danger">
-            [[?xy.xnully::x[[A4]]y::
-              [[M0:friendraiser:generic_error]]
-            ::
-              [[A4]]
-            ]]
-          </div>
-        ]]
-        [[?xx::x[[A20]]x::::
-          <div class="alert alert-danger">
-            [[A20]]
-          </div>
-        ]]
-        <div class="manageable-content" data-container="edit_ut_title_container">
-          <h2 class="h5" id="ut_title_container">
-            [[C1:fr_ut_title]]
-          </h2>
-        </div>
-        <p>
-          Did you participate last year?
-        </p>
-        <div class="">
-          <div class="manageable-content" data-container="edit_fr_returning_user_container">
-            <button type="button" class="btn btn-toggle" ng-class="{'btn-toggle--selected': userType == 'existing'}" ng-click="toggleUserType('existing')">
-              <span id="fr_returning_user_container">[[C1:fr_returning_user]]</span>
-            </button> 
-            <button type="button" class="btn btn-toggle" ng-click="toggleUserType('new')">
-              <span id="fr_new_user_container">[[C1:fr_new_user]]</span> <i class="fa fa-chevron-right"></i>
-            </button>
-          </div>
-        </div>
-        <div ng-class="{'hidden': userType != 'existing'}" ng-cloak>
-          <form method="POST" ng-submit="submitUtypeLogin()">
-            <div class="row">
-              <div class="col-sm-6">
-                <label for="existingUser_username">
-                  [[M0:global:user_name_field]]
-                </label>
-                <input type="text" class="form-control" name="USERNAME" id="existingUser_username" ng-model="existingUser.username" maxlength="[[S0:USER_MAX_LOGIN_LEN]]">
-              </div>
-              <div class="col-sm-6">
-                <label for="existingUser_password">
-                  [[M0:global:user_password_field]]
-                </label>
-                <input type="password" class="form-control" name="Password" id="existingUser_password" ng-model="existingUser.password" maxlength="[[S0:USER_MAX_PASSWD_LEN]]">
-              </div>
-            </div>
-            <div class="">
-              <a ng-click="toggleForgotUsername('show')">Forgot Username or Password?</a>
-            </div>
-            <div class="ym-registration-form-footer">
-              <div class="clearfix">
-                <div class="pull-right">
-                  <button type="submit" class="btn btn-primary">
-                    Next <i class="fa fa-chevron-right"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
+<div class="ym-registration-page-container ym-registration-page-container--utype" ng-controller="RegistrationUtypeCtrl" ng-init="[[?xTx::x[[A21]]x::userType='existing';::]][[?xx::x[[A26]]x::::showForgotLogin=true;]]">
+  <div ng-class="{'hidden': showForgotLogin}" ng-cloak>
+    <div class="ym-registration-page-header">
+      <div class="manageable-content" data-container="edit_ut_title_container">
+        <h2 class="h5" id="ut_title_container">
+          [[C1:fr_ut_title]]
+        </h2>
       </div>
+      [[?xxnullx::x[[A5]]x::::
+        <div class="alert alert-success">
+          [[A5]]
+        </div>
+      ]]
+      [[?xx::x[[A25]]x::::
+        <div class="alert alert-success">
+          [[A25]]
+        </div>
+      ]]
+      [[?xyz.xnullynullz.xynullz.xnullyz::x[[A4]]y[[A6]]z::::
+        <div class="alert alert-danger">
+          [[?xy.xnully::x[[A4]]y::
+            [[M0:friendraiser:generic_error]]
+          ::
+            [[A4]]
+          ]]
+        </div>
+      ]]
+      [[?xx::x[[A20]]x::::
+        <div class="alert alert-danger">
+          [[A20]]
+        </div>
+      ]]
+      <p>
+        Did you participate last year?
+      </p>
+    </div>
+    <div class="ym-registration-utype-user-type">
+      <div class="manageable-content" data-container="edit_fr_returning_user_container">
+        <button type="button" class="btn btn-toggle" ng-class="{'btn-toggle--selected': userType == 'existing'}" ng-click="toggleUserType('existing')">
+          <span id="fr_returning_user_container">[[C1:fr_returning_user]]</span>
+        </button> 
+        <button type="button" class="btn btn-toggle" ng-click="toggleUserType('new')">
+          <span id="fr_new_user_container">[[C1:fr_new_user]]</span> <i class="fa fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+    <div ng-class="{'hidden': userType != 'existing'}" ng-cloak>
+      <form class="ym-registration-utype-login-form" method="POST" ng-submit="submitUtypeLogin()">
+        <div class="row">
+          <div class="col-xs-6">
+            <label for="existingUser_username">
+              [[M0:global:user_name_field]]
+            </label>
+            <input type="text" class="form-control" name="USERNAME" id="existingUser_username" ng-model="existingUser.username" maxlength="[[S0:USER_MAX_LOGIN_LEN]]">
+          </div>
+          <div class="col-xs-6">
+            <label for="existingUser_password">
+              [[M0:global:user_password_field]]
+            </label>
+            <input type="password" class="form-control" name="Password" id="existingUser_password" ng-model="existingUser.password" maxlength="[[S0:USER_MAX_PASSWD_LEN]]">
+          </div>
+        </div>
+        <div class="ym-registration-utype-forgot-toggle">
+          <a ng-click="toggleForgotLogin('show')">Forgot Username or Password?</a>
+        </div>
+        <div class="ym-registration-form-footer">
+          <div class="clearfix">
+            <div class="pull-right">
+              <button type="submit" class="btn btn-primary">
+                Next <i class="fa fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
-  <div ng-class="{'hidden': !showForgotUsername}" ng-cloak>
-    <div class="row clearfix">
-      <div class="col-sm-6 col-sm-offset-3">
-        <a ng-click="toggleForgotUsername('hide')">Back</a>
-        <h2 class="h5" id="ut_title_container">
-          Forgot Username or Password
-        </h2>
-        [[?xx::x[[A26]]x::::
-          <div class="alert alert-danger">
-            [[A26]]
-          </div>
-        ]]
-        <form method="POST" ng-submit="submitForgotUsername()">
-          <label for="existingUser_email">
-            [[M0:global:email_reg_field]]
-          </label>
-          <input type="text" class="form-control" name="email" id="existingUser_email" ng-model="existingUser.email" maxlength="100">
-          <button type="submit" class="btn btn-primary">
-            Submit
-          </button>
-        </form>
-      </div>
+  <div ng-class="{'hidden': !showForgotLogin}" ng-cloak>
+    <a class="btn btn-link" ng-click="toggleForgotLogin('hide')">
+      <i class="fa fa-chevron-left"></i> Back
+    </a>
+    <div class="ym-registration-page-header">
+      <h2 class="h5" id="ut_title_container">
+        Forgot Username or Password
+      </h2>
+      [[?xx::x[[A26]]x::::
+        <div class="alert alert-danger">
+          [[A26]]
+        </div>
+      ]]
     </div>
+    <form class="form-inline" method="POST" ng-submit="submitForgotLogin()">
+      <div class="form-group">
+        <label class="sr-only" for="existingUser_email">
+          [[M0:global:email_reg_field]]
+        </label>
+        <input type="text" class="form-control" name="email" id="existingUser_email" ng-model="existingUser.email" maxlength="100">
+      </div>
+      <button type="submit" class="btn btn-primary">
+        Submit
+      </button>
+    </form>
   </div>
   <div class="hidden">
     <form class="js--default-utype-existing-form" action="[[A1]]" method="POST">
@@ -133,6 +134,7 @@
   </div>
 </div>
 [[?xTx::x[[A24]]x::
+  <!-- manage mode -->
   <div id="edit_ut_title_container" class="EditContainer" style="display: none;">
     [[C:ajax-custompage-edit-component:edit_ut_title_container]]
   </div>
@@ -147,7 +149,7 @@
     hide_element('edit_fr_html_container');
     Y.use('emc-reg-editor', function(Y) {
       jQuery(function() {
-        jQuery('.registration-page-container').manageEMCEditable({
+        jQuery('.ym-registration-page-container').manageEMCEditable({
           windowTitle: '[[T6:[[M0:friendraiser_emgmt:editor_window_title]]]]'
         });
       });

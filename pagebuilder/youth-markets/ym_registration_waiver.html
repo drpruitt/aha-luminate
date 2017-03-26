@@ -10,11 +10,13 @@
   </style>
 ]]
 <div class="ym-registration-page-container" ng-controller="RegistrationWaiverCtrl">
-  <form class="js--registration-waiver-form" name="FriendraiserUserWaiver" method="POST" action="[[A1]]">
-    <input type="hidden" name="fr_id" id="fr_id" value="[[A2]]">
-    <input type="hidden" name="pg" id="pg" value="[[A7]]">
-    <input type="hidden" name="extra_person" value="[[A15]]">
-    <input type="hidden" name="fr_accept" value="on">
-    <input type="hidden" name="fuw_next.x" value="[[M1:friendraiser:join_team_step_next_button]]">
-  </form>
+  <div class="hidden">
+    <form class="js--registration-waiver-form" method="POST" action="[[A1]]">
+      <input type="hidden" name="fr_id" value="[[A2]]">
+      <input type="hidden" name="pg" value="[[A7]]">
+      <input type="hidden" name="extra_person" value="[[A15]]">
+      <input type="hidden" name="fr_accept" value="on">
+      <input type="hidden" name="fuw_next.x" value="[[M1:friendraiser:join_team_step_next_button]]">
+    </form>
+  </div>
 </div>
