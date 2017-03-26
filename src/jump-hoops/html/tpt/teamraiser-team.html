@@ -4,9 +4,9 @@
         <img class="hidden-md hidden-lg" src="[[C4:graphic_upload]]" alt="[[C1:graphic_caption]]" />
     </div>
     <div class="col-md-6 ym-progress ym-secondary-medium-color">
-      <h4 class="ym-progress__title">[[C1:title]]</h4>
+      <h4 class="ym-progress__title">[[C1:title_field]]</h4>
       <div class="ym-progress__cta">         
-          <a class="btn btn-primary btn-lg" ng-href="TRR?fr_id=[[S334:fr_id]]&pg=tfind&fr_tm_opt=existing&fr_team_id={{teamId}}&company_id=[[S334:company_id]]">
+          <a class="btn btn-primary btn-lg" ng-href="TRR?fr_id=[[S334:fr_id]]&pg=tfind&fr_tm_opt=existing&fr_team_id={{teamId}}">
             Join Team
           </a>
           <a class="btn btn-primary btn-lg" ng-href="Donation2?df_id=[[E42:[[S334:fr_id]]:form-id]]&FR_ID=[[S334:fr_id]]&PROXY_ID=[[S334:team_id]]&PROXY_TYPE=22">
@@ -20,7 +20,7 @@
         <div class="ym-progress__amount col-sm-6">
           <p>We've raised <strong ng-bind="teamProgress.amountRaisedFormatted"></strong></p>
         </div>
-        <div class="ym-progress__goal col-sm-6" ng-if="teamProgress.goal && teamProgress.goal != 0">
+        <div class="ym-progress__goal col-sm-6">
           <p>Our goal is <strong ng-bind="teamProgress.goalFormatted"></strong></p>
         </div>
         <div class="clearfix"></div>
