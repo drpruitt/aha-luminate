@@ -50,7 +50,6 @@ angular.module 'ahaLuminateControllers'
           error: ->
             setTeamFundraisingProgress()
           success: (response) ->
-            console.log response
             teamInfo = response.getTeamSearchByInfoResponse?.team
             companyId = teamInfo.companyId
             $scope.participantCount = teamInfo.numMembers
