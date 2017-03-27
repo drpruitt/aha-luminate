@@ -36,3 +36,9 @@ select {
     }
   }
 }
+
+.has-error {
+  .form-control {
+    border: 1px solid $event-secondary;
+  }
+}
