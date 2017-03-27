@@ -35,113 +35,130 @@
     <input type="hidden" name="fr_id" value="[[A2]]">
     <input type="hidden" name="pg" value="[[A7]]">
     <input type="hidden" name="fr_cstm_reg" value="t">
-    <div class="section-container">
-      <div class="section-body">
-        [[A13]]
-        <div class="sub-section-container" id="reg_options_cons_info_extension">
-          <div class="sub-section-body" id="reg_options_cons_info_extension_body">
-            [[?xxnullx::x[[A20]]x::::
-              [[?xxnullxBASELINEx::x[[S0:TPV_FR_CSTM_REG_OPTIN]]x:: 
-                <div id="gift_notice_optin">
-                  <input type="checkbox" name="fr_email_opt_in" id="fr_email_opt_in" [[?[[A20]]::T::checked="checked" ::]]>
-                  <label for="fr_email_opt_in" class="wrapable">
-                    <span class="manageable-content" data-container="edit_opt_in_container">
-                      <span id="opt_in_label">
-                        [[?xx::x[[C1:fr_gift_notice_opt_in_checkbox]]x::
-                          [[M0:friendraiser:gift_notice_opt_in_checkbox]]
-                        ::
-                          [[C1:fr_gift_notice_opt_in_checkbox]]
-                        ]]
-                      </span>
-                    </span>
-                  </label>
-                </div>
-              :: 
-                [[?xOPTINx::x[[S0:TPV_FR_CSTM_REG_OPTIN]]x:: 
-                  <input type="hidden" name="fr_email_opt_in" id="fr_email_opt_in" value="on">
-                ::]]
-              ]]
-            ]]
-            [[?xxnullx::x[[A23]]x::::
-              <div id="email_optin">
-                [[A23]]
-              </div>
-            ]]
-          </div>
+    <div class="hidden js--registration-reg-contact-info">
+      [[A13]]
+    </div>
+    <div ng-repeat="(key, value) in registrationHiddenFields">
+      <input type="hidden" name="{{key}}" value="{{value}}">
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group" ng-if="registrationQuestions.cons_first_name" ng-cloak>
+          <label class="control-label" for="registrationInfo-cons_first_name">
+            <span ng-bind-html="registrationQuestions.cons_first_name.label"></span>
+          </label>
+          <input type="text" class="form-control" name="cons_first_name" id="registrationInfo-cons_first_name" ng-model="registrationInfo.cons_first_name" maxlength="registrationQuestions.cons_first_name.maxlength">
         </div>
-        [[?xx::x[[A16]]x::::
-          <hr>
-          <div class="sub-section-container" id="participant_info_container">
-            <div class="sub-section-header">
-              <div class="manageable-content" data-container="edit_password_hdr_container">
-                <span id="password_hdr_container">[[C1:fr_password_hdr]]</span>
-              </div>
-            </div>
-            <div class="sub-section-body clearfix" id="participant_info_body_container">
-              [[?xxnullx::x[[A16]]x::::
-                <div id="user_name_pword_container">
-                  <div id="password_component_container">
-                    [[A16]]
-                  </div>
-                </div>
-              ]]
-            </div>
-          </div>
-        ]]
-        [[?xTx::x[[A24]]x::
-          <div class="sub-section-container">
-            <div class="sub-section-header">
-              <div class="manageable-content" data-container="edit_questions_hdr_container">
-                <span id="questions_hdr_container">[[C1:fr_questions_hdr]]</span>
-              </div>
-            </div>
-          </div>
-        ::
-          [[?xxnullx::x[[A19]]x::::
-            [[?xtruex::x[[A29]]x::
-              <div class="sub-section-container">
-                <div class="sub-section-header">
-                  [[C1:fr_questions_hdr]]
-                </div>
-                <div class="sub-section-body" id="additional_questions_container">
-                  [[A19]]
-                </div>
-              </div>
-            ::
-              <div class="sub-section-body" id="additional_questions_container">
-                [[A19]]
-              </div>
-            ]]
-          ]]
-        ]]
-        <div ng-if="participationType.waiver" ng-cloak>
-          <div ng-bind-html="participationType.waiver"></div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group" ng-if="registrationQuestions.cons_last_name" ng-cloak>
+          <label class="control-label" for="registrationInfo-cons_last_name">
+            <span ng-bind-html="registrationQuestions.cons_last_name.label"></span>
+          </label>
+          <input type="text" class="form-control" name="cons_last_name" id="registrationInfo-cons_last_name" ng-model="registrationInfo.cons_last_name" maxlength="registrationQuestions.cons_last_name.maxlength">
         </div>
-        <div class="ym-registration-form-footer">
-          <div class="ym-registration-form-footer-btns">
-            <div class="clearfix">
-              <div class="pull-right">
-                <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-primary" name="next_step.x" value="[[M1:friendraiser:join_team_step_next_button]]">
-                  <span>[[M1:friendraiser:join_team_step_next_button]]</span> <i class="fa fa-chevron-right"></i>
-                </button>
-              </div>
-              <div class="pull-left">
-                <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-toggle" name="previous_step.x" value="[[M1:friendraiser:join_team_step_prev_button]]">
-                  <i class="fa fa-chevron-left"></i> <span>[[M1:friendraiser:join_team_step_prev_button]]</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        [[S66:util/SpamControlComponentResponsive.tpt]]
       </div>
     </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group" ng-if="registrationQuestions.cons_email" ng-cloak>
+          <label class="control-label" for="registrationInfo-cons_email">
+            <span ng-bind-html="registrationQuestions.cons_email.label"></span>
+          </label>
+          <input type="text" class="form-control" name="cons_email" id="registrationInfo-cons_email" ng-model="registrationInfo.cons_email" maxlength="registrationQuestions.cons_email.maxlength">
+        </div>
+      </div>
+      <div class="col-sm-6">
+      </div>
+    </div>
+    <div class="js--registration-reg-opt-ins">
+      [[?xxnullx::x[[A23]]x::::
+        [[A23]]
+      ]]
+      [[?xxnullx::x[[A20]]x::::
+        [[?xxnullxBASELINEx::x[[S0:TPV_FR_CSTM_REG_OPTIN]]x:: 
+          <input type="checkbox" name="fr_email_opt_in" id="fr_email_opt_in" [[?[[A20]]::T::checked::]]>
+          <label for="fr_email_opt_in">
+            <span class="manageable-content" data-container="edit_opt_in_container">
+              <span id="opt_in_label">
+                [[?xx::x[[C1:fr_gift_notice_opt_in_checkbox]]x::
+                  [[M0:friendraiser:gift_notice_opt_in_checkbox]]
+                ::
+                  [[C1:fr_gift_notice_opt_in_checkbox]]
+                ]]
+              </span>
+            </span>
+          </label>
+        :: 
+          [[?xOPTINx::x[[S0:TPV_FR_CSTM_REG_OPTIN]]x:: 
+            <input type="hidden" name="fr_email_opt_in" id="fr_email_opt_in" value="on">
+          ::]]
+        ]]
+      ]]
+    </div>
+    [[?xx::x[[A16]]x::::
+      <div class="js--registration-reg-login-info">
+        <div class="manageable-content" data-container="edit_password_hdr_container">
+          <span id="password_hdr_container">[[C1:fr_password_hdr]]</span>
+        </div>
+        [[?xxnullx::x[[A16]]x::::
+          [[A16]]
+        ]]
+      </div>
+    ]]
+    [[?xTx::x[[A24]]x::
+      <!-- manage mode -->
+      <div class="js--registration-reg-additional-info">
+        <div class="manageable-content" data-container="edit_questions_hdr_container">
+          <span id="questions_hdr_container">[[C1:fr_questions_hdr]]</span>
+        </div>
+      </div>
+    ::
+      [[?xxnullx::x[[A19]]x::::
+        <div class="js--registration-reg-additional-info">
+          [[?xtruex::x[[A29]]x::
+            [[C1:fr_questions_hdr]]
+            [[A19]]
+          ::
+            [[A19]]
+          ]]
+        </div>
+      ]]
+    ]]
+    <div ng-if="participationType.waiver.content" ng-cloak>
+      <div class="form-group">
+        <label class="control-label">
+          Do you agree to the waiver?
+        </label>
+        <div ng-bind-html="participationType.waiver.content"></div>
+      </div>
+    </div>
+    <div class="ym-registration-form-footer">
+      <div class="ym-registration-form-footer-btns">
+        <div class="clearfix">
+          <div class="pull-right">
+            <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-primary" name="next_step.x" value="[[M1:friendraiser:join_team_step_next_button]]">
+              <span>[[M1:friendraiser:join_team_step_next_button]]</span> <i class="fa fa-chevron-right"></i>
+            </button>
+          </div>
+          <div class="pull-left">
+            <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-toggle" name="previous_step.x" value="[[M1:friendraiser:join_team_step_prev_button]]">
+              <i class="fa fa-chevron-left"></i> <span>[[M1:friendraiser:join_team_step_prev_button]]</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    [[S66:util/SpamControlComponentResponsive.tpt]]
   </form>
   <div class="hidden">
     <form class="js--default-reg-form" action="[[A1]]" method="POST">
       <input type="hidden" name="fr_id" value="[[A2]]">
       <input type="hidden" name="pg" value="[[A7]]">
       <input type="hidden" name="fr_cstm_reg" value="t">
+      <div ng-repeat="(key, value) in registrationHiddenFields">
+        <input type="hidden" name="{{key}}" value="{{value}}">
+      </div>
       <input type="hidden" name="next_step.x" value="[[M1:friendraiser:join_team_step_next_button]]" ng-if="!ng_go_back">
       <input type="hidden" name="previous_step.x" value="[[M1:friendraiser:join_team_step_prev_button]]" ng-if="ng_go_back">
     </form>
