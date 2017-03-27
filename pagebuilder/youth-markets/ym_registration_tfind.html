@@ -44,22 +44,17 @@
         <p>
           Find your team in the list below or search:
         </p>
-        <div class="manageable-editor" data-container="edit_team_label_container">
-          <span id="team_label_container">
+      </div>
+      <form class="form-inline ym-registration-tfind-form" method="POST" ng-submit="submitTfindSearch()">
+        <div class="form-group">
+          <label class="sr-only" for="ng_team_name">
             [[?xx::x[[C1:fr_team_field]]x::
               [[M0:friendraiser:team_field]]
             ::
               [[C1:fr_team_field]]
             ]]
-          </span>
-        </div>
-      </div>
-      <form class="form-inline ym-registration-tfind-form" method="POST" ng-submit="submitTfindSearch()">
-        <div class="form-group">
-          <label class="sr-only" for="">
-            Team name:
           </label>
-          <input type="text" class="form-control" name="ng_team_name" id="" ng-model="ng_team_name">
+          <input type="text" class="form-control" name="ng_team_name" id="ng_team_name" ng-model="ng_team_name">
         </div>
         <button type="submit" class="btn btn-secondary">
           [[C1:fr_team_search_button]]
@@ -80,7 +75,7 @@
                   <div class="table-cell">
                     <a ng-href="TR?fr_id={{team.EventId}}&amp;pg=team&amp;team_id={{team.id}}"><span ng-bind-html="team.name"></span></a>
                   </div>
-                  <div class="table-cell">
+                  <div class="table-cell table-cell--righted">
                     <a class="btn btn-md btn-primary" ng-href="TRR?fr_id={{team.EventId}}&amp;pg=tfind&amp;fr_tm_opt=existing&amp;fr_tjoin={{team.id}}&amp;skip_login_page=true">
                       Join Team <i class="fa fa-chevron-right"></i>
                     </a>
@@ -98,9 +93,6 @@
   <!-- manage mode -->
   <div id="edit_title_container" class="EditContainer" style="display: none;">
     [[C:ajax-custompage-edit-component:edit_title_container]]
-  </div>
-  <div id="edit_team_label_container" class="EditContainer" style="display: none;">
-    [[C:ajax-custompage-edit-component:edit_team_label_container]]
   </div>
   <input id="edit_btn_title" type="hidden" value="[[M0:friendraiser_emgmt:preview_edit_link]]">
   <script>

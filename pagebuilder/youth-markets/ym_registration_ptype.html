@@ -76,17 +76,21 @@
       ]]
     ::]]
     [[?xTx::x[[A17]]x::
-      [[?[[A6]]::ERR_BAD_GOAL::
-        <div class="alert alert-danger">
-          [[M0:friendraiser:error_invalid_goal_amt]]
+      <div class="ym-registration-ptype-goal-container">
+        [[?[[A6]]::ERR_BAD_GOAL::
+          <div class="alert alert-danger">
+            [[M0:friendraiser:error_invalid_goal_amt]]
+          </div>
+        ::]]
+        <div class="form-group [[?[[A6]]::ERR_BAD_GOAL::has-error::]]">
+          <div class="manageable-content" data-container="edit_fund_goal_container">
+            <label class="control-label" id="fund_goal_container" for="fr_goal">
+              [[?xx::x[[C1:fr_your_fundraising_goal_field]]x::[[M0:friendraiser:your_fundraising_goal_field]]::[[C1:fr_your_fundraising_goal_field]]]]
+            </label>
+          </div>
+          <input type="text" class="form-control" name="fr_goal" id="participationOptions-fr_goal" ng-model="participationOptions.fr_goal" placeholder="[[?xx::x[[A18]]x::::[[?xx::x[[C1:fr_suggested_goal_field]]x::[[M0:friendraiser:suggested_goal_field]]::[[C1:fr_suggested_goal_field]]]] [[A18]]]]" maxlength="15">
         </div>
-      ::]]
-      <div class="manageable-content" data-container="edit_fund_goal_container">
-        <label for="fr_goal" id="fund_goal_container">
-          [[?xx::x[[C1:fr_your_fundraising_goal_field]]x::[[M0:friendraiser:your_fundraising_goal_field]]::[[C1:fr_your_fundraising_goal_field]]]]
-        </label>
       </div>
-      <input type="text" class="form-control" name="fr_goal" id="participationOptions-fr_goal" ng-model="participationOptions.fr_goal" placeholder="[[?xx::x[[A18]]x::::[[?xx::x[[C1:fr_suggested_goal_field]]x::[[M0:friendraiser:suggested_goal_field]]::[[C1:fr_suggested_goal_field]]]] [[A18]]]]" maxlength="15">
     ::]]
     <div class="ym-registration-form-footer">
       <div class="ym-registration-form-footer-btns">

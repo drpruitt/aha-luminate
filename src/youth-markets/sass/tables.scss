@@ -73,6 +73,10 @@ div.table {
   }
 }
 
+.table-cell--righted {
+  text-align: right;
+}
+
 .ym-list__column {
   a[ng-click]:link {
     text-decoration: none;

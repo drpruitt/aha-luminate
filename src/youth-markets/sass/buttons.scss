@@ -66,8 +66,8 @@ a.btn-lg {
   &:visited {
     @include button-size($padding-base-vertical, $padding-base-horizontal, 20px);
     
-    min-width:180px;
     text-align: center;
+    min-width:180px;
     
     @media (max-width: $screen-xs-max) {
       @include button-size(10px, 12px, 14px);
@@ -116,9 +116,16 @@ div.responsive {
 .btn-toggle, 
 a.btn-toggle {
   @include button-size($padding-base-vertical, $padding-base-horizontal, 18px);
-  font-weight: 700;
-  text-decoration: none;
-  text-align: center;
+  
+  &, 
+  &:link, 
+  &:visited, 
+  &:hover, 
+  &:focus, 
+  &:active {
+    font-weight: 700;
+    text-align: center;
+  }
 }
 
 .donation-form-container .btn-toggle {
