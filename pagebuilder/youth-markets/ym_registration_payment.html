@@ -24,63 +24,119 @@
   <form class="ym-registration-payment-form" action="[[A1]]" method="POST">
     <input type="hidden" name="fr_id" value="[[A2]]">
     <input type="hidden" name="pg" value="[[A5]]">
-    <div class="section-container">
-      <div class="section-body" id="reg_payment_body_container">
-        <div id="reg_total_block" class="label-value-block-container clearfix">
-          <p class="clearfix">
-            <span id="reg_total_amt" class="option-amount">[[A9]]</span>
-          </p>
-        </div>
-        <div id="reg_payment_info_block">
-          [[?xx::x[[C:payment-type-element:responsive_payment_type]]x::
-            [[C:payment-type-element:payment_type]]
-          ::
-            [[C:payment-type-element:responsive_payment_type]]
-          ]]
-        </div>
-        <div id="reg_billing_info_block">
-          <h3>
-            [[M0:friendraiser:reg_payment_page_billing_header]]
-          </h3>
-          <div id="billing_info_name">
-            [[C:selectlist-title-element:billing_title]]
-            [[C:text-element:billing_first_name]]
-            [[C:text-element:billing_last_name]]
-            [[C:selectlist-suffix-element:billing_suffix]]
-          </div>
-          <div id="billing_info_address">
-            [[C:text-element:billing_addr_street1]]
-            [[C:text-element:billing_addr_street2]]
-            [[C:text-element:billing_addr_city]]
-            [[C:selectlist-state-element:billing_addr_state]]
-            [[C:text-element:billing_addr_zip]]
-            [[C:selectlist-country-element:billing_addr_country]]
-          </div>
+    <div class="hidden js--registration-payment-billing-info">
+      [[C:selectlist-title-element:billing_title]]
+      [[C:text-element:billing_first_name]]
+      [[C:text-element:billing_last_name]]
+      [[C:selectlist-suffix-element:billing_suffix]]
+      [[C:text-element:billing_addr_street1]]
+      [[C:text-element:billing_addr_street2]]
+      [[C:text-element:billing_addr_city]]
+      [[C:selectlist-state-element:billing_addr_state]]
+      [[C:text-element:billing_addr_zip]]
+      [[C:selectlist-country-element:billing_addr_country]]
+    </div>
+    [[M0:friendraiser:reg_payment_page_billing_header]]
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="control-label" for="">
+            Billing First Name:
+          </label>
+          <input type="text" class="form-control">
         </div>
       </div>
-      <div id="external_payment_wait_dlg" class="yui-panel-container">
-        <div class="hd">
-          [[M0:friendraiser:reg_payment_page_lightbox_title]]
-        </div>
-        <div class="bd">
-          <p>
-            [[M0:friendraiser:reg_payment_page_lightbox_title]]
-          </p>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="control-label" for="">
+            Billing Last Name:
+          </label>
+          <input type="text" class="form-control">
         </div>
       </div>
-      <div class="ym-registration-form-footer">
-        <div class="ym-registration-form-footer-btns">
-          <div class="clearfix">
-            <div class="pull-right">
-              <button type="[[?xTx::x[[A7]]x::button::submit]]" class="btn btn-primary" name="btn_next" value="[[M0:friendraiser:reg_payment_page_next_button_label]]">
-                <span>[[M0:friendraiser:reg_payment_page_next_button_label]]</span> <i class="fa fa-chevron-right"></i>
-              </button>
-            </div>
-            <div class="pull-left">
-              <button type="[[?xTx::x[[A7]]x::button::submit]]" class="btn btn-toggle" name="btn_prev" value="[[M0:friendraiser:reg_payment_page_prev_button_label]]">
-                <i class="fa fa-chevron-left"></i> <span>[[M0:friendraiser:reg_payment_page_prev_button_label]]</span>
-              </button>
-            </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="form-group">
+          <label class="control-label" for="">
+            Billing Address:
+          </label>
+          <input type="text" class="form-control">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="form-group">
+          <label class="control-label" for="">
+            Billing Address Line 2 (Optional):
+          </label>
+          <input type="text" class="form-control">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="control-label" for="">
+            City:
+          </label>
+          <input type="text" class="form-control">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="control-label" for="">
+            State/Province:
+          </label>
+          <select class="form-control">
+            <option></option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="control-label" for="">
+            ZIP/Postal Code:
+          </label>
+          <input type="text" class="form-control">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="control-label" for="">
+            Country:
+          </label>
+          <select class="form-control">
+            <option></option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="hidden js--registration-payment-account-info">
+      [[?xx::x[[C:payment-type-element:responsive_payment_type]]x::
+        [[C:payment-type-element:payment_type]]
+      ::
+        [[C:payment-type-element:responsive_payment_type]]
+      ]]
+    </div>
+    <hr>
+    <div>
+    </div>
+    <div class="ym-registration-form-footer">
+      <div class="ym-registration-form-footer-btns">
+        <div class="clearfix">
+          <div class="pull-right">
+            <button type="[[?xTx::x[[A7]]x::button::submit]]" class="btn btn-primary" name="btn_next" value="[[M0:friendraiser:reg_payment_page_next_button_label]]">
+              Donate [[E130:"[[A9]]" ".00" "" replaceall]] <i class="fa fa-chevron-right"></i>
+            </button>
+          </div>
+          <div class="pull-left">
+            <button type="[[?xTx::x[[A7]]x::button::submit]]" class="btn btn-toggle" name="btn_prev" value="[[M0:friendraiser:reg_payment_page_prev_button_label]]">
+              <i class="fa fa-chevron-left"></i> Previous
+            </button>
           </div>
         </div>
       </div>
@@ -91,6 +147,16 @@
       <input type="hidden" name="fr_id" value="[[A2]]">
       <input type="hidden" name="pg" value="[[A5]]">
     </form>
+  </div>
+</div>
+<div id="external_payment_wait_dlg" class="yui-panel-container">
+  <div class="hd">
+    [[M0:friendraiser:reg_payment_page_lightbox_title]]
+  </div>
+  <div class="bd">
+    <p>
+      [[M0:friendraiser:reg_payment_page_lightbox_title]]
+    </p>
   </div>
 </div>
 <script>
