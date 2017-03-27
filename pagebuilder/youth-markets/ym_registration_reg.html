@@ -121,7 +121,7 @@
               <label class="control-label" for="registrationInfo-cons_user_name">
                 <span ng-bind-html="registrationQuestions.cons_user_name.label"></span>
               </label>
-              <input type="text" name="ng_cons_user_name" id="registrationInfo-cons_user_name" ng-model="registrationInfo.cons_user_name" maxlength="{{registrationQuestions.cons_user_name.maxlength}}">
+              <input type="text" class="form-control" name="ng_cons_user_name" id="registrationInfo-cons_user_name" ng-model="registrationInfo.cons_user_name" maxlength="{{registrationQuestions.cons_user_name.maxlength}}">
             </div>
           </div>
         </div>
@@ -131,7 +131,7 @@
               <label class="control-label" for="registrationInfo-cons_password">
                 <span ng-bind-html="registrationQuestions.cons_password.label"></span>
               </label>
-              <input type="text" name="ng_cons_password" id="registrationInfo-cons_password" ng-model="registrationInfo.cons_password" maxlength="{{registrationQuestions.cons_password.maxlength}}">
+              <input type="password" class="form-control" name="ng_cons_password" id="registrationInfo-cons_password" ng-model="registrationInfo.cons_password" maxlength="{{registrationQuestions.cons_password.maxlength}}">
             </div>
           </div>
           <div class="col-sm-6">
@@ -139,7 +139,7 @@
               <label class="control-label" for="registrationInfo-cons_rep_password">
                 <span ng-bind-html="registrationQuestions.cons_rep_password.label"></span>
               </label>
-              <input type="text" name="ng_cons_rep_password" id="registrationInfo-cons_rep_password" ng-model="registrationInfo.cons_rep_password" maxlength="{{registrationQuestions.cons_rep_password.maxlength}}">
+              <input type="password" class="form-control" name="ng_cons_rep_password" id="registrationInfo-cons_rep_password" ng-model="registrationInfo.cons_rep_password" maxlength="{{registrationQuestions.cons_rep_password.maxlength}}">
             </div>
           </div>
         </div>
@@ -167,7 +167,16 @@
             <div ng-repeat="(key, value) in registrationAdditionalQuestions">
               <div class="row">
                 <div class="col-xs-12">
-                  <input type="text" name="ng_{{key}}" id="registrationInfo-{{key}}" ng-model="registrationInfo[key]" maxlength="{{registrationQuestions[key].maxlength}}">
+                  <div class="form-group">
+                    <label class="control-label" for="registrationInfo-{{key}}">
+                      <span ng-bind-html="registrationQuestions[key].label"></span>
+                    </label>
+                    <input type="text" class="form-control" name="ng_{{key}}" id="registrationInfo-{{key}}" ng-model="registrationInfo[key]" maxlength="{{registrationQuestions[key].maxlength}}" ng-if="questionType != 'textarea' && questionType != 'select'">
+                    <textarea class="form-control" name="ng_{{key}}" id="registrationInfo-{{key}}" ng-model="registrationInfo[key]" maxlength="{{registrationQuestions[key].maxlength}}" ng-if="questionType == 'textarea'"></textarea>
+                    <select class="form-control" name="ng_{{key}}" id="registrationInfo-{{key}}" ng-model="registrationInfo[key]" ng-if="questionType == 'select'">
+                      <option value="NOREPLY"></option>
+                    </select>
+                  </div>
                 </div>
               </div>
             </div>

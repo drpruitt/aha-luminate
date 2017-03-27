@@ -59,7 +59,7 @@ angular.module 'ahaLuminateControllers'
         questionName = $loginInfoHiddenField.attr 'name'
         questionValue = $loginInfoHiddenField.val()
         $scope.registrationHiddenFields[questionName] = questionValue
-      $loginInfoQuestions = $loginInfo.find 'input[type="text"]'
+      $loginInfoQuestions = $loginInfo.find 'input[type="text"], input[type="password"]'
       angular.forEach $loginInfoQuestions, (loginInfoQuestion) ->
         $loginInfoQuestion = angular.element loginInfoQuestion
         questionName = $loginInfoQuestion.attr 'name'
@@ -83,22 +83,31 @@ angular.module 'ahaLuminateControllers'
         questionName = $additionalInfoHiddenField.attr 'name'
         questionValue = $additionalInfoHiddenField.val()
         $scope.registrationHiddenFields[questionName] = questionValue
-      $additionalInfoQuestions = $additionalInfo.find 'input[type="text"], textarea, select'
+      $additionalInfoQuestions = $additionalInfo.find 'input[type="text"], input[type="number"], textarea, select'
       angular.forEach $additionalInfoQuestions, (additionalInfoQuestion) ->
         $additionalInfoQuestion = angular.element additionalInfoQuestion
+        questionType = $additionalInfoQuestion.prop('tagName').toLowerCase()
         questionName = $additionalInfoQuestion.attr 'name'
         questionId = $additionalInfoQuestion.attr 'id'
         $questionLabel = angular.element 'label[for="' + questionId + '"]'
+        questionLegend = undefined
+        if $additionalInfoQuestion.is '[class*="survey-date-month"] select'
+          $questionLegend = $additionalInfoQuestion.closest('fieldset').find 'legend'
+          if $questionLegend.find('.input-label').length > 0
+            questionLegend = $questionLegend.find('.input-label').text()
         questionLabel = undefined
         if $questionLabel.find('.input-label').length > 0
           questionLabel = $questionLabel.find('.input-label').text()
         questionValue = $additionalInfoQuestion.val() or ''
         questionMaxLength = $additionalInfoQuestion.attr('maxlength') or ''
         $scope.registrationQuestions[questionName] = 
+          type: questionType
+          legend: questionLegend
           label: questionLabel
           value: questionValue
           maxlength: questionMaxLength
-        $scope.registrationAdditionalQuestions[questionName] = true
+        if questionLegend isnt 'Event Date' and questionLabel isnt 'Number of eCards Sent' and questionLabel isnt 'eCards shared' and questionLabel isnt 'eCards opened' and questionLabel isnt 'eCards clicked'
+          $scope.registrationAdditionalQuestions[questionName] = true
         $scope.registrationInfo[questionName] = questionValue
       
       $scope.participationType = {}
