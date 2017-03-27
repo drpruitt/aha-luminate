@@ -34,38 +34,37 @@
   <form class="ym-registration-reg-form" action="[[A1]]" method="POST">
     <input type="hidden" name="fr_id" value="[[A2]]">
     <input type="hidden" name="pg" value="[[A7]]">
-    <input type="hidden" name="fr_cstm_reg" value="t">
     <div ng-repeat="(key, value) in registrationHiddenFields">
       <input type="hidden" name="{{key}}" value="{{value}}">
     </div>
     <div class="hidden js--registration-reg-contact-info">
       [[A13]]
     </div>
-    <div class="row">
+    <div class="row" ng-if="registrationQuestions.cons_first_name || registrationQuestions.cons_last_name" ng-cloak>
       <div class="col-sm-6">
         <div class="form-group" ng-if="registrationQuestions.cons_first_name" ng-cloak>
           <label class="control-label" for="registrationInfo-cons_first_name">
-            <span ng-bind-html="registrationQuestions.cons_first_name.label"></span>
+            Student First Name:
           </label>
-          <input type="text" class="form-control" name="cons_first_name" id="registrationInfo-cons_first_name" ng-model="registrationInfo.cons_first_name" maxlength="registrationQuestions.cons_first_name.maxlength">
+          <input type="text" class="form-control" name="cons_first_name" id="registrationInfo-cons_first_name" ng-model="registrationInfo.cons_first_name" maxlength="{{registrationQuestions.cons_first_name.maxlength}}">
         </div>
       </div>
       <div class="col-sm-6">
         <div class="form-group" ng-if="registrationQuestions.cons_last_name" ng-cloak>
           <label class="control-label" for="registrationInfo-cons_last_name">
-            <span ng-bind-html="registrationQuestions.cons_last_name.label"></span>
+            Student Last Name:
           </label>
-          <input type="text" class="form-control" name="cons_last_name" id="registrationInfo-cons_last_name" ng-model="registrationInfo.cons_last_name" maxlength="registrationQuestions.cons_last_name.maxlength">
+          <input type="text" class="form-control" name="cons_last_name" id="registrationInfo-cons_last_name" ng-model="registrationInfo.cons_last_name" maxlength="{{registrationQuestions.cons_last_name.maxlength}}">
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row" ng-if="registrationQuestions.cons_email" ng-cloak>
       <div class="col-sm-6">
         <div class="form-group" ng-if="registrationQuestions.cons_email" ng-cloak>
           <label class="control-label" for="registrationInfo-cons_email">
-            <span ng-bind-html="registrationQuestions.cons_email.label"></span>
+            Email Address:
           </label>
-          <input type="text" class="form-control" name="cons_email" id="registrationInfo-cons_email" ng-model="registrationInfo.cons_email" maxlength="registrationQuestions.cons_email.maxlength">
+          <input type="text" class="form-control" name="cons_email" id="registrationInfo-cons_email" ng-model="registrationInfo.cons_email" maxlength="{{registrationQuestions.cons_email.maxlength}}">
         </div>
       </div>
       <div class="col-sm-6">
@@ -106,13 +105,44 @@
       </label>
     </div>
     [[?xx::x[[A16]]x::::
-      <div class="js--registration-reg-login-info">
-        <div class="manageable-content" data-container="edit_password_hdr_container">
-          <span id="password_hdr_container">[[C1:fr_password_hdr]]</span>
-        </div>
+      <div class="hidden js--registration-reg-login-info">
         [[?xxnullx::x[[A16]]x::::
           [[A16]]
         ]]
+      </div>
+      <div ng-if="registrationQuestions.cons_user_name || registrationQuestions.cons_password" ng-cloak>
+        <hr>
+        <div class="manageable-content" data-container="edit_password_hdr_container">
+          <span id="password_hdr_container">[[C1:fr_password_hdr]]</span>
+        </div>
+        <div class="row" ng-if="registrationQuestions.cons_user_name" ng-cloak>
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label class="control-label" for="registrationInfo-cons_user_name">
+                <span ng-bind-html="registrationQuestions.cons_user_name.label"></span>
+              </label>
+              <input type="text" name="cons_user_name" id="registrationInfo-cons_user_name" ng-model="registrationInfo.cons_user_name" maxlength="{{registrationQuestions.cons_user_name.maxlength}}">
+            </div>
+          </div>
+        </div>
+        <div class="row" ng-if="registrationQuestions.cons_password || registrationQuestions.cons_rep_password" ng-cloak>
+          <div class="col-sm-6">
+            <div class="form-group" ng-if="registrationQuestions.cons_password" ng-cloak>
+              <label class="control-label" for="registrationInfo-cons_password">
+                <span ng-bind-html="registrationQuestions.cons_password.label"></span>
+              </label>
+              <input type="text" name="cons_password" id="registrationInfo-cons_password" ng-model="registrationInfo.cons_password" maxlength="{{registrationQuestions.cons_password.maxlength}}">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group" ng-if="registrationQuestions.cons_rep_password" ng-cloak>
+              <label class="control-label" for="registrationInfo-cons_rep_password">
+                <span ng-bind-html="registrationQuestions.cons_rep_password.label"></span>
+              </label>
+              <input type="text" name="cons_rep_password" id="registrationInfo-cons_rep_password" ng-model="registrationInfo.cons_rep_password" maxlength="{{registrationQuestions.cons_rep_password.maxlength}}">
+            </div>
+          </div>
+        </div>
       </div>
     ]]
     [[?xTx::x[[A24]]x::
@@ -164,7 +194,6 @@
     <form class="js--default-reg-form" action="[[A1]]" method="POST">
       <input type="hidden" name="fr_id" value="[[A2]]">
       <input type="hidden" name="pg" value="[[A7]]">
-      <input type="hidden" name="fr_cstm_reg" value="t">
       <div ng-repeat="(key, value) in registrationHiddenFields">
         <input type="hidden" name="{{key}}" value="{{value}}">
       </div>
