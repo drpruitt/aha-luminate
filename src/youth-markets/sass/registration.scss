@@ -6,9 +6,13 @@
 
 .ym-registration-page-header {
   margin: 0 0 24px;
-
+  
   @media (min-width: $screen-sm-min) {
     margin: 0 0 26px;
+  }
+  
+  .alert {
+    text-align: left;
   }
   
   p {
@@ -93,4 +97,8 @@
   @media (min-width: $screen-sm-min) {
     margin: 28px 0 0;
   }
+}
+
+.ym-registration-ptype-goal-container {
+  text-align: inherit;
 }
