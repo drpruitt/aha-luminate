@@ -29,6 +29,11 @@
           ::
             [[A4]]
           ]]
+          <ul ng-if="registrationInfoErrors.errors.length > 0" ng-cloak>
+            <li ng-repeat="registrationInfoError in registrationInfoErrors">
+              <span ng-bind-html="registrationInfoError.text"></span>
+            </li>
+          </ul>
         </div>
       ]]
     </div>

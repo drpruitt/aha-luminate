@@ -3,6 +3,15 @@ angular.module 'ahaLuminateControllers'
     '$scope'
     'TeamraiserRegistrationService'
     ($scope, TeamraiserRegistrationService) ->
+      $scope.registrationInfoErrors = 
+        errors: []
+      $fieldErrors = angular.element '.ErrorMessage'
+      angular.forEach $fieldErrors, (fieldError) ->
+        $fieldError = angular.element fieldError
+        if $fieldError.find('.field-error-text').length > 0
+          $scope.registrationInfoErrors.errors.push
+            text: $fieldError.find('.field-error-text').text()
+      
       $scope.registrationHiddenFields = 
         fr_cstm_reg: 't'
       $scope.registrationQuestions = {}
