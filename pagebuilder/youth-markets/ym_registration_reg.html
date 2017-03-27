@@ -223,7 +223,7 @@
                       </div>
                       <div ng-if="registrationQuestions[key].type == 'select'">
                         <select class="form-control" name="ng_{{key}}" id="registrationInfo-{{key}}" ng-model="registrationInfo[key]">
-                          <option ng-repeat="questionOption in registrationQuestions[key].options" value="{{questionOption.value}}">{{questionOption.value}}</option>
+                          <option ng-repeat="questionOption in registrationQuestions[key].options" value="{{questionOption.value}}">{{questionOption.text}}</option>
                         </select>
                       </div>
                     </div>

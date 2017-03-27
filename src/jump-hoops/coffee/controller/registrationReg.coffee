@@ -119,8 +119,10 @@ angular.module 'ahaLuminateControllers'
           angular.forEach $questionOptions, (questionOption) ->
             $questionOption = angular.element questionOption
             questionOptionValue = $questionOption.attr 'value'
+            questionOptionText = jQuery.trim $questionOption.text()
             questionOptions.push
               value: questionOptionValue
+              text: questionOptionText
         questionValue = $additionalInfoQuestion.val() or ''
         questionMaxLength = $additionalInfoQuestion.attr('maxlength') or ''
         questionHasError = $additionalInfoQuestion.is '.form-error *'
