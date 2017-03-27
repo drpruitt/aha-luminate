@@ -3,7 +3,8 @@ angular.module 'ahaLuminateControllers'
     '$scope'
     'TeamraiserRegistrationService'
     ($scope, TeamraiserRegistrationService) ->
-      $scope.registrationHiddenFields = {}
+      $scope.registrationHiddenFields = 
+        fr_cstm_reg: 't'
       $scope.registrationQuestions = {}
       
       $contactInfo = angular.element '.js--registration-reg-contact-info'
@@ -47,6 +48,28 @@ angular.module 'ahaLuminateControllers'
         $scope.registrationQuestions[questionName] = 
           label: questionLabel
       $optIns.remove()
+      
+      $loginInfo = angular.element '.js--registration-reg-login-info'
+      $loginInfoHiddenFields = $loginInfo.find 'input[type="hidden"][name]'
+      angular.forEach $loginInfoHiddenFields, (loginInfoHiddenField) ->
+        $loginInfoHiddenField = angular.element loginInfoHiddenField
+        questionName = $loginInfoHiddenField.attr 'name'
+        questionValue = $loginInfoHiddenField.val()
+        $scope.registrationHiddenFields[questionName] = questionValue
+      $loginInfoQuestions = $loginInfo.find 'input[type="text"]'
+      angular.forEach $loginInfoQuestions, (loginInfoQuestion) ->
+        $loginInfoQuestion = angular.element loginInfoQuestion
+        questionName = $loginInfoQuestion.attr 'name'
+        questionId = $loginInfoQuestion.attr 'id'
+        $questionLabel = angular.element 'label[for="' + questionId + '"]'
+        questionLabel = undefined
+        if $questionLabel.find('.input-label').length > 0
+          questionLabel = $questionLabel.find('.input-label').text()
+        questionMaxLength = $loginInfoQuestion.attr('maxlength') or ''
+        $scope.registrationQuestions[questionName] = 
+          label: questionLabel
+          maxlength: questionMaxLength
+      $loginInfo.remove()
       
       $scope.participationType = {}
       setParticipationType = (participationType) ->
