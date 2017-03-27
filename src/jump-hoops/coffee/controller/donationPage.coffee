@@ -20,13 +20,13 @@ angular.module 'ahaLuminateControllers'
         if type is 'monthly'
           if checkBox is false
             angular.element('.generic-repeat-label-checkbox-container input').click()
-          angular.element('.ym-donation-levels__type--onetime').removeClass 'btn-toggle--selected'
-          angular.element('.ym-donation-levels__type--monthly').addClass 'btn-toggle--selected'
+          angular.element('.ym-donation-levels__type--onetime').removeClass 'active'
+          angular.element('.ym-donation-levels__type--monthly').addClass 'active'
         else
           if checkBox is true
             angular.element('.generic-repeat-label-checkbox-container input').click()
-          angular.element('.ym-donation-levels__type--onetime').addClass 'btn-toggle--selected'
-          angular.element('.ym-donation-levels__type--monthly').removeClass 'btn-toggle--selected'
+          angular.element('.ym-donation-levels__type--onetime').addClass 'active'
+          angular.element('.ym-donation-levels__type--monthly').removeClass 'active'
       
       $scope.selectLevel = (type, level, amount) ->
         angular.element('#pstep_finish span').remove()
@@ -36,8 +36,8 @@ angular.module 'ahaLuminateControllers'
         else
           angular.element('#pstep_finish').append '<span />'
         
-        angular.element('.ym-donation-levels__amount .btn-toggle.btn-toggle--selected').removeClass 'btn-toggle--selected'
-        angular.element('.ym-donation-levels__amount .btn-toggle.level' + level).addClass 'btn-toggle--selected'
+        angular.element('.ym-donation-levels__amount .btn-toggle.active').removeClass 'active'
+        angular.element('.ym-donation-levels__amount .btn-toggle.level' + level).addClass 'active'
         angular.element('.ym-donation-levels__message').addClass 'hidden'
         angular.element('.ym-donation-levels__message.level' + level).removeClass 'hidden'
         angular.element('.donation-level-container.level' + level + ' input').click()
@@ -73,10 +73,10 @@ angular.module 'ahaLuminateControllers'
       
       $scope.tributeGift = (type) ->
         if type is 'honor'
-          angular.element('.btn-toggle--honor').toggleClass 'btn-toggle--selected'
+          angular.element('.btn-toggle--honor').toggleClass 'active'
           
-          if angular.element('.btn-toggle--honor').is '.btn-toggle--selected'
-            angular.element('.btn-toggle--memory').removeClass 'btn-toggle--selected'
+          if angular.element('.btn-toggle--honor').is '.active'
+            angular.element('.btn-toggle--memory').removeClass 'active'
             angular.element('#tribute_type').val 'tribute_type_value2'
             angular.element('#tribute_show_honor_fieldsname').prop 'checked', true
             angular.element('#tribute_honoree_name_row').show()
@@ -85,10 +85,10 @@ angular.module 'ahaLuminateControllers'
             angular.element('#tribute_show_honor_fieldsname').prop 'checked', false
             angular.element('#tribute_honoree_name_row').hide()
         else
-          angular.element('.btn-toggle--memory').toggleClass 'btn-toggle--selected'
+          angular.element('.btn-toggle--memory').toggleClass 'active'
           
-          if angular.element('.btn-toggle--memory').is '.btn-toggle--selected'
-            angular.element('.btn-toggle--honor').removeClass 'btn-toggle--selected'
+          if angular.element('.btn-toggle--memory').is '.active'
+            angular.element('.btn-toggle--honor').removeClass 'active'
             angular.element('#tribute_type').val 'tribute_type_value1'
             angular.element('#tribute_show_honor_fieldsname').prop 'checked', true
             angular.element('#tribute_honoree_name_row').show()
