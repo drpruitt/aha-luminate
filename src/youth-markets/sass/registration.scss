@@ -28,6 +28,13 @@
   }
 }
 
+.ym-registration-form-footer-btns {
+  @media (min-width: $screen-sm-min) {
+    width: 330px;
+    margin: 0 auto;
+  }
+}
+
 #fr_new_user_container {
   display: inline-block;
   margin: 0;

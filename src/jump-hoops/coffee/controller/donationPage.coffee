@@ -37,10 +37,10 @@ angular.module 'ahaLuminateControllers'
           angular.element('#pstep_finish').append '<span />'
         
         angular.element('.ym-donation-levels__amount .btn-toggle.btn-toggle--selected').removeClass 'btn-toggle--selected'
-        angular.element('.ym-donation-levels__amount .btn-toggle.level'+level).addClass 'btn-toggle--selected'
+        angular.element('.ym-donation-levels__amount .btn-toggle.level' + level).addClass 'btn-toggle--selected'
         angular.element('.ym-donation-levels__message').addClass 'hidden'
-        angular.element('.ym-donation-levels__message.level'+level).removeClass 'hidden'
-        angular.element('.donation-level-container.level'+level+' input').click()
+        angular.element('.ym-donation-levels__message.level' + level).removeClass 'hidden'
+        angular.element('.donation-level-container.level' + level + ' input').click()
       
       $scope.enterAmount = (amount) ->
         angular.element('#pstep_finish span').text ''
