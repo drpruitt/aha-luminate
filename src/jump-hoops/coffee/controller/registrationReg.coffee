@@ -7,7 +7,7 @@ angular.module 'ahaLuminateControllers'
       $scope.registrationQuestions = {}
       
       $contactInfo = angular.element '.js--registration-reg-contact-info'
-      $contactInfoHiddenFields = $contactInfo.find 'input[type="hidden"]'
+      $contactInfoHiddenFields = $contactInfo.find 'input[type="hidden"][name]'
       angular.forEach $contactInfoHiddenFields, (contactInfoHiddenField) ->
         $contactInfoHiddenField = angular.element contactInfoHiddenField
         questionName = $contactInfoHiddenField.attr 'name'
@@ -19,12 +19,34 @@ angular.module 'ahaLuminateControllers'
         questionName = $contactInfoQuestion.attr 'name'
         questionId = $contactInfoQuestion.attr 'id'
         $questionLabel = angular.element 'label[for="' + questionId + '"]'
-        questionLabel = $questionLabel.find('.input-label').text()
+        questionLabel = undefined
+        if $questionLabel.find('.input-label').length > 0
+          questionLabel = $questionLabel.find('.input-label').text()
         questionMaxLength = $contactInfoQuestion.attr('maxlength') or ''
         $scope.registrationQuestions[questionName] = 
           label: questionLabel
           maxlength: questionMaxLength
       $contactInfo.remove()
+      
+      $optIns = angular.element '.js--registration-reg-opt-ins'
+      $optInHiddenFields = $optIns.find 'input[type="hidden"][name]'
+      angular.forEach $optInHiddenFields, (optInHiddenField) ->
+        $optInHiddenField = angular.element optInHiddenField
+        questionName = $optInHiddenField.attr 'name'
+        questionValue = $optInHiddenField.val()
+        $scope.registrationHiddenFields[questionName] = questionValue
+      $optInQuestions = $optIns.find 'input[type="checkbox"]'
+      angular.forEach $optInQuestions, (optInQuestion) ->
+        $optInQuestion = angular.element optInQuestion
+        questionName = $optInQuestion.attr 'name'
+        questionId = $optInQuestion.attr 'id'
+        $questionLabel = angular.element 'label[for="' + questionId + '"]'
+        questionLabel = undefined
+        if $questionLabel.find('.input-label').length > 0
+          questionLabel = $questionLabel.find('.input-label').text()
+        $scope.registrationQuestions[questionName] = 
+          label: questionLabel
+      $optIns.remove()
       
       $scope.participationType = {}
       setParticipationType = (participationType) ->
