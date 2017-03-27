@@ -91,7 +91,7 @@ angular.module 'ahaLuminateControllers'
         questionId = $additionalInfoQuestion.attr 'id'
         $questionLabel = angular.element 'label[for="' + questionId + '"]'
         questionLegend = undefined
-        if $additionalInfoQuestion.is '[class*="survey-date-month"] select'
+        if $additionalInfoQuestion.is '[class*="survey-date-"] select'
           $questionLegend = $additionalInfoQuestion.closest('fieldset').find 'legend'
           if $questionLegend.find('.input-label').length > 0
             questionLegend = $questionLegend.find('.input-label').text()
