@@ -5,18 +5,14 @@ div.responsive textarea {
   border: 1px solid $event-secondary;
 }
 
-[type="checkbox"] {
-  &:not(:checked), 
-  &:checked {
-    + label {
-      &:before {
-        border-color: $event-secondary;
-      }
-      
-      &:after {
-        color: $event-primary;
-      }
-    }
+.checkbox label, 
+input[type="checkbox"] + label {
+  &:before {
+    border-color: $event-secondary;
+  }
+  
+  &:after {
+    color: $event-primary;
   }
 }
 
