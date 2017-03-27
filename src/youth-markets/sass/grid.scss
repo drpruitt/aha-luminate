@@ -1,5 +1,5 @@
 .container {
-  @media (min-width: $screen-md) {
+  @media (min-width: $screen-md-min) {
     width: 100%;
     max-width: 1170px;
   }

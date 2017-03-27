@@ -89,23 +89,25 @@
       <input type="text" class="form-control" name="fr_goal" id="participationOptions-fr_goal" ng-model="participationOptions.fr_goal" placeholder="[[?xx::x[[A18]]x::::[[?xx::x[[C1:fr_suggested_goal_field]]x::[[M0:friendraiser:suggested_goal_field]]::[[C1:fr_suggested_goal_field]]]] [[A18]]]]" maxlength="15">
     ::]]
     <div class="ym-registration-form-footer">
-      <div class="clearfix">
-        [[?xTx::x[[A45]]x::::
-          <div class="pull-right">
-            <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-primary">
-              <span>[[M1:friendraiser:join_team_step_next_button]]</span> <i class="fa fa-chevron-right"></i>
-            </button>
-          </div>
-        ]]
-        [[?xxnullx::x[[A21]]x::
-          [[?xTx::x[[A47]]x::::
-            <div class="pull-left">
-              <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-toggle" ng-click="previousStep()">
-                <i class="fa fa-chevron-left"></i> <span>[[M1:friendraiser:join_team_step_prev_button]]</span>
+      <div class="ym-registration-form-footer-btns">
+        <div class="clearfix">
+          [[?xTx::x[[A45]]x::::
+            <div class="pull-right">
+              <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-primary">
+                <span>[[M1:friendraiser:join_team_step_next_button]]</span> <i class="fa fa-chevron-right"></i>
               </button>
             </div>
           ]]
-        ::]]
+          [[?xxnullx::x[[A21]]x::
+            [[?xTx::x[[A47]]x::::
+              <div class="pull-left">
+                <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-toggle" ng-click="previousStep()">
+                  <i class="fa fa-chevron-left"></i> <span>[[M1:friendraiser:join_team_step_prev_button]]</span>
+                </button>
+              </div>
+            ]]
+          ::]]
+        </div>
       </div>
     </div>
     [[S66:util/SpamControlComponentResponsive.tpt]]
