@@ -10,206 +10,208 @@
   <script src="../js/ajax_mce.js"></script>
 ::]]
 <div class="ym-registration-page-container ym-registration-page-container--reg" ng-controller="RegistrationRegCtrl">
-  <div class="ym-registration-page-header">
-    <div class="manageable-content" data-container="edit_title_container">
-      <h2 class="h5" id="title_container">
-        [[C1:fr_reg_title]]
-      </h2>
-    </div>
-    [[?xxnullx::x[[A5]]x::::
-      <div class="alert alert-success">
-        [[A5]]
+  <div ng-cloak>
+    <div class="ym-registration-page-header">
+      <div class="manageable-content" data-container="edit_title_container">
+        <h2 class="h5" id="title_container">
+          [[C1:fr_reg_title]]
+        </h2>
       </div>
-    ]]
-    [[?xyz.xnullynullz.xynullz.xnullyz::x[[A4]]y[[A6]]z::::
-      <div class="alert alert-danger">
-        [[?xy.xnully::x[[A4]]y::
-          [[M0:friendraiser:generic_error]]
-        ::
-          [[A4]]
-        ]]
-      </div>
-    ]]
-  </div>
-  <form class="ym-registration-reg-form" method="POST" ng-submit="submitReg()">
-    <input type="hidden" name="fr_id" value="[[A2]]">
-    <input type="hidden" name="pg" value="[[A7]]">
-    <div ng-repeat="(key, value) in registrationHiddenFields">
-      <input type="hidden" name="{{key}}" value="{{value}}">
-    </div>
-    <div class="hidden js--registration-reg-contact-info">
-      [[A13]]
-    </div>
-    <div class="row" ng-if="registrationQuestions.cons_first_name || registrationQuestions.cons_last_name" ng-cloak>
-      <div class="col-sm-6">
-        <div class="form-group" ng-if="registrationQuestions.cons_first_name" ng-cloak>
-          <label class="control-label" for="registrationInfo-cons_first_name">
-            Student First Name:
-          </label>
-          <input type="text" class="form-control" name="ng_cons_first_name" id="registrationInfo-cons_first_name" ng-model="registrationInfo.cons_first_name" maxlength="{{registrationQuestions.cons_first_name.maxlength}}">
+      [[?xxnullx::x[[A5]]x::::
+        <div class="alert alert-success">
+          [[A5]]
         </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="form-group" ng-if="registrationQuestions.cons_last_name" ng-cloak>
-          <label class="control-label" for="registrationInfo-cons_last_name">
-            Student Last Name:
-          </label>
-          <input type="text" class="form-control" name="ng_cons_last_name" id="registrationInfo-cons_last_name" ng-model="registrationInfo.cons_last_name" maxlength="{{registrationQuestions.cons_last_name.maxlength}}">
-        </div>
-      </div>
-    </div>
-    <div class="row" ng-if="registrationQuestions.cons_email" ng-cloak>
-      <div class="col-sm-6">
-        <div class="form-group" ng-if="registrationQuestions.cons_email" ng-cloak>
-          <label class="control-label" for="registrationInfo-cons_email">
-            Email Address:
-          </label>
-          <input type="text" class="form-control" name="ng_cons_email" id="registrationInfo-cons_email" ng-model="registrationInfo.cons_email" maxlength="{{registrationQuestions.cons_email.maxlength}}">
-        </div>
-      </div>
-      <div class="col-sm-6">
-      </div>
-    </div>
-    <div class="hidden js--registration-reg-opt-ins">
-      [[?xxnullx::x[[A23]]x::::
-        [[A23]]
       ]]
-      [[?xxnullx::x[[A20]]x::::
-        [[?xxnullxBASELINEx::x[[S0:TPV_FR_CSTM_REG_OPTIN]]x::
-          <input type="checkbox" name="fr_email_opt_in" id="fr_email_opt_in" [[?[[A20]]::T::checked::]]>
-        :: 
-          [[?xOPTINx::x[[S0:TPV_FR_CSTM_REG_OPTIN]]x:: 
-            <input type="hidden" name="fr_email_opt_in" id="fr_email_opt_in" value="on">
-          ::]]
-        ]]
+      [[?xyz.xnullynullz.xynullz.xnullyz::x[[A4]]y[[A6]]z::::
+        <div class="alert alert-danger">
+          [[?xy.xnully::x[[A4]]y::
+            [[M0:friendraiser:generic_error]]
+          ::
+            [[A4]]
+          ]]
+        </div>
       ]]
     </div>
-    <div class="checkbox" ng-if="registrationQuestions.fr_email_opt_in" ng-cloak>
-      <label for="registrationInfo-fr_email_opt_in">
-        <input type="checkbox" name="ng_fr_email_opt_in" id="registrationInfo-fr_email_opt_in" ng-model="registrationInfo.fr_email_opt_in"> 
-        <span class="manageable-content" data-container="edit_opt_in_container">
-          <span id="opt_in_label">
-            [[?xx::x[[C1:fr_gift_notice_opt_in_checkbox]]x::
-              [[M0:friendraiser:gift_notice_opt_in_checkbox]]
-            ::
-              [[C1:fr_gift_notice_opt_in_checkbox]]
-            ]]
+    <form class="ym-registration-reg-form" method="POST" ng-submit="submitReg()">
+      <input type="hidden" name="fr_id" value="[[A2]]">
+      <input type="hidden" name="pg" value="[[A7]]">
+      <div ng-repeat="(key, value) in registrationHiddenFields">
+        <input type="hidden" name="{{key}}" value="{{value}}">
+      </div>
+      <div class="hidden js--registration-reg-contact-info">
+        [[A13]]
+      </div>
+      <div class="row" ng-if="registrationQuestions.cons_first_name || registrationQuestions.cons_last_name" ng-cloak>
+        <div class="col-sm-6">
+          <div class="form-group" ng-if="registrationQuestions.cons_first_name" ng-cloak>
+            <label class="control-label" for="registrationInfo-cons_first_name">
+              Student First Name:
+            </label>
+            <input type="text" class="form-control" name="ng_cons_first_name" id="registrationInfo-cons_first_name" ng-model="registrationInfo.cons_first_name" maxlength="{{registrationQuestions.cons_first_name.maxlength}}">
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group" ng-if="registrationQuestions.cons_last_name" ng-cloak>
+            <label class="control-label" for="registrationInfo-cons_last_name">
+              Student Last Name:
+            </label>
+            <input type="text" class="form-control" name="ng_cons_last_name" id="registrationInfo-cons_last_name" ng-model="registrationInfo.cons_last_name" maxlength="{{registrationQuestions.cons_last_name.maxlength}}">
+          </div>
+        </div>
+      </div>
+      <div class="row" ng-if="registrationQuestions.cons_email" ng-cloak>
+        <div class="col-sm-6">
+          <div class="form-group" ng-if="registrationQuestions.cons_email" ng-cloak>
+            <label class="control-label" for="registrationInfo-cons_email">
+              Email Address:
+            </label>
+            <input type="email" class="form-control" name="ng_cons_email" id="registrationInfo-cons_email" ng-model="registrationInfo.cons_email" maxlength="{{registrationQuestions.cons_email.maxlength}}">
+          </div>
+        </div>
+        <div class="col-sm-6">
+        </div>
+      </div>
+      <div class="hidden js--registration-reg-opt-ins">
+        [[?xxnullx::x[[A23]]x::::
+          [[A23]]
+        ]]
+        [[?xxnullx::x[[A20]]x::::
+          [[?xxnullxBASELINEx::x[[S0:TPV_FR_CSTM_REG_OPTIN]]x::
+            <input type="checkbox" name="fr_email_opt_in" id="fr_email_opt_in" [[?[[A20]]::T::checked::]]>
+          :: 
+            [[?xOPTINx::x[[S0:TPV_FR_CSTM_REG_OPTIN]]x:: 
+              <input type="hidden" name="fr_email_opt_in" id="fr_email_opt_in" value="on">
+            ::]]
+          ]]
+        ]]
+      </div>
+      <div class="checkbox" ng-if="registrationQuestions.fr_email_opt_in" ng-cloak>
+        <label for="registrationInfo-fr_email_opt_in">
+          <input type="checkbox" name="ng_fr_email_opt_in" id="registrationInfo-fr_email_opt_in" ng-model="registrationInfo.fr_email_opt_in"> 
+          <span class="manageable-content" data-container="edit_opt_in_container">
+            <span id="opt_in_label">
+              [[?xx::x[[C1:fr_gift_notice_opt_in_checkbox]]x::
+                [[M0:friendraiser:gift_notice_opt_in_checkbox]]
+              ::
+                [[C1:fr_gift_notice_opt_in_checkbox]]
+              ]]
+            </span>
           </span>
-        </span>
-      </label>
-    </div>
-    <div class="checkbox" ng-if="registrationQuestions.cons_email_opt_in" ng-cloak>
-      <label for="registrationInfo-cons_email_opt_in">
-        <input type="checkbox" name="ng_cons_email_opt_in" id="registrationInfo-cons_email_opt_in" ng-model="registrationInfo.cons_email_opt_in"> 
-        <span ng-bind-html="registrationQuestions.cons_email_opt_in.label"></span>
-      </label>
-    </div>
-    [[?xx::x[[A16]]x::::
-      <div class="hidden js--registration-reg-login-info">
-        [[?xxnullx::x[[A16]]x::::
-          [[A16]]
-        ]]
+        </label>
       </div>
-      <div ng-if="registrationQuestions.cons_user_name || registrationQuestions.cons_password || registrationQuestions.cons_rep_password" ng-cloak>
+      <div class="checkbox" ng-if="registrationQuestions.cons_email_opt_in" ng-cloak>
+        <label for="registrationInfo-cons_email_opt_in">
+          <input type="checkbox" name="ng_cons_email_opt_in" id="registrationInfo-cons_email_opt_in" ng-model="registrationInfo.cons_email_opt_in"> 
+          <span ng-bind-html="registrationQuestions.cons_email_opt_in.label"></span>
+        </label>
+      </div>
+      [[?xx::x[[A16]]x::::
+        <div class="hidden js--registration-reg-login-info">
+          [[?xxnullx::x[[A16]]x::::
+            [[A16]]
+          ]]
+        </div>
+        <div ng-if="registrationQuestions.cons_user_name || registrationQuestions.cons_password || registrationQuestions.cons_rep_password" ng-cloak>
+          <hr>
+          <div class="manageable-content" data-container="edit_password_hdr_container">
+            <span id="password_hdr_container">[[C1:fr_password_hdr]]</span>
+          </div>
+          <div class="row" ng-if="registrationQuestions.cons_user_name" ng-cloak>
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label class="control-label" for="registrationInfo-cons_user_name">
+                  <span ng-bind-html="registrationQuestions.cons_user_name.label"></span>
+                </label>
+                <input type="text" class="form-control" name="ng_cons_user_name" id="registrationInfo-cons_user_name" ng-model="registrationInfo.cons_user_name" maxlength="{{registrationQuestions.cons_user_name.maxlength}}">
+              </div>
+            </div>
+          </div>
+          <div class="row" ng-if="registrationQuestions.cons_password || registrationQuestions.cons_rep_password" ng-cloak>
+            <div class="col-sm-6">
+              <div class="form-group" ng-if="registrationQuestions.cons_password" ng-cloak>
+                <label class="control-label" for="registrationInfo-cons_password">
+                  <span ng-bind-html="registrationQuestions.cons_password.label"></span>
+                </label>
+                <input type="password" class="form-control" name="ng_cons_password" id="registrationInfo-cons_password" ng-model="registrationInfo.cons_password" maxlength="{{registrationQuestions.cons_password.maxlength}}">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group" ng-if="registrationQuestions.cons_rep_password" ng-cloak>
+                <label class="control-label" for="registrationInfo-cons_rep_password">
+                  <span ng-bind-html="registrationQuestions.cons_rep_password.label"></span>
+                </label>
+                <input type="password" class="form-control" name="ng_cons_rep_password" id="registrationInfo-cons_rep_password" ng-model="registrationInfo.cons_rep_password" maxlength="{{registrationQuestions.cons_rep_password.maxlength}}">
+              </div>
+            </div>
+          </div>
+        </div>
+      ]]
+      [[?xTx::x[[A24]]x::
+        <!-- manage mode -->
         <hr>
-        <div class="manageable-content" data-container="edit_password_hdr_container">
-          <span id="password_hdr_container">[[C1:fr_password_hdr]]</span>
-        </div>
-        <div class="row" ng-if="registrationQuestions.cons_user_name" ng-cloak>
-          <div class="col-xs-12">
-            <div class="form-group">
-              <label class="control-label" for="registrationInfo-cons_user_name">
-                <span ng-bind-html="registrationQuestions.cons_user_name.label"></span>
-              </label>
-              <input type="text" class="form-control" name="ng_cons_user_name" id="registrationInfo-cons_user_name" ng-model="registrationInfo.cons_user_name" maxlength="{{registrationQuestions.cons_user_name.maxlength}}">
-            </div>
-          </div>
-        </div>
-        <div class="row" ng-if="registrationQuestions.cons_password || registrationQuestions.cons_rep_password" ng-cloak>
-          <div class="col-sm-6">
-            <div class="form-group" ng-if="registrationQuestions.cons_password" ng-cloak>
-              <label class="control-label" for="registrationInfo-cons_password">
-                <span ng-bind-html="registrationQuestions.cons_password.label"></span>
-              </label>
-              <input type="password" class="form-control" name="ng_cons_password" id="registrationInfo-cons_password" ng-model="registrationInfo.cons_password" maxlength="{{registrationQuestions.cons_password.maxlength}}">
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="form-group" ng-if="registrationQuestions.cons_rep_password" ng-cloak>
-              <label class="control-label" for="registrationInfo-cons_rep_password">
-                <span ng-bind-html="registrationQuestions.cons_rep_password.label"></span>
-              </label>
-              <input type="password" class="form-control" name="ng_cons_rep_password" id="registrationInfo-cons_rep_password" ng-model="registrationInfo.cons_rep_password" maxlength="{{registrationQuestions.cons_rep_password.maxlength}}">
-            </div>
-          </div>
-        </div>
-      </div>
-    ]]
-    [[?xTx::x[[A24]]x::
-      <!-- manage mode -->
-      <hr>
-      <div class="hidden js--registration-reg-additional-info">
-        <div class="manageable-content" data-container="edit_questions_hdr_container">
-          <span id="questions_hdr_container">[[C1:fr_questions_hdr]]</span>
-        </div>
-      </div>
-    ::
-      [[?xxnullx::x[[A19]]x::::
         <div class="hidden js--registration-reg-additional-info">
-          [[A19]]
+          <div class="manageable-content" data-container="edit_questions_hdr_container">
+            <span id="questions_hdr_container">[[C1:fr_questions_hdr]]</span>
+          </div>
         </div>
-        [[?xtruex::x[[A29]]x::
-          <div ng-cloak>
-            <hr>
-            <div class="manageable-content" data-container="edit_questions_hdr_container">
-              <span id="questions_hdr_container">[[C1:fr_questions_hdr]]</span>
-            </div>
-            <div ng-repeat="(key, value) in registrationAdditionalQuestions">
-              <div class="row">
-                <div class="col-xs-12">
-                  <div class="form-group">
-                    <label class="control-label" for="registrationInfo-{{key}}">
-                      <span ng-bind-html="registrationQuestions[key].label"></span>
-                    </label>
-                    <input type="text" class="form-control" name="ng_{{key}}" id="registrationInfo-{{key}}" ng-model="registrationInfo[key]" maxlength="{{registrationQuestions[key].maxlength}}" ng-if="questionType != 'textarea' && questionType != 'select'">
-                    <textarea class="form-control" name="ng_{{key}}" id="registrationInfo-{{key}}" ng-model="registrationInfo[key]" maxlength="{{registrationQuestions[key].maxlength}}" ng-if="questionType == 'textarea'"></textarea>
-                    <select class="form-control" name="ng_{{key}}" id="registrationInfo-{{key}}" ng-model="registrationInfo[key]" ng-if="questionType == 'select'">
-                      <option value="NOREPLY"></option>
-                    </select>
+      ::
+        [[?xxnullx::x[[A19]]x::::
+          <div class="hidden js--registration-reg-additional-info">
+            [[A19]]
+          </div>
+          [[?xtruex::x[[A29]]x::
+            <div ng-cloak>
+              <hr>
+              <div class="manageable-content" data-container="edit_questions_hdr_container">
+                <span id="questions_hdr_container">[[C1:fr_questions_hdr]]</span>
+              </div>
+              <div ng-repeat="(key, value) in registrationAdditionalQuestions">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <div class="form-group">
+                      <label class="control-label" for="registrationInfo-{{key}}">
+                        <span ng-bind-html="registrationQuestions[key].label"></span>
+                      </label>
+                      <input type="text" class="form-control" name="ng_{{key}}" id="registrationInfo-{{key}}" ng-model="registrationInfo[key]" maxlength="{{registrationQuestions[key].maxlength}}" ng-if="registrationQuestions[key].type != 'textarea' && registrationQuestions[key].type != 'select'">
+                      <textarea class="form-control" name="ng_{{key}}" id="registrationInfo-{{key}}" ng-model="registrationInfo[key]" maxlength="{{registrationQuestions[key].maxlength}}" ng-if="registrationQuestions[key].type == 'textarea'"></textarea>
+                      <select class="form-control" name="ng_{{key}}" id="registrationInfo-{{key}}" ng-model="registrationInfo[key]" ng-if="registrationQuestions[key].type == 'select'">
+                        <option value="NOREPLY"></option>
+                      </select>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        ::]]
+          ::]]
+        ]]
       ]]
-    ]]
-    <div ng-if="participationType.waiver.content" ng-cloak>
-      <div class="form-group">
-        <label class="control-label">
-          Do you agree to the waiver?
-        </label>
-        <div ng-bind-html="participationType.waiver.content"></div>
+      <div ng-if="participationType.waiver.content" ng-cloak>
+        <div class="form-group">
+          <label class="control-label">
+            Do you agree to the waiver?
+          </label>
+          <div ng-bind-html="participationType.waiver.content"></div>
+        </div>
       </div>
-    </div>
-    <div class="ym-registration-form-footer">
-      <div class="ym-registration-form-footer-btns">
-        <div class="clearfix">
-          <div class="pull-right">
-            <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-primary">
-              <span>[[M1:friendraiser:join_team_step_next_button]]</span> <i class="fa fa-chevron-right"></i>
-            </button>
-          </div>
-          <div class="pull-left">
-            <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-toggle" ng-click="previousStep()">
-              <i class="fa fa-chevron-left"></i> <span>[[M1:friendraiser:join_team_step_prev_button]]</span>
-            </button>
+      <div class="ym-registration-form-footer">
+        <div class="ym-registration-form-footer-btns">
+          <div class="clearfix">
+            <div class="pull-right">
+              <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-primary">
+                <span>[[M1:friendraiser:join_team_step_next_button]]</span> <i class="fa fa-chevron-right"></i>
+              </button>
+            </div>
+            <div class="pull-left">
+              <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-toggle" ng-click="previousStep()">
+                <i class="fa fa-chevron-left"></i> <span>[[M1:friendraiser:join_team_step_prev_button]]</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    [[S66:util/SpamControlComponentResponsive.tpt]]
-  </form>
+      [[S66:util/SpamControlComponentResponsive.tpt]]
+    </form>
+  </div>
   <div class="hidden">
     <form class="js--default-reg-form" action="[[A1]]" method="POST">
       <input type="hidden" name="fr_id" value="[[A2]]">
