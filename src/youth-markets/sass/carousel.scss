@@ -1,64 +1,67 @@
-.owl-carousel{
+.owl-carousel {
   position: relative;
-
+  
   .owl-nav {
-    width: 100%;
-    top:40%;
     position: absolute;
-
+    top: 40%;
+    width: 100%;
+    
     > div {
-      background: rgba(255,255,255,.8);
+      position: absolute;
+      top: 40%;
+      background: rgb(255, 255, 255);
+      background: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      text-align: center;
       width: 40px;
       height: 70px;
-      text-decoration: none;
-      position: absolute;
-      top:40%;
-      text-align: center;
-    }
-
-    > div:hover {
-      background: rgba(255,255,255,1);
+      
+      &:hover {
+        background: rgb(255, 255, 255);
+        background: rgba(255, 255, 255, 1);
+      }
     }
   }
+  
   .owl-prev {
-    left:0;
+    left: 0;
   }
   
   .owl-next {
     right: 0
-  }  
+  }
 }
 
-a.carousel-control-prev,
+a.carousel-control-prev, 
 a.carousel-control-next {
-  &,
-  &:link,
+  &, 
+  &:link, 
   &:visited {
-    background: rgba(255,255,255,.8);
+    position: absolute;
+    top: 40%;
+    background: rgb(255, 255, 255);
+    background: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    text-align: center;
     width: 40px;
     height: 70px;
-    text-decoration: none;
-    position: absolute;
-    top:40%;
-    text-align: center;
-
+    
     .fa {
-      font-size: 30px;
       color: $event-grey;
+      font-size: 30px;
       line-height: 70px;
     }
   }
+  
   &:hover {
-    background: rgba(255,255,255,1);
+    background: rgb(255, 255, 255);
+    background: rgba(255, 255, 255, 1);
   }
 }
 
-
-
-
 .ym-home-feature {
   .owl-item {
-    h4,
+    h4, 
     p {
       display: block;
       text-align: center;

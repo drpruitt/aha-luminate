@@ -4,55 +4,55 @@
     > span {
       border: 0 none;
       color: $event-primary;
-      font-weight: bold;
+      font-weight: 700;
       margin-left: 10px;
-
-      &:hover,
+      
+      &:hover, 
       &:focus {
         color: $event-primary;
         text-decoration: underline;
       }
     }
   }
-
+  
   .disabled {
     > a {
-      &,
-      &:focus,
+      &, 
+      &:focus, 
       &:hover {
         color: $event-primary;
-        font-weight: bold;
+        font-weight: 700;
         text-decoration: none;
       }
     }
-
+    
     > span {
-      &,
-      &:focus,
+      &, 
+      &:focus, 
       &:hover {
         color: $event-primary;
-        font-weight: bold;
+        font-weight: 700;
       }
-    } 
+    }
   }
-
+  
   .active {
     > a {
-      &,
-      &:focus,
+      &, 
+      &:focus, 
       &:hover {
         background-color: $event-primary;
         border-color: $event-primary;
       }
     }
-
+    
     > span {
-      &,
-      &:focus,
+      &, 
+      &:focus, 
       &:hover {
         background-color: $event-primary;
         border-color: $event-primary;
       }
-    } 
+    }
   }
 }

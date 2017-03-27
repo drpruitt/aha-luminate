@@ -2,7 +2,7 @@
   max-width: 960px;
   margin: auto;
   
-  @media(max-width: 1070px) {
+  @media (max-width: 1070px) {
     max-width: 918px;
   }
   
@@ -29,11 +29,11 @@
   margin: 0 20px 20px 0;
   vertical-align: middle;
   
-  @media(max-width: 1070px) and (min-width: $screen-md-min) {
+  @media (max-width: 1070px) and (min-width: $screen-md-min) {
     margin: 0 5px 20px 0;
   }
   
-  &.ym-promo-block__item:last-child {
+  &:last-child {
     margin-right: 0;
   }
   
@@ -62,12 +62,11 @@
 .ym-promo-block--circle {
   border-radius: 100%;
   
-  @media (min-width: $screen-md-min){
+  @media (min-width: $screen-md-min) {
     box-shadow: 0 10px 0 0 rgb(50, 50, 50);
     box-shadow: 0 10px 0 0 rgba(50, 50, 50, 1);
   }
 }
-
 
 .cms {
   .ym-promo-block {
@@ -77,7 +76,7 @@
   .ym-promo-block__item {
     margin: 20px 20px 20px 0;
     
-    @media(min-width: $screen-md-min) {
+    @media (min-width: $screen-md-min) {
       margin-right: 73px;
     }
   }
