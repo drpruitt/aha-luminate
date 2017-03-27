@@ -78,16 +78,18 @@ div.responsive .btn-toggle {
   }
 }
 
-.btn-toggle--selected, 
-div.responsive .btn-toggle--selected {
-  &, 
-  &:link, 
-  &:visited, 
-  &:hover, 
-  &:focus, 
-  &:active {
-    background: $event-primary;
-    color: #ffffff;
+.btn-toggle, 
+div.responsive .btn-toggle {
+  &.active {
+    &, 
+    &:link, 
+    &:visited, 
+    &:hover, 
+    &:focus, 
+    &:active {
+      background: $event-primary;
+      color: #ffffff;
+    }
   }
 }
 

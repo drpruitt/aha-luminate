@@ -100,5 +100,7 @@
 }
 
 .ym-registration-ptype-goal-container {
-  text-align: inherit;
+  .form-control {
+    text-align: inherit;
+  }
 }
