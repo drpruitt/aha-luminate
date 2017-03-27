@@ -15,7 +15,7 @@
     
     p {
       color: inherit;
-      font-weight: 700;
+      font-weight: bold;
       max-width: 100%;
       margin: 0 auto;
     }
@@ -25,5 +25,11 @@
     @media (max-width: $screen-xs-max) {
       margin: 0 auto 25px;
     }
+  }
+}
+
+.cms {
+  .ym-promo-block__item {
+    background: $event-secondary;
   }
 }

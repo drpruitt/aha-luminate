@@ -1,9 +1,9 @@
-.owl-carousel {
+.owl-carousel{
   position: relative;
   
   .owl-nav {
     position: absolute;
-    top: 40%;
+    top: 30%;
     width: 100%;
     
     > div {
@@ -20,6 +20,12 @@
         background: rgb(255, 255, 255);
         background: rgba(255, 255, 255, 1);
       }
+      
+      > .fa {
+        color: $event-grey;
+        font-size: 30px;
+        line-height: 70px;
+      }
     }
   }
   
@@ -28,43 +34,32 @@
   }
   
   .owl-next {
-    right: 0
-  }
-}
-
-a.carousel-control-prev, 
-a.carousel-control-next {
-  &, 
-  &:link, 
-  &:visited {
-    position: absolute;
-    top: 40%;
-    background: rgb(255, 255, 255);
-    background: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-    text-align: center;
-    width: 40px;
-    height: 70px;
-    
-    .fa {
-      color: $event-grey;
-      font-size: 30px;
-      line-height: 70px;
-    }
-  }
-  
-  &:hover {
-    background: rgb(255, 255, 255);
-    background: rgba(255, 255, 255, 1);
+    right: 0;
   }
 }
 
 .ym-home-feature {
   .owl-item {
+    text-align: center;
+    
+    img {
+      border-right: 1px solid #ffffff;
+    }
+    
+    h4, 
+    p {
+      display: none;
+    }
+  }
+  
+  .center {
     h4, 
     p {
       display: block;
-      text-align: center;
+    }
+    
+    h4 {
+      margin: 20px auto;
     }
   }
 }

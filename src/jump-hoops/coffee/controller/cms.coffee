@@ -3,23 +3,24 @@ angular.module 'ahaLuminateControllers'
     '$scope'
     '$timeout'
     ($scope, $timeout) ->
-      console.log 'cms ctrl start'
-      
-      initHomeCarousel = ->
-        console.log 'fire rotatorz'
-        jQuery('.owl-carousel').owlCarousel
+      initCarousel = ->
+        owl = jQuery '.ym-home-feature .owl-carousel'
+        owl.owlCarousel
           items: 1
           nav: true
           loop: true
+          center: true
           responsive:
-            0: 
+            0:
               stagePadding: 0
             568:
               stagePadding: 75
-            768: 
+            768:
               stagePadding: 150
             1050:
               stagePadding: 290
+        jQuery('.owl-prev').html '<i class="fa fa-chevron-left" aria-hidden="true" />'
+        jQuery('.owl-next').html '<i class="fa fa-chevron-right" aria-hidden="true" />'
       
-      $timeout initHomeCarousel, 1000
+      $timeout initCarousel, 1000
   ]
