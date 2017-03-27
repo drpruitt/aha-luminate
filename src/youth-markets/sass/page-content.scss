@@ -39,11 +39,11 @@
     padding: 50px 100px;
     margin: 0;
     
-    @media(max-width: $screen-md-max) {
+    @media (max-width: $screen-md-max) {
       padding: 50px;
     }
     
-    @media(max-width: $screen-sm-max) {
+    @media (max-width: $screen-sm-max) {
       padding: 30px;
     }
     
@@ -59,9 +59,10 @@
     
     @media (min-width: $screen-md-min) {
       .col-md-4 {
-        width: calc(100% - 700px);
         float: right;
+        width: calc(100% - 700px);
       }
+      
       .col-md-8 {
         width: 670px;
         margin: auto;
@@ -69,7 +70,7 @@
       }
     }
     
-    @media(max-width: $screen-sm-max) {
+    @media (max-width: $screen-sm-max) {
       .col-md-8 {
         float: none;
       }
@@ -95,39 +96,40 @@
   position: relative;
   padding: 0;
   
-  @media (max-width: $screen-md) {
+  @media (max-width: $screen-sm-max) {
     background-image: none !important;
   }
   
-  @media (min-width: 630px) and (max-width: $screen-md-min) {
+  @media (min-width: 630px) and (max-width: $screen-sm-max) {
     background: #ffffff;
     padding: 20px 0;
   }
   
-  @media (min-width: $screen-md) {
+  @media (min-width: $screen-md-min) {
     background-size: cover;
     min-height: 360px;
   }
   
   img {
     margin: auto;
-    @media (max-width: $screen-md) {
+    @media (max-width: $screen-sm-max) {
       max-width: 100%;
       display: block;
     }
   }
-
+  
   .caption {
     position: absolute;
     bottom: 0;
-    background: rgba(255,255,255, .8);
-    text-align: center;
-    font-weight: bold;
-    margin: 0;
-    line-height: 1.2;
-    padding: 15px 0;
+    background: rgb(255, 255, 255);
+    background: rgba(255, 255, 255, 0.8);
     font-size: $font-size-sm;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
     width: 100%;
+    padding: 15px 0;
+    margin: 0;
   }
 }
 

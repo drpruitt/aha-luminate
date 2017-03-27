@@ -4,5 +4,4 @@ angular.module 'ahaLuminateControllers'
     '$timeout'
     ($scope, $timeout) ->
 
-      
   ]
