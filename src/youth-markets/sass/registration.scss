@@ -76,9 +76,11 @@
 
 .ym-registration-ptype-donation-levels {
   padding: 18px 13px;
+  margin: 0 0 36px;
   
   @media (min-width: $screen-sm-min) {
     padding: 20px 12px;
+    margin: 0 0 48px;
   }
   
   .btn {
