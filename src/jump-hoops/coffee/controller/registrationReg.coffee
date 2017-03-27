@@ -6,6 +6,7 @@ angular.module 'ahaLuminateControllers'
       $scope.registrationHiddenFields = 
         fr_cstm_reg: 't'
       $scope.registrationQuestions = {}
+      $scope.registrationAdditionalQuestions = {}
       $scope.registrationInfo = {}
       
       $contactInfo = angular.element '.js--registration-reg-contact-info'
@@ -67,7 +68,7 @@ angular.module 'ahaLuminateControllers'
         questionLabel = undefined
         if $questionLabel.find('.input-label').length > 0
           questionLabel = $questionLabel.find('.input-label').text()
-        questionValue = $contactInfoQuestion.val() or ''
+        questionValue = $loginInfoQuestion.val() or ''
         questionMaxLength = $loginInfoQuestion.attr('maxlength') or ''
         $scope.registrationQuestions[questionName] = 
           label: questionLabel
@@ -91,12 +92,13 @@ angular.module 'ahaLuminateControllers'
         questionLabel = undefined
         if $questionLabel.find('.input-label').length > 0
           questionLabel = $questionLabel.find('.input-label').text()
-        questionValue = $contactInfoQuestion.val() or ''
+        questionValue = $additionalInfoQuestion.val() or ''
         questionMaxLength = $additionalInfoQuestion.attr('maxlength') or ''
         $scope.registrationQuestions[questionName] = 
           label: questionLabel
           value: questionValue
           maxlength: questionMaxLength
+        $scope.registrationAdditionalQuestions[questionName] = true
         $scope.registrationInfo[questionName] = questionValue
       
       $scope.participationType = {}
@@ -111,6 +113,13 @@ angular.module 'ahaLuminateControllers'
           participationTypes = response.getParticipationTypesResponse.participationType
           participationTypes = [participationTypes] if not angular.isArray participationTypes
           setParticipationType participationTypes[0]
+      
+      $scope.previousStep = ->
+        $scope.ng_go_back = true
+        $timeout ->
+          $scope.submitReg()
+        , 500
+        false
       
       $scope.submitReg = ->
         angular.element('.js--default-reg-form').submit()
