@@ -6,6 +6,7 @@ angular.module 'ahaLuminateControllers'
       $scope.registrationHiddenFields = 
         fr_cstm_reg: 't'
       $scope.registrationQuestions = {}
+      $scope.registrationInfo = {}
       
       $contactInfo = angular.element '.js--registration-reg-contact-info'
       $contactInfoHiddenFields = $contactInfo.find 'input[type="hidden"][name]'
@@ -23,11 +24,13 @@ angular.module 'ahaLuminateControllers'
         questionLabel = undefined
         if $questionLabel.find('.input-label').length > 0
           questionLabel = $questionLabel.find('.input-label').text()
+        questionValue = $contactInfoQuestion.val() or ''
         questionMaxLength = $contactInfoQuestion.attr('maxlength') or ''
         $scope.registrationQuestions[questionName] = 
           label: questionLabel
+          value: questionValue
           maxlength: questionMaxLength
-      $contactInfo.remove()
+        $scope.registrationInfo[questionName] = questionValue
       
       $optIns = angular.element '.js--registration-reg-opt-ins'
       $optInHiddenFields = $optIns.find 'input[type="hidden"][name]'
@@ -47,7 +50,6 @@ angular.module 'ahaLuminateControllers'
           questionLabel = $questionLabel.find('.input-label').text()
         $scope.registrationQuestions[questionName] = 
           label: questionLabel
-      $optIns.remove()
       
       $loginInfo = angular.element '.js--registration-reg-login-info'
       $loginInfoHiddenFields = $loginInfo.find 'input[type="hidden"][name]'
@@ -65,11 +67,37 @@ angular.module 'ahaLuminateControllers'
         questionLabel = undefined
         if $questionLabel.find('.input-label').length > 0
           questionLabel = $questionLabel.find('.input-label').text()
+        questionValue = $contactInfoQuestion.val() or ''
         questionMaxLength = $loginInfoQuestion.attr('maxlength') or ''
         $scope.registrationQuestions[questionName] = 
           label: questionLabel
+          value: questionValue
           maxlength: questionMaxLength
-      $loginInfo.remove()
+        $scope.registrationInfo[questionName] = questionValue
+      
+      $additionalInfo = angular.element '.js--registration-reg-additional-info'
+      $additionalInfoHiddenFields = $additionalInfo.find 'input[type="hidden"][name]'
+      angular.forEach $additionalInfoHiddenFields, (additionalInfoHiddenField) ->
+        $additionalInfoHiddenField = angular.element additionalInfoHiddenField
+        questionName = $additionalInfoHiddenField.attr 'name'
+        questionValue = $additionalInfoHiddenField.val()
+        $scope.registrationHiddenFields[questionName] = questionValue
+      $additionalInfoQuestions = $additionalInfo.find 'input[type="text"], textarea, select'
+      angular.forEach $additionalInfoQuestions, (additionalInfoQuestion) ->
+        $additionalInfoQuestion = angular.element additionalInfoQuestion
+        questionName = $additionalInfoQuestion.attr 'name'
+        questionId = $additionalInfoQuestion.attr 'id'
+        $questionLabel = angular.element 'label[for="' + questionId + '"]'
+        questionLabel = undefined
+        if $questionLabel.find('.input-label').length > 0
+          questionLabel = $questionLabel.find('.input-label').text()
+        questionValue = $contactInfoQuestion.val() or ''
+        questionMaxLength = $additionalInfoQuestion.attr('maxlength') or ''
+        $scope.registrationQuestions[questionName] = 
+          label: questionLabel
+          value: questionValue
+          maxlength: questionMaxLength
+        $scope.registrationInfo[questionName] = questionValue
       
       $scope.participationType = {}
       setParticipationType = (participationType) ->
