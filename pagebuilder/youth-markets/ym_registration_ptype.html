@@ -69,7 +69,7 @@
             <span ng-if="donationLevel.isOtherAmount">Other</span>
             <span ng-if="donationLevel.isNoDonation">No, Thanks</span>
           </button> 
-          <div class="ym-registration-ptype-donation-message">
+          <div class="ym-registration-ptype-donation-message" ng-class="{'hidden': !donationLevels.activeLevel || donationLevels.activeLevel.isNoDonation}" ng-cloak>
             <span ng-bind-html="donationLevels.activeLevel.askMessage"></span>
           </div>
         </div>

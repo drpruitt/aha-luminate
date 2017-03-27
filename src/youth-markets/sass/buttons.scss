@@ -10,6 +10,7 @@ a.btn {
   &:active {
     border-radius: 10px;
     border-width: 0;
+    box-shadow: none;
     font-family: inherit;
     font-weight: 600;
     text-decoration: none;
@@ -17,7 +18,8 @@ a.btn {
   
   &:focus, 
   &:active, 
-  &:focus:active {
+  &:focus:active, 
+  &:focus.active {
     outline: none;
   }
   
