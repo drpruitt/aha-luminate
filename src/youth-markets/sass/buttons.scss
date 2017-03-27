@@ -113,7 +113,8 @@ div.responsive {
   }
 }
 
-.btn-toggle {
+.btn-toggle, 
+a.btn-toggle {
   @include button-size($padding-base-vertical, $padding-base-horizontal, 18px);
   font-weight: 700;
   text-decoration: none;
