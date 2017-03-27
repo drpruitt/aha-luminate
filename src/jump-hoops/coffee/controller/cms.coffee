@@ -8,6 +8,7 @@ angular.module 'ahaLuminateControllers'
         owl.owlCarousel
           nav: true
           items: 3
+          center: true
           loop: true
           margin: 60
           navText: [
