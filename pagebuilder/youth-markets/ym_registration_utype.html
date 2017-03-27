@@ -59,16 +59,20 @@
       <form class="ym-registration-utype-login-form" method="POST" ng-submit="submitUtypeLogin()">
         <div class="row">
           <div class="col-xs-6">
-            <label for="existingUser_username">
-              [[M0:global:user_name_field]]
-            </label>
-            <input type="text" class="form-control" name="USERNAME" id="existingUser_username" ng-model="existingUser.username" maxlength="[[S0:USER_MAX_LOGIN_LEN]]">
+            <div class="form-group [[?xx::x[[A20]]x::::[[?x[[M0:login_admin:err_username_password_required]]x[[M0:login_admin:err_invalid_userid]]x::x[[A20]]x::has-error::]]]]">
+              <label class="control-label" for="existingUser_username">
+                [[M0:global:user_name_field]]
+              </label>
+              <input type="text" class="form-control" name="USERNAME" id="existingUser_username" ng-model="existingUser.username" maxlength="[[S0:USER_MAX_LOGIN_LEN]]">
+            </div>
           </div>
           <div class="col-xs-6">
-            <label for="existingUser_password">
-              [[M0:global:user_password_field]]
-            </label>
-            <input type="password" class="form-control" name="Password" id="existingUser_password" ng-model="existingUser.password" maxlength="[[S0:USER_MAX_PASSWD_LEN]]">
+            <div class="form-group [[?xx::x[[A20]]x::::[[?x[[M0:login_admin:err_username_password_required]]x[[M0:login_admin:err_invalid_password]]x::x[[A20]]x::has-error::]]]]">
+              <label class="control-label" for="existingUser_password">
+                [[M0:global:user_password_field]]
+              </label>
+              <input type="password" class="form-control" name="Password" id="existingUser_password" ng-model="existingUser.password" maxlength="[[S0:USER_MAX_PASSWD_LEN]]">
+            </div>
           </div>
         </div>
         <div class="ym-registration-utype-forgot-toggle">
