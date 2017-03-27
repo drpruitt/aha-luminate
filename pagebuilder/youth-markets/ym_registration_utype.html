@@ -47,7 +47,7 @@
     </div>
     <div class="ym-registration-utype-user-type">
       <div class="manageable-content" data-container="edit_fr_returning_user_container">
-        <button type="button" class="btn btn-toggle" ng-class="{'btn-toggle--selected': userType == 'existing'}" ng-click="toggleUserType('existing')">
+        <button type="button" class="btn btn-toggle" ng-class="{'active': userType == 'existing'}" ng-click="toggleUserType('existing')">
           <span id="fr_returning_user_container">[[C1:fr_returning_user]]</span>
         </button> 
         <button type="button" class="btn btn-toggle" ng-click="toggleUserType('new')">

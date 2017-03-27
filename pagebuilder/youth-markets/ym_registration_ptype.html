@@ -64,7 +64,7 @@
           [[A33]]
         </div>
         <div class="ym-registration-ptype-donation-levels" ng-class="{'active': donationLevels.activeLevel}">
-          <button type="button" class="btn btn-toggle" ng-repeat="donationLevel in donationLevels.levels" ng-class="{'btn-toggle--selected': donationLevels.activeLevel.amount == donationLevel.amount}" ng-click="toggleDonationLevel(donationLevel.amount)" ng-cloak>
+          <button type="button" class="btn btn-toggle" ng-repeat="donationLevel in donationLevels.levels" ng-class="{'active': donationLevels.activeLevel.amount == donationLevel.amount}" ng-click="toggleDonationLevel(donationLevel.amount)" ng-cloak>
             <span ng-bind-html="donationLevel.amountFormatted" ng-if="!donationLevel.isOtherAmount && !donationLevel.isNoDonation"></span>
             <span ng-if="donationLevel.isOtherAmount">Other</span>
             <span ng-if="donationLevel.isNoDonation">No, Thanks</span>

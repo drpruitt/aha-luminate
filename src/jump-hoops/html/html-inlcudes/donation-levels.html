@@ -1,12 +1,12 @@
 <div class="event-secondary-light ym-donation-levels">
   <div class="ym-donation-levels__type">
-    <a class="btn btn-toggle btn-toggle--selected ym-donation-levels__type--onetime" ng-click="giftType('onetime')">One Time Gift</a>
+    <a class="btn btn-toggle active ym-donation-levels__type--onetime" ng-click="giftType('onetime')">One Time Gift</a>
     <a class="btn btn-toggle ym-donation-levels__type--monthly" ng-click="giftType('monthly');">Monthly Gift</a>
   </div>
   <hr />
   <div class="ym-donation-levels__levels">
     <div class="ym-donation-levels__amount" ng-repeat="donationLevel in donationLevels">
-      <a class="btn btn-toggle {{donationLevel.classLevel}}" ng-class="{'btn-toggle--selected': donationLevel.levelChecked == true}" ng-if="donationLevel.userSpecified == 'false'" ng-click="selectLevel('level', donationLevel.levelId, donationLevel.amount);">
+      <a class="btn btn-toggle {{donationLevel.classLevel}}" ng-class="{'active': donationLevel.levelChecked == true}" ng-if="donationLevel.userSpecified == 'false'" ng-click="selectLevel('level', donationLevel.levelId, donationLevel.amount);">
         {{donationLevel.amount}}
       </a>
       <input type="text" class="btn btn-toggle btn-enter {{donationLevel.classLevel}}" ng-if="donationLevel.userSpecified == 'true'" ng-keyup="enterAmount(otherAmt)" ng-model="otherAmt" ng-click="selectLevel('other', donationLevel.levelId);" placeholder="Other">
