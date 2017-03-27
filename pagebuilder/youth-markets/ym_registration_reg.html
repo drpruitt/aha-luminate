@@ -46,7 +46,7 @@
           <label class="control-label" for="registrationInfo-cons_first_name">
             Student First Name:
           </label>
-          <input type="text" class="form-control" name="cons_first_name" id="registrationInfo-cons_first_name" ng-model="registrationInfo.cons_first_name" maxlength="{{registrationQuestions.cons_first_name.maxlength}}">
+          <input type="text" class="form-control" name="ng_cons_first_name" id="registrationInfo-cons_first_name" ng-model="registrationInfo.cons_first_name" maxlength="{{registrationQuestions.cons_first_name.maxlength}}">
         </div>
       </div>
       <div class="col-sm-6">
@@ -54,7 +54,7 @@
           <label class="control-label" for="registrationInfo-cons_last_name">
             Student Last Name:
           </label>
-          <input type="text" class="form-control" name="cons_last_name" id="registrationInfo-cons_last_name" ng-model="registrationInfo.cons_last_name" maxlength="{{registrationQuestions.cons_last_name.maxlength}}">
+          <input type="text" class="form-control" name="ng_cons_last_name" id="registrationInfo-cons_last_name" ng-model="registrationInfo.cons_last_name" maxlength="{{registrationQuestions.cons_last_name.maxlength}}">
         </div>
       </div>
     </div>
@@ -64,7 +64,7 @@
           <label class="control-label" for="registrationInfo-cons_email">
             Email Address:
           </label>
-          <input type="text" class="form-control" name="cons_email" id="registrationInfo-cons_email" ng-model="registrationInfo.cons_email" maxlength="{{registrationQuestions.cons_email.maxlength}}">
+          <input type="text" class="form-control" name="ng_cons_email" id="registrationInfo-cons_email" ng-model="registrationInfo.cons_email" maxlength="{{registrationQuestions.cons_email.maxlength}}">
         </div>
       </div>
       <div class="col-sm-6">
@@ -86,7 +86,7 @@
     </div>
     <div class="checkbox" ng-if="registrationQuestions.fr_email_opt_in" ng-cloak>
       <label for="registrationInfo-fr_email_opt_in">
-        <input type="checkbox" name="fr_email_opt_in" id="registrationInfo-fr_email_opt_in" ng-model="registrationInfo.fr_email_opt_in"> 
+        <input type="checkbox" name="ng_fr_email_opt_in" id="registrationInfo-fr_email_opt_in" ng-model="registrationInfo.fr_email_opt_in"> 
         <span class="manageable-content" data-container="edit_opt_in_container">
           <span id="opt_in_label">
             [[?xx::x[[C1:fr_gift_notice_opt_in_checkbox]]x::
@@ -100,7 +100,7 @@
     </div>
     <div class="checkbox" ng-if="registrationQuestions.cons_email_opt_in" ng-cloak>
       <label for="registrationInfo-cons_email_opt_in">
-        <input type="checkbox" name="cons_email_opt_in" id="registrationInfo-cons_email_opt_in" ng-model="registrationInfo.cons_email_opt_in"> 
+        <input type="checkbox" name="ng_cons_email_opt_in" id="registrationInfo-cons_email_opt_in" ng-model="registrationInfo.cons_email_opt_in"> 
         <span ng-bind-html="registrationQuestions.cons_email_opt_in.label"></span>
       </label>
     </div>
@@ -110,7 +110,7 @@
           [[A16]]
         ]]
       </div>
-      <div ng-if="registrationQuestions.cons_user_name || registrationQuestions.cons_password" ng-cloak>
+      <div ng-if="registrationQuestions.cons_user_name || registrationQuestions.cons_password || registrationQuestions.cons_rep_password" ng-cloak>
         <hr>
         <div class="manageable-content" data-container="edit_password_hdr_container">
           <span id="password_hdr_container">[[C1:fr_password_hdr]]</span>
@@ -121,7 +121,7 @@
               <label class="control-label" for="registrationInfo-cons_user_name">
                 <span ng-bind-html="registrationQuestions.cons_user_name.label"></span>
               </label>
-              <input type="text" name="cons_user_name" id="registrationInfo-cons_user_name" ng-model="registrationInfo.cons_user_name" maxlength="{{registrationQuestions.cons_user_name.maxlength}}">
+              <input type="text" name="ng_cons_user_name" id="registrationInfo-cons_user_name" ng-model="registrationInfo.cons_user_name" maxlength="{{registrationQuestions.cons_user_name.maxlength}}">
             </div>
           </div>
         </div>
@@ -131,7 +131,7 @@
               <label class="control-label" for="registrationInfo-cons_password">
                 <span ng-bind-html="registrationQuestions.cons_password.label"></span>
               </label>
-              <input type="text" name="cons_password" id="registrationInfo-cons_password" ng-model="registrationInfo.cons_password" maxlength="{{registrationQuestions.cons_password.maxlength}}">
+              <input type="text" name="ng_cons_password" id="registrationInfo-cons_password" ng-model="registrationInfo.cons_password" maxlength="{{registrationQuestions.cons_password.maxlength}}">
             </div>
           </div>
           <div class="col-sm-6">
@@ -139,7 +139,7 @@
               <label class="control-label" for="registrationInfo-cons_rep_password">
                 <span ng-bind-html="registrationQuestions.cons_rep_password.label"></span>
               </label>
-              <input type="text" name="cons_rep_password" id="registrationInfo-cons_rep_password" ng-model="registrationInfo.cons_rep_password" maxlength="{{registrationQuestions.cons_rep_password.maxlength}}">
+              <input type="text" name="ng_cons_rep_password" id="registrationInfo-cons_rep_password" ng-model="registrationInfo.cons_rep_password" maxlength="{{registrationQuestions.cons_rep_password.maxlength}}">
             </div>
           </div>
         </div>
@@ -147,14 +147,14 @@
     ]]
     [[?xTx::x[[A24]]x::
       <!-- manage mode -->
-      <div class="js--registration-reg-additional-info">
+      <div class="hidden js--registration-reg-additional-info">
         <div class="manageable-content" data-container="edit_questions_hdr_container">
           <span id="questions_hdr_container">[[C1:fr_questions_hdr]]</span>
         </div>
       </div>
     ::
       [[?xxnullx::x[[A19]]x::::
-        <div class="js--registration-reg-additional-info">
+        <div class="hidden js--registration-reg-additional-info">
           [[?xtruex::x[[A29]]x::
             [[C1:fr_questions_hdr]]
             [[A19]]
