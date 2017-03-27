@@ -69,9 +69,8 @@
             ]]
           </div>
         </div>
-        [[?xy::x[[A16]]y::
-          <div class="clearfix"></div>
-        ::
+        [[?xx::x[[A16]]x::::
+          <hr>
           <div class="sub-section-container" id="participant_info_container">
             <div class="sub-section-header">
               <div class="manageable-content" data-container="edit_password_hdr_container">
@@ -115,6 +114,9 @@
             ]]
           ]]
         ]]
+        <div ng-if="participationType.waiver" ng-cloak>
+          <div ng-bind-html="participationType.waiver"></div>
+        </div>
         <div class="ym-registration-form-footer">
           <div class="ym-registration-form-footer-btns">
             <div class="clearfix">
