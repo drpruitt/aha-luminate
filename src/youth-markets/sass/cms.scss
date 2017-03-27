@@ -1,44 +1,45 @@
 .ym-school-search {
   .img-responsive {
-    @media(max-width: $screen-sm) {
-      margin-top: 20px;
+    margin: 20px auto 10px;
+    
+    @media (min-width: $screen-sm-min) {
+      margin-top: 50px;
     }
-    margin: 50px auto 10px;
   }
-
+  
   .pos-r {
     position: relative;
   }
-
+  
   > .form-group {
     margin-bottom: 50px;
   }
-
+  
   .ym-page-section__roster {
     padding-top: 0;
   }
-
+  
   #school-name-filter {
-    height: 60px;
-    width: 90%;
-    max-width: 390px;
     font-size: $font-size-reg;
     text-align: center;
+    width: 90%;
+    max-width: 390px;
+    height: 60px;
   }
-
+  
   #school-state-filter {
     position: absolute;
     top: 0;
     right: 0;
-    width: 200px;
     background: url("../../youth-markets/image/ym-select-carrot.png") right 0.75rem center no-repeat $event-secondary;
-    font-weight: bold;
+    font-weight: 700;
+    width: 200px;
   }
   
   .ym-page-section__header {
     position: relative;
   }
-
+  
   .pagination {
     margin: 30px 0;
   }
@@ -47,6 +48,7 @@
     .ym-page-section__header {
       text-align: center;
     }
+    
     #school-state-filter {
       position: relative;
       margin-bottom: 30px;
@@ -57,23 +59,24 @@
     .ym-list__school-list-wrpr {
       overflow-x: scroll;
     }
+    
     .ym-list--school-list {
       min-width: 600px;
     }
+    
     #school-name-filter {
       display: inline-block;
     }
   }
 }
 
-
 .ym-home-feature {
-  padding: 50px 0;
-
-  @media (max-width: $screen-sm-max) {
-    padding: 30px 0;
+  padding: 30px 0;
+  
+  @media (min-width: $screen-md-min) {
+    padding: 50px 0;
   }
-
+  
   > .container {
     max-width: 970px;
     padding: 20px;

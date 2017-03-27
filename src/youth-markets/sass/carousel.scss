@@ -1,57 +1,63 @@
 .owl-carousel{
   position: relative;
-
+  
   .owl-nav {
-    width: 100%;
-    top: 30%;
     position: absolute;
-
+    top: 30%;
+    width: 100%;
+    
     > div {
-      background: rgba(255,255,255,.8);
+      position: absolute;
+      top: 40%;
+      background: rgb(255, 255, 255);
+      background: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      text-align: center;
       width: 40px;
       height: 70px;
-      text-decoration: none;
-      position: absolute;
-      top:40%;
-      text-align: center;
-
+      
+      &:hover {
+        background: rgb(255, 255, 255);
+        background: rgba(255, 255, 255, 1);
+      }
+      
       > .fa {
-        font-size: 30px;
         color: $event-grey;
+        font-size: 30px;
         line-height: 70px;
       }
     }
-
-    > div:hover {
-      background: rgba(255,255,255,1);
-    }
   }
+  
   .owl-prev {
-    left:0;
+    left: 0;
   }
   
   .owl-next {
-    right: 0
-  }  
+    right: 0;
+  }
 }
 
 .ym-home-feature {
   .owl-item {
     text-align: center;
-
+    
     img {
-      border-right: 1px solid #fff;
+      border-right: 1px solid #ffffff;
     }
-    h4,
+    
+    h4, 
     p {
       display: none;
     }
   }
+  
   .center {
-    h4,
+    h4, 
     p {
       display: block;
     }
+    
     h4 {
       margin: 20px auto;
     }

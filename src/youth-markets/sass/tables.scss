@@ -24,7 +24,7 @@ div.table {
     > .table-body {
       > .table-row {
         > .table-cell {
-          @media(max-width: $screen-xs-max) {
+          @media (max-width: $screen-xs-max) {
             white-space: nowrap;
           }
         }
@@ -89,7 +89,7 @@ div.table {
   .ym-list__column--name {
     width: 80%;
     
-    @media(min-width: $screen-sm-min) {
+    @media (min-width: $screen-sm-min) {
       width: 43%;
     }
   }

@@ -6,7 +6,7 @@
 
 .ym-registration-page-header {
   margin: 0 0 24px;
-  
+
   @media (min-width: $screen-sm-min) {
     margin: 0 0 26px;
   }
@@ -25,6 +25,13 @@
   @media (min-width: $screen-sm-min) {
     padding: 20px;
     margin: 56px 0 0;
+  }
+}
+
+.ym-registration-form-footer-btns {
+  @media (min-width: $screen-sm-min) {
+    width: 330px;
+    margin: 0 auto;
   }
 }
 
@@ -64,12 +71,26 @@
 }
 
 .ym-registration-ptype-donation-levels {
-  padding: 18px;
+  padding: 18px 8px;
   
   @media (min-width: $screen-sm-min) {
-    padding: 20px;
+    padding: 20px 5px;
+  }
+  
+  .btn {
+    margin: 0 10px;
+    
+    @media (min-width: $screen-sm-min) {
+      margin: 0 15px;
+    }
   }
 }
 
 .ym-registration-ptype-donation-message {
+  font-weight: 700;
+  margin: 18px 0 0;
+  
+  @media (min-width: $screen-sm-min) {
+    margin: 28px 0 0;
+  }
 }
