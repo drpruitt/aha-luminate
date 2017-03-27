@@ -3,7 +3,7 @@ angular.module 'ahaLuminateApp'
     'LuminateRESTService'
     (LuminateRESTService) ->
       getParticipationTypes: (callback) ->
-        dataString = 'method=getRegistrationDocument'
+        dataString = 'method=getParticipationTypes'
         LuminateRESTService.luminateExtendTeamraiserRequest dataString, false, true, callback
       
       getRegistrationDocument: (requestData, callback) ->

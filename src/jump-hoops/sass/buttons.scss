@@ -99,6 +99,7 @@ div.responsive input[type="text"].btn-enter {
 }
 
 .btn-enter {
+  &::placeholder, 
   &::-webkit-input-placeholder, 
   &::-moz-placeholder, 
   &::-ms-input-placeholder {
