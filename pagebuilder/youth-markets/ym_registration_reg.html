@@ -35,11 +35,11 @@
     <input type="hidden" name="fr_id" value="[[A2]]">
     <input type="hidden" name="pg" value="[[A7]]">
     <input type="hidden" name="fr_cstm_reg" value="t">
-    <div class="hidden js--registration-reg-contact-info">
-      [[A13]]
-    </div>
     <div ng-repeat="(key, value) in registrationHiddenFields">
       <input type="hidden" name="{{key}}" value="{{value}}">
+    </div>
+    <div class="hidden js--registration-reg-contact-info">
+      [[A13]]
     </div>
     <div class="row">
       <div class="col-sm-6">
@@ -71,30 +71,39 @@
       <div class="col-sm-6">
       </div>
     </div>
-    <div class="js--registration-reg-opt-ins">
+    <div class="hidden js--registration-reg-opt-ins">
       [[?xxnullx::x[[A23]]x::::
         [[A23]]
       ]]
       [[?xxnullx::x[[A20]]x::::
-        [[?xxnullxBASELINEx::x[[S0:TPV_FR_CSTM_REG_OPTIN]]x:: 
+        [[?xxnullxBASELINEx::x[[S0:TPV_FR_CSTM_REG_OPTIN]]x::
           <input type="checkbox" name="fr_email_opt_in" id="fr_email_opt_in" [[?[[A20]]::T::checked::]]>
-          <label for="fr_email_opt_in">
-            <span class="manageable-content" data-container="edit_opt_in_container">
-              <span id="opt_in_label">
-                [[?xx::x[[C1:fr_gift_notice_opt_in_checkbox]]x::
-                  [[M0:friendraiser:gift_notice_opt_in_checkbox]]
-                ::
-                  [[C1:fr_gift_notice_opt_in_checkbox]]
-                ]]
-              </span>
-            </span>
-          </label>
         :: 
           [[?xOPTINx::x[[S0:TPV_FR_CSTM_REG_OPTIN]]x:: 
             <input type="hidden" name="fr_email_opt_in" id="fr_email_opt_in" value="on">
           ::]]
         ]]
       ]]
+    </div>
+    <div class="checkbox" ng-if="registrationQuestions.fr_email_opt_in" ng-cloak>
+      <label for="registrationInfo-fr_email_opt_in">
+        <input type="checkbox" name="fr_email_opt_in" id="registrationInfo-fr_email_opt_in" ng-model="registrationInfo.fr_email_opt_in"> 
+        <span class="manageable-content" data-container="edit_opt_in_container">
+          <span id="opt_in_label">
+            [[?xx::x[[C1:fr_gift_notice_opt_in_checkbox]]x::
+              [[M0:friendraiser:gift_notice_opt_in_checkbox]]
+            ::
+              [[C1:fr_gift_notice_opt_in_checkbox]]
+            ]]
+          </span>
+        </span>
+      </label>
+    </div>
+    <div class="checkbox" ng-if="registrationQuestions.cons_email_opt_in" ng-cloak>
+      <label for="registrationInfo-cons_email_opt_in">
+        <input type="checkbox" name="cons_email_opt_in" id="registrationInfo-cons_email_opt_in" ng-model="registrationInfo.cons_email_opt_in"> 
+        <span ng-bind-html="registrationQuestions.cons_email_opt_in.label"></span>
+      </label>
     </div>
     [[?xx::x[[A16]]x::::
       <div class="js--registration-reg-login-info">
