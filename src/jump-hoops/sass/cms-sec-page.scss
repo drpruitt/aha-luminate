@@ -52,7 +52,7 @@
       padding-right: 100px;
     }
 
-    @media (max-width: $screen-sm-max) {
+    @media (max-width: $screen-md) {
       margin-bottom: 40px;
 
       &,
@@ -217,17 +217,17 @@
     padding-right: 35px;
   }
 
-  .ym-page-sidebar {
+  .ym-sidebar {
     border-left: 1px solid $border-gray;
 
-    .ym-sidebar-headline {
+    .ym-sidebar__headline {
       font-size: 18px;
       color: $brand-white;
       background-color: $event-secondary;
       padding: 12px 20px;
     }
 
-    .ym-sidebar-nav {
+    .ym-sidebar__nav {
       list-style: none;
       list-style-image: none;
       margin: 0;
