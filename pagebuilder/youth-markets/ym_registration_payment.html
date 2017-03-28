@@ -139,7 +139,7 @@
             </div>
           </div>
         </div>
-        <div class="row" ng-if="paymentQuestions.responsive_payment_typecc_exp_date_MONTH || paymentQuestions.responsive_payment_typecc_exp_date_DAY || paymentQuestions.responsive_payment_typecc_cvvname" ng-cloak>
+        <div class="row" ng-if="paymentQuestions.responsive_payment_typecc_exp_date_MONTH || paymentQuestions.responsive_payment_typecc_exp_date_YEAR || paymentQuestions.responsive_payment_typecc_cvvname" ng-cloak>
           <div class="col-sm-4">
             <div class="form-group" ng-if="paymentQuestions.responsive_payment_typecc_exp_date_MONTH" ng-cloak>
               <label class="control-label" for="paymentInfo-responsive_payment_typecc_exp_date_MONTH">
@@ -151,12 +151,12 @@
             </div>
           </div>
           <div class="col-sm-4">
-            <div class="form-group" ng-if="paymentQuestions.responsive_payment_typecc_exp_date_DAY" ng-cloak>
-              <label class="control-label" for="paymentInfo-responsive_payment_typecc_exp_date_DAY">
+            <div class="form-group" ng-if="paymentQuestions.responsive_payment_typecc_exp_date_YEAR" ng-cloak>
+              <label class="control-label" for="paymentInfo-responsive_payment_typecc_exp_date_YEAR">
                 Expiration Year:
               </label>
-              <select class="form-control" name="ng_responsive_payment_typecc_exp_date_DAY" id="paymentInfo-responsive_payment_typecc_exp_date_DAY" ng-model="paymentInfo.responsive_payment_typecc_exp_date_DAY">
-                <option ng-repeat="questionOption in paymentQuestions.responsive_payment_typecc_exp_date_DAY.options" value="{{questionOption.value}}">{{questionOption.text}}</option>
+              <select class="form-control" name="ng_responsive_payment_typecc_exp_date_YEAR" id="paymentInfo-responsive_payment_typecc_exp_date_YEAR" ng-model="paymentInfo.responsive_payment_typecc_exp_date_YEAR">
+                <option ng-repeat="questionOption in paymentQuestions.responsive_payment_typecc_exp_date_YEAR.options" value="{{questionOption.value}}">{{questionOption.text}}</option>
               </select>
             </div>
           </div>
@@ -174,12 +174,12 @@
         <div class="ym-registration-form-footer-btns">
           <div class="clearfix">
             <div class="pull-right">
-              <button type="[[?xTx::x[[A7]]x::button::submit]]" class="btn btn-primary" name="btn_next" value="[[M0:friendraiser:reg_payment_page_next_button_label]]">
+              <button type="[[?xTx::x[[A7]]x::button::submit]]" class="btn btn-primary">
                 Donate [[E130:"[[A9]]" ".00" "" replaceall]] <i class="fa fa-chevron-right"></i>
               </button>
             </div>
             <div class="pull-left">
-              <button type="[[?xTx::x[[A7]]x::button::submit]]" class="btn btn-toggle" name="btn_prev" value="[[M0:friendraiser:reg_payment_page_prev_button_label]]">
+              <button type="[[?xTx::x[[A7]]x::button::submit]]" class="btn btn-toggle" ng-click="previousStep()">
                 <i class="fa fa-chevron-left"></i> Previous
               </button>
             </div>
@@ -198,6 +198,8 @@
       <div ng-repeat="(key, value) in paymentInfo">
         <input type="hidden" name="{{key}}" value="{{value}}">
       </div>
+      <input type="hidden" name="btn_next" value="[[M0:friendraiser:reg_payment_page_next_button_label]]" ng-if="!ng_go_back">
+      <input type="hidden" name="btn_prev" value="[[M0:friendraiser:reg_payment_page_prev_button_label]]" ng-if="ng_go_back">
     </form>
   </div>
 </div>
