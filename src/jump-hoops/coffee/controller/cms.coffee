@@ -19,7 +19,12 @@ angular.module 'ahaLuminateControllers'
         #jQuery('.owl-nav').removeClass('disabled')
 
       if angular.element('ym-carousel--internal')
-        console.log 'fire rotate'
         $timeout initCarousel, 1000
+
+
+      toggleOpen = ->
+        console.log 'click'
+        angular.element('.collapse').parent().removeClass('active')
+        angular.element('.collapse.in').parent().addClass('active')
 
   ]
