@@ -163,23 +163,39 @@
       }
     }
 
-    @media(max-width: $screen-sm){
+    @media(max-width: $screen-sm - 1){
       display: block;
 
       .ym-promo-block__text{
-        padding:20px 0;
+        padding: 20px 0;
       }
 
       .ym-promo-block__image {
         display: block;
         padding: 0;
 
-        image {
-          margin: 20px auto 0;
-          max-width: none;
-          width: 100%;
+        img {
+          margin: auto;
+          padding-top: 20px;
         }
       }
     }
+  }
+
+  .ym-sidebar-promo {
+    &.event-accent {
+      a,
+      a:link,
+      a:visited {
+        color: $brand-white;
+      }
+    }
+    .ym-sidebar-promo__text {
+      padding: 20px 20px 30px;
+    }
+  }
+
+  .ym-sidebar__promo--list {
+    padding: 30px 20px 20px;
   }
 }
