@@ -9,7 +9,7 @@ angular.module 'ahaLuminateControllers'
         $fieldError = angular.element fieldError
         if $fieldError.find('.field-error-text').length > 0
           fieldErrorText = jQuery.trim $fieldError.find('.field-error-text').text()
-          $scope.registrationInfoErrors.errors.push
+          $scope.paymentInfoErrors.errors.push
             text: fieldErrorText
       
       $scope.paymentHiddenFields = {}
@@ -83,6 +83,13 @@ angular.module 'ahaLuminateControllers'
           maxLength: questionMaxLength
           hasError: questionHasError
         $scope.paymentInfo[questionName] = questionValue
+      
+      $scope.previousStep = ->
+        $scope.ng_go_back = true
+        $timeout ->
+          $scope.submitPayment()
+        , 500
+        false
       
       $scope.submitPayment = ->
         angular.element('.js--default-payment-form').submit()
