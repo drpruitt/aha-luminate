@@ -52,7 +52,7 @@
       padding-right: 100px;
     }
 
-    @media (max-width: $screen-sm-max) {
+    @media (max-width: $screen-md) {
       margin-bottom: 40px;
 
       &,
@@ -214,20 +214,26 @@
   }
 
   .ym-page-section__left-col {
-    padding-right: 35px;
+    padding: 0;
   }
 
-  .ym-page-sidebar {
-    border-left: 1px solid $border-gray;
+  .ym-page-section__right-col {
+    padding: 0;
+  }
 
-    .ym-sidebar-headline {
+  .ym-sidebar {
+    border-left: 1px solid $border-gray;
+    max-width: 250px;
+    margin: auto;
+
+    .ym-sidebar__headline {
       font-size: 18px;
       color: $brand-white;
       background-color: $event-secondary;
       padding: 12px 20px;
     }
 
-    .ym-sidebar-nav {
+    .ym-sidebar__nav {
       list-style: none;
       list-style-image: none;
       margin: 0;
@@ -264,6 +270,25 @@
           }
         }
       }
+    }
+  }
+
+  .ym-accordion-list {
+    .panel-heading {
+      background: transparent;
+      border-radius: 0;
+      border-color: transparent;
+
+      a {
+        display: block;
+      }
+    }
+
+  }
+
+  .ym-list {
+    .fa {
+      color: $event-primary;
     }
   }
 }
