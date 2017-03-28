@@ -99,7 +99,7 @@ div.registration-page-container div.section-header {
 .mobile div#find_participant li {
   width: 135px !important;
   
-  @media(min-width: $screen-sm-min) {
+  @media (min-width: $screen-sm-min) {
     width: auto !important;
   }
 }

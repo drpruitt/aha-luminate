@@ -53,10 +53,10 @@ a.btn-md {
   &, 
   &:link, 
   &:visited {
-    @include button-size(7px, 14px, 14px);
+    @include button-size(6px, 6px, 14px);
     
-    @media (max-width: $screen-xs-max) {
-      @include button-size(6px, 6px, 14px);
+    @media (min-width: $screen-sm-min) {
+      @include button-size(7px, 14px, 14px);
     }
   }
 }
@@ -77,14 +77,15 @@ a.btn-lg {
   &, 
   &:link, 
   &:visited {
-    @include button-size($padding-base-vertical, $padding-base-horizontal, 20px);
+    @include button-size(10px, 12px, 14px);
     
     text-align: center;
-    min-width:180px;
+    min-width: 120px;
     
-    @media (max-width: $screen-xs-max) {
-      @include button-size(10px, 12px, 14px);
-      min-width: 120px;
+    @media (min-width: $screen-sm-min) {
+      @include button-size($padding-base-vertical, $padding-base-horizontal, 20px);
+      
+      min-width: 180px;
     }
   }
 }
@@ -125,17 +126,17 @@ a.btn-global-primary {
 div.responsive {
   .step-button, 
   button.step-button {
-    @include button-size($padding-base-vertical, $padding-base-horizontal, 20px);
+    @include button-size(10px, 12px, 14px);
     background-image: none;
     border-radius: 10px;
     filter: none;
     border: 0;
-    min-width: 180px;
+    min-width: 120px;
     max-width: none;
     
-    @media (max-width: $screen-xs-max) {
-      @include button-size(10px, 12px, 14px);
-      min-width: 120px;
+    @media (min-width: $screen-sm-min) {
+      @include button-size($padding-base-vertical, $padding-base-horizontal, 20px);
+      min-width: 180px;
     }
   }
 }

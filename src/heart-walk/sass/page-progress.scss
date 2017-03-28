@@ -70,7 +70,7 @@
   border-top: 1px solid #353f40;
   padding: 14px;
   
-  @media(min-width: $screen-sm-min) {
+  @media (min-width: $screen-sm-min) {
     padding: 20px;
   }
   
@@ -90,12 +90,12 @@
   line-height: 32px;
   font-weight: 600;
   
-  @media(min-width: $screen-sm-min) {
+  @media (min-width: $screen-sm-min) {
     font-size: 28px;
     line-height: 28px;
   }
   
-  @media(min-width: $screen-lg-min) {
+  @media (min-width: $screen-lg-min) {
     font-size: 32px;
     line-height: 32px;
   }
@@ -114,12 +114,12 @@
     font-size: 16px;
     line-height: 16px;
     
-    @media(min-width: $screen-sm-min) {
+    @media (min-width: $screen-sm-min) {
       font-size: 16px;
       line-height: 16px;
     }
     
-    @media(min-width: $screen-lg-min) {
+    @media (min-width: $screen-lg-min) {
       font-size: 16px;
       line-height: 16px;
     }
@@ -139,11 +139,11 @@
   font-size: 16px;
   padding: 0 40px;
   
-  @media(min-width: $screen-sm-min) {
+  @media (min-width: $screen-sm-min) {
     padding: 0 30px;
   }
   
-  @media(min-width: $screen-lg-min) {
+  @media (min-width: $screen-lg-min) {
     padding: 0 40px;
   }
 }

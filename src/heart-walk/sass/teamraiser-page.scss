@@ -1,25 +1,25 @@
 .heart-page-rail {
   margin: 0 20px;
   
-  @media(min-width: $screen-sm-min) {
+  @media (min-width: $screen-sm-min) {
     float: left;
     width: 36%;
     margin: 0 0 0 40px;
   }
   
-  @media(min-width: 830px) {
+  @media (min-width: 830px) {
     width: 34%;
   }
   
-  @media(min-width: 880px) {
+  @media (min-width: 880px) {
     width: 32%;
   }
   
-  @media(min-width: 940px) {
+  @media (min-width: 940px) {
     width: 30%;
   }
   
-  @media(min-width: $screen-md-min) {
+  @media (min-width: $screen-md-min) {
     border: 3px solid #ffffff;
     width: 306px;
     margin: 0 0 0 48px;
@@ -39,11 +39,11 @@
   width: 100%;
   margin: 0 auto 30px;
   
-  @media(min-width: $screen-sm-min) {
+  @media (min-width: $screen-sm-min) {
     margin: 0 0 40px;
   }
   
-  @media(min-width: $screen-md-min) {
+  @media (min-width: $screen-md-min) {
     margin: 0 0 30px;
   }
 }
@@ -53,13 +53,13 @@
   padding: 0 0 12px;
   margin: 0 0 30px;
   
-  @media(min-width: $screen-sm-min) {
+  @media (min-width: $screen-sm-min) {
     border-bottom: 0;
     padding: 0 0 40px;
     margin: 0;
   }
   
-  @media(min-width: $screen-md-min) {
+  @media (min-width: $screen-md-min) {
     border-bottom: 1px solid #c9cccc;
     margin: 0 0 40px;
   }
@@ -70,7 +70,7 @@
     padding: 0 0 12px;
     margin: 24px 0 0;
     
-    @media(min-width: $screen-sm-min) {
+    @media (min-width: $screen-sm-min) {
       padding: 0;
       margin: 0;
     }
@@ -82,13 +82,13 @@
   padding: 12px 0 0;
   margin: 12px 0 0;
   
-  @media(min-width: $screen-sm-min) {
+  @media (min-width: $screen-sm-min) {
     border-top: 0;
     padding: 0;
     margin: 30px 0 0;
   }
   
-  @media(min-width: $screen-md-min) {
+  @media (min-width: $screen-md-min) {
     margin: 14px 0 0;
   }
   
@@ -98,7 +98,7 @@
     font-size: 14px;
     width: 50%;
     
-    @media(min-width: $screen-sm-min) {
+    @media (min-width: $screen-sm-min) {
       float: none;
       display: block;
       width: auto;
@@ -106,13 +106,13 @@
       margin: 0 0 12px;
     }
     
-    @media(min-width: $screen-md-min) {
+    @media (min-width: $screen-md-min) {
       display: inline-block;
       margin: 0 20px 0 0;
     }
     
     &:last-child {
-      @media(min-width: $screen-sm-min) {
+      @media (min-width: $screen-sm-min) {
         margin: 0;
       }
     }
@@ -121,7 +121,7 @@
     a.heart-page-info__related-item {
       display: block;
       
-      @media(min-width: $screen-sm-min) {
+      @media (min-width: $screen-sm-min) {
         display: inline-block;
       }
     }
@@ -134,15 +134,15 @@
   width: 46%;
   margin: 0 40px 0 48px;
   
-  @media(min-width: 830px) {
+  @media (min-width: 830px) {
     width: 50%;
   }
   
-  @media(min-width: 880px) {
+  @media (min-width: 880px) {
     width: 52%;
   }
   
-  @media(min-width: 940px) {
+  @media (min-width: 940px) {
     width: 55%;
   }
 }
@@ -150,17 +150,17 @@
 .heart-page-main {
   margin: 32px 20px 0;
   
-  @media(min-width: $screen-sm-min) {
+  @media (min-width: $screen-sm-min) {
     margin: 32px 40px 0;
   }
   
-  @media(min-width: $screen-md-min) {
+  @media (min-width: $screen-md-min) {
     float: left;
     width: 490px;
     margin: 0 72px 0 48px;
   }
   
-  @media(min-width: $screen-lg-min) {
+  @media (min-width: $screen-lg-min) {
     width: 664px;
     margin: 0 98px 0 48px;
   }
@@ -170,7 +170,7 @@
     font-weight: 600;
     margin: 0 0 32px;
     
-    @media(min-width: $screen-md-min) {
+    @media (min-width: $screen-md-min) {
       margin: 0 0 40px;
     }
   }
@@ -179,7 +179,7 @@
 .heart-user-video {
   margin: 0 0 20px;
   
-  @media(min-width: $screen-sm-min) {
+  @media (min-width: $screen-sm-min) {
     margin: 0 0 32px;
   }
 }
@@ -198,7 +198,7 @@
   h2 {
     margin: 0 0 24px;
     
-    @media(min-width: $screen-sm-min) {
+    @media (min-width: $screen-sm-min) {
       margin: 0 0 32px;
     }
   }
