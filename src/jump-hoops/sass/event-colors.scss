@@ -6,7 +6,7 @@
   background: $event-primary-dark;
 }
 
-.event-secondary {
+.event-secondary { 
   background: $event-secondary;
 }
 
@@ -24,6 +24,10 @@
 
 .event-accent {
   background: $event-accent;
+}
+
+.event-accent-medium {
+  background: $event-accent-medium;
 }
 
 .event-accent-light {
