@@ -150,6 +150,18 @@ angular.module 'ahaLuminateControllers'
           participationTypes = response.getParticipationTypesResponse.participationType
           participationTypes = [participationTypes] if not angular.isArray participationTypes
           setParticipationType participationTypes[0]
+      $scope.$watch 'participationType.id', (newValue) ->
+        if newValue
+          TeamraiserRegistrationService.getRegistrationDocument 'participation_id=' + newValue,
+            error: ->
+              # TODO
+            success: (response) ->
+              registrationQuestions = response.data.processRegistrationRequest?.primaryRegistration?.question
+              if registrationQuestions
+                registrationQuestions = [registrationQuestions] if not angular.isArray registrationQuestions
+                angular.forEach registrationQuestions, (registrationQuestion) ->
+                  registrationQuestionKey = registrationQuestion.key
+                  registrationQuestionId = registrationQuestion.id
       
       $scope.previousStep = ->
         $scope.ng_go_back = true

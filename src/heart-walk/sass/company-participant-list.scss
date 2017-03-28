@@ -5,29 +5,29 @@
     border-bottom: 1px solid #c9cccc;
     padding: 30px 0 20px;
     
-    @media(min-width: $screen-sm-min) {
+    @media (min-width: $screen-sm-min) {
       padding: 0 0 30px;
     }
     
-    @media(min-width: $screen-md-min) {
+    @media (min-width: $screen-md-min) {
       padding: 30px 0;
     }
     
     h2 {
       margin: 0 0 30px;
       
-      @media(min-width: 500px) {
+      @media (min-width: 500px) {
         float: left;
         margin: 10px 0;
       }
       
-      @media(min-width: $screen-md-min) {
+      @media (min-width: $screen-md-min) {
         margin: 10px 0;
       }
     }
     
     form {
-      @media(min-width: 500px) {
+      @media (min-width: 500px) {
         float: right;
       }
       
@@ -36,15 +36,15 @@
         vertical-align: middle;
         width: 180px;
         
-        @media(min-width: 360px) {
+        @media (min-width: 360px) {
           width: 220px;
         }
         
-        @media(min-width: 375px) {
+        @media (min-width: 375px) {
           width: 235px;
         }
         
-        @media(min-width: 380px) {
+        @media (min-width: 380px) {
           width: 240px;
         }
       }
@@ -71,7 +71,7 @@
       height: 72px;
       padding: 0 15px;
       
-      @media(min-width: $screen-sm-min) {
+      @media (min-width: $screen-sm-min) {
         height: 90px;
       }
     }
@@ -80,21 +80,21 @@
       border-left: 1px solid #c9cccc;
       padding: 0 15px 0 20px;
       
-      @media(min-width: $screen-sm-min) {
+      @media (min-width: $screen-sm-min) {
         width: 460px;
       }
       
-      @media(min-width: $screen-md-min) {
+      @media (min-width: $screen-md-min) {
         width: 250px;
       }
       
-      @media(min-width: $screen-lg-min) {
+      @media (min-width: $screen-lg-min) {
         width: 460px;
       }
     }
     
     .heart-company-participant-list__column--captain {
-      @media(min-width: $screen-sm-min) {
+      @media (min-width: $screen-sm-min) {
         text-align: center;
         width: 160px;
       }
@@ -104,13 +104,13 @@
       text-align: right;
       padding: 0 0 0 15px;
       
-      @media(min-width: $screen-sm-min) {
+      @media (min-width: $screen-sm-min) {
         padding: 0 15px;
       }
     }
     
     .heart-company-participant-list__column--cta {
-      @media(min-width: $screen-sm-min) {
+      @media (min-width: $screen-sm-min) {
         width: 102px;
         padding: 0 0 0 15px;
       }
