@@ -141,7 +141,7 @@
         </div>
         <div class="row" ng-if="paymentQuestions.responsive_payment_typecc_exp_date_MONTH || paymentQuestions.responsive_payment_typecc_exp_date_YEAR || paymentQuestions.responsive_payment_typecc_cvvname" ng-cloak>
           <div class="col-sm-4">
-            <div class="form-group" ng-if="paymentQuestions.responsive_payment_typecc_exp_date_MONTH" ng-cloak>
+            <div class="form-group" ng-class="{'has-error': paymentQuestions.responsive_payment_typecc_exp_date_MONTH.hasError}" ng-if="paymentQuestions.responsive_payment_typecc_exp_date_MONTH" ng-cloak>
               <label class="control-label" for="paymentInfo-responsive_payment_typecc_exp_date_MONTH">
                 Expiration Month:
               </label>
@@ -151,7 +151,7 @@
             </div>
           </div>
           <div class="col-sm-4">
-            <div class="form-group" ng-if="paymentQuestions.responsive_payment_typecc_exp_date_YEAR" ng-cloak>
+            <div class="form-group" ng-class="{'has-error': paymentQuestions.responsive_payment_typecc_exp_date_YEAR.hasError}" ng-if="paymentQuestions.responsive_payment_typecc_exp_date_YEAR" ng-cloak>
               <label class="control-label" for="paymentInfo-responsive_payment_typecc_exp_date_YEAR">
                 Expiration Year:
               </label>
@@ -161,7 +161,7 @@
             </div>
           </div>
           <div class="col-sm-4">
-            <div class="form-group" ng-if="paymentQuestions.responsive_payment_typecc_cvvname" ng-cloak>
+            <div class="form-group" ng-class="{'has-error': paymentQuestions.responsive_payment_typecc_cvvname.hasError}" ng-if="paymentQuestions.responsive_payment_typecc_cvvname" ng-cloak>
               <label class="control-label" for="paymentInfo-responsive_payment_typecc_cvvname">
                 CVV:
               </label>

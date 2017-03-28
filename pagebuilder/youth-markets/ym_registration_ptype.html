@@ -64,7 +64,7 @@
           [[A33]]
         </div>
         <div class="ym-registration-ptype-donation-levels" ng-class="{'active': donationLevels.activeLevel}">
-          <button type="button" class="btn btn-toggle" ng-repeat="donationLevel in donationLevels.levels" ng-class="{'active': donationLevels.activeLevel.amount == donationLevel.amount}" ng-click="toggleDonationLevel(donationLevel.amount)" ng-cloak>
+          <button type="button" class="btn btn-toggle" ng-class="{'active': donationLevels.activeLevel.amount == donationLevel.amount}" ng-repeat="donationLevel in donationLevels.levels" ng-click="toggleDonationLevel(donationLevel.amount)" ng-cloak>
             <span ng-bind-html="donationLevel.amountFormatted" ng-if="!donationLevel.isOtherAmount && !donationLevel.isNoDonation"></span>
             <span ng-if="donationLevel.isOtherAmount">Other</span>
             <span ng-if="donationLevel.isNoDonation">No, Thanks</span>
@@ -88,7 +88,11 @@
               [[?xx::x[[C1:fr_your_fundraising_goal_field]]x::[[M0:friendraiser:your_fundraising_goal_field]]::[[C1:fr_your_fundraising_goal_field]]]]
             </label>
           </div>
-          <input type="text" class="form-control" name="fr_goal" id="participationOptions-fr_goal" ng-model="participationOptions.fr_goal" placeholder="[[?xx::x[[A18]]x::::[[?xx::x[[C1:fr_suggested_goal_field]]x::[[M0:friendraiser:suggested_goal_field]]::[[C1:fr_suggested_goal_field]]]] [[A18]]]]" maxlength="15">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6">
+              <input type="text" class="form-control" name="fr_goal" id="participationOptions-fr_goal" ng-model="participationOptions.fr_goal" placeholder="[[?xx::x[[A18]]x::::[[?xx::x[[C1:fr_suggested_goal_field]]x::[[M0:friendraiser:suggested_goal_field]]::[[C1:fr_suggested_goal_field]]]] [[A18]]]]" maxlength="15">
+            </div>
+          </div>
         </div>
       </div>
     ::]]
