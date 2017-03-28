@@ -162,6 +162,9 @@ angular.module 'ahaLuminateControllers'
                 angular.forEach registrationQuestions, (registrationQuestion) ->
                   registrationQuestionKey = registrationQuestion.key
                   registrationQuestionId = registrationQuestion.id
+                  angular.forEach $scope.registrationQuestions, (questionObj, questionName) ->
+                    if questionName.match('_' + registrationQuestionId + '$')
+                      $scope.registrationQuestions[questionName].surveyKey = registrationQuestionKey
       
       $scope.previousStep = ->
         $scope.ng_go_back = true
