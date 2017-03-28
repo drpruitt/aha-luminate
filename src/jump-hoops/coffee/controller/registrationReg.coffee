@@ -134,7 +134,7 @@ angular.module 'ahaLuminateControllers'
           value: questionValue
           maxLength: questionMaxLength
           hasError: questionHasError
-        if questionLegend isnt 'Event Date' and questionLabel isnt 'Number of eCards Sent' and questionLabel isnt 'eCards shared' and questionLabel isnt 'eCards opened' and questionLabel isnt 'eCards clicked'
+        if questionLegend isnt 'Event Date' and questionLabel isnt 'Additional Challenge Info' and questionLabel isnt 'Number of eCards Sent' and questionLabel isnt 'eCards shared' and questionLabel isnt 'eCards opened' and questionLabel isnt 'eCards clicked'
           $scope.registrationAdditionalQuestions[questionName] = true
         $scope.registrationInfo[questionName] = questionValue
       
