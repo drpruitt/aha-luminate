@@ -61,6 +61,17 @@ a.btn-md {
   }
 }
 
+.btn-md--wide, 
+a.btn-md--wide {
+  &, 
+  &:link, 
+  &:visited {
+    @include button-size(7px, 14px, 25px);
+    
+  }
+}
+
+
 .btn-lg, 
 a.btn-lg {
   &, 
