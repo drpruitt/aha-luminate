@@ -9,8 +9,10 @@ angular.module 'ahaLuminateControllers'
       angular.forEach $fieldErrors, (fieldError) ->
         $fieldError = angular.element fieldError
         if $fieldError.find('.field-error-text').length > 0
+          fieldErrorText = jQuery.trim $fieldError.find('.field-error-text').text()
+          fieldErrorText = fieldErrorText.replace(':&nbsp;is a required field', '&nbsp;is a required field').replace(': is a required field', ' is a required field')
           $scope.registrationInfoErrors.errors.push
-            text: $fieldError.find('.field-error-text').text()
+            text: fieldErrorText
       
       $scope.registrationHiddenFields = 
         fr_cstm_reg: 't'
@@ -33,13 +35,15 @@ angular.module 'ahaLuminateControllers'
         $questionLabel = angular.element 'label[for="' + questionId + '"]'
         questionLabel = undefined
         if $questionLabel.find('.input-label').length > 0
-          questionLabel = $questionLabel.find('.input-label').text()
+          questionLabel = jQuery.trim $questionLabel.find('.input-label').text()
         questionValue = $contactInfoQuestion.val() or ''
         questionMaxLength = $contactInfoQuestion.attr('maxlength') or ''
-        $scope.registrationQuestions[questionName] = 
+        questionHasError = $contactInfoQuestion.is '.form-error *'
+        $scope.registrationQuestions[questionName] =
           label: questionLabel
           value: questionValue
-          maxlength: questionMaxLength
+          maxLength: questionMaxLength
+          hasError: questionHasError
         $scope.registrationInfo[questionName] = questionValue
       
       $optIns = angular.element '.js--registration-reg-opt-ins'
@@ -57,8 +61,8 @@ angular.module 'ahaLuminateControllers'
         $questionLabel = angular.element 'label[for="' + questionId + '"]'
         questionLabel = undefined
         if $questionLabel.find('.input-label').length > 0
-          questionLabel = $questionLabel.find('.input-label').text()
-        $scope.registrationQuestions[questionName] = 
+          questionLabel = jQuery.trim $questionLabel.find('.input-label').text()
+        $scope.registrationQuestions[questionName] =
           label: questionLabel
       
       $loginInfo = angular.element '.js--registration-reg-login-info'
@@ -76,13 +80,15 @@ angular.module 'ahaLuminateControllers'
         $questionLabel = angular.element 'label[for="' + questionId + '"]'
         questionLabel = undefined
         if $questionLabel.find('.input-label').length > 0
-          questionLabel = $questionLabel.find('.input-label').text()
+          questionLabel = jQuery.trim $questionLabel.find('.input-label').text()
         questionValue = $loginInfoQuestion.val() or ''
         questionMaxLength = $loginInfoQuestion.attr('maxlength') or ''
-        $scope.registrationQuestions[questionName] = 
+        questionHasError = $loginInfoQuestion.is '.form-error *'
+        $scope.registrationQuestions[questionName] =
           label: questionLabel
           value: questionValue
-          maxlength: questionMaxLength
+          maxLength: questionMaxLength
+          hasError: questionHasError
         $scope.registrationInfo[questionName] = questionValue
       
       $additionalInfo = angular.element '.js--registration-reg-additional-info'
@@ -103,18 +109,31 @@ angular.module 'ahaLuminateControllers'
         if $additionalInfoQuestion.is '[class*="survey-date-"] select'
           $questionLegend = $additionalInfoQuestion.closest('fieldset').find 'legend'
           if $questionLegend.find('.input-label').length > 0
-            questionLegend = $questionLegend.find('.input-label').text()
+            questionLegend = jQuery.trim $questionLegend.find('.input-label').text()
         questionLabel = undefined
         if $questionLabel.find('.input-label').length > 0
-          questionLabel = $questionLabel.find('.input-label').text()
+          questionLabel = jQuery.trim $questionLabel.find('.input-label').text()
+        questionOptions = []
+        if questionType is 'select'
+          $questionOptions = $additionalInfoQuestion.find 'option'
+          angular.forEach $questionOptions, (questionOption) ->
+            $questionOption = angular.element questionOption
+            questionOptionValue = $questionOption.attr 'value'
+            questionOptionText = jQuery.trim $questionOption.text()
+            questionOptions.push
+              value: questionOptionValue
+              text: questionOptionText
         questionValue = $additionalInfoQuestion.val() or ''
         questionMaxLength = $additionalInfoQuestion.attr('maxlength') or ''
-        $scope.registrationQuestions[questionName] = 
+        questionHasError = $additionalInfoQuestion.is '.form-error *'
+        $scope.registrationQuestions[questionName] =
           type: questionType
           legend: questionLegend
           label: questionLabel
+          options: questionOptions
           value: questionValue
-          maxlength: questionMaxLength
+          maxLength: questionMaxLength
+          hasError: questionHasError
         if questionLegend isnt 'Event Date' and questionLabel isnt 'Number of eCards Sent' and questionLabel isnt 'eCards shared' and questionLabel isnt 'eCards opened' and questionLabel isnt 'eCards clicked'
           $scope.registrationAdditionalQuestions[questionName] = true
         $scope.registrationInfo[questionName] = questionValue

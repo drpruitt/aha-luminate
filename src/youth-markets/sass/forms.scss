@@ -5,6 +5,11 @@ div.responsive select {
   padding: 10px;
 }
 
+textarea.form-control, 
+div.responsive textarea {
+  resize: none;
+}
+
 label {
   font-weight: 500;
   white-space: normal;

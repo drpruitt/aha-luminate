@@ -30,7 +30,7 @@
             [[A4]]
           ]]
           <ul ng-if="registrationInfoErrors.errors.length > 0" ng-cloak>
-            <li ng-repeat="registrationInfoError in registrationInfoErrors">
+            <li ng-repeat="registrationInfoError in registrationInfoErrors.errors">
               <span ng-bind-html="registrationInfoError.text"></span>
             </li>
           </ul>
@@ -38,39 +38,34 @@
       ]]
     </div>
     <form class="ym-registration-reg-form" method="POST" ng-submit="submitReg()">
-      <input type="hidden" name="fr_id" value="[[A2]]">
-      <input type="hidden" name="pg" value="[[A7]]">
-      <div ng-repeat="(key, value) in registrationHiddenFields">
-        <input type="hidden" name="{{key}}" value="{{value}}">
-      </div>
       <div class="hidden js--registration-reg-contact-info">
         [[A13]]
       </div>
       <div class="row" ng-if="registrationQuestions.cons_first_name || registrationQuestions.cons_last_name" ng-cloak>
         <div class="col-sm-6">
-          <div class="form-group" ng-if="registrationQuestions.cons_first_name" ng-cloak>
+          <div class="form-group" ng-class="{'has-error': registrationQuestions.cons_first_name.hasError}" ng-if="registrationQuestions.cons_first_name" ng-cloak>
             <label class="control-label" for="registrationInfo-cons_first_name">
               Student First Name:
             </label>
-            <input type="text" class="form-control" name="ng_cons_first_name" id="registrationInfo-cons_first_name" ng-model="registrationInfo.cons_first_name" maxlength="{{registrationQuestions.cons_first_name.maxlength}}">
+            <input type="text" class="form-control" name="ng_cons_first_name" id="registrationInfo-cons_first_name" ng-model="registrationInfo.cons_first_name" maxlength="{{registrationQuestions.cons_first_name.maxLength}}">
           </div>
         </div>
         <div class="col-sm-6">
-          <div class="form-group" ng-if="registrationQuestions.cons_last_name" ng-cloak>
+          <div class="form-group" ng-class="{'has-error': registrationQuestions.cons_last_name.hasError}" ng-if="registrationQuestions.cons_last_name" ng-cloak>
             <label class="control-label" for="registrationInfo-cons_last_name">
               Student Last Name:
             </label>
-            <input type="text" class="form-control" name="ng_cons_last_name" id="registrationInfo-cons_last_name" ng-model="registrationInfo.cons_last_name" maxlength="{{registrationQuestions.cons_last_name.maxlength}}">
+            <input type="text" class="form-control" name="ng_cons_last_name" id="registrationInfo-cons_last_name" ng-model="registrationInfo.cons_last_name" maxlength="{{registrationQuestions.cons_last_name.maxLength}}">
           </div>
         </div>
       </div>
       <div class="row" ng-if="registrationQuestions.cons_email" ng-cloak>
         <div class="col-sm-6">
-          <div class="form-group" ng-if="registrationQuestions.cons_email" ng-cloak>
+          <div class="form-group" ng-class="{'has-error': registrationQuestions.cons_email.hasError}" ng-if="registrationQuestions.cons_email" ng-cloak>
             <label class="control-label" for="registrationInfo-cons_email">
               Email Address:
             </label>
-            <input type="email" class="form-control" name="ng_cons_email" id="registrationInfo-cons_email" ng-model="registrationInfo.cons_email" maxlength="{{registrationQuestions.cons_email.maxlength}}">
+            <input type="email" class="form-control" name="ng_cons_email" id="registrationInfo-cons_email" ng-model="registrationInfo.cons_email" maxlength="{{registrationQuestions.cons_email.maxLength}}">
           </div>
         </div>
         <div class="col-sm-6">
@@ -110,6 +105,44 @@
           <span ng-bind-html="registrationQuestions.cons_email_opt_in.label"></span>
         </label>
       </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label class="control-label" for="">
+              Grade:
+            </label>
+            <select class="form-control">
+              <option value="NOREPLY"></option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label class="control-label" for="">
+              Homeroom Teacher (last name only):
+            </label>
+            <input type="text" class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label class="control-label" for="">
+              School Name:
+            </label>
+            <input type="text" class="form-control">
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label class="control-label" for="">
+              School City, State:
+            </label>
+            <input type="text" class="form-control">
+          </div>
+        </div>
+      </div>
       [[?xx::x[[A16]]x::::
         <div class="hidden js--registration-reg-login-info">
           [[?xxnullx::x[[A16]]x::::
@@ -123,29 +156,29 @@
           </div>
           <div class="row" ng-if="registrationQuestions.cons_user_name" ng-cloak>
             <div class="col-xs-12">
-              <div class="form-group">
+              <div class="form-group" ng-class="{'has-error': registrationQuestions.cons_user_name.hasError}">
                 <label class="control-label" for="registrationInfo-cons_user_name">
                   <span ng-bind-html="registrationQuestions.cons_user_name.label"></span>
                 </label>
-                <input type="text" class="form-control" name="ng_cons_user_name" id="registrationInfo-cons_user_name" ng-model="registrationInfo.cons_user_name" maxlength="{{registrationQuestions.cons_user_name.maxlength}}">
+                <input type="text" class="form-control" name="ng_cons_user_name" id="registrationInfo-cons_user_name" ng-model="registrationInfo.cons_user_name" maxlength="{{registrationQuestions.cons_user_name.maxLength}}">
               </div>
             </div>
           </div>
           <div class="row" ng-if="registrationQuestions.cons_password || registrationQuestions.cons_rep_password" ng-cloak>
             <div class="col-sm-6">
-              <div class="form-group" ng-if="registrationQuestions.cons_password" ng-cloak>
+              <div class="form-group" ng-class="{'has-error': registrationQuestions.cons_password.hasError}" ng-if="registrationQuestions.cons_password" ng-cloak>
                 <label class="control-label" for="registrationInfo-cons_password">
                   <span ng-bind-html="registrationQuestions.cons_password.label"></span>
                 </label>
-                <input type="password" class="form-control" name="ng_cons_password" id="registrationInfo-cons_password" ng-model="registrationInfo.cons_password" maxlength="{{registrationQuestions.cons_password.maxlength}}">
+                <input type="password" class="form-control" name="ng_cons_password" id="registrationInfo-cons_password" ng-model="registrationInfo.cons_password" maxlength="{{registrationQuestions.cons_password.maxLength}}">
               </div>
             </div>
             <div class="col-sm-6">
-              <div class="form-group" ng-if="registrationQuestions.cons_rep_password" ng-cloak>
+              <div class="form-group" ng-class="{'has-error': registrationQuestions.cons_rep_password.hasError}" ng-if="registrationQuestions.cons_rep_password" ng-cloak>
                 <label class="control-label" for="registrationInfo-cons_rep_password">
                   <span ng-bind-html="registrationQuestions.cons_rep_password.label"></span>
                 </label>
-                <input type="password" class="form-control" name="ng_cons_rep_password" id="registrationInfo-cons_rep_password" ng-model="registrationInfo.cons_rep_password" maxlength="{{registrationQuestions.cons_rep_password.maxlength}}">
+                <input type="password" class="form-control" name="ng_cons_rep_password" id="registrationInfo-cons_rep_password" ng-model="registrationInfo.cons_rep_password" maxlength="{{registrationQuestions.cons_rep_password.maxLength}}">
               </div>
             </div>
           </div>
@@ -173,15 +206,21 @@
               <div ng-repeat="(key, value) in registrationAdditionalQuestions">
                 <div class="row">
                   <div class="col-xs-12">
-                    <div class="form-group">
+                    <div class="form-group" ng-class="{'has-error': registrationQuestions[key].hasError}">
                       <label class="control-label" for="registrationInfo-{{key}}">
                         <span ng-bind-html="registrationQuestions[key].label"></span>
                       </label>
-                      <input type="text" class="form-control" name="ng_{{key}}" id="registrationInfo-{{key}}" ng-model="registrationInfo[key]" maxlength="{{registrationQuestions[key].maxlength}}" ng-if="registrationQuestions[key].type != 'textarea' && registrationQuestions[key].type != 'select'">
-                      <textarea class="form-control" name="ng_{{key}}" id="registrationInfo-{{key}}" ng-model="registrationInfo[key]" maxlength="{{registrationQuestions[key].maxlength}}" ng-if="registrationQuestions[key].type == 'textarea'"></textarea>
-                      <select class="form-control" name="ng_{{key}}" id="registrationInfo-{{key}}" ng-model="registrationInfo[key]" ng-if="registrationQuestions[key].type == 'select'">
-                        <option value="NOREPLY"></option>
-                      </select>
+                      <div ng-if="registrationQuestions[key].type != 'textarea' && registrationQuestions[key].type != 'select'">
+                        <input type="text" class="form-control" name="ng_{{key}}" id="registrationInfo-{{key}}" ng-model="registrationInfo[key]" maxlength="{{registrationQuestions[key].maxLength}}">
+                      </div>
+                      <div ng-if="registrationQuestions[key].type == 'textarea'">
+                        <textarea class="form-control" name="ng_{{key}}" id="registrationInfo-{{key}}" ng-model="registrationInfo[key]" maxlength="{{registrationQuestions[key].maxLength}}"></textarea>
+                      </div>
+                      <div ng-if="registrationQuestions[key].type == 'select'">
+                        <select class="form-control" name="ng_{{key}}" id="registrationInfo-{{key}}" ng-model="registrationInfo[key]">
+                          <option ng-repeat="questionOption in registrationQuestions[key].options" value="{{questionOption.value}}">{{questionOption.text}}</option>
+                        </select>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -203,12 +242,12 @@
           <div class="clearfix">
             <div class="pull-right">
               <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-primary">
-                <span>[[M1:friendraiser:join_team_step_next_button]]</span> <i class="fa fa-chevron-right"></i>
+                Next <i class="fa fa-chevron-right"></i>
               </button>
             </div>
             <div class="pull-left">
               <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-toggle" ng-click="previousStep()">
-                <i class="fa fa-chevron-left"></i> <span>[[M1:friendraiser:join_team_step_prev_button]]</span>
+                <i class="fa fa-chevron-left"></i> Previous
               </button>
             </div>
           </div>
