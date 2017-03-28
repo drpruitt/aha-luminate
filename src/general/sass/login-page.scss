@@ -1,7 +1,7 @@
 .heart-page-container--login {
   padding: 20px 20px 72px;
   
-  @media(min-width: $screen-md-min) {
+  @media (min-width: $screen-md-min) {
     padding: 80px 20px 48px;
   }
 }
@@ -16,7 +16,7 @@
     text-align: center;
     padding: 32px 28px 0 28px;
     
-    @media(min-width: $screen-sm-min) {
+    @media (min-width: $screen-sm-min) {
       padding: 42px 48px 0 48px;
     }
   }
@@ -28,7 +28,7 @@
   > .panel-body {
     padding: 32px 28px 20px;
     
-    @media(min-width: $screen-sm-min) {
+    @media (min-width: $screen-sm-min) {
       padding: 32px 48px 28px;
     }
     
@@ -36,7 +36,7 @@
       font-size: 16px;
       padding: 15px 25px;
       
-      @media(min-width: $screen-sm-min) {
+      @media (min-width: $screen-sm-min) {
         padding: 15px 30px;
       }
     }
@@ -55,7 +55,7 @@
         height: 60px;
         padding: 6px 25px;
         
-        @media(min-width: $screen-sm-min) {
+        @media (min-width: $screen-sm-min) {
           padding: 6px 30px;
         }
       }
@@ -66,7 +66,7 @@
     text-align: center;
     padding: 32px 28px;
     
-    @media(min-width: $screen-sm-min) {
+    @media (min-width: $screen-sm-min) {
       padding: 32px 48px 48px;
     }
     
