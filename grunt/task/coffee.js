@@ -12,6 +12,7 @@ module.exports = {
         'src/global/coffee/config/*.*', 
         'src/general/coffee/config/*.*', 
         'src/global/coffee/service/*.*', 
+        '!src/global/coffee/service/trpc-*.*', 
         'src/general/coffee/service/*.*', 
         'src/global/coffee/directive/*.*', 
         'src/general/coffee/directive/*.*', 
@@ -27,6 +28,7 @@ module.exports = {
         'src/global/coffee/config/*.*', 
         'src/heart-walk/coffee/config/*.*', 
         'src/global/coffee/service/*.*', 
+        '!src/global/coffee/service/trpc-*.*', 
         'src/heart-walk/coffee/service/*.*', 
         'src/global/coffee/directive/*.*', 
         'src/heart-walk/coffee/directive/*.*', 
@@ -40,6 +42,7 @@ module.exports = {
       'dist/jump-hoops/js/main.js': [
         'src/jump-hoops/coffee/init.coffee', 
         'src/global/coffee/service/*.*', 
+        '!src/global/coffee/service/trpc-*.*', 
         'src/jump-hoops/coffee/**/*.*', 
         '!src/jump-hoops/coffee/**/trpc-*.*'
       ], 
