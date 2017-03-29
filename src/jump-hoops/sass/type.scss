@@ -26,6 +26,17 @@ h3,
   color: $event-secondary;
 }
 
+div.responsive a,
+a {
+  &,
+  &:link
+  &:visited,
+  &:hover,
+  &:focus {
+    color: $event-primary !important;
+  }
+}
+
 .ym-accent-color,
 .event-accent {
   h2, 
@@ -35,7 +46,9 @@ h3,
   h4, 
   .h4, 
   h5, 
-  .h5 {
+  .h5,
+  h6,
+  .h6 {
     color: #ffffff;
   }
   
@@ -47,4 +60,5 @@ h3,
     text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.85);
   }
 }
+
 
