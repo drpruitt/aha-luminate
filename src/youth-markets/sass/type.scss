@@ -61,6 +61,15 @@ p {
   }
 }
 
+.ym-section-header {
+  font-size: 20px;
+  margin: 0 0 20px;
+  
+  @media (min-width: $screen-sm-min) {
+    margin: 0 0 24px;
+  }
+}
+
 a {
   &, 
   &:link, 

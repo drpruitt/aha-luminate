@@ -47,7 +47,7 @@
             <label class="control-label" for="registrationInfo-cons_first_name">
               Student First Name:
             </label>
-            <input type="text" class="form-control" name="ng_cons_first_name" id="registrationInfo-cons_first_name" ng-model="registrationInfo.cons_first_name" maxlength="{{registrationQuestions.cons_first_name.maxLength}}">
+            <input type="text" class="form-control input-lg" name="ng_cons_first_name" id="registrationInfo-cons_first_name" ng-model="registrationInfo.cons_first_name" maxlength="{{registrationQuestions.cons_first_name.maxLength}}">
           </div>
         </div>
         <div class="col-sm-6">
@@ -55,7 +55,7 @@
             <label class="control-label" for="registrationInfo-cons_last_name">
               Student Last Name:
             </label>
-            <input type="text" class="form-control" name="ng_cons_last_name" id="registrationInfo-cons_last_name" ng-model="registrationInfo.cons_last_name" maxlength="{{registrationQuestions.cons_last_name.maxLength}}">
+            <input type="text" class="form-control input-lg" name="ng_cons_last_name" id="registrationInfo-cons_last_name" ng-model="registrationInfo.cons_last_name" maxlength="{{registrationQuestions.cons_last_name.maxLength}}">
           </div>
         </div>
       </div>
@@ -65,7 +65,7 @@
             <label class="control-label" for="registrationInfo-cons_email">
               Email Address:
             </label>
-            <input type="email" class="form-control" name="ng_cons_email" id="registrationInfo-cons_email" ng-model="registrationInfo.cons_email" maxlength="{{registrationQuestions.cons_email.maxLength}}">
+            <input type="email" class="form-control input-lg" name="ng_cons_email" id="registrationInfo-cons_email" ng-model="registrationInfo.cons_email" maxlength="{{registrationQuestions.cons_email.maxLength}}">
           </div>
         </div>
         <div class="col-sm-6">
@@ -73,7 +73,7 @@
             <label class="control-label" for="">
               Is this a student's or parent's email address?
             </label>
-            <select class="form-control">
+            <select class="form-control input-lg">
               <option value="NOREPLY"></option>
             </select>
           </div>
@@ -119,7 +119,7 @@
             <label class="control-label" for="">
               Grade:
             </label>
-            <select class="form-control">
+            <select class="form-control input-lg">
               <option value="NOREPLY"></option>
             </select>
           </div>
@@ -129,7 +129,7 @@
             <label class="control-label" for="">
               Homeroom Teacher (last name only):
             </label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control input-lg">
           </div>
         </div>
       </div>
@@ -139,7 +139,7 @@
             <label class="control-label" for="">
               School Name:
             </label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control input-lg">
           </div>
         </div>
         <div class="col-sm-6" ng-cloak>
@@ -147,7 +147,7 @@
             <label class="control-label" for="">
               School City, State:
             </label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control input-lg">
           </div>
         </div>
       </div>
@@ -158,9 +158,11 @@
           ]]
         </div>
         <div ng-if="registrationQuestions.cons_user_name || registrationQuestions.cons_password || registrationQuestions.cons_rep_password" ng-cloak>
-          <hr>
+          <hr class="ym-section-divider">
           <div class="manageable-content" data-container="edit_password_hdr_container">
-            <span id="password_hdr_container">[[C1:fr_password_hdr]]</span>
+            <p class="ym-section-header" id="password_hdr_container">
+              [[C1:fr_password_hdr]]
+            </p>
           </div>
           <div class="row" ng-if="registrationQuestions.cons_user_name" ng-cloak>
             <div class="col-xs-12">
@@ -168,7 +170,7 @@
                 <label class="control-label" for="registrationInfo-cons_user_name">
                   <span ng-bind-html="registrationQuestions.cons_user_name.label"></span>
                 </label>
-                <input type="text" class="form-control" name="ng_cons_user_name" id="registrationInfo-cons_user_name" ng-model="registrationInfo.cons_user_name" maxlength="{{registrationQuestions.cons_user_name.maxLength}}">
+                <input type="text" class="form-control input-lg" name="ng_cons_user_name" id="registrationInfo-cons_user_name" ng-model="registrationInfo.cons_user_name" maxlength="{{registrationQuestions.cons_user_name.maxLength}}">
               </div>
             </div>
           </div>
@@ -178,7 +180,7 @@
                 <label class="control-label" for="registrationInfo-cons_password">
                   <span ng-bind-html="registrationQuestions.cons_password.label"></span>
                 </label>
-                <input type="password" class="form-control" name="ng_cons_password" id="registrationInfo-cons_password" ng-model="registrationInfo.cons_password" maxlength="{{registrationQuestions.cons_password.maxLength}}">
+                <input type="password" class="form-control input-lg" name="ng_cons_password" id="registrationInfo-cons_password" ng-model="registrationInfo.cons_password" maxlength="{{registrationQuestions.cons_password.maxLength}}">
               </div>
             </div>
             <div class="col-sm-6">
@@ -186,7 +188,7 @@
                 <label class="control-label" for="registrationInfo-cons_rep_password">
                   <span ng-bind-html="registrationQuestions.cons_rep_password.label"></span>
                 </label>
-                <input type="password" class="form-control" name="ng_cons_rep_password" id="registrationInfo-cons_rep_password" ng-model="registrationInfo.cons_rep_password" maxlength="{{registrationQuestions.cons_rep_password.maxLength}}">
+                <input type="password" class="form-control input-lg" name="ng_cons_rep_password" id="registrationInfo-cons_rep_password" ng-model="registrationInfo.cons_rep_password" maxlength="{{registrationQuestions.cons_rep_password.maxLength}}">
               </div>
             </div>
           </div>
@@ -194,10 +196,12 @@
       ]]
       [[?xTx::x[[A24]]x::
         <!-- manage mode -->
-        <hr>
+        <hr class="ym-section-divider">
         <div class="hidden js--registration-reg-additional-info">
           <div class="manageable-content" data-container="edit_questions_hdr_container">
-            <span id="questions_hdr_container">[[C1:fr_questions_hdr]]</span>
+            <p class="ym-section-header" id="questions_hdr_container">
+              [[C1:fr_questions_hdr]]
+            </p>
           </div>
         </div>
       ::
@@ -206,8 +210,8 @@
             [[A19]]
           </div>
           [[?xtruex::x[[A29]]x::
-            <div ng-cloak>
-              <hr>
+            <div ng-if="registrationAdditionalQuestions" ng-cloak>
+              <hr class="ym-section-divider">
               <div class="manageable-content" data-container="edit_questions_hdr_container">
                 <span id="questions_hdr_container">[[C1:fr_questions_hdr]]</span>
               </div>
@@ -219,13 +223,13 @@
                         <span ng-bind-html="registrationQuestions[key].label"></span>
                       </label>
                       <div ng-if="registrationQuestions[key].type != 'textarea' && registrationQuestions[key].type != 'select'">
-                        <input type="text" class="form-control" name="ng_{{key}}" id="registrationInfo-{{key}}" ng-model="registrationInfo[key]" maxlength="{{registrationQuestions[key].maxLength}}">
+                        <input type="text" class="form-control input-lg" name="ng_{{key}}" id="registrationInfo-{{key}}" ng-model="registrationInfo[key]" maxlength="{{registrationQuestions[key].maxLength}}">
                       </div>
                       <div ng-if="registrationQuestions[key].type == 'textarea'">
                         <textarea class="form-control" name="ng_{{key}}" id="registrationInfo-{{key}}" ng-model="registrationInfo[key]" maxlength="{{registrationQuestions[key].maxLength}}"></textarea>
                       </div>
                       <div ng-if="registrationQuestions[key].type == 'select'">
-                        <select class="form-control" name="ng_{{key}}" id="registrationInfo-{{key}}" ng-model="registrationInfo[key]">
+                        <select class="form-control input-lg" name="ng_{{key}}" id="registrationInfo-{{key}}" ng-model="registrationInfo[key]">
                           <option ng-repeat="questionOption in registrationQuestions[key].options" value="{{questionOption.value}}">{{questionOption.text}}</option>
                         </select>
                       </div>
