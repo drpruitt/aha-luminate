@@ -10,63 +10,70 @@
   <script src="../js/ajax_mce.js"></script>
 ::]]
 <div class="ym-registration-page-container ym-registration-page-container--regsummary" ng-controller="RegistrationRegSummaryCtrl">
-  <div class="ym-registration-page-header">
-    <div class="manageable-content" data-container="edit_title_container">
-      <h2 class="h5" id="title_container">
-        [[C1:fr_reg_summary_page_title]]
-      </h2>
-    </div>
-    [[?xxnullx::x[[A5]]x::::
-      <div class="alert alert-success">
-        [[A5]]
+  <div ng-cloak>
+    <div class="ym-registration-page-header">
+      <div class="manageable-content" data-container="edit_title_container">
+        <h2 class="h5" id="title_container">
+          [[C1:fr_reg_summary_page_title]]
+        </h2>
       </div>
-    ]]
-    [[?xyz.xnullynullz.xynullz.xnullyz::x[[A4]]y[[A6]]z::::
-      <div class="alert alert-danger">
-        [[?xy.xnully::x[[A4]]y::
-          [[M0:friendraiser:generic_error]]
-        ::
-          [[A4]]
-        ]]
+      [[?xxnullx::x[[A5]]x::::
+        <div class="alert alert-success">
+          [[A5]]
+        </div>
+      ]]
+      [[?xyz.xnullynullz.xynullz.xnullyz::x[[A4]]y[[A6]]z::::
+        <div class="alert alert-danger">
+          [[?xy.xnully::x[[A4]]y::
+            [[M0:friendraiser:generic_error]]
+          ::
+            [[A4]]
+          ]]
+        </div>
+      ]]
+    </div>
+    <form class="ym-registration-regsummary-form" method="POST" ng-submit="submitRegSummary()">
+      <div class="hidden js--registration-regsummary-participant-info">
+        [[A13]]
       </div>
-    ]]
-  </div>
-  <form class="ym-registration-regsummary-form" method="POST" ng-submit="submitRegSummary()">
-    <div class="hidden js--registration-regsummary-participant-info">
-      [[A13]]
-    </div>
-    <div>
-      Student contact information:
-    </div>
-    <div>
-      <span ng-bind-html="regSummaryInfo.cons_first_name"></span> <span ng-bind-html="regSummaryInfo.cons_last_name"></span>
-    </div>
-    <div>
-      <span ng-bind-html="regSummaryInfo.cons_email"></span>
-    </div>
-    [[?xx$0.00x::x[[A16]]x::::
-      <hr>
-      Your donation:
-      <div class="manageable-content" data-container="edit_page_info2_container">
-        <span id="page_info2_container"><strong>[[?xxnullx::x[[C1:fr_reg_summary_page_info2]]x::[[M0:friendraiser:reg_summary_page_total_price_footer]]::[[C1:fr_reg_summary_page_info2]]]]</strong></span> 
-        <span id="reg_total_amt" class="option-amount"><strong>[[A16]]</strong></span>
+      <div>
+        Student contact information:
       </div>
-    ]]
-    <div class="ym-registration-form-footer">
-      <div class="ym-registration-form-footer-btns">
-        <div class="clearfix">
-          <div class="pull-right">
-            [[?xTx::x[[A26]]x::::
-              <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-primary">
-                Next <i class="fa fa-chevron-right"></i>
-              </button>
-            ]]
+      <div>
+        <span ng-bind-html="regSummaryInfo.cons_first_name"></span> <span ng-bind-html="regSummaryInfo.cons_last_name"></span>
+      </div>
+      <div>
+        <span ng-bind-html="regSummaryInfo.cons_email"></span>
+      </div>
+      [[?xx$0.00x::x[[A16]]x::::
+        <hr class="ym-section-divider">
+        <div>
+          Your donation:
+        </div>
+        <div>
+          Donation: <span ng-bind-html="regSummaryInfo.fr_gift"></span>
+        </div>
+        <div class="manageable-content" data-container="edit_page_info2_container">
+          <span id="page_info2_container"><strong>[[?xxnullx::x[[C1:fr_reg_summary_page_info2]]x::[[M0:friendraiser:reg_summary_page_total_price_footer]]::[[C1:fr_reg_summary_page_info2]]]]</strong></span> 
+          <span id="reg_total_amt" class="option-amount"><strong>[[A16]]</strong></span>
+        </div>
+      ]]
+      <div class="ym-registration-form-footer">
+        <div class="ym-registration-form-footer-btns">
+          <div class="clearfix">
+            <div class="pull-right">
+              [[?xTx::x[[A26]]x::::
+                <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-primary">
+                  Next <i class="fa fa-chevron-right"></i>
+                </button>
+              ]]
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    [[S66:util/SpamControlComponentResponsive.tpt]]
-  </form>
+      [[S66:util/SpamControlComponentResponsive.tpt]]
+    </form>
+  </div>
   <div class="hidden">
     <form class="js--default-regsummary-form" action="[[A1]]" method="POST">
       <input type="hidden" name="fr_id" value="[[A2]]">
