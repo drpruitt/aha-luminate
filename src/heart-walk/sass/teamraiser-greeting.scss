@@ -3,12 +3,12 @@
   height: 422px;
   margin: 0;
   
-  @media(min-width: $screen-sm-min) {
+  @media (min-width: $screen-sm-min) {
     background-image: url(../image/hero-greeting.jpg);
     height: 560px;
   }
   
-  @media(min-width: $screen-md-min) {
+  @media (min-width: $screen-md-min) {
     height: 445px;
     margin: 0;
   }
@@ -17,12 +17,12 @@
     height: 450px;
     padding: 36px 24px 0;
     
-    @media(min-width: $screen-sm-min) {
+    @media (min-width: $screen-sm-min) {
       height: 560px;
       padding: 54px 40px 0;
     }
     
-    @media(min-width: $screen-md-min) {
+    @media (min-width: $screen-md-min) {
       height: 445px;
       padding: 80px 50px 0;
     }
@@ -35,23 +35,23 @@
     min-height: 112px;
     margin: 0;
     
-    @media(min-width: 414px) {
+    @media (min-width: 414px) {
       font-size: 36px;
       min-height: 118px;
     }
     
-    @media(min-width: $screen-sm-min) {
+    @media (min-width: $screen-sm-min) {
       float: left;
       font-size: 52px;
       max-width: 480px;
     }
     
-    @media(min-width: $screen-md-min) {
+    @media (min-width: $screen-md-min) {
       font-size: 72px;
       max-width: 650px;
     }
     
-    @media(min-width: $screen-md-min) {
+    @media (min-width: $screen-md-min) {
       max-width: 690px;
     }
   }
@@ -59,16 +59,16 @@
   .heart-hero__info {
     margin: 14px 0 0;
     
-    @media(min-width: 414px) {
+    @media (min-width: 414px) {
       margin: 12px 0 0;
     }
     
-    @media(min-width: $screen-sm-min) {
+    @media (min-width: $screen-sm-min) {
       float: right;
       margin: 125px 0 0;
     }
     
-    @media(min-width: $screen-md-min) {
+    @media (min-width: $screen-md-min) {
       margin: 140px 0 0;
     }
     
@@ -91,11 +91,11 @@
   padding-bottom: 30px;
   margin-bottom: 0;
   
-  @media(min-width: $screen-sm-min) {
+  @media (min-width: $screen-sm-min) {
     min-height: 715px;
   }
   
-  @media(min-width: $screen-md-min) {
+  @media (min-width: $screen-md-min) {
     min-height: 575px;
     padding-bottom: 40px;
   }
@@ -106,19 +106,19 @@
   padding: 50px 28px 32px;
   margin: -210px 20px 20px;
   
-  @media(min-width: $screen-sm-min) {
+  @media (min-width: $screen-sm-min) {
     padding: 75px 48px 65px;
     margin: -285px 40px 40px;
   }
   
-  @media(min-width: $screen-md-min) {
+  @media (min-width: $screen-md-min) {
     float: right;
     width: 545px;
     padding: 80px 50px 50px;
     margin: -120px 50px 0;
   }
   
-  @media(min-width: $screen-lg-min) {
+  @media (min-width: $screen-lg-min) {
     width: 730px;
   }
 }
@@ -126,7 +126,7 @@
 .heart-greeting-detail__header {
   margin: 0 0 32px;
   
-  @media(min-width: $screen-sm-min) {
+  @media (min-width: $screen-sm-min) {
     margin: 0 0 70px;
   }
   
@@ -134,15 +134,15 @@
     font-size: 24px;
     margin: 0 0 32px;
     
-    @media(min-width: 360px) {
+    @media (min-width: 360px) {
       font-size: 28px;
     }
     
-    @media(min-width: 375px) {
+    @media (min-width: 375px) {
       font-size: 30px;
     }
     
-    @media(min-width: $screen-sm-min) {
+    @media (min-width: $screen-sm-min) {
       font-size: 42px;
       margin: 0 0 40px;
     }
@@ -159,31 +159,31 @@
   padding: 12px 0 0;
   margin: 0 0 32px;
   
-  @media(min-width: $screen-sm-min) {
+  @media (min-width: $screen-sm-min) {
     border-top: 0;
     padding: 0;
     margin: 0 0 48px;
   }
   
   [class*="col-"] {
-    @media(max-width: $screen-xs-max) {
+    @media (max-width: $screen-xs-max) {
       height: auto !important;
     }
     
-    @media(min-width: $screen-sm-min) {
+    @media (min-width: $screen-sm-min) {
       border-left: 1px solid #c9cccc;
       padding: 24px;
     }
     
     &:first-child {
-      @media(min-width: $screen-sm-min) {
+      @media (min-width: $screen-sm-min) {
         border-left: 0;
         padding: 24px 24px 24px 15px;
       }
     }
     
     &:last-child {
-      @media(min-width: $screen-sm-min) {
+      @media (min-width: $screen-sm-min) {
         padding: 24px 15px 24px 24px;
       }
     }
@@ -194,7 +194,7 @@
     font-weight: 600;
     margin: 24px 0 16px;
     
-    @media(min-width: $screen-sm-min) {
+    @media (min-width: $screen-sm-min) {
       margin: 0 0 20px;
     }
   }
@@ -210,7 +210,7 @@
     width: 165px;
     margin: 0 0 6px;
     
-    @media(min-width: $screen-sm-min) {
+    @media (min-width: $screen-sm-min) {
       width: auto;
       margin: 0;
     }
@@ -224,17 +224,17 @@
 .heart-page-progress--entry {
   margin: 0 20px;
   
-  @media(min-width: $screen-sm-min) {
+  @media (min-width: $screen-sm-min) {
     width: 275px;
     margin: 0 40px;
   }
   
-  @media(min-width: $screen-md-min) {
+  @media (min-width: $screen-md-min) {
     float: left;
     margin: 3px 0 0 48px;
   }
   
-  @media(min-width: $screen-lg-min) {
+  @media (min-width: $screen-lg-min) {
     width: 292px;
   }
 }
@@ -245,7 +245,7 @@
   padding: 50px;
   margin: 20px 20px 0;
   
-  @media(min-width: $screen-sm-min) {
+  @media (min-width: $screen-sm-min) {
     margin: 0;
   }
 }
@@ -253,16 +253,16 @@
 .heart-greeting-leaderboards {
   margin: 0 20px 50px;
   
-  @media(min-width: $screen-md-min) {
+  @media (min-width: $screen-md-min) {
     margin: 50px 50px 80px;
   }
   
   [class*="col-"] {
-    @media(max-width: $screen-xs-max) {
+    @media (max-width: $screen-xs-max) {
       height: auto !important;
     }
     
-    @media(min-width: $screen-sm-min) {
+    @media (min-width: $screen-sm-min) {
       padding-bottom: 44px;
     }
   }
@@ -272,11 +272,11 @@
     font-weight: 600;
     margin: 32px 0;
     
-    @media(min-width: $screen-md-min) {
+    @media (min-width: $screen-md-min) {
       margin: 0 0 20px;
     }
     
-    @media(min-width: $screen-md-min) {
+    @media (min-width: $screen-md-min) {
       margin: 0 0 40px;
     }
   }
@@ -298,7 +298,7 @@
   }
   
   .btn:not(.btn--no-list) {
-    @media(min-width: $screen-sm-min) {
+    @media (min-width: $screen-sm-min) {
       position: absolute;
       bottom: 0;
     }

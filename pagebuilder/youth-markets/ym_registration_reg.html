@@ -69,6 +69,14 @@
           </div>
         </div>
         <div class="col-sm-6">
+          <div class="form-group" ng-cloak>
+            <label class="control-label" for="">
+              Is this a student's or parent's email address?
+            </label>
+            <select class="form-control">
+              <option value="NOREPLY"></option>
+            </select>
+          </div>
         </div>
       </div>
       <div class="hidden js--registration-reg-opt-ins">
@@ -105,9 +113,9 @@
           <span ng-bind-html="registrationQuestions.cons_email_opt_in.label"></span>
         </label>
       </div>
-      <div class="row">
+      <div class="row" ng-cloak>
         <div class="col-sm-6">
-          <div class="form-group">
+          <div class="form-group" ng-cloak>
             <label class="control-label" for="">
               Grade:
             </label>
@@ -117,7 +125,7 @@
           </div>
         </div>
         <div class="col-sm-6">
-          <div class="form-group">
+          <div class="form-group" ng-cloak>
             <label class="control-label" for="">
               Homeroom Teacher (last name only):
             </label>
@@ -125,16 +133,16 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row" ng-cloak>
         <div class="col-sm-6">
-          <div class="form-group">
+          <div class="form-group" ng-cloak>
             <label class="control-label" for="">
               School Name:
             </label>
             <input type="text" class="form-control">
           </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-6" ng-cloak>
           <div class="form-group">
             <label class="control-label" for="">
               School City, State:
