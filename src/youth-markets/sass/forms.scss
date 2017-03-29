@@ -1,3 +1,15 @@
+label {
+  font-weight: 500;
+  white-space: normal;
+}
+
+.ym-optional {
+  color: $event-secondary;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: normal;
+}
+
 .form-control, 
 div.responsive input[type="text"], 
 div.responsive select {
@@ -10,16 +22,14 @@ div.responsive textarea {
   resize: none;
 }
 
-label {
-  font-weight: 500;
-  white-space: normal;
-}
-
-.ym-optional {
-  color: $event-secondary;
-  font-size: 14px;
-  font-style: italic;
-  font-weight: normal;
+.input-lg, 
+select.input-lg {
+  line-height: 1;
+  height: 40px;
+  
+  @media (min-width: $screen-sm-min) {
+    height: 50px;
+  }
 }
 
 input[type="checkbox"] {

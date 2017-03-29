@@ -1,3 +1,11 @@
+.ym-section-divider {
+  border: 0;
+  border-top: 1px solid $event-secondary;
+  width: 100%;
+  height: 1px;
+  margin: 0;
+}
+
 .ym-page-section__list {
   background: $event-accent;
 }

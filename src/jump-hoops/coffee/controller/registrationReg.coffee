@@ -17,7 +17,6 @@ angular.module 'ahaLuminateControllers'
       $scope.registrationHiddenFields = 
         fr_cstm_reg: 't'
       $scope.registrationQuestions = {}
-      $scope.registrationAdditionalQuestions = {}
       $scope.registrationInfo = {}
       
       $contactInfo = angular.element '.js--registration-reg-contact-info'
@@ -134,8 +133,6 @@ angular.module 'ahaLuminateControllers'
           value: questionValue
           maxLength: questionMaxLength
           hasError: questionHasError
-        if questionLegend isnt 'Event Date' and questionLabel isnt 'Additional Challenge Info' and questionLabel isnt 'Number of eCards Sent' and questionLabel isnt 'eCards shared' and questionLabel isnt 'eCards opened' and questionLabel isnt 'eCards clicked'
-          $scope.registrationAdditionalQuestions[questionName] = true
         $scope.registrationInfo[questionName] = questionValue
       
       $scope.participationType = {}
@@ -154,6 +151,11 @@ angular.module 'ahaLuminateControllers'
         if newValue
           setRegistrationQuestionSurveyKey = (questionName, surveyKey) ->
             $scope.registrationQuestions[questionName].surveyKey = surveyKey
+            questionLegend = $scope.registrationQuestions[questionName].legend
+            if questionLegend isnt 'Event Date' and surveyKey isnt 'ym_hoops_jump_challenge_info' and surveyKey isnt 'ym_hoops_jump_ecards_sent' and surveyKey isnt 'ym_hoops_jump_ecards_shared' and surveyKey isnt 'ym_hoops_jump_ecards_open' and surveyKey isnt 'ym_hoops_jump_ecards_clicked'
+              if not $scope.registrationAdditionalQuestions
+                $scope.registrationAdditionalQuestions = {}
+              $scope.registrationAdditionalQuestions[questionName] = true
             if not $scope.$$phase
               $scope.$apply()
           TeamraiserRegistrationService.getRegistrationDocument 'participation_id=' + newValue,
