@@ -10,7 +10,7 @@
   <script src="../js/ajax_mce.js"></script>
 ::]]
 <div class="ym-registration-page-container ym-registration-page-container--reg" ng-controller="RegistrationRegCtrl">
-  <div ng-cloak>
+  <div ng-show="registrationCustomQuestions" ng-cloak>
     <div class="ym-registration-page-header">
       <div class="manageable-content" data-container="edit_title_container">
         <h2 class="h5" id="title_container">
@@ -69,12 +69,12 @@
           </div>
         </div>
         <div class="col-sm-6">
-          <div class="form-group" ng-cloak>
-            <label class="control-label" for="">
-              Is this a student's or parent's email address?
+          <div class="form-group" ng-class="{'has-error': registrationQuestions[registrationCustomQuestions.ym_hoops_jump_email_type].hasError}" ng-if="registrationCustomQuestions.ym_hoops_jump_email_type" ng-cloak>
+            <label class="control-label" for="registrationInfo-{{registrationCustomQuestions.ym_hoops_jump_email_type}}">
+              <span ng-bind-html="registrationQuestions[registrationCustomQuestions.ym_hoops_jump_email_type].label"></span>
             </label>
-            <select class="form-control input-lg">
-              <option value="NOREPLY"></option>
+            <select class="form-control input-lg" name="ng_{{registrationCustomQuestions.ym_hoops_jump_email_type}}" id="registrationInfo-{{registrationCustomQuestions.ym_hoops_jump_email_type}}" ng-model="registrationInfo[registrationCustomQuestions.ym_hoops_jump_email_type]">
+              <option ng-repeat="questionOption in registrationQuestions[registrationCustomQuestions.ym_hoops_jump_email_type].options" value="{{questionOption.value}}">{{questionOption.text}}</option>
             </select>
           </div>
         </div>
@@ -115,9 +115,9 @@
       </div>
       <div class="row" ng-cloak>
         <div class="col-sm-6">
-          <div class="form-group" ng-if="registrationCustomQuestions.ym_hoops_jump_grade" ng-cloak>
+          <div class="form-group" ng-class="{'has-error': registrationQuestions[registrationCustomQuestions.ym_hoops_jump_grade].hasError}" ng-if="registrationCustomQuestions.ym_hoops_jump_grade" ng-cloak>
             <label class="control-label" for="registrationInfo-{{registrationCustomQuestions.ym_hoops_jump_grade}}">
-              Grade:
+              <span ng-bind-html="registrationQuestions[registrationCustomQuestions.ym_hoops_jump_grade].label"></span>
             </label>
             <select class="form-control input-lg" name="ng_{{registrationCustomQuestions.ym_hoops_jump_grade}}" id="registrationInfo-{{registrationCustomQuestions.ym_hoops_jump_grade}}" ng-model="registrationInfo[registrationCustomQuestions.ym_hoops_jump_grade]">
               <option ng-repeat="questionOption in registrationQuestions[registrationCustomQuestions.ym_hoops_jump_grade].options" value="{{questionOption.value}}">{{questionOption.text}}</option>
@@ -125,9 +125,9 @@
           </div>
         </div>
         <div class="col-sm-6">
-          <div class="form-group" ng-if="registrationCustomQuestions.ym_hoops_jump_teacher_name" ng-cloak>
+          <div class="form-group" ng-class="{'has-error': registrationQuestions[registrationCustomQuestions.ym_hoops_jump_teacher_name].hasError}" ng-if="registrationCustomQuestions.ym_hoops_jump_teacher_name" ng-cloak>
             <label class="control-label" for="registrationInfo-{{registrationCustomQuestions.ym_hoops_jump_teacher_name}}">
-              Homeroom Teacher (last name only):
+              <span ng-bind-html="registrationQuestions[registrationCustomQuestions.ym_hoops_jump_teacher_name].label"></span>
             </label>
             <input type="text" class="form-control input-lg" name="ng_{{registrationCustomQuestions.ym_hoops_jump_teacher_name}}" id="registrationInfo-{{registrationCustomQuestions.ym_hoops_jump_teacher_name}}" ng-model="registrationInfo[registrationCustomQuestions.ym_hoops_jump_teacher_name]" maxlength="{{registrationQuestions[registrationCustomQuestions.ym_hoops_jump_teacher_name].maxLength}}">
           </div>
@@ -135,17 +135,17 @@
       </div>
       <div class="row" ng-cloak>
         <div class="col-sm-6">
-          <div class="form-group" ng-if="registrationCustomQuestions.ym_hoops_jump_school" ng-cloak>
+          <div class="form-group" ng-class="{'has-error': registrationQuestions[registrationCustomQuestions.ym_hoops_jump_school].hasError}" ng-if="registrationCustomQuestions.ym_hoops_jump_school" ng-cloak>
             <label class="control-label" for="registrationInfo-{{registrationCustomQuestions.ym_hoops_jump_school}}">
-              School Name:
+              <span ng-bind-html="registrationQuestions[registrationCustomQuestions.ym_hoops_jump_school].label"></span>
             </label>
             <input type="text" class="form-control input-lg" name="ng_{{registrationCustomQuestions.ym_hoops_jump_school}}" id="registrationInfo-{{registrationCustomQuestions.ym_hoops_jump_school}}" ng-model="registrationInfo[registrationCustomQuestions.ym_hoops_jump_school]" maxlength="{{registrationQuestions[registrationCustomQuestions.ym_hoops_jump_school].maxLength}}">
           </div>
         </div>
         <div class="col-sm-6">
-          <div class="form-group" ng-if="registrationCustomQuestions.ym_hoops_jump_school_address" ng-cloak>
+          <div class="form-group" ng-class="{'has-error': registrationQuestions[registrationCustomQuestions.ym_hoops_jump_school_address].hasError}" ng-if="registrationCustomQuestions.ym_hoops_jump_school_address" ng-cloak>
             <label class="control-label" for="registrationInfo-{{registrationCustomQuestions.ym_hoops_jump_school_address}}">
-              School City, State:
+              <span ng-bind-html="registrationQuestions[registrationCustomQuestions.ym_hoops_jump_school_address].label"></span>
             </label>
             <input type="text" class="form-control input-lg" name="ng_{{registrationCustomQuestions.ym_hoops_jump_school_address}}" id="registrationInfo-{{registrationCustomQuestions.ym_hoops_jump_school_address}}" ng-model="registrationInfo[registrationCustomQuestions.ym_hoops_jump_school_address]" maxlength="{{registrationQuestions[registrationCustomQuestions.ym_hoops_jump_school_address].maxLength}}">
           </div>

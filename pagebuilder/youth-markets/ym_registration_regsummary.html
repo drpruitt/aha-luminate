@@ -35,8 +35,18 @@
     <div class="hidden js--registration-regsummary-participant-info">
       [[A13]]
     </div>
+    <div>
+      Student contact information:
+    </div>
+    <div>
+      <span ng-bind-html="regSummaryInfo.cons_first_name"></span> <span ng-bind-html="regSummaryInfo.cons_last_name"></span>
+    </div>
+    <div>
+      <span ng-bind-html="regSummaryInfo.cons_email"></span>
+    </div>
     [[?xx$0.00x::x[[A16]]x::::
       <hr>
+      Your donation:
       <div class="manageable-content" data-container="edit_page_info2_container">
         <span id="page_info2_container"><strong>[[?xxnullx::x[[C1:fr_reg_summary_page_info2]]x::[[M0:friendraiser:reg_summary_page_total_price_footer]]::[[C1:fr_reg_summary_page_info2]]]]</strong></span> 
         <span id="reg_total_amt" class="option-amount"><strong>[[A16]]</strong></span>
