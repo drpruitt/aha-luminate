@@ -25,8 +25,9 @@ angular.module 'ahaLuminateControllers'
         $timeout initCarousel, 1000
 
 
-      toggleOpen = ->
-        angular.element('.collapse').parent().removeClass('active')
-        angular.element('.collapse.in').parent().addClass('active')
+      $scope.toggleOpen = (id) ->
+        console.log id
+        angular.element('.panel-heading').removeClass('active')
+        angular.element('#'+id).toggleClass('active')
 
   ]
