@@ -115,39 +115,39 @@
       </div>
       <div class="row" ng-cloak>
         <div class="col-sm-6">
-          <div class="form-group" ng-cloak>
-            <label class="control-label" for="">
+          <div class="form-group" ng-if="registrationCustomQuestions.ym_hoops_jump_grade" ng-cloak>
+            <label class="control-label" for="registrationInfo-{{registrationCustomQuestions.ym_hoops_jump_grade}}">
               Grade:
             </label>
-            <select class="form-control input-lg">
-              <option value="NOREPLY"></option>
+            <select class="form-control input-lg" name="ng_{{registrationCustomQuestions.ym_hoops_jump_grade}}" id="registrationInfo-{{registrationCustomQuestions.ym_hoops_jump_grade}}" ng-model="registrationInfo[registrationCustomQuestions.ym_hoops_jump_grade]">
+              <option ng-repeat="questionOption in registrationQuestions[registrationCustomQuestions.ym_hoops_jump_grade].options" value="{{questionOption.value}}">{{questionOption.text}}</option>
             </select>
           </div>
         </div>
         <div class="col-sm-6">
-          <div class="form-group" ng-cloak>
-            <label class="control-label" for="">
+          <div class="form-group" ng-if="registrationCustomQuestions.ym_hoops_jump_teacher_name" ng-cloak>
+            <label class="control-label" for="registrationInfo-{{registrationCustomQuestions.ym_hoops_jump_teacher_name}}">
               Homeroom Teacher (last name only):
             </label>
-            <input type="text" class="form-control input-lg">
+            <input type="text" class="form-control input-lg" name="ng_{{registrationCustomQuestions.ym_hoops_jump_teacher_name}}" id="registrationInfo-{{registrationCustomQuestions.ym_hoops_jump_teacher_name}}" ng-model="registrationInfo[registrationCustomQuestions.ym_hoops_jump_teacher_name]" maxlength="{{registrationQuestions[registrationCustomQuestions.ym_hoops_jump_teacher_name].maxLength}}">
           </div>
         </div>
       </div>
       <div class="row" ng-cloak>
         <div class="col-sm-6">
-          <div class="form-group" ng-cloak>
-            <label class="control-label" for="">
+          <div class="form-group" ng-if="registrationCustomQuestions.ym_hoops_jump_school" ng-cloak>
+            <label class="control-label" for="registrationInfo-{{registrationCustomQuestions.ym_hoops_jump_school}}">
               School Name:
             </label>
-            <input type="text" class="form-control input-lg">
+            <input type="text" class="form-control input-lg" name="ng_{{registrationCustomQuestions.ym_hoops_jump_school}}" id="registrationInfo-{{registrationCustomQuestions.ym_hoops_jump_school}}" ng-model="registrationInfo[registrationCustomQuestions.ym_hoops_jump_school]" maxlength="{{registrationQuestions[registrationCustomQuestions.ym_hoops_jump_school].maxLength}}">
           </div>
         </div>
-        <div class="col-sm-6" ng-cloak>
-          <div class="form-group">
-            <label class="control-label" for="">
+        <div class="col-sm-6">
+          <div class="form-group" ng-if="registrationCustomQuestions.ym_hoops_jump_school_address" ng-cloak>
+            <label class="control-label" for="registrationInfo-{{registrationCustomQuestions.ym_hoops_jump_school_address}}">
               School City, State:
             </label>
-            <input type="text" class="form-control input-lg">
+            <input type="text" class="form-control input-lg" name="ng_{{registrationCustomQuestions.ym_hoops_jump_school_address}}" id="registrationInfo-{{registrationCustomQuestions.ym_hoops_jump_school_address}}" ng-model="registrationInfo[registrationCustomQuestions.ym_hoops_jump_school_address]" maxlength="{{registrationQuestions[registrationCustomQuestions.ym_hoops_jump_school_address].maxLength}}">
           </div>
         </div>
       </div>
@@ -213,7 +213,9 @@
             <div ng-if="registrationAdditionalQuestions" ng-cloak>
               <hr class="ym-section-divider">
               <div class="manageable-content" data-container="edit_questions_hdr_container">
-                <span id="questions_hdr_container">[[C1:fr_questions_hdr]]</span>
+                <p class="ym-section-header" id="questions_hdr_container">
+                  [[C1:fr_questions_hdr]]
+                </p>
               </div>
               <div ng-repeat="(key, value) in registrationAdditionalQuestions">
                 <div class="row">
