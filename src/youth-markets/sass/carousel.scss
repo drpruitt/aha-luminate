@@ -101,4 +101,9 @@
 
     }*/
   }
+  .owl-carousel--circle .owl-item {
+    img {
+      clip-path: circle(95px at center);
+    }
+  }
 }
