@@ -152,7 +152,7 @@ angular.module 'ahaLuminateControllers'
           setRegistrationQuestionSurveyKey = (questionName, surveyKey) ->
             $scope.registrationQuestions[questionName].surveyKey = surveyKey
             questionLegend = $scope.registrationQuestions[questionName].legend
-            if surveyKey is 'ym_hoops_jump_grade' or surveyKey is 'ym_hoops_jump_school' or surveyKey is 'ym_hoops_jump_teacher_name' or surveyKey is 'ym_hoops_jump_school_address'
+            if surveyKey is 'ym_hoops_jump_email_type' or surveyKey is 'ym_hoops_jump_grade' or surveyKey is 'ym_hoops_jump_school' or surveyKey is 'ym_hoops_jump_teacher_name' or surveyKey is 'ym_hoops_jump_school_address'
               if not $scope.registrationCustomQuestions
                 $scope.registrationCustomQuestions = {}
               $scope.registrationCustomQuestions[surveyKey] = questionName
