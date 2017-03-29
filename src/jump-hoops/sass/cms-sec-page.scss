@@ -71,6 +71,14 @@
       }
     }
   }
+
+  .ym-section-features {
+    margin-bottom: 50px;
+
+    @media (max-width: $screen-sm-max) {
+      margin-bottom: 40px;
+    }
+  }
   
   .ym-page-survey {
     padding: 40px;
