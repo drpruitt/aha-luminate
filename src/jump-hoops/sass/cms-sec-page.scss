@@ -347,15 +347,34 @@
   }
   
   .ym-accordion-list {
+    .panel {
+      border-radius: 0;
+      margin-top: 0;
+    }
     .panel-heading {
       background: transparent;
       border-radius: 0;
       border-color: transparent;
+
+
+      &.active {
+        background: $event-secondary;
+
+        a,
+        a:link,
+        a:visted,
+        a:hover,
+        a:focus {
+          color: #fff;
+        }
+      }
       
       a {
         display: block;
+        text-decoration: none;
       }
     }
+
   }
   
   .ym-list {
