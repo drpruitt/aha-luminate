@@ -3,7 +3,6 @@ angular.module 'ahaLuminateControllers'
     '$scope'
     '$timeout'
     ($scope, $timeout) ->
-      console.log 'fire'
       initCarousel = ->
         owl = jQuery '.owl-carousel'
         owl.owlCarousel

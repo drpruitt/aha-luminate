@@ -115,23 +115,29 @@
   }
   
   .ym-promo-block--full {
-    display: flex;
+    @media(min-width: $screen-sm-min){
+      display: flex;
+    }
     
     .event-accent-medium {
-      justify-content: center;
-      align-content:center;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
+      @media(min-width: $screen-sm-min){
+        justify-content: center;
+        align-content:center;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+      }
     }
     
     .ym-promo-block__text {
       max-width: 380px;
       margin: auto;
+      text-align: center;
       
       h5 {
         color: $event-secondary;
         margin-top: 0;
+
         @media (min-width: $screen-md-min){
           margin: 0 0 20px;
         }
@@ -167,18 +173,13 @@
     @media(max-width: $screen-sm - 1){
       display: block;
       
-      .ym-promo-block__text{
-        padding: 20px 0;
-      }
       
       .ym-promo-block__image {
         display: block;
         padding: 0;
 
-
         img {
           margin: auto;
-          padding-top: 20px;
         }
       }
     }
