@@ -17,7 +17,6 @@ angular.module 'ahaLuminateControllers'
       $scope.registrationHiddenFields = 
         fr_cstm_reg: 't'
       $scope.registrationQuestions = {}
-      $scope.registrationAdditionalQuestions = {}
       $scope.registrationInfo = {}
       
       $contactInfo = angular.element '.js--registration-reg-contact-info'
@@ -134,8 +133,6 @@ angular.module 'ahaLuminateControllers'
           value: questionValue
           maxLength: questionMaxLength
           hasError: questionHasError
-        if questionLegend isnt 'Event Date' and questionLabel isnt 'Additional Challenge Info' and questionLabel isnt 'Number of eCards Sent' and questionLabel isnt 'eCards shared' and questionLabel isnt 'eCards opened' and questionLabel isnt 'eCards clicked'
-          $scope.registrationAdditionalQuestions[questionName] = true
         $scope.registrationInfo[questionName] = questionValue
       
       $scope.participationType = {}
@@ -152,11 +149,24 @@ angular.module 'ahaLuminateControllers'
           setParticipationType participationTypes[0]
       $scope.$watch 'participationType.id', (newValue) ->
         if newValue
+          setRegistrationQuestionSurveyKey = (questionName, surveyKey) ->
+            $scope.registrationQuestions[questionName].surveyKey = surveyKey
+            questionLegend = $scope.registrationQuestions[questionName].legend
+            if surveyKey is 'ym_hoops_jump_email_type' or surveyKey is 'ym_hoops_jump_grade' or surveyKey is 'ym_hoops_jump_school' or surveyKey is 'ym_hoops_jump_teacher_name' or surveyKey is 'ym_hoops_jump_school_address'
+              if not $scope.registrationCustomQuestions
+                $scope.registrationCustomQuestions = {}
+              $scope.registrationCustomQuestions[surveyKey] = questionName
+            else if questionLegend isnt 'Event Date' and surveyKey isnt 'ym_hoops_jump_challenge_info' and surveyKey isnt 'ym_hoops_jump_ecards_sent' and surveyKey isnt 'ym_hoops_jump_ecards_shared' and surveyKey isnt 'ym_hoops_jump_ecards_open' and surveyKey isnt 'ym_hoops_jump_ecards_clicked'
+              if not $scope.registrationAdditionalQuestions
+                $scope.registrationAdditionalQuestions = {}
+              $scope.registrationAdditionalQuestions[questionName] = questionName
+            if not $scope.$$phase
+              $scope.$apply()
           TeamraiserRegistrationService.getRegistrationDocument 'participation_id=' + newValue,
             error: ->
               # TODO
             success: (response) ->
-              registrationQuestions = response.data.processRegistrationRequest?.primaryRegistration?.question
+              registrationQuestions = response.processRegistrationRequest?.primaryRegistration?.question
               if registrationQuestions
                 registrationQuestions = [registrationQuestions] if not angular.isArray registrationQuestions
                 angular.forEach registrationQuestions, (registrationQuestion) ->
@@ -164,7 +174,7 @@ angular.module 'ahaLuminateControllers'
                   registrationQuestionId = registrationQuestion.id
                   angular.forEach $scope.registrationQuestions, (questionObj, questionName) ->
                     if questionName.match('_' + registrationQuestionId + '$')
-                      $scope.registrationQuestions[questionName].surveyKey = registrationQuestionKey
+                      setRegistrationQuestionSurveyKey questionName, registrationQuestionKey
       
       $scope.previousStep = ->
         $scope.ng_go_back = true
