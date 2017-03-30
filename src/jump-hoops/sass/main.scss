@@ -1,11 +1,9 @@
 @import "../../youth-markets/sass/variables.scss";
 @import "variables.scss";
 @import "../../youth-markets/sass/mixins.scss";
-
 @import "../../youth-markets/sass/luminate-reset.scss";
-
 @import "../../youth-markets/sass/type.scss";
-@import "type.scss";
+
 @import "../../youth-markets/sass/grid.scss";
 @import "../../youth-markets/sass/tables.scss";
 @import "tables.scss";
@@ -16,8 +14,7 @@
 
 @import "pagination.scss";
 @import "../../youth-markets/sass/alerts.scss";
-
-@import "event-colors.scss";
+@import "../../youth-markets/sass/general.scss";
 @import "header.scss";
 @import "../../youth-markets/sass/main-container.scss";
 @import "main-container.scss";
@@ -29,7 +26,6 @@
 @import "page-content.scss";
 @import "../../youth-markets/sass/hero.scss";
 @import "../../youth-markets/sass/cms.scss";
-@import "cms-sec-page.scss";
 @import "../../youth-markets/sass/carousel.scss";
 @import "../../youth-markets/sass/progress.scss";
 @import "progress.scss";
