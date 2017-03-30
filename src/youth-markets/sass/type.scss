@@ -136,3 +136,12 @@ a {
     text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.85);
   }
 }
+
+.ym-section-header {
+  font-size: 20px;
+  margin: 0 0 20px;
+  
+  @media (min-width: $screen-sm-min) {
+    margin: 0 0 24px;
+  }
+}
