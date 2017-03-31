@@ -60,18 +60,18 @@
         <div class="row">
           <div class="col-xs-6">
             <div class="form-group [[?xx::x[[A20]]x::::[[?x[[M0:login_admin:err_username_password_required]]x[[M0:login_admin:err_invalid_userid]]x::x[[A20]]x::has-error::]]]]">
-              <label class="control-label" for="existingUser_username">
+              <label class="control-label" for="existingUser-username">
                 [[M0:global:user_name_field]]
               </label>
-              <input type="text" class="form-control input-lg" name="USERNAME" id="existingUser_username" ng-model="existingUser.username" maxlength="[[S0:USER_MAX_LOGIN_LEN]]">
+              <input type="text" class="form-control input-lg" name="USERNAME" id="existingUser-username" ng-model="existingUser.username" maxlength="[[S0:USER_MAX_LOGIN_LEN]]">
             </div>
           </div>
           <div class="col-xs-6">
             <div class="form-group [[?xx::x[[A20]]x::::[[?x[[M0:login_admin:err_username_password_required]]x[[M0:login_admin:err_invalid_password]]x::x[[A20]]x::has-error::]]]]">
-              <label class="control-label" for="existingUser_password">
+              <label class="control-label" for="existingUser-password">
                 [[M0:global:user_password_field]]
               </label>
-              <input type="password" class="form-control input-lg" name="Password" id="existingUser_password" ng-model="existingUser.password" maxlength="[[S0:USER_MAX_PASSWD_LEN]]">
+              <input type="password" class="form-control input-lg" name="Password" id="existingUser-password" ng-model="existingUser.password" maxlength="[[S0:USER_MAX_PASSWD_LEN]]">
             </div>
           </div>
         </div>
@@ -93,9 +93,6 @@
     </div>
   </div>
   <div ng-class="{'hidden': !showForgotLogin}" ng-cloak>
-    <a class="btn btn-link" ng-click="toggleForgotLogin('hide')">
-      <i class="fa fa-chevron-left"></i> Back
-    </a>
     <div class="ym-registration-page-header">
       <h2 class="h5" id="ut_title_container">
         Forgot Username or Password
@@ -108,16 +105,29 @@
       <p>
       </p>
     </div>
-    <form class="form-inline" method="POST" ng-submit="submitForgotLogin()">
+    <form class="ym-registration-utype-forgot-form" method="POST" ng-submit="submitForgotLogin()">
       <div class="form-group [[?xx::x[[A26]]x::::has-error]]">
-        <label class="sr-only" for="existingUser_email">
-          [[M0:global:email_reg_field]]
+        <label class="control-label" for="existingUser-email">
+          Email Address:
         </label>
-        <input type="text" class="form-control input-lg" name="email" id="existingUser_email" ng-model="existingUser.email" maxlength="100">
+        <input type="text" class="form-control input-lg" name="email" id="existingUser-email" ng-model="existingUser.email" maxlength="100">
       </div>
-      <button type="submit" class="btn btn-primary">
-        Submit
-      </button>
+      <div class="ym-registration-form-footer">
+        <div class="ym-registration-form-footer-btns">
+          <div class="clearfix">
+            <div class="pull-right">
+              <button type="submit" class="btn btn-primary">
+                Submit
+              </button>
+            </div>
+            <div class="pull-left">
+              <a class="btn btn-toggle" ng-click="toggleForgotLogin('hide')">
+                <i class="fa fa-chevron-left"></i> Cancel
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </form>
   </div>
   <div class="hidden">
