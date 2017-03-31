@@ -10,6 +10,7 @@ angular.module 'ahaLuminateControllers'
     'TeamraiserCompanyService'
     'ZuriService'
     ($scope, $rootScope, $location, $filter, $timeout, TeamraiserTeamService, TeamraiserParticipantService, TeamraiserCompanyService, ZuriService) ->
+      console.log 'test'
       $scope.teamId = $location.absUrl().split('team_id=')[1].split('&')[0]
       $scope.teamProgress = []
       $scope.teamMembers = []
