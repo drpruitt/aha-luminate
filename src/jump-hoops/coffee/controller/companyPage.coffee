@@ -45,31 +45,6 @@ angular.module 'ahaLuminateControllers'
           else
             $scope.activity3amt = 0
 
-      
-      ###Using test to populate until school data ready in Zuri
-      ZuriService.getZooTest
-        error: (response) ->
-          $scope.studentsPledgedTotal = 0
-          $scope.activity1amt = 0
-          $scope.activity2amt = 0
-          $scope.activity3amt = 0
-        success: (response) ->
-          console.log response
-          $scope.studentsPledgedTotal = response.data.studentsPledged
-          studentsPledgedActivities = response.data.studentsPledgedByActivity
-          if studentsPledgedActivities['1']
-            $scope.activity1amt = studentsPledgedActivities['1']
-          else 
-            $scope.activity1amt = 0
-          if studentsPledgedActivities['2']
-            $scope.activity2amt = studentsPledgedActivities['2']
-          else
-            $scope.activity2amt = 0
-          if studentsPledgedActivities['3']
-            $scope.activity3amt = studentsPledgedActivities['3']
-          else
-            $scope.activity3amt = 0
-      ###
       setCompanyFundraisingProgress = (amountRaised, goal) ->
         $scope.companyProgress.amountRaised = amountRaised
         $scope.companyProgress.amountRaised = Number $scope.companyProgress.amountRaised
