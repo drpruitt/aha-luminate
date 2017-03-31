@@ -99,6 +99,10 @@
     margin: 20px 0;
   }
 
+  .owl-stage {
+    display: flex;
+  }
+
   .owl-stage-outer {
     img {
       max-width: 100%
@@ -119,15 +123,18 @@
       @media(max-width: $screen-md) {
         max-width: 350px;
       }
-    }/*
+    }
+    p {
+      padding-bottom: 50px;
+    }
     .btn {
       position: absolute;
       bottom: 0;
       left: 0; 
       right: 0;
       max-width: 120px;
-
-    }*/
+      margin: auto;
+    }
 
   }
   .owl-carousel--circle {

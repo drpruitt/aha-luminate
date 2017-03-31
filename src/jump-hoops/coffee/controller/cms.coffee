@@ -22,7 +22,6 @@ angular.module 'ahaLuminateControllers'
               items: 3
               stagePadding: 120
               margin: 60
-
           navText: [
             '<i class="fa fa-chevron-left" aria-hidden="true" />',
             '<i class="fa fa-chevron-right" aria-hidden="true" />'
@@ -30,7 +29,6 @@ angular.module 'ahaLuminateControllers'
 
       if angular.element('ym-carousel--internal')
         $timeout initCarousel, 1000
-
 
       $scope.toggleOpen = (id) ->
         angular.element('.panel-heading').removeClass('active')
