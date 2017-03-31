@@ -12,7 +12,6 @@ a.btn {
     border-width: 0;
     box-shadow: none;
     font-family: inherit;
-    font-weight: 600;
     text-decoration: none;
   }
   
@@ -90,20 +89,6 @@ a.btn-lg {
   }
 }
 
-.btn-link, 
-a.btn-link {
-  &, 
-  &:link, 
-  &:visited, 
-  &:hover, 
-  &:focus, 
-  &:active {
-    background: transparent;
-    border: 0;
-    color: inherit;
-  }
-}
-
 .btn-global-primary, 
 a.btn-global-primary {
   @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border, $btn-primary-color, $btn-primary-darker-bg, $btn-primary-darker-border);
@@ -143,8 +128,6 @@ div.responsive {
 
 .btn-toggle, 
 a.btn-toggle {
-  @include button-size($padding-base-vertical, $padding-base-horizontal, 18px);
-  
   &, 
   &:link, 
   &:visited, 
