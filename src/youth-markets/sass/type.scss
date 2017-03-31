@@ -1,7 +1,36 @@
 body {
   color: #2d2d2d;
-  font-family: Raleway;
+  font-family: $event-font;
   font-size: $font-size-reg;
+  font-weight: 500;
+}
+
+h1 {
+  color: #ffffff;
+  font-family: $headline-font;
+  text-shadow: 2px 2px 1px rgb(0, 0, 0);
+  text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.85);
+}
+
+.ym-headline {
+  font-family: $headline-font;
+}
+
+h2, 
+.h2, 
+h3, 
+.h3, 
+h4, 
+.h4 {
+  color: $event-secondary;
+}
+
+h2, 
+.h2, 
+h3, 
+.h3 {
+  font-family: $headline-font;
+  color: $event-secondary;
 }
 
 h2, 
@@ -53,11 +82,58 @@ h5,
   }
 }
 
+h6,
+.h6 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
 p {
   line-height: 1.5;
   
   @media (max-width: $screen-sm-max) {
     font-size: 14px;
+  }
+}
+
+div.responsive a,
+a {
+  &, 
+  &:link, 
+  &:visited {
+    text-decoration: underline;
+    color: $event-primary;
+  }
+  
+  &:hover, 
+  &:focus, 
+  &:active {
+    text-decoration: none;
+    color: $event-primary;
+  }
+}
+
+.ym-accent-color,
+.event-accent {
+  h2, 
+  .h2, 
+  h3, 
+  .h3, 
+  h4, 
+  .h4, 
+  h5, 
+  .h5,
+  h6,
+  .h6 {
+    color: #ffffff;
+  }
+  
+  h2, 
+  .h2, 
+  h3, 
+  .h3 {
+    text-shadow: 2px 2px 1px rgb(0, 0, 0);
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.85);
   }
 }
 
@@ -67,19 +143,5 @@ p {
   
   @media (min-width: $screen-sm-min) {
     margin: 0 0 24px;
-  }
-}
-
-a {
-  &, 
-  &:link, 
-  &:visited {
-    text-decoration: underline;
-  }
-  
-  &:hover, 
-  &:focus, 
-  &:active {
-    text-decoration: none;
   }
 }

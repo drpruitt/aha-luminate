@@ -19,7 +19,10 @@ angular.module 'ahaLuminateControllers'
               stagePadding: 150
             1050:
               stagePadding: 290
-        jQuery('.owl-prev').html '<i class="fa fa-chevron-left" aria-hidden="true" />'
-        jQuery('.owl-next').html '<i class="fa fa-chevron-right" aria-hidden="true" />'
+          navText: [
+            '<i class="fa fa-chevron-left" aria-hidden="true" />',
+            '<i class="fa fa-chevron-right" aria-hidden="true" />'
+          ]
+          
       $timeout initCarousel, 1000
   ]
