@@ -1,4 +1,4 @@
-<div ng-controller="TeamPageCtrl">
+<div ng-controller="TeamPageCtrl" ng-cloak>
     <div class="ym-page-section ym-page-section__top">
     <div class="col-md-6 ym-user-image" style="background-image:url('[[C4:graphic_upload]]');">
         <img class="hidden-md hidden-lg" src="[[C4:graphic_upload]]" alt="[[C1:graphic_caption]]" />
@@ -62,7 +62,7 @@
     <div class="col-md-6 ym-list">
       <img class="img-responsive" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/hj-fundraisers-graphic.png">
       <div class="ym-donor-list">
-
+        <team-participant-list team-id="'[[T6:[[S334:team_id]]]]'" participants="teamMembers.participants"></team-participant-list>
       </div>
     </div>
     <div class="clearfix"></div>
