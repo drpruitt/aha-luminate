@@ -109,9 +109,7 @@
       <div class="col-md-6 ym-list">
         <img class="img-responsive" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/hj-fundraisers-graphic.png" alt="">
         <div class="ym-donor-list">'
-          <div ng-if="companyTeams.totalNumber == 1">
-            <company-participant-list company-id="'[[T6:[[S334:company_id]]]]'" participants="companyParticipants.participants"></company-participant-list>
-          </div>
+          <company-participant-list company-id="'[[T6:[[S334:company_id]]]]'" participants="companyParticipants.participants"></company-participant-list>
           <div ng-if="companyParticipants.participants = 0 || companyParticipants.participants = null">
             <p>Your School has no donations. Be the first to doante.</p>
             <a class="btn btn-primary btn-lg" ng-href="#" data-toggle="modal" data-target="#schoolDonation">
