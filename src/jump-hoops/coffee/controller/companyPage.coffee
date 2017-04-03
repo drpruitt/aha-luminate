@@ -21,6 +21,7 @@ angular.module 'ahaLuminateControllers'
       $scope.activity1amt = ''
       $scope.activity2amt = ''
       $scope.activity3amt = ''
+      $scope.totalDonors = 5
       
       ZuriService.getZooSchool $scope.companyId,
         error: (response) ->
@@ -70,7 +71,6 @@ angular.module 'ahaLuminateControllers'
       getCompanyTotals = ->
         TeamraiserCompanyService.getCompanies 'company_id=' + $scope.companyId, 
             success: (response) ->
-              console.log response
               $scope.participantCount = response.getCompaniesResponse.company.participantCount 
               totalTeams = response.getCompaniesResponse.company.teamCount
               eventId = response.getCompaniesResponse.company.eventId
@@ -95,7 +95,6 @@ angular.module 'ahaLuminateControllers'
         totalNumber = totalNumber or 0
         $scope.companyTeams.totalNumber = Number totalNumber
         $scope.totalTeams = totalNumber
-        console.log 'teams'+$scope.totalTeams
         if not $scope.$$phase
           $scope.$apply()
       
@@ -119,12 +118,12 @@ angular.module 'ahaLuminateControllers'
       getCompanyTeams()
       
       $scope.companyParticipants = []
-      setCompanyParticipants = (participants, totalNumber, totalDonors) ->
+      setCompanyParticipants = (participants, totalNumber) ->
         $scope.companyParticipants.participants = participants or []
         totalNumber = totalNumber or 0
         $scope.companyParticipants.totalNumber = Number totalNumber
-        $scope.totalDonors = Number totalDonors
-        console.log 'donors'+$scope.totalDonors
+        #$scope.totalDonors = Number totalDonors
+        #console.log 'donors'+$scope.totalDonors
         if not $scope.$$phase
           $scope.$apply()
       
@@ -140,15 +139,18 @@ angular.module 'ahaLuminateControllers'
               if participants
                 participants = [participants] if not angular.isArray participants
                 companyParticipants = []
-                totalDonors = 0
+                #totalDonors = 0
                 angular.forEach participants, (participant) ->
                   if participant.amountRaised > 1
                     participant.amountRaised = Number participant.amountRaised
                     participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
                     participant.name.last = participant.name.last.substring(0,1)+'.'
                     companyParticipants.push participant
-                    totalDonors++
+                    #totalDonors++
                 totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
-                setCompanyParticipants companyParticipants, totalNumberParticipants, totalDonors
+                setCompanyParticipants companyParticipants, totalNumberParticipants
       getCompanyParticipants()
+
+
+      console.log $scope.totalDonors
   ]
