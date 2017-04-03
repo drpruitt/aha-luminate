@@ -16,6 +16,7 @@ angular.module 'ahaLuminateControllers'
       $scope.companyTeams = []
       $scope.eventDate = ''
       $scope.totalTeams = ''
+      $scope.totalDonors = 0
       $scope.teamId = ''
       $scope.studentsPledgedTotal = ''
       $scope.studentsRegisteredTotal = ''
@@ -144,6 +145,7 @@ angular.module 'ahaLuminateControllers'
                     participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
                     participant.name.last = participant.name.last.substring(0,1)+'.'
                     companyParticipants.push participant
+                    $scope.totalDonors++
                 totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
                 setCompanyParticipants companyParticipants, totalNumberParticipants
       getCompanyParticipants()
