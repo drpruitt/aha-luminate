@@ -106,17 +106,12 @@
       [[C6:fr_rich_text]]
     </div>
     <div class="col-md-6 ym-list">
-      <h1>
-        donors - {{totalDonors}}<br />
-        part - {{companyParticipants.totalNumber}}<br /> 
-        {{totalDonor}}
-      </h1>
       <img class="img-responsive" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/hj-fundraisers-graphic.png" alt="Check out these top fundraisers">
-      <div class="ym-donor-list">
+      <div class="ym-donor-list" ng-if="totalDonors > 0">
         <company-participant-list company-id="'[[T6:[[S334:company_id]]]]'" participants="companyParticipants.participants"></company-participant-list>
       </div>
-      <div ng-if="totalDonors = 0">
-        <p>Your School has no donations. Be the first to doante.</p>
+      <div ng-if="totalDonors = 0 && companyTeams.totalNumber == 1">
+        <p>Your School has no donations. Be the first to donate.</p>
         <a class="btn btn-primary btn-lg" ng-href="#" data-toggle="modal" data-target="#schoolDonation">
           Donate
         </a>
