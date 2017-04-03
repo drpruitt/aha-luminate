@@ -30,7 +30,6 @@ angular.module 'ahaLuminateControllers'
           $scope.activity2amt = 0
           $scope.activity3amt = 0
         success: (response) ->
-          console.log response
           $scope.studentsPledgedTotal = response.data.studentsPledged
           studentsPledgedActivities = response.data.studentsPledgedByActivity
           if studentsPledgedActivities['1']
@@ -143,6 +142,7 @@ angular.module 'ahaLuminateControllers'
                   if participant.amountRaised > 1
                     participant.amountRaised = Number participant.amountRaised
                     participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
+                    participant.name.last = participant.name.last.substring(0,1)+'.'
                     companyParticipants.push participant
                 totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
                 setCompanyParticipants companyParticipants, totalNumberParticipants

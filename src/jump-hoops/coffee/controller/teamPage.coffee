@@ -93,7 +93,6 @@ angular.module 'ahaLuminateControllers'
       getTeamData()
 
       setTeamParticipants = (participants, totalNumber) ->
-        console.log participants
         $scope.teamParticipants.participants = participants or []
         $scope.teamParticipants.totalNumber = totalNumber or 0
         if not $scope.$$phase
@@ -105,7 +104,6 @@ angular.module 'ahaLuminateControllers'
               setTeamMembers()
               
             success: (response) ->
-              console.log response
               $scope.studentsRegisteredTotal = response.getParticipantsResponse.totalNumberResults
               participants = response.getParticipantsResponse?.participant
               if participants
@@ -115,9 +113,9 @@ angular.module 'ahaLuminateControllers'
                   if participant.amountRaised > 1
                     participant.amountRaised = Number participant.amountRaised
                     participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
+                    participant.name.last = participant.name.last.substring(0,1)+'.'
                     teamParticipants.push participant
                 totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
-                #console.log teamParticipants
                 setTeamParticipants teamParticipants, totalNumberParticipants
       getTeamParticipants()
 
