@@ -146,6 +146,8 @@ angular.module 'ahaLuminateControllers'
                     participant.name.last = participant.name.last.substring(0,1)+'.'
                     companyParticipants.push participant
                     $scope.totalDonors++
+                
+                console.log $scope.totalDonors
                 totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
                 setCompanyParticipants companyParticipants, totalNumberParticipants
       getCompanyParticipants()
