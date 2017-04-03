@@ -18,7 +18,6 @@ angular.module 'ahaLuminateControllers'
       $scope.totalTeams = ''
       $scope.teamId = ''
       $scope.studentsPledgedTotal = ''
-      $scope.studentsRegisteredTotal = ''
       $scope.activity1amt = ''
       $scope.activity2amt = ''
       $scope.activity3amt = ''
@@ -73,7 +72,7 @@ angular.module 'ahaLuminateControllers'
             success: (response) ->
               console.log response
               $scope.participantCount = response.getCompaniesResponse.company.participantCount 
-              $scope.totalTeams = response.getCompaniesResponse.company.teamCount
+              totalTeams = response.getCompaniesResponse.company.teamCount
               eventId = response.getCompaniesResponse.company.eventId
               amountRaised = response.getCompaniesResponse.company.amountRaised
               goal = response.getCompaniesResponse.company.goal
@@ -86,7 +85,7 @@ angular.module 'ahaLuminateControllers'
                 .then (response) ->
                   $scope.eventDate = response.data.coordinator.event_date
                   
-                  if $scope.totalTeams = 1
+                  if totalTeams = 1
                     $scope.teamId = response.data.coordinator.team_id
       
       getCompanyTotals()
@@ -96,13 +95,13 @@ angular.module 'ahaLuminateControllers'
         totalNumber = totalNumber or 0
         $scope.companyTeams.totalNumber = Number totalNumber
         $scope.totalTeams = totalNumber
+        console.log 'teams'+$scope.totalTeams
         if not $scope.$$phase
           $scope.$apply()
       
       getCompanyTeams = ->
         TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId,
           success: (response) ->
-            setCompanyTeams()
             companyTeams = response.getTeamSearchByInfoResponse.team
             if companyTeams
               companyTeams = [companyTeams] if not angular.isArray companyTeams
@@ -114,14 +113,18 @@ angular.module 'ahaLuminateControllers'
                   companyTeam.joinTeamURL = joinTeamURL.split('/site/')[1]
               totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults
               setCompanyTeams companyTeams, totalNumberTeams
+          error: ->
+            setCompanyTeams()
       
       getCompanyTeams()
       
       $scope.companyParticipants = []
-      setCompanyParticipants = (participants, totalNumber) ->
+      setCompanyParticipants = (participants, totalNumber, totalDonors) ->
         $scope.companyParticipants.participants = participants or []
         totalNumber = totalNumber or 0
         $scope.companyParticipants.totalNumber = Number totalNumber
+        $scope.totalDonors = Number totalDonors
+        console.log 'donors'+$scope.totalDonors
         if not $scope.$$phase
           $scope.$apply()
       
@@ -133,22 +136,19 @@ angular.module 'ahaLuminateControllers'
               if numCompaniesParticipantRequestComplete is numCompanies
                 setCompanyNumParticipants numParticipants
             success: (response) ->
-              $scope.studentsRegisteredTotal = response.getParticipantsResponse.totalNumberResults
-              setCompanyParticipants()
               participants = response.getParticipantsResponse?.participant
               if participants
                 participants = [participants] if not angular.isArray participants
                 companyParticipants = []
+                totalDonors = 0
                 angular.forEach participants, (participant) ->
                   if participant.amountRaised > 1
                     participant.amountRaised = Number participant.amountRaised
                     participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
                     participant.name.last = participant.name.last.substring(0,1)+'.'
                     companyParticipants.push participant
-                    $scope.totalDonors++
-                
-                console.log $scope.totalDonors
+                    totalDonors++
                 totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
-                setCompanyParticipants companyParticipants, totalNumberParticipants
+                setCompanyParticipants companyParticipants, totalNumberParticipants, totalDonors
       getCompanyParticipants()
   ]
