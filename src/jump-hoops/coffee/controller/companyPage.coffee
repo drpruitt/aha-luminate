@@ -13,6 +13,7 @@ angular.module 'ahaLuminateControllers'
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0]
       $scope.companyProgress = []
       $rootScope.companyName = ''
+      $scope.companyTeams = []
       $scope.eventDate = ''
       $scope.totalTeams = ''
       $scope.teamId = ''
@@ -90,7 +91,6 @@ angular.module 'ahaLuminateControllers'
       
       getCompanyTotals()
       
-      $scope.companyTeams = []
       setCompanyTeams = (teams, totalNumber) ->
         $scope.companyTeams.teams = teams or []
         totalNumber = totalNumber or 0
@@ -140,7 +140,7 @@ angular.module 'ahaLuminateControllers'
                 participants = [participants] if not angular.isArray participants
                 companyParticipants = []
                 angular.forEach participants, (participant) ->
-                  if participant.name?.first
+                  if participant.amountRaised > 1
                     participant.amountRaised = Number participant.amountRaised
                     participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
                     companyParticipants.push participant

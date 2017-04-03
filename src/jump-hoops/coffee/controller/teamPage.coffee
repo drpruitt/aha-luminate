@@ -12,7 +12,7 @@ angular.module 'ahaLuminateControllers'
     ($scope, $rootScope, $location, $filter, $timeout, TeamraiserTeamService, TeamraiserParticipantService, TeamraiserCompanyService, ZuriService) ->
       $scope.teamId = $location.absUrl().split('team_id=')[1].split('&')[0]
       $scope.teamProgress = []
-      $scope.teamMembers = []
+      $scope.teamParticipants = []
       $rootScope.teamName = ''
       $scope.eventDate = ''
       $scope.participantCount = ''
@@ -92,9 +92,9 @@ angular.module 'ahaLuminateControllers'
                     $scope.eventDate = response.data.coordinator.event_date
       getTeamData()
 
-      setTeamParticipants = (teamParticipants, totalNumber) ->
-        console.log teamParticipants
-        $scope.teamParticipants.participants = teamParticipants or []
+      setTeamParticipants = (participants, totalNumber) ->
+        console.log participants
+        $scope.teamParticipants.participants = participants or []
         $scope.teamParticipants.totalNumber = totalNumber or 0
         if not $scope.$$phase
           $scope.$apply()
@@ -112,12 +112,12 @@ angular.module 'ahaLuminateControllers'
                 participants = [participants] if not angular.isArray participants
                 teamParticipants = []
                 angular.forEach participants, (participant) ->
-                  if participant.name?.first
+                  if participant.amountRaised > 1
                     participant.amountRaised = Number participant.amountRaised
                     participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
                     teamParticipants.push participant
                 totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
-                console.log teamParticipants
+                #console.log teamParticipants
                 setTeamParticipants teamParticipants, totalNumberParticipants
       getTeamParticipants()
 
