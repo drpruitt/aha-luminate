@@ -16,7 +16,6 @@ angular.module 'ahaLuminateControllers'
       $scope.companyTeams = []
       $scope.eventDate = ''
       $scope.totalTeams = ''
-      $scope.totalDonors = 0
       $scope.teamId = ''
       $scope.studentsPledgedTotal = ''
       $scope.studentsRegisteredTotal = ''
@@ -72,6 +71,7 @@ angular.module 'ahaLuminateControllers'
       getCompanyTotals = ->
         TeamraiserCompanyService.getCompanies 'company_id=' + $scope.companyId, 
             success: (response) ->
+              console.log response
               $scope.participantCount = response.getCompaniesResponse.company.participantCount 
               $scope.totalTeams = response.getCompaniesResponse.company.teamCount
               eventId = response.getCompaniesResponse.company.eventId
