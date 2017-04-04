@@ -13,7 +13,7 @@ angular.module 'ahaLuminateControllers'
       console.log 'test'
       $scope.teamId = $location.absUrl().split('team_id=')[1].split('&')[0]
       $scope.teamProgress = []
-      $scope.teamMembers = []
+      $scope.teamParticipants = []
       $rootScope.teamName = ''
       $scope.eventDate = ''
       $scope.participantCount = ''
@@ -93,9 +93,9 @@ angular.module 'ahaLuminateControllers'
                     $scope.eventDate = response.data.coordinator.event_date
       getTeamData()
 
-      setTeamMembers = (teamMembers, totalNumber) ->
-        $scope.teamMembers.members = teamMembers or []
-        $scope.teamMembers.totalNumber = totalNumber or 0
+      setTeamParticipants = (participants, totalNumber) ->
+        $scope.teamParticipants.participants = participants or []
+        $scope.teamParticipants.totalNumber = totalNumber or 0
         if not $scope.$$phase
           $scope.$apply()
 
@@ -105,21 +105,21 @@ angular.module 'ahaLuminateControllers'
               setTeamMembers()
               
             success: (response) ->
-              console.log response
               $scope.studentsRegisteredTotal = response.getParticipantsResponse.totalNumberResults
-              setTeamMembers()
               participants = response.getParticipantsResponse?.participant
               if participants
                 participants = [participants] if not angular.isArray participants
-                companyParticipants = []
+                teamParticipants = []
                 angular.forEach participants, (participant) ->
-                  if participant.name?.first
+                  if participant.amountRaised > 1
                     participant.amountRaised = Number participant.amountRaised
                     participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
+                    participant.name.last = participant.name.last.substring(0,1)+'.'
                     teamParticipants.push participant
                 totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
-                setTeamMembers teamParticipants, totalNumberParticipants
+                setTeamParticipants teamParticipants, totalNumberParticipants
       getTeamParticipants()
+
 
 
 
