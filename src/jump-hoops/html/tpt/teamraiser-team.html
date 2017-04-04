@@ -1,31 +1,37 @@
 <div ng-controller="TeamPageCtrl">
     <div class="ym-page-section ym-page-section__top">
     <div class="col-md-6 ym-user-image" style="background-image:url('[[C4:graphic_upload]]');">
-        <img class="hidden-md hidden-lg" src="[[C4:graphic_upload]]" alt="[[C1:graphic_caption]]" />
+      <img class="hidden-md hidden-lg" src="[[C4:graphic_upload]]" alt="[[C1:graphic_caption]]">
     </div>
     <div class="col-md-6 ym-progress ym-secondary-medium-color">
       <h4 class="ym-progress__title">[[C1:title_field]]</h4>
       <div class="ym-progress__cta">         
-          <a class="btn btn-primary btn-lg" ng-href="TRR?fr_id=[[S334:fr_id]]&pg=tfind&fr_tm_opt=existing&fr_team_id={{teamId}}">
-            Join Team
-          </a>
-          <a class="btn btn-primary btn-lg" ng-href="Donation2?df_id=[[E42:[[S334:fr_id]]:form-id]]&FR_ID=[[S334:fr_id]]&PROXY_ID=[[S334:team_id]]&PROXY_TYPE=22">
-            Donate
-          </a>
+        <a class="btn btn-primary btn-lg" ng-href="TRR?fr_id=[[S334:fr_id]]&pg=tfind&fr_tm_opt=existing&fr_tjoin={{teamId}}">
+          Join Team
+        </a>
+        <a class="btn btn-primary btn-lg" ng-href="Donation2?df_id=[[E42:[[S334:fr_id]]:form-id]]&FR_ID=[[S334:fr_id]]&PROXY_TYPE=22&PROXY_ID={{teamId}}">
+          Donate
+        </a>
       </div>
       <div class="ym-progress__thermometer" ng-if="teamProgress.goal && teamProgress.goal != 0">
         <div class="ym-progress__thermometer--fill" ng-style="{'width': teamProgress.percent + '%'}"></div>
       </div>
       <div class="ym-progress__stats">
         <div class="ym-progress__amount col-sm-6">
-          <p>We've raised <strong ng-bind="teamProgress.amountRaisedFormatted"></strong></p>
+          <p>
+            We've raised <strong ng-bind="teamProgress.amountRaisedFormatted"></strong>
+          </p>
         </div>
         <div class="ym-progress__goal col-sm-6">
-          <p>Our goal is <strong ng-bind="teamProgress.goalFormatted"></strong></p>
+          <p>
+            Our goal is <strong ng-bind="teamProgress.goalFormatted"></strong>
+          </p>
         </div>
         <div class="clearfix"></div>
         <div class="ym-progress__date">
-          <p>Our event date is <strong ng-bind-html="eventDate"></strong></p> 
+          <p>
+            Our event date is <strong ng-bind-html="eventDate"></strong>
+          </p> 
         </div>
       </div>
     </div>
@@ -34,36 +40,54 @@
   <div class="ym-page-section ym-page-section__main">
     <div class="container">
       <div class="ym-our-stats ym-promo-block" ng-if="participantCount > 0">
-        <h3 class="ym-headline">Our Stats</h3>
+        <h3 class="ym-headline">
+          Our Stats
+        </h3>
         <div class="ym-promo-block__item ym-promo-block__item--members ym-promo-block--circle">
-          <h2 class="ym-headline">{{participantCount}}</h2>
-          <p>team members registered.</p>
+          <h2 class="ym-headline">
+            {{participantCount}}
+          </h2>
+          <p>
+            team members registered.
+          </p>
         </div>
         <div class="ym-promo-block__item ym-promo-block__item--exercise ym-promo-block--circle">
-          <h2 class="ym-headline">{{activity1amt}}</h2>
-          <p>daily challenges of excersing 60 minutes a day!</p>
+          <h2 class="ym-headline">
+            {{activity1amt}}
+          </h2>
+          <p>
+            daily challenges of excersing 60 minutes a day!
+          </p>
         </div>
         <div class="ym-promo-block__item ym-promo-block__item--water ym-promo-block--circle">
-          <h2 class="ym-headline">{{activity2amt}}</h2>
-          <p>daily challenges of choosing water over sugar drinks</p>
+          <h2 class="ym-headline">
+            {{activity2amt}}
+          </h2>
+          <p>
+            daily challenges of choosing water over sugar drinks
+          </p>
         </div>
         <div class="ym-promo-block__item ym-promo-block__item--food ym-promo-block--circle">
-          <h2 class="ym-headline">{{activity3amt}}</h2>
-          <p>daily challenges of fruits and veggies at every meal</p>
+          <h2 class="ym-headline">
+            {{activity3amt}}
+          </h2>
+          <p>
+            daily challenges of fruits and veggies at every meal
+          </p>
         </div>
       </div>
     </div>
   </div>
   <div class="ym-page-section ym-page-section__list ym-accent-color">
     <div class="col-md-6 ym-story">
-      <h3 class="ym-headline">Our Team is Heart Healthy!</h3>
+      <h3 class="ym-headline">
+        Our Team is Heart Healthy!
+      </h3>
       [[C6:fr_rich_text]]
     </div>
     <div class="col-md-6 ym-list">
-      <img class="img-responsive" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/hj-fundraisers-graphic.png">
-      <div class="ym-donor-list">
-
-      </div>
+      <img class="img-responsive" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/hj-fundraisers-graphic.png" alt="">
+      <div class="ym-donor-list"></div>
     </div>
     <div class="clearfix"></div>
   </div>
