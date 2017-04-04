@@ -27,15 +27,12 @@ angular.module 'ahaLuminateControllers'
           companyItems = response.getCompanyListResponse?.companyItem or []
           companyItems = [companyItems] if not angular.isArray companyItems
           rootAncestorCompanies = []
-          # TODO: don't include companies with $0 raised
           angular.forEach companyItems, (companyItem) ->
             if companyItem.parentOrgEventId is '0'
               rootAncestorCompany =
                 eventId: $scope.frId
                 companyId: companyItem.companyId
                 companyName: companyItem.companyName
-                participantCount: 0
-                teamCount: 0
                 amountRaised: if companyItem.amountRaised then Number(companyItem.amountRaised) else 0
               rootAncestorCompanies.push rootAncestorCompany
           angular.forEach companyItems, (companyItem) ->
@@ -47,6 +44,16 @@ angular.module 'ahaLuminateControllers'
                   rootAncestorCompanies[rootAncestorCompanyIndex].amountRaised = rootAncestorCompany.amountRaised + childCompanyAmountRaised
           angular.forEach rootAncestorCompanies, (rootAncestorCompany, rootAncestorCompanyIndex) ->
             rootAncestorCompanies[rootAncestorCompanyIndex].amountRaisedFormatted = $filter('currency') rootAncestorCompany.amountRaised / 100, '$', 0
-          setTopCompanies rootAncestorCompanies
-          $scope.sortCompanyList 'companyName'
+          TeamraiserCompanyService.getCompanies 'list_sort_column=total&list_ascending=false&list_page_size=500', 
+            error: ->
+              setTopCompanies []
+            success: (response) ->
+              companies = response.getCompaniesResponse?.company or []
+              companies = [companies] if not angular.isArray companies
+              angular.forEach companies, (company) ->
+                angular.forEach rootAncestorCompanies, (rootAncestorCompany, rootAncestorCompanyIndex) ->
+                  if rootAncestorCompany.companyId is company.companyId
+                    rootAncestorCompanies[rootAncestorCompanyIndex].participantCount = company.participantCount
+                    rootAncestorCompanies[rootAncestorCompanyIndex].teamCount = company.teamCount
+              setTopCompanies rootAncestorCompanies
   ]
