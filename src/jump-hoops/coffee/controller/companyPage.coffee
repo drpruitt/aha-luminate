@@ -139,7 +139,7 @@ angular.module 'ahaLuminateControllers'
               if participants
                 participants = [participants] if not angular.isArray participants
                 companyParticipants = []
-                totalFundraisers
+                totalFundraisers = 0
                 angular.forEach participants, (participant) ->
                   if participant.amountRaised > 1
                     participant.amountRaised = Number participant.amountRaised
