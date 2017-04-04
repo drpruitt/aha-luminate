@@ -122,7 +122,7 @@ angular.module 'ahaLuminateControllers'
         totalNumber = totalNumber or 0
         $scope.companyParticipants.totalNumber = Number totalNumber
         $scope.companyParticipants.totalFundraisers = Number totalFundraisers
-        console.log 'donors'+$scope.totalFundraisers
+        console.log 'donors '+$scope.companyParticipants.totalFundraisers
         console.log $scope.companyParticipants
         if not $scope.$$phase
           $scope.$apply()
@@ -139,7 +139,7 @@ angular.module 'ahaLuminateControllers'
               if participants
                 participants = [participants] if not angular.isArray participants
                 companyParticipants = []
-                totalFundraisers = 0
+                totalFundraisers
                 angular.forEach participants, (participant) ->
                   if participant.amountRaised > 1
                     participant.amountRaised = Number participant.amountRaised
