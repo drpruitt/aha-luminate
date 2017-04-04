@@ -6,8 +6,7 @@ angular.module 'ahaLuminateControllers'
     '$filter'
     'TeamraiserParticipantService'
     'TeamraiserTeamService'
-    'TeamraiserCompanyDataService'
-    ($scope, $http, $timeout, $filter, TeamraiserParticipantService, TeamraiserTeamService, TeamraiserCompanyDataService) ->
+    ($scope, $http, $timeout, $filter, TeamraiserParticipantService, TeamraiserTeamService) ->
       $http.get 'PageServer?pagename=getTeamraiserInfo&fr_id=' + $scope.frId + '&response_format=json&pgwrap=n'
         .then (response) ->
           teamraiserInfo = response.data.getTeamraiserInfo
@@ -37,7 +36,7 @@ angular.module 'ahaLuminateControllers'
         if not $scope.$$phase
           $scope.$apply()
       TeamraiserParticipantService.getParticipants 'first_name=' + encodeURIComponent('%%%') + '&list_sort_column=total&list_ascending=false', 
-        error: () ->
+        error: ->
           setTopParticipants []
         success: (response) ->
           participants = response.getParticipantsResponse?.participant or []
@@ -60,7 +59,7 @@ angular.module 'ahaLuminateControllers'
         if not $scope.$$phase
           $scope.$apply()
       TeamraiserTeamService.getTeams 'list_sort_column=total&list_ascending=false', 
-        error: () ->
+        error: ->
           setTopTeams []
         success: (response) ->
           teams = response.getTeamSearchByInfoResponse?.team or []
@@ -77,40 +76,26 @@ angular.module 'ahaLuminateControllers'
             setTopTeams topTeams
       
       $scope.topCompanies = {}
-      TeamraiserCompanyDataService.getCompanyData()
-        .then (response) ->
-          companies = response.data.getCompanyDataResponse?.company
-          if not companies
-            $scope.topCompanies.companies = []
-          else
-            topCompanies = []
-            csvToArray = (strData) ->
-              strDelimiter = ','
-              objPattern = new RegExp ("(\\" + strDelimiter + "|\\r?\\n|\\r|^)" + "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" + "([^\"\\" + strDelimiter + "\\r\\n]*))"), "gi"
-              arrData = [[]]
-              arrMatches = null
-              while arrMatches = objPattern.exec(strData)
-                strMatchedDelimiter = arrMatches[1]
-                strMatchedValue = undefined
-                if strMatchedDelimiter.length and strMatchedDelimiter isnt strDelimiter
-                  arrData.push []
-                if arrMatches[2]
-                  strMatchedValue = arrMatches[2].replace new RegExp("\"\"", "g"), "\""
-                else
-                  strMatchedValue = arrMatches[3]
-                arrData[arrData.length - 1].push strMatchedValue
-              arrData
-            # TODO: don't include companies with $0 raised
-            angular.forEach companies, (company) ->
-              if company isnt ''
-                companyData = csvToArray(company)[0]
-                topCompanies.push
-                  "eventId": $scope.frId
-                  "companyId": companyData[0]
-                  "participantCount": companyData[3]
-                  "companyName": companyData[1]
-                  "teamCount": companyData[4]
-                  "amountRaised": Number(companyData[2]) * 100
-                  "amountRaisedFormatted": $filter('currency')(Number(companyData[2]), '$', 0)
-            $scope.topCompanies.companies = $filter('orderBy') topCompanies, 'amountRaised', true
+      setTopCompanies = (companies) ->
+        $scope.topCompanies.companies = companies
+        if not $scope.$$phase
+          $scope.$apply()
+      TeamraiserCompanyService.getCompanyList 'include_all_companies=true', 
+        error: ->
+          setTopCompanies []
+        success: (response) ->
+          companyItems = response.getCompanyListResponse?.companyItem or []
+          companyItems = [companyItems] if not angular.isArray companyItems
+          rootAncestorCompanies = []
+          # TODO: don't include companies with $0 raised
+          angular.forEach companyItems, (companyItem) ->
+            if companyItem.parentOrgEventId is '0'
+              rootAncestorCompany =
+                eventId: $scope.frId
+                companyId: companyItem.companyId
+                companyName: companyItem.companyName
+                amountRaised: if companyItem.amountRaised then Number(companyItem.amountRaised) else 0
+              rootAncestorCompany.amountRaisedFormatted = $filter('currency')(rootAncestorCompany.amountRaised, '$', 0)
+              rootAncestorCompanies.push rootAncestorCompany
+          setTopCompanies $filter('orderBy') rootAncestorCompanies, 'amountRaised', true
   ]
