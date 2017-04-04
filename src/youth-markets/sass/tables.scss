@@ -19,7 +19,9 @@ div.table {
 }
 
 .table-responsive {
-  > .table {
+  border: 0;
+  
+  > div.table {
     > .table-header, 
     > .table-body {
       > .table-row {

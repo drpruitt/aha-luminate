@@ -45,14 +45,22 @@
         Did you participate last year?
       </p>
     </div>
-    <div class="ym-registration-utype-user-type">
-      <div class="manageable-content" data-container="edit_fr_returning_user_container">
-        <button type="button" class="btn btn-toggle" ng-class="{'active': userType == 'existing'}" ng-click="toggleUserType('existing')">
-          <span id="fr_returning_user_container">[[C1:fr_returning_user]]</span>
-        </button> 
-        <button type="button" class="btn btn-toggle" ng-click="toggleUserType('new')">
-          <span id="fr_new_user_container">[[C1:fr_new_user]]</span> <i class="fa fa-chevron-right"></i>
-        </button>
+    <div class="ym-registration-utype-user-types">
+      <div class="clearfix">
+        <div class="ym-registration-utype-user-type">
+          <div class="manageable-content" data-container="edit_fr_returning_user_container">
+            <button type="button" class="btn btn-toggle" ng-class="{'active': userType == 'existing'}" ng-click="toggleUserType('existing')">
+              <span id="fr_returning_user_container">[[C1:fr_returning_user]]</span>
+            </button>
+          </div>
+        </div>
+        <div class="ym-registration-utype-user-type">
+          <div class="manageable-content" data-container="edit_fr_new_user_container">
+            <button type="button" class="btn btn-toggle" ng-click="toggleUserType('new')">
+              <span id="fr_new_user_container">[[C1:fr_new_user]]</span> <i class="fa fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
     <div ng-class="{'hidden': userType != 'existing'}" ng-cloak>
@@ -83,7 +91,7 @@
             <div class="clearfix">
               <div class="pull-right">
                 <button type="submit" class="btn btn-primary">
-                  Next <i class="fa fa-chevron-right"></i>
+                  <strong>Next</strong> <i class="fa fa-chevron-right"></i>
                 </button>
               </div>
             </div>
@@ -156,11 +164,11 @@
   <div id="edit_ut_title_container" class="EditContainer" style="display: none;">
     [[C:ajax-custompage-edit-component:edit_ut_title_container]]
   </div>
-  <div id="edit_fr_new_user_container" class="EditContainer" style="display: none;">
-    [[C:ajax-custompage-edit-component:edit_fr_new_user_container]]
-  </div>
   <div id="edit_fr_returning_user_container" class="EditContainer" style="display: none;">
     [[C:ajax-custompage-edit-component:edit_fr_returning_user_container]]
+  </div>
+  <div id="edit_fr_new_user_container" class="EditContainer" style="display: none;">
+    [[C:ajax-custompage-edit-component:edit_fr_new_user_container]]
   </div>
   <input id="edit_btn_title" type="hidden" value="[[M0:friendraiser_emgmt:preview_edit_link]]">
   <script>
