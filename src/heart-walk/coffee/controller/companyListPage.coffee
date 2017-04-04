@@ -27,6 +27,7 @@ angular.module 'ahaLuminateControllers'
           companyItems = response.getCompanyListResponse?.companyItem or []
           companyItems = [companyItems] if not angular.isArray companyItems
           rootAncestorCompanies = []
+          childCompanyIdMap = {}
           angular.forEach companyItems, (companyItem) ->
             if companyItem.parentOrgEventId is '0'
               rootAncestorCompany =
@@ -38,6 +39,7 @@ angular.module 'ahaLuminateControllers'
           angular.forEach companyItems, (companyItem) ->
             parentOrgEventId = companyItem.parentOrgEventId
             if parentOrgEventId isnt '0'
+              childCompanyIdMap['company-' + companyItem.companyId] = parentOrgEventId
               childCompanyAmountRaised = if companyItem.amountRaised then Number(companyItem.amountRaised) else 0
               angular.forEach rootAncestorCompanies, (rootAncestorCompany, rootAncestorCompanyIndex) ->
                 if rootAncestorCompany.companyId is parentOrgEventId
@@ -51,9 +53,15 @@ angular.module 'ahaLuminateControllers'
               companies = response.getCompaniesResponse?.company or []
               companies = [companies] if not angular.isArray companies
               angular.forEach companies, (company) ->
+                participantCount = if company.participantCount then Number(company.participantCount) else 0
+                teamCount = if company.teamCount then Number(company.teamCount) else 0
                 angular.forEach rootAncestorCompanies, (rootAncestorCompany, rootAncestorCompanyIndex) ->
                   if rootAncestorCompany.companyId is company.companyId
-                    rootAncestorCompanies[rootAncestorCompanyIndex].participantCount = company.participantCount
-                    rootAncestorCompanies[rootAncestorCompanyIndex].teamCount = company.teamCount
+                    rootAncestorCompanies[rootAncestorCompanyIndex].participantCount = participantCount
+                    rootAncestorCompanies[rootAncestorCompanyIndex].teamCount = teamCount
+                angular.forEach rootAncestorCompanies, (rootAncestorCompany, rootAncestorCompanyIndex) ->
+                  if childCompanyIdMap['company-' + company.companyId] and rootAncestorCompany.companyId is childCompanyIdMap['company-' + company.companyId]
+                    rootAncestorCompanies[rootAncestorCompanyIndex].participantCount = rootAncestorCompany.participantCount + participantCount
+                    rootAncestorCompanies[rootAncestorCompanyIndex].teamCount = rootAncestorCompany.teamCount + teamCount
               setTopCompanies rootAncestorCompanies
   ]
