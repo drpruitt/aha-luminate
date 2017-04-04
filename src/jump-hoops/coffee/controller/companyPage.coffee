@@ -21,7 +21,6 @@ angular.module 'ahaLuminateControllers'
       $scope.activity1amt = ''
       $scope.activity2amt = ''
       $scope.activity3amt = ''
-      $scope.totalDonors = 5
       
       ZuriService.getZooSchool $scope.companyId,
         error: (response) ->
@@ -118,12 +117,12 @@ angular.module 'ahaLuminateControllers'
       getCompanyTeams()
       
       $scope.companyParticipants = []
-      setCompanyParticipants = (participants, totalNumber) ->
+      setCompanyParticipants = (participants, totalNumber, totalFundraisers) ->
         $scope.companyParticipants.participants = participants or []
         totalNumber = totalNumber or 0
         $scope.companyParticipants.totalNumber = Number totalNumber
-        #$scope.totalDonors = Number totalDonors
-        #console.log 'donors'+$scope.totalDonors
+        $scope.totalFundraisers = totalFundraisers
+        console.log 'donors'+$scope.totalFundraisers
         if not $scope.$$phase
           $scope.$apply()
       
@@ -139,18 +138,17 @@ angular.module 'ahaLuminateControllers'
               if participants
                 participants = [participants] if not angular.isArray participants
                 companyParticipants = []
-                #totalDonors = 0
+                totalFundraisers = 0
                 angular.forEach participants, (participant) ->
                   if participant.amountRaised > 1
                     participant.amountRaised = Number participant.amountRaised
                     participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
                     participant.name.last = participant.name.last.substring(0,1)+'.'
                     companyParticipants.push participant
-                    #totalDonors++
+                    totalFundraisers++
                 totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
-                setCompanyParticipants companyParticipants, totalNumberParticipants
+                setCompanyParticipants companyParticipants, totalNumberParticipants, totalFundraisers
       getCompanyParticipants()
 
-
-      console.log $scope.totalDonors
+      
   ]
