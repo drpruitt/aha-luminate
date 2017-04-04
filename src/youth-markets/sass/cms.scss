@@ -471,6 +471,10 @@
     font-weight: bold;
     font-weight: 700;
     width: 200px;
+
+    &:hover {
+      background: url("../../youth-markets/image/ym-select-carrot.png") right 0.75rem center no-repeat $event-secondary-dark;
+    }
     
     option {
       background: #ffffff;
