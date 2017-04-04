@@ -6,7 +6,8 @@ angular.module 'ahaLuminateControllers'
     '$filter'
     'TeamraiserParticipantService'
     'TeamraiserTeamService'
-    ($scope, $http, $timeout, $filter, TeamraiserParticipantService, TeamraiserTeamService) ->
+    'TeamraiserCompanyService'
+    ($scope, $http, $timeout, $filter, TeamraiserParticipantService, TeamraiserTeamService, TeamraiserCompanyService) ->
       $http.get 'PageServer?pagename=getTeamraiserInfo&fr_id=' + $scope.frId + '&response_format=json&pgwrap=n'
         .then (response) ->
           teamraiserInfo = response.data.getTeamraiserInfo
@@ -49,7 +50,7 @@ angular.module 'ahaLuminateControllers'
             angular.forEach participants, (participant) ->
               if participant.name?.first
                 participant.amountRaised = Number participant.amountRaised
-                participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$', 0)
+                participant.amountRaisedFormatted = $filter('currency') participant.amountRaised / 100, '$', 0
                 topParticipants.push participant
             setTopParticipants topParticipants
       
@@ -71,7 +72,7 @@ angular.module 'ahaLuminateControllers'
             # TODO: don't include teams with $0 raised
             angular.forEach teams, (team) ->
               team.amountRaised = Number team.amountRaised
-              team.amountRaisedFormatted = $filter('currency')(team.amountRaised / 100, '$', 0)
+              team.amountRaisedFormatted = $filter('currency') team.amountRaised / 100, '$', 0
               topTeams.push team
             setTopTeams topTeams
       
@@ -95,7 +96,15 @@ angular.module 'ahaLuminateControllers'
                 companyId: companyItem.companyId
                 companyName: companyItem.companyName
                 amountRaised: if companyItem.amountRaised then Number(companyItem.amountRaised) else 0
-              rootAncestorCompany.amountRaisedFormatted = $filter('currency')(rootAncestorCompany.amountRaised, '$', 0)
               rootAncestorCompanies.push rootAncestorCompany
+          angular.forEach companyItems, (companyItem) ->
+            parentOrgEventId = companyItem.parentOrgEventId
+            if parentOrgEventId isnt '0'
+              childCompanyAmountRaised = if companyItem.amountRaised then Number(companyItem.amountRaised) else 0
+              angular.forEach rootAncestorCompanies, (rootAncestorCompany, rootAncestorCompanyIndex) ->
+                if rootAncestorCompany.companyId is parentOrgEventId
+                  rootAncestorCompanies[rootAncestorCompanyIndex].amountRaised = rootAncestorCompany.amountRaised + childCompanyAmountRaised
+          angular.forEach rootAncestorCompanies, (rootAncestorCompany, rootAncestorCompanyIndex) ->
+            rootAncestorCompanies[rootAncestorCompanyIndex].amountRaisedFormatted = $filter('currency') rootAncestorCompany.amountRaised / 100, '$', 0
           setTopCompanies $filter('orderBy') rootAncestorCompanies, 'amountRaised', true
   ]
