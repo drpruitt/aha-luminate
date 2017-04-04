@@ -121,8 +121,9 @@ angular.module 'ahaLuminateControllers'
         $scope.companyParticipants.participants = participants or []
         totalNumber = totalNumber or 0
         $scope.companyParticipants.totalNumber = Number totalNumber
-        $scope.totalFundraisers = totalFundraisers
+        $scope.companyParticipants.totalFundraisers = Number totalFundraisers
         console.log 'donors'+$scope.totalFundraisers
+        console.log $scope.companyParticipants
         if not $scope.$$phase
           $scope.$apply()
       
