@@ -50,7 +50,17 @@
 
 .ym-registration-utype-user-type {
   display: inline-block;
-  margin: 0 12px;
+  width: 126px;
+  margin: 0 2px;
+  
+  @media (min-width: $screen-sm-min) {
+    width: 164px;
+    margin: 0 12px;
+  }
+  
+  .btn {
+    width: 100%;
+  }
 }
 
 .ym-registration-utype-login-form {
@@ -117,11 +127,21 @@
 
 .ym-registration-ptype-donation-levels {
   padding: 18px 13px;
-  margin: 0 0 36px;
+  margin: 18px 0 36px;
   
   @media (min-width: $screen-sm-min) {
-    padding: 20px 12px;
-    margin: 0 0 48px;
+    padding: 0px 12px;
+    margin: 36px 0 48px;
+  }
+  
+  &.active {
+    padding: 18px 13px;
+    margin: 18px 0 36px;
+    
+    @media (min-width: $screen-sm-min) {
+      padding: 18px 12px;
+      margin: 18px 0 30px;
+    }
   }
   
   .btn {
