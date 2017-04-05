@@ -201,5 +201,9 @@ angular.module 'ahaLuminateControllers'
       
       $scope.submitReg = ->
         angular.element('.js--default-reg-form').submit()
+        if $scope.acceptWaiver is 'no'
+          $scope.registrationInfoErrors.errors = [
+            'You must agree to the waiver.'
+          ]
         false
   ]
