@@ -379,7 +379,11 @@
 
 .ym-registration-regsummary-contact-header, 
 .ym-registration-regsummary-donation-header {
-  margin: 0 auto;
+  margin: 0 auto 24px;
+  
+  @media (min-width: $screen-sm-min) {
+    margin: 0 auto 20px;
+  }
   
   .ym-section-header {
     float: left;
@@ -417,7 +421,7 @@
 }
 
 .ym-registration-regsummary-contact-header {
-  width: 196px;
+  width: 206px;
   
   @media (min-width: $screen-sm-min) {
     width: auto;
@@ -433,7 +437,7 @@
 }
 
 .ym-registration-regsummary-donation-header {
-  width: 182px;
+  width: 192px;
   
   @media (min-width: $screen-sm-min) {
     width: auto;
@@ -446,6 +450,19 @@
       width: auto;
     }
   }
+}
+
+.ym-registration-regsummary-donation-gift {
+  font-size: 14px;
+  margin: 0 0 28px;
+  
+  @media (min-width: $screen-sm-min) {
+    margin: 0 0 32px;
+  }
+}
+
+.ym-registration-regsummary-donation-total {
+  font-size: 16px;
 }
 
 .ym-registration-payment-form {
