@@ -41,7 +41,11 @@
         [[C:text-element:billing_addr_zip]]
         [[C:selectlist-country-element:billing_addr_country]]
       </div>
-      [[M0:friendraiser:reg_payment_page_billing_header]]
+      <div>
+        <p class="ym-section-header">
+          [[M0:friendraiser:reg_payment_page_billing_header]]
+        </p>
+      </div>
       <div class="row" ng-if="paymentQuestions.billing_first_namename || paymentQuestions.billing_last_namename" ng-cloak>
         <div class="col-sm-6">
           <div class="form-group" ng-class="{'has-error': paymentQuestions.billing_first_namename.hasError}" ng-if="paymentQuestions.billing_first_namename" ng-cloak>
