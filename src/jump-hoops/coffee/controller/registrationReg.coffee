@@ -1,8 +1,9 @@
 angular.module 'ahaLuminateControllers'
   .controller 'RegistrationRegCtrl', [
     '$scope'
+    '$filter'
     'TeamraiserRegistrationService'
-    ($scope, TeamraiserRegistrationService) ->
+    ($scope, $filter, TeamraiserRegistrationService) ->
       $scope.registrationInfoErrors = 
         errors: []
       $fieldErrors = angular.element '.ErrorMessage'
