@@ -189,8 +189,8 @@ angular.module 'ahaLuminateControllers'
                   if registrationQuestion.ng_questionName
                     setRegistrationQuestionSurveyKey registrationQuestion.ng_questionName, registrationQuestion.key
       
-      $scope.toggleAcceptWaiver = ->
-        # TODO
+      $scope.toggleAcceptWaiver = (acceptWaiver) ->
+        $scope.acceptWaiver = acceptWaiver
       
       $scope.previousStep = ->
         $scope.ng_go_back = true
@@ -200,6 +200,12 @@ angular.module 'ahaLuminateControllers'
         false
       
       $scope.submitReg = ->
-        angular.element('.js--default-reg-form').submit()
+        if $scope.acceptWaiver isnt 'yes'
+          window.scrollTo 0, 0
+          $scope.registrationInfoErrors.errors = [
+            'You must agree to the waiver.'
+          ]
+        else
+          angular.element('.js--default-reg-form').submit()
         false
   ]
