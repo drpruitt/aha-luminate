@@ -186,7 +186,11 @@ angular.module 'ahaLuminateControllers'
                       registrationQuestions[registrationQuestionIndex].ng_questionName = questionName
                 registrationQuestions = $filter('orderBy') registrationQuestions, 'ng_questionName', false
                 angular.forEach registrationQuestions, (registrationQuestion) ->
-                  setRegistrationQuestionSurveyKey registrationQuestion.ng_questionName, registrationQuestion.key
+                  if registrationQuestion.ng_questionName
+                    setRegistrationQuestionSurveyKey registrationQuestion.ng_questionName, registrationQuestion.key
+      
+      $scope.toggleAcceptWaiver = ->
+        # TODO
       
       $scope.previousStep = ->
         $scope.ng_go_back = true
