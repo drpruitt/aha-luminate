@@ -16,7 +16,9 @@ angular.module 'ahaLuminateControllers'
           fieldErrorText = fieldErrorText.replace ': is a required field', ' is a required field'
           if $fieldErrorLabel.length > 0
             fieldErrorLabel = jQuery.trim $fieldErrorLabel.text()
-            fieldErrorText = fieldErrorText.replace 'Error: Please enter a valid response.', fieldErrorLabel + ' Please enter a valid response.'
+            if fieldErrorLabel and fieldErrorLabel isnt ''
+              fieldErrorText = fieldErrorText.replace 'Error: Please enter a valid response.', fieldErrorLabel + ' - Please enter a valid response.'
+              fieldErrorText = fieldErrorText.replace ': - Please enter a valid response.', ' - Please enter a valid response.'
           $scope.registrationInfoErrors.errors.push
             text: fieldErrorText
       
