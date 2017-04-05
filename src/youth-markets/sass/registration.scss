@@ -98,13 +98,30 @@
 }
 
 .ym-registration-page-container--utype .ym-registration-page-header {
-  margin: 0 0 36px;
+  @media (min-width: $screen-sm-min) {
+    margin: 0 0 36px;
+  }
+}
+
+.ym-registration-utype-user-types {
+  margin: 0 -8px;
+  
+  @media (min-width: 360px) {
+    margin: 0;
+  }
 }
 
 .ym-registration-utype-user-type {
   display: inline-block;
+  font-size: 13px;
   width: 126px;
   margin: 0 2px;
+  
+  @media (min-width: 360px) {
+    font-size: 14px;
+    width: 136px;
+    margin: 0 3px;
+  }
   
   @media (min-width: $screen-sm-min) {
     width: 164px;
@@ -123,6 +140,18 @@
   
   .form-group {
     text-align: left;
+  }
+}
+
+.ym-registration-utype-login-header {
+  margin: 0 0 20px;
+}
+
+.ym-registration-utype-login-info {
+  margin: 0 -8px;
+  
+  @media (min-width: $screen-sm-min) {
+    margin: 0;
   }
 }
 
