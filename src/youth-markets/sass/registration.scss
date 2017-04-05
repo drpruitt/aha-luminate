@@ -23,22 +23,41 @@
 }
 
 .ym-registration-row--bottomed {
-  display: table-row;
+  @media (min-width: $screen-sm-min) {
+    display: table;
+    width: 100%;
+  }
   
-  .col-sm-6 {
-    float: none;
-    display: table-cell;
-    position: absolute;
-    bottom: 0;
-    
-    &:first-child {
-      padding-left: 0;
+  .row {
+    @media (min-width: $screen-sm-min) {
+      display: table-row;
     }
     
-    &:last-child {
-      padding-right: 0;
+    .col-sm-6 {
+      @media (min-width: $screen-sm-min) {
+        float: none;
+        display: table-cell;
+        vertical-align: bottom;
+      }
+      
+      &:first-child {
+        @media (min-width: $screen-sm-min) {
+          padding-left: 0;
+        }
+      }
+      
+      &:last-child {
+        @media (min-width: $screen-sm-min) {
+          padding-right: 0;
+        }
+      }
     }
   }
+}
+
+.ym-registration-page-container .input-lg, 
+.ym-registration-page-container select.input-lg {
+  font-size: inherit;
 }
 
 .ym-registration-form-footer {
