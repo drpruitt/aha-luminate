@@ -74,12 +74,13 @@ angular.module 'ahaLuminateControllers'
               angular.forEach companies, (company) ->
                 companyId = company.companyId
                 rootParentCompanyId = childCompanyIdMap['company-' + companyId]
-                participantCount = if company.participantCount then Number(company.participantCount) else 0
-                teamCount = if company.teamCount then Number(company.teamCount) else 0
-                angular.forEach rootAncestorCompanies, (rootAncestorCompany, rootAncestorCompanyIndex) ->
-                  if rootParentCompanyId and rootAncestorCompany.companyId is rootParentCompanyId
-                    rootAncestorCompanies[rootAncestorCompanyIndex].participantCount = rootAncestorCompanies[rootAncestorCompanyIndex].participantCount + participantCount
-                    rootAncestorCompanies[rootAncestorCompanyIndex].teamCount = rootAncestorCompanies[rootAncestorCompanyIndex].teamCount + teamCount
+                if rootParentCompanyId
+                  participantCount = if company.participantCount then Number(company.participantCount) else 0
+                  teamCount = if company.teamCount then Number(company.teamCount) else 0
+                  angular.forEach rootAncestorCompanies, (rootAncestorCompany, rootAncestorCompanyIndex) ->
+                    if rootAncestorCompany.companyId is rootParentCompanyId
+                      rootAncestorCompanies[rootAncestorCompanyIndex].participantCount = rootAncestorCompanies[rootAncestorCompanyIndex].participantCount + participantCount
+                      rootAncestorCompanies[rootAncestorCompanyIndex].teamCount = rootAncestorCompanies[rootAncestorCompanyIndex].teamCount + teamCount
               setTopCompanies rootAncestorCompanies
               $scope.sortCompanyList 'companyName'
   ]

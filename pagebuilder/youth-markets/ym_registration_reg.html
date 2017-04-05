@@ -64,7 +64,7 @@
           </div>
         </div>
       </div>
-      <div class="row" ng-if="registrationQuestions.cons_email" ng-cloak>
+      <div class="row ym-registration-row--bottomed" ng-if="registrationQuestions.cons_email" ng-cloak>
         <div class="col-sm-6">
           <div class="form-group" ng-class="{'has-error': registrationQuestions.cons_email.hasError}" ng-if="registrationQuestions.cons_email" ng-cloak>
             <label class="control-label" for="registrationInfo-cons_email">
@@ -118,7 +118,7 @@
           <span ng-bind-html="registrationQuestions.cons_email_opt_in.label"></span>
         </label>
       </div>
-      <div class="row" ng-cloak>
+      <div class="row ym-registration-row--bottomed" ng-cloak>
         <div class="col-sm-6">
           <div class="form-group" ng-class="{'has-error': registrationQuestions[registrationCustomQuestions.ym_hoops_jump_grade].hasError}" ng-if="registrationCustomQuestions.ym_hoops_jump_grade" ng-cloak>
             <label class="control-label" for="registrationInfo-{{registrationCustomQuestions.ym_hoops_jump_grade}}">

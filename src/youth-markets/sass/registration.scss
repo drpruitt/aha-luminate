@@ -22,6 +22,25 @@
   }
 }
 
+.ym-registration-row--bottomed {
+  display: table-row;
+  
+  .col-sm-6 {
+    float: none;
+    display: table-cell;
+    position: absolute;
+    bottom: 0;
+    
+    &:first-child {
+      padding-left: 0;
+    }
+    
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+}
+
 .ym-registration-form-footer {
   padding: 18px;
   margin: 26px 0 0;
@@ -36,6 +55,16 @@
   @media (min-width: $screen-sm-min) {
     width: 330px;
     margin: 0 auto;
+  }
+  
+  .btn {
+    width: 130px;
+    height: 40px;
+    
+    @media (min-width: $screen-sm-min) {
+      width: 150px;
+      height: 50px;
+    }
   }
 }
 
