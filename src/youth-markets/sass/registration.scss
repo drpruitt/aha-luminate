@@ -20,6 +20,10 @@
   
   .alert {
     text-align: left;
+    
+    ul {
+      padding-left: 20px;
+    }
   }
   
   p {
@@ -78,18 +82,26 @@
 }
 
 .ym-registration-form-footer-btns {
+  width: 254px;
+  margin: 0 auto;
+  
+  @media (min-width: 360px) {
+    width: 274px;
+  }
+  
   @media (min-width: $screen-sm-min) {
     width: 330px;
-    margin: 0 auto;
   }
   
   .btn {
     width: 122px;
     height: 40px;
+    padding: 10px 24px;
     
     @media (min-width: $screen-sm-min) {
       width: 150px;
       height: 50px;
+      padding: 12px 24px;
     }
   }
 }
@@ -331,6 +343,27 @@
   .form-control {
     border-radius: 0;
     height: 105px;
+  }
+}
+
+.ym-registration-reg-waiver-btns {
+  width: 210px;
+  margin: 15px auto 0;
+  
+  @media (min-width: 360px) {
+    width: 230px;
+  }
+  
+  @media (min-width: $screen-sm-min) {
+    width: 254px;
+  }
+  
+  .btn {
+    width: 100px;
+    
+    @media (min-width: $screen-sm-min) {
+      width: 112px;
+    }
   }
 }
 

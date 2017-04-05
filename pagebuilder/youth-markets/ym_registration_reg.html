@@ -22,20 +22,18 @@
           [[A5]]
         </div>
       ]]
-      [[?xyz.xnullynullz.xynullz.xnullyz::x[[A4]]y[[A6]]z::::
-        <div class="alert alert-danger">
-          [[?xy.xnully::x[[A4]]y::
-            [[M0:friendraiser:generic_error]]
-          ::
-            [[A4]]
-          ]]
-          <ul ng-if="registrationInfoErrors.errors.length > 0" ng-cloak>
-            <li ng-repeat="registrationInfoError in registrationInfoErrors.errors">
-              <span ng-bind-html="registrationInfoError.text"></span>
-            </li>
-          </ul>
-        </div>
-      ]]
+      <div class="alert alert-danger" ng-class="{'hidden': [[?xyz.xnullynullz.xynullz.xnullyz::x[[A4]]y[[A6]]z::true::]] && (!registrationInfoErrors || !registrationInfoErrors.errors || registrationInfoErrors.errors.length == 0)}" ng-cloak>
+        [[?xy.xnully::x[[A4]]y::
+          [[M0:friendraiser:generic_error]]
+        ::
+          [[A4]]
+        ]]
+        <ul ng-if="registrationInfoErrors.errors.length > 0" ng-cloak>
+          <li ng-repeat="registrationInfoError in registrationInfoErrors.errors">
+            <span ng-bind-html="registrationInfoError.text"></span>
+          </li>
+        </ul>
+      </div>
     </div>
     <form class="ym-registration-reg-form" method="POST" ng-submit="submitReg()">
       <div class="hidden js--registration-reg-contact-info">
@@ -262,12 +260,18 @@
           </div>
         </div>
         <div class="ym-registration-reg-waiver-btns">
-          <button type="button" class="btn btn-toggle">
-            Yes
-          </button>
-          <button type="button" class="btn btn-toggle">
-            No
-          </button>
+          <div class="clearfix">
+            <div class="pull-left">
+              <button type="button" class="btn btn-toggle" ng-class="{'active': acceptWaiver == 'yes'}" ng-click="toggleAcceptWaiver('yes')">
+                Yes
+              </button>
+            </div>
+            <div class="pull-right">
+              <button type="button" class="btn btn-toggle" ng-class="{'active': acceptWaiver == 'no'}" ng-click="toggleAcceptWaiver('no')">
+                No
+              </button>
+            </div>
+          </div>
         </div>
       </div>
       <div class="ym-registration-form-footer">
