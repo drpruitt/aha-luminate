@@ -88,6 +88,7 @@ angular.module 'ahaLuminateControllers'
           companyItems = response.getCompanyListResponse?.companyItem or []
           companyItems = [companyItems] if not angular.isArray companyItems
           rootAncestorCompanies = []
+          childCompanyIdMap = {}
           # TODO: don't include companies with $0 raised
           angular.forEach companyItems, (companyItem) ->
             if companyItem.parentOrgEventId is '0'
@@ -98,11 +99,20 @@ angular.module 'ahaLuminateControllers'
                 amountRaised: if companyItem.amountRaised then Number(companyItem.amountRaised) else 0
               rootAncestorCompanies.push rootAncestorCompany
           angular.forEach companyItems, (companyItem) ->
-            parentOrgEventId = companyItem.parentOrgEventId
-            if parentOrgEventId isnt '0'
+            if companyItem.parentOrgEventId isnt '0'
+              childCompanyIdMap['company-' + companyItem.companyId] = parentOrgEventId
+          angular.forEach childCompanyIdMap, (value, key) ->
+            if childCompanyIdMap['company-' + value]
+              childCompanyIdMap[key] = childCompanyIdMap['company-' + value]
+          angular.forEach childCompanyIdMap, (value, key) ->
+            if childCompanyIdMap['company-' + value]
+              childCompanyIdMap[key] = childCompanyIdMap['company-' + value]
+          angular.forEach companyItems, (companyItem) ->
+            if companyItem.parentOrgEventId isnt '0'
+              rootParentCompanyId = childCompanyIdMap['company-' + companyItem.companyId]
               childCompanyAmountRaised = if companyItem.amountRaised then Number(companyItem.amountRaised) else 0
               angular.forEach rootAncestorCompanies, (rootAncestorCompany, rootAncestorCompanyIndex) ->
-                if rootAncestorCompany.companyId is parentOrgEventId
+                if rootAncestorCompany.companyId is rootParentCompanyId
                   rootAncestorCompanies[rootAncestorCompanyIndex].amountRaised = rootAncestorCompany.amountRaised + childCompanyAmountRaised
           angular.forEach rootAncestorCompanies, (rootAncestorCompany, rootAncestorCompanyIndex) ->
             rootAncestorCompanies[rootAncestorCompanyIndex].amountRaisedFormatted = $filter('currency') rootAncestorCompany.amountRaised / 100, '$', 0

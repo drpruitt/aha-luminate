@@ -37,12 +37,20 @@ angular.module 'ahaLuminateControllers'
                 amountRaised: if companyItem.amountRaised then Number(companyItem.amountRaised) else 0
               rootAncestorCompanies.push rootAncestorCompany
           angular.forEach companyItems, (companyItem) ->
-            parentOrgEventId = companyItem.parentOrgEventId
-            if parentOrgEventId isnt '0'
+            if companyItem.parentOrgEventId isnt '0'
               childCompanyIdMap['company-' + companyItem.companyId] = parentOrgEventId
+          angular.forEach childCompanyIdMap, (value, key) ->
+            if childCompanyIdMap['company-' + value]
+              childCompanyIdMap[key] = childCompanyIdMap['company-' + value]
+          angular.forEach childCompanyIdMap, (value, key) ->
+            if childCompanyIdMap['company-' + value]
+              childCompanyIdMap[key] = childCompanyIdMap['company-' + value]
+          angular.forEach companyItems, (companyItem) ->
+            if companyItem.parentOrgEventId isnt '0'
+              rootParentCompanyId = childCompanyIdMap['company-' + companyItem.companyId]
               childCompanyAmountRaised = if companyItem.amountRaised then Number(companyItem.amountRaised) else 0
               angular.forEach rootAncestorCompanies, (rootAncestorCompany, rootAncestorCompanyIndex) ->
-                if rootAncestorCompany.companyId is parentOrgEventId
+                if rootAncestorCompany.companyId is rootParentCompanyId
                   rootAncestorCompanies[rootAncestorCompanyIndex].amountRaised = rootAncestorCompany.amountRaised + childCompanyAmountRaised
           angular.forEach rootAncestorCompanies, (rootAncestorCompany, rootAncestorCompanyIndex) ->
             rootAncestorCompanies[rootAncestorCompanyIndex].amountRaisedFormatted = $filter('currency') rootAncestorCompany.amountRaised / 100, '$', 0
@@ -53,6 +61,7 @@ angular.module 'ahaLuminateControllers'
               companies = response.getCompaniesResponse?.company or []
               companies = [companies] if not angular.isArray companies
               angular.forEach companies, (company) ->
+                rootParentCompanyId = childCompanyIdMap['company-' + company.companyId]
                 participantCount = if company.participantCount then Number(company.participantCount) else 0
                 teamCount = if company.teamCount then Number(company.teamCount) else 0
                 angular.forEach rootAncestorCompanies, (rootAncestorCompany, rootAncestorCompanyIndex) ->
@@ -60,7 +69,7 @@ angular.module 'ahaLuminateControllers'
                     rootAncestorCompanies[rootAncestorCompanyIndex].participantCount = participantCount
                     rootAncestorCompanies[rootAncestorCompanyIndex].teamCount = teamCount
                 angular.forEach rootAncestorCompanies, (rootAncestorCompany, rootAncestorCompanyIndex) ->
-                  if childCompanyIdMap['company-' + company.companyId] and rootAncestorCompany.companyId is childCompanyIdMap['company-' + company.companyId]
+                  if rootParentCompanyId and rootAncestorCompany.companyId is rootParentCompanyId
                     rootAncestorCompanies[rootAncestorCompanyIndex].participantCount = rootAncestorCompany.participantCount + participantCount
                     rootAncestorCompanies[rootAncestorCompanyIndex].teamCount = rootAncestorCompany.teamCount + teamCount
               setTopCompanies rootAncestorCompanies
