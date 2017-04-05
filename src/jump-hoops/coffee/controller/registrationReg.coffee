@@ -10,7 +10,9 @@ angular.module 'ahaLuminateControllers'
         $fieldError = angular.element fieldError
         if $fieldError.find('.field-error-text').length > 0
           fieldErrorText = jQuery.trim $fieldError.find('.field-error-text').text()
+          console.log 'x' + fieldErrorText + 'x'
           fieldErrorText = fieldErrorText.replace(':&nbsp;is a required field', '&nbsp;is a required field').replace(': is a required field', ' is a required field')
+          console.log 'x' + fieldErrorText + 'x'
           $scope.registrationInfoErrors.errors.push
             text: fieldErrorText
       
