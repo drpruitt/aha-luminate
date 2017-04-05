@@ -77,13 +77,12 @@ a.btn-lg {
   &:link, 
   &:visited {
     @include button-size(10px, 12px, 14px);
-    
     text-align: center;
     min-width: 120px;
+    font-weight: 500
     
     @media (min-width: $screen-sm-min) {
       @include button-size($padding-base-vertical, $padding-base-horizontal, 20px);
-      
       min-width: 180px;
     }
   }
