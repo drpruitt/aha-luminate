@@ -64,13 +64,16 @@ angular.module 'ahaLuminateControllers'
               companies = response.getCompaniesResponse?.company or []
               companies = [companies] if not angular.isArray companies
               angular.forEach companies, (company) ->
-                rootParentCompanyId = childCompanyIdMap['company-' + company.companyId]
+                companyId = company.companyId
+                rootParentCompanyId = childCompanyIdMap['company-' + companyId]
                 participantCount = if company.participantCount then Number(company.participantCount) else 0
                 teamCount = if company.teamCount then Number(company.teamCount) else 0
                 angular.forEach rootAncestorCompanies, (rootAncestorCompany, rootAncestorCompanyIndex) ->
-                  if rootAncestorCompany.companyId is company.companyId
+                  console.log rootAncestorCompany.companyId, companyId, participantCount, teamCount
+                  if rootAncestorCompany.companyId is companyId
                     rootAncestorCompanies[rootAncestorCompanyIndex].participantCount = participantCount
                     rootAncestorCompanies[rootAncestorCompanyIndex].teamCount = teamCount
+                    console.log rootAncestorCompanies[rootAncestorCompanyIndex].participantCount, rootAncestorCompanies[rootAncestorCompanyIndex].teamCount
                 angular.forEach rootAncestorCompanies, (rootAncestorCompany, rootAncestorCompanyIndex) ->
                   if rootParentCompanyId and rootAncestorCompany.companyId is rootParentCompanyId
                     console.log rootParentCompanyId, rootAncestorCompanies[rootAncestorCompanyIndex].participantCount, participantCount
