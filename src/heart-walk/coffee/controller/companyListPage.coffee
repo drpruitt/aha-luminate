@@ -2,8 +2,8 @@ angular.module 'ahaLuminateControllers'
   .controller 'CompanyListPageCtrl', [
     '$scope'
     '$filter'
-    'TeamraiserCompanyDataService'
-    ($scope, $filter, TeamraiserCompanyDataService) ->
+    'TeamraiserCompanyService'
+    ($scope, $filter, TeamraiserCompanyService) ->
       $scope.topCompanies = 
         'ng_sort_column': null
         'ng_sort_reverse': null
@@ -16,41 +16,52 @@ angular.module 'ahaLuminateControllers'
         $scope.topCompanies.companies = $filter('orderBy') $scope.topCompanies.companies, column, $scope.topCompanies.ng_sort_reverse
         $scope.topCompanies.ng_sort_column = column
       
-      TeamraiserCompanyDataService.getCompanyData()
-        .then (response) ->
-          companies = response.data.getCompanyDataResponse?.company
-          if not companies
-            $scope.topCompanies.companies = []
-          else
-            topCompanies = []
-            csvToArray = (strData) ->
-              strDelimiter = ','
-              objPattern = new RegExp ("(\\" + strDelimiter + "|\\r?\\n|\\r|^)" + "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" + "([^\"\\" + strDelimiter + "\\r\\n]*))"), "gi"
-              arrData = [[]]
-              arrMatches = null
-              while arrMatches = objPattern.exec(strData)
-                strMatchedDelimiter = arrMatches[1]
-                strMatchedValue = undefined
-                if strMatchedDelimiter.length and strMatchedDelimiter isnt strDelimiter
-                  arrData.push []
-                if arrMatches[2]
-                  strMatchedValue = arrMatches[2].replace new RegExp("\"\"", "g"), "\""
-                else
-                  strMatchedValue = arrMatches[3]
-                arrData[arrData.length - 1].push strMatchedValue
-              arrData
-            # TODO: don't include companies with $0 raised
-            angular.forEach companies, (company) ->
-              if company isnt ''
-                companyData = csvToArray(company)[0]
-                topCompanies.push
-                  "eventId": $scope.frId
-                  "companyId": companyData[0]
-                  "participantCount": Number companyData[3]
-                  "companyName": companyData[1]
-                  "teamCount": Number companyData[4]
-                  "amountRaised": Number(companyData[2]) * 100
-                  "amountRaisedFormatted": $filter('currency')(Number(companyData[2]), '$', 0)
-            $scope.topCompanies.companies = topCompanies
-            $scope.sortCompanyList 'companyName'
+      setTopCompanies = (companies) ->
+        $scope.topCompanies.companies = companies
+        if not $scope.$$phase
+          $scope.$apply()
+      TeamraiserCompanyService.getCompanyList 'include_all_companies=true', 
+        error: ->
+          setTopCompanies []
+        success: (response) ->
+          companyItems = response.getCompanyListResponse?.companyItem or []
+          companyItems = [companyItems] if not angular.isArray companyItems
+          rootAncestorCompanies = []
+          childCompanyIdMap = {}
+          angular.forEach companyItems, (companyItem) ->
+            if companyItem.parentOrgEventId is '0'
+              rootAncestorCompany =
+                eventId: $scope.frId
+                companyId: companyItem.companyId
+                companyName: companyItem.companyName
+                amountRaised: if companyItem.amountRaised then Number(companyItem.amountRaised) else 0
+              rootAncestorCompanies.push rootAncestorCompany
+          angular.forEach companyItems, (companyItem) ->
+            parentOrgEventId = companyItem.parentOrgEventId
+            if parentOrgEventId isnt '0'
+              childCompanyIdMap['company-' + companyItem.companyId] = parentOrgEventId
+              childCompanyAmountRaised = if companyItem.amountRaised then Number(companyItem.amountRaised) else 0
+              angular.forEach rootAncestorCompanies, (rootAncestorCompany, rootAncestorCompanyIndex) ->
+                if rootAncestorCompany.companyId is parentOrgEventId
+                  rootAncestorCompanies[rootAncestorCompanyIndex].amountRaised = rootAncestorCompany.amountRaised + childCompanyAmountRaised
+          angular.forEach rootAncestorCompanies, (rootAncestorCompany, rootAncestorCompanyIndex) ->
+            rootAncestorCompanies[rootAncestorCompanyIndex].amountRaisedFormatted = $filter('currency') rootAncestorCompany.amountRaised / 100, '$', 0
+          TeamraiserCompanyService.getCompanies 'list_sort_column=total&list_ascending=false&list_page_size=500', 
+            error: ->
+              setTopCompanies []
+            success: (response) ->
+              companies = response.getCompaniesResponse?.company or []
+              companies = [companies] if not angular.isArray companies
+              angular.forEach companies, (company) ->
+                participantCount = if company.participantCount then Number(company.participantCount) else 0
+                teamCount = if company.teamCount then Number(company.teamCount) else 0
+                angular.forEach rootAncestorCompanies, (rootAncestorCompany, rootAncestorCompanyIndex) ->
+                  if rootAncestorCompany.companyId is company.companyId
+                    rootAncestorCompanies[rootAncestorCompanyIndex].participantCount = participantCount
+                    rootAncestorCompanies[rootAncestorCompanyIndex].teamCount = teamCount
+                angular.forEach rootAncestorCompanies, (rootAncestorCompany, rootAncestorCompanyIndex) ->
+                  if childCompanyIdMap['company-' + company.companyId] and rootAncestorCompany.companyId is childCompanyIdMap['company-' + company.companyId]
+                    rootAncestorCompanies[rootAncestorCompanyIndex].participantCount = rootAncestorCompany.participantCount + participantCount
+                    rootAncestorCompanies[rootAncestorCompanyIndex].teamCount = rootAncestorCompany.teamCount + teamCount
+              setTopCompanies rootAncestorCompanies
   ]

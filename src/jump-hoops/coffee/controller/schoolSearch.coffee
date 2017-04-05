@@ -4,8 +4,8 @@ angular.module('ahaLuminateControllers').controller 'SchoolSearchCtrl', [
   '$filter'
   'CsvService'
   'UtilsService'
-  'TeamraiserCompanyService'
-  ($scope, $rootScope, $filter, Csv, Utils, TeamraiserCompanyService) ->
+  'SchoolService'
+  ($scope, $rootScope, $filter, Csv, Utils, SchoolService) ->
     $scope.states = []
     $scope.schools = []
     $scope.filtered = []
@@ -69,7 +69,7 @@ angular.module('ahaLuminateControllers').controller 'SchoolSearchCtrl', [
       index = $scope.filtered.indexOf value
       begin <= index and index < end
     
-    TeamraiserCompanyService.getSchools
+    SchoolService.getSchools
       success: (csv) ->
         schools = Csv.toJson csv
         $scope.schools = schools
