@@ -377,6 +377,77 @@
   }
 }
 
+.ym-registration-regsummary-contact-header, 
+.ym-registration-regsummary-donation-header {
+  margin: 0 auto;
+  
+  .ym-section-header {
+    float: left;
+    margin: 0 10px 0 0;
+    
+    @media (min-width: $screen-sm-min) {
+      display: inline-block;
+      float: none;
+    }
+  }
+  
+  .btn, 
+  a.btn {
+    &, 
+    &:link, 
+    &:visited, 
+    &:hover, 
+    &:focus, 
+    &:active {
+      float: left;
+      border-radius: 5px;
+      font-weight: 500;
+      text-transform: uppercase;
+      width: 70px;
+      height: 32px;
+      
+      @media (min-width: $screen-sm-min) {
+        display: inline-block;
+        float: none;
+        width: 76px;
+        height: 35px;
+      }
+    }
+  }
+}
+
+.ym-registration-regsummary-contact-header {
+  width: 196px;
+  
+  @media (min-width: $screen-sm-min) {
+    width: auto;
+  }
+  
+  .ym-section-header {
+    width: 126px;
+    
+    @media (min-width: $screen-sm-min) {
+      width: auto;
+    }
+  }
+}
+
+.ym-registration-regsummary-donation-header {
+  width: 182px;
+  
+  @media (min-width: $screen-sm-min) {
+    width: auto;
+  }
+  
+  .ym-section-header {
+    width: 112px;
+    
+    @media (min-width: $screen-sm-min) {
+      width: auto;
+    }
+  }
+}
+
 .ym-registration-payment-form {
   .form-group, 
   .checkbox {
