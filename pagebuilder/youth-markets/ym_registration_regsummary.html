@@ -36,10 +36,13 @@
       <div class="hidden js--registration-regsummary-participant-info">
         [[A13]]
       </div>
-      <div>
-        <p class="ym-section-header">
-          Student contact information:
-        </p>
+      <div class="ym-registration-regsummary-contact-header">
+        <div class="clearfix">
+          <p class="ym-section-header">
+            Student contact information:
+          </p>
+          <a class="btn btn-toggle" href="[[S8]]#">Edit</a>
+        </div>
       </div>
       <div>
         <span ng-bind-html="regSummaryInfo.cons_first_name"></span> <span ng-bind-html="regSummaryInfo.cons_last_name"></span>
@@ -49,17 +52,20 @@
       </div>
       [[?xx$0.00x::x[[A16]]x::::
         <hr class="ym-section-divider">
-        <div>
-          <p class="ym-section-header">
-            Your donation:
-          </p>
+        <div class="ym-registration-regsummary-donation-header">
+          <div class="clearfix">
+            <p class="ym-section-header">
+              Your donation:
+            </p>
+            <a class="btn btn-toggle" href="[[S8]]#">Edit</a>
+          </div>
         </div>
         <div>
           Donation: <span ng-bind-html="regSummaryInfo.fr_gift"></span>
         </div>
         <div class="manageable-content" data-container="edit_page_info2_container">
           <span id="page_info2_container"><strong>[[?xxnullx::x[[C1:fr_reg_summary_page_info2]]x::[[M0:friendraiser:reg_summary_page_total_price_footer]]::[[C1:fr_reg_summary_page_info2]]]]</strong></span> 
-          <span id="reg_total_amt" class="option-amount"><strong>[[A16]]</strong></span>
+          <span id="reg_total_amt" class="option-amount"><strong>[[E130:"[[A16]]" ".00" "" replaceall]]</strong></span>
         </div>
       ]]
       <div class="ym-registration-form-footer">

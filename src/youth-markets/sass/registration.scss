@@ -377,6 +377,17 @@
   }
 }
 
+.ym-registration-regsummary-contact-header, 
+.ym-registration-regsummary-donation-header {
+  .ym-section-header {
+    float: left;
+  }
+  
+  .btn {
+    float: left;
+  }
+}
+
 .ym-registration-payment-form {
   .form-group, 
   .checkbox {
