@@ -9,6 +9,7 @@ angular.module 'ahaLuminateControllers'
           nav: true
           center: true
           loop: true
+          video: true
           responsive:
             0:
               items: 1
