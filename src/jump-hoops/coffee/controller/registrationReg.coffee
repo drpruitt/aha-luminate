@@ -8,9 +8,17 @@ angular.module 'ahaLuminateControllers'
       $fieldErrors = angular.element '.ErrorMessage'
       angular.forEach $fieldErrors, (fieldError) ->
         $fieldError = angular.element fieldError
-        if $fieldError.find('.field-error-text').length > 0
-          fieldErrorText = jQuery.trim $fieldError.find('.field-error-text').text()
-          fieldErrorText = fieldErrorText.replace(':&nbsp;is a required field', '&nbsp;is a required field').replace(': is a required field', ' is a required field')
+        $fieldErrorLabel = $fieldError.closest('.form-error').find('label .input-label')
+        $fieldErrorText = $fieldError.find('.field-error-text')
+        if $fieldErrorText.length > 0
+          $fieldErrorText.html $fieldErrorText.html().replace(':&nbsp;is a required field', '&nbsp;is a required field')
+          fieldErrorText = jQuery.trim $fieldErrorText.text()
+          fieldErrorText = fieldErrorText.replace ': is a required field', ' is a required field'
+          if $fieldErrorLabel.length > 0
+            fieldErrorLabel = jQuery.trim $fieldErrorLabel.text()
+            if fieldErrorLabel and fieldErrorLabel isnt ''
+              fieldErrorText = fieldErrorText.replace 'Error: Please enter a valid response.', fieldErrorLabel + ' - Please enter a valid response.'
+              fieldErrorText = fieldErrorText.replace ': - Please enter a valid response.', ' - Please enter a valid response.'
           $scope.registrationInfoErrors.errors.push
             text: fieldErrorText
       
