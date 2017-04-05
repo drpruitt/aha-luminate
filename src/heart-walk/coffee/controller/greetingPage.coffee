@@ -114,7 +114,7 @@ angular.module 'ahaLuminateControllers'
               childCompanyAmountRaised = if companyItem.amountRaised then Number(companyItem.amountRaised) else 0
               angular.forEach rootAncestorCompanies, (rootAncestorCompany, rootAncestorCompanyIndex) ->
                 if rootAncestorCompany.companyId is rootParentCompanyId
-                  rootAncestorCompanies[rootAncestorCompanyIndex].amountRaised = rootAncestorCompany.amountRaised + childCompanyAmountRaised
+                  rootAncestorCompanies[rootAncestorCompanyIndex].amountRaised = rootAncestorCompanies[rootAncestorCompanyIndex].amountRaised + childCompanyAmountRaised
           angular.forEach rootAncestorCompanies, (rootAncestorCompany, rootAncestorCompanyIndex) ->
             rootAncestorCompanies[rootAncestorCompanyIndex].amountRaisedFormatted = $filter('currency') rootAncestorCompany.amountRaised / 100, '$', 0
           setTopCompanies $filter('orderBy') rootAncestorCompanies, 'amountRaised', true
