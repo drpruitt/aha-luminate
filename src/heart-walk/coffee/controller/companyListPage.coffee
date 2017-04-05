@@ -15,6 +15,8 @@ angular.module 'ahaLuminateControllers'
           $scope.topCompanies.ng_sort_reverse = false
         $scope.topCompanies.companies = $filter('orderBy') $scope.topCompanies.companies, column, $scope.topCompanies.ng_sort_reverse
         $scope.topCompanies.ng_sort_column = column
+        if not $scope.$$phase
+          $scope.$apply()
       
       setTopCompanies = (companies) ->
         $scope.topCompanies.companies = companies
@@ -46,6 +48,7 @@ angular.module 'ahaLuminateControllers'
           angular.forEach childCompanyIdMap, (value, key) ->
             if childCompanyIdMap['company-' + value]
               childCompanyIdMap[key] = childCompanyIdMap['company-' + value]
+          console.log childCompanyIdMap
           angular.forEach companyItems, (companyItem) ->
             if companyItem.parentOrgEventId isnt '0'
               rootParentCompanyId = childCompanyIdMap['company-' + companyItem.companyId]
