@@ -129,11 +129,20 @@
   }
   
   .btn {
+    font-size: 13px;
     width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+    
+    @media (min-width: 360px) {
+      font-size: 14px;
+    }
   }
 }
 
 .ym-registration-utype-login-form {
+  margin: 40px 0 0;
+  
   @media (min-width: $screen-sm-min) {
     margin: 56px 0 0;
   }
@@ -144,7 +153,22 @@
 }
 
 .ym-registration-utype-login-header {
-  margin: 0 0 20px;
+  max-width: 250px;
+  margin: 0 0 14px;
+  
+  @media (min-width: $screen-sm-min) {
+    max-width: none;
+    margin: 0 0 20px;
+  }
+  
+  .ym-section-header {
+    max-width: 160px;
+    margin: 0 auto;
+    
+    @media (min-width: $screen-sm-min) {
+      max-width: none;
+    }
+  }
 }
 
 .ym-registration-utype-login-info {
@@ -153,10 +177,26 @@
   @media (min-width: $screen-sm-min) {
     margin: 0;
   }
+  
+  .row {
+    .col-xs-6 {
+      &:first-child {
+        @media (max-width: $screen-xs-max) {
+          padding-right: 5px;
+        }
+      }
+      
+      &:last-child {
+        @media (max-width: $screen-xs-max) {
+          padding-left: 5px;
+        }
+      }
+    }
+  }
 }
 
 .ym-registration-utype-forgot-toggle {
-  margin: 14px 0 0;
+  margin: 8px 0 0;
   
   @media (min-width: $screen-sm-min) {
     margin: 18px 0 0;
@@ -176,11 +216,11 @@
   
   .form-control {
     display: inline-block;
-    width: 160px;
+    width: 148px;
     vertical-align: middle;
     
     @media (min-width: 360px) {
-      width: 195px;
+      width: 188px;
     }
     
     @media (min-width: 375px) {
@@ -193,6 +233,12 @@
   }
   
   .btn {
+    @media (max-width: $screen-xs-max) {
+      width: 90px;
+      padding-right: 0;
+      padding-left: 0;
+    }
+    
     @media (min-width: $screen-sm-min) {
       height: 50px;
     }
@@ -201,18 +247,10 @@
 
 .ym-registration-tfind-results {
   text-align: left;
-  margin: 28px 0 0;
+  margin: 28px -8px 0;
   
   @media (min-width: $screen-sm-min) {
     margin: 32px 0 0;
-  }
-  
-  .table-responsive {
-    margin: 0 -8px 15px;
-    
-    @media (min-width: $screen-sm-min) {
-      margin: 0 0 15px;
-    }
   }
 }
 
