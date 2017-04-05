@@ -387,7 +387,6 @@
   
   .ym-section-header {
     float: left;
-    margin: 0 10px 0 0;
     
     @media (min-width: $screen-sm-min) {
       display: inline-block;
@@ -413,8 +412,10 @@
       @media (min-width: $screen-sm-min) {
         display: inline-block;
         float: none;
+        position: relative;
+        top: -2px;
         width: 76px;
-        height: 35px;
+        height: 36px;
       }
     }
   }
@@ -429,9 +430,27 @@
   
   .ym-section-header {
     width: 126px;
+    margin: 0 10px 0 0;
     
     @media (min-width: $screen-sm-min) {
       width: auto;
+      margin: 0 8px 0 0;
+    }
+  }
+  
+  .btn, 
+  a.btn {
+    &, 
+    &:link, 
+    &:visited, 
+    &:hover, 
+    &:focus, 
+    &:active {
+      margin: 8px 0 0;
+      
+      @media (min-width: $screen-sm-min) {
+        margin: 0;
+      }
     }
   }
 }
@@ -445,15 +464,16 @@
   
   .ym-section-header {
     width: 112px;
+    margin: 4px 10px 0 0;
     
     @media (min-width: $screen-sm-min) {
       width: auto;
+      margin: 0 8px 0 0;
     }
   }
 }
 
 .ym-registration-regsummary-donation-gift {
-  font-size: 14px;
   margin: 0 0 28px;
   
   @media (min-width: $screen-sm-min) {
@@ -463,6 +483,10 @@
 
 .ym-registration-regsummary-donation-total {
   font-size: 16px;
+  
+  @media (min-width: $screen-sm-min) {
+    font-size: 20px;
+  }
 }
 
 .ym-registration-payment-form {
