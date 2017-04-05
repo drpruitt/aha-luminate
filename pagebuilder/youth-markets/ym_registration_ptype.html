@@ -83,10 +83,12 @@
           </div>
         ::]]
         <div class="form-group [[?[[A6]]::ERR_BAD_GOAL::has-error::]]">
-          <div class="manageable-content" data-container="edit_fund_goal_container">
-            <label class="control-label" id="fund_goal_container" for="fr_goal">
-              [[?xx::x[[C1:fr_your_fundraising_goal_field]]x::[[M0:friendraiser:your_fundraising_goal_field]]::[[C1:fr_your_fundraising_goal_field]]]]
-            </label>
+          <div class="sr-only">
+            <div class="manageable-content" data-container="edit_fund_goal_container">
+              <label class="control-label" id="fund_goal_container" for="fr_goal">
+                [[?xx::x[[C1:fr_your_fundraising_goal_field]]x::[[M0:friendraiser:your_fundraising_goal_field]]::[[C1:fr_your_fundraising_goal_field]]]]
+              </label>
+            </div>
           </div>
           <div class="row">
             <div class="col-xs-12 col-sm-6 col-sm-offset-3">
@@ -102,7 +104,7 @@
           [[?xTx::x[[A45]]x::::
             <div class="pull-right">
               <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-primary">
-                Next <i class="fa fa-chevron-right"></i>
+                <strong>Next</strong> <i class="fa fa-chevron-right"></i>
               </button>
             </div>
           ]]
@@ -110,7 +112,7 @@
             [[?xTx::x[[A47]]x::::
               <div class="pull-left">
                 <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-toggle" ng-click="previousStep()">
-                  <i class="fa fa-chevron-left"></i> Previous
+                  <i class="fa fa-chevron-left"></i> <strong>Previous</strong>
                 </button>
               </div>
             ]]

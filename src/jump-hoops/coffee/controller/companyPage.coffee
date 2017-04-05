@@ -13,11 +13,11 @@ angular.module 'ahaLuminateControllers'
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0]
       $scope.companyProgress = []
       $rootScope.companyName = ''
+      $scope.companyTeams = []
       $scope.eventDate = ''
       $scope.totalTeams = ''
       $scope.teamId = ''
       $scope.studentsPledgedTotal = ''
-      $scope.studentsRegisteredTotal = ''
       $scope.activity1amt = ''
       $scope.activity2amt = ''
       $scope.activity3amt = ''
@@ -29,7 +29,6 @@ angular.module 'ahaLuminateControllers'
           $scope.activity2amt = 0
           $scope.activity3amt = 0
         success: (response) ->
-          console.log response
           $scope.studentsPledgedTotal = response.data.studentsPledged
           studentsPledgedActivities = response.data.studentsPledgedByActivity
           if studentsPledgedActivities['1']
@@ -45,31 +44,6 @@ angular.module 'ahaLuminateControllers'
           else
             $scope.activity3amt = 0
 
-      
-      ###Using test to populate until school data ready in Zuri
-      ZuriService.getZooTest
-        error: (response) ->
-          $scope.studentsPledgedTotal = 0
-          $scope.activity1amt = 0
-          $scope.activity2amt = 0
-          $scope.activity3amt = 0
-        success: (response) ->
-          console.log response
-          $scope.studentsPledgedTotal = response.data.studentsPledged
-          studentsPledgedActivities = response.data.studentsPledgedByActivity
-          if studentsPledgedActivities['1']
-            $scope.activity1amt = studentsPledgedActivities['1']
-          else 
-            $scope.activity1amt = 0
-          if studentsPledgedActivities['2']
-            $scope.activity2amt = studentsPledgedActivities['2']
-          else
-            $scope.activity2amt = 0
-          if studentsPledgedActivities['3']
-            $scope.activity3amt = studentsPledgedActivities['3']
-          else
-            $scope.activity3amt = 0
-      ###
       setCompanyFundraisingProgress = (amountRaised, goal) ->
         $scope.companyProgress.amountRaised = amountRaised
         $scope.companyProgress.amountRaised = Number $scope.companyProgress.amountRaised
@@ -97,7 +71,7 @@ angular.module 'ahaLuminateControllers'
         TeamraiserCompanyService.getCompanies 'company_id=' + $scope.companyId, 
             success: (response) ->
               $scope.participantCount = response.getCompaniesResponse.company.participantCount 
-              $scope.totalTeams = response.getCompaniesResponse.company.teamCount
+              totalTeams = response.getCompaniesResponse.company.teamCount
               eventId = response.getCompaniesResponse.company.eventId
               amountRaised = response.getCompaniesResponse.company.amountRaised
               goal = response.getCompaniesResponse.company.goal
@@ -110,12 +84,11 @@ angular.module 'ahaLuminateControllers'
                 .then (response) ->
                   $scope.eventDate = response.data.coordinator.event_date
                   
-                  if $scope.totalTeams = 1
+                  if totalTeams = 1
                     $scope.teamId = response.data.coordinator.team_id
       
       getCompanyTotals()
       
-      $scope.companyTeams = []
       setCompanyTeams = (teams, totalNumber) ->
         $scope.companyTeams.teams = teams or []
         totalNumber = totalNumber or 0
@@ -127,7 +100,6 @@ angular.module 'ahaLuminateControllers'
       getCompanyTeams = ->
         TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId,
           success: (response) ->
-            setCompanyTeams()
             companyTeams = response.getTeamSearchByInfoResponse.team
             if companyTeams
               companyTeams = [companyTeams] if not angular.isArray companyTeams
@@ -139,14 +111,17 @@ angular.module 'ahaLuminateControllers'
                   companyTeam.joinTeamURL = joinTeamURL.split('/site/')[1]
               totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults
               setCompanyTeams companyTeams, totalNumberTeams
+          error: ->
+            setCompanyTeams()
       
       getCompanyTeams()
       
       $scope.companyParticipants = []
-      setCompanyParticipants = (participants, totalNumber) ->
+      setCompanyParticipants = (participants, totalNumber, totalFundraisers) ->
         $scope.companyParticipants.participants = participants or []
         totalNumber = totalNumber or 0
         $scope.companyParticipants.totalNumber = Number totalNumber
+        $scope.companyParticipants.totalFundraisers = Number totalFundraisers
         if not $scope.$$phase
           $scope.$apply()
       
@@ -158,18 +133,21 @@ angular.module 'ahaLuminateControllers'
               if numCompaniesParticipantRequestComplete is numCompanies
                 setCompanyNumParticipants numParticipants
             success: (response) ->
-              $scope.studentsRegisteredTotal = response.getParticipantsResponse.totalNumberResults
-              setCompanyParticipants()
               participants = response.getParticipantsResponse?.participant
               if participants
                 participants = [participants] if not angular.isArray participants
                 companyParticipants = []
+                totalFundraisers = ''
                 angular.forEach participants, (participant) ->
-                  if participant.name?.first
+                  if participant.amountRaised > 1
                     participant.amountRaised = Number participant.amountRaised
                     participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
+                    participant.name.last = participant.name.last.substring(0,1)+'.'
                     companyParticipants.push participant
+                    totalFundraisers++
                 totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
-                setCompanyParticipants companyParticipants, totalNumberParticipants
+                setCompanyParticipants companyParticipants, totalNumberParticipants, totalFundraisers
       getCompanyParticipants()
+
+      
   ]
