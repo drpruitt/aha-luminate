@@ -15,7 +15,8 @@ angular.module 'ahaLuminateControllers'
               stagePadding: 35
               margin : 0
             768:
-              items: 3
+              center: false
+              items: 2
               stagePadding: 60
               margin: 30
             992:

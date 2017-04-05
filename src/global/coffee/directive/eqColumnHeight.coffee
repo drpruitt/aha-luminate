@@ -9,7 +9,7 @@ angular.module 'ahaLuminateApp'
           angular.element(element).css 'height', ''
           angular.element(element).siblings('[eq-column-height]').css 'height', ''
           columnHeight = Number angular.element(element).css('height').replace('px', '')
-          angular.element(element).siblings('[eq-column-height]').each () ->
+          angular.element(element).siblings('[eq-column-height]').each ->
             siblingHeight = Number angular.element(this).css('height').replace('px', '')
             if siblingHeight > columnHeight
               columnHeight = siblingHeight

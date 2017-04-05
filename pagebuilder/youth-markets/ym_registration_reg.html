@@ -41,6 +41,11 @@
       <div class="hidden js--registration-reg-contact-info">
         [[A13]]
       </div>
+      <div class="manageable-content" data-container="edit_contact_info_hdr_container">
+        <p class="ym-section-header" id="contact_info_hdr_container">
+          [[C1:cons_info_contact_info_header]]
+        </p>
+      </div>
       <div class="row" ng-if="registrationQuestions.cons_first_name || registrationQuestions.cons_last_name" ng-cloak>
         <div class="col-sm-6">
           <div class="form-group" ng-class="{'has-error': registrationQuestions.cons_first_name.hasError}" ng-if="registrationQuestions.cons_first_name" ng-cloak>
@@ -243,12 +248,14 @@
           ::]]
         ]]
       ]]
-      <div ng-if="participationType.waiver.content" ng-cloak>
+      <div class="ym-registration-reg-waiver" ng-if="participationType.waiver.content" ng-cloak>
         <div class="form-group">
           <label class="control-label">
             Do you agree to the waiver?
           </label>
-          <div ng-bind-html="participationType.waiver.content"></div>
+          <div class="form-control">
+            <div ng-bind-html="participationType.waiver.content"></div>
+          </div>
         </div>
       </div>
       <div class="ym-registration-form-footer">
@@ -256,12 +263,12 @@
           <div class="clearfix">
             <div class="pull-right">
               <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-primary">
-                Next <i class="fa fa-chevron-right"></i>
+                <strong>Next</strong> <i class="fa fa-chevron-right"></i>
               </button>
             </div>
             <div class="pull-left">
               <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-toggle" ng-click="previousStep()">
-                <i class="fa fa-chevron-left"></i> Previous
+                <i class="fa fa-chevron-left"></i> <strong>Previous</strong>
               </button>
             </div>
           </div>
