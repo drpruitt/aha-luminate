@@ -76,7 +76,7 @@
     @media(max-width: $screen-md){
       width: calc(100% - 230px);
     }
-    @media(max-width: $screen-sm){
+    @media(max-width: $screen-xs-max){
       width:100%;
       max-width: 100%;
     }
@@ -90,7 +90,7 @@
     @media(max-width: $screen-md) {
       width: 200px;
     }
-    @media(max-width: $screen-sm){
+    @media(max-width: $screen-xs-max){
       width:100%;
       max-width: 100%;
       margin-bottom: 40px;
