@@ -114,11 +114,15 @@
       </p>
     </div>
     <form class="ym-registration-utype-forgot-form" method="POST" ng-submit="submitForgotLogin()">
-      <div class="form-group [[?xx::x[[A26]]x::::has-error]]">
-        <label class="control-label" for="existingUser-email">
-          Email Address:
-        </label>
-        <input type="text" class="form-control input-lg" name="email" id="existingUser-email" ng-model="existingUser.email" maxlength="100">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+          <div class="form-group [[?xx::x[[A26]]x::::has-error]]">
+            <label class="control-label" for="existingUser-email">
+              Email Address:
+            </label>
+            <input type="text" class="form-control input-lg" name="email" id="existingUser-email" ng-model="existingUser.email" maxlength="100">
+          </div>
+        </div>
       </div>
       <div class="ym-registration-form-footer">
         <div class="ym-registration-form-footer-btns">
