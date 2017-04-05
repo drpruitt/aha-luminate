@@ -146,10 +146,11 @@ a {
 }
 
 .ym-section-header {
-  font-size: 20px;
+  font-size: 16px;
   margin: 0 0 20px;
   
   @media (min-width: $screen-sm-min) {
+    font-size: 20px;
     margin: 0 0 24px;
   }
 }
