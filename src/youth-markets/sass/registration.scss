@@ -196,9 +196,19 @@
   }
 }
 
+.ym-registration-regsummary-form {
+  .ym-section-divider {
+    margin: 30px 0 40px;
+  }
+}
+
 .ym-registration-payment-form {
   .form-group, 
   .checkbox {
     text-align: left;
+  }
+  
+  .ym-section-divider {
+    margin: 30px 0 40px;
   }
 }
