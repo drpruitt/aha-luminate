@@ -8,6 +8,12 @@
     padding: 0;
     font-weight: lighter;
   }
+  
+  @media (max-width: $screen-xs-max) {
+    & {
+      display: none;
+    }
+  }
 }
 
 .breadcrumbseparator {
