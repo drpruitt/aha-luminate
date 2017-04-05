@@ -54,10 +54,7 @@ angular.module 'ahaLuminateControllers'
               childCompanyAmountRaised = if companyItem.amountRaised then Number(companyItem.amountRaised) else 0
               angular.forEach rootAncestorCompanies, (rootAncestorCompany, rootAncestorCompanyIndex) ->
                 if rootAncestorCompany.companyId is rootParentCompanyId
-                  console.log rootParentCompanyId, rootAncestorCompanies[rootAncestorCompanyIndex].amountRaised, childCompanyAmountRaised
                   rootAncestorCompanies[rootAncestorCompanyIndex].amountRaised = rootAncestorCompanies[rootAncestorCompanyIndex].amountRaised + childCompanyAmountRaised
-                  console.log rootParentCompanyId, rootAncestorCompanies[rootAncestorCompanyIndex].amountRaised
-          console.log rootAncestorCompanies
           angular.forEach rootAncestorCompanies, (rootAncestorCompany, rootAncestorCompanyIndex) ->
             rootAncestorCompanies[rootAncestorCompanyIndex].amountRaisedFormatted = $filter('currency') rootAncestorCompany.amountRaised / 100, '$', 0
           TeamraiserCompanyService.getCompanies 'list_sort_column=total&list_ascending=false&list_page_size=500', 
@@ -76,7 +73,9 @@ angular.module 'ahaLuminateControllers'
                     rootAncestorCompanies[rootAncestorCompanyIndex].teamCount = teamCount
                 angular.forEach rootAncestorCompanies, (rootAncestorCompany, rootAncestorCompanyIndex) ->
                   if rootParentCompanyId and rootAncestorCompany.companyId is rootParentCompanyId
+                    console.log rootParentCompanyId, rootAncestorCompanies[rootAncestorCompanyIndex].participantCount, participantCount
                     rootAncestorCompanies[rootAncestorCompanyIndex].participantCount = rootAncestorCompanies[rootAncestorCompanyIndex].participantCount + participantCount
+                    console.log rootAncestorCompanies[rootAncestorCompanyIndex].participantCount
                     rootAncestorCompanies[rootAncestorCompanyIndex].teamCount = rootAncestorCompanies[rootAncestorCompanyIndex].teamCount + teamCount
               setTopCompanies rootAncestorCompanies
               $scope.sortCompanyList 'companyName'
