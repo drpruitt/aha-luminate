@@ -41,7 +41,7 @@
           [[A20]]
         </div>
       ]]
-      <p>
+      <p class="ym-section-header">
         Did you participate last year?
       </p>
     </div>
@@ -65,21 +65,31 @@
     </div>
     <div ng-class="{'hidden': userType != 'existing'}" ng-cloak>
       <form class="ym-registration-utype-login-form" method="POST" ng-submit="submitUtypeLogin()">
+        <p class="ym-section-header">
+          Welcome Back! Please Log In:
+        </p>
+        <p>
+          As a returning student, we will need to ask you to update your current information.
+        </p>
         <div class="row">
-          <div class="col-xs-6">
-            <div class="form-group [[?xx::x[[A20]]x::::[[?x[[M0:login_admin:err_username_password_required]]x[[M0:login_admin:err_invalid_userid]]x::x[[A20]]x::has-error::]]]]">
-              <label class="control-label" for="existingUser-username">
-                [[M0:global:user_name_field]]
-              </label>
-              <input type="text" class="form-control input-lg" name="USERNAME" id="existingUser-username" ng-model="existingUser.username" maxlength="[[S0:USER_MAX_LOGIN_LEN]]">
-            </div>
-          </div>
-          <div class="col-xs-6">
-            <div class="form-group [[?xx::x[[A20]]x::::[[?x[[M0:login_admin:err_username_password_required]]x[[M0:login_admin:err_invalid_password]]x::x[[A20]]x::has-error::]]]]">
-              <label class="control-label" for="existingUser-password">
-                [[M0:global:user_password_field]]
-              </label>
-              <input type="password" class="form-control input-lg" name="Password" id="existingUser-password" ng-model="existingUser.password" maxlength="[[S0:USER_MAX_PASSWD_LEN]]">
+          <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+            <div class="row">
+              <div class="col-xs-6">
+                <div class="form-group [[?xx::x[[A20]]x::::[[?x[[M0:login_admin:err_username_password_required]]x[[M0:login_admin:err_invalid_userid]]x::x[[A20]]x::has-error::]]]]">
+                  <label class="control-label" for="existingUser-username">
+                    [[M0:global:user_name_field]]
+                  </label>
+                  <input type="text" class="form-control input-lg" name="USERNAME" id="existingUser-username" ng-model="existingUser.username" maxlength="[[S0:USER_MAX_LOGIN_LEN]]">
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="form-group [[?xx::x[[A20]]x::::[[?x[[M0:login_admin:err_username_password_required]]x[[M0:login_admin:err_invalid_password]]x::x[[A20]]x::has-error::]]]]">
+                  <label class="control-label" for="existingUser-password">
+                    [[M0:global:user_password_field]]
+                  </label>
+                  <input type="password" class="form-control input-lg" name="Password" id="existingUser-password" ng-model="existingUser.password" maxlength="[[S0:USER_MAX_PASSWD_LEN]]">
+                </div>
+              </div>
             </div>
           </div>
         </div>

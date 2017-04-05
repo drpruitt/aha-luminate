@@ -117,15 +117,16 @@
 }
 
 .ym-registration-utype-login-form {
-  text-align: left;
-  
   @media (min-width: $screen-sm-min) {
     margin: 56px 0 0;
+  }
+  
+  .form-group {
+    text-align: left;
   }
 }
 
 .ym-registration-utype-forgot-toggle {
-  text-align: center;
   margin: 14px 0 0;
   
   @media (min-width: $screen-sm-min) {
