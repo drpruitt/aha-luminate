@@ -262,12 +262,18 @@
           </div>
         </div>
         <div class="ym-registration-reg-waiver-btns">
-          <button type="button" class="btn btn-toggle">
-            Yes
-          </button>
-          <button type="button" class="btn btn-toggle">
-            No
-          </button>
+          <div class="clearfix">
+            <div class="pull-left">
+              <button type="button" class="btn btn-toggle" ng-click="toggleAcceptWaiver(true)">
+                Yes
+              </button>
+            </div>
+            <div class="pull-right">
+              <button type="button" class="btn btn-toggle" ng-click="toggleAcceptWaiver(false)">
+                No
+              </button>
+            </div>
+          </div>
         </div>
       </div>
       <div class="ym-registration-form-footer">

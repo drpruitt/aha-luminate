@@ -189,8 +189,8 @@ angular.module 'ahaLuminateControllers'
                   if registrationQuestion.ng_questionName
                     setRegistrationQuestionSurveyKey registrationQuestion.ng_questionName, registrationQuestion.key
       
-      $scope.toggleAcceptWaiver = ->
-        # TODO
+      $scope.toggleAcceptWaiver = (acceptWaiver) ->
+        $scope.acceptWaiver = acceptWaiver
       
       $scope.previousStep = ->
         $scope.ng_go_back = true

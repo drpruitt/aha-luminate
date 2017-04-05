@@ -78,18 +78,26 @@
 }
 
 .ym-registration-form-footer-btns {
+  width: 254px;
+  margin: 0 auto;
+  
+  @media (min-width: 360px) {
+    width: 274px;
+  }
+  
   @media (min-width: $screen-sm-min) {
     width: 330px;
-    margin: 0 auto;
   }
   
   .btn {
     width: 122px;
     height: 40px;
+    padding: 10px 24px;
     
     @media (min-width: $screen-sm-min) {
       width: 150px;
       height: 50px;
+      padding: 12px 24px;
     }
   }
 }
@@ -331,6 +339,16 @@
   .form-control {
     border-radius: 0;
     height: 105px;
+  }
+}
+
+.ym-registration-reg-waiver-btns {
+  .btn {
+    width: 100px;
+    
+    @media (min-width: $screen-sm-min) {
+      width: 112px;
+    }
   }
 }
 
