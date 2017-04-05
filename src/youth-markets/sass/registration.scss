@@ -1,10 +1,12 @@
 .ym-registration-page-container {
+  font-size: 14px;
   text-align: center;
   max-width: 630px;
   padding: 0 8px;
   margin: 0 auto;
   
   @media (min-width: $screen-sm-min) {
+    font-size: inherit;
     padding: 0;
   }
 }
@@ -104,9 +106,11 @@
 }
 
 .ym-registration-utype-user-types {
+  padding: 0 0 10px;
   margin: 0 -8px;
   
   @media (min-width: 360px) {
+    padding: 0 0 40px;
     margin: 0;
   }
 }
@@ -141,10 +145,10 @@
 }
 
 .ym-registration-utype-login-form {
-  margin: 40px 0 0;
+  margin: 30px 0 0;
   
   @media (min-width: $screen-sm-min) {
-    margin: 56px 0 0;
+    margin: 16px 0 0;
   }
   
   .form-group {
@@ -154,7 +158,7 @@
 
 .ym-registration-utype-login-header {
   max-width: 250px;
-  margin: 0 0 14px;
+  margin: 0 auto 14px;
   
   @media (min-width: $screen-sm-min) {
     max-width: none;
@@ -163,8 +167,9 @@
   
   .ym-section-header {
     max-width: 160px;
-    margin: 0 auto;
-    
+    margin-left: auto;
+    margin-right: auto;
+
     @media (min-width: $screen-sm-min) {
       max-width: none;
     }
@@ -314,7 +319,7 @@
   }
   
   .ym-section-divider {
-    margin: 30px -8px 40px;
+    margin: 15px -8px 30px;
     
     @media (min-width: $screen-sm-min) {
       margin: 30px 0 40px;
@@ -331,7 +336,11 @@
 
 .ym-registration-regsummary-form {
   .ym-section-divider {
-    margin: 30px 0 40px;
+    margin: 15px -8px 30px;
+    
+    @media (min-width: $screen-sm-min) {
+      margin: 30px 0 40px;
+    }
   }
 }
 
@@ -342,6 +351,10 @@
   }
   
   .ym-section-divider {
-    margin: 30px 0 40px;
+    margin: 15px -8px 30px;
+    
+    @media (min-width: $screen-sm-min) {
+      margin: 30px 0 40px;
+    }
   }
 }

@@ -1,8 +1,9 @@
 angular.module 'ahaLuminateControllers'
   .controller 'RegistrationRegCtrl', [
     '$scope'
+    '$filter'
     'TeamraiserRegistrationService'
-    ($scope, TeamraiserRegistrationService) ->
+    ($scope, $filter, TeamraiserRegistrationService) ->
       $scope.registrationInfoErrors = 
         errors: []
       $fieldErrors = angular.element '.ErrorMessage'
@@ -177,12 +178,19 @@ angular.module 'ahaLuminateControllers'
               registrationQuestions = response.processRegistrationRequest?.primaryRegistration?.question
               if registrationQuestions
                 registrationQuestions = [registrationQuestions] if not angular.isArray registrationQuestions
-                angular.forEach registrationQuestions, (registrationQuestion) ->
+                angular.forEach registrationQuestions, (registrationQuestion, registrationQuestionIndex) ->
                   registrationQuestionKey = registrationQuestion.key
                   registrationQuestionId = registrationQuestion.id
                   angular.forEach $scope.registrationQuestions, (questionObj, questionName) ->
                     if questionName.match('_' + registrationQuestionId + '$')
-                      setRegistrationQuestionSurveyKey questionName, registrationQuestionKey
+                      registrationQuestions[registrationQuestionIndex].ng_questionName = questionName
+                registrationQuestions = $filter('orderBy') registrationQuestions, 'ng_questionName', false
+                angular.forEach registrationQuestions, (registrationQuestion) ->
+                  if registrationQuestion.ng_questionName
+                    setRegistrationQuestionSurveyKey registrationQuestion.ng_questionName, registrationQuestion.key
+      
+      $scope.toggleAcceptWaiver = ->
+        # TODO
       
       $scope.previousStep = ->
         $scope.ng_go_back = true
