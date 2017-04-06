@@ -5,7 +5,7 @@ angular.module 'trPcControllers'
     '$translate'
     '$route'
     '$httpParamSerializer'
-    'AuthService'
-    ($rootScope, $scope, $translate, $route, $httpParamSerializer, AuthService) ->
+    'NgPcAuthService'
+    ($rootScope, $scope, $translate, $route, $httpParamSerializer, NgPcAuthService) ->
       # TODO
   ]

@@ -8,9 +8,9 @@ angular.module 'trPcControllers'
     '$httpParamSerializer'
     '$translate'
     '$uibModal'
-    'TeamraiserEmailService'
-    'ContactService'
-    ($rootScope, $scope, $window, $routeParams, $location, $httpParamSerializer, $translate, $uibModal, TeamraiserEmailService, ContactService) ->
+    'NgPcTeamraiserEmailService'
+    'NgPcContactService'
+    ($rootScope, $scope, $window, $routeParams, $location, $httpParamSerializer, $translate, $uibModal, NgPcTeamraiserEmailService, NgPcContactService) ->
       $scope.filter = $routeParams.filter
       
       $scope.emailPromises = []

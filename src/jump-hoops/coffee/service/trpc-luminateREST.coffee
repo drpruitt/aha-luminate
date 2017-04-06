@@ -5,8 +5,8 @@ angular.module 'trPcApp'
     '$http'
     '$timeout'
     '$uibModal'
-    'NgPc_APP_INFO'
-    ($rootScope, $q, $http, $timeout, $uibModal, NgPc_APP_INFO) ->
+    'NG_PC_APP_INFO'
+    ($rootScope, $q, $http, $timeout, $uibModal, NG_PC_APP_INFO) ->
       request: (apiServlet, requestData, includeAuth, includeFrId) ->
         if not requestData
           new Error 'Angular TeamRaiser Participant Center: API request for ' + apiServlet + ' with no requestData'
@@ -20,7 +20,7 @@ angular.module 'trPcApp'
             else
               this.request apiServlet, requestData, includeAuth, includeFrId
           else
-            requestData += '&v=1.0&api_key=' + $rootScope.apiKey + '&response_format=json&suppress_response_codes=true&ng_tr_pc_v=' + NgPc_APP_INFO.version
+            requestData += '&v=1.0&api_key=' + $rootScope.apiKey + '&response_format=json&suppress_response_codes=true&ng_tr_pc_v=' + NG_PC_APP_INFO.version
             if includeAuth and not $rootScope.authToken
               new Error 'Angular TeamRaiser Participant Center: No Luminate Online auth token is defined.'
             else
