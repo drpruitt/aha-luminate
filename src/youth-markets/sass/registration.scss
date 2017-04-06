@@ -97,14 +97,15 @@
   }
   
   .btn {
+    font-size: 16px;
     width: 122px;
-    height: 40px;
-    padding: 10px 24px;
+    height: 45px;
+    padding: 10px 0;
     
     @media (min-width: $screen-sm-min) {
       width: 150px;
       height: 50px;
-      padding: 12px 24px;
+      padding: 12px 0;
     }
   }
 }
@@ -465,7 +466,7 @@
         display: inline-block;
         float: none;
         position: relative;
-        top: -2px;
+        top: -3px;
         width: 76px;
         height: 36px;
       }
@@ -542,6 +543,22 @@
 }
 
 .ym-registration-payment-form {
+  .row {
+    .col-xs-6 {
+      &:first-child {
+        @media (max-width: $screen-xs-max) {
+          padding-right: 5px;
+        }
+      }
+      
+      &:last-child {
+        @media (max-width: $screen-xs-max) {
+          padding-left: 5px;
+        }
+      }
+    }
+  }
+  
   .form-group, 
   .checkbox {
     text-align: left;
