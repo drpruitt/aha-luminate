@@ -113,9 +113,9 @@
     <div class="col-sm-8 col-md-9">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h2 class="panel-title">
-            {{messageTypeName}}
-          </h2>
+          <span class="panel-title">
+            <span ng-bind-html="messageTypeName"></span>
+          </span>
         </div>
         <div class="panel-body" ng-if="emailMessages.totalNumber == 0">
           <div ng-if="messageType == 'draft'">
