@@ -4,13 +4,12 @@ angular.module 'trPcControllers'
     '$scope'
     '$timeout'
     '$filter'
-    '$translate'
     '$uibModal'
     'NgPcTeamraiserRegistrationService'
     'NgPcTeamraiserProgressService'
     'NgPcTeamraiserTeamService'
     'NgPcTeamraiserCompanyService'
     'NgPcTeamraiserShortcutURLService'
-    ($rootScope, $scope, $timeout, $filter, $translate, $uibModal, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserCompanyService, NgPcTeamraiserShortcutURLService) ->
+    ($rootScope, $scope, $timeout, $filter, $uibModal, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserCompanyService, NgPcTeamraiserShortcutURLService) ->
       $scope.dashboardPromises = []
   ]

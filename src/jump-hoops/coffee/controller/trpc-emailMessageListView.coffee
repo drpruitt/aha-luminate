@@ -3,11 +3,10 @@ angular.module 'trPcControllers'
     '$scope'
     '$routeParams'
     '$location'
-    '$translate'
     '$uibModal'
     'NgPcTeamraiserEmailService'
     'NgPcContactService'
-    ($scope, $routeParams, $location, $translate, $uibModal, NgPcTeamraiserEmailService, NgPcContactService) ->
+    ($scope, $routeParams, $location, $uibModal, NgPcTeamraiserEmailService, NgPcContactService) ->
       $scope.messageType = $routeParams.messageType
       
       $scope.emailPromises = []
