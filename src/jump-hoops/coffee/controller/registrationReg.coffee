@@ -200,7 +200,7 @@ angular.module 'ahaLuminateControllers'
         false
       
       $scope.submitReg = ->
-        if $scope.acceptWaiver isnt 'yes'
+        if $scope.acceptWaiver isnt 'yes' and not $scope.ng_go_back
           window.scrollTo 0, 0
           $scope.registrationInfoErrors.errors = [
             {
