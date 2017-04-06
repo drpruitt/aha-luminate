@@ -13,7 +13,7 @@
   <div ng-class="{'hidden': showForgotLogin}" ng-cloak>
     <div class="ym-registration-page-header">
       <div class="manageable-content" data-container="edit_ut_title_container">
-        <h2 class="h5" id="ut_title_container">
+        <h2 class="h4" id="ut_title_container">
           [[C1:fr_ut_title]]
         </h2>
       </div>
@@ -41,7 +41,7 @@
           [[A20]]
         </div>
       ]]
-      <p>
+      <p class="ym-section-header">
         Did you participate last year?
       </p>
     </div>
@@ -65,21 +65,35 @@
     </div>
     <div ng-class="{'hidden': userType != 'existing'}" ng-cloak>
       <form class="ym-registration-utype-login-form" method="POST" ng-submit="submitUtypeLogin()">
-        <div class="row">
-          <div class="col-xs-6">
-            <div class="form-group [[?xx::x[[A20]]x::::[[?x[[M0:login_admin:err_username_password_required]]x[[M0:login_admin:err_invalid_userid]]x::x[[A20]]x::has-error::]]]]">
-              <label class="control-label" for="existingUser-username">
-                [[M0:global:user_name_field]]
-              </label>
-              <input type="text" class="form-control input-lg" name="USERNAME" id="existingUser-username" ng-model="existingUser.username" maxlength="[[S0:USER_MAX_LOGIN_LEN]]">
-            </div>
-          </div>
-          <div class="col-xs-6">
-            <div class="form-group [[?xx::x[[A20]]x::::[[?x[[M0:login_admin:err_username_password_required]]x[[M0:login_admin:err_invalid_password]]x::x[[A20]]x::has-error::]]]]">
-              <label class="control-label" for="existingUser-password">
-                [[M0:global:user_password_field]]
-              </label>
-              <input type="password" class="form-control input-lg" name="Password" id="existingUser-password" ng-model="existingUser.password" maxlength="[[S0:USER_MAX_PASSWD_LEN]]">
+        <div class="ym-registration-utype-login-header">
+          <p class="ym-section-header">
+            Welcome Back! Please Log In:
+          </p>
+          <p>
+            As a returning student, we will need to ask you to update your current information.
+          </p>
+        </div>
+        <div class="ym-registration-utype-login-info">
+          <div class="row">
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+              <div class="row">
+                <div class="col-xs-6">
+                  <div class="form-group [[?xx::x[[A20]]x::::[[?x[[M0:login_admin:err_username_password_required]]x[[M0:login_admin:err_invalid_userid]]x::x[[A20]]x::has-error::]]]]">
+                    <label class="control-label" for="existingUser-username">
+                      [[M0:global:user_name_field]]
+                    </label>
+                    <input type="text" class="form-control input-lg" name="USERNAME" id="existingUser-username" ng-model="existingUser.username" maxlength="[[S0:USER_MAX_LOGIN_LEN]]">
+                  </div>
+                </div>
+                <div class="col-xs-6">
+                  <div class="form-group [[?xx::x[[A20]]x::::[[?x[[M0:login_admin:err_username_password_required]]x[[M0:login_admin:err_invalid_password]]x::x[[A20]]x::has-error::]]]]">
+                    <label class="control-label" for="existingUser-password">
+                      [[M0:global:user_password_field]]
+                    </label>
+                    <input type="password" class="form-control input-lg" name="Password" id="existingUser-password" ng-model="existingUser.password" maxlength="[[S0:USER_MAX_PASSWD_LEN]]">
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -89,7 +103,12 @@
         <div class="ym-registration-form-footer">
           <div class="ym-registration-form-footer-btns">
             <div class="clearfix">
-              <div class="pull-right">
+              <div class="visible-xs">
+                <button type="submit" class="btn btn-primary">
+                  <strong>Next</strong> <i class="fa fa-chevron-right"></i>
+                </button>
+              </div>
+              <div class="pull-right hidden-xs">
                 <button type="submit" class="btn btn-primary">
                   <strong>Next</strong> <i class="fa fa-chevron-right"></i>
                 </button>
@@ -114,23 +133,27 @@
       </p>
     </div>
     <form class="ym-registration-utype-forgot-form" method="POST" ng-submit="submitForgotLogin()">
-      <div class="form-group [[?xx::x[[A26]]x::::has-error]]">
-        <label class="control-label" for="existingUser-email">
-          Email Address:
-        </label>
-        <input type="text" class="form-control input-lg" name="email" id="existingUser-email" ng-model="existingUser.email" maxlength="100">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+          <div class="form-group [[?xx::x[[A26]]x::::has-error]]">
+            <label class="control-label" for="existingUser-email">
+              Email Address:
+            </label>
+            <input type="text" class="form-control input-lg" name="email" id="existingUser-email" ng-model="existingUser.email" maxlength="100">
+          </div>
+        </div>
       </div>
       <div class="ym-registration-form-footer">
         <div class="ym-registration-form-footer-btns">
           <div class="clearfix">
             <div class="pull-right">
               <button type="submit" class="btn btn-primary">
-                Submit
+                <strong>Submit</strong>
               </button>
             </div>
             <div class="pull-left">
               <a class="btn btn-toggle" ng-click="toggleForgotLogin('hide')">
-                <i class="fa fa-chevron-left"></i> Cancel
+                <i class="fa fa-chevron-left"></i> <strong>Cancel</strong>
               </a>
             </div>
           </div>

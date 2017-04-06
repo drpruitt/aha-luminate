@@ -4,9 +4,10 @@ angular.module 'trPcApp'
     '$q'
     '$http'
     '$timeout'
+    '$uibModal'
     'APP_INFO'
     'NG_PC_APP_INFO'
-    ($rootScope, $q, $http, $timeout, APP_INFO, NG_PC_APP_INFO) ->
+    ($rootScope, $q, $http, $timeout, $uibModal, APP_INFO, NG_PC_APP_INFO) ->
       request: (apiServlet, requestData, includeAuth, includeFrId) ->
         if not requestData
           new Error 'Angular TeamRaiser Participant Center: API request for ' + apiServlet + ' with no requestData'
@@ -39,8 +40,11 @@ angular.module 'trPcApp'
               .then (response) ->
                 # TODO: check for error code 204 except for when method is login, 2603 except for when method is getRegistration
                 if response.data.errorResponse and ['3', '5', '14', '2604'].indexOf(response.data.errorResponse.code) isnt -1
-                  # TODO: if not $rootScope.loginModal
-                    # TODO: loginModal
+                  if not $rootScope.loginModal
+                    $rootScope.loginModal = $uibModal.open 
+                      scope: $rootScope
+                      backdrop: 'static'
+                      templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/login.html'
                   $q.reject()
                 else
                   response
