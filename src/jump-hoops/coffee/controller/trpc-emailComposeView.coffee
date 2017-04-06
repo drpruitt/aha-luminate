@@ -6,10 +6,10 @@ angular.module 'trPcControllers'
     '$timeout'
     '$httpParamSerializer'
     '$uibModal'
-    'TeamraiserEventService'
-    'TeamraiserEmailService'
-    'ContactService'
-    ($rootScope, $scope, $routeParams, $timeout, $httpParamSerializer, $uibModal, TeamraiserEventService, TeamraiserEmailService, ContactService) ->
+    'NgPcTeamraiserEventService'
+    'NgPcTeamraiserEmailService'
+    'NgPcContactService'
+    ($rootScope, $scope, $routeParams, $timeout, $httpParamSerializer, $uibModal, NgPcTeamraiserEventService, NgPcTeamraiserEmailService, NgPcContactService) ->
       $scope.messageType = $routeParams.messageType
       $scope.messageId = $routeParams.messageId
       
