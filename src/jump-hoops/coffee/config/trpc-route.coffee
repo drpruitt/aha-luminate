@@ -6,24 +6,24 @@ if window.location.href.indexOf('pagename=jump_hoops_participant_center') isnt -
         $routeProvider
           .when '/dashboard', 
             templateUrl: '../angular-teamraiser-participant-center/dist/html/view/dashboard.html'
-            controller: 'DashboardViewCtrl'
+            controller: 'NgPcDashboardViewCtrl'
           .when '/email', 
             redirectTo: '/email/compose'
           .when '/email/compose/:messageType?/:messageId?', 
             templateUrl: '../angular-teamraiser-participant-center/dist/html/view/emailCompose.html'
-            controller: 'EmailComposeViewCtrl'
+            controller: 'NgPcEmailComposeViewCtrl'
           .when '/email/message/:messageType', 
             redirectTo: '/email/message/:messageType/list'
           .when '/email/message/:messageType/list', 
             templateUrl: '../angular-teamraiser-participant-center/dist/html/view/emailMessageList.html'
-            controller: 'EmailMessageListViewCtrl'
+            controller: 'NgPcEmailMessageListViewCtrl'
           .when '/email/contacts', 
             redirectTo: '/email/contacts/email_rpt_show_all/list'
           .when '/email/contacts/:filter', 
             redirectTo: '/email/contacts/:filter/list'
           .when '/email/contacts/:filter/list', 
             templateUrl: '../angular-teamraiser-participant-center/dist/html/view/emailContactsList.html'
-            controller: 'EmailContactsListViewCtrl'
+            controller: 'NgPcEmailContactsListViewCtrl'
           .otherwise 
             redirectTo: do ->
               # redirect PC1-style URLs
@@ -34,7 +34,7 @@ if window.location.href.indexOf('pagename=jump_hoops_participant_center') isnt -
               else
                 '/dashboard'
     ]
-
+  
   angular.module 'trPcApp'
     .run [
       '$rootScope'
