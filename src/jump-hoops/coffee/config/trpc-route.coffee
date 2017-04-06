@@ -42,6 +42,7 @@ if window.location.href.indexOf('pagename=jump_hoops_participant_center') isnt -
       '$location'
       '$route'
       '$uibModal'
+      'APP_INFO'
       'NgPcAuthService'
       'NgPcTeamraiserEventService'
       'NgPcTeamraiserRegistrationService'
