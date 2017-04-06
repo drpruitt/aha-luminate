@@ -53,17 +53,10 @@ angular.module 'trPcControllers'
             response
         $scope.emailPromises.push contactCountPromise
       
-      $translate ['drafts_drafts_label', 'sent_sent_message_label']
-        .then (translations) ->
-          messageTypeNames = 
-            draft: translations.drafts_drafts_label
-            sentMessage: 'Sent Mail'
-          $scope.messageTypeName = messageTypeNames[$scope.messageType]
-        , (translationIds) ->
-          messageTypeNames = 
-            draft: translationIds.drafts_drafts_label
-            sentMessage: 'Sent Mail'
-          $scope.messageTypeName = messageTypeNames[$scope.messageType]
+      messageTypeNames = 
+        draft: 'Drafts'
+        sentMessage: 'Sent Mail'
+      $scope.messageTypeName = messageTypeNames[$scope.messageType]
       
       $scope.selectMessage = (messageId) ->
         if $scope.messageType is 'draft'
