@@ -42,22 +42,12 @@ if window.location.href.indexOf('pagename=jump_hoops_participant_center') isnt -
       '$location'
       '$route'
       '$uibModal'
+      'APP_INFO'
       'NgPcAuthService'
       'NgPcTeamraiserEventService'
       'NgPcTeamraiserRegistrationService'
-      ($rootScope, $location, $route, $uibModal, NgPcAuthService, NgPcTeamraiserEventService, NgPcTeamraiserRegistrationService) ->
+      ($rootScope, $location, $route, $uibModal, APP_INFO, NgPcAuthService, NgPcTeamraiserEventService, NgPcTeamraiserRegistrationService) ->
         $rootScope.$on '$routeChangeStart', ($event, next, current) ->
-          # set active tab
-          if next.originalPath
-            if next.originalPath.indexOf('/email') is 0
-              $rootScope.activeTab = 1
-            else if next.originalPath is '/edit-page'
-              $rootScope.activeTab = 2
-            else if next.originalPath is '/tools'
-              $rootScope.activeTab = 3
-            else
-              $rootScope.activeTab = 0
-          
           # ensure window is scrolled
           window.scrollTo 0, 0
           
