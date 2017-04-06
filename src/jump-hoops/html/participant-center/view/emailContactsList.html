@@ -80,9 +80,9 @@
           </a>
         </div>
         <div class="list-group ng-pc-nav-list-group">
-          <h3 class="list-group-item-heading">
+          <h2 class="h5 list-group-item-heading">
             Contacts
-          </h3>
+          </h2>
           <a class="list-group-item" ng-class="{'active': filter == 'email_rpt_show_all'}" href="{{baseUrl}}#/email/contacts/email_rpt_show_all/list">
             <span class="badge">{{contactCounts.email_rpt_show_all}}</span>
             All Contacts
@@ -133,10 +133,10 @@
           </button>
         </div>
         <div class="contacts-list__actions-manage">
-          <button class="btn btn-primary-inverted text-uppercase" ng-click="addContact()">
+          <button class="btn btn-toggle text-uppercase" ng-click="addContact()">
             Add<span class="hidden-xs"> Contact</span>
           </button> 
-          <button class="btn btn-primary-inverted text-uppercase" ng-click="importContacts()">
+          <button class="btn btn-toggle text-uppercase" ng-click="importContacts()">
             Import<span class="hidden-xs"> Contacts</span>
           </button>
         </div>
@@ -158,7 +158,7 @@
         <div class="panel-body" ng-if="contactCounts.email_rpt_show_all != '0' && addressBookContacts.totalNumber == 0">
           No contacts to display.
         </div>
-        <contact-list contacts="addressBookContacts.contacts" toggle-contact="toggleContact" select-contact="selectContact" delete-contact="deleteContact" ng-if="addressBookContacts.totalNumber > 0"></contact-list>
+        <pc-contact-list contacts="addressBookContacts.contacts" toggle-contact="toggleContact" select-contact="selectContact" delete-contact="deleteContact" ng-if="addressBookContacts.totalNumber > 0"></pc-contact-list>
         <div class="panel-footer" ng-if="addressBookContacts.totalNumber > 10">
           <div class="ym-list-pagination">
             <nav>
