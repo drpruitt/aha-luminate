@@ -5,8 +5,9 @@ angular.module 'trPcApp'
     '$http'
     '$timeout'
     '$uibModal'
+    'APP_INFO'
     'NG_PC_APP_INFO'
-    ($rootScope, $q, $http, $timeout, $uibModal, NG_PC_APP_INFO) ->
+    ($rootScope, $q, $http, $timeout, $uibModal, APP_INFO, NG_PC_APP_INFO) ->
       request: (apiServlet, requestData, includeAuth, includeFrId) ->
         if not requestData
           new Error 'Angular TeamRaiser Participant Center: API request for ' + apiServlet + ' with no requestData'
@@ -43,7 +44,7 @@ angular.module 'trPcApp'
                     $rootScope.loginModal = $uibModal.open 
                       scope: $rootScope
                       backdrop: 'static'
-                      templateUrl: '../angular-teamraiser-participant-center/dist/html/modal/login.html'
+                      templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/login.html'
                   $q.reject()
                 else
                   response
