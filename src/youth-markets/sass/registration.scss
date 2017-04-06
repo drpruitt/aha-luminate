@@ -130,8 +130,8 @@
   margin: 0 -8px;
   
   @media (min-width: 360px) {
-    padding: 0 0 40px;
-    margin: 4px 0 0;
+    padding: 8px 0 40px;
+    margin: 0;
   }
 }
 
@@ -264,6 +264,8 @@
   }
   
   .btn {
+    font-size: inherit;
+
     @media (max-width: $screen-xs-max) {
       width: 90px;
       height: 40px;
@@ -301,6 +303,15 @@
   text-align: center;
 }
 
+.ym-registration-ptype-donation-info {
+  .ym-section-header {
+    @media (min-width: $screen-sm-min) {
+      max-width: 550px;
+      margin: 0 auto 14px;
+    }
+  }
+}
+
 .ym-registration-ptype-donation-levels {
   padding: 18px 13px 3px;
   margin: 18px -8px 36px;
@@ -311,8 +322,6 @@
   }
   
   &.active {
-    margin: 18px 0 36px;
-    
     @media (min-width: $screen-sm-min) {
       padding: 18px 12px;
       margin: 18px 0 30px;
@@ -320,9 +329,19 @@
   }
   
   .btn {
+    padding: 12px 14px;
     margin: 0 5px 15px;
     
+    @media (min-width: 360px) {
+      padding: 12px 20px;
+    }
+    
+    @media (min-width: 400px) {
+      padding: 12px 24px;
+    }
+    
     @media (min-width: $screen-sm-min) {
+      font-size: 18px;
       margin: 0 8px;
     }
   }
