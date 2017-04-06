@@ -16,9 +16,9 @@ angular.module 'ahaLuminateControllers'
       $scope.teamId = $dataRoot.data('team-id') if $dataRoot.data('team-id') isnt ''
       $scope.eventDate =''
       $rootScope.numTeams = ''
-      $scope.challengeId = ''
-      $scope.challengeName = ''
-      $scope.challengeCompleted = ''
+      $scope.challengeId = null
+      $scope.challengeName = null
+      $scope.challengeCompleted = 0
 
       ZuriService.getZooStudent frId+'/'+$scope.participantId,
         success: (response) ->
@@ -28,7 +28,9 @@ angular.module 'ahaLuminateControllers'
 
         error: (response) ->
           $scope.challengeName = null
+          $scope.challengeId = null
           $scope.challengeCompleted = 0
+
 
       TeamraiserCompanyService.getCompanies 'company_id=' + $scope.companyId, 
         success: (response) ->

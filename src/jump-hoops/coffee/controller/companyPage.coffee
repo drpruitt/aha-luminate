@@ -122,6 +122,7 @@ angular.module 'ahaLuminateControllers'
         totalNumber = totalNumber or 0
         $scope.companyParticipants.totalNumber = Number totalNumber
         $scope.companyParticipants.totalFundraisers = Number totalFundraisers
+        console.log $scope.companyParticipants
         if not $scope.$$phase
           $scope.$apply()
       
@@ -133,11 +134,12 @@ angular.module 'ahaLuminateControllers'
               if numCompaniesParticipantRequestComplete is numCompanies
                 setCompanyNumParticipants numParticipants
             success: (response) ->
+              console.log response
               participants = response.getParticipantsResponse?.participant
+              companyParticipants = []
+              totalFundraisers = ''
               if participants
                 participants = [participants] if not angular.isArray participants
-                companyParticipants = []
-                totalFundraisers = ''
                 angular.forEach participants, (participant) ->
                   if participant.amountRaised > 1
                     participant.amountRaised = Number participant.amountRaised
@@ -145,8 +147,9 @@ angular.module 'ahaLuminateControllers'
                     participant.name.last = participant.name.last.substring(0,1)+'.'
                     companyParticipants.push participant
                     totalFundraisers++
-                totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
-                setCompanyParticipants companyParticipants, totalNumberParticipants, totalFundraisers
+              totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
+              setCompanyParticipants companyParticipants, totalNumberParticipants, totalFundraisers
+
       getCompanyParticipants()
 
       

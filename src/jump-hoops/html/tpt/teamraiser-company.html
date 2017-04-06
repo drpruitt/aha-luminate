@@ -9,13 +9,13 @@
       </h4>
       <div class="ym-progress__cta">
         <div ng-if="companyTeams.totalNumber > 1">
-          <a class="btn btn-primary btn-lg" href="TRR?fr_id=[[S334:fr_id]]&pg=tfind&fr_tm_opt=existing&company_id=[[S334:company_id]]">
-            Join Team
+          <a class="btn btn-primary btn-lg" ng-href="TRR?fr_id=[[S334:fr_id]]&pg=tfind&fr_tm_opt=existing&company_id=[[S334:company_id]]">
+            Sign Up
           </a>
         </div>
         <div ng-if="companyTeams.totalNumber == 1">
-          <a class="btn btn-primary btn-lg" ng-href="TRR?fr_id=[[S334:fr_id]]&pg=tfind&fr_tm_opt=existing&fr_tjoin={{teamId}}">
-            Join Team
+          <a class="btn btn-primary btn-lg" ng-href="TRR?fr_id=[[S334:fr_id]]&pg=tfind&fr_tm_opt=existing&fr_team_id={{teamId}}&company_id=[[S334:company_id]]">
+            Sign Up
           </a>
           <a class="btn btn-primary btn-lg" ng-href="#" data-toggle="modal" data-target="#schoolDonation">
             Donate
@@ -60,7 +60,7 @@
             team members registered.
           </p>
         </div>
-        <div class="ym-promo-block__item ym-promo-block__item--exercise ym-promo-block--circle">
+        <div class="ym-promo-block__item ym-promo-block__item--exercise ym-promo-block--circle" ng-if="activity1amt != 0">
           <h2 class="ym-headline">
             {{activity1amt}}
           </h2>
@@ -68,7 +68,7 @@
             daily challenges of excersing 60 minutes a day!
           </p>
         </div>
-        <div class="ym-promo-block__item ym-promo-block__item--water ym-promo-block--circle">
+        <div class="ym-promo-block__item ym-promo-block__item--water ym-promo-block--circle" ng-if="activity2amt != 0">
           <h2 class="ym-headline">
             {{activity2amt}}
           </h2>
@@ -76,7 +76,7 @@
             daily challenges of choosing water over sugar drinks
           </p>
         </div>
-        <div class="ym-promo-block__item ym-promo-block__item--food ym-promo-block--circle">
+        <div class="ym-promo-block__item ym-promo-block__item--food ym-promo-block--circle" ng-if="activity3amt != 0">
           <h2 class="ym-headline">
             {{activity3amt}}
           </h2>
@@ -110,8 +110,8 @@
       <div class="ym-donor-list" ng-if="companyParticipants.totalFundraisers > 0">
         <company-participant-list company-id="'[[T6:[[S334:company_id]]]]'" participants="companyParticipants.participants"></company-participant-list>
       </div>
-      <div ng-if="companyParticipants.totalFundraisers < 1 && companyTeams.totalNumber == 1">
-        <p>Your School has no donations. Be the first to donate.</p>
+      <div class="text-center" ng-if="companyParticipants.totalFundraisers < 1 && companyTeams.totalNumber == 1">
+        <p>Your School has no donations yet. Be the first to donate.</p>
         <a class="btn btn-primary btn-lg" ng-href="#" data-toggle="modal" data-target="#schoolDonation">
           Donate
         </a>
