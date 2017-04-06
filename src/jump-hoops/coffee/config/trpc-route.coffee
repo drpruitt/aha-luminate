@@ -2,27 +2,28 @@ if window.location.href.indexOf('pagename=jump_hoops_participant_center') isnt -
   angular.module 'trPcApp'
     .config [
       '$routeProvider'
-      ($routeProvider) ->
+      'APP_INFO'
+      ($routeProvider, APP_INFO) ->
         $routeProvider
           .when '/dashboard', 
-            templateUrl: '../angular-teamraiser-participant-center/dist/html/view/dashboard.html'
+            templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/view/dashboard.html'
             controller: 'NgPcDashboardViewCtrl'
           .when '/email', 
             redirectTo: '/email/compose'
           .when '/email/compose/:messageType?/:messageId?', 
-            templateUrl: '../angular-teamraiser-participant-center/dist/html/view/emailCompose.html'
+            templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/view/emailCompose.html'
             controller: 'NgPcEmailComposeViewCtrl'
           .when '/email/message/:messageType', 
             redirectTo: '/email/message/:messageType/list'
           .when '/email/message/:messageType/list', 
-            templateUrl: '../angular-teamraiser-participant-center/dist/html/view/emailMessageList.html'
+            templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/view/emailMessageList.html'
             controller: 'NgPcEmailMessageListViewCtrl'
           .when '/email/contacts', 
             redirectTo: '/email/contacts/email_rpt_show_all/list'
           .when '/email/contacts/:filter', 
             redirectTo: '/email/contacts/:filter/list'
           .when '/email/contacts/:filter/list', 
-            templateUrl: '../angular-teamraiser-participant-center/dist/html/view/emailContactsList.html'
+            templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/view/emailContactsList.html'
             controller: 'NgPcEmailContactsListViewCtrl'
           .otherwise 
             redirectTo: do ->
@@ -78,7 +79,7 @@ if window.location.href.indexOf('pagename=jump_hoops_participant_center') isnt -
               $rootScope.loginModal = $uibModal.open 
                 scope: $rootScope
                 backdrop: 'static'
-                templateUrl: '../angular-teamraiser-participant-center/dist/html/modal/login.html'
+                templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/login.html'
           
           # event config unknown
           if not $rootScope.teamraiserConfig
