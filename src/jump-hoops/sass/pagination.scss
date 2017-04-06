@@ -56,3 +56,26 @@
     }
   }
 }
+
+table {
+  &.paginator {
+    .pg-items {
+      display: none;
+    }
+    
+    td {
+      padding: 2px 2px;
+      line-height: 1.5em;
+      text-align: center;
+      
+      a {
+        display: block;
+        padding: 2px 15px;
+        margin: -2px -7px;
+        background: #fff;
+        font-weight:bold;
+        text-decoration:none;
+      }
+    }
+  }
+}
