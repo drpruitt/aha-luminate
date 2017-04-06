@@ -6,10 +6,11 @@ angular.module 'trPcControllers'
     '$timeout'
     '$httpParamSerializer'
     '$uibModal'
+    'APP_INFO'
     'NgPcTeamraiserEventService'
     'NgPcTeamraiserEmailService'
     'NgPcContactService'
-    ($rootScope, $scope, $routeParams, $timeout, $httpParamSerializer, $uibModal, NgPcTeamraiserEventService, NgPcTeamraiserEmailService, NgPcContactService) ->
+    ($rootScope, $scope, $routeParams, $timeout, $httpParamSerializer, $uibModal, APP_INFO, NgPcTeamraiserEventService, NgPcTeamraiserEmailService, NgPcContactService) ->
       $scope.messageType = $routeParams.messageType
       $scope.messageId = $routeParams.messageId
       
@@ -231,7 +232,7 @@ angular.module 'trPcControllers'
               $scope.emailPreview.body = messageBody
               $scope.emailPreviewModal = $uibModal.open 
                 scope: $scope
-                templateUrl: '../angular-teamraiser-participant-center/dist/html/modal/emailPreview.html'
+                templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/emailPreview.html'
                 size: 'lg'
       
       $scope.selectStationery = ->
