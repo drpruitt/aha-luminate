@@ -12,7 +12,7 @@
 }
 
 .ym-registration-page-header {
-  margin: 0 0 24px;
+  margin: 0 0 18px;
   
   @media (min-width: $screen-sm-min) {
     margin: 0 0 26px;
@@ -165,7 +165,7 @@
 }
 
 .ym-registration-utype-login-form {
-  margin: 30px 0 0;
+  margin: 10px 0 0;
   
   @media (min-width: $screen-sm-min) {
     margin: 8px 0 0;
@@ -178,7 +178,7 @@
 
 .ym-registration-utype-login-header {
   max-width: 250px;
-  margin: 0 auto 14px;
+  margin: 0 auto 10px;
   
   @media (min-width: 375px) {
     max-width: 300px;
@@ -285,6 +285,16 @@
   @media (min-width: $screen-sm-min) {
     margin: 32px 0 0;
   }
+  
+  .btn {
+    font-size: 12px;
+    width: 90px;
+    
+    @media (min-width: $screen-sm-min) {
+      font-size: inherit;
+      width: 108px;
+    }
+  }
 }
 
 .ym-registration-tfind-no-results {
@@ -292,16 +302,15 @@
 }
 
 .ym-registration-ptype-donation-levels {
-  padding: 18px 13px;
+  padding: 18px 13px 3px;
   margin: 18px -8px 36px;
   
   @media (min-width: $screen-sm-min) {
-    padding: 0px 12px;
+    padding: 0 12px;
     margin: 36px 0 48px;
   }
   
   &.active {
-    padding: 18px 13px;
     margin: 18px 0 36px;
     
     @media (min-width: $screen-sm-min) {
@@ -321,7 +330,7 @@
 
 .ym-registration-ptype-donation-message {
   font-weight: 700;
-  margin: 18px 0 0;
+  margin: 3px 0 15px;
   
   @media (min-width: $screen-sm-min) {
     margin: 28px 0 0;
