@@ -67,7 +67,7 @@ angular.module 'trPcControllers'
           subject: ''
           prepend_salutation: true
           message_body: ''
-          layout_id: if defaultStationeryId is not '-1' then defaultStationeryId else ''
+          layout_id: if defaultStationeryId isnt '-1' then defaultStationeryId else ''
       setEmailComposerDefaults()
       
       setEmailMessageBody = (messageBody = '') ->

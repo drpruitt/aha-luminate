@@ -1,42 +1,42 @@
 <form ng-submit="saveUpdatedContact()">
   <div class="modal-header">
-    <h2 class="modal-title">
-      <span translate="contact_details_edit_info"></span>
+    <h2 class="h5 modal-title">
+      Edit Information
     </h2>
   </div>
   <div class="modal-body">
     <div uib-alert class="alert-danger" ng-if="editContactError">
-      {{editContactError}}
+      <div ng-bind-html="editContactError"></div>
     </div>
     <div class="form-group">
       <label for="updatedContactFirstName">
-        <span translate="contact_edit_first_name_label"></span>
+        First Name
       </label>
-      <input type="text" class="form-control" id="updatedContactFirstName" ng-model="updatedContact.first_name" aria-label="{{ 'contact_edit_first_name_label' | translate }}">
+      <input type="text" class="form-control" id="updatedContactFirstName" ng-model="updatedContact.first_name" aria-label="First Name">
     </div>
     <div class="form-group">
       <label for="updatedContactLastName">
-        <span translate="contact_edit_last_name_label"></span>
+        Last Name
       </label>
-      <input type="text" class="form-control" id="updatedContactLastName" ng-model="updatedContact.last_name" aria-label="{{ 'contact_edit_last_name_label' | translate }}">
+      <input type="text" class="form-control" id="updatedContactLastName" ng-model="updatedContact.last_name" aria-label="Last Name">
     </div>
     <div class="form-group">
       <label for="updatedContactEmail">
-        <span translate="contact_edit_email_label"></span>
+        Email
       </label>
-      <input type="email" class="form-control" id="updatedContactEmail" ng-model="updatedContact.email" aria-label="{{ 'contact_edit_email_label' | translate }}" required>
+      <input type="email" class="form-control" id="updatedContactEmail" ng-model="updatedContact.email" aria-label="Email" required>
     </div>
   </div>
   <div class="modal-footer">
     <div class="clearfix">
       <div class="pull-left">
         <button type="button" class="btn btn-primary-inverted text-uppercase" ng-click="cancelEditContact()">
-          <span translate="contact_edit_cancel_link"></span>
+          Cancel
         </button>
       </div>
       <div class="pull-right">
         <button type="submit" class="btn btn-primary text-uppercase">
-          <span translate="contact_edit_save_button"></span>
+          Save
         </button>
       </div>
     </div>
