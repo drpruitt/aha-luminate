@@ -172,8 +172,15 @@
   max-width: 250px;
   margin: 0 auto 14px;
   
-  @media (min-width: $screen-sm-min) {
+  @media (min-width: 375px) {
+    max-width: 300px;
+  }
+  
+  @media (min-width: 630px) {
     max-width: none;
+  }
+  
+  @media (min-width: $screen-sm-min) {
     margin: 0 0 20px;
   }
   
@@ -181,8 +188,8 @@
     max-width: 160px;
     margin-left: auto;
     margin-right: auto;
-
-    @media (min-width: $screen-sm-min) {
+    
+    @media (min-width: 375px) {
       max-width: none;
     }
   }
@@ -252,11 +259,13 @@
   .btn {
     @media (max-width: $screen-xs-max) {
       width: 90px;
+      height: 40px;
       padding-right: 0;
       padding-left: 0;
     }
     
     @media (min-width: $screen-sm-min) {
+      width: 125px;
       height: 50px;
     }
   }
@@ -269,6 +278,10 @@
   @media (min-width: $screen-sm-min) {
     margin: 32px 0 0;
   }
+}
+
+.ym-registration-tfind-no-results {
+  text-align: center;
 }
 
 .ym-registration-ptype-donation-levels {
