@@ -20,7 +20,11 @@
   
   h4, 
   .h4 {
-    margin: 0 0 14px;
+    margin: 0 0 10px;
+    
+    @media (min-width: $screen-sm-min) {
+      margin: 0 0 14px;
+    }
   }
   
   .alert {
@@ -110,9 +114,20 @@
   margin: 0;
 }
 
+.ym-registration-page-container--utype .ym-registration-page-header {
+  h4, 
+  .h4 {
+    margin: 0 0 14px;
+    
+    @media (min-width: $screen-sm-min) {
+      margin: 0 0 14px;
+    }
+  }
+}
+
 .ym-registration-utype-user-types {
   padding: 0 0 10px;
-  margin: 4px -8px 0;
+  margin: 0 -8px;
   
   @media (min-width: 360px) {
     padding: 0 0 40px;
@@ -178,7 +193,7 @@
   }
   
   .ym-section-header {
-    max-width: 184px;
+    max-width: 210px;
     margin: 0 auto 10px;
     
     @media (min-width: 375px) {
@@ -296,7 +311,7 @@
   }
   
   .btn {
-    margin: 0 5px;
+    margin: 0 5px 15px;
     
     @media (min-width: $screen-sm-min) {
       margin: 0 8px;
