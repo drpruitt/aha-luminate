@@ -1,12 +1,11 @@
 .btn, 
 a.btn {
   &.btn-primary {
-    color: #ffffff;
-    
     &, 
     &:link, 
     &:visited {
       background: $event-primary;
+      color: #ffffff;
     }
     
     &:hover, 
@@ -17,18 +16,32 @@ a.btn {
   }
   
   &.btn-secondary {
-    color: #ffffff;
-    
     &, 
     &:link, 
     &:visited {
       background: $event-secondary;
+      color: #ffffff;
     }
     
     &:hover, 
     &:focus, 
     &:active {
       background: $event-secondary-dark;
+    }
+  }
+  
+  &.btn-success {
+    &, 
+    &:link, 
+    &:visited {
+      background: $brand-success;
+      color: #ffffff;
+    }
+    
+    &:hover, 
+    &:focus, 
+    &:active {
+      background: $brand-success;
     }
   }
 }
@@ -38,8 +51,6 @@ div.responsive {
   a.btn, 
   .step-button, 
   button.step-button {
-    color: #ffffff;
-    
     &, 
     &:link, 
     &:visited {
