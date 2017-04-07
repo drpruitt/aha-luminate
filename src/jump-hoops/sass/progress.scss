@@ -1,10 +1,12 @@
 .ym-progress {
   background: $event-secondary-medium;
 }
-.ym-progress__thermometer{
+
+.ym-progress__thermometer {
   border: 8px solid #38b5bd;
 }
+
 .ym-progress__thermometer--fill {
-    background: url('/aha-luminate/dist/jump-hoops/image/hj_thermometer-full.png') no-repeat top left;
-    height: 35px;
+  background: url('../image/hj_thermometer-full.png') no-repeat top left;
+  height: 35px;
 }
