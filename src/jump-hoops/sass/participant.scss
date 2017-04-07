@@ -115,7 +115,23 @@
   margin: 0 0 30px;
 }
 
+.ym-pc-dashboard-coordinator-students-box {
+  text-align: center;
+}
+
 .ym-pc-dashboard-coordinator-resources-section {
   background-color: $event-accent-light;
   padding: 36px;
+  margin: 0 0 30px;
+  
+  .ym-pc-dashboard-coordinator-resources-options {
+    text-align: center;
+    
+    .ym-pc-dashboard-section-header {
+      h5, 
+      .h5 {
+        color: $event-secondary;
+      }
+    }
+  }
 }
