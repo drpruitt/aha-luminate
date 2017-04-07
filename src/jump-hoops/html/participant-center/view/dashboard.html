@@ -39,6 +39,8 @@
             <a class="btn btn-primary" ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{consId}}">
               Donate to Personal Page
             </a>
+            <strong><span ng-bind-html="participantProgress.raisedFormatted"></span></strong>
+            <strong><span ng-bind-html="participantProgress.goalFormatted"></span></strong>
             <a ng-click="editPersonalGoal()">
               Update Personal Goal
             </a>
@@ -47,11 +49,15 @@
             <div class="ym-progress__thermometer">
               <div class="ym-progress__thermometer--fill" ng-style="{'width': companyProgress.percent + '%'}"></div>
             </div>
+            <strong><span ng-bind-html="companyProgress.raisedFormatted"></span></strong>
+            <strong><span ng-bind-html="companyProgress.goalFormatted"></span></strong>
           </div>
           <div ng-class="{'hidden': dashboardProgressType != 'team'}" ng-cloak>
             <div class="ym-progress__thermometer">
               <div class="ym-progress__thermometer--fill" ng-style="{'width': teamProgress.percent + '%'}"></div>
             </div>
+            <strong><span ng-bind-html="teamProgress.raisedFormatted"></span></strong>
+            <strong><span ng-bind-html="teamProgress.goalFormatted"></span></strong>
             <div ng-if="participantRegistration.aTeamCaptain == 'true'" ng-cloak>
               <a ng-click="editTeamGoal()">
                 Update Team Goal
@@ -92,6 +98,24 @@
               <h3 class="h5">
                 My Donors
               </h3>
+              <div ng-if="donorContactCounts.email_rpt_show_unthanked_donors > 0" ng-cloak>
+                You have new donors who haven't received a thank-you email!
+                <a class="btn btn-primary">
+                  Say Thanks
+                </a>
+              </div>
+              <div ng-if="donorContactCounts.email_rpt_show_nondonors_followup > 0" ng-cloak>
+                Great job sending emails. Some of your friends haven't donated!
+                <a class="btn btn-primary">
+                  Follow Up
+                </a>
+              </div>
+              <div ng-if="donorContactCounts.email_rpt_show_donors > 0" ng-cloak>
+                Review all of your donations on the Reports page.
+                <a class="btn btn-primary">
+                  View All
+                </a>
+              </div>
             </div>
           </div>
         </div>

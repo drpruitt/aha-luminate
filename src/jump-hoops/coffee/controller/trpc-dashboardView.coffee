@@ -10,8 +10,9 @@ angular.module 'trPcControllers'
     'NgPcTeamraiserProgressService'
     'NgPcTeamraiserTeamService'
     'NgPcTeamraiserCompanyService'
+    'NgPcContactService'
     'NgPcTeamraiserShortcutURLService'
-    ($rootScope, $scope, $filter, $uibModal, APP_INFO, ZuriService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserCompanyService, NgPcTeamraiserShortcutURLService) ->
+    ($rootScope, $scope, $filter, $uibModal, APP_INFO, ZuriService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserCompanyService, NgPcContactService, NgPcTeamraiserShortcutURLService) ->
       $scope.dashboardPromises = []
       
       $scope.dashboardProgressType = 'personal'
@@ -82,6 +83,20 @@ angular.module 'trPcControllers'
       
       $scope.updateTeamGoal = ->
         # TODO
+      
+      $scope.donorContactCounts = {}
+      donorContactFilters = [
+        'email_rpt_show_nondonors_followup'
+        'email_rpt_show_unthanked_donors'
+        'email_rpt_show_donors'
+      ]
+      angular.forEach donorContactFilters, (filter) ->
+        donorContactCountPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=1'
+          .then (response) ->
+            totalNumberResults = response.data.getTeamraiserAddressBookContactsResponse?.totalNumberResults
+            $scope.donorContactCounts[filter] = if totalNumberResults then Number(totalNumberResults) else 0
+            response
+        $scope.dashboardPromises.push donorContactCountPromise
       
       $scope.personalChallenge = {}
       ZuriService.getZooStudent $scope.frId + '/' + $scope.consId, 
