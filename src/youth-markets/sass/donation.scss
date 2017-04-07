@@ -4,6 +4,13 @@
       display: none;
     }
   }
+
+  .section-header-container, 
+  h2 {
+    color: $event-secondary;
+    border-color: $event-secondary;
+    font-family: $event-font;
+  }
   
   .form-progress-bar, 
   div.form-row.don-standard-levels, 
@@ -64,6 +71,7 @@
       font-size: 18px;
       font-weight: 700;
       text-align: center;
+      color: $event-secondary;
     }
   }
   
@@ -294,6 +302,7 @@
     border: 0;
     padding: 20px;
     clear: both;
+    background: $event-secondary-light;
     
     button.finish-step {
       display: block;
