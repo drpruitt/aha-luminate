@@ -1,21 +1,3 @@
-.form-control, 
-div.responsive input[type="text"], 
-div.responsive select, 
-div.responsive textarea {
-  border: 1px solid $event-secondary;
-}
-
-.checkbox label, 
-input[type="checkbox"] + label {
-  &:before {
-    border-color: $event-secondary;
-  }
-  
-  &:after {
-    color: $event-primary;
-  }
-}
-
 select {
   &, 
   &.form-control {
@@ -31,11 +13,5 @@ select {
     &::-ms-expand {
       display: none;
     }
-  }
-}
-
-.has-error {
-  .form-control {
-    border: 1px solid $event-secondary;
   }
 }
