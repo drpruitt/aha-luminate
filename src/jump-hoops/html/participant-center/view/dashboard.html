@@ -13,7 +13,26 @@
               Progress
             </h3>
           </div>
-          <div>
+          <div class="ym-pc-dashboard-progress-types">
+            <div class="clearfix">
+              <div class="ym-pc-dashboard-progress-type" ng-class="{'active': dashboardProgressType == 'personal'}">
+                <a ng-click="toggleProgressType('personal')">
+                  <strong>Personal</strong>
+                </a>
+              </div>
+              <div class="ym-pc-dashboard-progress-type" ng-class="{'active': dashboardProgressType == 'company'}">
+                <a ng-click="toggleProgressType('company')">
+                  <strong>School</strong>
+                </a>
+              </div>
+              <div class="ym-pc-dashboard-progress-type" ng-class="{'active': dashboardProgressType == 'team'}">
+                <a ng-click="toggleProgressType('team')">
+                  <strong>Team</strong>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div ng-class="{'hidden': dashboardProgressType != 'personal'}" ng-cloak>
             <div class="ym-progress__thermometer">
               <div class="ym-progress__thermometer--fill" ng-style="{'width': participantProgress.percent + '%'}"></div>
             </div>
@@ -24,14 +43,19 @@
               Update Personal Goal
             </a>
           </div>
-          <div>
+          <div ng-class="{'hidden': dashboardProgressType != 'company'}" ng-cloak>
             <div class="ym-progress__thermometer">
               <div class="ym-progress__thermometer--fill" ng-style="{'width': companyProgress.percent + '%'}"></div>
             </div>
           </div>
-          <div>
+          <div ng-class="{'hidden': dashboardProgressType != 'team'}" ng-cloak>
             <div class="ym-progress__thermometer">
               <div class="ym-progress__thermometer--fill" ng-style="{'width': teamProgress.percent + '%'}"></div>
+            </div>
+            <div ng-if="participantRegistration.aTeamCaptain == 'true'" ng-cloak>
+              <a ng-click="editTeamGoal()">
+                Update Team Goal
+              </a>
             </div>
           </div>
         </div>

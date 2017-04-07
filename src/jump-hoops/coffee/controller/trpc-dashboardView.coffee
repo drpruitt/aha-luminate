@@ -14,6 +14,10 @@ angular.module 'trPcControllers'
     ($rootScope, $scope, $filter, $uibModal, APP_INFO, ZuriService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserCompanyService, NgPcTeamraiserShortcutURLService) ->
       $scope.dashboardPromises = []
       
+      $scope.dashboardProgressType = 'personal'
+      $scope.toggleProgressType = (progressType) ->
+        $scope.dashboardProgressType = progressType
+      
       fundraisingProgressPromise = NgPcTeamraiserProgressService.getProgress()
         .then (response) ->
           participantProgress = response.data.getParticipantProgressResponse?.personalProgress
@@ -66,6 +70,17 @@ angular.module 'trPcControllers'
         $scope.editPersonalGoalModal.close()
       
       $scope.updatePersonalGoal = ->
+        # TODO
+      
+      $scope.editTeamGoal = ->
+        $scope.editTeamGoalModal = $uibModal.open 
+          scope: $scope
+          templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/editTeamGoal.html'
+      
+      $scope.cancelEditTeamGoal = ->
+        $scope.editTeamGoalModal.close()
+      
+      $scope.updateTeamGoal = ->
         # TODO
       
       $scope.personalChallenge = {}
