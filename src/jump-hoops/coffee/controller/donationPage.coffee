@@ -15,16 +15,13 @@ angular.module 'ahaLuminateControllers'
       $scope.donationLevels = []
       
       $scope.giftType = (type) ->
-        checkBox = angular.element('.generic-repeat-label-checkbox-container input').prop 'checked'
+        #checkBox = angular.element('.generic-repeat-label-checkbox-container input').prop 'checked'
+        console.log type
         
         if type is 'monthly'
-          if checkBox is false
-            angular.element('.generic-repeat-label-checkbox-container input').click()
           angular.element('.ym-donation-levels__type--onetime').removeClass 'active'
           angular.element('.ym-donation-levels__type--monthly').addClass 'active'
         else
-          if checkBox is true
-            angular.element('.generic-repeat-label-checkbox-container input').click()
           angular.element('.ym-donation-levels__type--onetime').addClass 'active'
           angular.element('.ym-donation-levels__type--monthly').removeClass 'active'
       
@@ -120,6 +117,7 @@ angular.module 'ahaLuminateControllers'
       loadForm = ->
         DonationService.getDonationFormInfo 'form_id=' + $scope.donationInfo.form_id + '&fr_id=' + $scope.donationInfo.fr_id
           .then (response) ->
+            console.log response
             levels = response.data.getDonationFormInfoResponse.donationLevels.donationLevel
             
             angular.forEach levels, (level) ->
@@ -127,7 +125,7 @@ angular.module 'ahaLuminateControllers'
               amount = level.amount.formatted
               amount = amount.split('.')[0]
               userSpecified = level.userSpecified
-              inputId = '#level_standardexpanded' + levelId
+              inputId = '#level_installmentexpanded' + levelId
               classLevel = 'level' + levelId
               
               angular.element(inputId).parent().parent().parent().parent().addClass classLevel
@@ -143,6 +141,8 @@ angular.module 'ahaLuminateControllers'
                 userSpecified: userSpecified
                 levelLabel: levelLabel
                 levelChecked: levelChecked
+
+            console.log levels
         
         optional = '<span class="ym-optional">Optional</span>'
         
