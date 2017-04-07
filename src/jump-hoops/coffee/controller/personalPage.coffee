@@ -19,25 +19,24 @@ angular.module 'ahaLuminateControllers'
       $scope.challengeId = null
       $scope.challengeName = null
       $scope.challengeCompleted = 0
-
-      ZuriService.getZooStudent frId+'/'+$scope.participantId,
+      
+      ZuriService.getZooStudent frId + '/' + $scope.participantId, 
         success: (response) ->
           $scope.challengeId = response.data.challenges.current
           $scope.challengeName = response.data.challenges.text
           $scope.challengeCompleted = response.data.challenges.completed
-
+        
         error: (response) ->
           $scope.challengeName = null
           $scope.challengeId = null
           $scope.challengeCompleted = 0
-
-
+      
       TeamraiserCompanyService.getCompanies 'company_id=' + $scope.companyId, 
         success: (response) ->
           coordinatorId = response.getCompaniesResponse?.company.coordinatorId
           eventId = response.getCompaniesResponse?.company.eventId
           $rootScope.numTeams = response.getCompaniesResponse.company.teamCount
-
+          
           TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
             .then (response) ->
               $scope.eventDate = response.data.coordinator.event_date
@@ -70,7 +69,7 @@ angular.module 'ahaLuminateControllers'
           if not $scope.$$phase
             $scope.$apply()
         , 500
-
+      
       TeamraiserParticipantService.getParticipants 'fr_id=' + $scope.frId + '&first_name=' + encodeURIComponent('%%') + '&last_name=' + encodeURIComponent('%') + '&list_filter_column=reg.cons_id&list_filter_text=' + $scope.participantId, 
         error: ->
           setParticipantProgress()
@@ -80,7 +79,7 @@ angular.module 'ahaLuminateControllers'
             setParticipantProgress()
           else
             setParticipantProgress Number(participantInfo.amountRaised), Number(participantInfo.goal)
-
+      
       $scope.personalDonors = 
         page: 1
       $defaultResponsivePersonalDonors = angular.element '.js--personal-donors .team-honor-list-row'
