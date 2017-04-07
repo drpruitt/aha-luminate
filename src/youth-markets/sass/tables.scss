@@ -35,28 +35,6 @@ div.table {
   }
 }
 
-.table-striped {
-  border: 0;
-  
-  tbody {
-    tr {
-      td {
-        vertical-align: middle;
-        padding: 10px;
-      }
-    }
-  }
-  
-  .table-body {
-    .table-row {
-      .table-cell {
-        vertical-align: middle;
-        padding: 10px;
-      }
-    }
-  }
-}
-
 .table--padded {
   tbody {
     tr {
@@ -112,3 +90,50 @@ div.table {
     padding-right: 15px;
   }
 }
+
+.table-striped {
+  border: 0;
+  
+  tbody {
+    tr {
+      &:nth-of-type(odd) {
+        background-color: $event-accent-light;
+      }
+      
+      td {
+        vertical-align: middle;
+        padding: 10px;
+        border-top: 0;
+        border-bottom: 1px solid $event-accent;
+      }
+
+      &:first-child {
+        td {
+          border-top: 7px solid $event-secondary;
+        }
+      }
+    }
+  }
+  
+  .table-body {
+    .table-row {
+      &:nth-of-type(odd) {
+        background-color: $event-accent-light;
+      }
+
+      .table-cell {
+        vertical-align: middle;
+        padding: 10px;
+        border-top: 0;
+        border-bottom: 1px solid $event-accent;
+      }
+
+      &:first-child {
+        .table-cell {
+          border-top: 7px solid $event-secondary;
+        }
+      }
+    }
+  }
+}
+

@@ -92,6 +92,8 @@ header {
     font-size: 26px;
     text-transform: uppercase;
     margin: 0 0 16px;
+    color: $event-secondary;
+    font: $headline-font;
   }
   
   .ym-header-post-text {
