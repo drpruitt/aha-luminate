@@ -6,13 +6,14 @@ angular.module 'trPcControllers'
     '$uibModal'
     'APP_INFO'
     'ZuriService'
+    'ParticipantBadgesService'
     'NgPcTeamraiserRegistrationService'
     'NgPcTeamraiserProgressService'
     'NgPcTeamraiserTeamService'
     'NgPcTeamraiserCompanyService'
     'NgPcContactService'
     'NgPcTeamraiserShortcutURLService'
-    ($rootScope, $scope, $filter, $uibModal, APP_INFO, ZuriService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserCompanyService, NgPcContactService, NgPcTeamraiserShortcutURLService) ->
+    ($rootScope, $scope, $filter, $uibModal, APP_INFO, ZuriService, ParticipantBadgesService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserCompanyService, NgPcContactService, NgPcTeamraiserShortcutURLService) ->
       $scope.dashboardPromises = []
       
       if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
@@ -86,6 +87,13 @@ angular.module 'trPcControllers'
       
       $scope.updateTeamGoal = ->
         # TODO
+      
+      participantBadgesPromise = ParticipantBadgesService.getBadges()
+        .then (response) ->
+          prizes = response.data.prizes
+          if prizes
+            $scope.participantBadges = prizes
+      $scope.dashboardPromises.push participantBadgesPromise
       
       $scope.donorContactCounts = {}
       donorContactFilters = [

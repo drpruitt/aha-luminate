@@ -90,11 +90,19 @@
         </div>
       </div>
     </section>
-    <section class="ym-pc-dashboard-badges-section">
+    <section class="ym-pc-dashboard-badges-section" ng-if="participantBadges && participantBadges.length > 0" ng-cloak>
       <div class="ym-pc-dashboard-section-header">
         <h2 class="h5">
           Badges
         </h2>
+      </div>
+      <div class="ym-pc-dashboard-badges-icons">
+        <div class="ym-pc-dashboard-badges-icon" ng-repeat="participantBadge in participantBadges">
+          <div>
+            <img src="" alt="{{participantBadge.label}}">
+          </div>
+          <div ng-bind-html="participantBadge.label"></div>
+        </div>
       </div>
     </section>
     <section class="ym-pc-dashboard-activities-section">
@@ -297,6 +305,9 @@
                 <h3 class="h5">
                   Edit My Pages
                 </h3>
+                <p>
+                  Edit your pages to encourage students and parents to join and donate!
+                </p>
               </div>
             </div>
           </div>
@@ -308,6 +319,12 @@
                 <h3 class="h5">
                   Show your Students
                 </h3>
+                <p>
+                  Use the "Student View" to show your students all of the great tools and games in their Headquarters and encourage them to fundraise!
+                </p>
+                <a class="btn btn-primary">
+                  <strong>Student View</strong>
+                </a>
               </div>
             </div>
           </div>
@@ -321,6 +338,12 @@
                 <h3 class="h5">
                   Check Progress
                 </h3>
+                <p>
+                  Check out the reports page to see which students have completed challenges and who has earned donations.
+                </p>
+                <a class="btn btn-primary">
+                  <strong>View Reports</strong>
+                </a>
               </div>
             </div>
           </div>
@@ -332,6 +355,12 @@
                 <h3 class="h5">
                   Order Thank-You Gifts
                 </h3>
+                <p>
+                  Visit our Thank-You Gift portal to manage and order gifts for your students.
+                </p>
+                <a class="btn btn-primary">
+                  <strong>Thank You Gifts</strong>
+                </a>
               </div>
             </div>
           </div>
@@ -387,7 +416,7 @@
           </div>
         </div>
       </div>
-      <div class="">
+      <div class="ym-pc-dashboard-coordinator-resources-more">
         <a>
           <strong>View All Resources</strong>
         </a>
