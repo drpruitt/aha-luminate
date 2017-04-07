@@ -4,16 +4,17 @@ angular.module 'trPcControllers'
     '$scope'
     '$filter'
     '$uibModal'
+    'APP_INFO'
     'ZuriService'
     'NgPcTeamraiserRegistrationService'
     'NgPcTeamraiserProgressService'
     'NgPcTeamraiserTeamService'
     'NgPcTeamraiserCompanyService'
     'NgPcTeamraiserShortcutURLService'
-    ($rootScope, $scope, $filter, $uibModal, ZuriService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserCompanyService, NgPcTeamraiserShortcutURLService) ->
+    ($rootScope, $scope, $filter, $uibModal, APP_INFO, ZuriService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserCompanyService, NgPcTeamraiserShortcutURLService) ->
       $scope.dashboardPromises = []
       
-      fundraisingProgressPromise = TeamraiserProgressService.getProgress()
+      fundraisingProgressPromise = NgPcTeamraiserProgressService.getProgress()
         .then (response) ->
           participantProgress = response.data.getParticipantProgressResponse?.personalProgress
           if participantProgress
@@ -55,6 +56,14 @@ angular.module 'trPcControllers'
               $scope.companyProgress = companyProgress
           response
       $scope.dashboardPromises.push fundraisingProgressPromise
+      
+      $scope.editPersonalGoal = ->
+        $scope.editPersonalGoalModal = $uibModal.open 
+          scope: $scope
+          templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/editParticipantGoal.html'
+      
+      $scope.cancelEditPersonalGoal = ->
+        $scope.editPersonalGoalModal.close()
       
       $scope.personalChallenge = {}
       ZuriService.getZooStudent $scope.frId + '/' + $scope.consId, 
