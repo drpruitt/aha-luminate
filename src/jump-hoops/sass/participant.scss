@@ -29,6 +29,10 @@
   }
 }
 
+.ym-pc-dashboard-activities-section {
+  margin: 0 0 24px;
+}
+
 .ym-pc-dashboard-captains-message-section {
   background-color: $event-accent;
   text-align: center;
@@ -40,13 +44,18 @@
   }
 }
 
-.ym-pc-dashboard-spread-options {
-  text-align: center;
+.ym-pc-dashboard-spread-section {
+  background: repeating-linear-gradient(45deg, transparent, transparent 10px, #dfdded 10px, #dfdded 20px), linear-gradient(to bottom, #e1e0ea, #e1e0ea);
+  padding: 36px;
   
-  .ym-pc-dashboard-section-header {
-    h5, 
-    .h5 {
-      color: $event-secondary;
+  .ym-pc-dashboard-spread-options {
+    text-align: center;
+    
+    .ym-pc-dashboard-section-header {
+      h5, 
+      .h5 {
+        color: $event-secondary;
+      }
     }
   }
 }
