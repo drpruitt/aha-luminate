@@ -13,7 +13,7 @@
   background: $event-secondary-medium;
   padding: 24px 20px;
   margin: 0 0 30px;
-  
+
   .ym-pc-dashboard-section-header {
     color: $event-secondary;
   }
@@ -31,10 +31,22 @@
 
 .ym-pc-dashboard-captains-message-section {
   background-color: $event-accent;
+  text-align: center;
   padding: 24px 172px;
   margin: 0 0 24px;
   
   .ym-pc-dashboard-section-header {
     color: #ffffff;
+  }
+}
+
+.ym-pc-dashboard-spread-options {
+  text-align: center;
+  
+  .ym-pc-dashboard-section-header {
+    h5, 
+    .h5 {
+      color: $event-secondary;
+    }
   }
 }

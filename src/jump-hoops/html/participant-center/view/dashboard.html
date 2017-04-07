@@ -13,6 +13,9 @@
               Progress
             </h3>
           </div>
+          <a class="btn btn-primary" ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{consId}}">
+            Donate to Personal Page
+          </a>
         </div>
       </div>
       <div class="col-sm-6">
@@ -42,41 +45,64 @@
     <div class="row">
       <div class="col-sm-6">
         <div class="">
-          <h3 class="h5">
-            My Donors
-          </h3>
+          <div class="">
+            <div class="">
+              <h3 class="h5">
+                My Donors
+              </h3>
+            </div>
+          </div>
         </div>
       </div>
       <div class="col-sm-6">
         <div class="">
-          <h3 class="h5">
-            My Page
-          </h3>
+          <div class="">
+            <div class="">
+              <h3 class="h5">
+                My Page
+              </h3>
+              <p>
+                Personalize your fundraising page to share your heart-healthy journey. Students who personalize their page raise more money!
+              </p>
+              <a class="btn btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=personal&amp;px={{consId}}">
+                View and Edit Your Page
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-6">
         <div class="">
-          <h3 class="h5">
-            Daily Heart-Healthy Challenge
-          </h3>
+          <div class="">
+            <div class="">
+              <h3 class="h5">
+                Daily Heart-Healthy Challenge
+              </h3>
+            </div>
+          </div>
         </div>
       </div>
       <div class="col-sm-6">
         <div class="">
-          <h3 class="h5">
-            My Virtual World
-          </h3>
+          <div class="">
+            <div class="">
+              <h3 class="h5">
+                My Virtual World
+              </h3>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
-  <section class="ym-pc-dashboard-captains-message-section">
+  <section class="ym-pc-dashboard-captains-message-section" ng-if="teamCaptainsMessage.message && teamCaptainsMessage.message != ''" ng-cloak>
     <div class="ym-pc-dashboard-section-header">
       <h2 class="h5">
         Note From Your Teacher
       </h2>
+      <div ng-bind-html="teamCaptainsMessage.message"></div>
     </div>
   </section>
   <section class="ym-pc-dashboard-spread-section">
@@ -85,12 +111,29 @@
         Spread the Word
       </h2>
     </div>
-    <div class="row">
-      <div class="col-sm-4">
-      </div>
-      <div class="col-sm-4">
-      </div>
-      <div class="col-sm-4">
+    <div class="ym-pc-dashboard-spread-options">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="ym-pc-dashboard-section-header">
+            <h3 class="h5">
+              Download Mobile App
+            </h3>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="ym-pc-dashboard-section-header">
+            <h3 class="h5">
+              Facebook Fundraising
+            </h3>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="ym-pc-dashboard-section-header">
+            <h3 class="h5">
+              Email Signature
+            </h3>
+          </div>
+        </div>
       </div>
     </div>
   </section>
