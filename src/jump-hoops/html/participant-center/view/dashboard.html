@@ -13,9 +13,24 @@
               Progress
             </h3>
           </div>
-          <a class="btn btn-primary" ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{consId}}">
-            Donate to Personal Page
-          </a>
+          <div>
+            <div class="ym-progress__thermometer">
+              <div class="ym-progress__thermometer--fill" ng-style="{'width': participantProgress.percent + '%'}"></div>
+            </div>
+            <a class="btn btn-primary" ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{consId}}">
+              Donate to Personal Page
+            </a>
+          </div>
+          <div>
+            <div class="ym-progress__thermometer">
+              <div class="ym-progress__thermometer--fill" ng-style="{'width': companyProgress.percent + '%'}"></div>
+            </div>
+          </div>
+          <div>
+            <div class="ym-progress__thermometer">
+              <div class="ym-progress__thermometer--fill" ng-style="{'width': teamProgress.percent + '%'}"></div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="col-sm-6">
@@ -118,6 +133,9 @@
             <h3 class="h5">
               Download Mobile App
             </h3>
+            <p>
+              Download our Mobile Fundraising App today!
+            </p>
           </div>
         </div>
         <div class="col-sm-4">
@@ -125,6 +143,9 @@
             <h3 class="h5">
               Facebook Fundraising
             </h3>
+            <p>
+              Use our Facebook app to raise even more!
+            </p>
           </div>
         </div>
         <div class="col-sm-4">
@@ -132,6 +153,9 @@
             <h3 class="h5">
               Email Signature
             </h3>
+            <p>
+              Download a signature for your email!
+            </p>
           </div>
         </div>
       </div>
