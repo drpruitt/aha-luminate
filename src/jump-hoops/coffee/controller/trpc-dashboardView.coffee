@@ -108,15 +108,4 @@ angular.module 'trPcControllers'
             $scope.personalChallenge.id = personalChallenges.current
             $scope.personalChallenge.name = personalChallenges.text
             $scope.personalChallenge.completed = personalChallenges.completed
-      
-      if $scope.participantRegistration.teamId and $scope.participantRegistration.teamId isnt '-1'
-        captainsMessagePromise = NgPcTeamraiserTeamService.getCaptainsMessage()
-          .then (response) ->
-            teamCaptainsMessage = response.data.getCaptainsMessageResponse
-            if teamCaptainsMessage
-              $scope.teamCaptainsMessage = teamCaptainsMessage
-              if not angular.isString $scope.teamCaptainsMessage.message
-                delete $scope.teamCaptainsMessage.message
-            response
-        $scope.dashboardPromises.push captainsMessagePromise
   ]
