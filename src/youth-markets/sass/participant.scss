@@ -2,6 +2,12 @@
 @import "variables.scss";
 @import "../../youth-markets/sass/mixins.scss";
 
+.ng-pc-container {
+  @media (max-width: $screen-xs-max) {
+    margin: 8px;
+  }
+}
+
 .ng-pc-container, 
 .ng-pc-modal {
   .btn.form-control {
@@ -170,7 +176,7 @@
 
 .ta-toolbar {
   background-color: #f0f0f0;
-  border: 1px solid #cccccc;
+  border: 1px solid $event-secondary;
   border-radius: 0;
   padding: 10px;
   margin-left: 0;
@@ -213,7 +219,7 @@
 
 .ta-editor {
   background-color: #ffffff;
-  border: 1px solid #cccccc;
+  border: 1px solid $event-secondary;
   border-top: 0;
   border-radius: 0;
   padding: 10px;
