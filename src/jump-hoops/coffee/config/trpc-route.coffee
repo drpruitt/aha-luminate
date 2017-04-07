@@ -25,6 +25,15 @@ if window.location.href.indexOf('pagename=jump_hoops_participant_center') isnt -
           .when '/email/contacts/:filter/list', 
             templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/view/emailContactsList.html'
             controller: 'NgPcEmailContactsListViewCtrl'
+          .when '/reports', 
+            templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/view/reports.html'
+            controller: 'NgPcReportsViewCtrl'
+          .when '/resources', 
+            templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/view/resources.html'
+            controller: 'NgPcResourcesViewCtrl'
+          .when '/social', 
+            templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/view/social.html'
+            controller: 'NgPcSocialViewCtrl'
           .otherwise 
             redirectTo: do ->
               # redirect PC1-style URLs
@@ -32,6 +41,8 @@ if window.location.href.indexOf('pagename=jump_hoops_participant_center') isnt -
               pcPage = $embedRoot.data('pc-page') if $embedRoot.data('pc-page') isnt ''
               if pcPage is 'mtype'
                 '/email/compose'
+              else if pcPage is 'abook'
+                '/email/contacts/email_rpt_show_all/list'
               else
                 '/dashboard'
     ]

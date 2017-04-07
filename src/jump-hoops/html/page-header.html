@@ -1,7 +1,16 @@
-[[?x19x23x26x27x9x::x[[S4]]x::
+[[?x9x19x23x26x27x::x[[S4]]x::
   <div class="ym-page-header ym-accent-color">
     <div class="container">
       <div class="col-sm-9">
+        [[?x9x::x[[S4]]x::
+          <!-- Donation2 -->
+          <h1>
+            Donate
+          </h1>
+          <p>
+            Thank you for donating to the American Heart Association. With your life-saving donation, we can build healthier lives, free of cardiovascular disease and stroke.
+          </p>
+        ::]]
         [[?x19x23x::x[[S4]]x::
           <!-- PageServer and SPageServer -->
           [[?xjump_hoops_participant_centerx::x[[S334:pagename]]x::
@@ -47,7 +56,7 @@
                     My School: <a href="TR?fr_id=[[S80:trID]]&pg=company&company_id=[[E43:[[S80:trID]]:company-id:[[E48:[[S80:trID]]-[[S334:px]]:team-id]]]]">[[E43:[[S80:trID]]:company-name:[[E48:[[S80:trID]]-[[S334:px]]:team-id]]]]</a>
                   </p>
                 ]]
-                <p class="team-name" ng-if="numTeams != 1">
+                <p class="team-name" ng-if="numTeams > 1" ng-cloak>
                   My Team: <a href="TR?pg=team&fr_id=[[S80:trID]]&team_id=[[E48:[[S80:trID]]-[[S334:px]]:team-id]]">[[E48:[[S80:trID]]-[[S334:px]]:team-name]]</a>
                 </p>
               ]]
@@ -69,7 +78,6 @@
               <h1>
                 <span ng-bind-html="companyName"></span>              
               </h1>
-              
             ::]]
           ::
             <!-- all other TR pages -->
@@ -83,18 +91,13 @@
             Sign Up
           </h1>
         ::]]
-        [[?x9x::x[[S4]]x::
-          <h1>
-            Donate
-          </h1>
-          <p>
-            Thank you for donating to the American Heart Association. With your life-saving donation, we can build healthier lives, free of cardiovascular disease and stroke.
-          </p>
-        ::]]
       </div>
-      [[?[[?xcompanyxteamxpersonalx::x[[S334:pg]]x::T::]][[?xjump_hoops_participant_centerx::x[[S334:pagename]]x::T::]]::T::
+      [[?
+        [[?xpersonalxteamxcompanyx::x[[S334:pg]]x::T::]]
+        [[?xjump_hoops_participant_centerx::x[[S334:pagename]]x::T::]]
+      ::T::
         <div class="hidden-xs masthead-monster">
-          <img src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/hj-monsters-header.png" alt="Our 2017-2018 Heart Health Ambassadors" />
+          <img src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/hj-monsters-header.png" alt="Our 2017-2018 Heart Health Ambassadors">
         </div>
       ::]]
     </div>
