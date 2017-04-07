@@ -41,6 +41,8 @@ module.exports = {
     files: {
       'dist/jump-hoops/js/main.js': [
         'src/jump-hoops/coffee/init.coffee', 
+        'src/jump-hoops/coffee/config/*.*', 
+        '!src/jump-hoops/coffee/config/trpc-*.*', 
         'src/global/coffee/service/*.*', 
         '!src/global/coffee/service/trpc-*.*', 
         'src/jump-hoops/coffee/**/*.*', 
@@ -48,6 +50,7 @@ module.exports = {
       ], 
       'dist/jump-hoops/js/participant.js': [
         'src/jump-hoops/coffee/trpc-init.coffee', 
+        'src/jump-hoops/coffee/config/trpc-*.*', 
         'src/global/coffee/service/trpc-*.*', 
         'src/jump-hoops/coffee/**/trpc-*.*'
       ]
