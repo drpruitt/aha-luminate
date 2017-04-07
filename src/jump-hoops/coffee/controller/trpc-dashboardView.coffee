@@ -24,7 +24,7 @@ angular.module 'trPcControllers'
             participantProgress.goalFormatted = if participantProgress.goal then $filter('currency')(participantProgress.goal / 100, '$', 0) else '$0'
             participantProgress.percent = 0
             if participantProgress.goal isnt 0
-              participantProgress.percent = Math.ceil((participantProgress.raised / $scope.participantProgress.goal) * 100)
+              participantProgress.percent = Math.ceil((participantProgress.raised / participantProgress.goal) * 100)
             if participantProgress.percent > 100
               participantProgress.percent = 100
             $scope.participantProgress = participantProgress
@@ -64,6 +64,9 @@ angular.module 'trPcControllers'
       
       $scope.cancelEditPersonalGoal = ->
         $scope.editPersonalGoalModal.close()
+      
+      $scope.updatePersonalGoal = ->
+        # TODO
       
       $scope.personalChallenge = {}
       ZuriService.getZooStudent $scope.frId + '/' + $scope.consId, 
