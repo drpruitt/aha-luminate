@@ -13,10 +13,58 @@
   background: $event-secondary-medium;
   padding: 24px 20px;
   margin: 0 0 30px;
-
+  
   .ym-pc-dashboard-section-header {
     color: $event-secondary;
   }
+}
+
+.ym-pc-dashboard-progress-types {
+  margin: 0 0 32px;
+}
+
+.ym-pc-dashboard-progress-type {
+  float: left;
+  border-right: 1px solid transparent;
+  border-left: 1px solid transparent;
+  text-align: center;
+  width: 33.33333333%;
+  
+  a {
+    &, 
+    &:link, 
+    &:visited {
+      display: block;
+      background: #b3add3;
+      color: $event-secondary;
+      text-decoration: none;
+      padding: 8px;
+      width: 100%;
+    }
+    
+    &:hover, 
+    &:focus, 
+    &:active {
+      background: $event-secondary;
+      color: #ffffff;
+      text-decoration: none;
+    }
+  }
+  
+  &.active {
+    a {
+      &, 
+      &:link, 
+      &:visited {
+        background: $event-secondary;
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+.ym-pc-dashboard-progress-box .ym-progress__thermometer {
+  max-width: 420px;
 }
 
 .ym-pc-dashboard-badges-section {

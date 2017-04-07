@@ -15,6 +15,8 @@ angular.module 'trPcControllers'
       $scope.dashboardPromises = []
       
       $scope.dashboardProgressType = 'personal'
+      $scope.toggleProgressType = (progressType) ->
+        $scope.dashboardProgressType = progressType
       
       fundraisingProgressPromise = NgPcTeamraiserProgressService.getProgress()
         .then (response) ->
