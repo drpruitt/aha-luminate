@@ -81,7 +81,7 @@
   margin: 0 0 24px;
 }
 
-.ym-pc-dashboard-captains-message-section {
+.ym-pc-dashboard-coordinators-message-section {
   background-color: $event-accent;
   text-align: center;
   padding: 24px 172px;
@@ -106,4 +106,16 @@
       }
     }
   }
+}
+
+.ym-pc-dashboard-coordinator-progress-box, 
+.ym-pc-dashboard-coordinator-students-box {
+  background: $event-secondary-medium;
+  padding: 24px 20px;
+  margin: 0 0 30px;
+}
+
+.ym-pc-dashboard-coordinator-resources-section {
+  background-color: $event-accent-light;
+  padding: 36px;
 }
