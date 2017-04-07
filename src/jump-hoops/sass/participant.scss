@@ -77,6 +77,14 @@
   }
 }
 
+.ym-pc-dashboard-badges-icons {
+  margin: 0 0 32px;
+}
+
+.ym-pc-dashboard-badges-icon {
+  float: left;
+}
+
 .ym-pc-dashboard-activities-section {
   margin: 0 0 24px;
 }
@@ -119,6 +127,10 @@
   text-align: center;
 }
 
+.ym-pc-dashboard-coordinator-steps-section {
+  margin: 0 0 40px;
+}
+
 .ym-pc-dashboard-coordinator-resources-section {
   background-color: $event-accent-light;
   padding: 36px;
@@ -134,4 +146,8 @@
       }
     }
   }
+}
+
+.ym-pc-dashboard-coordinator-resources-more {
+  text-align: center;
 }
