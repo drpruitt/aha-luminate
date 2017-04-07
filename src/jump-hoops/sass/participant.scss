@@ -3,3 +3,38 @@
 @import "../../youth-markets/sass/mixins.scss";
 
 @import "../../youth-markets/sass/participant.scss";
+
+.ym-pc-dashboard-section-header {
+  text-align: center;
+}
+
+.ym-pc-dashboard-progress-box, 
+.ym-pc-dashboard-email-challenge-box {
+  background: $event-secondary-medium;
+  padding: 24px 20px;
+  margin: 0 0 30px;
+  
+  .ym-pc-dashboard-section-header {
+    color: $event-secondary;
+  }
+}
+
+.ym-pc-dashboard-badges-section {
+  background-color: $event-accent-medium;
+  padding: 28px 38px;
+  margin: 0 0 40px;
+  
+  .ym-pc-dashboard-section-header {
+    color: $event-secondary;
+  }
+}
+
+.ym-pc-dashboard-captains-message-section {
+  background-color: $event-accent;
+  padding: 24px 172px;
+  margin: 0 0 24px;
+  
+  .ym-pc-dashboard-section-header {
+    color: #ffffff;
+  }
+}
