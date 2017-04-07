@@ -72,11 +72,12 @@
       </div>
     </div>
   </section>
-  <section class="ym-pc-dashboard-captains-message-section">
+  <section class="ym-pc-dashboard-captains-message-section" ng-if="teamCaptainsMessage.message && teamCaptainsMessage.message != ''" ng-cloak>
     <div class="ym-pc-dashboard-section-header">
       <h2 class="h5">
         Note From Your Teacher
       </h2>
+      <div ng-bind-html="teamCaptainsMessage.message"></div>
     </div>
   </section>
   <section class="ym-pc-dashboard-spread-section">
