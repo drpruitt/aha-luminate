@@ -14,19 +14,17 @@ angular.module 'ahaLuminateControllers'
       
       $scope.donationLevels = []
       
-      $scope.giftType = (type) ->
-        checkBox = angular.element('.generic-repeat-label-checkbox-container input').prop 'checked'
-        
+      $scope.giftType = (type) ->        
         if type is 'monthly'
-          if checkBox is false
-            angular.element('.generic-repeat-label-checkbox-container input').click()
           angular.element('.ym-donation-levels__type--onetime').removeClass 'active'
           angular.element('.ym-donation-levels__type--monthly').addClass 'active'
+          angular.element('#level_installment_row').removeClass 'hidden'
+
         else
-          if checkBox is true
-            angular.element('.generic-repeat-label-checkbox-container input').click()
           angular.element('.ym-donation-levels__type--onetime').addClass 'active'
           angular.element('.ym-donation-levels__type--monthly').removeClass 'active'
+          angular.element('#level_installment_row').addClass 'hidden'
+          angular.element('#level_installmentduration').val 'S:0'
       
       $scope.selectLevel = (type, level, amount) ->
         angular.element('#pstep_finish span').remove()
@@ -127,7 +125,7 @@ angular.module 'ahaLuminateControllers'
               amount = level.amount.formatted
               amount = amount.split('.')[0]
               userSpecified = level.userSpecified
-              inputId = '#level_standardexpanded' + levelId
+              inputId = '#level_installmentexpanded' + levelId
               classLevel = 'level' + levelId
               
               angular.element(inputId).parent().parent().parent().parent().addClass classLevel
@@ -151,6 +149,7 @@ angular.module 'ahaLuminateControllers'
         angular.element('#billing_info').parent().addClass 'billing_info_toggle'
         angular.element('#payment_cc_container').append '<div class="clearfix" />'
         angular.element('#responsive_payment_typecc_cvv_row .FormLabelText').text 'CVV:'
+        angular.element('#level_installment_row').addClass('hidden');
         employerMatchFields()
         billingAddressFields()
         donorRecognitionFields()
