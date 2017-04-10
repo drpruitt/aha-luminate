@@ -107,12 +107,12 @@
                 <button type="button" class="btn btn-link ym-header-welcome-toggle" ng-click="toggleWelcomeMenu()">
                   Welcome[[?xx::x[[S1:first_name]]x::::, [[S1:first_name]]]]! <i class="fa fa-chevron-down" ng-class="{'fa-chevron-down': !welcomeMenuOpen, 'fa-chevron-up': welcomeMenuOpen}"></i>
                 </button>
-                <a class="btn btn-global-primary ym-header-login-toggle" ng-if="numberEvents > 1 && numberEvents != 0" ng-href="https://[[S29:SECURE_DOMAIN]][[S29:SECURE_PATH]]SPageServer?pagename=jump_hoops_my_events">
+                <a class="btn btn-global-primary ym-header-hq-btn" ng-if="numberEvents > 1" ng-href="https://[[S29:SECURE_DOMAIN]][[S29:SECURE_PATH]]SPageServer?pagename=jump_hoops_my_events">
                   My Events
                 </a>
-                <a class="btn btn-global-primary ym-header-login-toggle" ng-if="numberEvents < 2 && numberEvents != 0" ng-href="https://[[S29:SECURE_DOMAIN]][[S29:SECURE_PATH]]TRC?fr_id={{regEventId}}">
-                  <span class="hidden-sm hidden-mg hidden-lg">My Headquarters</span>
-                  <span class="hidden-xs">My HQ</span>
+                <a class="btn btn-global-primary ym-header-hq-btn" ng-if="numberEvents == 1" ng-href="https://[[S29:SECURE_DOMAIN]][[S29:SECURE_PATH]]TRC?fr_id={{regEventId}}">
+                  <span class="visible-xs visible-sm">My HQ</span>
+                  <span class="hidden-xs hidden-sm">My Headquarters</span>
                 </a>
                 <div class="ym-header-welcome-dropdown" ng-class="{'open': welcomeMenuOpen}" ng-cloak>
                   <ul>
@@ -129,10 +129,6 @@
                   </ul>
                 </div>
               </div>
-              <!-- <a class="btn btn-global-primary ym-header-hq-btn" href="[[S8]]#">
-                <span class="visible-xs visible-sm">My HQ</span>
-                <span class="hidden-xs hidden-sm">My Headquarters</span>
-              </a> -->
             </div>
           </div>
         ]]

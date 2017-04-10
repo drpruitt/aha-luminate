@@ -12,19 +12,14 @@ angular.module 'ahaLuminateControllers'
   
       if consId isnt undefined
         TeamraiserParticipantService.getRegisteredTeamraisers 'event_type=Jump&cons_id=' + consId,
-          error: (response) ->
-           #to do
           success: (response) ->
-            console.log response
             teamraiser = response.getRegisteredTeamraisersResponse?.teamraiser
-            if teamraiser.length > 1
+            if teamraiser.length
               angular.forEach teamraiser, (teamraiser) ->
                 $scope.numberEvents++
             else 
-              $scope.numberEvents == 1
+              $scope.numberEvents = 1
               $scope.regEventId = teamraiser.id
-
-      console.log $scope.numberEvents
 
       $scope.toggleLoginMenu = ->
         if $scope.loginMenuOpen
