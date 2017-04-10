@@ -96,8 +96,14 @@
           Badges
         </h2>
       </div>
-      <pc-badges></pc-badges>
-
+      <div class="ym-pc-dashboard-badges-icons">
+        <div class="ym-pc-dashboard-badges-icon" ng-repeat="participantBadge in participantBadges">
+          <div>
+            <img src="" alt="{{participantBadge.label}}">
+          </div>
+          <div ng-bind-html="participantBadge.label"></div>
+        </div>
+      </div>
     </section>
     <section class="ym-pc-dashboard-activities-section">
       <div class="ym-pc-dashboard-section-header">

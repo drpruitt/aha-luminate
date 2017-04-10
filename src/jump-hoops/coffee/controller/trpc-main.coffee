@@ -3,7 +3,8 @@ angular.module 'trPcControllers'
     '$rootScope'
     '$scope'
     '$location'
-    ($rootScope, $scope, $location) ->
+    'APP_INFO'
+    ($rootScope, $scope, $location, APP_INFO) ->
       $rootScope.$location = $location
       $rootScope.baseUrl = $location.absUrl().split('#')[0]
   ]

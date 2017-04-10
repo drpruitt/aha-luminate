@@ -1,8 +1,11 @@
 angular.module 'trPcApp'
   .directive 'pcBadges', ->
-    templateUrl: APP_INFO.rootPath + 'dist/html/participant-center/directive/participantBadges.html'
+    templateUrl: '../jump-hoops-personal/aha-luminate/dist/jump-hoops/html/participant-center/directive/participantBadges.html'
     restrict: 'E'
     replace: true
     scope:
-      contacts: '='
-      toggleContact: '='
+      participantBadge: '='
+      participantBadges: '='
+    rootScope:
+      participantBadge: '='
+      participantBadges: '='
