@@ -9,7 +9,7 @@ angular.module 'ahaLuminateControllers'
       noRegConsId = 3180158
 
 
-      TeamraiserParticipantService.getRegisteredTeamraisers 'cons_id='+ regConsId+'event_type=Jump', 
+      TeamraiserParticipantService.getRegisteredTeamraisersCMS 'cons_id='+ regConsId+'&event_type=Jump', 
         success: (response) ->
           console.log 'success'
           console.log response
