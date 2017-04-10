@@ -2,7 +2,21 @@ angular.module 'ahaLuminateControllers'
   .controller 'HomeCtrl', [
     '$scope'
     '$timeout'
-    ($scope, $timeout) ->
+    'TeamraiserParticipantService'
+    ($scope, $timeout, TeamraiserParticipantService) ->
+      console.log 'home page'
+      regConsId = 3135905
+      noRegConsId = 3180158
+
+
+      TeamraiserParticipantService.getRegisteredTeamraisers 'cons_id='+ regConsId+'event_type=Jump', 
+        success: (response) ->
+          console.log 'success'
+          console.log response
+        error: (response) ->
+          console.log 'error'
+          console.log response
+
       initCarousel = ->
         owl = jQuery '.ym-home-feature .owl-carousel'
         owl.owlCarousel
@@ -25,4 +39,6 @@ angular.module 'ahaLuminateControllers'
           ]
           
       $timeout initCarousel, 1000
+
+
   ]
