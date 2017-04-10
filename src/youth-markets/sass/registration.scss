@@ -1,30 +1,82 @@
 .ym-registration-page-container {
+  font-size: 14px;
   text-align: center;
   max-width: 630px;
+  padding: 0 8px;
   margin: 0 auto;
+  
+  @media (min-width: $screen-sm-min) {
+    font-size: inherit;
+    padding: 0;
+  }
 }
 
 .ym-registration-page-header {
-  margin: 0 0 24px;
+  margin: 0 0 18px;
   
   @media (min-width: $screen-sm-min) {
     margin: 0 0 26px;
   }
   
-  .alert {
-    text-align: left;
+  h4, 
+  .h4 {
+    margin: 0 0 10px;
+    
+    @media (min-width: $screen-sm-min) {
+      margin: 0 0 14px;
+    }
   }
   
-  p {
-    @media (min-width: $screen-sm-min) {
-      font-size: 18px;
+  .alert {
+    text-align: left;
+    
+    ul {
+      padding-left: 20px;
     }
   }
 }
 
+.ym-registration-row--bottomed {
+  @media (min-width: $screen-sm-min) {
+    display: table;
+    width: 100%;
+  }
+  
+  .row {
+    @media (min-width: $screen-sm-min) {
+      display: table-row;
+    }
+    
+    .col-sm-6 {
+      @media (min-width: $screen-sm-min) {
+        float: none;
+        display: table-cell;
+        vertical-align: bottom;
+      }
+      
+      &:first-child {
+        @media (min-width: $screen-sm-min) {
+          padding-left: 0;
+        }
+      }
+      
+      &:last-child {
+        @media (min-width: $screen-sm-min) {
+          padding-right: 0;
+        }
+      }
+    }
+  }
+}
+
+.ym-registration-page-container .input-lg, 
+.ym-registration-page-container select.input-lg {
+  font-size: inherit;
+}
+
 .ym-registration-form-footer {
-  padding: 18px;
-  margin: 26px 0 0;
+  padding: 18px 8px;
+  margin: 26px -8px 0;
   
   @media (min-width: $screen-sm-min) {
     padding: 20px;
@@ -33,9 +85,28 @@
 }
 
 .ym-registration-form-footer-btns {
+  width: 254px;
+  margin: 0 auto;
+  
+  @media (min-width: 360px) {
+    width: 274px;
+  }
+  
   @media (min-width: $screen-sm-min) {
     width: 330px;
-    margin: 0 auto;
+  }
+  
+  .btn {
+    font-size: 16px;
+    width: 122px;
+    height: 45px;
+    padding: 10px 0;
+    
+    @media (min-width: $screen-sm-min) {
+      width: 150px;
+      height: 50px;
+      padding: 12px 0;
+    }
   }
 }
 
@@ -45,38 +116,122 @@
 }
 
 .ym-registration-page-container--utype .ym-registration-page-header {
-  margin: 0 0 36px;
+  h4, 
+  .h4 {
+    margin: 0 0 14px;
+    
+    @media (min-width: $screen-sm-min) {
+      margin: 0 0 14px;
+    }
+  }
+}
+
+.ym-registration-utype-user-types {
+  padding: 0 0 10px;
+  margin: 0 -8px;
+  
+  @media (min-width: 360px) {
+    padding: 8px 0 40px;
+    margin: 0;
+  }
 }
 
 .ym-registration-utype-user-type {
   display: inline-block;
+  font-size: 13px;
   width: 126px;
   margin: 0 2px;
   
+  @media (min-width: 360px) {
+    font-size: 14px;
+    width: 136px;
+    margin: 0 3px;
+  }
+  
   @media (min-width: $screen-sm-min) {
-    width: 164px;
+    width: 176px;
     margin: 0 12px;
   }
   
   .btn {
+    font-size: 13px;
     width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+    
+    @media (min-width: 360px) {
+      font-size: 14px;
+    }
   }
 }
 
 .ym-registration-utype-login-form {
-  text-align: left;
+  margin: 10px 0 0;
   
   @media (min-width: $screen-sm-min) {
-    margin: 56px 0 0;
+    margin: 8px 0 0;
+  }
+  
+  .form-group {
+    text-align: left;
+  }
+}
+
+.ym-registration-utype-login-header {
+  max-width: 250px;
+  margin: 0 auto 10px;
+  
+  @media (min-width: 375px) {
+    max-width: 300px;
+  }
+  
+  @media (min-width: 630px) {
+    max-width: none;
+  }
+  
+  @media (min-width: $screen-sm-min) {
+    margin: 0 0 16px;
+  }
+  
+  .ym-section-header {
+    max-width: 210px;
+    margin: 0 auto 10px;
+    
+    @media (min-width: 375px) {
+      max-width: none;
+    }
+  }
+}
+
+.ym-registration-utype-login-info {
+  margin: 0 -8px;
+  
+  @media (min-width: $screen-sm-min) {
+    margin: 0;
+  }
+  
+  .row {
+    .col-xs-6 {
+      &:first-child {
+        @media (max-width: $screen-xs-max) {
+          padding-right: 5px;
+        }
+      }
+      
+      &:last-child {
+        @media (max-width: $screen-xs-max) {
+          padding-left: 5px;
+        }
+      }
+    }
   }
 }
 
 .ym-registration-utype-forgot-toggle {
-  text-align: center;
-  margin: 14px 0 0;
+  margin: 8px 0 0;
   
   @media (min-width: $screen-sm-min) {
-    margin: 18px 0 0;
+    margin: 12px 0 0;
   }
 }
 
@@ -93,11 +248,11 @@
   
   .form-control {
     display: inline-block;
-    width: 160px;
+    width: 148px;
     vertical-align: middle;
     
     @media (min-width: 360px) {
-      width: 195px;
+      width: 188px;
     }
     
     @media (min-width: 375px) {
@@ -110,7 +265,17 @@
   }
   
   .btn {
+    font-size: inherit;
+
+    @media (max-width: $screen-xs-max) {
+      width: 90px;
+      height: 40px;
+      padding-right: 0;
+      padding-left: 0;
+    }
+    
     @media (min-width: $screen-sm-min) {
+      width: 125px;
       height: 50px;
     }
   }
@@ -118,26 +283,46 @@
 
 .ym-registration-tfind-results {
   text-align: left;
-  margin: 28px 0 0;
+  margin: 28px -8px 0;
   
   @media (min-width: $screen-sm-min) {
     margin: 32px 0 0;
   }
+  
+  .btn {
+    font-size: 12px;
+    width: 90px;
+    
+    @media (min-width: $screen-sm-min) {
+      font-size: inherit;
+      width: 108px;
+    }
+  }
+}
+
+.ym-registration-tfind-no-results {
+  text-align: center;
+}
+
+.ym-registration-ptype-donation-info {
+  .ym-section-header {
+    @media (min-width: $screen-sm-min) {
+      max-width: 550px;
+      margin: 0 auto 14px;
+    }
+  }
 }
 
 .ym-registration-ptype-donation-levels {
-  padding: 18px 13px;
-  margin: 18px 0 36px;
+  padding: 18px 13px 3px;
+  margin: 18px -8px 16px;
   
   @media (min-width: $screen-sm-min) {
-    padding: 0px 12px;
+    padding: 0 12px;
     margin: 36px 0 48px;
   }
   
   &.active {
-    padding: 18px 13px;
-    margin: 18px 0 36px;
-    
     @media (min-width: $screen-sm-min) {
       padding: 18px 12px;
       margin: 18px 0 30px;
@@ -145,7 +330,17 @@
   }
   
   .btn {
-    margin: 0 5px;
+    font-size: 18px;
+    padding: 8px 14px;
+    margin: 0 5px 15px;
+    
+    @media (min-width: 360px) {
+      padding: 12px 20px;
+    }
+    
+    @media (min-width: 400px) {
+      padding: 12px 24px;
+    }
     
     @media (min-width: $screen-sm-min) {
       margin: 0 8px;
@@ -155,7 +350,7 @@
 
 .ym-registration-ptype-donation-message {
   font-weight: 700;
-  margin: 18px 0 0;
+  margin: 3px 0 15px;
   
   @media (min-width: $screen-sm-min) {
     margin: 28px 0 0;
@@ -185,30 +380,195 @@
   }
   
   .ym-section-divider {
-    margin: 30px 0 40px;
+    margin: 15px -8px 30px;
+    
+    @media (min-width: $screen-sm-min) {
+      margin: 30px 0 40px;
+    }
   }
 }
 
 .ym-registration-reg-waiver {
+  .form-group {
+    margin: 0 0 30px;
+  }
+  
   .form-control {
     border-radius: 0;
     height: 105px;
   }
 }
 
+.ym-registration-reg-waiver-btns {
+  width: 210px;
+  margin: 0 auto;
+  
+  @media (min-width: 360px) {
+    width: 230px;
+  }
+  
+  @media (min-width: $screen-sm-min) {
+    width: 254px;
+  }
+  
+  .btn {
+    width: 100px;
+    
+    @media (min-width: $screen-sm-min) {
+      width: 112px;
+    }
+  }
+}
+
 .ym-registration-regsummary-form {
   .ym-section-divider {
-    margin: 30px 0 40px;
+    margin: 15px -8px 30px;
+    
+    @media (min-width: $screen-sm-min) {
+      margin: 30px 0 40px;
+    }
+  }
+}
+
+.ym-registration-regsummary-contact-header, 
+.ym-registration-regsummary-donation-header {
+  margin: 0 auto 24px;
+  
+  @media (min-width: $screen-sm-min) {
+    margin: 0 auto 20px;
+  }
+  
+  .ym-section-header {
+    float: left;
+    
+    @media (min-width: $screen-sm-min) {
+      display: inline-block;
+      float: none;
+    }
+  }
+  
+  .btn, 
+  a.btn {
+    &, 
+    &:link, 
+    &:visited, 
+    &:hover, 
+    &:focus, 
+    &:active {
+      float: left;
+      border-radius: 5px;
+      font-weight: 500;
+      text-transform: uppercase;
+      width: 70px;
+      height: 32px;
+      
+      @media (min-width: $screen-sm-min) {
+        display: inline-block;
+        float: none;
+        position: relative;
+        top: -3px;
+        width: 76px;
+        height: 36px;
+      }
+    }
+  }
+}
+
+.ym-registration-regsummary-contact-header {
+  width: 206px;
+  
+  @media (min-width: $screen-sm-min) {
+    width: auto;
+  }
+  
+  .ym-section-header {
+    width: 126px;
+    margin: 0 10px 0 0;
+    
+    @media (min-width: $screen-sm-min) {
+      width: auto;
+      margin: 0 8px 0 0;
+    }
+  }
+  
+  .btn, 
+  a.btn {
+    &, 
+    &:link, 
+    &:visited, 
+    &:hover, 
+    &:focus, 
+    &:active {
+      margin: 8px 0 0;
+      
+      @media (min-width: $screen-sm-min) {
+        margin: 0;
+      }
+    }
+  }
+}
+
+.ym-registration-regsummary-donation-header {
+  width: 192px;
+  
+  @media (min-width: $screen-sm-min) {
+    width: auto;
+  }
+  
+  .ym-section-header {
+    width: 112px;
+    margin: 4px 10px 0 0;
+    
+    @media (min-width: $screen-sm-min) {
+      width: auto;
+      margin: 0 8px 0 0;
+    }
+  }
+}
+
+.ym-registration-regsummary-donation-gift {
+  margin: 0 0 28px;
+  
+  @media (min-width: $screen-sm-min) {
+    margin: 0 0 32px;
+  }
+}
+
+.ym-registration-regsummary-donation-total {
+  font-size: 16px;
+  
+  @media (min-width: $screen-sm-min) {
+    font-size: 20px;
   }
 }
 
 .ym-registration-payment-form {
+  .row {
+    .col-xs-6 {
+      &:first-child {
+        @media (max-width: $screen-xs-max) {
+          padding-right: 5px;
+        }
+      }
+      
+      &:last-child {
+        @media (max-width: $screen-xs-max) {
+          padding-left: 5px;
+        }
+      }
+    }
+  }
+  
   .form-group, 
   .checkbox {
     text-align: left;
   }
   
   .ym-section-divider {
-    margin: 30px 0 40px;
+    margin: 15px -8px 30px;
+    
+    @media (min-width: $screen-sm-min) {
+      margin: 30px 0 40px;
+    }
   }
 }

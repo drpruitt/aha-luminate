@@ -1,0 +1,34 @@
+<form method="POST" novalidate ng-submit="updateTeamGoal()">
+  <div class="modal-header">
+    <h2 class="h5 modal-title">
+      Update Team Goal
+    </h2>
+  </div>
+  <div class="modal-body">
+    <div uib-alert class="alert-danger" ng-if="editGoalOptions.updateGoalFailure">
+      <div ng-bind-html="editGoalOptions.updateGoalFailureMessage"></div>
+    </div>
+    <div class="form-group">
+      <label for="goal" class="sr-only">Goal</label>
+      <div class="input-group">
+        <span class="input-group-addon">$</span>
+        <input type="number" class="form-control" id="goal" ng-model="editGoalOptions.updateGoalInput" aria-label="Goal" min="0" required>
+        <span class="input-group-addon">.00</span>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="clearfix">
+      <div class="pull-left">
+        <button type="button" class="btn btn-toggle text-uppercase" ng-click="cancelEditTeamGoal()">
+          Cancel
+        </button>
+      </div>
+      <div class="pull-right">
+        <button type="submit" class="btn btn-primary text-uppercase">
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+<form>

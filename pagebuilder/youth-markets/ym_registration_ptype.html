@@ -17,7 +17,7 @@
 <div class="ym-registration-page-container ym-registration-page-container--ptype" ng-controller="RegistrationPtypeCtrl">
   <div class="ym-registration-page-header">
     <div class="manageable-content" data-container="edit_pt_title_container">
-      <h2 class="h5" id="pt_title_container">
+      <h2 class="h4" id="pt_title_container">
         [[C1:fr_pt_title]]
       </h2>
     </div>
@@ -49,31 +49,36 @@
       [[A13]]
     </div>
     [[?xTx::x[[A16]]x::
-      [[?[[A6]]::ERR_BAD_GIFT::
-        <div class="alert alert-danger">
-          [[M0:friendraiser:error_invalid_amt_user]]
-        </div>
-      ::]]
-      <div class="manageable-content" data-container="edit_part_type_additional_gift_section_header">
-        <div id="part_type_additional_gift_section_header">
-          [[C1:fr_gift_hdr]]
-        </div>
-      </div>
-      [[?xx::x[[A33]]x::::
-        <div class="hidden js--registration-ptype-donation-levels">
-          [[A33]]
-        </div>
-        <div class="ym-registration-ptype-donation-levels" ng-class="{'active': donationLevels.activeLevel}">
-          <button type="button" class="btn btn-toggle" ng-class="{'active': donationLevels.activeLevel.amount == donationLevel.amount}" ng-repeat="donationLevel in donationLevels.levels" ng-click="toggleDonationLevel(donationLevel.amount)" ng-cloak>
-            <span ng-bind-html="donationLevel.amountFormatted" ng-if="!donationLevel.isOtherAmount && !donationLevel.isNoDonation"></span>
-            <span ng-if="donationLevel.isOtherAmount">Other</span>
-            <span ng-if="donationLevel.isNoDonation">No, Thanks</span>
-          </button> 
-          <div class="ym-registration-ptype-donation-message" ng-class="{'hidden': !donationLevels.activeLevel || donationLevels.activeLevel.isNoDonation}" ng-cloak>
-            <span ng-bind-html="donationLevels.activeLevel.askMessage"></span>
+      <div class="ym-registration-ptype-donation-info">
+        [[?[[A6]]::ERR_BAD_GIFT::
+          <div class="alert alert-danger">
+            [[M0:friendraiser:error_invalid_amt_user]]
+          </div>
+        ::]]
+        <p class="ym-section-header">
+          Will you kick things off by making a donation to support heart health? <span class="ym-optional">Optional</span>
+        </p>
+        <div class="manageable-content" data-container="edit_part_type_additional_gift_section_header">
+          <div id="part_type_additional_gift_section_header">
+            [[C1:fr_gift_hdr]]
           </div>
         </div>
-      ]]
+        [[?xx::x[[A33]]x::::
+          <div class="hidden js--registration-ptype-donation-levels">
+            [[A33]]
+          </div>
+          <div class="ym-registration-ptype-donation-levels" ng-class="{'active': donationLevels.activeLevel}">
+            <button type="button" class="btn btn-toggle" ng-class="{'active': donationLevels.activeLevel.amount == donationLevel.amount}" ng-repeat="donationLevel in donationLevels.levels" ng-click="toggleDonationLevel(donationLevel.amount)" ng-cloak>
+              <span ng-bind-html="donationLevel.amountFormatted" ng-if="!donationLevel.isOtherAmount && !donationLevel.isNoDonation"></span>
+              <span ng-if="donationLevel.isOtherAmount">Other</span>
+              <span ng-if="donationLevel.isNoDonation">No, Thanks</span>
+            </button> 
+            <div class="ym-registration-ptype-donation-message" ng-class="{'hidden': !donationLevels.activeLevel || donationLevels.activeLevel.isNoDonation}" ng-cloak>
+              <span ng-bind-html="donationLevels.activeLevel.askMessage"></span>
+            </div>
+          </div>
+        ]]
+      </div>
     ::]]
     [[?xTx::x[[A17]]x::
       <div class="ym-registration-ptype-goal-container">
@@ -82,6 +87,12 @@
             [[M0:friendraiser:error_invalid_goal_amt]]
           </div>
         ::]]
+        <p class="ym-section-header">
+          How much can you raise to support heart health?
+        </p>
+        <p>
+          When you raise $100, you will earn all 4 animals!
+        </p>
         <div class="form-group [[?[[A6]]::ERR_BAD_GOAL::has-error::]]">
           <div class="sr-only">
             <div class="manageable-content" data-container="edit_fund_goal_container">
@@ -91,7 +102,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+            <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3">
               <input type="text" class="form-control input-lg" name="fr_goal" id="participationOptions-fr_goal" ng-model="participationOptions.fr_goal" placeholder="[[?xx::x[[A18]]x::::[[?xx::x[[C1:fr_suggested_goal_field]]x::[[M0:friendraiser:suggested_goal_field]]::[[C1:fr_suggested_goal_field]]]] [[A18]]]]" maxlength="15">
             </div>
           </div>

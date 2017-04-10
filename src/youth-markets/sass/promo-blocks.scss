@@ -1,6 +1,16 @@
+.ym-promo-block--circle {
+  border-radius: 100%;
+  
+  @media (min-width: $screen-sm-min) {
+    box-shadow: 0 10px 0 0 rgb(50, 50, 50);
+    box-shadow: 0 10px 0 0 rgba(50, 50, 50, 1);
+  }
+}
+
 .ym-promo-block {
   max-width: 960px;
   margin: auto;
+  text-align: center;
   
   @media (max-width: 1070px) {
     max-width: 918px;
@@ -28,21 +38,8 @@
   height: 225px;
   margin: 0 20px 20px 0;
   vertical-align: middle;
-  
-  @media (max-width: 1070px) and (min-width: $screen-md-min) {
-    margin: 0 5px 20px 0;
-  }
-  
-  &:last-child {
-    margin-right: 0;
-  }
-  
-  &:nth-child(3) {
-    @media (max-width: $screen-sm-max) {
-      margin-right: 0;
-    }
-  }
-  
+  background: $event-secondary;
+
   h2 {
     color: #ffffff;
     font-size: 68px;
@@ -57,14 +54,50 @@
     max-width: 175px;
     margin: 0 auto;
   }
-}
 
-.ym-promo-block--circle {
-  border-radius: 100%;
+  @media (max-width: $screen-xs-max) {
+    background: transparent;
+    width: 100%;
+    height: auto;
+    margin: 0 auto 25px;
+    padding: 0 0 25px;
+    border-bottom: 1px solid $event-secondary-medium;
+    border-radius: 0;
+
+    &:last-child {
+      margin: 0 auto;
+      padding:0;
+      border: 0 none;
+    }
+    
+    h2 {
+      color: $event-secondary;
+      line-height: 1;
+      margin: 0;
+    }
+    
+    p {
+      color: inherit;
+      font-weight: bold;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+  }
+
+
+  @media (max-width: 1070px) and (min-width: $screen-md-min) {
+    margin: 0 5px 20px 0;
+  }
+
   
-  @media (min-width: $screen-md-min) {
-    box-shadow: 0 10px 0 0 rgb(50, 50, 50);
-    box-shadow: 0 10px 0 0 rgba(50, 50, 50, 1);
+  &:last-child {
+    margin-right: 0;
+  }
+  
+  &:nth-child(3) {
+    @media (max-width: $screen-sm-max) {
+      margin-right: 0;
+    }
   }
 }
 
@@ -78,7 +111,8 @@
     
     .ym-promo-block__item {
       margin-right: 73px;
-      
+      background: $event-secondary;
+
       &:last-child {
         margin-right: 0;
       }

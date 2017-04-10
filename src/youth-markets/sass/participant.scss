@@ -1,0 +1,299 @@
+@import "../../youth-markets/sass/variables.scss";
+@import "variables.scss";
+@import "../../youth-markets/sass/mixins.scss";
+
+.ng-pc-container {
+  @media (max-width: $screen-xs-max) {
+    margin: 8px;
+  }
+}
+
+.ng-pc-container, 
+.ng-pc-modal {
+  .btn.form-control {
+    height: auto;
+  }
+}
+
+.ng-pc-nav-btn-group {
+  text-align: left;
+  width: 100%;
+  margin: 0 0 12px;
+  
+  > .btn {
+    text-align: left;
+    
+    .caret {
+      margin-left: 8px;
+    }
+  }
+  
+  &.open {
+    > .dropdown-menu {
+      width: 100%;
+    }
+  }
+  
+  .dropdown-menu {
+    > li {
+      > a {
+        .badge {
+          float: right;
+        }
+      }
+    }
+  }
+}
+
+.ng-pc-container {
+  .list-group-item-heading {
+    font-size: 18px;
+  }
+  
+  .list-group-item {
+    font-size: 16px;
+    
+    .checkbox {
+      margin: 0;
+      label {
+        padding-left: 0;
+      }
+    }
+  }
+  
+  a.list-group-item {
+    &, 
+    &:link, 
+    &:visited, 
+    &:hover, 
+    &:focus {
+      font-weight: 500;
+      text-decoration: none;
+    }
+    
+    &:not(.active) {
+      &, 
+      &:link {
+        color: #555555;
+        
+        .badge {
+          color: #ffffff;
+        }
+      }
+    }
+  }
+}
+
+.ng-pc-nav-list-group {
+  .list-group-item-heading {
+    padding: 10px;
+    margin: 0;
+  }
+  
+  .list-group-item {
+    border-right: 0;
+    border-bottom: 0;
+    border-left: 0;
+    
+    &:first-child {
+      border-top: 0;
+      border-radius: 0;
+    }
+    
+    &:last-child {
+      border-radius: 0;
+    }
+  }
+}
+
+.btn + .ng-pc-nav-list-group {
+  margin: 12px 0 0;
+}
+
+.ng-pc-nav-list-group + .ng-pc-nav-list-group {
+  margin: 12px 0 0;
+}
+
+.ng-pc-container {
+  .panel-heading {
+    position: relative;
+    
+    .checkbox {
+      margin: 0;
+      
+      label {
+        padding-left: 0;
+      }
+    }
+  }
+  
+  .panel-title {
+    font-size: 18px;
+    line-height: 18px;
+  }
+}
+
+.panel-heading-btn {
+  float: right;
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  font-size: 13px;
+  line-height: 13px;
+}
+
+.ng-pc-modal {
+  .modal-body {
+    font-size: 15px;
+  }
+  
+  .modal-header__btns {
+    float: right;
+    
+    .btn {
+      margin: 0 0 0 6px;
+    }
+  }
+  
+  .modal-header__btns--block-xxs {
+    @media (max-width: 359px) {
+      float: none;
+      display: block;
+      text-align: center;
+      margin: 0 0 18px 0;
+      
+      .btn {
+        margin: 0 3px;
+      }
+    }
+  }
+}
+
+.ng-pc-modal-email-message-body {
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.ta-toolbar {
+  background-color: #f0f0f0;
+  border: 1px solid $event-secondary;
+  border-radius: 0;
+  padding: 10px;
+  margin-left: 0;
+  
+  .btn-group {
+    margin: 0 12px 12px 0;
+    
+    @media (min-width: 680px) {
+      display: inline-block;
+    }
+    
+    &:last-child {
+      margin: 0 12px 0 0;
+    }
+  }
+  
+  .btn {
+    &, 
+    &:link, 
+    &:visited, 
+    &:hover, 
+    &:focus, 
+    &:active {
+      padding: 8px !important;
+      
+      @media (min-width: 360px) {
+        padding: 10px !important;
+      }
+      
+      @media (min-width: 375px) {
+        padding: 11px !important;
+      }
+      
+      @media (min-width: 400px) {
+        padding: 12px !important;
+      }
+    }
+  }
+}
+
+.ta-editor {
+  background-color: #ffffff;
+  border: 1px solid $event-secondary;
+  border-top: 0;
+  border-radius: 0;
+  padding: 10px;
+  
+  [contenteditable] {
+    &:focus {
+      outline: 0;
+    }
+  }
+}
+
+.ta-scroll-window {
+  > .ta-bind {
+    min-height: 200px;
+    padding: 6px 8px;
+  }
+}
+
+.contacts-list__actions {
+  margin: 0 0 15px;
+  
+  .contacts-list__actions-selected {
+    float: left;
+    
+    .btn {
+      padding: 10px;
+      
+      @media (min-width: 360px) {
+        padding: 12px 14px;
+      }
+      
+      @media (min-width: $screen-sm-min) {
+        padding: 12px 18px;
+      }
+      
+      @media (min-width: $screen-md-min) {
+        padding: 12px 24px;
+      }
+    }
+  }
+  
+  .contacts-list__actions-manage {
+    float: right;
+    
+    .btn {
+      padding: 10px;
+      margin: 0 0 0 6px;
+      
+      @media (min-width: 360px) {
+        padding: 12px 14px;
+      }
+      
+      @media (min-width: $screen-sm-min) {
+        padding: 12px 18px;
+        margin: 0 0 0 10px;
+      }
+      
+      @media (min-width: $screen-md-min) {
+        padding: 12px 24px;
+        margin: 0 0 0 12px;
+      }
+    }
+  }
+}
+
+.import-contacts__list-wrap {
+  max-height: 250px;
+  overflow-y: scroll;
+  
+  .list-group-item {
+    border-radius: 0;
+    
+    .checkbox {
+      margin: 0;
+    }
+  }
+}

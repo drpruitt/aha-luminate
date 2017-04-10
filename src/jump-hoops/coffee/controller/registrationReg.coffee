@@ -1,16 +1,25 @@
 angular.module 'ahaLuminateControllers'
   .controller 'RegistrationRegCtrl', [
     '$scope'
+    '$filter'
     'TeamraiserRegistrationService'
-    ($scope, TeamraiserRegistrationService) ->
+    ($scope, $filter, TeamraiserRegistrationService) ->
       $scope.registrationInfoErrors = 
         errors: []
       $fieldErrors = angular.element '.ErrorMessage'
       angular.forEach $fieldErrors, (fieldError) ->
         $fieldError = angular.element fieldError
-        if $fieldError.find('.field-error-text').length > 0
-          fieldErrorText = jQuery.trim $fieldError.find('.field-error-text').text()
-          fieldErrorText = fieldErrorText.replace(':&nbsp;is a required field', '&nbsp;is a required field').replace(': is a required field', ' is a required field')
+        $fieldErrorLabel = $fieldError.closest('.form-error').find('label .input-label')
+        $fieldErrorText = $fieldError.find('.field-error-text')
+        if $fieldErrorText.length > 0
+          $fieldErrorText.html $fieldErrorText.html().replace(':&nbsp;is a required field', '&nbsp;is a required field')
+          fieldErrorText = jQuery.trim $fieldErrorText.text()
+          fieldErrorText = fieldErrorText.replace ': is a required field', ' is a required field'
+          if $fieldErrorLabel.length > 0
+            fieldErrorLabel = jQuery.trim $fieldErrorLabel.text()
+            if fieldErrorLabel and fieldErrorLabel isnt ''
+              fieldErrorText = fieldErrorText.replace 'Error: Please enter a valid response.', fieldErrorLabel + ' - Please enter a valid response.'
+              fieldErrorText = fieldErrorText.replace ': - Please enter a valid response.', ' - Please enter a valid response.'
           $scope.registrationInfoErrors.errors.push
             text: fieldErrorText
       
@@ -169,12 +178,19 @@ angular.module 'ahaLuminateControllers'
               registrationQuestions = response.processRegistrationRequest?.primaryRegistration?.question
               if registrationQuestions
                 registrationQuestions = [registrationQuestions] if not angular.isArray registrationQuestions
-                angular.forEach registrationQuestions, (registrationQuestion) ->
+                angular.forEach registrationQuestions, (registrationQuestion, registrationQuestionIndex) ->
                   registrationQuestionKey = registrationQuestion.key
                   registrationQuestionId = registrationQuestion.id
                   angular.forEach $scope.registrationQuestions, (questionObj, questionName) ->
                     if questionName.match('_' + registrationQuestionId + '$')
-                      setRegistrationQuestionSurveyKey questionName, registrationQuestionKey
+                      registrationQuestions[registrationQuestionIndex].ng_questionName = questionName
+                registrationQuestions = $filter('orderBy') registrationQuestions, 'ng_questionName', false
+                angular.forEach registrationQuestions, (registrationQuestion) ->
+                  if registrationQuestion.ng_questionName
+                    setRegistrationQuestionSurveyKey registrationQuestion.ng_questionName, registrationQuestion.key
+      
+      $scope.toggleAcceptWaiver = (acceptWaiver) ->
+        $scope.acceptWaiver = acceptWaiver
       
       $scope.previousStep = ->
         $scope.ng_go_back = true
@@ -184,6 +200,14 @@ angular.module 'ahaLuminateControllers'
         false
       
       $scope.submitReg = ->
-        angular.element('.js--default-reg-form').submit()
+        if $scope.acceptWaiver isnt 'yes' and not $scope.ng_go_back
+          window.scrollTo 0, 0
+          $scope.registrationInfoErrors.errors = [
+            {
+              text: 'You must agree to the waiver.'
+            }
+          ]
+        else
+          angular.element('.js--default-reg-form').submit()
         false
   ]

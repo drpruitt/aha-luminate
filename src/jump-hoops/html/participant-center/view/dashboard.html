@@ -1,0 +1,473 @@
+<div cg-busy="dashboardPromises">
+  <div ng-if="participantRegistration.companyInformation.isCompanyCoordinator != 'true'" ng-cloak>
+    <section class="ym-pc-dashboard-progress-section">
+      <div class="ym-pc-dashboard-section-header">
+        <h2 class="h3">
+          My Fundraising
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="ym-pc-dashboard-progress-box">
+            <div class="ym-pc-dashboard-section-header">
+              <h3 class="h5">
+                Progress
+              </h3>
+            </div>
+            <div class="ym-pc-dashboard-progress-types">
+              <div class="clearfix">
+                <div class="ym-pc-dashboard-progress-type" ng-class="{'active': dashboardProgressType == 'personal'}">
+                  <a ng-click="toggleProgressType('personal')">
+                    <strong>Personal</strong>
+                  </a>
+                </div>
+                <div class="ym-pc-dashboard-progress-type" ng-class="{'active': dashboardProgressType == 'company'}">
+                  <a ng-click="toggleProgressType('company')">
+                    <strong>School</strong>
+                  </a>
+                </div>
+                <div class="ym-pc-dashboard-progress-type" ng-class="{'active': dashboardProgressType == 'team'}">
+                  <a ng-click="toggleProgressType('team')">
+                    <strong>Team</strong>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div ng-class="{'hidden': dashboardProgressType != 'personal'}" ng-cloak>
+              <div class="ym-progress__thermometer">
+                <div class="ym-progress__thermometer--fill" ng-style="{'width': participantProgress.percent + '%'}"></div>
+              </div>
+              <a class="btn btn-primary" ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{consId}}">
+                <strong>Donate to Personal Page</strong>
+              </a>
+              <div>
+                <strong><span ng-bind-html="participantProgress.raisedFormatted"></span></strong>
+              </div>
+              <div ng-if="participantProgress.goalFormatted && participantProgress.goalFormatted != '$0'" ng-cloak>
+                <strong><span ng-bind-html="participantProgress.goalFormatted"></span></strong>
+              </div>
+              <a ng-click="editPersonalGoal()">
+                Update Personal Goal
+              </a>
+            </div>
+            <div ng-class="{'hidden': dashboardProgressType != 'company'}" ng-cloak>
+              <div class="ym-progress__thermometer">
+                <div class="ym-progress__thermometer--fill" ng-style="{'width': companyProgress.percent + '%'}"></div>
+              </div>
+              <div>
+                <strong><span ng-bind-html="companyProgress.raisedFormatted"></span></strong>
+              </div>
+              <div ng-if="companyProgress.goalFormatted && companyProgress.goalFormatted != '$0'" ng-cloak>
+                <strong><span ng-bind-html="companyProgress.goalFormatted"></span></strong>
+              </div>
+            </div>
+            <div ng-class="{'hidden': dashboardProgressType != 'team'}" ng-cloak>
+              <div class="ym-progress__thermometer">
+                <div class="ym-progress__thermometer--fill" ng-style="{'width': teamProgress.percent + '%'}"></div>
+              </div>
+              <div>
+                <strong><span ng-bind-html="teamProgress.raisedFormatted"></span></strong>
+              </div>
+              <div ng-if="teamProgress.goalFormatted && teamProgress.goalFormatted != '$0'" ng-cloak>
+                <strong><span ng-bind-html="teamProgress.goalFormatted"></span></strong>
+              </div>
+              <div ng-if="participantRegistration.aTeamCaptain == 'true'" ng-cloak>
+                <a ng-click="editTeamGoal()">
+                  Update Team Goal
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="ym-pc-dashboard-email-challenge-box">
+            <div class="ym-pc-dashboard-section-header">
+              <h3 class="h5">
+                Email Challenge
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="ym-pc-dashboard-badges-section" ng-if="participantBadges && participantBadges.length > 0" ng-cloak>
+      <div class="ym-pc-dashboard-section-header">
+        <h2 class="h5">
+          Badges
+        </h2>
+      </div>
+      <div class="ym-pc-dashboard-badges-icons">
+        <div class="ym-pc-dashboard-badges-icon" ng-repeat="participantBadge in participantBadges">
+          <div>
+            <img src="" alt="{{participantBadge.label}}">
+          </div>
+          <div ng-bind-html="participantBadge.label"></div>
+        </div>
+      </div>
+    </section>
+    <section class="ym-pc-dashboard-activities-section">
+      <div class="ym-pc-dashboard-section-header">
+        <h2 class="h3">
+          My Activities
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="">
+            <div class="">
+              <div class="">
+                <h3 class="h5">
+                  My Donors
+                </h3>
+                <div ng-if="donorContactCounts.email_rpt_show_unthanked_donors > 0" ng-cloak>
+                  You have new donors who haven't received a thank-you email!
+                  <a class="btn btn-primary">
+                    <strong>Say Thanks</strong>
+                  </a>
+                </div>
+                <div ng-if="donorContactCounts.email_rpt_show_nondonors_followup > 0" ng-cloak>
+                  Great job sending emails. Some of your friends haven't donated!
+                  <a class="btn btn-primary">
+                    <strong>Follow Up</strong>
+                  </a>
+                </div>
+                <div ng-if="donorContactCounts.email_rpt_show_donors > 0" ng-cloak>
+                  Review all of your donations on the Reports page.
+                  <a class="btn btn-primary">
+                    <strong>View All</strong>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="">
+            <div class="">
+              <div class="">
+                <h3 class="h5">
+                  My Page
+                </h3>
+                <p>
+                  Personalize your fundraising page to share your heart-healthy journey. Students who personalize their page raise more money!
+                </p>
+                <a class="btn btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=personal&amp;px={{consId}}">
+                  <strong>View and Edit Your Page</strong>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="">
+            <div class="">
+              <div class="">
+                <h3 class="h5">
+                  Daily Heart-Healthy Challenge
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="">
+            <div class="">
+              <div class="">
+                <h3 class="h5">
+                  My Virtual World
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="ym-pc-dashboard-coordinators-message-section" ng-if="coordinatorsMessage.message && coordinatorsMessage.message != ''" ng-cloak>
+      <div class="ym-pc-dashboard-section-header">
+        <h2 class="h5">
+          Note From Your Teacher
+        </h2>
+        <div ng-bind-html="coordinatorsMessage.message"></div>
+      </div>
+    </section>
+  </div>
+  <div ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
+    <section class="ym-pc-dashboard-coordinator-progress-section">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="ym-pc-dashboard-coordinator-progress-box">
+            <div class="ym-pc-dashboard-section-header">
+              <h3>
+                Fundraising
+              </h3>
+            </div>
+            <div class="ym-pc-dashboard-progress-types">
+              <div class="clearfix">
+                <div class="ym-pc-dashboard-progress-type" ng-class="{'active': dashboardProgressType == 'company'}">
+                  <a ng-click="toggleProgressType('company')">
+                    <strong>School</strong>
+                  </a>
+                </div>
+                <div class="ym-pc-dashboard-progress-type" ng-class="{'active': dashboardProgressType == 'team'}">
+                  <a ng-click="toggleProgressType('team')">
+                    <strong>Team</strong>
+                  </a>
+                </div>
+                <div class="ym-pc-dashboard-progress-type" ng-class="{'active': dashboardProgressType == 'personal'}">
+                  <a ng-click="toggleProgressType('personal')">
+                    <strong>Personal</strong>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div ng-class="{'hidden': dashboardProgressType != 'personal'}" ng-cloak>
+              <div class="ym-progress__thermometer">
+                <div class="ym-progress__thermometer--fill" ng-style="{'width': participantProgress.percent + '%'}"></div>
+              </div>
+              <a class="btn btn-primary" ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{consId}}">
+                <strong>Donate to Personal Page</strong>
+              </a>
+              <div>
+                <strong><span ng-bind-html="participantProgress.raisedFormatted"></span></strong>
+              </div>
+              <div ng-if="participantProgress.goalFormatted && participantProgress.goalFormatted != '$0'" ng-cloak>
+                <strong><span ng-bind-html="participantProgress.goalFormatted"></span></strong>
+              </div>
+              <a ng-click="editPersonalGoal()">
+                Update Personal Goal
+              </a>
+            </div>
+            <div ng-class="{'hidden': dashboardProgressType != 'company'}" ng-cloak>
+              <div class="ym-progress__thermometer">
+                <div class="ym-progress__thermometer--fill" ng-style="{'width': companyProgress.percent + '%'}"></div>
+              </div>
+              <div>
+                <strong><span ng-bind-html="companyProgress.raisedFormatted"></span></strong>
+              </div>
+              <div ng-if="companyProgress.goalFormatted && companyProgress.goalFormatted != '$0'" ng-cloak>
+                <strong><span ng-bind-html="companyProgress.goalFormatted"></span></strong>
+              </div>
+            </div>
+            <div ng-class="{'hidden': dashboardProgressType != 'team'}" ng-cloak>
+              <div class="ym-progress__thermometer">
+                <div class="ym-progress__thermometer--fill" ng-style="{'width': teamProgress.percent + '%'}"></div>
+              </div>
+              <div>
+                <strong><span ng-bind-html="teamProgress.raisedFormatted"></span></strong>
+              </div>
+              <div ng-if="teamProgress.goalFormatted && teamProgress.goalFormatted != '$0'" ng-cloak>
+                <strong><span ng-bind-html="teamProgress.goalFormatted"></span></strong>
+              </div>
+              <div ng-if="participantRegistration.aTeamCaptain == 'true'" ng-cloak>
+                <a ng-click="editTeamGoal()">
+                  Update Team Goal
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="ym-pc-dashboard-coordinator-students-box">
+            <div class="ym-pc-dashboard-section-header">
+              <h3>
+                My Students
+              </h3>
+            </div>
+            <p>
+              You have <strong></strong> students registered. Keep recruiting to meet your goal of <strong></strong> students!
+            </p>
+            <a class="btn btn-primary">
+              <strong>Send Emails</strong>
+            </a>
+            <p>
+              Create/Update an <strong>encouraging message</strong> for your student in their Headquarters.
+            </p>
+            <a class="btn btn-primary">
+              <strong>Create Message</strong>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="ym-pc-dashboard-coordinator-steps-section">
+      <div class="ym-pc-dashboard-section-header">
+        <h2 class="h3">
+          Coordinator Fundraising Steps
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="">
+            <div class="">
+              <div class="">
+                <h3 class="h5">
+                  Edit My Pages
+                </h3>
+                <p>
+                  Edit your pages to encourage students and parents to join and donate!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="">
+            <div class="">
+              <div class="">
+                <h3 class="h5">
+                  Show your Students
+                </h3>
+                <p>
+                  Use the "Student View" to show your students all of the great tools and games in their Headquarters and encourage them to fundraise!
+                </p>
+                <a class="btn btn-primary">
+                  <strong>Student View</strong>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="">
+            <div class="">
+              <div class="">
+                <h3 class="h5">
+                  Check Progress
+                </h3>
+                <p>
+                  Check out the reports page to see which students have completed challenges and who has earned donations.
+                </p>
+                <a class="btn btn-primary">
+                  <strong>View Reports</strong>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="">
+            <div class="">
+              <div class="">
+                <h3 class="h5">
+                  Order Thank-You Gifts
+                </h3>
+                <p>
+                  Visit our Thank-You Gift portal to manage and order gifts for your students.
+                </p>
+                <a class="btn btn-primary">
+                  <strong>Thank You Gifts</strong>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="ym-pc-dashboard-coordinator-resources-section">
+      <div class="ym-pc-dashboard-section-header">
+        <h2 class="h3">
+          Coordinator Resources
+        </h2>
+      </div>
+      <div class="ym-pc-dashboard-coordinator-resources-options">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="ym-pc-dashboard-section-header">
+              <h3 class="h5">
+                Educational Resources
+              </h3>
+            </div>
+            <p>
+              Download resources by state to share with your students.
+            </p>
+            <a class="btn btn-primary">
+              <strong>Download Resources</strong>
+            </a>
+          </div>
+          <div class="col-sm-4">
+            <div class="ym-pc-dashboard-section-header">
+              <h3 class="h5">
+                Online Assignment
+              </h3>
+            </div>
+            <p>
+              Download a worksheet for an in-class assignment.
+            </p>
+            <a class="btn btn-primary">
+              <strong>Download Assignment</strong>
+            </a>
+          </div>
+          <div class="col-sm-4">
+            <div class="ym-pc-dashboard-section-header">
+              <h3 class="h5">
+                Homework with Heart
+              </h3>
+            </div>
+            <p>
+              Download a worksheet for a take-home assignment.
+            </p>
+            <a class="btn btn-primary">
+              <strong>Download Homework</strong>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="ym-pc-dashboard-coordinator-resources-more">
+        <a>
+          <strong>View All Resources</strong>
+        </a>
+      </div>
+    </section>
+  </div>
+  <section class="ym-pc-dashboard-spread-section">
+    <div class="ym-pc-dashboard-section-header">
+      <h2 class="h3">
+        Spread the Word
+      </h2>
+    </div>
+    <div class="ym-pc-dashboard-spread-options">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="ym-pc-dashboard-section-header">
+            <h3 class="h5">
+              Download Mobile App
+            </h3>
+            <p>
+              Download our Mobile Fundraising App today!
+            </p>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="ym-pc-dashboard-section-header">
+            <h3 class="h5">
+              Facebook Fundraising
+            </h3>
+            <p>
+              Use our Facebook app to raise even more!
+            </p>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="ym-pc-dashboard-section-header">
+            <h3 class="h5">
+              Email Signature
+            </h3>
+            <p>
+              Download a signature for your email!
+            </p>
+            <a class="btn btn-secondary">
+              <strong>PC Instructions</strong>
+            </a>
+            <a class="btn btn-secondary">
+              <strong>Mac Instructions</strong>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

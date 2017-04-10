@@ -24,6 +24,13 @@
 
 .event-accent {
   background: $event-accent;
+
+  a,
+  a:link,
+  a:visited,
+  a:hover {
+    color: $brand-white;
+  }
 }
 
 .event-accent-medium {

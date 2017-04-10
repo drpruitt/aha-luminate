@@ -93,9 +93,10 @@ angular.module 'ahaLuminateControllers'
                     $scope.eventDate = response.data.coordinator.event_date
       getTeamData()
 
-      setTeamParticipants = (participants, totalNumber) ->
+      setTeamParticipants = (participants, totalNumber, totalFundraisers) ->
         $scope.teamParticipants.participants = participants or []
         $scope.teamParticipants.totalNumber = totalNumber or 0
+        $scope.teamParticipants.totalFundraisers = totalFundraisers or 0
         if not $scope.$$phase
           $scope.$apply()
 
@@ -110,14 +111,16 @@ angular.module 'ahaLuminateControllers'
               if participants
                 participants = [participants] if not angular.isArray participants
                 teamParticipants = []
+                totalFundraisers = 0
                 angular.forEach participants, (participant) ->
                   if participant.amountRaised > 1
                     participant.amountRaised = Number participant.amountRaised
                     participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
                     participant.name.last = participant.name.last.substring(0,1)+'.'
                     teamParticipants.push participant
+                    totalFundraisers++
                 totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
-                setTeamParticipants teamParticipants, totalNumberParticipants
+                setTeamParticipants teamParticipants, totalNumberParticipants, totalFundraisers
       getTeamParticipants()
 
 

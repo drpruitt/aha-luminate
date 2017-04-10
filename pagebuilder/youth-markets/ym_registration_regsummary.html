@@ -13,7 +13,7 @@
   <div ng-cloak>
     <div class="ym-registration-page-header">
       <div class="manageable-content" data-container="edit_title_container">
-        <h2 class="h5" id="title_container">
+        <h2 class="h4" id="title_container">
           [[C1:fr_reg_summary_page_title]]
         </h2>
       </div>
@@ -36,8 +36,15 @@
       <div class="hidden js--registration-regsummary-participant-info">
         [[A13]]
       </div>
-      <div>
-        Student contact information:
+      <div class="ym-registration-regsummary-contact-header">
+        <div class="clearfix">
+          <p class="ym-section-header">
+            Student contact information:
+          </p>
+          <a class="btn btn-md btn-toggle" href="[[A1]]?fr_id=2520&pg=regsummary&action=previous">
+            <i class="fa fa-pencil"></i> Edit
+          </a>
+        </div>
       </div>
       <div>
         <span ng-bind-html="regSummaryInfo.cons_first_name"></span> <span ng-bind-html="regSummaryInfo.cons_last_name"></span>
@@ -47,21 +54,37 @@
       </div>
       [[?xx$0.00x::x[[A16]]x::::
         <hr class="ym-section-divider">
-        <div>
-          Your donation:
+        <div class="ym-registration-regsummary-donation-header">
+          <div class="clearfix">
+            <p class="ym-section-header">
+              Your donation:
+            </p>
+            <a class="btn btn-md btn-toggle" href="[[A1]]?fr_id=2520&pg=regsummary&action=previous">
+              <i class="fa fa-pencil"></i> Edit
+            </a>
+          </div>
         </div>
-        <div>
+        <div class="ym-registration-regsummary-donation-gift">
           Donation: <span ng-bind-html="regSummaryInfo.fr_gift"></span>
         </div>
-        <div class="manageable-content" data-container="edit_page_info2_container">
-          <span id="page_info2_container"><strong>[[?xxnullx::x[[C1:fr_reg_summary_page_info2]]x::[[M0:friendraiser:reg_summary_page_total_price_footer]]::[[C1:fr_reg_summary_page_info2]]]]</strong></span> 
-          <span id="reg_total_amt" class="option-amount"><strong>[[A16]]</strong></span>
+        <div class="ym-registration-regsummary-donation-total">
+          <div class="manageable-content" data-container="edit_page_info2_container">
+            <span id="page_info2_container"><strong>[[?xxnullx::x[[C1:fr_reg_summary_page_info2]]x::[[M0:friendraiser:reg_summary_page_total_price_footer]]::[[C1:fr_reg_summary_page_info2]]]]</strong></span> 
+            <span id="reg_total_amt" class="option-amount"><strong>[[E130:"[[A16]]" ".00" "" replaceall]]</strong></span>
+          </div>
         </div>
       ]]
       <div class="ym-registration-form-footer">
         <div class="ym-registration-form-footer-btns">
           <div class="clearfix">
-            <div class="pull-right">
+            <div class="visible-xs">
+              [[?xTx::x[[A26]]x::::
+                <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-primary">
+                  <strong>Next</strong> <i class="fa fa-chevron-right"></i>
+                </button>
+              ]]
+            </div>
+            <div class="pull-right hidden-xs">
               [[?xTx::x[[A26]]x::::
                 <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-primary">
                   <strong>Next</strong> <i class="fa fa-chevron-right"></i>

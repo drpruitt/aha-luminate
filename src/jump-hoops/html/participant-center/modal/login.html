@@ -1,0 +1,39 @@
+<div ng-controller="NgPcLoginCtrl">
+  <form name="consLoginForm" method="POST" novalidate ng-submit="submitLogin()">
+    <div class="modal-header">
+      <h2 class="h5 modal-title">
+        Login
+      </h2>
+    </div>
+    <div class="modal-body">
+      <div uib-alert class="alert-danger" ng-if="loginError">
+        {{loginError}}
+      </div>
+      <div uib-alert class="alert-warning">
+        You must be logged in to continue.
+      </div>
+      <div class="form-group">
+        <label for="login-user-name">
+          Username:
+        </label>
+        <input type="text" class="form-control" name="user_name" id="login-user-name" ng-model="consLogin.user_name" autocorrect="off" autocapitalize="off" spellcheck="false">
+      </div>
+      <div class="form-group">
+        <label for="login-user-password">
+          Password:
+        </label>
+        <input type="password" class="form-control" name="password" id="login-user-password" ng-model="consLogin.password">
+      </div>
+      <!-- TODO: remember me -->
+    </div>
+    <div class="modal-footer">
+      <div class="clearfix">
+        <div class="pull-right">
+          <button type="submit" class="btn btn-primary text-uppercase">
+            Sign In
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
