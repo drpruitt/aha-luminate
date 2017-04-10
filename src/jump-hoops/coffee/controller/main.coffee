@@ -7,20 +7,24 @@ angular.module 'ahaLuminateControllers'
     ($scope, $httpParamSerializer, AuthService, TeamraiserParticipantService) ->
       $dataRoot = angular.element '[data-aha-luminate-root]'
       consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
-      $scope.numberEvents = ''
+      $scope.numberEvents = 0
       $scope.regEventId = ''
   
       if consId isnt undefined
-        TeamraiserParticipantService.getRegisteredTeamraisers 'cons_id=' + consId,
+        TeamraiserParticipantService.getRegisteredTeamraisers 'event_type=Jump&cons_id=' + consId,
           error: (response) ->
            #to do
           success: (response) ->
             console.log response
             teamraiser = response.getRegisteredTeamraisersResponse?.teamraiser
-            $scope.numberEvents = teamraiser.length
-            console.log $scope.numberEvents
-            if teamraiser.length == 1
+            if teamraiser.length > 1
+              angular.forEach teamraiser, (teamraiser) ->
+                $scope.numberEvents++
+            else 
+              $scope.numberEvents == 1
               $scope.regEventId = teamraiser.id
+
+      console.log $scope.numberEvents
 
       $scope.toggleLoginMenu = ->
         if $scope.loginMenuOpen
