@@ -1,3 +1,13 @@
+
+.ym-registration-ptype-donation-levels {
+  &.active {
+    background: $event-secondary-light;
+  }
+}
+
+.ym-registration-ptype-donation-message {
+  color: $event-secondary;
+}
 .ym-registration-page-container {
   font-size: 14px;
   text-align: center;
@@ -77,6 +87,7 @@
 .ym-registration-form-footer {
   padding: 18px 8px;
   margin: 26px -8px 0;
+  background: $event-secondary-light;
   
   @media (min-width: $screen-sm-min) {
     padding: 20px;
