@@ -89,8 +89,8 @@
             <div class="text-center">
               <p>Send 10 eCards to Earn your Rory badge!</p>
               <p><a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email"><strong>Send Email</strong></a>
-              <a class="btn btn-md-wide btn-primary" href=" http://hearttools.heart.org/aha_ym18/?eid={eventId}&sid={consId}&name={consName}"><strong>Send eCard</strong></a></p>
-              <p><a href="http://hearttools.heart.org/aha_ym18/api/student/challenge/{eventId}/{consId}?challenge={challengeId}&key=6Mwqh5dFV39HLDq7"><strong>Take or update my challenge</strong></a></p>
+              <a class="btn btn-md-wide btn-primary" href=" http://hearttools.heart.org/aha_ym18/?eid={{frId}}&sid={{consId}}&name={{consName}"><strong>Send eCard</strong></a></p>
+              <p><a href="http://hearttools.heart.org/aha_ym18/api/student/challenge/{{frId}}/{consId}?challenge={{challengeId}}&key=6Mwqh5dFV39HLDq7"><strong>Take or update my challenge</strong></a></p>
             </div>
           </div>
         </div>
@@ -178,15 +178,21 @@
           <p>
             Personalize your fundraising page to share your heart-healthy journey. Students who personalize their page raise more money!
           </p>
-          <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=personal&amp;px={{consId}}">
-            <strong>View and Edit Your Page</strong>
-          </a>
+          <p class="text-center">
+            <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=personal&amp;px={{consId}}">
+              <strong>View and Edit Your Page</strong>
+            </a>
+          </p>
           <div class="row">
             <div class="col-sm-6">
-              <p><strong>Personal Page URL:</strong>
+              <p class="small">
+                <strong>Personal Page URL:</strong>
+              </p>
             </div>
             <div class="col-sm-6">
-            <p><strong>Share My Personal Page:</strong>
+              <p class="small">
+                <strong>Share My Personal Page:</strong>
+              </p>
             </div>
           </div>
         </div>

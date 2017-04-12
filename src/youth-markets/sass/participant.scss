@@ -179,17 +179,6 @@ main > .container {
   }
 }
 
-/*.ym-pc-dashboard-progress-box, 
-.ym-pc-dashboard-email-challenge-box {
-  background: $event-secondary-medium;
-  padding: 24px 20px;
-  margin: 0 0 30px;
-  
-  .ym-pc-dashboard-section-header {
-    color: $event-secondary;
-  }
-}*/
-
 .ym-pc-dashboard-activities-section {
   .row {
     display: flex;
@@ -209,7 +198,7 @@ main > .container {
     color: $event-secondary;
     margin: 0 0 20px;
   }
-
+  .row,
   .col-sm-8 {
     padding: 0;
   }
