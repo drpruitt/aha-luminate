@@ -254,6 +254,7 @@ header {
         color: $brand-primary;
         height: 50px;
         outline: 0;
+        font-weight: bold;
       }
       
       &:hover, 
@@ -283,6 +284,10 @@ header {
       @media (min-width: $screen-sm-min) {
         right: 0;
       }
+
+      &.my-events {
+        right: 175px;
+      }
       
       &.open {
         display: block;
@@ -306,8 +311,11 @@ header {
       }
     }
     
-    .ym-header-hq-btn {
+    .ym-header-hq-btn.btn {
       height: 50px;
+      line-height: 50px;
+      font-weight: bold;
+      padding: 0 20px;
     }
     
     .ym-site-menu {

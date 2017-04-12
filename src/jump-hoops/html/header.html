@@ -117,7 +117,7 @@
                   <span class="visible-xs visible-sm">My HQ</span>
                   <span class="hidden-xs hidden-sm">My Headquarters</span>
                 </a>
-                <div class="ym-header-welcome-dropdown" ng-class="{'open': welcomeMenuOpen}" ng-cloak>
+                <div class="ym-header-welcome-dropdown" ng-class="{'open': welcomeMenuOpen, 'my-events': numberEvents > 1, 'my-hq' : numberEvents == 1}" ng-cloak>
                   <ul>
                     <li>
                       <a href="ConsProfileUser?dispMode=edit&amp;NEXTURL=[[T1:[[E130:[[T8:[[S8]]]] [[T8:&amp;]] [[T8:&]] replaceall]]]]">
