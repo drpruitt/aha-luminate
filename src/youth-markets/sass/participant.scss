@@ -2,6 +2,39 @@
 @import "variables.scss";
 @import "../../youth-markets/sass/mixins.scss";
 
+.ym-page-content {
+  padding: 0;
+
+  .ng-pc-view-container {
+    padding: 28px;
+  }
+}
+
+.ng-pc-nav {
+  background: $event-accent;
+  a,
+  a:link,
+  a:visited {
+    display:inline-block;
+    text-align: center;
+    text-decoration: none;
+    color: $event-secondary;
+    background: $event-secondary-medium;
+    font-weight: bold;
+    border-right: 2px solid $event-accent;
+    width: 234px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 18px;
+  }
+  a:last-child {
+    border-right: 0 none;
+  }
+  a.active {
+    background: $brand-white;
+  }
+}
+
 .ng-pc-container {
   @media (max-width: $screen-xs-max) {
     margin: 8px;
