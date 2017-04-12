@@ -166,10 +166,15 @@ main > .container {
     margin: 0 0 30px;
 
     .ym-pc-dashboard-progress-section__column {
-      padding: 0 20px;
-    }
-    &:first-child {
-      margin-right: 30px;
+      padding: 20px;
+    
+      &:first-child {
+        margin-right: 30px;
+      }
+
+      .h5 {
+        margin: 0 0 25px;
+      }
     }
   }
 }
