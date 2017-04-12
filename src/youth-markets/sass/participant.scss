@@ -2,6 +2,14 @@
 @import "variables.scss";
 @import "../../youth-markets/sass/mixins.scss";
 
+header {
+  padding: 0;
+
+  > .container {
+    display: none;
+  }
+}
+
 main > .container {
   @media(max-width: $screen-sm-min){
     margin-top: -72px;
@@ -68,7 +76,7 @@ main > .container {
   }
 }
 
-.ng-pc-view-container{
+.ng-pc-view-container {
   background: $brand-white;
 }
 
@@ -147,6 +155,35 @@ main > .container {
     }
   }
 }
+
+.ym-pc-dashboard-section-header {
+  text-align: center;
+}
+
+.ym-pc-dashboard-progress-section {
+  .row {
+    display: flex;
+    margin: 0 0 30px;
+
+    .ym-pc-dashboard-progress-section__column {
+      padding: 0 20px;
+    }
+    &:first-child {
+      margin-right: 30px;
+    }
+  }
+}
+
+/*.ym-pc-dashboard-progress-box, 
+.ym-pc-dashboard-email-challenge-box {
+  background: $event-secondary-medium;
+  padding: 24px 20px;
+  margin: 0 0 30px;
+  
+  .ym-pc-dashboard-section-header {
+    color: $event-secondary;
+  }
+}*/
 
 .ym-pc-dashboard-activities-section {
   .row {

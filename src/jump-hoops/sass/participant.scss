@@ -4,28 +4,8 @@
 
 @import "../../youth-markets/sass/participant.scss";
 
-header {
-  padding: 0;
 
-  > .container {
-    display: none;
-  }
-}
 
-.ym-pc-dashboard-section-header {
-  text-align: center;
-}
-
-.ym-pc-dashboard-progress-box, 
-.ym-pc-dashboard-email-challenge-box {
-  background: $event-secondary-medium;
-  padding: 24px 20px;
-  margin: 0 0 30px;
-  
-  .ym-pc-dashboard-section-header {
-    color: $event-secondary;
-  }
-}
 
 .ym-pc-dashboard-progress-types {
   margin: 0 0 32px;
