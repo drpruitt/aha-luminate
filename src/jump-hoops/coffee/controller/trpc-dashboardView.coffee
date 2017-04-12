@@ -13,9 +13,10 @@ angular.module 'trPcControllers'
     'NgPcTeamraiserCompanyService'
     'NgPcContactService'
     'NgPcTeamraiserShortcutURLService'
-    ($rootScope, $scope, $filter, $uibModal, APP_INFO, ZuriService, ParticipantBadgesService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserCompanyService, NgPcContactService, NgPcTeamraiserShortcutURLService) ->
+    '$location'
+    ($rootScope, $scope, $filter, $uibModal, APP_INFO, ZuriService, ParticipantBadgesService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserCompanyService, NgPcContactService, NgPcTeamraiserShortcutURLService, $location) ->
       $scope.dashboardPromises = []
-      
+
       if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
         $scope.dashboardProgressType = 'personal'
       else
