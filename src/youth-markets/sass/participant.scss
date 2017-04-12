@@ -161,6 +161,9 @@ main > .container {
 }
 
 .ym-pc-dashboard-progress-section {
+  .h3 {
+    margin-bottom: 35px;
+  }
   .row {
     display: flex;
     margin: 0 0 30px;
@@ -275,13 +278,17 @@ main > .container {
   margin: 25px;
   padding: 25px 20px;
 
+
+  &.ym-activity-box--donors{
+    .row,
+    .col-sm-8 {
+      padding: 0;
+    }
+  }
+
   .h5 {
     color: $event-secondary;
     margin: 0 0 20px;
-  }
-  .row,
-  .col-sm-8 {
-    padding: 0;
   }
 }
 
@@ -303,6 +310,21 @@ main > .container {
     
     &:last-child {
       border-radius: 0;
+    }
+  }
+}
+
+.ym-pc-dashboard-spread-section {
+  padding: 36px;
+  
+  .ym-pc-dashboard-spread-options {
+    text-align: center;
+    
+    .ym-pc-dashboard-section-header {
+      h5, 
+      .h5 {
+        color: $event-secondary;
+      }
     }
   }
 }
@@ -497,4 +519,40 @@ main > .container {
       margin: 0;
     }
   }
+}
+
+.ym-pc-dashboard-coordinator-progress-box, 
+.ym-pc-dashboard-coordinator-students-box {
+  background: $event-secondary-medium;
+  padding: 24px 20px;
+  margin: 0 0 30px;
+}
+
+.ym-pc-dashboard-coordinator-students-box {
+  text-align: center;
+}
+
+.ym-pc-dashboard-coordinator-steps-section {
+  margin: 0 0 40px;
+}
+
+.ym-pc-dashboard-coordinator-resources-section {
+  background-color: $event-accent-light;
+  padding: 36px;
+  margin: 0 0 30px;
+  
+  .ym-pc-dashboard-coordinator-resources-options {
+    text-align: center;
+    
+    .ym-pc-dashboard-section-header {
+      h5, 
+      .h5 {
+        color: $event-secondary;
+      }
+    }
+  }
+}
+
+.ym-pc-dashboard-coordinator-resources-more {
+  text-align: center;
 }

@@ -219,16 +219,19 @@ a.btn-toggle {
 a.btn-outline {
   &, 
   &:link, 
-  &:visited, 
-  &:hover, 
-  &:focus, 
-  &:active {
+  &:visited {
     font-weight: 700;
     text-align: center;
     background: transparent;
     border: 1px solid $event-primary;
     color: $event-primary;
     text-decoration: none;
+  }
+  &:hover, 
+  &:focus, 
+  &:active {
+    background: $event-primary;
+    color: #fff;
   }
 }
 
