@@ -90,7 +90,7 @@
               <p>Send 10 eCards to Earn your Rory badge!</p>
               <p><a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email"><strong>Send Email</strong></a>
               <a class="btn btn-md-wide btn-primary" href=" http://hearttools.heart.org/aha_ym18/?eid={{frId}}&sid={{consId}}&name={{consName}"><strong>Send eCard</strong></a></p>
-              <p><a href="http://hearttools.heart.org/aha_ym18/api/student/challenge/{{frId}}/{consId}?challenge={{challengeId}}&key=6Mwqh5dFV39HLDq7"><strong>Take or update my challenge</strong></a></p>
+              <p><a href="http://hearttools.heart.org/aha_ym18/api/student/challenge/{{frId}}/{{consId}}?challenge={{personalChallenge.id}}&key=6Mwqh5dFV39HLDq7"><strong>Take or update my challenge</strong></a></p>
             </div>
           </div>
         </div>
@@ -204,26 +204,26 @@
           </h3>
           <div class="col-sm-8">
             <p class="ym_my_challenge__description">  
-              <strong>{{challengeName}}</strong>
+              <strong>{{personalChallenge.name}}</strong>
             </p>
-            <p class="ym_my_challenge__stats" ng-if="challengeCompleted == 1">
+            <p class="ym_my_challenge__stats" ng-if="personalChallenge.completed == 1">
               I've met my challenge <span>1</span> day!
             </p>
-            <p class="ym_my_challenge__stats" ng-if="challengeCompleted != 1">
-              I've met my challenge <span>{{challengeCompleted}}</span> days!
+            <p class="ym_my_challenge__stats" ng-if="personalChallenge.completed != 1">
+              I've met my challenge <span>{{personalChallenge.completed}}</span> days!
             </p>
           </div>
           <div class="col-sm-4">
-            <img class="img-responsive" ng-if="challengeId == 1 || challengeId == 4" src="../aha-luminate/dist/jump-hoops/image/my-challenge-exercise.png" alt="{{challengeName}}" />
-            <img class="img-responsive" ng-if="challengeId == 2" src="../aha-luminate/dist/jump-hoops/image/my-challenge-water.png" alt="{{challengeName}}" />
-            <img class="img-responsive" ng-if="challengeId == 3" src="../aha-luminate/dist/jump-hoops/image/my-challenge-food.png" alt="{{challengeName}}" />          
+            <img class="img-responsive" ng-if="personalChallenge.id == 1 || personalChallenge.id == 4" src="../aha-luminate/dist/jump-hoops/image/my-challenge-exercise.png" alt="{{personalChallenge.name}}" />
+            <img class="img-responsive" ng-if="personalChallenge.id == 2" src="../aha-luminate/dist/jump-hoops/image/my-challenge-water.png" alt="{{personalChallenge.name}}" />
+            <img class="img-responsive" ng-if="personalChallenge.id == 3" src="../aha-luminate/dist/jump-hoops/image/my-challenge-food.png" alt="{{personalChallenge.name}}" />          
           </div>
           <div class="clearfix"></div>
           <div class="ym_my_challenge__actions">
-            <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=personal&amp;px={{consId}}">
+            <a class="btn btn-md-wide btn-primary" ng-href="http://hearttools.heart.org/aha_ym18/api/student/{{frId}}/{{consId}}/{{personalChallenge.id}}?key=6Mwqh5dFV39HLDq7">
               <strong>I have met this challenge!</strong> <i class="fa fa-check" aria-hidden="true"></i>
             </a>
-            <a class="btn btn-md-wide btn-outline" ng-href="TR?fr_id={{frId}}&amp;pg=personal&amp;px={{consId}}">
+            <a class="btn btn-md-wide btn-outline" ng-href="#">
               <strong>Skip</strong> <i class="fa fa-times" aria-hidden="true"></i>
             </a>
           </div>
@@ -510,10 +510,10 @@
             <p>
               Download a signature for your email!
             </p>
-            <a class="btn btn-secondary">
+            <a class="btn btn-secondary btn-md-wide">
               <strong>PC Instructions</strong>
             </a>
-            <a class="btn btn-secondary">
+            <a class="btn btn-secondary btn-medium-wide">
               <strong>Mac Instructions</strong>
             </a>
           </div>
