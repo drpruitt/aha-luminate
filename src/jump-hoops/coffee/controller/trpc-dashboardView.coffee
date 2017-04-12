@@ -16,8 +16,6 @@ angular.module 'trPcControllers'
     '$location'
     ($rootScope, $scope, $filter, $uibModal, APP_INFO, ZuriService, ParticipantBadgesService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserCompanyService, NgPcContactService, NgPcTeamraiserShortcutURLService, $location) ->
       $scope.dashboardPromises = []
-      $dataRoot = angular.element '[data-embed-root]'
-      $scope.consName = $dataRoot.data('cons-name') if $dataRoot.data('cons-name') isnt ''
 
       if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
         $scope.dashboardProgressType = 'personal'

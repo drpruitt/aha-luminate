@@ -12,5 +12,8 @@ angular.module 'trPcControllers'
       $rootScope.$on '$routeChangeSuccess', ->
         $scope.location = $location.path()
         return
+
+      $dataRoot = angular.element '[data-embed-root]'
+      $scope.consName = $dataRoot.data('cons-name') if $dataRoot.data('cons-name') isnt ''
       
   ]

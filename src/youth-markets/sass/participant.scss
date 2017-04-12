@@ -180,6 +180,14 @@ main > .container {
       }
     }
   }
+
+  .pull-right {
+    text-align: right;
+
+    p {
+      margin: 0;
+    }
+  }
 }
 
 .ym-pc-dashboard-progress-types {
@@ -240,6 +248,11 @@ main > .container {
   }
 }
 
+.ym-pc-dashboard-email-challenge-box {
+  .btn {
+    margin: 30px 10px 0;
+  }
+}
 .ym-pc-dashboard-badges-icons {
   margin: 0 0 32px;
 }
@@ -280,9 +293,22 @@ main > .container {
 
 
   &.ym-activity-box--donors{
+    > div {
+      padding: 0 0 20px;
+      margin: 0 0 20px;
+      border: 1px solid $event-secondary;
+    
+      &:last-child {
+        padding: 0;
+        margin: 0;
+        border: 0 none;
+      }
+    }
+
     .row,
     .col-sm-8 {
       padding: 0;
+      margin:0;
     }
   }
 
