@@ -93,7 +93,7 @@ header {
     text-transform: uppercase;
     margin: 0 0 16px;
     color: $event-secondary;
-    font: $headline-font;
+    font-family: $headline-font;
   }
   
   .ym-header-post-text {
@@ -230,10 +230,11 @@ header {
     }
     
     .ym-header-logged-in {
-      float: left;
+      float: right;
       
-      @media (min-width: $screen-sm-min) {
-        float: right;
+      @media (max-width: $screen-sm) {
+        float: left;
+        width: calc(100% - 71px);
       }
     }
     
@@ -255,6 +256,27 @@ header {
         height: 50px;
         outline: 0;
         font-weight: bold;
+
+        @media (max-width: $screen-sm) {
+          width: calc(100% - 110px);
+          height: auto;
+          white-space: inherit;
+          text-align: left;
+          display: block;
+          float: left;
+          position: relative;
+          padding-right: 0;
+          line-height: 1;
+
+          .fa {
+            font-size: 25px;
+            position: absolute;
+            right: 10%;
+            top: 35%;
+            font-size: 20px;
+
+          }
+        }
       }
       
       &:hover, 
@@ -285,8 +307,12 @@ header {
         right: 0;
       }
 
+      &.my-hq {
+        right: 180px;
+      }
+
       &.my-events {
-        right: 175px;
+        right: 135px;
       }
       
       &.open {
@@ -321,6 +347,10 @@ header {
     .ym-site-menu {
       float: right;
       position: relative;
+    }
+
+    &.visible-xs {
+      width: 66px;
     }
     
     .btn.ym-site-menu-toggle {
