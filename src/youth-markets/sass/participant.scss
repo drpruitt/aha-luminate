@@ -296,7 +296,7 @@ main > .container {
     > div {
       padding: 0 0 20px;
       margin: 0 0 20px;
-      border: 1px solid $event-secondary;
+      border-bottom: 1px solid $event-secondary;
     
       &:last-child {
         padding: 0;
@@ -315,6 +315,22 @@ main > .container {
   .h5 {
     color: $event-secondary;
     margin: 0 0 20px;
+  }
+
+  &.ym-activity-box--challenge {
+
+    .col-sm-8,
+    .col-sm-4 {
+      padding: 0;
+    }
+
+    .ym_my_challenge__actions {
+      margin-top: 15px;
+
+      .btn:first-child{
+        margin-right: 15px;
+      }
+    }
   }
 }
 

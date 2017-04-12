@@ -14,6 +14,5 @@ angular.module 'trPcControllers'
         return
 
       $dataRoot = angular.element '[data-embed-root]'
-      $scope.consName = $dataRoot.data('cons-name') if $dataRoot.data('cons-name') isnt ''
-      
+      $scope.consName = $dataRoot.data('cons-name') if $dataRoot.data('cons-name') isnt ''     
   ]
