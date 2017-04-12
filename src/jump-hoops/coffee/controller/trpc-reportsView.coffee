@@ -1,6 +1,9 @@
 angular.module 'trPcControllers'
   .controller 'NgPcReportsViewCtrl', [
     '$scope'
-    ($scope) ->
-      # TODO
+    '$location'
+    ($scope, $location) ->
+      #to do
+
+      
   ]

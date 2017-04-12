@@ -2,10 +2,82 @@
 @import "variables.scss";
 @import "../../youth-markets/sass/mixins.scss";
 
-.ng-pc-container {
-  @media (max-width: $screen-xs-max) {
-    margin: 8px;
+header {
+  padding: 0;
+
+  > .container {
+    display: none;
   }
+}
+
+main > .container {
+  @media(max-width: $screen-sm-min){
+    margin-top: -72px;
+  }
+}
+.ym-page-content {
+  padding: 0;
+  background: transparent;
+
+  .ng-pc-view-container {
+    padding: 28px;
+  }
+}
+
+.ng-pc-nav {
+  background: $event-accent;
+  
+  @media(max-width: $screen-xs){
+    background: transparent;
+    text-align: center;
+    margin-bottom: 7px;
+  }
+
+  a,
+  a:link,
+  a:visited {
+    display:inline-block;
+    text-align: center;
+    text-decoration: none;
+    color: $event-secondary;
+    background: $event-secondary-medium;
+    font-weight: bold;
+    border-right: 2px solid $event-accent;
+    width: 20%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 18px;
+
+    @media(max-width: $screen-sm) {
+      font-size: 14px;
+    }
+
+    @media(max-width: $screen-xs){
+      margin: 0 5px 5px 0;
+      border: 0 none;
+      width: 100px;
+      color: $brand-white;
+      background: $event-secondary;
+      height: 40px;
+      line-height: 40px;
+    }
+
+    @media(max-width:350px) {
+      max-width: 85px;
+    }
+  }
+  a:last-child {
+    border-right: 0 none;
+    margin: 0;
+  }
+  a.active {
+    background: $brand-white;
+    color: $event-secondary;
+  }
+}
+
+.ng-pc-view-container {
+  background: $brand-white;
 }
 
 .ng-pc-container, 
@@ -84,6 +156,184 @@
   }
 }
 
+.ym-pc-dashboard-section-header {
+  text-align: center;
+}
+
+.ym-pc-dashboard-progress-section {
+  .h3 {
+    margin-bottom: 35px;
+  }
+  .row {
+    display: flex;
+    margin: 0 0 30px;
+
+    .ym-pc-dashboard-progress-section__column {
+      padding: 20px;
+    
+      &:first-child {
+        margin-right: 30px;
+      }
+
+      .h5 {
+        margin: 0 0 25px;
+      }
+    }
+  }
+
+  .pull-right {
+    text-align: right;
+
+    p {
+      margin: 0;
+    }
+  }
+}
+
+.ym-pc-dashboard-progress-types {
+  margin: 0 0 32px;
+}
+
+.ym-pc-dashboard-progress-type {
+  float: left;
+  border-right: 1px solid transparent;
+  border-left: 1px solid transparent;
+  text-align: center;
+  width: 33.33333333%;
+  
+  a {
+    &, 
+    &:link, 
+    &:visited {
+      display: block;
+      background: #b3add3;
+      color: $event-secondary;
+      text-decoration: none;
+      padding: 8px;
+      width: 100%;
+    }
+    
+    &:hover, 
+    &:focus, 
+    &:active {
+      background: $event-secondary;
+      color: #ffffff;
+      text-decoration: none;
+    }
+  }
+  
+  &.active {
+    a {
+      &, 
+      &:link, 
+      &:visited {
+        background: $event-secondary;
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+.ym-pc-dashboard-progress-box .ym-progress__thermometer {
+  max-width: 420px;
+}
+
+.ym-pc-dashboard-badges-section {
+  background-color: $event-accent-medium;
+  padding: 28px 38px;
+  margin: 0 0 40px;
+  
+  .ym-pc-dashboard-section-header {
+    color: $event-secondary;
+  }
+}
+
+.ym-pc-dashboard-email-challenge-box {
+  .btn {
+    margin: 30px 10px 0;
+  }
+}
+.ym-pc-dashboard-badges-icons {
+  margin: 0 0 32px;
+}
+
+.ym-pc-dashboard-badges-icon {
+  float: left;
+}
+
+.ym-pc-dashboard-activities-section {
+  margin: 0 0 24px;
+}
+
+.ym-pc-dashboard-coordinators-message-section {
+  background-color: $event-accent;
+  text-align: center;
+  padding: 24px 172px;
+  margin: 0 0 24px;
+  
+  .ym-pc-dashboard-section-header {
+    color: #ffffff;
+  }
+}
+
+.ym-pc-dashboard-activities-section {
+  .row {
+    display: flex;
+    padding: 0 25px;
+  }
+}
+
+.ym-activity-box {
+  background: $event-secondary-medium;
+  border: 5px solid $event-secondary;
+  border-radius: 20px;
+  box-shadow: 0 5px 0 0 rgba(50, 50, 50, 1);
+  margin: 25px;
+  padding: 25px 20px;
+
+
+  &.ym-activity-box--donors{
+    > div {
+      padding: 0 0 20px;
+      margin: 0 0 20px;
+      border-bottom: 1px solid $event-secondary;
+    
+      &:last-child {
+        padding: 0;
+        margin: 0;
+        border: 0 none;
+      }
+    }
+
+    .row,
+    .col-sm-8 {
+      padding: 0;
+      margin:0;
+    }
+  }
+
+  .h5 {
+    color: $event-secondary;
+    margin: 0 0 20px;
+  }
+
+  &.ym-activity-box--challenge {
+
+    .col-sm-8,
+    .col-sm-4 {
+      padding: 0;
+    }
+
+    .ym_my_challenge__actions {
+      margin-top: 15px;
+
+      .btn:first-child{
+        margin-right: 15px;
+      }
+    }
+  }
+}
+
 .ng-pc-nav-list-group {
   .list-group-item-heading {
     padding: 10px;
@@ -102,6 +352,21 @@
     
     &:last-child {
       border-radius: 0;
+    }
+  }
+}
+
+.ym-pc-dashboard-spread-section {
+  padding: 36px;
+  
+  .ym-pc-dashboard-spread-options {
+    text-align: center;
+    
+    .ym-pc-dashboard-section-header {
+      h5, 
+      .h5 {
+        color: $event-secondary;
+      }
     }
   }
 }
@@ -296,4 +561,40 @@
       margin: 0;
     }
   }
+}
+
+.ym-pc-dashboard-coordinator-progress-box, 
+.ym-pc-dashboard-coordinator-students-box {
+  background: $event-secondary-medium;
+  padding: 24px 20px;
+  margin: 0 0 30px;
+}
+
+.ym-pc-dashboard-coordinator-students-box {
+  text-align: center;
+}
+
+.ym-pc-dashboard-coordinator-steps-section {
+  margin: 0 0 40px;
+}
+
+.ym-pc-dashboard-coordinator-resources-section {
+  background-color: $event-accent-light;
+  padding: 36px;
+  margin: 0 0 30px;
+  
+  .ym-pc-dashboard-coordinator-resources-options {
+    text-align: center;
+    
+    .ym-pc-dashboard-section-header {
+      h5, 
+      .h5 {
+        color: $event-secondary;
+      }
+    }
+  }
+}
+
+.ym-pc-dashboard-coordinator-resources-more {
+  text-align: center;
 }
