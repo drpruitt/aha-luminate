@@ -119,19 +119,25 @@
           <div ng-if="donorContactCounts.email_rpt_show_unthanked_donors > 0" ng-cloak>
             You have new donors who haven't received a thank-you email!
             <a class="btn btn-primary">
-              <strong>Say Thanks</strong>
+              <strong>Say Thanks</strong> <i class="fa fa-envelope" aria-hidden="true"></i>
             </a>
           </div>
           <div ng-if="donorContactCounts.email_rpt_show_nondonors_followup > 0" ng-cloak>
             Great job sending emails. Some of your friends haven't donated!
             <a class="btn btn-primary">
-              <strong>Follow Up</strong>
+              <strong>Follow Up</strong> <i class="fa fa-heart" aria-hidden="true"></i>
             </a>
           </div>
           <div ng-if="donorContactCounts.email_rpt_show_donors > 0" ng-cloak>
             Review all of your donations on the Reports page.
             <a class="btn btn-primary">
-              <strong>View All</strong>
+              <strong>View All</strong> <i class="fa fa-eye" aria-hidden="true"></i>
+            </a>  
+          </div>
+          <div ng-if="donorContactCounts.email_rpt_show_donors == 0" ng-cloak>
+            You have not received any donations yet. Use the email tool to ask for support. 
+            <a class="btn btn-primary">
+              <strong>Email</strong> <i class="fa fa-envelope" aria-hidden="true"></i>
             </a>  
           </div>
         </div>
@@ -152,11 +158,6 @@
           <h3 class="h5">
             Daily Heart-Healthy Challenge
           </h3>
-          <div class="col-sm-4">
-            <img class="img-responsive" ng-if="challengeId == 1 || challengeId == 4" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/my-challenge-exercise.png" alt="{{challengeName}}" />
-            <img class="img-responsive" ng-if="challengeId == 2" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/my-challenge-water.png" alt="{{challengeName}}" />
-            <img class="img-responsive" ng-if="challengeId == 3" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/my-challenge-food.png" alt="{{challengeName}}" />          
-          </div>
           <div class="col-sm-8">
             <p class="ym_my_challenge__description">  
               <strong>{{challengeName}}</strong>
@@ -168,7 +169,20 @@
               I've met my challenge <span>{{challengeCompleted}}</span> days!
             </p>
           </div>
+          <div class="col-sm-4">
+            <img class="img-responsive" ng-if="challengeId == 1 || challengeId == 4" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/my-challenge-exercise.png" alt="{{challengeName}}" />
+            <img class="img-responsive" ng-if="challengeId == 2" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/my-challenge-water.png" alt="{{challengeName}}" />
+            <img class="img-responsive" ng-if="challengeId == 3" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/my-challenge-food.png" alt="{{challengeName}}" />          
+          </div>
           <div class="clearfix"></div>
+          <div class="ym_my_challenge__actions">
+            <a class="btn btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=personal&amp;px={{consId}}">
+              <strong>I have met this challenge!</strong> <i class="fa fa-check" aria-hidden="true"></i>
+            </a>
+            <a class="btn btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=personal&amp;px={{consId}}">
+              <strong>Skip</strong> <i class="fa fa-times" aria-hidden="true"></i>
+            </a>
+          </div>
         </div>
         <div class="col-sm-6 ym-activity-box">
           <h3 class="h5">
