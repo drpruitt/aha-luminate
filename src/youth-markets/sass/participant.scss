@@ -152,11 +152,6 @@ main > .container {
   .row {
     display: flex;
     padding: 0 25px;
-
-    > div {
-      margin: 25px;
-      padding: 25px 20px;
-    }
   }
 }
 
@@ -165,10 +160,16 @@ main > .container {
   border: 5px solid $event-secondary;
   border-radius: 20px;
   box-shadow: 0 5px 0 0 rgba(50, 50, 50, 1);
+  margin: 25px;
+  padding: 25px 20px;
 
   .h5 {
     color: $event-secondary;
     margin: 0 0 20px;
+  }
+
+  .col-sm-8 {
+    padding: 0;
   }
 }
 

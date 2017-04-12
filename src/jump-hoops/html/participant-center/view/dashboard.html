@@ -7,7 +7,7 @@
         </h2>
       </div>
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-6 ym-pc-dashboard-progress-section__column event-secondary-medium">
           <div class="ym-pc-dashboard-progress-box">
             <div class="ym-pc-dashboard-section-header">
               <h3 class="h5">
@@ -79,12 +79,17 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-6 ym-pc-dashboard-progress-section__column event-secondary-medium">
           <div class="ym-pc-dashboard-email-challenge-box">
             <div class="ym-pc-dashboard-section-header">
               <h3 class="h5">
                 Email Challenge
               </h3>
+            </div>
+            <p>Send 10 eCards to Earn your Rory badge!</p>
+            <div class="text-center">
+              <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email">Send Email</a>
+              <a class="btn btn-md-wide btn-primary" href="#">Send eCard</a>
             </div>
           </div>
         </div>
@@ -112,7 +117,7 @@
         </h2>
       </div>
       <div class="row">
-        <div class="col-sm-6 ym-activity-box ym-activity-box--donors   ">
+        <div class="col-sm-6 ym-activity-box ym-activity-box--donors">
           <h3 class="h5">
             My Donors
           </h3>
@@ -165,7 +170,7 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-6 ym-activity-box">
+        <div class="col-sm-6 ym-activity-box ym-activity-box--page">
           <h3 class="h5">
             My Page
           </h3>
@@ -175,10 +180,18 @@
           <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=personal&amp;px={{consId}}">
             <strong>View and Edit Your Page</strong>
           </a>
+          <div class="row">
+            <div class="col-sm-6">
+              <p><strong>Personal Page URL:</strong>
+            </div>
+            <div class="col-sm-6">
+            <p><strong>Share My Personal Page:</strong>
+            </div>
+          </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-6 ym-activity-box">
+        <div class="col-sm-6 ym-activity-box ym-activity-box--challenge">
           <h3 class="h5">
             Daily Heart-Healthy Challenge
           </h3>
@@ -208,7 +221,7 @@
             </a>
           </div>
         </div>
-        <div class="col-sm-6 ym-activity-box">
+        <div class="col-sm-6 ym-activity-box ym-activity-box--virtual">
           <h3 class="h5">
             My Virtual World
           </h3>
