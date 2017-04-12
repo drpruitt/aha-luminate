@@ -12,7 +12,6 @@ angular.module 'trPcControllers'
     'NgPcContactService'
     '$location'
     ($rootScope, $scope, $routeParams, $timeout, $httpParamSerializer, $uibModal, APP_INFO, NgPcTeamraiserEventService, NgPcTeamraiserEmailService, NgPcContactService, $location) ->
-      $scope.location = $location.path
       $scope.messageType = $routeParams.messageType
       $scope.messageId = $routeParams.messageId
       

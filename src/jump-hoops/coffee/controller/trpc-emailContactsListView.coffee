@@ -11,7 +11,6 @@ angular.module 'trPcControllers'
     'NgPcTeamraiserEmailService'
     'NgPcContactService'
     ($rootScope, $scope, $window, $routeParams, $location, $httpParamSerializer, $uibModal, APP_INFO, NgPcTeamraiserEmailService, NgPcContactService) ->
-      $scope.location = $location.path
       $scope.filter = $routeParams.filter
       
       $scope.emailPromises = []

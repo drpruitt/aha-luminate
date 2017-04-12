@@ -8,7 +8,6 @@ angular.module 'trPcControllers'
     'NgPcTeamraiserEmailService'
     'NgPcContactService'
     ($scope, $routeParams, $location, $uibModal, APP_INFO, NgPcTeamraiserEmailService, NgPcContactService) ->
-      $scope.location = $location.path
       $scope.messageType = $routeParams.messageType
       
       $scope.emailPromises = []

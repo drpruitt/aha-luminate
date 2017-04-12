@@ -3,5 +3,5 @@ angular.module 'trPcControllers'
     '$scope'
     '$location'
     ($scope, $location) ->
-      $scope.location = $location.path
+      # to do
   ]
