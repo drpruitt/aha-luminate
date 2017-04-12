@@ -1,6 +1,7 @@
 angular.module 'trPcControllers'
   .controller 'NgPcResourcesViewCtrl', [
     '$scope'
-    ($scope) ->
-      # TODO
+    '$location'
+    ($scope, $location) ->
+      $scope.location = $location.path
   ]
