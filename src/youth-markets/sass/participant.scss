@@ -2,8 +2,14 @@
 @import "variables.scss";
 @import "../../youth-markets/sass/mixins.scss";
 
+main > .container {
+  @media(max-width: $screen-sm-min){
+    margin-top: -72px;
+  }
+}
 .ym-page-content {
   padding: 0;
+  background: transparent;
 
   .ng-pc-view-container {
     padding: 28px;
@@ -12,6 +18,13 @@
 
 .ng-pc-nav {
   background: $event-accent;
+  
+  @media(max-width: $screen-xs){
+    background: transparent;
+    text-align: center;
+    margin-bottom: 7px;
+  }
+
   a,
   a:link,
   a:visited {
@@ -22,23 +35,41 @@
     background: $event-secondary-medium;
     font-weight: bold;
     border-right: 2px solid $event-accent;
-    width: 234px;
+    width: 20%;
     height: 50px;
     line-height: 50px;
     font-size: 18px;
+
+    @media(max-width: $screen-sm) {
+      font-size: 14px;
+    }
+
+    @media(max-width: $screen-xs){
+      margin: 0 5px 5px 0;
+      border: 0 none;
+      width: 100px;
+      color: $brand-white;
+      background: $event-secondary;
+      height: 40px;
+      line-height: 40px;
+    }
+
+    @media(max-width:350px) {
+      max-width: 85px;
+    }
   }
   a:last-child {
     border-right: 0 none;
+    margin: 0;
   }
   a.active {
     background: $brand-white;
+    color: $event-secondary;
   }
 }
 
-.ng-pc-container {
-  @media (max-width: $screen-xs-max) {
-    margin: 8px;
-  }
+.ng-pc-view-container{
+  background: $brand-white;
 }
 
 .ng-pc-container, 

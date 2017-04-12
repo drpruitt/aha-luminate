@@ -258,7 +258,7 @@ header {
         font-weight: bold;
 
         @media (max-width: $screen-sm) {
-          width: calc(100% - 110px);
+          width: calc(100% - 100px);
           height: auto;
           white-space: inherit;
           text-align: left;
