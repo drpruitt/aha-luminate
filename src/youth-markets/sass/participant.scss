@@ -148,6 +148,12 @@ main > .container {
   }
 }
 
+.ym-pc-dashboard-activities-section {
+  .row {
+    display: flex;
+  }
+}
+
 .ng-pc-nav-list-group {
   .list-group-item-heading {
     padding: 10px;
