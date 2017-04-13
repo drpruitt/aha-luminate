@@ -16,13 +16,13 @@ angular.module 'ahaLuminateApp'
           callback.error response
       
       updateChallenge: (requestData, callback) ->
-        url = '//hearttools.heart.org/aha_ym18/api/student/challenge/' + requestData + '?key=6Mwqh5dFV39HLDq7'
+        url = '//hearttools.heart.org/aha_ym18/api/student/challenge/' + requestData + '&key=6Mwqh5dFV39HLDq7'
         urlSCE = $sce.trustAsResourceUrl url
         $http.jsonp(urlSCE, jsonpCallbackParam: 'callback').then (response) ->
-          if response.data.success is false
-            callback.error response
+          if response.data.status is 'success'
+            return response
           else
-            callback.success response
+            callback.error response
         , (response) ->
           callback.error response
 
