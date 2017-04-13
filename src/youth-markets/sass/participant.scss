@@ -281,7 +281,7 @@ main > .container {
 }
 
 .ym-pc-dashboard-activities-section {
-  .row {
+  > .row {
     padding:0;
     margin:0;
     
@@ -326,6 +326,12 @@ main > .container {
       }
     }
 
+    .btn {
+      width: 125px;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
     .row,
     .col-sm-8 {
       padding: 0;
@@ -344,11 +350,6 @@ main > .container {
     }
   }
 
-  .h5 {
-    color: $event-secondary;
-    margin: 0 0 20px;
-  }
-
   &.ym-activity-box--challenge {
 
     .col-sm-8,
@@ -363,6 +364,23 @@ main > .container {
         margin-right: 15px;
       }
     }
+
+    .ym_my_challenge__update button {
+      margin: 10px auto 0;
+    }
+  }
+
+  .h5 {
+    color: $event-secondary;
+    margin: 0 0 20px;
+  }
+
+  .col-sm-6 {
+    padding: 0;
+  }
+
+  .row {
+    margin: 0;
   }
 }
 

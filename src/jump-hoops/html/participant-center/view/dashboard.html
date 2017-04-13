@@ -178,7 +178,7 @@
             Personalize your fundraising page to share your heart-healthy journey. Students who personalize their page raise more money!
           </p>
           <p class="text-center">
-            <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=personal&amp;px={{consId}}">
+            <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=personal&amp;px={{consId}}&hasSecureSession=true">
               <strong>View and Edit Your Page</strong>
             </a>
           </p>
@@ -188,10 +188,16 @@
                 <strong>Personal Page URL:</strong>
               </p>
             </div>
-            <div class="col-sm-6">
-              <p class="small">
+            <div class="col-sm-6 text-right">
+              <p class="small ">
                 <strong>Share My Personal Page:</strong>
               </p>
+              <a href="" class="addthis_button_facebookr"  title="Facebook">
+                <img class="img-responsive" alt="Twitter" src="../../dist/youth-markets/image/facebook-logo.png" />>
+              </a>
+              <a href="" class="addthis_button_twitter"  title="Twitter">
+                <img class="img-responsive" alt="Twitter" src="../../dist/youth-markets/image/twitter-logo.png" />>
+              </a>
             </div>
           </div>
         </div>
@@ -228,10 +234,11 @@
               </a>
             </div>
           </div>
+          <hr />
           <div class="ym_my_challenge__update">
             <form method="post" novalidate ng-submit="updateChallenge">
               <label for="updateChallenge">Take or update my challenge</label>
-              <select class="form-control input-lg" name="updateChallenge" id="updateChallenge" ng-model="challenges">
+              <select class="form-control" name="updateChallenge" id="updateChallenge" ng-model="challenges">
                 <option ng-repeat="challenge in challenges" value="{{challenge.id}}">{{challenge.text}}</option>
               </select>
               <button type="submit" class="btn btn-md-wide btn-primary"><strong>Update Challenge</strong></button>
@@ -500,6 +507,7 @@
             <p>
               Download our Mobile Fundraising App today!
             </p>
+            <p><a href=""><img src="../../dist/youth-markets/image/apple-store-logo.png" class="img-responsive" alt="Download the iPhone App" /></a><a href=""><img src="../../dist/youth-markets/image/google-play-logo.png" class="img-responsive" alt="Download the Android App" /></a></p>
           </div>
         </div>
         <div class="col-sm-4">
@@ -510,6 +518,7 @@
             <p>
               Use our Facebook app to raise even more!
             </p>
+            <p><a href=""><img src="../../dist/youth-markets/image/fundraise-with-facebook.png" class="img-responsive" alt="Fundraise with Facebook" /></a></p>
           </div>
         </div>
         <div class="col-sm-4">
