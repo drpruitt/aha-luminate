@@ -17,6 +17,8 @@ angular.module 'trPcControllers'
     ($rootScope, $scope, $filter, $uibModal, APP_INFO, ZuriService, ParticipantBadgesService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserCompanyService, NgPcContactService, NgPcTeamraiserShortcutURLService, $location) ->
       $scope.dashboardPromises = []
 
+      console.log 'dash'
+
       if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
         $scope.dashboardProgressType = 'personal'
       else
@@ -134,4 +136,8 @@ angular.module 'trPcControllers'
             $scope.challenges.push
               id: id
               name: challenge
+
+      $scope.updateChallenge = ->
+        console.log 'click'
+        #ZuriService.updateChallenge $scope.frId + '/' + $scope.consId
   ]

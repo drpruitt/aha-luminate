@@ -89,7 +89,7 @@
             <div class="text-center">
               <p>Send 10 eCards to Earn your Rory badge!</p>
               <p><a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email"><strong>Send Email</strong></a>
-              <a class="btn btn-md-wide btn-primary" href=" http://hearttools.heart.org/aha_ym18/?eid={{frId}}&sid={{consId}}&name={{consName}}"><strong>Send eCard</strong></a></p>
+              <a target="_blank" class="btn btn-md-wide btn-primary" href=" http://hearttools.heart.org/aha_ym18/?eid={{frId}}&sid={{consId}}&name={{consName}}"><strong>Send eCard</strong></a></p>
             </div>
           </div>
         </div>
@@ -235,7 +235,7 @@
             </div>
           </div>
           <div class="ym_my_challenge__update">
-            <form method="post" novalidate ng-submit="updateChallenge">
+            <form method="post" novalidate ng-submit="updateChallenge()">
               <label for="updateChallenge">Take or update my challenge</label>
               <select class="form-control" name="updateChallenge" id="updateChallenge">
                 <option ng-repeat="challenge in challenges" value="{{challenge.id}}">{{challenge.name}}</option>
