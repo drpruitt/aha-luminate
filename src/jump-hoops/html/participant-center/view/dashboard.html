@@ -229,15 +229,13 @@
             </div>
           </div>
           <div class="ym_my_challenge__update">
-            <h4 class="h6">Take or update my challenge</h4>
             <form method="post" novalidate ng-submit="updateChallenge">
-              <label for="updateChallenge">Select a Challenge</label>
+              <label for="updateChallenge">Take or update my challenge</label>
               <select class="form-control input-lg" name="updateChallenge" id="updateChallenge" ng-model="challenges">
                 <option ng-repeat="challenge in challenges" value="{{challenge.id}}">{{challenge.text}}</option>
               </select>
-              <button type="submit" class="btn btn-md-wide btn-primary">Update Challenge</button>
+              <button type="submit" class="btn btn-md-wide btn-primary"><strong>Update Challenge</strong></button>
             </form>
-            <p><a href="http://hearttools.heart.org/aha_ym18/api/student/challenge/{{frId}}/{{consId}}?challenge={{personalChallenge.id}}&key=6Mwqh5dFV39HLDq7"><strong>Take or update my challenge</strong></a></p>
           </div>
         </div>
         <div class="col-sm-6 ym-activity-box ym-activity-box--virtual">

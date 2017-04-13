@@ -112,7 +112,7 @@ angular.module 'trPcControllers'
       
       $scope.personalChallenge = {}
       ZuriService.getZooStudent $scope.frId + '/' + $scope.consId, 
-        error: ->
+        error:(resposne) ->
           # TODO
         success: (response) ->
           personalChallenges = response.data.challenges
@@ -120,4 +120,16 @@ angular.module 'trPcControllers'
             $scope.personalChallenge.id = personalChallenges.current
             $scope.personalChallenge.name = personalChallenges.text
             $scope.personalChallenge.completed = personalChallenges.completed
+
+      ###
+      use to grab challenges to populate dropdown list
+      $scope.challenges = ''
+      ZuriService.getChallenges $scope.frId + '/' + $scope.consId, 
+        error:(response) ->
+          # TODO
+        success: (response) ->
+          console.log response
+      ###
+
+    
   ]
