@@ -90,7 +90,6 @@
               <p>Send 10 eCards to Earn your Rory badge!</p>
               <p><a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email"><strong>Send Email</strong></a>
               <a class="btn btn-md-wide btn-primary" href=" http://hearttools.heart.org/aha_ym18/?eid={{frId}}&sid={{consId}}&name={{consName}}"><strong>Send eCard</strong></a></p>
-              <p><a href="http://hearttools.heart.org/aha_ym18/api/student/challenge/{{frId}}/{{consId}}?challenge={{personalChallenge.id}}&key=6Mwqh5dFV39HLDq7"><strong>Take or update my challenge</strong></a></p>
             </div>
           </div>
         </div>
@@ -202,30 +201,43 @@
           <h3 class="h5">
             Daily Heart-Healthy Challenge
           </h3>
-          <div class="col-sm-8">
-            <p class="ym_my_challenge__description">  
-              <strong>{{personalChallenge.name}}</strong>
-            </p>
-            <p class="ym_my_challenge__stats" ng-if="personalChallenge.completed == 1">
-              I've met my challenge <span>1</span> day!
-            </p>
-            <p class="ym_my_challenge__stats" ng-if="personalChallenge.completed != 1">
-              I've met my challenge <span>{{personalChallenge.completed}}</span> days!
-            </p>
+          <div class="ym_my_challenge__current" ng-if="personalChallenge.id">
+            <div class="col-sm-8">
+              <p class="ym_my_challenge__description">  
+                <strong>{{personalChallenge.name}}</strong>
+              </p>
+              <p class="ym_my_challenge__stats" ng-if="personalChallenge.completed == 1">
+                I've met my challenge <span>1</span> day!
+              </p>
+              <p class="ym_my_challenge__stats" ng-if="personalChallenge.completed != 1">
+                I've met my challenge <span>{{personalChallenge.completed}}</span> days!
+              </p>
+            </div>
+            <div class="col-sm-4">
+              <img class="img-responsive" ng-if="personalChallenge.id == 1 || personalChallenge.id == 4" src="../aha-luminate/dist/jump-hoops/image/my-challenge-exercise.png" alt="{{personalChallenge.name}}" />
+              <img class="img-responsive" ng-if="personalChallenge.id == 2" src="../aha-luminate/dist/jump-hoops/image/my-challenge-water.png" alt="{{personalChallenge.name}}" />
+              <img class="img-responsive" ng-if="personalChallenge.id == 3" src="../aha-luminate/dist/jump-hoops/image/my-challenge-food.png" alt="{{personalChallenge.name}}" />          
+            </div>
+            <div class="clearfix"></div>
+            <div class="ym_my_challenge__actions text-center">
+              <a class="btn btn-md-wide btn-primary" ng-href="http://hearttools.heart.org/aha_ym18/api/student/{{frId}}/{{consId}}/{{personalChallenge.id}}?key=6Mwqh5dFV39HLDq7">
+                <strong>I have met this challenge!</strong> <i class="fa fa-check" aria-hidden="true"></i>
+              </a>
+              <a class="btn btn-md-wide btn-outline" ng-href="#">
+                <strong>Skip</strong> <i class="fa fa-times" aria-hidden="true"></i>
+              </a>
+            </div>
           </div>
-          <div class="col-sm-4">
-            <img class="img-responsive" ng-if="personalChallenge.id == 1 || personalChallenge.id == 4" src="../aha-luminate/dist/jump-hoops/image/my-challenge-exercise.png" alt="{{personalChallenge.name}}" />
-            <img class="img-responsive" ng-if="personalChallenge.id == 2" src="../aha-luminate/dist/jump-hoops/image/my-challenge-water.png" alt="{{personalChallenge.name}}" />
-            <img class="img-responsive" ng-if="personalChallenge.id == 3" src="../aha-luminate/dist/jump-hoops/image/my-challenge-food.png" alt="{{personalChallenge.name}}" />          
-          </div>
-          <div class="clearfix"></div>
-          <div class="ym_my_challenge__actions text-center">
-            <a class="btn btn-md-wide btn-primary" ng-href="http://hearttools.heart.org/aha_ym18/api/student/{{frId}}/{{consId}}/{{personalChallenge.id}}?key=6Mwqh5dFV39HLDq7">
-              <strong>I have met this challenge!</strong> <i class="fa fa-check" aria-hidden="true"></i>
-            </a>
-            <a class="btn btn-md-wide btn-outline" ng-href="#">
-              <strong>Skip</strong> <i class="fa fa-times" aria-hidden="true"></i>
-            </a>
+          <div class="ym_my_challenge__update">
+            <h4 class="h6">Take or update my challenge</h4>
+            <form method="post" novalidate ng-submit="updateChallenge">
+              <label for="updateChallenge">Select a Challenge</label>
+              <select class="form-control input-lg" name="updateChallenge" id="updateChallenge" ng-model="challenges">
+                <option ng-repeat="challenge in challenges" value="{{challenge.id}}">{{challenge.text}}</option>
+              </select>
+              <button type="submit" class="btn btn-md-wide btn-primary">Update Challenge</button>
+            </form>
+            <p><a href="http://hearttools.heart.org/aha_ym18/api/student/challenge/{{frId}}/{{consId}}?challenge={{personalChallenge.id}}&key=6Mwqh5dFV39HLDq7"><strong>Take or update my challenge</strong></a></p>
           </div>
         </div>
         <div class="col-sm-6 ym-activity-box ym-activity-box--virtual">

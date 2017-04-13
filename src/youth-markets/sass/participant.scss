@@ -20,7 +20,11 @@ main > .container {
   background: transparent;
 
   .ng-pc-view-container {
-    padding: 28px;
+    padding: 10px;
+
+    @media(min-width: $screen-md-min){
+      padding: 28px;
+    }
   }
 }
 
@@ -278,8 +282,18 @@ main > .container {
 
 .ym-pc-dashboard-activities-section {
   .row {
-    display: flex;
-    padding: 0 25px;
+    padding:0;
+    margin:0;
+    
+    @media (min-width: $screen-sm-min){
+      display: flex;
+      margin-bottom: 25px;
+    }
+
+    @media(min-width: $screen-md-min){
+      padding: 0 25px;
+      margin: 0;
+    }
   }
 }
 
@@ -288,9 +302,16 @@ main > .container {
   border: 5px solid $event-secondary;
   border-radius: 20px;
   box-shadow: 0 5px 0 0 rgba(50, 50, 50, 1);
-  margin: 25px;
+  margin: 0 0 20px;  
   padding: 25px 20px;
 
+  @media (min-width: $screen-sm-min) {
+    margin: 0;
+  }
+
+  @media (min-width: $screen-md-min) {
+    margin: 25px;
+  }
 
   &.ym-activity-box--donors{
     > div {
@@ -309,6 +330,17 @@ main > .container {
     .col-sm-8 {
       padding: 0;
       margin:0;
+    }
+  }
+
+  &.ym-activity-box--donors,
+  &.ym-activity-box--challenge {
+    
+    @media(min-width: $screen-sm-min){
+      margin: 0 20px 0 0;
+    }
+    @media (min-width: $screen-md-min) {
+      margin: 25px;
     }
   }
 
