@@ -121,14 +121,15 @@ angular.module 'trPcControllers'
             $scope.personalChallenge.name = personalChallenges.text
             $scope.personalChallenge.completed = personalChallenges.completed
 
-
-      $scope.challenges = ''
+      $scope.challenges = []
+      
       ZuriService.getChallenges $scope.frId + '/' + $scope.consId, 
         error: (response) ->
           # TODO
         success: (response) ->
-          $scope.challenges = response.data.challenges
-
-
-    
+          challenges = response.data.challenges
+          angular.forEach challenges, (challenge) ->
+            $scope.challenges.push
+              id: id
+              name: challenge
   ]
