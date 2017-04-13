@@ -113,7 +113,7 @@ angular.module 'trPcControllers'
       $scope.personalChallenge = {}
       ZuriService.getZooStudent $scope.frId + '/' + $scope.consId, 
         error:(resposne) ->
-          # TODO
+          return
         success: (response) ->
           personalChallenges = response.data.challenges
           if personalChallenges
@@ -125,10 +125,12 @@ angular.module 'trPcControllers'
       
       ZuriService.getChallenges $scope.frId + '/' + $scope.consId, 
         error: (response) ->
-          # TODO
+          return
         success: (response) ->
           challenges = response.data.challenges
+          id = 0
           angular.forEach challenges, (challenge) ->
+            id++
             $scope.challenges.push
               id: id
               name: challenge
