@@ -193,10 +193,10 @@
                 <strong>Share My Personal Page:</strong>
               </p>
               <a href="" class="addthis_button_facebookr"  title="Facebook">
-                <img class="img-responsive" alt="Twitter" src="../../dist/youth-markets/image/facebook-logo.png" />>
+                <img class="img-responsive" alt="Twitter" src="../aha-luminate/dist/youth-markets/image/facebook-logo.png" />>
               </a>
               <a href="" class="addthis_button_twitter"  title="Twitter">
-                <img class="img-responsive" alt="Twitter" src="../../dist/youth-markets/image/twitter-logo.png" />>
+                <img class="img-responsive" alt="Twitter" src="../aha-luminate/dist/youth-markets/image/twitter-logo.png" />>
               </a>
             </div>
           </div>
@@ -234,7 +234,9 @@
               </a>
             </div>
           </div>
-          <hr />
+          <div ng-repeat="challenge in challenges">
+          {{challenge}}
+          </div>
           <div class="ym_my_challenge__update">
             <form method="post" novalidate ng-submit="updateChallenge">
               <label for="updateChallenge">Take or update my challenge</label>
@@ -507,7 +509,7 @@
             <p>
               Download our Mobile Fundraising App today!
             </p>
-            <p><a href=""><img src="../../dist/youth-markets/image/apple-store-logo.png" class="img-responsive" alt="Download the iPhone App" /></a><a href=""><img src="../../dist/youth-markets/image/google-play-logo.png" class="img-responsive" alt="Download the Android App" /></a></p>
+            <p><a href=""><img src="../aha-luminate/dist/youth-markets/image/apple-store-logo.png" class="img-responsive" alt="Download the iPhone App" /></a><a href=""><img src="../aha-luminate/dist/youth-markets/image/google-play-logo.png" class="img-responsive" alt="Download the Android App" /></a></p>
           </div>
         </div>
         <div class="col-sm-4">
@@ -518,7 +520,7 @@
             <p>
               Use our Facebook app to raise even more!
             </p>
-            <p><a href=""><img src="../../dist/youth-markets/image/fundraise-with-facebook.png" class="img-responsive" alt="Fundraise with Facebook" /></a></p>
+            <p><a href=""><img src="../aha-luminate/dist/youth-markets/image/fundraise-with-facebook.png" class="img-responsive" alt="Fundraise with Facebook" /></a></p>
           </div>
         </div>
         <div class="col-sm-4">
