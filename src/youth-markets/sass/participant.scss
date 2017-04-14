@@ -356,6 +356,9 @@ main > .container {
     .col-sm-4 {
       padding: 0;
     }
+    .ym_my_challenge__current {
+      padding-bottom: 20px;
+    }
 
     .ym_my_challenge__actions {
       margin-top: 15px;
@@ -365,8 +368,19 @@ main > .container {
       }
     }
 
-    .ym_my_challenge__update button {
-      margin: 10px auto 0;
+    .ym_my_challenge__update {
+      button {
+        margin: 10px auto 0;
+      }
+    }
+  }
+
+  &.ym-activity-box--page {
+    .text-right {
+      a {
+        display: inline-block;
+        margin-left: 5px;
+      }
     }
   }
 
