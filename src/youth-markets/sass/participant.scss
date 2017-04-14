@@ -313,6 +313,10 @@ main > .container {
     margin: 25px;
   }
 
+  .ym-activity-box__action {
+    margin-top: 25px;
+  }
+
   &.ym-activity-box--next-step{
     > div {
       padding: 0 0 20px;
@@ -325,7 +329,17 @@ main > .container {
         border: 0 none;
       }
     }
+    .ym-next-step > div {
+      display: inline-block;
+    }
 
+    .ym-next-step__step {
+      width: calc(100% - 125px);
+    }
+    .ym-next-step__action {
+      width: 125px;
+      vertical-align: top;
+    }
     .btn {
       width: 125px;
       padding-left: 0;
@@ -434,7 +448,7 @@ main > .container {
         margin: 0 0 10px 0;
 
         @media(min-width: $screen-sm-min) {
-          margin: 10px;
+          margin: 0 10px 0 0;
         }
       }
     }
