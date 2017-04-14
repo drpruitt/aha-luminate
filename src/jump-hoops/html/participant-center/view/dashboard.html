@@ -222,7 +222,7 @@
               <a ng-click="logChallenge()" class="btn btn-md-wide btn-primary">
                 <strong>I have met this challenge!</strong> <i class="fa fa-check" aria-hidden="true"></i>
               </a>
-              <a ng-click="skipChallenge()" class="btn btn-md-wide btn-outline" ng-href="#">
+              <a ng-click="skipChallenge()" class="btn btn-md-wide btn-outline">
                 <strong>Skip</strong> <i class="fa fa-times" aria-hidden="true"></i>
               </a>
             </div>
@@ -230,7 +230,7 @@
           <div class="ym_my_challenge__update">
             <form method="post" novalidate ng-submit="updateChallenge()">
               <label for="updateChallenge">Take or update my challenge</label>
-              <select class="form-control" name="updateChallenge" id="updateChallenge">
+              <select class="form-control" name="updateChallenge" model="updateChallenge" id="updateChallenge">
                 <option ng-repeat="challenge in challenges" value="{{challenge.id}}">{{challenge.name}}</option>
               </select>
               <button type="submit" class="btn btn-md-wide btn-primary"><strong>Update Challenge</strong></button>

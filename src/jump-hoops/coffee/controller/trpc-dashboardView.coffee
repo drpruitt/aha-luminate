@@ -111,18 +111,20 @@ angular.module 'trPcControllers'
         $scope.dashboardPromises.push donorContactCountPromise
       
       $scope.personalChallenge = {}
-      ZuriService.getZooStudent $scope.frId + '/' + $scope.consId, 
-        error:(resposne) ->
-          return
-        success: (response) ->
-          personalChallenges = response.data.challenges
-          if personalChallenges
-            $scope.personalChallenge.id = personalChallenges.current
-            $scope.personalChallenge.name = personalChallenges.text
-            $scope.personalChallenge.completed = personalChallenges.completed
-
-      $scope.challenges = []
       
+      getStudentChallenge = ->
+        ZuriService.getZooStudent $scope.frId + '/' + $scope.consId, 
+          error:(resposne) ->
+            return
+          success: (response) ->
+            personalChallenges = response.data.challenges
+            if personalChallenges
+              $scope.personalChallenge.id = personalChallenges.current
+              $scope.personalChallenge.name = personalChallenges.text
+              $scope.personalChallenge.completed = personalChallenges.completed
+      getStudentChallenge()
+
+      $scope.challenges = []      
       ZuriService.getChallenges $scope.frId + '/' + $scope.consId, 
         error: (response) ->
           return
@@ -134,22 +136,18 @@ angular.module 'trPcControllers'
             $scope.challenges.push
               id: id
               name: challenge
-
+      
       $scope.updateChallenge = ->
         console.log 'click'
-        ZuriService.updateChallenge $scope.frId + '/' + $scope.consId + '?challenge=1',
+        ZuriService.updateChallenge $scope.frId + '/' + $scope.consId + '?'+ $scope.updateChallenge,
           error: (response) ->
             console.log response
           succes: (response) ->
             console.log response
 
-      $scope.logChallenge = ->
-        console.log 'log'
-        ZuriService.logChallenge $scope.frId + '/' + $scope.consId + '/' + $scope.challengeId,
-          error: (response) ->
-            console.log response
-          succes: (response) ->
-            console.log response
+      $scope.logChallenge = ->        
+        ZuriService.logChallenge $scope.frId + '/' + $scope.consId + '/' + $scope.personalChallenge.id,
+            getStudentChallenge()
 
       $scope.skipChallenge = ->
         console.log 'skip'
