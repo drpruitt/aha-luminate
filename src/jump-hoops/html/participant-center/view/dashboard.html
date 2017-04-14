@@ -117,56 +117,48 @@
         </h2>
       </div>
       <div class="row">
-        <div class="col-sm-6 ym-activity-box ym-activity-box--donors">
+        <div class="col-sm-6 ym-activity-box ym-activity-box--next-step">
           <h3 class="h5">
             My Donors
           </h3>
-          <div ng-if="donorContactCounts.email_rpt_show_unthanked_donors > 0" ng-cloak>
-            <div class="row">
-              <div class="col-sm-8">
+          <div class="ym-next-step" ng-if="donorContactCounts.email_rpt_show_unthanked_donors > 0" ng-cloak>            
+              <div class="ym-next-step__step">
                 You have new donors who haven't received a thank-you email!
               </div>
-              <div class="col-sm-4">
+              <div class="ym-next-step__action">
                 <a class="btn btn-md-wide btn-primary">
                   <strong>Say Thanks</strong> <i class="fa fa-envelope" aria-hidden="true"></i>
                 </a>
               </div>
+          </div>
+          <div class="ym-next-step" ng-if="donorContactCounts.email_rpt_show_nondonors_followup > 0" ng-cloak>
+            <div class="ym-next-step__step">
+              Great job sending emails. Some of your friends haven't donated!
+            </div>
+            <div class="ym-next-step__action">
+              <a class="btn btn-md-wide btn-primary">
+                <strong>Follow Up</strong> <i class="fa fa-heart" aria-hidden="true"></i>
+              </a>
             </div>
           </div>
-          <div ng-if="donorContactCounts.email_rpt_show_nondonors_followup > 0" ng-cloak>
-            <div class="row">
-              <div class="col-sm-8">
-                Great job sending emails. Some of your friends haven't donated!
-              </div>
-              <div class="col-sm-4">
-                <a class="btn btn-md-wide btn-primary">
-                  <strong>Follow Up</strong> <i class="fa fa-heart" aria-hidden="true"></i>
-                </a>
-              </div>
+          <div class="ym-next-step" ng-if="donorContactCounts.email_rpt_show_donors > 0" ng-cloak>
+            <div class="ym-next-step__step8">
+              Review all of your donations on the Reports page.
             </div>
+            <div class="ym-next-step__action">
+              <a class="btn btn-md-wide btn-primary">
+                <strong>View All</strong> <i class="fa fa-eye" aria-hidden="true"></i>
+              </a> 
+            </div>  
           </div>
-          <div ng-if="donorContactCounts.email_rpt_show_donors > 0" ng-cloak>
-            <div class="row">
-              <div class="col-sm-8">
-                Review all of your donations on the Reports page.
-              </div>
-              <div class="col-sm-4">
-                <a class="btn btn-md-wide btn-primary">
-                  <strong>View All</strong> <i class="fa fa-eye" aria-hidden="true"></i>
-                </a> 
-              </div> 
+          <div class="ym-next-step" ng-if="donorContactCounts.email_rpt_show_donors == 0" ng-cloak>
+            <div class="ym-next-step__step">
+              You have not received any donations yet. Use the email tool to ask for support. 
             </div>
-          </div>
-          <div ng-if="donorContactCounts.email_rpt_show_donors == 0" ng-cloak>
-            <div class="row">
-              <div class="col-sm-8">
-                You have not received any donations yet. Use the email tool to ask for support. 
-              </div>
-              <div class="col-sm-4">
-                <a class="btn btn-md-wide btn-primary">
-                  <strong>Email</strong> <i class="fa fa-envelope" aria-hidden="true"></i>
-                </a>  
-              </div>
+            <div class="ym-next-step__action">
+              <a class="btn btn-md-wide btn-primary">
+                <strong>Email</strong> <i class="fa fa-envelope" aria-hidden="true"></i>
+              </a>  
             </div>
           </div>
         </div>
@@ -182,7 +174,7 @@
               <strong>View and Edit Your Page</strong>
             </a>
           </p>
-          <div class="row">
+          <div class="row ym-activity-box__action">
             <div class="col-sm-6">
               <p class="small">
                 <strong>Personal Page URL:</strong>
@@ -506,7 +498,10 @@
             <p>
               Download our Mobile Fundraising App today!
             </p>
-            <p><a href=""><img src="../aha-luminate/dist/youth-markets/image/apple-store-logo.png" class="img-responsive" alt="Download the iPhone App" /></a><a href=""><img src="../aha-luminate/dist/youth-markets/image/google-play-logo.png" class="img-responsive" alt="Download the Android App" /></a></p>
+            <p class="text-center">
+              <a href=""><img src="../aha-luminate/dist/youth-markets/image/apple-store-logo.png" class="img-responsive" alt="Download the iPhone App" /></a>
+              <a href=""><img src="../aha-luminate/dist/youth-markets/image/google-play-logo.png" class="img-responsive" alt="Download the Android App" /></a>
+            </p>
           </div>
         </div>
         <div class="col-sm-4">
@@ -517,7 +512,7 @@
             <p>
               Use our Facebook app to raise even more!
             </p>
-            <p><a href=""><img src="../aha-luminate/dist/youth-markets/image/fundraise-with-facebook.png" class="img-responsive" alt="Fundraise with Facebook" /></a></p>
+            <p class="text-center"><a href=""><img src="../aha-luminate/dist/youth-markets/image/fundraise-with-facebook.png" class="img-responsive" alt="Fundraise with Facebook" /></a></p>
           </div>
         </div>
         <div class="col-sm-4">
@@ -528,12 +523,14 @@
             <p>
               Download a signature for your email!
             </p>
-            <a class="btn btn-secondary btn-md-wide">
-              <strong>PC Instructions</strong>
-            </a>
-            <a class="btn btn-secondary btn-md-wide">
-              <strong>Mac Instructions</strong>
-            </a>
+            <p class="text-center">
+              <a class="btn btn-secondary btn-md-wide">
+                <strong>PC Instructions</strong>
+              </a>
+              <a class="btn btn-secondary btn-md-wide">
+                <strong>Mac Instructions</strong>
+              </a>
+            </p>
           </div>
         </div>
       </div>
