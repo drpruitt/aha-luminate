@@ -137,11 +137,11 @@ angular.module 'trPcControllers'
               id: id
               name: challenge
 
-      $scope.updateChallengeValue
+      #$scope.updateChallengeValue
       console.log $scope.updateChallengeValue
       
       $scope.updateChallenge = ->
-        console.log $scope.updateChallengeValue.val
+        console.log $scope.updateChallengeValue
         ###
         ZuriService.updateChallenge $scope.frId + '/' + $scope.consId + '?'+ $scope.updateChallengeValue,
           error: (response) ->
