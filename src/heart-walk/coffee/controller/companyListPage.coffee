@@ -51,7 +51,7 @@ angular.module 'ahaLuminateControllers'
           angular.forEach companyItems, (companyItem) ->
             if companyItem.parentOrgEventId isnt '0'
               rootParentCompanyId = childCompanyIdMap['company-' + companyItem.companyId]
-              childCompanyAmountRaised = if companyItem.amountRaised then Math.round(Number(companyItem.amountRaised)) else 0
+              childCompanyAmountRaised = if companyItem.amountRaised then Number(companyItem.amountRaised) else 0
               angular.forEach rootAncestorCompanies, (rootAncestorCompany, rootAncestorCompanyIndex) ->
                 if rootAncestorCompany.companyId is rootParentCompanyId
                   rootAncestorCompanies[rootAncestorCompanyIndex].amountRaised = rootAncestorCompanies[rootAncestorCompanyIndex].amountRaised + childCompanyAmountRaised
