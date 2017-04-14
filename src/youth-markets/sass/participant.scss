@@ -169,14 +169,21 @@ main > .container {
     margin-bottom: 35px;
   }
   .row {
-    display: flex;
     margin: 0 0 30px;
+
+    @media (min-width: $screen-sm-min){
+      display: flex;
+    }   
 
     .ym-pc-dashboard-progress-section__column {
       padding: 20px;
     
       &:first-child {
-        margin-right: 30px;
+        margin-right: 15px;
+        
+        @media (min-width: $screen-md-min){
+          margin-right: 30px;
+        }
       }
 
       .h5 {
@@ -265,10 +272,6 @@ main > .container {
   float: left;
 }
 
-.ym-pc-dashboard-activities-section {
-  margin: 0 0 24px;
-}
-
 .ym-pc-dashboard-coordinators-message-section {
   background-color: $event-accent;
   text-align: center;
@@ -281,6 +284,8 @@ main > .container {
 }
 
 .ym-pc-dashboard-activities-section {
+  margin: 0 0 24px;
+  clear: both;
   > .row {
     padding:0;
     margin:0;
@@ -313,10 +318,6 @@ main > .container {
     margin: 25px;
   }
 
-  .ym-activity-box__action {
-    margin-top: 25px;
-  }
-
   &.ym-activity-box--next-step{
     > div {
       padding: 0 0 20px;
@@ -330,15 +331,31 @@ main > .container {
       }
     }
     .ym-next-step > div {
-      display: inline-block;
+      margin: 0 0 15px;
+
+      @media(min-width: $screen-sm-min){
+        display: inline-block;
+        margin: 0;
+      }
     }
 
     .ym-next-step__step {
-      width: calc(100% - 125px);
+      margin: 0 0 15px;
+      @media(min-width: $screen-sm-min){
+        width: calc(100% - 125px);
+        padding-right: 20px;
+      }
+      @media(min-width: $screen-md-min){
+        padding-right: 40px;
+      }
     }
     .ym-next-step__action {
-      width: 125px;
-      vertical-align: top;
+      text-align: center;
+
+      @media(min-width: $screen-sm-min){
+        width: 125px;
+        vertical-align: top;
+      }
     }
     .btn {
       width: 125px;
@@ -347,7 +364,7 @@ main > .container {
     }
   }
 
-  &.ym-activity-box--donors,
+  &.ym-activity-box--next-step,
   &.ym-activity-box--challenge {
     
     @media(min-width: $screen-sm-min){
@@ -384,6 +401,10 @@ main > .container {
   }
 
   &.ym-activity-box--page {
+    > div.text-center {
+      margin: 20px 0 30px;
+    }
+
     .text-right {
       a {
         display: inline-block;
