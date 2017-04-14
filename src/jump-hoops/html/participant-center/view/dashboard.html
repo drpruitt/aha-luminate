@@ -230,13 +230,9 @@
           <div class="ym_my_challenge__update">
             <form method="post" novalidate ng-submit="updateChallenge()">
               <label for="ym-update-challenge">Take or update my challenge</label>
-              <h1>test {{challenges}}</h1>
+              <h1>test {{challenge.id}}</h1>
+              <h1>test {{challenges.id}}</h1>
               <select class="form-control" name="ym-update-challenge" model="challenges">
-                <option ng-repeat="challenge in challenges" value="{{challenge.id}}">{{challenge.name}}</option>
-              </select>
-
-              <h1>test {{challenge}}</h1>
-              <select class="form-control" name="ym-update-challenge" model="challenge">
                 <option ng-repeat="challenge in challenges" value="{{challenge.id}}">{{challenge.name}}</option>
               </select>
 
