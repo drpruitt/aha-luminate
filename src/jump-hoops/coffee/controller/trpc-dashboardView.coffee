@@ -142,4 +142,16 @@ angular.module 'trPcControllers'
             console.log response
           succes: (response) ->
             console.log response
-  ]
+
+      $scope.logChallenge = ->
+        console.log 'log'
+        ZuriService.logChallenge $scope.frId + '/' + $scope.consId + '/' + $scope.challengeId,
+          error: (response) ->
+            console.log response
+          succes: (response) ->
+            console.log response
+
+      $scope.skipChallenge = ->
+        console.log 'skip'
+        #TO DO
+  ] 

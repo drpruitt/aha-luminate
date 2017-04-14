@@ -196,7 +196,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-6 ym-activity-box ym-activity-box--challenge">
+        <div class="col-sm-6 ym-activity-box ym-activity-box--challenge" ng-model="personalChallenge">
           <h3 class="h5">
             Daily Heart-Healthy Challenge
           </h3>
@@ -219,10 +219,10 @@
             </div>
             <div class="clearfix"></div>
             <div class="ym_my_challenge__actions text-center">
-              <a class="btn btn-md-wide btn-primary" ng-href="http://hearttools.heart.org/aha_ym18/api/student/{{frId}}/{{consId}}/{{personalChallenge.id}}?key=6Mwqh5dFV39HLDq7">
+              <a ng-click="logChallenge()" class="btn btn-md-wide btn-primary">
                 <strong>I have met this challenge!</strong> <i class="fa fa-check" aria-hidden="true"></i>
               </a>
-              <a class="btn btn-md-wide btn-outline" ng-href="#">
+              <a ng-click="skipChallenge()" class="btn btn-md-wide btn-outline" ng-href="#">
                 <strong>Skip</strong> <i class="fa fa-times" aria-hidden="true"></i>
               </a>
             </div>

@@ -26,6 +26,17 @@ angular.module 'ahaLuminateApp'
         , (response) ->
           callback.error response
 
+      logChallenge: (requestData, callback) ->
+        url = '//hearttools.heart.org/aha_ym18/api/student/' + requestData + '?key=6Mwqh5dFV39HLDq7'
+        urlSCE = $sce.trustAsResourceUrl url
+        $http.jsonp(urlSCE, jsonpCallbackParam: 'callback').then (response) ->
+          if response.data.success is false
+            callback.error response
+          else
+            callback.success response
+        , (response) ->
+          callback.error response
+
       getZooStudent: (requestData, callback) ->
         url = '//hearttools.heart.org/aha_ym18/api/student/' + requestData + '?key=6Mwqh5dFV39HLDq7'
         urlSCE = $sce.trustAsResourceUrl url

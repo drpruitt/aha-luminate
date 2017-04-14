@@ -169,26 +169,45 @@ main > .container {
     margin-bottom: 35px;
   }
   .row {
-    margin: 0 0 30px;
+    margin: 0;
 
     @media (min-width: $screen-sm-min){
       display: flex;
+      margin: 0 0 30px;
     }   
 
     .ym-pc-dashboard-progress-section__column {
       padding: 20px;
+      margin: 0 0 15px;
+
+      @media (min-width: $screen-sm-min){
+        margin: 0;
+      }
     
       &:first-child {
-        margin-right: 15px;
+        @media (min-width: $screen-sm-min){
+          margin: 0 15px 0 0;
+        }
         
         @media (min-width: $screen-md-min){
-          margin-right: 30px;
+          margin: 0 30px 0 0;
         }
       }
 
       .h5 {
         margin: 0 0 25px;
       }
+    }
+  }
+  
+  .btn-lg {
+    display: block;
+    margin: 0 auto 15px;
+    max-width: 200px;
+
+    @media (min-width: $screen-sm-min){
+      display: inline-block;
+      max-width: none;
     }
   }
 
@@ -406,6 +425,11 @@ main > .container {
     }
 
     .text-right {
+      @media(max-width: $screen-sm) {
+        text-align: left;
+        margin-top: 15px;
+      }
+
       a {
         display: inline-block;
         margin-left: 5px;
