@@ -117,6 +117,7 @@ angular.module 'trPcControllers'
           error:(resposne) ->
             return
           success: (response) ->
+            console.log response
             personalChallenges = response.data.challenges
             if personalChallenges
               $scope.personalChallenge.id = personalChallenges.current
@@ -125,10 +126,6 @@ angular.module 'trPcControllers'
       getStudentChallenge()
 
       $scope.challenges = [] 
-      setChallenges = (key, value) ->
-        obj = {}
-        obj[key] = value
-        $scope.challenges.push obj
 
       ZuriService.getChallenges $scope.frId + '/' + $scope.consId, 
         error: (response) ->
@@ -137,9 +134,7 @@ angular.module 'trPcControllers'
           challenges = response.data.challenges
           id = 0
           angular.forEach challenges, (challenge) ->
-            id++
-            #setChallenges 'id', id
-            
+            id++            
             $scope.challenges.push
               id: id
               name: challenge
