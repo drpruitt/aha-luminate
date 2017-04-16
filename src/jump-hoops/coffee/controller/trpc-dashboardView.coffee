@@ -140,9 +140,9 @@ angular.module 'trPcControllers'
               name: challenge
 
       console.log $scope.challenges
-      
+      $scope.updateChallengeValue = ''
       $scope.updateChallenge = ->
-        console.log $scope.personalChallenge.id
+        console.log $scope.updateChallengeValue
         ###
         ZuriService.updateChallenge $scope.frId + '/' + $scope.consId + '?'+ $scope.updateChallengeValue,
           error: (response) ->
