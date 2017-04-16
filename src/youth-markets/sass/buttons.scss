@@ -232,6 +232,7 @@ a.btn-outline {
   &:active {
     background: $event-primary;
     color: #fff;
+    border: 1px solid $event-primary;
   }
 }
 
