@@ -139,7 +139,7 @@ angular.module 'trPcControllers'
               name: challenge
     
       $scope.updateChallenge = ->
-        ZuriService.updateChallenge $scope.frId + '/' + $scope.consId + '?'+ $scope.personalChallenge.id,
+        ZuriService.updateChallenge $scope.frId + '/' + $scope.consId + '?challenge='+ $scope.personalChallenge.id,
           getStudentChallenge()
 
       $scope.logChallenge = ->        
