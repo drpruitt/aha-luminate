@@ -117,7 +117,6 @@ angular.module 'trPcControllers'
           error:(resposne) ->
             return
           success: (response) ->
-            console.log response
             personalChallenges = response.data.challenges
             if personalChallenges
               $scope.personalChallenge.id = personalChallenges.current
@@ -142,7 +141,7 @@ angular.module 'trPcControllers'
       console.log $scope.challenges
     
       $scope.updateChallenge = ->
-        console.log $scope.updateChallengeValue
+        console.log $scope.personalChallenge.id
         ###
         ZuriService.updateChallenge $scope.frId + '/' + $scope.consId + '?'+ $scope.updateChallengeValue,
           error: (response) ->
