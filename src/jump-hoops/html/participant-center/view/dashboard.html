@@ -231,7 +231,8 @@
             <form method="post" novalidate ng-submit="updateChallenge()">
               <label for="ym-update-challenge">Take or update my challenge</label>
               <p>test {{personalChallenge.id}}</p>
-              <select class="form-control" name="ym-update-challenge" model="personalChallenge.id">
+              <p>test update val {{updateChallenge.value}}
+              <select class="form-control" name="ym-update-challenge" model="updateChallenge.value">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
