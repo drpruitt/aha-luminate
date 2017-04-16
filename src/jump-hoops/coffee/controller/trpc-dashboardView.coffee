@@ -140,7 +140,7 @@ angular.module 'trPcControllers'
               name: challenge
 
       console.log $scope.challenges
-      $scope.updateChallengeValue = ''
+    
       $scope.updateChallenge = ->
         console.log $scope.updateChallengeValue
         ###
