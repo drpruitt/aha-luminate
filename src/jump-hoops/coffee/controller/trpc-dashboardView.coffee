@@ -137,18 +137,10 @@ angular.module 'trPcControllers'
             $scope.challenges.push
               id: id
               name: challenge
-
-      console.log $scope.challenges
     
       $scope.updateChallenge = ->
-        console.log $scope.personalChallenge.id
-        ###
-        ZuriService.updateChallenge $scope.frId + '/' + $scope.consId + '?'+ $scope.updateChallengeValue,
-          error: (response) ->
-            console.log response
-          succes: (response) ->
-            console.log response
-        ###
+        ZuriService.updateChallenge $scope.frId + '/' + $scope.consId + '?'+ $scope.personalChallenge.id,
+          getStudentChallenge()
 
       $scope.logChallenge = ->        
         ZuriService.logChallenge $scope.frId + '/' + $scope.consId + '/' + $scope.personalChallenge.id,
