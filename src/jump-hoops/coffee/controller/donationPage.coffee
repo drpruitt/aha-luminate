@@ -6,18 +6,15 @@ angular.module 'ahaLuminateControllers'
     'DonationService'
     'ZuriService'
     ($scope, $rootScope, $location, DonationService, ZuriService) ->
-      $donationFormRoot = angular.element '[data-donation-form-root]'
-
       ecardLinkParam = $location.absUrl().split('ecard_linktrack=')[1]
-    
       if ecardLinkParam != undefined
         ecardLinkParamSplit = ecardLinkParam.split('&')[0]
         ZuriService.eCardTracking ecardLinkParamSplit,
             console.log 'send track'
 
-
       $scope.paymentInfoErrors = 
         errors: []
+      angular.element('.page-error').remove()
       $fieldErrors = angular.element '.ErrorMessage'
       angular.forEach $fieldErrors, (fieldError) ->
         $fieldError = angular.element fieldError
@@ -25,16 +22,23 @@ angular.module 'ahaLuminateControllers'
           fieldErrorText = jQuery.trim $fieldError.find('.field-error-text').text()
           $scope.paymentInfoErrors.errors.push
             text: fieldErrorText
+
+      $errorContainer = angular.element '.form-error'
+      angular.forEach $errorContainer, (error) ->
+        $error = angular.element error
+        angular.element($error).addClass 'has-error'
+        angular.element($error).removeClass 'form-error'
       
       $scope.donationInfo = 
         validate: 'true'
-        form_id: $donationFormRoot.data 'formid'
-        fr_id: $donationFormRoot.data 'frid'
+        form_id: angular.element('#df_id').val()
+        fr_id: angular.element('#FR_ID').val()
         billing_text: angular.element('#billing_info_same_as_donor_row label').text()
         giftType: 'onetime'
       
       $scope.donationLevels = []
-      
+      console.log $scope.donationInfo
+
       $scope.giftType = (type) ->  
         $scope.donationInfo.giftType = type    
         if type is 'monthly'
@@ -171,7 +175,7 @@ angular.module 'ahaLuminateControllers'
         angular.element('#billing_info').parent().addClass 'billing_info_toggle'
         angular.element('#payment_cc_container').append '<div class="clearfix" />'
         angular.element('#responsive_payment_typecc_cvv_row .FormLabelText').text 'CVV:'
-        angular.element('#level_installment_row').addClass('hidden');
+        angular.element('#level_installment_row').addClass 'hidden'
         employerMatchFields()
         billingAddressFields()
         donorRecognitionFields()

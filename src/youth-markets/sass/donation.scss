@@ -5,6 +5,18 @@
     }
   }
 
+  .ErrorMessage {
+    display: none;
+  }
+
+  .has-error {
+    input[type="text"],
+    select {
+      background-color: $error-color;
+      border: 1px solid $event-secondary;
+    }
+  }
+
   .section-header-container, 
   h2 {
     color: $event-secondary;
