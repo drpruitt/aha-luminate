@@ -4,6 +4,13 @@ angular.module 'ahaLuminateApp'
     '$http'
     '$sce'
     ($rootScope, $http, $sce) ->
+      eCardTracking: (requestData) ->
+        url = 'https://hearttools.heart.org/aha_ym18/visitlink_record.php?ecard_linktrack='+ requestData
+        urlSCE = $sce.trustAsResourceUrl url
+        $http
+          method: 'POST',
+          url: urlSCE
+
       getChallenges: (requestData, callback) ->
         url = '//hearttools.heart.org/aha_ym18/api/student/challenges/' + requestData + '?key=6Mwqh5dFV39HLDq7'
         urlSCE = $sce.trustAsResourceUrl url
@@ -19,7 +26,6 @@ angular.module 'ahaLuminateApp'
         url = '//hearttools.heart.org/aha_ym18/api/student/challenge/' + requestData + '&key=6Mwqh5dFV39HLDq7'
         urlSCE = $sce.trustAsResourceUrl url
         $http.jsonp(urlSCE, jsonpCallbackParam: 'callback').then (response) ->
-          console.log response
           response
 
       logChallenge: (requestData, callback) ->

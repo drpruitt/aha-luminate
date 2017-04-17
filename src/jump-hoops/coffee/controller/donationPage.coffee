@@ -2,19 +2,41 @@ angular.module 'ahaLuminateControllers'
   .controller 'DonationCtrl', [
     '$scope'
     '$rootScope'
+    '$location'
     'DonationService'
-    ($scope, $rootScope, DonationService) ->
+    'ZuriService'
+    ($scope, $rootScope, $location, DonationService, ZuriService) ->
       $donationFormRoot = angular.element '[data-donation-form-root]'
+
+      ecardLinkParam = $location.absUrl().split('ecard_linktrack=')[1]
+    
+      if ecardLinkParam != undefined
+        ecardLinkParamSplit = ecardLinkParam.split('&')[0]
+        ZuriService.eCardTracking ecardLinkParamSplit,
+            console.log 'send track'
+
+
+      $scope.paymentInfoErrors = 
+        errors: []
+      $fieldErrors = angular.element '.ErrorMessage'
+      angular.forEach $fieldErrors, (fieldError) ->
+        $fieldError = angular.element fieldError
+        if $fieldError.find('.field-error-text').length > 0
+          fieldErrorText = jQuery.trim $fieldError.find('.field-error-text').text()
+          $scope.paymentInfoErrors.errors.push
+            text: fieldErrorText
       
       $scope.donationInfo = 
         validate: 'true'
         form_id: $donationFormRoot.data 'formid'
         fr_id: $donationFormRoot.data 'frid'
         billing_text: angular.element('#billing_info_same_as_donor_row label').text()
+        giftType: 'onetime'
       
       $scope.donationLevels = []
       
-      $scope.giftType = (type) ->        
+      $scope.giftType = (type) ->  
+        $scope.donationInfo.giftType = type    
         if type is 'monthly'
           angular.element('.ym-donation-levels__type--onetime').removeClass 'active'
           angular.element('.ym-donation-levels__type--monthly').addClass 'active'
