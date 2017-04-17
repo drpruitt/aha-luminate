@@ -37,7 +37,6 @@ angular.module 'ahaLuminateControllers'
         giftType: 'onetime'
       
       $scope.donationLevels = []
-      console.log $scope.donationInfo
 
       $scope.giftType = (type) ->  
         $scope.donationInfo.giftType = type    

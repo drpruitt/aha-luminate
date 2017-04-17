@@ -108,7 +108,7 @@ input[type="checkbox"] {
   }
   
   .form-control {
-    background-color: #fcddde;
+    background-color: $error-color;
     border: 1px solid $event-secondary;
   }
 }
