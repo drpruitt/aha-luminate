@@ -32,7 +32,7 @@
           <p>Our goal is <strong ng-bind="teamProgress.goalFormatted"></strong></p>
         </div>
         <div class="clearfix"></div>
-        <div class="ym-progress__date">
+        <div class="ym-progress__date" ng-if="eventDate != 'User Provided No Response'">
           <p>Our event date is <strong ng-bind-html="eventDate"></strong></p> 
         </div>
       </div>
