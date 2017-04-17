@@ -29,6 +29,10 @@ div.responsive textarea {
   resize: none;
 }
 
+select.form-control {
+  height: auto;
+}
+
 .input-lg, 
 select.input-lg {
   line-height: 1;
@@ -104,7 +108,7 @@ input[type="checkbox"] {
   }
   
   .form-control {
-    background-color: #fcddde;
+    background-color: $error-color;
     border: 1px solid $event-secondary;
   }
 }
