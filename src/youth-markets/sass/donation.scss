@@ -356,3 +356,25 @@
 .mobile div.html-caption-container {
   width: auto;
 }
+
+
+.ym-embed-video {
+  position: relative;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+  padding-bottom: 56.25%;
+
+  @media(min-width: $screen-md-min) {
+    padding-bottom: 30.25%
+  }
+  
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
