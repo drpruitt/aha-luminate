@@ -82,13 +82,18 @@
   
   .ym-donation-levels {
     max-width: 670px;
-    padding: 30px 20px;
+    padding: 20px 5px;
+
+    @media(min-width: $screen-xs-min){
+      padding: 30px 20px;
+    }
     
     p {
       font-size: 18px;
       font-weight: 700;
       text-align: center;
       color: $event-secondary;
+      margin: 0;
     }
   }
   
@@ -96,12 +101,17 @@
     text-align: center;
     
     .btn-toggle {
+      &:first-child {
+        margin: 0 auto 10px; 
 
-      @media(min-width: $screen-sm-min){
-        &:first-child {
-          margin-right: 30px;
+        @media(min-width: $screen-xs-min){
+          margin: 0 10px 10px 0;
         }
-      }
+
+        @media(min-width: $screen-sm-min){
+          margin: 0 30px 0 0;
+        }
+      }  
     }
     
     .btn-lg {
@@ -111,23 +121,26 @@
   
   .ym-donation-levels__amount {
     display: inline-block;
-    margin-left: 20px;
+    margin: 0 0 10px 10px;
     vertical-align: middle;
+
+    @media (min-width: $screen-xs-min){
+      margin: 0 0 10px 20px;
+    }
     
     &:first-child {
       margin-left: 0;
     }
-    
-    .btn-lg {
-      font-size: inherit;
-    }
 
     .btn-toggle {
-      display: block;
+      font-size: 20px;
 
-      @media (min-width: $screen-sm-min){
-        width: 110px;
+      @media (min-width: $screen-xs-min) {
         min-width: 110px;
+      }
+
+      &.btn-enter {
+        width: 110px;
       }
     }
   }
@@ -501,6 +514,8 @@
 
   @media(min-width: 1050px) {
     padding: 25px 20px 0;
+    width: 100%;
+    float: none;
   }
 }
 
@@ -512,7 +527,7 @@
   div.employer-address-container input#employer_street {
     width: 100%;
   }
-  
+
   div.responsive {
     div.form-content,
     div.form-row {
