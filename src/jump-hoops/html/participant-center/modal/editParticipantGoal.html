@@ -6,7 +6,7 @@
   </div>
   <div class="modal-body">
     <div uib-alert class="alert-danger" ng-if="personalGoalInfo.errorMessage">
-      <div ng-bing-html="personalGoalInfo.errorMessage"></div>
+      <div ng-bind-html="personalGoalInfo.errorMessage"></div>
     </div>
     <div class="form-group">
       <label for="goal" class="sr-only">Goal</label>
