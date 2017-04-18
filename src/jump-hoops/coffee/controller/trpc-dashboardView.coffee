@@ -16,7 +16,7 @@ angular.module 'trPcControllers'
     '$location'
     ($rootScope, $scope, $filter, $uibModal, APP_INFO, ZuriService, ParticipantBadgesService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserCompanyService, NgPcContactService, NgPcTeamraiserShortcutURLService, $location) ->
       $scope.dashboardPromises = []
-
+      
       if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
         $scope.dashboardProgressType = 'personal'
       else
@@ -68,7 +68,7 @@ angular.module 'trPcControllers'
       $scope.dashboardPromises.push fundraisingProgressPromise
       
       $scope.editPersonalGoal = ->
-        $scope.editPersonalGoalModal = $uibModal.open 
+        $scope.editPersonalGoalModal = $uibModal.open
           scope: $scope
           templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/editParticipantGoal.html'
       
@@ -79,7 +79,7 @@ angular.module 'trPcControllers'
         # TODO
       
       $scope.editTeamGoal = ->
-        $scope.editTeamGoalModal = $uibModal.open 
+        $scope.editTeamGoalModal = $uibModal.open
           scope: $scope
           templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/editTeamGoal.html'
       
@@ -111,7 +111,6 @@ angular.module 'trPcControllers'
         $scope.dashboardPromises.push donorContactCountPromise
       
       $scope.personalChallenge = {}
-      
       getStudentChallenge = ->
         ZuriService.getZooStudent $scope.frId + '/' + $scope.consId, 
           error:(resposne) ->
@@ -123,30 +122,26 @@ angular.module 'trPcControllers'
               $scope.personalChallenge.name = personalChallenges.text
               $scope.personalChallenge.completed = personalChallenges.completed
       getStudentChallenge()
-
-      $scope.challenges = [] 
-
+      
+      $scope.challenges = []
       ZuriService.getChallenges $scope.frId + '/' + $scope.consId, 
         error: (response) ->
           return
         success: (response) ->
           challenges = response.data.challenges
-          id = 0
-          angular.forEach challenges, (challenge) ->
-            id++            
+          angular.forEach challenges, (challenge, challengeIndex) ->
             $scope.challenges.push
-              id: id
+              id: challengeIndex + 1
               name: challenge
-    
+      
       $scope.updateChallenge = ->
-        ZuriService.updateChallenge $scope.frId + '/' + $scope.consId + '?challenge='+ $scope.personalChallenge.id,
+        ZuriService.updateChallenge $scope.frId + '/' + $scope.consId + '?challenge=' + $scope.personalChallenge.id,
           getStudentChallenge()
-
-      $scope.logChallenge = ->        
+      
+      $scope.logChallenge = ->
         ZuriService.logChallenge $scope.frId + '/' + $scope.consId + '/' + $scope.personalChallenge.id,
-            getStudentChallenge()
-
+          getStudentChallenge()
+      
       $scope.skipChallenge = ->
-        console.log 'skip'
-        #TO DO
+        # TODO
   ] 
