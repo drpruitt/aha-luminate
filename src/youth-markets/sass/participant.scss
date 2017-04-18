@@ -42,29 +42,26 @@ main > .container {
   a:link,
   a:visited {
     display: inline-block;
-    background: $event-secondary-medium;
-    border-right: 2px solid $event-accent;
-    color: $event-secondary;
-    font-size: 18px;
-    font-weight: bold;
-    line-height: 50px;
+    background: $event-secondary;
+    color: $brand-white;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 40px;
     text-align: center;
     text-decoration: none;
-    width: 20%;
-    height: 50px;
+    width: 100px;
+    height: 40px;
+    margin: 0 5px 5px 0;
     
-    @media (max-width: $screen-xs-max) {
-      font-size: 14px;
-    }
-    
-    @media (max-width: $screen-xs) {
-      margin: 0 5px 5px 0;
-      border: 0 none;
-      width: 100px;
-      color: $brand-white;
-      background: $event-secondary;
-      height: 40px;
-      line-height: 40px;
+    @media (min-width: $screen-sm-min) {
+      background: $event-secondary-medium;
+      border-right: 2px solid $event-accent;
+      color: $event-secondary;
+      font-size: 18px;
+      line-height: 50px;
+      width: 20%;
+      height: 50px;
+      margin: 0;
     }
     
     @media (max-width: 350px) {
@@ -73,7 +70,7 @@ main > .container {
   }
   
   a:last-child {
-    border-right: 0 none;
+    border-right: 0;
     margin: 0;
   }
 
@@ -351,7 +348,7 @@ main > .container {
       &:last-child {
         padding: 0;
         margin: 0;
-        border: 0 none;
+        border: 0;
       }
     }
     
