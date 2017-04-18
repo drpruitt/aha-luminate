@@ -67,7 +67,10 @@ angular.module 'trPcControllers'
           response
       $scope.dashboardPromises.push fundraisingProgressPromise
       
+      $scope.personalGoalInfo = {}
+      
       $scope.editPersonalGoal = ->
+        $scope.personalGoalInfo.goal = $scope.participantProgress.goalFormatted.replace('$', '')
         $scope.editPersonalGoalModal = $uibModal.open
           scope: $scope
           templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/editParticipantGoal.html'
@@ -78,7 +81,10 @@ angular.module 'trPcControllers'
       $scope.updatePersonalGoal = ->
         # TODO
       
+      $scope.teamGoalInfo = {}
+      
       $scope.editTeamGoal = ->
+        $scope.teamGoalInfo.goal = $scope.teamProgress.goalFormatted.replace('$', '')
         $scope.editTeamGoalModal = $uibModal.open
           scope: $scope
           templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/editTeamGoal.html'
