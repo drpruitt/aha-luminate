@@ -45,7 +45,9 @@
                   <strong><span ng-bind-html="participantProgress.raisedFormatted"></span></strong> raised
                 </p>
                 <div ng-if="participantProgress.goalFormatted && participantProgress.goalFormatted != '$0'" ng-cloak>
-                  <p><strong><span ng-bind-html="participantProgress.goalFormatted"></span></strong> goal</p>
+                  <p>
+                    <strong><span ng-bind-html="participantProgress.goalFormatted"></span></strong> goal
+                  </p>
                 </div>
                 <a ng-click="editPersonalGoal()">
                   <strong>Update Personal Goal</strong>
@@ -141,22 +143,22 @@
           <h3 class="h5">
             My Donors
           </h3>
-          <div class="ym-next-step" ng-if="donorContactCounts.email_rpt_show_unthanked_donors > 0" ng-cloak>            
-              <div class="ym-next-step__step">
-                You have new donors who haven't received a thank-you email!
-              </div>
-              <div class="ym-next-step__action">
-                <a class="btn btn-md-wide btn-primary">
-                  <strong>Say Thanks</strong> <i class="fa fa-envelope" aria-hidden="true"></i>
-                </a>
-              </div>
+          <div class="ym-next-step" ng-if="donorContactCounts.email_rpt_show_unthanked_donors > 0" ng-cloak>
+            <div class="ym-next-step__step">
+              You have new donors who haven't received a thank-you email!
+            </div>
+            <div class="ym-next-step__action">
+              <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#">
+                <strong>Say Thanks</strong> <i class="fa fa-envelope" aria-hidden="true"></i>
+              </a>
+            </div>
           </div>
           <div class="ym-next-step" ng-if="donorContactCounts.email_rpt_show_nondonors_followup > 0" ng-cloak>
             <div class="ym-next-step__step">
               Great job sending emails. Some of your friends haven't donated!
             </div>
             <div class="ym-next-step__action">
-              <a class="btn btn-md-wide btn-primary">
+              <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#">
                 <strong>Follow Up</strong> <i class="fa fa-heart" aria-hidden="true"></i>
               </a>
             </div>
@@ -166,19 +168,19 @@
               Review all of your donations on the Reports page.
             </div>
             <div class="ym-next-step__action">
-              <a class="btn btn-md-wide btn-primary">
+              <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#">
                 <strong>View All</strong> <i class="fa fa-eye" aria-hidden="true"></i>
-              </a> 
-            </div>  
+              </a>
+            </div>
           </div>
           <div class="ym-next-step" ng-if="donorContactCounts.email_rpt_show_donors == 0" ng-cloak>
             <div class="ym-next-step__step">
               You have not received any donations yet. Use the email tool to ask for support. 
             </div>
             <div class="ym-next-step__action">
-              <a class="btn btn-md-wide btn-primary">
+              <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#">
                 <strong>Email</strong> <i class="fa fa-envelope" aria-hidden="true"></i>
-              </a>  
+              </a>
             </div>
           </div>
         </div>
@@ -190,7 +192,7 @@
             Personalize your fundraising page to share your heart-healthy journey. Students who personalize their page raise more money!
           </p>
           <div class="text-center">
-            <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=personal&amp;px={{consId}}&hasSecureSession=true">
+            <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=personal&amp;px={{consId}}">
               <strong>View and Edit Your Page</strong>
             </a>
           </div>
@@ -203,10 +205,10 @@
             <p class="small ">
               <strong>Share My Personal Page:</strong>
             </p>
-            <a class="addthis_button_facebook" href="{{baseUrl}}#">
+            <a class="addthis_button_facebook" ng-href="{{baseUrl}}#">
               <img class="img-responsive" src="../aha-luminate/dist/youth-markets/image/facebook-logo.png" alt="Facebook">
             </a>
-            <a class="addthis_button_twitter" href="{{baseUrl}}#">
+            <a class="addthis_button_twitter" ng-href="{{baseUrl}}#">
               <img class="img-responsive" src="../aha-luminate/dist/youth-markets/image/twitter-logo.png" alt="Twitter">
             </a>
           </div>
@@ -220,7 +222,7 @@
           </h3>
           <div class="ym_my_challenge__current" ng-if="personalChallenge.id">
             <div class="col-sm-8">
-              <p class="ym_my_challenge__description">  
+              <p class="ym_my_challenge__description">
                 <strong>{{personalChallenge.name}}</strong>
               </p>
               <p class="ym_my_challenge__stats" ng-if="personalChallenge.completed == 1">
@@ -233,7 +235,7 @@
             <div class="col-sm-4">
               <img class="img-responsive" src="../aha-luminate/dist/jump-hoops/image/my-challenge-exercise.png" alt="{{personalChallenge.name}}" ng-if="personalChallenge.id == 1 || personalChallenge.id == 4">
               <img class="img-responsive" src="../aha-luminate/dist/jump-hoops/image/my-challenge-water.png" alt="{{personalChallenge.name}}" ng-if="personalChallenge.id == 2">
-              <img class="img-responsive" src="../aha-luminate/dist/jump-hoops/image/my-challenge-food.png" alt="{{personalChallenge.name}}" ng-if="personalChallenge.id == 3">          
+              <img class="img-responsive" src="../aha-luminate/dist/jump-hoops/image/my-challenge-food.png" alt="{{personalChallenge.name}}" ng-if="personalChallenge.id == 3">
             </div>
             <div class="clearfix"></div>
             <div class="ym_my_challenge__actions text-center">
@@ -248,7 +250,7 @@
           <div class="ym_my_challenge__update">
             <form method="post" novalidate ng-submit="updateChallenge()">
               <label for="ym-update-challenge">Take or update my challenge</label>
-              <select class="form-control" name="ym-update-challenge" ng-model="personalChallenge.id">  
+              <select class="form-control" name="ym-update-challenge" ng-model="personalChallenge.id">
                 <option ng-repeat="challenge in challenges" ng-value="{{challenge.id}}">{{challenge.name}}</option>
               </select>
               <button type="submit" class="btn btn-md-wide btn-primary"><strong>Update Challenge</strong></button>
@@ -462,7 +464,7 @@
             <p>
               Download resources by state to share with your students.
             </p>
-            <a class="btn btn-primary">
+            <a class="btn btn-primary" ng-href="{{baseUrl}}#">
               <strong>Download Resources</strong>
             </a>
           </div>
@@ -475,7 +477,7 @@
             <p>
               Download a worksheet for an in-class assignment.
             </p>
-            <a class="btn btn-primary">
+            <a class="btn btn-primary" ng-href="{{baseUrl}}#">
               <strong>Download Assignment</strong>
             </a>
           </div>
@@ -488,7 +490,7 @@
             <p>
               Download a worksheet for a take-home assignment.
             </p>
-            <a class="btn btn-primary">
+            <a class="btn btn-primary" ng-href="{{baseUrl}}#">
               <strong>Download Homework</strong>
             </a>
           </div>
@@ -518,8 +520,12 @@
               Download our Mobile Fundraising App today!
             </p>
             <p class="text-center">
-              <a href="{{baseUrl}}#"><img class="img-responsive" src="../aha-luminate/dist/youth-markets/image/apple-store-logo.png" alt="Download the iPhone App"></a> 
-              <a href="{{baseUrl}}#"><img class="img-responsive" src="../aha-luminate/dist/youth-markets/image/google-play-logo.png" alt="Download the Android App"></a>
+              <a ng-href="{{baseUrl}}#" target="_blank">
+                <img class="img-responsive" src="../aha-luminate/dist/youth-markets/image/apple-store-logo.png" alt="Download the iPhone App">
+              </a> 
+              <a ng-href="{{baseUrl}}#" target="_blank">
+                <img class="img-responsive" src="../aha-luminate/dist/youth-markets/image/google-play-logo.png" alt="Download the Android App">
+              </a>
             </p>
           </div>
         </div>
@@ -532,7 +538,9 @@
               Use our Facebook app to raise even more!
             </p>
             <p class="text-center">
-              <a href="{{baseUrl}}#"><img class="img-responsive" src="../aha-luminate/dist/youth-markets/image/fundraise-with-facebook.png" alt="Fundraise with Facebook"></a>
+              <a ng-href="{{baseUrl}}#" target="_blank">
+                <img class="img-responsive" src="../aha-luminate/dist/youth-markets/image/fundraise-with-facebook.png" alt="Fundraise with Facebook">
+              </a>
             </p>
           </div>
         </div>
@@ -545,10 +553,10 @@
               Download a signature for your email!
             </p>
             <p class="text-center">
-              <a class="btn btn-secondary btn-md-wide">
+              <a class="btn btn-secondary btn-md-wide" ng-href="{{baseUrl}}#">
                 <strong>PC Instructions</strong>
               </a> 
-              <a class="btn btn-secondary btn-md-wide">
+              <a class="btn btn-secondary btn-md-wide" ng-href="{{baseUrl}}#">
                 <strong>Mac Instructions</strong>
               </a>
             </p>
