@@ -341,24 +341,59 @@
 }
 
 .ym-donation-sidebar {
-  max-width: 270px;
   margin: auto;
+  padding: 30px;
+
+  hr {
+    clear: both;
+    
+    @media(min-width: 1050px) {
+      max-width: 230px;
+    }
+  }
 
   @media(min-width: 1050px) {
     float: right;
+    max-width: 270px;
+    padding: 0;
+  }
+
+  @media (max-width: 1049px) {
+    img {
+      float: left;
+    }
+
+    .ym-donation-sidebar__text--top {
+      float: right;
+      width: calc(100% - 300px);
+    }
   }
 }
 
 .ym-donation-sidebar__text {
   text-align: center;
-  padding: 25px 20px;
   
-  h3 {
-    color: #ffffff;
+  @media(min-width: 1050px) {
+    padding: 0 20px 25px;
+  }
+  
+  h5 {
+    color: $brand-white;
     font-weight: 700;
+    margin-top: 0;
+  }
+
+  span {
+    color: $brand-white;
+  }
+
+
+}
+.ym-donation-sidebar__text--top {
+  @media(min-width: 1050px) {
+    padding: 25px 20px 0;
   }
 }
-
 .mobile div.html-caption-container {
   width: auto;
 }
