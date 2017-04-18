@@ -5,15 +5,14 @@
     </h2>
   </div>
   <div class="modal-body">
-    <div uib-alert class="alert-danger" ng-if="editGoalOptions.updateGoalFailure">
-      <div ng-bing-html="editGoalOptions.updateGoalFailureMessage"></div>
+    <div uib-alert class="alert-danger" ng-if="personalGoalInfo.errorMessage">
+      <div ng-bind-html="personalGoalInfo.errorMessage"></div>
     </div>
     <div class="form-group">
       <label for="goal" class="sr-only">Goal</label>
       <div class="input-group">
         <span class="input-group-addon">$</span>
-        <input type="text" class="form-control" id="goal" ng-model="editGoalOptions.updateGoalInput" aria-label="Goal" min="0" required>
-        <span class="input-group-addon">.00</span>
+        <input type="text" class="form-control" id="goal" ng-model="personalGoalInfo.goal" aria-label="Goal" required>
       </div>
     </div>
   </div>
