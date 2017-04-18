@@ -316,7 +316,7 @@
                 <strong><span ng-bind-html="participantProgress.goalFormatted"></span></strong>
               </div>
               <a ng-click="editPersonalGoal()">
-                Update Personal Goal
+                <strong>Update Personal Goal</strong>
               </a>
             </div>
             <div ng-class="{'hidden': dashboardProgressType != 'company'}" ng-cloak>
@@ -342,7 +342,7 @@
               </div>
               <div ng-if="participantRegistration.aTeamCaptain == 'true'" ng-cloak>
                 <a ng-click="editTeamGoal()">
-                  Update Team Goal
+                  <strong>Update Team Goal</strong>
                 </a>
               </div>
             </div>
