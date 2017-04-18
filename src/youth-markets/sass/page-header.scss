@@ -35,6 +35,24 @@
     &:last-child {
       margin: 0;
     }
+
+    &.school-name a {
+      margin-left: 30px;
+
+      @media (max-width: $screen-sm) {
+        display: block;
+        margin: 0;
+      }
+    }
+
+    &.team-name a {
+      margin-left: 40px;
+
+      @media (max-width: $screen-sm) {
+        display: block;
+        margin: 0;
+      }
+    }
     
     a {
       &, 

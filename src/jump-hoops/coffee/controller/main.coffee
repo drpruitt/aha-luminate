@@ -11,7 +11,7 @@ angular.module 'ahaLuminateControllers'
       $scope.regEventId = ''
   
       if consId isnt undefined
-        TeamraiserParticipantService.getRegisteredTeamraisers 'event_type=Jump&cons_id=' + consId,
+        TeamraiserParticipantService.getRegisteredTeamraisers 'event_type=Jump%Hoops&cons_id=' + consId,
           success: (response) ->
             teamraiser = response.getRegisteredTeamraisersResponse?.teamraiser
             if teamraiser.length

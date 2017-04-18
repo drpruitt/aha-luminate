@@ -13,9 +13,10 @@ angular.module 'trPcControllers'
     'NgPcTeamraiserCompanyService'
     'NgPcContactService'
     'NgPcTeamraiserShortcutURLService'
-    ($rootScope, $scope, $filter, $uibModal, APP_INFO, ZuriService, ParticipantBadgesService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserCompanyService, NgPcContactService, NgPcTeamraiserShortcutURLService) ->
+    '$location'
+    ($rootScope, $scope, $filter, $uibModal, APP_INFO, ZuriService, ParticipantBadgesService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserCompanyService, NgPcContactService, NgPcTeamraiserShortcutURLService, $location) ->
       $scope.dashboardPromises = []
-      
+
       if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
         $scope.dashboardProgressType = 'personal'
       else
@@ -110,13 +111,42 @@ angular.module 'trPcControllers'
         $scope.dashboardPromises.push donorContactCountPromise
       
       $scope.personalChallenge = {}
-      ZuriService.getZooStudent $scope.frId + '/' + $scope.consId, 
-        error: ->
-          # TODO
+      
+      getStudentChallenge = ->
+        ZuriService.getZooStudent $scope.frId + '/' + $scope.consId, 
+          error:(resposne) ->
+            return
+          success: (response) ->
+            personalChallenges = response.data.challenges
+            if personalChallenges
+              $scope.personalChallenge.id = personalChallenges.current
+              $scope.personalChallenge.name = personalChallenges.text
+              $scope.personalChallenge.completed = personalChallenges.completed
+      getStudentChallenge()
+
+      $scope.challenges = [] 
+
+      ZuriService.getChallenges $scope.frId + '/' + $scope.consId, 
+        error: (response) ->
+          return
         success: (response) ->
-          personalChallenges = response.data.challenges
-          if personalChallenges
-            $scope.personalChallenge.id = personalChallenges.current
-            $scope.personalChallenge.name = personalChallenges.text
-            $scope.personalChallenge.completed = personalChallenges.completed
-  ]
+          challenges = response.data.challenges
+          id = 0
+          angular.forEach challenges, (challenge) ->
+            id++            
+            $scope.challenges.push
+              id: id
+              name: challenge
+    
+      $scope.updateChallenge = ->
+        ZuriService.updateChallenge $scope.frId + '/' + $scope.consId + '?challenge='+ $scope.personalChallenge.id,
+          getStudentChallenge()
+
+      $scope.logChallenge = ->        
+        ZuriService.logChallenge $scope.frId + '/' + $scope.consId + '/' + $scope.personalChallenge.id,
+            getStudentChallenge()
+
+      $scope.skipChallenge = ->
+        console.log 'skip'
+        #TO DO
+  ] 
