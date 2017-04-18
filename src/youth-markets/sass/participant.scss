@@ -4,25 +4,26 @@
 
 header {
   padding: 0;
-
+  
   > .container {
     display: none;
   }
 }
 
 main > .container {
-  @media(max-width: $screen-sm-min){
+  @media (max-width: $screen-xs-max) {
     margin-top: -72px;
   }
 }
-.ym-page-content {
-  padding: 0;
-  background: transparent;
 
+.ym-page-content {
+  background: transparent;
+  padding: 0;
+  
   .ng-pc-view-container {
     padding: 10px;
-
-    @media(min-width: $screen-md-min){
+    
+    @media (min-width: $screen-md-min) {
       padding: 28px;
     }
   }
@@ -31,32 +32,32 @@ main > .container {
 .ng-pc-nav {
   background: $event-accent;
   
-  @media(max-width: $screen-xs){
+  @media (max-width: $screen-xs-max) {
     background: transparent;
     text-align: center;
     margin-bottom: 7px;
   }
-
+  
   a,
   a:link,
   a:visited {
-    display:inline-block;
+    display: inline-block;
+    background: $event-secondary-medium;
+    border-right: 2px solid $event-accent;
+    color: $event-secondary;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 50px;
     text-align: center;
     text-decoration: none;
-    color: $event-secondary;
-    background: $event-secondary-medium;
-    font-weight: bold;
-    border-right: 2px solid $event-accent;
     width: 20%;
     height: 50px;
-    line-height: 50px;
-    font-size: 18px;
-
-    @media(max-width: $screen-sm) {
+    
+    @media (max-width: $screen-xs-max) {
       font-size: 14px;
     }
-
-    @media(max-width: $screen-xs){
+    
+    @media (max-width: $screen-xs) {
       margin: 0 5px 5px 0;
       border: 0 none;
       width: 100px;
@@ -65,15 +66,17 @@ main > .container {
       height: 40px;
       line-height: 40px;
     }
-
-    @media(max-width:350px) {
+    
+    @media (max-width: 350px) {
       max-width: 85px;
     }
   }
+  
   a:last-child {
     border-right: 0 none;
     margin: 0;
   }
+
   a.active {
     background: $brand-white;
     color: $event-secondary;
@@ -170,30 +173,30 @@ main > .container {
   }
   .row {
     margin: 0;
-
-    @media (min-width: $screen-sm-min){
+    
+    @media (min-width: $screen-sm-min) {
       display: flex;
       margin: 0 0 30px;
-    }   
-
+    }
+    
     .ym-pc-dashboard-progress-section__column {
       padding: 20px;
       margin: 0 0 15px;
-
-      @media (min-width: $screen-sm-min){
+      
+      @media (min-width: $screen-sm-min) {
         margin: 0;
       }
-    
+      
       &:first-child {
-        @media (min-width: $screen-sm-min){
+        @media (min-width: $screen-sm-min) {
           margin: 0 15px 0 0;
         }
         
-        @media (min-width: $screen-md-min){
+        @media (min-width: $screen-md-min) {
           margin: 0 30px 0 0;
         }
       }
-
+      
       .h5 {
         margin: 0 0 25px;
       }
@@ -204,16 +207,16 @@ main > .container {
     display: block;
     margin: 0 auto 15px;
     max-width: 200px;
-
-    @media (min-width: $screen-sm-min){
+    
+    @media (min-width: $screen-sm-min) {
       display: inline-block;
       max-width: none;
     }
   }
-
+  
   .pull-right {
     text-align: right;
-
+    
     p {
       margin: 0;
     }
@@ -305,16 +308,17 @@ main > .container {
 .ym-pc-dashboard-activities-section {
   margin: 0 0 24px;
   clear: both;
+
   > .row {
-    padding:0;
-    margin:0;
+    padding: 0;
+    margin: 0;
     
-    @media (min-width: $screen-sm-min){
+    @media (min-width: $screen-sm-min) {
       display: flex;
       margin-bottom: 25px;
     }
-
-    @media(min-width: $screen-md-min){
+    
+    @media (min-width: $screen-md-min) {
       padding: 0 25px;
       margin: 0;
     }
@@ -325,129 +329,135 @@ main > .container {
   background: $event-secondary-medium;
   border: 5px solid $event-secondary;
   border-radius: 20px;
+  box-shadow: 0 5px 0 0 rgb(50, 50, 50);
   box-shadow: 0 5px 0 0 rgba(50, 50, 50, 1);
-  margin: 0 0 20px;  
   padding: 25px 20px;
-
+  margin: 0 0 20px;
+  
   @media (min-width: $screen-sm-min) {
     margin: 0;
   }
-
+  
   @media (min-width: $screen-md-min) {
     margin: 25px;
   }
-
-  &.ym-activity-box--next-step{
+  
+  &.ym-activity-box--next-step {
     > div {
       padding: 0 0 20px;
       margin: 0 0 20px;
       border-bottom: 1px solid $event-secondary;
-    
+      
       &:last-child {
         padding: 0;
         margin: 0;
         border: 0 none;
       }
     }
+    
     .ym-next-step > div {
       margin: 0 0 15px;
-
-      @media(min-width: $screen-sm-min){
+      
+      @media (min-width: $screen-sm-min) {
         display: inline-block;
         margin: 0;
       }
     }
-
+    
     .ym-next-step__step {
       margin: 0 0 15px;
-      @media(min-width: $screen-sm-min){
+      
+      @media (min-width: $screen-sm-min) {
         width: calc(100% - 125px);
         padding-right: 20px;
       }
-      @media(min-width: $screen-md-min){
+      
+      @media (min-width: $screen-md-min) {
         padding-right: 40px;
       }
     }
+    
     .ym-next-step__action {
       text-align: center;
-
-      @media(min-width: $screen-sm-min){
+      
+      @media (min-width: $screen-sm-min) {
         width: 125px;
         vertical-align: top;
       }
     }
+    
     .btn {
       width: 125px;
       padding-left: 0;
       padding-right: 0;
     }
   }
-
-  &.ym-activity-box--next-step,
+  
+  &.ym-activity-box--next-step, 
   &.ym-activity-box--challenge {
-    
-    @media(min-width: $screen-sm-min){
+    @media (min-width: $screen-sm-min) {
       margin: 0 20px 0 0;
     }
+    
     @media (min-width: $screen-md-min) {
       margin: 25px;
     }
   }
-
+  
   &.ym-activity-box--challenge {
-
-    .col-sm-8,
+    .col-sm-8, 
     .col-sm-4 {
       padding: 0;
     }
+    
     .ym_my_challenge__current {
       padding-bottom: 20px;
     }
-
+    
     .ym_my_challenge__actions {
       margin-top: 15px;
-
+      
       .btn:first-child{
         margin-right: 15px;
       }
     }
-
+    
     .ym_my_challenge__update {
       button {
         margin: 10px auto 0;
       }
     }
   }
-
+  
   &.ym-activity-box--page {
     > div.text-center {
       margin: 20px 0 30px;
     }
-
+    
     .text-right {
-      @media(max-width: $screen-sm) {
+      @media (max-width: $screen-xs-max) {
         text-align: left;
         margin-top: 15px;
       }
-
+      
       a {
         display: inline-block;
         margin-left: 5px;
       }
     }
   }
-
+  
   .h5 {
     color: $event-secondary;
     margin: 0 0 20px;
   }
-
-  .col-sm-6 {
-    padding: 0;
-  }
-
+  
   .row {
     margin: 0;
+  }
+  
+  .col-sm-6 {
+    padding: 0;
   }
 }
 
@@ -485,14 +495,14 @@ main > .container {
         color: $event-secondary;
       }
     }
-
+    
     a {
       display: inline-block;
-
+      
       &:first-child {
         margin: 0 0 10px 0;
-
-        @media(min-width: $screen-sm-min) {
+        
+        @media (min-width: $screen-sm-min) {
           margin: 0 10px 0 0;
         }
       }
