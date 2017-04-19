@@ -3,39 +3,22 @@ angular.module 'ahaLuminateApp'
     '$http'
     '$sce'
     ($http, $sce) ->      
-      ###
-      getBadges: ->
-        $http
-          url: '../ym-dev/mock-badges.json'
-      ###
       getAuth: ->
-        console.log 'getauth'
-        url = 'https://jumphoopsstaging.boundlessnetwork.com/api/validate/'
+        console.log 'auth'
+        url = 'https://jumphoopsstaging.boundlessnetwork.com/api/login/'
         urlSCE = $sce.trustAsResourceUrl url
         urlSCEparse = $sce.parseAsResourceUrl urlSCE
 
         $http
           method: 'JSONP'
-          url: urlSCE
+          url: $sce.trustAsResourceUrl url
           auth_key: 'lxDH5IaQiUBfpqfYAN7jOn7rD'
           public_key: '44dd74bf0136e3c451af98af63d8ef5f'
-          jsonpCallbackParam: 'callback'
+         jsonpCallbackParam: 'callback'
         .then (response) ->
           console.log response
-        ###
-        $http.jsonp
-          url: urlSCE 
-          jsonpCallbackParam: 'callback'
-
-        .then (response) ->
-          if response.data.success is false
-            callback.error response
-          else
-            callback.success response
-        , (response) ->
-          callback.error response
-        ###
-
+        .catch (response) ->
+          console.log response
 
       getBadges: (requestData) ->
         url = 'https://jumphoopsstaging.boundlessnetwork.com/api/coordinator/instant/student/'+requestData
