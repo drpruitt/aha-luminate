@@ -37,57 +37,61 @@
               <div class="ym-progress__thermometer">
                 <div class="ym-progress__thermometer--fill" ng-style="{'width': participantProgress.percent + '%'}"></div>
               </div>
-              <a class="btn btn-primary btn-lg" ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{consId}}">
-                <strong>Donate to Personal Page</strong>
-              </a>
-              <div class="pull-right">
-                <p>
-                  <strong><span ng-bind-html="participantProgress.raisedFormatted"></span></strong> raised
-                </p>
-                <div ng-if="participantProgress.goalFormatted && participantProgress.goalFormatted != '$0'" ng-cloak>
-                  <p>
-                    <strong><span ng-bind-html="participantProgress.goalFormatted"></span></strong> goal
-                  </p>
-                </div>
-                <a ng-click="editPersonalGoal()">
-                  <strong>Update Personal Goal</strong>
+              <div class="clearfix">
+                <a class="btn btn-lg btn-primary" ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{consId}}">
+                  <strong>Donate to Personal Page</strong>
                 </a>
+                <div class="pull-right">
+                  <p>
+                    <strong><span ng-bind-html="participantProgress.raisedFormatted"></span></strong> raised
+                  </p>
+                  <div ng-if="participantProgress.goalFormatted && participantProgress.goalFormatted != '$0'" ng-cloak>
+                    <p>
+                      <strong><span ng-bind-html="participantProgress.goalFormatted"></span></strong> goal
+                    </p>
+                  </div>
+                  <a ng-click="editPersonalGoal()">
+                    <strong>Update Personal Goal</strong>
+                  </a>
+                </div>
               </div>
-              <div class="clearfix"></div>
             </div>
             <div ng-class="{'hidden': dashboardProgressType != 'company'}" ng-cloak>
               <div class="ym-progress__thermometer">
                 <div class="ym-progress__thermometer--fill" ng-style="{'width': companyProgress.percent + '%'}"></div>
               </div>
-              <div class="pull-right">
-                <p>
-                  <strong><span ng-bind-html="companyProgress.raisedFormatted"></span></strong> raised
-                </p>
-                <div ng-if="companyProgress.goalFormatted && companyProgress.goalFormatted != '$0'" ng-cloak>
+              <div class="clearfix">
+                <div class="pull-right">
                   <p>
-                    <strong><span ng-bind-html="companyProgress.goalFormatted"></span></strong> goal
+                    <strong><span ng-bind-html="companyProgress.raisedFormatted"></span></strong> raised
                   </p>
+                  <div ng-if="companyProgress.goalFormatted && companyProgress.goalFormatted != '$0'" ng-cloak>
+                    <p>
+                      <strong><span ng-bind-html="companyProgress.goalFormatted"></span></strong> goal
+                    </p>
+                  </div>
                 </div>
               </div>
-              <div class="clearfix"></div>
             </div>
             <div ng-class="{'hidden': dashboardProgressType != 'team'}" ng-cloak>
               <div class="ym-progress__thermometer">
                 <div class="ym-progress__thermometer--fill" ng-style="{'width': teamProgress.percent + '%'}"></div>
               </div>
-              <div class="pull-right">
-                <p>
-                  <strong><span ng-bind-html="teamProgress.raisedFormatted"></span></strong> raised
-                </p>
-                <div ng-if="teamProgress.goalFormatted && teamProgress.goalFormatted != '$0'" ng-cloak>
+              <div class="clearfix">
+                <div class="pull-right">
                   <p>
-                    <strong><span ng-bind-html="teamProgress.goalFormatted"></span></strong> goal
+                    <strong><span ng-bind-html="teamProgress.raisedFormatted"></span></strong> raised
                   </p>
-                </div>
-                <div ng-if="participantRegistration.aTeamCaptain == 'true'" ng-cloak>
-                  <a ng-click="editTeamGoal()">
-                    <strong>Update Team Goal</strong>
-                  </a>
+                  <div ng-if="teamProgress.goalFormatted && teamProgress.goalFormatted != '$0'" ng-cloak>
+                    <p>
+                      <strong><span ng-bind-html="teamProgress.goalFormatted"></span></strong> goal
+                    </p>
+                  </div>
+                  <div ng-if="participantRegistration.aTeamCaptain == 'true'" ng-cloak>
+                    <a ng-click="editTeamGoal()">
+                      <strong>Update Team Goal</strong>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -178,7 +182,7 @@
               You have not received any donations yet. Use the email tool to ask for support. 
             </div>
             <div class="ym-next-step__action">
-              <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#">
+              <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email">
                 <strong>Email</strong> <i class="fa fa-envelope" aria-hidden="true"></i>
               </a>
             </div>
@@ -202,17 +206,16 @@
             </p>
           </div>
           <div class="col-sm-6 text-right">
-            <p class="small ">
+            <p class="small">
               <strong>Share My Personal Page:</strong>
             </p>
             <a ng-href="{{baseUrl}}#" ng-click="delegatedAddThis('.js--personal-social-share', 'facebook')">
               <img class="img-responsive" src="../aha-luminate/dist/youth-markets/image/facebook-logo.png" alt="Facebook">
-            </a>
+            </a> 
             <a ng-href="{{baseUrl}}#" ng-click="delegatedAddThis('.js--personal-social-share', 'twitter')">
               <img class="img-responsive" src="../aha-luminate/dist/youth-markets/image/twitter-logo.png" alt="Twitter">
             </a>
           </div>
-          
         </div>
       </div>
       <div class="row">
@@ -221,23 +224,24 @@
             Daily Heart-Healthy Challenge
           </h3>
           <div class="ym_my_challenge__current" ng-if="personalChallenge.id">
-            <div class="col-sm-8">
-              <p class="ym_my_challenge__description">
-                <strong>{{personalChallenge.name}}</strong>
-              </p>
-              <p class="ym_my_challenge__stats" ng-if="personalChallenge.completed == 1">
-                I've met my challenge <span>1</span> day!
-              </p>
-              <p class="ym_my_challenge__stats" ng-if="personalChallenge.completed != 1">
-                I've met my challenge <span>{{personalChallenge.completed}}</span> days!
-              </p>
+            <div class="row">
+              <div class="col-sm-8">
+                <p class="ym_my_challenge__description">
+                  <strong><span ng-bind-html="personalChallenge.name"></span></strong>
+                </p>
+                <p class="ym_my_challenge__stats" ng-if="personalChallenge.completed == 1">
+                  I've met my challenge <span>1</span> day!
+                </p>
+                <p class="ym_my_challenge__stats" ng-if="personalChallenge.completed != 1">
+                  I've met my challenge <span><span ng-bind-html="personalChallenge.completed"></span></span> days!
+                </p>
+              </div>
+              <div class="col-sm-4">
+                <img class="img-responsive" src="../aha-luminate/dist/jump-hoops/image/my-challenge-exercise.png" alt="{{personalChallenge.name}}" ng-if="personalChallenge.id == 1 || personalChallenge.id == 4">
+                <img class="img-responsive" src="../aha-luminate/dist/jump-hoops/image/my-challenge-water.png" alt="{{personalChallenge.name}}" ng-if="personalChallenge.id == 2">
+                <img class="img-responsive" src="../aha-luminate/dist/jump-hoops/image/my-challenge-food.png" alt="{{personalChallenge.name}}" ng-if="personalChallenge.id == 3">
+              </div>
             </div>
-            <div class="col-sm-4">
-              <img class="img-responsive" src="../aha-luminate/dist/jump-hoops/image/my-challenge-exercise.png" alt="{{personalChallenge.name}}" ng-if="personalChallenge.id == 1 || personalChallenge.id == 4">
-              <img class="img-responsive" src="../aha-luminate/dist/jump-hoops/image/my-challenge-water.png" alt="{{personalChallenge.name}}" ng-if="personalChallenge.id == 2">
-              <img class="img-responsive" src="../aha-luminate/dist/jump-hoops/image/my-challenge-food.png" alt="{{personalChallenge.name}}" ng-if="personalChallenge.id == 3">
-            </div>
-            <div class="clearfix"></div>
             <div class="ym_my_challenge__actions text-center">
               <a ng-click="logChallenge()" class="btn btn-md-wide btn-primary">
                 <strong>I have met this challenge!</strong> <i class="fa fa-check" aria-hidden="true"></i>
@@ -302,48 +306,69 @@
                 </div>
               </div>
             </div>
-            <div ng-class="{'hidden': dashboardProgressType != 'personal'}" ng-cloak>
-              <div class="ym-progress__thermometer">
-                <div class="ym-progress__thermometer--fill" ng-style="{'width': participantProgress.percent + '%'}"></div>
-              </div>
-              <a class="btn btn-primary" ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{consId}}">
-                <strong>Donate to Personal Page</strong>
-              </a>
-              <div>
-                <strong><span ng-bind-html="participantProgress.raisedFormatted"></span></strong>
-              </div>
-              <div ng-if="participantProgress.goalFormatted && participantProgress.goalFormatted != '$0'" ng-cloak>
-                <strong><span ng-bind-html="participantProgress.goalFormatted"></span></strong>
-              </div>
-              <a ng-click="editPersonalGoal()">
-                <strong>Update Personal Goal</strong>
-              </a>
-            </div>
             <div ng-class="{'hidden': dashboardProgressType != 'company'}" ng-cloak>
               <div class="ym-progress__thermometer">
                 <div class="ym-progress__thermometer--fill" ng-style="{'width': companyProgress.percent + '%'}"></div>
               </div>
-              <div>
-                <strong><span ng-bind-html="companyProgress.raisedFormatted"></span></strong>
-              </div>
-              <div ng-if="companyProgress.goalFormatted && companyProgress.goalFormatted != '$0'" ng-cloak>
-                <strong><span ng-bind-html="companyProgress.goalFormatted"></span></strong>
+              <div class="clearfix">
+                <div class="pull-right">
+                  <p>
+                    <strong><span ng-bind-html="companyProgress.raisedFormatted"></span></strong> raised
+                  </p>
+                  <div ng-if="companyProgress.goalFormatted && companyProgress.goalFormatted != '$0'" ng-cloak>
+                    <p>
+                      <strong><span ng-bind-html="companyProgress.goalFormatted"></span></strong> goal
+                    </p>
+                  </div>
+                  <a ng-href="NTM?tr.ntmgmt=company_cservice_main&amp;company_id={{participantRegistration.companyInformation.companyId}}" target="_blank">
+                    <strong>Update School Goal</strong>
+                  </a>
+                </div>
               </div>
             </div>
             <div ng-class="{'hidden': dashboardProgressType != 'team'}" ng-cloak>
               <div class="ym-progress__thermometer">
                 <div class="ym-progress__thermometer--fill" ng-style="{'width': teamProgress.percent + '%'}"></div>
               </div>
-              <div>
-                <strong><span ng-bind-html="teamProgress.raisedFormatted"></span></strong>
+              <div class="clearfix">
+                <div class="pull-right">
+                  <p>
+                    <strong><span ng-bind-html="teamProgress.raisedFormatted"></span></strong> raised
+                  </p>
+                  <div ng-if="teamProgress.goalFormatted && teamProgress.goalFormatted != '$0'" ng-cloak>
+                    <p>
+                      <strong><span ng-bind-html="teamProgress.goalFormatted"></span></strong> goal
+                    </p>
+                  </div>
+                  <div ng-if="participantRegistration.aTeamCaptain == 'true'" ng-cloak>
+                    <a ng-click="editTeamGoal()">
+                      <strong>Update Team Goal</strong>
+                    </a>
+                  </div>
+                </div>
               </div>
-              <div ng-if="teamProgress.goalFormatted && teamProgress.goalFormatted != '$0'" ng-cloak>
-                <strong><span ng-bind-html="teamProgress.goalFormatted"></span></strong>
+            </div>
+            <div ng-class="{'hidden': dashboardProgressType != 'personal'}" ng-cloak>
+              <div class="ym-progress__thermometer">
+                <div class="ym-progress__thermometer--fill" ng-style="{'width': participantProgress.percent + '%'}"></div>
               </div>
-              <div ng-if="participantRegistration.aTeamCaptain == 'true'" ng-cloak>
-                <a ng-click="editTeamGoal()">
-                  <strong>Update Team Goal</strong>
+              <div class="clearfix">
+                <a class="btn btn-lg btn-primary" ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{consId}}">
+                  <strong>Donate to Personal Page</strong>
                 </a>
+                <div class="pull-right">
+                  <p>
+                    <strong><span ng-bind-html="participantProgress.raisedFormatted"></span></strong> raised
+                  </p>
+                  <div ng-if="participantProgress.goalFormatted && participantProgress.goalFormatted != '$0'" ng-cloak>
+                    <p>
+                      <strong><span ng-bind-html="participantProgress.goalFormatted"></span></strong> goal
+                    </p>
+                  </div>
+                  <a ng-click="editPersonalGoal()">
+                    <strong>Update Personal Goal</strong>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -378,71 +403,58 @@
         </h2>
       </div>
       <div class="row">
-        <div class="col-sm-6">
-          <div class="">
-            <div class="">
-              <div class="">
-                <h3 class="h5">
-                  Edit My Pages
-                </h3>
-                <p>
-                  Edit your pages to encourage students and parents to join and donate!
-                </p>
-              </div>
+        <div class="col-sm-6 ym-activity-box ym-activity-box--coordinator-pages">
+          <h3 class="h5">
+            Edit My Pages
+          </h3>
+          <p>
+            Edit your pages to encourage students and parents to join and donate!
+          </p>
+          <div>
+            <div class="text-center">
+              <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=company&amp;company_id={{participantRegistration.companyInformation.companyId}}">
+                <strong>View and Edit School Page</strong>
+              </a>
             </div>
           </div>
         </div>
-        <div class="col-sm-6">
-          <div class="">
-            <div class="">
-              <div class="">
-                <h3 class="h5">
-                  Show your Students
-                </h3>
-                <p>
-                  Use the "Student View" to show your students all of the great tools and games in their Headquarters and encourage them to fundraise!
-                </p>
-                <a class="btn btn-primary">
-                  <strong>Student View</strong>
-                </a>
-              </div>
-            </div>
-          </div>
+        <div class="col-sm-6 ym-activity-box ym-activity-box--coordinator-student-view">
+          <h3 class="h5">
+            Show your Students
+          </h3>
+          <p>
+            Use the "Student View" to show your students all of the great tools and games in their Headquarters and encourage them to fundraise!
+          </p>
+          <a class="btn btn-primary" ng-href="{{baseUrl}}#/dashboard">
+            <strong>Student View</strong>
+          </a>
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-6">
-          <div class="">
-            <div class="">
-              <div class="">
-                <h3 class="h5">
-                  Check Progress
-                </h3>
-                <p>
-                  Check out the reports page to see which students have completed challenges and who has earned donations.
-                </p>
-                <a class="btn btn-primary">
-                  <strong>View Reports</strong>
-                </a>
-              </div>
-            </div>
+        <div class="col-sm-6 ym-activity-box ym-activity-box--coordinator-reports">
+          <h3 class="h5">
+            Check Progress
+          </h3>
+          <p>
+            Check out the reports page to see which students have completed challenges and who has earned donations.
+          </p>
+          <div class="text-center">
+            <a class="btn btn-primary" ng-href="{{baseUrl}}#/reports">
+              <strong>View Reports</strong>
+            </a>
           </div>
         </div>
-        <div class="col-sm-6">
-          <div class="">
-            <div class="">
-              <div class="">
-                <h3 class="h5">
-                  Order Thank-You Gifts
-                </h3>
-                <p>
-                  Visit our Thank-You Gift portal to manage and order gifts for your students.
-                </p>
-                <a class="btn btn-primary">
-                  <strong>Thank You Gifts</strong>
-                </a>
-              </div>
-            </div>
+        <div class="col-sm-6 ym-activity-box ym-activity-box--coordinator-prizes">
+          <h3 class="h5">
+            Order Thank-You Gifts
+          </h3>
+          <p>
+            Visit our Thank-You Gift portal to manage and order gifts for your students.
+          </p>
+          <div class="text-center">
+            <a class="btn btn-primary" ng-href="{{baseUrl}}#">
+              <strong>Thank You Gifts</strong>
+            </a>
           </div>
         </div>
       </div>

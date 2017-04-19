@@ -1,40 +1,38 @@
 <header>
-  [[?xjump_hoops_participant_centerx::x[[S334:pagename]]x::::
-    <div class="container">
-      [[?x9x27x::x[[S4]]x::::
-        <div class="ym-header-pre-text">
-          <a href="http://heart.org" target="_blank">
-            Visit Heart.org
-          </a>
-        </div>
-      ]]
-      <div class="ym-header-logos clearfix">
-        <div class="ym-header-logo ym-header-logo--aha">
-          <a href="http://heart.org" target="_blank"><img src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/youth-markets/image/aha-logo.png" alt="American Heart Association"></a>
-        </div>
-        [[?x9x27x::x[[S4]]x::::
-          <div class="ym-header-logo ym-header-logo--jump hidden-xs">
-            <a href="[[S8]]#"><img src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/jump-logo.png" alt="Jump Rope for Heart"></a>
-          </div>
-          <div class="ym-header-logo ym-header-logo--hoops hidden-xs">
-            <a href="[[S8]]#"><img src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/hoops-logo.png" alt="Hoops for Heart"></a>
-          </div>
-          <div class="ym-header-logo ym-header-logo--shape-america hidden-xs">
-            <span><img src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/shape-america-logo.png" alt="SHAPE America"></span>
-          </div>
-        ]]
+  <div class="container">
+    [[?x9x27x::x[[S4]]x::::
+      <div class="ym-header-pre-text">
+        <a href="http://heart.org" target="_blank">
+          Visit Heart.org
+        </a>
+      </div>
+    ]]
+    <div class="ym-header-logos clearfix">
+      <div class="ym-header-logo ym-header-logo--aha">
+        <a href="http://heart.org" target="_blank"><img src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/youth-markets/image/aha-logo.png" alt="American Heart Association"></a>
       </div>
       [[?x9x27x::x[[S4]]x::::
-        <div class="ym-header-title visible-xs">
-          Jump Rope for Heart<br>
-          Hoops for Heart
+        <div class="ym-header-logo ym-header-logo--jump hidden-xs">
+          <a href="[[S8]]#"><img src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/jump-logo.png" alt="Jump Rope for Heart"></a>
         </div>
-        <div class="ym-header-post-text hidden-xs">
-          SHAPE America and the American Heart Association collaborate on the Jump Rope for Heart and Hoops for Heart programs.
+        <div class="ym-header-logo ym-header-logo--hoops hidden-xs">
+          <a href="[[S8]]#"><img src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/hoops-logo.png" alt="Hoops for Heart"></a>
+        </div>
+        <div class="ym-header-logo ym-header-logo--shape-america hidden-xs">
+          <span><img src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/shape-america-logo.png" alt="SHAPE America"></span>
         </div>
       ]]
     </div>
-  ]]
+    [[?x9x27x::x[[S4]]x::::
+      <div class="ym-header-title visible-xs">
+        Jump Rope for Heart<br>
+        Hoops for Heart
+      </div>
+      <div class="ym-header-post-text hidden-xs">
+        SHAPE America and the American Heart Association collaborate on the Jump Rope for Heart and Hoops for Heart programs.
+      </div>
+    ]]
+  </div>
   <nav>
     <div class="container">
       <div class="clearfix">
@@ -106,10 +104,10 @@
                 <button type="button" class="btn btn-link ym-header-welcome-toggle" ng-click="toggleWelcomeMenu()">
                   Welcome[[?xx::x[[S1:first_name]]x::::, [[S1:first_name]]]]! <i class="fa fa-chevron-down" ng-class="{'fa-chevron-down': !welcomeMenuOpen, 'fa-chevron-up': welcomeMenuOpen}"></i>
                 </button>
-                <a class="btn btn-global-primary ym-header-hq-btn" ng-if="numberEvents > 1" ng-href="https://[[S29:SECURE_DOMAIN]][[S29:SECURE_PATH]]SPageServer?pagename=jump_hoops_my_events">
+                <a class="btn btn-global-primary ym-header-hq-btn" href="PageServer?pagename=jump_hoops_my_events" ng-if="numberEvents > 1" ng-cloak>
                   My Events
                 </a>
-                <a class="btn btn-global-primary ym-header-hq-btn" ng-if="numberEvents == 1" ng-href="https://[[S29:SECURE_DOMAIN]][[S29:SECURE_PATH]]TRC?fr_id={{regEventId}}">
+                <a class="btn btn-global-primary ym-header-hq-btn" ng-href="TRC?fr_id={{regEventId}}" ng-if="numberEvents == 1" ng-cloak>
                   <span class="visible-xs visible-sm">My HQ</span>
                   <span class="hidden-xs hidden-sm">My Headquarters</span>
                 </a>
