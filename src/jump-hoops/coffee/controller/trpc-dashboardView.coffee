@@ -158,6 +158,13 @@ angular.module 'trPcControllers'
             response
         $scope.dashboardPromises.push donorContactCountPromise
       
+      if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
+        $scope.dashboardPageType = 'personal'
+      else
+        $scope.dashboardPageType = 'company'
+      $scope.togglePageType = (pageType) ->
+        $scope.dashboardPageType = pageType
+      
       $scope.personalChallenge = {}
       getStudentChallenge = ->
         ZuriService.getZooStudent $scope.frId + '/' + $scope.consId, 
