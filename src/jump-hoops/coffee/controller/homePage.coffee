@@ -9,8 +9,6 @@ angular.module 'ahaLuminateControllers'
       $dataRoot = angular.element '[data-aha-luminate-root]'
       consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
 
-      console.log consId
-
       if consId != undefined
         TeamraiserParticipantService.getRegisteredTeamraisersCMS '&cons_id='+ consId + '&event_type=Jump%20Hoops'
         .then (response) ->

@@ -11,19 +11,29 @@ angular.module 'ahaLuminateControllers'
       $scope.regEventId = ''
       
       if consId
-        TeamraiserParticipantService.getRegisteredTeamraisers 'event_type=Jump%Hoops&cons_id=' + consId,
-          success: (response) ->
-            if response.errorResponse
-              # TODO
+        if angular.element('body').hasClass('cms')
+          TeamraiserParticipantService.getRegisteredTeamraisersCMS '&cons_id='+ consId + '&event_type=Jump%20Hoops'
+          .then (response) ->
+            console.log response.data
+            if response.data.errorResponse
+              $scope.numberEvents = 0
             else
-              teamraisers = response.getRegisteredTeamraisersResponse.teamraiser
-              teamraisers = [teamraisers] if not angular.isArray teamraisers
-              $scope.numberEvents = teamraisers.length
-              if $scope.numberEvents is 0
+              $scope.numberEvents = response.data.getRegisteredTeamraisersResponse.teamraiser.length
+            console.log $scope.numberEvents
+        else
+          TeamraiserParticipantService.getRegisteredTeamraisers 'event_type=Jump%Hoops&cons_id=' + consId,
+            success: (response) ->
+              if response.errorResponse
                 # TODO
               else
-                if $scope.numberEvents is 1
-                  $scope.regEventId = teamraisers[0].id
+                teamraisers = response.getRegisteredTeamraisersResponse.teamraiser
+                teamraisers = [teamraisers] if not angular.isArray teamraisers
+                $scope.numberEvents = teamraisers.length
+                if $scope.numberEvents is 0
+                  # TODO
+                else
+                  if $scope.numberEvents is 1
+                    $scope.regEventId = teamraisers[0].id
       
       $scope.toggleLoginMenu = ->
         if $scope.loginMenuOpen
