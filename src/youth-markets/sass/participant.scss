@@ -38,45 +38,47 @@ main > .container {
     margin-bottom: 7px;
   }
   
-  a,
-  a:link,
-  a:visited {
-    display: inline-block;
-    background: $event-secondary;
-    color: $brand-white;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 40px;
-    text-align: center;
-    text-decoration: none;
-    width: 100px;
-    height: 40px;
-    margin: 0 5px 5px 0;
+  a {
+    &, 
+    &:link, 
+    &:visited {
+      display: inline-block;
+      background: $event-secondary;
+      color: $brand-white;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 40px;
+      text-align: center;
+      text-decoration: none;
+      width: 100px;
+      height: 40px;
+      margin: 0 5px 5px 0;
+      
+      @media (max-width: 350px) {
+        max-width: 85px;
+      }
+      
+      @media (min-width: $screen-sm-min) {
+        background: $event-secondary-medium;
+        border-right: 2px solid $event-accent;
+        color: $event-secondary;
+        font-size: 18px;
+        line-height: 50px;
+        width: 20%;
+        height: 50px;
+        margin: 0;
+      }
+    }
     
-    @media (min-width: $screen-sm-min) {
-      background: $event-secondary-medium;
-      border-right: 2px solid $event-accent;
-      color: $event-secondary;
-      font-size: 18px;
-      line-height: 50px;
-      width: 20%;
-      height: 50px;
+    &:last-child {
+      border-right: 0;
       margin: 0;
     }
     
-    @media (max-width: 350px) {
-      max-width: 85px;
+    &.active {
+      background: $brand-white;
+      color: $event-secondary;
     }
-  }
-  
-  a:last-child {
-    border-right: 0;
-    margin: 0;
-  }
-
-  a.active {
-    background: $brand-white;
-    color: $event-secondary;
   }
 }
 
@@ -153,7 +155,7 @@ main > .container {
         color: #555555;
         
         .badge {
-          color: #ffffff;
+          color: $brand-white;
         }
       }
     }
@@ -247,7 +249,7 @@ main > .container {
     &:focus, 
     &:active {
       background: $event-secondary;
-      color: #ffffff;
+      color: $brand-white;
       text-decoration: none;
     }
   }
@@ -258,7 +260,7 @@ main > .container {
       &:link, 
       &:visited {
         background: $event-secondary;
-        color: #ffffff;
+        color: $brand-white;
       }
     }
   }
@@ -298,7 +300,7 @@ main > .container {
   margin: 0 0 24px;
   
   .ym-pc-dashboard-section-header {
-    color: #ffffff;
+    color: $brand-white;
   }
 }
 
@@ -619,7 +621,7 @@ main > .container {
 }
 
 .ta-editor {
-  background-color: #ffffff;
+  background-color: $brand-white;
   border: 1px solid $event-secondary;
   border-top: 0;
   border-radius: 0;
