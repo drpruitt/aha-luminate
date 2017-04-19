@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
 </head>
-<body class="aha-luminate cms" data-aha-luminate-root data-api-key="wDB09SQODRpVIOvX" ng-controller="MainCtrl">
+<body class="aha-luminate cms" data-aha-luminate-root data-api-key="wDB09SQODRpVIOvX" data-cons-id="${cons.cons_id}" ng-controller="MainCtrl">
 <div id="convio-content-793245938" class="templateComponent" style="display: inline;"></div>
 <main>
   <div class="ym-page-header">
@@ -27,9 +27,25 @@
     </div>
   </div>
 </main>
-
 <div class="templateComponent" id="convio-content-793430287" style="display: inline;"></div>
-
 <DIV class=templateComponent id=poweredBy style="DISPLAY: inline"></DIV>
+<div class="modal fade" id="noRegModal" tabindex="-1" role="dialog" aria-labelledby="roRegModelLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="noRegModalLabel">Welcome, ${cons.first_name}</h4>
+      </div>
+      <div class="modal-body">
+        <p class="text-center">
+          Our records indicate you have not yet registered for this year's Jump Rope for Heart or Hoops for Heart. 
+        </p>
+      </div>
+      <div class="modal-footer text-center">
+        <a class="btn btn-primary btn-lg" href="#search-school">Find your School and Sign Up</a>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
