@@ -12,8 +12,7 @@ angular.module 'ahaLuminateControllers'
         TeamraiserParticipantService.getRegisteredTeamraisersCMS '&cons_id='+ consId + '&event_type=Jump%20Hoops'
         .then (response) ->
           if response.data.errorResponse
-            noRegModal()
-            console.log 'no reg'          
+            angular.element('#noRegModal').modal()          
 
       initCarousel = ->
         owl = jQuery '.ym-home-feature .owl-carousel'
