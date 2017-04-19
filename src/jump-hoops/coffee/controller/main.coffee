@@ -14,12 +14,10 @@ angular.module 'ahaLuminateControllers'
         if angular.element('body').hasClass('cms')
           TeamraiserParticipantService.getRegisteredTeamraisersCMS '&cons_id='+ consId + '&event_type=Jump%20Hoops'
           .then (response) ->
-            console.log response.data
             if response.data.errorResponse
               $scope.numberEvents = 0
             else
               $scope.numberEvents = response.data.getRegisteredTeamraisersResponse.teamraiser.length
-            console.log $scope.numberEvents
         else
           TeamraiserParticipantService.getRegisteredTeamraisers 'event_type=Jump%Hoops&cons_id=' + consId,
             success: (response) ->
