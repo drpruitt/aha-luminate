@@ -3,19 +3,24 @@ angular.module 'ahaLuminateControllers'
     '$scope'
     '$timeout'
     'TeamraiserParticipantService'
-    ($scope, $timeout, TeamraiserParticipantService) ->
-      console.log 'home page'
-      regConsId = 3135905
-      noRegConsId = 3180158
+    '$rootScope'
+    ($scope, $timeout, TeamraiserParticipantService, $rootScope) ->
 
+      $dataRoot = angular.element '[data-aha-luminate-root]'
+      consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
 
-      TeamraiserParticipantService.getRegisteredTeamraisersCMS 'cons_id='+ regConsId+'&event_type=Jump', 
-        success: (response) ->
+      console.log consId
+
+      if consId != undefined
+        TeamraiserParticipantService.getRegisteredTeamraisersCMS '&cons_id='+ consId + '&event_type=Jump%20Hoops'
+        .then (response) ->
           console.log 'success'
-          console.log response
-        error: (response) ->
-          console.log 'error'
-          console.log response
+          console.log response.data
+          if response.data.errorResponse
+            $rootScope.numberEvents = 0
+          else
+            $rootScope.numberEvents = response.data.getRegisteredTeamraisersResponse.teamraiser.length
+          console.log $rootScope.numberEvents
 
       initCarousel = ->
         owl = jQuery '.ym-home-feature .owl-carousel'
