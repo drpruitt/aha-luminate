@@ -40,9 +40,14 @@
   .section-header-container {
     font-size: 32px;
     font-weight: 700;
-    padding: 50px 0 0;
-    margin: 50px 0 40px;
     clear: both;
+    padding: 40px 0 0;
+    margin: 40px 0 30px;
+
+    @media(min-width: $screen-sm-min){
+      padding: 50px 0 0;
+      margin: 50px 0 40px;
+    }
   }
   
   label {
@@ -77,13 +82,18 @@
   
   .ym-donation-levels {
     max-width: 670px;
-    padding: 30px 20px;
+    padding: 20px 5px;
+
+    @media(min-width: $screen-xs-min){
+      padding: 30px 20px;
+    }
     
     p {
       font-size: 18px;
       font-weight: 700;
       text-align: center;
       color: $event-secondary;
+      margin: 0;
     }
   }
   
@@ -92,24 +102,46 @@
     
     .btn-toggle {
       &:first-child {
-        margin-right: 30px;
-      }
+        margin: 0 auto 10px; 
+
+        @media(min-width: $screen-xs-min){
+          margin: 0 10px 10px 0;
+        }
+
+        @media(min-width: $screen-sm-min){
+          margin: 0 30px 0 0;
+        }
+      }  
+    }
+    
+    .btn-lg {
+      font-size: inherit;
     }
   }
   
   .ym-donation-levels__amount {
     display: inline-block;
-    margin-left: 20px;
+    margin: 0 0 10px 10px;
     vertical-align: middle;
+
+    @media (min-width: $screen-xs-min){
+      margin: 0 0 10px 20px;
+    }
     
     &:first-child {
       margin-left: 0;
     }
-    
+
     .btn-toggle {
-      display: block;
-      width: 110px;
-      min-width: 110px;
+      font-size: 20px;
+
+      @media (min-width: $screen-xs-min) {
+        min-width: 110px;
+      }
+
+      &.btn-enter {
+        width: 110px;
+      }
     }
   }
 
@@ -131,24 +163,44 @@
   }
   
   .ym-employer-match {
-    padding: 50px 50px 0;
+    padding: 30px 0 0;
+
+    @media(min-width: $screen-sm-min){
+      padding: 50px 50px 0;
+    }
   }
   
   .ym-donor-recognition, 
   .ym-personal-note {
-    padding: 20px 50px 0;
+    padding: 20px 0 0;
+
+    @media (min-width: $screen-sm-min) {
+      padding: 20px 50px 0;
+    }
     
     h5 {
-      padding: 25px 25px 15px;
+      padding: 15px 25px;
+
+      @media (min-width: $screen-sm-min) {
+        padding: 25px 25px 15px; 
+      }
     }
   }
   
   .employer-address-container {
-    padding: 0 50px;
+    padding: 0 20px;
+
+    @media(min-width: $screen-sm-min){
+      padding: 0 50px;
+    }
   }
   
   .ym-employer-match__message {
-    padding: 25px 25px 0;
+    padding: 20px 25px 0;
+
+    @media(min-width: $screen-sm-min){
+      padding: 25px 25px 0;
+    }
   }
   
   .ym-employer-match__fields {
@@ -156,19 +208,35 @@
   }
   
   #tr_show_gift_to_public_row {
-    padding: 0 75px 25px;
+    padding: 0 25px 25px;
+
+    @media(min-width: $screen-sm-min){
+      padding: 0 75px 25px;
+    }
   }
   
   #tr_recognition_nameanonymous_row {
-    padding: 0 75px;
+    padding: 0 25px;
+
+    @media(min-width: $screen-sm-min){
+      padding: 0 75px;
+    }
   }
   
   #tr_message_to_participant_row, 
   #tr_recognition_namerec_name_row {
-    padding: 25px 75px;
+    padding: 25px;
+
+    @media(min-width: $screen-sm-min){
+      padding: 25px 75px;
+    }
     
     &.ym-border {
-      padding-bottom: 40px;
+      padding-bottom: 20px;
+
+      @media(min-width: $screen-sm-min){
+        padding-bottom: 40px;
+      }
     }
     
     textarea {
@@ -177,7 +245,11 @@
   }
   
   .ym-tribute-gift {
-    padding: 20px 100px 0;
+    padding: 20px 0 0;
+
+    @media(min-width: $screen-sm-min){
+      padding: 20px 100px 0;
+    }
     
     h5 {
       text-align: center;
@@ -217,9 +289,14 @@
   #billing_addr_state_row, 
   #billing_addr_zip_row, 
   #billing_addr_country_row {
-    width: 49%;
-    vertical-align: middle;
-    
+    margin-bottom: 20px;
+
+    @media (min-width: $screen-sm-min) {
+      width: 49%;
+      vertical-align: middle;
+      margin: 0;
+    }
+
     @media (min-width: $screen-md-min) {
       max-width: 320px;
     }
@@ -232,8 +309,13 @@
   #billing_first_name_row, 
   #billing_addr_city_row, 
   #billing_addr_zip_row {
-    float: left;
-    padding: 0 0 30px 50px;
+    margin-bottom: 20px;
+
+    @media (min-width: $screen-sm-min) {
+      float: left;
+      padding: 0 0 30px 50px;
+      margin: 0;
+    }
   }
   
   #donor_last_name_row, 
@@ -243,12 +325,22 @@
   #billing_last_name_row, 
   #billing_addr_state_row, 
   #billing_addr_country_row {
-    float: right;
-    padding: 0 50px 30px 0;
+    margin-bottom: 20px;
+
+    @media (min-width: $screen-sm-min) {
+      float: right;
+      padding: 0 50px 30px 0;
+      margin: 0;
+    }
   }
   
   #donor_addr_country_row {
-    padding-bottom: 50px;
+    margin-bottom: 20px;
+
+    @media (min-width: $screen-sm-min) {
+      padding-bottom: 50px;
+      margin: 0;
+    }
   }
   
   #donor_email_opt_in_Row, 
@@ -256,8 +348,13 @@
   #donor_addr_street2_row, 
   #billing_addr_street1_row, 
   #billing_addr_street2_row {
-    padding: 0 50px 30px;
     clear: both;
+    margin-bottom: 20px;
+    
+    @media (min-width: $screen-sm-min) {
+      padding: 0 50px 30px;
+      margin: 0;
+    }
   }
   
   #donor_addr_street1_row, 
@@ -272,16 +369,24 @@
   }
   
   .billing_info_toggle {
-    padding: 0 50px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+
+    @media (min-width: $screen-sm-min) {
+      padding: 0 50px; 
+      margin-bottom: 30px; 
+    }
   }
   
   div.payment-type-element-container {
     clear: both;
     
     #responsive_payment_typecc_number_row {
-      max-width: 470px;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
+
+      @media(min-width: $screen-sm-min) {
+        max-width: 470px;
+        margin-bottom: 30px;
+      }
       
       input {
         width: 100%;
@@ -289,7 +394,12 @@
     }
     
     #responsive_payment_typecc_exp_date_row {
-      padding-left: 50px;
+      display: inline-block;
+      vertical-align: middle;
+
+      @media(min-width: $screen-sm-min) {
+        padding-left: 50px;
+      }
       
       select {
         width: 170px;
@@ -303,17 +413,20 @@
     
     #responsive_payment_typecc_cvv_row {
       width: 170px;
+      clear: both;
+      display: block;
+      margin: 20px 0 0;
+
+      @media(min-width: $screen-sm-min) {
+        display: inline-block;
+        clear: none;
+        margin: auto;
+      }
       
       input {
         width: auto;
         max-width: 170px;
       }
-    }
-    
-    #responsive_payment_typecc_exp_date_row, 
-    #responsive_payment_typecc_cvv_row {
-      display: inline-block;
-      vertical-align: middle;
     }
   }
   
@@ -339,20 +452,91 @@
 }
 
 .ym-donation-sidebar {
-  max-width: 270px;
   margin: auto;
+  padding: 0 0 20px;
+  max-width: 270px;  
+
+  @media(min-width: $screen-xs-min) {
+    padding: 25px;
+    max-width: 100%;
+  }
+  
+  @media(min-width: 1050px) {
+    max-width: 270px;
+    padding: 0 0 25px;
+  }
+
+  hr {
+    clear: both;
+    
+    @media(min-width: 1050px) {
+      max-width: 230px;
+      margin: 10px auto 20px;
+    }
+  }
+
+  img {
+    margin: 0 auto 25px;
+
+    @media (min-width: $screen-sm-min) {
+      margin: 0;
+      float: left;
+    }
+
+    @media(min-width: 1050px) {
+      margin: 0 auto 25px;
+    }
+  }  
 }
 
 .ym-donation-sidebar__text {
   text-align: center;
-  padding: 25px 20px;
+  padding: 0 20px;
   
-  h3 {
-    color: #ffffff;
+  h5 {
+    color: $brand-white;
     font-weight: 700;
+    margin-top: 0;
+  }
+
+  span {
+    color: $brand-white;
   }
 }
 
-.mobile div.html-caption-container {
-  width: auto;
+.ym-donation-sidebar__text--top {
+
+  @media (min-width: $screen-sm-min) {
+    float: right;
+    width: calc(100% - 300px);
+    padding: 0;
+  }
+
+  @media(min-width: 1050px) {
+    padding: 25px 20px 0;
+    width: 100%;
+    float: none;
+  }
+}
+
+.app-9.mobile {
+  div.html-caption-container {
+    width: auto;
+  }
+
+  div.employer-address-container input#employer_street {
+    width: 100%;
+  }
+
+  div.responsive {
+    div.form-content,
+    div.form-row {
+      margin: 0 auto;
+    }
+
+    div.form-checkbox label,
+    textarea {
+      max-width: 100%;
+    }
+  }
 }
