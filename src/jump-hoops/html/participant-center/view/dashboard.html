@@ -1,5 +1,5 @@
 <div cg-busy="dashboardPromises">
-  <div ng-if="participantRegistration.companyInformation.isCompanyCoordinator != 'true'" ng-cloak>
+  <div ng-if="participantRegistration.companyInformation.isCompanyCoordinator != 'true' || location == '/dashboard-student'" ng-cloak>
     <section class="ym-pc-dashboard-progress-section">
       <div class="ym-pc-dashboard-section-header">
         <h2 class="h3">
@@ -281,7 +281,7 @@
       </div>
     </section>
   </div>
-  <div ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
+  <div ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true' && location != '/dashboard-student'" ng-cloak>
     <section class="ym-pc-dashboard-coordinator-progress-section">
       <div class="row">
         <div class="col-sm-6 ym-pc-dashboard-coordinator-progress-section__column event-secondary-medium">
