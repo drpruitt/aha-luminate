@@ -175,6 +175,7 @@ angular.module 'ahaLuminateControllers'
         angular.element('#payment_cc_container').append '<div class="clearfix" />'
         angular.element('#responsive_payment_typecc_cvv_row .FormLabelText').text 'CVV:'
         angular.element('#level_installment_row').addClass 'hidden'
+        angular.element('.employer-address-container').addClass 'clearfix'
         employerMatchFields()
         billingAddressFields()
         donorRecognitionFields()

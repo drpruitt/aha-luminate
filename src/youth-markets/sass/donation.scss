@@ -301,6 +301,13 @@
       max-width: 320px;
     }
   }
+
+  .ym-employer-match__fields {
+    @media (min-width: $screen-sm-min) {
+      float: left;
+    }
+  }
+
   
   #donor_first_name_row, 
   #donor_email_address_row, 
@@ -416,6 +423,7 @@
       clear: both;
       display: block;
       margin: 20px 0 0;
+      vertical-align: middle;
 
       @media(min-width: $screen-sm-min) {
         display: inline-block;

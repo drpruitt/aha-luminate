@@ -8,7 +8,9 @@ angular.module 'ahaLuminateControllers'
     'TeamraiserParticipantService'
     'TeamraiserCompanyService'
     'ZuriService'
-    ($scope, $rootScope, $location, $filter, $timeout, TeamraiserParticipantService, TeamraiserCompanyService, ZuriService) ->
+    'ParticipantBadgesService'
+    ($scope, $rootScope, $location, $filter, $timeout, TeamraiserParticipantService, TeamraiserCompanyService, ZuriService, ParticipantBadgesService) ->
+
       $dataRoot = angular.element '[data-aha-luminate-root]'
       $scope.participantId = $location.absUrl().split('px=')[1].split('&')[0]
       frId = $dataRoot.data('fr-id') if $dataRoot.data('fr-id') isnt ''
@@ -19,6 +21,10 @@ angular.module 'ahaLuminateControllers'
       $scope.challengeId = null
       $scope.challengeName = null
       $scope.challengeCompleted = 0
+
+      ParticipantBadgesService.getAuth
+        success: (response) ->
+          console.log 'get auth'
       
       ZuriService.getZooStudent frId + '/' + $scope.participantId, 
         success: (response) ->
