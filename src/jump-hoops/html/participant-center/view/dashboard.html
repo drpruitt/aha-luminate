@@ -206,17 +206,16 @@
             </p>
           </div>
           <div class="col-sm-6 text-right">
-            <p class="small ">
+            <p class="small">
               <strong>Share My Personal Page:</strong>
             </p>
             <a ng-href="{{baseUrl}}#" ng-click="delegatedAddThis('.js--personal-social-share', 'facebook')">
               <img class="img-responsive" src="../aha-luminate/dist/youth-markets/image/facebook-logo.png" alt="Facebook">
-            </a>
+            </a> 
             <a ng-href="{{baseUrl}}#" ng-click="delegatedAddThis('.js--personal-social-share', 'twitter')">
               <img class="img-responsive" src="../aha-luminate/dist/youth-markets/image/twitter-logo.png" alt="Twitter">
             </a>
           </div>
-          
         </div>
       </div>
       <div class="row">
@@ -411,6 +410,13 @@
           <p>
             Edit your pages to encourage students and parents to join and donate!
           </p>
+          <div>
+            <div class="text-center">
+              <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=company&amp;company_id={{participantRegistration.companyInformation.companyId}}">
+                <strong>View and Edit School Page</strong>
+              </a>
+            </div>
+          </div>
         </div>
         <div class="col-sm-6 ym-activity-box ym-activity-box--coordinator-student-view">
           <h3 class="h5">
@@ -419,7 +425,7 @@
           <p>
             Use the "Student View" to show your students all of the great tools and games in their Headquarters and encourage them to fundraise!
           </p>
-          <a class="btn btn-primary">
+          <a class="btn btn-primary" ng-href="{{baseUrl}}#/dashboard">
             <strong>Student View</strong>
           </a>
         </div>
@@ -432,9 +438,11 @@
           <p>
             Check out the reports page to see which students have completed challenges and who has earned donations.
           </p>
-          <a class="btn btn-primary">
-            <strong>View Reports</strong>
-          </a>
+          <div class="text-center">
+            <a class="btn btn-primary" ng-href="{{baseUrl}}#/reports">
+              <strong>View Reports</strong>
+            </a>
+          </div>
         </div>
         <div class="col-sm-6 ym-activity-box ym-activity-box--coordinator-prizes">
           <h3 class="h5">
@@ -443,9 +451,11 @@
           <p>
             Visit our Thank-You Gift portal to manage and order gifts for your students.
           </p>
-          <a class="btn btn-primary">
-            <strong>Thank You Gifts</strong>
-          </a>
+          <div class="text-center">
+            <a class="btn btn-primary" ng-href="{{baseUrl}}#">
+              <strong>Thank You Gifts</strong>
+            </a>
+          </div>
         </div>
       </div>
     </section>
