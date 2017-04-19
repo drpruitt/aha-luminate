@@ -9,18 +9,22 @@ angular.module 'ahaLuminateControllers'
       consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
       $scope.numberEvents = 0
       $scope.regEventId = ''
-  
-      if consId isnt undefined
-        TeamraiserParticipantService.getRegisteredTeamraisers 'event_type=Jump&cons_id=' + consId,
+      
+      if consId
+        TeamraiserParticipantService.getRegisteredTeamraisers 'event_type=Jump%Hoops&cons_id=' + consId,
           success: (response) ->
-            teamraiser = response.getRegisteredTeamraisersResponse?.teamraiser
-            if teamraiser.length
-              angular.forEach teamraiser, (teamraiser) ->
-                $scope.numberEvents++
-            else 
-              $scope.numberEvents = 1
-              $scope.regEventId = teamraiser.id
-
+            if response.errorResponse
+              # TODO
+            else
+              teamraisers = response.getRegisteredTeamraisersResponse.teamraiser
+              teamraisers = [teamraisers] if not angular.isArray teamraisers
+              $scope.numberEvents = teamraisers.length
+              if $scope.numberEvents is 0
+                # TODO
+              else
+                if $scope.numberEvents is 1
+                  $scope.regEventId = teamraisers[0].id
+      
       $scope.toggleLoginMenu = ->
         if $scope.loginMenuOpen
           delete $scope.loginMenuOpen
@@ -70,7 +74,8 @@ angular.module 'ahaLuminateControllers'
           $scope.toggleSiteMenu()
         if not $scope.$$phase
           $scope.$apply()
-
-
-
+      
+      $scope.delegatedAddThis = (targetToolboxContainer, shareType) ->
+        angular.element(targetToolboxContainer).find('.addthis_button_' + shareType).click()
+        false
   ]

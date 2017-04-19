@@ -8,6 +8,9 @@ if window.location.href.indexOf('pagename=jump_hoops_participant_center') isnt -
           .when '/dashboard', 
             templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/view/dashboard.html'
             controller: 'NgPcDashboardViewCtrl'
+          .when '/dashboard-student', 
+            templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/view/dashboard.html'
+            controller: 'NgPcDashboardViewCtrl'
           .when '/email', 
             redirectTo: '/email/compose'
           .when '/email/compose/:messageType?/:messageId?', 

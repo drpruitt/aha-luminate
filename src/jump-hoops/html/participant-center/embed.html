@@ -1,4 +1,42 @@
 [[E84:[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/html/set-tr-id.html]]
-<div class="ng-pc-container" ng-controller="NgPcMainCtrl" data-embed-root data-app-version="0.1.0" data-nonsecure-path="http://[[S29:DOMAIN]][[S29:PATH]]" data-api-key="[[S0:CONVIO_API_KEY]]" data-fr-id="[[S334:fr_id]]" data-cons-id="[[?xx::x[[S1:cons_id]]x::-1::[[S1:cons_id]]]]" data-auth-token="[[S86:true]]" data-locale="[[S72:locale]]" data-days-to-event="[[E42:[[S80:trID]]:days-to-event]]" data-pc-page="[[S334:pc2_page]]">
-  <div ng-view></div>
+<div class="ng-pc-container" ng-controller="NgPcMainCtrl" data-embed-root data-app-version="0.1.0" data-nonsecure-path="http://[[S29:DOMAIN]][[S29:PATH]]" data-api-key="[[S0:CONVIO_API_KEY]]" data-fr-id="[[S334:fr_id]]" data-cons-id="[[?xx::x[[S1:cons_id]]x::-1::[[S1:cons_id]]]]" data-auth-token="[[S86:true]]" data-locale="[[S72:locale]]" data-days-to-event="[[E42:[[S80:trID]]:days-to-event]]" data-pc-page="[[S334:pc2_page]]" data-cons-name="[[S1:first_name]]%[[S1:last_name]]">
+  <nav class="ng-pc-nav" ng-if="participantRegistration" ng-cloak>
+    <a ng-href="{{baseUrl}}#/dashboard" class="ng-pc-nav__item event-secondary--light" ng-class="{'active': location == '/dashboard'}">
+      HQ Home
+    </a>
+    <a ng-href="{{baseUrl}}#/email" class="ng-pc-nav__item event-secondary--light" ng-class="{'active': location.indexOf('/email/') != -1}">
+      Email
+    </a>
+    <a ng-href="{{baseUrl}}#/reports" class="ng-pc-nav__item event-secondary--light" ng-class="{'active': location == '/reports'}">
+      Reports
+    </a>
+    <a ng-href="{{baseUrl}}#/resources" class="ng-pc-nav__item event-secondary--light" ng-class="{'active': location == '/resources'}">
+      <span ng-if="participantRegistration.companyInformation.isCompanyCoordinator != 'true'" ng-cloak>Resources</span>
+      <span ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>Teacher Resources</span>
+    </a>
+    <a ng-href="{{baseUrl}}#/dashboard-student" class="ng-pc-nav__item event-secondary--light" ng-class="{'active': location == '/dashboard-student'}" ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
+      Student View
+    </a>
+    <a ng-href="{{baseUrl}}#/social" class="ng-pc-nav__item event-secondary--light" ng-class="{'active': location == '/social'}">
+      Social
+    </a>
+  </nav>
+  <div ng-view class="ng-pc-view-container"></div>
+</div>
+
+<div class="hidden">
+  <div class="js--personal-social-share">
+    <div class="addthis_toolbox" addthis:title="[[E42:[[S80:trID]]:title]]: [[S1:first_name]] [[S1:last_name]]" addthis:url="http://[[S29:DOMAIN]][[S29:PATH]]TR?fr_id=[[S80:trID]]&amp;pg=personal&amp;px=[[S1:cons_id]]">
+      <a class="addthis_button_facebook"></a>
+      <a class="addthis_button_twitter"></a>
+    </div>
+  </div>
+  [[?xx::x[[E48:[[S80:trID]]-[[S1:cons_id]]:team-id]]x::::
+    <div class="js--team-social-share">
+      <div class="addthis_toolbox" addthis:title="[[E42:[[S80:trID]]:title]]: [[E48:[[S80:trID]]-[[S1:cons_id]]:team-name]]" addthis:url="http://[[S29:DOMAIN]][[S29:PATH]]TR?fr_id=[[S80:trID]]&amp;pg=team&amp;team_id=[[E48:[[S80:trID]]-[[S1:cons_id]]:team-id]]">
+        <a class="addthis_button_facebook"></a>
+        <a class="addthis_button_twitter"></a>
+      </div>
+    </div>
+  ]]
 </div>
