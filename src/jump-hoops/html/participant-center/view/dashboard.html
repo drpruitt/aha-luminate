@@ -200,21 +200,25 @@
               <strong>View and Edit Your Page</strong>
             </a>
           </div>
-          <div class="col-sm-6">
-            <p class="small">
-              <strong>Personal Page URL:</strong>
-            </p>
-          </div>
-          <div class="col-sm-6 text-right">
-            <p class="small">
-              <strong>Share My Personal Page:</strong>
-            </p>
-            <a ng-href="{{baseUrl}}#" ng-click="delegatedAddThis('.js--personal-social-share', 'facebook')">
-              <img class="img-responsive" src="../aha-luminate/dist/youth-markets/image/facebook-logo.png" alt="Facebook">
-            </a> 
-            <a ng-href="{{baseUrl}}#" ng-click="delegatedAddThis('.js--personal-social-share', 'twitter')">
-              <img class="img-responsive" src="../aha-luminate/dist/youth-markets/image/twitter-logo.png" alt="Twitter">
-            </a>
+          <div class="row">
+            <div class="col-sm-6">
+              <p class="small">
+                <strong>Personal Page URL:</strong>
+              </p>
+            </div>
+            <div class="col-sm-6">
+              <div class="text-right">
+                <p class="small">
+                  <strong>Share My Personal Page:</strong>
+                </p>
+                <a ng-href="{{baseUrl}}#" ng-click="delegatedAddThis('.js--personal-social-share', 'facebook')">
+                  <img class="img-responsive" src="../aha-luminate/dist/youth-markets/image/facebook-logo.png" alt="Facebook">
+                </a> 
+                <a ng-href="{{baseUrl}}#" ng-click="delegatedAddThis('.js--personal-social-share', 'twitter')">
+                  <img class="img-responsive" src="../aha-luminate/dist/youth-markets/image/twitter-logo.png" alt="Twitter">
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -429,7 +433,7 @@
               </div>
             </div>
           </div>
-          <div ng-class="{'hidden': dashboardPageType != 'school'}" ng-cloak>
+          <div ng-class="{'hidden': dashboardPageType != 'company'}" ng-cloak>
             <div class="text-center">
               <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=company&amp;company_id={{participantRegistration.companyInformation.companyId}}">
                 <strong>View and Edit School Page</strong>
@@ -438,16 +442,56 @@
           </div>
           <div ng-class="{'hidden': dashboardPageType != 'team'}" ng-cloak>
             <div class="text-center">
-              <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#">
+              <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=team&amp;team_id={{participantRegistration.teamId}}">
                 <strong>View and Edit Team Page</strong>
               </a>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <p class="small">
+                  <strong>Team Page URL:</strong>
+                </p>
+              </div>
+              <div class="col-sm-6">
+                <div class="text-right">
+                  <p class="small">
+                    <strong>Share My Team Page:</strong>
+                  </p>
+                  <a ng-href="{{baseUrl}}#" ng-click="delegatedAddThis('.js--team-social-share', 'facebook')">
+                    <img class="img-responsive" src="../aha-luminate/dist/youth-markets/image/facebook-logo.png" alt="Facebook">
+                  </a> 
+                  <a ng-href="{{baseUrl}}#" ng-click="delegatedAddThis('.js--team-social-share', 'twitter')">
+                    <img class="img-responsive" src="../aha-luminate/dist/youth-markets/image/twitter-logo.png" alt="Twitter">
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
           <div ng-class="{'hidden': dashboardPageType != 'personal'}" ng-cloak>
             <div class="text-center">
               <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=personal&amp;px={{consId}}">
-                <strong>View and Edit Personal Page</strong>
+                <strong>View and Edit Your Page</strong>
               </a>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <p class="small">
+                  <strong>Personal Page URL:</strong>
+                </p>
+              </div>
+              <div class="col-sm-6">
+                <div class="text-right">
+                  <p class="small">
+                    <strong>Share My Personal Page:</strong>
+                  </p>
+                  <a ng-href="{{baseUrl}}#" ng-click="delegatedAddThis('.js--personal-social-share', 'facebook')">
+                    <img class="img-responsive" src="../aha-luminate/dist/youth-markets/image/facebook-logo.png" alt="Facebook">
+                  </a> 
+                  <a ng-href="{{baseUrl}}#" ng-click="delegatedAddThis('.js--personal-social-share', 'twitter')">
+                    <img class="img-responsive" src="../aha-luminate/dist/youth-markets/image/twitter-logo.png" alt="Twitter">
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
