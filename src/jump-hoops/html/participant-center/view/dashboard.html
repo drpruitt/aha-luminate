@@ -410,10 +410,43 @@
           <p>
             Edit your pages to encourage students and parents to join and donate!
           </p>
-          <div>
+          <div class="ym-pc-dashboard-coordinator-page-types">
+            <div class="clearfix">
+              <div class="ym-pc-dashboard-coordinator-page-type" ng-class="{'active': dashboardPageType == 'company'}">
+                <a ng-click="togglePageType('company')">
+                  <strong>School</strong>
+                </a>
+              </div>
+              <div class="ym-pc-dashboard-coordinator-page-type" ng-class="{'active': dashboardPageType == 'team'}">
+                <a ng-click="togglePageType('team')">
+                  <strong>Team</strong>
+                </a>
+              </div>
+              <div class="ym-pc-dashboard-coordinator-page-type" ng-class="{'active': dashboardPageType == 'personal'}">
+                <a ng-click="togglePageType('personal')">
+                  <strong>Personal</strong>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div ng-class="{'hidden': dashboardPageType != 'school'}" ng-cloak>
             <div class="text-center">
               <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=company&amp;company_id={{participantRegistration.companyInformation.companyId}}">
                 <strong>View and Edit School Page</strong>
+              </a>
+            </div>
+          </div>
+          <div ng-class="{'hidden': dashboardPageType != 'team'}" ng-cloak>
+            <div class="text-center">
+              <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#">
+                <strong>View and Edit Team Page</strong>
+              </a>
+            </div>
+          </div>
+          <div ng-class="{'hidden': dashboardPageType != 'personal'}" ng-cloak>
+            <div class="text-center">
+              <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=personal&amp;px={{consId}}">
+                <strong>View and Edit Personal Page</strong>
               </a>
             </div>
           </div>

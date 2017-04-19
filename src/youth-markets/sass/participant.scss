@@ -775,6 +775,50 @@ main > .container {
   }
 }
 
+.ym-pc-dashboard-coordinator-page-types {
+  margin: 0 0 32px;
+}
+
+.ym-pc-dashboard-coordinator-page-type {
+  float: left;
+  border-right: 1px solid transparent;
+  border-left: 1px solid transparent;
+  text-align: center;
+  width: 33.33333333%;
+  
+  a {
+    &, 
+    &:link, 
+    &:visited {
+      display: block;
+      background: #b3add3;
+      color: $event-secondary;
+      text-decoration: none;
+      padding: 8px;
+      width: 100%;
+    }
+    
+    &:hover, 
+    &:focus, 
+    &:active {
+      background: $event-secondary;
+      color: $brand-white;
+      text-decoration: none;
+    }
+  }
+  
+  &.active {
+    a {
+      &, 
+      &:link, 
+      &:visited {
+        background: $event-secondary;
+        color: $brand-white;
+      }
+    }
+  }
+}
+
 .ym-pc-dashboard-coordinator-resources-section {
   background-color: $event-accent-light;
   padding: 36px;
