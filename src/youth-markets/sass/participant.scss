@@ -843,3 +843,44 @@ main > .container {
     margin: 32px 0 0;
   }
 }
+
+.ym-pc-reports-lists {
+  .tab-content {
+    > .tab-pane {
+      padding: 28px 0 0;
+    }
+  }
+}
+
+.ym-pc-report-header {
+  text-align: center;
+  margin: 0 0 28px;
+  
+  h5, 
+  .h5 {
+    margin: 0;
+  }
+}
+
+.ym-pc-reports-lists > .table {
+  thead {
+    tr {
+      th {
+        a {
+          &, 
+          &:link, 
+          &:visited, 
+          &:hover, 
+          &:focus, 
+          &:active {
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+.ym-pc-report-gift-unthanked {
+  font-weight: 700;
+}
