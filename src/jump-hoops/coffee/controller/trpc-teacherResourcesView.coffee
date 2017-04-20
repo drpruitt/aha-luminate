@@ -1,7 +1,7 @@
 angular.module 'trPcControllers'
-  .controller 'NgPcResourcesViewCtrl', [
+  .controller 'NgPcTeacherResourcesViewCtrl', [
     '$scope'
     '$location'
     ($scope, $location) ->
-      #to do
+      # TODO
   ]
