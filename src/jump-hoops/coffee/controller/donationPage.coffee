@@ -167,8 +167,7 @@ angular.module 'ahaLuminateControllers'
                 levelLabel: levelLabel
                 levelChecked: levelChecked
         
-        optional = '<span class="ym-optional">Optional</span>'
-        
+        optional = '<span class="ym-optional">Optional</span>'       
         angular.element('#donor_phone_row label').append optional
         angular.element('#tr_message_to_participant_row').addClass 'hidden'
         angular.element('#billing_info').parent().addClass 'billing_info_toggle'
@@ -176,6 +175,10 @@ angular.module 'ahaLuminateControllers'
         angular.element('#responsive_payment_typecc_cvv_row .FormLabelText').text 'CVV:'
         angular.element('#level_installment_row').addClass 'hidden'
         angular.element('.employer-address-container').addClass 'clearfix'
+
+        angular.element('#tr_recognition_namerec_namename').attr('placeholder', 'If different from your name')
+        angular.element('#tr_message_to_participantname').attr('placeholder', 'Write a message of encouragement. 255 characters max.')
+
         employerMatchFields()
         billingAddressFields()
         donorRecognitionFields()
