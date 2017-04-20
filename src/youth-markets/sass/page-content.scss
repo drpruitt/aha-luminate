@@ -36,15 +36,15 @@
 
 .app-9 {
   .ym-page-content {
-    padding: 50px 100px;
+    padding: 30px;
     margin: 0;
     
-    @media (max-width: $screen-md-max) {
+    @media (min-width: $screen-md-min) {
       padding: 50px;
     }
-    
-    @media (max-width: $screen-sm-max) {
-      padding: 30px;
+
+    @media (min-width: $screen-lg-min) {
+      padding: 50px 100px;
     }
     
     > div {

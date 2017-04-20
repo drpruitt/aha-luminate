@@ -101,6 +101,13 @@
     text-align: center;
     
     .btn-toggle {
+      height: 50px;
+      line-height: 48px;
+
+      @media (min-width: $screen-sm-min) {
+        padding: 0;
+      }
+
       &:first-child {
         margin: 0 auto 10px; 
 
@@ -118,14 +125,23 @@
       font-size: inherit;
     }
   }
-  
+  .ym-donation-levels__levels {
+    max-width: 370px;
+    margin: auto;
+    text-align: center;
+
+    @media (min-width: $screen-sm-min) {
+      max-width: 100%;
+    }
+  }
+
   .ym-donation-levels__amount {
     display: inline-block;
-    margin: 0 0 10px 10px;
+    margin: 0 0 15px 10px;
     vertical-align: middle;
 
     @media (min-width: $screen-xs-min){
-      margin: 0 0 10px 20px;
+      margin: 0 0 15px 20px;
     }
     
     &:first-child {
@@ -134,8 +150,12 @@
 
     .btn-toggle {
       font-size: 20px;
+      min-width: 80px;
+      height: 50px;
+      line-height: 48px;
+      padding: 0;
 
-      @media (min-width: $screen-xs-min) {
+      @media (min-width: $screen-sm-min) {
         min-width: 110px;
       }
 
@@ -159,7 +179,11 @@
   }
   
   .ym-donation-levels__message {
-    margin-top: 20px;
+    margin-top: 10px;
+
+    @media (min-width: $screen-sm-min) {
+      margin-top: 20px;
+    }
   }
   
   .ym-employer-match {
