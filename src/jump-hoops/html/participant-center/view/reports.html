@@ -1,14 +1,54 @@
 <div cg-busy="reportPromises">
   <uib-tabset active="0">
     <uib-tab index="0" heading="School Detail" ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
-      <h2 class="h5">
-        School Detail Report
-      </h2>
+      <div>
+        <h2 class="h5">
+          School Detail Report
+        </h2>
+      </div>
     </uib-tab>
     <uib-tab index="1" heading="Donors">
-      <h2 class="h5">
-        My Donors
-      </h2>
+      <div>
+        <h2 class="h5">
+          My Donors
+        </h2>
+      </div>
+      <div ng-if="participantGifts.gifts && participantGifts.gifts.length == 0" ng-cloak>
+      </div>
+      <div ng-if="participantGifts.gifts && participantGifts.gifts.length > 0" ng-cloak>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>
+                  <strong>Name</strong>
+                </th>
+                <th>
+                  <strong>Amount</strong>
+                </th>
+                <th>
+                  <strong>Date</strong>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="participantGift in participantGifts.gifts">
+                <td>
+                  <div ng-if="participantGift.name.first && participantGift.name.first != ''">
+                    <span ng-bind-html="participantGift.name.first"></span> <span ng-bind-html="participantGift.name.last"></span>
+                  </div>
+                </td>
+                <td>
+                  {{participantGift.giftAmountFormatted}}
+                </td>
+                <td>
+                  {{participantGift.date | date : 'M/d/yy'}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </uib-tab>
   </uib-tabset>
 </div>
