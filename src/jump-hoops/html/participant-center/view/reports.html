@@ -36,8 +36,16 @@
               <tbody>
                 <tr ng-repeat="participantGift in participantGifts.gifts">
                   <td>
+                    <div ng-if="!participantGift.name.first || participantGift.name.first == ''">
+                      (no name)
+                    </div>
                     <div ng-if="participantGift.name.first && participantGift.name.first != ''">
                       <span ng-bind-html="participantGift.name.first"></span> <span ng-bind-html="participantGift.name.last"></span>
+                    </div>
+                    <div ng-if="participantGift.acknowledged != 'true'">
+                      <a class="btn btn-primary">
+                        Thank
+                      </a>
                     </div>
                   </td>
                   <td>
