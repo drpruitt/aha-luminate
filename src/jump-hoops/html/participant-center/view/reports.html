@@ -23,18 +23,24 @@
               <thead>
                 <tr>
                   <th>
-                    <strong>Name</strong>
+                    <a>
+                      <strong>Name</strong>
+                    </a>
                   </th>
                   <th>
-                    <strong>Amount</strong>
+                    <a>
+                      <strong>Amount</strong>
+                    </a>
                   </th>
                   <th>
-                    <strong>Date</strong>
+                    <a>
+                      <strong>Date</strong>
+                    </a>
                   </th>
                 </tr>
               </thead>
               <tbody>
-                <tr ng-repeat="participantGift in participantGifts.gifts">
+                <tr ng-repeat="participantGift in participantGifts.gifts" ng-class="{'ym-pc-report-gift-unthanked': participantGift.acknowledged != 'true'}">
                   <td>
                     <div ng-if="!participantGift.name.first || participantGift.name.first == ''">
                       (no name)
