@@ -10,11 +10,35 @@ angular.module 'ahaLuminateControllers'
       $dataRoot = angular.element '[data-aha-luminate-root]'
       consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
 
-      if consId != undefined
+      if consId
         TeamraiserParticipantService.getRegisteredTeamraisersCMS '&cons_id='+ consId + '&event_type=Jump%20Hoops'
         .then (response) ->
           if response.data.errorResponse
-            angular.element('#noRegModal').modal() 
+            modalSet = readCookie 'modalSet'
+            if modalSet != 'true'
+              setModal()
+
+      readCookie = (name) ->
+        nameEQ = name + '='
+        ca = document.cookie.split(';')
+        i = 0
+        while i < ca.length
+          c = ca[i]
+          while c.charAt(0) == ' '
+            c = c.substring(1, c.length)
+          if c.indexOf(nameEQ) == 0
+            return c.substring(nameEQ.length, c.length)
+          i++
+        null 
+
+      setModal = ->
+        date = new Date
+        expires = 'expires='
+        date.setDate date.getDate() + 1
+        expires += date.toGMTString()
+
+        angular.element('#noRegModal').modal() 
+        document.cookie = 'modalSet=true ; ' + expires + '; path=/'
 
       $scope.closeModal = ->
         angular.element('#noRegModal').modal('hide')
