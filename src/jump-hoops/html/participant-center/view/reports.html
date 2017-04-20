@@ -19,7 +19,7 @@
         </div>
         <div ng-if="participantGifts.gifts && participantGifts.gifts.length > 0" ng-cloak>
           <div class="table-responsive">
-            <table class="table">
+            <table class="table table-striped">
               <thead>
                 <tr>
                   <th>
@@ -33,9 +33,11 @@
                     </a>
                   </th>
                   <th>
-                    <a>
-                      <strong>Date</strong>
-                    </a>
+                    <div class="text-right">
+                      <a>
+                        <strong>Date</strong>
+                      </a>
+                    </div>
                   </th>
                 </tr>
               </thead>
@@ -58,7 +60,9 @@
                     {{participantGift.giftAmountFormatted}}
                   </td>
                   <td>
-                    {{participantGift.date | date : 'M/d/yy'}}
+                    <div class="text-right">
+                      {{participantGift.date | date : 'M/d/yy'}}
+                    </div>
                   </td>
                 </tr>
               </tbody>

@@ -862,6 +862,25 @@ main > .container {
   }
 }
 
+.ym-pc-reports-lists > .table {
+  thead {
+    tr {
+      th {
+        a {
+          &, 
+          &:link, 
+          &:visited, 
+          &:hover, 
+          &:focus, 
+          &:active {
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+}
+
 .ym-pc-report-gift-unthanked {
   font-weight: 700;
 }
