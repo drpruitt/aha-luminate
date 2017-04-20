@@ -1,0 +1,16 @@
+.nav-tabs {
+  > li {
+    a {
+      &, 
+      &:link, 
+      &:visited, 
+      &:hover, 
+      &:focus, 
+      &:active {
+        color: inherit;
+        font-weight: 700;
+        text-decoration: none;
+      }
+    }
+  }
+}
