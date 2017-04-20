@@ -1,2 +1,75 @@
-<div>
+<div cg-busy="reportPromises">
+  <div class="ym-pc-reports-lists">
+    <uib-tabset active="0">
+      <uib-tab index="0" heading="School Detail" ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
+        <div class="ym-pc-report-header">
+          <h2 class="h5">
+            School Detail Report
+          </h2>
+        </div>
+      </uib-tab>
+      <uib-tab index="1" heading="Donors">
+        <div class="ym-pc-report-header">
+          <h2 class="h5">
+            My Donors
+          </h2>
+        </div>
+        <div ng-if="participantGifts.gifts && participantGifts.gifts.length == 0" ng-cloak>
+          No donors to display.
+        </div>
+        <div ng-if="participantGifts.gifts && participantGifts.gifts.length > 0" ng-cloak>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>
+                    <a>
+                      <strong>Name</strong>
+                    </a>
+                  </th>
+                  <th>
+                    <a>
+                      <strong>Amount</strong>
+                    </a>
+                  </th>
+                  <th>
+                    <div class="text-right">
+                      <a>
+                        <strong>Date</strong>
+                      </a>
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="participantGift in participantGifts.gifts" ng-class="{'ym-pc-report-gift-unthanked': participantGift.acknowledged != 'true'}">
+                  <td>
+                    <div ng-if="!participantGift.name.first || participantGift.name.first == ''">
+                      (no name)
+                    </div>
+                    <div ng-if="participantGift.name.first && participantGift.name.first != ''">
+                      <span ng-bind-html="participantGift.name.first"></span> <span ng-bind-html="participantGift.name.last"></span>
+                    </div>
+                    <div ng-if="participantGift.acknowledged != 'true'">
+                      <a class="btn btn-primary">
+                        Thank
+                      </a>
+                    </div>
+                  </td>
+                  <td>
+                    {{participantGift.giftAmountFormatted}}
+                  </td>
+                  <td>
+                    <div class="text-right">
+                      {{participantGift.date | date : 'M/d/yy'}}
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </uib-tab>
+    </uib-tabset>
+  </div>
 </div>
