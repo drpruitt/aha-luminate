@@ -31,9 +31,12 @@ if window.location.href.indexOf('pagename=jump_hoops_participant_center') isnt -
           .when '/reports', 
             templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/view/reports.html'
             controller: 'NgPcReportsViewCtrl'
-          .when '/resources', 
-            templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/view/resources.html'
-            controller: 'NgPcResourcesViewCtrl'
+          .when '/student-resources', 
+            templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/view/studentResources.html'
+            controller: 'NgPcStudentResourcesViewCtrl'
+          .when '/teacher-resources', 
+            templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/view/teacherResources.html'
+            controller: 'NgPcTeacherResourcesViewCtrl'
           .when '/social', 
             templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/view/social.html'
             controller: 'NgPcSocialViewCtrl'

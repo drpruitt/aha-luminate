@@ -10,9 +10,11 @@
     <a ng-href="{{baseUrl}}#/reports" class="ng-pc-nav__item event-secondary--light" ng-class="{'active': location == '/reports'}">
       Reports
     </a>
-    <a ng-href="{{baseUrl}}#/resources" class="ng-pc-nav__item event-secondary--light" ng-class="{'active': location == '/resources'}">
-      <span ng-if="participantRegistration.companyInformation.isCompanyCoordinator != 'true'" ng-cloak>Resources</span>
-      <span ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>Teacher Resources</span>
+    <a ng-href="{{baseUrl}}#/student-resources" class="ng-pc-nav__item event-secondary--light" ng-class="{'active': location == '/student-resources'}" ng-if="participantRegistration.companyInformation.isCompanyCoordinator != 'true'" ng-cloak>
+      Resources
+    </a>
+    <a ng-href="{{baseUrl}}#/teacher-resources" class="ng-pc-nav__item event-secondary--light" ng-class="{'active': location == '/teacher-resources'}" ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
+      Teacher Resources
     </a>
     <a ng-href="{{baseUrl}}#/dashboard-student" class="ng-pc-nav__item event-secondary--light" ng-class="{'active': location == '/dashboard-student'}" ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
       Student View
