@@ -1,9 +1,8 @@
 angular.module 'trPcControllers'
   .controller 'NgPcReportsViewCtrl', [
     '$scope'
-    '$location'
-    ($scope, $location) ->
-      #to do
-
+    ($scope) ->
+      $scope.reportPromises = []
       
+      $scope.activeReportTab = if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true' then 0 else 1
   ]
