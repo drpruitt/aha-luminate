@@ -108,7 +108,12 @@ main > .container {
       }
       
       @media (min-width: 670px) {
+        font-size: 17px;
         width: 16.66666667%;
+      }
+      
+      @media (min-width: 690px) {
+        font-size: 18px;
       }
       
       &.ng-pc-nav-item--resources {
@@ -123,6 +128,10 @@ main > .container {
           
           @media (min-width: 670px) {
             max-width: 100px;
+          }
+          
+          @media (min-width: 1170px) {
+            max-width: none;
           }
         }
       }
@@ -139,6 +148,10 @@ main > .container {
           
           @media (min-width: 670px) {
             max-width: 80px;
+          }
+          
+          @media (min-width: 890px) {
+            max-width: none;
           }
         }
       }
