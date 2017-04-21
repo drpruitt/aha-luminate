@@ -85,8 +85,10 @@ main > .container {
     }
     
     &:last-child {
-      border-right: 0;
-      margin: 0;
+      @media (min-width: 560px) {
+        border-right: 0;
+        margin: 0;
+      }
     }
     
     &.active {
@@ -198,6 +200,12 @@ main > .container {
       @media (max-width: 669px) {
         background: $event-secondary;
         color: $brand-white;
+      }
+    }
+    
+    &:last-child {
+      @media (min-width: 560px) and (max-width: 669px) {
+        margin: 0 3px 5px;
       }
     }
     
@@ -396,11 +404,12 @@ main > .container {
       &:focus, 
       &:active {
         @media (min-width: $screen-sm-min) {
-          width: 100px;
+          display: inline-block;
+          max-width: 100px;
         }
         
         @media (min-width: $screen-md-min) {
-          width: auto;
+          max-width: none;
         }
       }
     }
@@ -998,11 +1007,12 @@ main > .container {
       &:focus, 
       &:active {
         @media (min-width: $screen-sm-min) {
-          width: 100px;
+          display: inline-block;
+          max-width: 100px;
         }
         
         @media (min-width: $screen-md-min) {
-          width: auto;
+          max-width: none;
         }
       }
     }
