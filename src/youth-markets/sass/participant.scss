@@ -353,17 +353,30 @@ main > .container {
       float: left;
     }
     
-    .btn-lg {
-      display: block;
-      margin: 0 auto 15px;
-      max-width: 200px;
-      
-      @media (min-width: $screen-sm-min) {
-        display: inline-block;
-        position: absolute;
-        bottom: 0;
-        max-width: none;
-        margin: 0;
+    .btn-lg, 
+    a.btn-lg {
+      &, 
+      &:link, 
+      &:visited, 
+      &:hover, 
+      &:focus, 
+      &:active {
+        display: block;
+        margin: 0 auto 15px;
+        max-width: 200px;
+        
+        @media (min-width: $screen-sm-min) {
+          display: inline-block;
+          position: absolute;
+          bottom: 0;
+          max-width: none;
+          margin: 0;
+        }
+        
+        @media (max-width: $screen-sm-max) {
+          font-size: 14px;
+          padding: 10px 12px;
+        }
       }
     }
   }
@@ -925,17 +938,30 @@ main > .container {
       float: left;
     }
     
-    .btn-lg {
-      display: block;
-      margin: 0 auto 15px;
-      max-width: 200px;
-      
-      @media (min-width: $screen-sm-min) {
-        display: inline-block;
-        position: absolute;
-        bottom: 0;
-        max-width: none;
-        margin: 0;
+    .btn-lg, 
+    a.btn-lg {
+      &, 
+      &:link, 
+      &:visited, 
+      &:hover, 
+      &:focus, 
+      &:active {
+        display: block;
+        margin: 0 auto 15px;
+        max-width: 200px;
+        
+        @media (min-width: $screen-sm-min) {
+          display: inline-block;
+          position: absolute;
+          bottom: 0;
+          max-width: none;
+          margin: 0;
+        }
+        
+        @media (max-width: $screen-sm-max) {
+          font-size: 14px;
+          padding: 10px 12px;
+        }
       }
     }
   }
