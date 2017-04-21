@@ -659,7 +659,7 @@ main > .container {
     }
     
     .text-right {
-      @media (max-width: $screen-xs-max) {
+      @media (max-width: $screen-sm-max) {
         text-align: left;
         margin-top: 15px;
       }
@@ -1065,7 +1065,7 @@ main > .container {
 
 .ym-activity-box--coordinator-pages {
   .text-right {
-    @media (max-width: $screen-xs-max) {
+    @media (max-width: $screen-sm-max) {
       text-align: left;
       margin-top: 15px;
     }
