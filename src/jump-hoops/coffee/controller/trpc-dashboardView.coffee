@@ -217,8 +217,7 @@ angular.module 'trPcControllers'
       $scope.personalUrlInfo = {}
       
       $scope.editPersonalUrl = ->
-        $scope.personalUrlInfo.updatedShortcut =
-          text: $scope.participantShortcut.text or ''
+        $scope.personalUrlInfo.updatedShortcut = $scope.participantShortcut.text or ''
         $scope.editPersonalUrlModal = $uibModal.open
           scope: $scope
           templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/editParticipantUrl.html'
@@ -254,8 +253,7 @@ angular.module 'trPcControllers'
         $scope.teamUrlInfo = {}
         
         $scope.editTeamUrl = ->
-          $scope.teamUrlInfo.updatedShortcut =
-            text: $scope.teamShortcut.text or ''
+          $scope.teamUrlInfo.updatedShortcut = $scope.teamShortcut.text or ''
           $scope.editTeamUrlModal = $uibModal.open
             scope: $scope
             templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/editTeamUrl.html'
@@ -287,6 +285,20 @@ angular.module 'trPcControllers'
               response
           $scope.dashboardPromises.push getCompanyShortcutPromise
         $scope.getCompanyShortcut()
+        
+        $scope.companyUrlInfo = {}
+        
+        $scope.editCompanyUrl = ->
+          $scope.companyUrlInfo.updatedShortcut = $scope.companyShortcut.text or ''
+          $scope.editCompanyUrlModal = $uibModal.open
+            scope: $scope
+            templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/editCompanyUrl.html'
+        
+        $scope.cancelEditCompanyUrl = ->
+         $scope.editCompanyUrlModal.close()
+        
+        $scope.updateCompanyUrl = (urlType) ->
+          # TODO
       
       $scope.personalChallenge = {}
       $scope.updatedPersonalChallenge = {}
