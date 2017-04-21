@@ -137,12 +137,12 @@ angular.module 'trPcControllers'
               response
           $scope.dashboardPromises.push updateTeamGoalPromise
       
-      participantBadgesPromise = ParticipantBadgesService.getBadges()
-        .then (response) ->
-          prizes = response.data.prizes
-          if prizes
-            $scope.participantBadges = prizes
-      $scope.dashboardPromises.push participantBadgesPromise
+      # participantBadgesPromise = ParticipantBadgesService.getBadges()
+        # .then (response) ->
+          # prizes = response.data.prizes
+          # if prizes
+            # $scope.participantBadges = prizes
+      # $scope.dashboardPromises.push participantBadgesPromise
       
       $scope.donorContactCounts = {}
       donorContactFilters = [
