@@ -264,6 +264,17 @@ main > .container {
       
       label {
         padding-left: 28px;
+        
+        a {
+          &, 
+          &:link, 
+          &:visited, 
+          &:hover, 
+          &:focus, 
+          &:active {
+            text-decoration: none;
+          }
+        }
       }
     }
   }
@@ -273,7 +284,8 @@ main > .container {
     &:link, 
     &:visited, 
     &:hover, 
-    &:focus {
+    &:focus, 
+    &:active {
       font-weight: 500;
       text-decoration: none;
     }

@@ -84,13 +84,13 @@
       </div>
       <div class="pull-right">
         <button type="button" class="btn btn-primary" ng-click="chooseImportContactType()" ng-if="contactImport.step == 'choose-type'">
-          Next
+          <strong>Next</strong>
         </button>
         <button type="button" class="btn btn-primary" ng-click="chooseContactsToImport()" ng-if="contactImport.step == 'contacts-available-for-import' && contactsAvailableForImport.length > 0">
-          Next
+          <strong>Next</strong>
         </button>
         <button type="button" class="btn btn-primary" ng-click="uploadContactsCSV()" ng-if="contactImport.step == 'csv-upload'">
-          Next
+          <strong>Next</strong>
         </button>
       </div>
     </div>
