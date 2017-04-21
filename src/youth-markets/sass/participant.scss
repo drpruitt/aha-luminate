@@ -555,6 +555,10 @@ main > .container {
     margin: 25px;
   }
   
+  .ym-activity-box-inner {
+    position: relative;
+  }
+  
   &.ym-activity-box--next-step {
     > div {
       padding: 0 0 20px;
@@ -1180,8 +1184,6 @@ main > .container {
 }
 
 .ym-activity-box--coordinator-prizes {
-  position: relative;
-  
   p {
     margin: 0 0 18px;
     
