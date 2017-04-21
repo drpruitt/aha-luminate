@@ -365,6 +365,7 @@ main > .container {
         }
       }
       
+      h5, 
       .h5 {
         margin: 0 0 25px;
       }
@@ -971,6 +972,7 @@ main > .container {
         }
       }
       
+      h5, 
       .h5 {
         margin: 0 0 25px;
       }
@@ -1161,6 +1163,10 @@ main > .container {
 .ym-activity-box--coordinator-prizes {
   position: relative;
   
+  @media (min-width: $screen-sm-min) {
+    padding-bottom: 50px;
+  }
+  
   p {
     margin: 0 0 18px;
     
@@ -1170,9 +1176,12 @@ main > .container {
   }
   
   .ym-activity-box-cta {
+    text-align: center;
+    
     @media (min-width: $screen-sm-min) {
       position: absolute;
-      bottom: 0;
+      bottom: 25px;
+      width: 100%;
     }
   }
 }
