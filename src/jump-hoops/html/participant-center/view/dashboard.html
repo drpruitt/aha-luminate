@@ -399,7 +399,7 @@
           </div>
         </div>
         <div class="col-sm-6 ym-pc-dashboard-coordinator-progress-section__column event-secondary-medium">
-          <div class="ym-pc-dashboard-coordinator-students-box">
+          <div class="ym-pc-dashboard-coordinator-students-box" ng-if="companyInfo.participantCount" ng-cloak>
             <div class="ym-pc-dashboard-section-header">
               <h3>
                 My Students
@@ -407,7 +407,7 @@
             </div>
             <div>
               <p>
-                You have <strong></strong> students registered. Keep recruiting to meet your goal of <strong></strong> students!
+                You have <strong>{{companyInfo.participantCount}}</strong> students registered. Keep recruiting to meet your goal of <strong>0</strong> students!
               </p>
               <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email">
                 <strong>Send Emails</strong>
