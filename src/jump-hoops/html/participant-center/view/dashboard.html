@@ -337,7 +337,7 @@
                       <strong><span ng-bind-html="companyProgress.goalFormatted"></span></strong> goal
                     </p>
                   </div>
-                  <a ng-href="NTM?tr.ntmgmt=company_cservice_main&amp;company_id={{participantRegistration.companyInformation.companyId}}" target="_blank">
+                  <a ng-href="NTM?tr.ntmgmt=company_cservice_main&amp;company_id={{participantRegistration.companyInformation.companyId}}">
                     <strong>Update School Goal</strong>
                   </a>
                 </div>
@@ -545,7 +545,7 @@
             Visit our Thank-You Gift portal to manage and order gifts for your students.
           </p>
           <div class="text-center">
-            <a class="btn btn-primary" ng-href="{{baseUrl}}#">
+            <a class="btn btn-primary" ng-href="{{baseUrl}}#" target="_blank">
               <strong>Thank You Gifts</strong>
             </a>
           </div>
@@ -602,7 +602,7 @@
         </div>
       </div>
       <div class="ym-pc-dashboard-coordinator-resources-more">
-        <a>
+        <a ng-href="{{baseUrl}}#/teacher-resources">
           <strong>View All Resources</strong>
         </a>
       </div>
