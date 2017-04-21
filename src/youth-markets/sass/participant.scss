@@ -344,14 +344,24 @@ main > .container {
     }
   }
   
-  .btn-lg {
-    display: block;
-    margin: 0 auto 15px;
-    max-width: 200px;
-    
+  .ym-progress-donate {
     @media (min-width: $screen-sm-min) {
-      display: inline-block;
-      max-width: none;
+      float: left;
+      position: relative;
+    }
+    
+    .btn-lg {
+      display: block;
+      margin: 0 auto 15px;
+      max-width: 200px;
+      
+      @media (min-width: $screen-sm-min) {
+        display: inline-block;
+        position: absolute;
+        bottom: 0;
+        max-width: none;
+        margin: 0;
+      }
     }
   }
   
@@ -903,14 +913,24 @@ main > .container {
     }
   }
   
-  .btn-lg {
-    display: block;
-    margin: 0 auto 15px;
-    max-width: 200px;
-    
+  .ym-progress-donate {
     @media (min-width: $screen-sm-min) {
-      display: inline-block;
-      max-width: none;
+      float: left;
+      position: relative;
+    }
+    
+    .btn-lg {
+      display: block;
+      margin: 0 auto 15px;
+      max-width: 200px;
+      
+      @media (min-width: $screen-sm-min) {
+        display: inline-block;
+        position: absolute;
+        bottom: 0;
+        max-width: none;
+        margin: 0;
+      }
     }
   }
   
@@ -1121,11 +1141,20 @@ main > .container {
             text-decoration: none;
           }
         }
+        
+        .btn, 
+        a.btn {
+          &, 
+          &:link, 
+          &:visited, 
+          &:hover, 
+          &:focus, 
+          &:active {
+            display: inline-block;
+            margin: 6px 0 0;
+          }
+        }
       }
     }
   }
-}
-
-.ym-pc-report-gift-unthanked {
-  font-weight: 700;
 }

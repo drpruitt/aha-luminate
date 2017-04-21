@@ -181,7 +181,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr ng-repeat="participantGift in participantGifts.gifts" ng-class="{'ym-pc-report-gift-unthanked': participantGift.acknowledged != 'true'}">
+                <tr ng-repeat="participantGift in participantGifts.gifts">
                   <td>
                     <div class="text-left">
                       <div ng-if="!participantGift.name.first || participantGift.name.first == ''">
@@ -191,8 +191,8 @@
                         <span ng-bind-html="participantGift.name.first"></span> <span ng-bind-html="participantGift.name.last"></span>
                       </div>
                       <div ng-if="participantGift.acknowledged != 'true'">
-                        <a class="btn btn-primary" ng-href="{{baseUrl}}#/email">
-                          <i class="fa fa-envelope" aria-hidden="true"></i> Thank
+                        <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email">
+                          <i class="fa fa-envelope" aria-hidden="true"></i> <strong>Thank</strong>
                         </a>
                       </div>
                     </div>
