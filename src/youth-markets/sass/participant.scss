@@ -527,10 +527,18 @@ main > .container {
       }
     }
     
-    .btn {
-      width: 125px;
-      padding-left: 0;
-      padding-right: 0;
+    .btn, 
+    a.btn {
+      &, 
+      &:link, 
+      &:visited, 
+      &:hover, 
+      &:focus, 
+      &:active {
+        width: 125px;
+        padding-left: 0;
+        padding-right: 0;
+      }
     }
   }
   
