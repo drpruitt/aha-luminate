@@ -181,8 +181,29 @@ angular.module 'trPcControllers'
                   $scope.personalPageUrl = shortcutItem.url
                 else
                   $scope.personalPageUrl = shortcutItem.defaultUrl.split('/site/')[0] + '/site/TR?fr_id=' + $scope.frId + '&pg=personal&px=' + $scope.consId
-        $scope.editPagePromises.push getParticipantShortcutPromise
+        $scope.dashboardPromises.push getParticipantShortcutPromise
       $scope.getParticipantShortcut()
+      
+      if $scope.participantRegistration.teamId and $scope.participantRegistration.teamId isnt '-1' and $scope.participantRegistration.aTeamCaptain is 'true'
+        $scope.getTeamShortcut = ->
+          getTeamShortcutPromise = TeamraiserShortcutURLService.getTeamShortcut()
+            .then (response) ->
+              if response.data.errorResponse
+                # TODO
+              else
+                shortcutItem = response.data.getTeamShortcutResponse.shortcutItem
+                if not shortcutItem
+                  # TODO
+                else
+                  if shortcutItem.prefix
+                    shortcutItem.prefix = shortcutItem.prefix
+                  $scope.teamShortcut = shortcutItem
+                  if shortcutItem.url
+                    $scope.teamPageUrl = shortcutItem.url
+                  else
+                    $scope.teamPageUrl = shortcutItem.defaultUrl.split('/site/')[0] + '/site/TR?fr_id=' + $scope.frId + '&pg=team&team_id=' + $scope.participantRegistration.teamId
+          $scope.dashboardPromises.push getTeamShortcutPromise
+        $scope.getTeamShortcut()
       
       $scope.personalChallenge = {}
       $scope.updatedPersonalChallenge = {}
