@@ -554,10 +554,6 @@ main > .container {
   @media (min-width: $screen-md-min) {
     margin: 25px;
   }
-  
-  .ym-activity-box-inner {
-    position: relative;
-  }
 
   &.ym-activity-box--next-step {
     > div {
@@ -1162,6 +1158,8 @@ main > .container {
 
 
 .ym-activity-box--coordinator-reports {
+  position: relative;
+  
   p {
     margin: 0 0 18px;
     
@@ -1182,6 +1180,8 @@ main > .container {
 }
 
 .ym-activity-box--coordinator-prizes {
+  position: relative;
+  
   p {
     margin: 0 0 18px;
     
