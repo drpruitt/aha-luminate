@@ -217,6 +217,7 @@ angular.module 'trPcControllers'
       $scope.personalUrlInfo = {}
       
       $scope.editPersonalUrl = ->
+        delete $scope.personalUrlInfo.errorMessage
         $scope.personalUrlInfo.updatedShortcut = $scope.participantShortcut.text or ''
         $scope.editPersonalUrlModal = $uibModal.open
           scope: $scope
@@ -225,8 +226,17 @@ angular.module 'trPcControllers'
       $scope.cancelEditPersonalUrl = ->
        $scope.editPersonalUrlModal.close()
       
-      $scope.updatePersonalUrl = (urlType) ->
-        # TODO
+      $scope.updatePersonalUrl = ->
+        delete $scope.personalUrlInfo.errorMessage
+        updatePersonalUrlPromise = NgPcTeamraiserShortcutURLService.updateShortcut 'text=' + encodeURIComponent($scope.personalUrlInfo.updatedShortcut)
+          .then (response) ->
+            if response.data.errorResponse
+              $scope.personalUrlInfo.errorMessage = response.data.errorResponse.message
+            else
+              $scope.editPersonalUrlModal.close()
+              $scope.getParticipantShortcut()
+            response
+        $scope.dashboardPromises.push updatePersonalUrlPromise
       
       if $scope.participantRegistration.teamId and $scope.participantRegistration.teamId isnt '-1' and $scope.participantRegistration.aTeamCaptain is 'true'
         $scope.getTeamShortcut = ->
@@ -253,6 +263,7 @@ angular.module 'trPcControllers'
         $scope.teamUrlInfo = {}
         
         $scope.editTeamUrl = ->
+          delete $scope.teamUrlInfo.errorMessage
           $scope.teamUrlInfo.updatedShortcut = $scope.teamShortcut.text or ''
           $scope.editTeamUrlModal = $uibModal.open
             scope: $scope
@@ -261,8 +272,17 @@ angular.module 'trPcControllers'
         $scope.cancelEditTeamUrl = ->
          $scope.editTeamUrlModal.close()
         
-        $scope.updateTeamUrl = (urlType) ->
-          # TODO
+        $scope.updateTeamUrl = ->
+          delete $scope.teamUrlInfo.errorMessage
+          updateTeamUrlPromise = NgPcTeamraiserShortcutURLService.updateTeamShortcut 'text=' + encodeURIComponent($scope.teamUrlInfo.updatedShortcut)
+            .then (response) ->
+              if response.data.errorResponse
+                $scope.teamUrlInfo.errorMessage = response.data.errorResponse.message
+              else
+                $scope.editTeamUrlModal.close()
+                $scope.getTeamShortcut()
+              response
+          $scope.dashboardPromises.push updateTeamUrlPromise
       
       if $scope.participantRegistration.companyInformation and $scope.participantRegistration.companyInformation.companyId and $scope.participantRegistration.companyInformation.companyId isnt -1 and $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
         $scope.getCompanyShortcut = ->
@@ -289,6 +309,7 @@ angular.module 'trPcControllers'
         $scope.companyUrlInfo = {}
         
         $scope.editCompanyUrl = ->
+          delete $scope.companyUrlInfo.errorMessage
           $scope.companyUrlInfo.updatedShortcut = $scope.companyShortcut.text or ''
           $scope.editCompanyUrlModal = $uibModal.open
             scope: $scope
@@ -297,8 +318,17 @@ angular.module 'trPcControllers'
         $scope.cancelEditCompanyUrl = ->
          $scope.editCompanyUrlModal.close()
         
-        $scope.updateCompanyUrl = (urlType) ->
-          # TODO
+        $scope.updateCompanyUrl = ->
+          delete $scope.companyUrlInfo.errorMessage
+          updateCompanyUrlPromise = NgPcTeamraiserShortcutURLService.updateCompanyShortcut 'text=' + encodeURIComponent($scope.companyUrlInfo.updatedShortcut)
+            .then (response) ->
+              if response.data.errorResponse
+                $scope.companyUrlInfo.errorMessage = response.data.errorResponse.message
+              else
+                $scope.editCompanyUrlModal.close()
+                $scope.getCompanyShortcut()
+              response
+          $scope.dashboardPromises.push updateCompanyUrlPromise
       
       $scope.personalChallenge = {}
       $scope.updatedPersonalChallenge = {}
