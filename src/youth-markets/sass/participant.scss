@@ -986,13 +986,29 @@ main > .container {
 
 .ym-pc-student-view-text {
   float: left;
-  width: 65%;
+  width: 45%;
   margin: 0 3% 0 0;
+  
+  @media (min-width: 360px) {
+    width: 53%;
+  }
+  
+  @media (min-width: 480px) {
+    width: 65%;
+  }
 }
 
 .ym-pc-student-view-image {
   float: right;
-  width: 32%;
+  width: 52%;
+  
+  @media (min-width: 360px) {
+    width: 44%;
+  }
+  
+  @media (min-width: 480px) {
+    width: 32%;
+  }
 }
 
 .ym-pc-dashboard-coordinator-resources-section {
