@@ -178,7 +178,7 @@ angular.module 'trPcControllers'
               $scope.personalChallenge.id = personalChallenges.current
               $scope.personalChallenge.name = personalChallenges.text
               $scope.personalChallenge.completed = personalChallenges.completed
-              $scope.updatedPersonalChallenge = $scope.personalChallenge
+              angular.copy $scope.personalChallenge, $scope.updatedPersonalChallenge
       getStudentChallenge()
       
       $scope.challenges = []

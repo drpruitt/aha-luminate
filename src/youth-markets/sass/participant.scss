@@ -24,10 +24,11 @@ main > .container {
 .ng-pc-nav {
   background: $event-accent;
   
-  @media (max-width: $screen-xs-max) {
+  @media (max-width: 559px) {
     background: transparent;
     text-align: center;
-    margin-bottom: 7px;
+    max-width: 320px;
+    margin: 0 auto 7px;
   }
   
   a {
@@ -44,13 +45,13 @@ main > .container {
       text-decoration: none;
       width: 100px;
       height: 40px;
-      margin: 0 5px 5px 0;
+      margin: 0 3px 5px;
       
       @media (max-width: 350px) {
         max-width: 85px;
       }
       
-      @media (min-width: $screen-sm-min) {
+      @media (min-width: 560px) {
         background: $event-secondary-medium;
         border-right: 2px solid $event-accent;
         color: $event-secondary;
