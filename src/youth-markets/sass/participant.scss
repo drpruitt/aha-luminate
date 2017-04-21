@@ -261,8 +261,20 @@ main > .container {
     
     .checkbox {
       margin: 0;
+      
       label {
-        padding-left: 0;
+        padding-left: 25px;
+        
+        a {
+          &, 
+          &:link, 
+          &:visited, 
+          &:hover, 
+          &:focus, 
+          &:active {
+            text-decoration: none;
+          }
+        }
       }
     }
   }
@@ -272,7 +284,8 @@ main > .container {
     &:link, 
     &:visited, 
     &:hover, 
-    &:focus {
+    &:focus, 
+    &:active {
       font-weight: 500;
       text-decoration: none;
     }
@@ -514,10 +527,18 @@ main > .container {
       }
     }
     
-    .btn {
-      width: 125px;
-      padding-left: 0;
-      padding-right: 0;
+    .btn, 
+    a.btn {
+      &, 
+      &:link, 
+      &:visited, 
+      &:hover, 
+      &:focus, 
+      &:active {
+        width: 125px;
+        padding-left: 0;
+        padding-right: 0;
+      }
     }
   }
   
@@ -669,7 +690,7 @@ main > .container {
       margin: 0;
       
       label {
-        padding-left: 0;
+        padding-left: 25px;
       }
     }
   }
@@ -1057,6 +1078,32 @@ main > .container {
   h5, 
   .h5 {
     margin: 0;
+  }
+}
+
+.ym-pc-report-header-buttons {
+  margin: 16px 0 0;
+  
+  @media (min-width: $screen-md-min) {
+    text-align: right;
+    margin: 0;
+  }
+  
+  a {
+    &, 
+    &:link, 
+    &:visited, 
+    &:hover, 
+    &:focus, 
+    &:active {
+      display: block;
+      margin: 0 0 12px;
+      
+      @media (min-width: 375px) {
+        display: inline-block;
+        margin: 0 0 0 10px;
+      }
+    }
   }
 }
 

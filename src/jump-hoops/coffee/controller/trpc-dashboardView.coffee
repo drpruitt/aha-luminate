@@ -151,6 +151,20 @@ angular.module 'trPcControllers'
               response
           $scope.dashboardPromises.push updateTeamGoalPromise
       
+      $scope.companyInfo = {}
+      companyInfoPromise = NgPcTeamraiserCompanyService.getCompany()
+        .then (response) ->
+          if response.data.errorResponse
+            # TODO
+          else
+            companies = response.data.getCompaniesResponse?.company
+            if not companies
+              # TODO
+            else
+              companies = [companies] if not angular.isArray companies
+              $scope.companyInfo = companies[0]
+      $scope.dashboardPromises.push companyInfoPromise
+      
       # participantBadgesPromise = ParticipantBadgesService.getBadges()
         # .then (response) ->
           # prizes = response.data.prizes
