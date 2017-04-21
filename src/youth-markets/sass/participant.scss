@@ -601,7 +601,9 @@ main > .container {
   }
   
   &.ym-activity-box--next-step, 
-  &.ym-activity-box--challenge {
+  &.ym-activity-box--challenge, 
+  &.ym-activity-box--coordinator-pages, 
+  &.ym-activity-box--coordinator-reports {
     @media (min-width: $screen-sm-min) {
       margin: 0 20px 0 0;
     }
