@@ -34,7 +34,10 @@ main > .container {
   a {
     &, 
     &:link, 
-    &:visited {
+    &:visited, 
+    &:hover, 
+    &:focus, 
+    &:active {
       display: inline-block;
       background: $event-secondary;
       color: $brand-white;
@@ -71,6 +74,21 @@ main > .container {
     &.active {
       background: $brand-white;
       color: $event-secondary;
+    }
+  }
+}
+
+.ng-pc-nav--coordinator {
+  a {
+    &, 
+    &:link, 
+    &:visited, 
+    &:hover, 
+    &:focus, 
+    &:active {
+      @media (min-width: 560px) {
+        width: 16.66666667%;
+      }
     }
   }
 }
