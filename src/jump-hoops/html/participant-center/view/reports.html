@@ -7,6 +7,47 @@
             School Detail Report
           </h2>
         </div>
+        <div ng-if="schoolDetailStudents.students && schoolDetailStudents.students.length == 0" ng-cloak>
+          No students to display.
+        </div>
+        <div ng-if="schoolDetailStudents.students && schoolDetailStudents.students.length > 0" ng-cloak>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>
+                    <a>
+                      <strong>Name</strong>
+                    </a>
+                  </th>
+                  <th>
+                    <a>
+                      <strong>Amount</strong>
+                    </a>
+                  </th>
+                  <th>
+                    <a>
+                      <strong>Ecards</strong>
+                    </a>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="schoolDetailStudent in schoolDetailStudents.students">
+                  <td>
+                    <span ng-bind-html="schoolDetailStudent.firstName"></span> <span ng-bind-html="schoolDetailStudent.lastName"></span>
+                  </td>
+                  <td>
+                    {{schoolDetailStudent.amountFormatted}}
+                  </td>
+                  <td>
+                    {{schoolDetailStudent.ecardsSent}}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </uib-tab>
       <uib-tab index="1" heading="Donors">
         <div class="ym-pc-report-header">
