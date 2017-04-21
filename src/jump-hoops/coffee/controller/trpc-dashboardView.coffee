@@ -16,7 +16,7 @@ angular.module 'trPcControllers'
     ($rootScope, $scope, $filter, $uibModal, APP_INFO, ZuriService, ParticipantBadgesService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserCompanyService, NgPcContactService, NgPcTeamraiserShortcutURLService) ->
       $scope.dashboardPromises = []
       
-      if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
+      if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true' or $scope.location is '/dashboard-student'
         $scope.dashboardProgressType = 'personal'
       else
         $scope.dashboardProgressType = 'company'
@@ -214,6 +214,30 @@ angular.module 'trPcControllers'
         $scope.dashboardPromises.push getParticipantShortcutPromise
       $scope.getParticipantShortcut()
       
+      $scope.personalUrlInfo = {}
+      
+      $scope.editPersonalUrl = ->
+        delete $scope.personalUrlInfo.errorMessage
+        $scope.personalUrlInfo.updatedShortcut = $scope.participantShortcut.text or ''
+        $scope.editPersonalUrlModal = $uibModal.open
+          scope: $scope
+          templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/editParticipantUrl.html'
+      
+      $scope.cancelEditPersonalUrl = ->
+       $scope.editPersonalUrlModal.close()
+      
+      $scope.updatePersonalUrl = ->
+        delete $scope.personalUrlInfo.errorMessage
+        updatePersonalUrlPromise = NgPcTeamraiserShortcutURLService.updateShortcut 'text=' + encodeURIComponent($scope.personalUrlInfo.updatedShortcut)
+          .then (response) ->
+            if response.data.errorResponse
+              $scope.personalUrlInfo.errorMessage = response.data.errorResponse.message
+            else
+              $scope.editPersonalUrlModal.close()
+              $scope.getParticipantShortcut()
+            response
+        $scope.dashboardPromises.push updatePersonalUrlPromise
+      
       if $scope.participantRegistration.teamId and $scope.participantRegistration.teamId isnt '-1' and $scope.participantRegistration.aTeamCaptain is 'true'
         $scope.getTeamShortcut = ->
           getTeamShortcutPromise = NgPcTeamraiserShortcutURLService.getTeamShortcut()
@@ -235,6 +259,30 @@ angular.module 'trPcControllers'
               response
           $scope.dashboardPromises.push getTeamShortcutPromise
         $scope.getTeamShortcut()
+        
+        $scope.teamUrlInfo = {}
+        
+        $scope.editTeamUrl = ->
+          delete $scope.teamUrlInfo.errorMessage
+          $scope.teamUrlInfo.updatedShortcut = $scope.teamShortcut.text or ''
+          $scope.editTeamUrlModal = $uibModal.open
+            scope: $scope
+            templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/editTeamUrl.html'
+        
+        $scope.cancelEditTeamUrl = ->
+         $scope.editTeamUrlModal.close()
+        
+        $scope.updateTeamUrl = ->
+          delete $scope.teamUrlInfo.errorMessage
+          updateTeamUrlPromise = NgPcTeamraiserShortcutURLService.updateTeamShortcut 'text=' + encodeURIComponent($scope.teamUrlInfo.updatedShortcut)
+            .then (response) ->
+              if response.data.errorResponse
+                $scope.teamUrlInfo.errorMessage = response.data.errorResponse.message
+              else
+                $scope.editTeamUrlModal.close()
+                $scope.getTeamShortcut()
+              response
+          $scope.dashboardPromises.push updateTeamUrlPromise
       
       if $scope.participantRegistration.companyInformation and $scope.participantRegistration.companyInformation.companyId and $scope.participantRegistration.companyInformation.companyId isnt -1 and $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
         $scope.getCompanyShortcut = ->
@@ -257,6 +305,30 @@ angular.module 'trPcControllers'
               response
           $scope.dashboardPromises.push getCompanyShortcutPromise
         $scope.getCompanyShortcut()
+        
+        $scope.companyUrlInfo = {}
+        
+        $scope.editCompanyUrl = ->
+          delete $scope.companyUrlInfo.errorMessage
+          $scope.companyUrlInfo.updatedShortcut = $scope.companyShortcut.text or ''
+          $scope.editCompanyUrlModal = $uibModal.open
+            scope: $scope
+            templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/editCompanyUrl.html'
+        
+        $scope.cancelEditCompanyUrl = ->
+         $scope.editCompanyUrlModal.close()
+        
+        $scope.updateCompanyUrl = ->
+          delete $scope.companyUrlInfo.errorMessage
+          updateCompanyUrlPromise = NgPcTeamraiserShortcutURLService.updateCompanyShortcut 'text=' + encodeURIComponent($scope.companyUrlInfo.updatedShortcut)
+            .then (response) ->
+              if response.data.errorResponse
+                $scope.companyUrlInfo.errorMessage = response.data.errorResponse.message
+              else
+                $scope.editCompanyUrlModal.close()
+                $scope.getCompanyShortcut()
+              response
+          $scope.dashboardPromises.push updateCompanyUrlPromise
       
       $scope.personalChallenge = {}
       $scope.updatedPersonalChallenge = {}

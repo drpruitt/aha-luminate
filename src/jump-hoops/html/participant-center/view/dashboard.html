@@ -218,18 +218,23 @@
             </a>
           </div>
           <div class="row">
-            <div class="col-sm-6">
+            <div class="col-md-6 col-lg-7">
               <p class="small">
                 <strong>Personal Page URL:</strong>
               </p>
-              <div>
-                <span ng-bind-html="personalPageUrl"></span>
+              <div class="ym-activity-url">
+                <div>
+                  <span ng-bind-html="personalPageUrl"></span>
+                </div>
+                <a class="btn btn-md-wide btn-primary" ng-click="editPersonalUrl()">
+                  <strong>Edit</strong>
+                </a>
               </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-md-6 col-lg-5">
               <div class="text-right">
                 <p class="small">
-                  <strong>Share My Personal Page:</strong>
+                  <strong>Share My Page:</strong>
                 </p>
                 <a ng-href="{{baseUrl}}#" ng-click="delegatedAddThis('.js--personal-social-share', 'facebook')">
                   <img class="img-responsive" src="../aha-luminate/dist/youth-markets/image/facebook-logo.png" alt="Facebook">
@@ -485,15 +490,20 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-sm-6">
+              <div class="col-md-6 col-lg-7">
                 <p class="small">
                   <strong>School Page URL:</strong>
                 </p>
-                <div>
-                  <span ng-bind-html="companyPageUrl"></span>
+                <div class="ym-activity-url">
+                  <div>
+                    <span ng-bind-html="companyPageUrl"></span>
+                  </div>
+                  <a class="btn btn-md-wide btn-primary" ng-click="editCompanyUrl()">
+                    <strong>Edit</strong>
+                  </a>
                 </div>
               </div>
-              <div class="col-sm-6">
+              <div class="col-md-6 col-lg-5">
                 <div class="text-right">
                   <p class="small">
                     <strong>Share My School Page:</strong>
@@ -517,15 +527,20 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-sm-6">
+              <div class="col-md-6 col-lg-7">
                 <p class="small">
                   <strong>Team Page URL:</strong>
                 </p>
-                <div>
-                  <span ng-bind-html="teamPageUrl"></span>
+                <div class="ym-activity-url">
+                  <div>
+                    <span ng-bind-html="teamPageUrl"></span>
+                  </div>
+                  <a class="btn btn-md-wide btn-primary" ng-click="editTeamUrl()">
+                    <strong>Edit</strong>
+                  </a>
                 </div>
               </div>
-              <div class="col-sm-6">
+              <div class="col-md-6 col-lg-5">
                 <div class="text-right">
                   <p class="small">
                     <strong>Share My Team Page:</strong>
@@ -549,18 +564,23 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-sm-6">
+              <div class="col-md-6 col-lg-7">
                 <p class="small">
                   <strong>Personal Page URL:</strong>
                 </p>
-                <div>
-                  <span ng-bind-html="personalPageUrl"></span>
+                <div class="ym-activity-url">
+                  <div>
+                    <span ng-bind-html="personalPageUrl"></span>
+                  </div>
+                  <a class="btn btn-md-wide btn-primary" ng-click="editPersonalUrl()">
+                    <strong>Edit</strong>
+                  </a>
                 </div>
               </div>
-              <div class="col-sm-6">
+              <div class="col-md-6 col-lg-5">
                 <div class="text-right">
                   <p class="small">
-                    <strong>Share My Personal Page:</strong>
+                    <strong>Share My Page:</strong>
                   </p>
                   <a ng-href="{{baseUrl}}#" ng-click="delegatedAddThis('.js--personal-social-share', 'facebook')">
                     <img class="img-responsive" src="../aha-luminate/dist/youth-markets/image/facebook-logo.png" alt="Facebook">
@@ -612,7 +632,7 @@
           <p>
             Check out the reports page to see which students have completed challenges and who has earned donations.
           </p>
-          <div class="text-center">
+          <div class="ym-activity-box-cta">
             <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/reports">
               <strong>View Reports</strong>
             </a>
@@ -625,7 +645,7 @@
           <p>
             Visit our Thank-You Gift portal to manage and order gifts for your students.
           </p>
-          <div class="text-center">
+          <div class="ym-activity-box-cta">
             <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#" target="_blank">
               <strong>Thank You Gifts</strong>
             </a>
