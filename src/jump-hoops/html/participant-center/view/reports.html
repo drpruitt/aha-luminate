@@ -128,8 +128,8 @@
                       <span ng-bind-html="participantGift.name.first"></span> <span ng-bind-html="participantGift.name.last"></span>
                     </div>
                     <div ng-if="participantGift.acknowledged != 'true'">
-                      <a class="btn btn-primary">
-                        Thank
+                      <a class="btn btn-primary" ng-href="{{baseUrl}}#/email">
+                        <i class="fa fa-envelope" aria-hidden="true"></i> Thank
                       </a>
                     </div>
                   </td>
