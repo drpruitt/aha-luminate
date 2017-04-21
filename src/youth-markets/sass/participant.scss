@@ -862,10 +862,10 @@ main > .container {
   }
 }
 
-.ym-pc-reports-lists > .table {
-  thead {
-    tr {
-      th {
+.ym-pc-reports-lists .table {
+  > thead {
+    > tr {
+      > th {
         a {
           &, 
           &:link, 
