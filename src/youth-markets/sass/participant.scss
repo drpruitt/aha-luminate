@@ -344,10 +344,13 @@ main > .container {
     }
   }
   
+  .ym-progress-related {
+    position: relative;
+  }
+  
   .ym-progress-donate {
     @media (min-width: $screen-sm-min) {
       float: left;
-      position: relative;
     }
     
     .btn-lg {
@@ -913,10 +916,13 @@ main > .container {
     }
   }
   
+  .ym-progress-related {
+    position: relative;
+  }
+  
   .ym-progress-donate {
     @media (min-width: $screen-sm-min) {
       float: left;
-      position: relative;
     }
     
     .btn-lg {
@@ -1141,7 +1147,13 @@ main > .container {
             text-decoration: none;
           }
         }
-        
+      }
+    }
+  }
+  
+  > tbody {
+    > tr {
+      > td {
         .btn, 
         a.btn {
           &, 
