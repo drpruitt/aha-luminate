@@ -658,6 +658,10 @@ main > .container {
       margin: 20px 0 30px;
     }
     
+    .ym-activity-url {
+      word-break: break-all;
+    }
+    
     .text-right {
       @media (max-width: $screen-sm-max) {
         text-align: left;
@@ -1064,6 +1068,10 @@ main > .container {
 }
 
 .ym-activity-box--coordinator-pages {
+  .ym-activity-url {
+    word-break: break-all;
+  }
+  
   .text-right {
     @media (max-width: $screen-sm-max) {
       text-align: left;
