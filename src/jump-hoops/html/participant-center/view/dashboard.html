@@ -109,7 +109,7 @@
             </div>
             <div class="text-center">
               <p>
-                Send 10 eCards to Earn your Rory badge!
+                Send 10 eCards to earn your Rory badge!
               </p>
               <div>
                 <a ng-href="http://hearttools.heart.org/aha_ym18?eid={{frId}}&amp;sid={{consId}}&amp;name={{consName}}" target="_blank">
@@ -156,6 +156,16 @@
           <h3 class="h5">
             My Donors
           </h3>
+          <div class="ym-next-step" ng-if="donorContactCounts.email_rpt_show_donors == 0" ng-cloak>
+            <div class="ym-next-step__step">
+              You have not received any donations yet. Use the email tool to ask for support. 
+            </div>
+            <div class="ym-next-step__action">
+              <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email">
+                <strong>Email</strong> <i class="fa fa-envelope" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
           <div class="ym-next-step" ng-if="donorContactCounts.email_rpt_show_unthanked_donors > 0" ng-cloak>
             <div class="ym-next-step__step">
               You have new donors who haven't received a thank-you email!
@@ -183,16 +193,6 @@
             <div class="ym-next-step__action">
               <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/reports">
                 <strong>View All</strong> <i class="fa fa-eye" aria-hidden="true"></i>
-              </a>
-            </div>
-          </div>
-          <div class="ym-next-step" ng-if="donorContactCounts.email_rpt_show_donors == 0" ng-cloak>
-            <div class="ym-next-step__step">
-              You have not received any donations yet. Use the email tool to ask for support. 
-            </div>
-            <div class="ym-next-step__action">
-              <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email">
-                <strong>Email</strong> <i class="fa fa-envelope" aria-hidden="true"></i>
               </a>
             </div>
           </div>
