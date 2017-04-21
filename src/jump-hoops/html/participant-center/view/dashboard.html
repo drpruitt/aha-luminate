@@ -403,18 +403,22 @@
                 My Students
               </h3>
             </div>
-            <p>
-              You have <strong></strong> students registered. Keep recruiting to meet your goal of <strong></strong> students!
-            </p>
-            <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email">
-              <strong>Send Emails</strong>
-            </a>
-            <p>
-              Create/Update an <strong>encouraging message</strong> for your student in their Headquarters.
-            </p>
-            <a class="btn btn-md-wide btn-primary">
-              <strong>Create Message</strong>
-            </a>
+            <div>
+              <p>
+                You have <strong></strong> students registered. Keep recruiting to meet your goal of <strong></strong> students!
+              </p>
+              <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email">
+                <strong>Send Emails</strong>
+              </a>
+            </div>
+            <div class="ym-pc-dashboard-coordinator-create-message">
+              <p>
+                Create/Update an <strong>encouraging message</strong> for your student in their Headquarters.
+              </p>
+              <a class="btn btn-md-wide btn-primary">
+                <strong>Create Message</strong>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -453,10 +457,12 @@
             </div>
           </div>
           <div ng-class="{'hidden': dashboardPageType != 'company'}" ng-cloak>
-            <div class="text-center">
-              <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=company&amp;company_id={{participantRegistration.companyInformation.companyId}}">
-                <strong>View and Edit School Page</strong>
-              </a>
+            <div class="ym-pc-dashboard-coordinator-page-view">
+              <div class="text-center">
+                <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=company&amp;company_id={{participantRegistration.companyInformation.companyId}}">
+                  <strong>View and Edit School Page</strong>
+                </a>
+              </div>
             </div>
             <div class="row">
               <div class="col-sm-6">
@@ -483,10 +489,12 @@
             </div>
           </div>
           <div ng-class="{'hidden': dashboardPageType != 'team'}" ng-cloak>
-            <div class="text-center">
-              <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=team&amp;team_id={{participantRegistration.teamId}}">
-                <strong>View and Edit Team Page</strong>
-              </a>
+            <div class="ym-pc-dashboard-coordinator-page-view">
+              <div class="text-center">
+                <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=team&amp;team_id={{participantRegistration.teamId}}">
+                  <strong>View and Edit Team Page</strong>
+                </a>
+              </div>
             </div>
             <div class="row">
               <div class="col-sm-6">
@@ -513,10 +521,12 @@
             </div>
           </div>
           <div ng-class="{'hidden': dashboardPageType != 'personal'}" ng-cloak>
-            <div class="text-center">
-              <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=personal&amp;px={{consId}}">
-                <strong>View and Edit Your Page</strong>
-              </a>
+            <div class="ym-pc-dashboard-coordinator-page-view">
+              <div class="text-center">
+                <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=personal&amp;px={{consId}}">
+                  <strong>View and Edit Your Page</strong>
+                </a>
+              </div>
             </div>
             <div class="row">
               <div class="col-sm-6">
