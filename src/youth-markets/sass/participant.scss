@@ -263,7 +263,7 @@ main > .container {
       margin: 0;
       
       label {
-        padding-left: 28px;
+        padding-left: 25px;
         
         a {
           &, 
@@ -682,7 +682,7 @@ main > .container {
       margin: 0;
       
       label {
-        padding-left: 28px;
+        padding-left: 25px;
       }
     }
   }
@@ -1074,8 +1074,11 @@ main > .container {
 }
 
 .ym-pc-report-header-buttons {
-  @media (min-width: $screen-sm-min) {
+  margin: 16px 0 0;
+  
+  @media (min-width: $screen-md-min) {
     text-align: right;
+    margin: 0;
   }
   
   a {
@@ -1085,7 +1088,13 @@ main > .container {
     &:hover, 
     &:focus, 
     &:active {
-      margin: 0 0 0 10px;
+      display: block;
+      margin: 0 0 12px;
+      
+      @media (min-width: 375px) {
+        display: inline-block;
+        margin: 0 0 0 10px;
+      }
     }
   }
 }
