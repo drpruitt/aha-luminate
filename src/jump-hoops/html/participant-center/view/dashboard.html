@@ -78,6 +78,9 @@
                 <div class="ym-progress__thermometer--fill" ng-style="{'width': teamProgress.percent + '%'}"></div>
               </div>
               <div class="clearfix">
+                <a class="btn btn-lg btn-primary" ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=22&amp;PROXY_ID={{participantRegistration.teamId}}">
+                  <strong>Donate to Team Page</strong>
+                </a>
                 <div class="pull-right">
                   <p>
                     <strong><span ng-bind-html="teamProgress.raisedFormatted"></span></strong> raised
@@ -108,6 +111,9 @@
               <p>
                 Send 10 eCards to Earn your Rory badge!
               </p>
+              <div>
+                <img class="img-responsive" src="//placeholdit.imgix.net/~text?txt=placeholder&amp;txtsize=36&amp;&bg=ffff00&amp;txtclr=000000&amp;w=195&amp;h=115&amp;txttrack=0" alt="">
+              </div>
               <p>
                 <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email">
                   <strong>Send Email</strong>
@@ -121,20 +127,21 @@
         </div>
       </div>
     </section>
-    <section class="ym-pc-dashboard-badges-section" ng-if="participantBadges && participantBadges.length > 0" ng-cloak>
+    <!-- <section class="ym-pc-dashboard-badges-section" ng-if="participantBadges && participantBadges.length > 0" ng-cloak> -->
+    <section class="ym-pc-dashboard-badges-section">
       <div class="ym-pc-dashboard-section-header">
         <h2 class="h5">
           Badges
         </h2>
       </div>
-      <div class="ym-pc-dashboard-badges-icons">
+      <!-- <div class="ym-pc-dashboard-badges-icons">
         <div class="ym-pc-dashboard-badges-icon" ng-repeat="participantBadge in participantBadges">
           <div>
             <img src="" alt="{{participantBadge.label}}">
           </div>
           <div ng-bind-html="participantBadge.label"></div>
         </div>
-      </div>
+      </div> -->
     </section>
     <section class="ym-pc-dashboard-activities-section">
       <div class="ym-pc-dashboard-section-header">
@@ -223,27 +230,27 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-6 ym-activity-box ym-activity-box--challenge" ng-model="personalChallenge">
+        <div class="col-sm-6 ym-activity-box ym-activity-box--challenge">
           <h3 class="h5">
             Daily Heart-Healthy Challenge
           </h3>
-          <div class="ym_my_challenge__current" ng-if="personalChallenge.id">
+          <div class="ym_my_challenge__current" ng-if="personalChallenge.id" ng-cloak>
             <div class="row">
               <div class="col-sm-8">
                 <p class="ym_my_challenge__description">
                   <strong><span ng-bind-html="personalChallenge.name"></span></strong>
                 </p>
-                <p class="ym_my_challenge__stats" ng-if="personalChallenge.completed == 1">
+                <p class="ym_my_challenge__stats" ng-if="personalChallenge.completed == 1" ng-cloak>
                   I've met my challenge <span>1</span> day!
                 </p>
-                <p class="ym_my_challenge__stats" ng-if="personalChallenge.completed != 1">
+                <p class="ym_my_challenge__stats" ng-if="personalChallenge.completed != 1" ng-cloak>
                   I've met my challenge <span><span ng-bind-html="personalChallenge.completed"></span></span> days!
                 </p>
               </div>
               <div class="col-sm-4">
-                <img class="img-responsive" src="../aha-luminate/dist/jump-hoops/image/my-challenge-exercise.png" alt="{{personalChallenge.name}}" ng-if="personalChallenge.id == 1 || personalChallenge.id == 4">
-                <img class="img-responsive" src="../aha-luminate/dist/jump-hoops/image/my-challenge-water.png" alt="{{personalChallenge.name}}" ng-if="personalChallenge.id == 2">
-                <img class="img-responsive" src="../aha-luminate/dist/jump-hoops/image/my-challenge-food.png" alt="{{personalChallenge.name}}" ng-if="personalChallenge.id == 3">
+                <img class="img-responsive" src="../aha-luminate/dist/jump-hoops/image/my-challenge-exercise.png" alt="{{personalChallenge.name}}" ng-if="personalChallenge.id == '1'" ng-cloak>
+                <img class="img-responsive" src="../aha-luminate/dist/jump-hoops/image/my-challenge-water.png" alt="{{personalChallenge.name}}" ng-if="personalChallenge.id == '2'" ng-cloak>
+                <img class="img-responsive" src="../aha-luminate/dist/jump-hoops/image/my-challenge-food.png" alt="{{personalChallenge.name}}" ng-if="personalChallenge.id == '3'" ng-cloak>
               </div>
             </div>
             <div class="ym_my_challenge__actions text-center">
@@ -258,8 +265,9 @@
           <div class="ym_my_challenge__update">
             <form method="post" novalidate ng-submit="updateChallenge()">
               <label for="ym-update-challenge">Take or update my challenge</label>
-              <select class="form-control" name="ym-update-challenge" ng-model="personalChallenge.id">
-                <option ng-repeat="challenge in challenges" ng-value="{{challenge.id}}">{{challenge.name}}</option>
+              <select class="form-control" name="ym-update-challenge" ng-model="updatedPersonalChallenge.id">
+                <option></option>
+                <option ng-repeat="challenge in challenges" value="{{challenge.id}}">{{challenge.name}}</option>
               </select>
               <button type="submit" class="btn btn-md-wide btn-primary"><strong>Update Challenge</strong></button>
             </form>
@@ -269,6 +277,11 @@
           <h3 class="h5">
             My Virtual World
           </h3>
+          <div>
+            <a ng-href="http://hearttools.heart.org/aha_ym18/expedition/?eid={{frId}}&sid={{consId}}&name={{consName}}" target="_blank">
+              <img class="img-responsive" src="//placeholdit.imgix.net/~text?txt=placeholder&amp;txtsize=36&amp;&bg=ffff00&amp;txtclr=000000&amp;w=415&amp;h=175&amp;txttrack=0" alt="View virtual world">
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -324,7 +337,7 @@
                       <strong><span ng-bind-html="companyProgress.goalFormatted"></span></strong> goal
                     </p>
                   </div>
-                  <a ng-href="NTM?tr.ntmgmt=company_cservice_main&amp;company_id={{participantRegistration.companyInformation.companyId}}" target="_blank">
+                  <a ng-href="NTM?tr.ntmgmt=company_cservice_main&amp;company_id={{participantRegistration.companyInformation.companyId}}">
                     <strong>Update School Goal</strong>
                   </a>
                 </div>
@@ -335,6 +348,9 @@
                 <div class="ym-progress__thermometer--fill" ng-style="{'width': teamProgress.percent + '%'}"></div>
               </div>
               <div class="clearfix">
+                <a class="btn btn-lg btn-primary" ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=22&amp;PROXY_ID={{participantRegistration.teamId}}">
+                  <strong>Donate to Team Page</strong>
+                </a>
                 <div class="pull-right">
                   <p>
                     <strong><span ng-bind-html="teamProgress.raisedFormatted"></span></strong> raised
@@ -409,7 +425,7 @@
       <div class="row">
         <div class="col-sm-6 ym-activity-box ym-activity-box--coordinator-pages">
           <h3 class="h5">
-            Edit My Pages
+            <span class="ym-activity-box-number">1</span> Edit My Pages
           </h3>
           <p>
             Edit your pages to encourage students and parents to join and donate!
@@ -497,7 +513,7 @@
         </div>
         <div class="col-sm-6 ym-activity-box ym-activity-box--coordinator-student-view">
           <h3 class="h5">
-            Show your Students
+            <span class="ym-activity-box-number">2</span> Show your Students
           </h3>
           <p>
             Use the "Student View" to show your students all of the great tools and games in their Headquarters and encourage them to fundraise!
@@ -510,7 +526,7 @@
       <div class="row">
         <div class="col-sm-6 ym-activity-box ym-activity-box--coordinator-reports">
           <h3 class="h5">
-            Check Progress
+            <span class="ym-activity-box-number">3</span> Check Progress
           </h3>
           <p>
             Check out the reports page to see which students have completed challenges and who has earned donations.
@@ -523,13 +539,13 @@
         </div>
         <div class="col-sm-6 ym-activity-box ym-activity-box--coordinator-prizes">
           <h3 class="h5">
-            Order Thank-You Gifts
+            <span class="ym-activity-box-number">4</span> Order Thank-You Gifts
           </h3>
           <p>
             Visit our Thank-You Gift portal to manage and order gifts for your students.
           </p>
           <div class="text-center">
-            <a class="btn btn-primary" ng-href="{{baseUrl}}#">
+            <a class="btn btn-primary" ng-href="{{baseUrl}}#" target="_blank">
               <strong>Thank You Gifts</strong>
             </a>
           </div>
@@ -586,7 +602,7 @@
         </div>
       </div>
       <div class="ym-pc-dashboard-coordinator-resources-more">
-        <a>
+        <a ng-href="{{baseUrl}}#/teacher-resources">
           <strong>View All Resources</strong>
         </a>
       </div>

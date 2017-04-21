@@ -22,43 +22,65 @@ main > .container {
 }
 
 .ng-pc-nav {
-  background: $event-accent;
-  
-  @media (max-width: $screen-xs-max) {
-    background: transparent;
+  @media (max-width: 559px) {
     text-align: center;
-    margin-bottom: 7px;
+    max-width: 320px;
+    margin: 0 auto 7px;
   }
   
   a {
     &, 
     &:link, 
-    &:visited {
-      display: inline-block;
-      background: $event-secondary;
-      color: $brand-white;
+    &:visited, 
+    &:hover, 
+    &:focus, 
+    &:active {
+      float: left;
       font-size: 14px;
-      font-weight: 700;
-      line-height: 40px;
+      line-height: 16px;
       text-align: center;
       text-decoration: none;
       width: 100px;
       height: 40px;
-      margin: 0 5px 5px 0;
+      padding: 12px 6px 0;
+      margin: 0 3px 5px;
       
       @media (max-width: 350px) {
         max-width: 85px;
       }
       
-      @media (min-width: $screen-sm-min) {
-        background: $event-secondary-medium;
+      @media (min-width: 560px) {
         border-right: 2px solid $event-accent;
-        color: $event-secondary;
         font-size: 18px;
-        line-height: 50px;
+        line-height: 22px;
         width: 20%;
         height: 50px;
+        padding: 14px 12px 0;
         margin: 0;
+      }
+    }
+    
+    &, 
+    &:link, 
+    &:visited {
+      background: $event-secondary;
+      color: $brand-white;
+      
+      @media (min-width: 560px) {
+        background: $event-secondary-medium;
+        color: $event-secondary;
+      }
+    }
+    
+    &:hover, 
+    &:focus, 
+    &:active {
+      background: $event-secondary;
+      color: $brand-white;
+      
+      @media (min-width: 560px) {
+        background: $event-secondary;
+        color: $brand-white;
       }
     }
     
@@ -70,6 +92,120 @@ main > .container {
     &.active {
       background: $brand-white;
       color: $event-secondary;
+    }
+    
+    > span {
+      display: inline-block;
+      margin: 0 auto;
+    }
+  }
+}
+
+.ng-pc-nav--coordinator {
+  @media (max-width: 669px) {
+    text-align: center;
+    max-width: 320px;
+    margin: 0 auto 7px;
+  }
+  
+  a {
+    &, 
+    &:link, 
+    &:visited, 
+    &:hover, 
+    &:focus, 
+    &:active {
+      @media (max-width: 669px) {
+        border-right: 0;
+        font-size: 14px;
+        line-height: 16px;
+        width: 100px;
+        height: 40px;
+        padding: 12px 6px 0;
+        margin: 0 3px 5px;
+      }
+      
+      @media (min-width: 670px) {
+        font-size: 17px;
+        width: 16.66666667%;
+      }
+      
+      @media (min-width: 690px) {
+        font-size: 18px;
+      }
+      
+      &.ng-pc-nav-item--resources {
+        padding: 3px 6px 0;
+        
+        @media (min-width: 670px) {
+          padding: 3px 12px 0;
+        }
+        
+        @media (min-width: 1170px) {
+          padding: 14px 12px 0;
+        }
+        
+        > span {
+          max-width: 80px;
+          
+          @media (min-width: 670px) {
+            max-width: 100px;
+          }
+          
+          @media (min-width: 1170px) {
+            max-width: none;
+          }
+        }
+      }
+      
+      &.ng-pc-nav-item--student-view {
+        padding: 3px 6px 0;
+        
+        @media (min-width: 670px) {
+          padding: 3px 12px 0;
+        }
+        
+        @media (min-width: 890px) {
+          padding: 14px 12px 0;
+        }
+        
+        > span {
+          max-width: 65px;
+          
+          @media (min-width: 670px) {
+            max-width: 80px;
+          }
+          
+          @media (min-width: 890px) {
+            max-width: none;
+          }
+        }
+      }
+    }
+    
+    &, 
+    &:link, 
+    &:visited {
+      @media (max-width: 669px) {
+        background: $event-secondary;
+        color: $brand-white;
+      }
+    }
+    
+    &:hover, 
+    &:focus, 
+    &:active {
+      @media (max-width: 669px) {
+        background: $event-secondary;
+        color: $brand-white;
+      }
+    }
+    
+    &.active {
+      @media (max-width: 669px) {
+        background: $brand-white;
+        color: $event-secondary;
+      }
     }
   }
 }
@@ -439,9 +575,24 @@ main > .container {
     }
   }
   
+  h5, 
   .h5 {
     color: $event-secondary;
     margin: 0 0 20px;
+    
+    .ym-activity-box-number {
+      display: inline-block;
+      background: $event-secondary;
+      border-radius: 100%;
+      color: $brand-white;
+      font-size: 28px;
+      line-height: 20px;
+      text-align: center;
+      width: 42px;
+      height: 42px;
+      padding: 8px;
+      margin-right: 3px;
+    }
   }
   
   .row {
@@ -775,6 +926,20 @@ main > .container {
   }
 }
 
+.ym-activity-box--coordinator-pages {
+  .text-right {
+    @media (max-width: $screen-xs-max) {
+      text-align: left;
+      margin-top: 15px;
+    }
+    
+    a {
+      display: inline-block;
+      margin-left: 5px;
+    }
+  }
+}
+
 .ym-pc-dashboard-coordinator-page-types {
   margin: 0 0 32px;
 }
@@ -852,6 +1017,12 @@ main > .container {
   }
 }
 
+.ym-pc-reports--no-tabs {
+  .nav-tabs {
+    display: none;
+  }
+}
+
 .ym-pc-report-header {
   text-align: center;
   margin: 0 0 28px;
@@ -860,6 +1031,10 @@ main > .container {
   .h5 {
     margin: 0;
   }
+}
+
+.ym-pc-report-no-results {
+  text-align: center;
 }
 
 .ym-pc-reports-lists .table {
