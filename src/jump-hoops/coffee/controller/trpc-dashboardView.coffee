@@ -182,7 +182,7 @@ angular.module 'trPcControllers'
       getStudentChallenge()
       
       $scope.challenges = []
-      ZuriService.getChallenges $scope.frId + '/' + $scope.consId, 
+      ZuriService.getChallenges $scope.frId + '/' + $scope.consId,
         failure: (response) ->
           # TODO
         error: (response) ->
@@ -204,4 +204,4 @@ angular.module 'trPcControllers'
       
       $scope.skipChallenge = ->
         # TODO
-  ] 
+  ]
