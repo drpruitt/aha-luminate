@@ -1,6 +1,6 @@
 <div cg-busy="reportPromises">
-  <div class="ym-pc-reports-lists">
-    <uib-tabset active="0">
+  <div class="ym-pc-reports-lists" ng-class="{'ym-pc-reports--no-tabs': participantRegistration.companyInformation.isCompanyCoordinator != 'true'}">
+    <uib-tabset active="activeReportTab">
       <uib-tab index="0" heading="School Detail" ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
         <div class="ym-pc-report-header">
           <h2 class="h5">
