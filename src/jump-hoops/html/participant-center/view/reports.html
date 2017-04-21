@@ -128,12 +128,14 @@
               </h2>
             </div>
             <div class="col-sm-3">
-              <a class="btn btn-secondary" ng-href="{{baseUrl}}#" target="_blank">
-                <strong>Download</strong>
-              </a>
-              <a class="btn btn-secondary" ng-href="{{baseUrl}}#">
-                <strong>Thank All</strong>
-              </a>
+              <div ng-if="participantGifts.gifts && participantGifts.gifts.length == 0" ng-cloak>
+                <a class="btn btn-md-wide btn-secondary" ng-href="TRParticipantDownload/Personal_Donations.csv?download_type=personal_donations&amp;fr_id={{frId}}" target="_blank">
+                  <i class="fa fa-download" aria-hidden="true"></i> <strong>Download</strong>
+                </a> 
+                <a class="btn btn-md-wide btn-secondary" ng-href="{{baseUrl}}#/email">
+                  <i class="fa fa-envelope" aria-hidden="true"></i> <strong>Thank All</strong>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -178,9 +180,7 @@
                         (no name)
                       </div>
                       <div ng-if="participantGift.name.first && participantGift.name.first != ''">
-                        <div class="text-center">
-                          <span ng-bind-html="participantGift.name.first"></span> <span ng-bind-html="participantGift.name.last"></span>
-                        </div>
+                        <span ng-bind-html="participantGift.name.first"></span> <span ng-bind-html="participantGift.name.last"></span>
                       </div>
                       <div ng-if="participantGift.acknowledged != 'true'">
                         <a class="btn btn-primary" ng-href="{{baseUrl}}#/email">
@@ -190,7 +190,9 @@
                     </div>
                   </td>
                   <td>
-                    {{participantGift.giftAmountFormatted}}
+                    <div class="text-center">
+                      {{participantGift.giftAmountFormatted}}
+                    </div>
                   </td>
                   <td>
                     <div class="text-right">
