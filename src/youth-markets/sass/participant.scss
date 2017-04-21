@@ -984,6 +984,17 @@ main > .container {
   }
 }
 
+.ym-pc-student-view-text {
+  float: left;
+  width: 65%;
+  margin: 0 3% 0 0;
+}
+
+.ym-pc-student-view-image {
+  float: right;
+  width: 32%;
+}
+
 .ym-pc-dashboard-coordinator-resources-section {
   background-color: $event-accent-light;
   padding: 36px;
