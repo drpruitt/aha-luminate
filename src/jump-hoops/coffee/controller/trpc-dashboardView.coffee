@@ -26,53 +26,68 @@ angular.module 'trPcControllers'
       $scope.refreshFundraisingProgress = ->
         fundraisingProgressPromise = NgPcTeamraiserProgressService.getProgress()
           .then (response) ->
-            participantProgress = response.data.getParticipantProgressResponse?.personalProgress
-            if participantProgress
-              participantProgress.raised = Number participantProgress.raised
-              participantProgress.raisedFormatted = if participantProgress.raised then $filter('currency')(participantProgress.raised / 100, '$', 0) else '$0'
-              participantProgress.goal = Number participantProgress.goal
-              participantProgress.goalFormatted = if participantProgress.goal then $filter('currency')(participantProgress.goal / 100, '$', 0) else '$0'
-              participantProgress.percent = 0
-              if participantProgress.goal isnt 0
-                participantProgress.percent = Math.ceil((participantProgress.raised / participantProgress.goal) * 100)
-              if participantProgress.percent > 100
-                participantProgress.percent = 100
-              $scope.participantProgress = participantProgress
+            if response.data.errorResponse
+              # TODO
+            else
+              participantProgress = response.data.getParticipantProgressResponse.personalProgress
+              if not participantProgress
+                # TODO
+              else
+                participantProgress.raised = Number participantProgress.raised
+                participantProgress.raisedFormatted = if participantProgress.raised then $filter('currency')(participantProgress.raised / 100, '$', 0) else '$0'
+                participantProgress.goal = Number participantProgress.goal
+                participantProgress.goalFormatted = if participantProgress.goal then $filter('currency')(participantProgress.goal / 100, '$', 0) else '$0'
+                participantProgress.percent = 0
+                if participantProgress.goal isnt 0
+                  participantProgress.percent = Math.ceil((participantProgress.raised / participantProgress.goal) * 100)
+                if participantProgress.percent > 100
+                  participantProgress.percent = 100
+                $scope.participantProgress = participantProgress
             if $scope.participantRegistration.teamId and $scope.participantRegistration.teamId isnt '-1'
-              teamProgress = response.data.getParticipantProgressResponse?.teamProgress
-              if teamProgress
-                teamProgress.raised = Number teamProgress.raised
-                teamProgress.raisedFormatted = if teamProgress.raised then $filter('currency')(teamProgress.raised / 100, '$', 0) else '$0'
-                teamProgress.goal = Number teamProgress.goal
-                teamProgress.goalFormatted = if teamProgress.goal then $filter('currency')(teamProgress.goal / 100, '$', 0) else '$0'
-                teamProgress.percent = 0
-                if teamProgress.goal isnt 0
-                  teamProgress.percent = Math.ceil((teamProgress.raised / teamProgress.goal) * 100)
-                if teamProgress.percent > 100
-                  teamProgress.percent = 100
-                $scope.teamProgress = teamProgress
+              if response.data.errorResponse
+                # TODO
+              else
+                teamProgress = response.data.getParticipantProgressResponse.teamProgress
+                if not teamProgress
+                  # TODO
+                else
+                  teamProgress.raised = Number teamProgress.raised
+                  teamProgress.raisedFormatted = if teamProgress.raised then $filter('currency')(teamProgress.raised / 100, '$', 0) else '$0'
+                  teamProgress.goal = Number teamProgress.goal
+                  teamProgress.goalFormatted = if teamProgress.goal then $filter('currency')(teamProgress.goal / 100, '$', 0) else '$0'
+                  teamProgress.percent = 0
+                  if teamProgress.goal isnt 0
+                    teamProgress.percent = Math.ceil((teamProgress.raised / teamProgress.goal) * 100)
+                  if teamProgress.percent > 100
+                    teamProgress.percent = 100
+                  $scope.teamProgress = teamProgress
             if $scope.participantRegistration.companyInformation and $scope.participantRegistration.companyInformation.companyId and $scope.participantRegistration.companyInformation.companyId isnt -1
-              companyProgress = response.data.getParticipantProgressResponse?.companyProgress
-              if companyProgress
-                companyProgress.raised = Number companyProgress.raised
-                companyProgress.raisedFormatted = if companyProgress.raised then $filter('currency')(companyProgress.raised / 100, '$', 0) else '$0'
-                companyProgress.goal = Number companyProgress.goal
-                companyProgress.goalFormatted = if companyProgress.goal then $filter('currency')(companyProgress.goal / 100, '$', 0) else '$0'
-                companyProgress.percent = 0
-                if companyProgress.goal isnt 0
-                  companyProgress.percent = Math.ceil((companyProgress.raised / companyProgress.goal) * 100)
-                if companyProgress.percent > 100
-                  companyProgress.percent = 100
-                $scope.companyProgress = companyProgress
+              if response.data.errorResponse
+                # TODO
+              else
+                companyProgress = response.data.getParticipantProgressResponse.companyProgress
+                if not companyProgress
+                  # TODO
+                else
+                  companyProgress.raised = Number companyProgress.raised
+                  companyProgress.raisedFormatted = if companyProgress.raised then $filter('currency')(companyProgress.raised / 100, '$', 0) else '$0'
+                  companyProgress.goal = Number companyProgress.goal
+                  companyProgress.goalFormatted = if companyProgress.goal then $filter('currency')(companyProgress.goal / 100, '$', 0) else '$0'
+                  companyProgress.percent = 0
+                  if companyProgress.goal isnt 0
+                    companyProgress.percent = Math.ceil((companyProgress.raised / companyProgress.goal) * 100)
+                  if companyProgress.percent > 100
+                    companyProgress.percent = 100
+                  $scope.companyProgress = companyProgress
             response
         $scope.dashboardPromises.push fundraisingProgressPromise
       $scope.refreshFundraisingProgress()
-
+      
       $scope.personalGoalInfo = {}
       
       $scope.editPersonalGoal = ->
         delete $scope.personalGoalInfo.errorMessage
-        personalGoal = $scope.participantProgress.goalFormatted.replace('$', '')
+        personalGoal = $scope.participantProgress.goalFormatted.replace '$', ''
         if personalGoal is '' or personalGoal is '0'
           $scope.personalGoalInfo.goal = ''
         else
@@ -106,7 +121,7 @@ angular.module 'trPcControllers'
       
       $scope.editTeamGoal = ->
         delete $scope.teamGoalInfo.errorMessage
-        teamGoal = $scope.teamProgress.goalFormatted.replace('$', '')
+        teamGoal = $scope.teamProgress.goalFormatted.replace '$', ''
         if teamGoal is '' or teamGoal is '0'
           $scope.teamGoalInfo.goal = ''
         else
