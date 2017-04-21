@@ -212,6 +212,9 @@
               <p class="small">
                 <strong>Personal Page URL:</strong>
               </p>
+              <div>
+                <span ng-bind-html="personalPageUrl"></span>
+              </div>
             </div>
             <div class="col-sm-6">
               <div class="text-right">
@@ -514,6 +517,9 @@
                 <p class="small">
                   <strong>Personal Page URL:</strong>
                 </p>
+                <div>
+                  <span ng-bind-html="personalPageUrl"></span>
+                </div>
               </div>
               <div class="col-sm-6">
                 <div class="text-right">
@@ -540,9 +546,11 @@
               <p>
                 Use the "Student View" to show your students all of the great tools and games in their Headquarters and encourage them to fundraise!
               </p>
-              <a class="btn btn-md-wide btn-primary hidden-xs" ng-href="{{baseUrl}}#/dashboard-student">
-                <strong>Student View</strong>
-              </a>
+              <div class="hidden-xs">
+                <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/dashboard-student">
+                  <strong>Student View</strong>
+                </a>
+              </div>
             </div>
             <div class="ym-pc-student-view-image">
               <div class="visible-xs">
@@ -553,9 +561,11 @@
               </div>
             </div>
           </div>
-          <a class="btn btn-md-wide btn-primary visible-xs" ng-href="{{baseUrl}}#/dashboard-student">
-            <strong>Student View</strong>
-          </a>
+          <div class="visible-xs">
+            <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/dashboard-student">
+              <strong>Student View</strong>
+            </a>
+          </div>
         </div>
       </div>
       <div class="row">
