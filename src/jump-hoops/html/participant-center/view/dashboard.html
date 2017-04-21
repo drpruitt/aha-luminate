@@ -37,10 +37,12 @@
               <div class="ym-progress__thermometer">
                 <div class="ym-progress__thermometer--fill" ng-style="{'width': participantProgress.percent + '%'}"></div>
               </div>
-              <div class="clearfix">
-                <a class="btn btn-lg btn-primary" ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{consId}}">
-                  <strong>Donate to Personal Page</strong>
-                </a>
+              <div class="ym-progress-related clearfix">
+                <div class="ym-progress-donate">
+                  <a class="btn btn-lg btn-primary" ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{consId}}">
+                    <strong>Donate to Personal Page</strong>
+                  </a>
+                </div>
                 <div class="pull-right">
                   <p>
                     <strong><span ng-bind-html="participantProgress.raisedFormatted"></span></strong> raised
@@ -50,9 +52,11 @@
                       <strong><span ng-bind-html="participantProgress.goalFormatted"></span></strong> goal
                     </p>
                   </div>
-                  <a ng-click="editPersonalGoal()">
-                    <strong>Update Personal Goal</strong>
-                  </a>
+                  <p>
+                    <a ng-click="editPersonalGoal()">
+                      <strong>Update Personal Goal</strong>
+                    </a>
+                  </p>
                 </div>
               </div>
             </div>
@@ -77,10 +81,12 @@
               <div class="ym-progress__thermometer">
                 <div class="ym-progress__thermometer--fill" ng-style="{'width': teamProgress.percent + '%'}"></div>
               </div>
-              <div class="clearfix">
-                <a class="btn btn-lg btn-primary" ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=22&amp;PROXY_ID={{participantRegistration.teamId}}">
-                  <strong>Donate to Team Page</strong>
-                </a>
+              <div class="ym-progress-related clearfix">
+                <div class="ym-progress-donate">
+                  <a class="btn btn-lg btn-primary" ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=22&amp;PROXY_ID={{participantRegistration.teamId}}">
+                    <strong>Donate to Team Page</strong>
+                  </a>
+                </div>
                 <div class="pull-right">
                   <p>
                     <strong><span ng-bind-html="teamProgress.raisedFormatted"></span></strong> raised
@@ -91,9 +97,11 @@
                     </p>
                   </div>
                   <div ng-if="participantRegistration.aTeamCaptain == 'true'" ng-cloak>
-                    <a ng-click="editTeamGoal()">
-                      <strong>Update Team Goal</strong>
-                    </a>
+                    <p>
+                      <a ng-click="editTeamGoal()">
+                        <strong>Update Team Goal</strong>
+                      </a>
+                    </p>
                   </div>
                 </div>
               </div>
@@ -113,7 +121,7 @@
               </p>
               <div>
                 <a ng-href="http://hearttools.heart.org/aha_ym18?eid={{frId}}&amp;sid={{consId}}&amp;name={{consName}}" target="_blank">
-                  <img class="img-responsive" src="//placeholdit.imgix.net/~text?txt=placeholder&amp;txtsize=36&amp;&bg=ffff00&amp;txtclr=000000&amp;w=195&amp;h=115&amp;txttrack=0" alt="">
+                  <img src="//placeholdit.imgix.net/~text?txt=placeholder&amp;txtsize=36&amp;&bg=ffff00&amp;txtclr=000000&amp;w=195&amp;h=115&amp;txttrack=0" alt="">
                 </a>
               </div>
               <p>
@@ -342,9 +350,11 @@
                       <strong><span ng-bind-html="companyProgress.goalFormatted"></span></strong> goal
                     </p>
                   </div>
-                  <a ng-href="NTM?tr.ntmgmt=company_cservice_main&amp;company_id={{participantRegistration.companyInformation.companyId}}">
-                    <strong>Update School Goal</strong>
-                  </a>
+                  <p>
+                    <a ng-href="NTM?tr.ntmgmt=company_cservice_main&amp;company_id={{participantRegistration.companyInformation.companyId}}">
+                      <strong>Update School Goal</strong>
+                    </a>
+                  </p>
                 </div>
               </div>
             </div>
@@ -352,10 +362,12 @@
               <div class="ym-progress__thermometer">
                 <div class="ym-progress__thermometer--fill" ng-style="{'width': teamProgress.percent + '%'}"></div>
               </div>
-              <div class="clearfix">
-                <a class="btn btn-lg btn-primary" ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=22&amp;PROXY_ID={{participantRegistration.teamId}}">
-                  <strong>Donate to Team Page</strong>
-                </a>
+              <div class="ym-progress-related clearfix">
+                <div class="ym-progress-donate">
+                  <a class="btn btn-lg btn-primary" ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=22&amp;PROXY_ID={{participantRegistration.teamId}}">
+                    <strong>Donate to Team Page</strong>
+                  </a>
+                </div>
                 <div class="pull-right">
                   <p>
                     <strong><span ng-bind-html="teamProgress.raisedFormatted"></span></strong> raised
@@ -366,9 +378,11 @@
                     </p>
                   </div>
                   <div ng-if="participantRegistration.aTeamCaptain == 'true'" ng-cloak>
-                    <a ng-click="editTeamGoal()">
-                      <strong>Update Team Goal</strong>
-                    </a>
+                    <p>
+                      <a ng-click="editTeamGoal()">
+                        <strong>Update Team Goal</strong>
+                      </a>
+                    </p>
                   </div>
                 </div>
               </div>
@@ -377,10 +391,12 @@
               <div class="ym-progress__thermometer">
                 <div class="ym-progress__thermometer--fill" ng-style="{'width': participantProgress.percent + '%'}"></div>
               </div>
-              <div class="clearfix">
-                <a class="btn btn-lg btn-primary" ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{consId}}">
-                  <strong>Donate to Personal Page</strong>
-                </a>
+              <div class="ym-progress-related clearfix">
+                <div class="ym-progress-donate">
+                  <a class="btn btn-lg btn-primary" ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{consId}}">
+                    <strong>Donate to Personal Page</strong>
+                  </a>
+                </div>
                 <div class="pull-right">
                   <p>
                     <strong><span ng-bind-html="participantProgress.raisedFormatted"></span></strong> raised
@@ -390,9 +406,11 @@
                       <strong><span ng-bind-html="participantProgress.goalFormatted"></span></strong> goal
                     </p>
                   </div>
-                  <a ng-click="editPersonalGoal()">
-                    <strong>Update Personal Goal</strong>
-                  </a>
+                  <p>
+                    <a ng-click="editPersonalGoal()">
+                      <strong>Update Personal Goal</strong>
+                    </a>
+                  </p>
                 </div>
               </div>
             </div>
