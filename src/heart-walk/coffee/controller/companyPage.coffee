@@ -129,6 +129,7 @@ angular.module 'ahaLuminateControllers'
                 angular.forEach companyTeams, (companyTeam) ->
                   companyTeam.amountRaised = Number companyTeam.amountRaised
                   companyTeam.amountRaisedFormatted = $filter('currency')(companyTeam.amountRaised / 100, '$', 0)
+                  companyTeam.name = companyTeam.name.replace(/&amp;/g, '&')
                   joinTeamURL = companyTeam.joinTeamURL
                   if joinTeamURL?
                     companyTeam.joinTeamURL = joinTeamURL.split('/site/')[1]
@@ -165,6 +166,7 @@ angular.module 'ahaLuminateControllers'
                 angular.forEach companyTeams, (companyTeam) ->
                   companyTeam.amountRaised = Number companyTeam.amountRaised
                   companyTeam.amountRaisedFormatted = $filter('currency')(companyTeam.amountRaised / 100, '$', 0)
+                  companyTeam.name = companyTeam.name.replace(/&amp;/g, '&')
                   joinTeamURL = companyTeam.joinTeamURL
                   if joinTeamURL?
                     companyTeam.joinTeamURL = joinTeamURL.split('/site/')[1]
