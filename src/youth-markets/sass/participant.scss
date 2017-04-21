@@ -690,14 +690,6 @@ main > .container {
       margin-right: 3px;
     }
   }
-  
-  .row {
-    margin: 0;
-  }
-  
-  .col-sm-6 {
-    padding: 0;
-  }
 }
 
 .ng-pc-nav-list-group {
@@ -1181,7 +1173,7 @@ main > .container {
     @media (min-width: $screen-sm-min) {
       position: absolute;
       bottom: 25px;
-      width: 100%;
+      width: calc(100% - 40px);
     }
   }
 }
