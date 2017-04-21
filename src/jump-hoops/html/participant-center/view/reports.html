@@ -4,14 +4,14 @@
       <uib-tab index="0" heading="School Detail" ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
         <div class="ym-pc-report-header">
           <div class="row clearfix">
-            <div class="col-sm-3"></div>
-            <div class="col-sm-6">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
               <h2 class="h5">
                 School Detail Report
               </h2>
             </div>
-            <div class="col-sm-3">
-              <div ng-if="schoolDetailStudents.students && schoolDetailStudents.students.length > 0" ng-cloak>
+            <div class="col-sm-4">
+              <div class="ym-pc-report-header-buttons" ng-if="schoolDetailStudents.students && schoolDetailStudents.students.length > 0" ng-cloak>
                 <a class="btn btn-md-wide btn-secondary" ng-href="{{baseUrl}}#" target="_blank">
                   <i class="fa fa-download" aria-hidden="true"></i> <strong>Download</strong>
                 </a> 
@@ -129,14 +129,14 @@
       <uib-tab index="1" heading="Donors">
         <div class="ym-pc-report-header">
           <div class="row clearfix">
-            <div class="col-sm-3"></div>
-            <div class="col-sm-6">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
               <h2 class="h5">
                 My Donors
               </h2>
             </div>
-            <div class="col-sm-3">
-              <div ng-if="participantGifts.gifts && participantGifts.gifts.length > 0" ng-cloak>
+            <div class="col-sm-4">
+              <div class="ym-pc-report-header-buttons" ng-if="participantGifts.gifts && participantGifts.gifts.length > 0" ng-cloak>
                 <a class="btn btn-md-wide btn-secondary" ng-href="TRParticipantDownload/Personal_Donations.csv?download_type=personal_donations&amp;fr_id={{frId}}" target="_blank">
                   <i class="fa fa-download" aria-hidden="true"></i> <strong>Download</strong>
                 </a> 

@@ -1060,6 +1060,23 @@ main > .container {
   }
 }
 
+.ym-pc-report-header-buttons {
+  @media (min-width: $screen-sm-min) {
+    text-align: right;
+  }
+  
+  a {
+    &, 
+    &:link, 
+    &:visited, 
+    &:hover, 
+    &:focus, 
+    &:active {
+      margin: 0 0 0 10px;
+    }
+  }
+}
+
 .ym-pc-reports-lists .table {
   > thead {
     > tr {

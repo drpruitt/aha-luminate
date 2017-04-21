@@ -161,7 +161,7 @@
               You have new donors who haven't received a thank-you email!
             </div>
             <div class="ym-next-step__action">
-              <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#">
+              <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_unthanked_donors/list">
                 <strong>Say Thanks</strong> <i class="fa fa-envelope" aria-hidden="true"></i>
               </a>
             </div>
@@ -171,7 +171,7 @@
               Great job sending emails. Some of your friends haven't donated!
             </div>
             <div class="ym-next-step__action">
-              <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#">
+              <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_nondonors_followup/list">
                 <strong>Follow Up</strong> <i class="fa fa-heart" aria-hidden="true"></i>
               </a>
             </div>
@@ -181,7 +181,7 @@
               Review all of your donations on the Reports page.
             </div>
             <div class="ym-next-step__action">
-              <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#">
+              <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/reports">
                 <strong>View All</strong> <i class="fa fa-eye" aria-hidden="true"></i>
               </a>
             </div>
@@ -407,7 +407,7 @@
             </div>
             <div>
               <p>
-                You have <strong>{{companyInfo.participantCount}}</strong> students registered. Keep recruiting to meet your goal of <strong>0</strong> students!
+                You have <strong>{{companyInfo.participantCount}}</strong> students registered. Keep recruiting to meet your goal of <strong><span>0</span></strong> students!
               </p>
               <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email">
                 <strong>Send Emails</strong>
