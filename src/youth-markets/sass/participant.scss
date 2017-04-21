@@ -387,6 +387,23 @@ main > .container {
     p {
       margin: 0;
     }
+    
+    a {
+      &, 
+      &:link, 
+      &:visited, 
+      &:hover, 
+      &:focus, 
+      &:active {
+        @media (min-width: $screen-sm-min) {
+          width: 100px;
+        }
+        
+        @media (min-width: $screen-md-min) {
+          width: auto;
+        }
+      }
+    }
   }
 }
 
@@ -971,6 +988,23 @@ main > .container {
     
     p {
       margin: 0;
+    }
+    
+    a {
+      &, 
+      &:link, 
+      &:visited, 
+      &:hover, 
+      &:focus, 
+      &:active {
+        @media (min-width: $screen-sm-min) {
+          width: 100px;
+        }
+        
+        @media (min-width: $screen-md-min) {
+          width: auto;
+        }
+      }
     }
   }
 }
