@@ -109,7 +109,7 @@
             </div>
             <div class="text-center">
               <p>
-                Send 10 eCards to Earn your Rory badge!
+                Send 10 eCards to earn your Rory badge!
               </p>
               <div>
                 <a ng-href="http://hearttools.heart.org/aha_ym18?eid={{frId}}&amp;sid={{consId}}&amp;name={{consName}}" target="_blank">
@@ -156,12 +156,22 @@
           <h3 class="h5">
             My Donors
           </h3>
+          <div class="ym-next-step" ng-if="donorContactCounts.email_rpt_show_donors == 0" ng-cloak>
+            <div class="ym-next-step__step">
+              You have not received any donations yet. Use the email tool to ask for support. 
+            </div>
+            <div class="ym-next-step__action">
+              <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email">
+                <strong>Email</strong> <i class="fa fa-envelope" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
           <div class="ym-next-step" ng-if="donorContactCounts.email_rpt_show_unthanked_donors > 0" ng-cloak>
             <div class="ym-next-step__step">
               You have new donors who haven't received a thank-you email!
             </div>
             <div class="ym-next-step__action">
-              <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#">
+              <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_unthanked_donors/list">
                 <strong>Say Thanks</strong> <i class="fa fa-envelope" aria-hidden="true"></i>
               </a>
             </div>
@@ -171,7 +181,7 @@
               Great job sending emails. Some of your friends haven't donated!
             </div>
             <div class="ym-next-step__action">
-              <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#">
+              <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_nondonors_followup/list">
                 <strong>Follow Up</strong> <i class="fa fa-heart" aria-hidden="true"></i>
               </a>
             </div>
@@ -181,18 +191,8 @@
               Review all of your donations on the Reports page.
             </div>
             <div class="ym-next-step__action">
-              <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#">
+              <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/reports">
                 <strong>View All</strong> <i class="fa fa-eye" aria-hidden="true"></i>
-              </a>
-            </div>
-          </div>
-          <div class="ym-next-step" ng-if="donorContactCounts.email_rpt_show_donors == 0" ng-cloak>
-            <div class="ym-next-step__step">
-              You have not received any donations yet. Use the email tool to ask for support. 
-            </div>
-            <div class="ym-next-step__action">
-              <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email">
-                <strong>Email</strong> <i class="fa fa-envelope" aria-hidden="true"></i>
               </a>
             </div>
           </div>
@@ -399,7 +399,7 @@
           </div>
         </div>
         <div class="col-sm-6 ym-pc-dashboard-coordinator-progress-section__column event-secondary-medium">
-          <div class="ym-pc-dashboard-coordinator-students-box">
+          <div class="ym-pc-dashboard-coordinator-students-box" ng-if="companyInfo.participantCount" ng-cloak>
             <div class="ym-pc-dashboard-section-header">
               <h3>
                 My Students
@@ -407,7 +407,7 @@
             </div>
             <div>
               <p>
-                You have <strong></strong> students registered. Keep recruiting to meet your goal of <strong></strong> students!
+                You have <strong>{{companyInfo.participantCount}}</strong> students registered. Keep recruiting to meet your goal of <strong><span>0</span></strong> students!
               </p>
               <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email">
                 <strong>Send Emails</strong>
