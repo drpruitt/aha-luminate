@@ -217,7 +217,8 @@ angular.module 'trPcControllers'
       $scope.personalUrlInfo = {}
       
       $scope.editPersonalUrl = ->
-        $scope.personalUrlInfo.updatedShortcut.text = $scope.participantShortcut.text or ''
+        $scope.personalUrlInfo.updatedShortcut =
+          text: $scope.participantShortcut.text or ''
         $scope.editPersonalUrlModal = $uibModal.open
           scope: $scope
           templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/editParticipantUrl.html'
@@ -249,6 +250,21 @@ angular.module 'trPcControllers'
               response
           $scope.dashboardPromises.push getTeamShortcutPromise
         $scope.getTeamShortcut()
+        
+        $scope.teamUrlInfo = {}
+        
+        $scope.editTeamUrl = ->
+          $scope.teamUrlInfo.updatedShortcut =
+            text: $scope.teamShortcut.text or ''
+          $scope.editTeamUrlModal = $uibModal.open
+            scope: $scope
+            templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/editTeamUrl.html'
+        
+        $scope.cancelEditTeamUrl = ->
+         $scope.editTeamUrlModal.close()
+        
+        $scope.updateTeamUrl = (urlType) ->
+          # TODO
       
       if $scope.participantRegistration.companyInformation and $scope.participantRegistration.companyInformation.companyId and $scope.participantRegistration.companyInformation.companyId isnt -1 and $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
         $scope.getCompanyShortcut = ->

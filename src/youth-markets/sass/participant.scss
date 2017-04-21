@@ -671,8 +671,15 @@ main > .container {
       
       .btn, 
       a.btn {
-        display: inline-block;
-        margin: 6px 0 0;
+        &, 
+        &:link, 
+        &:visited, 
+        &:hover, 
+        &:focus, 
+        &:active {
+          display: inline-block;
+          margin: 6px 0 0;
+        }
       }
     }
     
@@ -1092,8 +1099,15 @@ main > .container {
     
     .btn, 
     a.btn {
-      display: inline-block;
-      margin: 6px 0 0;
+      &, 
+      &:link, 
+      &:visited, 
+      &:hover, 
+      &:focus, 
+      &:active {
+        display: inline-block;
+        margin: 6px 0 0;
+      }
     }
   }
   
