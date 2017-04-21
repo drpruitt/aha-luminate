@@ -3,12 +3,13 @@ angular.module 'trPcControllers'
     '$scope'
     '$filter'
     'NgPcTeamraiserGiftService'
-    ($scope, $filter, NgPcTeamraiserGiftService) ->
+    'NgPcTeamraiserReportsService'
+    ($scope, $filter, NgPcTeamraiserGiftService, NgPcTeamraiserReportsService) ->
       $scope.reportPromises = []
       
       $scope.activeReportTab = if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true' then 0 else 1
       
-      $scope.participantGifts = 
+      $scope.participantGifts =
         sortColumn: 'date_recorded'
         sortAscending: false
         page: 1
@@ -38,4 +39,14 @@ angular.module 'trPcControllers'
             response
         $scope.reportPromises.push personalGiftsPromise
       $scope.getGifts()
+      
+      if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
+        $scope.schoolDetailStudents = {}
+        NgPcTeamraiserReportsService.getSchoolDetailReport()
+          .then (response) ->
+            if response.data.errorResponse
+              $scope.schoolDetailStudents.students = []
+            else
+              reportHtml = response.data.getSchoolDetailReport.report
+              console.log reportHtml
   ]

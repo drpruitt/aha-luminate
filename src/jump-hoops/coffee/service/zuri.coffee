@@ -8,7 +8,7 @@ angular.module 'ahaLuminateApp'
         url = '//hearttools.heart.org/aha_ym18/visitlink_record.php?ecard_linktrack=' + requestData
         urlSCE = $sce.trustAsResourceUrl url
         $http
-          method: 'POST',
+          method: 'POST'
           url: urlSCE
       
       getChallenges: (requestData, callback) ->
