@@ -214,6 +214,20 @@ angular.module 'trPcControllers'
         $scope.dashboardPromises.push getParticipantShortcutPromise
       $scope.getParticipantShortcut()
       
+      $scope.personalUrlInfo = {}
+      
+      $scope.editPersonalUrl = ->
+        $scope.personalUrlInfo.updatedShortcut.text = $scope.participantShortcut.text or ''
+        $scope.editPersonalUrlModal = $uibModal.open
+          scope: $scope
+          templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/editParticipantUrl.html'
+      
+      $scope.cancelEditPersonalUrl = ->
+       $scope.editPersonalUrlModal.close()
+      
+      $scope.updatePersonalUrl = (urlType) ->
+        # TODO
+      
       if $scope.participantRegistration.teamId and $scope.participantRegistration.teamId isnt '-1' and $scope.participantRegistration.aTeamCaptain is 'true'
         $scope.getTeamShortcut = ->
           getTeamShortcutPromise = NgPcTeamraiserShortcutURLService.getTeamShortcut()

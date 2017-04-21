@@ -234,8 +234,11 @@ main > .container {
 
 .ng-pc-container, 
 .ng-pc-modal {
-  .btn.form-control {
-    height: auto;
+  .btn, 
+  a.btn {
+    &.form-control {
+      height: auto;
+    }
   }
 }
 
@@ -244,7 +247,8 @@ main > .container {
   width: 100%;
   margin: 0 0 12px;
   
-  > .btn {
+  > .btn, 
+  > a.btn {
     text-align: left;
     
     .caret {
@@ -496,7 +500,8 @@ main > .container {
 }
 
 .ym-pc-dashboard-email-challenge-box {
-  .btn {
+  .btn, 
+  a.btn {
     margin: 30px 10px 0;
   }
 }
@@ -641,8 +646,11 @@ main > .container {
     .ym_my_challenge__actions {
       margin-top: 15px;
       
-      .btn:first-child{
-        margin-right: 15px;
+      .btn, 
+      a.btn {
+        &:first-child{
+          margin-right: 15px;
+        }
       }
     }
     
@@ -660,6 +668,12 @@ main > .container {
     
     .ym-activity-url {
       word-break: break-all;
+      
+      .btn, 
+      a.btn {
+        display: inline-block;
+        margin: 6px 0 0;
+      }
     }
     
     .text-right {
@@ -789,7 +803,8 @@ main > .container {
   .modal-header__btns {
     float: right;
     
-    .btn {
+    .btn, 
+    a.btn {
       margin: 0 0 0 6px;
     }
   }
@@ -801,7 +816,8 @@ main > .container {
       text-align: center;
       margin: 0 0 18px 0;
       
-      .btn {
+      .btn, 
+      a.btn {
         margin: 0 3px;
       }
     }
@@ -832,7 +848,8 @@ main > .container {
     }
   }
   
-  .btn {
+  .btn, 
+  a.btn {
     &, 
     &:link, 
     &:visited, 
@@ -883,7 +900,8 @@ main > .container {
   .contacts-list__actions-selected {
     float: left;
     
-    .btn {
+    .btn, 
+    a.btn {
       padding: 10px;
       
       @media (min-width: 360px) {
@@ -903,7 +921,8 @@ main > .container {
   .contacts-list__actions-manage {
     float: right;
     
-    .btn {
+    .btn, 
+    a.btn {
       padding: 10px;
       margin: 0 0 0 6px;
       
@@ -1070,6 +1089,12 @@ main > .container {
 .ym-activity-box--coordinator-pages {
   .ym-activity-url {
     word-break: break-all;
+    
+    .btn, 
+    a.btn {
+      display: inline-block;
+      margin: 6px 0 0;
+    }
   }
   
   .text-right {
@@ -1157,7 +1182,6 @@ main > .container {
     width: 135px;
   }
 }
-
 
 .ym-activity-box--coordinator-reports, 
 .ym-activity-box--coordinator-prizes {
