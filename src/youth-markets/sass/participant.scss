@@ -1236,6 +1236,19 @@ main > .container {
       h5, 
       .h5 {
         color: $event-secondary;
+        margin: 0 0 18px;
+        
+        @media (min-width: $screen-sm-min) {
+          margin: 0 0 20px;
+        }
+      }
+    }
+    
+    .btn {
+      margin: 0 0 32px;
+      
+      @media (min-width: $screen-sm-min) {
+        margin: 0;
       }
     }
   }
