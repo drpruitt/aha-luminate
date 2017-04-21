@@ -186,7 +186,7 @@ angular.module 'trPcControllers'
       
       if $scope.participantRegistration.teamId and $scope.participantRegistration.teamId isnt '-1' and $scope.participantRegistration.aTeamCaptain is 'true'
         $scope.getTeamShortcut = ->
-          getTeamShortcutPromise = TeamraiserShortcutURLService.getTeamShortcut()
+          getTeamShortcutPromise = NgPcTeamraiserShortcutURLService.getTeamShortcut()
             .then (response) ->
               if response.data.errorResponse
                 # TODO
@@ -204,6 +204,25 @@ angular.module 'trPcControllers'
                     $scope.teamPageUrl = shortcutItem.defaultUrl.split('/site/')[0] + '/site/TR?fr_id=' + $scope.frId + '&pg=team&team_id=' + $scope.participantRegistration.teamId
           $scope.dashboardPromises.push getTeamShortcutPromise
         $scope.getTeamShortcut()
+      
+      if $scope.participantRegistration.companyInformation and $scope.participantRegistration.companyInformation.companyId and $scope.participantRegistration.companyInformation.companyId isnt -1 and $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
+        $scope.getCompanyShortcut = ->
+          getCompanyShortcutPromise = NgPcTeamraiserShortcutURLService.getCompanyShortcut()
+            .then (response) ->
+              shortcutItem = response.data.getCompanyShortcutResponse?.shortcutItem
+              if shortcutItem
+                if shortcutItem.prefix
+                  shortcutItem.prefix = shortcutItem.prefix
+                $scope.companyShortcut = shortcutItem
+                if shortcutItem.url
+                  $scope.companyPageUrl = shortcutItem.url
+                else
+                  $scope.companyPageUrl = shortcutItem.defaultUrl.split('/site/')[0] + '/site/TR?fr_id=' + $scope.frId + '&pg=company&company_id=' + $scope.participantRegistration.companyInformation.companyId
+                $timeout ->
+                  addthis.toolbox '.addthis_toolbox'
+                , 500
+          $scope.dashboardPromises.push getCompanyShortcutPromise
+          $scope.getCompanyShortcut()
       
       $scope.personalChallenge = {}
       $scope.updatedPersonalChallenge = {}
