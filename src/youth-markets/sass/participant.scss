@@ -44,7 +44,7 @@ main > .container {
       text-decoration: none;
       width: 100px;
       height: 40px;
-      padding: 0 6px;
+      padding: 12px 6px 0;
       margin: 0 3px 5px;
       
       @media (max-width: 350px) {
@@ -59,7 +59,7 @@ main > .container {
         line-height: 22px;
         width: 20%;
         height: 50px;
-        padding: 0 12px;
+        padding: 14px 12px 0;
         margin: 0;
       }
     }
@@ -72,6 +72,11 @@ main > .container {
     &.active {
       background: $brand-white;
       color: $event-secondary;
+    }
+    
+    > span {
+      display: inline-block;
+      margin: 0 auto;
     }
   }
 }
@@ -98,40 +103,45 @@ main > .container {
         line-height: 16px;
         width: 100px;
         height: 40px;
+        padding: 12px 6px 0;
         margin: 0 3px 5px;
       }
       
       @media (min-width: 670px) {
         width: 16.66666667%;
       }
-    }
-  }
-}
-
-.ng-pc-nav-item {
-  > span {
-    display: inline-block;
-  }
-}
-
-.ng-pc-nav-item--resources {
-  span {
-    max-width: 80px;
-    margin: 0 auto;
-    
-    @media (min-width: 560px) {
-      max-width: 100px;
-    }
-  }
-}
-
-.ng-pc-nav-item--student-view {
-  span {
-    max-width: 65px;
-    margin: 0 auto;
-    
-    @media (min-width: 670px) {
-      max-width: 80px;
+      
+      &.ng-pc-nav-item--resources {
+        padding: 3px 6px 0;
+        
+        @media (min-width: 670px) {
+          padding: 3px 12px 0;
+        }
+        
+        > span {
+          max-width: 80px;
+          
+          @media (min-width: 670px) {
+            max-width: 100px;
+          }
+        }
+      }
+      
+      &.ng-pc-nav-item--student-view {
+        padding: 3px 6px 0;
+        
+        @media (min-width: 670px) {
+          padding: 3px 12px 0;
+        }
+        
+        > span {
+          max-width: 65px;
+          
+          @media (min-width: 670px) {
+            max-width: 80px;
+          }
+        }
+      }
     }
   }
 }
