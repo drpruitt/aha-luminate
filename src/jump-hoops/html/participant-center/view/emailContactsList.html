@@ -143,7 +143,12 @@
       </div>
       <div class="panel panel-default">
         <div class="panel-heading">
-          <div class="checkbox">
+          <div ng-if="addressBookContacts.totalNumber == 0" ng-cloak>
+            <span class="panel-title">
+              {{filterName}}
+            </span>
+          </div>
+          <div class="checkbox" ng-if="addressBookContacts.totalNumber && addressBookContacts.totalNumber != 0" ng-cloak>
             <label for="contact_select_all">
               <input id="contact_select_all" type="checkbox" ng-checked="addressBookContacts.allContactsSelected" ng-click="toggleAllContacts()">
               <span class="panel-title">
@@ -153,10 +158,10 @@
           </div>
           <!-- TODO: search -->
         </div>
-        <div class="panel-body" ng-if="contactCounts.email_rpt_show_all == '0'">
+        <div class="panel-body" ng-if="contactCounts.email_rpt_show_all == '0'" ng-cloak>
           You haven't added any contacts yet.
         </div>
-        <div class="panel-body" ng-if="contactCounts.email_rpt_show_all != '0' && addressBookContacts.totalNumber == 0">
+        <div class="panel-body" ng-if="contactCounts.email_rpt_show_all != '0' && addressBookContacts.totalNumber == 0" ng-cloak>
           No contacts to display.
         </div>
         <pc-contact-list contacts="addressBookContacts.contacts" toggle-contact="toggleContact" select-contact="selectContact" delete-contact="deleteContact" ng-if="addressBookContacts.totalNumber > 0"></pc-contact-list>
