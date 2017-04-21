@@ -68,7 +68,7 @@ angular.module 'trPcControllers'
                       emailsSent: Number jQuery.trim($reportTableRow.find('td').eq(12).text())
                       tshirtSize: jQuery.trim $reportTableRow.find('td').eq(14).text()
                       teacherName: jQuery.trim $reportTableRow.find('td').eq(6).text()
-                      challenge: jQuery.trim $reportTableRow.find('td').eq(15).text()
+                      challenge: jQuery.trim($reportTableRow.find('td').eq(15).text()).replace('1. ', '').replace('2. ', '').replace('3. ', '').replace '4. ', ''
                   $scope.schoolDetailStudents.students = schoolDetailStudents
             response
         $scope.reportPromises.push schoolDetailReportPromise
