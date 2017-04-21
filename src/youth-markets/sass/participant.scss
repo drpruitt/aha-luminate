@@ -200,6 +200,13 @@ main > .container {
         color: $brand-white;
       }
     }
+    
+    &.active {
+      @media (max-width: 669px) {
+        background: $brand-white;
+        color: $event-secondary;
+      }
+    }
   }
 }
 

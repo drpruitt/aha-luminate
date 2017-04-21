@@ -4,17 +4,17 @@
   background: $event-accent;
   
   > .container {
-    position: relative; 
-
+    position: relative;
+    
     @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
       width: auto;
     }
-
+    
     @media (min-width: $screen-lg-min) {
-      padding:0;
+      padding: 0;
     }
   }
-
+  
   .col-sm-9 {
     padding: 0;
   }
@@ -35,22 +35,26 @@
     &:last-child {
       margin: 0;
     }
-
-    &.school-name a {
-      margin-left: 30px;
-
-      @media (max-width: $screen-sm) {
-        display: block;
-        margin: 0;
+    
+    &.school-name {
+      a {
+        margin-left: 30px;
+        
+        @media (max-width: $screen-xs-max) {
+          display: inline-block;
+          margin: 0;
+        }
       }
     }
-
-    &.team-name a {
-      margin-left: 40px;
-
-      @media (max-width: $screen-sm) {
-        display: block;
-        margin: 0;
+    
+    &.team-name {
+      a {
+        margin-left: 40px;
+        
+        @media (max-width: $screen-xs-max) {
+          display: inline-block;
+          margin: 0;
+        }
       }
     }
     
@@ -59,7 +63,7 @@
       &:link, 
       &:visited {
         text-decoration: underline;
-        color: #ffffff;
+        color: $brand-white;
       }
       
       &:hover {
