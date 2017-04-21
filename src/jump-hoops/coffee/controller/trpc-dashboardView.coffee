@@ -16,7 +16,7 @@ angular.module 'trPcControllers'
     ($rootScope, $scope, $filter, $uibModal, APP_INFO, ZuriService, ParticipantBadgesService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserCompanyService, NgPcContactService, NgPcTeamraiserShortcutURLService) ->
       $scope.dashboardPromises = []
       
-      if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
+      if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true' or $scope.location is '/dashboard-student'
         $scope.dashboardProgressType = 'personal'
       else
         $scope.dashboardProgressType = 'company'
