@@ -13,10 +13,14 @@ main > .container {
   padding: 0;
   
   .ng-pc-view-container {
-    padding: 10px;
+    padding: 10px 10px 20px;
+    
+    @media (min-width: $screen-sm-min) {
+      padding: 32px 10px;
+    }
     
     @media (min-width: $screen-md-min) {
-      padding: 28px;
+      padding: 36px 28px;
     }
   }
 }
@@ -466,7 +470,8 @@ main > .container {
   }
 }
 
-.ym-pc-dashboard-progress-box .ym-progress__thermometer {
+.ym-pc-dashboard-progress-box .ym-progress__thermometer, 
+.ym-pc-dashboard-coordinator-progress-box .ym-progress__thermometer {
   max-width: 420px;
 }
 
