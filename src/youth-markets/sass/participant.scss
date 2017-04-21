@@ -906,6 +906,10 @@ main > .container {
   text-align: center;
 }
 
+.ym-pc-dashboard-coordinator-create-message {
+  margin: 20px 0 0;
+}
+
 .ym-pc-dashboard-coordinator-steps-section {
   margin: 0 0 40px;
   clear: both;
@@ -984,6 +988,10 @@ main > .container {
   }
 }
 
+.ym-pc-dashboard-coordinator-page-view {
+  margin: 0 0 30px;
+}
+
 .ym-pc-student-view-text {
   float: left;
   width: calc(97% - 115px);
@@ -1050,10 +1058,6 @@ main > .container {
   .h5 {
     margin: 0;
   }
-}
-
-.ym-pc-report-no-results {
-  text-align: center;
 }
 
 .ym-pc-reports-lists .table {
