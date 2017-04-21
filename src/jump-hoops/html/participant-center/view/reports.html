@@ -30,6 +30,28 @@
                       <strong>Ecards</strong>
                     </a>
                   </th>
+                  <th>
+                    <a>
+                      <strong>Emails</strong>
+                    </a>
+                  </th>
+                  <th>
+                    <a>
+                      <strong>T-shirt</strong>
+                    </a>
+                  </th>
+                  <th>
+                    <a>
+                      <strong>Teacher</strong>
+                    </a>
+                  </th>
+                  <th>
+                    <div class="text-right">
+                      <a>
+                        <strong>Challenge</strong>
+                      </a>
+                    </div>
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -42,6 +64,20 @@
                   </td>
                   <td>
                     {{schoolDetailStudent.ecardsSent}}
+                  </td>
+                  <td>
+                    {{schoolDetailStudent.emailsSent}}
+                  </td>
+                  <td>
+                    <span ng-bind-html="schoolDetailStudent.tshirtSize"></span>
+                  </td>
+                  <td>
+                    <span ng-bind-html="schoolDetailStudent.teacherName"></span>
+                  </td>
+                  <td>
+                    <div class="text-right">
+                      <span ng-bind-html="schoolDetailStudent.challenge"></span>
+                    </div>
                   </td>
                 </tr>
               </tbody>

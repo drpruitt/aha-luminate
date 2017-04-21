@@ -65,6 +65,10 @@ angular.module 'trPcControllers'
                       amount: Number jQuery.trim($reportTableRow.find('td').eq(10).text())
                       amountFormatted: $filter('currency') jQuery.trim($reportTableRow.find('td').eq(10).text()), '$', 0
                       ecardsSent: Number jQuery.trim($reportTableRow.find('td').eq(13).text())
+                      emailsSent: Number jQuery.trim($reportTableRow.find('td').eq(12).text())
+                      tshirtSize: jQuery.trim $reportTableRow.find('td').eq(14).text()
+                      teacherName: jQuery.trim $reportTableRow.find('td').eq(6).text()
+                      challenge: jQuery.trim $reportTableRow.find('td').eq(15).text()
                   $scope.schoolDetailStudents.students = schoolDetailStudents
             response
         $scope.reportPromises.push schoolDetailReportPromise

@@ -863,9 +863,9 @@ main > .container {
 }
 
 .ym-pc-reports-lists .table {
-  thead {
-    tr {
-      th {
+  > thead {
+    > tr {
+      > th {
         a {
           &, 
           &:link, 
