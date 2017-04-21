@@ -261,6 +261,15 @@ main > .container {
   .dropdown-menu {
     > li {
       > a {
+        &, 
+        &:link, 
+        &:visited, 
+        &:hover, 
+        &:focus, 
+        &:active {
+          text-decoration: none;
+        }
+        
         .badge {
           float: right;
         }
@@ -1130,6 +1139,12 @@ main > .container {
   @media (min-width: $screen-sm-min) {
     width: calc(97% - 135px);
   }
+  
+  p {
+    @media (min-width: $screen-sm-min) {
+      margin: 0 0 32px;
+    }
+  }
 }
 
 .ym-pc-student-view-image {
@@ -1138,6 +1153,51 @@ main > .container {
   
   @media (min-width: $screen-sm-min) {
     width: 135px;
+  }
+}
+
+
+.ym-activity-box--coordinator-reports {
+  position: relative;
+  
+  p {
+    margin: 0 0 18px;
+    
+    @media (min-width: $screen-md-min) {
+      margin: 0 0 32px;
+    }
+  }
+  
+  .btn {
+    margin: 0 auto;
+    
+    @media (min-width: $screen-sm-min) {
+      position: absolute;
+      bottom: 0;
+      margin: 0 auto;
+    }
+  }
+}
+
+.ym-activity-box--coordinator-prizes {
+  position: relative;
+  
+  p {
+    margin: 0 0 18px;
+    
+    @media (min-width: $screen-md-min) {
+      margin: 0 0 32px;
+    }
+  }
+  
+  .btn {
+    margin: 0 auto;
+    
+    @media (min-width: $screen-sm-min) {
+      position: absolute;
+      bottom: 0;
+      margin: 0 auto;
+    }
   }
 }
 
