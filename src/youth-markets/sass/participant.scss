@@ -13,10 +13,14 @@ main > .container {
   padding: 0;
   
   .ng-pc-view-container {
-    padding: 10px;
+    padding: 10px 10px 20px;
+    
+    @media (min-width: $screen-sm-min) {
+      padding: 32px 10px;
+    }
     
     @media (min-width: $screen-md-min) {
-      padding: 28px;
+      padding: 36px 28px;
     }
   }
 }
@@ -230,8 +234,11 @@ main > .container {
 
 .ng-pc-container, 
 .ng-pc-modal {
-  .btn.form-control {
-    height: auto;
+  .btn, 
+  a.btn {
+    &.form-control {
+      height: auto;
+    }
   }
 }
 
@@ -240,7 +247,8 @@ main > .container {
   width: 100%;
   margin: 0 0 12px;
   
-  > .btn {
+  > .btn, 
+  > a.btn {
     text-align: left;
     
     .caret {
@@ -257,6 +265,15 @@ main > .container {
   .dropdown-menu {
     > li {
       > a {
+        &, 
+        &:link, 
+        &:visited, 
+        &:hover, 
+        &:focus, 
+        &:active {
+          text-decoration: none;
+        }
+        
         .badge {
           float: right;
         }
@@ -352,6 +369,7 @@ main > .container {
         }
       }
       
+      h5, 
       .h5 {
         margin: 0 0 25px;
       }
@@ -414,7 +432,7 @@ main > .container {
           max-width: 100px;
         }
         
-        @media (min-width: $screen-md-min) {
+        @media (min-width: $screen-lg-min) {
           max-width: none;
         }
       }
@@ -466,7 +484,8 @@ main > .container {
   }
 }
 
-.ym-pc-dashboard-progress-box .ym-progress__thermometer {
+.ym-pc-dashboard-progress-box .ym-progress__thermometer, 
+.ym-pc-dashboard-coordinator-progress-box .ym-progress__thermometer {
   max-width: 420px;
 }
 
@@ -481,7 +500,8 @@ main > .container {
 }
 
 .ym-pc-dashboard-email-challenge-box {
-  .btn {
+  .btn, 
+  a.btn {
     margin: 30px 10px 0;
   }
 }
@@ -540,7 +560,7 @@ main > .container {
   @media (min-width: $screen-md-min) {
     margin: 25px;
   }
-  
+
   &.ym-activity-box--next-step {
     > div {
       padding: 0 0 20px;
@@ -601,7 +621,9 @@ main > .container {
   }
   
   &.ym-activity-box--next-step, 
-  &.ym-activity-box--challenge {
+  &.ym-activity-box--challenge, 
+  &.ym-activity-box--coordinator-pages, 
+  &.ym-activity-box--coordinator-reports {
     @media (min-width: $screen-sm-min) {
       margin: 0 20px 0 0;
     }
@@ -624,8 +646,11 @@ main > .container {
     .ym_my_challenge__actions {
       margin-top: 15px;
       
-      .btn:first-child{
-        margin-right: 15px;
+      .btn, 
+      a.btn {
+        &:first-child{
+          margin-right: 15px;
+        }
       }
     }
     
@@ -641,8 +666,25 @@ main > .container {
       margin: 20px 0 30px;
     }
     
+    .ym-activity-url {
+      word-break: break-all;
+      
+      .btn, 
+      a.btn {
+        &, 
+        &:link, 
+        &:visited, 
+        &:hover, 
+        &:focus, 
+        &:active {
+          display: inline-block;
+          margin: 6px 0 0;
+        }
+      }
+    }
+    
     .text-right {
-      @media (max-width: $screen-xs-max) {
+      @media (max-width: $screen-sm-max) {
         text-align: left;
         margin-top: 15px;
       }
@@ -672,14 +714,6 @@ main > .container {
       padding: 8px;
       margin-right: 3px;
     }
-  }
-  
-  .row {
-    margin: 0;
-  }
-  
-  .col-sm-6 {
-    padding: 0;
   }
 }
 
@@ -776,7 +810,8 @@ main > .container {
   .modal-header__btns {
     float: right;
     
-    .btn {
+    .btn, 
+    a.btn {
       margin: 0 0 0 6px;
     }
   }
@@ -788,7 +823,8 @@ main > .container {
       text-align: center;
       margin: 0 0 18px 0;
       
-      .btn {
+      .btn, 
+      a.btn {
         margin: 0 3px;
       }
     }
@@ -819,7 +855,8 @@ main > .container {
     }
   }
   
-  .btn {
+  .btn, 
+  a.btn {
     &, 
     &:link, 
     &:visited, 
@@ -870,7 +907,8 @@ main > .container {
   .contacts-list__actions-selected {
     float: left;
     
-    .btn {
+    .btn, 
+    a.btn {
       padding: 10px;
       
       @media (min-width: 360px) {
@@ -890,7 +928,8 @@ main > .container {
   .contacts-list__actions-manage {
     float: right;
     
-    .btn {
+    .btn, 
+    a.btn {
       padding: 10px;
       margin: 0 0 0 6px;
       
@@ -955,6 +994,7 @@ main > .container {
         }
       }
       
+      h5, 
       .h5 {
         margin: 0 0 25px;
       }
@@ -1017,7 +1057,7 @@ main > .container {
           max-width: 100px;
         }
         
-        @media (min-width: $screen-md-min) {
+        @media (min-width: $screen-lg-min) {
           max-width: none;
         }
       }
@@ -1054,8 +1094,25 @@ main > .container {
 }
 
 .ym-activity-box--coordinator-pages {
+  .ym-activity-url {
+    word-break: break-all;
+    
+    .btn, 
+    a.btn {
+      &, 
+      &:link, 
+      &:visited, 
+      &:hover, 
+      &:focus, 
+      &:active {
+        display: inline-block;
+        margin: 6px 0 0;
+      }
+    }
+  }
+  
   .text-right {
-    @media (max-width: $screen-xs-max) {
+    @media (max-width: $screen-sm-max) {
       text-align: left;
       margin-top: 15px;
     }
@@ -1123,6 +1180,12 @@ main > .container {
   @media (min-width: $screen-sm-min) {
     width: calc(97% - 135px);
   }
+  
+  p {
+    @media (min-width: $screen-sm-min) {
+      margin: 0 0 32px;
+    }
+  }
 }
 
 .ym-pc-student-view-image {
@@ -1131,6 +1194,33 @@ main > .container {
   
   @media (min-width: $screen-sm-min) {
     width: 135px;
+  }
+}
+
+.ym-activity-box--coordinator-reports, 
+.ym-activity-box--coordinator-prizes {
+  position: relative;
+  
+  @media (min-width: $screen-sm-min) {
+    padding-bottom: 50px;
+  }
+  
+  p {
+    margin: 0 0 18px;
+    
+    @media (min-width: $screen-md-min) {
+      margin: 0 0 32px;
+    }
+  }
+  
+  .ym-activity-box-cta {
+    text-align: center;
+    
+    @media (min-width: $screen-sm-min) {
+      position: absolute;
+      bottom: 25px;
+      width: calc(100% - 40px);
+    }
   }
 }
 
@@ -1146,6 +1236,19 @@ main > .container {
       h5, 
       .h5 {
         color: $event-secondary;
+        margin: 0 0 18px;
+        
+        @media (min-width: $screen-sm-min) {
+          margin: 0 0 20px;
+        }
+      }
+    }
+    
+    .btn {
+      margin: 0 0 32px;
+      
+      @media (min-width: $screen-sm-min) {
+        margin: 0;
       }
     }
   }
