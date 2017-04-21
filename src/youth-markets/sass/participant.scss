@@ -524,9 +524,18 @@ main > .container {
     }
   }
   
+  h5, 
   .h5 {
     color: $event-secondary;
     margin: 0 0 20px;
+    
+    .ym-activity-box-number {
+      display: inline-block;
+      background: $event-secondary;
+      border-radius: 100%;
+      color: $brand-white;
+      padding: 8px;
+    }
   }
   
   .row {
