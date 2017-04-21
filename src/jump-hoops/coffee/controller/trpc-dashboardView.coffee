@@ -181,6 +181,7 @@ angular.module 'trPcControllers'
                   $scope.personalPageUrl = shortcutItem.url
                 else
                   $scope.personalPageUrl = shortcutItem.defaultUrl.split('/site/')[0] + '/site/TR?fr_id=' + $scope.frId + '&pg=personal&px=' + $scope.consId
+            response
         $scope.dashboardPromises.push getParticipantShortcutPromise
       $scope.getParticipantShortcut()
       
@@ -202,6 +203,7 @@ angular.module 'trPcControllers'
                     $scope.teamPageUrl = shortcutItem.url
                   else
                     $scope.teamPageUrl = shortcutItem.defaultUrl.split('/site/')[0] + '/site/TR?fr_id=' + $scope.frId + '&pg=team&team_id=' + $scope.participantRegistration.teamId
+              response
           $scope.dashboardPromises.push getTeamShortcutPromise
         $scope.getTeamShortcut()
       
@@ -209,20 +211,23 @@ angular.module 'trPcControllers'
         $scope.getCompanyShortcut = ->
           getCompanyShortcutPromise = NgPcTeamraiserShortcutURLService.getCompanyShortcut()
             .then (response) ->
-              shortcutItem = response.data.getCompanyShortcutResponse?.shortcutItem
-              if shortcutItem
-                if shortcutItem.prefix
-                  shortcutItem.prefix = shortcutItem.prefix
-                $scope.companyShortcut = shortcutItem
-                if shortcutItem.url
-                  $scope.companyPageUrl = shortcutItem.url
+              if response.data.errorResponse
+                # TODO
+              else
+                shortcutItem = response.data.getCompanyShortcutResponse?.shortcutItem
+                if not shortcutItem
+                  # TODO
                 else
-                  $scope.companyPageUrl = shortcutItem.defaultUrl.split('/site/')[0] + '/site/TR?fr_id=' + $scope.frId + '&pg=company&company_id=' + $scope.participantRegistration.companyInformation.companyId
-                $timeout ->
-                  addthis.toolbox '.addthis_toolbox'
-                , 500
+                  if shortcutItem.prefix
+                    shortcutItem.prefix = shortcutItem.prefix
+                  $scope.companyShortcut = shortcutItem
+                  if shortcutItem.url
+                    $scope.companyPageUrl = shortcutItem.url
+                  else
+                    $scope.companyPageUrl = shortcutItem.defaultUrl.split('/site/')[0] + '/site/TR?fr_id=' + $scope.frId + '&pg=company&company_id=' + $scope.participantRegistration.companyInformation.companyId
+              response
           $scope.dashboardPromises.push getCompanyShortcutPromise
-          $scope.getCompanyShortcut()
+        $scope.getCompanyShortcut()
       
       $scope.personalChallenge = {}
       $scope.updatedPersonalChallenge = {}
