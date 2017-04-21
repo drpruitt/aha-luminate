@@ -35,7 +35,7 @@ main > .container {
     &:hover, 
     &:focus, 
     &:active {
-      float: left;
+      display: inline-block;
       font-size: 14px;
       line-height: 16px;
       text-align: center;
@@ -44,6 +44,7 @@ main > .container {
       height: 40px;
       padding: 12px 6px 0;
       margin: 0 3px 5px;
+      vertical-align: bottom;
       
       @media (max-width: 350px) {
         max-width: 85px;
@@ -69,6 +70,11 @@ main > .container {
       @media (min-width: 560px) {
         background: $event-secondary-medium;
         color: $event-secondary;
+        font-size: 17px;
+      }
+      
+      @media (min-width: 590px) {
+        font-size: 18px;
       }
     }
     
@@ -85,8 +91,10 @@ main > .container {
     }
     
     &:last-child {
-      border-right: 0;
-      margin: 0;
+      @media (min-width: 560px) {
+        border-right: 0;
+        margin: 0;
+      }
     }
     
     &.active {
@@ -198,6 +206,12 @@ main > .container {
       @media (max-width: 669px) {
         background: $event-secondary;
         color: $brand-white;
+      }
+    }
+    
+    &:last-child {
+      @media (min-width: 560px) and (max-width: 669px) {
+        margin: 0 3px 5px;
       }
     }
     
@@ -344,14 +358,40 @@ main > .container {
     }
   }
   
-  .btn-lg {
-    display: block;
-    margin: 0 auto 15px;
-    max-width: 200px;
-    
+  .ym-progress-related {
+    position: relative;
+  }
+  
+  .ym-progress-donate {
     @media (min-width: $screen-sm-min) {
-      display: inline-block;
-      max-width: none;
+      float: left;
+    }
+    
+    .btn-lg, 
+    a.btn-lg {
+      &, 
+      &:link, 
+      &:visited, 
+      &:hover, 
+      &:focus, 
+      &:active {
+        display: block;
+        margin: 0 auto 15px;
+        max-width: 200px;
+        
+        @media (min-width: $screen-sm-min) {
+          display: inline-block;
+          position: absolute;
+          bottom: 0;
+          max-width: none;
+          margin: 0;
+        }
+        
+        @media (max-width: $screen-sm-max) {
+          font-size: 14px;
+          padding: 10px 12px;
+        }
+      }
     }
   }
   
@@ -360,6 +400,24 @@ main > .container {
     
     p {
       margin: 0;
+    }
+    
+    a {
+      &, 
+      &:link, 
+      &:visited, 
+      &:hover, 
+      &:focus, 
+      &:active {
+        @media (min-width: $screen-sm-min) {
+          display: inline-block;
+          max-width: 100px;
+        }
+        
+        @media (min-width: $screen-md-min) {
+          max-width: none;
+        }
+      }
     }
   }
 }
@@ -903,14 +961,40 @@ main > .container {
     }
   }
   
-  .btn-lg {
-    display: block;
-    margin: 0 auto 15px;
-    max-width: 200px;
-    
+  .ym-progress-related {
+    position: relative;
+  }
+  
+  .ym-progress-donate {
     @media (min-width: $screen-sm-min) {
-      display: inline-block;
-      max-width: none;
+      float: left;
+    }
+    
+    .btn-lg, 
+    a.btn-lg {
+      &, 
+      &:link, 
+      &:visited, 
+      &:hover, 
+      &:focus, 
+      &:active {
+        display: block;
+        margin: 0 auto 15px;
+        max-width: 200px;
+        
+        @media (min-width: $screen-sm-min) {
+          display: inline-block;
+          position: absolute;
+          bottom: 0;
+          max-width: none;
+          margin: 0;
+        }
+        
+        @media (max-width: $screen-sm-max) {
+          font-size: 14px;
+          padding: 10px 12px;
+        }
+      }
     }
   }
   
@@ -919,6 +1003,24 @@ main > .container {
     
     p {
       margin: 0;
+    }
+    
+    a {
+      &, 
+      &:link, 
+      &:visited, 
+      &:hover, 
+      &:focus, 
+      &:active {
+        @media (min-width: $screen-sm-min) {
+          display: inline-block;
+          max-width: 100px;
+        }
+        
+        @media (min-width: $screen-md-min) {
+          max-width: none;
+        }
+      }
     }
   }
 }
@@ -1124,8 +1226,23 @@ main > .container {
       }
     }
   }
-}
-
-.ym-pc-report-gift-unthanked {
-  font-weight: 700;
+  
+  > tbody {
+    > tr {
+      > td {
+        .btn, 
+        a.btn {
+          &, 
+          &:link, 
+          &:visited, 
+          &:hover, 
+          &:focus, 
+          &:active {
+            display: inline-block;
+            margin: 6px 0 0;
+          }
+        }
+      }
+    }
+  }
 }
