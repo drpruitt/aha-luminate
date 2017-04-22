@@ -9,7 +9,8 @@ angular.module 'ahaLuminateControllers'
     'TeamraiserTeamService'
     'TeamraiserParticipantService'
     'ZuriService'
-    ($scope, $rootScope, $location, $filter, $timeout, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService, ZuriService) ->
+    'APP_INFO'
+    ($scope, $rootScope, $location, $filter, $timeout, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService, ZuriService, APP_INFO) ->
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0]
       $scope.companyProgress = []
       $rootScope.companyName = ''
@@ -150,8 +151,10 @@ angular.module 'ahaLuminateControllers'
 
       getCompanyParticipants()
 
-      companyParticipantsString = JSON.stringify(companyParticipants)
+      console.log $scope.companyParticipants
+      companyParticipantsString = JSON.stringify($scope.companyParticipants)
       console.log companyParticipantsString
-      angular.element('.ym-school-animation iframe')[0].contentWindow.postMessage(companyParticipantsString, 'http://[[S29:DOMAIN]]');
+
+      angular.element('.ym-school-animation iframe')[0].contentWindow.postMessage(companyParticipantsString, 'http://heartdev.convio.net');
       
   ]
