@@ -150,5 +150,8 @@ angular.module 'ahaLuminateControllers'
 
       getCompanyParticipants()
 
+      companyParticipantsString = JSON.stringify(companyParticipants)
+      console.log companyParticipantsString
+      angular.element('.ym-school-animation iframe')[0].contentWindow.postMessage(companyParticipantsString, 'http://[[S29:DOMAIN]]');
       
   ]
