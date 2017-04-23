@@ -152,7 +152,6 @@ angular.module 'ahaLuminateControllers'
       getCompanyParticipants()
 
       console.log $scope.companyParticipants
-      companyParticipantsString = JSON.stringify($scope.companyParticipants)
       console.log companyParticipantsString
 
       angular.element('.ym-school-animation iframe')[0].contentWindow.postMessage(companyParticipantsString, 'http://heartdev.convio.net');
