@@ -131,7 +131,7 @@ angular.module 'ahaLuminateControllers'
         angular.forEach participants, (participant) ->
           partString = '{name: '+participant.name.first+' '+participant.name.last+', raised: ' + participant.amountRaisedFormatted+'}, '
           participantsString += partString
-        companyParticipantsString = '[participants: '+participantsString+' totalNumber:'+ $scope.companyParticipants.totalNumber+']'
+        companyParticipantsString = '[participants: '+participantsString+' totalNumber: '+ $scope.companyParticipants.totalNumber+']'
         angular.element('.ym-school-animation iframe')[0].contentWindow.postMessage(companyParticipantsString, domain);
       
       getCompanyParticipants = ->
