@@ -12,6 +12,7 @@ angular.module 'ahaLuminateControllers'
     'APP_INFO'
     ($scope, $rootScope, $location, $filter, $timeout, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService, ZuriService, APP_INFO) ->
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0]
+      domain = $location.absUrl().split('/site')[0]
       $scope.companyProgress = []
       $rootScope.companyName = ''
       $scope.companyTeams = []
@@ -116,7 +117,8 @@ angular.module 'ahaLuminateControllers'
             setCompanyTeams()
       
       getCompanyTeams()
-      
+
+      participantsString = ''      
       $scope.companyParticipants = []
       setCompanyParticipants = (participants, totalNumber, totalFundraisers) ->
         $scope.companyParticipants.participants = participants or []
@@ -125,6 +127,12 @@ angular.module 'ahaLuminateControllers'
         $scope.companyParticipants.totalFundraisers = Number totalFundraisers
         if not $scope.$$phase
           $scope.$apply()
+
+        angular.forEach participants, (participant) ->
+          partString = '{name: '+participant.name.first+' '+participant.name.last+', raised: ' + participant.amountRaisedFormatted+'}, '
+          participantsString += partString
+        companyParticipantsString = '[participants: '+participantsString+' totalNumber:'+ $scope.companyParticipants.totalNumber+']'
+        angular.element('.ym-school-animation iframe')[0].contentWindow.postMessage(companyParticipantsString, domain);
       
       getCompanyParticipants = ->
         TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%%%') + '&first_name=' + encodeURIComponent('%%%') + '&last_name=' + encodeURIComponent('%%%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=50', 
@@ -151,9 +159,6 @@ angular.module 'ahaLuminateControllers'
 
       getCompanyParticipants()
 
-      console.log $scope.companyParticipants
-      console.log companyParticipantsString
 
-      angular.element('.ym-school-animation iframe')[0].contentWindow.postMessage(companyParticipantsString, 'http://heartdev.convio.net');
       
   ]
