@@ -13,63 +13,217 @@ main > .container {
   padding: 0;
   
   .ng-pc-view-container {
-    padding: 10px;
+    padding: 10px 10px 20px;
+    
+    @media (min-width: $screen-sm-min) {
+      padding: 32px 10px;
+    }
     
     @media (min-width: $screen-md-min) {
-      padding: 28px;
+      padding: 36px 28px;
     }
   }
 }
 
 .ng-pc-nav {
-  background: $event-accent;
-  
-  @media (max-width: $screen-xs-max) {
-    background: transparent;
+  @media (max-width: 559px) {
     text-align: center;
-    margin-bottom: 7px;
+    max-width: 320px;
+    margin: 0 auto 7px;
   }
   
   a {
     &, 
     &:link, 
-    &:visited {
+    &:visited, 
+    &:hover, 
+    &:focus, 
+    &:active {
       display: inline-block;
-      background: $event-secondary;
-      color: $brand-white;
       font-size: 14px;
-      font-weight: 700;
-      line-height: 40px;
+      line-height: 16px;
       text-align: center;
       text-decoration: none;
       width: 100px;
       height: 40px;
-      margin: 0 5px 5px 0;
+      padding: 12px 6px 0;
+      margin: 0 3px 5px;
+      vertical-align: bottom;
       
       @media (max-width: 350px) {
         max-width: 85px;
       }
       
-      @media (min-width: $screen-sm-min) {
-        background: $event-secondary-medium;
+      @media (min-width: 560px) {
         border-right: 2px solid $event-accent;
-        color: $event-secondary;
         font-size: 18px;
-        line-height: 50px;
+        line-height: 22px;
         width: 20%;
         height: 50px;
+        padding: 14px 12px 0;
         margin: 0;
       }
     }
     
+    &, 
+    &:link, 
+    &:visited {
+      background: $event-secondary;
+      color: $brand-white;
+      
+      @media (min-width: 560px) {
+        background: $event-secondary-medium;
+        color: $event-secondary;
+        font-size: 17px;
+      }
+      
+      @media (min-width: 590px) {
+        font-size: 18px;
+      }
+    }
+    
+    &:hover, 
+    &:focus, 
+    &:active {
+      background: $event-secondary;
+      color: $brand-white;
+      
+      @media (min-width: 560px) {
+        background: $event-secondary;
+        color: $brand-white;
+      }
+    }
+    
     &:last-child {
-      border-right: 0;
-      margin: 0;
+      @media (min-width: 560px) {
+        border-right: 0;
+        margin: 0;
+      }
     }
     
     &.active {
       background: $brand-white;
       color: $event-secondary;
+    }
+    
+    > span {
+      display: inline-block;
+      margin: 0 auto;
+    }
+  }
+}
+
+.ng-pc-nav--coordinator {
+  @media (max-width: 669px) {
+    text-align: center;
+    max-width: 320px;
+    margin: 0 auto 7px;
+  }
+  
+  a {
+    &, 
+    &:link, 
+    &:visited, 
+    &:hover, 
+    &:focus, 
+    &:active {
+      @media (max-width: 669px) {
+        border-right: 0;
+        font-size: 14px;
+        line-height: 16px;
+        width: 100px;
+        height: 40px;
+        padding: 12px 6px 0;
+        margin: 0 3px 5px;
+      }
+      
+      @media (min-width: 670px) {
+        font-size: 17px;
+        width: 16.66666667%;
+      }
+      
+      @media (min-width: 690px) {
+        font-size: 18px;
+      }
+      
+      &.ng-pc-nav-item--resources {
+        padding: 3px 6px 0;
+        
+        @media (min-width: 670px) {
+          padding: 3px 12px 0;
+        }
+        
+        @media (min-width: 1170px) {
+          padding: 14px 12px 0;
+        }
+        
+        > span {
+          max-width: 80px;
+          
+          @media (min-width: 670px) {
+            max-width: 100px;
+          }
+          
+          @media (min-width: 1170px) {
+            max-width: none;
+          }
+        }
+      }
+      
+      &.ng-pc-nav-item--student-view {
+        padding: 3px 6px 0;
+        
+        @media (min-width: 670px) {
+          padding: 3px 12px 0;
+        }
+        
+        @media (min-width: 890px) {
+          padding: 14px 12px 0;
+        }
+        
+        > span {
+          max-width: 65px;
+          
+          @media (min-width: 670px) {
+            max-width: 80px;
+          }
+          
+          @media (min-width: 890px) {
+            max-width: none;
+          }
+        }
+      }
+    }
+    
+    &, 
+    &:link, 
+    &:visited {
+      @media (max-width: 669px) {
+        background: $event-secondary;
+        color: $brand-white;
+      }
+    }
+    
+    &:hover, 
+    &:focus, 
+    &:active {
+      @media (max-width: 669px) {
+        background: $event-secondary;
+        color: $brand-white;
+      }
+    }
+    
+    &:last-child {
+      @media (min-width: 560px) and (max-width: 669px) {
+        margin: 0 3px 5px;
+      }
+    }
+    
+    &.active {
+      @media (max-width: 669px) {
+        background: $brand-white;
+        color: $event-secondary;
+      }
     }
   }
 }
@@ -80,8 +234,11 @@ main > .container {
 
 .ng-pc-container, 
 .ng-pc-modal {
-  .btn.form-control {
-    height: auto;
+  .btn, 
+  a.btn {
+    &.form-control {
+      height: auto;
+    }
   }
 }
 
@@ -90,7 +247,8 @@ main > .container {
   width: 100%;
   margin: 0 0 12px;
   
-  > .btn {
+  > .btn, 
+  > a.btn {
     text-align: left;
     
     .caret {
@@ -107,6 +265,15 @@ main > .container {
   .dropdown-menu {
     > li {
       > a {
+        &, 
+        &:link, 
+        &:visited, 
+        &:hover, 
+        &:focus, 
+        &:active {
+          text-decoration: none;
+        }
+        
         .badge {
           float: right;
         }
@@ -125,8 +292,20 @@ main > .container {
     
     .checkbox {
       margin: 0;
+      
       label {
-        padding-left: 0;
+        padding-left: 25px;
+        
+        a {
+          &, 
+          &:link, 
+          &:visited, 
+          &:hover, 
+          &:focus, 
+          &:active {
+            text-decoration: none;
+          }
+        }
       }
     }
   }
@@ -136,7 +315,8 @@ main > .container {
     &:link, 
     &:visited, 
     &:hover, 
-    &:focus {
+    &:focus, 
+    &:active {
       font-weight: 500;
       text-decoration: none;
     }
@@ -189,20 +369,47 @@ main > .container {
         }
       }
       
+      h5, 
       .h5 {
         margin: 0 0 25px;
       }
     }
   }
   
-  .btn-lg {
-    display: block;
-    margin: 0 auto 15px;
-    max-width: 200px;
-    
+  .ym-progress-related {
+    position: relative;
+  }
+  
+  .ym-progress-donate {
     @media (min-width: $screen-sm-min) {
-      display: inline-block;
-      max-width: none;
+      float: left;
+    }
+    
+    .btn-lg, 
+    a.btn-lg {
+      &, 
+      &:link, 
+      &:visited, 
+      &:hover, 
+      &:focus, 
+      &:active {
+        display: block;
+        margin: 0 auto 15px;
+        max-width: 200px;
+        
+        @media (min-width: $screen-sm-min) {
+          display: inline-block;
+          position: absolute;
+          bottom: 0;
+          max-width: none;
+          margin: 0;
+        }
+        
+        @media (max-width: $screen-sm-max) {
+          font-size: 14px;
+          padding: 10px 12px;
+        }
+      }
     }
   }
   
@@ -211,6 +418,24 @@ main > .container {
     
     p {
       margin: 0;
+    }
+    
+    a {
+      &, 
+      &:link, 
+      &:visited, 
+      &:hover, 
+      &:focus, 
+      &:active {
+        @media (min-width: $screen-sm-min) {
+          display: inline-block;
+          max-width: 100px;
+        }
+        
+        @media (min-width: $screen-lg-min) {
+          max-width: none;
+        }
+      }
     }
   }
 }
@@ -259,7 +484,8 @@ main > .container {
   }
 }
 
-.ym-pc-dashboard-progress-box .ym-progress__thermometer {
+.ym-pc-dashboard-progress-box .ym-progress__thermometer, 
+.ym-pc-dashboard-coordinator-progress-box .ym-progress__thermometer {
   max-width: 420px;
 }
 
@@ -274,7 +500,8 @@ main > .container {
 }
 
 .ym-pc-dashboard-email-challenge-box {
-  .btn {
+  .btn, 
+  a.btn {
     margin: 30px 10px 0;
   }
 }
@@ -333,7 +560,7 @@ main > .container {
   @media (min-width: $screen-md-min) {
     margin: 25px;
   }
-  
+
   &.ym-activity-box--next-step {
     > div {
       padding: 0 0 20px;
@@ -378,15 +605,25 @@ main > .container {
       }
     }
     
-    .btn {
-      width: 125px;
-      padding-left: 0;
-      padding-right: 0;
+    .btn, 
+    a.btn {
+      &, 
+      &:link, 
+      &:visited, 
+      &:hover, 
+      &:focus, 
+      &:active {
+        width: 125px;
+        padding-left: 0;
+        padding-right: 0;
+      }
     }
   }
   
   &.ym-activity-box--next-step, 
-  &.ym-activity-box--challenge {
+  &.ym-activity-box--challenge, 
+  &.ym-activity-box--coordinator-pages, 
+  &.ym-activity-box--coordinator-reports {
     @media (min-width: $screen-sm-min) {
       margin: 0 20px 0 0;
     }
@@ -409,8 +646,11 @@ main > .container {
     .ym_my_challenge__actions {
       margin-top: 15px;
       
-      .btn:first-child{
-        margin-right: 15px;
+      .btn, 
+      a.btn {
+        &:first-child{
+          margin-right: 15px;
+        }
       }
     }
     
@@ -426,8 +666,25 @@ main > .container {
       margin: 20px 0 30px;
     }
     
+    .ym-activity-url {
+      word-break: break-all;
+      
+      .btn, 
+      a.btn {
+        &, 
+        &:link, 
+        &:visited, 
+        &:hover, 
+        &:focus, 
+        &:active {
+          display: inline-block;
+          margin: 6px 0 0;
+        }
+      }
+    }
+    
     .text-right {
-      @media (max-width: $screen-xs-max) {
+      @media (max-width: $screen-sm-max) {
         text-align: left;
         margin-top: 15px;
       }
@@ -439,17 +696,24 @@ main > .container {
     }
   }
   
+  h5, 
   .h5 {
     color: $event-secondary;
     margin: 0 0 20px;
-  }
-  
-  .row {
-    margin: 0;
-  }
-  
-  .col-sm-6 {
-    padding: 0;
+    
+    .ym-activity-box-number {
+      display: inline-block;
+      background: $event-secondary;
+      border-radius: 100%;
+      color: $brand-white;
+      font-size: 28px;
+      line-height: 20px;
+      text-align: center;
+      width: 42px;
+      height: 42px;
+      padding: 8px;
+      margin-right: 3px;
+    }
   }
 }
 
@@ -518,7 +782,7 @@ main > .container {
       margin: 0;
       
       label {
-        padding-left: 0;
+        padding-left: 25px;
       }
     }
   }
@@ -546,7 +810,8 @@ main > .container {
   .modal-header__btns {
     float: right;
     
-    .btn {
+    .btn, 
+    a.btn {
       margin: 0 0 0 6px;
     }
   }
@@ -558,7 +823,8 @@ main > .container {
       text-align: center;
       margin: 0 0 18px 0;
       
-      .btn {
+      .btn, 
+      a.btn {
         margin: 0 3px;
       }
     }
@@ -589,7 +855,8 @@ main > .container {
     }
   }
   
-  .btn {
+  .btn, 
+  a.btn {
     &, 
     &:link, 
     &:visited, 
@@ -640,7 +907,8 @@ main > .container {
   .contacts-list__actions-selected {
     float: left;
     
-    .btn {
+    .btn, 
+    a.btn {
       padding: 10px;
       
       @media (min-width: 360px) {
@@ -660,7 +928,8 @@ main > .container {
   .contacts-list__actions-manage {
     float: right;
     
-    .btn {
+    .btn, 
+    a.btn {
       padding: 10px;
       margin: 0 0 0 6px;
       
@@ -725,20 +994,47 @@ main > .container {
         }
       }
       
+      h5, 
       .h5 {
         margin: 0 0 25px;
       }
     }
   }
   
-  .btn-lg {
-    display: block;
-    margin: 0 auto 15px;
-    max-width: 200px;
-    
+  .ym-progress-related {
+    position: relative;
+  }
+  
+  .ym-progress-donate {
     @media (min-width: $screen-sm-min) {
-      display: inline-block;
-      max-width: none;
+      float: left;
+    }
+    
+    .btn-lg, 
+    a.btn-lg {
+      &, 
+      &:link, 
+      &:visited, 
+      &:hover, 
+      &:focus, 
+      &:active {
+        display: block;
+        margin: 0 auto 15px;
+        max-width: 200px;
+        
+        @media (min-width: $screen-sm-min) {
+          display: inline-block;
+          position: absolute;
+          bottom: 0;
+          max-width: none;
+          margin: 0;
+        }
+        
+        @media (max-width: $screen-sm-max) {
+          font-size: 14px;
+          padding: 10px 12px;
+        }
+      }
     }
   }
   
@@ -748,11 +1044,33 @@ main > .container {
     p {
       margin: 0;
     }
+    
+    a {
+      &, 
+      &:link, 
+      &:visited, 
+      &:hover, 
+      &:focus, 
+      &:active {
+        @media (min-width: $screen-sm-min) {
+          display: inline-block;
+          max-width: 100px;
+        }
+        
+        @media (min-width: $screen-lg-min) {
+          max-width: none;
+        }
+      }
+    }
   }
 }
 
 .ym-pc-dashboard-coordinator-students-box {
   text-align: center;
+}
+
+.ym-pc-dashboard-coordinator-create-message {
+  margin: 20px 0 0;
 }
 
 .ym-pc-dashboard-coordinator-steps-section {
@@ -771,6 +1089,37 @@ main > .container {
     @media (min-width: $screen-md-min) {
       padding: 0 25px;
       margin: 0;
+    }
+  }
+}
+
+.ym-activity-box--coordinator-pages {
+  .ym-activity-url {
+    word-break: break-all;
+    
+    .btn, 
+    a.btn {
+      &, 
+      &:link, 
+      &:visited, 
+      &:hover, 
+      &:focus, 
+      &:active {
+        display: inline-block;
+        margin: 6px 0 0;
+      }
+    }
+  }
+  
+  .text-right {
+    @media (max-width: $screen-sm-max) {
+      text-align: left;
+      margin-top: 15px;
+    }
+    
+    a {
+      display: inline-block;
+      margin-left: 5px;
     }
   }
 }
@@ -819,6 +1168,62 @@ main > .container {
   }
 }
 
+.ym-pc-dashboard-coordinator-page-view {
+  margin: 0 0 30px;
+}
+
+.ym-pc-student-view-text {
+  float: left;
+  width: calc(97% - 115px);
+  margin: 0 3% 0 0;
+  
+  @media (min-width: $screen-sm-min) {
+    width: calc(97% - 135px);
+  }
+  
+  p {
+    @media (min-width: $screen-sm-min) {
+      margin: 0 0 32px;
+    }
+  }
+}
+
+.ym-pc-student-view-image {
+  float: right;
+  width: 115px;
+  
+  @media (min-width: $screen-sm-min) {
+    width: 135px;
+  }
+}
+
+.ym-activity-box--coordinator-reports, 
+.ym-activity-box--coordinator-prizes {
+  position: relative;
+  
+  @media (min-width: $screen-sm-min) {
+    padding-bottom: 50px;
+  }
+  
+  p {
+    margin: 0 0 18px;
+    
+    @media (min-width: $screen-md-min) {
+      margin: 0 0 32px;
+    }
+  }
+  
+  .ym-activity-box-cta {
+    text-align: center;
+    
+    @media (min-width: $screen-sm-min) {
+      position: absolute;
+      bottom: 25px;
+      width: calc(100% - 40px);
+    }
+  }
+}
+
 .ym-pc-dashboard-coordinator-resources-section {
   background-color: $event-accent-light;
   padding: 36px;
@@ -831,6 +1236,19 @@ main > .container {
       h5, 
       .h5 {
         color: $event-secondary;
+        margin: 0 0 18px;
+        
+        @media (min-width: $screen-sm-min) {
+          margin: 0 0 20px;
+        }
+      }
+    }
+    
+    .btn {
+      margin: 0 0 32px;
+      
+      @media (min-width: $screen-sm-min) {
+        margin: 0;
       }
     }
   }
@@ -841,5 +1259,93 @@ main > .container {
   
   @media (min-width: $screen-sm-min) {
     margin: 32px 0 0;
+  }
+}
+
+.ym-pc-reports-lists {
+  .tab-content {
+    > .tab-pane {
+      padding: 28px 0 0;
+    }
+  }
+}
+
+.ym-pc-reports--no-tabs {
+  .nav-tabs {
+    display: none;
+  }
+}
+
+.ym-pc-report-header {
+  text-align: center;
+  margin: 0 0 28px;
+  
+  h5, 
+  .h5 {
+    margin: 0;
+  }
+}
+
+.ym-pc-report-header-buttons {
+  margin: 16px 0 0;
+  
+  @media (min-width: $screen-md-min) {
+    text-align: right;
+    margin: 0;
+  }
+  
+  a {
+    &, 
+    &:link, 
+    &:visited, 
+    &:hover, 
+    &:focus, 
+    &:active {
+      display: block;
+      margin: 0 0 12px;
+      
+      @media (min-width: 375px) {
+        display: inline-block;
+        margin: 0 0 0 10px;
+      }
+    }
+  }
+}
+
+.ym-pc-reports-lists .table {
+  > thead {
+    > tr {
+      > th {
+        a {
+          &, 
+          &:link, 
+          &:visited, 
+          &:hover, 
+          &:focus, 
+          &:active {
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+  
+  > tbody {
+    > tr {
+      > td {
+        .btn, 
+        a.btn {
+          &, 
+          &:link, 
+          &:visited, 
+          &:hover, 
+          &:focus, 
+          &:active {
+            display: inline-block;
+            margin: 6px 0 0;
+          }
+        }
+      }
+    }
   }
 }
