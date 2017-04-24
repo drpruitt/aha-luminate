@@ -261,11 +261,11 @@
                 <p class="ym_my_challenge__description">
                   <strong><span ng-bind-html="personalChallenge.name"></span></strong>
                 </p>
-                <p class="ym_my_challenge__stats" ng-if="personalChallenge.completed == 1" ng-cloak>
+                <p class="ym_my_challenge__stats" ng-if="personalChallenge.numCompleted == 1" ng-cloak>
                   I've met my challenge <span>1</span> day!
                 </p>
-                <p class="ym_my_challenge__stats" ng-if="personalChallenge.completed != 1" ng-cloak>
-                  I've met my challenge <span><span ng-bind-html="personalChallenge.completed"></span></span> days!
+                <p class="ym_my_challenge__stats" ng-if="personalChallenge.numCompleted != 1" ng-cloak>
+                  I've met my challenge <span><span ng-bind-html="personalChallenge.numCompleted"></span></span> days!
                 </p>
               </div>
               <div class="col-sm-4">
