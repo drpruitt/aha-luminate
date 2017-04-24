@@ -368,7 +368,4 @@ angular.module 'trPcControllers'
       $scope.logChallenge = ->
         ZuriService.logChallenge $scope.frId + '/' + $scope.consId + '/' + $scope.personalChallenge.id,
           getStudentChallenge()
-      
-      $scope.skipChallenge = ->
-        # TODO
   ]
