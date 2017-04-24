@@ -2,11 +2,35 @@
   position: relative;
   background-size: cover;
   padding-top: 45.2991452%;
-  
+
   @media (min-width: $screen-md-min) {
     background-position: 0 center;
     height: 430px;
     padding: 0;
+  }
+}
+
+.ym-hero__owl-carousel {
+  &.owl-carousel {
+    display: block;
+  }
+
+  > .item {
+    &:nth-child(n+2) {
+      display: none;
+    }
+  }
+}
+
+.ym-hero-top__find-your-school {
+  background-color: $event-accent;
+  margin-top: -46px;
+  padding-bottom: 22px;
+
+  a {
+    &.btn {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
   }
 }
 
@@ -15,7 +39,7 @@
   background-size: cover;
   padding-top: 45.2991452%;
   background-position: center;
-  
+
   @media (min-width: $screen-md-min) {
     height: 280px;
     padding: 0;
@@ -26,7 +50,7 @@
 .ym-hero__text {
   background: #ffffff;
   padding: 20px 20px 0;
-  
+
   @media (min-width: $screen-sm-min) {
     position: absolute;
     bottom: 20px;
@@ -35,38 +59,38 @@
     width: 300px;
     padding: 15px;
   }
-  
+
   @media (min-width: $screen-md-min) {
     width: 430px;
     padding: 20px;
   }
-  
+
   &.ym-hero__text--right {
     right: 20px;
-    
+
     @media (min-width: $screen-md-min) {
       right: 50px;
     }
   }
-  
+
   &.ym-hero__text--left {
     left: 20px;
-    
+
     @media (min-width: $screen-md-min) {
       left: 50px;
     }
   }
-  
+
   h1 {
     color: $event-secondary;
     text-shadow: none;
     margin-top: 0;
-    
+
     @media (max-width: $screen-sm-max) {
       font-size: 30px;
     }
   }
-  
+
   p {
     margin: 0;
   }

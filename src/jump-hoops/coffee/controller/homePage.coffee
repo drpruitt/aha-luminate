@@ -29,7 +29,7 @@ angular.module 'ahaLuminateControllers'
           if c.indexOf(nameEQ) == 0
             return c.substring(nameEQ.length, c.length)
           i++
-        null 
+        null
 
       setModal = ->
         date = new Date
@@ -37,13 +37,12 @@ angular.module 'ahaLuminateControllers'
         date.setDate date.getDate() + 1
         expires += date.toGMTString()
 
-        angular.element('#noRegModal').modal() 
+        angular.element('#noRegModal').modal()
         document.cookie = 'modalSet=true ; ' + expires + '; path=/'
 
       $scope.closeModal = ->
         angular.element('#noRegModal').modal('hide')
         document.getElementById('school-search').scrollIntoView()
-        
 
       initCarousel = ->
         owl = jQuery '.ym-home-feature .owl-carousel'
@@ -65,8 +64,21 @@ angular.module 'ahaLuminateControllers'
             '<i class="fa fa-chevron-left" aria-hidden="true" />',
             '<i class="fa fa-chevron-right" aria-hidden="true" />'
           ]
-          
       $timeout initCarousel, 1000
 
-
+      initHeroCarousel = ->
+        owl = jQuery '.ym-hero__owl-carousel'
+        if owl.length
+          items = owl.find '> .item'
+          if items.length > 1
+            owl.owlCarousel
+              items: 1
+              nav: true
+              loop: true
+              center: true
+              navText: [
+                '<i class="fa fa-chevron-left" aria-hidden="true" />',
+                '<i class="fa fa-chevron-right" aria-hidden="true" />'
+              ]
+      $timeout initHeroCarousel, 1000
   ]
