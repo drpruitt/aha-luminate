@@ -22,9 +22,11 @@ angular.module 'ahaLuminateControllers'
       $scope.challengeName = null
       $scope.challengeCompleted = 0
 
+      ###
       ParticipantBadgesService.getAuth
         success: (response) ->
           console.log 'get auth'
+      ###
       
       ZuriService.getZooStudent frId + '/' + $scope.participantId, 
         success: (response) ->

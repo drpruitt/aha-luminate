@@ -4,13 +4,6 @@ angular.module 'ahaLuminateApp'
     '$http'
     '$sce'
     ($rootScope, $http, $sce) ->
-      eCardTracking: (requestData) ->
-        url = '//hearttools.heart.org/aha_ym18/visitlink_record.php?ecard_linktrack=' + requestData
-        urlSCE = $sce.trustAsResourceUrl url
-        $http
-          method: 'POST',
-          url: urlSCE
-      
       getChallenges: (requestData, callback) ->
         url = '//hearttools.heart.org/aha_ym18/api/student/challenges/' + requestData + '?key=6Mwqh5dFV39HLDq7'
         urlSCE = $sce.trustAsResourceUrl url
@@ -20,7 +13,7 @@ angular.module 'ahaLuminateApp'
           else
             callback.success response
         , (response) ->
-          callback.error response
+          callback.failure response
       
       updateChallenge: (requestData, callback) ->
         url = '//hearttools.heart.org/aha_ym18/api/student/challenge/' + requestData + '&key=6Mwqh5dFV39HLDq7'
@@ -43,7 +36,7 @@ angular.module 'ahaLuminateApp'
           else
             callback.success response
         , (response) ->
-          callback.error response
+          callback.failure response
       
       getZooSchool: (requestData, callback) ->
         url = '//hearttools.heart.org/aha_ym18/api/program/school/' + requestData + '?key=6Mwqh5dFV39HLDq7'
@@ -54,7 +47,7 @@ angular.module 'ahaLuminateApp'
           else
             callback.success response
         , (response) ->
-          callback.error response
+          callback.failure response
       
       getZooTeam: (requestData, callback) ->
         url = '//hearttools.heart.org/aha_ym18/api/program/team/' + requestData + '?key=6Mwqh5dFV39HLDq7'
@@ -65,7 +58,7 @@ angular.module 'ahaLuminateApp'
           else
             callback.success response
         , (response) ->
-          callback.error response
+          callback.failure response
       
       getZooProgram: (callback) ->
         url = '//hearttools.heart.org/aha_ym18/api/program?key=6Mwqh5dFV39HLDq7'
@@ -76,7 +69,7 @@ angular.module 'ahaLuminateApp'
           else
             callback.success response
         , (response) ->
-          callback.error response
+          callback.failure response
       
       getZooTest: (callback) ->
         url = '//hearttools.heart.org/aha_ym18/api/program/event/1163033?key=6Mwqh5dFV39HLDq7'
@@ -87,5 +80,12 @@ angular.module 'ahaLuminateApp'
           else
             callback.success response
         , (response) ->
-          callback.error response
+          callback.failure response
+      
+      eCardTracking: (requestData) ->
+        url = '//hearttools.heart.org/aha_ym18/visitlink_record.php?ecard_linktrack=' + requestData
+        urlSCE = $sce.trustAsResourceUrl url
+        $http
+          method: 'POST'
+          url: urlSCE
   ]

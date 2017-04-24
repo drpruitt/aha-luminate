@@ -4,7 +4,7 @@
       <div class="visible-xs">
         <div class="btn-group ng-pc-nav-btn-group" uib-dropdown>
           <button type="button" class="btn btn-success form-control" uib-dropdown-toggle>
-            {{messageTypeName}} <span class="caret"></span>
+            <strong>{{messageTypeName}}</strong> <span class="caret"></span>
           </button>
           <ul class="list-unstyled dropdown-menu" uib-dropdown-menu>
             <li>
@@ -67,7 +67,7 @@
       </div>
       <div class="hidden-xs">
         <a class="btn btn-success form-control" href="{{baseUrl}}#/email/compose">
-          Compose
+          <strong>Compose</strong>
         </a>
         <div class="list-group ng-pc-nav-list-group">
           <a class="list-group-item" ng-class="{'active': messageType == 'draft'}" href="{{baseUrl}}#/email/message/draft/list">
