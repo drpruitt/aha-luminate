@@ -343,7 +343,8 @@ angular.module 'trPcControllers'
             if personalChallenges
               $scope.personalChallenge.id = personalChallenges.current
               $scope.personalChallenge.name = personalChallenges.text
-              $scope.personalChallenge.completed = personalChallenges.completed
+              $scope.personalChallenge.numCompleted = if personalChallenges.completed then Number(personalChallenges.completed) else 0
+              $scope.personalChallenge.completedToday = personalChallenges.completedToday
               $scope.updatedPersonalChallenge.id = $scope.personalChallenge.id
       getStudentChallenge()
       
