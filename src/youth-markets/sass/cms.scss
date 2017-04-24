@@ -14,7 +14,7 @@
   .ym-page-breadcrumbs {
     color: $brand-white;
     padding-bottom: 18px;
-    
+
     a {
       color: $brand-white;
       text-decoration: underline;
@@ -24,14 +24,14 @@
   .breadcrumbComponent {
     display: block;
     margin-bottom: 25px;
-      
+
     .breadcrumb {
       color: $brand-white;
       background-color: $event-accent;
       padding: 0;
       font-weight: lighter;
     }
-    
+
     @media (max-width: $screen-xs-max) {
       & {
         display: none;
@@ -42,35 +42,35 @@
   .breadcrumbseparator {
     color: $brand-white;
   }
-  
+
   .ym-page-section__block {
     padding: 0px 40px;
     margin-bottom: 50px;
-    
+
     &.ym-page-section__block--narrow {
       padding-left: 70px;
       padding-right: 70px;
     }
-    
+
     &.ym-page-section__block--slim {
       padding-left: 100px;
       padding-right: 100px;
     }
-    
+
     @media (max-width: $screen-sm-max) {
       margin-bottom: 40px;
-      
-      &, 
-      &.ym-page-section__block--narrow, 
+
+      &,
+      &.ym-page-section__block--narrow,
       &.ym-page-section__block--slim {
         padding-left: 40px;
         padding-right: 40px;
       }
     }
-    
+
     @media (max-width: $screen-xs-max) {
-      &, 
-      &.ym-page-section__block--narrow, 
+      &,
+      &.ym-page-section__block--narrow,
       &.ym-page-section__block--slim {
         padding-left: 20px;
         padding-right: 20px;
@@ -89,7 +89,7 @@
       margin-bottom: 40px;
     }
   }
-  
+
   .ym-page-section__left-col {
     padding: 0;
     max-width: 670px;
@@ -103,7 +103,7 @@
       max-width: 100%;
     }
   }
-  
+
   .ym-page-section__right-col {
     padding: 0;
     float: right;
@@ -118,7 +118,7 @@
       margin-bottom: 40px;
     }
   }
-  
+
   .ym-sidebar {
     border-left: 1px solid $border-gray;
     margin: auto;
@@ -131,33 +131,33 @@
       font-size: 18px;
       padding: 12px 20px;
       margin: 0;
-      
+
       a {
         color: $brand-white;
         text-decoration: none;
-        
+
         &:hover {
           text-decoration: underline;
         }
       }
     }
-    
+
     .ym-sidebar__nav {
       list-style: none;
       list-style-image: none;
       padding: 0 0 30px 20px;
       margin: 0;
-      
+
       li {
         display: block;
         border-bottom: 1px solid $border-gray;
         padding-top: 15px;
         padding-bottom: 15px;
-        
+
         &:last-child {
           border-bottom: none;
         }
-        
+
         a {
           position: relative;
           display: block;
@@ -165,11 +165,11 @@
           font-weight: bolder;
           text-decoration: none;
           padding-right: 30px;
-          
+
           &:hover {
             text-decoration: underline;
           }
-          
+
           .fa-chevron-right {
             position: absolute;
             top: 4px;
@@ -190,59 +190,57 @@
 
 .ym-page-survey {
   padding: 40px;
-  
+
   &.event-secondary-medium {
-    background: $event-secondary-medium;
-    
     h5 {
       color: $event-secondary;
       margin-top: 0px;
       margin-bottom: 20px;
     }
   }
-  
+
   input[type="text"] {
     &.form-control {
       height: 50px;
     }
   }
-  
+
   .element-group {
     display: inline-table;
   }
-  
+
   .input-group {
     padding-right: 28px;
-    
+
     &.pr-0 {
       padding-right: 0;
     }
-    
+
     button {
       display: block;
       min-width: auto;
     }
-    
+
     .form-control {
       &:last-child {
         border-radius: 10px;
       }
     }
   }
-  
+
   .input-group__zip_code {
     width: 125px;
   }
-  
+
   @media (max-width: $screen-sm-max) {
     padding: 30px;
-    
+
     input[type="text"] {
       &.form-control {
         height: 40px;
       }
     }
-    
+
     button {
       font-size: 16px;
       line-height: 20px;
@@ -250,30 +248,30 @@
       padding-bottom: 10px;
     }
   }
-  
+
   @media (max-width: $screen-xs-max) {
     padding-left: 20px;
     padding-right: 20px;
-    
+
     .element-group {
       display: block;
       padding-bottom: 20px;
-      
+
       &:last-child {
         padding-bottom: 0px;
       }
-      
+
       .input-group {
         display: block;
         padding-right: 0px;
       }
     }
-    
+
     .input-group__zip_code {
       float: left;
       width: calc(100% - 100px);
     }
-    
+
     .input-group__submit-btn {
       float: right;
     }
@@ -282,37 +280,37 @@
 
 .ym-story {
   padding-bottom: 40px;
-  
+
   h3 {
     + h5 {
       margin-top: inherit;
     }
   }
-  
+
   h5 {
     margin-top: 30px;
   }
-  
+
   .ym-story-photo {
     float: right;
     width: 269px;
     padding-left: 20px;
     padding-bottom: 20px;
-    
+
     img {
       max-width: 100%;
     }
-    
+
     p {
       font-size: 14px;
       padding-top: 15px;
       margin-bottom: 0px;
     }
   }
-  
+
   @media (max-width: $screen-sm-max) {
     padding-bottom: 30px;
-    
+
     .ym-story-photo {
       width: 100%;
       max-width: 249px;
@@ -325,11 +323,11 @@
 
 .ym-home-feature {
   padding: 30px 0;
-  
+
   @media (min-width: $screen-md-min) {
     padding: 50px 0;
   }
-  
+
   > .container {
     max-width: 970px;
     padding: 20px;
@@ -339,7 +337,7 @@
 .ym-related-content {
   .ym-related-content__item {
     margin: 0 0 20px;
-    
+
     @media(max-width: $screen-sm) {
       margin: 0 0 30px;
     }
@@ -422,7 +420,7 @@
         }
       }
     }
-    
+
     a.panel-title {
       display: block;
       text-decoration: none;
@@ -450,6 +448,9 @@
 
   .fa {
     color: $event-primary;
+    &.inactive {
+      color: $inactive-grey;
+    }
   }
 
   li {
@@ -468,24 +469,24 @@
 .ym-school-search {
   .img-responsive {
     margin: 20px auto 10px;
-    
+
     @media (min-width: $screen-sm-min) {
       margin-top: 50px;
     }
   }
-  
+
   .pos-r {
     position: relative;
   }
-  
+
   > .form-group {
     margin-bottom: 50px;
   }
-  
+
   .ym-page-section__roster {
     padding-top: 0;
   }
-  
+
   #school-name-filter {
     font-size: $font-size-reg;
     text-align: center;
@@ -493,7 +494,7 @@
     max-width: 390px;
     height: 60px;
   }
-  
+
   #school-state-filter {
     position: absolute;
     top: 0;
@@ -506,38 +507,38 @@
     &:hover {
       background: url("../../youth-markets/image/ym-select-carrot.png") right 0.75rem center no-repeat $event-secondary-dark;
     }
-    
+
     option {
       background: #ffffff;
       color: $event-grey !important;
     }
   }
-  
+
   .ym-page-section__header {
     position: relative;
   }
-  
-  
+
+
   @media (max-width: $screen-sm-max) {
     .ym-page-section__header {
       text-align: center;
     }
-    
+
     #school-state-filter {
       position: relative;
       margin-bottom: 30px;
     }
   }
-  
+
   @media (max-width: $screen-xs-max) {
     .ym-list__school-list-wrpr {
       overflow-x: scroll;
     }
-    
+
     .ym-list--school-list {
       min-width: 600px;
     }
-    
+
     #school-name-filter {
       display: inline-block;
     }
