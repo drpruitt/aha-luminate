@@ -15,7 +15,8 @@ angular.module('ahaLuminateControllers').controller 'SchoolSearchCtrl', [
       totalItems: 0
       currentPage: 1
       numPerPage: 5
-    
+      showHelp: false
+
     $scope.setStates = ->
       list = {}
       states = []
@@ -36,7 +37,7 @@ angular.module('ahaLuminateControllers').controller 'SchoolSearchCtrl', [
         $scope.states = states
         $scope.schoolList.stateFilter = states[0]
       return
-    
+
     $scope.filterSchools = ->
       filter = $filter 'filter'
       schools = $scope.schools
@@ -52,7 +53,7 @@ angular.module('ahaLuminateControllers').controller 'SchoolSearchCtrl', [
       $scope.schoolList.totalItems = schools.length
       $scope.filtered = schools
       $scope.orderSchools $scope.schoolList.sortProp
-    
+
     $scope.orderSchools = (sortProp) ->
       schools = $scope.filtered
       if schools.length
@@ -62,13 +63,13 @@ angular.module('ahaLuminateControllers').controller 'SchoolSearchCtrl', [
         schools = orderBy schools, sortProp, $scope.schoolList.sortDesc
         $scope.filtered = schools
         $scope.schoolList.currentPage = 1 # reset pagination back to first page
-    
+
     $scope.paginate = (value) ->
       begin = ($scope.schoolList.currentPage - 1) * $scope.schoolList.numPerPage
       end = begin + $scope.schoolList.numPerPage
       index = $scope.filtered.indexOf value
       begin <= index and index < end
-    
+
     SchoolService.getSchools
       success: (csv) ->
         schools = Csv.toJson csv
