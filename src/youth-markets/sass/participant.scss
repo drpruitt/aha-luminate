@@ -510,21 +510,27 @@ main > .container {
       display: inline-block;
       text-decoration: none;
       width: 100px;
+      margin: 0 5px;
+      
+      @media (min-width: 360px) {
+        width: 110px;
+        margin: 0 10px;
+      }
       
       @media (min-width: 375px) {
         width: 120px;
       }
       
       @media (min-width: 414px) {
-        width: 150px;
+        width: 140px;
       }
       
       @media (min-width: $screen-sm-min) {
-        width: 142px;
+        width: 132px;
       }
       
       @media (min-width: $screen-md-min) {
-        width: 200px;
+        width: 180px;
       }
       
       img {
