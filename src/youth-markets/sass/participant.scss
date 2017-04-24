@@ -499,12 +499,49 @@ main > .container {
   }
 }
 
-.ym-pc-dashboard-email-challenge-box {
+.ym-pc-dashboard-email-challenge-images {
+  a {
+    &, 
+    &:link, 
+    &:visited, 
+    &:hover, 
+    &:focus, 
+    &:active {
+      display: inline-block;
+      text-decoration: none;
+      width: 100px;
+      
+      @media (min-width: 375px) {
+        width: 120px;
+      }
+      
+      @media (min-width: 414px) {
+        width: 150px;
+      }
+      
+      @media (min-width: $screen-sm-min) {
+        width: 142px;
+      }
+      
+      @media (min-width: $screen-md-min) {
+        width: 200px;
+      }
+      
+      img {
+        display: inline-block;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.ym-pc-dashboard-email-challenge-buttons {
   .btn, 
   a.btn {
     margin: 30px 10px 0;
   }
 }
+
 .ym-pc-dashboard-badges-icons {
   margin: 0 0 32px;
 }
