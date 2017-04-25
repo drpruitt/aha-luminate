@@ -21,6 +21,19 @@ angular.module 'trPcControllers'
           scope: $scope
           templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/firstLogin.html'
         
+        $scope.setPersonalUrlInfo = 
+          updatedShortcut: ''
+        
+        $scope.setPersonalUrl = ->
+          delete $scope.setPersonalUrlInfo.errorMessage
+          delete $scope.setPersonalUrlInfo.success
+          NgPcTeamraiserShortcutURLService.updateShortcut 'text=' + encodeURIComponent($scope.setPersonalUrlInfo.updatedShortcut)
+            .then (response) ->
+              if response.data.errorResponse
+                $scope.setPersonalUrlInfo.errorMessage = response.data.errorResponse.message
+              else
+                $scope.setPersonalUrlInfo.success = true
+        
         $scope.closeFirstLogin = ->
           $scope.firstLoginModal.close()
       
