@@ -499,12 +499,55 @@ main > .container {
   }
 }
 
-.ym-pc-dashboard-email-challenge-box {
+.ym-pc-dashboard-email-challenge-images {
+  a {
+    &, 
+    &:link, 
+    &:visited, 
+    &:hover, 
+    &:focus, 
+    &:active {
+      display: inline-block;
+      text-decoration: none;
+      width: 100px;
+      margin: 0 5px;
+      
+      @media (min-width: 360px) {
+        width: 110px;
+        margin: 0 10px;
+      }
+      
+      @media (min-width: 375px) {
+        width: 120px;
+      }
+      
+      @media (min-width: 414px) {
+        width: 140px;
+      }
+      
+      @media (min-width: $screen-sm-min) {
+        width: 132px;
+      }
+      
+      @media (min-width: $screen-md-min) {
+        width: 180px;
+      }
+      
+      img {
+        display: inline-block;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.ym-pc-dashboard-email-challenge-buttons {
   .btn, 
   a.btn {
     margin: 30px 10px 0;
   }
 }
+
 .ym-pc-dashboard-badges-icons {
   margin: 0 0 32px;
 }
@@ -639,12 +682,33 @@ main > .container {
     }
     
     .ym_my_challenge__actions {
-      margin-top: 15px;
+      text-align: center;
+      margin: 15px 0 0;
       
       .btn, 
       a.btn {
-        &:first-child{
-          margin-right: 15px;
+        &, 
+        &:link, 
+        &:visited, 
+        &:hover, 
+        &:focus, 
+        &:active {
+          width: 216px;
+          padding: 7px 0;
+          
+          @media (min-width: 360px) {
+            width: 240px;
+          }
+        }
+      }
+      
+      .alert-success {
+        width: 216px;
+        padding: 7px 0;
+        margin: 0 auto;
+        
+        @media (min-width: 360px) {
+          width: 240px;
         }
       }
     }
@@ -691,6 +755,18 @@ main > .container {
     }
   }
   
+  &.ym-activity-box--virtual {
+    a {
+      display: inline-block;
+      max-width: 100%;
+      
+      img {
+        display: inline-block;
+        width: 100%;
+      }
+    }
+  }
+  
   h5, 
   .h5 {
     color: $event-secondary;
@@ -708,28 +784,6 @@ main > .container {
       height: 42px;
       padding: 8px;
       margin-right: 3px;
-    }
-  }
-}
-
-.ng-pc-nav-list-group {
-  .list-group-item-heading {
-    padding: 10px;
-    margin: 0;
-  }
-  
-  .list-group-item {
-    border-right: 0;
-    border-bottom: 0;
-    border-left: 0;
-    
-    &:first-child {
-      border-top: 0;
-      border-radius: 0;
-    }
-    
-    &:last-child {
-      border-radius: 0;
     }
   }
 }
@@ -757,6 +811,28 @@ main > .container {
           margin: 0 10px 0 0;
         }
       }
+    }
+  }
+}
+
+.ng-pc-nav-list-group {
+  .list-group-item-heading {
+    padding: 10px;
+    margin: 0;
+  }
+  
+  .list-group-item {
+    border-right: 0;
+    border-bottom: 0;
+    border-left: 0;
+    
+    &:first-child {
+      border-top: 0;
+      border-radius: 0;
+    }
+    
+    &:last-child {
+      border-radius: 0;
     }
   }
 }
@@ -1342,5 +1418,11 @@ main > .container {
         }
       }
     }
+  }
+}
+
+.ng-pc-view-container .ym-list {
+  .fa-ul {
+    margin-bottom: 0;
   }
 }
