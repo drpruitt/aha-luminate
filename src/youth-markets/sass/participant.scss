@@ -802,14 +802,62 @@ main > .container {
     }
     
     a {
-      display: inline-block;
-      
-      &:first-child {
-        margin: 0 0 10px 0;
+      &, 
+      &:link, 
+      &:visited, 
+      &:hover, 
+      &:focus, 
+      &:active {
+        display: block;
+        margin: 0 auto;
+        
+        @media (min-width: 480px) {
+          display: inline-block;
+        }
         
         @media (min-width: $screen-sm-min) {
+          display: block;
+        }
+        
+        @media (min-width: $screen-lg-min) {
+          display: inline-block;
+        }
+      }
+      
+      &:first-child {
+        margin: 0 auto 10px;
+        
+        @media (min-width: 480px) {
           margin: 0 10px 0 0;
         }
+        
+        @media (min-width: $screen-sm-min) {
+          margin: 0 auto 10px;
+        }
+        
+        @media (min-width: $screen-lg-min) {
+          margin: 0 10px 0 0;
+        }
+      }
+    }
+  }
+}
+
+.ym-pc-dashboard-mobile-downloads {
+  text-align: center;
+  
+  a {
+    &, 
+    &:link, 
+    &:visited, 
+    &:hover, 
+    &:focus, 
+    &:active {
+      width: 110px;
+      
+      img {
+        display: inline-block;
+        width: 100%;
       }
     }
   }
