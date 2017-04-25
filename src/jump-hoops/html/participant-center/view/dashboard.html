@@ -274,10 +274,13 @@
                 <img class="img-responsive" src="../aha-luminate/dist/jump-hoops/image/my-challenge-food.png" alt="{{personalChallenge.name}}" ng-if="personalChallenge.id == '3'" ng-cloak>
               </div>
             </div>
-            <div class="ym_my_challenge__actions text-center">
-              <a ng-click="logChallenge()" class="btn btn-md-wide btn-primary">
+            <div class="ym_my_challenge__actions">
+              <a class="btn btn-md-wide btn-primary" ng-click="logChallenge()" ng-if="!personalChallenge.completedToday" ng-cloak>
                 <strong>I have met this challenge!</strong> <i class="fa fa-check" aria-hidden="true"></i>
               </a>
+              <div class="alert alert-success" ng-if="personalChallenge.completedToday" ng-cloak>
+                <strong>Challenge met</strong> <i class="fa fa-check" aria-hidden="true"></i>
+              </div>
             </div>
           </div>
           <div class="ym_my_challenge__update" ng-if="personalChallenge.id == '-1'" ng-cloak>
