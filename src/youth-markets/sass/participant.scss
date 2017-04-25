@@ -704,6 +704,8 @@ main > .container {
       
       .alert-success {
         width: 216px;
+        padding: 7px 0;
+        margin: 0 auto;
         
         @media (min-width: 360px) {
           width: 240px;
