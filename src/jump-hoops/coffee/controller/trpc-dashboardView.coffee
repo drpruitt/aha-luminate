@@ -335,17 +335,26 @@ angular.module 'trPcControllers'
       getStudentChallenge = ->
         ZuriService.getZooStudent $scope.frId + '/' + $scope.consId,
           failure: (response) ->
-            # TODO
+            $scope.personalChallenge.id = '-1'
+            $scope.updatedPersonalChallenge.id = ''
           error: (response) ->
-            # TODO
+            $scope.personalChallenge.id = '-1'
+            $scope.updatedPersonalChallenge.id = ''
           success: (response) ->
             personalChallenges = response.data.challenges
-            if personalChallenges
+            if not personalChallenges
+              $scope.personalChallenge.id = '-1'
+              $scope.updatedPersonalChallenge.id = ''
+            else
               $scope.personalChallenge.id = personalChallenges.current
-              $scope.personalChallenge.name = personalChallenges.text
-              $scope.personalChallenge.numCompleted = if personalChallenges.completed then Number(personalChallenges.completed) else 0
-              $scope.personalChallenge.completedToday = personalChallenges.completedToday
-              $scope.updatedPersonalChallenge.id = $scope.personalChallenge.id
+              if $scope.personalChallenge.id isnt '1' and $scope.personalChallenge.id isnt '2' and $scope.personalChallenge.id isnt '3'
+                $scope.personalChallenge.id = '-1'
+                $scope.updatedPersonalChallenge.id = ''
+              else
+                $scope.personalChallenge.name = personalChallenges.text
+                $scope.personalChallenge.numCompleted = if personalChallenges.completed then Number(personalChallenges.completed) else 0
+                $scope.personalChallenge.completedToday = personalChallenges.completedToday
+                $scope.updatedPersonalChallenge.id = $scope.personalChallenge.id
       getStudentChallenge()
       
       $scope.challenges = []
