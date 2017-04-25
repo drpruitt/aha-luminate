@@ -499,12 +499,55 @@ main > .container {
   }
 }
 
-.ym-pc-dashboard-email-challenge-box {
+.ym-pc-dashboard-email-challenge-images {
+  a {
+    &, 
+    &:link, 
+    &:visited, 
+    &:hover, 
+    &:focus, 
+    &:active {
+      display: inline-block;
+      text-decoration: none;
+      width: 100px;
+      margin: 0 5px;
+      
+      @media (min-width: 360px) {
+        width: 110px;
+        margin: 0 10px;
+      }
+      
+      @media (min-width: 375px) {
+        width: 120px;
+      }
+      
+      @media (min-width: 414px) {
+        width: 140px;
+      }
+      
+      @media (min-width: $screen-sm-min) {
+        width: 132px;
+      }
+      
+      @media (min-width: $screen-md-min) {
+        width: 180px;
+      }
+      
+      img {
+        display: inline-block;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.ym-pc-dashboard-email-challenge-buttons {
   .btn, 
   a.btn {
     margin: 30px 10px 0;
   }
 }
+
 .ym-pc-dashboard-badges-icons {
   margin: 0 0 32px;
 }
@@ -634,11 +677,6 @@ main > .container {
   }
   
   &.ym-activity-box--challenge {
-    .col-sm-8, 
-    .col-sm-4 {
-      padding: 0;
-    }
-    
     .ym_my_challenge__current {
       padding-bottom: 20px;
     }
