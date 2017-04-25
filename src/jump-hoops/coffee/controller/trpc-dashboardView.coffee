@@ -396,9 +396,15 @@ angular.module 'trPcControllers'
       
       $scope.updateChallenge = ->
         ZuriService.updateChallenge $scope.frId + '/' + $scope.consId + '?challenge=' + $scope.updatedPersonalChallenge.id,
-          getStudentChallenge()
+          failure: (response) ->
+            # TODO
+          success: (response) ->
+            getStudentChallenge()
       
       $scope.logChallenge = ->
         ZuriService.logChallenge $scope.frId + '/' + $scope.consId + '/' + $scope.personalChallenge.id,
-          getStudentChallenge()
+          failure: (response) ->
+            # TODO
+          success: (response) ->
+            getStudentChallenge()
   ]

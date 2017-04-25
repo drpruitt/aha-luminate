@@ -9,15 +9,15 @@
       </h2>
       <div class="ym-progress__cta">
         <div ng-if="companyTeams.totalNumber > 1">
-          <a class="btn btn-primary btn-lg" ng-href="TRR?fr_id=[[S334:fr_id]]&pg=tfind&fr_tm_opt=existing&company_id=[[S334:company_id]]">
+          <a class="btn btn-primary btn-lg" href="TRR?fr_id=[[S80:trID]]&amp;pg=tfind&amp;fr_tm_opt=existing&amp;company_id=[[S334:company_id]]">
             Sign Up
           </a>
         </div>
         <div ng-if="companyTeams.totalNumber == 1">
-          <a class="btn btn-primary btn-lg" ng-href="TRR?fr_id=[[S334:fr_id]]&pg=tfind&fr_tm_opt=existing&fr_team_id={{teamId}}&company_id=[[S334:company_id]]">
+          <a class="btn btn-primary btn-lg" ng-href="TRR?fr_id=[[S80:trID]]&amp;pg=tfind&amp;fr_tm_opt=existing&amp;fr_tjoin={{teamId}}&amp;company_id=[[S334:company_id]]">
             Sign Up
           </a>
-          <a class="btn btn-primary btn-lg" ng-href="#" data-toggle="modal" data-target="#schoolDonation">
+          <a class="btn btn-primary btn-lg" href="#" data-toggle="modal" data-target="#schoolDonation">
             Donate
           </a>
         </div>
@@ -28,18 +28,18 @@
       <div class="ym-progress__stats">
         <div class="ym-progress__amount col-sm-6">
           <p>
-            We've raised <strong ng-bind="companyProgress.amountRaisedFormatted"></strong>
+            We've raised <strong><span ng-bind-html="companyProgress.amountRaisedFormatted"></span></strong>
           </p>
         </div>
         <div class="ym-progress__goal col-sm-6">
           <p>
-            Our goal is <strong ng-bind="companyProgress.goalFormatted"></strong>
+            Our goal is <strong><span ng-bind-html="companyProgress.goalFormatted"></span></strong>
           </p>
         </div>
         <div class="clearfix"></div>
         <div class="ym-progress__date" ng-if="eventDate != 'User Provided No Response'">
           <p>
-            Our event date is <strong ng-bind-html="eventDate"></strong>
+            Our event date is <strong><span ng-bind-html="eventDate"></span></strong>
           </p>
         </div>
       </div>
@@ -89,8 +89,7 @@
     <hr class="hidden-xs">
     <div class="container">
       <div class="ym-school-animation hidden-xs">
-        <iframe id="school-animation" src="http://[[S29:DOMAIN]][[S29:PATH]]PageServer?pagename=jump_hoops_school_animation&pgwrap=n">
-        </iframe>
+        <iframe id="school-animation" src="http://[[S29:DOMAIN]][[S29:PATH]]PageServer?pagename=jump_hoops_school_animation&pgwrap=n"></iframe>
       </div>
     </div>
   </div>
@@ -107,7 +106,9 @@
         <company-participant-list company-id="'[[T6:[[S334:company_id]]]]'" participants="companyParticipants.participants"></company-participant-list>
       </div>
       <div class="text-center" ng-if="companyParticipants.totalFundraisers < 1 && companyTeams.totalNumber == 1">
-        <p>Your School has no donations yet. Be the first to donate.</p>
+        <p>
+          Your School has no donations yet. Be the first to donate.
+        </p>
         <a class="btn btn-primary btn-lg" ng-href="#" data-toggle="modal" data-target="#schoolDonation">
           Donate
         </a>
@@ -135,7 +136,7 @@
           <p>
             You can also make a general donation to a school:
           </p>
-          <a class="btn btn-lg btn-primary" ng-href="Donation2?df_id=[[E42:[[S334:fr_id]]:form-id]]&FR_ID=[[S334:fr_id]]&PROXY_ID={{teamId}}&PROXY_TYPE=22">
+          <a class="btn btn-lg btn-primary" ng-href="Donation2?df_id=[[E42:[[S80:trID]]:form-id]]&amp;FR_ID=[[S80:trID]]&amp;PROXY_ID={{teamId}}&amp;PROXY_TYPE=22">
             Donate to Our School
           </a>
         </div>
