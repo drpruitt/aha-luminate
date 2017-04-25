@@ -16,6 +16,30 @@ angular.module 'trPcControllers'
     ($rootScope, $scope, $filter, $uibModal, APP_INFO, ZuriService, ParticipantBadgesService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserCompanyService, NgPcContactService, NgPcTeamraiserShortcutURLService) ->
       $scope.dashboardPromises = []
       
+      if $scope.participantRegistration.lastPC2Login is '0'
+        $scope.firstLoginModal = $uibModal.open
+          scope: $scope
+          templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/firstLogin.html'
+        
+        $scope.setPersonalUrlInfo = 
+          updatedShortcut: ''
+        
+        $scope.setPersonalUrl = ->
+          delete $scope.setPersonalUrlInfo.errorMessage
+          delete $scope.setPersonalUrlInfo.success
+          NgPcTeamraiserShortcutURLService.updateShortcut 'text=' + encodeURIComponent($scope.setPersonalUrlInfo.updatedShortcut)
+            .then (response) ->
+              if response.data.errorResponse
+                $scope.setPersonalUrlInfo.errorMessage = response.data.errorResponse.message
+              else
+                $scope.setPersonalUrlInfo.success = true
+        
+        $scope.closeFirstLogin = ->
+          $scope.firstLoginModal.close()
+      
+      # undocumented update_last_pc2_login parameter required to make news feeds work, see bz #67720
+      NgPcTeamraiserRegistrationService.updateRegistration 'update_last_pc2_login=true'
+      
       if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true' or $scope.location is '/dashboard-student'
         $scope.dashboardProgressType = 'personal'
       else

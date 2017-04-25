@@ -802,14 +802,62 @@ main > .container {
     }
     
     a {
-      display: inline-block;
-      
-      &:first-child {
-        margin: 0 0 10px 0;
+      &, 
+      &:link, 
+      &:visited, 
+      &:hover, 
+      &:focus, 
+      &:active {
+        display: block;
+        margin: 0 auto;
+        
+        @media (min-width: 480px) {
+          display: inline-block;
+        }
         
         @media (min-width: $screen-sm-min) {
+          display: block;
+        }
+        
+        @media (min-width: $screen-lg-min) {
+          display: inline-block;
+        }
+      }
+      
+      &:first-child {
+        margin: 0 auto 10px;
+        
+        @media (min-width: 480px) {
           margin: 0 10px 0 0;
         }
+        
+        @media (min-width: $screen-sm-min) {
+          margin: 0 auto 10px;
+        }
+        
+        @media (min-width: $screen-lg-min) {
+          margin: 0 10px 0 0;
+        }
+      }
+    }
+  }
+}
+
+.ym-pc-dashboard-mobile-downloads {
+  text-align: center;
+  
+  a {
+    &, 
+    &:link, 
+    &:visited, 
+    &:hover, 
+    &:focus, 
+    &:active {
+      width: 110px;
+      
+      img {
+        display: inline-block;
+        width: 100%;
       }
     }
   }
@@ -900,6 +948,69 @@ main > .container {
       }
     }
   }
+}
+
+.ym-pc-first-login-modal {
+  text-align: center;
+  padding: 20px 0;
+  margin: 0 -5px;
+  
+  @media (min-width: $screen-sm-min) {
+    padding: 22px 30px;
+    margin: 0;
+  }
+}
+
+.ym-pc-first-login-url {
+  margin: 20px 0 24px;
+  
+  @media (min-width: $screen-sm-min) {
+    margin: 30px 0 36px;
+  }
+}
+
+.ym-pc-first-login-url-prefix {
+  display: inline-block;
+  font-size: 11px;
+  margin: 5px 0 0;
+  
+  @media (min-width: 360px) {
+    font-size: 12px;
+  }
+  
+  @media (min-width: 414px) {
+    font-size: inherit;
+  }
+}
+
+.ym-pc-first-login-url-text {
+  display: inline-block;
+  width: 100px;
+  margin: 0 0 0 2px;
+  
+  @media (min-width: 535px) {
+    width: 180px;
+  }
+}
+
+.ym-pc-first-login-url-btn {
+  display: block;
+  
+  @media (min-width: 535px) {
+    display: inline-block;
+    margin: 0 0 0 10px;
+  }
+}
+
+.ym-pc-first-login-image {
+  img {
+    display: block;
+    width: 100%;
+  }
+}
+
+.ym-pc-first-login-close {
+  margin: 24px 0 0;
 }
 
 .ng-pc-modal-email-message-body {
