@@ -809,6 +809,7 @@ main > .container {
       &:focus, 
       &:active {
         display: block;
+        margin: 0 auto;
         
         @media (min-width: 480px) {
           display: inline-block;
@@ -824,14 +825,14 @@ main > .container {
       }
       
       &:first-child {
-        margin: 0 0 10px;
+        margin: 0 auto 10px;
         
         @media (min-width: 480px) {
           margin: 0 10px 0 0;
         }
         
         @media (min-width: $screen-sm-min) {
-          margin: 0 0 10px;
+          margin: 0 auto 10px;
         }
         
         @media (min-width: $screen-md-min) {
@@ -852,7 +853,7 @@ main > .container {
   &:focus, 
   &:active {
     width: 110px;
-    
+
     img {
       display: inline-block;
       width: 100%;
