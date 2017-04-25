@@ -288,3 +288,23 @@
     margin: auto;
   }
 }
+
+.ym-skip-content {
+  position: absolute;
+  top: -1000px;
+  left: -1000px;
+  height: 1px;
+  width: 1px;
+  text-align: left;
+  overflow: hidden;
+}
+    
+a.ym-skip-content:active, 
+a.ym-skip-content:focus, 
+a.ym-skip-content:hover {
+    left: 0; 
+    top: 0;
+    width: auto; 
+    height: auto; 
+    overflow: visible; 
+}
