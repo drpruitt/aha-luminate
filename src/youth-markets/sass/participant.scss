@@ -819,7 +819,7 @@ main > .container {
           display: block;
         }
         
-        @media (min-width: $screen-md-min) {
+        @media (min-width: $screen-lg-min) {
           display: inline-block;
         }
       }
@@ -835,7 +835,7 @@ main > .container {
           margin: 0 auto 10px;
         }
         
-        @media (min-width: $screen-md-min) {
+        @media (min-width: $screen-lg-min) {
           margin: 0 10px 0 0;
         }
       }
@@ -846,17 +846,19 @@ main > .container {
 .ym-pc-dashboard-mobile-downloads {
   text-align: center;
   
-  &, 
-  &:link, 
-  &:visited, 
-  &:hover, 
-  &:focus, 
-  &:active {
-    width: 110px;
-
-    img {
-      display: inline-block;
-      width: 100%;
+  a {
+    &, 
+    &:link, 
+    &:visited, 
+    &:hover, 
+    &:focus, 
+    &:active {
+      width: 110px;
+      
+      img {
+        display: inline-block;
+        width: 100%;
+      }
     }
   }
 }
