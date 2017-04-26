@@ -26,7 +26,7 @@
       <a class="btn btn-toggle btn-lg ym-donation-levels__type--onetime active" ng-click="giftType('onetime')">One Time Gift</a>
       <a class="btn btn-toggle btn-lg ym-donation-levels__type--monthly" ng-click="giftType('monthly');">Installment Gift</a>
     </div>
-    <hr />
+    <hr>
     <div class="ym-donation-levels__levels">
       <div class="ym-donation-levels__amount" ng-repeat="donationLevel in donationLevels">
         <a class="btn btn-toggle btn-lg {{donationLevel.classLevel}}" ng-class="{'active': donationLevel.levelChecked == true}" ng-if="donationLevel.userSpecified == 'false'" ng-click="selectLevel('level', donationLevel.levelId, donationLevel.amount);">

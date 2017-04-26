@@ -5,7 +5,7 @@ require('events').EventEmitter.prototype._maxListeners = 100;
 module.exports = {
   "grunt-config": {
     files: [
-      'Gruntfile.js', 
+      'Gruntfile.coffee', 
       'grunt/task/*.js', 
       'grunt/.jshintrc'
     ], 
