@@ -11,6 +11,6 @@ angular.module 'ahaLuminateApp'
           headers:
             'Content-Type': 'application/json'
         .then (response) ->
-          console.log response
+          response
   ]
 

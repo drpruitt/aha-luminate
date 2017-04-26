@@ -401,17 +401,19 @@ angular.module 'trPcControllers'
           success: (response) ->
             getStudentChallenge()
 
+      $scope.prizes = []
+      ParticipantBadgesService.getBadges '3196745'
+      .then (response) ->
+        prizes = response.data.prizes
+        angular.forEach prizes, (prize) ->
+          console.log prize
+          $scope.prizes.push
+            id: prize.id
+            label: prize.label
+            sku: prize.sku
+            status: prize.status
+            earned: prize.earned_datetime
 
-      ParticipantBadgesService.getBadges '3196745',
-        error:(response) ->
-          console.log 'error'
-        success: (response) ->
-          console.log response
+      console.log $scope.prizes 
 
-      # participantBadgesPromise = ParticipantBadgesService.getBadges()
-        # .then (response) ->
-          # prizes = response.data.prizes
-          # if prizes
-            # $scope.participantBadges = prizes
-      # $scope.dashboardPromises.push participantBadgesPromise
   ]
