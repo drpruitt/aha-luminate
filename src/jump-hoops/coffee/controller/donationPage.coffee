@@ -10,8 +10,8 @@ angular.module 'ahaLuminateControllers'
       if ecardLinkParam != undefined
         ecardLinkParamSplit = ecardLinkParam.split('&')[0]
         ZuriService.eCardTracking ecardLinkParamSplit,
-            console.log 'send track'
-
+          console.log 'send track'
+      
       $scope.paymentInfoErrors = 
         errors: []
       angular.element('.page-error').remove()
@@ -22,7 +22,7 @@ angular.module 'ahaLuminateControllers'
           fieldErrorText = jQuery.trim $fieldError.find('.field-error-text').text()
           $scope.paymentInfoErrors.errors.push
             text: fieldErrorText
-
+      
       $errorContainer = angular.element '.form-error'
       angular.forEach $errorContainer, (error) ->
         $error = angular.element error
@@ -37,7 +37,7 @@ angular.module 'ahaLuminateControllers'
         giftType: 'onetime'
       
       $scope.donationLevels = []
-
+      
       $scope.giftType = (type) ->  
         $scope.donationInfo.giftType = type    
         if type is 'monthly'

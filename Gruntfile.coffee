@@ -101,11 +101,24 @@ module.exports = (grunt) ->
     ], 'jump-hoops'
     return
   grunt.registerTask 'dev', ->
-    grunt.task.run [
+    devTasks = [
       'configureProxies:dev'
-      'connect'
-      'watch'
+      'connect:dev'
     ]
+    config.watch['general'].tasks.forEach (task) ->
+      if task.indexOf('notify:') is -1
+        devTasks.push task
+    config.watch['heart-walk'].tasks.forEach (task) ->
+      if task.indexOf('notify:') is -1
+        devTasks.push task
+    config.watch['youth-markets'].tasks.forEach (task) ->
+      if task.indexOf('notify:') is -1
+        devTasks.push task
+    config.watch['jump-hoops'].tasks.forEach (task) ->
+      if task.indexOf('notify:') is -1
+        devTasks.push task
+    devTasks.push 'watch'
+    grunt.task.run devTasks
     return
   grunt.registerTask 'default', [
     'dev'

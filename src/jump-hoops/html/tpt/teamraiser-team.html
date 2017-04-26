@@ -1,24 +1,25 @@
 <div ng-controller="TeamPageCtrl" ng-cloak>
   <div class="ym-page-section ym-page-section__top">
     <div class="col-md-6 ym-user-image" style="background-image:url('[[C4:graphic_upload]]');">
-      <img class="hidden-md hidden-lg" src="[[C4:graphic_upload]]" alt="[[C1:graphic_caption]]">
-      [[?xx::x[[C1:graphic_caption]]x::::
-        <div class="caption">
-          [[C1:graphic_caption]]
-        </div>
-      ]]
+        <img class="hidden-md hidden-lg" src="[[C4:graphic_upload]]" alt="[[?xx::x[[C1:graphic_caption]]x::Team Fundraising Page Photo::[[C1:graphic_caption]]]]" />
+        [[?xx::x[[C1:graphic_caption]]x::
+        ::
+          <div class="caption">
+            [[C1:graphic_caption]]
+          </div>
+        ]]
     </div>
     <div class="col-md-6 ym-progress ym-secondary-medium-color">
-      <h4 class="ym-progress__title">
+      <h2 class="ym-progress__title h4">
         Help us raise more life-saving donations!
-      </h4>
-      <div class="ym-progress__cta">
-        <a class="btn btn-primary btn-lg" href="TRR?fr_id=[[S80:trID]]&amp;pg=tfind&amp;fr_tm_opt=existing&amp;fr_tjoin=[[S334:team_id]]">
-          Sign Up
-        </a>
-        <a class="btn btn-primary btn-lg" href="Donation2?df_id=[[E42:[[S80:trID]]:form-id]]&amp;FR_ID=[[S80:trID]]&amp;PROXY_ID=[[S334:team_id]]&amp;PROXY_TYPE=22">
-          Donate
-        </a>
+      </h2>
+      <div class="ym-progress__cta">         
+          <a class="btn btn-primary btn-lg" ng-href="TRR?fr_id=[[S334:fr_id]]&pg=tfind&fr_tm_opt=existing&fr_team_id={{teamId}}">
+            Sign Up
+          </a>
+          <a class="btn btn-primary btn-lg" ng-href="Donation2?df_id=[[E42:[[S334:fr_id]]:form-id]]&FR_ID=[[S334:fr_id]]&PROXY_ID=[[S334:team_id]]&PROXY_TYPE=22">
+            Donate
+          </a>
       </div>
       <div class="ym-progress__thermometer" ng-if="teamProgress.goal && teamProgress.goal != 0" ng-cloak>
         <div class="ym-progress__thermometer--fill" ng-style="{'width': teamProgress.percent + '%'}"></div>
