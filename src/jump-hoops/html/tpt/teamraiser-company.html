@@ -1,12 +1,12 @@
 <div ng-controller="CompanyPageCtrl" ng-cloak>
   <div class="ym-page-section ym-page-section__top">
     <div class="col-md-6 ym-user-image" style="background-image: url('[[C4:responsive_company_logo]]');">
-      <img class="hidden-md hidden-lg" src="[[C4:responsive_company_logo]]" alt="[[C1:photo1_text]]">
+      <img class="hidden-md hidden-lg" src="[[C4:responsive_company_logo]]" alt="[[?xx::x[[C1:photo1_text]]x::School Fundraising Page Photo::[[C1:photo1_text]]]]">
     </div>
     <div class="col-md-6 ym-progress ym-secondary-medium-color">
-      <h4 class="ym-progress__title">
+      <h2 class="ym-progress__title h4">
         [[C1:title]]
-      </h4>
+      </h2>
       <div class="ym-progress__cta">
         <div ng-if="(companyTeams.totalNumber == 1 && !teamId) || companyTeams.totalNumber > 1" ng-cloak>
           <a class="btn btn-primary btn-lg" href="TRR?fr_id=[[S80:trID]]&amp;pg=tfind&amp;fr_tm_opt=existing&amp;company_id=[[S334:company_id]]">
@@ -116,10 +116,10 @@
     </div>
     <div class="clearfix"></div>
   </div>
-  <div class="ym-page-section ym-page-section__roster" ng-if="companyTeams.totalNumber > 1" ng-cloak>
-    <h5>
+  <div class="ym-page-section ym-page-section__roster" ng-if="companyTeams.totalNumber > 1">
+    <h4 class="h5">
       Our Teams
-    </h5>
+    </h4>
     <company-team-list company-id="'[[T6:[[S334:company_id]]]]'" teams="companyTeams.teams"></company-team-list>
   </div>
   <div ng-if="companyTeams.totalNumber == 1" class="modal fade" id="schoolDonation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
@@ -127,9 +127,9 @@
       <div class="modal-content">
         <div class="modal-body text-center">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">X</span></button>
-          <h3 class="modal-title">
+          <h4 class="modal-title h3">
             Donate
-          </h3>
+          </h4>
           <p>
             If you'd like to donate directly to an individual, ask them (or their parent/guardian) to send you a donation request email containing a link to their secure personal fundraising page.
           </p>
