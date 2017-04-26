@@ -8,7 +8,6 @@ angular.module 'ahaLuminateApp'
       getBadges: (requestData) ->
         url = '//jumphoopsstaging.boundlessnetwork.com/api/badges/student/'+requestData
         urlSCE = $sce.trustAsResourceUrl url
-        console.log $sce.getTrustedResourceUrl url
         ###
         $http
           method: 'GET'
