@@ -2,27 +2,33 @@ angular.module 'ahaLuminateApp'
   .factory 'ParticipantBadgesService', [
     '$http'
     '$sce'
-    ($http, $sce) ->      
-      getAuth: ->
-        url = 'https://jumphoopsstaging.boundlessnetwork.com/api/login/'
-        urlSCE = $sce.trustAsResourceUrl url
-        urlSCEparse = $sce.parseAsResourceUrl urlSCE
+    ($http, $sce) ->            
 
-        $http
-          method: 'POST'
-          url: 'AjaxProxy?auth=' + luminateExtend.global.ajaxProxyAuth + '&cnv_url=' + encodeURIComponent(url)
-          auth_key: 'lxDH5IaQiUBfpqfYAN7jOn7rD'
-          public_key: '44dd74bf0136e3c451af98af63d8ef5f'
-        .then (response) ->
-          console.log response
-        
 
       getBadges: (requestData) ->
-        url = 'https://jumphoopsstaging.boundlessnetwork.com/api/coordinator/instant/student/'+requestData
+        url = '//jumphoopsstaging.boundlessnetwork.com/api/badges/student/'+requestData
         urlSCE = $sce.trustAsResourceUrl url
+        console.log $sce.getTrustedResourceUrl url
+        ###
         $http
-          method: 'POST',
+          method: 'GET'
           url: urlSCE
+        .then (response) ->
+          console.log response
+        ###
+        $http
+          method: 'JSONP'
+          url: urlSCE 
+          jsonpCallbackParam: 'callback'
+        .then (response) ->
+          console.log response
+          ###
+          if response.data.success is false
+            callback.error response
+          else
+            callback.success response
+        , (response) ->
+          callback.failure response###
 
 
 

@@ -189,13 +189,6 @@ angular.module 'trPcControllers'
               $scope.companyInfo = companies[0]
       $scope.dashboardPromises.push companyInfoPromise
       
-      # participantBadgesPromise = ParticipantBadgesService.getBadges()
-        # .then (response) ->
-          # prizes = response.data.prizes
-          # if prizes
-            # $scope.participantBadges = prizes
-      # $scope.dashboardPromises.push participantBadgesPromise
-      
       $scope.donorContactCounts = {}
       donorContactFilters = [
         'email_rpt_show_nondonors_followup'
@@ -407,4 +400,18 @@ angular.module 'trPcControllers'
             # TODO
           success: (response) ->
             getStudentChallenge()
+
+
+      ParticipantBadgesService.getBadges '3196745',
+        error:(response) ->
+          console.log 'error'
+        success: (response) ->
+          console.log response
+
+      # participantBadgesPromise = ParticipantBadgesService.getBadges()
+        # .then (response) ->
+          # prizes = response.data.prizes
+          # if prizes
+            # $scope.participantBadges = prizes
+      # $scope.dashboardPromises.push participantBadgesPromise
   ]
