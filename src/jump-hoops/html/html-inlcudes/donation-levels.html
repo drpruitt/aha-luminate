@@ -32,7 +32,8 @@
         <a class="btn btn-toggle btn-lg {{donationLevel.classLevel}}" ng-class="{'active': donationLevel.levelChecked == true}" ng-if="donationLevel.userSpecified == 'false'" ng-click="selectLevel('level', donationLevel.levelId, donationLevel.amount);">
           {{donationLevel.amount}}
         </a>
-        <input type="text" class="btn btn-toggle btn-enter {{donationLevel.classLevel}}" ng-if="donationLevel.userSpecified == 'true'" ng-keyup="enterAmount(otherAmt)" ng-model="otherAmt" ng-click="selectLevel('other', donationLevel.levelId);" placeholder="Other">
+        <label class="sr-only" for="other_amount">Other Amount</label>
+        <input type="text" class="btn btn-toggle btn-enter {{donationLevel.classLevel}}" title="other_amount" ng-if="donationLevel.userSpecified == 'true'" ng-keyup="enterAmount(otherAmt)" ng-model="otherAmt" ng-click="selectLevel('other', donationLevel.levelId);" placeholder="Other">
       </div>
     </div>
     <div class="ym-donation-levels__message level{{donationLevel.levelId}}" ng-repeat="donationLevel in donationLevels" ng-class="{'hidden': donationLevel.levelChecked != true || donationInfo.giftType != 'onetime'}">
