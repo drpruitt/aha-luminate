@@ -3,32 +3,14 @@ angular.module 'ahaLuminateApp'
     '$http'
     '$sce'
     ($http, $sce) ->            
-
-
       getBadges: (requestData) ->
-        url = '//jumphoopsstaging.boundlessnetwork.com/api/badges/student/'+requestData
-        urlSCE = $sce.trustAsResourceUrl url
-        ###
+        url = 'AjaxProxy?cnv_url=' + encodeURIComponent('https://jumphoopsstaging.boundlessnetwork.com/api/badges/student/3196745') + '&auth=' + luminateExtend.global.ajaxProxyAuth       
         $http
           method: 'GET'
-          url: urlSCE
+          url: url 
+          headers:
+            'Content-Type': 'application/json'
         .then (response) ->
           console.log response
-        ###
-        $http
-          method: 'JSONP'
-          url: urlSCE 
-          jsonpCallbackParam: 'callback'
-        .then (response) ->
-          console.log response
-          ###
-          if response.data.success is false
-            callback.error response
-          else
-            callback.success response
-        , (response) ->
-          callback.failure response###
-
-
-
   ]
+
