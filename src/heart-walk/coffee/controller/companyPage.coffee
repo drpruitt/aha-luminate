@@ -10,7 +10,7 @@ angular.module 'ahaLuminateControllers'
     ($scope, $location, $filter, $timeout, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService) ->
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0]
       $scope.currentCompany = null
-      
+
       $defaultCompanyHierarchy = angular.element '.js--default-company-hierarchy'
       $childCompanyAmounts = $defaultCompanyHierarchy.find('.trr-td p.righted')
       totalCompanyAmountRaised = 0
@@ -20,14 +20,14 @@ angular.module 'ahaLuminateControllers'
           amountRaised = amountRaised.replace('$', '').replace(/,/g, '')
           amountRaised = Number(amountRaised) * 100
           totalCompanyAmountRaised += amountRaised
-      
+
       $defaultCompanySummary = angular.element '.js--default-company-summary'
       companyGiftCount = $defaultCompanySummary.find('.company-tally-container--gift-count .company-tally-ammount').text()
       if companyGiftCount is ''
         companyGiftCount = '0'
-      $scope.companyProgress = 
+      $scope.companyProgress =
         numDonations: companyGiftCount
-      
+
       setCompanyFundraisingProgress = (amountRaised, goal) ->
         $scope.companyProgress.amountRaised = amountRaised or 0
         $scope.companyProgress.amountRaised = Number $scope.companyProgress.amountRaised
@@ -51,7 +51,7 @@ angular.module 'ahaLuminateControllers'
         if not $scope.$$phase
           $scope.$apply()
 
-      TeamraiserCompanyService.getCompanies 'company_id=' + $scope.companyId, 
+      TeamraiserCompanyService.getCompanies 'company_id=' + $scope.companyId,
         error: ->
           setCompanyFundraisingProgress()
         success: (response) ->
@@ -61,21 +61,31 @@ angular.module 'ahaLuminateControllers'
           else
             $scope.currentCompany = companyInfo
             setCompanyFundraisingProgress totalCompanyAmountRaised, companyInfo.goal
-      
+
+      $scope.sortList = (participants, sortProp) ->
+        if participants and participants.length
+          orderBy = $filter 'orderBy'
+          participants = orderBy participants, sortProp
+          return participants
+        else
+          return []
+
       $childCompanyLinks = $defaultCompanyHierarchy.find('.trr-td a')
       $scope.childCompanies = []
       angular.forEach $childCompanyLinks, (childCompanyLink) ->
         childCompanyUrl = angular.element(childCompanyLink).attr('href')
         childCompanyName = angular.element(childCompanyLink).text()
         if childCompanyUrl.indexOf('company_id=') isnt -1
-          $scope.childCompanies.push 
+          $scope.childCompanies.push
             id: childCompanyUrl.split('company_id=')[1].split('&')[0]
             name: childCompanyName
+
+      $scope.childCompanies = $scope.sortList $scope.childCompanies, 'name'
       numCompanies = $scope.childCompanies.length + 1
-      
-      $scope.companyTeamSearch = 
+
+      $scope.companyTeamSearch =
         team_name: ''
-      $scope.companyTeams = 
+      $scope.companyTeams =
         isOpen: true
         page: 1
 
@@ -86,12 +96,12 @@ angular.module 'ahaLuminateControllers'
         if not $scope.$$phase
           $scope.$apply()
 
-      $scope.childCompanyTeams = 
+      $scope.childCompanyTeams =
         companies: []
 
       addChildCompanyTeams = (companyIndex, companyId, companyName, teams, totalNumber) ->
         pageNumber = $scope.childCompanyTeams.companies[companyIndex]?.page or 0
-        $scope.childCompanyTeams.companies[companyIndex] = 
+        $scope.childCompanyTeams.companies[companyIndex] =
           isOpen: true
           page: pageNumber
           companyIndex: companyIndex
@@ -115,7 +125,7 @@ angular.module 'ahaLuminateControllers'
         $scope.getCompanyTeams = ->
           # TODO: scroll to top of list
           pageNumber = $scope.companyTeams.page - 1
-          TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId + '&team_name=' + $scope.companyTeamSearch.team_name + '&list_sort_column=team_name&list_ascending=true&list_page_size=5&list_page_offset=' + pageNumber, 
+          TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId + '&team_name=' + $scope.companyTeamSearch.team_name + '&list_sort_column=team_name&list_ascending=true&list_page_size=5&list_page_offset=' + pageNumber,
             error: ->
               setCompanyTeams()
               numCompaniesTeamRequestComplete++
@@ -151,7 +161,7 @@ angular.module 'ahaLuminateControllers'
             pageNumber = 0
           else
             pageNumber--
-          TeamraiserTeamService.getTeams 'team_company_id=' + childCompanyId + '&team_name=' + $scope.companyTeamSearch.team_name + '&list_sort_column=team_name&list_ascending=true&list_page_size=5&list_page_offset=' + pageNumber, 
+          TeamraiserTeamService.getTeams 'team_company_id=' + childCompanyId + '&team_name=' + $scope.companyTeamSearch.team_name + '&list_sort_column=team_name&list_ascending=true&list_page_size=5&list_page_offset=' + pageNumber,
             error: ->
               addChildCompanyTeams childCompanyIndex, childCompanyId, childCompanyName
               numCompaniesTeamRequestComplete++
@@ -179,7 +189,7 @@ angular.module 'ahaLuminateControllers'
         angular.forEach $scope.childCompanies, (childCompany, childCompanyIndex) ->
           $scope.getChildCompanyTeams childCompanyIndex
       $scope.getCompanyTeamLists()
-      
+
       $scope.searchCompanyTeams = (companyTeamSearch) ->
         $scope.companyTeamSearch.team_name = companyTeamSearch?.team_name or ''
         $scope.companyTeams.isOpen = true
@@ -188,11 +198,11 @@ angular.module 'ahaLuminateControllers'
           $scope.childCompanyTeams.companies[companyIndex].isOpen = true
           $scope.childCompanyTeams.companies[companyIndex].page = 1
         $scope.getCompanyTeamLists()
-      
-      $scope.companyParticipantSearch = 
+
+      $scope.companyParticipantSearch =
         participant_name: ''
 
-      $scope.companyParticipants = 
+      $scope.companyParticipants =
         isOpen: true
         page: 1
 
@@ -201,10 +211,10 @@ angular.module 'ahaLuminateControllers'
         while i < participants.length
           participants[i].name.full = participants[i].name.first + ' ' + participants[i].name.last
           i++
-        participants  
-        
+        participants
+
       setCompanyParticipants = (participants, totalNumber) ->
-        participants = $scope.sortCompanyParticipants(participants, ['name.first', 'name.last'])
+        participants = $scope.sortList(participants, ['name.first', 'name.last'])
         participants = $scope.setParticipantsFullName participants
         $scope.companyParticipants.participants = []
         $scope.companyParticipants.participantsList = participants
@@ -214,23 +224,15 @@ angular.module 'ahaLuminateControllers'
         if not $scope.$$phase
           $scope.$apply()
 
-      $scope.childCompanyParticipants = 
+      $scope.childCompanyParticipants =
         companies: []
-
-      $scope.sortCompanyParticipants = (participants, sortProp) ->
-        if participants and participants.length
-          orderBy = $filter 'orderBy'
-          participants = orderBy participants, sortProp
-          return participants
-        else 
-          return []
 
       addChildCompanyParticipants = (companyIndex, companyId, companyName, participants) ->
         pageNumber = $scope.childCompanyParticipants.companies[companyIndex]?.page or 0
-        participants = $scope.sortCompanyParticipants(participants, ['name.first', 'name.last'])
+        participants = $scope.sortList(participants, ['name.first', 'name.last'])
         participants = $scope.setParticipantsFullName participants
         totalNumber = participants.length
-        $scope.childCompanyParticipants.companies[companyIndex] = 
+        $scope.childCompanyParticipants.companies[companyIndex] =
           isOpen: true
           isLoaded: true
           page: pageNumber
@@ -257,11 +259,11 @@ angular.module 'ahaLuminateControllers'
               company = companies[i]
               if company.companyId == $scope.companyId
                 $scope.currentCompany = company
-                break  
+                break
               i++
-            if $scope.currentCompany  
+            if $scope.currentCompany
               company = $scope.currentCompany
-              setCompanyNumParticipants company.participantCount  
+              setCompanyNumParticipants company.participantCount
               if company.amountRaisedFormatted
                 $scope.companyProgress.amountRaisedFormatted = company.amountRaisedFormatted
               else
@@ -281,7 +283,7 @@ angular.module 'ahaLuminateControllers'
 
           individualParticipants = []
           getCompanyParticipantsList = ->
-            TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%%%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_page_size=500',  
+            TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%%%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_page_size=500',
               error: ->
                 companyParticipants = individualParticipants
                 setCompanyParticipants companyParticipants
@@ -340,7 +342,7 @@ angular.module 'ahaLuminateControllers'
 
           individualParticipants = []
           getChildCompanyParticipantsList = ->
-            TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%%%') + '&list_filter_column=team.company_id&list_filter_text=' + childCompanyId + '&list_page_size=500', 
+            TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%%%') + '&list_filter_column=team.company_id&list_filter_text=' + childCompanyId + '&list_page_size=500',
             error: ->
               companyParticipants = individualParticipants
               addChildCompanyParticipants childCompanyIndex, childCompanyId, childCompanyName, companyParticipants
@@ -395,7 +397,7 @@ angular.module 'ahaLuminateControllers'
         if $scope.companyParticipantSearch.participant_name.indexOf(' ') isnt -1
           firstName = $scope.companyParticipantSearch.participant_name.split(' ')[0].trim()
           lastName = $scope.companyParticipantSearch.participant_name.split(' ')[1].trim()
-        if participants.length 
+        if participants.length
           if firstName.length and lastName.length
             participants = filter(participants, name: {first: firstName})
             participants = filter(participants, name: {last: lastName})
@@ -408,7 +410,7 @@ angular.module 'ahaLuminateControllers'
         participants = []
         if !companyIndex?
           companyParticipants = $scope.companyParticipants
-        else  
+        else
           companyParticipants = $scope.childCompanyParticipants.companies[companyIndex]
         currentPage = companyParticipants.page
         if currentPage > 0
@@ -422,7 +424,7 @@ angular.module 'ahaLuminateControllers'
         if !companyIndex?
           $scope.companyParticipants.participants = participants
           $scope.companyParticipants.totalNumber = participantsList.length
-        else  
+        else
           $scope.childCompanyParticipants.companies[companyIndex].participants = participants
           $scope.childCompanyParticipants.companies[companyIndex].totalNumber = participantsList.length
         return
