@@ -31,6 +31,9 @@
         <div ng-if="participant.aTeamCaptain == 'true'">
           Team Captain
         </div>
+        <div ng-if="participant.individualParticipant == 'true'">
+          Individual
+        </div>
       </div>
       <div class="heart-company-participant-list__column heart-company-participant-list__column--amount">
         <strong>{{participant.amountRaisedFormatted}}</strong>
