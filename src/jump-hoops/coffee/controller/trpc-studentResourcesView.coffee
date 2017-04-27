@@ -1,5 +1,5 @@
 angular.module 'trPcControllers'
-  .controller 'NgPcResourcesViewCtrl', [
+  .controller 'NgPcStudentResourcesViewCtrl', [
     '$scope'
     ($scope) ->
       # TODO

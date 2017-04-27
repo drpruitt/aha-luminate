@@ -8,17 +8,17 @@
     text-align: center;
     width: 40px;
     height: 70px;
-    
+
     @media(max-width: $screen-md){
       width: 30px;
       height: 50px;
     }
-    
+
     &:hover {
       background: rgb(255, 255, 255);
       background: rgba(255, 255, 255, 1);
     }
-    
+
     > .fa {
       color: $event-grey;
       font-size: 30px;
@@ -30,11 +30,11 @@
       }
     }
   }
-  
+
   .owl-prev {
     left: 0;
   }
-  
+
   .owl-next {
     right: 0;
   }
@@ -43,8 +43,8 @@
 .ym-carousel--home {
   .owl-carousel {
     position: relative;
-  }  
-  
+  }
+
   .owl-nav {
     position: absolute;
     top: 30%;
@@ -53,23 +53,23 @@
 
   .owl-item {
     text-align: center;
-    
+
     img {
       border-right: 1px solid #ffffff;
     }
-    
-    h4, 
+
+    h4,
     p {
       display: none;
     }
   }
-  
+
   .center {
-    h4, 
+    h4,
     p {
       display: block;
     }
-    
+
     h4 {
       margin: 20px auto;
     }
@@ -130,21 +130,46 @@
     .btn {
       position: absolute;
       bottom: 0;
-      left: 0; 
+      left: 0;
       right: 0;
       max-width: 120px;
       margin: auto;
     }
-
   }
+  
+  .carousel-item__img {
+    width: 100%;
+    padding-top: 61.53%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
   .owl-carousel--circle {
     .owl-item {
       .item {
         max-width: none;
       }
-
+      /*
       img {
         clip-path: circle(36% at center);
+      }
+      */
+      .carousel-item__img-box {
+        width: 100%;
+        position: relative;
+        padding-top: 61.53%;
+
+        .carousel-item__img {
+          position: absolute;
+          width: 61.53%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          right: 0;
+          margin: auto;
+          border-radius: 100%;
+        }
       }
     }
   }

@@ -1,2 +1,218 @@
-<div>
+<div cg-busy="reportPromises">
+  <div class="ym-pc-reports-lists" ng-class="{'ym-pc-reports--no-tabs': participantRegistration.companyInformation.isCompanyCoordinator != 'true'}">
+    <uib-tabset active="activeReportTab">
+      <uib-tab index="0" heading="School Detail" ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
+        <div class="ym-pc-report-header">
+          <div class="row clearfix">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+              <h2 class="h5">
+                School Detail Report
+              </h2>
+            </div>
+            <div class="col-md-4">
+              <div class="ym-pc-report-header-buttons" ng-if="schoolDetailStudents.students && schoolDetailStudents.students.length > 0" ng-cloak>
+                <a class="btn btn-md-wide btn-secondary" ng-href="{{baseUrl}}#" target="_blank">
+                  <i class="fa fa-download" aria-hidden="true"></i> <strong>Download</strong>
+                </a> 
+                <a class="btn btn-md-wide btn-secondary" ng-href="{{baseUrl}}#/email">
+                  <i class="fa fa-envelope" aria-hidden="true"></i> <strong>Email Students</strong>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div ng-if="schoolDetailStudents.students && schoolDetailStudents.students.length == 0" ng-cloak>
+          <div class="text-center">
+            No students to display.
+          </div>
+        </div>
+        <div ng-if="schoolDetailStudents.students && schoolDetailStudents.students.length > 0" ng-cloak>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>
+                    <div class="text-left">
+                      <a>
+                        <strong>Name</strong>
+                      </a>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="text-center">
+                      <a>
+                        <strong>Amount</strong>
+                      </a>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="text-center">
+                      <a>
+                        <strong>Ecards</strong>
+                      </a>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="text-center">
+                      <a>
+                        <strong>Emails</strong>
+                      </a>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="text-center">
+                      <a>
+                        <strong>T-shirt</strong>
+                      </a>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="text-center">
+                      <a>
+                        <strong>Teacher</strong>
+                      </a>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="text-right">
+                      <a>
+                        <strong>Challenge</strong>
+                      </a>
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="schoolDetailStudent in schoolDetailStudents.students">
+                  <td>
+                    <div class="text-left">
+                      <span ng-bind-html="schoolDetailStudent.firstName"></span> <span ng-bind-html="schoolDetailStudent.lastName"></span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="text-center">
+                      {{schoolDetailStudent.amountFormatted}}
+                    </div>
+                  </td>
+                  <td>
+                    <div class="text-center">
+                      {{schoolDetailStudent.ecardsSent}}
+                    </div>
+                  </td>
+                  <td>
+                    <div class="text-center">
+                      {{schoolDetailStudent.emailsSent}}
+                    </div>
+                  </td>
+                  <td>
+                    <div class="text-center">
+                      <span ng-bind-html="schoolDetailStudent.tshirtSize"></span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="text-center">
+                      <span ng-bind-html="schoolDetailStudent.teacherName"></span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="text-right">
+                      <span ng-bind-html="schoolDetailStudent.challenge"></span>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </uib-tab>
+      <uib-tab index="1" heading="Donors">
+        <div class="ym-pc-report-header">
+          <div class="row clearfix">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+              <h2 class="h5">
+                My Donors
+              </h2>
+            </div>
+            <div class="col-md-4">
+              <div class="ym-pc-report-header-buttons" ng-if="participantGifts.gifts && participantGifts.gifts.length > 0" ng-cloak>
+                <a class="btn btn-md-wide btn-secondary" ng-href="TRParticipantDownload/Personal_Donations.csv?download_type=personal_donations&amp;fr_id={{frId}}" target="_blank">
+                  <i class="fa fa-download" aria-hidden="true"></i> <strong>Download</strong>
+                </a> 
+                <a class="btn btn-md-wide btn-secondary" ng-href="{{baseUrl}}#/email">
+                  <i class="fa fa-envelope" aria-hidden="true"></i> <strong>Thank All</strong>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div ng-if="participantGifts.gifts && participantGifts.gifts.length == 0" ng-cloak>
+          <div class="text-center">
+            No donors to display.
+          </div>
+        </div>
+        <div ng-if="participantGifts.gifts && participantGifts.gifts.length > 0" ng-cloak>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>
+                    <div class="text-left">
+                      <a>
+                        <strong>Name</strong>
+                      </a>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="text-center">
+                      <a>
+                        <strong>Amount</strong>
+                      </a>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="text-right">
+                      <a>
+                        <strong>Date</strong>
+                      </a>
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="participantGift in participantGifts.gifts">
+                  <td>
+                    <div class="text-left">
+                      <div ng-if="!participantGift.name.first || participantGift.name.first == ''">
+                        (no name)
+                      </div>
+                      <div ng-if="participantGift.name.first && participantGift.name.first != ''">
+                        <span ng-bind-html="participantGift.name.first"></span> <span ng-bind-html="participantGift.name.last"></span>
+                      </div>
+                      <div ng-if="participantGift.acknowledged != 'true'">
+                        <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email">
+                          <i class="fa fa-envelope" aria-hidden="true"></i> <strong>Thank</strong>
+                        </a>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="text-center">
+                      {{participantGift.giftAmountFormatted}}
+                    </div>
+                  </td>
+                  <td>
+                    <div class="text-right">
+                      {{participantGift.date | date : 'M/d/yy'}}
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </uib-tab>
+    </uib-tabset>
+  </div>
 </div>

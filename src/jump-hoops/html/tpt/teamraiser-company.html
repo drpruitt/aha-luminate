@@ -1,45 +1,45 @@
 <div ng-controller="CompanyPageCtrl" ng-cloak>
   <div class="ym-page-section ym-page-section__top">
     <div class="col-md-6 ym-user-image" style="background-image: url('[[C4:responsive_company_logo]]');">
-      <img class="hidden-md hidden-lg" src="[[C4:responsive_company_logo]]" alt="[[C1:photo1_text]]">
+      <img class="hidden-md hidden-lg" src="[[C4:responsive_company_logo]]" alt="[[?xx::x[[C1:photo1_text]]x::School Fundraising Page Photo::[[C1:photo1_text]]]]">
     </div>
     <div class="col-md-6 ym-progress ym-secondary-medium-color">
-      <h4 class="ym-progress__title">
+      <h2 class="ym-progress__title h4">
         [[C1:title]]
-      </h4>
+      </h2>
       <div class="ym-progress__cta">
-        <div ng-if="companyTeams.totalNumber > 1">
-          <a class="btn btn-primary btn-lg" ng-href="TRR?fr_id=[[S334:fr_id]]&pg=tfind&fr_tm_opt=existing&company_id=[[S334:company_id]]">
+        <div ng-if="(companyTeams.totalNumber == 1 && !teamId) || companyTeams.totalNumber > 1" ng-cloak>
+          <a class="btn btn-primary btn-lg" href="TRR?fr_id=[[S80:trID]]&amp;pg=tfind&amp;fr_tm_opt=existing&amp;company_id=[[S334:company_id]]">
             Sign Up
           </a>
         </div>
-        <div ng-if="companyTeams.totalNumber == 1">
-          <a class="btn btn-primary btn-lg" ng-href="TRR?fr_id=[[S334:fr_id]]&pg=tfind&fr_tm_opt=existing&fr_team_id={{teamId}}&company_id=[[S334:company_id]]">
+        <div ng-if="companyTeams.totalNumber == 1 && teamId" ng-cloak>
+          <a class="btn btn-primary btn-lg" ng-href="TRR?fr_id=[[S80:trID]]&amp;pg=tfind&amp;fr_tm_opt=existing&amp;fr_tjoin={{teamId}}">
             Sign Up
           </a>
-          <a class="btn btn-primary btn-lg" ng-href="#" data-toggle="modal" data-target="#schoolDonation">
+          <a class="btn btn-primary btn-lg" href="[[S8]]#" data-toggle="modal" data-target="#schoolDonation">
             Donate
           </a>
         </div>
       </div>
-      <div class="ym-progress__thermometer" ng-if="companyProgress.goal && companyProgress.goal != 0">
+      <div class="ym-progress__thermometer" ng-if="companyProgress.goal && companyProgress.goal != 0" ng-cloak>
         <div class="ym-progress__thermometer--fill" ng-style="{'width': companyProgress.percent + '%'}"></div>
       </div>
       <div class="ym-progress__stats">
         <div class="ym-progress__amount col-sm-6">
           <p>
-            We've raised <strong ng-bind="companyProgress.amountRaisedFormatted"></strong>
+            We've raised <strong><span ng-bind-html="companyProgress.amountRaisedFormatted"></span></strong>
           </p>
         </div>
         <div class="ym-progress__goal col-sm-6">
           <p>
-            Our goal is <strong ng-bind="companyProgress.goalFormatted"></strong>
+            Our goal is <strong><span ng-bind-html="companyProgress.goalFormatted"></span></strong>
           </p>
         </div>
         <div class="clearfix"></div>
-        <div class="ym-progress__date" ng-if="eventDate != 'User Provided No Response'">
+        <div class="ym-progress__date" ng-if="eventDate != 'User Provided No Response'" ng-cloak>
           <p>
-            Our event date is <strong ng-bind-html="eventDate"></strong>
+            Our event date is <strong><span ng-bind-html="eventDate"></span></strong>
           </p>
         </div>
       </div>
@@ -48,7 +48,7 @@
   </div>
   <div class="ym-page-section ym-page-section__main">
     <div class="container">
-      <div class="ym-our-stats ym-promo-block" ng-if="participantCount > 0">
+      <div class="ym-our-stats ym-promo-block" ng-if="participantCount > 0" ng-cloak>
         <h2 class="ym-headline">
           Our Stats
         </h2>
@@ -60,7 +60,7 @@
             team members registered.
           </p>
         </div>
-        <div class="ym-promo-block__item ym-promo-block__item--exercise ym-promo-block--circle" ng-if="activity1amt != 0">
+        <div class="ym-promo-block__item ym-promo-block__item--exercise ym-promo-block--circle" ng-if="activity1amt != 0" ng-cloak>
           <h2 class="ym-headline">
             {{activity1amt}}
           </h2>
@@ -68,7 +68,7 @@
             daily challenges of excersing 60 minutes a day!
           </p>
         </div>
-        <div class="ym-promo-block__item ym-promo-block__item--water ym-promo-block--circle" ng-if="activity2amt != 0">
+        <div class="ym-promo-block__item ym-promo-block__item--water ym-promo-block--circle" ng-if="activity2amt != 0" ng-cloak>
           <h2 class="ym-headline">
             {{activity2amt}}
           </h2>
@@ -76,7 +76,7 @@
             daily challenges of choosing water over sugar drinks
           </p>
         </div>
-        <div class="ym-promo-block__item ym-promo-block__item--food ym-promo-block--circle" ng-if="activity3amt != 0">
+        <div class="ym-promo-block__item ym-promo-block__item--food ym-promo-block--circle" ng-if="activity3amt != 0" ng-cloak>
           <h2 class="ym-headline">
             {{activity3amt}}
           </h2>
@@ -88,13 +88,8 @@
     </div>
     <hr class="hidden-xs">
     <div class="container">
-      <div class="ym-zuri-animation hidden-xs">
-        <h4>
-          Lorem Ipsum
-        </h4>
-        <p>
-          Placeholder for animation
-        </p>
+      <div class="ym-school-animation hidden-xs">
+        <iframe id="school-animation" src="http://[[S29:DOMAIN]][[S29:PATH]]PageServer?pagename=jump_hoops_school_animation&pgwrap=n"></iframe>
       </div>
     </div>
   </div>
@@ -107,23 +102,24 @@
     </div>
     <div class="ym-list" ng-class="companyParticipants.totalFundraisers < 1 && companyTeams.totalNumber > 1 ? 'hidden' : 'col-md-6'">
       <img class="img-responsive" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/hj-fundraisers-graphic.png" alt="Check out these top fundraisers">
-      <div class="ym-donor-list" ng-if="companyParticipants.totalFundraisers > 0">
+      <div class="ym-donor-list" ng-if="companyParticipants.totalFundraisers > 0" ng-cloak>
         <company-participant-list company-id="'[[T6:[[S334:company_id]]]]'" participants="companyParticipants.participants"></company-participant-list>
       </div>
-      <div class="text-center" ng-if="companyParticipants.totalFundraisers < 1 && companyTeams.totalNumber == 1">
-        <p>Your School has no donations yet. Be the first to donate.</p>
-        <a class="btn btn-primary btn-lg" ng-href="#" data-toggle="modal" data-target="#schoolDonation">
+      <div class="text-center" ng-if="companyParticipants.totalFundraisers < 1 && companyTeams.totalNumber == 1" ng-cloak>
+        <p>
+          Your School has no donations yet. Be the first to donate.
+        </p>
+        <a class="btn btn-primary btn-lg" ng-href="[[S8]]#" data-toggle="modal" data-target="#schoolDonation">
           Donate
         </a>
       </div>
     </div>
     <div class="clearfix"></div>
-    
   </div>
   <div class="ym-page-section ym-page-section__roster" ng-if="companyTeams.totalNumber > 1">
-    <h5>
+    <h4 class="h5">
       Our Teams
-    </h5>
+    </h4>
     <company-team-list company-id="'[[T6:[[S334:company_id]]]]'" teams="companyTeams.teams"></company-team-list>
   </div>
   <div ng-if="companyTeams.totalNumber == 1" class="modal fade" id="schoolDonation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
@@ -131,16 +127,16 @@
       <div class="modal-content">
         <div class="modal-body text-center">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">X</span></button>
-          <h3 class="modal-title">
+          <h4 class="modal-title h3">
             Donate
-          </h3>
+          </h4>
           <p>
             If you'd like to donate directly to an individual, ask them (or their parent/guardian) to send you a donation request email containing a link to their secure personal fundraising page.
           </p>
           <p>
             You can also make a general donation to a school:
           </p>
-          <a class="btn btn-lg btn-primary" ng-href="Donation2?df_id=[[E42:[[S334:fr_id]]:form-id]]&FR_ID=[[S334:fr_id]]&PROXY_ID={{teamId}}&PROXY_TYPE=22">
+          <a class="btn btn-lg btn-primary" ng-href="Donation2?df_id=[[E42:[[S80:trID]]:form-id]]&amp;FR_ID=[[S80:trID]]&amp;PROXY_ID={{teamId}}&amp;PROXY_TYPE=22">
             Donate to Our School
           </a>
         </div>

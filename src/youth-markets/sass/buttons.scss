@@ -88,6 +88,54 @@ a.btn-lg {
   }
 }
 
+.btn, 
+a.btn {
+  &.btn-primary {
+    &, 
+    &:link, 
+    &:visited {
+      background: $event-primary;
+      color: #ffffff;
+    }
+    
+    &:hover, 
+    &:focus, 
+    &:active {
+      background: $event-primary-dark;
+    }
+  }
+  
+  &.btn-secondary {
+    &, 
+    &:link, 
+    &:visited {
+      background: $event-secondary;
+      color: #ffffff;
+    }
+    
+    &:hover, 
+    &:focus, 
+    &:active {
+      background: $event-secondary-dark;
+    }
+  }
+  
+  &.btn-success {
+    &, 
+    &:link, 
+    &:visited {
+      background: $brand-success;
+      color: #ffffff;
+    }
+    
+    &:hover, 
+    &:focus, 
+    &:active {
+      background: $brand-success;
+    }
+  }
+}
+
 .btn-global-primary, 
 a.btn-global-primary {
   @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border, $btn-primary-color, $btn-primary-darker-bg, $btn-primary-darker-border);
@@ -123,18 +171,71 @@ div.responsive {
       min-width: 180px;
     }
   }
+
+  .btn, 
+  a.btn, 
+  .step-button, 
+  button.step-button {
+    &, 
+    &:link, 
+    &:visited {
+      background: $event-primary;
+      color: #ffffff;
+    }
+    
+    &:hover, 
+    &:focus, 
+    &:active {
+      background: $event-primary-dark;
+      color: #ffffff;
+    }
+  }
 }
 
+div.responsive .btn-toggle,
+div.responsive a.btn-toggle,
 .btn-toggle, 
 a.btn-toggle {
   &, 
   &:link, 
-  &:visited, 
+  &:visited {
+    font-weight: 700;
+    text-align: center;
+    background: $brand-white;
+    border: 1px solid $event-primary;
+    color: $event-primary;
+    text-decoration: none;
+  }
+
+  &:hover, 
+  &:focus, 
+  &:active,
+  &.active {
+    background: $event-primary;
+    border: 1px solid $event-primary;
+    color: #ffffff;
+    cursor: pointer;
+  }
+}
+
+.btn-outline,
+a.btn-outline {
+  &, 
+  &:link, 
+  &:visited {
+    font-weight: 700;
+    text-align: center;
+    background: transparent;
+    border: 1px solid $event-primary;
+    color: $event-primary;
+    text-decoration: none;
+  }
   &:hover, 
   &:focus, 
   &:active {
-    font-weight: 700;
-    text-align: center;
+    background: $event-primary;
+    color: #fff;
+    border: 1px solid $event-primary;
   }
 }
 
@@ -147,4 +248,37 @@ input[type="text"].btn-enter {
   @include button-size($padding-base-vertical, $padding-base-horizontal, 18px);
   text-decoration: none;
   text-align: center;
+  border-color: $event-primary;
+}
+
+.btn-enter {
+  &::-webkit-input-placeholder {
+    color: $event-primary !important;
+    opacity: 1 !important;
+  }
+  
+  &:-moz-placeholder {
+    color: $event-primary !important;
+    opacity: 1 !important;
+  }
+  
+  &::-moz-placeholder {
+    color: $event-primary !important;
+    opacity: 1 !important;
+  }
+  
+  &::-ms-input-placeholder {
+    color: $event-primary !important;
+    opacity: 1 !important;
+  }
+  
+  &:placeholder {
+    color: $event-primary !important;
+    opacity: 1 !important;
+  }
+  
+  &::placeholder {
+    color: $event-primary !important;
+    opacity: 1 !important;
+  }
 }

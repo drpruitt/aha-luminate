@@ -7,7 +7,11 @@ tr,
 th, 
 td, 
 .Explicit, 
-div.responsive {
+div.responsive,
+textarea, 
+input, 
+select,
+option {
   font-family: inherit;
   font-size: inherit;
 }
