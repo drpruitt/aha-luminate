@@ -11,7 +11,6 @@ angular.module 'ahaLuminateControllers'
     'ZuriService'
     ($scope, $rootScope, $location, $filter, $timeout, TeamraiserTeamService, TeamraiserParticipantService, TeamraiserCompanyService, ZuriService) ->
       $scope.teamId = $location.absUrl().split('team_id=')[1].split('&')[0]
-      $scope.teamProgress = []
       $scope.teamParticipants = []
       $rootScope.teamName = ''
       $scope.eventDate = ''
@@ -20,7 +19,7 @@ angular.module 'ahaLuminateControllers'
       $scope.activity1amt = ''
       $scope.activity2amt = ''
       $scope.activity3amt = ''
-
+      
       ZuriService.getZooTeam $scope.teamId,
         error: (response) ->
           $scope.studentsPledgedTotal = 0
@@ -43,67 +42,62 @@ angular.module 'ahaLuminateControllers'
           else
             $scope.activity3amt = 0
       
-      setTeamFundraisingProgress = (amountRaised, goal) ->
-        $scope.teamProgress.amountRaised = amountRaised or 0
-        $scope.teamProgress.amountRaised = Number $scope.teamProgress.amountRaised
+      setTeamProgress = (amountRaised, goal) ->
+        $scope.teamProgress = 
+          amountRaised: if amountRaised then Number(amountRaised) else 0
+          goal: if goal then Number(goal) else 0
         $scope.teamProgress.amountRaisedFormatted = $filter('currency')($scope.teamProgress.amountRaised / 100, '$').replace '.00', ''
-        $scope.teamProgress.goal = goal or 0
-        $scope.teamProgress.goal = Number $scope.teamProgress.goal
         $scope.teamProgress.goalFormatted = $filter('currency')($scope.teamProgress.goal / 100, '$').replace '.00', ''
-
-        $scope.teamProgress.goal = goal or 0
-        $scope.teamProgress.percent = 2
+        $scope.teamProgress.percent = 0
+        if not $scope.$$phase
+          $scope.$apply()
         $timeout ->
           percent = $scope.teamProgress.percent
           if $scope.teamProgress.goal isnt 0
             percent = Math.ceil(($scope.teamProgress.amountRaised / $scope.teamProgress.goal) * 100)
-          if percent < 2
-            percent = 2
-          if percent > 98
-            percent = 98
+          if percent > 100
+            percent = 100
           $scope.teamProgress.percent = percent
           if not $scope.$$phase
             $scope.$apply()
         , 500
-        if not $scope.$$phase
-          $scope.$apply()
-
+      
       getTeamData = ->
         TeamraiserTeamService.getTeams 'team_id=' + $scope.teamId, 
           error: ->
-            setTeamFundraisingProgress()
+            setTeamProgress()
           success: (response) ->
             teamInfo = response.getTeamSearchByInfoResponse?.team
             companyId = teamInfo.companyId
             $scope.participantCount = teamInfo.numMembers
             
             if not teamInfo
-              setTeamFundraisingProgress()
+              setTeamProgress()
             else
-              setTeamFundraisingProgress teamInfo.amountRaised, teamInfo.goal
-
+              setTeamProgress teamInfo.amountRaised, teamInfo.goal
+            
             TeamraiserCompanyService.getCompanies 'company_id=' + companyId, 
               success: (response) ->
                 coordinatorId = response.getCompaniesResponse?.company.coordinatorId
                 eventId = response.getCompaniesResponse?.company.eventId
-
+                
                 TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
                   .then (response) ->
                     $scope.eventDate = response.data.coordinator.event_date
       getTeamData()
-
+      
       setTeamParticipants = (participants, totalNumber, totalFundraisers) ->
         $scope.teamParticipants.participants = participants or []
         $scope.teamParticipants.totalNumber = totalNumber or 0
         $scope.teamParticipants.totalFundraisers = totalFundraisers or 0
         if not $scope.$$phase
           $scope.$apply()
-
+      
       getTeamParticipants = ->
         TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%%%') + '&first_name=' + encodeURIComponent('%%%') + '&last_name=' + encodeURIComponent('%%%') + '&list_filter_column=reg.team_id&list_filter_text=' + $scope.teamId + '&list_sort_column=total&list_ascending=false&list_page_size=50', 
             error: (response) ->
               setTeamMembers()
-              
+            
             success: (response) ->
               $scope.studentsRegisteredTotal = response.getParticipantsResponse.totalNumberResults
               participants = response.getParticipantsResponse?.participant
@@ -121,8 +115,4 @@ angular.module 'ahaLuminateControllers'
                 totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
                 setTeamParticipants teamParticipants, totalNumberParticipants, totalFundraisers
       getTeamParticipants()
-
-
-
-
   ]
