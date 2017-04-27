@@ -406,14 +406,11 @@ angular.module 'trPcControllers'
       .then (response) ->
         prizes = response.data.prizes
         angular.forEach prizes, (prize) ->
-          console.log prize
           $scope.prizes.push
             id: prize.id
             label: prize.label
             sku: prize.sku
             status: prize.status
             earned: prize.earned_datetime
-
-      console.log $scope.prizes 
 
   ]
