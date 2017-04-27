@@ -418,15 +418,8 @@ angular.module 'trPcControllers'
         owl = jQuery '.owl-carousel'
         owl.owlCarousel
           nav: true
-          center: true
           loop: true
-          responsive:
-            0:
-              items: 1
-            768:
-              items: 3
-            992:
-              items: 6
+          items: 6
           navText: [
             '<span class="fa fa-chevron-left" aria-hidden="true" />',
             '<span class="fa fa-chevron-right" aria-hidden="true" />'
