@@ -13,7 +13,8 @@ angular.module 'trPcControllers'
     'NgPcTeamraiserCompanyService'
     'NgPcContactService'
     'NgPcTeamraiserShortcutURLService'
-    ($rootScope, $scope, $filter, $uibModal, APP_INFO, ZuriService, ParticipantBadgesService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserCompanyService, NgPcContactService, NgPcTeamraiserShortcutURLService) ->
+    '$timeout'
+    ($rootScope, $scope, $filter, $uibModal, APP_INFO, ZuriService, ParticipantBadgesService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserCompanyService, NgPcContactService, NgPcTeamraiserShortcutURLService, $timeout) ->
       $scope.dashboardPromises = []
       
       if $scope.participantRegistration.lastPC2Login is '0'
@@ -413,5 +414,23 @@ angular.module 'trPcControllers'
             status: prize.status
             earned: prize.earned_datetime
 
-      console.log $scope.prizes
+      initCarousel = ->
+        owl = jQuery '.owl-carousel'
+        owl.owlCarousel
+          nav: true
+          center: true
+          loop: true
+          responsive:
+            0:
+              items: 1
+            768:
+              items: 3
+            992:
+              items: 6
+          navText: [
+            '<span class="fa fa-chevron-left" aria-hidden="true" />',
+            '<span class="fa fa-chevron-right" aria-hidden="true" />'
+          ]
+
+      $timeout initCarousel, 1000
   ]
