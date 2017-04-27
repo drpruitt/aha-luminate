@@ -412,7 +412,4 @@ angular.module 'trPcControllers'
             sku: prize.sku
             status: prize.status
             earned: prize.earned_datetime
-            badge: 'https://s3.amazonaws.com/aha-jumphoops-production/fy18/assets/badges/'+prize.id +'_delivered.png'
-            badgeFill: 'https://s3.amazonaws.com/aha-jumphoops-production/fy18/assets/badges/'+prize.id +'_earned.png'
-
   ]
