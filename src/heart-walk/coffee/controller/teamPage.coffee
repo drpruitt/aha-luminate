@@ -62,7 +62,7 @@ angular.module 'ahaLuminateControllers'
       $scope.getTeamMembers = ->
         # TODO: scroll to top of list
         pageNumber = $scope.teamMembers.page - 1
-        TeamraiserParticipantService.getParticipants 'first_name=' + encodeURIComponent('%%%') + '&list_filter_column=reg.team_id&list_filter_text=' + $scope.teamId + '&list_sort_column=total&list_ascending=false&list_page_size=4&list_page_offset=' + pageNumber, 
+        TeamraiserParticipantService.getParticipants 'first_name=' + encodeURIComponent('%%%') + '&list_filter_column=reg.team_id&list_filter_text=' + $scope.teamId + '&list_sort_column=first_name&list_ascending=true&list_page_size=4&list_page_offset=' + pageNumber, 
           error: ->
             setTeamMembers()
           success: (response) ->
