@@ -94,6 +94,10 @@ header {
     margin: 0 0 16px;
     color: $event-secondary;
     font-family: $headline-font;
+
+    &.visible-xs {
+      line-height: 32px;
+    }
   }
 
   .ym-header-post-text {
@@ -161,6 +165,12 @@ header {
       float: left;
       position: relative;
 
+      > a {
+        &.ym-header-login-toggle {
+          padding-top: 14px;
+        }
+      }
+
       @media (min-width: $screen-sm-min) {
         float: right;
       }
@@ -226,6 +236,10 @@ header {
           font-weight: 700;
           text-decoration: underline;
           margin: 12px 0 0;
+        }
+
+        &:hover {
+          text-decoration: none;
         }
       }
     }
