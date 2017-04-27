@@ -13,7 +13,8 @@ angular.module 'trPcControllers'
     'NgPcTeamraiserCompanyService'
     'NgPcContactService'
     'NgPcTeamraiserShortcutURLService'
-    ($rootScope, $scope, $filter, $uibModal, APP_INFO, ZuriService, ParticipantBadgesService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserCompanyService, NgPcContactService, NgPcTeamraiserShortcutURLService) ->
+    '$timeout'
+    ($rootScope, $scope, $filter, $uibModal, APP_INFO, ZuriService, ParticipantBadgesService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserCompanyService, NgPcContactService, NgPcTeamraiserShortcutURLService, $timeout) ->
       $scope.dashboardPromises = []
       
       if $scope.participantRegistration.lastPC2Login is '0'
@@ -188,13 +189,6 @@ angular.module 'trPcControllers'
               companies = [companies] if not angular.isArray companies
               $scope.companyInfo = companies[0]
       $scope.dashboardPromises.push companyInfoPromise
-      
-      # participantBadgesPromise = ParticipantBadgesService.getBadges()
-        # .then (response) ->
-          # prizes = response.data.prizes
-          # if prizes
-            # $scope.participantBadges = prizes
-      # $scope.dashboardPromises.push participantBadgesPromise
       
       $scope.donorContactCounts = {}
       donorContactFilters = [
@@ -407,4 +401,45 @@ angular.module 'trPcControllers'
             # TODO
           success: (response) ->
             getStudentChallenge()
+
+      $scope.prizes = []
+      ParticipantBadgesService.getBadges '3196745'
+      .then (response) ->
+        prizes = response.data.prizes
+        angular.forEach prizes, (prize) ->
+          $scope.prizes.push
+            id: prize.id
+            label: prize.label
+            sku: prize.sku
+            status: prize.status
+            earned: prize.earned_datetime
+
+      initCarousel = ->
+        owl = jQuery '.owl-carousel'
+        owl.owlCarousel
+          nav: true
+          loop: true
+          responsive:
+            0:
+              items: 2
+              stagePadding: 30
+              margin : 15
+            480:
+              items: 3
+              stagePadding: 30
+              margin: 15
+            768:
+              items: 5
+              margin: 30
+              stagePadding: 60
+            1024:
+              items: 7
+              margin: 30
+              stagePadding: 60
+          navText: [
+            '<span class="fa fa-chevron-left" aria-hidden="true" />',
+            '<span class="fa fa-chevron-right" aria-hidden="true" />'
+          ]
+
+      $timeout initCarousel, 1000
   ]

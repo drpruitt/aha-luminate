@@ -24,6 +24,13 @@
     font-family: $event-font;
   }
 
+  h5,
+  .h5 {
+    font-size: 28px;
+    color: inherit;
+    border: 0 none;
+  }
+
   .ym-donation-headlines {
     margin: 0 0 20px;
 
@@ -31,14 +38,15 @@
       margin: 0 0 30px;
     }
     
-    h4 {
+    h4,
+    .h4 {
       margin: 0;
     }
 
-    h5 {
-      font-size: 28px;
+    h5,
+    .h5 {
       margin: 0 0 20px;
-
+    
       @media(min-width: $screen-md-min){
         margin: 0 0 40px;
       }
@@ -246,7 +254,8 @@
       padding: 20px 50px 0;
     }
     
-    h5 {
+    h5,
+    .h5 {
       padding: 15px 25px;
 
       @media (min-width: $screen-sm-min) {
@@ -319,9 +328,6 @@
       padding: 20px 100px 0;
     }
     
-    h5 {
-      text-align: center;
-    }
   }
   
   .ym-tribute-gift__type {
@@ -615,7 +621,8 @@
   text-align: center;
   padding: 0 20px;
   
-  h5 {
+  h5,
+  .h5 {
     color: $brand-white;
     font-weight: 700;
     margin-top: 0;

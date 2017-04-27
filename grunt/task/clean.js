@@ -117,5 +117,38 @@ module.exports = {
         ]
       }
     ]
+  }, 
+  
+  "middle-school": {
+    files: [
+      {
+        expand: true, 
+        cwd: 'dist/middle-school/html/', 
+        src: [
+          '**/*'
+        ]
+      }, 
+      {
+        expand: true, 
+        cwd: 'dist/middle-school/image/', 
+        src: [
+          '**/*'
+        ]
+      }, 
+      {
+        expand: true, 
+        cwd: 'dist/middle-school/css/', 
+        src: [
+          '**/*'
+        ]
+      }, 
+      {
+        expand: true, 
+        cwd: 'dist/middle-school/js/', 
+        src: [
+          '**/*'
+        ]
+      }
+    ]
   }
 }

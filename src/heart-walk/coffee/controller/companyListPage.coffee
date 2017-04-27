@@ -22,6 +22,7 @@ angular.module 'ahaLuminateControllers'
         $scope.topCompanies.companies = companies
         if not $scope.$$phase
           $scope.$apply()
+          
       TeamraiserCompanyService.getCompanyList 'include_all_companies=true', 
         error: ->
           setTopCompanies []
