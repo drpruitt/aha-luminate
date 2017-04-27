@@ -6,6 +6,10 @@ angular.module 'trPcControllers'
     '$httpParamSerializer'
     'NgPcAuthService'
     ($rootScope, $scope, $route, $httpParamSerializer, NgPcAuthService) ->
+      $scope.consLogin = 
+        user_name: ''
+        password: ''
+      
       setUserNameOrPasswordError = ->
         $scope.loginError = 'The User Name or Password is invalid.'
       
