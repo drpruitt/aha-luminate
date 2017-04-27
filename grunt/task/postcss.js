@@ -59,5 +59,26 @@ module.exports = {
         dest: 'dist/jump-hoops/css/'
       }
     ]
+  }, 
+  
+  "middle-school": {
+    files: [
+      {
+        expand: true, 
+        cwd: 'dist/middle-school/css/', 
+        src: [
+          'main.css'
+        ], 
+        dest: 'dist/middle-school/css/'
+      }, 
+      {
+        expand: true, 
+        cwd: 'dist/middle-school/css/', 
+        src: [
+          'participant.css'
+        ], 
+        dest: 'dist/middle-school/css/'
+      }
+    ]
   }
 }
