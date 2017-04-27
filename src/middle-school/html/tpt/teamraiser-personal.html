@@ -1,0 +1,148 @@
+<div ng-controller="PersonalPageCtrl" ng-cloak>
+  <div class="ym-page-section ym-page-section__top">
+    <div class="col-md-6 ym-user-image" style="background-image:url('[[C4:graphic_upload]]');">
+      <img class="hidden-md hidden-lg" src="[[C4:graphic_upload]]" alt="[[?xx::x[[C1:graphic_caption]]x::Personal Fundraising Page Photo::[[C1:graphic_caption]]]]">
+      [[?xx::x[[C1:graphic_caption]]x::::
+        <div class="caption">
+          [[C1:graphic_caption]]
+        </div>
+      ]]
+    </div>
+    <div class="col-md-6 ym-progress ym-secondary-medium-color">
+      <h2 class="ym-progress__title h4">
+        Help me raise more life-saving donations
+      </h2>
+      <a class="btn btn-primary btn-lg" href="Donation2?df_id=[[E42:[[S80:trID]]:form-id]]&amp;FR_ID=[[S80:trID]]&amp;PROXY_ID=[[S334:px]]&amp;PROXY_TYPE=20">
+        Donate
+      </a>
+      <div class="ym-progress__thermometer">
+        <div class="ym-progress__thermometer--fill" ng-style="{'width': personalProgress.percent + '%'}"></div>
+      </div>
+      <div class="ym-progress__stats">
+        <div class="ym-progress__amount col-sm-6">
+          <p>
+            I've raised <strong>[[E130:"[[E48:[[S80:trID]]-[[S334:px]]:dollars]]" ".00" "" replaceall]]</strong>
+          </p>
+        </div>
+        <div class="ym-progress__goal col-sm-6">
+          <p>
+            My goal is <strong>[[E130:"[[E48:[[S80:trID]]-[[S334:px]]:goal]]" ".00" "" replaceall]]</strong>
+          </p>
+        </div>
+        <div class="clearfix"></div>
+        <div class="ym-progress__date" ng-if="eventDate != 'User Provided No Response'" ng-cloak>
+          <p>
+            My event date is <strong><span ng-bind-html="eventDate"></span></strong>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="ym-page-section ym-page-section__main">
+    <div class="col-md-6 ym-story">
+      <h3 class="ym-headline">
+        My Story
+      </h3>
+      [[C6:fr_rich_text]]
+    </div>
+    <div class="col-md-6">
+      <div class="ym-badges">
+        <h3 class="ym-headline">
+          Check Out My Badges
+        </h3>
+        <div class="ym-badges__item">
+          <img class="img-responsive" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/hj_badge1.png" alt="">
+          <span>I've Earned Rory!</span>
+        </div>
+        <div class="ym-badges__item">
+          <img class="img-responsive" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/hj_badge2.png" alt="">
+          <span>Raised $250</span>
+        </div>
+        <div class="ym-badges__item">
+          <img class="img-responsive" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/hj_badge3.png" alt="">
+          <span>I'm a Jump/Hoops Veteran</span>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="ym-my-challenge ym-secondary-medium-color" ng-if="challengeId != null" ng-cloak>
+        <h3 class="ym-headline">
+          My Challenge
+        </h3>
+        <div class="col-sm-4">
+          <img class="img-responsive" ng-if="challengeId == 1 || challengeId == 4" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/my-challenge-exercise.png" alt="{{challengeName}}" ng-cloak>
+          <img class="img-responsive" ng-if="challengeId == 2" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/my-challenge-water.png" alt="{{challengeName}}" ng-cloak>
+          <img class="img-responsive" ng-if="challengeId == 3" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/my-challenge-food.png" alt="{{challengeName}}" ng-cloak>
+        </div>
+        <div class="col-sm-8">
+          <p class="ym_my_challenge__description">
+            <strong>{{challengeName}}</strong>
+          </p>
+          <p class="ym_my_challenge__stats" ng-if="challengeCompleted == 1" ng-cloak>
+            I've met my challenge <span>1</span> day!
+          </p>
+          <p class="ym_my_challenge__stats" ng-if="challengeCompleted != 1" ng-cloak>
+            I've met my challenge <span>{{challengeCompleted}}</span> days!
+          </p>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <!-- fallback to pull challenge from LO if no Zuri data -->
+      [[?[[E48:[[S80:trID]]-[[S334:px]]:question:Pick from one of the choices below and we will customize your message letting friends and family know you have taken the challenge. We will also send you some information to help you meet your goal.]]::::
+      ::
+        <div class="ym-my-challenge ym-secondary-medium-color" ng-if="challengeId == null" ng-cloak>
+          <h3 class="ym-headline">
+            My Challenge
+          </h3>
+          <div class="col-sm-4">
+            <img class="img-responsive" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/my-challenge-water.png" alt="">
+          </div>
+          <div class="col-sm-8">
+            <p class="ym_my_challenge__description">
+              <strong>[[E48:[[S80:trID]]-[[S334:px]]:question:Pick from one of the choices below and we will customize your message letting friends and family know you have taken the challenge. We will also send you some information to help you meet your goal.]]</strong>
+            </p>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      ]]
+      <div class="clearfix"></div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="ym-page-section ym-page-section__list ym-accent-color">
+    <div class="ym-donate-cta" ng-class="personalDonors.donors.length < 1 ? 'col-sm-12' : 'col-sm-6'">
+      <h3>
+        Donate to [[E48:[[S80:trID]]-[[S334:px]]:cons.first_name]]
+      </h3>
+      <div ng-if="personalDonors.donors.length > 0" ng-cloak>
+        <p>
+          <strong>Add your name to the list</strong>
+        </p>
+      </div>
+      <div ng-if="personalDonors.donors.length < 1" ng-cloak>
+        <p>
+          <strong>Be the first to donate</strong>
+        </p>
+      </div>
+      <a class="btn btn-primary btn-lg" href="Donation2?df_id=[[E42:[[S80:trID]]:form-id]]&amp;FR_ID=[[S80:trID]]&amp;PROXY_ID=[[S334:px]]&amp;PROXY_TYPE=20">
+        Donate
+      </a>
+    </div>
+    <div class="ym-list" ng-class="personalDonors.donors.length < 1 ? 'hidden' : 'col-sm-6'">
+      <img class="img-responsive" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/hj-fundraisers-graphic.png" alt="Saluting the following top fundraisers">
+      <div class="ym-donor-list">
+        <div class="ym-donor-list__row" ng-repeat="personalDonor in personalDonors.donors" ng-if="personalDonors.donors.length > 0" ng-cloak>
+          <span class="ym-donor-list__row--name">{{personalDonor.name}}</span>
+          <span class="ym-donor-list__row--amount">{{personalDonor.amountFormatted}}</span>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="hidden">
+    <div class="js--personal-donors">
+      [[C5:fr_status_2]]
+    </div>
+  </div>
+</div>

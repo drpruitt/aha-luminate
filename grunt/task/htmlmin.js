@@ -62,5 +62,18 @@ module.exports = {
         dest: "dist/jump-hoops/html/"
       }
     ]
+  }, 
+  
+  "middle-school": {
+    files: [
+      {
+        expand: true, 
+        cwd: 'dist/middle-school/html/', 
+        src: [
+          '**/*.*'
+        ], 
+        dest: "dist/middle-school/html/"
+      }
+    ]
   }
 }

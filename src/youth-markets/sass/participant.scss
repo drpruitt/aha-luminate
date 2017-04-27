@@ -491,13 +491,23 @@ main > .container {
 
 .ym-pc-dashboard-badges-section {
   background-color: $event-accent-medium;
-  padding: 28px 38px;
+  padding: 28px 0;
   margin: 0 0 40px;
   
   .ym-pc-dashboard-section-header {
     color: $event-secondary;
+    margin: 0 0 32px;
   }
 }
+
+.ym-pc-dashboard-badges-icons {
+  margin: 0 0 32px;
+
+  img {
+    margin: 0 0 10px;
+  }
+}
+
 
 .ym-pc-dashboard-email-challenge-images {
   a {
@@ -546,14 +556,6 @@ main > .container {
   a.btn {
     margin: 30px 10px 0;
   }
-}
-
-.ym-pc-dashboard-badges-icons {
-  margin: 0 0 32px;
-}
-
-.ym-pc-dashboard-badges-icon {
-  float: left;
 }
 
 .ym-pc-dashboard-coordinators-message-section {

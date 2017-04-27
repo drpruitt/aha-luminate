@@ -38,5 +38,22 @@ module.exports = {
         dest: 'dist/jump-hoops/js/participant.' + '<%= timestamp %>' + '.min.js'
       }
     ]
+  }, 
+  
+  "middle-school": {
+    files: [
+      {
+        src: [
+          'dist/middle-school/js/main.js'
+        ], 
+        dest: 'dist/middle-school/js/main.' + '<%= timestamp %>' + '.min.js'
+      }, 
+      {
+        src: [
+          'dist/middle-school/js/participant.js'
+        ], 
+        dest: 'dist/middle-school/js/participant.' + '<%= timestamp %>' + '.min.js'
+      }
+    ]
   }
 }
