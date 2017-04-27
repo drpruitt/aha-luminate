@@ -97,5 +97,25 @@ module.exports = {
       'img-copy:jump-hoops-images', 
       'notify:jump-hoops'
     ]
+  }, 
+  
+  "middle-school": {
+    files: [
+      'src/youth-markets/sass/**/*', 
+      'src/global/coffee/**/*', 
+      'src/youth-markets/coffee/**/*', 
+      'src/middle-school/html/**/*', 
+      'src/middle-school/image/**/*', 
+      'src/middle-school/sass/**/*', 
+      'src/jump-hoops/coffee/**/*'
+    ], 
+    tasks: [
+      'clean:middle-school',  
+      'css-dist:middle-school', 
+      'js-dist:middle-school', 
+      'html-dist:middle-school', 
+      'img-copy:middle-school-images', 
+      'notify:middle-school'
+    ]
   }
 }
