@@ -25,18 +25,18 @@ angular.module 'ahaLuminateControllers'
       $scope.prizes = []
       ParticipantBadgesService.getBadges '3196745'
       .then (response) ->
-        console.log response
-        prizes = response.data.prizes
-        angular.forEach prizes, (prize) ->
-          if prize.earned_datetime != null
-            $scope.prizes.push
-              id: prize.id
-              label: prize.label
-              sku: prize.sku
-              status: prize.status
-              earned: prize.earned_datetime
-
-      console.log $scope.prizes
+        if response.data.status == 'success'
+          prizes = response.data.prizes
+          angular.forEach prizes, (prize) ->
+            if prize.earned_datetime != null
+              $scope.prizes.push
+                id: prize.id
+                label: prize.label
+                sku: prize.sku
+                status: prize.status
+                earned: prize.earned_datetime
+            else
+              # TODO
       
       ZuriService.getZooStudent frId + '/' + $scope.participantId, 
         success: (response) ->
