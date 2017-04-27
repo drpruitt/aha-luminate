@@ -203,5 +203,9 @@
   .owl-nav > div {
     top: 25%;
 
+    @media(min-width: $screen-md-min) {
+      top: 15%;
+    }
+
   }
 }

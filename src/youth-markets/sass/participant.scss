@@ -497,6 +497,15 @@ main > .container {
   .ym-pc-dashboard-section-header {
     color: $event-secondary;
     margin: 0 0 32px;
+    position: relative;
+  }
+
+  .btn {
+    @media  (min-width: $screen-md-min) {
+      position: absolute;
+      right: 60px;
+      top: 0;
+    }
   }
 }
 

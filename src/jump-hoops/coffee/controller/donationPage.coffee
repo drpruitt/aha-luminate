@@ -10,7 +10,6 @@ angular.module 'ahaLuminateControllers'
       if ecardLinkParam != undefined
         ecardLinkParamSplit = ecardLinkParam.split('&')[0]
         ZuriService.eCardTracking ecardLinkParamSplit,
-          console.log 'send track'
       
       $scope.paymentInfoErrors = 
         errors: []
