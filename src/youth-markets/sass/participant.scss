@@ -503,15 +503,6 @@ main > .container {
 .ym-pc-dashboard-badges-icons {
   margin: 0 0 32px;
 
-  .owl-item {
-    text-align: center;
-    visibility: hidden;
-
-    &.active {
-      visibility: visible;
-    }
-  }
-
   img {
     margin: 0 0 10px;
   }

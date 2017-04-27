@@ -150,11 +150,6 @@
       .item {
         max-width: none;
       }
-      /*
-      img {
-        clip-path: circle(36% at center);
-      }
-      */
       .carousel-item__img-box {
         width: 100%;
         position: relative;
@@ -193,4 +188,23 @@
 
 .owl-item-video {
   padding-bottom: 52.25%;
+}
+
+.ym-carousel--badges {
+  .owl-item {
+    text-align: center;
+    visibility: hidden;
+
+    &.active {
+      visibility: visible;
+    }
+  }
+
+  .owl-nav > div {
+    top: 25%;
+
+    @media(max-width: $screen-sm){
+      top: 10%;
+    }
+  }
 }
