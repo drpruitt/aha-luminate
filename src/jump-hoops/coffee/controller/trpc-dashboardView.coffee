@@ -405,7 +405,6 @@ angular.module 'trPcControllers'
       $scope.prizes = []
       ParticipantBadgesService.getBadges $scope.consId
       .then (response) ->
-        console.log response
         prizes = response.data.prizes
         angular.forEach prizes, (prize) ->
           $scope.prizes.push

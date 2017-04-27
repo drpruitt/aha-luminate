@@ -22,11 +22,21 @@ angular.module 'ahaLuminateControllers'
       $scope.challengeName = null
       $scope.challengeCompleted = 0
 
-      ###
-      ParticipantBadgesService.getAuth
-        success: (response) ->
-          console.log 'get auth'
-      ###
+      $scope.prizes = []
+      ParticipantBadgesService.getBadges '3196745'
+      .then (response) ->
+        console.log response
+        prizes = response.data.prizes
+        angular.forEach prizes, (prize) ->
+          if prize.earned_datetime != null
+            $scope.prizes.push
+              id: prize.id
+              label: prize.label
+              sku: prize.sku
+              status: prize.status
+              earned: prize.earned_datetime
+
+      console.log $scope.prizes
       
       ZuriService.getZooStudent frId + '/' + $scope.participantId, 
         success: (response) ->
