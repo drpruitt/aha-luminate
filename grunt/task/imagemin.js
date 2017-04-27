@@ -47,5 +47,16 @@ module.exports = {
       ], 
       dest: 'dist/jump-hoops/image/'
     }]
+  }, 
+  
+  "middle-school": {
+    files: [{
+      expand: true, 
+      cwd: 'src/middle-school/image/', 
+      src: [
+        '*.{gif,GIF,jpg,JPG,png,PNG,svg,SVG}'
+      ], 
+      dest: 'dist/middle-school/image/'
+    }]
   }
 }

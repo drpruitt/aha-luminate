@@ -55,5 +55,25 @@ module.exports = {
         'src/jump-hoops/coffee/**/trpc-*.*'
       ]
     }
+  }, 
+  
+  "middle-school": {
+    files: {
+      'dist/middle-school/js/main.js': [
+        'src/jump-hoops/coffee/init.coffee', 
+        'src/jump-hoops/coffee/config/*.*', 
+        '!src/jump-hoops/coffee/config/trpc-*.*', 
+        'src/global/coffee/service/*.*', 
+        '!src/global/coffee/service/trpc-*.*', 
+        'src/jump-hoops/coffee/**/*.*', 
+        '!src/jump-hoops/coffee/**/trpc-*.*'
+      ], 
+      'dist/middle-school/js/participant.js': [
+        'src/jump-hoops/coffee/trpc-init.coffee', 
+        'src/jump-hoops/coffee/config/trpc-*.*', 
+        'src/global/coffee/service/trpc-*.*', 
+        'src/jump-hoops/coffee/**/trpc-*.*'
+      ]
+    }
   }
 }

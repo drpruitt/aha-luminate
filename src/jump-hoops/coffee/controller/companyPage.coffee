@@ -117,8 +117,8 @@ angular.module 'ahaLuminateControllers'
             setCompanyTeams()
       
       getCompanyTeams()
-
-      participantsString = ''      
+      
+      participantsString = ''
       $scope.companyParticipants = []
       setCompanyParticipants = (participants, totalNumber, totalFundraisers) ->
         $scope.companyParticipants.participants = participants or []
@@ -127,14 +127,14 @@ angular.module 'ahaLuminateControllers'
         $scope.companyParticipants.totalFundraisers = Number totalFundraisers
         if not $scope.$$phase
           $scope.$apply()
-
+        
         i = 0
         angular.forEach participants, (participant) ->
           i++
-          partString = '{name: '+participant.name.first+' '+participant.name.last+', raised: ' + participant.amountRaisedFormatted+'}, '
+          partString = '{name: ' + participant.name.first + ' ' + participant.name.last + ', raised: ' + participant.amountRaisedFormatted + '}, '
           participantsString += partString
-        companyParticipantsString = '[participants: '+participantsString+' totalNumber: '+i+']'
-        angular.element('.ym-school-animation iframe')[0].contentWindow.postMessage(companyParticipantsString, domain);
+        companyParticipantsString = '[participants: ' + participantsString + ' totalNumber: ' + i + ']'
+        angular.element('.ym-school-animation iframe')[0].contentWindow.postMessage companyParticipantsString, domain
       
       getCompanyParticipants = ->
         TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%%%') + '&first_name=' + encodeURIComponent('%%%') + '&last_name=' + encodeURIComponent('%%%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=50', 

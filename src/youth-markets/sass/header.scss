@@ -1,122 +1,126 @@
 header {
   padding: 10px 0 0;
-  
+
   @media (min-width: $screen-sm-min) {
     padding: 20px 0 0;
   }
-  
+
   > .container {
     @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
       width: auto;
     }
   }
-  
+
   .ym-header-pre-text {
     font-size: 12px;
     font-weight: 500;
     margin: 0 0 16px;
-    
+
     a {
-      &, 
-      &:link, 
-      &:visited, 
-      &:hover, 
-      &:focus, 
+      &,
+      &:link,
+      &:visited,
+      &:hover,
+      &:focus,
       &:active {
-        color: inherit;
+        color: $brand-primary;
       }
     }
   }
-  
+
   .ym-header-logos {
     height: 70px;
     margin: 0 0 18px;
-    
+
     @media (min-width: $screen-sm-min) {
       height: 76px;
     }
   }
-  
+
   .ym-header-logo {
     float: left;
     border-left: 1px solid #838181;
     height: 54px;
-    
+
     &:first-child {
       border-left: 0;
     }
-    
-    > a, 
+
+    > a,
     > span {
       display: block;
     }
   }
-  
+
   .ym-header-logo--aha {
-    > a, 
+    > a,
     > span {
       margin: 0 10px 0 0;
-      
+
       img {
         width: 125px;
-        
+
         @media (min-width: $screen-sm-min) {
           width: auto;
         }
       }
     }
   }
-  
+
   .ym-header-logo--jump {
-    > a, 
+    > a,
     > span {
       margin: -8px 8px 0;
     }
   }
-  
+
   .ym-header-logo--hoops {
-    > a, 
+    > a,
     > span {
       margin: 10px 8px 0;
     }
   }
-  
+
   .ym-header-logo--shape-america {
-    > a, 
+    > a,
     > span {
       margin: 6px 18px 0;
     }
   }
-  
+
   .ym-header-title {
     font-size: 26px;
     text-transform: uppercase;
     margin: 0 0 16px;
     color: $event-secondary;
     font-family: $headline-font;
+
+    &.visible-xs {
+      line-height: 32px;
+    }
   }
-  
+
   .ym-header-post-text {
     font-size: 10px;
     font-weight: 500;
     margin: 0 0 16px;
   }
-  
+
   nav {
     border-top: 1px solid #e8e8e8;
     border-bottom: 1px solid #e8e8e8;
-    
+
     > .container {
       @media (max-width: $screen-xs-max) {
         padding: 0;
       }
-      
+
       @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
         width: auto;
         padding-right: 0;
       }
     }
-    
+
     ul.ym-site-nav {
       color: $brand-primary;
       float: left;
@@ -125,59 +129,66 @@ header {
       list-style: none;
       padding: 0;
       margin: 0;
-      
+
       li {
         float: left;
         padding: 15px 0;
         margin: 0 75px 0 0;
-        
+
         &:last-child {
           margin: 0;
         }
-        
+
         a {
-          &, 
-          &:link, 
-          &:visited, 
-          &:hover, 
-          &:focus, 
+          &,
+          &:link,
+          &:visited,
+          &:hover,
+          &:focus,
           &:active {
+            color: $brand-primary;
             display: inline-block;
             font-weight: 700;
             text-decoration: none;
           }
-          
-          &:hover, 
-          &:focus, 
+
+          &:hover,
+          &:focus,
           &:active {
             color: $brand-primary-darker;
           }
         }
       }
     }
-    
+
     .ym-header-login {
       float: left;
       position: relative;
-      
+
+      > a {
+        &.ym-header-login-toggle {
+          padding-top: 14px;
+        }
+      }
+
       @media (min-width: $screen-sm-min) {
         float: right;
       }
     }
-    
+
     .btn.ym-header-login-toggle {
-      &, 
-      &:link, 
-      &:visited, 
-      &:hover, 
-      &:focus, 
+      &,
+      &:link,
+      &:visited,
+      &:hover,
+      &:focus,
       &:active {
         font-size: 16px;
         font-weight: 500;
         height: 50px;
       }
     }
-    
+
     .ym-header-login-dropdown {
       display: none;
       position: absolute;
@@ -188,69 +199,73 @@ header {
       width: 266px;
       padding: 0;
       z-index: 1000;
-      
+
       @media (max-width: $screen-xs-max) {
         left: 0;
         border-left: 0;
       }
-      
+
       @media (min-width: $screen-sm-min) {
         right: 0;
       }
-      
+
       &.open {
         display: block;
       }
     }
-    
+
     .ym-header-login-form {
       border-left: 6px solid $brand-primary;
       padding: 30px 20px;
-      
+
       .form-group {
         margin: 0 0 10px;
       }
-      
+
       .ym-header-login-footer {
         padding: 10px 0 0;
       }
-      
+
       a {
-        &, 
-        &:link, 
-        &:visited, 
-        &:hover, 
-        &:focus, 
+        &,
+        &:link,
+        &:visited,
+        &:hover,
+        &:focus,
         &:active {
           font-weight: 700;
           text-decoration: underline;
           margin: 12px 0 0;
         }
+
+        &:hover {
+          text-decoration: none;
+        }
       }
     }
-    
+
     .ym-header-logged-in {
       float: right;
-      
+
       @media (max-width: $screen-sm) {
         float: left;
         width: calc(100% - 71px);
       }
     }
-    
+
     .ym-header-welcome {
       float: left;
       position: relative;
     }
-    
+
     .ym-header-welcome-toggle {
-      &, 
-      &:link, 
-      &:visited, 
-      &:hover, 
-      &:focus, 
-      &:active, 
-      &:active:hover, 
+      &,
+      &:link,
+      &:visited,
+      &:hover,
+      &:focus,
+      &:active,
+      &:active:hover,
       &:active:focus {
         color: $brand-primary;
         height: 50px;
@@ -278,16 +293,16 @@ header {
           }
         }
       }
-      
-      &:hover, 
-      &:focus, 
-      &:active, 
-      &:active:hover, 
+
+      &:hover,
+      &:focus,
+      &:active,
+      &:active:hover,
       &:active:focus {
         color: $brand-primary-darker;
       }
     }
-    
+
     .ym-header-welcome-dropdown {
       display: none;
       position: absolute;
@@ -297,12 +312,12 @@ header {
       font-size: 14px;
       padding: 0;
       z-index: 1000;
-      
+
       @media (max-width: $screen-xs-max) {
         left: 0;
         border-left: 0;
       }
-      
+
       @media (min-width: $screen-sm-min) {
         right: 0;
       }
@@ -314,36 +329,36 @@ header {
       &.my-events {
         right: 135px;
       }
-      
+
       &.open {
         display: block;
       }
-      
+
       ul {
         border-left: 6px solid $brand-primary;
         color: $brand-primary;
         list-style: none;
         padding: 30px 20px;
         margin: 0;
-        
+
         li {
           font-weight: 700;
           margin: 0 0 30px;
-          
+
           &:last-child {
             margin: 0;
           }
         }
       }
     }
-    
+
     .ym-header-hq-btn.btn {
       height: 50px;
       line-height: 50px;
       font-weight: bold;
       padding: 0 20px;
     }
-    
+
     .ym-site-menu {
       float: right;
       position: relative;
@@ -352,27 +367,27 @@ header {
     &.visible-xs {
       width: 66px;
     }
-    
+
     .btn.ym-site-menu-toggle {
       display: block;
       border: 0;
       border-radius: 0;
       padding: 8px 10px;
       margin: 1px 10px 0 0;
-      
-      &, 
-      &:link, 
-      &:visited, 
-      &:hover, 
-      &:focus, 
-      &:active, 
-      &:active:hover, 
+
+      &,
+      &:link,
+      &:visited,
+      &:hover,
+      &:focus,
+      &:active,
+      &:active:hover,
       &:active:focus {
         background: transparent;
         box-shadow: none;
         outline: 0;
       }
-      
+
       .ym-site-menu-bar {
         display: block;
         background: $brand-primary;
@@ -380,23 +395,23 @@ header {
         width: 36px;
         height: 6px;
         margin: 0 0 3px;
-        
+
         &:last-child {
           margin: 0;
         }
       }
-      
-      &:hover, 
-      &:focus, 
-      &:active, 
-      &:active:hover, 
+
+      &:hover,
+      &:focus,
+      &:active,
+      &:active:hover,
       &:active:focus {
         .ym-site-menu-bar {
           background: #353535;
         }
       }
     }
-    
+
     .ym-site-menu-dropdown {
       display: none;
       position: absolute;
@@ -409,22 +424,22 @@ header {
       width: 140px;
       padding: 0;
       z-index: 1000;
-      
+
       &.open {
         display: block;
       }
-      
+
       ul {
         border-left: 6px solid $brand-primary;
         color: $brand-primary;
         list-style: none;
         padding: 30px 20px;
         margin: 0;
-        
+
         li {
           font-weight: 700;
           margin: 0 0 30px;
-          
+
           &:last-child {
             margin: 0;
           }

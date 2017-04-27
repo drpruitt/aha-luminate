@@ -41,5 +41,12 @@ module.exports = {
       title: 'AHA Luminate Framework', 
       message: 'Jump/Hoops files updated.'
     }
+  }, 
+  
+  "middle-school": {
+    options: {
+      title: 'AHA Luminate Framework', 
+      message: 'Middle School files updated.'
+    }
   }
 }

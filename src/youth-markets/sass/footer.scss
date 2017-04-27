@@ -1,0 +1,15 @@
+footer {
+  .address,
+  .social-icons {
+    a {
+      &,
+      &:link,
+      &:visited,
+      &:hover,
+      &:focus,
+      &:active {
+        color: $brand-primary;
+      }
+    }
+  }
+}
