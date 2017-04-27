@@ -6,17 +6,20 @@ angular.module 'trPcControllers'
     '$httpParamSerializer'
     'NgPcAuthService'
     ($rootScope, $scope, $route, $httpParamSerializer, NgPcAuthService) ->
+      setUserNameOrPasswordError = ->
+        $scope.loginError = 'The User Name or Password is invalid.'
+      
       $scope.submitLogin = ->
+        delete $scope.loginError
         if $scope.consLogin.user_name is '' or $scope.consLogin.password is ''
-          # TODO
+          setUserNameOrPasswordError()
         else
-          delete $scope.loginError
           NgPcAuthService.login $httpParamSerializer($scope.consLogin)
             .then (response) ->
               errorResponse = response.data.errorResponse
               if errorResponse
                 if ['200', '201', '202', '204'].indexOf(errorResponse.code) isnt -1
-                  # TODO
+                  setUserNameOrPasswordError()
                 else
                   $scope.loginError = errorResponse.message
               else
