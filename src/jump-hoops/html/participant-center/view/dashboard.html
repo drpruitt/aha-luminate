@@ -96,6 +96,11 @@
                       <strong><span ng-bind-html="teamProgress.goalFormatted"></span></strong> goal
                     </p>
                   </div>
+                  <div ng-if="participantRegistration.aTeamCaptain != 'true'" ng-cloak>
+                    <p>
+                      &nbsp;
+                    </p>
+                  </div>
                   <div ng-if="participantRegistration.aTeamCaptain == 'true'" ng-cloak>
                     <p>
                       <a ng-click="editTeamGoal()">
@@ -383,6 +388,11 @@
                   <div ng-if="teamProgress.goalFormatted && teamProgress.goalFormatted != '$0'" ng-cloak>
                     <p>
                       <strong><span ng-bind-html="teamProgress.goalFormatted"></span></strong> goal
+                    </p>
+                  </div>
+                  <div ng-if="participantRegistration.aTeamCaptain != 'true'" ng-cloak>
+                    <p>
+                      &nbsp;
                     </p>
                   </div>
                   <div ng-if="participantRegistration.aTeamCaptain == 'true'" ng-cloak>
