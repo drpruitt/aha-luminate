@@ -419,7 +419,23 @@ angular.module 'trPcControllers'
         owl.owlCarousel
           nav: true
           loop: true
-          items: 6
+          responsive:
+            0:
+              items: 2
+              stagePadding: 15
+              margin : 15
+            480:
+              items: 3
+              stagePadding: 15
+              margin: 15
+            768:
+              items: 5
+              margin: 30
+              stagePadding: 60
+            992:
+              items: 7
+              margin: 30
+              stagePadding: 60
           navText: [
             '<span class="fa fa-chevron-left" aria-hidden="true" />',
             '<span class="fa fa-chevron-right" aria-hidden="true" />'

@@ -505,13 +505,18 @@ main > .container {
 
   .owl-item {
     text-align: center;
+    visibility: hidden;
+
+    &.active {
+      visibility: visible;
+    }
+  }
+
+  img {
+    margin: 0 0 10px;
   }
 }
 
-.ym-pc-dashboard-badges-icon {
-  max-width: 150px;
-  margin: auto;
-}
 
 .ym-pc-dashboard-email-challenge-images {
   a {
