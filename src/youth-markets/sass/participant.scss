@@ -496,6 +496,7 @@ main > .container {
   
   .ym-pc-dashboard-section-header {
     color: $event-secondary;
+    margin: 0 0 32px;
   }
 }
 
@@ -509,6 +510,7 @@ main > .container {
 
 .ym-pc-dashboard-badges-icon {
   max-width: 150px;
+  margin: auto;
 }
 
 .ym-pc-dashboard-email-challenge-images {
