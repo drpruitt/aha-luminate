@@ -10,7 +10,6 @@ angular.module 'ahaLuminateControllers'
     'ZuriService'
     'ParticipantBadgesService'
     ($scope, $rootScope, $location, $filter, $timeout, TeamraiserParticipantService, TeamraiserCompanyService, ZuriService, ParticipantBadgesService) ->
-
       $dataRoot = angular.element '[data-aha-luminate-root]'
       $scope.participantId = $location.absUrl().split('px=')[1].split('&')[0]
       frId = $dataRoot.data('fr-id') if $dataRoot.data('fr-id') isnt ''
@@ -38,18 +37,17 @@ angular.module 'ahaLuminateControllers'
             else
               # TODO
       
-      ZuriService.getZooStudent frId + '/' + $scope.participantId, 
-        success: (response) ->
-          $scope.challengeId = response.data.challenges.current
-          $scope.challengeName = response.data.challenges.text
-          $scope.challengeCompleted = response.data.challenges.completed
-        
+      ZuriService.getZooStudent frId + '/' + $scope.participantId,
         error: (response) ->
           $scope.challengeName = null
           $scope.challengeId = null
           $scope.challengeCompleted = 0
+        success: (response) ->
+          $scope.challengeId = response.data.challenges.current
+          $scope.challengeName = response.data.challenges.text
+          $scope.challengeCompleted = response.data.challenges.completed
       
-      TeamraiserCompanyService.getCompanies 'company_id=' + $scope.companyId, 
+      TeamraiserCompanyService.getCompanies 'company_id=' + $scope.companyId,
         success: (response) ->
           coordinatorId = response.getCompaniesResponse?.company.coordinatorId
           eventId = response.getCompaniesResponse?.company.eventId
@@ -61,17 +59,10 @@ angular.module 'ahaLuminateControllers'
         
       setParticipantProgress = (amountRaised, goal) ->
         $scope.personalProgress = 
-          amountRaised: amountRaised or 0
-          goal: goal or 0
+          amountRaised: if amountRaised then Number(amountRaised) else 0
+          goal: if goal then Number(goal) else 0
         $scope.personalProgress.amountRaisedFormatted = $filter('currency')($scope.personalProgress.amountRaised / 100, '$').replace '.00', ''
         $scope.personalProgress.goalFormatted = $filter('currency')($scope.personalProgress.goal / 100, '$').replace '.00', ''
-        if $scope.personalProgress.goal is 0
-          $scope.personalProgress.rawPercent = 0
-        else
-          rawPercent = Math.ceil(($scope.personalProgress.amountRaised / $scope.personalProgress.goal) * 100)
-          if rawPercent > 100
-            rawPercent = 100
-          $scope.personalProgress.rawPercent = rawPercent
         $scope.personalProgress.percent = 0
         if not $scope.$$phase
           $scope.$apply()
@@ -81,8 +72,6 @@ angular.module 'ahaLuminateControllers'
             percent = Math.ceil(($scope.personalProgress.amountRaised / $scope.personalProgress.goal) * 100)
           if percent > 100
             percent = 100
-          else if percent < 2
-            percent = 2
           $scope.personalProgress.percent = percent
           if not $scope.$$phase
             $scope.$apply()

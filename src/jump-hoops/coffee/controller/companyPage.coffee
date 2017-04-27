@@ -13,7 +13,6 @@ angular.module 'ahaLuminateControllers'
     ($scope, $rootScope, $location, $filter, $timeout, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService, ZuriService, APP_INFO) ->
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0]
       domain = $location.absUrl().split('/site')[0]
-      $scope.companyProgress = []
       $rootScope.companyName = ''
       $scope.companyTeams = []
       $scope.eventDate = ''
@@ -45,29 +44,26 @@ angular.module 'ahaLuminateControllers'
             $scope.activity3amt = studentsPledgedActivities['3'].count
           else
             $scope.activity3amt = 0
-
-      setCompanyFundraisingProgress = (amountRaised, goal) ->
-        $scope.companyProgress.amountRaised = amountRaised
-        $scope.companyProgress.amountRaised = Number $scope.companyProgress.amountRaised
+      
+      setCompanyProgress = (amountRaised, goal) ->
+        $scope.companyProgress = 
+          amountRaised: if amountRaised then Number(amountRaised) else 0
+          goal: if goal then Number(goal) else 0
         $scope.companyProgress.amountRaisedFormatted = $filter('currency')($scope.companyProgress.amountRaised / 100, '$').replace '.00', ''
-        $scope.companyProgress.goal = goal or 0
-        $scope.companyProgress.goal = Number $scope.companyProgress.goal
         $scope.companyProgress.goalFormatted = $filter('currency')($scope.companyProgress.goal / 100, '$').replace '.00', ''
-        $scope.companyProgress.percent = 2
+        $scope.companyProgress.percent = 0
+        if not $scope.$$phase
+          $scope.$apply()
         $timeout ->
           percent = $scope.companyProgress.percent
           if $scope.companyProgress.goal isnt 0
             percent = Math.ceil(($scope.companyProgress.amountRaised / $scope.companyProgress.goal) * 100)
-          if percent < 2
-            percent = 2
           if percent > 100
             percent = 100
           $scope.companyProgress.percent = percent
           if not $scope.$$phase
             $scope.$apply()
         , 500
-        if not $scope.$$phase
-          $scope.$apply()
       
       getCompanyTotals = ->
         TeamraiserCompanyService.getCompanies 'list_page_size=500&company_id=' + $scope.companyId, 
@@ -80,7 +76,7 @@ angular.module 'ahaLuminateControllers'
               name = response.getCompaniesResponse.company.companyName
               coordinatorId = response.getCompaniesResponse.company.coordinatorId
               $rootScope.companyName = name
-              setCompanyFundraisingProgress amountRaised, goal
+              setCompanyProgress amountRaised, goal
               
               TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
                 .then (response) ->
@@ -88,7 +84,6 @@ angular.module 'ahaLuminateControllers'
                   
                   if totalTeams = 1
                     $scope.teamId = response.data.coordinator.team_id
-      
       getCompanyTotals()
       
       setCompanyTeams = (teams, totalNumber) ->
@@ -115,10 +110,10 @@ angular.module 'ahaLuminateControllers'
               setCompanyTeams companyTeams, totalNumberTeams
           error: ->
             setCompanyTeams()
-      
       getCompanyTeams()
       
-      participantsString = ''
+      if angular.element('.ym-school-animation iframe').length > 0
+        participantsString = ''
       $scope.companyParticipants = []
       setCompanyParticipants = (participants, totalNumber, totalFundraisers) ->
         $scope.companyParticipants.participants = participants or []
@@ -128,13 +123,14 @@ angular.module 'ahaLuminateControllers'
         if not $scope.$$phase
           $scope.$apply()
         
-        i = 0
-        angular.forEach participants, (participant) ->
-          i++
-          partString = '{name: ' + participant.name.first + ' ' + participant.name.last + ', raised: ' + participant.amountRaisedFormatted + '}, '
-          participantsString += partString
-        companyParticipantsString = '[participants: ' + participantsString + ' totalNumber: ' + i + ']'
-        angular.element('.ym-school-animation iframe')[0].contentWindow.postMessage companyParticipantsString, domain
+        if angular.element('.ym-school-animation iframe').length > 0
+          if participants and participants.length > 0
+            i = 0
+            angular.forEach participants, (participant) ->
+              i++
+              participantsString += '{name: ' + participant.name.first + ' ' + participant.name.last + ', raised: ' + participant.amountRaisedFormatted + '}, '
+            companyParticipantsString = '{participants: [' + participantsString + '], totalNumber: ' + i + '}'
+            angular.element('.ym-school-animation iframe')[0].contentWindow.postMessage companyParticipantsString, domain
       
       getCompanyParticipants = ->
         TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%%%') + '&first_name=' + encodeURIComponent('%%%') + '&last_name=' + encodeURIComponent('%%%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=50', 
@@ -158,9 +154,5 @@ angular.module 'ahaLuminateControllers'
                     totalFundraisers++
               totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
               setCompanyParticipants companyParticipants, totalNumberParticipants, totalFundraisers
-
       getCompanyParticipants()
-
-
-      
   ]

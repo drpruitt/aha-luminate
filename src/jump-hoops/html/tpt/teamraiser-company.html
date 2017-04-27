@@ -86,9 +86,9 @@
         </div>
       </div>
     </div>
-    <hr class="hidden-xs">
-    <div class="container">
-      <div class="ym-school-animation hidden-xs">
+    <hr class="hidden-xs" ng-show="companyParticipants.participants.length > 0" ng-cloak>
+    <div class="container hidden-xs" ng-show="companyParticipants.participants.length > 0" ng-cloak>
+      <div class="ym-school-animation">
         <iframe id="school-animation" src="http://[[S29:DOMAIN]][[S29:PATH]]PageServer?pagename=jump_hoops_school_animation&pgwrap=n"></iframe>
       </div>
     </div>
