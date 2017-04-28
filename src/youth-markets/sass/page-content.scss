@@ -1,7 +1,7 @@
 .ym-page-content,
 .ym-page-section__main,
 .ym-page-section__roster  {
-  background: #ffffff;
+  background: $brand-white;
 }
 
 .ym-page-content {
@@ -111,7 +111,7 @@
   }
 
   @media (min-width: 630px) and (max-width: $screen-sm-max) {
-    background: #ffffff;
+    background: $brand-white;
     padding: 20px 0;
   }
 
@@ -318,7 +318,7 @@
 }
 
 .ym-page-section__sponsor {
-  background: #ffffff;
+  background: $brand-white;
   padding: 0 0 50px;
   text-align: center;
 
