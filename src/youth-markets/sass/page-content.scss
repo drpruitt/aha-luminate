@@ -168,6 +168,15 @@
     .ym-my-challenge > div {
         padding: 0;
     }
+
+    &.ym-user-interactions {
+      @media (min-screen: $screen-md-min) {
+        padding: 0 40px 0 0;
+      }
+      @media (min-screen: $screen-lg-min) {
+        padding: 0 40px;
+      }
+    }
   }
 
   @media (max-width: $screen-sm-max) {
@@ -203,15 +212,13 @@
 
 .ym-page-section__list {
   padding: 40px 0;
-  display: flex;
-  align-items: center;
 
   @media (max-width: $screen-xs-max) {
     padding: 30px 0;
   }
 
   > div {
-    padding: 0;
+    padding: 0 40px;
 
     @media (max-width: $screen-sm-max) {
       padding: 0 60px;
@@ -223,7 +230,6 @@
   }
 
   .ym-donate-cta {
-    margin: 0;
     text-align: center;
 
     @media (max-width: $screen-xs-max) {
@@ -252,6 +258,36 @@
       }
     }
   }
+}
+
+.pg-personal .ym-page-section__list {
+  @media(min-width: $screen-sm-min){
+    display: flex;
+    align-items: center;
+  }
+
+  > div {
+    padding: 0 20px;
+
+    @media (min-width: $screen-sm-min) {
+      padding: 0;
+    }
+
+    &.ym-list {
+      @media (min-width: $screen-sm-min) {
+        padding-right: 20px;
+      }
+
+      @media (min-width: $screen-md-min) {
+        padding-right: 40px
+      }
+
+      @media (min-width: $screen-lg-min) {
+        padding-right: 0;
+      }
+    }
+  }
+
 }
 
 .ym-page-section__roster {
