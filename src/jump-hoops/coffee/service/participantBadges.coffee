@@ -13,8 +13,8 @@ angular.module 'ahaLuminateApp'
         .then (response) ->
           response
 
-      getRollupTotals: (requestData) ->
-        url = 'AjaxProxy?cnv_url=' + encodeURIComponent('https://jumphoopsstaging.boundlessnetwork.com/api/badges/student/3196745') + '&auth=' + luminateExtend.global.ajaxProxyAuth       
+      getRollupTotals: ->
+        url = 'http://heart.pub30.convio.net/system/proxy.jsp?__proxyURL=https://jumphoopsstaging.boundlessnetwork.com/api/schools/totals'
         $http
           method: 'GET'
           url: url 
@@ -22,5 +22,6 @@ angular.module 'ahaLuminateApp'
             'Content-Type': 'application/json'
         .then (response) ->
           response
+
   ]
 
