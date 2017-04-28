@@ -103,17 +103,17 @@
   </div>
   <div class="ym-page-section ym-page-section__list ym-accent-color">
     <div class="ym-donate-cta" ng-class="personalDonors.donors.length < 1 ? 'col-sm-12' : 'col-sm-6'">
-      <h3>
+      <h4 class="h5">
         Donate to [[E48:[[S80:trID]]-[[S334:px]]:cons.first_name]]
-      </h3>
+      </h4>
       <div ng-if="personalDonors.donors.length > 0" ng-cloak>
         <p>
-          <strong>Add your name to the list</strong>
+          <strong>Add your name to the list!</strong>
         </p>
       </div>
       <div ng-if="personalDonors.donors.length < 1" ng-cloak>
         <p>
-          <strong>Be the first to donate</strong>
+          <strong>Be the first to donate!</strong>
         </p>
       </div>
       <a class="btn btn-primary btn-lg" href="Donation2?df_id=[[E42:[[S80:trID]]:form-id]]&amp;FR_ID=[[S80:trID]]&amp;PROXY_ID=[[S334:px]]&amp;PROXY_TYPE=20">
