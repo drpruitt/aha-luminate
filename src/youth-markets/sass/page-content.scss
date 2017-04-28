@@ -140,6 +140,10 @@
     width: 100%;
     padding: 15px 0;
     margin: 0;
+
+    @media (min-width: 630px) and (max-width: $screen-sm-max) {
+      margin: 0 0 20px;
+    }
   }
 }
 
@@ -168,14 +172,16 @@
     .ym-my-challenge > div {
         padding: 0;
     }
+  }
 
-    &.ym-user-interactions {
-      @media (min-screen: $screen-md-min) {
-        padding: 0 40px 0 0;
-      }
-      @media (min-screen: $screen-lg-min) {
-        padding: 0 40px;
-      }
+  .ym-user-interactions {
+
+    @media (min-width: $screen-md-min) {
+      padding: 0 40px 0 0;
+    }
+
+    @media (min-width: $screen-lg-min) {
+      padding: 0 40px;
     }
   }
 
