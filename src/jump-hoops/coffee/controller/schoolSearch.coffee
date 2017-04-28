@@ -16,7 +16,7 @@ angular.module('ahaLuminateControllers').controller 'SchoolSearchCtrl', [
       currentPage: 1
       numPerPage: 5
       showHelp: false
-
+    
     $scope.setStates = ->
       list = {}
       states = []
@@ -27,7 +27,7 @@ angular.module('ahaLuminateControllers').controller 'SchoolSearchCtrl', [
       i = 0
       while i < schools.length
         school = schools[i]
-        if school.SCHOOL_STATE and school.SCHOOL_STATE != '' and angular.isUndefined(list[school.SCHOOL_STATE])
+        if school.SCHOOL_STATE and school.SCHOOL_STATE isnt '' and angular.isUndefined(list[school.SCHOOL_STATE])
           list[school.SCHOOL_STATE] = school.SCHOOL_STATE
           states.push
             'id': school.SCHOOL_STATE
@@ -37,7 +37,7 @@ angular.module('ahaLuminateControllers').controller 'SchoolSearchCtrl', [
         $scope.states = states
         $scope.schoolList.stateFilter = states[0]
       return
-
+    
     $scope.filterSchools = ->
       filter = $filter 'filter'
       schools = $scope.schools
@@ -53,7 +53,7 @@ angular.module('ahaLuminateControllers').controller 'SchoolSearchCtrl', [
       $scope.schoolList.totalItems = schools.length
       $scope.filtered = schools
       $scope.orderSchools $scope.schoolList.sortProp
-
+    
     $scope.orderSchools = (sortProp) ->
       schools = $scope.filtered
       if schools.length
@@ -63,19 +63,19 @@ angular.module('ahaLuminateControllers').controller 'SchoolSearchCtrl', [
         schools = orderBy schools, sortProp, $scope.schoolList.sortDesc
         $scope.filtered = schools
         $scope.schoolList.currentPage = 1 # reset pagination back to first page
-
+    
     $scope.paginate = (value) ->
       begin = ($scope.schoolList.currentPage - 1) * $scope.schoolList.numPerPage
       end = begin + $scope.schoolList.numPerPage
       index = $scope.filtered.indexOf value
       begin <= index and index < end
-
+    
     SchoolService.getSchools
+      failure: (response) ->
+        return
       success: (csv) ->
         schools = Csv.toJson csv
         $scope.schools = schools
         $scope.setStates()
-        return
-      failure: (response) ->
         return
 ]

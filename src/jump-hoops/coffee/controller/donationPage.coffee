@@ -7,7 +7,7 @@ angular.module 'ahaLuminateControllers'
     'ZuriService'
     ($scope, $rootScope, $location, DonationService, ZuriService) ->
       ecardLinkParam = $location.absUrl().split('ecard_linktrack=')[1]
-      if ecardLinkParam != undefined
+      if ecardLinkParam isnt undefined
         ecardLinkParamSplit = ecardLinkParam.split('&')[0]
         ZuriService.eCardTracking ecardLinkParamSplit,
       
