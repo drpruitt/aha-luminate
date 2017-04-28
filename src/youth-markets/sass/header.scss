@@ -23,7 +23,12 @@ header {
       &:hover,
       &:focus,
       &:active {
-        color: $brand-primary;
+        color: inherit;
+        text-decoration: none;
+      }
+
+      &:hover {
+        text-decoration: underline;
       }
     }
   }
@@ -238,14 +243,31 @@ header {
           margin: 12px 0 0;
         }
 
-        &:hover {
-          text-decoration: none;
+        &.ym-header-login__help-link {
+          color: $brand-primary;
+
+          &:hover {
+            text-decoration: none;
+          }
         }
       }
     }
 
     .ym-header-logged-in {
       float: right;
+
+      ul {
+        a {
+          &,
+          &:link,
+          &:visited,
+          &:hover,
+          &:focus,
+          &:active {
+            color: $brand-primary;
+          }
+        }
+      }
 
       @media (max-width: $screen-sm) {
         float: left;
