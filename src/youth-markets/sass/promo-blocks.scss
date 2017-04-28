@@ -111,6 +111,7 @@
     .ym-promo-block__item {
       margin-right: 73px;
       background: $event-secondary;
+      border-radius: 100%;
 
       &:last-child {
         margin-right: 0;
@@ -133,7 +134,7 @@
       h2 {
         color: #ffffff;
         line-height: 0.75;
-        margin: 50px 0 10px;
+        margin: 70px 0 10px;
       }
       
       p {
