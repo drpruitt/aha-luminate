@@ -1,4 +1,4 @@
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular[[?xtruex::x[[S80:debug]]x::::.min]].js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular[[?xtruex::x[[S80:debug]]x::::.min]].js"></script>or
 [[?
   [[?xheartwalk_participant_centerx::x[[S334:pagename]]x::T::]]
   [[?xx::x[[S1:cons_id]]x::::
@@ -53,3 +53,17 @@
   };
   addthis.init();
 </script>
+
+<script>
+
+jQuery(document).ready(function(){
+	if (jQuery('.list-component-row').length > 0){
+		console.log('checking to update results');
+		jQuery('.list-component-cell-title-text:contains("Team Captain")').each(function(){
+			jQuery(this).text('Coach');
+		});
+	}
+});
+
+</script>
+
