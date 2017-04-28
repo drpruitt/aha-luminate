@@ -9,6 +9,22 @@ footer {
       &:focus,
       &:active {
         color: $brand-primary;
+      }
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  .social-icons {
+    a {
+      &,
+      &:link,
+      &:visited,
+      &:hover,
+      &:focus,
+      &:active {
         text-decoration: none;
       }
     }
