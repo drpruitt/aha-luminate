@@ -45,17 +45,18 @@ angular.module 'ahaLuminateControllers'
         angular.element('#noRegModal').modal('hide')
         document.getElementById('school-search').scrollIntoView()
 
-      $scope.rollUpTotals = []
-      #ParticipantBadgesService.getRollupTotals()
+  
+      $scope.totalStudents = ''
+      $scope.totalSchools = ''
+      $scope.totalChallenges = ''
       
       ParticipantBadgesService.getRollupTotals()
       .then (response) ->
         if response.data.status == 'success'
           totals = response.data.totals          
-          $scope.rollUpTotals.push
-            students: totals.total_students
-            schools: totals.total_schools
-            challenges: totals.total_challenge_taken_students
+          $scope.totalStudents = totals.total_students
+          $scope.totalSchools = totals.total_schools
+          $scope.totalChallenges = totals.total_challenge_taken_students
         else
           # TODO
        
