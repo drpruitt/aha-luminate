@@ -6,7 +6,8 @@ angular.module 'ahaLuminateControllers'
     '$rootScope'
     '$location'
     '$anchorScroll'
-    ($scope, $timeout, TeamraiserParticipantService, $rootScope, $location, $anchorScroll) ->
+    'ParticipantBadgesService'
+    ($scope, $timeout, TeamraiserParticipantService, $rootScope, $location, $anchorScroll, ParticipantBadgesService) ->
       $dataRoot = angular.element '[data-aha-luminate-root]'
       consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
 
@@ -43,6 +44,22 @@ angular.module 'ahaLuminateControllers'
       $scope.closeModal = ->
         angular.element('#noRegModal').modal('hide')
         document.getElementById('school-search').scrollIntoView()
+
+      $scope.rollUpTotals = []
+      #ParticipantBadgesService.getRollupTotals()
+      
+      ParticipantBadgesService.getRollupTotals()
+      .then (response) ->
+        if response.data.status == 'success'
+          totals = response.data.totals          
+          $scope.rollUpTotals.push
+            students: totals.total_students
+            schools: totals.total_schools
+            challenges: totals.total_challenge_taken_students
+        else
+          # TODO
+       
+      console.log $scope.rollUpTotals
 
       initCarousel = ->
         owl = jQuery '.ym-home-feature .owl-carousel'

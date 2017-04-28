@@ -34,8 +34,8 @@ angular.module 'ahaLuminateControllers'
                 sku: prize.sku
                 status: prize.status
                 earned: prize.earned_datetime
-            else
-              # TODO
+        else
+          # TODO
       
       ZuriService.getZooStudent frId + '/' + $scope.participantId,
         error: (response) ->
