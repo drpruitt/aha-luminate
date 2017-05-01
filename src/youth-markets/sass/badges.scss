@@ -30,4 +30,8 @@
   max-width: 125px;
   margin: 0 15px 15px;
   vertical-align: top;
+
+  @media (min-width: $screen-md-min) and (max-width: $screen-md-max)  {
+    margin: 0 15px 15px 0;
+  }
 }
