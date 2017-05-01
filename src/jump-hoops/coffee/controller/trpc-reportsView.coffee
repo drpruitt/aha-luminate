@@ -47,7 +47,7 @@ angular.module 'trPcControllers'
           page: 1
         $scope.getTeamGifts = ->
           pageNumber = $scope.teamGifts.page - 1
-          personalGiftsPromise = NgPcTeamraiserGiftService.getGifts 'list_sort_column=' + $scope.teamGifts.sortColumn + '&list_ascending=' + $scope.teamGifts.sortAscending + '&list_page_size=10&list_page_offset=' + pageNumber
+          personalGiftsPromise = NgPcTeamraiserGiftService.getTeamGifts 'list_sort_column=' + $scope.teamGifts.sortColumn + '&list_ascending=' + $scope.teamGifts.sortAscending + '&list_page_size=10&list_page_offset=' + pageNumber
             .then (response) ->
               if response.data.errorResponse
                 $scope.teamGifts.gifts = []
