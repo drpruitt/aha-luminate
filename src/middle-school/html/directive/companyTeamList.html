@@ -17,7 +17,7 @@
           <a ng-href="TR?fr_id={{team.EventId}}&amp;pg=team&amp;team_id={{team.id}}">{{team.name}}</a>
         </td>
         <td class="ym-list__column ym-list__column--amount hidden-xs">
-          <strong>{{team.amountRaisedFormatted}}</strong>
+          <span>{{team.amountRaisedFormatted}}</span>
         </td>
         <td class="ym-list__column ym-list__column--cta">
           <a class="btn btn-primary btn-md" ng-href="{{team.joinTeamURL}}" ng-if="team.joinTeamURL">Join Team</a>
