@@ -35,10 +35,42 @@ angular.module 'trPcControllers'
                   gift.giftAmountFormatted = $filter('currency') gift.giftAmount / 100, '$', 0
                   participantGifts.push gift
                 $scope.participantGifts.gifts = participantGifts
-              $scope.participantGifts.totalNumber = Number response.data.getGiftsResponse?.totalNumberResults or 0
+              $scope.participantGifts.totalNumber = if response.data.getGiftsResponse.totalNumberResults then Number(response.data.getGiftsResponse.totalNumberResults) else 0
             response
         $scope.reportPromises.push personalGiftsPromise
       $scope.getGifts()
+      
+      if $scope.participantRegistration.aTeamCaptain is 'true'
+        $scope.teamGifts =
+          sortColumn: 'date_recorded'
+          sortAscending: false
+          page: 1
+        $scope.getTeamGifts = ->
+          pageNumber = $scope.teamGifts.page - 1
+          personalGiftsPromise = NgPcTeamraiserGiftService.getGifts 'list_sort_column=' + $scope.teamGifts.sortColumn + '&list_ascending=' + $scope.teamGifts.sortAscending + '&list_page_size=10&list_page_offset=' + pageNumber
+            .then (response) ->
+              if response.data.errorResponse
+                $scope.teamGifts.gifts = []
+                $scope.teamGifts.totalNumber = 0
+              else
+                gifts = response.data.getGiftsResponse.gift
+                if not gifts
+                  $scope.teamGifts.gifts = []
+                else
+                  gifts = [gifts] if not angular.isArray gifts
+                  teamGifts = []
+                  angular.forEach gifts, (gift) ->
+                    gift.contact =
+                      firstName: gift.name.first
+                      lastName: gift.name.last
+                      email: gift.email
+                    gift.giftAmountFormatted = $filter('currency') gift.giftAmount / 100, '$', 0
+                    teamGifts.push gift
+                  $scope.teamGifts.gifts = teamGifts
+                $scope.teamGifts.totalNumber = if response.data.getGiftsResponse.totalNumberResults then Number(response.data.getGiftsResponse.totalNumberResults) else 0
+              response
+          $scope.reportPromises.push personalGiftsPromise
+        $scope.getTeamGifts()
       
       if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
         $scope.schoolDetailStudents = {}

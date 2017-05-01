@@ -1,5 +1,5 @@
 <div cg-busy="reportPromises">
-  <div class="ym-pc-reports-lists" ng-class="{'ym-pc-reports--no-tabs': participantRegistration.companyInformation.isCompanyCoordinator != 'true'}">
+  <div class="ym-pc-reports-lists" ng-class="{'ym-pc-reports--no-tabs': participantRegistration.aTeamCaptain != 'true' && participantRegistration.companyInformation.isCompanyCoordinator != 'true'}">
     <uib-tabset active="activeReportTab">
       <uib-tab index="0" heading="School Detail" ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
         <div class="ym-pc-report-header">
@@ -205,6 +205,93 @@
                   <td>
                     <div class="text-right">
                       {{participantGift.date | date : 'M/d/yy'}}
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </uib-tab>
+      <uib-tab index="2" heading="Team Donors" ng-if="participantRegistration.aTeamCaptain == 'true'" ng-cloak>
+        <div class="ym-pc-report-header">
+          <div class="row clearfix">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+              <h2 class="h5">
+                Team Donors
+              </h2>
+            </div>
+            <div class="col-md-4">
+              <div class="ym-pc-report-header-buttons" ng-if="teamGifts.gifts && teamGifts.gifts.length > 0" ng-cloak>
+                <a class="btn btn-md-wide btn-secondary" ng-href="TRParticipantDownload/Team_Donations.csv?download_type=team_donations&amp;fr_id={{frId}}" target="_blank">
+                  <i class="fa fa-download" aria-hidden="true"></i> <strong>Download</strong>
+                </a> 
+                <a class="btn btn-md-wide btn-secondary" ng-href="{{baseUrl}}#/email">
+                  <i class="fa fa-envelope" aria-hidden="true"></i> <strong>Thank All</strong>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div ng-if="teamGifts.gifts && teamGifts.gifts.length == 0" ng-cloak>
+          <div class="text-center">
+            No donors to display.
+          </div>
+        </div>
+        <div ng-if="teamGifts.gifts && teamGifts.gifts.length > 0" ng-cloak>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>
+                    <div class="text-left">
+                      <a>
+                        <strong>Name</strong>
+                      </a>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="text-center">
+                      <a>
+                        <strong>Amount</strong>
+                      </a>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="text-right">
+                      <a>
+                        <strong>Date</strong>
+                      </a>
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="teamGift in teamGifts.gifts">
+                  <td>
+                    <div class="text-left">
+                      <div ng-if="!teamGift.name.first || teamGift.name.first == ''">
+                        (no name)
+                      </div>
+                      <div ng-if="teamGift.name.first && teamGift.name.first != ''">
+                        <span ng-bind-html="teamGift.name.first"></span> <span ng-bind-html="teamGift.name.last"></span>
+                      </div>
+                      <div ng-if="teamGift.acknowledged != 'true'">
+                        <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email">
+                          <i class="fa fa-envelope" aria-hidden="true"></i> <strong>Thank</strong>
+                        </a>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="text-center">
+                      {{teamGift.giftAmountFormatted}}
+                    </div>
+                  </td>
+                  <td>
+                    <div class="text-right">
+                      {{teamGift.date | date : 'M/d/yy'}}
                     </div>
                   </td>
                 </tr>
