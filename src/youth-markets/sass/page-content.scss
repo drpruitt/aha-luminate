@@ -1,7 +1,7 @@
 .ym-page-content,
 .ym-page-section__main,
 .ym-page-section__roster  {
-  background: #ffffff;
+  background: $brand-white;
 }
 
 .ym-page-content {
@@ -111,7 +111,7 @@
   }
 
   @media (min-width: 630px) and (max-width: $screen-sm-max) {
-    background: #ffffff;
+    background: $brand-white;
     padding: 20px 0;
   }
 
@@ -140,6 +140,10 @@
     width: 100%;
     padding: 15px 0;
     margin: 0;
+
+    @media (min-width: 630px) and (max-width: $screen-sm-max) {
+      margin: 0 0 20px;
+    }
   }
 }
 
@@ -167,6 +171,17 @@
 
     .ym-my-challenge > div {
         padding: 0;
+    }
+  }
+
+  .ym-user-interactions {
+
+    @media (min-width: $screen-md-min) {
+      padding: 0 40px 0 0;
+    }
+
+    @media (min-width: $screen-lg-min) {
+      padding: 0 40px;
     }
   }
 
@@ -221,7 +236,6 @@
   }
 
   .ym-donate-cta {
-    margin: 100px 0 0;
     text-align: center;
 
     @media (max-width: $screen-xs-max) {
@@ -252,6 +266,36 @@
   }
 }
 
+.pg-personal .ym-page-section__list {
+  @media(min-width: $screen-sm-min){
+    display: flex;
+    align-items: center;
+  }
+
+  > div {
+    padding: 0 20px;
+
+    @media (min-width: $screen-sm-min) {
+      padding: 0;
+    }
+
+    &.ym-list {
+      @media (min-width: $screen-sm-min) {
+        padding-right: 20px;
+      }
+
+      @media (min-width: $screen-md-min) {
+        padding-right: 40px
+      }
+
+      @media (min-width: $screen-lg-min) {
+        padding-right: 0;
+      }
+    }
+  }
+
+}
+
 .ym-page-section__roster {
   padding: 50px;
 
@@ -274,7 +318,7 @@
 }
 
 .ym-page-section__sponsor {
-  background: #ffffff;
+  background: $brand-white;
   padding: 0 0 50px;
   text-align: center;
 
