@@ -1,7 +1,12 @@
 <div ng-controller="CompanyPageCtrl" ng-cloak>
   <div class="ym-page-section ym-page-section__top">
-    <div class="col-md-6 ym-user-image" style="background-image: url('[[C4:responsive_company_logo]]');">
-      <img class="hidden-md hidden-lg" src="[[C4:responsive_company_logo]]" alt="[[?xx::x[[C1:photo1_text]]x::School Fundraising Page Photo::[[C1:photo1_text]]]]">
+    <div class="col-md-6 ym-user-image" style="background-image: url('[[?xx::x[[C4:responsive_company_logo]]x::::[[C4:responsive_company_logo]]]]');">
+      <div class="ym-user-image-inner">
+        <button type="button" class="btn btn-default" ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
+          <span class="fa fa-camera"></span> Edit Photo
+        </button>
+        <img class="hidden-md hidden-lg" src="[[?xx::x[[C4:responsive_company_logo]]x::::[[C4:responsive_company_logo]]]]" alt="">
+      </div>
     </div>
     <div class="col-md-6 ym-progress ym-secondary-medium-color">
       <h2 class="ym-progress__title h4">

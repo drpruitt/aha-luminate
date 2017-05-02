@@ -1,12 +1,23 @@
 <div ng-controller="PersonalPageCtrl" ng-cloak>
   <div class="ym-page-section ym-page-section__top">
-    <div class="col-md-6 ym-user-image" style="background-image:url('[[C4:graphic_upload]]');">
-      <img class="hidden-md hidden-lg" src="[[C4:graphic_upload]]" alt="[[?xx::x[[C1:graphic_caption]]x::Personal Fundraising Page Photo::[[C1:graphic_caption]]]]">
-      [[?xx::x[[C1:graphic_caption]]x::::
-        <div class="caption">
-          [[C1:graphic_caption]]
-        </div>
-      ]]
+    <div class="col-md-6 ym-user-image" style="background-image: url('[[?xx::x[[C4:graphic_upload]]x::::[[C4:graphic_upload]]]]');">
+      <div class="ym-user-image-inner">
+        [[?
+          [[?xx::x[[S1:cons_id]]x::::
+            [[?x[[S1:cons_id]]x::x[[S334:px]]x::T::]]
+          ]]
+        ::T::
+          <button type="button" class="btn btn-default">
+            <span class="fa fa-camera"></span> Edit Photo
+          </button>
+        ::]]
+        <img class="hidden-md hidden-lg" src="[[?xx::x[[C4:graphic_upload]]x::::[[C4:graphic_upload]]]]" alt="[[?xx::x[[C1:graphic_caption]]x::::[[C1:graphic_caption]]]]">
+        [[?xx::x[[C1:graphic_caption]]x::::
+          <div class="caption">
+            [[C1:graphic_caption]]
+          </div>
+        ]]
+      </div>
     </div>
     <div class="col-md-6 ym-progress ym-secondary-medium-color">
       <h2 class="ym-progress__title h4">
@@ -52,7 +63,7 @@
           Check Out My Badges
         </h3>
         <div class="ym-badges__item" ng-repeat="prize in prizes" ng-cloak>
-          <img class="img-responsive" ng-src="https://s3.amazonaws.com/aha-jumphoops-production/fy18/assets/badges/{{prize.id}}_delivered.png" alt="{{prize.label}}" />
+          <img class="img-responsive" ng-src="https://s3.amazonaws.com/aha-jumphoops-production/fy18/assets/badges/{{prize.id}}_delivered.png" alt="{{prize.label}}">
           <div ng-bind-html="prize.label"></div>
         </div>
         <div class="clearfix"></div>
