@@ -103,8 +103,8 @@
           [[?x[[E48:[[S80:trID]]:team-id]]xTRUEx::x[[S334:team_id]]x[[E48:[[S80:trID]]-[[S1:cons_id]]:if-is-captain]]x::T::]]
         ]]
       ::T::
-        <div class="ym-story-edit-btn">
-          <button type="button" class="btn btn-md-wide btn-toggle" ng-click="editTeamPageContent()">
+        <div class="ym-story-edit-btns">
+          <button type="button" class="btn btn-md-wide btn-toggle" ng-click="editTeamPageContent()" ng-if="teamPageContent.mode == 'view'">
             <span class="fa fa-pencil"></span> Edit Story
           </button>
         </div>
