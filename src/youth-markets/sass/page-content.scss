@@ -122,6 +122,10 @@
   
   .ym-user-image-inner {
     position: relative;
+
+    @media (min-width: $screen-md-min) {
+      min-height: 360px;
+    }
     
     .btn {
       position: absolute;
@@ -152,10 +156,6 @@
       width: 100%;
       padding: 15px 0;
       margin: 0;
-      
-      @media (min-width: 630px) and (max-width: $screen-sm-max) {
-        margin: 0 0 20px;
-      }
     }
   }
 }

@@ -25,6 +25,7 @@ angular.module 'ahaLuminateControllers'
       $scope.challengeCompleted = 0
       
       $scope.prizes = []
+      $scope.monsters = []
       ParticipantBadgesService.getBadges '3196745'
       .then (response) ->
         if not response.data.status or response.data.status isnt 'success'
@@ -32,13 +33,55 @@ angular.module 'ahaLuminateControllers'
         else
           prizes = response.data.prizes
           angular.forEach prizes, (prize) ->
-            if prize.earned_datetime isnt null
-              $scope.prizes.push
+            if prize.id == '342' or prize.id == '343' or prize.id == '344'
+              date = new Date(prize.earned_datetime)
+              $scope.monsters.push
+                priority: 1
+
                 id: prize.id
                 label: prize.label
                 sku: prize.sku
                 status: prize.status
-                earned: prize.earned_datetime
+                earned: date
+              $scope.monsters.sort (a, b) ->
+                b.earned - a.earned
+            else 
+              if prize.earned_datetime != null
+                if prize.id == '352'
+                  $scope.prizes.push
+                    priority: 2
+                    id: prize.id
+                    label: prize.label
+                    sku: prize.sku
+                    status: prize.status
+                    earned: prize.earned_datetime
+                if prize.id == '350'
+                  $scope.prizes.push
+                    priority: 3
+                    id: prize.id
+                    label: prize.label
+                    sku: prize.sku
+                    status: prize.status
+                    earned: prize.earned_datetime
+                if prize.id == '353'
+                  $scope.prizes.push
+                    priority: 4
+                    id: prize.id
+                    label: prize.label
+                    sku: prize.sku
+                    status: prize.status
+                    earned: prize.earned_datetime
+                if prize.id == '351'
+                  $scope.prizes.push
+                    priority: 5
+                    id: prize.id
+                    label: prize.label
+                    sku: prize.sku
+                    status: prize.status
+                    earned: prize.earned_datetime
+          $scope.prizes.push $scope.monsters[0]
+          $scope.prizes.sort (a, b) ->
+            a.priority - b.priority
       
       ZuriService.getZooStudent frId + '/' + $scope.participantId,
         error: (response) ->
