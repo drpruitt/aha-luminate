@@ -160,7 +160,7 @@ angular.module 'ahaLuminateControllers'
               setCompanyParticipants companyParticipants, totalNumberParticipants, totalFundraisers
       getCompanyParticipants()
       
-      $scope.companyPhoto1IsDefault = false
+      $scope.companyPhoto1IsDefault = true
       
       $scope.editCompanyPhoto1 = ->
         $scope.editCompanyPhoto1Modal = $uibModal.open

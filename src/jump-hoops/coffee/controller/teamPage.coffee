@@ -119,8 +119,8 @@ angular.module 'ahaLuminateControllers'
                 setTeamParticipants teamParticipants, totalNumberParticipants, totalFundraisers
       getTeamParticipants()
       
-      $scope.teamPhoto1IsDefault = false
-
+      $scope.teamPhoto1IsDefault = true
+      
       $scope.editTeamPhoto1 = ->
         $scope.editTeamPhoto1Modal = $uibModal.open
           scope: $scope
