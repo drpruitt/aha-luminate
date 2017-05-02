@@ -1,12 +1,23 @@
 <div ng-controller="PersonalPageCtrl" ng-cloak>
   <div class="ym-page-section ym-page-section__top">
-    <div class="col-md-6 ym-user-image" style="background-image:url('[[C4:graphic_upload]]');">
-      <img class="hidden-md hidden-lg" src="[[C4:graphic_upload]]" alt="[[?xx::x[[C1:graphic_caption]]x::Personal Fundraising Page Photo::[[C1:graphic_caption]]]]">
-      [[?xx::x[[C1:graphic_caption]]x::::
-        <div class="caption">
-          [[C1:graphic_caption]]
-        </div>
-      ]]
+    <div class="col-md-6 ym-user-image" ng-init="personalPagePhoto1.customUrl = '[[C4:graphic_upload]]'; personalPagePhoto1.caption = '[[T6:[[C1:graphic_caption]]]]'" ng-style="{'background-image': (personalPagePhoto1.customUrl && personalPagePhoto1.customUrl != '') ? ('url(' + personalPagePhoto1.customUrl + ')') : ('url(' + personalPagePhoto1.defaultUrl + ')')}">
+      <div class="ym-user-image-inner">
+        [[?
+          [[?xx::x[[S1:cons_id]]x::::
+            [[?x[[S1:cons_id]]x::x[[S334:px]]x::T::]]
+          ]]
+        ::T::
+          <button type="button" class="btn btn-md-wide btn-toggle" ng-click="editPersonalPhoto1()">
+            <span class="fa fa-camera"></span> Edit Photo
+          </button>
+        ::]]
+        <img class="hidden-md hidden-lg" ng-src="{{personalPagePhoto1.customUrl && personalPagePhoto1.customUrl != '' ? personalPagePhoto1.customUrl : personalPagePhoto1.defaultUrl}}" alt="{{personalPagePhoto1.caption}}" ng-cloak>
+        [[?xx::x[[C1:graphic_caption]]x::::
+          <div class="caption">
+            [[C1:graphic_caption]]
+          </div>
+        ]]
+      </div>
     </div>
     <div class="col-md-6 ym-progress ym-secondary-medium-color">
       <h2 class="ym-progress__title h4">
@@ -41,10 +52,47 @@
   </div>
   <div class="ym-page-section ym-page-section__main">
     <div class="col-md-6 ym-story">
+      [[?
+        [[?xx::x[[S1:cons_id]]x::::
+          [[?x[[S1:cons_id]]x::x[[S334:px]]x::T::]]
+        ]]
+      ::T::
+        <div class="ym-story-edit-btns">
+          <button type="button" class="btn btn-md-wide btn-toggle" ng-click="editPersonalPageContent()" ng-if="personalPageContent.mode == 'view'">
+            <span class="fa fa-pencil"></span> Edit Story
+          </button>
+          <div ng-if="personalPageContent.mode == 'edit'" ng-cloak>
+            <button type="button" class="btn btn-md-wide btn-primary" ng-click="savePersonalPageContent()">
+              <span class="fa fa-pencil"></span> <strong>Save Story</strong>
+            </button> 
+            <button type="button" class="btn btn-md-wide btn-toggle" ng-click="resetPersonalPageContent()">
+              Cancel
+            </button>
+          </div>
+        </div>
+      ::]]
       <h3 class="ym-headline">
         My Story
       </h3>
-      [[C6:fr_rich_text]]
+      <div class="hidden js--default-page-content" ng-non-bindable>
+        [[C6:fr_rich_text]]
+      </div>
+      <div ng-show="personalPageContent.mode == 'view'">
+        <div ng-bind-html="personalPageContent.rich_text">
+          <div ng-non-bindable>
+            [[C6:fr_rich_text]]
+          </div>
+        </div>
+      </div>
+      [[?
+        [[?xx::x[[S1:cons_id]]x::::
+          [[?x[[S1:cons_id]]x::x[[S334:px]]x::T::]]
+        ]]
+      ::T::
+        <div ng-show="personalPageContent.mode == 'edit'" ng-cloak>
+          <div text-angular name="ng_rich_text" ng-model="personalPageContent.ng_rich_text" ta-toolbar="{{personalPageContent.textEditorToolbar}}"></div>
+        </div>
+      ::]]
     </div>
     <div class="col-md-6 ym-user-interactions">
       <div class="ym-badges" ng-if="prizes.length > 0">
@@ -52,7 +100,7 @@
           Check Out My Badges
         </h3>
         <div class="ym-badges__item" ng-repeat="prize in prizes" ng-cloak>
-          <img class="img-responsive" ng-src="https://s3.amazonaws.com/aha-jumphoops-production/fy18/assets/badges/{{prize.id}}_delivered.png" alt="{{prize.label}}" />
+          <img class="img-responsive" ng-src="https://s3.amazonaws.com/aha-jumphoops-production/fy18/assets/badges/{{prize.id}}_delivered.png" alt="{{prize.label}}">
           <div ng-bind-html="prize.label"></div>
         </div>
         <div class="clearfix"></div>

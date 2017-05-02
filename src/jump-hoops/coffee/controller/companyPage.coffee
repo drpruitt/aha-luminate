@@ -5,12 +5,14 @@ angular.module 'ahaLuminateControllers'
     '$location'
     '$filter'
     '$timeout'
+    '$uibModal'
+    'APP_INFO'
     'TeamraiserCompanyService'
     'TeamraiserTeamService'
     'TeamraiserParticipantService'
     'ZuriService'
-    'APP_INFO'
-    ($scope, $rootScope, $location, $filter, $timeout, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService, ZuriService, APP_INFO) ->
+    'TeamraiserCompanyPageService'
+    ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService, ZuriService, TeamraiserCompanyPageService) ->
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0]
       domain = $location.absUrl().split('/site')[0]
       $rootScope.companyName = ''
@@ -131,10 +133,8 @@ angular.module 'ahaLuminateControllers'
               participantsString += '{name: ' + participant.name.first + ' ' + participant.name.last + ', raised: ' + participant.amountRaisedFormatted + '}, '
             companyParticipantsString = '{participants: [' + participantsString + '], totalNumber: ' + i + '}'
             angular.element('.ym-school-animation iframe')[0].contentWindow.postMessage companyParticipantsString, domain
-
-            window.iframeLoaded = ->
+            angular.element('.ym-school-animation iframe').on 'load', ->
               angular.element('.ym-school-animation iframe')[0].contentWindow.postMessage companyParticipantsString, domain
-
       
       getCompanyParticipants = ->
         TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%%%') + '&first_name=' + encodeURIComponent('%%%') + '&last_name=' + encodeURIComponent('%%%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=50',
@@ -159,4 +159,134 @@ angular.module 'ahaLuminateControllers'
               totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
               setCompanyParticipants companyParticipants, totalNumberParticipants, totalFundraisers
       getCompanyParticipants()
+      
+      $scope.companyPagePhoto1 =
+        defaultUrl: APP_INFO.rootPath + 'dist/jump-hoops/image/company-default.jpg'
+      
+      $scope.companyPhoto1IsDefault = true
+      
+      $scope.editCompanyPhoto1 = ->
+        $scope.editCompanyPhoto1Modal = $uibModal.open
+          scope: $scope
+          templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/modal/editCompanyPhoto1.html'
+      
+      $scope.closeCompanyPhoto1Modal = ->
+        $scope.editCompanyPhoto1Modal.close()
+      
+      $scope.cancelEditCompanyPhoto1 = ->
+        $scope.closeCompanyPhoto1Modal()
+      
+      $scope.deleteCompanyPhoto1 = (e) ->
+        if e
+          e.preventDefault()
+        # TODO
+      
+      window.trPageEdit =
+        uploadPhotoError: (response) ->
+          errorResponse = response.errorResponse
+          photoType = errorResponse.photoType
+          photoNumber = errorResponse.photoNumber
+          errorCode = errorResponse.code
+          errorMessage = errorResponse.message
+          
+          # if photoNumber is '1'
+            # TODO
+        uploadPhotoSuccess: (response) ->
+          successResponse = response.successResponse
+          photoType = successResponse.photoType
+          photoNumber = successResponse.photoNumber
+          
+          TeamraiserCompanyPageService.getCompanyPhoto
+            error: (response) ->
+              # TODO
+            success: (response) ->
+              photoItems = response.getCompanyPhotoResponse?.photoItem
+              if photoItems
+                photoItems = [photoItems] if not angular.isArray photoItems
+                angular.forEach photoItems, (photoItem) ->
+                  photoUrl = photoItem.customUrl
+                  # if photoItem.id is '1'
+                    # TODO
+              $scope.closeCompanyPhoto1Modal()
+      
+      $scope.companyPageContent =
+        mode: 'view'
+        textEditorToolbar: [
+          [
+            'h1'
+            'h2'
+            'h3'
+            'p'
+            'bold'
+            'italics'
+            'underline'
+          ]
+          [
+            'ul'
+            'ol'
+            'justifyLeft'
+            'justifyCenter'
+            'justifyRight'
+            'justifyFull'
+            'indent'
+            'outdent'
+          ]
+          [
+            'insertImage'
+            'insertLink'
+            'undo'
+            'redo'
+          ]
+        ]
+        rich_text: angular.element('.js--default-page-content').html()
+        ng_rich_text: angular.element('.js--default-page-content').html()
+      
+      $scope.editCompanyPageContent = ->
+        richText = $scope.companyPageContent.ng_rich_text
+        $richText = jQuery '<div />',
+          html: richText
+        richText = $richText.html()
+        richText = richText.replace(/<strong>/g, '<b>').replace(/<strong /g, '<b ').replace /<\/strong>/g, '</b>'
+        .replace(/<em>/g, '<i>').replace(/<em /g, '<i ').replace /<\/em>/g, '</i>'
+        $scope.companyPageContent.ng_rich_text = richText
+        $scope.companyPageContent.mode = 'edit'
+      
+      $scope.resetCompanyPageContent = ->
+        $scope.companyPageContent.ng_rich_text = $scope.companyPageContent.rich_text
+        $scope.companyPageContent.mode = 'view'
+      
+      $scope.saveCompanyPageContent = (isRetry) ->
+        richText = $scope.companyPageContent.ng_rich_text
+        $richText = jQuery '<div />', 
+          html: richText
+        richText = $richText.html()
+        richText = richText.replace /<\/?[A-Z]+.*?>/g, (m) ->
+          m.toLowerCase()
+        .replace(/<font>/g, '<span>').replace(/<font /g, '<span ').replace /<\/font>/g, '</span>'
+        .replace(/<b>/g, '<strong>').replace(/<b /g, '<strong ').replace /<\/b>/g, '</strong>'
+        .replace(/<i>/g, '<em>').replace(/<i /g, '<em ').replace /<\/i>/g, '</em>'
+        .replace(/<u>/g, '<span style="text-decoration: underline;">').replace(/<u /g, '<span style="text-decoration: underline;" ').replace /<\/u>/g, '</span>'
+        .replace /[\u00A0-\u9999\&]/gm, (i) ->
+          '&#' + i.charCodeAt(0) + ';'
+        .replace /&#38;/g, '&'
+        .replace /<!--[\s\S]*?-->/g, ''
+        TeamraiserCompanyPageService.updateCompanyPageInfo 'rich_text=' + encodeURIComponent(richText),
+          error: ->
+            # TODO
+          success: (response) ->
+            if response.teamraiserErrorResponse
+              errorCode = response.teamraiserErrorResponse.code
+              if errorCode is '2647' and not isRetry
+                $scope.companyPageContent.ng_rich_text = response.teamraiserErrorResponse.body
+                $scope.savePageContent true
+            else
+              isSuccess = response.updateCompanyPageResponse?.success is 'true'
+              if not isSuccess
+                # TODO
+              else
+                $scope.companyPageContent.rich_text = richText
+                $scope.companyPageContent.ng_rich_text = richText
+                $scope.companyPageContent.mode = 'view'
+                if not $scope.$$phase
+                  $scope.$apply()
   ]

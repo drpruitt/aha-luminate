@@ -1,9 +1,18 @@
-angular.module 'ahaLuminateApp', [
+appDependencies = [
   'ngSanitize'
   'ngTouch'
+  'angular.filter'
   'ui.bootstrap'
   'ahaLuminateControllers'
 ]
+
+angular.forEach ['textAngular'], (appDependency) ->
+  try
+    angular.module appDependency
+    appDependencies.push appDependency
+  catch error
+
+angular.module 'ahaLuminateApp', appDependencies
 
 angular.module 'ahaLuminateControllers', []
 

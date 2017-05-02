@@ -30,7 +30,7 @@ angular.module 'ahaLuminateControllers'
       
       readCookie = (name) ->
         nameEQ = name + '='
-        ca = document.cookie.split(';')
+        ca = document.cookie.split ';'
         i = 0
         while i < ca.length
           c = ca[i]
@@ -48,7 +48,7 @@ angular.module 'ahaLuminateControllers'
         expires += date.toGMTString()
         
         angular.element('#noRegModal').modal()
-        document.cookie = 'modalSet=true ; ' + expires + '; path=/'
+        document.cookie = 'modalSet=true; ' + expires + '; path=/'
       
       $scope.closeModal = ->
         angular.element('#noRegModal').modal 'hide'
@@ -60,13 +60,15 @@ angular.module 'ahaLuminateControllers'
       
       ParticipantBadgesService.getRollupTotals()
         .then (response) ->
-          if response.data.status is 'success'
+          if not response.data.status or response.data.status isnt 'success'
+            # TODO
+          else
             totals = response.data.totals          
             $scope.totalStudents = totals.total_students
             $scope.totalSchools = totals.total_schools
             $scope.totalChallenges = totals.total_challenge_taken_students
-          else
-            # TODO
+        , (response) ->
+          # TODO
       
       console.log $scope.rollUpTotals
       

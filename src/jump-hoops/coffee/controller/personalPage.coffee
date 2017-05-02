@@ -5,11 +5,14 @@ angular.module 'ahaLuminateControllers'
     '$location'
     '$filter'
     '$timeout'
+    '$uibModal'
+    'APP_INFO'
     'TeamraiserParticipantService'
     'TeamraiserCompanyService'
     'ZuriService'
     'ParticipantBadgesService'
-    ($scope, $rootScope, $location, $filter, $timeout, TeamraiserParticipantService, TeamraiserCompanyService, ZuriService, ParticipantBadgesService) ->
+    'TeamraiserParticipantPageService'
+    ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserParticipantService, TeamraiserCompanyService, ZuriService, ParticipantBadgesService, TeamraiserParticipantPageService) ->
       $dataRoot = angular.element '[data-aha-luminate-root]'
       $scope.participantId = $location.absUrl().split('px=')[1].split('&')[0]
       frId = $dataRoot.data('fr-id') if $dataRoot.data('fr-id') isnt ''
@@ -20,18 +23,21 @@ angular.module 'ahaLuminateControllers'
       $scope.challengeId = null
       $scope.challengeName = null
       $scope.challengeCompleted = 0
-
+      
       $scope.prizes = []
       $scope.monsters = []
       ParticipantBadgesService.getBadges '3196745'
       .then (response) ->
-        if response.data.status == 'success'
+        if not response.data.status or response.data.status isnt 'success'
+          # TODO
+        else
           prizes = response.data.prizes
           angular.forEach prizes, (prize) ->
             if prize.id == '342' or prize.id == '343' or prize.id == '344'
               date = new Date(prize.earned_datetime)
               $scope.monsters.push
                 priority: 1
+
                 id: prize.id
                 label: prize.label
                 sku: prize.sku
@@ -171,4 +177,134 @@ angular.module 'ahaLuminateControllers'
               amount: donorAmount
               amountFormatted: if donorAmount is -1 then '' else $filter('currency')(donorAmount / 100, '$').replace '.00', ''
           $scope.personalDonors.totalNumber = $defaultPersonalDonors.length
+      
+      $scope.personalPagePhoto1 =
+        defaultUrl: APP_INFO.rootPath + 'dist/jump-hoops/image/personal-default.jpg'
+      
+      $scope.personalPhoto1IsDefault = true
+      
+      $scope.editPersonalPhoto1 = ->
+        $scope.editPersonalPhoto1Modal = $uibModal.open
+          scope: $scope
+          templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/modal/editPersonalPhoto1.html'
+      
+      $scope.closePersonalPhoto1Modal = ->
+        $scope.editPersonalPhoto1Modal.close()
+      
+      $scope.cancelEditPersonalPhoto1 = ->
+        $scope.closePersonalPhoto1Modal()
+      
+      $scope.deletePersonalPhoto1 = (e) ->
+        if e
+          e.preventDefault()
+        # TODO
+      
+      window.trPageEdit =
+        uploadPhotoError: (response) ->
+          errorResponse = response.errorResponse
+          photoType = errorResponse.photoType
+          photoNumber = errorResponse.photoNumber
+          errorCode = errorResponse.code
+          errorMessage = errorResponse.message
+          
+          # if photoNumber is '1'
+            # TODO
+        uploadPhotoSuccess: (response) ->
+          successResponse = response.successResponse
+          photoType = successResponse.photoType
+          photoNumber = successResponse.photoNumber
+          
+          TeamraiserParticipantPageService.getPersonalPhotos
+            error: (response) ->
+              # TODO
+            success: (response) ->
+              photoItems = response.getPersonalPhotosResponse?.photoItem
+              if photoItems
+                photoItems = [photoItems] if not angular.isArray photoItems
+                angular.forEach photoItems, (photoItem) ->
+                  photoUrl = photoItem.customUrl
+                  # if photoItem.id is '1'
+                    # TODO
+              $scope.closePersonalPhoto1Modal()
+      
+      $scope.personalPageContent =
+        mode: 'view'
+        textEditorToolbar: [
+          [
+            'h1'
+            'h2'
+            'h3'
+            'p'
+            'bold'
+            'italics'
+            'underline'
+          ]
+          [
+            'ul'
+            'ol'
+            'justifyLeft'
+            'justifyCenter'
+            'justifyRight'
+            'justifyFull'
+            'indent'
+            'outdent'
+          ]
+          [
+            'insertImage'
+            'insertLink'
+            'undo'
+            'redo'
+          ]
+        ]
+        rich_text: angular.element('.js--default-page-content').html()
+        ng_rich_text: angular.element('.js--default-page-content').html()
+      
+      $scope.editPersonalPageContent = ->
+        richText = $scope.personalPageContent.ng_rich_text
+        $richText = jQuery '<div />',
+          html: richText
+        richText = $richText.html()
+        richText = richText.replace(/<strong>/g, '<b>').replace(/<strong /g, '<b ').replace /<\/strong>/g, '</b>'
+        .replace(/<em>/g, '<i>').replace(/<em /g, '<i ').replace /<\/em>/g, '</i>'
+        $scope.personalPageContent.ng_rich_text = richText
+        $scope.personalPageContent.mode = 'edit'
+      
+      $scope.resetPersonalPageContent = ->
+        $scope.personalPageContent.ng_rich_text = $scope.personalPageContent.rich_text
+        $scope.personalPageContent.mode = 'view'
+      
+      $scope.savePersonalPageContent = (isRetry) ->
+        richText = $scope.personalPageContent.ng_rich_text
+        $richText = jQuery '<div />', 
+          html: richText
+        richText = $richText.html()
+        richText = richText.replace /<\/?[A-Z]+.*?>/g, (m) ->
+          m.toLowerCase()
+        .replace(/<font>/g, '<span>').replace(/<font /g, '<span ').replace /<\/font>/g, '</span>'
+        .replace(/<b>/g, '<strong>').replace(/<b /g, '<strong ').replace /<\/b>/g, '</strong>'
+        .replace(/<i>/g, '<em>').replace(/<i /g, '<em ').replace /<\/i>/g, '</em>'
+        .replace(/<u>/g, '<span style="text-decoration: underline;">').replace(/<u /g, '<span style="text-decoration: underline;" ').replace /<\/u>/g, '</span>'
+        .replace /[\u00A0-\u9999\&]/gm, (i) ->
+          '&#' + i.charCodeAt(0) + ';'
+        .replace /&#38;/g, '&'
+        .replace /<!--[\s\S]*?-->/g, ''
+        TeamraiserParticipantPageService.updatePersonalPageInfo 'rich_text=' + encodeURIComponent(richText),
+          error: ->
+            # TODO
+          success: (response) ->
+            if response.teamraiserErrorResponse
+              errorCode = response.teamraiserErrorResponse.code
+              if errorCode is '2647' and not isRetry
+                $scope.personalPageContent.ng_rich_text = response.teamraiserErrorResponse.body
+                $scope.savePageContent true
+            else
+              isSuccess = response.updatePersonalPageResponse?.success is 'true'
+              if not isSuccess
+                # TODO
+              else
+                $scope.personalPageContent.rich_text = richText
+                $scope.personalPageContent.ng_rich_text = richText
+                $scope.personalPageContent.mode = 'view'
+                if not $scope.$$phase
+                  $scope.$apply()
   ]

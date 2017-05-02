@@ -280,17 +280,26 @@
 
 .ym-story {
   padding-bottom: 40px;
-
+  
+  .ym-story-edit-btns {
+    margin: 0 0 28px;
+    
+    .btn {
+      border-radius: 0;
+      padding: 7px 15px;
+    }
+  }
+  
   h3 {
     + h5 {
       margin-top: inherit;
     }
   }
-
+  
   h5 {
     margin-top: 30px;
   }
-
+  
   .ym-story-photo {
     float: right;
     width: 269px;
@@ -518,6 +527,16 @@
     position: relative;
   }
 
+  .dropdown-menu {
+    .active {
+      > a {
+        &:focus,
+        &:active {
+          background-color: $event-secondary;
+        }
+      }
+    }
+  }
 
   @media (max-width: $screen-sm-max) {
     .ym-page-section__header {
@@ -544,8 +563,3 @@
     }
   }
 }
-
-#cv-poweredBy {
-  display: none;
-}
-

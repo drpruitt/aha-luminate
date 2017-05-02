@@ -1,13 +1,23 @@
 <div ng-controller="TeamPageCtrl" ng-cloak>
   <div class="ym-page-section ym-page-section__top">
-    <div class="col-md-6 ym-user-image" style="background-image:url('[[C4:graphic_upload]]');">
-        <img class="hidden-md hidden-lg" src="[[C4:graphic_upload]]" alt="[[?xx::x[[C1:graphic_caption]]x::Team Fundraising Page Photo::[[C1:graphic_caption]]]]" />
-        [[?xx::x[[C1:graphic_caption]]x::
-        ::
+    <div class="col-md-6 ym-user-image" ng-init="teamPagePhoto1.customUrl = '[[C4:graphic_upload]]'; teamPagePhoto1.caption = '[[T6:[[C1:graphic_caption]]]]'" ng-style="{'background-image': (teamPagePhoto1.customUrl && teamPagePhoto1.customUrl != '') ? ('url(' + teamPagePhoto1.customUrl + ')') : ('url(' + teamPagePhoto1.defaultUrl + ')')}">
+      <div class="ym-user-image-inner">
+        [[?
+          [[?xx::x[[S1:cons_id]]x::::
+            [[?x[[E48:[[S80:trID]]:team-id]]xTRUEx::x[[S334:team_id]]x[[E48:[[S80:trID]]-[[S1:cons_id]]:if-is-captain]]x::T::]]
+          ]]
+        ::T::
+          <button type="button" class="btn btn-md-wide btn-toggle" ng-click="editTeamPhoto1()">
+            <span class="fa fa-camera"></span> Edit Photo
+          </button>
+        ::]]
+        <img class="hidden-md hidden-lg" ng-src="{{teamPagePhoto1.customUrl && teamPagePhoto1.customUrl != '' ? teamPagePhoto1.customUrl : teamPagePhoto1.defaultUrl}}" alt="{{teamPagePhoto1.caption}}" ng-cloak>
+        [[?xx::x[[C1:graphic_caption]]x::::
           <div class="caption">
             [[C1:graphic_caption]]
           </div>
         ]]
+      </div>
     </div>
     <div class="col-md-6 ym-progress ym-secondary-medium-color">
       <h2 class="ym-progress__title h4">
@@ -88,10 +98,47 @@
   </div>
   <div class="ym-page-section ym-page-section__list ym-accent-color">
     <div class="ym-story" ng-class="teamParticipants.totalFundraisers < 1 ? 'col-md-12' : 'col-md-6'">
+      [[?
+        [[?xx::x[[S1:cons_id]]x::::
+          [[?x[[E48:[[S80:trID]]:team-id]]xTRUEx::x[[S334:team_id]]x[[E48:[[S80:trID]]-[[S1:cons_id]]:if-is-captain]]x::T::]]
+        ]]
+      ::T::
+        <div class="ym-story-edit-btns">
+          <button type="button" class="btn btn-md-wide btn-toggle" ng-click="editTeamPageContent()" ng-if="teamPageContent.mode == 'view'">
+            <span class="fa fa-pencil"></span> Edit Story
+          </button>
+          <div ng-if="teamPageContent.mode == 'edit'" ng-cloak>
+            <button type="button" class="btn btn-md-wide btn-primary" ng-click="saveTeamPageContent()">
+              <span class="fa fa-pencil"></span> <strong>Save Story</strong>
+            </button> 
+            <button type="button" class="btn btn-md-wide btn-toggle" ng-click="resetTeamPageContent()">
+              Cancel
+            </button>
+          </div>
+        </div>
+      ::]]
       <h3 class="h5">
         Our Class is Heart Healthy!
       </h3>
-      [[C6:fr_rich_text]]
+      <div class="hidden js--default-page-content" ng-non-bindable>
+        [[C6:fr_rich_text]]
+      </div>
+      <div ng-show="teamPageContent.mode == 'view'">
+        <div ng-bind-html="teamPageContent.rich_text">
+          <div ng-non-bindable>
+            [[C6:fr_rich_text]]
+          </div>
+        </div>
+      </div>
+      [[?
+        [[?xx::x[[S1:cons_id]]x::::
+          [[?x[[E48:[[S80:trID]]:team-id]]xTRUEx::x[[S334:team_id]]x[[E48:[[S80:trID]]-[[S1:cons_id]]:if-is-captain]]x::T::]]
+        ]]
+      ::T::
+        <div ng-show="teamPageContent.mode == 'edit'" ng-cloak>
+          <div text-angular name="ng_rich_text" ng-model="teamPageContent.ng_rich_text" ta-toolbar="{{teamPageContent.textEditorToolbar}}"></div>
+        </div>
+      ::]]
     </div>
     <div class="ym-list" ng-class="teamParticipants.totalFundraisers < 1 ? 'hidden' : 'col-md-6'">
       <h3 class="h5">
