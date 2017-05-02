@@ -5,7 +5,7 @@
         <button type="button" class="btn btn-md-wide btn-toggle" ng-click="editCompanyPhoto1()" ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
           <span class="fa fa-camera"></span> Edit Photo
         </button>
-        <img class="hidden-md hidden-lg" ng-src="(companyPagePhoto1.customUrl && companyPagePhoto1.customUrl != '') ? companyPagePhoto1.customUrl : companyPagePhoto1.defaultUrl" alt="" ng-cloak>
+        <img class="hidden-md hidden-lg" ng-src="{{companyPagePhoto1.customUrl && companyPagePhoto1.customUrl != '' ? companyPagePhoto1.customUrl : companyPagePhoto1.defaultUrl}}" alt="" ng-cloak>
       </div>
     </div>
     <div class="col-md-6 ym-progress ym-secondary-medium-color">
@@ -100,9 +100,11 @@
   </div>
   <div class="ym-page-section ym-page-section__list ym-accent-color">
     <div class="ym-story" ng-class="companyParticipants.totalFundraisers < 1 && companyTeams.totalNumber > 1 ? 'col-md-12' : 'col-md-6'">
-      <button type="button" class="btn btn-md-wide btn-toggle" ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
-        <span class="fa fa-pencil"></span> Edit Story
-      </button>
+      <div class="ym-story-edit-btn" ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
+        <button type="button" class="btn btn-md-wide btn-toggle">
+          <span class="fa fa-pencil"></span> Edit Story
+        </button>
+      </div>
       <h3 class="ym-headline">
         Our School is Heart Healthy!
       </h3>

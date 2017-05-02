@@ -1,6 +1,6 @@
 <div ng-controller="TeamPageCtrl" ng-cloak>
   <div class="ym-page-section ym-page-section__top">
-    <div class="col-md-6 ym-user-image" ng-init="teamPagePhoto1.customUrl = '[[C4:graphic_upload]]'" ng-style="{'background-image': (teamPagePhoto1.customUrl && teamPagePhoto1.customUrl != '') ? ('url(' + teamPagePhoto1.customUrl + ')') : ('url(' + teamPagePhoto1.defaultUrl + ')')}">
+    <div class="col-md-6 ym-user-image" ng-init="teamPagePhoto1.customUrl = '[[C4:graphic_upload]]'; teamPagePhoto1.caption = '[[T6:[[C1:graphic_caption]]]]'" ng-style="{'background-image': (teamPagePhoto1.customUrl && teamPagePhoto1.customUrl != '') ? ('url(' + teamPagePhoto1.customUrl + ')') : ('url(' + teamPagePhoto1.defaultUrl + ')')}">
       <div class="ym-user-image-inner">
         [[?
           [[?xx::x[[S1:cons_id]]x::::
@@ -11,7 +11,7 @@
             <span class="fa fa-camera"></span> Edit Photo
           </button>
         ::]]
-        <img class="hidden-md hidden-lg" ng-src="(teamPagePhoto1.customUrl && teamPagePhoto1.customUrl != '') ? teamPagePhoto1.customUrl : teamPagePhoto1.defaultUrl" alt="[[C1:graphic_caption]]" ng-cloak>
+        <img class="hidden-md hidden-lg" ng-src="{{teamPagePhoto1.customUrl && teamPagePhoto1.customUrl != '' ? teamPagePhoto1.customUrl : teamPagePhoto1.defaultUrl}}" alt="{{teamPagePhoto1.caption}}" ng-cloak>
         [[?xx::x[[C1:graphic_caption]]x::::
           <div class="caption">
             [[C1:graphic_caption]]
@@ -103,9 +103,11 @@
           [[?x[[E48:[[S80:trID]]:team-id]]xTRUEx::x[[S334:team_id]]x[[E48:[[S80:trID]]-[[S1:cons_id]]:if-is-captain]]x::T::]]
         ]]
       ::T::
-        <button type="button" class="btn btn-md-wide btn-toggle">
-          <span class="fa fa-pencil"></span> Edit Story
-        </button>
+        <div class="ym-story-edit-btn">
+          <button type="button" class="btn btn-md-wide btn-toggle">
+            <span class="fa fa-pencil"></span> Edit Story
+          </button>
+        </div>
       ::]]
       <h3 class="ym-headline">
         Our Class is Heart Healthy!
