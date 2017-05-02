@@ -122,4 +122,7 @@ angular.module 'ahaLuminateControllers'
         $scope.editTeamPhoto1Modal = $uibModal.open
           scope: $scope
           templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/modal/editTeamPhoto1.html'
+      
+      $scope.cancelEditTeamPhoto1 = ->
+        $scope.editTeamPhoto1Modal()
   ]
