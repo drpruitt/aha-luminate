@@ -1,25 +1,8 @@
 .heart-page-rail {
   margin: 0 20px;
   
-  @media (min-width: $screen-sm-min) {
-    float: left;
-    width: 36%;
-    margin: 0 0 0 40px;
-  }
-  
-  @media (min-width: 830px) {
-    width: 34%;
-  }
-  
-  @media (min-width: 880px) {
-    width: 32%;
-  }
-  
-  @media (min-width: 940px) {
-    width: 30%;
-  }
-  
   @media (min-width: $screen-md-min) {
+    float: left;
     border: 3px solid #ffffff;
     width: 306px;
     margin: 0 0 0 48px;
