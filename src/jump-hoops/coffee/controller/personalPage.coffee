@@ -223,4 +223,39 @@ angular.module 'ahaLuminateControllers'
         .replace(/<em>/g, '<i>').replace(/<em /g, '<i ').replace /<\/em>/g, '</i>'
         $scope.personalPageContent.ng_rich_text = richText
         $scope.personalPageContent.mode = 'edit'
+      
+      $scope.savePersonalPageContent = (isRetry) ->
+        richText = $scope.personalPageContent.ng_rich_text
+        $richText = jQuery '<div />', 
+          html: richText
+        richText = $richText.html()
+        richText = richText.replace /<\/?[A-Z]+.*?>/g, (m) ->
+          m.toLowerCase()
+        .replace(/<font>/g, '<span>').replace(/<font /g, '<span ').replace /<\/font>/g, '</span>'
+        .replace(/<b>/g, '<strong>').replace(/<b /g, '<strong ').replace /<\/b>/g, '</strong>'
+        .replace(/<i>/g, '<em>').replace(/<i /g, '<em ').replace /<\/i>/g, '</em>'
+        .replace(/<u>/g, '<span style="text-decoration: underline;">').replace(/<u /g, '<span style="text-decoration: underline;" ').replace /<\/u>/g, '</span>'
+        .replace /[\u00A0-\u9999\&]/gm, (i) ->
+          '&#' + i.charCodeAt(0) + ';'
+        .replace /&#38;/g, '&'
+        .replace /<!--[\s\S]*?-->/g, ''
+        TeamraiserParticipantPageService.updatePersonalPageInfo 'rich_text=' + encodeURIComponent(richText),
+          error: ->
+            # TODO
+          success: (response) ->
+            if response.teamraiserErrorResponse
+              errorCode = response.teamraiserErrorResponse.code
+              if errorCode is '2647' and not isRetry
+                $scope.personalPageContent.ng_rich_text = response.teamraiserErrorResponse.body
+                $scope.savePageContent true
+            else
+              isSuccess = response.updatePersonalPageResponse?.success is 'true'
+              if not isSuccess
+                # TODO
+              else
+                $scope.personalPageContent.rich_text = richText
+                $scope.personalPageContent.ng_rich_text = richText
+                $scope.personalPageContent.mode = 'view'
+                if not $scope.$$phase
+                  $scope.$apply()
   ]
