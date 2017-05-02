@@ -1,7 +1,5 @@
 angular.module 'trPcApp', [
   'ngRoute'
-  'ngSanitize'
-  'ui.bootstrap'
   'textAngular'
   'trPcControllers'
 ]
