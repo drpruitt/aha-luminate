@@ -60,13 +60,15 @@ angular.module 'ahaLuminateControllers'
       
       ParticipantBadgesService.getRollupTotals()
         .then (response) ->
-          if response.data.status is 'success'
+          if not response.data.status or response.data.status isnt 'success'
+            # TODO
+          else
             totals = response.data.totals          
             $scope.totalStudents = totals.total_students
             $scope.totalSchools = totals.total_schools
             $scope.totalChallenges = totals.total_challenge_taken_students
-          else
-            # TODO
+        , (response) ->
+          # TODO
       
       console.log $scope.rollUpTotals
       
