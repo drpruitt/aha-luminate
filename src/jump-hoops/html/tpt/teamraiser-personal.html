@@ -1,17 +1,17 @@
 <div ng-controller="PersonalPageCtrl" ng-cloak>
   <div class="ym-page-section ym-page-section__top">
-    <div class="col-md-6 ym-user-image" style="background-image: url('[[?xx::x[[C4:graphic_upload]]x::::[[C4:graphic_upload]]]]');">
+    <div class="col-md-6 ym-user-image" ng-init="personalPagePhoto1.customUrl = '[[C4:graphic_upload]]'" ng-style="{'background-image': (personalPagePhoto1.customUrl && personalPagePhoto1.customUrl != '') ? ('url(' + personalPagePhoto1.customUrl + ')') : ('url(' + personalPagePhoto1.defaultUrl + ')')}">
       <div class="ym-user-image-inner">
         [[?
           [[?xx::x[[S1:cons_id]]x::::
             [[?x[[S1:cons_id]]x::x[[S334:px]]x::T::]]
           ]]
         ::T::
-          <button type="button" class="btn btn-md-wide btn-default" ng-click="editPersonalPhoto1()">
+          <button type="button" class="btn btn-md-wide btn-toggle" ng-click="editPersonalPhoto1()">
             <span class="fa fa-camera"></span> Edit Photo
           </button>
         ::]]
-        <img class="hidden-md hidden-lg" src="[[?xx::x[[C4:graphic_upload]]x::::[[C4:graphic_upload]]]]" alt="[[?xx::x[[C1:graphic_caption]]x::::[[C1:graphic_caption]]]]">
+        <img class="hidden-md hidden-lg" ng-src="(personalPagePhoto1.customUrl && personalPagePhoto1.customUrl != '') ? personalPagePhoto1.customUrl : personalPagePhoto1.defaultUrl" alt="[[C1:graphic_caption]]" ng-cloak>
         [[?xx::x[[C1:graphic_caption]]x::::
           <div class="caption">
             [[C1:graphic_caption]]
@@ -57,7 +57,7 @@
           [[?x[[S1:cons_id]]x::x[[S334:px]]x::T::]]
         ]]
       ::T::
-        <button type="button" class="btn btn-md-wide btn-default">
+        <button type="button" class="btn btn-md-wide btn-toggle">
           <span class="fa fa-pencil"></span> Edit Story
         </button>
       ::]]
