@@ -210,6 +210,10 @@ angular.module 'ahaLuminateControllers'
         $scope.teamPageContent.ng_rich_text = richText
         $scope.teamPageContent.mode = 'edit'
       
+      $scope.resetTeamPageContent = ->
+        $scope.teamPageContent.ng_rich_text = $scope.teamPageContent.rich_text
+        $scope.teamPageContent.mode = 'view'
+      
       $scope.saveTeamPageContent = (isRetry) ->
         richText = $scope.teamPageContent.ng_rich_text
         $richText = jQuery '<div />', 
