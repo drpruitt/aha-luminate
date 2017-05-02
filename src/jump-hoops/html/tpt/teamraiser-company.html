@@ -108,7 +108,16 @@
       <h3 class="ym-headline">
         Our School is Heart Healthy!
       </h3>
-      [[C6:fr_rich_text]]
+      <div class="hidden js--default-page-content" ng-non-bindable>
+        [[C6:fr_rich_text]]
+      </div>
+      <div ng-show="companyPageContent.mode == 'view'">
+        <div ng-bind-html="companyPageContent.rich_text">
+          <div ng-non-bindable>
+            [[C6:fr_rich_text]]
+          </div>
+        </div>
+      </div>
     </div>
     <div class="ym-list" ng-class="companyParticipants.totalFundraisers < 1 && companyTeams.totalNumber > 1 ? 'hidden' : 'col-md-6'">
       <img class="img-responsive" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/hj-fundraisers-graphic.png" alt="Check out these top fundraisers">

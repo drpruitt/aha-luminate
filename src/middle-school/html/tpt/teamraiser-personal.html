@@ -66,7 +66,16 @@
       <h3 class="ym-headline">
         My Story
       </h3>
-      [[C6:fr_rich_text]]
+      <div class="hidden js--default-page-content" ng-non-bindable>
+        [[C6:fr_rich_text]]
+      </div>
+      <div ng-show="personalPageContent.mode == 'view'">
+        <div ng-bind-html="personalPageContent.rich_text">
+          <div ng-non-bindable>
+            [[C6:fr_rich_text]]
+          </div>
+        </div>
+      </div>
     </div>
     <div class="col-md-6 ym-user-interactions">
       <div class="ym-badges" ng-if="prizes.length > 0">

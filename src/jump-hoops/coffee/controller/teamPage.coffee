@@ -170,4 +170,24 @@ angular.module 'ahaLuminateControllers'
       
       $scope.teamPageContent =
         mode: 'view'
+        textEditorToolbar: [
+          [
+            'bold'
+            'italics'
+          ]
+          [
+            'ul'
+            'ol'
+          ]
+          [
+            'insertLink'
+            'insertImage'
+          ]
+          [
+            'undo'
+            'redo'
+          ]
+        ]
+        rich_text: angular.element('.js--default-page-content').html()
+        ng_rich_text: angular.element('.js--default-page-content').html()
   ]
