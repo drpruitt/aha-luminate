@@ -82,8 +82,6 @@ angular.module 'ahaLuminateControllers'
           $scope.prizes.push $scope.monsters[0]
           $scope.prizes.sort (a, b) ->
             a.priority - b.priority
-        else
-          # TODO
       
       ZuriService.getZooStudent frId + '/' + $scope.participantId,
         error: (response) ->
