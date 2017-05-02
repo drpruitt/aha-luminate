@@ -518,6 +518,16 @@
     position: relative;
   }
 
+  .dropdown-menu {
+    .active {
+      > a {
+        &:focus,
+        &:active {
+          background-color: $event-secondary;
+        }
+      }
+    }
+  }
 
   @media (max-width: $screen-sm-max) {
     .ym-page-section__header {
@@ -544,8 +554,3 @@
     }
   }
 }
-
-#cv-poweredBy {
-  display: none;
-}
-
