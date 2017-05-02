@@ -30,7 +30,7 @@ angular.module 'ahaLuminateControllers'
       
       readCookie = (name) ->
         nameEQ = name + '='
-        ca = document.cookie.split(';')
+        ca = document.cookie.split ';'
         i = 0
         while i < ca.length
           c = ca[i]
@@ -48,7 +48,7 @@ angular.module 'ahaLuminateControllers'
         expires += date.toGMTString()
         
         angular.element('#noRegModal').modal()
-        document.cookie = 'modalSet=true ; ' + expires + '; path=/'
+        document.cookie = 'modalSet=true; ' + expires + '; path=/'
       
       $scope.closeModal = ->
         angular.element('#noRegModal').modal 'hide'
