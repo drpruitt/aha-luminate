@@ -9,8 +9,14 @@
 </script>
 <!--[if (gt IE 9) | (!IE)]><!-->
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular[[?xtruex::x[[S80:debug]]x::::.min]].js"></script>
-  [[?xjump_hoops_participant_centerx::x[[S334:pagename]]x::
-    <!-- participant center -->
+  [[?
+    [[?xjump_hoops_participant_centerx::x[[S334:pagename]]x::T::]]
+    [[?xx::x[[S1:cons_id]]x::::
+      [[?xpersonalx[[S1:cons_id]]x::x[[S334:pg]]x[[S334:px]]x::T::]]
+      [[?xteamx[[E48:[[S334:fr_id]]-[[S1:cons_id]]:team-id]]xTRUEx::x[[S334:pg]]x[[S334:team_id]]x[[E48:[[S334:fr_id]]-[[S1:cons_id]]:if-is-captain]]x::T::]]
+      [[?xcompanyx::x[[S334:pg]]x::T::]]
+    ]]
+  ::T::
     <script src="//cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.16/textAngular-sanitize[[?xtruex::x[[S80:debug]]x::::.min]].js"></script>
   ::
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-sanitize[[?xtruex::x[[S80:debug]]x::::.min]].js"></script>
@@ -21,29 +27,3 @@
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-aria[[?xtruex::x[[S80:debug]]x::::.min]].js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-messages[[?xtruex::x[[S80:debug]]x::::.min]].js"></script>
 <!--<![endif]-->
-
-[[?xjump_hoops_participant_centerx::x[[S334:pagename]]x::
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
-::
-]]
-
-[[?xheartdevx::x[[S29:TABLE_PREFIX]]x::
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-34030359-13', 'auto');
-    ga('send', 'pageview');
-  </script>
-
-::
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-34030359-1', 'auto');
-    ga('send', 'pageview');
-  </script>
-]]
