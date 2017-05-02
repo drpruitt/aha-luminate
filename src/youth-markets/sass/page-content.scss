@@ -268,10 +268,12 @@
       
       @media (max-width: $screen-sm-max) {
         max-width: 275px;
+        margin: 15px auto;
+
       }
       
-      @media (max-width: $screen-xs) {
-        max-width: 250px;
+      @media (max-width: $screen-xs-max) {
+        max-width: 240px;
       }
     }
   }
