@@ -133,7 +133,7 @@ angular.module 'ahaLuminateControllers'
               amountFormatted: if donorAmount is -1 then '' else $filter('currency')(donorAmount / 100, '$').replace '.00', ''
           $scope.personalDonors.totalNumber = $defaultPersonalDonors.length
       
-      $scope.personalPhoto1IsDefault = false
+      $scope.personalPhoto1IsDefault = true
       
       $scope.editPersonalPhoto1 = ->
         $scope.editPersonalPhoto1Modal = $uibModal.open
