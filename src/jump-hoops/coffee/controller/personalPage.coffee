@@ -22,20 +22,39 @@ angular.module 'ahaLuminateControllers'
       $scope.challengeCompleted = 0
 
       $scope.prizes = []
+      $scope.monsters = []
       ParticipantBadgesService.getBadges '3196745'
       .then (response) ->
         if response.data.status == 'success'
           prizes = response.data.prizes
           angular.forEach prizes, (prize) ->
-            if prize.earned_datetime != null
-              $scope.prizes.push
+            if prize.id == '342' or prize.id == '343' or prize.id == '344'
+              date = new Date(prize.earned_datetime)
+              $scope.monsters.push
                 id: prize.id
                 label: prize.label
                 sku: prize.sku
                 status: prize.status
-                earned: prize.earned_datetime
+                earned: date
+              
+              $scope.monsters.sort (a, b) ->
+                dateA = new Date(a.earned)
+                dateB = new Date(b.earned)
+                dateB - dateA
+
+            else
+              if prize.earned_datetime != null
+                $scope.prizes.push
+                  id: prize.id
+                  label: prize.label
+                  sku: prize.sku
+                  status: prize.status
+                  earned: prize.earned_datetime
         else
           # TODO
+
+      console.log $scope.monsters
+
       
       ZuriService.getZooStudent frId + '/' + $scope.participantId,
         error: (response) ->

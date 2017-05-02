@@ -51,7 +51,11 @@
         <h3 class="ym-headline">
           Check Out My Badges
         </h3>
-        <div class="ym-badges__item" ng-repeat="prize in prizes" ng-cloak>
+        <div class="ym-badges__item" ng-repeat="monster in monsters || limitTo: 1" ng-cloak>
+          <img class="img-responsive" ng-src="https://s3.amazonaws.com/aha-jumphoops-production/fy18/assets/badges/{{monster.id}}_delivered.png" alt="{{monster.label}}" />
+          <div ng-bind-html="monster.label"></div>
+        </div>
+        <div class="ym-badges__item" ng-repeat="prize in prizes || limitTo: 3" ng-cloak>
           <img class="img-responsive" ng-src="https://s3.amazonaws.com/aha-jumphoops-production/fy18/assets/badges/{{prize.id}}_delivered.png" alt="{{prize.label}}" />
           <div ng-bind-html="prize.label"></div>
         </div>
