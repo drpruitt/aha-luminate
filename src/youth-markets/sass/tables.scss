@@ -68,10 +68,15 @@ div.table {
   .table {
     max-width: 970px;
     margin: auto;
+
+    &.ym-list tbody a {
+      font-weight: 500;
+    }
   }
   
   .ym-list__column--name {
     width: 80%;
+    text-align: left;
     
     @media (min-width: $screen-sm-min) {
       width: 43%;
