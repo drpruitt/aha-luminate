@@ -94,6 +94,9 @@
   </div>
   <div class="ym-page-section ym-page-section__list ym-accent-color">
     <div class="ym-story" ng-class="companyParticipants.totalFundraisers < 1 && companyTeams.totalNumber > 1 ? 'col-md-12' : 'col-md-6'">
+      <button type="button" class="btn btn-md-wide btn-default" ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
+        <span class="fa fa-pencil"></span> Edit Story
+      </button>
       <h3 class="h5">
         Our School is Heart Healthy!
       </h3>
