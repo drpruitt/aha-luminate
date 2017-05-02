@@ -119,6 +119,9 @@ angular.module 'ahaLuminateControllers'
                 setTeamParticipants teamParticipants, totalNumberParticipants, totalFundraisers
       getTeamParticipants()
       
+      $scope.teamPagePhoto1 =
+        defaultUrl: APP_INFO.rootPath + 'dist/jump-hoops/image/team-default.jpg'
+      
       $scope.teamPhoto1IsDefault = true
       
       $scope.editTeamPhoto1 = ->
@@ -164,4 +167,7 @@ angular.module 'ahaLuminateControllers'
                   # if photoItem.id is '1'
                     # TODO
               $scope.closeTeamPhoto1Modal()
+      
+      $scope.teamPageContent =
+        mode: 'view'
   ]

@@ -133,6 +133,9 @@ angular.module 'ahaLuminateControllers'
               amountFormatted: if donorAmount is -1 then '' else $filter('currency')(donorAmount / 100, '$').replace '.00', ''
           $scope.personalDonors.totalNumber = $defaultPersonalDonors.length
       
+      $scope.personalPagePhoto1 =
+        defaultUrl: APP_INFO.rootPath + 'dist/jump-hoops/image/personal-default.jpg'
+      
       $scope.personalPhoto1IsDefault = true
       
       $scope.editPersonalPhoto1 = ->
@@ -178,4 +181,7 @@ angular.module 'ahaLuminateControllers'
                   # if photoItem.id is '1'
                     # TODO
               $scope.closePersonalPhoto1Modal()
+      
+      $scope.personalPageContent =
+        mode: 'view'
   ]
