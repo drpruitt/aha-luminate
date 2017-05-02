@@ -251,6 +251,10 @@ angular.module 'ahaLuminateControllers'
         $scope.companyPageContent.ng_rich_text = richText
         $scope.companyPageContent.mode = 'edit'
       
+      $scope.resetCompanyPageContent = ->
+        $scope.companyPageContent.ng_rich_text = $scope.companyPageContent.rich_text
+        $scope.companyPageContent.mode = 'view'
+      
       $scope.saveCompanyPageContent = (isRetry) ->
         richText = $scope.companyPageContent.ng_rich_text
         $richText = jQuery '<div />', 

@@ -63,7 +63,10 @@
           </button>
           <div ng-if="personalPageContent.mode == 'edit'" ng-cloak>
             <button type="button" class="btn btn-md-wide btn-primary" ng-click="savePersonalPageContent()">
-              <span class="fa fa-pencil"></span> Save Story
+              <span class="fa fa-pencil"></span> <strong>Save Story</strong>
+            </button> 
+            <button type="button" class="btn btn-md-wide btn-toggle" ng-click="resetPersonalPageContent()">
+              Cancel
             </button>
           </div>
         </div>
