@@ -38,7 +38,7 @@
     
     @media (min-width: $screen-sm-min) {
       display: inline-block;
-      background: #ffffff;
+      background: $brand-white;
       border-radius: 7px;
       color: $event-secondary;
       font-size: 40px;

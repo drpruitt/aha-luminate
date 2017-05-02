@@ -5,11 +5,14 @@ body {
   font-weight: 500;
 }
 
-h1 {
-  color: #ffffff;
+h1, 
+.h1 {
+  color: $brand-white;
   font-family: $headline-font;
   text-shadow: 2px 2px 1px rgb(0, 0, 0);
   text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.85);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1;
 }
 
 .ym-headline {
@@ -32,6 +35,7 @@ h3,
   font-family: $headline-font;
   color: $event-secondary;
   line-height: 1;
+  -webkit-font-smoothing: antialiased;
 }
 
 h2, 
@@ -127,7 +131,7 @@ a {
   .h5,
   h6,
   .h6 {
-    color: #ffffff;
+    color: $brand-white;
   }
   
   h2, 
@@ -137,10 +141,16 @@ a {
     text-shadow: 2px 2px 1px rgb(0, 0, 0);
     text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.85);
   }
+
+  .h4,
+  .h5 {
+    text-shadow: none;
+  }
 }
 
 .event-secondary-medium {
-  h5, .h5 {
+  h5, 
+  .h5 {
     color:$event-secondary;
   }
 }

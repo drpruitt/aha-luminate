@@ -95,7 +95,7 @@ a.btn {
     &:link, 
     &:visited {
       background: $event-primary;
-      color: #ffffff;
+      color: $brand-white;
     }
     
     &:hover, 
@@ -110,7 +110,7 @@ a.btn {
     &:link, 
     &:visited {
       background: $event-secondary;
-      color: #ffffff;
+      color: $brand-white;
     }
     
     &:hover, 
@@ -125,7 +125,7 @@ a.btn {
     &:link, 
     &:visited {
       background: $brand-success;
-      color: #ffffff;
+      color: $brand-white;
     }
     
     &:hover, 
@@ -180,14 +180,14 @@ div.responsive {
     &:link, 
     &:visited {
       background: $event-primary;
-      color: #ffffff;
+      color: $brand-white;
     }
     
     &:hover, 
     &:focus, 
     &:active {
       background: $event-primary-dark;
-      color: #ffffff;
+      color: $brand-white;
     }
   }
 }
@@ -213,7 +213,7 @@ a.btn-toggle {
   &.active {
     background: $event-primary;
     border: 1px solid $event-primary;
-    color: #ffffff;
+    color: $brand-white;
     cursor: pointer;
   }
 }
@@ -234,7 +234,7 @@ a.btn-outline {
   &:focus, 
   &:active {
     background: $event-primary;
-    color: #fff;
+    color: $brand-white;
     border: 1px solid $event-primary;
   }
 }

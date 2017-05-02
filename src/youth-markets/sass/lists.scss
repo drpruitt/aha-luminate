@@ -1,3 +1,7 @@
+.ym-list {
+  text-align: center;
+}
+
 .ym-donor-list {
   background: #ffffff;
   text-align: left;
@@ -21,12 +25,12 @@
 }
 
 .ym-donor-list__row--name {
-  width: 85%;
+  width: calc(100% - 70px);
 }
 
 .ym-donor-list__row--amount {
   text-align: right;
-  width: 10%;
+  width: 65px;
 }
 
 .ym-stripe-list__header {
