@@ -1,13 +1,13 @@
-.ym-page-content,
-.ym-page-section__main,
-.ym-page-section__roster  {
+.ym-page-content, 
+.ym-page-section__main, 
+.ym-page-section__roster {
   background: $brand-white;
 }
 
 .ym-page-content {
   padding: 10px;
   margin: 18px 0 0;
-
+  
   @media (min-width: $screen-sm-min) {
     padding: 28px;
     margin: 0;
@@ -18,15 +18,15 @@
   .ym-page-content {
     padding: 0;
     margin: 18px 0 0;
-
+    
     @media (min-width:$screen-sm-min) {
       padding: 0;
       margin: -30px 0 0;
     }
-
+    
     > .container {
       padding: 10px;
-
+      
       @media (min-width: $screen-sm-min) {
         padding: 30px;
       }
@@ -38,49 +38,49 @@
   .ym-page-content {
     padding: 30px;
     margin: 0;
-
+    
     @media (min-width: $screen-md-min) {
       padding: 50px;
     }
-
+    
     @media (min-width: $screen-lg-min) {
       padding: 50px 100px;
     }
-
+    
     > div {
       padding: 0;
     }
-
+    
     .col-md-8 {
       margin: auto;
       padding: 0;
       max-width: 670px;
       width: 100%;
     }
-
+    
     .col-md-4 {
       max-width: 670px;
       width: 100%;
       margin: 50px auto 0;
       padding: 0;
     }
-
+    
     @media (min-width: 1050px) {
       .col-md-4 {
         float: right;
         width: calc(100% - 700px);
         padding: 0;
       }
-
+      
       .col-md-8 {
         width: 670px;
         margin: auto;
         padding: 0;
       }
     }
-
+    
     @media (max-width: 1049px) {
-      .col-md-8,
+      .col-md-8, 
       .col-md-4 {
         float: none;
       }
@@ -92,10 +92,10 @@
   @media (min-width: $screen-md-min) {
     display: flex;
   }
-
+  
   .ym-progress {
     padding: 20px;
-
+    
     .ym-progress__cta .btn {
       margin: 0 10px 10px;
     }
@@ -105,110 +105,121 @@
 .ym-user-image {
   position: relative;
   padding: 0;
-
+  
   @media (max-width: $screen-sm-max) {
     background-image: none !important;
   }
-
+  
   @media (min-width: 630px) and (max-width: $screen-sm-max) {
     background: $brand-white;
     padding: 20px 0;
   }
-
+  
   @media (min-width: $screen-md-min) {
     background-size: cover;
     min-height: 360px;
   }
-
-  img {
-    margin: auto;
-    @media (max-width: $screen-sm-max) {
-      max-width: 100%;
-      display: block;
+  
+  .ym-user-image-inner {
+    position: relative;
+    
+    .btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      padding: 7px 15px;
     }
-  }
-
-  .caption {
-    position: absolute;
-    bottom: 0;
-    background: rgb(255, 255, 255);
-    background: rgba(255, 255, 255, 0.8);
-    font-size: $font-size-sm;
-    font-weight: 700;
-    line-height: 1.2;
-    text-align: center;
-    width: 100%;
-    padding: 15px 0;
-    margin: 0;
-
-    @media (min-width: 630px) and (max-width: $screen-sm-max) {
-      margin: 0 0 20px;
+    
+    img {
+      margin: auto;
+      
+      @media (max-width: $screen-sm-max) {
+        max-width: 100%;
+        display: block;
+      }
+    }
+    
+    .caption {
+      position: absolute;
+      bottom: 0;
+      background: rgb(255, 255, 255);
+      background: rgba(255, 255, 255, 0.8);
+      font-size: $font-size-sm;
+      font-weight: 700;
+      line-height: 1.2;
+      text-align: center;
+      width: 100%;
+      padding: 15px 0;
+      margin: 0;
+      
+      @media (min-width: 630px) and (max-width: $screen-sm-max) {
+        margin: 0 0 20px;
+      }
     }
   }
 }
 
 .ym-page-section__main {
   padding: 50px 0;
-
+  
   @media (max-width: $screen-sm-max) {
    padding: 40px 0;
   }
-
+  
   @media (max-width: $screen-xs-max) {
     padding: 30px 0;
   }
-
+  
   > .col-md-6 {
     padding: 0 40px;
-
+    
     @media (max-width: $screen-sm-max) {
       padding: 0 60px;
     }
-
+    
     @media (max-width: $screen-xs-max) {
       padding: 0 20px;
     }
-
+    
     .ym-my-challenge > div {
         padding: 0;
     }
   }
-
+  
   .ym-user-interactions {
-
     @media (min-width: $screen-md-min) {
       padding: 0 40px 0 0;
     }
-
+    
     @media (min-width: $screen-lg-min) {
       padding: 0 40px;
     }
   }
-
+  
   @media (max-width: $screen-sm-max) {
     .ym-story {
       margin-bottom: 30px;
     }
-
-    .ym-badges,
+    
+    .ym-badges, 
     .ym-my-challenge {
       max-width: 485px;
       margin: auto;
     }
-
+    
     .ym-my-challenge {
       margin-top: 35px;
     }
   }
-
+  
   @media (max-width: $screen-xs-max) {
     .ym-my-challenge {
       margin-top: 15px;
-
+      
       img {
         margin: 0 auto 20px;
       }
-
+      
       p {
         text-align: center;
       }
@@ -218,49 +229,49 @@
 
 .ym-page-section__list {
   padding: 40px 0;
-
+  
   @media (max-width: $screen-xs-max) {
     padding: 30px 0;
   }
-
+  
   > div {
     padding: 0 40px;
-
+    
     @media (max-width: $screen-sm-max) {
       padding: 0 60px;
     }
-
+    
     @media (max-width: $screen-xs-max) {
       padding: 0 20px;
     }
   }
-
+  
   .ym-donate-cta {
     text-align: center;
-
+    
     @media (max-width: $screen-xs-max) {
       margin: 0 0 30px;
     }
-
+    
     p {
       margin-bottom: 20px;
-
+      
       @media (min-width: $screen-md-min) {
         margin-bottom: 30px;
       }
     }
   }
-
+  
   .ym-list {
     img {
       margin: 0 auto 15px;
-
+      
       @media (max-width: $screen-sm-max) {
         max-width: 275px;
         margin: 15px auto;
 
       }
-
+      
       @media (max-width: $screen-xs-max) {
         max-width: 240px;
       }
@@ -273,46 +284,45 @@
     display: flex;
     align-items: center;
   }
-
+  
   > div {
     padding: 0 20px;
-
+    
     @media (min-width: $screen-sm-min) {
       padding: 0;
     }
-
+    
     &.ym-list {
       @media (min-width: $screen-sm-min) {
         padding-right: 20px;
       }
-
+      
       @media (min-width: $screen-md-min) {
         padding-right: 40px
       }
-
+      
       @media (min-width: $screen-lg-min) {
         padding-right: 0;
       }
     }
   }
-
 }
 
 .ym-page-section__roster {
   padding: 50px;
-
+  
   &.hidden {
     padding-bottom: 0px;
   }
-
+  
   @media (max-width: $screen-xs) {
     padding: 25px;
   }
-
+  
   .h5 {
     text-align: center;
     margin: 0 0 30px;
-
+    
     @media (max-width: $screen-xs) {
       margin: 0 0 15px;
     }
@@ -323,34 +333,14 @@
   background: $brand-white;
   padding: 0 0 50px;
   text-align: center;
-
+  
   hr {
     margin: 0 0 50px;
   }
-
+  
   img {
     display: inline-block;
     max-width: 100%;
     margin: auto;
   }
-}
-
-.ym-skip-content {
-  position: absolute;
-  top: -1000px;
-  left: -1000px;
-  height: 1px;
-  width: 1px;
-  text-align: left;
-  overflow: hidden;
-}
-    
-a.ym-skip-content:active, 
-a.ym-skip-content:focus, 
-a.ym-skip-content:hover {
-    left: 0; 
-    top: 0;
-    width: auto; 
-    height: auto; 
-    overflow: visible; 
 }

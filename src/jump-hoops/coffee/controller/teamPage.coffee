@@ -5,11 +5,13 @@ angular.module 'ahaLuminateControllers'
     '$location'
     '$filter'
     '$timeout'
+    '$uibModal'
+    'APP_INFO'
     'TeamraiserTeamService'
     'TeamraiserParticipantService'
     'TeamraiserCompanyService'
     'ZuriService'
-    ($scope, $rootScope, $location, $filter, $timeout, TeamraiserTeamService, TeamraiserParticipantService, TeamraiserCompanyService, ZuriService) ->
+    ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserTeamService, TeamraiserParticipantService, TeamraiserCompanyService, ZuriService) ->
       $scope.teamId = $location.absUrl().split('team_id=')[1].split('&')[0]
       $scope.teamParticipants = []
       $rootScope.teamName = ''
@@ -115,4 +117,43 @@ angular.module 'ahaLuminateControllers'
                 totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
                 setTeamParticipants teamParticipants, totalNumberParticipants, totalFundraisers
       getTeamParticipants()
+      
+      $scope.editTeamPhoto1 = ->
+        $scope.editTeamPhoto1Modal = $uibModal.open
+          scope: $scope
+          templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/modal/editTeamPhoto1.html'
+      
+      $scope.closeTeamPhoto1Modal = ->
+        $scope.editTeamPhoto1Modal.close()
+      
+      $scope.cancelEditTeamPhoto1 = ->
+        $scope.closeTeamPhoto1Modal()
+      
+      window.trPageEdit =
+        uploadPhotoError: (response) ->
+          errorResponse = response.errorResponse
+          photoType = errorResponse.photoType
+          photoNumber = errorResponse.photoNumber
+          errorCode = errorResponse.code
+          errorMessage = errorResponse.message
+          
+          # if photoNumber is '1'
+            # TODO
+        uploadPhotoSuccess: (response) ->
+          successResponse = response.successResponse
+          photoType = successResponse.photoType
+          photoNumber = successResponse.photoNumber
+          
+          TeamraiserTeamPageService.getTeamPhoto
+            error: (response) ->
+              # TODO
+            success: (response) ->
+              photoItems = response.getTeamPhotoResponse?.photoItem
+              if photoItems
+                photoItems = [photoItems] if not angular.isArray photoItems
+                angular.forEach photoItems, (photoItem) ->
+                  photoUrl = photoItem.customUrl
+                  # if photoItem.id is '1'
+                    # TODO
+              $scope.closeTeamPhoto1Modal()
   ]
