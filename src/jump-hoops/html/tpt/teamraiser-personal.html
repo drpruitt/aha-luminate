@@ -58,7 +58,7 @@
         ]]
       ::T::
         <div class="ym-story-edit-btn">
-          <button type="button" class="btn btn-md-wide btn-toggle">
+          <button type="button" class="btn btn-md-wide btn-toggle" ng-click="editPersonalPageContent()">
             <span class="fa fa-pencil"></span> Edit Story
           </button>
         </div>
@@ -76,6 +76,15 @@
           </div>
         </div>
       </div>
+      [[?
+        [[?xx::x[[S1:cons_id]]x::::
+          [[?x[[S1:cons_id]]x::x[[S334:px]]x::T::]]
+        ]]
+      ::T::
+        <div ng-show="personalPageContent.mode == 'edit'" ng-cloak>
+          <div text-angular name="ng_rich_text" ng-model="personalPageContent.ng_rich_text" ta-toolbar="{{personalPageContent.textEditorToolbar}}"></div>
+        </div>
+      ::]]
     </div>
     <div class="col-md-6 ym-user-interactions">
       <div class="ym-badges" ng-if="prizes.length > 0">
