@@ -1,4 +1,4 @@
-angular.module 'trPageEditApp'
+angular.module 'ahaLuminateApp'
   .factory 'TeamraiserTeamPageService', [
     '$rootScope'
     'LuminateRESTService'
