@@ -137,6 +137,37 @@ angular.module 'ahaLuminateControllers'
           scope: $scope
           templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/modal/editPersonalPhoto1.html'
       
-      $scope.cancelEditPersonalPhoto1 = ->
+      $scope.closePersonalPhoto1Modal = ->
         $scope.editPersonalPhoto1Modal.close()
+
+      $scope.cancelEditPersonalPhoto1 = ->
+        $scope.closePersonalPhoto1Modal()
+      
+      window.trPageEdit =
+        uploadPhotoError: (response) ->
+          errorResponse = response.errorResponse
+          photoType = errorResponse.photoType
+          photoNumber = errorResponse.photoNumber
+          errorCode = errorResponse.code
+          errorMessage = errorResponse.message
+          
+          # if photoNumber is '1'
+            # TODO
+        uploadPhotoSuccess: (response) ->
+          successResponse = response.successResponse
+          photoType = successResponse.photoType
+          photoNumber = successResponse.photoNumber
+          
+          TeamraiserParticipantPageService.getPersonalPhotos
+            error: (response) ->
+              # TODO
+            success: (response) ->
+              photoItems = response.getPersonalPhotosResponse?.photoItem
+              if photoItems
+                photoItems = [photoItems] if not angular.isArray photoItems
+                angular.forEach photoItems, (photoItem) ->
+                  photoUrl = photoItem.customUrl
+                  # if photoItem.id is '1'
+                    # TODO
+              $scope.closePersonalPhoto1Modal()
   ]

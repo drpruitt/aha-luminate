@@ -11,8 +11,7 @@ angular.module 'ahaLuminateControllers'
     'TeamraiserTeamService'
     'TeamraiserParticipantService'
     'ZuriService'
-    'APP_INFO'
-    ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService, ZuriService, APP_INFO) ->
+    ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService, ZuriService) ->
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0]
       domain = $location.absUrl().split('/site')[0]
       $rootScope.companyName = ''
@@ -165,6 +164,37 @@ angular.module 'ahaLuminateControllers'
           scope: $scope
           templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/modal/editCompanyPhoto1.html'
       
-      $scope.cancelEditCompanyPhoto1 = ->
+      $scope.closeCompanyPhoto1Modal = ->
         $scope.editCompanyPhoto1Modal.close()
+      
+      $scope.cancelEditCompanyPhoto1 = ->
+        $scope.closeCompanyPhoto1Modal()
+      
+      window.trPageEdit =
+        uploadPhotoError: (response) ->
+          errorResponse = response.errorResponse
+          photoType = errorResponse.photoType
+          photoNumber = errorResponse.photoNumber
+          errorCode = errorResponse.code
+          errorMessage = errorResponse.message
+          
+          # if photoNumber is '1'
+            # TODO
+        uploadPhotoSuccess: (response) ->
+          successResponse = response.successResponse
+          photoType = successResponse.photoType
+          photoNumber = successResponse.photoNumber
+          
+          TeamraiserCompanyPageService.getCompanyPhoto
+            error: (response) ->
+              # TODO
+            success: (response) ->
+              photoItems = response.getCompanyPhotoResponse?.photoItem
+              if photoItems
+                photoItems = [photoItems] if not angular.isArray photoItems
+                angular.forEach photoItems, (photoItem) ->
+                  photoUrl = photoItem.customUrl
+                  # if photoItem.id is '1'
+                    # TODO
+              $scope.closeCompanyPhoto1Modal()
   ]
