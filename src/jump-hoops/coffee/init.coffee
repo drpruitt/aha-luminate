@@ -1,6 +1,7 @@
 angular.module 'ahaLuminateApp', [
   'ngSanitize'
   'ngTouch'
+  'angular.filter'
   'ui.bootstrap'
   'ahaLuminateControllers'
 ]
