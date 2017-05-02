@@ -28,7 +28,7 @@ angular.module 'ahaLuminateApp'
         while arrMatches = objPattern.exec csvStr
           strMatchedDelimiter = arrMatches[1]
           strMatchedValue = undefined
-          if strMatchedDelimiter.length and strMatchedDelimiter != strDelimiter
+          if strMatchedDelimiter.length and strMatchedDelimiter isnt strDelimiter
             arrData.push []
           if arrMatches[2]
             strMatchedValue = arrMatches[2].replace(new RegExp('""', 'g'), '"')

@@ -2,7 +2,7 @@
   <div class="ym-page-section ym-page-section__top">
     <div class="col-md-6 ym-user-image" style="background-image: url('[[?xx::x[[C4:responsive_company_logo]]x::::[[C4:responsive_company_logo]]]]');">
       <div class="ym-user-image-inner">
-        <button type="button" class="btn btn-md-wide btn-default" ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
+        <button type="button" class="btn btn-md-wide btn-default" ng-click="editCompanyPhoto1()" ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
           <span class="fa fa-camera"></span> Edit Photo
         </button>
         <img class="hidden-md hidden-lg" src="[[?xx::x[[C4:responsive_company_logo]]x::::[[C4:responsive_company_logo]]]]" alt="">
@@ -94,7 +94,7 @@
     <hr class="hidden-xs" ng-show="companyParticipants.participants.length > 0" ng-cloak>
     <div class="container hidden-xs" ng-show="companyParticipants.participants.length > 0" ng-cloak>
       <div class="ym-school-animation">
-        <iframe id="school-animation" src="http://[[S29:DOMAIN]][[S29:PATH]]PageServer?pagename=jump_hoops_school_animation&pgwrap=n" onLoad="iframeLoaded()"></iframe>
+        <iframe id="school-animation" src="http://[[S29:DOMAIN]][[S29:PATH]]PageServer?pagename=jump_hoops_school_animation&pgwrap=n"></iframe>
       </div>
     </div>
   </div>

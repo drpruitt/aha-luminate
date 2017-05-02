@@ -5,11 +5,13 @@ angular.module 'ahaLuminateControllers'
     '$location'
     '$filter'
     '$timeout'
+    '$uibModal'
+    'APP_INFO'
     'TeamraiserParticipantService'
     'TeamraiserCompanyService'
     'ZuriService'
     'ParticipantBadgesService'
-    ($scope, $rootScope, $location, $filter, $timeout, TeamraiserParticipantService, TeamraiserCompanyService, ZuriService, ParticipantBadgesService) ->
+    ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserParticipantService, TeamraiserCompanyService, ZuriService, ParticipantBadgesService) ->
       $dataRoot = angular.element '[data-aha-luminate-root]'
       $scope.participantId = $location.absUrl().split('px=')[1].split('&')[0]
       frId = $dataRoot.data('fr-id') if $dataRoot.data('fr-id') isnt ''
@@ -20,22 +22,22 @@ angular.module 'ahaLuminateControllers'
       $scope.challengeId = null
       $scope.challengeName = null
       $scope.challengeCompleted = 0
-
+      
       $scope.prizes = []
       ParticipantBadgesService.getBadges '3196745'
       .then (response) ->
-        if response.data.status == 'success'
+        if not response.data.status or response.data.status isnt 'success'
+          # TODO
+        else
           prizes = response.data.prizes
           angular.forEach prizes, (prize) ->
-            if prize.earned_datetime != null
+            if prize.earned_datetime isnt null
               $scope.prizes.push
                 id: prize.id
                 label: prize.label
                 sku: prize.sku
                 status: prize.status
                 earned: prize.earned_datetime
-        else
-          # TODO
       
       ZuriService.getZooStudent frId + '/' + $scope.participantId,
         error: (response) ->
@@ -129,4 +131,9 @@ angular.module 'ahaLuminateControllers'
               amount: donorAmount
               amountFormatted: if donorAmount is -1 then '' else $filter('currency')(donorAmount / 100, '$').replace '.00', ''
           $scope.personalDonors.totalNumber = $defaultPersonalDonors.length
+      
+      $scope.editPersonalPhoto1 = ->
+        $scope.editPersonalPhoto1Modal = $uibModal.open
+          scope: $scope
+          templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/modal/editPersonalPhoto1.html'
   ]
