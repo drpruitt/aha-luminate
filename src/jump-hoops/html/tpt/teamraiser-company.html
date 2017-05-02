@@ -100,8 +100,8 @@
   </div>
   <div class="ym-page-section ym-page-section__list ym-accent-color">
     <div class="ym-story" ng-class="companyParticipants.totalFundraisers < 1 && companyTeams.totalNumber > 1 ? 'col-md-12' : 'col-md-6'">
-      <div class="ym-story-edit-btn" ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
-        <button type="button" class="btn btn-md-wide btn-toggle" ng-click="editCompanyPageContent()">
+      <div class="ym-story-edit-btns" ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
+        <button type="button" class="btn btn-md-wide btn-toggle" ng-click="editCompanyPageContent()" ng-if="companyPageContent.mode == 'view'">
           <span class="fa fa-pencil"></span> Edit Story
         </button>
       </div>
