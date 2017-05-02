@@ -11,7 +11,8 @@ angular.module 'ahaLuminateControllers'
     'TeamraiserParticipantService'
     'TeamraiserCompanyService'
     'ZuriService'
-    ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserTeamService, TeamraiserParticipantService, TeamraiserCompanyService, ZuriService) ->
+    'TeamraiserTeamPageService'
+    ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserTeamService, TeamraiserParticipantService, TeamraiserCompanyService, ZuriService, TeamraiserTeamPageService) ->
       $scope.teamId = $location.absUrl().split('team_id=')[1].split('&')[0]
       $scope.teamParticipants = []
       $rootScope.teamName = ''
@@ -118,6 +119,8 @@ angular.module 'ahaLuminateControllers'
                 setTeamParticipants teamParticipants, totalNumberParticipants, totalFundraisers
       getTeamParticipants()
       
+      $scope.teamPhoto1IsDefault = false
+
       $scope.editTeamPhoto1 = ->
         $scope.editTeamPhoto1Modal = $uibModal.open
           scope: $scope
@@ -128,6 +131,11 @@ angular.module 'ahaLuminateControllers'
       
       $scope.cancelEditTeamPhoto1 = ->
         $scope.closeTeamPhoto1Modal()
+      
+      $scope.deleteTeamPhoto1 = (e) ->
+        if e
+          e.preventDefault()
+        # TODO
       
       window.trPageEdit =
         uploadPhotoError: (response) ->
