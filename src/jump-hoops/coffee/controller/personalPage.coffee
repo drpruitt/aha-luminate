@@ -11,7 +11,8 @@ angular.module 'ahaLuminateControllers'
     'TeamraiserCompanyService'
     'ZuriService'
     'ParticipantBadgesService'
-    ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserParticipantService, TeamraiserCompanyService, ZuriService, ParticipantBadgesService) ->
+    'TeamraiserParticipantPageService'
+    ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserParticipantService, TeamraiserCompanyService, ZuriService, ParticipantBadgesService, TeamraiserParticipantPageService) ->
       $dataRoot = angular.element '[data-aha-luminate-root]'
       $scope.participantId = $location.absUrl().split('px=')[1].split('&')[0]
       frId = $dataRoot.data('fr-id') if $dataRoot.data('fr-id') isnt ''
@@ -132,6 +133,8 @@ angular.module 'ahaLuminateControllers'
               amountFormatted: if donorAmount is -1 then '' else $filter('currency')(donorAmount / 100, '$').replace '.00', ''
           $scope.personalDonors.totalNumber = $defaultPersonalDonors.length
       
+      $scope.personalPhoto1IsDefault = false
+      
       $scope.editPersonalPhoto1 = ->
         $scope.editPersonalPhoto1Modal = $uibModal.open
           scope: $scope
@@ -139,9 +142,14 @@ angular.module 'ahaLuminateControllers'
       
       $scope.closePersonalPhoto1Modal = ->
         $scope.editPersonalPhoto1Modal.close()
-
+      
       $scope.cancelEditPersonalPhoto1 = ->
         $scope.closePersonalPhoto1Modal()
+      
+      $scope.deletePersonalPhoto1 = (e) ->
+        if e
+          e.preventDefault()
+        # TODO
       
       window.trPageEdit =
         uploadPhotoError: (response) ->
