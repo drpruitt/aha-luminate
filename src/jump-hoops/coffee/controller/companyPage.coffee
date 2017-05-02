@@ -231,4 +231,14 @@ angular.module 'ahaLuminateControllers'
         ]
         rich_text: angular.element('.js--default-page-content').html()
         ng_rich_text: angular.element('.js--default-page-content').html()
+      
+      $scope.editCompanyPageContent = ->
+        richText = $scope.companyPageContent.ng_rich_text
+        $richText = jQuery '<div />',
+          html: richText
+        richText = $richText.html()
+        richText = richText.replace(/<strong>/g, '<b>').replace(/<strong /g, '<b ').replace /<\/strong>/g, '</b>'
+        .replace(/<em>/g, '<i>').replace(/<em /g, '<i ').replace /<\/em>/g, '</i>'
+        $scope.companyPageContent.ng_rich_text = richText
+        $scope.companyPageContent.mode = 'edit'
   ]
