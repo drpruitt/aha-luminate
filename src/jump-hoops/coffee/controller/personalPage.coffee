@@ -197,6 +197,8 @@ angular.module 'ahaLuminateControllers'
       $scope.deletePersonalPhoto1 = (e) ->
         if e
           e.preventDefault()
+        angular.element('.js--delete-personal-photo-1-form').submit()
+        false
       
       window.trPageEdit =
         uploadPhotoError: (response) ->
