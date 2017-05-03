@@ -25,6 +25,7 @@ angular.module 'ahaLuminateControllers'
       $scope.challengeCompleted = 0
       
       $scope.prizes = []
+      $scope.monsters = []
       ParticipantBadgesService.getBadges '3196745'
       .then (response) ->
         if not response.data.status or response.data.status isnt 'success'
@@ -32,13 +33,55 @@ angular.module 'ahaLuminateControllers'
         else
           prizes = response.data.prizes
           angular.forEach prizes, (prize) ->
-            if prize.earned_datetime isnt null
-              $scope.prizes.push
+            if prize.id == '342' or prize.id == '343' or prize.id == '344'
+              date = new Date(prize.earned_datetime)
+              $scope.monsters.push
+                priority: 1
+
                 id: prize.id
                 label: prize.label
                 sku: prize.sku
                 status: prize.status
-                earned: prize.earned_datetime
+                earned: date
+              $scope.monsters.sort (a, b) ->
+                b.earned - a.earned
+            else 
+              if prize.earned_datetime != null
+                if prize.id == '352'
+                  $scope.prizes.push
+                    priority: 2
+                    id: prize.id
+                    label: prize.label
+                    sku: prize.sku
+                    status: prize.status
+                    earned: prize.earned_datetime
+                if prize.id == '350'
+                  $scope.prizes.push
+                    priority: 3
+                    id: prize.id
+                    label: prize.label
+                    sku: prize.sku
+                    status: prize.status
+                    earned: prize.earned_datetime
+                if prize.id == '353'
+                  $scope.prizes.push
+                    priority: 4
+                    id: prize.id
+                    label: prize.label
+                    sku: prize.sku
+                    status: prize.status
+                    earned: prize.earned_datetime
+                if prize.id == '351'
+                  $scope.prizes.push
+                    priority: 5
+                    id: prize.id
+                    label: prize.label
+                    sku: prize.sku
+                    status: prize.status
+                    earned: prize.earned_datetime
+          $scope.prizes.push $scope.monsters[0]
+          $scope.prizes.sort (a, b) ->
+            a.priority - b.priority
       
       ZuriService.getZooStudent frId + '/' + $scope.participantId,
         error: (response) ->
@@ -78,7 +121,7 @@ angular.module 'ahaLuminateControllers'
           $scope.personalProgress.percent = percent
           if not $scope.$$phase
             $scope.$apply()
-        , 500
+        , 100
       
       TeamraiserParticipantService.getParticipants 'fr_id=' + $scope.frId + '&first_name=' + encodeURIComponent('%%') + '&last_name=' + encodeURIComponent('%') + '&list_filter_column=reg.cons_id&list_filter_text=' + $scope.participantId, 
         error: ->
@@ -139,11 +182,13 @@ angular.module 'ahaLuminateControllers'
       $scope.personalPhoto1IsDefault = true
       
       $scope.editPersonalPhoto1 = ->
+        delete $scope.updatePersonalPhoto1Error
         $scope.editPersonalPhoto1Modal = $uibModal.open
           scope: $scope
           templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/modal/editPersonalPhoto1.html'
       
       $scope.closePersonalPhoto1Modal = ->
+        delete $scope.updatePersonalPhoto1Error
         $scope.editPersonalPhoto1Modal.close()
       
       $scope.cancelEditPersonalPhoto1 = ->
@@ -152,21 +197,24 @@ angular.module 'ahaLuminateControllers'
       $scope.deletePersonalPhoto1 = (e) ->
         if e
           e.preventDefault()
-        # TODO
       
       window.trPageEdit =
         uploadPhotoError: (response) ->
           errorResponse = response.errorResponse
-          photoType = errorResponse.photoType
           photoNumber = errorResponse.photoNumber
           errorCode = errorResponse.code
           errorMessage = errorResponse.message
           
-          # if photoNumber is '1'
-            # TODO
+          if photoNumber is '1'
+            $scope.updatePersonalPhoto1Error =
+              message: errorMessage
+          if not $scope.$$phase
+            $scope.$apply()
         uploadPhotoSuccess: (response) ->
+          delete $scope.updatePersonalPhoto1Error
+          if not $scope.$$phase
+            $scope.$apply()
           successResponse = response.successResponse
-          photoType = successResponse.photoType
           photoNumber = successResponse.photoNumber
           
           TeamraiserParticipantPageService.getPersonalPhotos
@@ -178,18 +226,20 @@ angular.module 'ahaLuminateControllers'
                 photoItems = [photoItems] if not angular.isArray photoItems
                 angular.forEach photoItems, (photoItem) ->
                   photoUrl = photoItem.customUrl
-                  # if photoItem.id is '1'
-                    # TODO
+                  photoCaption = photoItem.caption
+                  if not photoCaption or not angular.isString(photoCaption)
+                    photoCaption = ''
+                  if photoItem.id is '1'
+                    $scope.personalPagePhoto1.customUrl = photoUrl
+                    $scope.personalPagePhoto1.caption = photoCaption
+              if not $scope.$$phase
+                $scope.$apply()
               $scope.closePersonalPhoto1Modal()
       
       $scope.personalPageContent =
         mode: 'view'
         textEditorToolbar: [
           [
-            'h1'
-            'h2'
-            'h3'
-            'p'
             'bold'
             'italics'
             'underline'
@@ -197,16 +247,12 @@ angular.module 'ahaLuminateControllers'
           [
             'ul'
             'ol'
-            'justifyLeft'
-            'justifyCenter'
-            'justifyRight'
-            'justifyFull'
-            'indent'
-            'outdent'
           ]
           [
             'insertImage'
             'insertLink'
+          ]
+          [
             'undo'
             'redo'
           ]
@@ -223,6 +269,9 @@ angular.module 'ahaLuminateControllers'
         .replace(/<em>/g, '<i>').replace(/<em /g, '<i ').replace /<\/em>/g, '</i>'
         $scope.personalPageContent.ng_rich_text = richText
         $scope.personalPageContent.mode = 'edit'
+        $timeout ->
+          angular.element('[ta-bind][contenteditable]').focus()
+        , 500
       
       $scope.resetPersonalPageContent = ->
         $scope.personalPageContent.ng_rich_text = $scope.personalPageContent.rich_text

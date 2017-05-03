@@ -4,8 +4,8 @@
   <input type="hidden" name="method" value="uploadTeamPhoto">
   <input type="hidden" name="fr_id" value="{{frId}}">
   <input type="hidden" name="graphic_upload_upload" value="true">
-  <input type="hidden" name="success_redirect" value="{{nonsecurePath + '../teamraiser-inline-page-edit/dist/html/frame/edit-photo.html?photo_type=team&amp;success=true&amp;photo_number=1&amp;error_code=${uploadTeamPhotoResponse/code}&amp;error_message=${uploadTeamPhotoResponse/message}'}}">
-  <input type="hidden" name="error_redirect" value="{{nonsecurePath + '../teamraiser-inline-page-edit/dist/html/frame/edit-photo.html?photo_type=team&amp;photo_number=1&amp;error_code=${errorResponse/code}&amp;error_message=${errorResponse/message}'}}">
+  <input type="hidden" name="success_redirect" value="{{nonSecureDomain + 'teamraiser-inline-page-edit/dist/html/frame/edit-photo.html?photo_type=team&amp;success=true&amp;photo_number=1&amp;error_code=${uploadTeamPhotoResponse/code}&amp;error_message=${uploadTeamPhotoResponse/message}'}}">
+  <input type="hidden" name="error_redirect" value="{{nonSecureDomain + 'teamraiser-inline-page-edit/dist/html/frame/edit-photo.html?photo_type=team&amp;photo_number=1&amp;error_code=${errorResponse/code}&amp;error_message=${errorResponse/message}'}}">
   <input type="hidden" name="auth" value="{{authToken}}">
   <input type="hidden" name="JSESSIONID" value="{{sessionCookie}}">
   <div class="modal-header">
@@ -28,6 +28,12 @@
     </div>
     <div class="form-group" ng-if="!teamPhoto1IsDefault">
       or <a href="#" ng-click="deleteTeamPhoto1($event)">revert to default photo</a>
+    </div>
+    <div class="form-group">
+      <label for="team-photo-1-caption">
+        Caption:
+      </label>
+      <input type="text" class="form-control" name="graphic_caption" id="team-photo-1-caption" value="{{teamPagePhoto1.caption}}">
     </div>
   </div>
   <div class="modal-footer">
@@ -52,8 +58,8 @@
     <input type="hidden" name="method" value="removeTeamPhoto">
     <input type="hidden" name="fr_id" value="{{frId}}">
     <input type="hidden" name="graphic_upload_delete" value="true">
-    <input type="hidden" name="success_redirect" value="{{nonsecurePath + '../teamraiser-inline-page-edit/dist/html/frame/edit-photo.html?photo_type=team&amp;success=true&amp;photo_number=2&amp;error_code=${removeTeamPhotoResponse/code}&amp;error_message=${removeTeamPhotoResponse/message}'}}">
-    <input type="hidden" name="error_redirect" value="{{nonsecurePath + '../teamraiser-inline-page-edit/dist/html/frame/edit-photo.html?photo_type=team&amp;photo_number=2&amp;error_code=${errorResponse/code}&amp;error_message=${errorResponse/message}'}}">
+    <input type="hidden" name="success_redirect" value="{{nonSecureDomain + 'teamraiser-inline-page-edit/dist/html/frame/edit-photo.html?photo_type=team&amp;success=true&amp;photo_number=2&amp;error_code=${removeTeamPhotoResponse/code}&amp;error_message=${removeTeamPhotoResponse/message}'}}">
+    <input type="hidden" name="error_redirect" value="{{nonSecureDomain + 'teamraiser-inline-page-edit/dist/html/frame/edit-photo.html?photo_type=team&amp;photo_number=2&amp;error_code=${errorResponse/code}&amp;error_message=${errorResponse/message}'}}">
     <input type="hidden" name="auth" value="{{authToken}}">
     <input type="hidden" name="JSESSIONID" value="{{sessionCookie}}">
   </form>

@@ -17,7 +17,7 @@
    box-shadow: inset 2px 2px 10px 0 rgba(0, 0, 0, 0.35);
    background: #ffffff;
    max-width: 500px;
-   margin: 30px auto;
+   margin: 30px auto 0;
 }
 
 .ym-progress__thermometer--fill {
@@ -30,5 +30,5 @@
 
 .ym-progress__stats {
   max-width: 370px;
-  margin: auto;
+  margin: 20px auto 0;
 }

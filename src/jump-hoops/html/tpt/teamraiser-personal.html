@@ -12,11 +12,9 @@
           </button>
         ::]]
         <img class="hidden-md hidden-lg" ng-src="{{personalPagePhoto1.customUrl && personalPagePhoto1.customUrl != '' ? personalPagePhoto1.customUrl : personalPagePhoto1.defaultUrl}}" alt="{{personalPagePhoto1.caption}}" ng-cloak>
-        [[?xx::x[[C1:graphic_caption]]x::::
-          <div class="caption">
-            [[C1:graphic_caption]]
-          </div>
-        ]]
+      </div>
+      <div class="caption" ng-if="personalPagePhoto1.caption && personalPagePhoto1.caption != ''" ng-cloak>
+        <span ng-bind-html="personalPagePhoto1.caption"></span>
       </div>
     </div>
     <div class="col-md-6 ym-progress ym-secondary-medium-color">
@@ -52,6 +50,9 @@
   </div>
   <div class="ym-page-section ym-page-section__main">
     <div class="col-md-6 ym-story">
+      <h3 class="ym-headline">
+        My Story
+      </h3>
       [[?
         [[?xx::x[[S1:cons_id]]x::::
           [[?x[[S1:cons_id]]x::x[[S334:px]]x::T::]]
@@ -71,9 +72,6 @@
           </div>
         </div>
       ::]]
-      <h3 class="ym-headline">
-        My Story
-      </h3>
       <div class="hidden js--default-page-content" ng-non-bindable>
         [[C6:fr_rich_text]]
       </div>
@@ -89,7 +87,7 @@
           [[?x[[S1:cons_id]]x::x[[S334:px]]x::T::]]
         ]]
       ::T::
-        <div ng-show="personalPageContent.mode == 'edit'" ng-cloak>
+        <div class="ym-page-content-editor" ng-show="personalPageContent.mode == 'edit'" ng-cloak>
           <div text-angular name="ng_rich_text" ng-model="personalPageContent.ng_rich_text" ta-toolbar="{{personalPageContent.textEditorToolbar}}"></div>
         </div>
       ::]]
@@ -99,8 +97,8 @@
         <h3 class="ym-headline">
           Check Out My Badges
         </h3>
-        <div class="ym-badges__item" ng-repeat="prize in prizes" ng-cloak>
-          <img class="img-responsive" ng-src="https://s3.amazonaws.com/aha-jumphoops-production/fy18/assets/badges/{{prize.id}}_delivered.png" alt="{{prize.label}}">
+        <div class="ym-badges__item" ng-repeat="prize in prizes | limitTo: 3" ng-cloak>
+          <img class="img-responsive" ng-src="https://s3.amazonaws.com/aha-jumphoops-production/fy18/assets/badges/{{prize.id}}_delivered.png" alt="{{prize.label}}" />
           <div ng-bind-html="prize.label"></div>
         </div>
         <div class="clearfix"></div>
