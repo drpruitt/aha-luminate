@@ -122,8 +122,6 @@ angular.module 'ahaLuminateControllers'
       $scope.teamPagePhoto1 =
         defaultUrl: APP_INFO.rootPath + 'dist/jump-hoops/image/team-default.jpg'
       
-      $scope.teamPhoto1IsDefault = true
-      
       $scope.editTeamPhoto1 = ->
         delete $scope.updateTeamPhoto1Error
         $scope.editTeamPhoto1Modal = $uibModal.open
