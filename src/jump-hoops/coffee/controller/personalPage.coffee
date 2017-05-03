@@ -121,7 +121,7 @@ angular.module 'ahaLuminateControllers'
           $scope.personalProgress.percent = percent
           if not $scope.$$phase
             $scope.$apply()
-        , 500
+        , 100
       
       TeamraiserParticipantService.getParticipants 'fr_id=' + $scope.frId + '&first_name=' + encodeURIComponent('%%') + '&last_name=' + encodeURIComponent('%') + '&list_filter_column=reg.cons_id&list_filter_text=' + $scope.participantId, 
         error: ->
@@ -182,11 +182,13 @@ angular.module 'ahaLuminateControllers'
       $scope.personalPhoto1IsDefault = true
       
       $scope.editPersonalPhoto1 = ->
+        delete $scope.updatePersonalPhoto1Error
         $scope.editPersonalPhoto1Modal = $uibModal.open
           scope: $scope
           templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/modal/editPersonalPhoto1.html'
       
       $scope.closePersonalPhoto1Modal = ->
+        delete $scope.updatePersonalPhoto1Error
         $scope.editPersonalPhoto1Modal.close()
       
       $scope.cancelEditPersonalPhoto1 = ->
@@ -195,21 +197,24 @@ angular.module 'ahaLuminateControllers'
       $scope.deletePersonalPhoto1 = (e) ->
         if e
           e.preventDefault()
-        # TODO
       
       window.trPageEdit =
         uploadPhotoError: (response) ->
           errorResponse = response.errorResponse
-          photoType = errorResponse.photoType
           photoNumber = errorResponse.photoNumber
           errorCode = errorResponse.code
           errorMessage = errorResponse.message
           
-          # if photoNumber is '1'
-            # TODO
+          if photoNumber is '1'
+            $scope.updatePersonalPhoto1Error =
+              message: errorMessage
+          if not $scope.$$phase
+            $scope.$apply()
         uploadPhotoSuccess: (response) ->
+          delete $scope.updatePersonalPhoto1Error
+          if not $scope.$$phase
+            $scope.$apply()
           successResponse = response.successResponse
-          photoType = successResponse.photoType
           photoNumber = successResponse.photoNumber
           
           TeamraiserParticipantPageService.getPersonalPhotos
@@ -221,18 +226,20 @@ angular.module 'ahaLuminateControllers'
                 photoItems = [photoItems] if not angular.isArray photoItems
                 angular.forEach photoItems, (photoItem) ->
                   photoUrl = photoItem.customUrl
-                  # if photoItem.id is '1'
-                    # TODO
+                  photoCaption = photoItem.caption
+                  if not photoCaption or not angular.isString(photoCaption)
+                    photoCaption = ''
+                  if photoItem.id is '1'
+                    $scope.personalPagePhoto1.customUrl = photoUrl
+                    $scope.personalPagePhoto1.caption = photoCaption
+              if not $scope.$$phase
+                $scope.$apply()
               $scope.closePersonalPhoto1Modal()
       
       $scope.personalPageContent =
         mode: 'view'
         textEditorToolbar: [
           [
-            'h1'
-            'h2'
-            'h3'
-            'p'
             'bold'
             'italics'
             'underline'
@@ -240,16 +247,12 @@ angular.module 'ahaLuminateControllers'
           [
             'ul'
             'ol'
-            'justifyLeft'
-            'justifyCenter'
-            'justifyRight'
-            'justifyFull'
-            'indent'
-            'outdent'
           ]
           [
             'insertImage'
             'insertLink'
+          ]
+          [
             'undo'
             'redo'
           ]
@@ -266,6 +269,9 @@ angular.module 'ahaLuminateControllers'
         .replace(/<em>/g, '<i>').replace(/<em /g, '<i ').replace /<\/em>/g, '</i>'
         $scope.personalPageContent.ng_rich_text = richText
         $scope.personalPageContent.mode = 'edit'
+        $timeout ->
+          angular.element('[ta-bind][contenteditable]').focus()
+        , 500
       
       $scope.resetPersonalPageContent = ->
         $scope.personalPageContent.ng_rich_text = $scope.personalPageContent.rich_text
