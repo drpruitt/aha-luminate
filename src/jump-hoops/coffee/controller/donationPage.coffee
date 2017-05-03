@@ -80,7 +80,7 @@ angular.module 'ahaLuminateControllers'
       
       $scope.toggleEmployerMatch = ->
         angular.element('.ym-employer-match__message').toggleClass 'hidden'
-        angular.element('.employer-address-container').toggleClass 'hidden'
+        angular.element('.matching-gift-container').toggleClass 'hidden'
       
       donorRecognitionFields = ->
         angular.element('#tr_show_gift_to_public_row').addClass 'hidden ym-donor-recognition__fields'
@@ -131,9 +131,11 @@ angular.module 'ahaLuminateControllers'
         angular.element('.billing-info').addClass 'hidden'
 
       $scope.togglePaymentType = (paymentType) ->
-        console.log paymentType
-        #$scope.paymentInfo.responsive_payment_typepay_typeradio = paymentType
-      
+        if paymentType == 'paypal'
+          angular.element('#responsive_payment_typepay_typeradiopaypal').click()
+        else
+          angular.element('#responsive_payment_typepay_typeradiocredit').click()
+
       $scope.toggleBillingInfo = ->
         angular.element('.billing-info').toggleClass 'hidden'
         inputStatus = angular.element('#billing_info').prop 'checked'
@@ -177,8 +179,7 @@ angular.module 'ahaLuminateControllers'
         angular.element('#payment_cc_container').append '<div class="clearfix" />'
         angular.element('#responsive_payment_typecc_cvv_row .FormLabelText').text 'CVV:'
         angular.element('#level_installment_row').addClass 'hidden'
-        angular.element('.employer-address-container').addClass 'clearfix'
-
+        angular.element('.matching-gift-container').addClass 'hidden'
         angular.element('#tr_recognition_namerec_namename').attr('placeholder', 'If different from your name')
         angular.element('#tr_message_to_participantname').attr('placeholder', 'Write a message of encouragement. 255 characters max.')
 

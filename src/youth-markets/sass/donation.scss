@@ -108,6 +108,8 @@
   
   div.donation-level-general-ask, 
   div.html-caption-container {
+    display: block;
+
     @media (min-width: $screen-lg-min) {
       max-width: 670px;
     }
@@ -250,6 +252,49 @@
     }
   }
   
+  div.matching-gift-container {
+    padding: 0 25px 25px;
+
+    @media(min-width: $screen-sm-min) {
+      padding: 0 75px 25px;
+    }
+
+    input#donor_matching_employersearchname {
+      width: calc(100% - 150px);
+    }
+
+    button.step-button {
+      height: 44px;
+      width: 120px;
+      min-width: 0;
+      padding:0;
+      margin: 0 0 0 20px;
+      font-size: 18px;
+      background: $event-secondary;
+
+      &:hover {
+        background: $event-secondary-dark;
+      }
+    }
+
+    .radio-button-container {
+      margin: 0 0 5px;
+      input[type="radio"] {
+        width: auto;
+      }
+    }
+    #donor_matching_employer_company_information {
+      margin: 5px 0 0;
+    }
+
+    #donor_matching_employer_match_information {
+      border: 5px solid $event-secondary;
+      border-radius: 5px;
+      padding: 20px;
+      background: $brand-white;
+    }
+  }
+
   .ym-donor-recognition, 
   .ym-personal-note {
     padding: 20px 0 0;
