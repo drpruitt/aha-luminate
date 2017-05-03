@@ -69,15 +69,22 @@ angular.module 'ahaLuminateControllers'
         , 500
       
       getCompanyTotals = ->
-        TeamraiserCompanyService.getCompanies 'list_page_size=500&company_id=' + $scope.companyId, 
-            success: (response) ->
-              $scope.participantCount = response.getCompaniesResponse.company.participantCount 
-              totalTeams = response.getCompaniesResponse.company.teamCount
-              eventId = response.getCompaniesResponse.company.eventId
-              amountRaised = response.getCompaniesResponse.company.amountRaised
-              goal = response.getCompaniesResponse.company.goal
-              name = response.getCompaniesResponse.company.companyName
-              coordinatorId = response.getCompaniesResponse.company.coordinatorId
+        TeamraiserCompanyService.getCompanies 'list_page_size=500&company_id=' + $scope.companyId,
+          error: ->
+            # TODO
+          success: (response) ->
+            companies = response.getCompaniesResponse.company
+            if not companies
+              # TODO
+            else
+              companies = [companies] if not angular.isArray companies
+              $scope.participantCount = companies[0].participantCount 
+              totalTeams = companies[0].teamCount
+              eventId = companies[0].eventId
+              amountRaised = companies[0].amountRaised
+              goal = companies[0].goal
+              name = companies[0].companyName
+              coordinatorId = companies[0].coordinatorId
               $rootScope.companyName = name
               setCompanyProgress amountRaised, goal
               

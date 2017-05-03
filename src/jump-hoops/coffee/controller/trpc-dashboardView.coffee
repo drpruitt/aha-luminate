@@ -428,6 +428,8 @@ angular.module 'trPcControllers'
             sku: prize.sku
             status: prize.status
             earned: prize.earned_datetime
+      , (response) ->
+        # TODO
 
       initCarousel = ->
         owl = jQuery '.owl-carousel'
