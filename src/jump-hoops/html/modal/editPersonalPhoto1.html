@@ -29,6 +29,12 @@
     <div class="form-group" ng-if="!personalPhoto1IsDefault">
       or <a href="#" ng-click="deletePersonalPhoto1($event)">revert to default photo</a>
     </div>
+    <div class="form-group">
+      <label for="personal-photo-1-caption">
+        Caption:
+      </label>
+      <input type="text" class="form-control" name="graphic_caption" id="personal-photo-1-caption" value="{{personalPagePhoto1.caption}}">
+    </div>
   </div>
   <div class="modal-footer">
     <div class="clearfix">

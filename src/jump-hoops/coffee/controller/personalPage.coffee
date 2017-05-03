@@ -215,6 +215,7 @@ angular.module 'ahaLuminateControllers'
         .replace(/<em>/g, '<i>').replace(/<em /g, '<i ').replace /<\/em>/g, '</i>'
         $scope.personalPageContent.ng_rich_text = richText
         $scope.personalPageContent.mode = 'edit'
+        angular.element('[ta-bind][contenteditable]').focus()
       
       $scope.resetPersonalPageContent = ->
         $scope.personalPageContent.ng_rich_text = $scope.personalPageContent.rich_text
