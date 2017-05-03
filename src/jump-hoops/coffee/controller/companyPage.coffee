@@ -161,11 +161,12 @@ angular.module 'ahaLuminateControllers'
               setCompanyParticipants companyParticipants, totalNumberParticipants, totalFundraisers
       getCompanyParticipants()
       
-      TeamraiserRegistrationService.getRegistration
-        success: ->
-          participantRegistration = response.data.getRegistrationResponse?.registration
-          if participantRegistration
-            $scope.participantRegistration = participantRegistration
+      if $scope.consId
+        TeamraiserRegistrationService.getRegistration
+          success: (response) ->
+            participantRegistration = response.getRegistrationResponse?.registration
+            if participantRegistration
+              $scope.participantRegistration = participantRegistration
       
       $scope.companyPagePhoto1 =
         defaultUrl: APP_INFO.rootPath + 'dist/jump-hoops/image/company-default.jpg'
