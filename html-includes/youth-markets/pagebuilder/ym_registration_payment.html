@@ -28,7 +28,7 @@
         </div>
       ]]
     </div>
-    <form class="ym-registration-payment-form" method="POST" ng-submit="submitPayment()">
+    <form class="ym-registration-payment-form" method="POST" novalidate ng-submit="submitPayment()">
       <div class="hidden js--registration-payment-billing-info">
         [[C:selectlist-title-element:billing_title]]
         [[C:text-element:billing_first_name]]
@@ -124,6 +124,7 @@
           </div>
         </div>
       </div>
+      <hr class="ym-section-divider">
       <div class="hidden js--registration-payment-account-info">
         [[?xx::x[[C:payment-type-element:responsive_payment_type]]x::
           [[C:payment-type-element:payment_type]]
@@ -131,10 +132,30 @@
           [[C:payment-type-element:responsive_payment_type]]
         ]]
       </div>
-      <hr class="ym-section-divider">
-      <div ng-cloak>
+      <p class="ym-section-header">
+        Your Payment Information:
+      </p>
+      <div class="row" ng-if="paymentQuestions.responsive_payment_typepay_typeradio" ng-cloak>
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+          <div class="ym-registration-payment-type">
+            <div class="row">
+              <div class="col-xs-6">
+                <button type="button" class="btn" ng-class="{'btn-toggle': paymentInfo.responsive_payment_typepay_typeradio == 'paypal', 'btn-primary': paymentInfo.responsive_payment_typepay_typeradio == 'credit'}" ng-click="togglePaymentType('credit')">
+                  <strong>Credit Card</strong>
+                </button>
+              </div>
+              <div class="col-xs-6">
+                <button type="button" class="btn" ng-class="{'btn-toggle': paymentInfo.responsive_payment_typepay_typeradio == 'credit', 'btn-primary': paymentInfo.responsive_payment_typepay_typeradio == 'paypal'}" ng-click="togglePaymentType('paypal')">
+                  <strong>PayPal</strong>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div ng-if="paymentInfo.responsive_payment_typepay_typeradio == 'credit'" ng-cloak>
         <div class="row" ng-if="paymentQuestions.responsive_payment_typecc_numbername" ng-cloak>
-          <div class="col-xs-12">
+          <div class="col-xs-12 col-sm-8 col-sm-offset-2">
             <div class="form-group" ng-class="{'has-error': paymentQuestions.responsive_payment_typecc_numbername.hasError}">
               <label class="control-label" for="paymentInfo-responsive_payment_typecc_numbername">
                 Credit Card Number:

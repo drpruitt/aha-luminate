@@ -40,6 +40,9 @@ angular.module 'ahaLuminateControllers'
         false
       
       $scope.submitPtype = ->
-        angular.element('.js--default-ptype-form').submit()
-        false
+        if not $scope.participationOptionsForm.$valid
+          window.scrollTo 0, 0
+        else
+          angular.element('.js--default-ptype-form').submit()
+          false
   ]
