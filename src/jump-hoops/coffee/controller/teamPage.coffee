@@ -164,8 +164,12 @@ angular.module 'ahaLuminateControllers'
                 photoItems = [photoItems] if not angular.isArray photoItems
                 angular.forEach photoItems, (photoItem) ->
                   photoUrl = photoItem.customUrl
+                  photoCaption = photoItem.caption
+                  if not photoCaption or not angular.isString(photoCaption)
+                    photoCaption = ''
                   if photoItem.id is '1'
                     $scope.teamPagePhoto1.customUrl = photoUrl
+                    $scope.teamPagePhoto1.caption = photoCaption
               $scope.closeTeamPhoto1Modal()
       
       $scope.teamPageContent =
