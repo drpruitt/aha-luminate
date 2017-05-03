@@ -33,6 +33,17 @@
         ::
           [[A4]]
         ]]
+        [[?
+          [[?[[A6]]::ERR_BAD_GOAL::T::]]
+        ::T::
+          <ul>
+            [[?[[A6]]::ERR_BAD_GOAL::
+              <li>
+                [[E130:[[T8:[[M0:friendraiser:error_invalid_goal_amt]]]] "Error: " "" replaceall]]
+              </li>
+            ::]]
+          </ul>
+        ::]]
       </div>
     ]]
     [[?[[A6]]::ERR_TRANS_TOO_MUCH::
@@ -44,7 +55,7 @@
       <span id="pt_instruction_container">[[C1:fr_pt_instruction]]</span>
     </div>
   </div>
-  <form class="ym-registration-ptype-form" method="POST" ng-submit="submitPtype()">
+  <form class="ym-registration-ptype-form" name="participationOptionsForm" method="POST" novalidate ng-submit="submitPtype()">
     <div class="hidden js--registration-ptype-part-types">
       [[A13]]
     </div>
@@ -82,18 +93,13 @@
     ::]]
     [[?xTx::x[[A17]]x::
       <div class="ym-registration-ptype-goal-container">
-        [[?[[A6]]::ERR_BAD_GOAL::
-          <div class="alert alert-danger">
-            [[M0:friendraiser:error_invalid_goal_amt]]
-          </div>
-        ::]]
         <p class="ym-section-header">
           How much can you raise to support heart health?
         </p>
         <p>
           When you raise $100, you will earn all 4 animals!
         </p>
-        <div class="form-group [[?[[A6]]::ERR_BAD_GOAL::has-error::]]">
+        <div class="form-group [[?[[A6]]::ERR_BAD_GOAL::has-error::]]" ng-class="{'has-error': participationOptionsForm.$submitted && participationOptionsForm.fr_goal.$invalid}">
           <div class="sr-only">
             <div class="manageable-content" data-container="edit_fund_goal_container">
               <label class="control-label" id="fund_goal_container" for="fr_goal">
@@ -103,7 +109,7 @@
           </div>
           <div class="row">
             <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3">
-              <input type="text" class="form-control input-lg" name="fr_goal" id="participationOptions-fr_goal" ng-model="participationOptions.fr_goal" placeholder="[[?xx::x[[A18]]x::::[[?xx::x[[C1:fr_suggested_goal_field]]x::[[M0:friendraiser:suggested_goal_field]]::[[C1:fr_suggested_goal_field]]]] [[A18]]]]" maxlength="15">
+              <input type="text" class="form-control input-lg" name="fr_goal" id="participationOptions-fr_goal" ng-model="participationOptions.fr_goal" placeholder="[[?xx::x[[A18]]x::::[[?xx::x[[C1:fr_suggested_goal_field]]x::[[M0:friendraiser:suggested_goal_field]]::[[C1:fr_suggested_goal_field]]]] [[A18]]]]" maxlength="15" required>
             </div>
           </div>
         </div>
