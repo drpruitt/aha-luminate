@@ -244,7 +244,7 @@ angular.module 'ahaLuminateControllers'
         $scope.companyPageContent.mode = 'edit'
         $timeout ->
           angular.element('[ta-bind][contenteditable]').focus()
-        , 500
+        , 100
 
       $scope.resetCompanyPageContent = ->
         $scope.companyPageContent.ng_rich_text = $scope.companyPageContent.rich_text

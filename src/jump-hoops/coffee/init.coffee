@@ -37,6 +37,8 @@ angular.module 'ahaLuminateApp'
       
       # get data from root element
       $dataRoot = angular.element '[data-aha-luminate-root]'
+      $rootScope.nonsecurePath = luminateExtend.global.path.nonsecure
+      $rootScope.securePath = luminateExtend.global.path.secure
       $rootScope.frId = $dataRoot.data('fr-id') if $dataRoot.data('fr-id') isnt ''
       $rootScope.consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
       $rootScope.apiKey = $dataRoot.data('api-key') if $dataRoot.data('api-key') isnt ''

@@ -78,7 +78,7 @@ angular.module 'ahaLuminateControllers'
           $scope.personalProgress.percent = percent
           if not $scope.$$phase
             $scope.$apply()
-        , 500
+        , 100
       
       TeamraiserParticipantService.getParticipants 'fr_id=' + $scope.frId + '&first_name=' + encodeURIComponent('%%') + '&last_name=' + encodeURIComponent('%') + '&list_filter_column=reg.cons_id&list_filter_text=' + $scope.participantId, 
         error: ->
