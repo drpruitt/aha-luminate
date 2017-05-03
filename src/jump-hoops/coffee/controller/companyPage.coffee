@@ -11,8 +11,9 @@ angular.module 'ahaLuminateControllers'
     'TeamraiserTeamService'
     'TeamraiserParticipantService'
     'ZuriService'
+    'TeamraiserRegistrationService'
     'TeamraiserCompanyPageService'
-    ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService, ZuriService, TeamraiserCompanyPageService) ->
+    ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService, ZuriService, TeamraiserRegistrationService, TeamraiserCompanyPageService) ->
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0]
       domain = $location.absUrl().split('/site')[0]
       $rootScope.companyName = ''
@@ -160,17 +161,26 @@ angular.module 'ahaLuminateControllers'
               setCompanyParticipants companyParticipants, totalNumberParticipants, totalFundraisers
       getCompanyParticipants()
       
+      if $scope.consId
+        TeamraiserRegistrationService.getRegistration
+          success: (response) ->
+            participantRegistration = response.getRegistrationResponse?.registration
+            if participantRegistration
+              $scope.participantRegistration = participantRegistration
+      
       $scope.companyPagePhoto1 =
         defaultUrl: APP_INFO.rootPath + 'dist/jump-hoops/image/company-default.jpg'
       
       $scope.companyPhoto1IsDefault = true
       
       $scope.editCompanyPhoto1 = ->
+        delete $scope.updateCompanyPhoto1Error
         $scope.editCompanyPhoto1Modal = $uibModal.open
           scope: $scope
           templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/modal/editCompanyPhoto1.html'
       
       $scope.closeCompanyPhoto1Modal = ->
+        delete $scope.updateCompanyPhoto1Error
         $scope.editCompanyPhoto1Modal.close()
       
       $scope.cancelEditCompanyPhoto1 = ->
@@ -179,21 +189,26 @@ angular.module 'ahaLuminateControllers'
       $scope.deleteCompanyPhoto1 = (e) ->
         if e
           e.preventDefault()
-        # TODO
+        angular.element('.js--delete-company-photo-1-form').submit()
+        false
       
       window.trPageEdit =
         uploadPhotoError: (response) ->
           errorResponse = response.errorResponse
-          photoType = errorResponse.photoType
           photoNumber = errorResponse.photoNumber
           errorCode = errorResponse.code
           errorMessage = errorResponse.message
           
-          # if photoNumber is '1'
-            # TODO
+          if photoNumber is '1'
+            $scope.updateCompanyPhoto1Error =
+              message: errorMessage
+          if not $scope.$$phase
+            $scope.$apply()
         uploadPhotoSuccess: (response) ->
+          delete $scope.updateCompanyPhoto1Error
+          if not $scope.$$phase
+            $scope.$apply()
           successResponse = response.successResponse
-          photoType = successResponse.photoType
           photoNumber = successResponse.photoNumber
           
           TeamraiserCompanyPageService.getCompanyPhoto
@@ -205,18 +220,16 @@ angular.module 'ahaLuminateControllers'
                 photoItems = [photoItems] if not angular.isArray photoItems
                 angular.forEach photoItems, (photoItem) ->
                   photoUrl = photoItem.customUrl
-                  # if photoItem.id is '1'
-                    # TODO
+                  if photoItem.id is '1'
+                    $scope.companyPagePhoto1.customUrl = photoUrl
+              if not $scope.$$phase
+                $scope.$apply()
               $scope.closeCompanyPhoto1Modal()
       
       $scope.companyPageContent =
         mode: 'view'
         textEditorToolbar: [
           [
-            'h1'
-            'h2'
-            'h3'
-            'p'
             'bold'
             'italics'
             'underline'
@@ -224,16 +237,12 @@ angular.module 'ahaLuminateControllers'
           [
             'ul'
             'ol'
-            'justifyLeft'
-            'justifyCenter'
-            'justifyRight'
-            'justifyFull'
-            'indent'
-            'outdent'
           ]
           [
             'insertImage'
             'insertLink'
+          ]
+          [
             'undo'
             'redo'
           ]
@@ -250,7 +259,10 @@ angular.module 'ahaLuminateControllers'
         .replace(/<em>/g, '<i>').replace(/<em /g, '<i ').replace /<\/em>/g, '</i>'
         $scope.companyPageContent.ng_rich_text = richText
         $scope.companyPageContent.mode = 'edit'
-      
+        $timeout ->
+          angular.element('[ta-bind][contenteditable]').focus()
+        , 100
+
       $scope.resetCompanyPageContent = ->
         $scope.companyPageContent.ng_rich_text = $scope.companyPageContent.rich_text
         $scope.companyPageContent.mode = 'view'

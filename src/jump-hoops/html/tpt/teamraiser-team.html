@@ -12,11 +12,9 @@
           </button>
         ::]]
         <img class="hidden-md hidden-lg" ng-src="{{teamPagePhoto1.customUrl && teamPagePhoto1.customUrl != '' ? teamPagePhoto1.customUrl : teamPagePhoto1.defaultUrl}}" alt="{{teamPagePhoto1.caption}}" ng-cloak>
-        [[?xx::x[[C1:graphic_caption]]x::::
-          <div class="caption">
-            [[C1:graphic_caption]]
-          </div>
-        ]]
+      </div>
+      <div class="caption" ng-if="teamPagePhoto1.caption && teamPagePhoto1.caption != ''" ng-cloak>
+        <span ng-bind-html="teamPagePhoto1.caption"></span>
       </div>
     </div>
     <div class="col-md-6 ym-progress ym-secondary-medium-color">
@@ -105,6 +103,9 @@
   </div>
   <div class="ym-page-section ym-page-section__list ym-accent-color">
     <div class="ym-story" ng-class="teamParticipants.totalFundraisers < 1 ? 'col-md-12' : 'col-md-6'">
+      <h3 class="ym-headline">
+        Our Class is Heart Healthy!
+      </h3>
       [[?
         [[?xx::x[[S1:cons_id]]x::::
           [[?x[[E48:[[S80:trID]]:team-id]]xTRUEx::x[[S334:team_id]]x[[E48:[[S80:trID]]-[[S1:cons_id]]:if-is-captain]]x::T::]]
@@ -124,9 +125,6 @@
           </div>
         </div>
       ::]]
-      <h3 class="ym-headline">
-        Our Class is Heart Healthy!
-      </h3>
       <div class="hidden js--default-page-content" ng-non-bindable>
         [[C6:fr_rich_text]]
       </div>
@@ -142,7 +140,7 @@
           [[?x[[E48:[[S80:trID]]:team-id]]xTRUEx::x[[S334:team_id]]x[[E48:[[S80:trID]]-[[S1:cons_id]]:if-is-captain]]x::T::]]
         ]]
       ::T::
-        <div ng-show="teamPageContent.mode == 'edit'" ng-cloak>
+        <div class="ym-page-content-editor" ng-show="teamPageContent.mode == 'edit'" ng-cloak>
           <div text-angular name="ng_rich_text" ng-model="teamPageContent.ng_rich_text" ta-toolbar="{{teamPageContent.textEditorToolbar}}"></div>
         </div>
       ::]]
