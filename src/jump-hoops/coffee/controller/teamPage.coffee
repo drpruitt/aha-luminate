@@ -201,7 +201,9 @@ angular.module 'ahaLuminateControllers'
         .replace(/<em>/g, '<i>').replace(/<em /g, '<i ').replace /<\/em>/g, '</i>'
         $scope.teamPageContent.ng_rich_text = richText
         $scope.teamPageContent.mode = 'edit'
-        angular.element('[ta-bind][contenteditable]').focus()
+        $timeout ->
+          angular.element('[ta-bind][contenteditable]').focus()
+        , 500
       
       $scope.resetTeamPageContent = ->
         $scope.teamPageContent.ng_rich_text = $scope.teamPageContent.rich_text

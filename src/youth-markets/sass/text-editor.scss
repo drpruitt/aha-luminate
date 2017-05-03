@@ -2,33 +2,20 @@
   .btn-toolbar {
     border-bottom: 1px solid #dddddd;
     text-align: center;
-    padding: 11px 0;
-    
-    @media(min-width: $screen-md-min) {
-      padding: 0 0 11px;
-    }
-    
-    @media(min-width: $screen-lg-min) {
-      padding: 11px 0;
-    }
+    padding: 0 0 11px;
     
     > .btn-group {
       float: none;
-      border-right: 1px solid #dddddd;
       height: 24px;
-      padding: 0 10px;
       margin: 0;
       
-      @media(min-width: $screen-sm-min) {
+      @media(min-width: 375px) {
+        border-right: 1px solid #dddddd;
+        padding: 0 6px;
+      }
+      
+      @media(min-width: 414px) {
         padding: 0 12px;
-      }
-      
-      @media(min-width: $screen-md-min) {
-        margin: 11px 0 0;
-      }
-      
-      @media(min-width: $screen-lg-min) {
-        margin: 0;
       }
       
       &:last-child {
@@ -41,11 +28,6 @@
       border-radius: 0;
       padding: 3px 8px;
       margin-top: -3px;
-      
-      &[name="bold"], 
-      &[name="italics"] {
-        padding: 3px 6px;
-      }
     }
   }
   
