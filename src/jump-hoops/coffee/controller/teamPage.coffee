@@ -125,11 +125,13 @@ angular.module 'ahaLuminateControllers'
       $scope.teamPhoto1IsDefault = true
       
       $scope.editTeamPhoto1 = ->
+        delete $scope.updateTeamPhoto1Error
         $scope.editTeamPhoto1Modal = $uibModal.open
           scope: $scope
           templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/modal/editTeamPhoto1.html'
       
       $scope.closeTeamPhoto1Modal = ->
+        delete $scope.updateTeamPhoto1Error
         $scope.editTeamPhoto1Modal.close()
       
       $scope.cancelEditTeamPhoto1 = ->
@@ -138,21 +140,24 @@ angular.module 'ahaLuminateControllers'
       $scope.deleteTeamPhoto1 = (e) ->
         if e
           e.preventDefault()
-        # TODO
       
       window.trPageEdit =
         uploadPhotoError: (response) ->
           errorResponse = response.errorResponse
-          photoType = errorResponse.photoType
           photoNumber = errorResponse.photoNumber
           errorCode = errorResponse.code
           errorMessage = errorResponse.message
           
-          # if photoNumber is '1'
-            # TODO
+          if photoNumber is '1'
+            $scope.updateTeamPhoto1Error =
+              message: errorMessage
+          if not $scope.$$phase
+            $scope.$apply()
         uploadPhotoSuccess: (response) ->
+          delete $scope.updateTeamPhoto1Error
+          if not $scope.$$phase
+            $scope.$apply()
           successResponse = response.successResponse
-          photoType = successResponse.photoType
           photoNumber = successResponse.photoNumber
           
           TeamraiserTeamPageService.getTeamPhoto
@@ -170,6 +175,8 @@ angular.module 'ahaLuminateControllers'
                   if photoItem.id is '1'
                     $scope.teamPagePhoto1.customUrl = photoUrl
                     $scope.teamPagePhoto1.caption = photoCaption
+              if not $scope.$$phase
+                $scope.$apply()
               $scope.closeTeamPhoto1Modal()
       
       $scope.teamPageContent =

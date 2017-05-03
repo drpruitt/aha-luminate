@@ -166,11 +166,13 @@ angular.module 'ahaLuminateControllers'
       $scope.companyPhoto1IsDefault = true
       
       $scope.editCompanyPhoto1 = ->
+        delete $scope.updateCompanyPhoto1Error
         $scope.editCompanyPhoto1Modal = $uibModal.open
           scope: $scope
           templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/modal/editCompanyPhoto1.html'
       
       $scope.closeCompanyPhoto1Modal = ->
+        delete $scope.updateCompanyPhoto1Error
         $scope.editCompanyPhoto1Modal.close()
       
       $scope.cancelEditCompanyPhoto1 = ->
@@ -179,21 +181,24 @@ angular.module 'ahaLuminateControllers'
       $scope.deleteCompanyPhoto1 = (e) ->
         if e
           e.preventDefault()
-        # TODO
       
       window.trPageEdit =
         uploadPhotoError: (response) ->
           errorResponse = response.errorResponse
-          photoType = errorResponse.photoType
           photoNumber = errorResponse.photoNumber
           errorCode = errorResponse.code
           errorMessage = errorResponse.message
           
-          # if photoNumber is '1'
-            # TODO
+          if photoNumber is '1'
+            $scope.updateCompanyPhoto1Error =
+              message: errorMessage
+          if not $scope.$$phase
+            $scope.$apply()
         uploadPhotoSuccess: (response) ->
+          delete $scope.updateCompanyPhoto1Error
+          if not $scope.$$phase
+            $scope.$apply()
           successResponse = response.successResponse
-          photoType = successResponse.photoType
           photoNumber = successResponse.photoNumber
           
           TeamraiserCompanyPageService.getCompanyPhoto
@@ -207,6 +212,8 @@ angular.module 'ahaLuminateControllers'
                   photoUrl = photoItem.customUrl
                   if photoItem.id is '1'
                     $scope.companyPagePhoto1.customUrl = photoUrl
+              if not $scope.$$phase
+                $scope.$apply()
               $scope.closeCompanyPhoto1Modal()
       
       $scope.companyPageContent =
