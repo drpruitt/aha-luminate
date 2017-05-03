@@ -1,8 +1,9 @@
 .ym-page-content-editor {
   .btn-toolbar {
+    background-color: $brand-white;
     border-bottom: 1px solid #dddddd;
     text-align: center;
-    padding: 0 0 11px;
+    padding: 11px 0;
     margin: 0;
     
     > .btn-group {
@@ -28,7 +29,6 @@
       border: 0;
       border-radius: 0;
       padding: 3px 8px;
-      margin-top: -3px;
     }
   }
   
@@ -36,7 +36,6 @@
     &.form-control {
       border: 0;
       border-radius: 0;
-      box-shadow: none;
       min-height: 200px;
     }
     
