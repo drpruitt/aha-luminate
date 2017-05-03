@@ -34,11 +34,10 @@ angular.module 'ahaLuminateApp'
     ($rootScope, APP_INFO) ->
       $rootScope.nonSecureDomain = luminateExtend.global.path.nonsecure.split('/site/')[0] + '/'
       $rootScope.secureDomain = luminateExtend.global.path.secure.split('/site/')[0] + '/'
+      $rootScope.teamraiserAPIPath = $sce.trustAsResourceUrl luminateExtend.global.path.secure + 'CRTeamraiserAPI'
       
       # get data from root element
       $dataRoot = angular.element '[data-aha-luminate-root]'
-      $rootScope.nonsecurePath = luminateExtend.global.path.nonsecure
-      $rootScope.securePath = luminateExtend.global.path.secure
       $rootScope.frId = $dataRoot.data('fr-id') if $dataRoot.data('fr-id') isnt ''
       $rootScope.consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
       $rootScope.apiKey = $dataRoot.data('api-key') if $dataRoot.data('api-key') isnt ''
