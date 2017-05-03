@@ -205,8 +205,8 @@ angular.module 'ahaLuminateControllers'
                 photoItems = [photoItems] if not angular.isArray photoItems
                 angular.forEach photoItems, (photoItem) ->
                   photoUrl = photoItem.customUrl
-                  # if photoItem.id is '1'
-                    # TODO
+                  if photoItem.id is '1'
+                    $scope.companyPagePhoto1.customUrl = photoUrl
               $scope.closeCompanyPhoto1Modal()
       
       $scope.companyPageContent =
@@ -245,7 +245,7 @@ angular.module 'ahaLuminateControllers'
         $timeout ->
           angular.element('[ta-bind][contenteditable]').focus()
         , 500
-      
+
       $scope.resetCompanyPageContent = ->
         $scope.companyPageContent.ng_rich_text = $scope.companyPageContent.rich_text
         $scope.companyPageContent.mode = 'view'

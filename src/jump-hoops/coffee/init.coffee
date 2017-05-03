@@ -41,7 +41,7 @@ angular.module 'ahaLuminateApp'
       $rootScope.consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
       $rootScope.apiKey = $dataRoot.data('api-key') if $dataRoot.data('api-key') isnt ''
       $rootScope.authToken = $dataRoot.data('auth-token') if $dataRoot.data('auth-token') isnt ''
-      $rootScope.sessionCookie = $embedRoot.data('session-cookie') if $embedRoot.data('session-cookie') isnt ''
+      $rootScope.sessionCookie = $dataRoot.data('session-cookie') if $dataRoot.data('session-cookie') isnt ''
   ]
 
 angular.element(document).ready ->
