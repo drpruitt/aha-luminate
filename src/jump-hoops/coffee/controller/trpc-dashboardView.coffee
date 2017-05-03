@@ -382,8 +382,8 @@ angular.module 'trPcControllers'
             if not personalChallenges
               setPersonalChallenge()
             else
-              $scope.personalChallenge.id = personalChallenges.current
-              if $scope.personalChallenge.id isnt '1' and $scope.personalChallenge.id isnt '2' and $scope.personalChallenge.id isnt '3'
+              id = personalChallenges.current
+              if id isnt '1' and id isnt '2' and id isnt '3'
                 setPersonalChallenge()
               else
                 numCompleted = if personalChallenges.completed then Number(personalChallenges.completed) else 0
