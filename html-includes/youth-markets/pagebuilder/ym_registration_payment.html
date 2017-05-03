@@ -185,7 +185,7 @@
               </select>
             </div>
           </div>
-          <div class="col-xs-6 col-sm-4">
+          <div class="hidden-xs col-sm-4">
             <div class="form-group" ng-class="{'has-error': paymentQuestions.responsive_payment_typecc_cvvname.hasError}" ng-if="paymentQuestions.responsive_payment_typecc_cvvname" ng-cloak>
               <label class="control-label" for="paymentInfo-responsive_payment_typecc_cvvname">
                 CVV:
@@ -193,6 +193,17 @@
               <input type="text" class="form-control input-lg" name="ng_responsive_payment_typecc_cvvname" id="paymentInfo-responsive_payment_typecc_cvvname" ng-model="paymentInfo.responsive_payment_typecc_cvvname" maxlength="{{paymentQuestions.responsive_payment_typecc_cvvname.maxLength}}">
             </div>
           </div>
+        </div>
+        <div class="row visible-xs" ng-if="paymentQuestions.responsive_payment_typecc_cvvname" ng-cloak>
+          <div class="col-xs-6">
+            <div class="form-group" ng-class="{'has-error': paymentQuestions.responsive_payment_typecc_cvvname.hasError}" ng-if="paymentQuestions.responsive_payment_typecc_cvvname" ng-cloak>
+              <label class="control-label" for="paymentInfo-responsive_payment_typecc_cvvname">
+                CVV:
+              </label>
+              <input type="text" class="form-control input-lg" name="ng_responsive_payment_typecc_cvvname" id="paymentInfo-responsive_payment_typecc_cvvname" ng-model="paymentInfo.responsive_payment_typecc_cvvname" maxlength="{{paymentQuestions.responsive_payment_typecc_cvvname.maxLength}}">
+            </div>
+          </div>
+          <div class="col-xs-6"></div>
         </div>
       </div>
       <div class="ym-registration-form-footer">
