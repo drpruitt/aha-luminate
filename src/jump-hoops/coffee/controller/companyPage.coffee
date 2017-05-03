@@ -11,8 +11,9 @@ angular.module 'ahaLuminateControllers'
     'TeamraiserTeamService'
     'TeamraiserParticipantService'
     'ZuriService'
+    'TeamraiserRegistrationService'
     'TeamraiserCompanyPageService'
-    ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService, ZuriService, TeamraiserCompanyPageService) ->
+    ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService, ZuriService, TeamraiserRegistrationService, TeamraiserCompanyPageService) ->
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0]
       domain = $location.absUrl().split('/site')[0]
       $rootScope.companyName = ''
@@ -159,6 +160,12 @@ angular.module 'ahaLuminateControllers'
               totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
               setCompanyParticipants companyParticipants, totalNumberParticipants, totalFundraisers
       getCompanyParticipants()
+      
+      TeamraiserRegistrationService.getRegistration
+        success: ->
+          participantRegistration = response.data.getRegistrationResponse?.registration
+          if participantRegistration
+            $scope.participantRegistration = participantRegistration
       
       $scope.companyPagePhoto1 =
         defaultUrl: APP_INFO.rootPath + 'dist/jump-hoops/image/company-default.jpg'
