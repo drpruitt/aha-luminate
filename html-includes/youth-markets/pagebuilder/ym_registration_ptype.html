@@ -65,7 +65,10 @@
         </div>
         [[?xx::x[[A33]]x::::
           <div class="hidden js--registration-ptype-donation-levels">
+          <fieldset>
+            <legend>Donation levels</legend>
             [[A33]]
+          </fieldset>
           </div>
           <div class="ym-registration-ptype-donation-levels" ng-class="{'active': donationLevels.activeLevel}">
             <button type="button" class="btn btn-toggle" ng-class="{'active': donationLevels.activeLevel.amount == donationLevel.amount}" ng-repeat="donationLevel in donationLevels.levels" ng-click="toggleDonationLevel(donationLevel.amount)" ng-cloak>
@@ -103,7 +106,7 @@
           </div>
           <div class="row">
             <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3">
-              <input type="text" class="form-control input-lg" name="fr_goal" id="participationOptions-fr_goal" ng-model="participationOptions.fr_goal" placeholder="[[?xx::x[[A18]]x::::[[?xx::x[[C1:fr_suggested_goal_field]]x::[[M0:friendraiser:suggested_goal_field]]::[[C1:fr_suggested_goal_field]]]] [[A18]]]]" maxlength="15">
+              <input type="text" title="Participation Options" class="form-control input-lg" name="fr_goal" id="participationOptions-fr_goal" ng-model="participationOptions.fr_goal" placeholder="[[?xx::x[[A18]]x::::[[?xx::x[[C1:fr_suggested_goal_field]]x::[[M0:friendraiser:suggested_goal_field]]::[[C1:fr_suggested_goal_field]]]] [[A18]]]]" maxlength="15">
             </div>
           </div>
         </div>
@@ -139,11 +142,11 @@
       <input type="hidden" name="pg" value="[[A7]]">
       <input type="hidden" name="extra_person" value="[[A21]]">
       <input type="hidden" name="company_id" value="[[A42]]">
-      <input type="text" name="fr_part_radio" ng-model="participationOptions.fr_part_radio">
-      <input type="text" name="donation_level_form_[[A2]]" ng-model="participationOptions.ng_donation_level">
+      <input type="text" title="Participation Options Radio" name="fr_part_radio" ng-model="participationOptions.fr_part_radio">
+      <input type="text" title="Donation Level" name="donation_level_form_[[A2]]" ng-model="participationOptions.ng_donation_level">
       <input type="hidden" name="donation_level_custom_idsubmitted" value="true">
       <input type="hidden" name="donation_level_custom_id_donation_levels_submit" value="true">
-      <input type="text" name="fr_goal" ng-model="participationOptions.fr_goal">
+      <input type="text" title="Goal" name="fr_goal" ng-model="participationOptions.fr_goal">
       <input type="hidden" name="next_step.x" value="[[M1:friendraiser:join_team_step_next_button]]" ng-if="!ng_go_back">
       <input type="hidden" name="previous_step.x" value="[[M1:friendraiser:join_team_step_prev_button]]" ng-if="ng_go_back">
     </form>
