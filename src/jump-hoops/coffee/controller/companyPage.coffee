@@ -213,10 +213,6 @@ angular.module 'ahaLuminateControllers'
         mode: 'view'
         textEditorToolbar: [
           [
-            'h1'
-            'h2'
-            'h3'
-            'p'
             'bold'
             'italics'
             'underline'
@@ -224,16 +220,12 @@ angular.module 'ahaLuminateControllers'
           [
             'ul'
             'ol'
-            'justifyLeft'
-            'justifyCenter'
-            'justifyRight'
-            'justifyFull'
-            'indent'
-            'outdent'
           ]
           [
             'insertImage'
             'insertLink'
+          ]
+          [
             'undo'
             'redo'
           ]
