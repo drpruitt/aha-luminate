@@ -177,6 +177,7 @@ angular.module 'ahaLuminateControllers'
 
         angular.element('#tr_recognition_namerec_namename').attr('placeholder', 'If different from your name')
         angular.element('#tr_message_to_participantname').attr('placeholder', 'Write a message of encouragement. 255 characters max.')
+        angular.element('.donation-form-content > .form-info-message').prependTo('.ym-donation-headlines')
 
         employerMatchFields()
         billingAddressFields()
