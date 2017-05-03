@@ -27,7 +27,7 @@
       </label>
       <input type="file" name="photo_1_file" id="company-photo-1-file">
     </div>
-    <div class="form-group" ng-if="!companyPhoto1IsDefault">
+    <div class="form-group" ng-if="companyPagePhoto1.customUrl && companyPagePhoto1.customUrl != ''">
       or <a href="#" ng-click="deleteCompanyPhoto1($event)">revert to default photo</a>
     </div>
   </div>
