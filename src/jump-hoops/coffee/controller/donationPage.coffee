@@ -129,6 +129,10 @@ angular.module 'ahaLuminateControllers'
         angular.element('#billing_addr_zip_row').addClass 'billing-info'
         angular.element('#billing_addr_country_row').addClass 'billing-info'
         angular.element('.billing-info').addClass 'hidden'
+
+      $scope.togglePaymentType = (paymentType) ->
+        console.log paymentType
+        #$scope.paymentInfo.responsive_payment_typepay_typeradio = paymentType
       
       $scope.toggleBillingInfo = ->
         angular.element('.billing-info').toggleClass 'hidden'
