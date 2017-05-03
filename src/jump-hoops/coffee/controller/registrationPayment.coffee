@@ -83,6 +83,14 @@ angular.module 'ahaLuminateControllers'
           maxLength: questionMaxLength
           hasError: questionHasError
         $scope.paymentInfo[questionName] = questionValue
+      if angular.element('#responsive_payment_typepay_typeradiopaypal').length > 0
+        questionValue = angular.element('[name="responsive_payment_typepay_typeradio"]:checked').val()
+        $scope.paymentQuestions.responsive_payment_typepay_typeradio =
+          value: questionValue
+        $scope.paymentInfo.responsive_payment_typepay_typeradio = questionValue
+      
+      $scope.togglePaymentType = (paymentType) ->
+        $scope.paymentInfo.responsive_payment_typepay_typeradio = paymentType
       
       $scope.previousStep = ->
         $scope.ng_go_back = true

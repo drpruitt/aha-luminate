@@ -64,7 +64,7 @@
       </div>
     </div>
     <div ng-class="{'hidden': userType != 'existing'}" ng-cloak>
-      <form class="ym-registration-utype-login-form" method="POST" ng-submit="submitUtypeLogin()">
+      <form class="ym-registration-utype-login-form" method="POST" novalidate ng-submit="submitUtypeLogin()">
         <div class="ym-registration-utype-login-header">
           <p class="ym-section-header">
             Welcome Back! Please Log In:
@@ -132,7 +132,7 @@
       <p>
       </p>
     </div>
-    <form class="ym-registration-utype-forgot-form" method="POST" ng-submit="submitForgotLogin()">
+    <form class="ym-registration-utype-forgot-form" method="POST" novalidate ng-submit="submitForgotLogin()">
       <div class="row">
         <div class="col-xs-12 col-sm-6 col-sm-offset-3">
           <div class="form-group [[?xx::x[[A26]]x::::has-error]]">
