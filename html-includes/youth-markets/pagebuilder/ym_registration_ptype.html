@@ -112,6 +112,11 @@
               <input type="text" class="form-control input-lg" name="fr_goal" id="participationOptions-fr_goal" ng-model="participationOptions.fr_goal" placeholder="[[?xx::x[[A18]]x::::[[?xx::x[[C1:fr_suggested_goal_field]]x::[[M0:friendraiser:suggested_goal_field]]::[[C1:fr_suggested_goal_field]]]] [[A18]]]]" maxlength="15" required>
             </div>
           </div>
+          <div ng-if="participationOptionsForm.$submitted && participationOptionsForm.fr_goal.$invalid" ng-cloak>
+            <div class="help-block">
+              [[E130:[[T8:[[M0:friendraiser:error_invalid_goal_amt]]]] "Error: " "" replaceall]]
+            </div>
+          </div>
         </div>
       </div>
     ::]]
