@@ -61,9 +61,16 @@
           <h2 class="ym-headline">
             {{participantCount}}
           </h2>
-          <p>
-            team members registered.
-          </p>
+          <div ng-if="participantCount == 1">
+            <p>
+              team member registered.
+            </p>
+          </div>
+          <div ng-if="participantCount > 1">
+            <p>
+              team members registered.
+            </p>
+          </div>
         </div>
         <div class="ym-promo-block__item ym-promo-block__item--exercise ym-promo-block--circle" ng-if="activity1amt != 0" ng-cloak>
           <h2 class="ym-headline">
@@ -78,7 +85,7 @@
             {{activity2amt}}
           </h2>
           <p>
-            daily challenges of choosing water over sugar drinks
+            daily challenges of choosing water over sugar drinks.
           </p>
         </div>
         <div class="ym-promo-block__item ym-promo-block__item--food ym-promo-block--circle" ng-if="activity3amt != 0" ng-cloak>
@@ -86,7 +93,7 @@
             {{activity3amt}}
           </h2>
           <p>
-            daily challenges of fruits and veggies at every meal
+            daily challenges of fruits and veggies at every meal.
           </p>
         </div>
       </div>
