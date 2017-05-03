@@ -24,6 +24,8 @@ angular.module 'trPcApp'
     ($rootScope, NG_PC_APP_INFO) ->
       # get data from embed container
       $embedRoot = angular.element '[data-embed-root]'
+      $rootScope.consName = $embedRoot.data('cons-name') or ''
+      $rootScope.challengeTaken = $embedRoot.data('challenge-taken') if $embedRoot.data('challenge-taken') isnt ''
   ]
 
 angular.element(document).ready ->
