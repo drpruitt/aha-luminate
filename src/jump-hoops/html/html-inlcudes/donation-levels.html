@@ -1,5 +1,8 @@
 <div class="donation-form-container">
   <div class="ym-donation-headlines">
+    [[?xx::x[[S1:user_name]]x::::
+      <p>You are currently logged in as [[S1:user_name]] [[S1:last_name]]. If you are not [[S1:user_name]] [[S1:last_name]], <a href="UserLogin?logout=t&NEXTURL=[[T1:[[S8]]]]">click here</a>.
+    ]]
     <h2 class="h5">Your Donation to:
     [[?x20x::x[[S334:PROXY_TYPE]]x::
       [[S120:dc:participantName]]
@@ -23,8 +26,8 @@
   </div>
   <div class="event-secondary-light ym-donation-levels">
     <div class="ym-donation-levels__type">
-      <a class="btn btn-toggle btn-lg ym-donation-levels__type--onetime active" ng-click="giftType('onetime')">One Time Gift</a>
-      <a class="btn btn-toggle btn-lg ym-donation-levels__type--monthly" ng-click="giftType('monthly');">Installment Gift</a>
+      <a href="javascript:void(0);" class="btn btn-toggle btn-lg ym-donation-levels__type--onetime active" ng-click="giftType('onetime')">One Time Gift</a>
+      <a ng-href="javascript:void(0);" class="btn btn-toggle btn-lg ym-donation-levels__type--monthly" ng-click="giftType('monthly');">Installment Gift</a>
     </div>
     <hr>
     <div class="ym-donation-levels__levels">
