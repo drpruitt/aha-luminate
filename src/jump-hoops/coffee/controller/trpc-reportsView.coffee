@@ -125,7 +125,7 @@ angular.module 'trPcControllers'
                       challenge: challenge
                     schoolDetailDownloadData.push [
                       firstName + ' ' + jQuery.trim $reportTableRow.find('td').eq(9).text()
-                      amountFormatted
+                      amountFormatted.replace('$', '').replace /,/g, ''
                       ecardsSent
                       emailsSent
                       tshirtSize
