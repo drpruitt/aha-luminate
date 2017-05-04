@@ -77,7 +77,7 @@
 
     p {
       color: inherit;
-      font-weight: bold;
+      font-weight: 700;
       max-width: 100%;
       margin: 0 auto;
     }
@@ -149,12 +149,12 @@
   }
 
   .ym-promo-block--full {
-    @media(min-width: $screen-sm-min){
+    @media (min-width: $screen-sm-min) {
       display: flex;
     }
 
     .event-accent-medium {
-      @media(min-width: $screen-sm-min){
+      @media (min-width: $screen-sm-min) {
         justify-content: center;
         align-content:center;
         text-align: center;
@@ -173,13 +173,13 @@
         color: $event-secondary;
         margin-top: 0;
 
-        @media (min-width: $screen-md-min){
+        @media (min-width: $screen-md-min) {
           margin: 0 0 20px;
         }
       }
 
       .btn {
-        @media (min-width: $screen-md-min){
+        @media (min-width: $screen-md-min) {
           margin-top: 15px;
         }
       }
@@ -205,7 +205,7 @@
       }
     }
 
-    @media(max-width: $screen-sm - 1){
+    @media (max-width: $screen-sm - 1) {
       display: block;
 
 
@@ -230,7 +230,7 @@
     }
     .ym-sidebar-promo__text {
       padding: 20px 20px 30px;
-      font-weight: bold;
+      font-weight: 700;
     }
   }
 

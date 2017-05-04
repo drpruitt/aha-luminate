@@ -51,7 +51,7 @@
     .h5 {
       margin: 0 0 20px;
     
-      @media(min-width: $screen-md-min){
+      @media (min-width: $screen-md-min) {
         margin: 0 0 40px;
       }
     }
@@ -77,7 +77,7 @@
     padding: 40px 0 0;
     margin: 40px 0 30px;
 
-    @media(min-width: $screen-sm-min){
+    @media (min-width: $screen-sm-min) {
       padding: 50px 0 0;
       margin: 50px 0 40px;
     }
@@ -119,7 +119,7 @@
     max-width: 670px;
     padding: 20px 5px;
 
-    @media(min-width: $screen-xs-min){
+    @media (min-width: $screen-xs-min) {
       padding: 30px 20px;
     }
     
@@ -154,11 +154,11 @@
 
       &:first-child {
         margin: 0 auto 10px;
-        @media(min-width: $screen-xs-min){
+        @media (min-width: $screen-xs-min) {
           margin: 0 10px 0 0;
         }
 
-        @media(min-width: $screen-sm-min){
+        @media (min-width: $screen-sm-min) {
           margin: 0 30px 0 0;
         }
       }  
@@ -193,7 +193,7 @@
       padding-left: 0;
     }
 
-    @media (min-width: $screen-xs-min){
+    @media (min-width: $screen-xs-min) {
       margin: 0 0 15px;
       padding: 0 10px;
     }
@@ -212,11 +212,11 @@
       &.btn-enter {
         width: 110px;
         background: $brand-white;
-        font-weight: bold;
+        font-weight: 700;
 
         &.active,
         &:hover {
-          font-weight: bold;
+          font-weight: 700;
           background: $event-primary;
         }
       }
@@ -247,7 +247,7 @@
   .ym-employer-match {
     padding: 30px 0 0;
 
-    @media(min-width: $screen-sm-min){
+    @media (min-width: $screen-sm-min) {
       padding: 50px 50px 0;
     }
   }
@@ -255,7 +255,7 @@
   div.matching-gift-container {
     padding: 0 25px 25px;
 
-    @media(min-width: $screen-sm-min) {
+    @media (min-width: $screen-sm-min) {
       padding: 0 75px 25px;
     }
 
@@ -316,7 +316,7 @@
   .employer-address-container {
     padding: 0 20px;
 
-    @media(min-width: $screen-sm-min){
+    @media (min-width: $screen-sm-min) {
       padding: 0 50px;
     }
   }
@@ -324,7 +324,7 @@
   .ym-employer-match__message {
     padding: 20px 25px 0;
 
-    @media(min-width: $screen-sm-min){
+    @media (min-width: $screen-sm-min) {
       padding: 25px 25px 0;
     }
   }
@@ -336,7 +336,7 @@
   #tr_show_gift_to_public_row {
     padding: 0 25px 25px;
 
-    @media(min-width: $screen-sm-min){
+    @media (min-width: $screen-sm-min) {
       padding: 0 75px 25px;
     }
   }
@@ -344,7 +344,7 @@
   #tr_recognition_nameanonymous_row {
     padding: 0 25px;
 
-    @media(min-width: $screen-sm-min){
+    @media (min-width: $screen-sm-min) {
       padding: 0 75px;
     }
   }
@@ -353,14 +353,14 @@
   #tr_recognition_namerec_name_row {
     padding: 25px;
 
-    @media(min-width: $screen-sm-min){
+    @media (min-width: $screen-sm-min) {
       padding: 25px 75px;
     }
     
     &.ym-border {
       padding-bottom: 20px;
 
-      @media(min-width: $screen-sm-min){
+      @media (min-width: $screen-sm-min) {
         padding-bottom: 40px;
       }
     }
@@ -373,7 +373,7 @@
   .ym-tribute-gift {
     padding: 20px 0 0;
 
-    @media(min-width: $screen-sm-min){
+    @media (min-width: $screen-sm-min) {
       padding: 20px 100px 0;
     }
     
@@ -383,33 +383,33 @@
     margin: 20px auto 0;
     max-width: 226px;
 
-    @media(min-width: $screen-xs-min){
+    @media (min-width: $screen-xs-min) {
       max-width: 255px;
     }
 
-    @media(min-width: $screen-sm-min){
+    @media (min-width: $screen-sm-min) {
       max-width: 435px;
     }
     
     .btn-toggle {
       min-width: 100px;
 
-      @media(min-width: $screen-xs-min){
+      @media (min-width: $screen-xs-min) {
         min-width: 120px;
       }
 
-      @media(min-width: $screen-sm-min){
+      @media (min-width: $screen-sm-min) {
         width: 200px;
       }
       
       &:first-child {
         margin-right: 5px;
 
-        @media(min-width: $screen-xs-min){
+        @media (min-width: $screen-xs-min) {
           margin-right: 10px;
         }
 
-        @media (min-width: $screen-sm-min){
+        @media (min-width: $screen-sm-min) {
           margin-right: 30px;
         }
       }
@@ -537,7 +537,7 @@
     #responsive_payment_typecc_number_row {
       margin-bottom: 20px;
 
-      @media(min-width: $screen-sm-min) {
+      @media (min-width: $screen-sm-min) {
         max-width: 470px;
         margin-bottom: 30px;
       }
@@ -551,7 +551,7 @@
       display: inline-block;
       vertical-align: middle;
 
-      @media(min-width: $screen-sm-min) {
+      @media (min-width: $screen-sm-min) {
         padding-left: 50px;
       }
       
@@ -563,11 +563,11 @@
           margin: 0;
         }
 
-        @media(min-width: $screen-xs-min) {
+        @media (min-width: $screen-xs-min) {
           margin: 0 10px 0 0;
         }
         
-        @media(min-width: $screen-sm-min) {
+        @media (min-width: $screen-sm-min) {
           margin: 0 30px 0 0;
           width: 170px;
         }
@@ -585,13 +585,13 @@
       margin: 20px 0 0;
       vertical-align: middle;
 
-      @media(min-width: 567px) {
+      @media (min-width: 567px) {
         display: inline-block;
         clear: none;
         margin: 0 0 0 10px;
       }
 
-      @media(min-width: $screen-sm-min) {
+      @media (min-width: $screen-sm-min) {
         margin: 0 0 0 30px;
       }
       
@@ -599,7 +599,7 @@
         width: auto;
         max-width: 100px;
 
-        @media(min-width: 567px) {
+        @media (min-width: 567px) {
           max-width: 170px;
         }
       }
@@ -632,12 +632,12 @@
   padding: 0 0 20px;
   max-width: 270px;  
 
-  @media(min-width: $screen-xs-min) {
+  @media (min-width: $screen-xs-min) {
     padding: 25px;
     max-width: 100%;
   }
   
-  @media(min-width: 1050px) {
+  @media (min-width: 1050px) {
     max-width: 270px;
     padding: 0 0 25px;
     float: right;
@@ -646,7 +646,7 @@
   hr {
     clear: both;
     
-    @media(min-width: 1050px) {
+    @media (min-width: 1050px) {
       max-width: 230px;
       margin: 10px auto 20px;
     }
@@ -660,7 +660,7 @@
       float: left;
     }
 
-    @media(min-width: 1050px) {
+    @media (min-width: 1050px) {
       margin: 0 auto 25px;
     }
   }  
@@ -689,7 +689,7 @@
     padding: 0;
   }
 
-  @media(min-width: 1050px) {
+  @media (min-width: 1050px) {
     padding: 25px 20px 0;
     width: 100%;
     float: none;
@@ -702,4 +702,3 @@
     margin: 0 10px 0 0;
   } 
 }
-
