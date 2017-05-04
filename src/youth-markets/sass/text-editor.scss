@@ -25,10 +25,18 @@
       }
     }
     
-    .btn {
-      border: 0;
-      border-radius: 0;
-      padding: 3px 8px;
+    .btn, 
+    a.btn {
+      &, 
+      &:link, 
+      &:visited, 
+      &:hover, 
+      &:focus, 
+      &:active {
+        border: 0;
+        border-radius: 0;
+        padding: 3px 8px;
+      }
     }
   }
   
