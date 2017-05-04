@@ -1,5 +1,8 @@
 .cms {
-  h2, h5 {
+  h2,
+  .h2-heading,
+  h5,
+  .h5-heading {
     margin: 0 0 30px;
 
     @media(max-width: $screen-sm){
@@ -7,7 +10,9 @@
     }
   }
 
-  h2 + h5 {
+  h2 + h5,
+  h2 + .h5-heading
+   {
     margin: 0 0 20px;
   }
 
@@ -181,7 +186,8 @@
     }
 
     .ym-sidebar__promo--list {
-      h6 {
+      h6,
+      .h6-heading {
         margin-bottom: 25px;
       }
     }
@@ -192,7 +198,8 @@
   padding: 40px;
 
   &.event-secondary-medium {
-    h5 {
+    h5,
+    .h5-heading {
       color: $event-secondary;
       margin-top: 0px;
       margin-bottom: 20px;
@@ -280,26 +287,28 @@
 
 .ym-story {
   padding-bottom: 40px;
-  
+
   .ym-story-edit-btns {
     margin: 0 0 24px;
-    
+
     .btn {
       border-radius: 0;
       padding: 7px 15px;
     }
   }
-  
+
   h3 {
-    + h5 {
+    + h5,
+    + .h5-heading {
       margin-top: inherit;
     }
   }
-  
-  h5 {
+
+  h5,
+  .h5-heading {
     margin-top: 30px;
   }
-  
+
   .ym-story-photo {
     float: right;
     width: 269px;
@@ -551,7 +560,7 @@
             background-color: $event-secondary;
           }
         }
-      }  
+      }
     }
   }
 
