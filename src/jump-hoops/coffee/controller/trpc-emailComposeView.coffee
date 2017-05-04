@@ -143,10 +143,6 @@ angular.module 'trPcControllers'
       
       $scope.textEditorToolbar = [
         [
-          'h1'
-          'h2'
-          'h3'
-          'p'
           'bold'
           'italics'
           'underline'
@@ -154,16 +150,12 @@ angular.module 'trPcControllers'
         [
           'ul'
           'ol'
-          'justifyLeft'
-          'justifyCenter'
-          'justifyRight'
-          'justifyFull'
-          'indent'
-          'outdent'
         ]
         [
           'insertImage'
           'insertLink'
+        ]
+        [
           'undo'
           'redo'
         ]

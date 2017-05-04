@@ -11,12 +11,12 @@
       height: 24px;
       margin: 0;
       
-      @media(min-width: 375px) {
+      @media (min-width: 375px) {
         border-right: 1px solid #dddddd;
         padding: 0 6px;
       }
       
-      @media(min-width: 414px) {
+      @media (min-width: 414px) {
         padding: 0 12px;
       }
       
@@ -25,10 +25,18 @@
       }
     }
     
-    .btn {
-      border: 0;
-      border-radius: 0;
-      padding: 3px 8px;
+    .btn, 
+    a.btn {
+      &, 
+      &:link, 
+      &:visited, 
+      &:hover, 
+      &:focus, 
+      &:active {
+        border: 0;
+        border-radius: 0;
+        padding: 3px 8px;
+      }
     }
   }
   

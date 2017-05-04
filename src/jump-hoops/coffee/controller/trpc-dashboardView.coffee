@@ -40,6 +40,8 @@ angular.module 'trPcControllers'
       
       # undocumented update_last_pc2_login parameter required to make news feeds work, see bz #67720
       NgPcTeamraiserRegistrationService.updateRegistration 'update_last_pc2_login=true'
+        .then ->
+          NgPcTeamraiserRegistrationService.getRegistration()
       
       if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true' or $scope.location is '/dashboard-student'
         $scope.dashboardProgressType = 'personal'

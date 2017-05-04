@@ -64,7 +64,7 @@
               <div class="ym-progress__thermometer">
                 <div class="ym-progress__thermometer--fill" ng-style="{'width': companyProgress.percent + '%'}"></div>
               </div>
-              <div class="clearfix">
+              <div class="ym-progress-related clearfix">
                 <div class="pull-right">
                   <p>
                     <strong><span ng-bind-html="companyProgress.raisedFormatted"></span></strong> raised
@@ -145,7 +145,7 @@
         </div>
       </div>
     </section>
-    <section class="ym-pc-dashboard-badges-section" ng-if="prizes && prizes.length > 0">
+    <section class="ym-pc-dashboard-badges-section" ng-if="prizes && prizes.length > 0" ng-cloak>
       <div class="ym-pc-dashboard-section-header">
         <h2 class="h5">
           Badges
@@ -334,7 +334,7 @@
         <div class="col-sm-6 ym-pc-dashboard-coordinator-progress-section__column event-secondary-medium">
           <div class="ym-pc-dashboard-coordinator-progress-box">
             <div class="ym-pc-dashboard-section-header">
-              <h3>
+              <h3 class="h5">
                 Fundraising
               </h3>
             </div>
@@ -361,7 +361,7 @@
               <div class="ym-progress__thermometer">
                 <div class="ym-progress__thermometer--fill" ng-style="{'width': companyProgress.percent + '%'}"></div>
               </div>
-              <div class="clearfix">
+              <div class="ym-progress-related clearfix">
                 <div class="pull-right">
                   <p>
                     <strong><span ng-bind-html="companyProgress.raisedFormatted"></span></strong> raised
@@ -445,7 +445,7 @@
         <div class="col-sm-6 ym-pc-dashboard-coordinator-progress-section__column event-secondary-medium">
           <div class="ym-pc-dashboard-coordinator-students-box" ng-if="companyInfo.participantCount" ng-cloak>
             <div class="ym-pc-dashboard-section-header">
-              <h3>
+              <h3 class="h5">
                 My Students
               </h3>
             </div>
