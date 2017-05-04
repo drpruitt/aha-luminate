@@ -54,8 +54,8 @@ angular.module 'ahaLuminateControllers'
         
         angular.element('.ym-donation-levels__amount .btn-toggle.active').removeClass 'active'
         angular.element('.ym-donation-levels__amount .btn-toggle.level' + level).addClass 'active'
-        angular.element('.ym-donation-levels__message').addClass 'hidden'
-        angular.element('.ym-donation-levels__message.level' + level).removeClass 'hidden'
+        angular.element('.ym-donation-levels__message').removeClass 'active'
+        angular.element('.ym-donation-levels__message.level' + level).addClass 'active'
         angular.element('.donation-level-container.level' + level + ' input').click()
 
       console.log $scope.donationLevels

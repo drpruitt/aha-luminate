@@ -39,10 +39,8 @@
         <input type="text" class="btn btn-toggle btn-enter {{donationLevel.classLevel}}" title="other_amount" ng-if="donationLevel.userSpecified == 'true'" ng-keyup="enterAmount(otherAmt)" ng-model="otherAmt" ng-click="selectLevel('other', donationLevel.levelId);" placeholder="Other">
       </div>
     </div>
-    <div class="ym-donation-levels__message level{{donationLevel.levelId}}" ng-repeat="donationLevel in donationLevels" ng-class="{'active': donationLevel.levelChecked == true">
+    <div class="ym-donation-levels__message level{{donationLevel.levelId}}" ng-repeat="donationLevel in donationLevels" ng-class="{'active': donationLevel.levelChecked == true}">
       <p>
-        {{donationLevel.levelLabel}}
-        {{donationLevel.levelChecked}}
       </p>
     </div>
     <div class="ym-donation-levels__message--installment level--installment"  ng-class="{'hidden': donationInfo.giftType != 'monthly'}">
