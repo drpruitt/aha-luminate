@@ -127,8 +127,10 @@ angular.module 'ahaLuminateControllers'
       $scope.togglePaymentType = (paymentType) ->
         if paymentType == 'paypal'
           angular.element('#responsive_payment_typepay_typeradiopaypal').click()
+          angular.element('#payment_cc_container').hide()
         else
           angular.element('#responsive_payment_typepay_typeradiocredit').click()
+          angular.element('#payment_cc_container').show()
 
       $scope.toggleBillingInfo = ->
         angular.element('.billing-info').toggleClass 'hidden'
