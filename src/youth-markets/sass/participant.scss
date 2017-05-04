@@ -340,7 +340,11 @@ main > .container {
 
 .ym-pc-dashboard-progress-section {
   .h3 {
-    margin-bottom: 35px;
+    margin: 14px 0;
+    
+    @media (min-width: $screen-sm-min) {
+      margin: 0 0 35px;
+    }
   }
   
   .row {
@@ -369,7 +373,6 @@ main > .container {
         }
       }
       
-      h5, 
       .h5 {
         margin: 0 0 25px;
       }
@@ -779,7 +782,6 @@ main > .container {
     }
   }
   
-  h5, 
   .h5 {
     color: $event-secondary;
     margin: 0 0 20px;
@@ -807,7 +809,6 @@ main > .container {
     text-align: center;
     
     .ym-pc-dashboard-section-header {
-      h5, 
       .h5 {
         color: $event-secondary;
       }
@@ -1188,7 +1189,6 @@ main > .container {
         }
       }
       
-      h5, 
       .h5 {
         margin: 0 0 25px;
       }
@@ -1428,7 +1428,6 @@ main > .container {
     text-align: center;
     
     .ym-pc-dashboard-section-header {
-      h5, 
       .h5 {
         color: $event-secondary;
         margin: 0 0 18px;
@@ -1475,7 +1474,6 @@ main > .container {
   text-align: center;
   margin: 0 0 28px;
   
-  h5, 
   .h5 {
     margin: 0;
   }
