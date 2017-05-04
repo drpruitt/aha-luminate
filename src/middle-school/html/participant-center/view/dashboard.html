@@ -263,61 +263,6 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-6 ym-activity-box ym-activity-box--challenge">
-          <h3 class="h5">
-            Daily Heart-Healthy Challenge
-          </h3>
-          <div class="ym_my_challenge__current" ng-if="personalChallenge.id && personalChallenge.id != '-1'" ng-cloak>
-            <div class="row">
-              <div class="col-sm-8">
-                <p class="ym_my_challenge__description">
-                  <strong><span ng-bind-html="personalChallenge.name"></span></strong>
-                </p>
-                <p class="ym_my_challenge__stats" ng-if="personalChallenge.numCompleted == 1" ng-cloak>
-                  I've met my challenge <span>1</span> day!
-                </p>
-                <p class="ym_my_challenge__stats" ng-if="personalChallenge.numCompleted != 1" ng-cloak>
-                  I've met my challenge <span><span ng-bind-html="personalChallenge.numCompleted"></span></span> days!
-                </p>
-              </div>
-              <div class="col-sm-4">
-                <img class="img-responsive" src="../aha-luminate/dist/middle-school/image/my-challenge-exercise.png" alt="{{personalChallenge.name}}" ng-if="personalChallenge.id == '1'" ng-cloak>
-                <img class="img-responsive" src="../aha-luminate/dist/middle-school/image/my-challenge-water.png" alt="{{personalChallenge.name}}" ng-if="personalChallenge.id == '2'" ng-cloak>
-                <img class="img-responsive" src="../aha-luminate/dist/middle-school/image/my-challenge-food.png" alt="{{personalChallenge.name}}" ng-if="personalChallenge.id == '3'" ng-cloak>
-              </div>
-            </div>
-            <div class="ym_my_challenge__actions">
-              <a class="btn btn-md-wide btn-primary" ng-click="logChallenge()" ng-if="!personalChallenge.completedToday" ng-cloak>
-                <strong>I have met this challenge!</strong> <i class="fa fa-check" aria-hidden="true"></i>
-              </a>
-              <div class="alert alert-success" ng-if="personalChallenge.completedToday" ng-cloak>
-                <strong>Challenge met</strong> <i class="fa fa-check" aria-hidden="true"></i>
-              </div>
-            </div>
-          </div>
-          <div class="ym_my_challenge__update" ng-if="personalChallenge.id == '-1'" ng-cloak>
-            <form method="post" novalidate ng-submit="updateChallenge()">
-              <label for="ym-update-challenge">Take or update my challenge</label>
-              <select class="form-control" name="ym-update-challenge" ng-model="updatedPersonalChallenge.id">
-                <option value=""></option>
-                <option ng-repeat="challenge in challenges" value="{{challenge.id}}">{{challenge.name}}</option>
-              </select>
-              <button type="submit" class="btn btn-md-wide btn-primary"><strong>Update Challenge</strong></button>
-            </form>
-          </div>
-        </div>
-        <div class="col-sm-6 ym-activity-box ym-activity-box--virtual">
-          <h3 class="h5">
-            My Virtual World
-          </h3>
-          <div>
-            <a ng-href="http://hearttools.heart.org/aha_ym18/expedition/?eid={{frId}}&amp;sid={{consId}}&amp;name={{consName}}" target="_blank">
-              <img src="../aha-luminate/dist/middle-school/image/virtual-world.png" alt="View virtual world">
-            </a>
-          </div>
-        </div>
-      </div>
     </section>
     <section class="ym-pc-dashboard-coordinators-message-section" ng-if="coordinatorsMessage.message && coordinatorsMessage.message != ''" ng-cloak>
       <div class="ym-pc-dashboard-section-header">
