@@ -41,6 +41,7 @@
     </div>
     <div class="ym-donation-levels__message level{{donationLevel.levelId}}" ng-repeat="donationLevel in donationLevels" ng-class="{'active': donationLevel.levelChecked == true}">
       <p>
+        {{donationLevel.levelLabel}}
       </p>
     </div>
     <div class="ym-donation-levels__message--installment level--installment"  ng-class="{'hidden': donationInfo.giftType != 'monthly'}">

@@ -415,18 +415,16 @@ div.donation-form-container {
   
   .ym-tribute-gift__type {
     margin: 20px auto 0;
-    max-width: 226px;
-
-    @media(min-width: $screen-xs-min){
-      max-width: 255px;
-    }
-
-    @media(min-width: $screen-sm-min){
-      max-width: 435px;
-    }
+    text-align: center;
     
     .btn-toggle {
       min-width: 100px;
+      font-size: inherit;
+      display: inline-block;
+      height: 50px;
+      line-height: 48px;
+      padding-top: 0;
+      padding-bottom:0;
 
       @media(min-width: $screen-xs-min){
         min-width: 120px;
