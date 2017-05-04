@@ -107,7 +107,7 @@ module.exports = {
       'src/middle-school/html/**/*', 
       'src/middle-school/image/**/*', 
       'src/middle-school/sass/**/*', 
-      'src/jump-hoops/coffee/**/*'
+      'src/middle-school/coffee/**/*'
     ], 
     tasks: [
       'clean:middle-school',  
