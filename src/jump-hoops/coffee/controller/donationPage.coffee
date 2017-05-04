@@ -4,13 +4,7 @@ angular.module 'ahaLuminateControllers'
     '$rootScope'
     '$location'
     'DonationService'
-    'ZuriService'
-    ($scope, $rootScope, $location, DonationService, ZuriService) ->
-      ecardLinkParam = $location.absUrl().split('ecard_linktrack=')[1]
-      if ecardLinkParam isnt undefined
-        ecardLinkParamSplit = ecardLinkParam.split('&')[0]
-        ZuriService.eCardTracking ecardLinkParamSplit,
-      
+    ($scope, $rootScope, $location, DonationService) ->      
       $scope.paymentInfoErrors = 
         errors: []
       angular.element('.page-error').remove()
