@@ -519,13 +519,30 @@
   }
 
   .dropdown-menu {
-    .active {
+    > li {
       > a {
+        &,
+        &:link,
+        &:visited,
+        &:hover,
         &:focus,
         &:active {
-          background-color: $event-secondary;
+          text-decoration: none;
         }
       }
+
+      &.active {
+        > a {
+          &,
+          &:link,
+          &:visited,
+          &:hover,
+          &:focus,
+          &:active {
+            background-color: $event-secondary;
+          }
+        }
+      }  
     }
   }
 
