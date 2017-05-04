@@ -247,7 +247,8 @@ div.donation-form-container {
     }
   }
   
-  .ym-donation-levels__message {
+  .ym-donation-levels__message,
+  .ym-donation-levels__message--installment  {
     margin-top: 10px;
 
     @media (min-width: $screen-sm-min) {
