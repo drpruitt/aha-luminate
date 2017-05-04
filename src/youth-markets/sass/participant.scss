@@ -527,7 +527,7 @@ main > .container {
 
 .ym-pc-dashboard-badges-icons {
   margin: 0 0 32px;
-
+  
   img {
     margin: 0 0 10px;
   }
@@ -535,6 +535,8 @@ main > .container {
 
 
 .ym-pc-dashboard-email-challenge-images {
+  margin: 24px 0 0;
+
   a {
     &, 
     &:link, 
@@ -581,9 +583,27 @@ main > .container {
 }
 
 .ym-pc-dashboard-email-challenge-buttons {
+  margin: 20px 0 0;
+  
+  @media (min-width: $screen-sm-min) {
+    margin: 30px 0 0;
+  }
+  
   .btn, 
   a.btn {
-    margin: 30px 10px 0;
+    &, 
+    &:link, 
+    &:visited, 
+    &:hover, 
+    &:focus, 
+    &:active {
+      padding: 7px 12px;
+      margin: 0 10px;
+      
+      @media (min-width: $screen-sm-min) {
+        padding: 7px 25px;
+      }
+    }
   }
 }
 
