@@ -1,134 +1,133 @@
 .cms {
-  h2,
-  .h2-heading,
-  h5,
+  h2, 
+  .h2-heading, 
+  h5, 
   .h5-heading {
     margin: 0 0 30px;
-
-    @media(max-width: $screen-sm){
+    
+    @media (max-width: $screen-xs-max) {
       margin: 0 0 25px;
     }
   }
-
-  h2 + h5,
-  h2 + .h5-heading
-   {
+  
+  h2 + h5, 
+  h2 + .h5-heading {
     margin: 0 0 20px;
   }
-
+  
   .ym-page-breadcrumbs {
     color: $brand-white;
     padding-bottom: 18px;
-
+    
     a {
       color: $brand-white;
       text-decoration: underline;
     }
   }
-
+  
   .breadcrumbComponent {
     display: block;
     margin-bottom: 25px;
-
+    
     .breadcrumb {
       color: $brand-white;
       background-color: $event-accent;
       padding: 0;
       font-weight: lighter;
     }
-
+    
     @media (max-width: $screen-xs-max) {
-      & {
-        display: none;
-      }
+      display: none;
     }
   }
-
+  
   .breadcrumbseparator {
     color: $brand-white;
   }
-
+  
   .ym-page-section__block {
     padding: 0px 40px;
     margin-bottom: 50px;
-
+    
     &.ym-page-section__block--narrow {
       padding-left: 70px;
       padding-right: 70px;
     }
-
+    
     &.ym-page-section__block--slim {
       padding-left: 100px;
       padding-right: 100px;
     }
-
+    
     @media (max-width: $screen-sm-max) {
       margin-bottom: 40px;
-
-      &,
-      &.ym-page-section__block--narrow,
+      
+      &, 
+      &.ym-page-section__block--narrow, 
       &.ym-page-section__block--slim {
         padding-left: 40px;
         padding-right: 40px;
       }
     }
-
+    
     @media (max-width: $screen-xs-max) {
-      &,
-      &.ym-page-section__block--narrow,
+      &, 
+      &.ym-page-section__block--narrow, 
       &.ym-page-section__block--slim {
         padding-left: 20px;
         padding-right: 20px;
       }
     }
   }
-
+  
   .ym-page-intro {
     padding-top: 40px
   }
-
+  
   .ym-section-features {
     margin-bottom: 50px;
-
+    
     @media (max-width: $screen-sm-max) {
       margin-bottom: 40px;
     }
   }
-
+  
   .ym-page-section__left-col {
     padding: 0;
     max-width: 670px;
     width: calc(100% - 300px);
-
-    @media(max-width: $screen-md){
+    
+    @media (max-width: $screen-sm-max) {
       width: calc(100% - 230px);
     }
-    @media(max-width: $screen-xs-max){
+
+    @media (max-width: $screen-xs-max) {
       width:100%;
       max-width: 100%;
     }
   }
-
+  
   .ym-page-section__right-col {
     padding: 0;
     float: right;
     width: 250px;
-
-    @media(max-width: $screen-md) {
+    
+    @media (max-width: $screen-sm-max) {
       width: 200px;
     }
-    @media(max-width: $screen-xs-max){
+    
+    @media (max-width: $screen-xs-max) {
       width:100%;
       max-width: 100%;
       margin-bottom: 40px;
     }
   }
-
+  
   .ym-sidebar {
     border-left: 1px solid $border-gray;
     margin: auto;
     max-width: 250px;
-
+    
     .ym-sidebar__headline {
       color: $brand-white;
       background-color: $event-secondary;
@@ -136,38 +135,38 @@
       font-size: 18px;
       padding: 12px 20px;
       margin: 0;
-
+      
       a {
         color: $brand-white;
         text-decoration: none;
-
+        
         &:hover {
           text-decoration: underline;
         }
       }
     }
-
+    
     .ym-sidebar__nav {
       list-style: none;
       list-style-image: none;
       padding: 0 0 30px 20px;
       margin: 0;
-
+      
       li {
         display: block;
         border-bottom: 1px solid $border-gray;
         padding-top: 15px;
         padding-bottom: 15px;
-
+        
         &:last-child {
           border-bottom: none;
         }
-
+        
         a {
           position: relative;
           display: block;
           font-size: 14px;
-          font-weight: bolder;
+          font-weight: 700er;
           text-decoration: none;
           padding-right: 30px;
 
@@ -356,7 +355,7 @@
   .ym-related-content__item {
     margin: 0 0 20px;
 
-    @media(max-width: $screen-sm) {
+    @media (max-width: $screen-xs-max) {
       margin: 0 0 30px;
     }
   }
@@ -364,11 +363,11 @@
   .ym-related-content__image {
     width: 200px;
 
-    @media(max-width: $screen-md) {
+    @media (max-width: $screen-sm-max) {
       width: 150px;
     }
 
-    @media(max-width: $screen-xs){
+    @media (max-width: $screen-xs) {
       float:none;
     }
   }
@@ -376,11 +375,11 @@
   .ym-related-content__text {
     width: calc(100% - 200px);
 
-    @media(max-width: $screen-md) {
+    @media (max-width: $screen-sm-max) {
       width: calc(100% - 150px);
     }
 
-    @media(max-width: $screen-xs){
+    @media (max-width: $screen-xs) {
       width: 100%;
       float: none;
       clear: both;
@@ -399,59 +398,59 @@
 
 .ym-accordion-list {
   .panel-group {
-    @media(max-width: $screen-sm){
+    @media (max-width: $screen-xs-max) {
       margin-bottom: 40px;
     }
   }
-
+  
   .panel {
     border-radius: 0;
     margin-top: 0;
     border: 0 none;
     border-bottom: 1px solid $event-secondary;
   }
-
+  
   .panel + .panel {
     margin: 0;
   }
-
+  
   .panel-heading {
     background: transparent;
     border-radius: 0;
     border: 0 none;
     padding: 14px 15px;
-
+    
     &.active {
       background: $event-secondary;
-
+      
       a.panel-title {
         color: #fff;
         pointer-events: none;
         cursor: default;
-
+        
         .fa-chevron-down {
           display: none;
         }
-
+        
         .fa-chevron-up {
           display: inline-block;
         }
       }
     }
-
+    
     a.panel-title {
       display: block;
       text-decoration: none;
-      font-weight: bold;
-
+      font-weight: 700;
+      
       &:hover {
         text-decoration: underline;
       }
-
+      
       .fa-chevron-up {
           display: none;
       }
-
+      
       .fa-chevron-down {
         display: inline-block;
       }
@@ -480,7 +479,7 @@
   }
 
   a {
-    font-weight: bold;
+    font-weight: 700;
   }
 }
 
@@ -500,11 +499,11 @@
   > .form-group {
     margin-bottom: 50px;
   }
-
+  
   .ym-page-section__roster {
     padding-top: 0;
   }
-
+  
   #school-name-filter {
     font-size: $font-size-reg;
     text-align: center;
@@ -512,30 +511,30 @@
     max-width: 390px;
     height: 60px;
   }
-
+  
   #school-state-filter {
     position: absolute;
     top: 0;
     right: 0;
     background: url("../../youth-markets/image/ym-select-carrot.png") right 0.75rem center no-repeat $event-secondary;
-    font-weight: bold;
+    font-weight: 700;
     font-weight: 700;
     width: 200px;
-
+    
     &:hover {
       background: url("../../youth-markets/image/ym-select-carrot.png") right 0.75rem center no-repeat $event-secondary-dark;
     }
-
+    
     option {
       background: #ffffff;
       color: $event-grey !important;
     }
   }
-
+  
   .ym-page-section__header {
     position: relative;
   }
-
+  
   .dropdown-menu {
     > li {
       > a {
@@ -548,7 +547,7 @@
           text-decoration: none;
         }
       }
-
+      
       &.active {
         > a {
           &,
@@ -563,27 +562,27 @@
       }
     }
   }
-
+  
   @media (max-width: $screen-sm-max) {
     .ym-page-section__header {
       text-align: center;
     }
-
+    
     #school-state-filter {
       position: relative;
       margin-bottom: 30px;
     }
   }
-
+  
   @media (max-width: $screen-xs-max) {
     .ym-list__school-list-wrpr {
       overflow-x: scroll;
     }
-
+    
     .ym-list--school-list {
       min-width: 600px;
     }
-
+    
     #school-name-filter {
       display: inline-block;
     }

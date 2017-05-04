@@ -248,7 +248,7 @@ header {
         }
       }
       
-      @media (max-width: $screen-sm) {
+      @media (max-width: $screen-xs-max) {
         float: left;
         width: calc(100% - 71px);
       }
@@ -272,9 +272,9 @@ header {
         color: $brand-primary;
         height: 50px;
         outline: 0;
-        font-weight: bold;
+        font-weight: 700;
         
-        @media (max-width: $screen-sm) {
+        @media (max-width: $screen-xs-max) {
           height: auto;
           white-space: inherit;
           text-align: left;
@@ -353,7 +353,7 @@ header {
     .ym-header-hq-btn.btn {
       height: 50px;
       line-height: 50px;
-      font-weight: bold;
+      font-weight: 700;
       padding: 0 20px;
     }
     
