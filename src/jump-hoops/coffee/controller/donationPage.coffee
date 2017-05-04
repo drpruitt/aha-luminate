@@ -4,13 +4,7 @@ angular.module 'ahaLuminateControllers'
     '$rootScope'
     '$location'
     'DonationService'
-    'ZuriService'
-    ($scope, $rootScope, $location, DonationService, ZuriService) ->
-      ecardLinkParam = $location.absUrl().split('ecard_linktrack=')[1]
-      if ecardLinkParam isnt undefined
-        ecardLinkParamSplit = ecardLinkParam.split('&')[0]
-        ZuriService.eCardTracking ecardLinkParamSplit,
-      
+    ($scope, $rootScope, $location, DonationService) ->      
       $scope.paymentInfoErrors = 
         errors: []
       angular.element('.page-error').remove()
@@ -80,7 +74,7 @@ angular.module 'ahaLuminateControllers'
       
       $scope.toggleEmployerMatch = ->
         angular.element('.ym-employer-match__message').toggleClass 'hidden'
-        angular.element('.employer-address-container').toggleClass 'hidden'
+        angular.element('.matching-gift-container').toggleClass 'hidden'
       
       donorRecognitionFields = ->
         angular.element('#tr_show_gift_to_public_row').addClass 'hidden ym-donor-recognition__fields'
@@ -129,7 +123,15 @@ angular.module 'ahaLuminateControllers'
         angular.element('#billing_addr_zip_row').addClass 'billing-info'
         angular.element('#billing_addr_country_row').addClass 'billing-info'
         angular.element('.billing-info').addClass 'hidden'
-      
+
+      $scope.togglePaymentType = (paymentType) ->
+        if paymentType == 'paypal'
+          angular.element('#responsive_payment_typepay_typeradiopaypal').click()
+          angular.element('#payment_cc_container').hide()
+        else
+          angular.element('#responsive_payment_typepay_typeradiocredit').click()
+          angular.element('#payment_cc_container').show()
+
       $scope.toggleBillingInfo = ->
         angular.element('.billing-info').toggleClass 'hidden'
         inputStatus = angular.element('#billing_info').prop 'checked'
@@ -173,8 +175,7 @@ angular.module 'ahaLuminateControllers'
         angular.element('#payment_cc_container').append '<div class="clearfix" />'
         angular.element('#responsive_payment_typecc_cvv_row .FormLabelText').text 'CVV:'
         angular.element('#level_installment_row').addClass 'hidden'
-        angular.element('.employer-address-container').addClass 'clearfix'
-
+        angular.element('.matching-gift-container').addClass 'hidden'
         angular.element('#tr_recognition_namerec_namename').attr('placeholder', 'If different from your name')
         angular.element('#tr_message_to_participantname').attr('placeholder', 'Write a message of encouragement. 255 characters max.')
 

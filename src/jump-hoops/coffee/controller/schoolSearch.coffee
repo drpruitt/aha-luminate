@@ -9,7 +9,6 @@ angular.module('ahaLuminateControllers').controller 'SchoolSearchCtrl', [
     $scope.states = []
     $scope.schools = []
     $scope.filtered = []
-    $scope.schoolNames = []
     $scope.schoolList =
       sortProp: 'SCHOOL_NAME'
       sortDesc: false
@@ -75,19 +74,6 @@ angular.module('ahaLuminateControllers').controller 'SchoolSearchCtrl', [
       index = $scope.filtered.indexOf value
       begin <= index and index < end
 
-    $scope.setUniqueSchoolNames = ->
-      list = {}
-      names = []
-      schools = $scope.schools
-      i = 0
-      while i < schools.length
-        school = schools[i]
-        if school.SCHOOL_NAME and school.SCHOOL_NAME isnt '' and angular.isUndefined(list[school.SCHOOL_NAME])
-          list[school.SCHOOL_NAME] = school.SCHOOL_NAME
-          names.push school.SCHOOL_NAME
-        i++
-      $scope.schoolNames = names
-
     SchoolService.getSchools
       failure: (response) ->
         return
@@ -95,6 +81,5 @@ angular.module('ahaLuminateControllers').controller 'SchoolSearchCtrl', [
         schools = Csv.toJson csv
         $scope.schools = schools
         $scope.setStates()
-        $scope.setUniqueSchoolNames()
         return
 ]

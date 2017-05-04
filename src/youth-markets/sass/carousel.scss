@@ -59,18 +59,21 @@
     }
 
     h4,
-    p {
+    p,
+    .h4-heading {
       display: none;
     }
   }
 
   .center {
     h4,
-    p {
+    p,
+    .h4-heading {
       display: block;
     }
 
-    h4 {
+    h4,
+    .h4-heading {
       margin: 20px auto;
     }
   }
@@ -87,7 +90,8 @@
     }
   }
 
-  h3 {
+  h3,
+  .h3-heading {
     margin-bottom: 30px;
 
     @media(max-width: $screen-sm){
@@ -95,7 +99,8 @@
     }
   }
 
-  h5 {
+  h5,
+  .h5-heading {
     margin: 20px 0;
   }
 
@@ -136,7 +141,7 @@
       margin: auto;
     }
   }
-  
+
   .carousel-item__img {
     width: 100%;
     padding-top: 61.53%;
