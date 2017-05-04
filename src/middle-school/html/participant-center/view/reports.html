@@ -12,9 +12,9 @@
             </div>
             <div class="col-md-4">
               <div class="ym-pc-report-header-buttons" ng-if="schoolDetailStudents.students && schoolDetailStudents.students.length > 0" ng-cloak>
-                <a class="btn btn-md-wide btn-secondary" ng-href="{{baseUrl}}#" target="_blank">
+                <button type="button" class="btn btn-md-wide btn-secondary" csv-header="schoolDetailDownloadHeaders" ng-csv="schoolDetailDownloadData" filename="School_Detail_Report.csv">
                   <i class="fa fa-download" aria-hidden="true"></i> <strong>Download</strong>
-                </a> 
+                </button> 
                 <a class="btn btn-md-wide btn-secondary" ng-href="{{baseUrl}}#/email">
                   <i class="fa fa-envelope" aria-hidden="true"></i> <strong>Email Students</strong>
                 </a>

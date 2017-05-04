@@ -72,6 +72,18 @@ angular.module 'trPcControllers'
           $scope.reportPromises.push personalGiftsPromise
         $scope.getTeamGifts()
       
+      $scope.schoolDetailDownloadHeaders = [
+        'Name'
+        'Amount'
+        'Ecards'
+        'Emails'
+        'T-shirt'
+        'Teacher'
+        'Challenge'
+      ]
+      
+      $scope.schoolDetailDownloadData = []
+      
       if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
         $scope.schoolDetailStudents = {}
         schoolDetailReportPromise = NgPcTeamraiserReportsService.getSchoolDetailReport()
