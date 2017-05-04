@@ -73,35 +73,67 @@ angular.module 'trPcControllers'
         $scope.getTeamGifts()
       
       if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
-        $scope.schoolDetailStudents = {}
+        $scope.schoolDetailStudents =
+          downloadHeaders: [
+            'Name'
+            'Amount'
+            'Ecards'
+            'Emails'
+            'T-shirt'
+            'Teacher'
+            'Challenge'
+        ]
         schoolDetailReportPromise = NgPcTeamraiserReportsService.getSchoolDetailReport()
           .then (response) ->
             if response.data.errorResponse
               $scope.schoolDetailStudents.students = []
+              $scope.schoolDetailStudents.downloadData = []
             else
               reportHtml = response.data.getSchoolDetailReport.report
               $reportTable = angular.element('<div>' + reportHtml + '</div>').find 'table'
               if $reportTable.length is 0
                 $scope.schoolDetailStudents.students = []
+                $scope.schoolDetailStudents.downloadData = []
               else
                 $reportTableRows = $reportTable.find 'tr'
                 if $reportTableRows.length is 0
                   $scope.schoolDetailStudents.students = []
+                  $scope.schoolDetailStudents.downloadData = []
                 else
                   schoolDetailStudents = []
+                  schoolDetailDownloadData = []
                   angular.forEach $reportTableRows, (reportTableRow) ->
                     $reportTableRow = angular.element reportTableRow
+                    firstName = jQuery.trim $reportTableRow.find('td').eq(8).text()
+                    lastName = jQuery.trim $reportTableRow.find('td').eq(9).text()
+                    amount = Number jQuery.trim($reportTableRow.find('td').eq(10).text())
+                    amountFormatted = $filter('currency') jQuery.trim($reportTableRow.find('td').eq(10).text()), '$'
+                    ecardsSent = Number jQuery.trim($reportTableRow.find('td').eq(13).text())
+                    emailsSent = Number jQuery.trim($reportTableRow.find('td').eq(12).text())
+                    tshirtSize = jQuery.trim $reportTableRow.find('td').eq(14).text()
+                    teacherName = jQuery.trim $reportTableRow.find('td').eq(6).text()
+                    challenge = jQuery.trim($reportTableRow.find('td').eq(15).text()).replace('1. ', '').replace('2. ', '').replace('3. ', '').replace '4. ', ''
                     schoolDetailStudents.push
-                      firstName: jQuery.trim $reportTableRow.find('td').eq(8).text()
-                      lastName: jQuery.trim $reportTableRow.find('td').eq(9).text()
-                      amount: Number jQuery.trim($reportTableRow.find('td').eq(10).text())
-                      amountFormatted: $filter('currency') jQuery.trim($reportTableRow.find('td').eq(10).text()), '$', 0
-                      ecardsSent: Number jQuery.trim($reportTableRow.find('td').eq(13).text())
-                      emailsSent: Number jQuery.trim($reportTableRow.find('td').eq(12).text())
-                      tshirtSize: jQuery.trim $reportTableRow.find('td').eq(14).text()
-                      teacherName: jQuery.trim $reportTableRow.find('td').eq(6).text()
-                      challenge: jQuery.trim($reportTableRow.find('td').eq(15).text()).replace('1. ', '').replace('2. ', '').replace('3. ', '').replace '4. ', ''
+                      firstName: firstName
+                      lastName: lastName
+                      amount: amount
+                      amountFormatted: amountFormatted.replace '.00', ''
+                      ecardsSent: ecardsSent
+                      emailsSent: emailsSent
+                      tshirtSize: tshirtSize
+                      teacherName: teacherName
+                      challenge: challenge
+                    schoolDetailDownloadData.push [
+                      firstName + ' ' + jQuery.trim $reportTableRow.find('td').eq(9).text()
+                      amountFormatted
+                      ecardsSent
+                      emailsSent
+                      tshirtSize
+                      teacherName
+                      challenge
+                    ]
                   $scope.schoolDetailStudents.students = schoolDetailStudents
+                  $scope.schoolDetailStudents.downloadData = schoolDetailDownloadData
             response
         $scope.reportPromises.push schoolDetailReportPromise
   ]
