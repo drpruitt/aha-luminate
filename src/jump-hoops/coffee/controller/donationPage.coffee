@@ -57,6 +57,8 @@ angular.module 'ahaLuminateControllers'
         angular.element('.ym-donation-levels__message').addClass 'hidden'
         angular.element('.ym-donation-levels__message.level' + level).removeClass 'hidden'
         angular.element('.donation-level-container.level' + level + ' input').click()
+
+      console.log $scope.donationLevels
       
       $scope.enterAmount = (amount) ->
         angular.element('#pstep_finish span').text ''
