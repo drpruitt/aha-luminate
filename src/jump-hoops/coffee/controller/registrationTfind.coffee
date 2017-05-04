@@ -8,10 +8,13 @@ angular.module 'ahaLuminateControllers'
       
       $scope.teamList = {}
       getTeams = ->
-        setTeams = (teams) ->
-          $scope.teamList.teams = teams or []
-          if not $scope.$$phase
-            $scope.$apply()
+        setTeams = (teams = []) ->
+          if teams.length is 1
+            window.location = luminateExtend.global.path.secure + 'TRR?fr_id=' + teams[0].EventId + '&pg=tfind&fr_tm_opt=existing&fr_tjoin=' + teams[0].id + '&skip_login_page=true'
+          else
+            $scope.teamList.teams = teams
+            if not $scope.$$phase
+              $scope.$apply()
         TeamraiserTeamService.getTeams 'team_company_id=' + $scope.teamSearch.companyId + '&list_page_size=500',
           error: ->
             setTeams()
