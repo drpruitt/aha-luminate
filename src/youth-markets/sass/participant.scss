@@ -1029,7 +1029,7 @@ main > .container {
   overflow-y: scroll;
 }
 
-.ta-toolbar {
+.ng-pc-container .ta-toolbar {
   background-color: #f0f0f0;
   border: 1px solid $event-secondary;
   border-radius: 0;
@@ -1073,7 +1073,7 @@ main > .container {
   }
 }
 
-.ta-editor {
+.ng-pc-container .ta-editor {
   background-color: $brand-white;
   border: 1px solid $event-secondary;
   border-top: 0;
@@ -1087,7 +1087,7 @@ main > .container {
   }
 }
 
-.ta-scroll-window {
+.ng-pc-container .ta-scroll-window {
   > .ta-bind {
     min-height: 200px;
     padding: 6px 8px;

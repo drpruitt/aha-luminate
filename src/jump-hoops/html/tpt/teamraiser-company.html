@@ -1,7 +1,12 @@
 <div ng-controller="CompanyPageCtrl" ng-cloak>
   <div class="ym-page-section ym-page-section__top">
-    <div class="col-md-6 ym-user-image" style="background-image: url('[[C4:responsive_company_logo]]');">
-      <img class="hidden-md hidden-lg" src="[[C4:responsive_company_logo]]" alt="[[?xx::x[[C1:photo1_text]]x::School Fundraising Page Photo::[[C1:photo1_text]]]]">
+    <div class="col-md-6 ym-user-image" ng-init="companyPagePhoto1.customUrl = '[[C4:responsive_company_logo]]'" ng-style="{'background-image': (companyPagePhoto1.customUrl && companyPagePhoto1.customUrl != '') ? ('url(' + companyPagePhoto1.customUrl + ')') : ('url(' + companyPagePhoto1.defaultUrl + ')')}">
+      <div class="ym-user-image-inner">
+        <button type="button" class="btn btn-md-wide btn-toggle" ng-click="editCompanyPhoto1()" ng-if="participantRegistration.companyInformation.companyId == '[[S334:company_id]]' && participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
+          <span class="fa fa-camera"></span> Edit Photo
+        </button>
+        <img class="hidden-md hidden-lg" ng-src="{{companyPagePhoto1.customUrl && companyPagePhoto1.customUrl != '' ? companyPagePhoto1.customUrl : companyPagePhoto1.defaultUrl}}" alt="" ng-cloak>
+      </div>
     </div>
     <div class="col-md-6 ym-progress ym-secondary-medium-color">
       <h2 class="ym-progress__title h4">
@@ -46,9 +51,9 @@
     </div>
     <div class="clearfix"></div>
   </div>
-  <div class="ym-page-section ym-page-section__main">
+  <div class="ym-page-section ym-page-section__main" ng-if="participantCount > 0 && (activity1amt != 0 || activity2amt != 0 || activity3amt != 0)" ng-cloak>
     <div class="container">
-      <div class="ym-our-stats ym-promo-block" ng-if="participantCount > 0" ng-cloak>
+      <div class="ym-our-stats ym-promo-block">
         <h2 class="ym-headline">
           Our Stats
         </h2>
@@ -56,9 +61,16 @@
           <h2 class="ym-headline">
             {{participantCount}}
           </h2>
-          <p>
-            team members registered.
-          </p>
+          <div ng-if="participantCount == 1">
+            <p>
+              team member registered.
+            </p>
+          </div>
+          <div ng-if="participantCount > 1">
+            <p>
+              team members registered.
+            </p>
+          </div>
         </div>
         <div class="ym-promo-block__item ym-promo-block__item--exercise ym-promo-block--circle" ng-if="activity1amt != 0" ng-cloak>
           <h2 class="ym-headline">
@@ -73,7 +85,7 @@
             {{activity2amt}}
           </h2>
           <p>
-            daily challenges of choosing water over sugar drinks
+            daily challenges of choosing water over sugar drinks.
           </p>
         </div>
         <div class="ym-promo-block__item ym-promo-block__item--food ym-promo-block--circle" ng-if="activity3amt != 0" ng-cloak>
@@ -81,7 +93,7 @@
             {{activity3amt}}
           </h2>
           <p>
-            daily challenges of fruits and veggies at every meal
+            daily challenges of fruits and veggies at every meal.
           </p>
         </div>
       </div>
@@ -89,7 +101,7 @@
     <hr class="hidden-xs" ng-show="companyParticipants.participants.length > 0" ng-cloak>
     <div class="container hidden-xs" ng-show="companyParticipants.participants.length > 0" ng-cloak>
       <div class="ym-school-animation">
-        <iframe id="school-animation" src="http://[[S29:DOMAIN]][[S29:PATH]]PageServer?pagename=jump_hoops_school_animation&pgwrap=n" onLoad="iframeLoaded()"></iframe>
+        <iframe id="school-animation" src="http://[[S29:DOMAIN]][[S29:PATH]]PageServer?pagename=jump_hoops_school_animation&pgwrap=n"></iframe>
       </div>
     </div>
   </div>
@@ -98,7 +110,32 @@
       <h3 class="ym-headline">
         Our School is Heart Healthy!
       </h3>
-      [[C6:fr_rich_text]]
+      <div class="ym-story-edit-btns" ng-if="participantRegistration.companyInformation.companyId == '[[S334:company_id]]' && participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
+        <button type="button" class="btn btn-md-wide btn-toggle" ng-click="editCompanyPageContent()" ng-if="companyPageContent.mode == 'view'">
+          <span class="fa fa-pencil"></span> Edit Story
+        </button>
+        <div ng-if="companyPageContent.mode == 'edit'" ng-cloak>
+          <button type="button" class="btn btn-md-wide btn-primary" ng-click="saveCompanyPageContent()">
+            <span class="fa fa-pencil"></span> <strong>Save Story</strong>
+          </button> 
+          <button type="button" class="btn btn-md-wide btn-toggle" ng-click="resetCompanyPageContent()">
+            Cancel
+          </button>
+        </div>
+      </div>
+      <div class="hidden js--default-page-content" ng-non-bindable>
+        [[C6:fr_rich_text]]
+      </div>
+      <div ng-show="companyPageContent.mode == 'view'">
+        <div ng-bind-html="companyPageContent.rich_text">
+          <div ng-non-bindable>
+            [[C6:fr_rich_text]]
+          </div>
+        </div>
+      </div>
+      <div class="ym-page-content-editor" ng-show="companyPageContent.mode == 'edit'" ng-cloak>
+        <div text-angular name="ng_rich_text" ng-model="companyPageContent.ng_rich_text" ta-toolbar="{{companyPageContent.textEditorToolbar}}"></div>
+      </div>
     </div>
     <div class="ym-list" ng-class="companyParticipants.totalFundraisers < 1 && companyTeams.totalNumber > 1 ? 'hidden' : 'col-md-6'">
       <img class="img-responsive" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/hj-fundraisers-graphic.png" alt="Check out these top fundraisers">

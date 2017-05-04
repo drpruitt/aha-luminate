@@ -1,10 +1,18 @@
-angular.module 'ahaLuminateApp', [
+appDependencies = [
   'ngSanitize'
   'ngTouch'
   'angular.filter'
   'ui.bootstrap'
   'ahaLuminateControllers'
 ]
+
+angular.forEach ['textAngular'], (appDependency) ->
+  try
+    angular.module appDependency
+    appDependencies.push appDependency
+  catch error
+
+angular.module 'ahaLuminateApp', appDependencies
 
 angular.module 'ahaLuminateControllers', []
 
@@ -22,19 +30,20 @@ angular.module 'ahaLuminateApp'
 angular.module 'ahaLuminateApp'
   .run [
     '$rootScope'
+    '$sce'
     'APP_INFO'
-    ($rootScope, APP_INFO) ->
+    ($rootScope, $sce, APP_INFO) ->
       $rootScope.nonSecureDomain = luminateExtend.global.path.nonsecure.split('/site/')[0] + '/'
       $rootScope.secureDomain = luminateExtend.global.path.secure.split('/site/')[0] + '/'
+      $rootScope.teamraiserAPIPath = $sce.trustAsResourceUrl luminateExtend.global.path.secure + 'CRTeamraiserAPI'
       
       # get data from root element
       $dataRoot = angular.element '[data-aha-luminate-root]'
-      $rootScope.apiKey = $dataRoot.data('api-key') if $dataRoot.data('api-key') isnt ''
-      if not $rootScope.apiKey
-        new Error 'AHA Luminate Framework: No Luminate Online API Key is defined.'
-      $rootScope.consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
-      $rootScope.authToken = $dataRoot.data('auth-token') if $dataRoot.data('auth-token') isnt ''
       $rootScope.frId = $dataRoot.data('fr-id') if $dataRoot.data('fr-id') isnt ''
+      $rootScope.consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
+      $rootScope.apiKey = $dataRoot.data('api-key') if $dataRoot.data('api-key') isnt ''
+      $rootScope.authToken = $dataRoot.data('auth-token') if $dataRoot.data('auth-token') isnt ''
+      $rootScope.sessionCookie = $dataRoot.data('session-cookie') if $dataRoot.data('session-cookie') isnt ''
   ]
 
 angular.element(document).ready ->
