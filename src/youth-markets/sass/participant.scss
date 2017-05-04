@@ -440,6 +440,10 @@ main > .container {
           max-width: 100px;
         }
         
+        @media (min-width: $screen-md-min) {
+          max-width: 140px;
+        }
+        
         @media (min-width: $screen-lg-min) {
           max-width: none;
         }
@@ -1260,6 +1264,10 @@ main > .container {
         @media (min-width: $screen-sm-min) {
           display: inline-block;
           max-width: 100px;
+        }
+        
+        @media (min-width: $screen-md-min) {
+          max-width: 140px;
         }
         
         @media (min-width: $screen-lg-min) {
