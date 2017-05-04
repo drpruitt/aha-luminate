@@ -350,29 +350,44 @@ angular.module 'trPcControllers'
       
       $scope.personalChallenge = {}
       $scope.updatedPersonalChallenge = {}
+      setPersonalChallenge = (id = '-1', name = '', numCompleted = 0, completedToday = false) ->
+        if id is '-1' and $scope.challengeTaken and $scope.challengeTaken isnt ''
+          if $scope.challengeTaken.indexOf('1. ') isnt -1
+            id = '1'
+            name = $scope.challengeTaken.split('1. ')[1]
+          else if $scope.challengeTaken.indexOf('2. ') isnt -1
+            id = '2'
+            name = $scope.challengeTaken.split('2. ')[1]
+          else if $scope.challengeTaken.indexOf('3. ') isnt -1
+            id = '3'
+            name = $scope.challengeTaken.split('3. ')[1]
+        $scope.personalChallenge.id = id
+        $scope.personalChallenge.name = name
+        $scope.personalChallenge.numCompleted = numCompleted
+        $scope.personalChallenge.completedToday = completedToday
+        if id is '-1'
+          $scope.updatedPersonalChallenge.id = ''
+        else
+          $scope.updatedPersonalChallenge.id = id
+        if not $scope.$$phase
+          $scope.$apply()
       getStudentChallenge = ->
         ZuriService.getZooStudent $scope.frId + '/' + $scope.consId,
           failure: (response) ->
-            $scope.personalChallenge.id = '-1'
-            $scope.updatedPersonalChallenge.id = ''
+            setPersonalChallenge()
           error: (response) ->
-            $scope.personalChallenge.id = '-1'
-            $scope.updatedPersonalChallenge.id = ''
+            setPersonalChallenge()
           success: (response) ->
             personalChallenges = response.data.challenges
             if not personalChallenges
-              $scope.personalChallenge.id = '-1'
-              $scope.updatedPersonalChallenge.id = ''
+              setPersonalChallenge()
             else
-              $scope.personalChallenge.id = personalChallenges.current
-              if $scope.personalChallenge.id isnt '1' and $scope.personalChallenge.id isnt '2' and $scope.personalChallenge.id isnt '3'
-                $scope.personalChallenge.id = '-1'
-                $scope.updatedPersonalChallenge.id = ''
+              id = personalChallenges.current
+              if id isnt '1' and id isnt '2' and id isnt '3'
+                setPersonalChallenge()
               else
-                $scope.personalChallenge.name = personalChallenges.text
-                $scope.personalChallenge.numCompleted = if personalChallenges.completed then Number(personalChallenges.completed) else 0
-                $scope.personalChallenge.completedToday = personalChallenges.completedToday
-                $scope.updatedPersonalChallenge.id = $scope.personalChallenge.id
+                numCompleted = if personalChallenges.completed then Number(personalChallenges.completed) else 0
+                setPersonalChallenge id, personalChallenges.text, numCompleted, personalChallenges.completedToday
       getStudentChallenge()
       
       $scope.challenges = []
@@ -413,6 +428,8 @@ angular.module 'trPcControllers'
             sku: prize.sku
             status: prize.status
             earned: prize.earned_datetime
+      , (response) ->
+        # TODO
 
       initCarousel = ->
         owl = jQuery '.owl-carousel'
