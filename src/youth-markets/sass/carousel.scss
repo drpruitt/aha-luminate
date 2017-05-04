@@ -1,4 +1,4 @@
-.owl-carousel{
+.owl-carousel {
   .owl-nav > div {
     position: absolute;
     top: 40%;
@@ -9,7 +9,7 @@
     width: 40px;
     height: 70px;
 
-    @media(max-width: $screen-md){
+    @media (max-width: $screen-sm-max) {
       width: 30px;
       height: 50px;
     }
@@ -24,7 +24,7 @@
       font-size: 30px;
       line-height: 70px;
 
-      @media(max-width: $screen-md){
+      @media (max-width: $screen-sm-max) {
         line-height: 50px;
         font-size: 22px;
       }
@@ -85,7 +85,7 @@
   .owl-nav > div {
     top: 35%;
 
-    @media(max-width: $screen-sm){
+    @media (max-width: $screen-xs-max) {
       top: 28%;
     }
   }
@@ -94,7 +94,7 @@
   .h3-heading {
     margin-bottom: 30px;
 
-    @media(max-width: $screen-sm){
+    @media (max-width: $screen-xs-max) {
       margin-bottom: 20px;
     }
   }
@@ -125,13 +125,15 @@
       max-width: 270px;
       margin: auto;
 
-      @media(max-width: $screen-md) {
+      @media (max-width: $screen-sm-max) {
         max-width: 350px;
       }
     }
+
     p {
       padding-bottom: 50px;
     }
+    
     .btn {
       position: absolute;
       bottom: 0;
@@ -208,9 +210,8 @@
   .owl-nav > div {
     top: 25%;
 
-    @media(min-width: $screen-md-min) {
+    @media (min-width: $screen-md-min) {
       top: 15%;
     }
-
   }
 }

@@ -1,4 +1,3 @@
-
 .ym-embed-video,
 .ym-school-animation {
   position: relative;
@@ -22,9 +21,8 @@
 
 .app-9 {
   .ym-embed-video {
-    @media(min-width: $screen-md-min) {
+    @media (min-width: $screen-md-min) {
       padding-bottom: 30.25%
     }
   }
 }
-
