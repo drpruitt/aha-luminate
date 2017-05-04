@@ -1,4 +1,4 @@
-.donation-form-container {
+div.donation-form-container {
   &.responsive {
     span.field-required {
       display: none;
@@ -19,6 +19,16 @@
 
   .form-info-message {
     display: none;
+  }
+
+  .custom-field-container {
+    .form-input-label-block {
+      display: none;
+    }
+
+    label.custom-element-checkbox-label {
+      max-width: 100%;
+    }
   }
 
   .section-header-container, 
@@ -109,6 +119,7 @@
   div.donation-level-general-ask, 
   div.html-caption-container {
     display: block;
+    clear: both;
 
     @media (min-width: $screen-lg-min) {
       max-width: 670px;
@@ -261,6 +272,10 @@
 
     input#donor_matching_employersearchname {
       width: calc(100% - 150px);
+
+      @media (max-width: $screen-xs) {
+        width: 100%;
+      }
     }
 
     button.step-button {
@@ -271,6 +286,12 @@
       margin: 0 0 0 20px;
       font-size: 18px;
       background: $event-secondary;
+      display: inline-block;
+
+      @media (max-width: $screen-xs) {
+        display: block;
+        margin: 20px 0 0;
+      }
 
       &:hover {
         background: $event-secondary-dark;
@@ -325,7 +346,7 @@
     padding: 20px 25px 0;
 
     @media(min-width: $screen-sm-min){
-      padding: 25px 25px 0;
+      padding: 25px 75px 0;
     }
   }
   
@@ -370,6 +391,10 @@
     }
   }
   
+  #tribute_type_row {
+    display: none;
+  }
+
   .ym-tribute-gift {
     padding: 20px 0 0;
 
@@ -530,16 +555,20 @@
       margin-bottom: 30px; 
     }
   }
-  
+
+  .payment-type-selection-container {
+    display: none;
+  }
+
   div.payment-type-element-container {
     clear: both;
     
     #responsive_payment_typecc_number_row {
-      margin-bottom: 20px;
+      margin: 20px auto;
 
       @media(min-width: $screen-sm-min) {
         max-width: 470px;
-        margin-bottom: 30px;
+        margin: 30px auto;
       }
       
       input {

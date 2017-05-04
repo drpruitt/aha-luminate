@@ -71,8 +71,18 @@ angular.module 'ahaLuminateControllers'
         angular.element('#employer_zip_row').parent().addClass 'ym-employer-match__fields'
         angular.element('#employer_phone_row').parent().addClass 'ym-employer-match__fields'
         angular.element('.employer-address-container').addClass 'hidden'
-      
+        angular.element('.matching-gift-container').addClass 'hidden'
+        angular.element('label[for="match_checkbox_dropdown"]').parent().parent().parent().addClass('ym-employer-match')
+        empCheck = angular.element('#match_checkbox_radio').prop 'checked'
+        if empCheck == true
+          angular.element('.ym-employer-match__message').removeClass 'hidden'
+          angular.element('.matching-gift-container').removeClass 'hidden'
+
+      document.getElementById('match_checkbox_radio').onclick = ->
+        angular.element('.ym-employer-match__message').toggleClass 'hidden'
+        angular.element('.matching-gift-container').toggleClass 'hidden'         
       $scope.toggleEmployerMatch = ->
+        console.log 'click'
         angular.element('.ym-employer-match__message').toggleClass 'hidden'
         angular.element('.matching-gift-container').toggleClass 'hidden'
       
@@ -128,9 +138,13 @@ angular.module 'ahaLuminateControllers'
         if paymentType == 'paypal'
           angular.element('#responsive_payment_typepay_typeradiopaypal').click()
           angular.element('#payment_cc_container').hide()
+          angular.element('.btn--credit').removeClass('active')
+          angular.element('.btn--paypal').addClass('active')
         else
           angular.element('#responsive_payment_typepay_typeradiocredit').click()
           angular.element('#payment_cc_container').show()
+          angular.element('.btn--credit').addClass('active')
+          angular.element('.btn--paypal').removeClass('active')
 
       $scope.toggleBillingInfo = ->
         angular.element('.billing-info').toggleClass 'hidden'
@@ -175,7 +189,7 @@ angular.module 'ahaLuminateControllers'
         angular.element('#payment_cc_container').append '<div class="clearfix" />'
         angular.element('#responsive_payment_typecc_cvv_row .FormLabelText').text 'CVV:'
         angular.element('#level_installment_row').addClass 'hidden'
-        angular.element('.matching-gift-container').addClass 'hidden'
+
         angular.element('#tr_recognition_namerec_namename').attr('placeholder', 'If different from your name')
         angular.element('#tr_message_to_participantname').attr('placeholder', 'Write a message of encouragement. 255 characters max.')
 
