@@ -39,12 +39,12 @@
         <input type="text" class="btn btn-toggle btn-enter {{donationLevel.classLevel}}" title="other_amount" ng-if="donationLevel.userSpecified == 'true'" ng-keyup="enterAmount(otherAmt)" ng-model="otherAmt" ng-click="selectLevel('other', donationLevel.levelId);" placeholder="Other">
       </div>
     </div>
-    <div class="ym-donation-levels__message level{{donationLevel.levelId}}" ng-repeat="donationLevel in donationLevels" ng-class="{'hidden': donationLevel.levelChecked != true || donationInfo.giftType != 'onetime'}">
+    <div class="ym-donation-levels__message level{{donationLevel.levelId}}" ng-repeat="donationLevel in donationLevels" ng-class="{'active': donationLevel.levelChecked == true}">
       <p>
         {{donationLevel.levelLabel}}
       </p>
     </div>
-    <div class="ym-donation-levels__message level--installment"  ng-class="{'hidden': donationInfo.giftType != 'monthly'}">
+    <div class="ym-donation-levels__message--installment level--installment"  ng-class="{'hidden': donationInfo.giftType != 'monthly'}">
       <p>
         An installment gift allows you flexibility to give at a higher level and pay over time.
       </p>

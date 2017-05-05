@@ -4,3 +4,10 @@
   border-radius: 7px;
   color: #ed1c24;
 }
+
+.alert-info {
+  background: $event-secondary-light;
+  color: $event-grey;
+  border-radius: 0;
+  border: 0 none;
+}
