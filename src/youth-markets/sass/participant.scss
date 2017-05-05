@@ -508,16 +508,20 @@ main > .container {
 .ym-pc-dashboard-badges-section {
   background-color: $event-accent-medium;
   padding: 28px 0;
-  margin: 0 0 40px;
+  margin: 0 0 30px;
+  
+  @media (min-width: $screen-sm-min) {
+    margin: 0 0 40px;
+  }
   
   .ym-pc-dashboard-section-header {
+    position: relative;
     color: $event-secondary;
     margin: 0 0 32px;
-    position: relative;
   }
-
+  
   .btn {
-    @media  (min-width: $screen-md-min) {
+    @media (min-width: $screen-md-min) {
       position: absolute;
       right: 60px;
       top: 0;
@@ -842,7 +846,11 @@ main > .container {
 }
 
 .ym-pc-dashboard-spread-section {
-  padding: 36px;
+  padding: 24px;
+  
+  @media (min-width: $screen-sm-min) {
+    padding: 36px;
+  }
   
   .ym-pc-dashboard-spread-options {
     text-align: center;
@@ -1322,7 +1330,7 @@ main > .container {
 }
 
 .ym-pc-dashboard-coordinator-steps-section {
-  margin: 0 0 40px;
+  margin: 10px 0 40px;
   clear: both;
   
   > .row {
