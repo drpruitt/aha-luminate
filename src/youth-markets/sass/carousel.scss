@@ -58,22 +58,38 @@
       border-right: 1px solid #ffffff;
     }
 
-    h4,
     p,
-    .h4-heading {
+    h4,
+    .h4-heading,
+    h5,
+    .h5-heading {
       display: none;
+    }
+
+    .item {
+      @media(max-width: $screen-sm) {
+        > p,
+        > .h5-heading {
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+      }
     }
   }
 
   .center {
-    h4,
     p,
-    .h4-heading {
+    h4,
+    .h4-heading,
+    h5,
+    .h5-heading {
       display: block;
     }
 
     h4,
-    .h4-heading {
+    .h4-heading,
+    h5,
+    .h5-heading {
       margin: 20px auto;
     }
   }
@@ -129,9 +145,11 @@
         max-width: 350px;
       }
     }
+
     p {
       padding-bottom: 50px;
     }
+
     .btn {
       position: absolute;
       bottom: 0;
@@ -155,6 +173,7 @@
       .item {
         max-width: none;
       }
+
       .carousel-item__img-box {
         width: 100%;
         position: relative;
