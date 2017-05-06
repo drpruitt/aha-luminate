@@ -1,11 +1,11 @@
 header {
-  padding: 10px 0 0;
-  
-  @media (min-width: $screen-sm-min) {
-    padding: 20px 0 0;
-  }
-  
   > .container {
+    padding-top: 10px;
+    
+    @media (min-width: $screen-sm-min) {
+      padding-top: 20px;
+    }
+    
     @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
       width: auto;
     }
@@ -248,7 +248,7 @@ header {
         }
       }
       
-      @media (max-width: $screen-sm) {
+      @media (max-width: $screen-xs-max) {
         float: left;
         width: calc(100% - 71px);
       }
@@ -272,15 +272,15 @@ header {
         color: $brand-primary;
         height: 50px;
         outline: 0;
-        font-weight: bold;
+        font-weight: 700;
         
-        @media (max-width: $screen-sm) {
+        @media (max-width: $screen-xs-max) {
           height: auto;
           white-space: inherit;
           text-align: left;
           position: absolute;
           line-height: 1;
-          left: 115px;
+          left: 100px;
           padding: 17px 22px 0 0;
           
           .fa {
@@ -353,7 +353,7 @@ header {
     .ym-header-hq-btn.btn {
       height: 50px;
       line-height: 50px;
-      font-weight: bold;
+      font-weight: 700;
       padding: 0 20px;
     }
     

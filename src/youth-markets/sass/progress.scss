@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-.ym-progress__title{
+.ym-progress__title {
   font-size: 24px;
   margin: 10px 0 20px;
   
@@ -21,6 +21,7 @@
 }
 
 .ym-progress__thermometer--fill {
+  box-shadow: 2px 2px 10px 0 rgb(0, 0, 0);
   box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.35);
 }
 

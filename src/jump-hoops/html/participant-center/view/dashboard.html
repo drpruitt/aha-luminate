@@ -64,7 +64,7 @@
               <div class="ym-progress__thermometer">
                 <div class="ym-progress__thermometer--fill" ng-style="{'width': companyProgress.percent + '%'}"></div>
               </div>
-              <div class="clearfix">
+              <div class="ym-progress-related clearfix">
                 <div class="pull-right">
                   <p>
                     <strong><span ng-bind-html="companyProgress.raisedFormatted"></span></strong> raised
@@ -145,7 +145,7 @@
         </div>
       </div>
     </section>
-    <section class="ym-pc-dashboard-badges-section" ng-if="prizes && prizes.length > 0">
+    <section class="ym-pc-dashboard-badges-section" ng-if="prizes && prizes.length > 0" ng-cloak>
       <div class="ym-pc-dashboard-section-header">
         <h2 class="h5">
           Badges
@@ -157,10 +157,10 @@
       <div class="ym-pc-dashboard-badges-icons ym-carousel--badges owl-carousel">
         <div class="ym-pc-dashboard-badges-icon" ng-repeat="prize in prizes" ng-cloak>
           <div ng-if="prize.earned != null">
-            <img class="img-responsive" ng-src="https://s3.amazonaws.com/aha-jumphoops-production/fy18/assets/badges/{{prize.id}}_delivered.png" alt="{{prize.label}}">
+            <img class="img-responsive" ng-src="//s3.amazonaws.com/aha-jumphoops-production/fy18/assets/badges/{{prize.id}}_delivered.png" alt="{{prize.label}}">
           </div>
           <div ng-if="prize.earned == null">
-            <img class="img-responsive" ng-src="https://s3.amazonaws.com/aha-jumphoops-production/fy18/assets/badges/{{prize.id}}_earned.png" alt="{{prize.label}}">
+            <img class="img-responsive" ng-src="//s3.amazonaws.com/aha-jumphoops-production/fy18/assets/badges/{{prize.id}}_earned.png" alt="{{prize.label}}">
           </div>
           <div ng-bind-html="prize.label"></div>
         </div>
@@ -312,7 +312,7 @@
             My Virtual World
           </h3>
           <div>
-            <a ng-href="http://hearttools.heart.org/aha_ym18/expedition/?eid={{frId}}&sid={{consId}}&name={{consName}}" target="_blank">
+            <a ng-href="http://hearttools.heart.org/aha_ym18/expedition/?eid={{frId}}&amp;sid={{consId}}&amp;name={{consName}}" target="_blank">
               <img src="../aha-luminate/dist/jump-hoops/image/virtual-world.png" alt="View virtual world">
             </a>
           </div>
@@ -334,7 +334,7 @@
         <div class="col-sm-6 ym-pc-dashboard-coordinator-progress-section__column event-secondary-medium">
           <div class="ym-pc-dashboard-coordinator-progress-box">
             <div class="ym-pc-dashboard-section-header">
-              <h3>
+              <h3 class="h5">
                 Fundraising
               </h3>
             </div>
@@ -361,7 +361,7 @@
               <div class="ym-progress__thermometer">
                 <div class="ym-progress__thermometer--fill" ng-style="{'width': companyProgress.percent + '%'}"></div>
               </div>
-              <div class="clearfix">
+              <div class="ym-progress-related clearfix">
                 <div class="pull-right">
                   <p>
                     <strong><span ng-bind-html="companyProgress.raisedFormatted"></span></strong> raised
@@ -445,7 +445,7 @@
         <div class="col-sm-6 ym-pc-dashboard-coordinator-progress-section__column event-secondary-medium">
           <div class="ym-pc-dashboard-coordinator-students-box" ng-if="companyInfo.participantCount" ng-cloak>
             <div class="ym-pc-dashboard-section-header">
-              <h3>
+              <h3 class="h5">
                 My Students
               </h3>
             </div>
@@ -743,17 +743,17 @@
             <h3 class="h5">
               Download Mobile App
             </h3>
-            <p>
-              Download our Mobile Fundraising App today!
-            </p>
-            <div class="ym-pc-dashboard-mobile-downloads">
-              <a ng-href="{{baseUrl}}#" target="_blank">
-                <img src="../aha-luminate/dist/youth-markets/image/apple-store-logo.png" alt="Download the iPhone App">
-              </a> 
-              <a ng-href="{{baseUrl}}#" target="_blank">
-                <img src="../aha-luminate/dist/youth-markets/image/google-play-logo.png" alt="Download the Android App">
-              </a>
-            </div>
+          </div>
+          <p>
+            Download our Mobile Fundraising App today!
+          </p>
+          <div class="ym-pc-dashboard-mobile-downloads">
+            <a ng-href="{{baseUrl}}#" target="_blank">
+              <img src="../aha-luminate/dist/youth-markets/image/apple-store-logo.png" alt="Download the iPhone App">
+            </a> 
+            <a ng-href="{{baseUrl}}#" target="_blank">
+              <img src="../aha-luminate/dist/youth-markets/image/google-play-logo.png" alt="Download the Android App">
+            </a>
           </div>
         </div>
         <div class="col-sm-4">
@@ -761,14 +761,14 @@
             <h3 class="h5">
               Facebook Fundraising
             </h3>
-            <p>
-              Use our Facebook app to raise even more!
-            </p>
-            <div class="text-center">
-              <a ng-href="{{baseUrl}}#" target="_blank">
-                <img src="../aha-luminate/dist/youth-markets/image/fundraise-with-facebook.png" alt="Fundraise with Facebook">
-              </a>
-            </div>
+          </div>
+          <p>
+            Use our Facebook app to raise even more!
+          </p>
+          <div class="text-center">
+            <a ng-href="{{baseUrl}}#" target="_blank">
+              <img src="../aha-luminate/dist/youth-markets/image/fundraise-with-facebook.png" alt="Fundraise with Facebook">
+            </a>
           </div>
         </div>
         <div class="col-sm-4">
@@ -776,17 +776,17 @@
             <h3 class="h5">
               Email Signature
             </h3>
-            <p>
-              Download a signature for your email!
-            </p>
-            <div class="text-center">
-              <a class="btn btn-md-wide btn-secondary" ng-href="{{baseUrl}}#">
-                <strong>PC Instructions</strong>
-              </a> 
-              <a class="btn btn-md-wide btn-secondary" ng-href="{{baseUrl}}#">
-                <strong>Mac Instructions</strong>
-              </a>
-            </div>
+          </div>
+          <p>
+            Download a signature for your email!
+          </p>
+          <div class="text-center">
+            <a class="btn btn-md-wide btn-secondary" ng-href="{{baseUrl}}#">
+              <strong>PC Instructions</strong>
+            </a> 
+            <a class="btn btn-md-wide btn-secondary" ng-href="{{baseUrl}}#">
+              <strong>Mac Instructions</strong>
+            </a>
           </div>
         </div>
       </div>

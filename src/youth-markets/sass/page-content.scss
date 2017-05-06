@@ -122,9 +122,11 @@
   
   .ym-user-image-inner {
     position: relative;
+    background: $brand-white;
 
     @media (min-width: $screen-md-min) {
       min-height: 360px;
+      background: transparent;
     }
     
     .btn {
@@ -157,6 +159,10 @@
     width: 100%;
     padding: 15px 0;
     margin: 0;
+
+    @media (min-width: 630px) and (max-width: $screen-sm-max) {
+      margin: 0 0 20px;
+    }
   }
 }
 
@@ -281,7 +287,7 @@
 }
 
 .pg-personal .ym-page-section__list {
-  @media(min-width: $screen-sm-min){
+  @media (min-width: $screen-sm-min) {
     display: flex;
     align-items: center;
   }

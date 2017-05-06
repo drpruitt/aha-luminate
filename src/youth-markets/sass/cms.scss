@@ -11,8 +11,7 @@
   }
 
   h2 + h5,
-  h2 + .h5-heading
-   {
+  h2 + .h5-heading {
     margin: 0 0 20px;
   }
 
@@ -38,9 +37,7 @@
     }
 
     @media (max-width: $screen-xs-max) {
-      & {
-        display: none;
-      }
+      display: none;
     }
   }
 
@@ -100,10 +97,11 @@
     max-width: 670px;
     width: calc(100% - 300px);
 
-    @media(max-width: $screen-md){
+    @media (max-width: $screen-sm-max) {
       width: calc(100% - 230px);
     }
-    @media(max-width: $screen-xs-max){
+
+    @media (max-width: $screen-xs-max) {
       width:100%;
       max-width: 100%;
     }
@@ -114,10 +112,11 @@
     float: right;
     width: 250px;
 
-    @media(max-width: $screen-md) {
+    @media (max-width: $screen-sm-max) {
       width: 200px;
     }
-    @media(max-width: $screen-xs-max){
+
+    @media (max-width: $screen-xs-max) {
       width:100%;
       max-width: 100%;
       margin-bottom: 40px;
@@ -167,7 +166,7 @@
           position: relative;
           display: block;
           font-size: 14px;
-          font-weight: bolder;
+          font-weight: 700er;
           text-decoration: none;
           padding-right: 30px;
 
@@ -361,7 +360,7 @@
   .ym-related-content__item {
     margin: 0 0 20px;
 
-    @media(max-width: $screen-sm) {
+    @media (max-width: $screen-xs-max) {
       margin: 0 0 30px;
     }
   }
@@ -369,11 +368,11 @@
   .ym-related-content__image {
     width: 200px;
 
-    @media(max-width: $screen-md) {
+    @media (max-width: $screen-sm-max) {
       width: 150px;
     }
 
-    @media(max-width: $screen-xs){
+    @media (max-width: $screen-xs) {
       float:none;
     }
   }
@@ -381,11 +380,11 @@
   .ym-related-content__text {
     width: calc(100% - 200px);
 
-    @media(max-width: $screen-md) {
+    @media (max-width: $screen-sm-max) {
       width: calc(100% - 150px);
     }
 
-    @media(max-width: $screen-xs){
+    @media (max-width: $screen-xs) {
       width: 100%;
       float: none;
       clear: both;
@@ -404,7 +403,7 @@
 
 .ym-accordion-list {
   .panel-group {
-    @media(max-width: $screen-sm){
+    @media (max-width: $screen-xs-max) {
       margin-bottom: 40px;
     }
   }
@@ -447,7 +446,7 @@
     a.panel-title {
       display: block;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 700;
 
       &:hover {
         text-decoration: underline;
@@ -485,7 +484,7 @@
   }
 
   a {
-    font-weight: bold;
+    font-weight: 700;
   }
 }
 
@@ -523,7 +522,7 @@
     top: 0;
     right: 0;
     background: url("../../youth-markets/image/ym-select-carrot.png") right 0.75rem center no-repeat $event-secondary;
-    font-weight: bold;
+    font-weight: 700;
     font-weight: 700;
     width: 200px;
 
