@@ -101,7 +101,7 @@
                       &nbsp;
                     </p>
                   </div>
-                  <div ng-if="participantRegistration.aTeamCaptain == 'true'" ng-cloak>
+                  <div ng-if="participantRegistration.aTeamCaptain == 'true' && participantRegistration.companyInformation.isCompanyCoordinator != 'true'" ng-cloak>
                     <p>
                       <a ng-click="editTeamGoal()">
                         <strong>Update Team Goal</strong>
