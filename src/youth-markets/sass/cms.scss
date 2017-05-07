@@ -238,6 +238,17 @@
     width: 125px;
   }
 
+  .input-group__submit-btn {
+    float: right;
+
+    .btn-lg {
+      @media (min-width: $screen-md-min) {
+        font-size: 18px;
+        line-height: 26.6667px;
+      }
+    }
+  }
+
   @media (max-width: $screen-sm-max) {
     padding: 30px;
 

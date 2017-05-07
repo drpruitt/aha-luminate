@@ -31,6 +31,14 @@
     }
   }
 
+  .owl-item {
+    &.active {
+      .owl-item-video {
+        display: block;
+      }
+    }
+  }
+
   .owl-prev {
     left: 0;
   }
@@ -155,7 +163,7 @@
       bottom: 0;
       left: 0;
       right: 0;
-      max-width: 120px;
+      max-width: 132px;
       margin: auto;
     }
   }
@@ -211,6 +219,7 @@
 }
 
 .owl-item-video {
+  display: none;
   padding-bottom: 52.25%;
 }
 

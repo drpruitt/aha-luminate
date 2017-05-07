@@ -1,12 +1,12 @@
-.btn, 
+.btn,
 a.btn {
   @include button-size($padding-base-vertical, $padding-base-horizontal, 14px);
-  
-  &, 
-  &:link, 
-  &:visited, 
-  &:hover, 
-  &:focus, 
+
+  &,
+  &:link,
+  &:visited,
+  &:hover,
+  &:focus,
   &:active {
     border-radius: 10px;
     border-width: 0;
@@ -14,73 +14,72 @@ a.btn {
     font-family: inherit;
     text-decoration: none;
   }
-  
-  &:focus, 
-  &:active, 
-  &:focus:active, 
+
+  &:focus,
+  &:active,
+  &:focus:active,
   &:focus.active {
     outline: none;
   }
-  
+
   > * {
     color: inherit !important;
   }
 }
 
 span.btn {
-  &, 
-  &:link, 
-  &:visited, 
-  &:hover, 
-  &:focus, 
+  &,
+  &:link,
+  &:visited,
+  &:hover,
+  &:focus,
   &:active {
     cursor: default;
   }
 }
 
-.btn-sm, 
+.btn-sm,
 a.btn-sm {
-  &, 
-  &:link, 
+  &,
+  &:link,
   &:visited {
     @include button-size(4px, 12px, 14px);
   }
 }
 
-.btn-md, 
+.btn-md,
 a.btn-md {
-  &, 
-  &:link, 
+  &,
+  &:link,
   &:visited {
     @include button-size(6px, 6px, 14px);
-    
+
     @media (min-width: $screen-sm-min) {
       @include button-size(7px, 14px, 14px);
     }
   }
 }
 
-.btn-md-wide, 
+.btn-md-wide,
 a.btn-md-wide {
-  &, 
-  &:link, 
+  &,
+  &:link,
   &:visited {
     @include button-size(7px, 25px, 14px);
-    
   }
 }
 
 
-.btn-lg, 
+.btn-lg,
 a.btn-lg {
-  &, 
-  &:link, 
+  &,
+  &:link,
   &:visited {
     @include button-size(10px, 12px, 14px);
     text-align: center;
     min-width: 120px;
     font-weight: 700;
-    
+
     @media (min-width: $screen-sm-min) {
       @include button-size($padding-base-vertical, $padding-base-horizontal, 20px);
       min-width: 180px;
@@ -88,67 +87,67 @@ a.btn-lg {
   }
 }
 
-.btn, 
+.btn,
 a.btn {
   &.btn-primary {
-    &, 
-    &:link, 
+    &,
+    &:link,
     &:visited {
       background: $event-primary;
       color: $brand-white;
     }
-    
-    &:hover, 
-    &:focus, 
+
+    &:hover,
+    &:focus,
     &:active {
       background: $event-primary-dark;
     }
   }
-  
+
   &.btn-secondary {
-    &, 
-    &:link, 
+    &,
+    &:link,
     &:visited {
       background: $event-secondary;
       color: $brand-white;
     }
-    
-    &:hover, 
-    &:focus, 
+
+    &:hover,
+    &:focus,
     &:active {
       background: $event-secondary-dark;
     }
   }
-  
+
   &.btn-success {
-    &, 
-    &:link, 
+    &,
+    &:link,
     &:visited {
       background: $brand-success;
       color: $brand-white;
     }
-    
-    &:hover, 
-    &:focus, 
+
+    &:hover,
+    &:focus,
     &:active {
       background: $brand-success;
     }
   }
 }
 
-.btn-global-primary, 
+.btn-global-primary,
 a.btn-global-primary {
   @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border, $btn-primary-color, $btn-primary-darker-bg, $btn-primary-darker-border);
-  
-  &, 
-  &:link, 
+
+  &,
+  &:link,
   &:visited {
     background: linear-gradient(0deg, #c7191c 0%, #ec1c24 100%);
     border-radius: 0;
   }
-  
-  &:hover, 
-  &:focus, 
+
+  &:hover,
+  &:focus,
   &:active {
     background: #870a0f;
     border-radius: 0;
@@ -156,7 +155,7 @@ a.btn-global-primary {
 }
 
 div.responsive {
-  .step-button, 
+  .step-button,
   button.step-button {
     @include button-size(10px, 12px, 14px);
     background-image: none;
@@ -165,26 +164,26 @@ div.responsive {
     border: 0;
     min-width: 120px;
     max-width: none;
-    
+
     @media (min-width: $screen-sm-min) {
       @include button-size($padding-base-vertical, $padding-base-horizontal, 20px);
       min-width: 180px;
     }
   }
 
-  .btn, 
-  a.btn, 
-  .step-button, 
+  .btn,
+  a.btn,
+  .step-button,
   button.step-button {
-    &, 
-    &:link, 
+    &,
+    &:link,
     &:visited {
       background: $event-primary;
       color: $brand-white;
     }
-    
-    &:hover, 
-    &:focus, 
+
+    &:hover,
+    &:focus,
     &:active {
       background: $event-primary-dark;
       color: $brand-white;
@@ -194,10 +193,10 @@ div.responsive {
 
 div.responsive .btn-toggle,
 div.responsive a.btn-toggle,
-.btn-toggle, 
+.btn-toggle,
 a.btn-toggle {
-  &, 
-  &:link, 
+  &,
+  &:link,
   &:visited {
     font-weight: 700;
     text-align: center;
@@ -207,8 +206,8 @@ a.btn-toggle {
     text-decoration: none;
   }
 
-  &:hover, 
-  &:focus, 
+  &:hover,
+  &:focus,
   &:active,
   &.active {
     background: $event-primary;
@@ -220,8 +219,8 @@ a.btn-toggle {
 
 .btn-outline,
 a.btn-outline {
-  &, 
-  &:link, 
+  &,
+  &:link,
   &:visited {
     font-weight: 700;
     text-align: center;
@@ -230,8 +229,8 @@ a.btn-outline {
     color: $event-primary;
     text-decoration: none;
   }
-  &:hover, 
-  &:focus, 
+  &:hover,
+  &:focus,
   &:active {
     background: $event-primary;
     color: $brand-white;
@@ -256,27 +255,27 @@ input[type="text"].btn-enter {
     color: $event-primary !important;
     opacity: 1 !important;
   }
-  
+
   &:-moz-placeholder {
     color: $event-primary !important;
     opacity: 1 !important;
   }
-  
+
   &::-moz-placeholder {
     color: $event-primary !important;
     opacity: 1 !important;
   }
-  
+
   &::-ms-input-placeholder {
     color: $event-primary !important;
     opacity: 1 !important;
   }
-  
+
   &:placeholder {
     color: $event-primary !important;
     opacity: 1 !important;
   }
-  
+
   &::placeholder {
     color: $event-primary !important;
     opacity: 1 !important;
