@@ -477,6 +477,7 @@
 
   li {
     margin-bottom: 15px;
+    text-align: left;
   }
 
   li:last-child{
@@ -544,6 +545,16 @@
 
   .ym-page-section__header {
     position: relative;
+
+    h2 {
+      &.school-list__header {
+        text-align: center;
+
+        @media (min-width: $screen-lg-min) {
+          text-align: left;
+        }
+      }
+    }
   }
 
   .dropdown-menu {
