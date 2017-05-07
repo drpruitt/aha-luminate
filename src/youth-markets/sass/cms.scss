@@ -550,7 +550,7 @@
       &.school-list__header {
         text-align: center;
 
-        @media (min-width: $screen-lg-min) {
+        @media (min-width: $screen-md-min) {
           text-align: left;
         }
       }
