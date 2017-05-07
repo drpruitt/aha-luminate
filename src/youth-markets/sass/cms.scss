@@ -489,6 +489,12 @@
 }
 
 .ym-school-search {
+  .visible-xs-block {
+    em {
+      font-size: 14px;
+    }
+  }
+
   .img-responsive {
     margin: 20px auto 30px;
 
@@ -566,6 +572,21 @@
         }
       }
     }
+  }
+
+  .ym-list--school-list {
+    th {
+      a {
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .ym-list--school-list--help {
+    font-weight: 700;
+    padding: 12px 20px;
   }
 
   @media (max-width: $screen-sm-max) {
