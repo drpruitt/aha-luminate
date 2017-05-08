@@ -1,5 +1,5 @@
 select {
-  &, 
+  &,
   &.form-control {
     -moz-appearance: none;
     -webkit-appearance: none;
@@ -9,9 +9,17 @@ select {
     background-image: none\9;
     background: url('../image/ym-select-carot.png') right 0.75rem center no-repeat $brand-white;
     color: $event-secondary;
-    
+
     &::-ms-expand {
       display: none;
     }
+  }
+}
+
+.form-control {
+  &:focus {
+    border-color: $event-secondary;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2), 0 0 8px rgba(0, 0, 0, 0.19);
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2), 0 0 8px rgba(0, 0, 0, 0.19);
   }
 }
