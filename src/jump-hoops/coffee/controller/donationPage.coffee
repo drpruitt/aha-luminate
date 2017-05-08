@@ -38,13 +38,16 @@ angular.module 'ahaLuminateControllers'
         amount: $scope.donationInfo.amount
       ]
 
-      document.getElementById('level_installmentduration').onchange = ->
-        number = document.getElementById('level_installmentduration').value
+      calculateInstallment = (number, amount) ->
         number = Number(number.split(':')[1])
         amount = Number($scope.donationInfo.amount.split('$')[1])/number
         $scope.installment.number = number
         $scope.installment.amount = '$'+ amount.toFixed(2)
-        $scope.donationInfo.monthly = true
+
+      document.getElementById('level_installmentduration').onchange = ->
+        number = document.getElementById('level_installmentduration').value
+        amount = Number($scope.donationInfo.amount.split('$')[1])/number
+        calculateInstallment(number, amount)
 
       $scope.giftType = (type) ->  
         $scope.donationInfo.giftType = type    
@@ -53,6 +56,7 @@ angular.module 'ahaLuminateControllers'
           angular.element('.ym-donation-levels__type--monthly').addClass 'active'
           angular.element('#level_installment_row').removeClass 'hidden'
           angular.element('#pstep_finish span').remove()
+          $scope.donationInfo.monthly = true
           
         else
           angular.element('.ym-donation-levels__type--onetime').addClass 'active'
@@ -62,7 +66,6 @@ angular.module 'ahaLuminateControllers'
           $scope.donationInfo.monthly = false
           populateBtnAmt(type, level)
           
-
       $scope.selectLevel = (type, level, amount) ->   
         angular.element('.ym-donation-levels__amount .btn-toggle.active').removeClass 'active'
         angular.element('.ym-donation-levels__amount .btn-toggle.level' + level).addClass 'active'
@@ -71,8 +74,10 @@ angular.module 'ahaLuminateControllers'
         angular.element('.donation-level-container.level' + level + ' input').click() 
         $scope.donationInfo.amount = amount
         populateBtnAmt(type, level, amount)
+        if $scope.donationInfo.monthly == true
+          number = document.getElementById('level_installmentduration').value
+          calculateInstallment(number, $scope.installment.amount)
 
-      
       $scope.enterAmount = (amount) ->
         angular.element('#pstep_finish span').text ''
         angular.element('#pstep_finish span').prepend('$' + amount)
