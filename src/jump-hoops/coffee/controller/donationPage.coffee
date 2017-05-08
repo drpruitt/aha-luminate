@@ -125,7 +125,10 @@ angular.module 'ahaLuminateControllers'
       $scope.tributeGift = (type) ->
         if type is 'honor'
           angular.element('.btn-toggle--honor').toggleClass 'active'
-          
+
+          if !angular.element('.btn-toggle--honor').hasClass 'active'
+            document.activeElement.blur()
+
           if angular.element('.btn-toggle--honor').is '.active'
             angular.element('.btn-toggle--memory').removeClass 'active'
             angular.element('#tribute_type').val 'tribute_type_value2'
@@ -137,6 +140,9 @@ angular.module 'ahaLuminateControllers'
             angular.element('#tribute_honoree_name_row').hide()
         else
           angular.element('.btn-toggle--memory').toggleClass 'active'
+
+          if !angular.element('.btn-toggle--memory').hasClass 'active'
+            document.activeElement.blur()
           
           if angular.element('.btn-toggle--memory').is '.active'
             angular.element('.btn-toggle--honor').removeClass 'active'
