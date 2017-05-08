@@ -3,6 +3,10 @@
   margin: -22px 0 0;
   background: $event-accent;
 
+  @media (min-width: $screen-lg-min) {
+    padding-top: 30px;
+  }
+
   > .container {
     position: relative;
 

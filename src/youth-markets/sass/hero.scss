@@ -29,7 +29,9 @@
 
   a {
     &.btn {
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      -webkit-box-shadow: 0px 0px 30px 7px rgba(250,250,250,0.5);
+      -moz-box-shadow: 0px 0px 30px 7px rgba(250,250,250,0.5);
+      box-shadow: 0px 0px 30px 7px rgba(250,250,250,0.5);
     }
   }
 }
