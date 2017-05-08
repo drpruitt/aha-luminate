@@ -13,9 +13,11 @@ main {
       width: auto;
     }
 
+    /*
     @media (max-width: $screen-xs-max) {
       margin-top: -100px;
     }
+    */
 
     @media (min-width: $screen-lg-min) {
       padding: 0;
