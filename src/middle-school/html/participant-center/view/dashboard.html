@@ -101,7 +101,7 @@
                       &nbsp;
                     </p>
                   </div>
-                  <div ng-if="participantRegistration.aTeamCaptain == 'true'" ng-cloak>
+                  <div ng-if="participantRegistration.aTeamCaptain == 'true' && participantRegistration.companyInformation.isCompanyCoordinator != 'true'" ng-cloak>
                     <p>
                       <a ng-click="editTeamGoal()">
                         <strong>Update Team Goal</strong>
@@ -145,21 +145,29 @@
         </div>
       </div>
     </section>
-    <!-- <section class="ym-pc-dashboard-badges-section" ng-if="participantBadges && participantBadges.length > 0" ng-cloak> -->
-    <section class="ym-pc-dashboard-badges-section">
+    <section class="ym-pc-dashboard-badges-section" ng-if="prizes && prizes.length > 0" ng-cloak>
       <div class="ym-pc-dashboard-section-header">
         <h2 class="h5">
           Badges
         </h2>
+        <a class="btn btn-md-wide btn-secondary" ng-href="{{baseUrl}}#">
+          <strong>Learn About Badges</strong>
+        </a>
       </div>
-      <!-- <div class="ym-pc-dashboard-badges-icons">
-        <div class="ym-pc-dashboard-badges-icon" ng-repeat="participantBadge in participantBadges">
-          <div>
-            <img src="" alt="{{participantBadge.label}}">
+      <div class="ym-pc-dashboard-badges-icons ym-carousel--badges owl-carousel">
+        <div class="ym-pc-dashboard-badges-icon" ng-repeat="prize in prizes" ng-cloak>
+          <div ng-if="prize.earned != null">
+            <img class="img-responsive" ng-src="//s3.amazonaws.com/aha-jumphoops-production/fy18/assets/badges/{{prize.id}}_delivered.png" alt="{{prize.label}}">
           </div>
-          <div ng-bind-html="participantBadge.label"></div>
+          <div ng-if="prize.earned == null">
+            <img class="img-responsive" ng-src="//s3.amazonaws.com/aha-jumphoops-production/fy18/assets/badges/{{prize.id}}_earned.png" alt="{{prize.label}}">
+          </div>
+          <div ng-bind-html="prize.label"></div>
         </div>
-      </div> -->
+      </div>
+      <p class="text-center">
+        <strong>You can also <a ng-href="{{baseUrl}}#">download Adoption Certificates</a> for each badge level!</strong>
+      </p>
     </section>
     <section class="ym-pc-dashboard-activities-section">
       <div class="ym-pc-dashboard-section-header">
@@ -198,7 +206,7 @@
             </div>
             <div class="ym-next-step__action">
               <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_nondonors_followup/list">
-                <strong>Follow Up</strong> <i class="fa fa-heart" aria-hidden="true"></i>
+                <strong>Follow Up</strong> <span class="fa fa-heart" aria-hidden="true"></span>
               </a>
             </div>
           </div>
@@ -208,7 +216,7 @@
             </div>
             <div class="ym-next-step__action">
               <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/reports">
-                <strong>View All</strong> <i class="fa fa-eye" aria-hidden="true"></i>
+                <strong>View All</strong> <span class="fa fa-eye" aria-hidden="true"></span>
               </a>
             </div>
           </div>
@@ -255,61 +263,6 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-6 ym-activity-box ym-activity-box--challenge">
-          <h3 class="h5">
-            Daily Heart-Healthy Challenge
-          </h3>
-          <div class="ym_my_challenge__current" ng-if="personalChallenge.id && personalChallenge.id != '-1'" ng-cloak>
-            <div class="row">
-              <div class="col-sm-8">
-                <p class="ym_my_challenge__description">
-                  <strong><span ng-bind-html="personalChallenge.name"></span></strong>
-                </p>
-                <p class="ym_my_challenge__stats" ng-if="personalChallenge.numCompleted == 1" ng-cloak>
-                  I've met my challenge <span>1</span> day!
-                </p>
-                <p class="ym_my_challenge__stats" ng-if="personalChallenge.numCompleted != 1" ng-cloak>
-                  I've met my challenge <span><span ng-bind-html="personalChallenge.numCompleted"></span></span> days!
-                </p>
-              </div>
-              <div class="col-sm-4">
-                <img class="img-responsive" src="../aha-luminate/dist/middle-school/image/my-challenge-exercise.png" alt="{{personalChallenge.name}}" ng-if="personalChallenge.id == '1'" ng-cloak>
-                <img class="img-responsive" src="../aha-luminate/dist/middle-school/image/my-challenge-water.png" alt="{{personalChallenge.name}}" ng-if="personalChallenge.id == '2'" ng-cloak>
-                <img class="img-responsive" src="../aha-luminate/dist/middle-school/image/my-challenge-food.png" alt="{{personalChallenge.name}}" ng-if="personalChallenge.id == '3'" ng-cloak>
-              </div>
-            </div>
-            <div class="ym_my_challenge__actions">
-              <a class="btn btn-md-wide btn-primary" ng-click="logChallenge()" ng-if="!personalChallenge.completedToday" ng-cloak>
-                <strong>I have met this challenge!</strong> <i class="fa fa-check" aria-hidden="true"></i>
-              </a>
-              <div class="alert alert-success" ng-if="personalChallenge.completedToday" ng-cloak>
-                <strong>Challenge met</strong> <i class="fa fa-check" aria-hidden="true"></i>
-              </div>
-            </div>
-          </div>
-          <div class="ym_my_challenge__update" ng-if="personalChallenge.id == '-1'" ng-cloak>
-            <form method="post" novalidate ng-submit="updateChallenge()">
-              <label for="ym-update-challenge">Take or update my challenge</label>
-              <select class="form-control" name="ym-update-challenge" ng-model="updatedPersonalChallenge.id">
-                <option value=""></option>
-                <option ng-repeat="challenge in challenges" value="{{challenge.id}}">{{challenge.name}}</option>
-              </select>
-              <button type="submit" class="btn btn-md-wide btn-primary"><strong>Update Challenge</strong></button>
-            </form>
-          </div>
-        </div>
-        <div class="col-sm-6 ym-activity-box ym-activity-box--virtual">
-          <h3 class="h5">
-            My Virtual World
-          </h3>
-          <div>
-            <a ng-href="http://hearttools.heart.org/aha_ym18/expedition/?eid={{frId}}&amp;sid={{consId}}&amp;name={{consName}}" target="_blank">
-              <img src="../aha-luminate/dist/middle-school/image/virtual-world.png" alt="View virtual world">
-            </a>
-          </div>
-        </div>
-      </div>
     </section>
     <section class="ym-pc-dashboard-coordinators-message-section" ng-if="coordinatorsMessage.message && coordinatorsMessage.message != ''" ng-cloak>
       <div class="ym-pc-dashboard-section-header">
@@ -326,7 +279,7 @@
         <div class="col-sm-6 ym-pc-dashboard-coordinator-progress-section__column event-secondary-medium">
           <div class="ym-pc-dashboard-coordinator-progress-box">
             <div class="ym-pc-dashboard-section-header">
-              <h3>
+              <h3 class="h5">
                 Fundraising
               </h3>
             </div>
@@ -437,7 +390,7 @@
         <div class="col-sm-6 ym-pc-dashboard-coordinator-progress-section__column event-secondary-medium">
           <div class="ym-pc-dashboard-coordinator-students-box" ng-if="companyInfo.participantCount" ng-cloak>
             <div class="ym-pc-dashboard-section-header">
-              <h3>
+              <h3 class="h5">
                 My Students
               </h3>
             </div>
@@ -677,40 +630,40 @@
           <div class="col-sm-4">
             <div class="ym-pc-dashboard-section-header">
               <h3 class="h5">
-                Educational Resources
+                Game Guide
               </h3>
             </div>
             <p>
-              Download resources by state to share with your students.
+              Lorem ipsum.
             </p>
             <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#">
-              <strong>Download Resources</strong>
+              <strong>Download Game Guide</strong>
             </a>
           </div>
           <div class="col-sm-4">
             <div class="ym-pc-dashboard-section-header">
               <h3 class="h5">
-                Online Assignment
+                Volunteer Guide
               </h3>
             </div>
             <p>
-              Download a worksheet for an in-class assignment.
+              Lorem ipsum.
             </p>
             <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#">
-              <strong>Download Assignment</strong>
+              <strong>Download Volunteer Guide</strong>
             </a>
           </div>
           <div class="col-sm-4">
             <div class="ym-pc-dashboard-section-header">
               <h3 class="h5">
-                Homework with Heart
+                Lorem Ipsum
               </h3>
             </div>
             <p>
-              Download a worksheet for a take-home assignment.
+              Lorem ipsum.
             </p>
             <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#">
-              <strong>Download Homework</strong>
+              <strong>Download Lorem Ipsum</strong>
             </a>
           </div>
         </div>
@@ -730,55 +683,37 @@
     </div>
     <div class="ym-pc-dashboard-spread-options">
       <div class="row">
-        <div class="col-sm-4">
-          <div class="ym-pc-dashboard-section-header">
-            <h3 class="h5">
-              Download Mobile App
-            </h3>
-            <p>
-              Download our Mobile Fundraising App today!
-            </p>
-            <div class="ym-pc-dashboard-mobile-downloads">
-              <a ng-href="{{baseUrl}}#" target="_blank">
-                <img src="../aha-luminate/dist/youth-markets/image/apple-store-logo.png" alt="Download the iPhone App">
-              </a> 
-              <a ng-href="{{baseUrl}}#" target="_blank">
-                <img src="../aha-luminate/dist/youth-markets/image/google-play-logo.png" alt="Download the Android App">
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-4">
+        <div class="col-sm-6">
           <div class="ym-pc-dashboard-section-header">
             <h3 class="h5">
               Facebook Fundraising
             </h3>
-            <p>
-              Use our Facebook app to raise even more!
-            </p>
-            <div class="text-center">
-              <a ng-href="{{baseUrl}}#" target="_blank">
-                <img src="../aha-luminate/dist/youth-markets/image/fundraise-with-facebook.png" alt="Fundraise with Facebook">
-              </a>
-            </div>
+          </div>
+          <p>
+            Use our Facebook app to raise even more!
+          </p>
+          <div class="text-center">
+            <a ng-href="{{baseUrl}}#" target="_blank">
+              <img src="../aha-luminate/dist/youth-markets/image/fundraise-with-facebook.png" alt="Fundraise with Facebook">
+            </a>
           </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-6">
           <div class="ym-pc-dashboard-section-header">
             <h3 class="h5">
               Email Signature
             </h3>
-            <p>
-              Download a signature for your email!
-            </p>
-            <div class="text-center">
-              <a class="btn btn-md-wide btn-secondary" ng-href="{{baseUrl}}#">
-                <strong>PC Instructions</strong>
-              </a> 
-              <a class="btn btn-md-wide btn-secondary" ng-href="{{baseUrl}}#">
-                <strong>Mac Instructions</strong>
-              </a>
-            </div>
+          </div>
+          <p>
+            Download a signature for your email!
+          </p>
+          <div class="text-center">
+            <a class="btn btn-md-wide btn-secondary" ng-href="{{baseUrl}}#">
+              <strong>PC Instructions</strong>
+            </a> 
+            <a class="btn btn-md-wide btn-secondary" ng-href="{{baseUrl}}#">
+              <strong>Mac Instructions</strong>
+            </a>
           </div>
         </div>
       </div>
