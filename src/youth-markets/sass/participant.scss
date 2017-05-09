@@ -822,6 +822,14 @@ main > .container {
         margin-top: 15px;
       }
       
+      p {
+        display: inline-block;
+        
+        @media (min-width: $screen-sm-min) {
+          display: block;
+        }
+      }
+      
       a {
         display: inline-block;
         margin-left: 5px;
@@ -1387,6 +1395,14 @@ main > .container {
     @media (max-width: $screen-sm-max) {
       text-align: left;
       margin-top: 15px;
+    }
+    
+    p {
+      display: inline-block;
+      
+      @media (min-width: $screen-sm-min) {
+        display: block;
+      }
     }
     
     a {
