@@ -183,11 +183,21 @@
           <div ng-if="participantGifts.gifts && participantGifts.gifts.length == 0" ng-cloak>
             <div class="ym-next-step">
               <div class="ym-next-step__step">
-                You have not received any donations yet. Use the email tool to ask for support. 
+                You have no donations yet.
               </div>
               <div class="ym-next-step__action">
-                <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email">
-                  <strong>Email</strong> <i class="fa fa-envelope" aria-hidden="true"></i>
+                <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#">
+                  Be the first to donate!
+                </a>
+              </div>
+            </div>
+            <div class="ym-next-step">
+              <div class="ym-next-step__step">
+                Reaching out to family and friends is easy when you import your email address book.
+              </div>
+              <div class="ym-next-step__action">
+                <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#">
+                  Import Contacts
                 </a>
               </div>
             </div>
