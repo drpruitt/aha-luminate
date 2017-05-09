@@ -23,6 +23,12 @@ main {
   }
 }
 
+.app-9 main > .container {
+  @media (max-width: $screen-xs-max) {
+    margin-top: -60px;
+  }
+}
+
 .jump-hoops-home {
   main {
     > .container {
