@@ -75,7 +75,7 @@
     }
 
     .item {
-      @media(max-width: $screen-sm) {
+      @media(max-width: $screen-xs-max) {
         > p,
         > .h5-heading {
           padding-left: 10px;
