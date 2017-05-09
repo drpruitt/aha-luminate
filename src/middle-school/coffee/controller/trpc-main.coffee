@@ -11,5 +11,5 @@ angular.module 'trPcControllers'
       $scope.location = $location.path()
       $rootScope.$on '$routeChangeSuccess', ->
         $scope.location = $location.path()
-        return   
+        return
   ]

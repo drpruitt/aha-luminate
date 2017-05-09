@@ -219,7 +219,7 @@ angular.module 'trPcControllers'
           else
             $scope.contactImport.step = 'online-consent'
             $window.open APP_INFO.rootPath + 'dist/middle-school/html/participant-center/popup/address-book-import.html?import_source=' + $scope.contactImport.import_type, 'startimport', 'location=no,menubar=no,toolbar=no,height=400'
-            return false
+            false
       
       window.trPcContactImport = 
         buildAddressBookImport: (importJobId) ->
@@ -361,7 +361,7 @@ angular.module 'trPcControllers'
       
       $scope.uploadContactsCSV = ->
         angular.element('.js--import-contacts-csv-form').submit()
-        return false
+        false
       
       $scope.handleContactsCSV = (csvIframe) ->
         csvIframeContent = jQuery(csvIframe).contents().text()
