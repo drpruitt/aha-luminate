@@ -10,7 +10,7 @@ angular.module('ahaLuminateControllers').controller 'SchoolSearchCtrl', [
     $scope.schools = []
     $scope.filtered = []
     $scope.schoolList =
-      sortProp: 'SCHOOL_NAME'
+      sortProp: 'SCHOOL_STATE'
       sortDesc: false
       totalItems: 0
       currentPage: 1
@@ -62,8 +62,10 @@ angular.module('ahaLuminateControllers').controller 'SchoolSearchCtrl', [
       schools = $scope.filtered
       if schools.length
         orderBy = $filter 'orderBy'
-        $scope.schoolList.sortProp = sortProp
         $scope.schoolList.sortDesc = !$scope.schoolList.sortDesc
+        if $scope.schoolList.sortProp isnt sortProp
+          $scope.schoolList.sortProp = sortProp
+          $scope.schoolList.sortDesc = false
         schools = orderBy schools, sortProp, $scope.schoolList.sortDesc
         $scope.filtered = schools
         $scope.schoolList.currentPage = 1 # reset pagination back to first page
