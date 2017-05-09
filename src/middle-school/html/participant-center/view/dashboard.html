@@ -186,7 +186,7 @@
                 You have no donations yet.
               </div>
               <div class="ym-next-step__action">
-                <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#">
+                <a class="btn btn-md-wide btn-primary" ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{consId}}" target="_blank">
                   Be the first to donate!
                 </a>
               </div>
@@ -203,6 +203,26 @@
             </div>
           </div>
           <div ng-if="participantGifts.gifts && participantGifts.gifts.length == 1 && participantRegistration.selfDonor == 'true'" ng-cloak>
+            <div class="ym-next-step">
+              <div class="ym-next-step__step">
+                You're the only donor so far.
+              </div>
+              <div class="ym-next-step__action">
+                <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email">
+                  Send Some Emails
+                </a>
+              </div>
+            </div>
+            <div class="ym-next-step">
+              <div class="ym-next-step__step">
+                Reaching out to family and friends is easy when you import your email address book.
+              </div>
+              <div class="ym-next-step__action">
+                <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#">
+                  Import Contacts
+                </a>
+              </div>
+            </div>
           </div>
           <div ng-if="(participantGifts.gifts && participantGifts.gifts.length == 1 && participantRegistration.selfDonor == 'false') || (participantGifts.gifts && participantGifts.gifts.length > 1)" ng-cloak>
             <div class="ym-next-step" ng-if="donorContactCounts.email_rpt_show_unthanked_donors > 0" ng-cloak>
