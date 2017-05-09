@@ -221,7 +221,7 @@ angular.module 'trPcControllers'
                 $scope.participantGifts.gifts = participantGifts
               $scope.participantGifts.totalNumber = if response.data.getGiftsResponse.totalNumberResults then Number(response.data.getGiftsResponse.totalNumberResults) else 0
             response
-        $scope.reportPromises.push personalGiftsPromise
+        $scope.dashboardPromises.push personalGiftsPromise
       $scope.getGifts()
 
       $scope.donorContactCounts = {}

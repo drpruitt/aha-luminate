@@ -202,7 +202,9 @@
               </div>
             </div>
           </div>
-          <div ng-if="participantGifts.gifts && participantGifts.gifts.length > 0" ng-cloak>
+          <div ng-if="participantGifts.gifts && participantGifts.gifts.length == 1 && participantRegistration.selfDonor == 'true'" ng-cloak>
+          </div>
+          <div ng-if="(participantGifts.gifts && participantGifts.gifts.length == 1 && participantRegistration.selfDonor == 'false') || (participantGifts.gifts && participantGifts.gifts.length > 1)" ng-cloak>
             <div class="ym-next-step" ng-if="donorContactCounts.email_rpt_show_unthanked_donors > 0" ng-cloak>
               <div class="ym-next-step__step">
                 You have new donors who haven't received a thank-you email!
