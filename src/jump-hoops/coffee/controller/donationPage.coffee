@@ -44,7 +44,7 @@ angular.module 'ahaLuminateControllers'
       calculateInstallment = (number, amount) ->
         $scope.donationInfo.installmentAmount  = amount.toFixed(2)
         $scope.donationInfo.numberPayments = number
-        console.log $scope.donationInfo
+        #console.log $scope.donationInfo
 
       document.getElementById('level_installmentduration').onchange = ->
         number = document.getElementById('level_installmentduration').value
@@ -68,6 +68,7 @@ angular.module 'ahaLuminateControllers'
           angular.element('.ym-donation-levels__type--monthly').removeClass 'active'
           angular.element('#level_installment_row').addClass 'hidden'
           angular.element('#level_installmentduration').val 'S:0'
+          jQuery('#level_installmentduration').click()
           $scope.donationInfo.monthly = false
           populateBtnAmt(type, $scope.donationInfo.levelType)
           
@@ -79,15 +80,22 @@ angular.module 'ahaLuminateControllers'
         angular.element('.donation-level-container.level' + level + ' input').click() 
         $scope.donationInfo.amount = amount
         $scope.donationInfo.levelType
-        populateBtnAmt(type, level, amount)     
+        populateBtnAmt(type, level, amount)
+        console.log $scope.donationInfo   
 
         if $scope.donationInfo.monthly == true 
           number = document.getElementById('level_installmentduration').value
           number = Number(number.split(':')[1])
           if number == 0
             number = 1
-          amount = Number($scope.donationInfo.amount.split('$')[1])/number
+          if level = 'other'
+            amount = Number($scope.donationInfo.amount)/number
+          else
+            amount = Number($scope.donationInfo.amount.split('$')[1])/number
           calculateInstallment(number, amount)
+        else
+          $scope.donationInfo.installmentAmount = amount
+          $scope.donationInfo.numberPayments = 1
 
       $scope.enterAmount = (amount) ->
         angular.element('#pstep_finish span').text ''
