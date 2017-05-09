@@ -816,10 +816,23 @@ main > .container {
       }
     }
     
-    .text-right {
-      @media (max-width: $screen-sm-max) {
-        text-align: left;
-        margin-top: 15px;
+    .ym-activity-share-page {
+      margin: 15px 0 0;
+      
+      @media (min-width: $screen-sm-min) {
+        text-align: right;
+        margin: 0;
+      }
+      
+      p {
+        display: inline-block;
+        margin: 0;
+        vertical-align: bottom;
+        
+        @media (min-width: $screen-sm-min) {
+          display: block;
+          margin: 0 0 10px;
+        }
       }
       
       a {
@@ -1383,10 +1396,23 @@ main > .container {
     }
   }
   
-  .text-right {
-    @media (max-width: $screen-sm-max) {
-      text-align: left;
-      margin-top: 15px;
+  .ym-activity-share-page {
+    margin: 15px 0 0;
+    
+    @media (min-width: $screen-sm-min) {
+      text-align: right;
+      margin: 0;
+    }
+    
+    p {
+      display: inline-block;
+      margin: 0;
+      vertical-align: bottom;
+
+      @media (min-width: $screen-sm-min) {
+        display: block;
+        margin: 0 0 10px;
+      }
     }
     
     a {
