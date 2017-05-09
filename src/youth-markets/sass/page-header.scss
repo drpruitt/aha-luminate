@@ -89,3 +89,26 @@
   right: 15px;
   bottom: -20px;
 }
+
+.ym-page-header-social {
+  p {
+    margin: 0 0 12px;
+  }
+
+  a {
+    &, 
+    &:link, 
+    &:visited, 
+    &:hover, 
+    &:focus, 
+    &:active {
+      display: inline-block;
+      height: 24px;
+      
+      img {
+        display: inline-block;
+        width: 100%;
+      }
+    }
+  }
+}
