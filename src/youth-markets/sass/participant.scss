@@ -688,7 +688,7 @@ main > .container {
       margin: 0 0 15px;
       
       @media (min-width: $screen-sm-min) {
-        width: calc(100% - 125px);
+        width: calc(100% - 175px);
         padding-right: 20px;
       }
       
@@ -701,22 +701,48 @@ main > .container {
       text-align: center;
       
       @media (min-width: $screen-sm-min) {
-        width: 125px;
+        width: 175px;
         vertical-align: top;
+      }
+      
+      .btn, 
+      a.btn {
+        &, 
+        &:link, 
+        &:visited, 
+        &:hover, 
+        &:focus, 
+        &:active {
+          width: 125px;
+          padding-left: 0;
+          padding-right: 0;
+          
+          @media (min-width: $screen-sm-min) {
+            width: auto;
+            min-width: 125px;
+          }
+        }
       }
     }
     
-    .btn, 
-    a.btn {
-      &, 
-      &:link, 
-      &:visited, 
-      &:hover, 
-      &:focus, 
-      &:active {
-        width: 125px;
-        padding-left: 0;
-        padding-right: 0;
+    .ym-next-step--sm {
+      .ym-next-step__step {
+        @media (min-width: $screen-sm-min) {
+          width: calc(100% - 125px);
+        }
+      }
+      
+      .ym-next-step__action {
+        @media (min-width: $screen-sm-min) {
+          width: 125px;
+        }
+        
+        .btn, 
+        a.btn {
+          @media (min-width: $screen-sm-min) {
+            width: 125px;
+          }
+        }
       }
     }
   }
