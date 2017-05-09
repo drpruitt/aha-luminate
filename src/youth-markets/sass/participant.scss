@@ -673,15 +673,6 @@ main > .container {
         padding: 0;
         margin: 0;
       }
-      
-      > div {
-        margin: 0 0 15px;
-        
-        @media (min-width: $screen-sm-min) {
-          display: inline-block;
-          margin: 0;
-        }
-      }
     }
     
     .ym-next-step__step {
@@ -689,21 +680,20 @@ main > .container {
       
       @media (min-width: $screen-sm-min) {
         width: calc(100% - 175px);
-        padding-right: 20px;
-      }
-      
-      @media (min-width: $screen-md-min) {
-        padding-right: 40px;
+        padding-right: 15px;
+        margin: 0;
       }
     }
     
     .ym-next-step__action {
       text-align: center;
+      margin: 0 0 15px;
       
       @media (min-width: $screen-sm-min) {
         text-align: right;
-        width: 175px;
         vertical-align: top;
+        width: 175px;
+        margin: 0;
       }
       
       .btn, 
@@ -728,6 +718,11 @@ main > .container {
       .ym-next-step__step {
         @media (min-width: $screen-sm-min) {
           width: calc(100% - 125px);
+          padding-right: 20px;
+        }
+        
+        @media (min-width: $screen-md-min) {
+          padding-right: 40px;
         }
       }
       
