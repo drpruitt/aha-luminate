@@ -701,6 +701,7 @@ main > .container {
       text-align: center;
       
       @media (min-width: $screen-sm-min) {
+        text-align: right;
         width: 175px;
         vertical-align: top;
       }
@@ -713,9 +714,7 @@ main > .container {
         &:hover, 
         &:focus, 
         &:active {
-          width: 125px;
-          padding-left: 0;
-          padding-right: 0;
+          width: 175px;
           
           @media (min-width: $screen-sm-min) {
             width: auto;
