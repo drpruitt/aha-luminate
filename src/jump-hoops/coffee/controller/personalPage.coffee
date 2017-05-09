@@ -33,20 +33,19 @@ angular.module 'ahaLuminateControllers'
         else
           prizes = response.data.prizes
           angular.forEach prizes, (prize) ->
-            if prize.id is '342' or prize.id == '343' or prize.id == '344'
-              date = new Date(prize.earned_datetime)
-              $scope.monsters.push
-                priority: 1
-                id: prize.id
-                label: prize.label
-                sku: prize.sku
-                status: prize.status
-                earned: date
-              $scope.monsters.sort (a, b) ->
-                b.earned - a.earned
-            else 
-              if prize.earned_datetime isnt null
-                if prize.id == '352'
+            if prize.earned_datetime isnt null
+              if prize.id is '342' or prize.id is '343' or prize.id is '344'
+                $scope.monsters.push
+                  priority: 1
+                  id: prize.id
+                  label: prize.label
+                  sku: prize.sku
+                  status: prize.status
+                  earned: prize.earned_datetime
+                $scope.monsters.sort (a, b) ->
+                  b.earned - a.earned
+              else
+                if prize.id is '352'
                   $scope.prizes.push
                     priority: 2
                     id: prize.id
@@ -54,7 +53,7 @@ angular.module 'ahaLuminateControllers'
                     sku: prize.sku
                     status: prize.status
                     earned: prize.earned_datetime
-                if prize.id == '350'
+                else if prize.id is '350'
                   $scope.prizes.push
                     priority: 3
                     id: prize.id
@@ -62,7 +61,7 @@ angular.module 'ahaLuminateControllers'
                     sku: prize.sku
                     status: prize.status
                     earned: prize.earned_datetime
-                if prize.id == '353'
+                else if prize.id is '353'
                   $scope.prizes.push
                     priority: 4
                     id: prize.id
@@ -70,7 +69,7 @@ angular.module 'ahaLuminateControllers'
                     sku: prize.sku
                     status: prize.status
                     earned: prize.earned_datetime
-                if prize.id == '351'
+                else if prize.id is '351'
                   $scope.prizes.push
                     priority: 5
                     id: prize.id
@@ -122,7 +121,7 @@ angular.module 'ahaLuminateControllers'
             $scope.$apply()
         , 100
       
-      TeamraiserParticipantService.getParticipants 'fr_id=' + $scope.frId + '&first_name=' + encodeURIComponent('%%') + '&last_name=' + encodeURIComponent('%') + '&list_filter_column=reg.cons_id&list_filter_text=' + $scope.participantId, 
+      TeamraiserParticipantService.getParticipants 'fr_id=' + $scope.frId + '&first_name=' + encodeURIComponent('%%') + '&last_name=' + encodeURIComponent('%') + '&list_filter_column=reg.cons_id&list_filter_text=' + $scope.participantId,
         error: ->
           setParticipantProgress()
         success: (response) ->
@@ -176,13 +175,13 @@ angular.module 'ahaLuminateControllers'
           $scope.personalDonors.totalNumber = $defaultPersonalDonors.length
       
       $scope.personalPagePhoto1 =
-        defaultUrl: APP_INFO.rootPath + 'dist/jump-hoops/image/personal-default.jpg'
+        defaultUrl: APP_INFO.rootPath + 'dist/middle-school/image/personal-default.jpg'
       
       $scope.editPersonalPhoto1 = ->
         delete $scope.updatePersonalPhoto1Error
         $scope.editPersonalPhoto1Modal = $uibModal.open
           scope: $scope
-          templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/modal/editPersonalPhoto1.html'
+          templateUrl: APP_INFO.rootPath + 'dist/middle-school/html/modal/editPersonalPhoto1.html'
       
       $scope.closePersonalPhoto1Modal = ->
         delete $scope.updatePersonalPhoto1Error
