@@ -508,11 +508,7 @@
   }
 
   .img-responsive {
-    margin: 20px auto 30px;
-
-    @media (min-width: $screen-sm-min) {
-      margin-top: 50px;
-    }
+    margin: 20px auto 10px;
   }
 
   .pos-r {
