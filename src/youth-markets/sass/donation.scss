@@ -21,6 +21,16 @@ div.donation-form-container {
     display: none;
   }
 
+  input[type="text"].btn, 
+  input[type="text"].btn:before, 
+  input[type="text"].btn:after {
+    -webkit-user-select: initial;
+    -khtml-user-select: initial;
+    -moz-user-select: initial;
+    -ms-user-select: initial;
+    user-select: initial;
+  }
+
   .custom-field-container {
     .form-input-label-block {
       display: none;
