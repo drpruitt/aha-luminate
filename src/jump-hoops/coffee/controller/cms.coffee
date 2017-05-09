@@ -6,6 +6,7 @@ angular.module 'ahaLuminateControllers'
       initCarousel = ->
         owl = jQuery '.owl-carousel'
         owl.owlCarousel
+          mouseDrag: false
           nav: true
           center: true
           loop: true
@@ -27,12 +28,11 @@ angular.module 'ahaLuminateControllers'
             '<i class="fa fa-chevron-left" aria-hidden="true" />',
             '<i class="fa fa-chevron-right" aria-hidden="true" />'
           ]
-
+      
       if angular.element('ym-carousel--internal')
         $timeout initCarousel, 1000
-
+      
       $scope.toggleOpen = (id) ->
-        angular.element('.panel-heading').removeClass('active')
-        angular.element('#'+id).toggleClass('active')
-
+        angular.element('.panel-heading').removeClass 'active'
+        angular.element('#'+id).toggleClass 'active'
   ]

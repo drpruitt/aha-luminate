@@ -33,11 +33,10 @@ angular.module 'ahaLuminateControllers'
         else
           prizes = response.data.prizes
           angular.forEach prizes, (prize) ->
-            if prize.id == '342' or prize.id == '343' or prize.id == '344'
+            if prize.id is '342' or prize.id == '343' or prize.id == '344'
               date = new Date(prize.earned_datetime)
               $scope.monsters.push
                 priority: 1
-
                 id: prize.id
                 label: prize.label
                 sku: prize.sku
@@ -46,7 +45,7 @@ angular.module 'ahaLuminateControllers'
               $scope.monsters.sort (a, b) ->
                 b.earned - a.earned
             else 
-              if prize.earned_datetime != null
+              if prize.earned_datetime isnt null
                 if prize.id == '352'
                   $scope.prizes.push
                     priority: 2

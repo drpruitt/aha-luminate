@@ -468,6 +468,7 @@ angular.module 'trPcControllers'
       initCarousel = ->
         owl = jQuery '.owl-carousel'
         owl.owlCarousel
+          mouseDrag: false
           nav: true
           loop: true
           responsive:
