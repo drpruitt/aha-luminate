@@ -44,15 +44,17 @@ angular.module 'ahaLuminateControllers'
       calculateInstallment = (number, amount) ->
         $scope.donationInfo.installmentAmount  = amount.toFixed(2)
         $scope.donationInfo.numberPayments = number
-        #console.log $scope.donationInfo
 
       document.getElementById('level_installmentduration').onchange = ->
+        console.log $scope.donationInfo
         number = document.getElementById('level_installmentduration').value
         number = Number(number.split(':')[1])
         if number == 0
           number = 1
         amount = Number($scope.donationInfo.amount.split('$')[1])/number
         calculateInstallment(number, amount)
+        console.log $scope.donationInfo
+
 
       $scope.giftType = (type) ->  
         $scope.donationInfo.giftType = type    
@@ -68,7 +70,7 @@ angular.module 'ahaLuminateControllers'
           angular.element('.ym-donation-levels__type--monthly').removeClass 'active'
           angular.element('#level_installment_row').addClass 'hidden'
           angular.element('#level_installmentduration').val 'S:0'
-          jQuery('#level_installmentduration').click()
+          angular.element('#level_installmentduration').click()
           $scope.donationInfo.monthly = false
           populateBtnAmt(type, $scope.donationInfo.levelType)
           
@@ -88,11 +90,9 @@ angular.module 'ahaLuminateControllers'
           number = Number(number.split(':')[1])
           if number == 0
             number = 1
-          if level = 'other'
-            amount = Number($scope.donationInfo.amount)/number
-          else
+          if level != 'other'
             amount = Number($scope.donationInfo.amount.split('$')[1])/number
-          calculateInstallment(number, amount)
+            calculateInstallment(number, amount)
         else
           $scope.donationInfo.installmentAmount = amount
           $scope.donationInfo.numberPayments = 1
@@ -102,6 +102,15 @@ angular.module 'ahaLuminateControllers'
         angular.element('#pstep_finish span').prepend('$' + amount)
         angular.element('.donation-level-user-entered input').val amount
         $scope.donationInfo.amount = amount
+
+        if $scope.donationInfo.monthly == true 
+          number = document.getElementById('level_installmentduration').value
+          number = Number(number.split(':')[1])
+          if number == 0
+            number = 1
+          amount = amount/number
+          calculateInstallment(number, amount)
+          angular.element('#level_installmentduration').click()
 
       populateBtnAmt = (type, level) ->
         angular.element('#pstep_finish span').remove()
