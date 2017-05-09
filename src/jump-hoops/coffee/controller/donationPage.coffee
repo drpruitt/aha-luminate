@@ -46,15 +46,15 @@ angular.module 'ahaLuminateControllers'
         $scope.donationInfo.numberPayments = number
 
       document.getElementById('level_installmentduration').onchange = ->
-        console.log $scope.donationInfo
         number = document.getElementById('level_installmentduration').value
         number = Number(number.split(':')[1])
         if number == 0
           number = 1
-        amount = Number($scope.donationInfo.amount.split('$')[1])/number
+        if $scope.donationInfo.levelType == 'level'
+            amount = Number($scope.donationInfo.amount.split('$')[1])/number
+        else
+          amount = Number($scope.donationInfo.amount)
         calculateInstallment(number, amount)
-        console.log $scope.donationInfo
-
 
       $scope.giftType = (type) ->  
         $scope.donationInfo.giftType = type    
@@ -64,7 +64,12 @@ angular.module 'ahaLuminateControllers'
           angular.element('#level_installment_row').removeClass 'hidden'
           angular.element('#pstep_finish span').remove()
           $scope.donationInfo.monthly = true
-          
+          if $scope.donationInfo.levelType == 'level'
+            amount = Number($scope.donationInfo.amount.split('$')[1])
+          else
+            amount = Number($scope.donationInfo.amount)
+          number = 1
+          calculateInstallment(number, amount)
         else
           angular.element('.ym-donation-levels__type--onetime').addClass 'active'
           angular.element('.ym-donation-levels__type--monthly').removeClass 'active'
@@ -72,7 +77,9 @@ angular.module 'ahaLuminateControllers'
           angular.element('#level_installmentduration').val 'S:0'
           angular.element('#level_installmentduration').click()
           $scope.donationInfo.monthly = false
-          populateBtnAmt(type, $scope.donationInfo.levelType)
+          populateBtnAmt($scope.donationInfo.levelType, type)
+          amount = Number($scope.donationInfo.amount.split('$')[1])
+          calculateInstallment(1, amount)
           
       $scope.selectLevel = (type, level, amount) ->   
         angular.element('.ym-donation-levels__amount .btn-toggle.active').removeClass 'active'
@@ -81,25 +88,26 @@ angular.module 'ahaLuminateControllers'
         angular.element('.ym-donation-levels__message.level' + level).addClass 'active'
         angular.element('.donation-level-container.level' + level + ' input').click() 
         $scope.donationInfo.amount = amount
-        $scope.donationInfo.levelType
+        $scope.donationInfo.levelType = type
         populateBtnAmt(type, level, amount)
-        console.log $scope.donationInfo   
 
         if $scope.donationInfo.monthly == true 
           number = document.getElementById('level_installmentduration').value
           number = Number(number.split(':')[1])
           if number == 0
             number = 1
-          if level != 'other'
+          if $scope.donationInfo.levelType == 'level'
             amount = Number($scope.donationInfo.amount.split('$')[1])/number
-            calculateInstallment(number, amount)
+          else
+            amount = Number($scope.donationInfo.amount)
+          calculateInstallment(number, amount)
         else
           $scope.donationInfo.installmentAmount = amount
           $scope.donationInfo.numberPayments = 1
 
       $scope.enterAmount = (amount) ->
         angular.element('#pstep_finish span').text ''
-        angular.element('#pstep_finish span').prepend('$' + amount)
+        angular.element('#pstep_finish span').prepend(' $' + amount)
         angular.element('.donation-level-user-entered input').val amount
         $scope.donationInfo.amount = amount
 
@@ -115,7 +123,7 @@ angular.module 'ahaLuminateControllers'
       populateBtnAmt = (type, level) ->
         angular.element('#pstep_finish span').remove()
         if $scope.donationInfo.giftType == 'onetime'
-          if level is 'level'
+          if type is 'level'
             levelAmt = ' <span>' + $scope.donationInfo.amount + ' <i class="fa fa-chevron-right" aria-hidden="true"></i></span>'
             angular.element('#pstep_finish').append levelAmt
           else

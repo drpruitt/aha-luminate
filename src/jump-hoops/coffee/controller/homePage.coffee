@@ -70,7 +70,6 @@ angular.module 'ahaLuminateControllers'
         , (response) ->
           # TODO
       
-      console.log $scope.rollUpTotals
       
       initCarousel = ->
         owl = jQuery '.ym-home-feature .owl-carousel'
