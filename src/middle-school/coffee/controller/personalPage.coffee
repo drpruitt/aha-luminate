@@ -77,9 +77,11 @@ angular.module 'ahaLuminateControllers'
                     sku: prize.sku
                     status: prize.status
                     earned: prize.earned_datetime
-          $scope.prizes.push $scope.monsters[0]
-          $scope.prizes.sort (a, b) ->
-            a.priority - b.priority
+          if $scope.monsters.length > 0
+            $scope.prizes.push $scope.monsters[0]
+          if $scope.prizes.length > 0
+            $scope.prizes.sort (a, b) ->
+              a.priority - b.priority
       
       ZuriService.getZooStudent frId + '/' + $scope.participantId,
         error: (response) ->
