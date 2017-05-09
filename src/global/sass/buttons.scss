@@ -1,12 +1,12 @@
-.btn, 
+.btn,
 a.btn {
   @include button-size($padding-base-vertical, $padding-base-horizontal, 14px);
-  
-  &, 
-  &:link, 
-  &:visited, 
-  &:hover, 
-  &:focus, 
+
+  &,
+  &:link,
+  &:visited,
+  &:hover,
+  &:focus,
   &:active {
     border-radius: 0;
     border-width: 0;
@@ -17,56 +17,56 @@ a.btn {
 }
 
 span.btn {
-  &, 
-  &:link, 
-  &:visited, 
-  &:hover, 
-  &:focus, 
+  &,
+  &:link,
+  &:visited,
+  &:hover,
+  &:focus,
   &:active {
     cursor: default;
   }
 }
 
-.btn-success, 
+.btn-success,
 a.btn-success {
   @include button-variant($btn-success-color, $btn-success-bg, $btn-success-border, $btn-success-color, darken($btn-success-bg, 10%), darken($btn-success-border, 10%));
 }
 
-.btn-primary, 
+.btn-primary,
 a.btn-primary {
   @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border, $btn-primary-color, $btn-primary-darker-bg, $btn-primary-darker-border);
 }
 
 span.btn-primary {
-  &, 
-  &:link, 
-  &:visited, 
-  &:hover, 
-  &:focus, 
+  &,
+  &:link,
+  &:visited,
+  &:hover,
+  &:focus,
   &:active {
     background-color: $btn-primary-bg;
     border-color: $btn-primary-border;
   }
 }
 
-.btn-primary-inverted, 
+.btn-primary-inverted,
 a.btn-primary-inverted {
   @include button-variant($btn-primary-bg, transparent, $btn-primary-border, $btn-primary-color, $btn-primary-bg, $btn-primary-border);
 }
 
-.btn-md, 
+.btn-md,
 a.btn-md {
-  &, 
-  &:link, 
+  &,
+  &:link,
   &:visited {
     @include button-size($padding-large-vertical, $padding-large-horizontal, 16px);
   }
 }
 
-.btn-lg, 
+.btn-lg,
 a.btn-lg {
-  &, 
-  &:link, 
+  &,
+  &:link,
   &:visited {
     @include button-size($padding-large-horizontal, $padding-large-horizontal, 16px);
   }
