@@ -688,14 +688,12 @@ main > .container {
     
     .ym-next-step__action {
       text-align: center;
-      margin: 0 0 15px;
       
       @media (min-width: $screen-md-min) {
         display: inline-block;
         text-align: right;
         vertical-align: top;
         width: 175px;
-        margin: 0;
       }
       
       .btn, 
