@@ -96,7 +96,7 @@
                       <strong><span ng-bind-html="teamProgress.goalFormatted"></span></strong> goal
                     </p>
                   </div>
-                  <div ng-if="participantRegistration.aTeamCaptain != 'true'" ng-cloak>
+                  <div ng-if="participantRegistration.aTeamCaptain != 'true' || participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
                     <p>
                       &nbsp;
                     </p>
