@@ -11,10 +11,11 @@ angular.module 'trPcControllers'
     'NgPcTeamraiserProgressService'
     'NgPcTeamraiserTeamService'
     'NgPcTeamraiserCompanyService'
+    'NgPcTeamraiserGiftService'
     'NgPcContactService'
     'NgPcTeamraiserShortcutURLService'
     '$timeout'
-    ($rootScope, $scope, $filter, $uibModal, APP_INFO, ZuriService, ParticipantBadgesService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserCompanyService, NgPcContactService, NgPcTeamraiserShortcutURLService, $timeout) ->
+    ($rootScope, $scope, $filter, $uibModal, APP_INFO, ZuriService, ParticipantBadgesService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserCompanyService, NgPcTeamraiserGiftService, NgPcContactService, NgPcTeamraiserShortcutURLService, $timeout) ->
       $scope.dashboardPromises = []
       
       if $scope.participantRegistration.lastPC2Login is '0'
@@ -191,6 +192,37 @@ angular.module 'trPcControllers'
               companies = [companies] if not angular.isArray companies
               $scope.companyInfo = companies[0]
       $scope.dashboardPromises.push companyInfoPromise
+      
+      $scope.participantGifts =
+        sortColumn: 'date_recorded'
+        sortAscending: false
+        page: 1
+      $scope.getGifts = ->
+        pageNumber = $scope.participantGifts.page - 1
+        personalGiftsPromise = NgPcTeamraiserGiftService.getGifts 'list_sort_column=' + $scope.participantGifts.sortColumn + '&list_ascending=' + $scope.participantGifts.sortAscending + '&list_page_size=10&list_page_offset=' + pageNumber
+          .then (response) ->
+            if response.data.errorResponse
+              $scope.participantGifts.gifts = []
+              $scope.participantGifts.totalNumber = 0
+            else
+              gifts = response.data.getGiftsResponse.gift
+              if not gifts
+                $scope.participantGifts.gifts = []
+              else
+                gifts = [gifts] if not angular.isArray gifts
+                participantGifts = []
+                angular.forEach gifts, (gift) ->
+                  gift.contact =
+                    firstName: gift.name.first
+                    lastName: gift.name.last
+                    email: gift.email
+                  gift.giftAmountFormatted = $filter('currency') gift.giftAmount / 100, '$', 0
+                  participantGifts.push gift
+                $scope.participantGifts.gifts = participantGifts
+              $scope.participantGifts.totalNumber = if response.data.getGiftsResponse.totalNumberResults then Number(response.data.getGiftsResponse.totalNumberResults) else 0
+            response
+        $scope.dashboardPromises.push personalGiftsPromise
+      $scope.getGifts()
       
       $scope.donorContactCounts = {}
       donorContactFilters = [

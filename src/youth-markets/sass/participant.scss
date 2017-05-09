@@ -661,26 +661,26 @@ main > .container {
   @media (min-width: $screen-md-min) {
     margin: 25px;
   }
-
+  
   &.ym-activity-box--next-step {
-    > div {
+    .ym-next-step {
+      border-bottom: 1px solid $event-secondary;
       padding: 0 0 20px;
       margin: 0 0 20px;
-      border-bottom: 1px solid $event-secondary;
       
       &:last-child {
+        border: 0;
         padding: 0;
         margin: 0;
-        border: 0;
       }
-    }
-    
-    .ym-next-step > div {
-      margin: 0 0 15px;
       
-      @media (min-width: $screen-sm-min) {
-        display: inline-block;
-        margin: 0;
+      > div {
+        margin: 0 0 15px;
+        
+        @media (min-width: $screen-sm-min) {
+          display: inline-block;
+          margin: 0;
+        }
       }
     }
     
