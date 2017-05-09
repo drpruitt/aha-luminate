@@ -678,7 +678,7 @@ main > .container {
     .ym-next-step__step {
       margin: 0 0 15px;
       
-      @media (min-width: $screen-sm-min) {
+      @media (min-width: $screen-md-min) {
         display: inline-block;
         width: calc(100% - 175px);
         padding-right: 15px;
@@ -690,7 +690,7 @@ main > .container {
       text-align: center;
       margin: 0 0 15px;
       
-      @media (min-width: $screen-sm-min) {
+      @media (min-width: $screen-md-min) {
         display: inline-block;
         text-align: right;
         vertical-align: top;
@@ -708,7 +708,7 @@ main > .container {
         &:active {
           width: 175px;
           
-          @media (min-width: $screen-sm-min) {
+          @media (min-width: $screen-md-min) {
             width: auto;
             min-width: 125px;
           }
@@ -718,24 +718,20 @@ main > .container {
     
     .ym-next-step--sm {
       .ym-next-step__step {
-        @media (min-width: $screen-sm-min) {
-          width: calc(100% - 125px);
-          padding-right: 20px;
-        }
-        
         @media (min-width: $screen-md-min) {
+          width: calc(100% - 125px);
           padding-right: 40px;
         }
       }
       
       .ym-next-step__action {
-        @media (min-width: $screen-sm-min) {
+        @media (min-width: $screen-md-min) {
           width: 125px;
         }
         
         .btn, 
         a.btn {
-          @media (min-width: $screen-sm-min) {
+          @media (min-width: $screen-md-min) {
             width: 125px;
           }
         }
