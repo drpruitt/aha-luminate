@@ -4,7 +4,8 @@ angular.module 'ahaLuminateControllers'
     '$rootScope'
     '$location'
     'DonationService'
-    ($scope, $rootScope, $location, DonationService) ->      
+    '$timeout'
+    ($scope, $rootScope, $location, DonationService, $timeout) ->      
       $scope.paymentInfoErrors = 
         errors: []
       angular.element('.page-error').remove()
@@ -58,16 +59,17 @@ angular.module 'ahaLuminateControllers'
         
       
       document.getElementById('level_installmentduration').onblur = ->
-        alert 'blur'
-        number = document.getElementById('level_installmentduration').value
-        number = Number(number.split(':')[1])
-        if number == 0
-          number = 1
-        if $scope.donationInfo.levelType == 'level'
-            amount = Number($scope.donationInfo.amount.split('$')[1])/number
-        else
-          amount = Number($scope.donationInfo.amount)
-        calculateInstallment(number, amount)
+        $timeout ->
+          number = document.getElementById('level_installmentduration').value
+          number = Number(number.split(':')[1])
+          if number == 0
+            number = 1
+          if $scope.donationInfo.levelType == 'level'
+              amount = Number($scope.donationInfo.amount.split('$')[1])/number
+          else
+            amount = Number($scope.donationInfo.amount)
+          calculateInstallment(number, amount)
+        , 1000
         
 
       $scope.giftType = (type) ->  
@@ -104,6 +106,9 @@ angular.module 'ahaLuminateControllers'
         $scope.donationInfo.amount = amount
         $scope.donationInfo.levelType = type
         populateBtnAmt(type, level, amount)
+
+        if type == 'level'
+          angular.element('.btn-enter').val('')
 
         if $scope.donationInfo.monthly == true 
           number = document.getElementById('level_installmentduration').value
