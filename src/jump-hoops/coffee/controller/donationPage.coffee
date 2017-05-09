@@ -56,6 +56,17 @@ angular.module 'ahaLuminateControllers'
           amount = Number($scope.donationInfo.amount)
         calculateInstallment(number, amount)
 
+       document.getElementById('level_installmentduration').onblur = ->
+        number = document.getElementById('level_installmentduration').value
+        number = Number(number.split(':')[1])
+        if number == 0
+          number = 1
+        if $scope.donationInfo.levelType == 'level'
+            amount = Number($scope.donationInfo.amount.split('$')[1])/number
+        else
+          amount = Number($scope.donationInfo.amount)
+        calculateInstallment(number, amount)
+
       $scope.giftType = (type) ->  
         $scope.donationInfo.giftType = type    
         if type is 'monthly'
