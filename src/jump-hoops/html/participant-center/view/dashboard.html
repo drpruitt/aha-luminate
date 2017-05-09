@@ -224,7 +224,19 @@
               </div>
             </div>
           </div>
-          <div ng-if="(participantGifts.gifts && participantGifts.gifts.length == 1 && participantRegistration.selfDonor == 'false') || (participantGifts.gifts && participantGifts.gifts.length > 1)" ng-cloak>
+          <div ng-if="((participantGifts.gifts && participantGifts.gifts.length == 1 && participantRegistration.selfDonor == 'false') || (participantGifts.gifts && participantGifts.gifts.length > 1)) && donorContactCounts.email_rpt_show_unthanked_donors == 0 && donorContactCounts.email_rpt_show_nondonors_followup == 0" ng-cloak>
+            <div class="ym-next-step" ng-if="donorContactCounts.email_rpt_show_donors > 0" ng-cloak>
+              <div class="ym-next-step__step">
+                Review all of your donations on the Reports page.
+              </div>
+              <div class="ym-next-step__action">
+                <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/reports">
+                  <strong>View All</strong> <span class="fa fa-eye" aria-hidden="true"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div ng-if="((participantGifts.gifts && participantGifts.gifts.length == 1 && participantRegistration.selfDonor == 'false') || (participantGifts.gifts && participantGifts.gifts.length > 1)) && (donorContactCounts.email_rpt_show_unthanked_donors > 0 || donorContactCounts.email_rpt_show_nondonors_followup > 0)" ng-cloak>
             <div class="ym-next-step" ng-if="donorContactCounts.email_rpt_show_unthanked_donors > 0" ng-cloak>
               <div class="ym-next-step__step">
                 You have new donors who haven't received a thank-you email!

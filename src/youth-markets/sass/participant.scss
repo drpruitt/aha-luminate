@@ -664,14 +664,14 @@ main > .container {
   
   &.ym-activity-box--next-step {
     .ym-next-step {
+      border-bottom: 1px solid $event-secondary;
       padding: 0 0 20px;
       margin: 0 0 20px;
-      border-bottom: 1px solid $event-secondary;
       
       &:last-child {
+        border: 0;
         padding: 0;
         margin: 0;
-        border: 0;
       }
       
       > div {
