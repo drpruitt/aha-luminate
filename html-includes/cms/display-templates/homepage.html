@@ -10,6 +10,7 @@
   <t:list id="banner_image">
     <div class="ym-hero item" style="background-image:url(${url});">
       <t:if test="overlay_location.length>0">
+        <section>
           <t:list id="overlay_location">
               <t:if test="name=='bottom-left'">
               <div class="ym-hero__text ym-hero__text--left hidden-xs">
@@ -21,22 +22,27 @@
           <h1>${title}</h1>
           <p>${description}</p>
           </div>
+        </section>
       </t:if>
     </div>
     <t:if test="overlay_location.length>0">
     <div class="ym-hero__text hidden-sm hidden-md hidden-lg">
-      <h1>${title}</h1>
-      <p>${description}</p>
+      <section>
+        <h1>${title}</h1>
+        <p>${description}</p>
+      </section>  
     </div>
     </t:if>
   </t:list>
   </div>
   </t:if>
+  <t:if test="!isNull(body)">
   <div class="ym-page-section ym-page-section__block ym-page-section__block--slim">
    <div class="col-sm-12">
    ${body}
   </div>
   </div>
+  </t:if>
   <t:if test="full_width_promo_1.length>0">
   <t:list id="full_width_promo_1">
   ${body}
@@ -56,28 +62,35 @@
         <div class="form-inline text-center">
           <label for="school-name-filter" class="sr-only">Start typing your school's name:</label>
           <input type="text" id="school-name-filter" name="school-name-filter" class="form-control" maxlength="40" placeholder="Start typing your school's name"
+            uib-typeahead="school.SCHOOL_NAME for school in schools | unique: 'school.SCHOOL_NAME' | filter: {SCHOOL_NAME:$viewValue}"
+            typeahead-min-length="3"
+            typeahead-editable="false"
+            typeahead-no-results="schoolList.typeaheadNoResults"
+            typeahead-on-select="typeaheadFilter($item, $model, $label, $event)"
             ng-model="schoolList.nameFilter"
-            ng-change="filterSchools()"
             ng-minlength="3"
             >
         </div>
       </div>
-      <div class="ym-page-section ym-page-section__roster" ng-class="schoolList.totalItems > 0 || schoolList.nameFilter.length > 2 ? 'show' : 'hidden'">
-        <div ng-show="schoolList.totalItems > 0">
+      <div class="ym-page-section ym-page-section__roster" ng-class="schoolList.totalItems > 0 || schoolList.nameFilter.length > 2 || schoolList.typeaheadNoResults ? 'show' : 'hidden'">
+        <div ng-show="!schoolList.typeaheadNoResults">
           <div class="ym-page-section__header">
-            <h5>Results Matching Your School's Name</h5>
-            <select id="school-state-filter" class="btn btn-sm btn-secondary" name="school-state-filter"
-              ng-model="schoolList.stateFilter"
-              ng-change="filterSchools()"
-              ng-options="state as state.label for state in states | orderBy:'id' track by state.id"
-              >
-            </select>
+            <section>
+              <h2 class="h5 school-list__header">Results Matching Your School's Name</h2>
+              <select id="school-state-filter" class="btn btn-sm btn-secondary" name="school-state-filter" title="School State Filter"
+                ng-model="schoolList.stateFilter"
+                ng-change="filterSchools()"
+                ng-options="state as state.label for state in states | orderBy:'id' track by state.id"
+                >
+              </select>
+            </section>  
           </div>
           <div class="text-center pb-lg visible-xs-block">
             <em>Scroll right to view all information</em>
           </div>
           <div class="ym-list__school-list-wrpr mb-lg">
-            <table class="table table-responsive table-striped ym-list ym-list--school-list">
+            <table class="table table-responsive table-striped ym-list ym-list--school-list"
+              summary="Results Matching Your School's Name">
               <thead class="ym-list__header">
                 <th class="ym-list__column ym-list__column--school">
                     <a href="" ng-click="orderSchools('SCHOOL_NAME')">
@@ -98,19 +111,18 @@
                 </th>
                 <th class="ym-list__column ym-list__column--state">
                     <a href="" ng-click="orderSchools('SCHOOL_STATE')">
-
                         State
                         <span ng-show="filtered.length && schoolList.sortProp == 'SCHOOL_STATE' && !schoolList.sortDesc" class="fa fa-caret-down"></span>
                         <span ng-show="filtered.length && schoolList.sortProp == 'SCHOOL_STATE' && schoolList.sortDesc" class="fa fa-caret-up"></span>
                         <span ng-show="filtered.length && schoolList.sortProp != 'SCHOOL_STATE'" class="fa fa-caret-down inactive"></span>
                     </a>
                 </th>
-                <th class="ym-list__column ym-list__column--team-leader">
+                <th class="ym-list__column ym-list__column--team-leader text-right">
                     <a href="" ng-click="orderSchools('COORDINATOR_LAST_NAME')">
                         Team Leader
                         <span ng-show="filtered.length && schoolList.sortProp == 'COORDINATOR_LAST_NAME' && !schoolList.sortDesc" class="fa fa-caret-down"></span>
                         <span ng-show="filtered.length && schoolList.sortProp == 'COORDINATOR_LAST_NAME' && schoolList.sortDesc" class="fa fa-caret-up"></span>
-                        <span ng-show="filtered.length && schoolList.sortProp != 'COORDINATOR_LAST_NAME'" class="fa fa-caret-down inactive"></span>
+                        <span ng-show="filtered.length && schoolList.sortProp != 'COORDINATOR_LAST_NAME'" class="fa fa-caret-down inactive"></span
                     </a>
                 </th>
               </thead>
@@ -128,7 +140,7 @@
                   <td class="ym-list__column ym-list__column--state">
                     {{school.SCHOOL_STATE}}
                   </td>
-                  <td class="ym-list__column ym-list__column--team-leader">
+                  <td class="ym-list__column ym-list__column--team-leader text-right">
                     {{school.COORDINATOR_LAST_NAME}}, {{school.COORDINATOR_FIRST_NAME}}
                   </td>
                 </tr>
@@ -144,10 +156,10 @@
           </div>
         </div>  
         <div ng-show="schoolList.showHelp" class="text-center">
-          Click <a href="#">here</a> to sign up for “Jump Rope and Hoops for Heart” and a school coordinator will get in touch with you soon to confirm you’ve been properly signed up with your school.
+          Click <a href="http://www2.heart.org/site/TRR?fr_tm_opt=none&pg=tfind&fr_id=2900">here</a> to sign up for “Jump Rope and Hoops for Heart” and a school coordinator will get in touch with you soon to confirm you’ve been properly signed up with your school.
         </div>
         <div ng-show="schoolList.showHelp == false" class="text-center">
-          <a ng-click="schoolList.showHelp = true;" class="btn btn-md btn-secondary">Can't Find Your School</a>
+          <a ng-click="schoolList.showHelp = true;" class="btn btn-md btn-secondary ym-list--school-list--help">Can't Find Your School</a>
         </div>
       </div>
     </div>
@@ -155,8 +167,10 @@
     <div class="ym-home-feature ym-carousel--home event-accent">
     <t:if test="!isNull(section_title) && !isNull(section_intro_text)">
       <div class="container">
-         <t:if test="!isNull(section_title)"><h2 class="text-center">${section_title}</h2></t:if>
-         <t:if test="!isNull(section_intro_text)"><p class="text-center">${section_intro_text}</p></t:if>
+        <section>
+           <t:if test="!isNull(section_title)"><h2 class="text-center">${section_title}</h2></t:if>
+           <t:if test="!isNull(section_intro_text)"><p class="text-center">${section_intro_text}</p></t:if>
+        </section>   
       </div>
     </t:if>
     <!-- Stories Carousel -->
@@ -169,19 +183,27 @@
     <div class="ym-page-section ym-page-section__main" ng-cloak>
       <div class="container">
         <div class="ym-stats ym-promo-block">
-          <h2 class="text-center">Your Impact</h2>
-          <div class="ym-promo-block__item ym-promo-block__item--participants ym-promo-block--circle">
-            <h2 class="ym-headline">{{totalStudents}}</h2>
-            <p>participants</p>
-          </div>
-          <div class="ym-promo-block__item ym-promo-block__item--pledges ym-promo-block--circle">
-            <h2 class="ym-headline">{{totalChallenges}}</h2>
-            <p>pledges taken</p>
-          </div>
-          <div class="ym-promo-block__item ym-promo-block__item--schools ym-promo-block--circle">
-            <h2 class="ym-headline">{{totalSchools}}</h2>
-            <p>participating schools</p>
-          </div>
+          <section>
+            <h2 class="text-center">Your Impact</h2>
+            <div class="ym-promo-block__item ym-promo-block__item--participants ym-promo-block--circle">
+              <section>
+                <h2 class="ym-headline">{{totalStudents}}</h2>
+                <p>participants</p>
+              </section>
+            </div>
+            <div class="ym-promo-block__item ym-promo-block__item--pledges ym-promo-block--circle">
+              <section>
+                <h2 class="ym-headline">{{totalChallenges}}</h2>
+                <p>pledges taken</p>
+              </section>
+            </div>
+            <div class="ym-promo-block__item ym-promo-block__item--schools ym-promo-block--circle">
+              <section>
+                <h2 class="ym-headline">{{totalSchools}}</h2>
+                <p>participating schools</p>
+              </section>  
+            </div>
+          </section>    
         </div>
       </div>
     </div>
