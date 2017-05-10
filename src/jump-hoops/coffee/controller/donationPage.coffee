@@ -37,11 +37,6 @@ angular.module 'ahaLuminateControllers'
       
       $scope.donationLevels = []
 
-      $scope.installment = [
-        number: '1'
-        amount: $scope.donationInfo.amount
-      ]
-
       calculateInstallment = (number, amount) ->
         $scope.donationInfo.installmentAmount  = amount.toFixed(2)
         $scope.donationInfo.numberPayments = number
@@ -288,7 +283,6 @@ angular.module 'ahaLuminateControllers'
         angular.element('#payment_cc_container').append '<div class="clearfix" />'
         angular.element('#responsive_payment_typecc_cvv_row .FormLabelText').text 'CVV:'
         angular.element('#level_installment_row').addClass 'hidden'
-
         angular.element('#tr_recognition_namerec_namename').attr('placeholder', 'If different from your name')
         angular.element('#tr_message_to_participantname').attr('placeholder', 'Write a message of encouragement. 255 characters max.')
         employerMatchFields()
