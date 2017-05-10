@@ -70,10 +70,10 @@ angular.module 'ahaLuminateControllers'
         , (response) ->
           # TODO
       
+      
       initCarousel = ->
         owl = jQuery '.ym-home-feature .owl-carousel'
         owl.owlCarousel
-          mouseDrag: false
           items: 1
           nav: true
           loop: true
@@ -99,7 +99,6 @@ angular.module 'ahaLuminateControllers'
           items = owl.find '> .item'
           if items.length > 1
             owl.owlCarousel
-              mouseDrag: false
               items: 1
               nav: true
               loop: true
