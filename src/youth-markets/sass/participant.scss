@@ -802,6 +802,12 @@ main > .container {
     .ym-activity-url {
       word-break: break-all;
       
+      p {
+        font-size: 12px;
+        line-height: 14px;
+        margin: 0;
+      }
+      
       .btn, 
       a.btn {
         &, 
@@ -828,7 +834,7 @@ main > .container {
         display: inline-block;
         margin: 0;
         vertical-align: bottom;
-        
+
         @media (min-width: $screen-sm-min) {
           display: block;
           margin: 0 0 10px;
@@ -1381,6 +1387,12 @@ main > .container {
 .ym-activity-box--coordinator-pages {
   .ym-activity-url {
     word-break: break-all;
+    
+    p {
+      font-size: 12px;
+      line-height: 14px;
+      margin: 0;
+    }
     
     .btn, 
     a.btn {
