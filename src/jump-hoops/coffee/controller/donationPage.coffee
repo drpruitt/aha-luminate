@@ -37,11 +37,12 @@ angular.module 'ahaLuminateControllers'
       
       $scope.donationLevels = []
 
+      console.log 'test'
       calculateInstallment = (number, amount) ->
         $scope.donationInfo.installmentAmount  = amount.toFixed(2)
         $scope.donationInfo.numberPayments = number
 
-      document.getElementById('level_installmentduration').onchange = ->
+      installmentDropdown = ->
         number = document.getElementById('level_installmentduration').value
         number = Number(number.split(':')[1])
         if number == 0
@@ -51,19 +52,13 @@ angular.module 'ahaLuminateControllers'
         else
           amount = Number($scope.donationInfo.amount)
         calculateInstallment(number, amount)
+
+      document.getElementById('level_installmentduration').onchange = ->
+        installmentDropdown()
         
-      
       document.getElementById('level_installmentduration').onblur = ->
         $timeout ->
-          number = document.getElementById('level_installmentduration').value
-          number = Number(number.split(':')[1])
-          if number == 0
-            number = 1
-          if $scope.donationInfo.levelType == 'level'
-              amount = Number($scope.donationInfo.amount.split('$')[1])/number
-          else
-            amount = Number($scope.donationInfo.amount)
-          calculateInstallment(number, amount)
+          installmentDropdown()
         , 1000
         
 
@@ -144,12 +139,6 @@ angular.module 'ahaLuminateControllers'
             angular.element('#pstep_finish').append '<span> <i class="fa fa-chevron-right" aria-hidden="true"></i></span>'
       
       employerMatchFields = ->
-        angular.element('#employer_name_row').parent().addClass 'ym-employer-match__fields'
-        angular.element('#employer_street_row').parent().addClass 'ym-employer-match__fields'
-        angular.element('#employer_city_row').parent().addClass 'ym-employer-match__fields'
-        angular.element('#employer_state_row').parent().addClass 'ym-employer-match__fields'
-        angular.element('#employer_zip_row').parent().addClass 'ym-employer-match__fields'
-        angular.element('#employer_phone_row').parent().addClass 'ym-employer-match__fields'
         angular.element('.employer-address-container').addClass 'hidden'
         angular.element('.matching-gift-container').addClass 'hidden'
         angular.element('label[for="match_checkbox_dropdown"]').parent().parent().parent().addClass('ym-employer-match')

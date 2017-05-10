@@ -71,17 +71,15 @@
   addthis.init();
 </script>
 
-[[?x9x::x[[S4]]x::
-  [[?x20x::x[[S334:PROXY_TYPE]]x::
-    <script>
-      if(window.location.href.indexOf('ecard_linktrack=') > 0) {
-        var uparts = window.location.href.split('ecard_linktrack=');
-        uparts = uparts[1].split('&');
-        
-        var scriptTag = document.createElement('script');
-        scriptTag.src = 'https://hearttools.heart.org/aha_ym18/visitlink_record.php?ecard_linktrack=' + uparts[0];
-        document.body.appendChild(scriptTag);
-      }    
-    </script>
-  ::]]
+[[?xpersonalx::x[[S334:pg]]x::
+  <script>
+    if(window.location.href.indexOf('ecard_linktrack=') > 0) {
+      var uparts = window.location.href.split('ecard_linktrack=');
+      uparts = uparts[1].split('&');
+      
+      var scriptTag = document.createElement('script');
+      scriptTag.src = 'https://hearttools.heart.org/aha_ym18/visitlink_record.php?ecard_linktrack=' + uparts[0];
+      document.body.appendChild(scriptTag);
+    }    
+  </script>
 ::]]
