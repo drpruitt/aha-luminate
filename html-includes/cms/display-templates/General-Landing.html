@@ -1,0 +1,161 @@
+<div ng-controller="CmsCtrl">
+<t:if test="banner_image.length>0">
+<t:set id="bannerdisplay" value="'ym-page-banner'"/>
+<t:list id="display_full_height">
+<t:if test="name=='yes'">
+<!-- Full Height here-->
+<t:set id="bannerdisplay" value="'ym-hero'"/>
+</t:if>
+<t:else>
+<!-- NOT Full Height here-->
+<t:set id="bannerdisplay" value="'ym-page-banner'"/>
+</t:else>
+</t:list>
+<t:list id="banner_image">
+  <div class="${bannerdisplay}" style="background-image:url(${url});">
+  <t:if test="bannerdisplay == 'ym-hero'">
+    <t:if test="overlay_location.length>0">
+        <t:list id="overlay_location">
+            <t:if test="name=='bottom-left'">
+            <div class="ym-hero__text ym-hero__text--left hidden-xs">
+            </t:if>
+            <t:else>
+            <div class="ym-hero__text ym-hero__text--right hidden-xs">
+            </t:else>
+        </t:list>   
+        <h1>${title}</h1>
+        <p>${description}</p>
+        </div>
+    </t:if>
+  </t:if>
+  </div>
+</t:list>
+</t:if>
+<div class="ym-page-section ym-page-section__block ym-page-section__block--slim ym-page-intro">
+<t:if test="banner_image.length>0">
+    <h2>${title}</h2>
+</t:if>
+    <t:if test="!isNull(subtitle)"><span class="h5-heading">${subtitle}</span></t:if>
+    <t:if test="!isNull(intro_text)"><p>
+    ${intro_text}
+    </p></t:if>
+</div>
+<t:if test="section_features.length>0">
+  <div class="ym-carousel--internal ym-section-features event-accent">
+    <div class="container">
+      <h3 class="text-center">In This Section</h2>
+    </div>
+    <div class="owl-carousel owl-theme">
+    <t:list id="section_features">
+      <div class="item text-center">
+         <t:if test="video.length>0">
+         <t:list id="video">
+         <div class="owl-item-video">
+               <iframe width="560" height="349" src="${video_source_url}" frameborder="0" allowfullscreen></iframe>
+             </div>
+         </t:list>
+         </t:if>
+         <t:else>
+           <t:if test="standard_image.length>0">
+           <t:list id="standard_image"><img class="img-responsive" src="${url}" alt="${title}"></t:list>
+           </t:if>
+         </t:else>
+        <span class="h5-heading">${title}</span>
+        <p>${description}</p>
+        <a class="btn btn-md-wide btn-primary" href="${url}">Learn More</a>
+      </div> 
+    </t:list>
+    </div>
+  </div>
+</t:if>
+
+<div class="ym-page-section ym-page-section__block ym-page-section__block--slim border-bottom--gray">
+      <div class="ym-story">
+      ${body}
+      <!-- video --> 
+      <t:if test="video.length>0">
+       <t:list id="video">
+            <div class="ym-story-video mb-lg mt-lg">
+               <iframe width="560" height="349" src="${video_source_url}" frameborder="0" allowfullscreen></iframe>
+             </div>
+        </t:list>
+       </t:if>
+      </div>
+    <div class="clearfix"></div>
+</div>
+
+<!-- Full Width Promotions --> 
+<t:if test="full_width_promo_1.length>0">
+<t:list id="full_width_promo_1">
+${body}
+</t:list>
+</t:if>
+<t:if test="full_width_promo_2.length>0">
+<t:list id="full_width_promo_2">
+${body}
+</t:list>
+</t:if>
+</div>
+
+<!-- Footer Promotions -->
+<t:set id="displaypromo"  value="1" />
+<t:list id="display_footer_promos">
+<t:if test="name=='no'"><t:set id="displaypromo"  value="0" /></t:if><t:else><t:set id="displaypromo"  value="1" /></t:else> 
+</t:list>
+<t:if test="displaypromo==1">
+<div class="ym-carousel--internal ym-promo-block--footer event-secondary-medium">
+<t:if test="!isNull(footer_promos_section_title)"><span class="h3-heading text-center">${footer_promos_section_title}</span></t:if><t:else><span class="h3-heading text-center">Our Promotions</span></t:else>
+<t:list id="footer_promo_style">
+<t:set id="circleorsquare"  value="0" />
+<t:if test="name=='circles'"><t:set id="circleorsquare"  value="1" /></t:if>
+</t:list>
+<t:if test="footer_promos.length>0">
+<t:if test="circleorsquare==1">
+<div class="owl-carousel owl-carousel--circle owl-theme">
+</t:if>
+<t:else>
+<div class="owl-carousel owl-carousel--square owl-theme">
+</t:else>
+<t:list id="footer_promos">
+  <div class="item text-center">
+ <t:if test="!isNull(action_button_link)">
+ <t:set id="customlink" value="action_button_link"/>
+ </t:if>
+  <t:if test="standard_image.length>0">
+  <t:list id="standard_image">
+    <!--<img class="img-responsive" src="${url}" alt="${title}">-->
+ <t:if test="!isNull(customlink)"><a href="${customlink}"></t:if>
+    <div class="carousel-item__img-box">
+      <div class="carousel-item__img" style="background-image:url(${url});"></div>
+    </div>
+<t:if test="!isNull(customlink)"></a></t:if>
+ </t:list>
+  </t:if>
+    <span class="h5-heading"><t:if test="!isNull(customlink)"><a href="${customlink}"></t:if>${title}<t:if test="!isNull(customlink)"></a></t:if></span>
+    <p>${description}</p>
+    <t:list id="action_button_color"><t:if test="name=='purple'"><t:set id="btncolor" value="'btn-secondary'"/></t:if><t:else><t:set id="btncolor" value="'btn-primary'"/></t:else></t:list>
+    <t:if test="!isNull(action_button_link)">
+    <t:list id="new_window"><t:if test="name=='yes'"><a class="btn btn-md-wide ${btncolor}" href="${action_button_link}" target="_blank"></t:if><t:else><a class="btn btn-md-wide ${btncolor}" href="${action_button_link}"></t:else></t:list><t:if test="!isNull(action_button_label)">${action_button_label}</t:if><t:else>Learn More</t:else></a>
+    </t:if>
+  </div>
+</t:list>
+</div>
+</t:if>
+<t:else>
+<t:if test="circleorsquare==1">
+<!-- default footer promos in circles -->
+<t:include id="templatelist-801116945" />
+</t:if>
+<t:else>
+<!-- default footer promos in squares -->
+<t:include id="templatelist-801120018" />
+</t:else>
+</t:else>
+</div>
+</t:if>
+
+
+
+
+
+
