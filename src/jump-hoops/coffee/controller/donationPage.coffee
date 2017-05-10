@@ -37,11 +37,12 @@ angular.module 'ahaLuminateControllers'
       
       $scope.donationLevels = []
 
+      console.log 'test'
       calculateInstallment = (number, amount) ->
         $scope.donationInfo.installmentAmount  = amount.toFixed(2)
         $scope.donationInfo.numberPayments = number
 
-      document.getElementById('level_installmentduration').onchange = ->
+      installmentDropdown = ->
         number = document.getElementById('level_installmentduration').value
         number = Number(number.split(':')[1])
         if number == 0
@@ -51,19 +52,13 @@ angular.module 'ahaLuminateControllers'
         else
           amount = Number($scope.donationInfo.amount)
         calculateInstallment(number, amount)
+
+      document.getElementById('level_installmentduration').onchange = ->
+        installmentDropdown()
         
-      
       document.getElementById('level_installmentduration').onblur = ->
         $timeout ->
-          number = document.getElementById('level_installmentduration').value
-          number = Number(number.split(':')[1])
-          if number == 0
-            number = 1
-          if $scope.donationInfo.levelType == 'level'
-              amount = Number($scope.donationInfo.amount.split('$')[1])/number
-          else
-            amount = Number($scope.donationInfo.amount)
-          calculateInstallment(number, amount)
+          installmentDropdown()
         , 1000
         
 
