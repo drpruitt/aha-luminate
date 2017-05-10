@@ -139,12 +139,6 @@ angular.module 'ahaLuminateControllers'
             angular.element('#pstep_finish').append '<span> <i class="fa fa-chevron-right" aria-hidden="true"></i></span>'
       
       employerMatchFields = ->
-        angular.element('#employer_name_row').parent().addClass 'ym-employer-match__fields'
-        angular.element('#employer_street_row').parent().addClass 'ym-employer-match__fields'
-        angular.element('#employer_city_row').parent().addClass 'ym-employer-match__fields'
-        angular.element('#employer_state_row').parent().addClass 'ym-employer-match__fields'
-        angular.element('#employer_zip_row').parent().addClass 'ym-employer-match__fields'
-        angular.element('#employer_phone_row').parent().addClass 'ym-employer-match__fields'
         angular.element('.employer-address-container').addClass 'hidden'
         angular.element('.matching-gift-container').addClass 'hidden'
         angular.element('label[for="match_checkbox_dropdown"]').parent().parent().parent().addClass('ym-employer-match')
