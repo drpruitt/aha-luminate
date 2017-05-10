@@ -209,6 +209,12 @@ angular.module 'ahaLuminateControllers'
         angular.element('#billing_addr_country_row').addClass 'billing-info'
         angular.element('.billing-info').addClass 'hidden'
 
+      addOptional = ->
+        optional = '<span class="ym-optional">Optional</span>'       
+        angular.element('#donor_phone_row label').append optional
+        angular.element('#donor_addr_street2_row label').append optional
+        angular.element('#billing_addr_street2_row label').append optional
+
       $scope.togglePaymentType = (paymentType) ->
         if paymentType == 'paypal'
           angular.element('#responsive_payment_typepay_typeradiopaypal').click()
@@ -265,8 +271,6 @@ angular.module 'ahaLuminateControllers'
                 levelLabel: levelLabel
                 levelChecked: levelChecked
         
-        optional = '<span class="ym-optional">Optional</span>'       
-        angular.element('#donor_phone_row label').append optional
         angular.element('#tr_message_to_participant_row').addClass 'hidden'
         angular.element('#billing_info').parent().addClass 'billing_info_toggle'
         angular.element('#payment_cc_container').append '<div class="clearfix" />'
@@ -274,6 +278,7 @@ angular.module 'ahaLuminateControllers'
         angular.element('#level_installment_row').addClass 'hidden'
         angular.element('#tr_recognition_namerec_namename').attr('placeholder', 'If different from your name')
         angular.element('#tr_message_to_participantname').attr('placeholder', 'Write a message of encouragement. 255 characters max.')
+        addOptional()
         employerMatchFields()
         billingAddressFields()
         donorRecognitionFields()
