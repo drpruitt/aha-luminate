@@ -7,9 +7,16 @@ angular.module 'ahaLuminateControllers'
     '$location'
     '$anchorScroll'
     'ParticipantBadgesService'
-    ($scope, $timeout, TeamraiserParticipantService, $rootScope, $location, $anchorScroll, ParticipantBadgesService) ->
+    'TeamraiserService'
+    ($scope, $timeout, TeamraiserParticipantService, $rootScope, $location, $anchorScroll, ParticipantBadgesService, TeamraiserService) ->
       $dataRoot = angular.element '[data-aha-luminate-root]'
       consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
+
+      TeamraiserService.getTeamRaisersByInfo 'name=School%20Not&public_event_type=School%20Not%20Found&event_type=Jump%20Hoops&list_page_size=1&list_ascending=false&list_sort_column=event_date',
+          error: (response) ->
+            console.log response
+          success: (response) ->
+            $scope.noSchoolLink = response.getTeamraisersResponse.teamraiser.reg_indiv_url
       
       if consId
         TeamraiserParticipantService.getRegisteredTeamraisers 'cons_id=' + consId + '&event_type=' + encodeURIComponent('Jump Hoops'),
@@ -73,7 +80,6 @@ angular.module 'ahaLuminateControllers'
       initCarousel = ->
         owl = jQuery '.ym-home-feature .owl-carousel'
         owl.owlCarousel
-          mouseDrag: false
           items: 1
           nav: true
           loop: true
@@ -99,7 +105,6 @@ angular.module 'ahaLuminateControllers'
           items = owl.find '> .item'
           if items.length > 1
             owl.owlCarousel
-              mouseDrag: false
               items: 1
               nav: true
               loop: true
