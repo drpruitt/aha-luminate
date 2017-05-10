@@ -574,6 +574,13 @@ div.donation-form-container {
     }
   }
 
+  .ym-donation-payment-type {
+    .btn {
+      @media(min-width: $screen-sm-min) {
+        margin: 0 10px;
+      }
+    }
+  }
   .payment-type-selection-container {
     display: none;
   }
