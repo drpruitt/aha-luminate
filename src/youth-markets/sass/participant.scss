@@ -804,7 +804,7 @@ main > .container {
       
       p {
         font-size: 14px;
-        margin: 0 0 5px;
+        margin: 0 0 3px;
         
         &.small {
           font-size: 12px;
@@ -830,19 +830,22 @@ main > .container {
       margin: 15px 0 0;
       
       @media (min-width: $screen-sm-min) {
+        float: right;
         text-align: right;
+        max-width: 105px;
         margin: 0;
       }
       
       p {
         display: inline-block;
         font-size: 14px;
+        line-height: 18px;
         margin: 0;
         vertical-align: bottom;
         
         @media (min-width: $screen-sm-min) {
           display: block;
-          margin: 0 0 10px;
+          margin: 0 0 8px;
         }
       }
       
@@ -1395,7 +1398,7 @@ main > .container {
     
     p {
       font-size: 14px;
-      margin: 0 0 5px;
+      margin: 0 0 3px;
       
       &.small {
         font-size: 12px;
@@ -1421,19 +1424,22 @@ main > .container {
     margin: 15px 0 0;
     
     @media (min-width: $screen-sm-min) {
+      float: right;
       text-align: right;
+      max-width: 105px;
       margin: 0;
     }
     
     p {
       display: inline-block;
       font-size: 14px;
+      line-height: 18px;
       margin: 0;
       vertical-align: bottom;
       
       @media (min-width: $screen-sm-min) {
         display: block;
-        margin: 0 0 10px;
+        margin: 0 0 8px;
       }
     }
     
