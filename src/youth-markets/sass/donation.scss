@@ -3,6 +3,20 @@ div.donation-form-container {
     span.field-required {
       display: none;
     }
+
+    @media(max-width: $screen-sm-max) {
+      .btn-toggle:focus, 
+      .btn-toggle:active,
+      .btn-toggle:hover {
+        background: $brand-white;
+        color: $event-primary;
+
+        &.active {
+          background: $event-primary;
+          color: $brand-white;
+        }
+      }
+    }
   }
 
   .ErrorMessage {
@@ -512,6 +526,7 @@ div.donation-form-container {
       float: left;
       padding: 0 0 30px 50px;
       margin: 0;
+      clear: left;
     }
   }
   
@@ -574,6 +589,13 @@ div.donation-form-container {
     }
   }
 
+  .ym-donation-payment-type {
+    .btn {
+      @media(min-width: $screen-sm-min) {
+        margin: 0 10px;
+      }
+    }
+  }
   .payment-type-selection-container {
     display: none;
   }
