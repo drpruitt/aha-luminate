@@ -5,20 +5,6 @@ module.exports = {
     files: [
       {
         expand: true, 
-        cwd: 'dist/general/html/', 
-        src: [
-          '**/*'
-        ]
-      }, 
-      {
-        expand: true, 
-        cwd: 'dist/general/image/', 
-        src: [
-          '**/*'
-        ]
-      }, 
-      {
-        expand: true, 
         cwd: 'dist/general/css/', 
         src: [
           '**/*'
@@ -30,26 +16,26 @@ module.exports = {
         src: [
           '**/*'
         ]
+      }, 
+      {
+        expand: true, 
+        cwd: 'dist/general/html/', 
+        src: [
+          '**/*'
+        ]
+      }, 
+      {
+        expand: true, 
+        cwd: 'dist/general/image/', 
+        src: [
+          '**/*'
+        ]
       }
     ]
   }, 
   
   "heart-walk": {
     files: [
-      {
-        expand: true, 
-        cwd: 'dist/heart-walk/html/', 
-        src: [
-          '**/*'
-        ]
-      }, 
-      {
-        expand: true, 
-        cwd: 'dist/heart-walk/image/', 
-        src: [
-          '**/*'
-        ]
-      }, 
       {
         expand: true, 
         cwd: 'dist/heart-walk/css/', 
@@ -60,6 +46,20 @@ module.exports = {
       {
         expand: true, 
         cwd: 'dist/heart-walk/js/', 
+        src: [
+          '**/*'
+        ]
+      }, 
+      {
+        expand: true, 
+        cwd: 'dist/heart-walk/html/', 
+        src: [
+          '**/*'
+        ]
+      }, 
+      {
+        expand: true, 
+        cwd: 'dist/heart-walk/image/', 
         src: [
           '**/*'
         ]
@@ -90,20 +90,6 @@ module.exports = {
     files: [
       {
         expand: true, 
-        cwd: 'dist/jump-hoops/html/', 
-        src: [
-          '**/*'
-        ]
-      }, 
-      {
-        expand: true, 
-        cwd: 'dist/jump-hoops/image/', 
-        src: [
-          '**/*'
-        ]
-      }, 
-      {
-        expand: true, 
         cwd: 'dist/jump-hoops/css/', 
         src: [
           '**/*'
@@ -115,26 +101,26 @@ module.exports = {
         src: [
           '**/*'
         ]
+      }, 
+      {
+        expand: true, 
+        cwd: 'dist/jump-hoops/html/', 
+        src: [
+          '**/*'
+        ]
+      }, 
+      {
+        expand: true, 
+        cwd: 'dist/jump-hoops/image/', 
+        src: [
+          '**/*'
+        ]
       }
     ]
   }, 
   
   "middle-school": {
     files: [
-      {
-        expand: true, 
-        cwd: 'dist/middle-school/html/', 
-        src: [
-          '**/*'
-        ]
-      }, 
-      {
-        expand: true, 
-        cwd: 'dist/middle-school/image/', 
-        src: [
-          '**/*'
-        ]
-      }, 
       {
         expand: true, 
         cwd: 'dist/middle-school/css/', 
@@ -145,6 +131,20 @@ module.exports = {
       {
         expand: true, 
         cwd: 'dist/middle-school/js/', 
+        src: [
+          '**/*'
+        ]
+      }, 
+      {
+        expand: true, 
+        cwd: 'dist/middle-school/html/', 
+        src: [
+          '**/*'
+        ]
+      }, 
+      {
+        expand: true, 
+        cwd: 'dist/middle-school/image/', 
         src: [
           '**/*'
         ]
