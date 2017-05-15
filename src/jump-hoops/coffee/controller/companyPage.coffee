@@ -13,7 +13,8 @@ angular.module 'ahaLuminateControllers'
     'ZuriService'
     'TeamraiserRegistrationService'
     'TeamraiserCompanyPageService'
-    ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService, ZuriService, TeamraiserRegistrationService, TeamraiserCompanyPageService) ->
+    'PageContentService'
+    ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService, ZuriService, TeamraiserRegistrationService, TeamraiserCompanyPageService, PageContentService) ->
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0]
       domain = $location.absUrl().split('/site')[0]
       $rootScope.companyName = ''
@@ -25,7 +26,36 @@ angular.module 'ahaLuminateControllers'
       $scope.activity1amt = ''
       $scope.activity2amt = ''
       $scope.activity3amt = ''
-      
+      $scope.localSponsor = []
+
+      showLocalSponsor = ->
+        TeamraiserCompanyService.getCompanyList 'include_all_companies=true', 
+          error: ->
+            $scope.localSponsor = [
+              'show' : false
+            ]
+          success: (response) ->
+            companyItems = response.getCompanyListResponse.companyItem
+            angular.forEach companyItems, (companyItem) ->
+              if companyItem.companyId == $scope.companyId
+                parentId = companyItem.parentOrgEventId
+                PageContentService.getPageContent 'jump_hoops_local_sponsors_'+ parentId
+                .then (response) ->
+                  if response = 'No Data'
+                    $scope.localSponsor = [
+                      'show' : false
+                    ]
+                  else
+                    console.log response
+                    img = response.split('src=')[1]
+                    img = img.split(' /')[0]
+                    img = '<img src='+img+' />'
+                    $scope.localSponsor = [
+                      'show' : true
+                      'image' : img
+                    ]
+      showLocalSponsor()
+
       ZuriService.getZooSchool $scope.companyId,
         error: (response) ->
           $scope.studentsPledgedTotal = 0
