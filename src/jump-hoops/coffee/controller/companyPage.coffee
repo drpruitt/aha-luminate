@@ -14,7 +14,8 @@ angular.module 'ahaLuminateControllers'
     'TeamraiserRegistrationService'
     'TeamraiserCompanyPageService'
     'PageContentService'
-    ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService, ZuriService, TeamraiserRegistrationService, TeamraiserCompanyPageService, PageContentService) ->
+    '$sce'
+    ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService, ZuriService, TeamraiserRegistrationService, TeamraiserCompanyPageService, PageContentService, $sce) ->
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0]
       domain = $location.absUrl().split('/site')[0]
       $rootScope.companyName = ''
@@ -28,6 +29,9 @@ angular.module 'ahaLuminateControllers'
       $scope.activity3amt = ''
       $scope.localSponsorShow = ''
       $scope.localSponsorImage = ''
+
+      $scope.trustHtml = (html) ->
+        return $sce.trustAsHtml(html)
       
       TeamraiserCompanyService.getCompanyList 'include_all_companies=true', 
         error: ->
