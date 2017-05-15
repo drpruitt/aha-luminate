@@ -39,15 +39,17 @@ angular.module 'ahaLuminateControllers'
               parentId = companyItem.parentOrgEventId
               PageContentService.getPageContent 'jump_hoops_local_sponsors_'+ parentId
               .then (response) ->
-                if response = 'No Data'
+                if response == 'No Data'
                   $scope.localSponsorShow = false
                 else
-                  console.log response
                   img = response.split('src=')[1]
-                  img = img.split(' /')[0]
-                  img = '<img src='+img+' />'
-                  $scope.localSponsorShow = true
-                  $scope.localSponsorImage = img
+                  if img == undefined
+                    $scope.localSponsorShow = false
+                  else
+                    img = img.split(' /')[0]
+                    img = '<img src='+img+' />'
+                    $scope.localSponsorShow = true
+                    $scope.localSponsorImage = img
       
       ZuriService.getZooSchool $scope.companyId,
         error: (response) ->
