@@ -26,36 +26,38 @@ angular.module 'ahaLuminateControllers'
       $scope.activity1amt = ''
       $scope.activity2amt = ''
       $scope.activity3amt = ''
-      $scope.localSponsor = []
+      #$scope.localSponsor = []
 
-      showLocalSponsor = ->
-        TeamraiserCompanyService.getCompanyList 'include_all_companies=true', 
-          error: ->
-            $scope.localSponsor = [
-              'show' : false
-            ]
-          success: (response) ->
-            companyItems = response.getCompanyListResponse.companyItem
-            angular.forEach companyItems, (companyItem) ->
-              if companyItem.companyId == $scope.companyId
-                parentId = companyItem.parentOrgEventId
-                PageContentService.getPageContent 'jump_hoops_local_sponsors_'+ parentId
-                .then (response) ->
-                  if response = 'No Data'
-                    $scope.localSponsor = [
-                      'show' : false
-                    ]
-                  else
-                    console.log response
-                    img = response.split('src=')[1]
-                    img = img.split(' /')[0]
-                    img = '<img src='+img+' />'
-                    $scope.localSponsor = [
-                      'show' : true
-                      'image' : img
-                    ]
-      showLocalSponsor()
-
+      
+      TeamraiserCompanyService.getCompanyList 'include_all_companies=true', 
+        error: ->
+          $scope.localSponsor = [
+            show: false
+          ]
+        success: (response) ->
+          companyItems = response.getCompanyListResponse.companyItem
+          angular.forEach companyItems, (companyItem) ->
+            if companyItem.companyId == $scope.companyId
+              console.log companyItem
+              parentId = companyItem.parentOrgEventId
+              PageContentService.getPageContent 'jump_hoops_local_sponsors_'+ parentId
+              .then (response) ->
+                console.log response
+                if response = 'No Data'
+                  $scope.localSponsor = [
+                    show: false
+                  ]
+                else
+                  console.log response
+                  img = response.split('src=')[1]
+                  img = img.split(' /')[0]
+                  img = '<img src='+img+' />'
+                  $scope.localSponsor = [
+                    show: true
+                    image: img
+                  ]
+          console.log $scope.localSponsor
+      
       ZuriService.getZooSchool $scope.companyId,
         error: (response) ->
           $scope.studentsPledgedTotal = 0
