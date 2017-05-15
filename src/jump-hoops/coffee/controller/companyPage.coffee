@@ -27,8 +27,6 @@ angular.module 'ahaLuminateControllers'
       $scope.activity1amt = ''
       $scope.activity2amt = ''
       $scope.activity3amt = ''
-      $scope.localSponsorShow = ''
-      $scope.localSponsorImage = ''
 
       $scope.trustHtml = (html) ->
         return $sce.trustAsHtml(html)
@@ -46,14 +44,17 @@ angular.module 'ahaLuminateControllers'
                 if response == 'No Data'
                   $scope.localSponsorShow = false
                 else
-                  img = response.split('src=')[1]
+                  img = response.split('/>')[0]
                   if img == undefined
                     $scope.localSponsorShow = false
                   else
-                    img = img.split(' /')[0]
-                    img = '<img src='+img+' />'
+                    alt = img.split('alt="')
+                    src = alt[0].split('src="')
                     $scope.localSponsorShow = true
-                    $scope.localSponsorImage = img
+                    $scope.localSponsorImage = [
+                      src: src[1].split('"')[0]
+                      alt: alt[1].split('"')[0]
+                    ]
       
       ZuriService.getZooSchool $scope.companyId,
         error: (response) ->
