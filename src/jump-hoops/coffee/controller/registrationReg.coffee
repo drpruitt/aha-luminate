@@ -155,7 +155,11 @@ angular.module 'ahaLuminateControllers'
         success: (response) ->
           participationTypes = response.getParticipationTypesResponse.participationType
           participationTypes = [participationTypes] if not angular.isArray participationTypes
-          setParticipationType participationTypes[0]
+          participationType = participationTypes[0]
+          waiverContent = participationType.waiver?.content
+          if waiverContent
+            participationType.waiver.content = waiverContent.replace /(?:\r\n|\r|\n)/g, '<br />'
+          setParticipationType participationType
       $scope.$watch 'participationType.id', (newValue) ->
         if newValue
           setRegistrationQuestionSurveyKey = (questionName, surveyKey) ->
