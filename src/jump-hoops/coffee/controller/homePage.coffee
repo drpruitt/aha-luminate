@@ -64,18 +64,20 @@ angular.module 'ahaLuminateControllers'
       $scope.totalStudents = ''
       $scope.totalSchools = ''
       $scope.totalChallenges = ''
+      $scope.showStats = true
       
       ParticipantBadgesService.getRollupTotals()
         .then (response) ->
           if not response.data.status or response.data.status isnt 'success'
-            # TODO
+            $scope.showStats = false
           else
+            $scope.showStats = true
             totals = response.data.totals          
             $scope.totalStudents = totals.total_students
             $scope.totalSchools = totals.total_schools
             $scope.totalChallenges = totals.total_challenge_taken_students
         , (response) ->
-          # TODO
+          $scope.showStats = false
       
       initCarousel = ->
         owl = jQuery '.ym-home-feature .owl-carousel'
