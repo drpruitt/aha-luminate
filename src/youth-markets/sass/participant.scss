@@ -340,7 +340,11 @@ main > .container {
 
 .ym-pc-dashboard-progress-section {
   .h3 {
-    margin-bottom: 35px;
+    margin: 14px 0;
+    
+    @media (min-width: $screen-sm-min) {
+      margin: 0 0 35px;
+    }
   }
   
   .row {
@@ -369,7 +373,6 @@ main > .container {
         }
       }
       
-      h5, 
       .h5 {
         margin: 0 0 25px;
       }
@@ -378,6 +381,7 @@ main > .container {
   
   .ym-progress-related {
     position: relative;
+    margin: 30px 0 0;
   }
   
   .ym-progress-donate {
@@ -394,8 +398,9 @@ main > .container {
       &:focus, 
       &:active {
         display: block;
-        margin: 0 auto 15px;
+        font-size: 14px;
         max-width: 200px;
+        margin: 0 auto 15px;
         
         @media (min-width: $screen-sm-min) {
           display: inline-block;
@@ -406,8 +411,15 @@ main > .container {
         }
         
         @media (max-width: $screen-sm-max) {
-          font-size: 14px;
           padding: 10px 12px;
+        }
+        
+        @media (min-width: $screen-md-min) {
+          font-size: 16px;
+        }
+        
+        @media (min-width: $screen-lg-min) {
+          font-size: 18px;
         }
       }
     }
@@ -430,6 +442,10 @@ main > .container {
         @media (min-width: $screen-sm-min) {
           display: inline-block;
           max-width: 100px;
+        }
+        
+        @media (min-width: $screen-md-min) {
+          max-width: 140px;
         }
         
         @media (min-width: $screen-lg-min) {
@@ -492,16 +508,20 @@ main > .container {
 .ym-pc-dashboard-badges-section {
   background-color: $event-accent-medium;
   padding: 28px 0;
-  margin: 0 0 40px;
+  margin: 0 0 30px;
+  
+  @media (min-width: $screen-sm-min) {
+    margin: 0 0 40px;
+  }
   
   .ym-pc-dashboard-section-header {
+    position: relative;
     color: $event-secondary;
     margin: 0 0 32px;
-    position: relative;
   }
-
+  
   .btn {
-    @media  (min-width: $screen-md-min) {
+    @media (min-width: $screen-md-min) {
       position: absolute;
       right: 60px;
       top: 0;
@@ -511,7 +531,7 @@ main > .container {
 
 .ym-pc-dashboard-badges-icons {
   margin: 0 0 32px;
-
+  
   img {
     margin: 0 0 10px;
   }
@@ -519,6 +539,10 @@ main > .container {
 
 
 .ym-pc-dashboard-email-challenge-images {
+  @media (min-width: $screen-sm-min) {
+    margin: 24px 0 0;
+  }
+  
   a {
     &, 
     &:link, 
@@ -549,6 +573,10 @@ main > .container {
       }
       
       @media (min-width: $screen-md-min) {
+        width: 172px;
+      }
+      
+      @media (min-width: $screen-lg-min) {
         width: 180px;
       }
       
@@ -561,9 +589,28 @@ main > .container {
 }
 
 .ym-pc-dashboard-email-challenge-buttons {
+  margin: 20px 0 0;
+  
+  @media (min-width: $screen-sm-min) {
+    margin: 30px 0 0;
+  }
+  
   .btn, 
   a.btn {
-    margin: 30px 10px 0;
+    &, 
+    &:link, 
+    &:visited, 
+    &:hover, 
+    &:focus, 
+    &:active {
+      padding: 7px 12px;
+      margin: 0 5px;
+      
+      @media (min-width: 480px) {
+        padding: 7px 25px;
+        margin: 0 10px;
+      }
+    }
   }
 }
 
@@ -614,25 +661,16 @@ main > .container {
   @media (min-width: $screen-md-min) {
     margin: 25px;
   }
-
+  
   &.ym-activity-box--next-step {
-    > div {
+    .ym-next-step {
+      border-bottom: 1px solid $event-secondary;
       padding: 0 0 20px;
       margin: 0 0 20px;
-      border-bottom: 1px solid $event-secondary;
       
       &:last-child {
-        padding: 0;
-        margin: 0;
         border: 0;
-      }
-    }
-    
-    .ym-next-step > div {
-      margin: 0 0 15px;
-      
-      @media (min-width: $screen-sm-min) {
-        display: inline-block;
+        padding: 0;
         margin: 0;
       }
     }
@@ -640,36 +678,61 @@ main > .container {
     .ym-next-step__step {
       margin: 0 0 15px;
       
-      @media (min-width: $screen-sm-min) {
-        width: calc(100% - 125px);
-        padding-right: 20px;
-      }
-      
       @media (min-width: $screen-md-min) {
-        padding-right: 40px;
+        display: inline-block;
+        width: calc(100% - 175px);
+        padding-right: 15px;
+        margin: 0;
       }
     }
     
     .ym-next-step__action {
       text-align: center;
       
-      @media (min-width: $screen-sm-min) {
-        width: 125px;
+      @media (min-width: $screen-md-min) {
+        display: inline-block;
+        text-align: right;
         vertical-align: top;
+        width: 175px;
+      }
+      
+      .btn, 
+      a.btn {
+        &, 
+        &:link, 
+        &:visited, 
+        &:hover, 
+        &:focus, 
+        &:active {
+          width: 175px;
+          
+          @media (min-width: $screen-md-min) {
+            width: auto;
+            min-width: 125px;
+          }
+        }
       }
     }
     
-    .btn, 
-    a.btn {
-      &, 
-      &:link, 
-      &:visited, 
-      &:hover, 
-      &:focus, 
-      &:active {
-        width: 125px;
-        padding-left: 0;
-        padding-right: 0;
+    .ym-next-step--sm {
+      .ym-next-step__step {
+        @media (min-width: $screen-md-min) {
+          width: calc(100% - 125px);
+          padding-right: 40px;
+        }
+      }
+      
+      .ym-next-step__action {
+        @media (min-width: $screen-md-min) {
+          width: 125px;
+        }
+        
+        .btn, 
+        a.btn {
+          @media (min-width: $screen-md-min) {
+            width: 125px;
+          }
+        }
       }
     }
   }
@@ -739,6 +802,16 @@ main > .container {
     .ym-activity-url {
       word-break: break-all;
       
+      p {
+        font-size: 14px;
+        margin: 0 0 3px;
+        
+        &.small {
+          font-size: 12px;
+          line-height: 14px;
+        }
+      }
+      
       .btn, 
       a.btn {
         &, 
@@ -753,10 +826,27 @@ main > .container {
       }
     }
     
-    .text-right {
-      @media (max-width: $screen-sm-max) {
-        text-align: left;
-        margin-top: 15px;
+    .ym-activity-share-page {
+      margin: 15px 0 0;
+      
+      @media (min-width: $screen-sm-min) {
+        float: right;
+        text-align: right;
+        max-width: 105px;
+        margin: 0;
+      }
+      
+      p {
+        display: inline-block;
+        font-size: 14px;
+        line-height: 18px;
+        margin: 0;
+        vertical-align: bottom;
+        
+        @media (min-width: $screen-sm-min) {
+          display: block;
+          margin: 0 0 8px;
+        }
       }
       
       a {
@@ -778,7 +868,6 @@ main > .container {
     }
   }
   
-  h5, 
   .h5 {
     color: $event-secondary;
     margin: 0 0 20px;
@@ -800,13 +889,16 @@ main > .container {
 }
 
 .ym-pc-dashboard-spread-section {
-  padding: 36px;
+  padding: 24px;
+  
+  @media (min-width: $screen-sm-min) {
+    padding: 36px;
+  }
   
   .ym-pc-dashboard-spread-options {
     text-align: center;
     
     .ym-pc-dashboard-section-header {
-      h5, 
       .h5 {
         color: $event-secondary;
       }
@@ -1029,22 +1121,30 @@ main > .container {
   overflow-y: scroll;
 }
 
-.ta-toolbar {
-  background-color: #f0f0f0;
+.ng-pc-container .btn-toolbar {
+  background-color: $brand-white;
   border: 1px solid $event-secondary;
   border-radius: 0;
-  padding: 10px;
-  margin-left: 0;
+  text-align: center;
+  padding: 11px 0;
+  margin: 0;
   
-  .btn-group {
-    margin: 0 12px 12px 0;
+  > .btn-group {
+    float: none;
+    height: 24px;
+    margin: 0;
     
-    @media (min-width: 680px) {
-      display: inline-block;
+    @media (min-width: 375px) {
+      border-right: 1px solid #dddddd;
+      padding: 0 6px;
+    }
+    
+    @media (min-width: 414px) {
+      padding: 0 12px;
     }
     
     &:last-child {
-      margin: 0 12px 0 0;
+      border-right: 0;
     }
   }
   
@@ -1056,24 +1156,18 @@ main > .container {
     &:hover, 
     &:focus, 
     &:active {
-      padding: 8px !important;
+      border: 0;
+      border-radius: 0;
+      padding: 3px 8px;
       
-      @media (min-width: 360px) {
-        padding: 10px !important;
-      }
-      
-      @media (min-width: 375px) {
-        padding: 11px !important;
-      }
-      
-      @media (min-width: 400px) {
-        padding: 12px !important;
+      @media (min-width: 480px) {
+        padding: 3px 12px;
       }
     }
   }
 }
 
-.ta-editor {
+.ng-pc-container .ta-editor {
   background-color: $brand-white;
   border: 1px solid $event-secondary;
   border-top: 0;
@@ -1087,7 +1181,7 @@ main > .container {
   }
 }
 
-.ta-scroll-window {
+.ng-pc-container .ta-scroll-window {
   > .ta-bind {
     min-height: 200px;
     padding: 6px 8px;
@@ -1187,7 +1281,6 @@ main > .container {
         }
       }
       
-      h5, 
       .h5 {
         margin: 0 0 25px;
       }
@@ -1196,6 +1289,7 @@ main > .container {
   
   .ym-progress-related {
     position: relative;
+    margin: 30px 0 0;
   }
   
   .ym-progress-donate {
@@ -1212,8 +1306,9 @@ main > .container {
       &:focus, 
       &:active {
         display: block;
-        margin: 0 auto 15px;
+        font-size: 14px;
         max-width: 200px;
+        margin: 0 auto 15px;
         
         @media (min-width: $screen-sm-min) {
           display: inline-block;
@@ -1224,8 +1319,15 @@ main > .container {
         }
         
         @media (max-width: $screen-sm-max) {
-          font-size: 14px;
           padding: 10px 12px;
+        }
+        
+        @media (min-width: $screen-md-min) {
+          font-size: 16px;
+        }
+        
+        @media (min-width: $screen-lg-min) {
+          font-size: 18px;
         }
       }
     }
@@ -1250,6 +1352,10 @@ main > .container {
           max-width: 100px;
         }
         
+        @media (min-width: $screen-md-min) {
+          max-width: 140px;
+        }
+        
         @media (min-width: $screen-lg-min) {
           max-width: none;
         }
@@ -1267,7 +1373,7 @@ main > .container {
 }
 
 .ym-pc-dashboard-coordinator-steps-section {
-  margin: 0 0 40px;
+  margin: 10px 0 40px;
   clear: both;
   
   > .row {
@@ -1290,6 +1396,16 @@ main > .container {
   .ym-activity-url {
     word-break: break-all;
     
+    p {
+      font-size: 14px;
+      margin: 0 0 3px;
+      
+      &.small {
+        font-size: 12px;
+        line-height: 14px;
+      }
+    }
+    
     .btn, 
     a.btn {
       &, 
@@ -1304,10 +1420,27 @@ main > .container {
     }
   }
   
-  .text-right {
-    @media (max-width: $screen-sm-max) {
-      text-align: left;
-      margin-top: 15px;
+  .ym-activity-share-page {
+    margin: 15px 0 0;
+    
+    @media (min-width: $screen-sm-min) {
+      float: right;
+      text-align: right;
+      max-width: 105px;
+      margin: 0;
+    }
+    
+    p {
+      display: inline-block;
+      font-size: 14px;
+      line-height: 18px;
+      margin: 0;
+      vertical-align: bottom;
+      
+      @media (min-width: $screen-sm-min) {
+        display: block;
+        margin: 0 0 8px;
+      }
     }
     
     a {
@@ -1426,7 +1559,6 @@ main > .container {
     text-align: center;
     
     .ym-pc-dashboard-section-header {
-      h5, 
       .h5 {
         color: $event-secondary;
         margin: 0 0 18px;
@@ -1473,7 +1605,6 @@ main > .container {
   text-align: center;
   margin: 0 0 28px;
   
-  h5, 
   .h5 {
     margin: 0;
   }

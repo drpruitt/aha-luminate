@@ -11,10 +11,11 @@ angular.module 'trPcControllers'
     'NgPcTeamraiserProgressService'
     'NgPcTeamraiserTeamService'
     'NgPcTeamraiserCompanyService'
+    'NgPcTeamraiserGiftService'
     'NgPcContactService'
     'NgPcTeamraiserShortcutURLService'
     '$timeout'
-    ($rootScope, $scope, $filter, $uibModal, APP_INFO, ZuriService, ParticipantBadgesService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserCompanyService, NgPcContactService, NgPcTeamraiserShortcutURLService, $timeout) ->
+    ($rootScope, $scope, $filter, $uibModal, APP_INFO, ZuriService, ParticipantBadgesService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserCompanyService, NgPcTeamraiserGiftService, NgPcContactService, NgPcTeamraiserShortcutURLService, $timeout) ->
       $scope.dashboardPromises = []
       
       if $scope.participantRegistration.lastPC2Login is '0'
@@ -40,6 +41,8 @@ angular.module 'trPcControllers'
       
       # undocumented update_last_pc2_login parameter required to make news feeds work, see bz #67720
       NgPcTeamraiserRegistrationService.updateRegistration 'update_last_pc2_login=true'
+        .then ->
+          NgPcTeamraiserRegistrationService.getRegistration()
       
       if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true' or $scope.location is '/dashboard-student'
         $scope.dashboardProgressType = 'personal'
@@ -190,6 +193,37 @@ angular.module 'trPcControllers'
               $scope.companyInfo = companies[0]
       $scope.dashboardPromises.push companyInfoPromise
       
+      $scope.participantGifts =
+        sortColumn: 'date_recorded'
+        sortAscending: false
+        page: 1
+      $scope.getGifts = ->
+        pageNumber = $scope.participantGifts.page - 1
+        personalGiftsPromise = NgPcTeamraiserGiftService.getGifts 'list_sort_column=' + $scope.participantGifts.sortColumn + '&list_ascending=' + $scope.participantGifts.sortAscending + '&list_page_size=10&list_page_offset=' + pageNumber
+          .then (response) ->
+            if response.data.errorResponse
+              $scope.participantGifts.gifts = []
+              $scope.participantGifts.totalNumber = 0
+            else
+              gifts = response.data.getGiftsResponse.gift
+              if not gifts
+                $scope.participantGifts.gifts = []
+              else
+                gifts = [gifts] if not angular.isArray gifts
+                participantGifts = []
+                angular.forEach gifts, (gift) ->
+                  gift.contact =
+                    firstName: gift.name.first
+                    lastName: gift.name.last
+                    email: gift.email
+                  gift.giftAmountFormatted = $filter('currency') gift.giftAmount / 100, '$', 0
+                  participantGifts.push gift
+                $scope.participantGifts.gifts = participantGifts
+              $scope.participantGifts.totalNumber = if response.data.getGiftsResponse.totalNumberResults then Number(response.data.getGiftsResponse.totalNumberResults) else 0
+            response
+        $scope.dashboardPromises.push personalGiftsPromise
+      $scope.getGifts()
+
       $scope.donorContactCounts = {}
       donorContactFilters = [
         'email_rpt_show_nondonors_followup'
@@ -350,29 +384,44 @@ angular.module 'trPcControllers'
       
       $scope.personalChallenge = {}
       $scope.updatedPersonalChallenge = {}
+      setPersonalChallenge = (id = '-1', name = '', numCompleted = 0, completedToday = false) ->
+        if id is '-1' and $scope.challengeTaken and $scope.challengeTaken isnt ''
+          if $scope.challengeTaken.indexOf('1. ') isnt -1
+            id = '1'
+            name = $scope.challengeTaken.split('1. ')[1]
+          else if $scope.challengeTaken.indexOf('2. ') isnt -1
+            id = '2'
+            name = $scope.challengeTaken.split('2. ')[1]
+          else if $scope.challengeTaken.indexOf('3. ') isnt -1
+            id = '3'
+            name = $scope.challengeTaken.split('3. ')[1]
+        $scope.personalChallenge.id = id
+        $scope.personalChallenge.name = name
+        $scope.personalChallenge.numCompleted = numCompleted
+        $scope.personalChallenge.completedToday = completedToday
+        if id is '-1'
+          $scope.updatedPersonalChallenge.id = ''
+        else
+          $scope.updatedPersonalChallenge.id = id
+        if not $scope.$$phase
+          $scope.$apply()
       getStudentChallenge = ->
         ZuriService.getZooStudent $scope.frId + '/' + $scope.consId,
           failure: (response) ->
-            $scope.personalChallenge.id = '-1'
-            $scope.updatedPersonalChallenge.id = ''
+            setPersonalChallenge()
           error: (response) ->
-            $scope.personalChallenge.id = '-1'
-            $scope.updatedPersonalChallenge.id = ''
+            setPersonalChallenge()
           success: (response) ->
             personalChallenges = response.data.challenges
             if not personalChallenges
-              $scope.personalChallenge.id = '-1'
-              $scope.updatedPersonalChallenge.id = ''
+              setPersonalChallenge()
             else
-              $scope.personalChallenge.id = personalChallenges.current
-              if $scope.personalChallenge.id isnt '1' and $scope.personalChallenge.id isnt '2' and $scope.personalChallenge.id isnt '3'
-                $scope.personalChallenge.id = '-1'
-                $scope.updatedPersonalChallenge.id = ''
+              id = personalChallenges.current
+              if id isnt '1' and id isnt '2' and id isnt '3'
+                setPersonalChallenge()
               else
-                $scope.personalChallenge.name = personalChallenges.text
-                $scope.personalChallenge.numCompleted = if personalChallenges.completed then Number(personalChallenges.completed) else 0
-                $scope.personalChallenge.completedToday = personalChallenges.completedToday
-                $scope.updatedPersonalChallenge.id = $scope.personalChallenge.id
+                numCompleted = if personalChallenges.completed then Number(personalChallenges.completed) else 0
+                setPersonalChallenge id, personalChallenges.text, numCompleted, personalChallenges.completedToday
       getStudentChallenge()
       
       $scope.challenges = []
@@ -413,10 +462,13 @@ angular.module 'trPcControllers'
             sku: prize.sku
             status: prize.status
             earned: prize.earned_datetime
+      , (response) ->
+        # TODO
 
       initCarousel = ->
         owl = jQuery '.owl-carousel'
         owl.owlCarousel
+          mouseDrag: false
           nav: true
           loop: true
           responsive:

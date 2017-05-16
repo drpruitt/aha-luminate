@@ -10,4 +10,8 @@ angular.module 'ahaLuminateApp'
         dataString = 'method=getRegistrationDocument'
         dataString += '&' + requestData if requestData and requestData isnt ''
         LuminateRESTService.luminateExtendTeamraiserRequest dataString, false, true, callback
+      
+      getRegistration: (callback) ->
+        dataString = 'method=getRegistration'
+        LuminateRESTService.luminateExtendTeamraiserRequest dataString, true, true, callback
   ]

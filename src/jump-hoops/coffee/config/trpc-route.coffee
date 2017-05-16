@@ -106,7 +106,7 @@ if window.location.href.indexOf('pagename=jump_hoops_participant_center') isnt -
           # event closed
           else if $rootScope.teamraiserConfig.acceptingDonations isnt 'true' and $rootScope.teamraiserConfig.acceptingRegistrations isnt 'true'
             $event.preventDefault()
-            # TODO: redirect to site homepage
+            window.location = luminateExtend.global.path.secure + 'TR?fr_id=' + $rootScope.frId
           
           # login state unknown
           else if not $rootScope.consId
@@ -136,14 +136,14 @@ if window.location.href.indexOf('pagename=jump_hoops_participant_center') isnt -
             NgPcTeamraiserRegistrationService.getRegistration()
               .then ->
                 if $rootScope.participantRegistration is -1
-                  # TODO
+                  window.location = luminateExtend.global.path.secure + 'TR?fr_id=' + $rootScope.frId
                 else
                   reloadRoute()
           
           # not registered
           else if $rootScope.participantRegistration is -1
             $event.preventDefault()
-            # TODO: redirect to greeting page
+            window.location = luminateExtend.global.path.secure + 'TR?fr_id=' + $rootScope.frId
           
           # event info unknown
           else if not $rootScope.eventInfo

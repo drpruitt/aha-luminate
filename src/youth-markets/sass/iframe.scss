@@ -1,11 +1,10 @@
-
 .ym-embed-video,
 .ym-school-animation {
   position: relative;
   padding-top: 30px;
   height: 0;
   overflow: hidden;
-  padding-bottom: 53.25%;
+  padding-bottom: 56.25%;
 
   iframe {
     position: absolute;
@@ -22,9 +21,8 @@
 
 .app-9 {
   .ym-embed-video {
-    @media(min-width: $screen-md-min) {
+    @media (min-width: $screen-md-min) {
       padding-bottom: 30.25%
     }
   }
 }
-

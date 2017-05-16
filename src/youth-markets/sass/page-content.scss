@@ -1,6 +1,6 @@
 .ym-page-content,
 .ym-page-section__main,
-.ym-page-section__roster  {
+.ym-page-section__roster {
   background: $brand-white;
 }
 
@@ -120,11 +120,30 @@
     min-height: 360px;
   }
 
-  img {
-    margin: auto;
-    @media (max-width: $screen-sm-max) {
-      max-width: 100%;
-      display: block;
+  .ym-user-image-inner {
+    position: relative;
+    background: $brand-white;
+
+    @media (min-width: $screen-md-min) {
+      min-height: 360px;
+      background: transparent;
+    }
+
+    .btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      border-radius: 0;
+      padding: 7px 15px;
+    }
+
+    img {
+      margin: auto;
+
+      @media (max-width: $screen-sm-max) {
+        max-width: 100%;
+        display: block;
+      }
     }
   }
 
@@ -175,7 +194,6 @@
   }
 
   .ym-user-interactions {
-
     @media (min-width: $screen-md-min) {
       padding: 0 40px 0 0;
     }
@@ -257,7 +275,7 @@
 
       @media (max-width: $screen-sm-max) {
         max-width: 275px;
-        margin: 15px auto;
+        margin: 15px auto 20px;
 
       }
 
@@ -269,7 +287,7 @@
 }
 
 .pg-personal .ym-page-section__list {
-  @media(min-width: $screen-sm-min){
+  @media (min-width: $screen-sm-min) {
     display: flex;
     align-items: center;
   }
@@ -295,7 +313,6 @@
       }
     }
   }
-
 }
 
 .ym-page-section__roster {
@@ -305,17 +322,21 @@
     padding-bottom: 0px;
   }
 
-  @media (max-width: $screen-xs) {
-    padding: 25px;
-  }
-
   .h5 {
     text-align: center;
     margin: 0 0 30px;
 
+    &.text-left {
+      text-align: left;
+    }
+
     @media (max-width: $screen-xs) {
       margin: 0 0 15px;
     }
+  }
+
+  @media (max-width: $screen-xs) {
+    padding: 25px;
   }
 }
 
@@ -333,24 +354,4 @@
     max-width: 100%;
     margin: auto;
   }
-}
-
-.ym-skip-content {
-  position: absolute;
-  top: -1000px;
-  left: -1000px;
-  height: 1px;
-  width: 1px;
-  text-align: left;
-  overflow: hidden;
-}
-    
-a.ym-skip-content:active, 
-a.ym-skip-content:focus, 
-a.ym-skip-content:hover {
-    left: 0; 
-    top: 0;
-    width: auto; 
-    height: auto; 
-    overflow: visible; 
 }

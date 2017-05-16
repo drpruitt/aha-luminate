@@ -486,14 +486,14 @@
 }
 
 .ym-registration-regsummary-contact-header {
-  width: 206px;
+  width: 230px;
   
   @media (min-width: $screen-sm-min) {
     width: auto;
   }
   
   .ym-section-header {
-    width: 126px;
+    width: 150px;
     margin: 0 10px 0 0;
     
     @media (min-width: $screen-sm-min) {
@@ -581,5 +581,13 @@
     @media (min-width: $screen-sm-min) {
       margin: 30px 0 40px;
     }
+  }
+}
+
+.ym-registration-payment-type {
+  margin: 0 0 15px;
+  
+  .btn {
+    width: 100%;
   }
 }

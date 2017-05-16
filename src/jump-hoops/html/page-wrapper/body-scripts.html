@@ -8,8 +8,14 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.16/angular-filter[[?xtruex::x[[S80:debug]]x::::.min]].js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap[[?xtruex::x[[S80:debug]]x::::.min]].js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls[[?xtruex::x[[S80:debug]]x::::.min]].js"></script>
-[[?xjump_hoops_participant_centerx::x[[S334:pagename]]x::
-  <!-- participant center -->
+[[?
+  [[?xjump_hoops_participant_centerx::x[[S334:pagename]]x::T::]]
+  [[?xx::x[[S1:cons_id]]x::::
+    [[?xpersonalx[[S1:cons_id]]x::x[[S334:pg]]x[[S334:px]]x::T::]]
+    [[?xteamx[[E48:[[S334:fr_id]]-[[S1:cons_id]]:team-id]]xTRUEx::x[[S334:pg]]x[[S334:team_id]]x[[E48:[[S334:fr_id]]-[[S1:cons_id]]:if-is-captain]]x::T::]]
+    [[?xcompanyx::x[[S334:pg]]x::T::]]
+  ]]
+::T::
   <script src="//cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.16/textAngular-rangy.min.js"></script>
   [[?xtruex::x[[S80:debug]]x::
     <script src="//cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.16/textAngularSetup.js"></script>
@@ -33,9 +39,11 @@
 <script src="[[S666:template_macros/aha_luminate_filepath.tpt::jump-hoops/js/main::js::@@buildTimestamp]]"></script>
 
 [[?xjump_hoops_participant_centerx::x[[S334:pagename]]x::
-  <!-- participant center -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/ng-csv/0.3.6/ng-csv[[?xtruex::x[[S80:debug]]x::::.min]].js"></script>
   <script src="[[S666:template_macros/aha_luminate_filepath.tpt::jump-hoops/js/participant::js::@@buildTimestamp]]"></script>
 ::]]
+
 <script>
   (function() {
     if(!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|Android|IEMobile)/)) {
@@ -62,3 +70,16 @@
   };
   addthis.init();
 </script>
+
+[[?xpersonalx::x[[S334:pg]]x::
+  <script>
+    if(window.location.href.indexOf('ecard_linktrack=') > 0) {
+      var uparts = window.location.href.split('ecard_linktrack=');
+      uparts = uparts[1].split('&');
+      
+      var scriptTag = document.createElement('script');
+      scriptTag.src = 'https://hearttools.heart.org/aha_ym18/visitlink_record.php?ecard_linktrack=' + uparts[0];
+      document.body.appendChild(scriptTag);
+    }    
+  </script>
+::]]

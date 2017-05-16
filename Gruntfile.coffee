@@ -30,6 +30,19 @@ module.exports = (grunt) ->
   
   require('load-grunt-tasks') grunt
   
+  grunt.registerTask 'css-dist', (taskTarget) ->
+    runTargetedTask [
+      'sass'
+      'postcss'
+      'cssmin'
+    ], taskTarget
+    return
+  grunt.registerTask 'js-dist', (taskTarget) ->
+    runTargetedTask [
+      'coffee'
+      'uglify'
+    ], taskTarget
+    return
   grunt.registerTask 'html-dist', (taskTarget) ->
     runTargetedTask [
       'replace'
@@ -44,19 +57,6 @@ module.exports = (grunt) ->
   grunt.registerTask 'img-dist', (taskTarget) ->
     runTargetedTask [
       'imagemin'
-    ], taskTarget
-    return
-  grunt.registerTask 'css-dist', (taskTarget) ->
-    runTargetedTask [
-      'sass'
-      'postcss'
-      'cssmin'
-    ], taskTarget
-    return
-  grunt.registerTask 'js-dist', (taskTarget) ->
-    runTargetedTask [
-      'coffee'
-      'uglify'
     ], taskTarget
     return
   grunt.registerTask 'build', ->

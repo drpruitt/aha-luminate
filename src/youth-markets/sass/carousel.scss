@@ -1,4 +1,4 @@
-.owl-carousel{
+.owl-carousel {
   .owl-nav > div {
     position: absolute;
     top: 40%;
@@ -9,7 +9,7 @@
     width: 40px;
     height: 70px;
 
-    @media(max-width: $screen-md){
+    @media (max-width: $screen-sm-max) {
       width: 30px;
       height: 50px;
     }
@@ -24,9 +24,30 @@
       font-size: 30px;
       line-height: 70px;
 
-      @media(max-width: $screen-md){
+      @media (max-width: $screen-sm-max) {
         line-height: 50px;
         font-size: 22px;
+      }
+    }
+  }
+
+  .owl-item {
+    &.active {
+      .owl-item-video {
+        display: block;
+      }
+    }
+
+    h3,
+    .h3-heading,
+    h5,
+    .h5-heading {
+      a {
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }
@@ -58,19 +79,38 @@
       border-right: 1px solid #ffffff;
     }
 
+    p,
     h4,
-    p {
+    .h4-heading,
+    h5,
+    .h5-heading {
       display: none;
+    }
+
+    .item {
+      @media(max-width: $screen-xs-max) {
+        > p,
+        > .h5-heading {
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+      }
     }
   }
 
   .center {
+    p,
     h4,
-    p {
+    .h4-heading,
+    h5,
+    .h5-heading {
       display: block;
     }
 
-    h4 {
+    h4,
+    .h4-heading,
+    h5,
+    .h5-heading {
       margin: 20px auto;
     }
   }
@@ -82,21 +122,32 @@
   .owl-nav > div {
     top: 35%;
 
-    @media(max-width: $screen-sm){
+    @media (max-width: $screen-xs-max) {
       top: 28%;
     }
   }
 
-  h3 {
+  h3,
+  .h3-heading {
     margin-bottom: 30px;
 
-    @media(max-width: $screen-sm){
+    @media (max-width: $screen-xs-max) {
       margin-bottom: 20px;
     }
   }
 
-  h5 {
+  h5,
+  .h5-heading {
     margin: 20px 0;
+  }
+
+  h3,
+  .h3-heading,
+  h5,
+  .h5-heading {
+    a {
+      color: $event-secondary;
+    }
   }
 
   .owl-stage {
@@ -120,23 +171,25 @@
       max-width: 270px;
       margin: auto;
 
-      @media(max-width: $screen-md) {
+      @media (max-width: $screen-sm-max) {
         max-width: 350px;
       }
     }
+
     p {
       padding-bottom: 50px;
     }
+
     .btn {
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      max-width: 120px;
+      width: 132px;
       margin: auto;
     }
   }
-  
+
   .carousel-item__img {
     width: 100%;
     padding-top: 61.53%;
@@ -150,6 +203,7 @@
       .item {
         max-width: none;
       }
+
       .carousel-item__img-box {
         width: 100%;
         position: relative;
@@ -187,6 +241,7 @@
 }
 
 .owl-item-video {
+  display: none;
   padding-bottom: 52.25%;
 }
 
@@ -203,9 +258,8 @@
   .owl-nav > div {
     top: 25%;
 
-    @media(min-width: $screen-md-min) {
+    @media (min-width: $screen-md-min) {
       top: 15%;
     }
-
   }
 }

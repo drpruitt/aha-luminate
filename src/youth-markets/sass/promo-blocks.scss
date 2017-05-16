@@ -1,6 +1,10 @@
 .ym-promo-block--circle {
   border-radius: 100%;
-  
+
+  & > section {
+    padding: 1px;
+  }
+
   @media (min-width: $screen-sm-min) {
     box-shadow: 0 10px 0 0 rgba(50, 50, 50, 1);
   }
@@ -10,20 +14,20 @@
   max-width: 960px;
   margin: auto;
   text-align: center;
-  
+
   @media (max-width: 1070px) {
     max-width: 918px;
   }
-  
+
   @media (max-width: $screen-sm-max) {
     max-width: 475px;
   }
-  
+
   @media (max-width: $screen-xs-max) {
     display: block;
     max-width: 100%;
   }
-  
+
   > .ym-headline {
     text-align: center;
     margin: 0 0 25px;
@@ -45,7 +49,7 @@
     line-height: 0.75;
     margin: 50px 0 10px;
   }
-  
+
   p {
     color: #ffffff;
     font-weight: 700;
@@ -68,16 +72,16 @@
       padding:0;
       border: 0 none;
     }
-    
+
     h2 {
       color: $event-secondary;
       line-height: 1;
       margin: 0;
     }
-    
+
     p {
       color: inherit;
-      font-weight: bold;
+      font-weight: 700;
       max-width: 100%;
       margin: 0 auto;
     }
@@ -88,11 +92,11 @@
     margin: 0 5px 20px 0;
   }
 
-  
+
   &:last-child {
     margin-right: 0;
   }
-  
+
   &:nth-child(3) {
     @media (max-width: $screen-sm-max) {
       margin-right: 0;
@@ -103,11 +107,19 @@
 .cms {
   .ym-promo-block {
     max-width: 830px;
-    
+
+    section {
+      & > h2 {
+        @media (max-width: $screen-xs-max) {
+          margin-bottom: 40px;
+        }
+      }
+    }
+
     @media (max-width: $screen-sm-max) {
       max-width: 650px;
     }
-    
+
     .ym-promo-block__item {
       margin-right: 73px;
       background: $event-secondary;
@@ -115,46 +127,48 @@
 
       &:last-child {
         margin-right: 0;
-      }
-      
-      @media (max-width: $screen-sm-max) {
-        width: 200px;
-        height: 200px;
-        margin: 20px 20px 20px 0;
-      }
-      
-      &, 
-      &:last-child {
+
         @media (max-width: $screen-xs-max) {
-          display: block;
-          margin: 0 auto 20px;
+          margin-right: auto;
+          margin-bottom: 30px;
         }
       }
-      
+
       h2 {
         color: #ffffff;
         line-height: 0.75;
-        margin: 70px 0 10px;
+        margin: 60px 0 10px;
       }
-      
+
       p {
         color: #ffffff;
       }
+
+      @media (max-width: $screen-sm-max) {
+        width: 200px;
+        height: 200px;
+        margin: 20px 20px 20px 0px;
+      }
+
+      @media (max-width: $screen-xs-max) {
+        display: block;
+        margin: 0 auto 60px;
+      }
     }
   }
-  
+
   .ym-promo-block--circle {
     box-shadow: 0 10px 0 0 rgb(50, 50, 50);
     box-shadow: 0 10px 0 0 rgba(50, 50, 50, 1);
   }
-  
+
   .ym-promo-block--full {
-    @media(min-width: $screen-sm-min){
+    @media (min-width: $screen-sm-min) {
       display: flex;
     }
-    
+
     .event-accent-medium {
-      @media(min-width: $screen-sm-min){
+      @media (min-width: $screen-sm-min) {
         justify-content: center;
         align-content:center;
         text-align: center;
@@ -162,37 +176,38 @@
         flex-direction: column;
       }
     }
-    
+
     .ym-promo-block__text {
       max-width: 380px;
       margin: auto;
       text-align: center;
-      
-      h5 {
+
+      h5,
+      .h5-heading {
         color: $event-secondary;
         margin-top: 0;
 
-        @media (min-width: $screen-md-min){
+        @media (min-width: $screen-md-min) {
           margin: 0 0 20px;
         }
       }
-      
+
       .btn {
-        @media (min-width: $screen-md-min){
+        @media (min-width: $screen-md-min) {
           margin-top: 15px;
         }
       }
     }
-    
+
     .ym-promo-block__image {
       padding: 0;
     }
-    
+
     @media (max-width: $screen-sm-max) {
       .ym-promo-block__text {
         padding: 30px 20px 30px 20px;
       }
-      
+
       .ym-promo-block__image {
         justify-content: center;
         align-content: center;
@@ -204,10 +219,10 @@
       }
     }
 
-    @media(max-width: $screen-sm - 1){
+    @media (max-width: $screen-sm - 1) {
       display: block;
-      
-      
+
+
       .ym-promo-block__image {
         display: block;
         padding: 0;
@@ -228,8 +243,12 @@
       }
     }
     .ym-sidebar-promo__text {
+      font-size: 14px;
       padding: 20px 20px 30px;
-      font-weight: bold;
+
+      & > a {
+        font-weight: 700;
+      }
     }
   }
 

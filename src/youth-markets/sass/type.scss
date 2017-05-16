@@ -5,8 +5,9 @@ body {
   font-weight: 500;
 }
 
-h1, 
-.h1 {
+h1,
+.h1,
+.h1-heading {
   color: $brand-white;
   font-family: $headline-font;
   text-shadow: 2px 2px 1px rgb(0, 0, 0);
@@ -19,100 +20,139 @@ h1,
   font-family: $headline-font;
 }
 
-h2, 
-.h2, 
-h3, 
-.h3, 
-h4, 
-.h4 {
+h2,
+.h2,
+.h2-heading,
+h3,
+.h3,
+.h3-heading,
+h4,
+.h4,
+.h4-heading {
   color: $event-secondary;
 }
 
-h2, 
-.h2, 
-h3, 
-.h3 {
+h2,
+.h2,
+.h2-heading,
+h3,
+.h3,
+.h3-heading {
   font-family: $headline-font;
   color: $event-secondary;
   line-height: 1;
   -webkit-font-smoothing: antialiased;
 }
 
-h2, 
-.h2 {
+h2,
+.h2,
+.h2-heading {
   font-size: 32px;
   margin-top: 0;
-  
+
   @media (min-width: $screen-sm-min) {
     font-size: 42px;
   }
-  
+
   @media (min-width: $screen-md-min) {
     font-size: 48px;
   }
 }
 
-h3, 
-.h3 {
+h3,
+.h3,
+.h3-heading {
   font-size: 28px;
   margin-top: 0;
-  
+
   @media (min-width: $screen-sm-min) {
     font-size: 32px;
   }
-  
+
   @media (min-width: $screen-md-min) {
     font-size: 36px;
   }
 }
 
-h4, 
-.h4 {
+h4,
+.h4,
+.h4-heading {
   font-size: 28px;
   font-weight:  bold;
   margin-top: 0;
-  
+
   @media (min-width: $screen-md-min) {
     font-size: 32px;
   }
 }
 
-h5, 
-.h5 {
+h5,
+.h5,
+.h5-heading {
   font-size: 21px;
   font-weight: 700;
-  
+
   @media (min-width: $screen-md-min) {
     font-size: 24px;
   }
 }
 
 h6,
-.h6 {
+.h6,
+.h6-heading {
   font-size: 18px;
   font-weight: 700;
   margin: 0 0 15px;
 }
 
+.h1-heading,
+.h2-heading,
+.h3-heading,
+.h4-heading,
+.h5-heading,
+.h6-heading {
+  display: block;
+}
+
+.h1-heading {
+}
+.h2-heading {
+}
+.h3-heading {
+}
+.h4-heading {
+}
+.h5-heading {
+}
+.h6-heading {
+}
+
 p {
   line-height: 1.5;
-  
+
   @media (max-width: $screen-sm-max) {
     font-size: 14px;
   }
 }
 
+.text-large {
+  font-size: 16px;
+
+  @media(min-width: $screen-md-min) {
+    font-size: 18px;
+  }
+}
 div.responsive a,
 a {
-  &, 
-  &:link, 
+  &,
+  &:link,
   &:visited {
     text-decoration: underline;
     color: $event-primary;
   }
-  
-  &:hover, 
-  &:focus, 
+
+  &:hover,
+  &:focus,
   &:active {
     text-decoration: none;
     color: $event-primary;
@@ -121,36 +161,46 @@ a {
 
 .ym-accent-color,
 .event-accent {
-  h2, 
-  .h2, 
-  h3, 
-  .h3, 
-  h4, 
-  .h4, 
-  h5, 
+  h2,
+  .h,
+  .h2-heading,
+  h3,
+  .h3,
+  .h3-heading,
+  h4,
+  .h4,
+  .h4-heading,
+  h5,
   .h5,
+  .h5-heading,
   h6,
-  .h6 {
+  .h6,
+  .h6-heading {
     color: $brand-white;
   }
-  
-  h2, 
-  .h2, 
-  h3, 
-  .h3 {
+
+  h2,
+  .h2,
+  .h2-heading,
+  h3,
+  .h3,
+  .h3-heading {
     text-shadow: 2px 2px 1px rgb(0, 0, 0);
     text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.85);
   }
 
   .h4,
-  .h5 {
+  .h4-heading,
+  .h5,
+  .h5-heading {
     text-shadow: none;
   }
 }
 
 .event-secondary-medium {
-  h5, 
-  .h5 {
+  h5,
+  .h5,
+  .h5-heading {
     color:$event-secondary;
   }
 }
@@ -159,7 +209,7 @@ a {
   font-size: 18px;
   line-height: 24px;
   margin: 0 0 20px;
-  
+
   @media (min-width: $screen-sm-min) {
     font-size: 24px;
     line-height: 32px;

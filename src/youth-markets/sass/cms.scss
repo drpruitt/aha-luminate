@@ -1,13 +1,17 @@
 .cms {
-  h2, h5 {
+  h2,
+  .h2-heading,
+  h5,
+  .h5-heading {
     margin: 0 0 30px;
 
-    @media(max-width: $screen-sm){
-      margin: 0 0 25px;
+    @media(max-width: $screen-sm-max) {
+      margin: 0 0 20px;
     }
   }
 
-  h2 + h5 {
+  h2 + h5,
+  h2 + .h5-heading {
     margin: 0 0 20px;
   }
 
@@ -33,14 +37,26 @@
     }
 
     @media (max-width: $screen-xs-max) {
-      & {
-        display: none;
-      }
+      display: none;
     }
   }
 
   .breadcrumbseparator {
     color: $brand-white;
+  }
+
+  div {
+    & > .ym-page-section__block:last-of-type {
+      margin-bottom: 0px;
+    }
+  }
+
+  .ym-promo-block--footer {
+    margin-top: 50px;
+
+    @media (max-width: $screen-sm-max) {
+      margin-top: 40px;
+    }
   }
 
   .ym-page-section__block {
@@ -57,6 +73,12 @@
       padding-right: 100px;
     }
 
+    & > h2 {
+      &:only-child {
+        margin-bottom: -25px
+      }
+    }
+
     @media (max-width: $screen-sm-max) {
       margin-bottom: 40px;
 
@@ -65,6 +87,12 @@
       &.ym-page-section__block--slim {
         padding-left: 40px;
         padding-right: 40px;
+      }
+
+      & > h2 {
+        &:only-child {
+          margin-bottom: -15px
+        }
       }
     }
 
@@ -95,10 +123,11 @@
     max-width: 670px;
     width: calc(100% - 300px);
 
-    @media(max-width: $screen-md){
+    @media (max-width: $screen-sm-max) {
       width: calc(100% - 230px);
     }
-    @media(max-width: $screen-xs-max){
+
+    @media (max-width: $screen-xs-max) {
       width:100%;
       max-width: 100%;
     }
@@ -109,10 +138,11 @@
     float: right;
     width: 250px;
 
-    @media(max-width: $screen-md) {
+    @media (max-width: $screen-sm-max) {
       width: 200px;
     }
-    @media(max-width: $screen-xs-max){
+
+    @media (max-width: $screen-xs-max) {
       width:100%;
       max-width: 100%;
       margin-bottom: 40px;
@@ -162,7 +192,7 @@
           position: relative;
           display: block;
           font-size: 14px;
-          font-weight: bolder;
+          font-weight: 700;
           text-decoration: none;
           padding-right: 30px;
 
@@ -181,8 +211,15 @@
     }
 
     .ym-sidebar__promo--list {
-      h6 {
+      h6,
+      .h6-heading {
         margin-bottom: 25px;
+      }
+
+      .fa-ul {
+        & > li {
+          font-size: 14px;
+        }
       }
     }
   }
@@ -192,7 +229,8 @@
   padding: 40px;
 
   &.event-secondary-medium {
-    h5 {
+    h5,
+    .h5-heading {
       color: $event-secondary;
       margin-top: 0px;
       margin-bottom: 20px;
@@ -230,6 +268,17 @@
 
   .input-group__zip_code {
     width: 125px;
+  }
+
+  .input-group__submit-btn {
+    float: right;
+
+    .btn-lg {
+      @media (min-width: $screen-md-min) {
+        font-size: 18px;
+        line-height: 26.6667px;
+      }
+    }
   }
 
   @media (max-width: $screen-sm-max) {
@@ -281,13 +330,24 @@
 .ym-story {
   padding-bottom: 40px;
 
+  .ym-story-edit-btns {
+    margin: 0 0 24px;
+
+    .btn {
+      border-radius: 0;
+      padding: 7px 15px;
+    }
+  }
+
   h3 {
-    + h5 {
+    + h5,
+    + .h5-heading {
       margin-top: inherit;
     }
   }
 
-  h5 {
+  h5,
+  .h5-heading {
     margin-top: 30px;
   }
 
@@ -330,7 +390,12 @@
 
   > .container {
     max-width: 970px;
-    padding: 20px;
+    padding: 0px 20px 20px 20px;
+
+    @media (min-width: $screen-sm-min) {
+      padding-left: 50px;
+      padding-right: 50px;
+    }
   }
 }
 
@@ -338,7 +403,7 @@
   .ym-related-content__item {
     margin: 0 0 20px;
 
-    @media(max-width: $screen-sm) {
+    @media (max-width: $screen-xs-max) {
       margin: 0 0 30px;
     }
   }
@@ -346,11 +411,11 @@
   .ym-related-content__image {
     width: 200px;
 
-    @media(max-width: $screen-md) {
+    @media (max-width: $screen-sm-max) {
       width: 150px;
     }
 
-    @media(max-width: $screen-xs){
+    @media (max-width: $screen-xs) {
       float:none;
     }
   }
@@ -358,11 +423,11 @@
   .ym-related-content__text {
     width: calc(100% - 200px);
 
-    @media(max-width: $screen-md) {
+    @media (max-width: $screen-sm-max) {
       width: calc(100% - 150px);
     }
 
-    @media(max-width: $screen-xs){
+    @media (max-width: $screen-xs) {
       width: 100%;
       float: none;
       clear: both;
@@ -381,7 +446,7 @@
 
 .ym-accordion-list {
   .panel-group {
-    @media(max-width: $screen-sm){
+    @media (max-width: $screen-xs-max) {
       margin-bottom: 40px;
     }
   }
@@ -424,7 +489,7 @@
     a.panel-title {
       display: block;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 700;
 
       &:hover {
         text-decoration: underline;
@@ -455,6 +520,7 @@
 
   li {
     margin-bottom: 15px;
+    text-align: left;
   }
 
   li:last-child{
@@ -462,17 +528,19 @@
   }
 
   a {
-    font-weight: bold;
+    font-weight: 700;
   }
 }
 
 .ym-school-search {
+  .visible-xs-block {
+    em {
+      font-size: 14px;
+    }
+  }
+
   .img-responsive {
     margin: 20px auto 10px;
-
-    @media (min-width: $screen-sm-min) {
-      margin-top: 50px;
-    }
   }
 
   .pos-r {
@@ -500,7 +568,7 @@
     top: 0;
     right: 0;
     background: url("../../youth-markets/image/ym-select-carrot.png") right 0.75rem center no-repeat $event-secondary;
-    font-weight: bold;
+    font-weight: 700;
     font-weight: 700;
     width: 200px;
 
@@ -516,8 +584,60 @@
 
   .ym-page-section__header {
     position: relative;
+
+    h2 {
+      &.school-list__header {
+        text-align: center;
+
+        @media (min-width: $screen-md-min) {
+          text-align: left;
+        }
+      }
+    }
   }
 
+  .dropdown-menu {
+    > li {
+      > a {
+        &,
+        &:link,
+        &:visited,
+        &:hover,
+        &:focus,
+        &:active {
+          text-decoration: none;
+        }
+      }
+
+      &.active {
+        > a {
+          &,
+          &:link,
+          &:visited,
+          &:hover,
+          &:focus,
+          &:active {
+            background-color: $event-secondary;
+          }
+        }
+      }
+    }
+  }
+
+  .ym-list--school-list {
+    th {
+      a {
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .ym-list--school-list--help {
+    font-weight: 700;
+    padding: 12px 20px;
+  }
 
   @media (max-width: $screen-sm-max) {
     .ym-page-section__header {
@@ -544,8 +664,3 @@
     }
   }
 }
-
-#cv-poweredBy {
-  display: none;
-}
-

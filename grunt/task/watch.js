@@ -17,9 +17,9 @@ module.exports = {
   
   "global": {
     files: [
-      'src/global/html/**/*', 
       'src/global/sass/**/*', 
-      'src/global/coffee/**/*'
+      'src/global/coffee/**/*', 
+      'src/global/html/**/*'
     ], 
     tasks: [
       'notify:global'
@@ -28,13 +28,13 @@ module.exports = {
   
   "general": {
     files: [
-      'src/global/html/**/*', 
       'src/global/sass/**/*', 
       'src/global/coffee/**/*', 
-      'src/general/html/**/*', 
-      'src/general/image/**/*', 
+      'src/global/html/**/*', 
       'src/general/sass/**/*', 
-      'src/general/coffee/**/*'
+      'src/general/coffee/**/*', 
+      'src/general/html/**/*', 
+      'src/general/image/**/*'
     ], 
     tasks: [
       'clean:general', 
@@ -107,7 +107,7 @@ module.exports = {
       'src/middle-school/html/**/*', 
       'src/middle-school/image/**/*', 
       'src/middle-school/sass/**/*', 
-      'src/jump-hoops/coffee/**/*'
+      'src/middle-school/coffee/**/*'
     ], 
     tasks: [
       'clean:middle-school',  
