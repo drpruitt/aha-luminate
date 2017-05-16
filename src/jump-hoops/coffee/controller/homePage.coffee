@@ -11,12 +11,22 @@ angular.module 'ahaLuminateControllers'
     ($scope, $timeout, TeamraiserParticipantService, $rootScope, $location, $anchorScroll, ParticipantBadgesService, TeamraiserService) ->
       $dataRoot = angular.element '[data-aha-luminate-root]'
       consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
-
-      TeamraiserService.getTeamRaisersByInfo 'name=School%20Not&public_event_type=School%20Not%20Found&event_type=Jump%20Hoops&list_page_size=1&list_ascending=false&list_sort_column=event_date',
+      
+      setNoSchoolLink = (noSchoolLink) ->
+        $scope.noSchoolLink = noSchoolLink
+        if not $scope.$$phase
+          $scope.$apply()
+      TeamraiserService.getTeamRaisersByInfo 'event_type=' + encodeURIComponent('Jump Hoops') + '&public_event_type=' + encodeURIComponent ('School Not Found') + '&name=' + encodeURIComponent('%') + '&list_page_size=1&list_ascending=false&list_sort_column=event_date',
           error: (response) ->
-            console.log response
+            # TODO
           success: (response) ->
-            $scope.noSchoolLink = response.getTeamraisersResponse.teamraiser.reg_indiv_url
+            teamraisers = response.getTeamraisersResponse?.teamraiser
+            if not teamraisers
+              # TODO
+            else
+              teamraisers = [teamraisers] if not angular.isArray teamraisers
+              teamraiserInfo = teamraisers[0]
+              setNoSchoolLink $scope.nonSecureDomain + '/site/TRR?fr_id=' + teamraiserInfo.id + '&pg=tfind&fr_tm_opt=existing&s_frTJoin='
       
       if consId
         TeamraiserParticipantService.getRegisteredTeamraisers 'cons_id=' + consId + '&event_type=' + encodeURIComponent('Jump Hoops'),

@@ -86,10 +86,10 @@
                   <div class="table-body">
                     <div class="table-row" ng-repeat="team in teamList.teams|filter:{name: teamSearch.teamName}">
                       <div class="table-cell">
-                        <a ng-href="TR?fr_id={{team.EventId}}&amp;pg=team&amp;team_id={{team.id}}"><span ng-bind-html="team.name"></span></a>
+                        <a ng-href="TRR?fr_id={{team.EventId}}&amp;pg=tfind&amp;fr_tm_opt=existing&amp;fr_tjoin={{team.id}}&amp;s_frTJoin={{team.id}}&amp;skip_login_page=true"><span ng-bind-html="team.name"></span></a>
                       </div>
                       <div class="table-cell table-cell--righted">
-                        <a class="btn btn-md btn-primary" ng-href="TRR?fr_id={{team.EventId}}&amp;pg=tfind&amp;fr_tm_opt=existing&amp;fr_tjoin={{team.id}}&amp;skip_login_page=true">
+                        <a class="btn btn-md btn-primary" ng-href="TRR?fr_id={{team.EventId}}&amp;pg=tfind&amp;fr_tm_opt=existing&amp;fr_tjoin={{team.id}}&amp;s_frTJoin={{team.id}}&amp;skip_login_page=true">
                           <strong>Join Team</strong> <i class="fa fa-chevron-right"></i>
                         </a>
                       </div>

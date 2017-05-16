@@ -65,6 +65,8 @@
             uib-typeahead="school.SCHOOL_NAME for school in schools | unique: 'school.SCHOOL_NAME' | filter: {SCHOOL_NAME:$viewValue}"
             typeahead-min-length="3"
             typeahead-editable="false"
+            typeahead-focus-first="false"
+            typeahead-select-on-exact="true"
             typeahead-no-results="schoolList.typeaheadNoResults"
             typeahead-on-select="typeaheadFilter($item, $model, $label, $event)"
             ng-model="schoolList.nameFilter"
@@ -131,8 +133,8 @@
                   ng-repeat="school in filtered | filter:paginate"
                   >
                   <td class="ym-list__column ym-list__column--school">
-                    {{school.SCHOOL_NAME}}<br />
-                    <a class="btn btn-primary btn-md" ng-href="http://www2.heart.org/site/TR?pg=company&fr_id={{school.FR_ID}}&company_id={{school.COMPANY_ID}}">Sign Up</a>
+                   <a ng-href="{{nonSecureDomain}}/site/TR?pg=company&fr_id={{school.FR_ID}}&company_id={{school.COMPANY_ID}}">{{school.SCHOOL_NAME}}</a><br />
+                    <a class="btn btn-primary btn-md mt-sm" ng-href="{{nonSecureDomain}}/site/TRR?fr_id={{school.FR_ID}}&pg=tfind&fr_tm_opt=existing&s_frTJoin=&company_id={{school.COMPANY_ID}}">Sign Up</a>
                   </td>
                   <td class="ym-list__column ym-list__column--city">
                     {{school.SCHOOL_CITY}}
@@ -156,7 +158,7 @@
           </div>
         </div>  
         <div ng-show="schoolList.showHelp" class="text-center">
-          Click <a href="http://www2.heart.org/site/TRR?fr_tm_opt=none&pg=tfind&fr_id=2900">here</a> to sign up for “Jump Rope and Hoops for Heart” and a school coordinator will get in touch with you soon to confirm you’ve been properly signed up with your school.
+          Click <a ng-href="{{noSchoolLink}}">here</a> to sign up for “Jump Rope and Hoops for Heart” and a school coordinator will get in touch with you soon to confirm you’ve been properly signed up with your school.
         </div>
         <div ng-show="schoolList.showHelp == false" class="text-center">
           <a ng-click="schoolList.showHelp = true;" class="btn btn-md btn-secondary ym-list--school-list--help">Can't Find Your School</a>
@@ -180,7 +182,7 @@
   <t:list id="display_footer_promos">
   <t:if test="name != 'no'">
     <!-- Our Impact --> 
-    <div class="ym-page-section ym-page-section__main" ng-cloak>
+    <div class="ym-page-section ym-page-section__main" ng-show="showStats == true" ng-cloak>
       <div class="container">
         <div class="ym-stats ym-promo-block">
           <section>
