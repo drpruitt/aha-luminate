@@ -155,6 +155,15 @@
     </h4>
     <company-team-list company-id="'[[T6:[[S334:company_id]]]]'" teams="companyTeams.teams"></company-team-list>
   </div>
+  <div class="ym-page-section ym-page-section__sponsor" ng-if="localSponsorShow == true">
+    <hr>
+    <h5>
+      Thank You to Our Local Sponsors
+    </h5>
+    <p class="text-center">
+      <img src="{{localSponsorImageSrc}}" class="image-responsive" alt="{{localSponsorImageAlt}}"/>
+    </p>
+  </div>
   <div ng-if="companyTeams.totalNumber == 1" class="modal fade" id="schoolDonation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
       <div class="modal-content">
