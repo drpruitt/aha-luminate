@@ -132,8 +132,8 @@
                   ng-repeat="school in filtered | filter:paginate"
                   >
                   <td class="ym-list__column ym-list__column--school">
-                   <a ng-href="http://www2.heart.org/site/TR?pg=company&fr_id={{school.FR_ID}}&company_id={{school.COMPANY_ID}}">{{school.SCHOOL_NAME}}</a><br />
-                    <a class="btn btn-primary btn-md mt-sm" ng-href="http://www2.heart.org/site/TRR?fr_id={{school.FR_ID}}&pg=tfind&fr_tm_opt=existing&company_id={{school.COMPANY_ID}}">Sign Up</a>
+                   <a ng-href="{{nonSecureDomain}}/site/TR?pg=company&fr_id={{school.FR_ID}}&company_id={{school.COMPANY_ID}}">{{school.SCHOOL_NAME}}</a><br />
+                    <a class="btn btn-primary btn-md mt-sm" ng-href="{{nonSecureDomain}}/site/TRR?fr_id={{school.FR_ID}}&pg=tfind&fr_tm_opt=existing&s_frTJoin=&company_id={{school.COMPANY_ID}}">Sign Up</a>
                   </td>
                   <td class="ym-list__column ym-list__column--city">
                     {{school.SCHOOL_CITY}}
@@ -181,7 +181,7 @@
   <t:list id="display_footer_promos">
   <t:if test="name != 'no'">
     <!-- Our Impact --> 
-    <div class="ym-page-section ym-page-section__main" ng-cloak ng-show="showStats == true">
+    <div class="ym-page-section ym-page-section__main" ng-show="showStats == true" ng-cloak>
       <div class="container">
         <div class="ym-stats ym-promo-block">
           <section>
