@@ -37,7 +37,6 @@ angular.module 'ahaLuminateControllers'
       
       $scope.donationLevels = []
 
-      console.log 'test'
       calculateInstallment = (number, amount) ->
         $scope.donationInfo.installmentAmount  = amount.toFixed(2)
         $scope.donationInfo.numberPayments = number
