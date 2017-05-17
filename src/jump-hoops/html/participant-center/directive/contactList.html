@@ -2,10 +2,10 @@
   <li class="list-group-item" ng-repeat="contact in contacts">
     <div class="clearfix">
       <div class="pull-left">
-        <div class="checkbox" ng-class="{'checked': contact.selected}" ng-click="toggleContact(contact, $event)">
-          <label ng-click="toggleContact(contact, $event)">
-            <input type="checkbox" value="{{contact.id}}" ng-checked="contact.selected" ng-click="toggleContact(contact, $event)"> 
-            <a ng-click="selectContact($event, contact)">
+        <div class="checkbox" ng-class="{'checked': contact.selected}">
+          <label>
+            <input type="checkbox" value="{{contact.id}}" ng-checked="contact.selected" ng-click="toggleContact(contact)"> 
+            <a ng-click="selectContact(contact)">
               <span ng-if="contact.firstName">
                 {{contact.firstName}}{{contact.lastName ? ' ' + contact.lastName : ''}}{{contact.email ? ' &lt;' + contact.email + '&gt;' : ''}}
               </span>

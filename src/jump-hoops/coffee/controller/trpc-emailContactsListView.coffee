@@ -316,20 +316,15 @@ angular.module 'trPcControllers'
         $scope.contactImport.contactsToAdd = []
       
       $scope.toggleContactToAdd = (contact) ->
-        contactData = ''
-        if contact.firstName
-          contactData += '"' + contact.firstName + '"'
-        contactData += ', '
-        if contact.lastName
-          contactData += '"' + contact.lastName + '"'
-        contactData += ', '
-        if contact.email
-          contactData += '"' + contact.email + '"'
+        contactData = getContactString contact
         contactToAddIndex = $scope.contactImport.contactsToAdd.indexOf contactData
         if contactToAddIndex is -1
           $scope.contactImport.contactsToAdd.push contactData
         else
           $scope.contactImport.contactsToAdd.splice contactToAddIndex, 1
+        angular.forEach $scope.contactsAvailableForImport, (contactAvailableForImport) ->
+          if contactData is getContactString contactAvailableForImport
+            contactAvailableForImport.selected = contactToAddIndex is -1
       
       $scope.chooseContactsToImport = ->
         $scope.clearImportContactsAlerts()
@@ -411,12 +406,9 @@ angular.module 'trPcControllers'
       if not $rootScope.selectedContacts?.contacts
         $scope.resetSelectedContacts()
       
-      $scope.toggleContact = (contact, $event) ->
-        if $event
-          $event.preventDefault()
+      $scope.toggleContact = (contact) ->
         contactData = getContactString contact
         contactIndex = $rootScope.selectedContacts.contacts.indexOf contactData
-        console.log $event, contactData, contactIndex
         if contactIndex is -1
           $rootScope.selectedContacts.contacts.push contactData
         else
@@ -424,7 +416,9 @@ angular.module 'trPcControllers'
         angular.forEach $scope.addressBookContacts.allContacts, (aContact) ->
           if contactData is getContactString aContact
             aContact.selected = contactIndex is -1
-          aContact
+        angular.forEach $scope.addressBookContacts.contacts, (aContact) ->
+          if contactData is getContactString aContact
+            aContact.selected = contactIndex is -1
         $scope.addressBookContacts.allContactsSelected = isAllContactsSelected()
         $scope.addressBookContacts.allContactsSelected
       
@@ -445,9 +439,7 @@ angular.module 'trPcControllers'
         if $scope.editContactSuccess
           delete $scope.editContactSuccess
       
-      $scope.selectContact = ($event, contact) ->
-        if $event
-          $event.preventDefault()
+      $scope.selectContact = (contact) ->
         $scope.clearAllContactAlerts()
         $scope.selectedContact = contact
         $scope.updatedContact = 
