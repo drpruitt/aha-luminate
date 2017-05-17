@@ -442,7 +442,9 @@ angular.module 'trPcControllers'
         if $scope.editContactSuccess
           delete $scope.editContactSuccess
       
-      $scope.selectContact = (contact) ->
+      $scope.selectContact = ($event, contact) ->
+        if $event
+          $event.preventDefault()
         $scope.clearAllContactAlerts()
         $scope.selectedContact = contact
         $scope.updatedContact = 
