@@ -41,11 +41,11 @@ angular.module 'ahaLuminateControllers'
               parentId = companyItem.parentOrgEventId
               PageContentService.getPageContent 'jump_hoops_local_sponsors_'+ parentId
               .then (response) ->
-                if response == 'No Data'
+                if response.includes('No data') is true
                   $scope.localSponsorShow = false
                 else
                   img = response.split('/>')[0]
-                  if img == undefined
+                  if img is undefined
                     $scope.localSponsorShow = false
                   else
                     alt = img.split('alt="')
