@@ -360,8 +360,12 @@
   }
   
   input[type="text"].btn-enter {
-    width: 110px;
     font-weight: 700;
+    width: 95px;
+    
+    @media (min-width: 360px) {
+      width: 110px;
+    }
     
     &:hover, 
     &:active, 

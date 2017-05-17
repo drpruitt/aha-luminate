@@ -12,7 +12,7 @@ angular.module 'ahaLuminateControllers'
       
       $scope.donationLevels = 
         levels: []
-      $donationLevels = angular.element('.js--registration-ptype-donation-levels .donation-level-row-container')
+      $donationLevels = angular.element '.js--registration-ptype-donation-levels .donation-level-row-container'
       angular.forEach $donationLevels, ($donationLevel) ->
         $donationLevel = angular.element $donationLevel
         levelAmount = $donationLevel.find('input[type="radio"][name^="donation_level_form_"]').val()
@@ -31,6 +31,8 @@ angular.module 'ahaLuminateControllers'
         angular.forEach $scope.donationLevels.levels, (donationLevel, donationLevelIndex) ->
           if donationLevel.amount is levelAmount
             $scope.donationLevels.activeLevel = donationLevel
+        if levelAmount isnt '-1'
+          $scope.participationOptions.ng_donation_level_other_amount = ''
       
       $scope.previousStep = ->
         $scope.ng_go_back = true
