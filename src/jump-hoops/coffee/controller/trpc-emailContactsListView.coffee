@@ -411,11 +411,12 @@ angular.module 'trPcControllers'
       if not $rootScope.selectedContacts?.contacts
         $scope.resetSelectedContacts()
       
-      $scope.toggleContact = ($event, contact) ->
+      $scope.toggleContact = (contact, $event) ->
         if $event
           $event.preventDefault()
         contactData = getContactString contact
         contactIndex = $rootScope.selectedContacts.contacts.indexOf contactData
+        console.log $event, contactData, contactIndex
         if contactIndex is -1
           $rootScope.selectedContacts.contacts.push contactData
         else
