@@ -1,8 +1,11 @@
 angular.module 'trPcApp'
-  .directive 'pcImportContactsList', ->
-    templateUrl: '../angular-teamraiser-participant-center/dist/html/directive/importContactsList.html'
-    restrict: 'E'
-    replace: true
-    scope:
-      contacts: '='
-      toggleContact: '='
+  .directive 'pcImportContactsList', [
+    'APP_INFO'
+    (APP_INFO) ->
+      templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/directive/importContactsList.html'
+      restrict: 'E'
+      replace: true
+      scope:
+        contacts: '='
+        toggleContact: '='
+  ]
