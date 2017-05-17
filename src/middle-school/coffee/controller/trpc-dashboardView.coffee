@@ -35,6 +35,7 @@ angular.module 'trPcControllers'
                 $scope.setPersonalUrlInfo.errorMessage = response.data.errorResponse.message
               else
                 $scope.setPersonalUrlInfo.success = true
+                $scope.getParticipantShortcut()
         
         $scope.closeFirstLogin = ->
           $scope.firstLoginModal.close()
