@@ -414,6 +414,7 @@ angular.module 'trPcControllers'
       $scope.toggleContact = (contact) ->
         contactData = getContactString contact
         contactIndex = $rootScope.selectedContacts.contacts.indexOf contactData
+        console.log contact, contactData, contactIndex
         if contactIndex is -1
           $rootScope.selectedContacts.contacts.push contactData
         else
