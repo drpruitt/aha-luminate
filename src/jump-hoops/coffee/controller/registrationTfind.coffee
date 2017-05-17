@@ -1,8 +1,24 @@
 angular.module 'ahaLuminateControllers'
   .controller 'RegistrationTfindCtrl', [
+    '$rootScope'
     '$scope'
+    'TeamraiserCompanyService'
     'TeamraiserTeamService'
-    ($scope, TeamraiserTeamService) ->
+    ($rootScope, $scope, TeamraiserCompanyService, TeamraiserTeamService) ->
+      regCompanyId = luminateExtend.global.regCompanyId
+      $rootScope.companyName = ''
+      TeamraiserCompanyService.getCompanies 'company_id=' + regCompanyId,
+        error: ->
+          # TODO
+        success: (response) ->
+          companies = response.getCompaniesResponse.company
+          if not companies
+            # TODO
+          else
+            companies = [companies] if not angular.isArray companies
+            companyInfo = companies[0]
+            $rootScope.companyName = companyInfo.companyName
+      
       if not $scope.teamSearch
         $scope.teamSearch = {}
       

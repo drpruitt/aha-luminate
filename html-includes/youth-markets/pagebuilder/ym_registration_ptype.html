@@ -125,7 +125,7 @@
           </div>
           <div class="row">
             <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3">
-              <input type="text" class="form-control input-lg" name="fr_goal" id="participationOptions-fr_goal" title="Participation Options" ng-model="participationOptions.fr_goal" placeholder="[[?xx::x[[A18]]x::::[[?xx::x[[C1:fr_suggested_goal_field]]x::[[M0:friendraiser:suggested_goal_field]]::[[C1:fr_suggested_goal_field]]]] [[A18]]]]" maxlength="15" required>
+              <input type="text" class="form-control input-lg" name="fr_goal" id="participationOptions-fr_goal" ng-model="participationOptions.fr_goal" placeholder="[[?xx::x[[A18]]x::::[[?xx::x[[C1:fr_suggested_goal_field]]x::[[M0:friendraiser:suggested_goal_field]]::[[C1:fr_suggested_goal_field]]]] [[A18]]]]" maxlength="15" required>
             </div>
           </div>
           <div ng-if="participationOptionsForm.$submitted && participationOptionsForm.fr_goal.$invalid" ng-cloak>
@@ -172,6 +172,8 @@
       <input type="hidden" name="donation_level_custom_idsubmitted" value="true">
       <input type="hidden" name="donation_level_custom_id_donation_levels_submit" value="true">
       <input type="text" name="fr_goal" ng-model="participationOptions.fr_goal">
+      <input type="hidden" name="s_frCompanyId" value="[[S80:frCompanyId]]">
+      <input type="hidden" name="s_frTJoin" value="[[S80:frTJoin]]">
       <input type="hidden" name="next_step.x" value="[[M1:friendraiser:join_team_step_next_button]]" ng-if="!ng_go_back">
       <input type="hidden" name="previous_step.x" value="[[M1:friendraiser:join_team_step_prev_button]]" ng-if="ng_go_back">
     </form>
