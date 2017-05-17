@@ -12,7 +12,7 @@ angular.module 'ahaLuminateControllers'
       consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
       
       if consId
-        TeamraiserParticipantService.getRegisteredTeamraisers 'cons_id=' + consId + '&event_type=' + encodeURIComponent('Jump Hoops'),
+        TeamraiserParticipantService.getRegisteredTeamraisers 'cons_id=' + consId + '&event_type=' + encodeURIComponent('Middle School'),
           error: ->
             modalSet = readCookie 'modalSet'
             if modalSet isnt 'true'

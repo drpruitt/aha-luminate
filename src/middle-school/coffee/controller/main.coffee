@@ -11,7 +11,7 @@ angular.module 'ahaLuminateControllers'
       $scope.regEventId = ''
       
       if consId
-        TeamraiserParticipantService.getRegisteredTeamraisers 'cons_id=' + consId + '&event_type=' + encodeURIComponent('Jump Hoops'),
+        TeamraiserParticipantService.getRegisteredTeamraisers 'cons_id=' + consId + '&event_type=' + encodeURIComponent('Middle School'),
           success: (response) ->
             teamraisers = response.getRegisteredTeamraisersResponse.teamraiser
             if not teamraisers
