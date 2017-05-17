@@ -3,8 +3,8 @@
     <div class="clearfix">
       <div class="pull-left">
         <div class="checkbox" ng-class="{'checked': contact.selected}" ng-click="toggleContact($event, contact)">
-          <label>
-            <input type="checkbox" value="{{contact.id}}" ng-checked="contact.selected"> 
+          <label ng-click="toggleContact($event, contact)">
+            <input type="checkbox" value="{{contact.id}}" ng-checked="contact.selected" ng-click="toggleContact($event, contact)"> 
             <a ng-click="selectContact($event, contact)">
               <span ng-if="contact.firstName">
                 {{contact.firstName}}{{contact.lastName ? ' ' + contact.lastName : ''}}{{contact.email ? ' &lt;' + contact.email + '&gt;' : ''}}
