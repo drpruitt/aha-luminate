@@ -4,7 +4,10 @@ angular.module 'ahaLuminateApp'
     '$sce'
     ($http, $sce) ->            
       getBadges: (requestData) ->
-        url = 'AjaxProxy?cnv_url=' + encodeURIComponent('https://jumphoopsstaging.boundlessnetwork.com/api/badges/student/' + requestData) + '&auth=' + luminateExtend.global.ajaxProxyAuth
+        if luminateExtend.global.tablePrefix is 'heartdev'
+          url = 'AjaxProxy?cnv_url=' + encodeURIComponent('https://jumphoopsstaging.boundlessnetwork.com/api/badges/student/' + requestData) + '&auth=' + luminateExtend.global.ajaxProxyAuth
+        else
+          url = 'AjaxProxy?cnv_url=' + encodeURIComponent('https://jumphoopsstaging.boundlessnetwork.com/api/badges/student/' + requestData) + '&auth=' + luminateExtend.global.ajaxProxyAuth
         $http
           method: 'GET'
           url: url
