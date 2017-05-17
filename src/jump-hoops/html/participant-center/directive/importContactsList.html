@@ -1,7 +1,7 @@
 <ul class="list-unstyled list-group">
   <li class="list-group-item" ng-repeat="contact in contacts">
     <div class="clearfix">
-      <div class="checkbox" ng-class="{'checked': contact.selected}" ng-click="toggleContact(contact)">
+      <div class="checkbox" ng-class="{'checked': contact.selected}" ng-click="toggleContact($event, contact)">
         <label>
           <input type="checkbox" value="{{contact.id}}" ng-checked="contact.selected"> 
           <span ng-if="contact.firstName">
