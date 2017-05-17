@@ -26,7 +26,11 @@ angular.module 'ahaLuminateControllers'
             else
               teamraisers = [teamraisers] if not angular.isArray teamraisers
               teamraiserInfo = teamraisers[0]
+              ###
+              hard coding link to dev for testing, remove comment and use dynamic when go live
               setNoSchoolLink $scope.nonSecureDomain + '/site/TRR?fr_id=' + teamraiserInfo.id + '&pg=tfind&fr_tm_opt=existing&s_frTJoin=&s_frCompanyId='
+              ###
+              setNoSchoolLink 'https://secure3.convio.net/heartdev/site/TRR?pg=utype&fr_id=2613'
       
       if consId
         TeamraiserParticipantService.getRegisteredTeamraisers 'cons_id=' + consId + '&event_type=' + encodeURIComponent('Jump Hoops'),
