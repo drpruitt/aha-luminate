@@ -356,8 +356,15 @@
     @media (min-width: $screen-sm-min) {
       margin: 0 8px;
     }
+  }
+  
+  input.btn-enter {
+    width: 110px;
+    font-weight: 700;
     
-    &.btn-enter {
+    &:hover, 
+    &:active, 
+    &.active {
       font-weight: 700;
     }
   }

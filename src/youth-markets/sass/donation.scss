@@ -248,8 +248,9 @@ div.donation-form-container {
         width: 110px;
         font-weight: 700;
         
-        &.active,
-        &:hover {
+        &:hover, 
+        &:active, 
+        &.active {
           font-weight: 700;
         }
       }
