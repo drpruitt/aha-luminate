@@ -234,6 +234,8 @@
       <div ng-repeat="(key, value) in paymentInfo">
         <input type="hidden" name="{{key}}" value="{{value}}">
       </div>
+      <input type="hidden" name="s_frCompanyId" value="[[S80:frCompanyId]]">
+      <input type="hidden" name="s_frTJoin" value="[[S80:frTJoin]]">
       <input type="hidden" name="btn_next" value="[[M0:friendraiser:reg_payment_page_next_button_label]]" ng-if="!ng_go_back">
       <input type="hidden" name="btn_prev" value="[[M0:friendraiser:reg_payment_page_prev_button_label]]" ng-if="ng_go_back">
     </form>

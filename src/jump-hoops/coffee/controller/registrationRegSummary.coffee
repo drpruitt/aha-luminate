@@ -1,7 +1,23 @@
 angular.module 'ahaLuminateControllers'
   .controller 'RegistrationRegSummaryCtrl', [
+    '$rootScope'
     '$scope'
-    ($scope) ->
+    'TeamraiserCompanyService'
+    ($rootScope, $scope, TeamraiserCompanyService) ->
+      regCompanyId = luminateExtend.global.regCompanyId
+      $rootScope.companyName = ''
+      TeamraiserCompanyService.getCompanies 'company_id=' + regCompanyId,
+        error: ->
+          # TODO
+        success: (response) ->
+          companies = response.getCompaniesResponse.company
+          if not companies
+            # TODO
+          else
+            companies = [companies] if not angular.isArray companies
+            companyInfo = companies[0]
+            $rootScope.companyName = companyInfo.companyName
+      
       $scope.regSummaryInfo = {}
       
       $participantInfo = angular.element '.js--registration-regsummary-participant-info'
