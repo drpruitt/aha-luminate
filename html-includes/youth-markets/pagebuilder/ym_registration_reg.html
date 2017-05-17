@@ -98,7 +98,7 @@
           ]]
         ]]
       </div>
-      <div class="checkbox" ng-if="registrationQuestions.fr_email_opt_in" ng-cloak>
+      <div class="checkbox" ng-class="{'checked': registrationInfo.fr_email_opt_in}" ng-if="registrationQuestions.fr_email_opt_in" ng-cloak>
         <label for="registrationInfo-fr_email_opt_in">
           <input type="checkbox" name="ng_fr_email_opt_in" id="registrationInfo-fr_email_opt_in" ng-model="registrationInfo.fr_email_opt_in"> 
           <span class="manageable-content" data-container="edit_opt_in_container">
@@ -112,7 +112,7 @@
           </span>
         </label>
       </div>
-      <div class="checkbox" ng-if="registrationQuestions.cons_email_opt_in" ng-cloak>
+      <div class="checkbox" ng-class="{'checked': registrationInfo.cons_email_opt_in}" ng-if="registrationQuestions.cons_email_opt_in" ng-cloak>
         <label for="registrationInfo-cons_email_opt_in">
           <input type="checkbox" name="ng_cons_email_opt_in" id="registrationInfo-cons_email_opt_in" ng-model="registrationInfo.cons_email_opt_in"> 
           <span ng-bind-html="registrationQuestions.cons_email_opt_in.label"></span>

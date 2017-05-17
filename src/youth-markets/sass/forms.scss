@@ -83,6 +83,26 @@ input[type="checkbox"] + label {
   }
 }
 
+.checkbox {
+  &:not(.checked) {
+    label {
+      &:after {
+        opacity: 0;
+        transform: scale(0);
+      }
+    }
+  }
+  
+  &.checked {
+    label {
+      &:after {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
+}
+
 input[type="checkbox"] {
   &:not(:checked) {
     + label {
