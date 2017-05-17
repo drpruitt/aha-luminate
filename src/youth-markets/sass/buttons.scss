@@ -252,7 +252,7 @@ input[type="text"].btn-enter {
 
 .btn-enter, 
 a.btn-enter, 
-input.btn-enter {
+input[type="text"].btn-enter {
   &, 
   &:link, 
   &:visited {
@@ -269,7 +269,7 @@ input.btn-enter {
   }
 }
 
-input.btn-enter {
+input[type="text"].btn-enter {
   font-family: inherit;
 
   &::-webkit-input-placeholder {
