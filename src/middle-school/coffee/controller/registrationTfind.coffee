@@ -1,8 +1,28 @@
 angular.module 'ahaLuminateControllers'
   .controller 'RegistrationTfindCtrl', [
+    '$rootScope'
     '$scope'
+    'TeamraiserCompanyService'
     'TeamraiserTeamService'
-    ($scope, TeamraiserTeamService) ->
+    ($rootScope, $scope, TeamraiserCompanyService, TeamraiserTeamService) ->
+      $rootScope.companyName = ''
+      regCompanyId = luminateExtend.global.regCompanyId
+      setCompanyName = (companyName) ->
+        $rootScope.companyName = companyName
+        if not $rootScope.$$phase
+          $rootScope.$apply()
+      TeamraiserCompanyService.getCompanies 'company_id=' + $scope.companyId,
+        error: ->
+          # TODO
+        success: (response) ->
+          companies = response.getCompaniesResponse.company
+          if not companies
+            # TODO
+          else
+            companies = [companies] if not angular.isArray companies
+            companyInfo = companies[0]
+            setCompanyName companyInfo.companyName
+      
       if not $scope.teamSearch
         $scope.teamSearch = {}
       
@@ -11,7 +31,8 @@ angular.module 'ahaLuminateControllers'
         setTeams = (teams = []) ->
           if teams.length is 1
             teamId = teams[0].id
-            window.location = luminateExtend.global.path.secure + 'TRR?fr_id=' + teams[0].EventId + '&pg=tfind&fr_tm_opt=existing&fr_tjoin=' + teamId + '&s_frTJoin=' + teamId + '&skip_login_page=true'
+            teamCompanyId = teams[0].companyId
+            window.location = luminateExtend.global.path.secure + 'TRR?fr_id=' + teams[0].EventId + '&pg=tfind&fr_tm_opt=existing&fr_tjoin=' + teamId + '&s_frTJoin=' + teamId + '&s_frCompanyId=' + teamCompanyId + '&skip_login_page=true'
           else
             $scope.teamList.teams = teams
             if not $scope.$$phase

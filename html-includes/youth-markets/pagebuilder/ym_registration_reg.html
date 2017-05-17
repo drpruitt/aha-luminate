@@ -50,7 +50,7 @@
             <label class="control-label" for="registrationInfo-cons_first_name">
               Student First Name:
             </label>
-            <input type="text" title="Constituent First Name" class="form-control input-lg" name="ng_cons_first_name" id="registrationInfo-cons_first_name" ng-model="registrationInfo.cons_first_name" maxlength="{{registrationQuestions.cons_first_name.maxLength}}">
+            <input type="text" class="form-control input-lg" name="ng_cons_first_name" id="registrationInfo-cons_first_name" ng-model="registrationInfo.cons_first_name" maxlength="{{registrationQuestions.cons_first_name.maxLength}}">
           </div>
         </div>
         <div class="col-sm-6">
@@ -58,7 +58,7 @@
             <label class="control-label" for="registrationInfo-cons_last_name">
               Student Last Name:
             </label>
-            <input type="text" title="Constituent Last Name" class="form-control input-lg" name="ng_cons_last_name" id="registrationInfo-cons_last_name" ng-model="registrationInfo.cons_last_name" maxlength="{{registrationQuestions.cons_last_name.maxLength}}">
+            <input type="text" class="form-control input-lg" name="ng_cons_last_name" id="registrationInfo-cons_last_name" ng-model="registrationInfo.cons_last_name" maxlength="{{registrationQuestions.cons_last_name.maxLength}}">
           </div>
         </div>
       </div>
@@ -90,7 +90,7 @@
         ]]
         [[?xxnullx::x[[A20]]x::::
           [[?xxnullxBASELINEx::x[[S0:TPV_FR_CSTM_REG_OPTIN]]x::
-            <input type="checkbox" title="Email Opt-in" name="fr_email_opt_in" id="fr_email_opt_in" [[?[[A20]]::T::checked::]]>
+            <input type="checkbox" name="fr_email_opt_in" id="fr_email_opt_in" [[?[[A20]]::T::checked::]]>
           :: 
             [[?xOPTINx::x[[S0:TPV_FR_CSTM_REG_OPTIN]]x:: 
               <input type="hidden" name="fr_email_opt_in" id="fr_email_opt_in" value="on">
@@ -98,7 +98,7 @@
           ]]
         ]]
       </div>
-      <div class="checkbox" ng-if="registrationQuestions.fr_email_opt_in" ng-cloak>
+      <div class="checkbox" ng-class="{'checked': registrationInfo.fr_email_opt_in}" ng-if="registrationQuestions.fr_email_opt_in" ng-cloak>
         <label for="registrationInfo-fr_email_opt_in">
           <input type="checkbox" name="ng_fr_email_opt_in" id="registrationInfo-fr_email_opt_in" ng-model="registrationInfo.fr_email_opt_in"> 
           <span class="manageable-content" data-container="edit_opt_in_container">
@@ -112,7 +112,7 @@
           </span>
         </label>
       </div>
-      <div class="checkbox" ng-if="registrationQuestions.cons_email_opt_in" ng-cloak>
+      <div class="checkbox" ng-class="{'checked': registrationInfo.cons_email_opt_in}" ng-if="registrationQuestions.cons_email_opt_in" ng-cloak>
         <label for="registrationInfo-cons_email_opt_in">
           <input type="checkbox" name="ng_cons_email_opt_in" id="registrationInfo-cons_email_opt_in" ng-model="registrationInfo.cons_email_opt_in"> 
           <span ng-bind-html="registrationQuestions.cons_email_opt_in.label"></span>
@@ -135,7 +135,7 @@
               <label class="control-label" for="registrationInfo-{{registrationCustomQuestions.ym_hoops_jump_teacher_name}}">
                 <span ng-bind-html="registrationQuestions[registrationCustomQuestions.ym_hoops_jump_teacher_name].label"></span>
               </label>
-              <input type="text" title="Teacher Name" class="form-control input-lg" name="ng_{{registrationCustomQuestions.ym_hoops_jump_teacher_name}}" id="registrationInfo-{{registrationCustomQuestions.ym_hoops_jump_teacher_name}}" ng-model="registrationInfo[registrationCustomQuestions.ym_hoops_jump_teacher_name]" maxlength="{{registrationQuestions[registrationCustomQuestions.ym_hoops_jump_teacher_name].maxLength}}">
+              <input type="text" class="form-control input-lg" name="ng_{{registrationCustomQuestions.ym_hoops_jump_teacher_name}}" id="registrationInfo-{{registrationCustomQuestions.ym_hoops_jump_teacher_name}}" ng-model="registrationInfo[registrationCustomQuestions.ym_hoops_jump_teacher_name]" maxlength="{{registrationQuestions[registrationCustomQuestions.ym_hoops_jump_teacher_name].maxLength}}">
             </div>
           </div>
         </div>
@@ -146,7 +146,7 @@
             <label class="control-label" for="registrationInfo-{{registrationCustomQuestions.ym_hoops_jump_school}}">
               <span ng-bind-html="registrationQuestions[registrationCustomQuestions.ym_hoops_jump_school].label"></span>
             </label>
-            <input type="text" title="Custom Question" class="form-control input-lg" name="ng_{{registrationCustomQuestions.ym_hoops_jump_school}}" id="registrationInfo-{{registrationCustomQuestions.ym_hoops_jump_school}}" ng-model="registrationInfo[registrationCustomQuestions.ym_hoops_jump_school]" maxlength="{{registrationQuestions[registrationCustomQuestions.ym_hoops_jump_school].maxLength}}">
+            <input type="text" class="form-control input-lg" name="ng_{{registrationCustomQuestions.ym_hoops_jump_school}}" id="registrationInfo-{{registrationCustomQuestions.ym_hoops_jump_school}}" ng-model="registrationInfo[registrationCustomQuestions.ym_hoops_jump_school]" maxlength="{{registrationQuestions[registrationCustomQuestions.ym_hoops_jump_school].maxLength}}">
           </div>
         </div>
         <div class="col-sm-6">
@@ -154,7 +154,7 @@
             <label class="control-label" for="registrationInfo-{{registrationCustomQuestions.ym_hoops_jump_school_address}}">
               <span ng-bind-html="registrationQuestions[registrationCustomQuestions.ym_hoops_jump_school_address].label"></span>
             </label>
-            <input type="text" title="Another Custom Question" class="form-control input-lg" name="ng_{{registrationCustomQuestions.ym_hoops_jump_school_address}}" id="registrationInfo-{{registrationCustomQuestions.ym_hoops_jump_school_address}}" ng-model="registrationInfo[registrationCustomQuestions.ym_hoops_jump_school_address]" maxlength="{{registrationQuestions[registrationCustomQuestions.ym_hoops_jump_school_address].maxLength}}">
+            <input type="text" class="form-control input-lg" name="ng_{{registrationCustomQuestions.ym_hoops_jump_school_address}}" id="registrationInfo-{{registrationCustomQuestions.ym_hoops_jump_school_address}}" ng-model="registrationInfo[registrationCustomQuestions.ym_hoops_jump_school_address]" maxlength="{{registrationQuestions[registrationCustomQuestions.ym_hoops_jump_school_address].maxLength}}">
           </div>
         </div>
       </div>
@@ -177,7 +177,7 @@
                 <label class="control-label" for="registrationInfo-cons_user_name">
                   <span ng-bind-html="registrationQuestions.cons_user_name.label"></span>
                 </label>
-                <input type="text" title="Username" class="form-control input-lg" name="ng_cons_user_name" id="registrationInfo-cons_user_name" ng-model="registrationInfo.cons_user_name" maxlength="{{registrationQuestions.cons_user_name.maxLength}}">
+                <input type="text" class="form-control input-lg" name="ng_cons_user_name" id="registrationInfo-cons_user_name" ng-model="registrationInfo.cons_user_name" maxlength="{{registrationQuestions.cons_user_name.maxLength}}">
               </div>
             </div>
           </div>
@@ -232,7 +232,7 @@
                         <span ng-bind-html="registrationQuestions[key].label"></span>
                       </label>
                       <div ng-if="registrationQuestions[key].type != 'textarea' && registrationQuestions[key].type != 'select'">
-                        <input type="text" title="Registration Key" class="form-control input-lg" name="ng_{{key}}" id="registrationInfo-{{key}}" ng-model="registrationInfo[key]" maxlength="{{registrationQuestions[key].maxLength}}">
+                        <input type="text" class="form-control input-lg" name="ng_{{key}}" id="registrationInfo-{{key}}" ng-model="registrationInfo[key]" maxlength="{{registrationQuestions[key].maxLength}}">
                       </div>
                       <div ng-if="registrationQuestions[key].type == 'textarea'">
                         <textarea class="form-control" name="ng_{{key}}" id="registrationInfo-{{key}}" ng-model="registrationInfo[key]" maxlength="{{registrationQuestions[key].maxLength}}"></textarea>
@@ -303,6 +303,8 @@
       <div ng-repeat="(key, value) in registrationInfo">
         <input type="hidden" name="{{key}}" value="{{value}}">
       </div>
+      <input type="hidden" name="s_frCompanyId" value="[[S80:frCompanyId]]">
+      <input type="hidden" name="s_frTJoin" value="[[S80:frTJoin]]">
       <input type="hidden" name="next_step.x" value="[[M1:friendraiser:join_team_step_next_button]]" ng-if="!ng_go_back">
       <input type="hidden" name="previous_step.x" value="[[M1:friendraiser:join_team_step_prev_button]]" ng-if="ng_go_back">
     </form>

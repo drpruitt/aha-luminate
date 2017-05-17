@@ -1,9 +1,29 @@
 angular.module 'ahaLuminateControllers'
   .controller 'RegistrationPtypeCtrl', [
+    '$rootScope'
     '$scope'
     '$filter'
     '$timeout'
-    ($scope, $filter, $timeout) ->
+    'TeamraiserCompanyService'
+    ($rootScope, $scope, $filter, $timeout, TeamraiserCompanyService) ->
+      $rootScope.companyName = ''
+      regCompanyId = luminateExtend.global.regCompanyId
+      setCompanyName = (companyName) ->
+        $rootScope.companyName = companyName
+        if not $rootScope.$$phase
+          $rootScope.$apply()
+      TeamraiserCompanyService.getCompanies 'company_id=' + $scope.companyId,
+        error: ->
+          # TODO
+        success: (response) ->
+          companies = response.getCompaniesResponse.company
+          if not companies
+            # TODO
+          else
+            companies = [companies] if not angular.isArray companies
+            companyInfo = companies[0]
+            setCompanyName companyInfo.companyName
+      
       if not $scope.participationOptions
         $scope.participationOptions = {}
       
@@ -12,7 +32,7 @@ angular.module 'ahaLuminateControllers'
       
       $scope.donationLevels = 
         levels: []
-      $donationLevels = angular.element('.js--registration-ptype-donation-levels .donation-level-row-container')
+      $donationLevels = angular.element '.js--registration-ptype-donation-levels .donation-level-row-container'
       angular.forEach $donationLevels, ($donationLevel) ->
         $donationLevel = angular.element $donationLevel
         levelAmount = $donationLevel.find('input[type="radio"][name^="donation_level_form_"]').val()
@@ -31,6 +51,8 @@ angular.module 'ahaLuminateControllers'
         angular.forEach $scope.donationLevels.levels, (donationLevel, donationLevelIndex) ->
           if donationLevel.amount is levelAmount
             $scope.donationLevels.activeLevel = donationLevel
+        if levelAmount isnt '-1'
+          $scope.participationOptions.ng_donation_level_other_amount = ''
       
       $scope.previousStep = ->
         $scope.ng_go_back = true

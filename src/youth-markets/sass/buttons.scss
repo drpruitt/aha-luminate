@@ -1,7 +1,7 @@
-.btn,
+.btn, 
 a.btn {
   @include button-size($padding-base-vertical, $padding-base-horizontal, 14px);
-
+  
   &,
   &:link,
   &:visited,
@@ -14,14 +14,14 @@ a.btn {
     font-family: inherit;
     text-decoration: none;
   }
-
+  
   &:focus,
   &:active,
   &:focus:active,
   &:focus.active {
     outline: none;
   }
-
+  
   > * {
     color: inherit !important;
   }
@@ -38,7 +38,7 @@ span.btn {
   }
 }
 
-.btn-sm,
+.btn-sm, 
 a.btn-sm {
   &,
   &:link,
@@ -53,7 +53,7 @@ a.btn-md {
   &:link,
   &:visited {
     @include button-size(6px, 6px, 14px);
-
+    
     @media (min-width: $screen-sm-min) {
       @include button-size(7px, 14px, 14px);
     }
@@ -69,7 +69,6 @@ a.btn-md-wide {
   }
 }
 
-
 .btn-lg,
 a.btn-lg {
   &,
@@ -79,7 +78,7 @@ a.btn-lg {
     text-align: center;
     min-width: 120px;
     font-weight: 700;
-
+    
     @media (min-width: $screen-sm-min) {
       @include button-size($padding-base-vertical, $padding-base-horizontal, 20px);
       min-width: 180px;
@@ -96,14 +95,14 @@ a.btn {
       background: $event-primary;
       color: $brand-white;
     }
-
+    
     &:hover,
     &:focus,
     &:active {
       background: $event-primary-dark;
     }
   }
-
+  
   &.btn-secondary {
     &,
     &:link,
@@ -111,7 +110,7 @@ a.btn {
       background: $event-secondary;
       color: $brand-white;
     }
-
+    
     &:hover,
     &:focus,
     &:active {
@@ -191,9 +190,9 @@ div.responsive {
   }
 }
 
-div.responsive .btn-toggle,
-div.responsive a.btn-toggle,
-.btn-toggle,
+div.responsive .btn-toggle, 
+div.responsive a.btn-toggle, 
+.btn-toggle, 
 a.btn-toggle {
   &,
   &:link,
@@ -205,7 +204,7 @@ a.btn-toggle {
     color: $event-primary;
     text-decoration: none;
   }
-
+  
   &:hover,
   &:focus,
   &:active,
@@ -217,7 +216,7 @@ a.btn-toggle {
   }
 }
 
-.btn-outline,
+.btn-outline, 
 a.btn-outline {
   &,
   &:link,
@@ -229,8 +228,9 @@ a.btn-outline {
     color: $event-primary;
     text-decoration: none;
   }
-  &:hover,
-  &:focus,
+  
+  &:hover, 
+  &:focus, 
   &:active {
     background: $event-primary;
     color: $brand-white;
@@ -242,7 +242,7 @@ a.btn-outline {
   display: inline-block;
 }
 
-div.responsive input[type="text"].btn-enter,
+div.responsive input[type="text"].btn-enter, 
 input[type="text"].btn-enter {
   @include button-size($padding-base-vertical, $padding-base-horizontal, 18px);
   text-decoration: none;
@@ -250,34 +250,86 @@ input[type="text"].btn-enter {
   border-color: $event-primary;
 }
 
-.btn-enter {
+.btn-enter, 
+a.btn-enter, 
+input[type="text"].btn-enter {
+  &, 
+  &:link, 
+  &:visited {
+    background: $brand-white;
+  }
+  
+  &:hover, 
+  &:focus, 
+  &:active, 
+  &.active {
+    background: $event-primary;
+    border: 1px solid $event-primary;
+    color: $brand-white;
+  }
+}
+
+input[type="text"].btn-enter {
+  font-family: inherit;
+
   &::-webkit-input-placeholder {
     color: $event-primary !important;
     opacity: 1 !important;
   }
-
+  
   &:-moz-placeholder {
     color: $event-primary !important;
     opacity: 1 !important;
   }
-
+  
   &::-moz-placeholder {
     color: $event-primary !important;
     opacity: 1 !important;
   }
-
+  
   &::-ms-input-placeholder {
     color: $event-primary !important;
     opacity: 1 !important;
   }
-
+  
   &:placeholder {
     color: $event-primary !important;
     opacity: 1 !important;
   }
-
+  
   &::placeholder {
     color: $event-primary !important;
     opacity: 1 !important;
+  }
+  
+  &:hover, 
+  &:focus, 
+  &:active, 
+  &.active {
+    cursor: pointer;
+    
+    &::-webkit-input-placeholder {
+      color: $brand-white !important;
+    }
+    
+    &:-moz-placeholder {
+      color: $brand-white !important;
+    }
+    
+    &::-moz-placeholder {
+      color: $brand-white !important;
+    }
+    
+    &::-ms-input-placeholder {
+      color: $brand-white !important;
+    }
+    
+    &:placeholder {
+      color: $brand-white !important;
+    }
+    
+    &::placeholder {
+      color: $brand-white !important;
+    }
   }
 }

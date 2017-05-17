@@ -1,8 +1,28 @@
 angular.module 'ahaLuminateControllers'
   .controller 'RegistrationPaymentCtrl', [
+    '$rootScope'
     '$scope'
-    ($scope) ->
-      $scope.paymentInfoErrors = 
+    'TeamraiserCompanyService'
+    ($rootScope, $scope, TeamraiserCompanyService) ->
+      $rootScope.companyName = ''
+      regCompanyId = luminateExtend.global.regCompanyId
+      setCompanyName = (companyName) ->
+        $rootScope.companyName = companyName
+        if not $rootScope.$$phase
+          $rootScope.$apply()
+      TeamraiserCompanyService.getCompanies 'company_id=' + $scope.companyId,
+        error: ->
+          # TODO
+        success: (response) ->
+          companies = response.getCompaniesResponse.company
+          if not companies
+            # TODO
+          else
+            companies = [companies] if not angular.isArray companies
+            companyInfo = companies[0]
+            setCompanyName companyInfo.companyName
+      
+      $scope.paymentInfoErrors =
         errors: []
       $fieldErrors = angular.element '.ErrorMessage'
       angular.forEach $fieldErrors, (fieldError) ->

@@ -45,6 +45,11 @@ module.exports = {
         '!src/jump-hoops/coffee/config/trpc-*.*', 
         'src/global/coffee/service/*.*', 
         '!src/global/coffee/service/trpc-*.*', 
+        'src/jump-hoops/coffee/service/*.*', 
+        '!src/jump-hoops/coffee/service/trpc-*.*', 
+        'src/global/coffee/directive/*.*', 
+        'src/jump-hoops/coffee/directive/*.*', 
+        '!src/jump-hoops/coffee/directive/trpc-*.*', 
         'src/jump-hoops/coffee/**/*.*', 
         '!src/jump-hoops/coffee/**/trpc-*.*'
       ], 
@@ -65,6 +70,11 @@ module.exports = {
         '!src/middle-school/coffee/config/trpc-*.*', 
         'src/global/coffee/service/*.*', 
         '!src/global/coffee/service/trpc-*.*', 
+        'src/middle-school/coffee/service/*.*', 
+        '!src/middle-school/coffee/service/trpc-*.*', 
+        'src/global/coffee/directive/*.*', 
+        'src/middle-school/coffee/directive/*.*', 
+        '!src/middle-school/coffee/directive/trpc-*.*', 
         'src/middle-school/coffee/**/*.*', 
         '!src/middle-school/coffee/**/trpc-*.*'
       ], 
