@@ -3,14 +3,14 @@ div.donation-form-container {
     span.field-required {
       display: none;
     }
-
+    
     @media(max-width: $screen-sm-max) {
       .btn-toggle:focus, 
       .btn-toggle:active,
       .btn-toggle:hover {
         background: $brand-white;
         color: $event-primary;
-
+        
         &.active {
           background: $event-primary;
           color: $brand-white;
@@ -18,11 +18,11 @@ div.donation-form-container {
       }
     }
   }
-
+  
   .ErrorMessage {
     display: none;
   }
-
+  
   .has-error {
     input[type="text"],
     select {
@@ -30,11 +30,11 @@ div.donation-form-container {
       border: 1px solid $event-secondary;
     }
   }
-
+  
   .form-info-message {
     display: none;
   }
-
+  
   input[type="text"].btn, 
   input[type="text"].btn:before, 
   input[type="text"].btn:after {
@@ -44,17 +44,17 @@ div.donation-form-container {
     -ms-user-select: initial;
     user-select: initial;
   }
-
+  
   .custom-field-container {
     .form-input-label-block {
       display: none;
     }
-
+    
     label.custom-element-checkbox-label {
       max-width: 100%;
     }
   }
-
+  
   .section-header-container, 
   h2 {
     color: $event-secondary;
@@ -223,41 +223,39 @@ div.donation-form-container {
       padding-right: 0;
       
     }
-
+    
     &:first-child {
       padding-left: 0;
     }
-
+    
     @media (min-width: $screen-xs-min) {
       margin: 0 0 15px;
       padding: 0 10px;
     }
-
+    
     .btn-toggle {
       font-size: 20px;
       min-width: 80px;
       height: 50px;
       line-height: 48px;
       padding: 0;
-
+      
       @media (min-width: $screen-sm-min) {
         min-width: 110px;
       }
-
+      
       &.btn-enter {
         width: 110px;
-        background: $brand-white;
         font-weight: 700;
-
+        
         &.active,
         &:hover {
           font-weight: 700;
-          background: $event-primary;
         }
       }
     }
   }
-
+  
   #level_installment_row {
     margin: 30px 0 0;
     
@@ -265,7 +263,7 @@ div.donation-form-container {
       max-width: 300px;
       margin: 0 auto 20px;
     }
-
+    
     div.don-level-total-row {
       border-color: $event-secondary;
     }
@@ -745,7 +743,7 @@ div.donation-form-container {
     font-weight: 700;
     margin-top: 0;
   }
-
+  
   span {
     color: $brand-white;
   }
@@ -757,7 +755,7 @@ div.donation-form-container {
     width: calc(100% - 300px);
     padding: 0;
   }
-
+  
   @media (min-width: 1050px) {
     padding: 25px 20px 0;
     width: 100%;

@@ -5,8 +5,8 @@ angular.module 'ahaLuminateControllers'
     '$location'
     'DonationService'
     '$timeout'
-    ($scope, $rootScope, $location, DonationService, $timeout) ->      
-      $scope.paymentInfoErrors = 
+    ($scope, $rootScope, $location, DonationService, $timeout) ->
+      $scope.paymentInfoErrors =
         errors: []
       angular.element('.page-error').remove()
       $fieldErrors = angular.element '.ErrorMessage'
@@ -23,7 +23,7 @@ angular.module 'ahaLuminateControllers'
         angular.element($error).addClass 'has-error'
         angular.element($error).removeClass 'form-error'
       
-      $scope.donationInfo = 
+      $scope.donationInfo =
         validate: 'true'
         form_id: angular.element('#df_id').val()
         fr_id: angular.element('#FR_ID').val()
@@ -36,45 +36,44 @@ angular.module 'ahaLuminateControllers'
         levelType: 'level'
       
       $scope.donationLevels = []
-
+      
       calculateInstallment = (number, amount) ->
-        $scope.donationInfo.installmentAmount  = amount.toFixed(2)
+        $scope.donationInfo.installmentAmount  = amount.toFixed 2
         $scope.donationInfo.numberPayments = number
-
+      
       installmentDropdown = ->
-        number = document.getElementById('level_installmentduration').value
-        number = Number(number.split(':')[1])
-        if number == 0
+        number = angular.element('#level_installmentduration').val()
+        number = Number number.split(':')[1]
+        if number is 0
           number = 1
-        if $scope.donationInfo.levelType == 'level'
-            amount = Number($scope.donationInfo.amount.split('$')[1])/number
+        if $scope.donationInfo.levelType is 'level'
+          amount = Number($scope.donationInfo.amount.split('$')[1]) / number
         else
-          amount = Number($scope.donationInfo.amount)
-        calculateInstallment(number, amount)
-
+          amount = Number $scope.donationInfo.amount
+        calculateInstallment number, amount
+      
       document.getElementById('level_installmentduration').onchange = ->
         installmentDropdown()
-        
+      
       document.getElementById('level_installmentduration').onblur = ->
         $timeout ->
           installmentDropdown()
         , 1000
-        
-
-      $scope.giftType = (type) ->  
-        $scope.donationInfo.giftType = type    
+      
+      $scope.giftType = (type) ->
+        $scope.donationInfo.giftType = type
         if type is 'monthly'
           angular.element('.ym-donation-levels__type--onetime').removeClass 'active'
           angular.element('.ym-donation-levels__type--monthly').addClass 'active'
           angular.element('#level_installment_row').removeClass 'hidden'
           angular.element('#pstep_finish span').remove()
           $scope.donationInfo.monthly = true
-          if $scope.donationInfo.levelType == 'level'
-            amount = Number($scope.donationInfo.amount.split('$')[1])
+          if $scope.donationInfo.levelType is 'level'
+            amount = Number $scope.donationInfo.amount.split('$')[1]
           else
-            amount = Number($scope.donationInfo.amount)
+            amount = Number $scope.donationInfo.amount
           number = 1
-          calculateInstallment(number, amount)
+          calculateInstallment number, amount
         else
           angular.element('.ym-donation-levels__type--onetime').addClass 'active'
           angular.element('.ym-donation-levels__type--monthly').removeClass 'active'
@@ -82,55 +81,55 @@ angular.module 'ahaLuminateControllers'
           angular.element('#level_installmentduration').val 'S:0'
           angular.element('#level_installmentduration').click()
           $scope.donationInfo.monthly = false
-          populateBtnAmt($scope.donationInfo.levelType, type)
-          amount = Number($scope.donationInfo.amount.split('$')[1])
-          calculateInstallment(1, amount)
-          
-      $scope.selectLevel = (type, level, amount) ->   
+          populateBtnAmt $scope.donationInfo.levelType, type
+          amount = Number $scope.donationInfo.amount.split('$')[1]
+          calculateInstallment 1, amount
+      
+      $scope.selectLevel = (type, level, amount) ->
         angular.element('.ym-donation-levels__amount .btn-toggle.active').removeClass 'active'
         angular.element('.ym-donation-levels__amount .btn-toggle.level' + level).addClass 'active'
         angular.element('.ym-donation-levels__message').removeClass 'active'
         angular.element('.ym-donation-levels__message.level' + level).addClass 'active'
-        angular.element('.donation-level-container.level' + level + ' input').click() 
+        angular.element('.donation-level-container.level' + level + ' input').click()
         $scope.donationInfo.amount = amount
         $scope.donationInfo.levelType = type
-        populateBtnAmt(type, level, amount)
-
-        if type == 'level'
-          angular.element('.btn-enter').val('')
-
-        if $scope.donationInfo.monthly == true 
-          number = document.getElementById('level_installmentduration').value
-          number = Number(number.split(':')[1])
-          if number == 0
+        populateBtnAmt type, level, amount
+        
+        if type is 'level'
+          angular.element('.btn-enter').val ''
+        
+        if $scope.donationInfo.monthly is true
+          number = angular.element('#level_installmentduration').val()
+          number = Number number.split(':')[1]
+          if number is 0
             number = 1
-          if $scope.donationInfo.levelType == 'level'
-            amount = Number($scope.donationInfo.amount.split('$')[1])/number
+          if $scope.donationInfo.levelType is 'level'
+            amount = Number($scope.donationInfo.amount.split('$')[1]) / number
           else
-            amount = Number($scope.donationInfo.amount)
-          calculateInstallment(number, amount)
+            amount = Number $scope.donationInfo.amount
+          calculateInstallment number, amount
         else
           $scope.donationInfo.installmentAmount = amount
           $scope.donationInfo.numberPayments = 1
-
+      
       $scope.enterAmount = (amount) ->
         angular.element('#pstep_finish span').text ''
-        angular.element('#pstep_finish span').prepend(' $' + amount)
+        angular.element('#pstep_finish span').prepend ' $' + amount
         angular.element('.donation-level-user-entered input').val amount
         $scope.donationInfo.amount = amount
-
-        if $scope.donationInfo.monthly == true 
-          number = document.getElementById('level_installmentduration').value
-          number = Number(number.split(':')[1])
-          if number == 0
+        
+        if $scope.donationInfo.monthly is true
+          number = angular.element('#level_installmentduration').val()
+          number = Number number.split(':')[1]
+          if number is 0
             number = 1
-          amount = amount/number
-          calculateInstallment(number, amount)
+          amount = amount / number
+          calculateInstallment number, amount
           angular.element('#level_installmentduration').click()
-
+      
       populateBtnAmt = (type, level) ->
         angular.element('#pstep_finish span').remove()
-        if $scope.donationInfo.giftType == 'onetime'
+        if $scope.donationInfo.giftType is 'onetime'
           if type is 'level'
             levelAmt = ' <span>' + $scope.donationInfo.amount + ' <i class="fa fa-chevron-right" aria-hidden="true"></i></span>'
             angular.element('#pstep_finish').append levelAmt
@@ -140,16 +139,16 @@ angular.module 'ahaLuminateControllers'
       employerMatchFields = ->
         angular.element('.employer-address-container').addClass 'hidden'
         angular.element('.matching-gift-container').addClass 'hidden'
-        angular.element('label[for="match_checkbox_dropdown"]').parent().parent().parent().addClass('ym-employer-match')
+        angular.element('label[for="match_checkbox_dropdown"]').parent().parent().parent().addClass 'ym-employer-match'
         empCheck = angular.element('#match_checkbox_radio').prop 'checked'
-        if empCheck == true
+        if empCheck is true
           angular.element('.ym-employer-match__message').removeClass 'hidden'
           angular.element('.matching-gift-container').removeClass 'hidden'
-
+      
       document.getElementById('match_checkbox_radio').onclick = ->
         angular.element('.ym-employer-match__message').toggleClass 'hidden'
         angular.element('.matching-gift-container').toggleClass 'hidden'
-
+      
       $scope.toggleEmployerMatch = ->
         angular.element('.ym-employer-match__message').toggleClass 'hidden'
         angular.element('.matching-gift-container').toggleClass 'hidden'
@@ -168,10 +167,10 @@ angular.module 'ahaLuminateControllers'
       $scope.tributeGift = (type) ->
         if type is 'honor'
           angular.element('.btn-toggle--honor').toggleClass 'active'
-
+          
           if !angular.element('.btn-toggle--honor').hasClass 'active'
             document.activeElement.blur()
-
+          
           if angular.element('.btn-toggle--honor').is '.active'
             angular.element('.btn-toggle--memory').removeClass 'active'
             angular.element('#tribute_type').val 'tribute_type_value2'
@@ -183,7 +182,7 @@ angular.module 'ahaLuminateControllers'
             angular.element('#tribute_honoree_name_row').hide()
         else
           angular.element('.btn-toggle--memory').toggleClass 'active'
-
+          
           if !angular.element('.btn-toggle--memory').hasClass 'active'
             document.activeElement.blur()
           
@@ -207,25 +206,25 @@ angular.module 'ahaLuminateControllers'
         angular.element('#billing_addr_zip_row').addClass 'billing-info'
         angular.element('#billing_addr_country_row').addClass 'billing-info'
         angular.element('.billing-info').addClass 'hidden'
-
+      
       addOptional = ->
-        optional = '<span class="ym-optional">Optional</span>'       
+        optional = '<span class="ym-optional">Optional</span>'
         angular.element('#donor_phone_row label').append optional
         angular.element('#donor_addr_street2_row label').append optional
         angular.element('#billing_addr_street2_row label').append optional
-
+      
       $scope.togglePaymentType = (paymentType) ->
-        if paymentType == 'paypal'
+        if paymentType is 'paypal'
           angular.element('#responsive_payment_typepay_typeradiopaypal').click()
           angular.element('#payment_cc_container').hide()
-          angular.element('.btn--credit').removeClass('active')
-          angular.element('.btn--paypal').addClass('active')
+          angular.element('.btn--credit').removeClass 'active'
+          angular.element('.btn--paypal').addClass 'active'
         else
           angular.element('#responsive_payment_typepay_typeradiocredit').click()
           angular.element('#payment_cc_container').show()
-          angular.element('.btn--credit').addClass('active')
-          angular.element('.btn--paypal').removeClass('active')
-
+          angular.element('.btn--credit').addClass 'active'
+          angular.element('.btn--paypal').removeClass 'active'
+      
       $scope.toggleBillingInfo = ->
         angular.element('.billing-info').toggleClass 'hidden'
         inputStatus = angular.element('#billing_info').prop 'checked'
@@ -253,15 +252,15 @@ angular.module 'ahaLuminateControllers'
               levelLabel = angular.element('.' + classLevel).find('.donation-level-expanded-label p').text()
               
               levelChecked = angular.element('.' + classLevel + ' .donation-level-label-input-container input').prop 'checked'
-
+              
               if levelChecked is true
                 $scope.donationInfo.amount = amount
                 $scope.donationInfo.installmentAmount = amount
                 if $scope.donationInfo.monthly is false
-                  angular.element('.finish-step').append('<span> '+ amount + ' <i class="fa fa-chevron-right" aria-hidden="true"></i></span>')
-                else 
-                  angular.element('.finish-step').append('<span> <i class="fa fa-chevron-right" aria-hidden="true"></i></span>')
-     
+                  angular.element('.finish-step').append '<span> '+ amount + ' <i class="fa fa-chevron-right" aria-hidden="true"></i></span>'
+                else
+                  angular.element('.finish-step').append '<span> <i class="fa fa-chevron-right" aria-hidden="true"></i></span>'
+              
               $scope.donationLevels.push
                 levelId: levelId
                 classLevel: classLevel
@@ -275,12 +274,11 @@ angular.module 'ahaLuminateControllers'
         angular.element('#payment_cc_container').append '<div class="clearfix" />'
         angular.element('#responsive_payment_typecc_cvv_row .FormLabelText').text 'CVV:'
         angular.element('#level_installment_row').addClass 'hidden'
-        angular.element('#tr_recognition_namerec_namename').attr('placeholder', 'If different from your name')
-        angular.element('#tr_message_to_participantname').attr('placeholder', 'Write a message of encouragement. 255 characters max.')
+        angular.element('#tr_recognition_namerec_namename').attr 'placeholder', 'If different from your name'
+        angular.element('#tr_message_to_participantname').attr 'placeholder', 'Write a message of encouragement. 255 characters max.'
         addOptional()
         employerMatchFields()
         billingAddressFields()
         donorRecognitionFields()
-
       loadForm()
   ]
