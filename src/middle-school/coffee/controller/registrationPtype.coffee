@@ -6,9 +6,13 @@ angular.module 'ahaLuminateControllers'
     '$timeout'
     'TeamraiserCompanyService'
     ($rootScope, $scope, $filter, $timeout, TeamraiserCompanyService) ->
-      regCompanyId = luminateExtend.global.regCompanyId
       $rootScope.companyName = ''
-      TeamraiserCompanyService.getCompanies 'company_id=' + regCompanyId,
+      regCompanyId = luminateExtend.global.regCompanyId
+      setCompanyName = (companyName) ->
+        $rootScope.companyName = companyName
+        if not $rootScope.$$phase
+          $rootScope.$apply()
+      TeamraiserCompanyService.getCompanies 'company_id=' + $scope.companyId,
         error: ->
           # TODO
         success: (response) ->
@@ -18,7 +22,7 @@ angular.module 'ahaLuminateControllers'
           else
             companies = [companies] if not angular.isArray companies
             companyInfo = companies[0]
-            $rootScope.companyName = companyInfo.companyName
+            setCompanyName companyInfo.companyName
       
       if not $scope.participationOptions
         $scope.participationOptions = {}

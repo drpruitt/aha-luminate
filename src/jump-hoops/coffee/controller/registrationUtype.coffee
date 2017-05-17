@@ -4,8 +4,12 @@ angular.module 'ahaLuminateControllers'
     '$scope'
     'TeamraiserCompanyService'
     ($rootScope, $scope, TeamraiserCompanyService) ->
-      regCompanyId = luminateExtend.global.regCompanyId
       $rootScope.companyName = ''
+      regCompanyId = luminateExtend.global.regCompanyId
+      setCompanyName = (companyName) ->
+        $rootScope.companyName = companyName
+        if not $rootScope.$$phase
+          $rootScope.$apply()
       TeamraiserCompanyService.getCompanies 'company_id=' + $scope.companyId,
         error: ->
           # TODO
@@ -16,7 +20,7 @@ angular.module 'ahaLuminateControllers'
           else
             companies = [companies] if not angular.isArray companies
             companyInfo = companies[0]
-            $rootScope.companyName = companyInfo.companyName
+            setCompanyName companyInfo.companyName
       
       $scope.toggleUserType = (userType) ->
         $scope.userType = userType
