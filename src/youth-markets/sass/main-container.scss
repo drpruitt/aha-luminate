@@ -23,9 +23,13 @@ main {
   }
 }
 
-.app-9 main > .container {
-  @media (max-width: $screen-xs-max) {
-    margin-top: -60px;
+.app-9,
+.app-26,
+.app-27 {
+  main > .container {
+    @media (max-width: $screen-xs-max) {
+      margin-top: -72x;
+    }
   }
 }
 
