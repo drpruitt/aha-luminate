@@ -69,7 +69,7 @@ angular.module 'ahaLuminateControllers'
         , 500
       
       getCompanyTotals = ->
-        TeamraiserCompanyService.getCompanies 'list_page_size=500&company_id=' + $scope.companyId,
+        TeamraiserCompanyService.getCompanies 'company_id=' + $scope.companyId,
           error: ->
             # TODO
           success: (response) ->

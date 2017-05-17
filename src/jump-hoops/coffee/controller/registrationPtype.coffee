@@ -1,9 +1,25 @@
 angular.module 'ahaLuminateControllers'
   .controller 'RegistrationPtypeCtrl', [
+    '$rootScope'
     '$scope'
     '$filter'
     '$timeout'
-    ($scope, $filter, $timeout) ->
+    'TeamraiserCompanyService'
+    ($rootScope, $scope, $filter, $timeout, TeamraiserCompanyService) ->
+      regCompanyId = luminateExtend.global.regCompanyId
+      $rootScope.companyName = ''
+      TeamraiserCompanyService.getCompanies 'company_id=' + regCompanyId,
+        error: ->
+          # TODO
+        success: (response) ->
+          companies = response.getCompaniesResponse.company
+          if not companies
+            # TODO
+          else
+            companies = [companies] if not angular.isArray companies
+            companyInfo = companies[0]
+            $rootScope.companyName = companyInfo.companyName
+      
       if not $scope.participationOptions
         $scope.participationOptions = {}
       
