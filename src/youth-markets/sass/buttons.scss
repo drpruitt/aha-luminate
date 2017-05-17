@@ -250,9 +250,28 @@ input[type="text"].btn-enter {
   border-color: $event-primary;
 }
 
-.btn-enter {
-  background: $brand-white;
+.btn-enter, 
+a.btn-enter, 
+input.btn-enter {
+  &, 
+  &:link, 
+  &:visited {
+    background: $brand-white;
+  }
   
+  &:hover, 
+  &:focus, 
+  &:active, 
+  &.active {
+    background: $event-primary;
+    border: 1px solid $event-primary;
+    color: $brand-white;
+  }
+}
+
+input.btn-enter {
+  font-family: inherit;
+
   &::-webkit-input-placeholder {
     color: $event-primary !important;
     opacity: 1 !important;
@@ -287,9 +306,6 @@ input[type="text"].btn-enter {
   &:focus, 
   &:active, 
   &.active {
-    background: $event-primary;
-    border: 1px solid $event-primary;
-    color: $brand-white;
     cursor: pointer;
     
     &::-webkit-input-placeholder {
