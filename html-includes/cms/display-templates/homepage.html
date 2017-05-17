@@ -1,3 +1,4 @@
+<!--NOT PART OF DEPLOYMENT PROCESS. MUST BE MANUALLY COPIED TO CMS.-->
 <div ng-controller="HomeCtrl">
   <div class="ym-hero-top__find-your-school text-center visible-xs">
     <a href="#scroll#JumpSearch" class="btn btn-primary btn-lg" role="button">
@@ -133,7 +134,7 @@
                   >
                   <td class="ym-list__column ym-list__column--school">
                    <a ng-href="{{nonSecureDomain}}/site/TR?pg=company&fr_id={{school.FR_ID}}&company_id={{school.COMPANY_ID}}">{{school.SCHOOL_NAME}}</a><br />
-                    <a class="btn btn-primary btn-md mt-sm" ng-href="{{nonSecureDomain}}/site/TRR?fr_id={{school.FR_ID}}&pg=tfind&fr_tm_opt=existing&s_frTJoin=&company_id={{school.COMPANY_ID}}">Sign Up</a>
+                    <a class="btn btn-primary btn-md mt-sm" ng-href="{{nonSecureDomain}}/site/TRR?fr_id={{school.FR_ID}}&amp;pg=tfind&amp;fr_tm_opt=existing&s_frTJoin=&amp;company_id={{school.COMPANY_ID}}&amp;s_frCompanyId={{school.COMPANY_ID}}">Sign Up</a>
                   </td>
                   <td class="ym-list__column ym-list__column--city">
                     {{school.SCHOOL_CITY}}
