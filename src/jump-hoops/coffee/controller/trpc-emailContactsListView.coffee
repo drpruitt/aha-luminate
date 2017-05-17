@@ -411,7 +411,9 @@ angular.module 'trPcControllers'
       if not $rootScope.selectedContacts?.contacts
         $scope.resetSelectedContacts()
       
-      $scope.toggleContact = (contact) ->
+      $scope.toggleContact = ($event, contact) ->
+        if $event
+          $event.preventDefault()
         contactData = getContactString contact
         contactIndex = $rootScope.selectedContacts.contacts.indexOf contactData
         if contactIndex is -1
