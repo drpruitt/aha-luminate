@@ -340,7 +340,8 @@
     }
   }
   
-  .btn {
+  .btn, 
+  input[type="text"].btn {
     font-size: 18px;
     padding: 8px 14px;
     margin: 0 5px 15px;
@@ -354,7 +355,22 @@
     }
     
     @media (min-width: $screen-sm-min) {
-      margin: 0 8px;
+      margin: 0 6px;
+    }
+  }
+  
+  input[type="text"].btn-enter {
+    font-weight: 700;
+    width: 95px;
+    
+    @media (min-width: 360px) {
+      width: 110px;
+    }
+    
+    &:hover, 
+    &:active, 
+    &.active {
+      font-weight: 700;
     }
   }
 }
