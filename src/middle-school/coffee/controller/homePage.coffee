@@ -7,9 +7,26 @@ angular.module 'ahaLuminateControllers'
     '$location'
     '$anchorScroll'
     'ParticipantBadgesService'
-    ($scope, $timeout, TeamraiserParticipantService, $rootScope, $location, $anchorScroll, ParticipantBadgesService) ->
+    'TeamraiserService'
+    ($scope, $timeout, TeamraiserParticipantService, $rootScope, $location, $anchorScroll, ParticipantBadgesService, TeamraiserService) ->
       $dataRoot = angular.element '[data-aha-luminate-root]'
       consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
+      
+      setNoSchoolLink = (noSchoolLink) ->
+        $scope.noSchoolLink = noSchoolLink
+        if not $scope.$$phase
+          $scope.$apply()
+      TeamraiserService.getTeamRaisersByInfo 'event_type=' + encodeURIComponent('Middle School') + '&public_event_type=' + encodeURIComponent ('School Not Found') + '&name=' + encodeURIComponent('%') + '&list_page_size=1&list_ascending=false&list_sort_column=event_date',
+          error: (response) ->
+            # TODO
+          success: (response) ->
+            teamraisers = response.getTeamraisersResponse?.teamraiser
+            if not teamraisers
+              # TODO
+            else
+              teamraisers = [teamraisers] if not angular.isArray teamraisers
+              teamraiserInfo = teamraisers[0]
+              setNoSchoolLink $scope.nonSecureDomain + '/site/TRR?fr_id=' + teamraiserInfo.id + '&pg=tfind&fr_tm_opt=existing&s_frTJoin=&s_frCompanyId='
       
       if consId
         TeamraiserParticipantService.getRegisteredTeamraisers 'cons_id=' + consId + '&event_type=' + encodeURIComponent('Middle School'),
@@ -57,23 +74,24 @@ angular.module 'ahaLuminateControllers'
       $scope.totalStudents = ''
       $scope.totalSchools = ''
       $scope.totalChallenges = ''
+      $scope.showStats = true
       
       ParticipantBadgesService.getRollupTotals()
         .then (response) ->
           if not response.data.status or response.data.status isnt 'success'
-            # TODO
+            $scope.showStats = false
           else
+            $scope.showStats = true
             totals = response.data.totals          
             $scope.totalStudents = totals.total_students
             $scope.totalSchools = totals.total_schools
             $scope.totalChallenges = totals.total_challenge_taken_students
         , (response) ->
-          # TODO
+          $scope.showStats = false
       
       initCarousel = ->
         owl = jQuery '.ym-home-feature .owl-carousel'
         owl.owlCarousel
-          mouseDrag: false
           items: 1
           nav: true
           loop: true
@@ -99,7 +117,6 @@ angular.module 'ahaLuminateControllers'
           items = owl.find '> .item'
           if items.length > 1
             owl.owlCarousel
-              mouseDrag: false
               items: 1
               nav: true
               loop: true

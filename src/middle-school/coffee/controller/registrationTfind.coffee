@@ -11,7 +11,8 @@ angular.module 'ahaLuminateControllers'
         setTeams = (teams = []) ->
           if teams.length is 1
             teamId = teams[0].id
-            window.location = luminateExtend.global.path.secure + 'TRR?fr_id=' + teams[0].EventId + '&pg=tfind&fr_tm_opt=existing&fr_tjoin=' + teamId + '&s_frTJoin=' + teamId + '&skip_login_page=true'
+            teamCompanyId = teams[0].companyId
+            window.location = luminateExtend.global.path.secure + 'TRR?fr_id=' + teams[0].EventId + '&pg=tfind&fr_tm_opt=existing&fr_tjoin=' + teamId + '&s_frTJoin=' + teamId + '&s_frCompanyId=' + teamCompanyId + '&skip_login_page=true'
           else
             $scope.teamList.teams = teams
             if not $scope.$$phase
