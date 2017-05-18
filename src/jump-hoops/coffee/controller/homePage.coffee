@@ -30,7 +30,7 @@ angular.module 'ahaLuminateControllers'
               hard coding link to dev for testing, remove comment and use dynamic when go live
               setNoSchoolLink $scope.nonSecureDomain + '/site/TRR?fr_id=' + teamraiserInfo.id + '&pg=tfind&fr_tm_opt=existing&s_frTJoin=&s_frCompanyId='
               ###
-              setNoSchoolLink 'https://secure3.convio.net/heartdev/site/TRR?pg=utype&fr_id=2613'
+              setNoSchoolLink 'https://secure3.convio.net/heartdev/site/TRR?pg=tfind&fr_id=2613&fr_tm_opt=none'
       
       if consId
         TeamraiserParticipantService.getRegisteredTeamraisers 'cons_id=' + consId + '&event_type=' + encodeURIComponent('Jump Hoops'),
