@@ -9,10 +9,9 @@ angular.module 'ahaLuminateControllers'
     'APP_INFO'
     'TeamraiserParticipantService'
     'TeamraiserCompanyService'
-    'ZuriService'
     'ParticipantBadgesService'
     'TeamraiserParticipantPageService'
-    ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserParticipantService, TeamraiserCompanyService, ZuriService, ParticipantBadgesService, TeamraiserParticipantPageService) ->
+    ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserParticipantService, TeamraiserCompanyService, ParticipantBadgesService, TeamraiserParticipantPageService) ->
       $dataRoot = angular.element '[data-aha-luminate-root]'
       $scope.participantId = $location.absUrl().split('px=')[1].split('&')[0]
       frId = $dataRoot.data('fr-id') if $dataRoot.data('fr-id') isnt ''
@@ -20,9 +19,6 @@ angular.module 'ahaLuminateControllers'
       $scope.teamId = $dataRoot.data('team-id') if $dataRoot.data('team-id') isnt ''
       $scope.eventDate =''
       $rootScope.numTeams = ''
-      $scope.challengeId = null
-      $scope.challengeName = null
-      $scope.challengeCompleted = 0
       
       $scope.prizes = []
       $scope.monsters = []
@@ -82,16 +78,6 @@ angular.module 'ahaLuminateControllers'
           if $scope.prizes.length > 0
             $scope.prizes.sort (a, b) ->
               a.priority - b.priority
-      
-      ZuriService.getZooStudent frId + '/' + $scope.participantId,
-        error: (response) ->
-          $scope.challengeName = null
-          $scope.challengeId = null
-          $scope.challengeCompleted = 0
-        success: (response) ->
-          $scope.challengeId = response.data.challenges.current
-          $scope.challengeName = response.data.challenges.text
-          $scope.challengeCompleted = response.data.challenges.completed
       
       TeamraiserCompanyService.getCompanies 'company_id=' + $scope.companyId,
         success: (response) ->
