@@ -635,8 +635,11 @@
   }
 
   .ym-list--school-list--help {
-    font-weight: 700;
-    padding: 12px 20px;
+    &,
+    &:link {
+      font-weight: 700;
+      padding: 12px 20px !important;
+    }
   }
 
   @media (max-width: $screen-sm-max) {
