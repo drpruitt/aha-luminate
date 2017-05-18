@@ -35,14 +35,12 @@ angular.module 'ahaLuminateControllers'
         error: ->
           $scope.localSponsorShow = false
         success: (response) ->
-          console.log response
           companyItems = response.getCompanyListResponse.companyItem
           angular.forEach companyItems, (companyItem) ->
             if companyItem.companyId == $scope.companyId
               parentId = companyItem.parentOrgEventId
               PageContentService.getPageContent 'middle_school_local_sponsors_'+ parentId
               .then (response) ->
-                console.log response
                 if response.includes('No data') is true
                   console.log 'no data'
                   $scope.localSponsorShow = false
