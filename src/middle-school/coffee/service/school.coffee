@@ -4,7 +4,7 @@ angular.module 'ahaLuminateApp'
     '$sce'
     ($http, $sce) ->
       getSchools: (callback) ->
-        url = $sce.trustAsResourceUrl(luminateExtend.global.path.nonsecure + 'PageServer?pagename=middle_school_school_search&pgwrap=n')
+        url = $sce.trustAsResourceUrl(luminateExtend.global.path.nonsecure + 'PageServer?pagename=middle_school_search&pgwrap=n')
         $http.jsonp(url, jsonpCallbackParam: 'callback').then (response) ->
           if response.data.success
             callback.success decodeURIComponent(response.data.success.schools.replace(/\+/g, ' '))
