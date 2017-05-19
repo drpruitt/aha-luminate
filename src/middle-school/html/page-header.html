@@ -33,7 +33,7 @@
                   My School: <a href="TR?fr_id=[[S80:trID]]&pg=company&company_id=[[E43:[[S80:trID]]:company-id:[[E48:[[S80:trID]]-[[S1:cons_id]]:team-id]]]]">[[E43:[[S80:trID]]:company-name:[[E48:[[S80:trID]]-[[S1:cons_id]]:team-id]]]]</a>
                 </p>
               ]]
-              <p class="team-name">
+              <p class="team-name" ng-if="companyInfo.teamCount > 1">
                 My Team: <a href="TR?fr_id=[[S80:trID]]&pg=team&team_id=[[E48:[[S80:trID]]-[[S1:cons_id]]:team-id]]">[[E48:[[S80:trID]]-[[S1:cons_id]]:team-name]]</a>
               </p>
             ]]
