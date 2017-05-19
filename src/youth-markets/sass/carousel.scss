@@ -61,6 +61,14 @@
   }
 }
 
+.ym-carousel--hero {
+  .owl-nav > div {
+    @media(max-width: 568px) {
+      top: 15%;
+    }
+  }
+}
+
 .ym-carousel--home {
   .owl-carousel {
     position: relative;
