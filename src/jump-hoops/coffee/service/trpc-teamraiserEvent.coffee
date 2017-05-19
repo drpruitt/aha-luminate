@@ -23,10 +23,12 @@ angular.module 'trPcApp'
       getTeamraiser: ->
         this.getTeamraisers 'list_filter_column=frc.fr_id&list_filter_text=' + $rootScope.frId + '&name=' + encodeURIComponent('%')
           .then (response) ->
-            teamraiser = response.data.getTeamraisersResponse?.teamraiser
-            if not teamraiser
+            teamraisers = response.data.getTeamraisersResponse?.teamraiser
+            if not teamraisers
               $rootScope.eventInfo = -1
             else
+              teamraisers = [teamraiser] if not angular.isArray teamraisers
+              teamraiser = teamraisers[0]
               donate_event_url = teamraiser.donate_event_url
               if donate_event_url and donate_event_url.indexOf('df_id=') isnt -1
                 teamraiser.donationFormId = donate_event_url.split('df_id=')[1].split('&')[0]
