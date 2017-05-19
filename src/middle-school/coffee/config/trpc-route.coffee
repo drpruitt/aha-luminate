@@ -63,7 +63,8 @@ if window.location.href.indexOf('pagename=middle_school_participant_center') isn
       'NgPcAuthService'
       'NgPcTeamraiserEventService'
       'NgPcTeamraiserRegistrationService'
-      ($rootScope, $location, $route, $uibModal, APP_INFO, NgPcAuthService, NgPcTeamraiserEventService, NgPcTeamraiserRegistrationService) ->
+      'NgPcTeamraiserCompanyService'
+      ($rootScope, $location, $route, $uibModal, APP_INFO, NgPcAuthService, NgPcTeamraiserEventService, NgPcTeamraiserRegistrationService, NgPcTeamraiserCompanyService) ->
         $rootScope.$on '$routeChangeStart', ($event, next, current) ->
           # ensure window is scrolled
           window.scrollTo 0, 0
@@ -157,6 +158,21 @@ if window.location.href.indexOf('pagename=middle_school_participant_center') isn
           
           # no event info
           else if $rootScope.eventInfo is -1
+            $event.preventDefault()
+            # TODO
+          
+          # company info unknown
+          else if not $rootScope.companyInfo
+            $event.preventDefault()
+            NgPcTeamraiserCompanyService.getCompany()
+              .then (response) ->
+                if $rootScope.companyInfo is -1
+                  # TODO
+                else
+                  reloadRoute()
+          
+          # no company info
+          else if $rootScope.companyInfo is -1
             $event.preventDefault()
             # TODO
     ]
