@@ -6,35 +6,37 @@
     </a>
   </div>
   <t:if test="banner_image.length>0">
-  <div class="ym-hero__owl-carousel owl-carousel owl-theme">
-  <t:list id="banner_image">
-    <div class="ym-hero item" style="background-image:url(${url});">
-      <t:if test="overlay_location.length>0">
-        <section>
-          <t:list id="overlay_location">
-              <t:if test="name=='bottom-left'">
-              <div class="ym-hero__text ym-hero__text--left hidden-xs">
-              </t:if>
-              <t:else>
-              <div class="ym-hero__text ym-hero__text--right hidden-xs">
-              </t:else>
-          </t:list>   
-          <h1>${title}</h1>
-          <p>${description}</p>
+    <div class="ym-hero__owl-carousel ym-carousel--hero owl-carousel owl-theme">
+      <t:list id="banner_image">
+        <div class="item">
+          <div class="ym-hero" style="background-image:url(${url});">
+            <t:if test="overlay_location.length>0">
+              <section>
+                <t:list id="overlay_location">
+                  <t:if test="name=='bottom-left'">
+                    <div class="ym-hero__text ym-hero__text--left hidden-xs">
+                  </t:if>
+                  <t:else>
+                    <div class="ym-hero__text ym-hero__text--right hidden-xs">
+                  </t:else>
+                </t:list>   
+                  <h1>${title}</h1>
+                  <p>${description}</p>
+                </div>
+              </section>
+            </t:if>
           </div>
-        </section>
-      </t:if>
+          <t:if test="overlay_location.length>0">
+            <div class="ym-hero__text hidden-sm hidden-md hidden-lg">
+              <section>
+                <h1>${title}</h1>
+                <p>${description}</p>
+              </section>  
+            </div>
+          </t:if>
+        </div>
+      </t:list>
     </div>
-    <t:if test="overlay_location.length>0">
-    <div class="ym-hero__text hidden-sm hidden-md hidden-lg">
-      <section>
-        <h1>${title}</h1>
-        <p>${description}</p>
-      </section>  
-    </div>
-    </t:if>
-  </t:list>
-  </div>
   </t:if>
   <t:if test="!isNull(body)">
   <div class="ym-page-section ym-page-section__block ym-page-section__block--slim">
@@ -57,8 +59,13 @@
     <a name="JumpSearch"></a> 
     <div class="ym-school-search" id="school-search" ng-controller="SchoolSearchCtrl" ng-cloak>
       <div class="form-group">
-        <img class="img-responsive hidden-xs" src="http://heart.pub30.convio.net/../assets/images/hoops-jump-search-graphic.png" alt="Find your school" />
-        <img class="img-responsive hidden-sm hidden-md hidden-lg" src="http://heart.pub30.convio.net/../assets/images/hoops-jump-search-graphic-mobile.jpg" alt="Find your school" />
+        <t:if test="path =='/middle-school/'">
+          <img class="img-responsive" src="http://heart.pub30.convio.net/assets/images/middle-school/find-school-graphic.png" alt="Find your school" />
+        </t:if>
+        <t:else>
+          <img class="img-responsive hidden-xs" src="http://heart.pub30.convio.net/../assets/images/hoops-jump-search-graphic.png" alt="Find your school" />
+          <img class="img-responsive hidden-sm hidden-md hidden-lg" src="http://heart.pub30.convio.net/../assets/images/hoops-jump-search-graphic-mobile.jpg" alt="Find your school" />
+        </t:else>
         <div class="form-inline text-center">
           <label for="school-name-filter" class="sr-only">Start typing your school's name:</label>
           <input type="text" id="school-name-filter" name="school-name-filter" class="form-control" maxlength="40" placeholder="Start typing your school's name"
@@ -124,7 +131,7 @@
                         Team Leader
                         <span ng-show="filtered.length && schoolList.sortProp == 'COORDINATOR_LAST_NAME' && !schoolList.sortDesc" class="fa fa-caret-down"></span>
                         <span ng-show="filtered.length && schoolList.sortProp == 'COORDINATOR_LAST_NAME' && schoolList.sortDesc" class="fa fa-caret-up"></span>
-                        <span ng-show="filtered.length && schoolList.sortProp != 'COORDINATOR_LAST_NAME'" class="fa fa-caret-down inactive"></span
+                        <span ng-show="filtered.length && schoolList.sortProp != 'COORDINATOR_LAST_NAME'" class="fa fa-caret-down inactive"></span>
                     </a>
                 </th>
               </thead>
@@ -156,13 +163,26 @@
               >
             </ul>
           </div>
+        </div> 
+        <div ng-show="filtered.length == 0 && schoolList.stateFilter != '0'" class="text-center" ng-class="schoolList.showHelp ? 'pb-md' : ''">
+          <p>
+            Hi! We couldn't locate a school with the name of <strong>{{schoolList.nameFilter}}</strong> in <strong>{{schoolList.stateFilter.SCHOOL_STATE}}</strong>. Your school may not be added to our list just yet.
+          </p>      
+          <p>
+            No worries though! You can still register today without designating a school, and a school coordinator from our team will make sure you're properly linked up with your school.
+          </p>
+          <div class="pt-md">
+            <a ng-href="{{noSchoolLink}}" class="btn btn-md btn-secondary ym-list--school-list--help">Sign Up Today</a>
+          </div>   
+        </div>   
+        <div ng-show="!(filtered.length == 0 && schoolList.stateFilter != '0')">      
+          <div ng-show="schoolList.showHelp" class="text-center">
+            Click <a ng-href="{{noSchoolLink}}">here</a> to sign up for “Jump Rope and Hoops for Heart” and a school coordinator will get in touch with you soon to confirm you’ve been properly signed up with your school.
+          </div>
+          <div ng-show="schoolList.showHelp == false" class="text-center">
+            <a ng-click="schoolList.showHelp = true;" class="btn btn-md btn-secondary ym-list--school-list--help">Can't Find Your School</a>
+          </div>
         </div>  
-        <div ng-show="schoolList.showHelp" class="text-center">
-          Click <a ng-href="{{noSchoolLink}}">here</a> to sign up for “Jump Rope and Hoops for Heart” and a school coordinator will get in touch with you soon to confirm you’ve been properly signed up with your school.
-        </div>
-        <div ng-show="schoolList.showHelp == false" class="text-center">
-          <a ng-click="schoolList.showHelp = true;" class="btn btn-md btn-secondary ym-list--school-list--help">Can't Find Your School</a>
-        </div>
       </div>
     </div>
     <!-- School Search ends -->

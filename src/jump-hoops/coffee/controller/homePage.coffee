@@ -116,7 +116,7 @@ angular.module 'ahaLuminateControllers'
       $timeout initCarousel, 1000
       
       initHeroCarousel = ->
-        owl = jQuery '.ym-hero__owl-carousel'
+        owl = jQuery '.ym-carousel--hero'
         if owl.length
           items = owl.find '> .item'
           if items.length > 1
