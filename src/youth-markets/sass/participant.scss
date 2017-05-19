@@ -467,10 +467,6 @@ main > .container {
   text-align: center;
   width: 50%;
   
-  &.ym-pc-dashboard-progress-type--multi-team {
-    width: 33.33333333%;
-  }
-  
   a {
     &, 
     &:link, 
@@ -501,6 +497,12 @@ main > .container {
         color: $brand-white;
       }
     }
+  }
+}
+
+.ym-pc-dashboard-progress-types--multi-team {
+  .ym-pc-dashboard-progress-type {
+    width: 33.33333333%;
   }
 }
 
@@ -1465,10 +1467,6 @@ main > .container {
   text-align: center;
   width: 50%;
   
-  &.ym-pc-dashboard-coordinator-page-type--multi-team {
-    width: 33.33333333%;
-  }
-  
   a {
     &, 
     &:link, 
@@ -1499,6 +1497,12 @@ main > .container {
         color: $brand-white;
       }
     }
+  }
+}
+
+.ym-pc-dashboard-coordinator-page-types--multi-team {
+  .ym-pc-dashboard-coordinator-page-type {
+    width: 33.33333333%;
   }
 }
 
