@@ -13,8 +13,9 @@ angular.module 'ahaLuminateControllers'
     'ZuriService'
     'TeamraiserRegistrationService'
     'TeamraiserCompanyPageService'
+    'PageContentService'
     '$sce'
-    ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService, ZuriService, TeamraiserRegistrationService, TeamraiserCompanyPageService, $sce) ->
+    ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService, ZuriService, TeamraiserRegistrationService, TeamraiserCompanyPageService, PageContentService, $sce) ->
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0]
       domain = $location.absUrl().split('/site')[0]
       $rootScope.companyName = ''
@@ -38,13 +39,14 @@ angular.module 'ahaLuminateControllers'
           angular.forEach companyItems, (companyItem) ->
             if companyItem.companyId == $scope.companyId
               parentId = companyItem.parentOrgEventId
-              PageContentService.getPageContent 'jump_hoops_local_sponsors_'+ parentId
+              PageContentService.getPageContent 'middle_school_local_sponsors_'+ parentId
               .then (response) ->
-                if response == 'No Data'
+                if response.includes('No data') is true
+                  console.log 'no data'
                   $scope.localSponsorShow = false
                 else
                   img = response.split('/>')[0]
-                  if img == undefined
+                  if img is undefined
                     $scope.localSponsorShow = false
                   else
                     alt = img.split('alt="')
@@ -145,6 +147,15 @@ angular.module 'ahaLuminateControllers'
           error: ->
             setCompanyTeams()
       getCompanyTeams()
+
+      $scope.companyParticipants = []
+      setCompanyParticipants = (participants, totalNumber, totalFundraisers) ->
+        $scope.companyParticipants.participants = participants or []
+        totalNumber = totalNumber or 0
+        $scope.companyParticipants.totalNumber = Number totalNumber
+        $scope.companyParticipants.totalFundraisers = Number totalFundraisers
+        if not $scope.$$phase
+          $scope.$apply()
       
       getCompanyParticipants = ->
         TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%%%') + '&first_name=' + encodeURIComponent('%%%') + '&last_name=' + encodeURIComponent('%%%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=50',
