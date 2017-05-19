@@ -14,7 +14,7 @@
                 Progress
               </h3>
             </div>
-            <div class="ym-pc-dashboard-progress-types">
+            <div class="ym-pc-dashboard-progress-types" ng-class="{'ym-pc-dashboard-progress-types--multi-team': companyInfo.teamCount > 1}">
               <div class="clearfix">
                 <div class="ym-pc-dashboard-progress-type" ng-class="{'active': dashboardProgressType == 'personal'}">
                   <a ng-click="toggleProgressType('personal')">
@@ -353,7 +353,7 @@
                 Fundraising
               </h3>
             </div>
-            <div class="ym-pc-dashboard-progress-types">
+            <div class="ym-pc-dashboard-progress-types" ng-class="{'ym-pc-dashboard-progress-types--multi-team': companyInfo.teamCount > 1}">
               <div class="clearfix">
                 <div class="ym-pc-dashboard-progress-type" ng-class="{'active': dashboardProgressType == 'company'}">
                   <a ng-click="toggleProgressType('company')">
@@ -498,7 +498,7 @@
           <p>
             Edit your pages to encourage students and parents to join and donate!
           </p>
-          <div class="ym-pc-dashboard-coordinator-page-types">
+          <div class="ym-pc-dashboard-coordinator-page-types" ng-class="{'ym-pc-dashboard-coordinator-page-types--multi-team': companyInfo.teamCount > 1}">
             <div class="clearfix">
               <div class="ym-pc-dashboard-coordinator-page-type" ng-class="{'active': dashboardPageType == 'company'}">
                 <a ng-click="togglePageType('company')">

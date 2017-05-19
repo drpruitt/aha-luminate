@@ -27,7 +27,7 @@ angular.module 'trPcApp'
             if not teamraisers
               $rootScope.eventInfo = -1
             else
-              teamraisers = [teamraiser] if not angular.isArray teamraisers
+              teamraisers = [teamraisers] if not angular.isArray teamraisers
               teamraiser = teamraisers[0]
               donate_event_url = teamraiser.donate_event_url
               if donate_event_url and donate_event_url.indexOf('df_id=') isnt -1
