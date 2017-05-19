@@ -392,12 +392,22 @@
 
 .ym-registration-reg-form {
   .form-group, 
-  .checkbox {
+  .checkbox, 
+  .help-block {
     text-align: left;
   }
   
   .checkbox {
     margin-bottom: 20px;
+  }
+  
+  .help-block {
+    font-size: 12px;
+    margin-top: -10px;
+  }
+  
+  .form-group .help-block {
+    margin-top: 5px;
   }
   
   .ym-section-header {

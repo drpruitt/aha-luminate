@@ -42,7 +42,6 @@ angular.module 'ahaLuminateControllers'
               PageContentService.getPageContent 'middle_school_local_sponsors_'+ parentId
               .then (response) ->
                 if response.includes('No data') is true
-                  console.log 'no data'
                   $scope.localSponsorShow = false
                 else
                   img = response.split('/>')[0]
