@@ -26,6 +26,12 @@ angular.module 'trPcApp'
             else
               companies = [companies] if not angular.isArray companies
               company = companies[0]
+              participantCount = company.participantCount
+              if participantCount and participantCount isnt ''
+                company.participantCount = Number participantCount
+              teamCount = company.teamCount
+              if teamCount and teamCount isnt ''
+                company.teamCount = Number teamCount
               $rootScope.companyInfo = company
             response
   ]

@@ -26,7 +26,7 @@
                     <strong>School</strong>
                   </a>
                 </div>
-                <div class="ym-pc-dashboard-progress-type" ng-class="{'active': dashboardProgressType == 'team'}">
+                <div class="ym-pc-dashboard-progress-type" ng-class="{'active': dashboardProgressType == 'team'}" ng-if="companyInfo.teamCount > 1">
                   <a ng-click="toggleProgressType('team')">
                     <strong>Team</strong>
                   </a>
@@ -77,7 +77,7 @@
                 </div>
               </div>
             </div>
-            <div ng-class="{'hidden': dashboardProgressType != 'team'}" ng-cloak>
+            <div ng-class="{'hidden': dashboardProgressType != 'team'}" ng-if="companyInfo.teamCount > 1" ng-cloak>
               <div class="ym-progress__thermometer">
                 <div class="ym-progress__thermometer--fill" ng-style="{'width': teamProgress.percent + '%'}"></div>
               </div>
@@ -360,7 +360,7 @@
                     <strong>School</strong>
                   </a>
                 </div>
-                <div class="ym-pc-dashboard-progress-type" ng-class="{'active': dashboardProgressType == 'team'}">
+                <div class="ym-pc-dashboard-progress-type" ng-class="{'active': dashboardProgressType == 'team'}" ng-if="companyInfo.teamCount > 1">
                   <a ng-click="toggleProgressType('team')">
                     <strong>Team</strong>
                   </a>
@@ -394,7 +394,7 @@
                 </div>
               </div>
             </div>
-            <div ng-class="{'hidden': dashboardProgressType != 'team'}" ng-cloak>
+            <div ng-class="{'hidden': dashboardProgressType != 'team'}" ng-if="companyInfo.teamCount > 1" ng-cloak>
               <div class="ym-progress__thermometer">
                 <div class="ym-progress__thermometer--fill" ng-style="{'width': teamProgress.percent + '%'}"></div>
               </div>
@@ -505,7 +505,7 @@
                   <strong>School</strong>
                 </a>
               </div>
-              <div class="ym-pc-dashboard-coordinator-page-type" ng-class="{'active': dashboardPageType == 'team'}">
+              <div class="ym-pc-dashboard-coordinator-page-type" ng-class="{'active': dashboardPageType == 'team'}" ng-if="companyInfo.teamCount > 1">
                 <a ng-click="togglePageType('team')">
                   <strong>Team</strong>
                 </a>
@@ -556,7 +556,7 @@
               </div>
             </div>
           </div>
-          <div ng-class="{'hidden': dashboardPageType != 'team'}" ng-cloak>
+          <div ng-class="{'hidden': dashboardPageType != 'team'}" ng-if="companyInfo.teamCount > 1" ng-cloak>
             <div class="ym-pc-dashboard-coordinator-page-view">
               <div class="text-center">
                 <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=team&amp;team_id={{participantRegistration.teamId}}">
