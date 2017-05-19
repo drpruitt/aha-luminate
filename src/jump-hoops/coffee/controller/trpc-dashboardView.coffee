@@ -10,12 +10,11 @@ angular.module 'trPcControllers'
     'NgPcTeamraiserRegistrationService'
     'NgPcTeamraiserProgressService'
     'NgPcTeamraiserTeamService'
-    'NgPcTeamraiserCompanyService'
     'NgPcTeamraiserGiftService'
     'NgPcContactService'
     'NgPcTeamraiserShortcutURLService'
     '$timeout'
-    ($rootScope, $scope, $filter, $uibModal, APP_INFO, ZuriService, ParticipantBadgesService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserCompanyService, NgPcTeamraiserGiftService, NgPcContactService, NgPcTeamraiserShortcutURLService, $timeout) ->
+    ($rootScope, $scope, $filter, $uibModal, APP_INFO, ZuriService, ParticipantBadgesService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserGiftService, NgPcContactService, NgPcTeamraiserShortcutURLService, $timeout) ->
       $scope.dashboardPromises = []
       
       if $scope.participantRegistration.lastPC2Login is '0'
@@ -179,20 +178,6 @@ angular.module 'trPcControllers'
                 $scope.refreshFundraisingProgress()
               response
           $scope.dashboardPromises.push updateTeamGoalPromise
-      
-      $scope.companyInfo = {}
-      companyInfoPromise = NgPcTeamraiserCompanyService.getCompany()
-        .then (response) ->
-          if response.data.errorResponse
-            # TODO
-          else
-            companies = response.data.getCompaniesResponse?.company
-            if not companies
-              # TODO
-            else
-              companies = [companies] if not angular.isArray companies
-              $scope.companyInfo = companies[0]
-      $scope.dashboardPromises.push companyInfoPromise
       
       $scope.participantGifts =
         sortColumn: 'date_recorded'

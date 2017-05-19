@@ -465,7 +465,11 @@ main > .container {
   border-right: 1px solid transparent;
   border-left: 1px solid transparent;
   text-align: center;
-  width: 33.33333333%;
+  width: 50%;
+  
+  &.ym-pc-dashboard-progress-type--multi-team {
+    width: 33.33333333%;
+  }
   
   a {
     &, 
@@ -1459,7 +1463,11 @@ main > .container {
   border-right: 1px solid transparent;
   border-left: 1px solid transparent;
   text-align: center;
-  width: 33.33333333%;
+  width: 50%;
+  
+  &.ym-pc-dashboard-coordinator-page-type--multi-team {
+    width: 33.33333333%;
+  }
   
   a {
     &, 
