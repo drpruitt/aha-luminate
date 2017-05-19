@@ -178,6 +178,9 @@
                   <span ng-bind-html="registrationQuestions.cons_user_name.label"></span>
                 </label>
                 <input type="text" class="form-control input-lg" name="ng_cons_user_name" id="registrationInfo-cons_user_name" ng-model="registrationInfo.cons_user_name" maxlength="{{registrationQuestions.cons_user_name.maxLength}}">
+                <div class="help-block">
+                  User Name may contain letters, digits, and '+', '-', '_', '@', '.', '%', and ':'.
+                </div>
               </div>
             </div>
           </div>
@@ -196,6 +199,13 @@
                   <span ng-bind-html="registrationQuestions.cons_rep_password.label"></span>
                 </label>
                 <input type="password" class="form-control input-lg" name="ng_cons_rep_password" id="registrationInfo-cons_rep_password" ng-model="registrationInfo.cons_rep_password" maxlength="{{registrationQuestions.cons_rep_password.maxLength}}">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="help-block">
+                Password may contain letters, digits, and '!', '#', '$', '%', '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '=', '?', '@', '[', '\', ']', '^', '_', '`', '{', '|', '}', '~'.
               </div>
             </div>
           </div>
