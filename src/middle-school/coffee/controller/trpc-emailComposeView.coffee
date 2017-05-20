@@ -4,13 +4,14 @@ angular.module 'trPcControllers'
     '$scope'
     '$routeParams'
     '$timeout'
+    '$sce'
     '$httpParamSerializer'
     '$uibModal'
     'APP_INFO'
     'NgPcTeamraiserEventService'
     'NgPcTeamraiserEmailService'
     'NgPcContactService'
-    ($rootScope, $scope, $routeParams, $timeout, $httpParamSerializer, $uibModal, APP_INFO, NgPcTeamraiserEventService, NgPcTeamraiserEmailService, NgPcContactService) ->
+    ($rootScope, $scope, $routeParams, $timeout, $sce, $httpParamSerializer, $uibModal, APP_INFO, NgPcTeamraiserEventService, NgPcTeamraiserEmailService, NgPcContactService) ->
       $scope.messageType = $routeParams.messageType
       $scope.messageId = $routeParams.messageId
       
@@ -221,7 +222,7 @@ angular.module 'trPcControllers'
               # TODO
             else
               messageBody = response.data.getMessagePreviewResponse?.message or ''
-              $scope.emailPreview.body = messageBody
+              $scope.emailPreview.body = $sce.trustAsHtml messageBody
               $scope.emailPreviewModal = $uibModal.open 
                 scope: $scope
                 templateUrl: APP_INFO.rootPath + 'dist/middle-school/html/participant-center/modal/emailPreview.html'
@@ -235,7 +236,8 @@ angular.module 'trPcControllers'
             else if response.data.teamraiserErrorResponse
               # TODO
             else
-              $scope.emailPreview.body = response.data.getMessagePreviewResponse?.message or ''
+              messageBody = response.data.getMessagePreviewResponse?.message or ''
+              $scope.emailPreview.body = $sce.trustAsHtml messageBody
       
       closeEmailPreviewModal = ->
         $scope.emailPreviewModal.close()
