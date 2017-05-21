@@ -45,6 +45,10 @@ angular.module 'ahaLuminateControllers'
           isOtherAmount: levelAmount is '-1'
           isNoDonation: levelAmount is '$0.00'
           askMessage: $donationLevel.find('.donation-level-description-text').text()
+        if levelAmount is '-1'
+          otherAmount = $donationLevel.find('input[name^="fr_donation_level_enter_amount_"]').val()
+          if otherAmount
+            $scope.participationOptions.ng_donation_level_other_amount = otherAmount
       
       $scope.toggleDonationLevel = (levelAmount) ->
         $scope.participationOptions.ng_donation_level = levelAmount
