@@ -111,10 +111,10 @@
       </div>
     </div>
     <div class="col-sm-8 col-md-9">
-      <div uib-alert class="alert-danger" ng-if="sendEmailError">
-        {{sendEmailError}}
+      <div uib-alert class="alert-danger" ng-if="sendEmailError" ng-cloak>
+        <span ng-bind-html="sendEmailError"></span>
       </div>
-      <div uib-alert class="alert-success" ng-if="sendEmailSuccess">
+      <div uib-alert class="alert-success" ng-if="sendEmailSuccess" ng-cloak>
         Your email has been sent.
       </div>
       <form name="emailComposerForm" method="POST" novalidate ng-submit="previewEmail()">
