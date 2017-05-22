@@ -1,11 +1,12 @@
 angular.module 'trPcControllers'
   .controller 'NgPcReportsViewCtrl', [
+    '$rootScope'
     '$scope'
     '$filter'
     '$location'
     'NgPcTeamraiserGiftService'
     'NgPcTeamraiserReportsService'
-    ($scope, $filter, $location, NgPcTeamraiserGiftService, NgPcTeamraiserReportsService) ->
+    ($rootScope, $scope, $filter, $location, NgPcTeamraiserGiftService, NgPcTeamraiserReportsService) ->
       $scope.reportPromises = []
       
       $scope.activeReportTab = if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true' then 0 else 1
@@ -42,6 +43,22 @@ angular.module 'trPcControllers'
       $scope.getGifts()
       
       $scope.thankAllParticipantDonors = ->
+        $rootScope.selectedContacts.contacts = []
+        if $scope.participantGifts.gifts.length > 0
+          angular.forEach $scope.participantGifts.gifts, (participantGift) ->
+            giftContact = null
+            if participantGift.name.first
+              giftContact = participantGift.name.first
+              if participantGift.name.last
+                giftContact += ' ' + participantGift.name.last
+            if participantGift.email
+              if not giftContact
+                giftContact = '<'
+              else
+                giftContact += ' <'
+              giftContact += participantGift.email + '>'
+            if giftContact
+              $rootScope.selectedContacts.contacts.push giftContact
         $location.path '/email/compose'
       
       if $scope.participantRegistration.aTeamCaptain is 'true'
@@ -77,6 +94,22 @@ angular.module 'trPcControllers'
         $scope.getTeamGifts()
         
         $scope.thankAllTeamDonors = ->
+          $rootScope.selectedContacts.contacts = []
+          if $scope.teamGifts.gifts.length > 0
+            angular.forEach $scope.teamGifts.gifts, (teamGift) ->
+              giftContact = null
+              if teamGift.name.first
+                giftContact = teamGift.name.first
+                if teamGift.name.last
+                  giftContact += ' ' + teamGift.name.last
+              if teamGift.email
+                if not giftContact
+                  giftContact = '<'
+                else
+                  giftContact += ' <'
+                giftContact += teamGift.email + '>'
+              if giftContact
+                $rootScope.selectedContacts.contacts.push giftContact
           $location.path '/email/compose'
       
       if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
