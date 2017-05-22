@@ -42,21 +42,39 @@ angular.module 'trPcControllers'
         $scope.reportPromises.push personalGiftsPromise
       $scope.getGifts()
       
+      $scope.thankParticipantDonor = (participantGift) ->
+        $rootScope.selectedContacts.contacts = []
+        if gift
+          giftContact = null
+          if participantGift.contact.firstName
+            giftContact = participantGift.contact.firstName
+            if participantGift.contact.lastName
+              giftContact += ' ' + participantGift.contact.lastName
+          if participantGift.contact.email
+            if not giftContact
+              giftContact = '<'
+            else
+              giftContact += ' <'
+            giftContact += participantGift.contact.email + '>'
+          if giftContact
+            $rootScope.selectedContacts.contacts = [giftContact]
+        $location.path '/email/compose'
+      
       $scope.thankAllParticipantDonors = ->
         $rootScope.selectedContacts.contacts = []
         if $scope.participantGifts.gifts.length > 0
           angular.forEach $scope.participantGifts.gifts, (participantGift) ->
             giftContact = null
-            if participantGift.name.first
-              giftContact = participantGift.name.first
-              if participantGift.name.last
-                giftContact += ' ' + participantGift.name.last
-            if participantGift.email
+            if participantGift.contact.firstName
+              giftContact = participantGift.contact.firstName
+              if participantGift.contact.lastName
+                giftContact += ' ' + participantGift.contact.lastName
+            if participantGift.contact.email
               if not giftContact
                 giftContact = '<'
               else
                 giftContact += ' <'
-              giftContact += participantGift.email + '>'
+              giftContact += participantGift.contact.email + '>'
             if giftContact
               $rootScope.selectedContacts.contacts.push giftContact
         $location.path '/email/compose'
@@ -93,21 +111,39 @@ angular.module 'trPcControllers'
           $scope.reportPromises.push personalGiftsPromise
         $scope.getTeamGifts()
         
+        $scope.thankTeamDonor = (teamGift) ->
+          $rootScope.selectedContacts.contacts = []
+          if gift
+            giftContact = null
+            if teamGift.contact.firstName
+              giftContact = teamGift.contact.firstName
+              if teamGift.contact.lastName
+                giftContact += ' ' + teamGift.contact.lastName
+            if teamGift.contact.email
+              if not giftContact
+                giftContact = '<'
+              else
+                giftContact += ' <'
+              giftContact += teamGift.contact.email + '>'
+            if giftContact
+              $rootScope.selectedContacts.contacts = [giftContact]
+          $location.path '/email/compose'
+        
         $scope.thankAllTeamDonors = ->
           $rootScope.selectedContacts.contacts = []
           if $scope.teamGifts.gifts.length > 0
             angular.forEach $scope.teamGifts.gifts, (teamGift) ->
               giftContact = null
-              if teamGift.name.first
-                giftContact = teamGift.name.first
-                if teamGift.name.last
-                  giftContact += ' ' + teamGift.name.last
-              if teamGift.email
+              if teamGift.contact.firstName
+                giftContact = teamGift.contact.firstName
+                if teamGift.contact.lastName
+                  giftContact += ' ' + teamGift.contact.lastName
+              if teamGift.contact.email
                 if not giftContact
                   giftContact = '<'
                 else
                   giftContact += ' <'
-                giftContact += teamGift.email + '>'
+                giftContact += teamGift.contact.email + '>'
               if giftContact
                 $rootScope.selectedContacts.contacts.push giftContact
           $location.path '/email/compose'
