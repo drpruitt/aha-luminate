@@ -113,7 +113,14 @@ angular.module 'trPcControllers'
           $scope.suggestedMessages = []
           angular.forEach suggestedMessages, (message) ->
             if message.active is 'true'
-              $scope.suggestedMessages.push message
+              if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
+                if message.name.indexOf('Coordinator:') is -1
+                  message.name = message.name.split('Student: ')[1]
+                  $scope.suggestedMessages.push message
+              else
+                if message.name.indexOf('Student:') is -1
+                  message.name = message.name.split('Coordinator: ')[1]
+                  $scope.suggestedMessages.push message
           response
       $scope.emailPromises.push suggestedMessagesPromise
       
