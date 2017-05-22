@@ -84,6 +84,8 @@ angular.module 'ahaLuminateControllers'
           populateBtnAmt $scope.donationInfo.levelType, type
           amount = Number $scope.donationInfo.amount.split('$')[1]
           calculateInstallment 1, amount
+
+        localStorage['giftType'] = type
       
       $scope.selectLevel = (type, level, amount) ->
         angular.element('.ym-donation-levels__amount .btn-toggle.active').removeClass 'active'
@@ -280,5 +282,10 @@ angular.module 'ahaLuminateControllers'
         employerMatchFields()
         billingAddressFields()
         donorRecognitionFields()
+
+        if localStorage['giftType']
+          $scope.donationInfo.giftType = localStorage['giftType']
+
       loadForm()
+      console.log $scope.donationInfo
   ]

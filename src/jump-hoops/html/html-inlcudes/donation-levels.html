@@ -26,8 +26,8 @@
   </div>
   <div class="event-secondary-light ym-donation-levels">
     <div class="ym-donation-levels__type">
-      <button type="button" class="btn btn-toggle btn-lg ym-donation-levels__type--onetime active" ng-click="giftType('onetime')">One-time Gift</button>
-      <button type="button" class="btn btn-toggle btn-lg ym-donation-levels__type--monthly" ng-click="giftType('monthly');">Installment Gift</button>
+      <button type="button" class="btn btn-toggle btn-lg ym-donation-levels__type--onetime" ng-class="{'active': donationInfo.giftType == 'onetime'}" ng-click="giftType('onetime')">One-time Gift</button>
+      <button type="button" class="btn btn-toggle btn-lg ym-donation-levels__type--monthly" ng-class="{'active': donationInfo.giftType == 'monthly'}" ng-click="giftType('monthly');">Installment Gift</button>
     </div>
     <hr>
     <div class="ym-donation-levels__levels">
