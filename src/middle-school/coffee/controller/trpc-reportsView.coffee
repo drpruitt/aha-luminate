@@ -46,7 +46,7 @@ angular.module 'trPcControllers'
         if not $rootScope.selectedContacts
           $rootScope.selectedContacts = {}
         $rootScope.selectedContacts.contacts = []
-        if gift
+        if participantGift
           giftContact = null
           if participantGift.contact.firstName
             giftContact = participantGift.contact.firstName
@@ -119,7 +119,7 @@ angular.module 'trPcControllers'
           if not $rootScope.selectedContacts
             $rootScope.selectedContacts = {}
           $rootScope.selectedContacts.contacts = []
-          if gift
+          if teamGift
             giftContact = null
             if teamGift.contact.firstName
               giftContact = teamGift.contact.firstName
