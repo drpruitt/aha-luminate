@@ -2,9 +2,10 @@ angular.module 'trPcControllers'
   .controller 'NgPcReportsViewCtrl', [
     '$scope'
     '$filter'
+    '$location'
     'NgPcTeamraiserGiftService'
     'NgPcTeamraiserReportsService'
-    ($scope, $filter, NgPcTeamraiserGiftService, NgPcTeamraiserReportsService) ->
+    ($scope, $filter, $location, NgPcTeamraiserGiftService, NgPcTeamraiserReportsService) ->
       $scope.reportPromises = []
       
       $scope.activeReportTab = if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true' then 0 else 1
@@ -15,7 +16,7 @@ angular.module 'trPcControllers'
         page: 1
       $scope.getGifts = ->
         pageNumber = $scope.participantGifts.page - 1
-        personalGiftsPromise = NgPcTeamraiserGiftService.getGifts 'list_sort_column=' + $scope.participantGifts.sortColumn + '&list_ascending=' + $scope.participantGifts.sortAscending + '&list_page_size=10&list_page_offset=' + pageNumber
+        personalGiftsPromise = NgPcTeamraiserGiftService.getGifts 'list_sort_column=' + $scope.participantGifts.sortColumn + '&list_ascending=' + $scope.participantGifts.sortAscending + '&list_page_size=500&list_page_offset=' + pageNumber
           .then (response) ->
             if response.data.errorResponse
               $scope.participantGifts.gifts = []
@@ -40,6 +41,9 @@ angular.module 'trPcControllers'
         $scope.reportPromises.push personalGiftsPromise
       $scope.getGifts()
       
+      $scope.thankAllParticipantDonors = ->
+        $location.path '/email/compose'
+      
       if $scope.participantRegistration.aTeamCaptain is 'true'
         $scope.teamGifts =
           sortColumn: 'date_recorded'
@@ -47,7 +51,7 @@ angular.module 'trPcControllers'
           page: 1
         $scope.getTeamGifts = ->
           pageNumber = $scope.teamGifts.page - 1
-          personalGiftsPromise = NgPcTeamraiserGiftService.getTeamGifts 'list_sort_column=' + $scope.teamGifts.sortColumn + '&list_ascending=' + $scope.teamGifts.sortAscending + '&list_page_size=10&list_page_offset=' + pageNumber
+          personalGiftsPromise = NgPcTeamraiserGiftService.getTeamGifts 'list_sort_column=' + $scope.teamGifts.sortColumn + '&list_ascending=' + $scope.teamGifts.sortAscending + '&list_page_size=500&list_page_offset=' + pageNumber
             .then (response) ->
               if response.data.errorResponse
                 $scope.teamGifts.gifts = []
@@ -71,6 +75,9 @@ angular.module 'trPcControllers'
               response
           $scope.reportPromises.push personalGiftsPromise
         $scope.getTeamGifts()
+        
+        $scope.thankAllTeamDonors = ->
+          $location.path '/email/compose'
       
       if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
         $scope.schoolDetailStudents =
