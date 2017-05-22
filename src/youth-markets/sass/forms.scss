@@ -133,3 +133,13 @@ input[type="checkbox"] {
     border: 1px solid $event-secondary;
   }
 }
+
+input[type="text"].btn-enter, 
+input[type="text"].btn-enter:before, 
+input[type="text"].btn-enter:after {
+  -webkit-user-select: initial;
+  -khtml-user-select: initial;
+  -moz-user-select: initial;
+  -ms-user-select: initial;
+  user-select: initial;
+}
