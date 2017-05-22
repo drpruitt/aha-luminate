@@ -89,7 +89,10 @@ angular.module 'ahaLuminateControllers'
           $scope.challengeId = null
           $scope.challengeCompleted = 0
         success: (response) ->
-          $scope.challengeId = response.data.challenges.current
+          if response.data.challenges.current == '0'
+            $scope.challengeId = null
+          else
+            $scope.challengeId = response.data.challenges.current
           $scope.challengeName = response.data.challenges.text
           $scope.challengeCompleted = response.data.challenges.completed
       
