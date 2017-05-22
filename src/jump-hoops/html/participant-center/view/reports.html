@@ -140,7 +140,7 @@
                 <a class="btn btn-md-wide btn-secondary" ng-href="TRParticipantDownload/Personal_Donations.csv?download_type=personal_donations&amp;fr_id={{frId}}" target="_blank">
                   <i class="fa fa-download" aria-hidden="true"></i> <strong>Download</strong>
                 </a> 
-                <a class="btn btn-md-wide btn-secondary" ng-href="{{baseUrl}}#/email">
+                <a class="btn btn-md-wide btn-secondary" ng-click="thankAllParticipantDonors()">
                   <i class="fa fa-envelope" aria-hidden="true"></i> <strong>Thank All</strong>
                 </a>
               </div>
@@ -191,7 +191,7 @@
                         <span ng-bind-html="participantGift.name.first"></span> <span ng-bind-html="participantGift.name.last"></span>
                       </div>
                       <div ng-if="participantGift.acknowledged != 'true'">
-                        <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email">
+                        <a class="btn btn-md-wide btn-primary" ng-click="thankParticipantDonor(participantGift)">
                           <i class="fa fa-envelope" aria-hidden="true"></i> <strong>Thank</strong>
                         </a>
                       </div>
@@ -227,7 +227,7 @@
                 <a class="btn btn-md-wide btn-secondary" ng-href="TRParticipantDownload/Team_Donations.csv?download_type=team_donations&amp;fr_id={{frId}}" target="_blank">
                   <i class="fa fa-download" aria-hidden="true"></i> <strong>Download</strong>
                 </a> 
-                <a class="btn btn-md-wide btn-secondary" ng-href="{{baseUrl}}#/email">
+                <a class="btn btn-md-wide btn-secondary" ng-click="thankAllTeamDonors()">
                   <i class="fa fa-envelope" aria-hidden="true"></i> <strong>Thank All</strong>
                 </a>
               </div>
@@ -278,7 +278,7 @@
                         <span ng-bind-html="teamGift.name.first"></span> <span ng-bind-html="teamGift.name.last"></span>
                       </div>
                       <div ng-if="teamGift.acknowledged != 'true'">
-                        <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email">
+                        <a class="btn btn-md-wide btn-primary" ng-click="thankTeamDonor(teamGift)">
                           <i class="fa fa-envelope" aria-hidden="true"></i> <strong>Thank</strong>
                         </a>
                       </div>

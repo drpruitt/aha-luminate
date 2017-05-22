@@ -1,10 +1,12 @@
 angular.module 'trPcControllers'
   .controller 'NgPcReportsViewCtrl', [
+    '$rootScope'
     '$scope'
     '$filter'
+    '$location'
     'NgPcTeamraiserGiftService'
     'NgPcTeamraiserReportsService'
-    ($scope, $filter, NgPcTeamraiserGiftService, NgPcTeamraiserReportsService) ->
+    ($rootScope, $scope, $filter, $location, NgPcTeamraiserGiftService, NgPcTeamraiserReportsService) ->
       $scope.reportPromises = []
       
       $scope.activeReportTab = if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true' then 0 else 1
@@ -15,7 +17,7 @@ angular.module 'trPcControllers'
         page: 1
       $scope.getGifts = ->
         pageNumber = $scope.participantGifts.page - 1
-        personalGiftsPromise = NgPcTeamraiserGiftService.getGifts 'list_sort_column=' + $scope.participantGifts.sortColumn + '&list_ascending=' + $scope.participantGifts.sortAscending + '&list_page_size=10&list_page_offset=' + pageNumber
+        personalGiftsPromise = NgPcTeamraiserGiftService.getGifts 'list_sort_column=' + $scope.participantGifts.sortColumn + '&list_ascending=' + $scope.participantGifts.sortAscending + '&list_page_size=500&list_page_offset=' + pageNumber
           .then (response) ->
             if response.data.errorResponse
               $scope.participantGifts.gifts = []
@@ -40,6 +42,47 @@ angular.module 'trPcControllers'
         $scope.reportPromises.push personalGiftsPromise
       $scope.getGifts()
       
+      $scope.thankParticipantDonor = (participantGift) ->
+        if not $rootScope.selectedContacts
+          $rootScope.selectedContacts = {}
+        $rootScope.selectedContacts.contacts = []
+        if participantGift
+          giftContact = null
+          if participantGift.contact.firstName
+            giftContact = participantGift.contact.firstName
+            if participantGift.contact.lastName
+              giftContact += ' ' + participantGift.contact.lastName
+          if participantGift.contact.email
+            if not giftContact
+              giftContact = '<'
+            else
+              giftContact += ' <'
+            giftContact += participantGift.contact.email + '>'
+          if giftContact
+            $rootScope.selectedContacts.contacts = [giftContact]
+        $location.path '/email/compose'
+      
+      $scope.thankAllParticipantDonors = ->
+        if not $rootScope.selectedContacts
+          $rootScope.selectedContacts = {}
+        $rootScope.selectedContacts.contacts = []
+        if $scope.participantGifts.gifts.length > 0
+          angular.forEach $scope.participantGifts.gifts, (participantGift) ->
+            giftContact = null
+            if participantGift.contact.firstName
+              giftContact = participantGift.contact.firstName
+              if participantGift.contact.lastName
+                giftContact += ' ' + participantGift.contact.lastName
+            if participantGift.contact.email
+              if not giftContact
+                giftContact = '<'
+              else
+                giftContact += ' <'
+              giftContact += participantGift.contact.email + '>'
+            if giftContact
+              $rootScope.selectedContacts.contacts.push giftContact
+        $location.path '/email/compose'
+      
       if $scope.participantRegistration.aTeamCaptain is 'true'
         $scope.teamGifts =
           sortColumn: 'date_recorded'
@@ -47,7 +90,7 @@ angular.module 'trPcControllers'
           page: 1
         $scope.getTeamGifts = ->
           pageNumber = $scope.teamGifts.page - 1
-          personalGiftsPromise = NgPcTeamraiserGiftService.getTeamGifts 'list_sort_column=' + $scope.teamGifts.sortColumn + '&list_ascending=' + $scope.teamGifts.sortAscending + '&list_page_size=10&list_page_offset=' + pageNumber
+          personalGiftsPromise = NgPcTeamraiserGiftService.getTeamGifts 'list_sort_column=' + $scope.teamGifts.sortColumn + '&list_ascending=' + $scope.teamGifts.sortAscending + '&list_page_size=500&list_page_offset=' + pageNumber
             .then (response) ->
               if response.data.errorResponse
                 $scope.teamGifts.gifts = []
@@ -71,6 +114,47 @@ angular.module 'trPcControllers'
               response
           $scope.reportPromises.push personalGiftsPromise
         $scope.getTeamGifts()
+        
+        $scope.thankTeamDonor = (teamGift) ->
+          if not $rootScope.selectedContacts
+            $rootScope.selectedContacts = {}
+          $rootScope.selectedContacts.contacts = []
+          if teamGift
+            giftContact = null
+            if teamGift.contact.firstName
+              giftContact = teamGift.contact.firstName
+              if teamGift.contact.lastName
+                giftContact += ' ' + teamGift.contact.lastName
+            if teamGift.contact.email
+              if not giftContact
+                giftContact = '<'
+              else
+                giftContact += ' <'
+              giftContact += teamGift.contact.email + '>'
+            if giftContact
+              $rootScope.selectedContacts.contacts = [giftContact]
+          $location.path '/email/compose'
+        
+        $scope.thankAllTeamDonors = ->
+          if not $rootScope.selectedContacts
+            $rootScope.selectedContacts = {}
+          $rootScope.selectedContacts.contacts = []
+          if $scope.teamGifts.gifts.length > 0
+            angular.forEach $scope.teamGifts.gifts, (teamGift) ->
+              giftContact = null
+              if teamGift.contact.firstName
+                giftContact = teamGift.contact.firstName
+                if teamGift.contact.lastName
+                  giftContact += ' ' + teamGift.contact.lastName
+              if teamGift.contact.email
+                if not giftContact
+                  giftContact = '<'
+                else
+                  giftContact += ' <'
+                giftContact += teamGift.contact.email + '>'
+              if giftContact
+                $rootScope.selectedContacts.contacts.push giftContact
+          $location.path '/email/compose'
       
       if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
         $scope.schoolDetailStudents =
