@@ -43,6 +43,8 @@ angular.module 'trPcControllers'
       $scope.getGifts()
       
       $scope.thankParticipantDonor = (participantGift) ->
+        if not $rootScope.selectedContacts
+          $rootScope.selectedContacts = {}
         $rootScope.selectedContacts.contacts = []
         if gift
           giftContact = null
@@ -61,6 +63,8 @@ angular.module 'trPcControllers'
         $location.path '/email/compose'
       
       $scope.thankAllParticipantDonors = ->
+        if not $rootScope.selectedContacts
+          $rootScope.selectedContacts = {}
         $rootScope.selectedContacts.contacts = []
         if $scope.participantGifts.gifts.length > 0
           angular.forEach $scope.participantGifts.gifts, (participantGift) ->
@@ -112,6 +116,8 @@ angular.module 'trPcControllers'
         $scope.getTeamGifts()
         
         $scope.thankTeamDonor = (teamGift) ->
+          if not $rootScope.selectedContacts
+            $rootScope.selectedContacts = {}
           $rootScope.selectedContacts.contacts = []
           if gift
             giftContact = null
@@ -130,6 +136,8 @@ angular.module 'trPcControllers'
           $location.path '/email/compose'
         
         $scope.thankAllTeamDonors = ->
+          if not $rootScope.selectedContacts
+            $rootScope.selectedContacts = {}
           $rootScope.selectedContacts.contacts = []
           if $scope.teamGifts.gifts.length > 0
             angular.forEach $scope.teamGifts.gifts, (teamGift) ->
