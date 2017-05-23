@@ -42,6 +42,8 @@ angular.module 'ahaLuminateControllers'
       calculateInstallment = (number, amount) ->
         $scope.donationInfo.installmentAmount  = amount.toFixed 2
         $scope.donationInfo.numberPayments = number
+        localStorage['installmentAmount'] = amount.toFixed 2
+        localStorage['numberPayments'] = number
       
       installmentDropdown = ->
         number = angular.element('#level_installmentduration').val()
@@ -102,6 +104,7 @@ angular.module 'ahaLuminateControllers'
         if type is 'level'
           angular.element('.btn-enter').val ''
           $scope.donationInfo.otherAmt = ''
+          localStorage['amount'] = amount
 
         if $scope.donationInfo.monthly is true
           number = angular.element('#level_installmentduration').val()
@@ -124,6 +127,7 @@ angular.module 'ahaLuminateControllers'
         $scope.donationInfo.amount = amount
         $scope.donationInfo.otherAmt = amount
         localStorage['amount'] = amount
+        localStorage['otherAmt'] = amount
         
         if $scope.donationInfo.monthly is true
           number = angular.element('#level_installmentduration').val()
@@ -242,23 +246,23 @@ angular.module 'ahaLuminateControllers'
           angular.element('#billing_info_same_as_donorname').prop 'checked', false
 
       loadLocalStorage = ->
-        console.log 'enter local storage'
         if localStorage['giftType']
           $scope.donationInfo.giftType = localStorage['giftType']
           if localStorage['giftType'] is 'monthly'
             $scope.donationInfo.monthly = true
+            $scope.donationInfo.installmentAmount = localStorage['installmentAmount']
+            $scope.donationInfo.numberPayments = localStorage['numberPayments']
         if localStorage['amount']
           $scope.donationInfo.amount = localStorage['amount']
-          console.log $scope.donationInfo.amount
         if localStorage['levelType']
           $scope.donationInfo.levelType = localStorage['levelType']
           if localStorage['levelType'] is 'other'
-            console.log localStorage['amount']
-            angular.element('.btn-enter').val localStorage['amount']
-      
+            $scope.donationInfo.otherAmt = localStorage['otherAmt']
+          else
+            $scope.donationInfo.otherAmt = ''
+          
       loadLevels = ->
         $q (resolve) ->
-          console.log 'load levels'
           DonationService.getDonationFormInfo 'form_id=' + $scope.donationInfo.form_id + '&fr_id=' + $scope.donationInfo.fr_id
             .then (response) ->
               levels = response.data.getDonationFormInfoResponse.donationLevels.donationLevel
@@ -294,7 +298,6 @@ angular.module 'ahaLuminateControllers'
       finishLoad = loadLevels()
 
       finishLoad.then ( ->
-        console.log 'finish load'
         loadLocalStorage()
         if $scope.donationInfo.giftType == 'onetime'
           angular.element('#level_installment_row').addClass 'hidden'
@@ -311,6 +314,6 @@ angular.module 'ahaLuminateControllers'
         console.log $scope.donationInfo
         return
       ), (reason) ->
-        console.log 'fail'
+        #TO DO
 
   ]
