@@ -36,7 +36,7 @@
           {{donationLevel.amount}}
         </button>
         <label class="sr-only" for="other_amount">Other Amount</label>
-        <input type="text" class="btn btn-toggle btn-enter {{donationLevel.classLevel}}" title="other_amount" ng-if="donationLevel.userSpecified == 'true'" ng-keyup="enterAmount(otherAmt)" ng-model="otherAmt" ng-click="selectLevel('other', donationLevel.levelId);" placeholder="Other">
+        <input type="text" class="btn btn-toggle btn-enter {{donationLevel.classLevel}}" ng-class="{'active': donationInfo.levelType == other}" title="other_amount" ng-if="donationLevel.userSpecified == 'true'" ng-keyup="enterAmount(otherAmt)" ng-model="otherAmt" ng-click="selectLevel('other', donationLevel.levelId);" placeholder="Other" ng-value="donationInfo.otherAmt">
       </div>
     </div>
     <div class="ym-donation-levels__message level{{donationLevel.levelId}}" ng-repeat="donationLevel in donationLevels" ng-class="{'active': donationLevel.levelChecked == true}">

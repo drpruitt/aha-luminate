@@ -5,7 +5,8 @@ angular.module 'ahaLuminateControllers'
     '$location'
     'DonationService'
     '$timeout'
-    ($scope, $rootScope, $location, DonationService, $timeout) ->
+    '$q'
+    ($scope, $rootScope, $location, DonationService, $timeout, $q) ->
       $scope.paymentInfoErrors =
         errors: []
       angular.element('.page-error').remove()
@@ -34,6 +35,7 @@ angular.module 'ahaLuminateControllers'
         amount: ''
         installmentAmount: ''
         levelType: 'level'
+        otherAmt: ''
       
       $scope.donationLevels = []
       
@@ -62,6 +64,7 @@ angular.module 'ahaLuminateControllers'
       
       $scope.giftType = (type) ->
         $scope.donationInfo.giftType = type
+        localStorage['giftType'] = type
         if type is 'monthly'
           angular.element('.ym-donation-levels__type--onetime').removeClass 'active'
           angular.element('.ym-donation-levels__type--monthly').addClass 'active'
@@ -84,8 +87,6 @@ angular.module 'ahaLuminateControllers'
           populateBtnAmt $scope.donationInfo.levelType, type
           amount = Number $scope.donationInfo.amount.split('$')[1]
           calculateInstallment 1, amount
-
-        localStorage['giftType'] = type
       
       $scope.selectLevel = (type, level, amount) ->
         angular.element('.ym-donation-levels__amount .btn-toggle.active').removeClass 'active'
@@ -95,11 +96,13 @@ angular.module 'ahaLuminateControllers'
         angular.element('.donation-level-container.level' + level + ' input').click()
         $scope.donationInfo.amount = amount
         $scope.donationInfo.levelType = type
+        localStorage['levelType'] = type
         populateBtnAmt type, level, amount
-        
+
         if type is 'level'
           angular.element('.btn-enter').val ''
-        
+          $scope.donationInfo.otherAmt = ''
+
         if $scope.donationInfo.monthly is true
           number = angular.element('#level_installmentduration').val()
           number = Number number.split(':')[1]
@@ -119,6 +122,8 @@ angular.module 'ahaLuminateControllers'
         angular.element('#pstep_finish span').prepend ' $' + amount
         angular.element('.donation-level-user-entered input').val amount
         $scope.donationInfo.amount = amount
+        $scope.donationInfo.otherAmt = amount
+        localStorage['amount'] = amount
         
         if $scope.donationInfo.monthly is true
           number = angular.element('#level_installmentduration').val()
@@ -235,62 +240,77 @@ angular.module 'ahaLuminateControllers'
           angular.element('#billing_info_same_as_donorname').prop 'checked', true
         else
           angular.element('#billing_info_same_as_donorname').prop 'checked', false
-      
-      loadForm = ->
-        DonationService.getDonationFormInfo 'form_id=' + $scope.donationInfo.form_id + '&fr_id=' + $scope.donationInfo.fr_id
-          .then (response) ->
-            levels = response.data.getDonationFormInfoResponse.donationLevels.donationLevel
-            
-            angular.forEach levels, (level) ->
-              levelId = level.level_id
-              amount = level.amount.formatted
-              amount = amount.split('.')[0]
-              userSpecified = level.userSpecified
-              inputId = '#level_installmentexpanded' + levelId
-              classLevel = 'level' + levelId
-              
-              angular.element(inputId).parent().parent().parent().parent().addClass classLevel
-              
-              levelLabel = angular.element('.' + classLevel).find('.donation-level-expanded-label p').text()
-              
-              levelChecked = angular.element('.' + classLevel + ' .donation-level-label-input-container input').prop 'checked'
-              
-              if levelChecked is true
-                $scope.donationInfo.amount = amount
-                $scope.donationInfo.installmentAmount = amount
-                if $scope.donationInfo.monthly is false
-                  angular.element('.finish-step').append '<span> '+ amount + ' <i class="fa fa-chevron-right" aria-hidden="true"></i></span>'
-                else
-                  angular.element('.finish-step').append '<span> <i class="fa fa-chevron-right" aria-hidden="true"></i></span>'
-              
-              $scope.donationLevels.push
-                levelId: levelId
-                classLevel: classLevel
-                amount: amount
-                userSpecified: userSpecified
-                levelLabel: levelLabel
-                levelChecked: levelChecked
 
+      loadLocalStorage = ->
+        console.log 'enter local storage'
         if localStorage['giftType']
           $scope.donationInfo.giftType = localStorage['giftType']
+          if localStorage['giftType'] is 'monthly'
+            $scope.donationInfo.monthly = true
+        if localStorage['amount']
+          $scope.donationInfo.amount = localStorage['amount']
+          console.log $scope.donationInfo.amount
+        if localStorage['levelType']
+          $scope.donationInfo.levelType = localStorage['levelType']
+          if localStorage['levelType'] is 'other'
+            console.log localStorage['amount']
+            angular.element('.btn-enter').val localStorage['amount']
+      
+      loadLevels = ->
+        $q (resolve) ->
+          console.log 'load levels'
+          DonationService.getDonationFormInfo 'form_id=' + $scope.donationInfo.form_id + '&fr_id=' + $scope.donationInfo.fr_id
+            .then (response) ->
+              levels = response.data.getDonationFormInfoResponse.donationLevels.donationLevel
+              
+              angular.forEach levels, (level) ->
+                levelId = level.level_id
+                amount = level.amount.formatted
+                amount = amount.split('.')[0]
+                userSpecified = level.userSpecified
+                inputId = '#level_installmentexpanded' + levelId
+                classLevel = 'level' + levelId
+                
+                angular.element(inputId).parent().parent().parent().parent().addClass classLevel
+                levelLabel = angular.element('.' + classLevel).find('.donation-level-expanded-label p').text()
+                levelChecked = angular.element('.' + classLevel + ' .donation-level-label-input-container input').prop 'checked'
+                
+                if levelChecked is true
+                  $scope.donationInfo.amount = amount
+                  $scope.donationInfo.installmentAmount = amount
+                  if $scope.donationInfo.monthly is false
+                    angular.element('.finish-step').append '<span> '+ amount + ' <i class="fa fa-chevron-right" aria-hidden="true"></i></span>'
+                  else
+                    angular.element('.finish-step').append '<span> <i class="fa fa-chevron-right" aria-hidden="true"></i></span>'
+                $scope.donationLevels.push
+                  levelId: levelId
+                  classLevel: classLevel
+                  amount: amount
+                  userSpecified: userSpecified
+                  levelLabel: levelLabel
+                  levelChecked: levelChecked
+          resolve()
 
+      finishLoad = loadLevels()
+
+      finishLoad.then ( ->
+        console.log 'finish load'
+        loadLocalStorage()
         if $scope.donationInfo.giftType == 'onetime'
           angular.element('#level_installment_row').addClass 'hidden'
-
         angular.element('#tr_message_to_participant_row').addClass 'hidden'
         angular.element('#billing_info').parent().addClass 'billing_info_toggle'
         angular.element('#payment_cc_container').append '<div class="clearfix" />'
         angular.element('#responsive_payment_typecc_cvv_row .FormLabelText').text 'CVV:'
-        
         angular.element('#tr_recognition_namerec_namename').attr 'placeholder', 'If different from your name'
         angular.element('#tr_message_to_participantname').attr 'placeholder', 'Write a message of encouragement. 255 characters max.'
         addOptional()
         employerMatchFields()
         billingAddressFields()
         donorRecognitionFields()
+        console.log $scope.donationInfo
+        return
+      ), (reason) ->
+        console.log 'fail'
 
-        
-
-      loadForm()
-      console.log $scope.donationInfo
   ]
