@@ -283,8 +283,13 @@ angular.module 'ahaLuminateControllers'
                 levelChecked = angular.element('.' + classLevel + ' .donation-level-label-input-container input').prop 'checked'
                 
                 if levelChecked is true
-                  $scope.donationInfo.amount = amount
-                  $scope.donationInfo.installmentAmount = level.amount.decimal
+                  if userSpecified  is 'true'
+                    $scope.donationInfo.amount = $scope.donationInfo.otherAmt
+                    installmentAmount = Number($scope.donationInfo.otherAmt)/Number($scope.donationInfo.numberPayments)
+                    $scope.donationInfo.installmentAmount = installmentAmount.toFixed 2
+                  else
+                    $scope.donationInfo.amount = amount
+                    $scope.donationInfo.installmentAmount = level.amount.decimal
                   $scope.donationInfo.levelChecked = classLevel
                   if $scope.donationInfo.monthly is false
                     angular.element('.finish-step').append '<span> '+ amount + ' <i class="fa fa-chevron-right" aria-hidden="true"></i></span>'
