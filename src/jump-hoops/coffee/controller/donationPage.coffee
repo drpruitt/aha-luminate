@@ -270,12 +270,18 @@ angular.module 'ahaLuminateControllers'
                 userSpecified: userSpecified
                 levelLabel: levelLabel
                 levelChecked: levelChecked
-        
+
+        if localStorage['giftType']
+          $scope.donationInfo.giftType = localStorage['giftType']
+
+        if $scope.donationInfo.giftType == 'onetime'
+          angular.element('#level_installment_row').addClass 'hidden'
+
         angular.element('#tr_message_to_participant_row').addClass 'hidden'
         angular.element('#billing_info').parent().addClass 'billing_info_toggle'
         angular.element('#payment_cc_container').append '<div class="clearfix" />'
         angular.element('#responsive_payment_typecc_cvv_row .FormLabelText').text 'CVV:'
-        angular.element('#level_installment_row').addClass 'hidden'
+        
         angular.element('#tr_recognition_namerec_namename').attr 'placeholder', 'If different from your name'
         angular.element('#tr_message_to_participantname').attr 'placeholder', 'Write a message of encouragement. 255 characters max.'
         addOptional()
@@ -283,8 +289,7 @@ angular.module 'ahaLuminateControllers'
         billingAddressFields()
         donorRecognitionFields()
 
-        if localStorage['giftType']
-          $scope.donationInfo.giftType = localStorage['giftType']
+        
 
       loadForm()
       console.log $scope.donationInfo
