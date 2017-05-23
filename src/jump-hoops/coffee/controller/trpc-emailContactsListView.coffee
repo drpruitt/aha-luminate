@@ -331,7 +331,16 @@ angular.module 'trPcControllers'
         else
           $scope.contactImport.contactsToAdd.splice contactToAddIndex, 1
         angular.forEach $scope.contactsAvailableForImport, (contactAvailableForImport) ->
-          if contactData is getContactString contactAvailableForImport
+          contactAvailableForImportData = ''
+          if contactAvailableForImport.firstName
+            contactAvailableForImportData += '"' + contactAvailableForImport.firstName + '"'
+          contactAvailableForImportData += ', '
+          if contactAvailableForImport.lastName
+            contactAvailableForImportData += '"' + contactAvailableForImport.lastName + '"'
+          contactAvailableForImportData += ', '
+          if contactAvailableForImport.email
+            contactAvailableForImportData += '"' + contactAvailableForImport.email + '"'
+          if contactData is contactAvailableForImportData
             contactAvailableForImport.selected = contactToAddIndex is -1
       
       $scope.chooseContactsToImport = ->
