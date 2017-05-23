@@ -316,7 +316,15 @@ angular.module 'trPcControllers'
         $scope.contactImport.contactsToAdd = []
       
       $scope.toggleContactToAdd = (contact) ->
-        contactData = getContactString contact
+        contactData = ''
+        if contact.firstName
+          contactData += '"' + contact.firstName + '"'
+        contactData += ', '
+        if contact.lastName
+          contactData += '"' + contact.lastName + '"'
+        contactData += ', '
+        if contact.email
+          contactData += '"' + contact.email + '"'
         contactToAddIndex = $scope.contactImport.contactsToAdd.indexOf contactData
         if contactToAddIndex is -1
           $scope.contactImport.contactsToAdd.push contactData
