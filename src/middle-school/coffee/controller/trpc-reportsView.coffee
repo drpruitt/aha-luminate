@@ -4,12 +4,34 @@ angular.module 'trPcControllers'
     '$scope'
     '$filter'
     '$location'
+    'NgPcTeamraiserEmailService'
     'NgPcTeamraiserGiftService'
     'NgPcTeamraiserReportsService'
-    ($rootScope, $scope, $filter, $location, NgPcTeamraiserGiftService, NgPcTeamraiserReportsService) ->
+    ($rootScope, $scope, $filter, $location, NgPcTeamraiserEmailService, NgPcTeamraiserGiftService, NgPcTeamraiserReportsService) ->
       $scope.reportPromises = []
       
       $scope.activeReportTab = if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true' then 0 else 1
+      
+      NgPcTeamraiserEmailService.getSuggestedMessages()
+        .then (response) ->
+          suggestedMessages = response.data.getSuggestedMessagesResponse.suggestedMessage
+          suggestedMessages = [suggestedMessages] if not angular.isArray suggestedMessages
+          $scope.suggestedMessages = []
+          angular.forEach suggestedMessages, (message) ->
+            if message.active is 'true'
+              if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
+                if message.name.indexOf('Coordinator:') is -1
+                  message.name = message.name.split('Student: ')[1]
+                  $scope.suggestedMessages.push message
+              else
+                if message.name.indexOf('Student:') is -1
+                  message.name = message.name.split('Coordinator: ')[1]
+                  $scope.suggestedMessages.push message
+          angular.forEach $scope.suggestedMessages, (suggestedMessage) ->
+            messageType = suggestedMessage.messageType
+            if messageType
+              if messageType.toLowerCase() is 'thanks' and not $scope.thankYouMessageId
+                $scope.thankYouMessageId = suggestedMessage.messageId
       
       $scope.participantGifts =
         sortColumn: 'date_recorded'
@@ -60,7 +82,10 @@ angular.module 'trPcControllers'
             giftContact += participantGift.contact.email + '>'
           if giftContact
             $rootScope.selectedContacts.contacts = [giftContact]
-        $location.path '/email/compose'
+        if $scope.thankYouMessageId
+          $location.path '/email/message/suggestedMessage/' + $scope.thankYouMessageId
+        else
+          $location.path '/email/compose/'
       
       $scope.thankAllParticipantDonors = ->
         if not $rootScope.selectedContacts
@@ -81,7 +106,10 @@ angular.module 'trPcControllers'
               giftContact += participantGift.contact.email + '>'
             if giftContact
               $rootScope.selectedContacts.contacts.push giftContact
-        $location.path '/email/compose'
+        if $scope.thankYouMessageId
+          $location.path '/email/message/suggestedMessage/' + $scope.thankYouMessageId
+        else
+          $location.path '/email/compose/'
       
       if $scope.participantRegistration.aTeamCaptain is 'true'
         $scope.teamGifts =
@@ -133,7 +161,10 @@ angular.module 'trPcControllers'
               giftContact += teamGift.contact.email + '>'
             if giftContact
               $rootScope.selectedContacts.contacts = [giftContact]
-          $location.path '/email/compose'
+          if $scope.thankYouMessageId
+            $location.path '/email/message/suggestedMessage/' + $scope.thankYouMessageId
+          else
+            $location.path '/email/compose/'
         
         $scope.thankAllTeamDonors = ->
           if not $rootScope.selectedContacts
@@ -154,7 +185,10 @@ angular.module 'trPcControllers'
                 giftContact += teamGift.contact.email + '>'
               if giftContact
                 $rootScope.selectedContacts.contacts.push giftContact
-          $location.path '/email/compose'
+          if $scope.thankYouMessageId
+            $location.path '/email/message/suggestedMessage/' + $scope.thankYouMessageId
+          else
+            $location.path '/email/compose/'
       
       if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
         $scope.schoolDetailStudents =
