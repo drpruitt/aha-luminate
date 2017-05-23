@@ -83,7 +83,7 @@ angular.module 'trPcControllers'
           if giftContact
             $rootScope.selectedContacts.contacts = [giftContact]
         if $scope.thankYouMessageId
-          $location.path '/email/message/suggestedMessage/' + $scope.thankYouMessageId
+          $location.path '/email/compose/suggestedMessage/' + $scope.thankYouMessageId
         else
           $location.path '/email/compose/'
       
@@ -107,7 +107,7 @@ angular.module 'trPcControllers'
             if giftContact
               $rootScope.selectedContacts.contacts.push giftContact
         if $scope.thankYouMessageId
-          $location.path '/email/message/suggestedMessage/' + $scope.thankYouMessageId
+          $location.path '/email/compose/suggestedMessage/' + $scope.thankYouMessageId
         else
           $location.path '/email/compose/'
       
@@ -162,7 +162,7 @@ angular.module 'trPcControllers'
             if giftContact
               $rootScope.selectedContacts.contacts = [giftContact]
           if $scope.thankYouMessageId
-            $location.path '/email/message/suggestedMessage/' + $scope.thankYouMessageId
+            $location.path '/email/compose/suggestedMessage/' + $scope.thankYouMessageId
           else
             $location.path '/email/compose/'
         
@@ -186,7 +186,7 @@ angular.module 'trPcControllers'
               if giftContact
                 $rootScope.selectedContacts.contacts.push giftContact
           if $scope.thankYouMessageId
-            $location.path '/email/message/suggestedMessage/' + $scope.thankYouMessageId
+            $location.path '/email/compose/suggestedMessage/' + $scope.thankYouMessageId
           else
             $location.path '/email/compose/'
       
