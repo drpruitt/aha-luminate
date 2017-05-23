@@ -36,6 +36,7 @@ angular.module 'ahaLuminateControllers'
         installmentAmount: ''
         levelType: 'level'
         otherAmt: ''
+        levelChecked: ''
       
       $scope.donationLevels = []
       
@@ -105,6 +106,7 @@ angular.module 'ahaLuminateControllers'
           angular.element('.btn-enter').val ''
           $scope.donationInfo.otherAmt = ''
           localStorage['amount'] = amount
+          localStorage['otherAmt'] = ''
 
         if $scope.donationInfo.monthly is true
           number = angular.element('#level_installmentduration').val()
@@ -268,6 +270,7 @@ angular.module 'ahaLuminateControllers'
               levels = response.data.getDonationFormInfoResponse.donationLevels.donationLevel
               
               angular.forEach levels, (level) ->
+                console.log level
                 levelId = level.level_id
                 amount = level.amount.formatted
                 amount = amount.split('.')[0]
@@ -281,7 +284,8 @@ angular.module 'ahaLuminateControllers'
                 
                 if levelChecked is true
                   $scope.donationInfo.amount = amount
-                  $scope.donationInfo.installmentAmount = amount
+                  $scope.donationInfo.installmentAmount = level.amount.decimal
+                  $scope.donationInfo.levelChecked = classLevel
                   if $scope.donationInfo.monthly is false
                     angular.element('.finish-step').append '<span> '+ amount + ' <i class="fa fa-chevron-right" aria-hidden="true"></i></span>'
                   else
