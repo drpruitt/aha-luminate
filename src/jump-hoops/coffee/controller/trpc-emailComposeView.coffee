@@ -80,7 +80,19 @@ angular.module 'trPcControllers'
         messageBody = $scope.emailComposer.message_body
         messageBody
       
-      if $scope.messageType is 'draft' and $scope.messageId
+      if $scope.messageType is 'suggestedMessage' and $scope.messageId
+        NgPcTeamraiserEmailService.getSuggestedMessage 'message_id=' + $scope.messageId
+          .then (response) ->
+            if response.data.errorResponse
+              # TODO
+            else
+              messageInfo = response.data.getSuggestedMessageResponse?.messageInfo
+              if messageInfo
+                $scope.emailComposer.suggested_message_id = $scope.messageId
+                $scope.emailComposer.subject = messageInfo.subject
+                messageBody = messageInfo.messageBody
+                setEmailMessageBody messageBody
+      else if $scope.messageType is 'draft' and $scope.messageId
         NgPcTeamraiserEmailService.getDraft 'message_id=' + $scope.messageId
           .then (response) ->
             if response.data.errorResponse

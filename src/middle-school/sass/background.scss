@@ -1,9 +1,5 @@
 main {
-  background: #bddd98;
-  
-  @media (min-width: $screen-md-min) {
-    background: url('../image/middle-school-bkgrd.png') repeat top left scroll;
-  }
+  background: url('../image/middle-school-bkgrd.png') repeat top left scroll;
 }
 
 .event-secondary-medium--diagonal {
