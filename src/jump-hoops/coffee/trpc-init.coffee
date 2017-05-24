@@ -26,6 +26,7 @@ angular.module 'trPcApp'
       # get data from embed container
       $embedRoot = angular.element '[data-embed-root]'
       $rootScope.consName = $embedRoot.data('cons-name') or ''
+      $rootScope.studentRegGoal = $embedRoot.data('student-reg-goal') or '0'
       $rootScope.challengeTaken = $embedRoot.data('challenge-taken') if $embedRoot.data('challenge-taken') isnt ''
   ]
 
