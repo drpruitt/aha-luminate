@@ -270,7 +270,6 @@ angular.module 'ahaLuminateControllers'
               levels = response.data.getDonationFormInfoResponse.donationLevels.donationLevel
               
               angular.forEach levels, (level) ->
-                console.log level
                 levelId = level.level_id
                 amount = level.amount.formatted
                 amount = amount.split('.')[0]
@@ -289,7 +288,10 @@ angular.module 'ahaLuminateControllers'
                     $scope.donationInfo.installmentAmount = installmentAmount.toFixed 2
                   else
                     $scope.donationInfo.amount = amount
-                    $scope.donationInfo.installmentAmount = level.amount.decimal
+                    if localStorage['installmentAmount']
+                      $scope.donationInfo.installmentAmount = localStorage['installmentAmount']
+                    else
+                      $scope.donationInfo.installmentAmount = level.amount.decimal
                   $scope.donationInfo.levelChecked = classLevel
                   if $scope.donationInfo.monthly is false
                     angular.element('.finish-step').append '<span> '+ amount + ' <i class="fa fa-chevron-right" aria-hidden="true"></i></span>'
@@ -320,7 +322,6 @@ angular.module 'ahaLuminateControllers'
         employerMatchFields()
         billingAddressFields()
         donorRecognitionFields()
-        console.log $scope.donationInfo
         return
       ), (reason) ->
         #TO DO
