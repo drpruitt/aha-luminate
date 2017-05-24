@@ -307,6 +307,7 @@
     <form class="js--default-reg-form" action="[[A1]]" method="POST">
       <input type="hidden" name="fr_id" value="[[A2]]">
       <input type="hidden" name="pg" value="[[A7]]">
+      <input type="hidden" name="cons_email_format" value="1">
       <div ng-repeat="(key, value) in registrationHiddenFields">
         <input type="hidden" name="{{key}}" value="{{value}}">
       </div>
