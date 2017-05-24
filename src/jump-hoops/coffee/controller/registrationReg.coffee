@@ -86,12 +86,14 @@ angular.module 'ahaLuminateControllers'
         $optInQuestion = angular.element optInQuestion
         questionName = $optInQuestion.attr 'name'
         questionId = $optInQuestion.attr 'id'
+        questionChecked = $optInQuestion.is '[checked]'
         $questionLabel = angular.element 'label[for="' + questionId + '"]'
         questionLabel = undefined
         if $questionLabel.find('.input-label').length > 0
           questionLabel = jQuery.trim $questionLabel.find('.input-label').text()
         $scope.registrationQuestions[questionName] =
           label: questionLabel
+        $scope.registrationInfo[questionName] = questionChecked
       
       $loginInfo = angular.element '.js--registration-reg-login-info'
       $loginInfoHiddenFields = $loginInfo.find 'input[type="hidden"][name]'
