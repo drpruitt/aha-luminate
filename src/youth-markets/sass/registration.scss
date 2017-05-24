@@ -438,22 +438,28 @@
 }
 
 .ym-registration-reg-waiver-btns {
-  width: 210px;
+  width: 254px;
   margin: 0 auto;
   
   @media (min-width: 360px) {
-    width: 230px;
+    width: 282px;
   }
   
   @media (min-width: $screen-sm-min) {
-    width: 254px;
+    width: 286px;
   }
   
   .btn {
-    width: 100px;
+    font-size: 13px;
+    width: 122px;
+    
+    @media (min-width: 360px) {
+      font-size: inherit;
+      width: 126px;
+    }
     
     @media (min-width: $screen-sm-min) {
-      width: 112px;
+      width: 128px;
     }
   }
 }
