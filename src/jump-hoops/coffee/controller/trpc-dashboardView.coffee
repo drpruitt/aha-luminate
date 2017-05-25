@@ -137,11 +137,12 @@ angular.module 'trPcControllers'
         console.log $scope.coordinatorMessage.text
         NgPcTeamraiserTeamService.updateCaptainsMessage 'captains_message='+$scope.coordinatorMessage.text
             .then (response) ->
-              console.log response
-              $scope.coordinatorMessage.successMessage = true
-        
+              if response.data.updateCaptainsMessageResponse.success = 'true'
+                $scope.coordinatorMessage.successMessage = true
+                $scope.editCoordinatorMessageModal.close()
+              else
+                $scope.coordinatorMessage.errorMessage = 'There was an error processing your update. Please try again later.'      
 
-      
       $scope.personalGoalInfo = {}
       
       $scope.editPersonalGoal = ->

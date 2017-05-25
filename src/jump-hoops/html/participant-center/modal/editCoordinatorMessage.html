@@ -8,12 +8,6 @@
     <div uib-alert class="alert-danger" ng-if="coordinatorMessage.errorMessage">
       <div ng-bind-html="coordinatorMessage.errorMessage"></div>
     </div>
-    <div uib-alert class="alert-success" ng-if="coordinatorMessage.successMessage == true">
-      <p> 
-        You have successfully updated you message to the following:
-      </p>
-      <strong ng-bind-html="coordinatorMessage.text"></strong>
-    </div>
     <div class="form-group">
       <label for="coordinatorMessage" class="sr-only">Edit Coordinator Message</label>
       <input type="text" class="form-control" id="coordinatorMessage" ng-model="coordinatorMessage.text" aria-label="Coordinator Message" ng-value="coordinatorMessage.text" required>
