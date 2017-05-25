@@ -110,6 +110,14 @@ angular.module 'trPcControllers'
             response
         $scope.dashboardPromises.push fundraisingProgressPromise
       $scope.refreshFundraisingProgress()
+
+      $scope.editCoordinatorMessage = ->
+        $scope.editCoordinatorMessageModal = $uibModal.open
+          scope: $scope
+          templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/editCoordinatorMessage.html'
+
+      $scope.cancelEditCoordinatorMessage = ->
+        $scope.editCoordinatorMessageModal.close()
       
       $scope.personalGoalInfo = {}
       
