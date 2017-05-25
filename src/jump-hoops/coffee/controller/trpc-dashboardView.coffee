@@ -111,13 +111,36 @@ angular.module 'trPcControllers'
         $scope.dashboardPromises.push fundraisingProgressPromise
       $scope.refreshFundraisingProgress()
 
+      $scope.coordinatorMessage = {
+        'text' : ''
+        'errorMessage' : null
+        'successMessage': false
+      }
+
       $scope.editCoordinatorMessage = ->
         $scope.editCoordinatorMessageModal = $uibModal.open
           scope: $scope
           templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/editCoordinatorMessage.html'
+        NgPcTeamraiserTeamService.getCaptainsMessage()
+        .then (response) ->
+          console.log response
+          if response.data.getCaptainsMessageResponse.message is null
+            $scope.coordinatorMessage.text = ''
+          else
+            response.data.getCaptainsMessageResponse.message = $scope.coordinatorMessage.text
 
       $scope.cancelEditCoordinatorMessage = ->
         $scope.editCoordinatorMessageModal.close()
+
+      $scope.updateCoordinatorMessage = ->
+        console.log 'update submitted'
+        console.log $scope.coordinatorMessage.text
+        NgPcTeamraiserTeamService.updateCaptainsMessage 'captains_message='+$scope.coordinatorMessage.text
+            .then (response) ->
+              console.log response
+              $scope.coordinatorMessage.successMessage = true
+        
+
       
       $scope.personalGoalInfo = {}
       
