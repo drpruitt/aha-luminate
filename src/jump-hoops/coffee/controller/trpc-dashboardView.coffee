@@ -524,10 +524,5 @@ angular.module 'trPcControllers'
 
       console.log $scope.participantRegistration
 
-      #testing issue with getCompanyTeams issue, remove when done
-      NgPcTeamraiserTeamService.getCompanyTeams()
-
-
-
 
   ]

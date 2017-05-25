@@ -48,16 +48,4 @@ angular.module 'trPcApp'
         NgPcLuminateRESTService.teamraiserRequest dataString, true, true
           .then (response) ->
             response
-      
-      getCaptainsMessage: ->
-        NgPcLuminateRESTService.teamraiserRequest 'method=getCaptainsMessage', true, true
-          .then (response) ->
-            response
-
-      #researching getCompanyTeams Api issue, remove when done
-      getCompanyTeams: ->
-        NgPcLuminateRESTService.teamraiserRequest 'method=getCompanyTeams&company_id=1101', true, true
-          .then (response) ->
-            response
-            console.log response
   ]
