@@ -686,7 +686,7 @@ main > .container {
       
       @media (min-width: $screen-md-min) {
         display: inline-block;
-        width: calc(100% - 175px);
+        width: calc(100% - 200px);
         padding-right: 15px;
         margin: 0;
       }
@@ -699,7 +699,7 @@ main > .container {
         display: inline-block;
         text-align: right;
         vertical-align: top;
-        width: 175px;
+        width: 200px;
       }
       
       .btn, 
@@ -710,7 +710,7 @@ main > .container {
         &:hover, 
         &:focus, 
         &:active {
-          width: 175px;
+          width: 200px;
           
           @media (min-width: $screen-md-min) {
             width: auto;
@@ -759,6 +759,11 @@ main > .container {
   &.ym-activity-box--challenge {
     .ym_my_challenge__current {
       padding-bottom: 20px;
+
+      .col-sm-4 {
+        max-width: 300px;
+        margin: auto;
+      }
     }
     
     .ym_my_challenge__actions {
@@ -947,6 +952,10 @@ main > .container {
         @media (min-width: $screen-lg-min) {
           margin: 0 10px 0 0;
         }
+      }
+
+      &.btn {
+        max-width: 175px;
       }
     }
   }
