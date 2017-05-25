@@ -389,12 +389,12 @@
         </div>
       </div>
     </section>
-    <section class="ym-pc-dashboard-coordinators-message-section" ng-if="coordinatorsMessage.message && coordinatorsMessage.message != ''" ng-cloak>
+    <section class="ym-pc-dashboard-coordinators-message-section" ng-if="coordinatorMessage.message && coordinatorMessage.message != ''" ng-cloak>
       <div class="ym-pc-dashboard-section-header">
         <h2 class="h5">
           Note From Your Teacher
         </h2>
-        <div ng-bind-html="coordinatorsMessage.message"></div>
+        <div ng-bind-html="coordinatorMessage.message"></div>
       </div>
     </section>
   </div>
@@ -531,7 +531,13 @@
               <p>
                 Create/Update an <strong>encouraging message</strong> for your student in their Headquarters.
               </p>
-              <a class="btn btn-md-wide btn-primary">
+              <div uib-alert class="alert-success" ng-if="coordinatorMessage.successMessage == true">
+                <p> 
+                  You have successfully updated you message to the following:
+                </p>
+                <strong ng-bind-html="coordinatorMessage.text"></strong>
+              </div>
+              <a class="btn btn-md-wide btn-primary" ng-click="editCoordinatorMessage()">
                 <strong>Create Message</strong>
               </a>
             </div>

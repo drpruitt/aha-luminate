@@ -110,7 +110,48 @@ angular.module 'trPcControllers'
             response
         $scope.dashboardPromises.push fundraisingProgressPromise
       $scope.refreshFundraisingProgress()
-      
+
+
+
+      $scope.coordinatorMessage = {
+        'text' : ''
+        'errorMessage' : null
+        'successMessage': false
+        'message' : ''
+      }
+
+      if $scope.participantRegistration.companyInformation.isCompanyCoordinator is true
+        $scope.editCoordinatorMessage = ->
+          $scope.editCoordinatorMessageModal = $uibModal.open
+            scope: $scope
+            templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/editCoordinatorMessage.html'
+          NgPcTeamraiserTeamService.getCaptainsMessage()
+          .then (response) ->
+            if response.data.getCaptainsMessageResponse.message is null
+              $scope.coordinatorMessage.text = ''
+            else
+               $scope.coordinatorMessage.text = response.data.getCaptainsMessageResponse.message
+
+        $scope.cancelEditCoordinatorMessage = ->
+          $scope.editCoordinatorMessageModal.close()
+
+        $scope.updateCoordinatorMessage = ->
+          NgPcTeamraiserTeamService.updateCaptainsMessage 'captains_message='+$scope.coordinatorMessage.text
+              .then (response) ->
+                if response.data.updateCaptainsMessageResponse.success = 'true'
+                  $scope.coordinatorMessage.successMessage = true
+                  $scope.editCoordinatorMessageModal.close()
+                else
+                  $scope.coordinatorMessage.errorMessage = 'There was an error processing your update. Please try again later.'   
+      else
+        NgPcTeamraiserTeamService.getCaptainsMessage()
+          .then (response) ->
+            if response.data.getCaptainsMessageResponse.message is null
+              $scope.coordinatorMessage.message = ''
+            else
+               $scope.coordinatorMessage.message = response.data.getCaptainsMessageResponse.message
+
+
       $scope.personalGoalInfo = {}
       
       $scope.editPersonalGoal = ->
@@ -480,4 +521,13 @@ angular.module 'trPcControllers'
           ]
 
       $timeout initCarousel, 1000
+
+      console.log $scope.participantRegistration
+
+      #testing issue with getCompanyTeams issue, remove when done
+      NgPcTeamraiserTeamService.getCompanyTeams()
+
+
+
+
   ]
