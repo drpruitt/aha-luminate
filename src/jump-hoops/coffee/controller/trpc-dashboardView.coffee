@@ -123,18 +123,15 @@ angular.module 'trPcControllers'
           templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/editCoordinatorMessage.html'
         NgPcTeamraiserTeamService.getCaptainsMessage()
         .then (response) ->
-          console.log response
           if response.data.getCaptainsMessageResponse.message is null
             $scope.coordinatorMessage.text = ''
           else
-            response.data.getCaptainsMessageResponse.message = $scope.coordinatorMessage.text
+             $scope.coordinatorMessage.text = response.data.getCaptainsMessageResponse.message
 
       $scope.cancelEditCoordinatorMessage = ->
         $scope.editCoordinatorMessageModal.close()
 
       $scope.updateCoordinatorMessage = ->
-        console.log 'update submitted'
-        console.log $scope.coordinatorMessage.text
         NgPcTeamraiserTeamService.updateCaptainsMessage 'captains_message='+$scope.coordinatorMessage.text
             .then (response) ->
               if response.data.updateCaptainsMessageResponse.success = 'true'
