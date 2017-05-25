@@ -144,10 +144,8 @@ angular.module 'trPcControllers'
                 else
                   $scope.coordinatorMessage.errorMessage = 'There was an error processing your update. Please try again later.'   
       else
-        console.log 'not coord'
         NgPcTeamraiserTeamService.getCaptainsMessage()
           .then (response) ->
-            console.log response
             if response.data.getCaptainsMessageResponse.message is null
               $scope.coordinatorMessage.message = ''
             else
@@ -525,4 +523,11 @@ angular.module 'trPcControllers'
       $timeout initCarousel, 1000
 
       console.log $scope.participantRegistration
+
+      #testing issue with getCompanyTeams issue, remove when done
+      NgPcTeamraiserTeamService.getCompanyTeams()
+
+
+
+
   ]
