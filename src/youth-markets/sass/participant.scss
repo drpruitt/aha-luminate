@@ -937,25 +937,11 @@ main > .container {
           display: inline-block;
         }
       }
-      
-      &:first-child {
-        margin: 0 auto 10px;
-        
-        @media (min-width: 480px) {
-          margin: 0 10px 0 0;
-        }
-        
-        @media (min-width: $screen-sm-min) {
-          margin: 0 auto 10px;
-        }
-        
-        @media (min-width: $screen-lg-min) {
-          margin: 0 10px 0 0;
-        }
-      }
 
       &.btn {
-        max-width: 175px;
+        max-width: 200px;
+        display: block;
+        margin: 0 auto 10px;
       }
     }
   }
