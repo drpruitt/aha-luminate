@@ -153,7 +153,6 @@ angular.module 'trPcControllers'
                $scope.coordinatorMessage.message = response.data.getCaptainsMessageResponse.message
         ###
 
-
       $scope.personalGoalInfo = {}
       
       $scope.editPersonalGoal = ->
