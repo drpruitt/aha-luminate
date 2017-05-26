@@ -126,7 +126,7 @@ angular.module 'trPcControllers'
 
       if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
         interactionData = 'interaction_type_id=' + interactionTypeId + '&cons_id=' + $scope.participantRegistration.consId + '&list_page_size=1'
-        NgPcInteractionService.getInteraction interactionData
+        NgPcInteractionService.getUserInteractions interactionData
           .then (response) ->
             if response.data.getUserInteractionsResponse.interaction
               $scope.coordinatorMessage.text = response.data.getUserInteractionsResponse.interaction.note.text
@@ -164,16 +164,16 @@ angular.module 'trPcControllers'
         NgPcTeamraiserCompanyService.getCompany()
           .then (response) ->
             coordinatorId = response.data.getCompaniesResponse.company.coordinatorId
-            console.log response
 
-            NgPcInteractionService.getInteraction 'interaction_type_id=' + interactionTypeId + '&cons_id=' + coordinatorId + '&list_page_size=1'
+            NgPcInteractionService.listInteractions 'interaction_type_id=' + interactionTypeId + '&cons_id=' + coordinatorId
               .then (response) ->
                 console.log response
-                if response.data.getUserInteractionsResponse.interaction
-                  $scope.coordinatorMessage.text = response.data.getUserInteractionsResponse.interaction.note.text
-                  $scope.coordinatorMessage.interactionId = response.data.getUserInteractionsResponse.interaction.interactionId
+                
+                if response.data.listInteractionsResponse.interaction
+                  $scope.coordinatorMessage.message = response.data.listInteractionsResponse.interaction.note.text
+                  $scope.coordinatorMessage.interactionId = response.data.listInteractionsResponse.interaction.interactionId
                 else
-                  $scope.coordinatorMessage.text = ''
+                  $scope.coordinatorMessage.message = ''
                   $scope.coordinatorMessage.interactionId = ''
 
       $scope.personalGoalInfo = {}

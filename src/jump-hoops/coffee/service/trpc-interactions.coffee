@@ -2,8 +2,15 @@ angular.module 'trPcApp'
   .factory 'NgPcInteractionService', [
     'NgPcLuminateRESTService'
     (NgPcLuminateRESTService) ->
-      getInteraction: (requestData) ->
+      getUserInteractions: (requestData) ->
         dataString = 'method=getUserInteractions'
+        dataString += '&' + requestData if requestData and requestData isnt ''
+        NgPcLuminateRESTService.consRequest dataString, true
+          .then (response) ->
+            response
+
+      listInteractions: (requestData) ->
+        dataString = 'method=listInteractions'
         dataString += '&' + requestData if requestData and requestData isnt ''
         NgPcLuminateRESTService.consRequest dataString, true
           .then (response) ->
