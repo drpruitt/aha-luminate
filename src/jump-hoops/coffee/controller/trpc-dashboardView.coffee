@@ -14,8 +14,9 @@ angular.module 'trPcControllers'
     'NgPcContactService'
     'NgPcTeamraiserShortcutURLService'
     'NgPcInteractionService'
+    'NgPcTeamraiserCompanyService'
     '$timeout'
-    ($rootScope, $scope, $filter, $uibModal, APP_INFO, ZuriService, ParticipantBadgesService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserGiftService, NgPcContactService, NgPcTeamraiserShortcutURLService, NgPcInteractionService, $timeout) ->
+    ($rootScope, $scope, $filter, $uibModal, APP_INFO, ZuriService, ParticipantBadgesService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserGiftService, NgPcContactService, NgPcTeamraiserShortcutURLService, NgPcInteractionService, NgPcTeamraiserCompanyService, $timeout) ->
       $scope.dashboardPromises = []
       $dataRoot = angular.element '[data-embed-root]'
       
@@ -113,55 +114,67 @@ angular.module 'trPcControllers'
         $scope.dashboardPromises.push fundraisingProgressPromise
       $scope.refreshFundraisingProgress()
 
-      interactionType = $dataRoot.data('coordinator-message-id')
+      interactionTypeId = $dataRoot.data('coordinator-message-id')
       
       $scope.coordinatorMessage = {
         'text' : ''
         'errorMessage' : null
         'successMessage': false
         'message' : ''
+        'interactionId' : ''
       }
 
-      if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true' or true
-        
-        interactionData = 'interaction_id=' + interactionType + '&cons_id=' + $scope.participantRegistration.consId + '&list_page_size=1'
-        console.log interactionData
+      if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
+        interactionData = 'interaction_type_id=' + interactionTypeId + '&cons_id=' + $scope.participantRegistration.consId + '&list_page_size=1'
         NgPcInteractionService.getInteraction interactionData
           .then (response) ->
-            console.log response
+            if response.data.getUserInteractionsResponse.interaction
+              $scope.coordinatorMessage.text = response.data.getUserInteractionsResponse.interaction.note.text
+              $scope.coordinatorMessage.interactionId = response.data.getUserInteractionsResponse.interaction.interactionId
+            else
+              $scope.coordinatorMessage.text = ''
+              $scope.coordinatorMessage.interactionId = ''
 
         $scope.editCoordinatorMessage = ->
           $scope.editCoordinatorMessageModal = $uibModal.open
             scope: $scope
             templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/editCoordinatorMessage.html'
-          NgPcTeamraiserTeamService.getCaptainsMessage()
-          .then (response) ->
-            if response.data.getCaptainsMessageResponse.message is null
-              $scope.coordinatorMessage.text = ''
-            else
-               $scope.coordinatorMessage.text = response.data.getCaptainsMessageResponse.message
 
         $scope.cancelEditCoordinatorMessage = ->
           $scope.editCoordinatorMessageModal.close()
 
         $scope.updateCoordinatorMessage = ->
-          NgPcTeamraiserTeamService.updateCaptainsMessage 'captains_message='+$scope.coordinatorMessage.text
+          if $scope.coordinatorMessage.interactionId is ''
+            NgPcInteractionService.logInteraction 'interaction_type_id=' + interactionTypeId + '&cons_id=' + $scope.participantRegistration.consId + '&interaction_subject=CoordinatorMessage&interaction_body=' + $scope.coordinatorMessage.text
+                .then (response) ->
+                  if response.data.updateConsResponse.message 
+                    $scope.coordinatorMessage.successMessage = true
+                    $scope.editCoordinatorMessageModal.close()
+                  else
+                    $scope.coordinatorMessage.errorMessage = 'There was an error processing your update. Please try again later.' 
+          else
+            NgPcInteractionService.updateInteraction 'interaction_id=' + $scope.coordinatorMessage.interactionId + '&cons_id=' + $scope.participantRegistration.consId + '&interaction_subject=CoordinatorMessage&interaction_body=' + $scope.coordinatorMessage.text
               .then (response) ->
-                if response.data.updateCaptainsMessageResponse.success = 'true'
-                  $scope.coordinatorMessage.successMessage = true
-                  $scope.editCoordinatorMessageModal.close()
+                if response.data.errorResponse 
+                  $scope.coordinatorMessage.errorMessage = 'There was an error processing your update. Please try again later.' 
                 else
-                  $scope.coordinatorMessage.errorMessage = 'There was an error processing your update. Please try again later.'   
+                  $scope.coordinatorMessage.successMessage = true
+                  $scope.editCoordinatorMessageModal.close()         
       else
-        
-        ###
-        NgPcTeamraiserTeamService.getCaptainsMessage()
+        NgPcTeamraiserCompanyService.getCompany()
           .then (response) ->
-            if response.data.getCaptainsMessageResponse.message is null
-              $scope.coordinatorMessage.message = ''
-            else
-               $scope.coordinatorMessage.message = response.data.getCaptainsMessageResponse.message
-        ###
+            coordinatorId = response.data.getCompaniesResponse.company.coordinatorId
+            console.log response
+
+            NgPcInteractionService.getInteraction 'interaction_type_id=' + interactionTypeId + '&cons_id=' + coordinatorId + '&list_page_size=1'
+              .then (response) ->
+                console.log response
+                if response.data.getUserInteractionsResponse.interaction
+                  $scope.coordinatorMessage.text = response.data.getUserInteractionsResponse.interaction.note.text
+                  $scope.coordinatorMessage.interactionId = response.data.getUserInteractionsResponse.interaction.interactionId
+                else
+                  $scope.coordinatorMessage.text = ''
+                  $scope.coordinatorMessage.interactionId = ''
 
       $scope.personalGoalInfo = {}
       

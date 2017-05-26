@@ -3,7 +3,7 @@ angular.module 'trPcApp'
     'NgPcLuminateRESTService'
     (NgPcLuminateRESTService) ->
       getInteraction: (requestData) ->
-        dataString = 'method=getInteraction'
+        dataString = 'method=getUserInteractions'
         dataString += '&' + requestData if requestData and requestData isnt ''
         NgPcLuminateRESTService.consRequest dataString, true
           .then (response) ->
