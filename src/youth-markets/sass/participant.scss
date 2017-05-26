@@ -908,6 +908,18 @@ main > .container {
   
   .ym-pc-dashboard-spread-options {
     text-align: center;
+
+    .row > div {
+      margin: 0 0 40px;
+
+      &:last-child {
+        margin: 0;
+      }
+
+      @media(min-width: $screen-md-min) {
+        margin: 0;
+      }
+    }
     
     .ym-pc-dashboard-section-header {
       .h5 {
@@ -923,19 +935,7 @@ main > .container {
       &:focus, 
       &:active {
         display: block;
-        margin: 0 auto;
-        
-        @media (min-width: 480px) {
-          display: inline-block;
-        }
-        
-        @media (min-width: $screen-sm-min) {
-          display: block;
-        }
-        
-        @media (min-width: $screen-lg-min) {
-          display: inline-block;
-        }
+        margin: 0 auto 10px;
       }
 
       &.btn {
