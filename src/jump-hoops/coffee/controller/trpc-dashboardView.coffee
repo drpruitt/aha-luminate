@@ -144,12 +144,14 @@ angular.module 'trPcControllers'
                 else
                   $scope.coordinatorMessage.errorMessage = 'There was an error processing your update. Please try again later.'   
       else
+        ###
         NgPcTeamraiserTeamService.getCaptainsMessage()
           .then (response) ->
             if response.data.getCaptainsMessageResponse.message is null
               $scope.coordinatorMessage.message = ''
             else
                $scope.coordinatorMessage.message = response.data.getCaptainsMessageResponse.message
+        ###
 
 
       $scope.personalGoalInfo = {}
