@@ -8,6 +8,13 @@ angular.module 'trPcApp'
         NgPcLuminateRESTService.consRequest dataString, true
           .then (response) ->
             response
+
+      listInteractions: (requestData) ->
+        dataString = 'method=listInteractions'
+        dataString += '&' + requestData if requestData and requestData isnt ''
+        NgPcLuminateRESTService.consRequest dataString, true
+          .then (response) ->
+            response
       
       logInteraction: (requestData) ->
         dataString = 'method=logInteraction'

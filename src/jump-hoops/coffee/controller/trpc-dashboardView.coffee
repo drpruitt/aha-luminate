@@ -145,7 +145,7 @@ angular.module 'trPcControllers'
 
         $scope.updateCoordinatorMessage = ->
           if $scope.coordinatorMessage.interactionId is ''
-            NgPcInteractionService.logInteraction 'interaction_type_id=' + interactionTypeId + '&cons_id=' + $scope.participantRegistration.consId + '&interaction_subject=CoordinatorMessage&interaction_body=' + $scope.coordinatorMessage.text
+            NgPcInteractionService.logInteraction 'interaction_type_id=' + interactionTypeId + '&cons_id=' + $scope.participantRegistration.consId + '&interaction_subject=' + $scope.participantRegistration.companyInformation.companyId + '&interaction_body=' + $scope.coordinatorMessage.text
                 .then (response) ->
                   if response.data.updateConsResponse.message 
                     $scope.coordinatorMessage.successMessage = true
@@ -153,7 +153,7 @@ angular.module 'trPcControllers'
                   else
                     $scope.coordinatorMessage.errorMessage = 'There was an error processing your update. Please try again later.' 
           else
-            NgPcInteractionService.updateInteraction 'interaction_id=' + $scope.coordinatorMessage.interactionId + '&cons_id=' + $scope.participantRegistration.consId + '&interaction_subject=CoordinatorMessage&interaction_body=' + $scope.coordinatorMessage.text
+            NgPcInteractionService.updateInteraction 'interaction_id=' + $scope.coordinatorMessage.interactionId + '&cons_id=' + $scope.participantRegistration.consId + '&interaction_subject=' + $scope.participantRegistration.companyInformation.companyId + '&interaction_body=' + $scope.coordinatorMessage.text
               .then (response) ->
                 if response.data.errorResponse 
                   $scope.coordinatorMessage.errorMessage = 'There was an error processing your update. Please try again later.' 
@@ -161,20 +161,14 @@ angular.module 'trPcControllers'
                   $scope.coordinatorMessage.successMessage = true
                   $scope.editCoordinatorMessageModal.close()         
       else
-        NgPcTeamraiserCompanyService.getCompany()
+        NgPcInteractionService.listInteractions 'interaction_type_id=' + interactionTypeId + '&interaction_subject=' + $scope.participantRegistration.companyInformation.companyId
           .then (response) ->
-            coordinatorId = response.data.getCompaniesResponse.company.coordinatorId
-
-            NgPcInteractionService.listInteractions 'interaction_type_id=' + interactionTypeId + '&cons_id=' + coordinatorId
-              .then (response) ->
-                console.log response
-                
-                if response.data.listInteractionsResponse.interaction
-                  $scope.coordinatorMessage.message = response.data.listInteractionsResponse.interaction.note.text
-                  $scope.coordinatorMessage.interactionId = response.data.listInteractionsResponse.interaction.interactionId
-                else
-                  $scope.coordinatorMessage.message = ''
-                  $scope.coordinatorMessage.interactionId = ''
+            if response.data.listInteractionsResponse.interaction
+              $scope.coordinatorMessage.message = response.data.listInteractionsResponse.interaction.note.text
+              $scope.coordinatorMessage.interactionId = response.data.listInteractionsResponse.interaction.interactionId
+            else
+              $scope.coordinatorMessage.message = ''
+              $scope.coordinatorMessage.interactionId = ''
 
       $scope.personalGoalInfo = {}
       
