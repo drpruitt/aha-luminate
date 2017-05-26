@@ -13,9 +13,11 @@ angular.module 'trPcControllers'
     'NgPcTeamraiserGiftService'
     'NgPcContactService'
     'NgPcTeamraiserShortcutURLService'
+    'NgPcInteractionService'
     '$timeout'
-    ($rootScope, $scope, $filter, $uibModal, APP_INFO, ZuriService, ParticipantBadgesService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserGiftService, NgPcContactService, NgPcTeamraiserShortcutURLService, $timeout) ->
+    ($rootScope, $scope, $filter, $uibModal, APP_INFO, ZuriService, ParticipantBadgesService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserGiftService, NgPcContactService, NgPcTeamraiserShortcutURLService, NgPcInteractionService, $timeout) ->
       $scope.dashboardPromises = []
+      $dataRoot = angular.element '[data-aha-luminate-root]'
       
       if $scope.participantRegistration.lastPC2Login is '0'
         $scope.firstLoginModal = $uibModal.open
@@ -120,7 +122,16 @@ angular.module 'trPcControllers'
         'message' : ''
       }
 
+      consId = consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
+      interactionType = $dataRoot.data('coordinator-message-id') if $dataRoot.data('coordinator-message-id') isnt ''
+      
       if $scope.participantRegistration.companyInformation.isCompanyCoordinator is true
+
+        interactionData = 'interaction_id=' + interactionType + '&cons_id= ' + consId + '&list_page_size=1'
+        NgPcInteractionService.getUserInteractions interactionData
+          .then (response) ->
+            console.log response
+
         $scope.editCoordinatorMessage = ->
           $scope.editCoordinatorMessageModal = $uibModal.open
             scope: $scope
