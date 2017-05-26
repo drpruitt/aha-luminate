@@ -17,7 +17,7 @@ angular.module 'trPcControllers'
     '$timeout'
     ($rootScope, $scope, $filter, $uibModal, APP_INFO, ZuriService, ParticipantBadgesService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserGiftService, NgPcContactService, NgPcTeamraiserShortcutURLService, NgPcInteractionService, $timeout) ->
       $scope.dashboardPromises = []
-      $dataRoot = angular.element '[data-aha-luminate-root]'
+      $dataRoot = angular.element '[data-embed-root]'
       
       if $scope.participantRegistration.lastPC2Login is '0'
         $scope.firstLoginModal = $uibModal.open
@@ -113,8 +113,8 @@ angular.module 'trPcControllers'
         $scope.dashboardPromises.push fundraisingProgressPromise
       $scope.refreshFundraisingProgress()
 
-
-
+      interactionType = $dataRoot.data('coordinator-message-id')
+      
       $scope.coordinatorMessage = {
         'text' : ''
         'errorMessage' : null
@@ -122,13 +122,11 @@ angular.module 'trPcControllers'
         'message' : ''
       }
 
-      consId = consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
-      interactionType = $dataRoot.data('coordinator-message-id') if $dataRoot.data('coordinator-message-id') isnt ''
-      
-      if $scope.participantRegistration.companyInformation.isCompanyCoordinator is true
-
-        interactionData = 'interaction_id=' + interactionType + '&cons_id= ' + consId + '&list_page_size=1'
-        NgPcInteractionService.getUserInteractions interactionData
+      if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true' or true
+        
+        interactionData = 'interaction_id=' + interactionType + '&cons_id=' + $scope.participantRegistration.consId + '&list_page_size=1'
+        console.log interactionData
+        NgPcInteractionService.getInteraction interactionData
           .then (response) ->
             console.log response
 
@@ -155,6 +153,7 @@ angular.module 'trPcControllers'
                 else
                   $scope.coordinatorMessage.errorMessage = 'There was an error processing your update. Please try again later.'   
       else
+        
         ###
         NgPcTeamraiserTeamService.getCaptainsMessage()
           .then (response) ->
