@@ -57,6 +57,8 @@ angular.module 'trPcControllers'
                     lastName: gift.name.last
                     email: gift.email
                   gift.giftAmountFormatted = $filter('currency') gift.giftAmount / 100, '$', 0
+                  if gift.giftMessage
+                    gift.showMessage = 'false'
                   participantGifts.push gift
                 $scope.participantGifts.gifts = participantGifts
               $scope.participantGifts.totalNumber = if response.data.getGiftsResponse.totalNumberResults then Number(response.data.getGiftsResponse.totalNumberResults) else 0
@@ -255,11 +257,10 @@ angular.module 'trPcControllers'
             response
         $scope.reportPromises.push schoolDetailReportPromise
 
-      $scope.showNote = false
+      console.log $scope.participantGifts
       $scope.toggleNote = ->
-        console.log 'click'
-        if $scope.showNote = false
-          $scope.showNote = true
+        if $scope.participantGift.showMessage is 'false'
+          $scope.participantGift.showMessage = 'true'
         else
-          $scope.showNote = false
+          $scope.participantGift.showMessage = 'false' 
   ]

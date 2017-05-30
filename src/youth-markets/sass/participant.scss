@@ -1600,12 +1600,25 @@ main > .container {
       padding: 28px 0 0;
     }
   }
+}
 
-  .ym-pc-reports-list__acknowledge {
-    > div {
-      display: inline-block;
-      margin: 0 5px 5px 0;
-    }
+.ym-pc-reports-lists__acknowledge {
+  > div {
+    display: inline-block;
+  }
+
+  .ym-pc-reports-lists__note {
+    position: relative;
+    margin: 0 0 0 20px;
+  }
+
+  .ym-pc-reports-lists__note--show {
+    width: 300px;
+    position: absolute;
+    top: 0;
+    padding: 10px;
+    border: 1px solid $inactive-grey;
+    background: $brand-white;
   }
 }
 
