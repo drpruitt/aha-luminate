@@ -256,14 +256,4 @@ angular.module 'trPcControllers'
                   $scope.schoolDetailStudents.downloadData = schoolDetailDownloadData
             response
         $scope.reportPromises.push schoolDetailReportPromise
-
-      console.log $scope.participantGifts
-      $scope.toggleNote = (msg)->
-        console.log participantGift.showMessage
-        ###
-        if $scope.participantGift.showMessage is 'false'
-          $scope.participantGift.showMessage = 'true'
-        else
-          $scope.participantGift.showMessage = 'false'
-        ### 
   ]
