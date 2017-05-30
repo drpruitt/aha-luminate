@@ -1600,6 +1600,13 @@ main > .container {
       padding: 28px 0 0;
     }
   }
+
+  .ym-pc-reports-list__acknowledge {
+    > div {
+      display: inline-block;
+      margin: 0 5px 5px 0;
+    }
+  }
 }
 
 .ym-pc-reports--no-tabs {
