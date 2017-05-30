@@ -197,10 +197,10 @@
                           </a>
                         </div>
                         <div class="ym-pc-reports-lists__note" ng-if="participantGift.giftMessage">
-                          <a ng-click="toggleNote()">
+                          <a ng-click="toggleNote()" ng-model="showNote">
                             See Note <i class="fa fa-chevron-up" ng-show="showNote == true"></i><i class="fa fa-chevron-down" ng-show="showNote == false"></i></i>
                           </a>
-                          <div class="ym-pc-reports-lists__note--show" ng-show="showNote == true">
+                          <div class="ym-pc-reports-lists__note--show" ng-show="showNote == true" ng-model="showNote">
                             {{participantGift.giftMessage}}
                           </div>
                         </div>
