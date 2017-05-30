@@ -258,9 +258,12 @@ angular.module 'trPcControllers'
         $scope.reportPromises.push schoolDetailReportPromise
 
       console.log $scope.participantGifts
-      $scope.toggleNote = ->
+      $scope.toggleNote = (msg)->
+        console.log msg
+        ###
         if $scope.participantGift.showMessage is 'false'
           $scope.participantGift.showMessage = 'true'
         else
-          $scope.participantGift.showMessage = 'false' 
+          $scope.participantGift.showMessage = 'false'
+        ### 
   ]
