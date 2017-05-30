@@ -8,7 +8,6 @@ angular.module 'trPcControllers'
     'NgPcTeamraiserGiftService'
     'NgPcTeamraiserReportsService'
     ($rootScope, $scope, $filter, $location, NgPcTeamraiserEmailService, NgPcTeamraiserGiftService, NgPcTeamraiserReportsService) ->
-      console.log 'reports view'
       $scope.reportPromises = []
       
       $scope.activeReportTab = if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true' then 0 else 1
@@ -256,10 +255,9 @@ angular.module 'trPcControllers'
             response
         $scope.reportPromises.push schoolDetailReportPromise
 
-
-      console.log $scope.participantGifts
       $scope.showNote = false
       $scope.toggleNote = ->
+        console.log 'click'
         if $scope.showNote = false
           $scope.showNote = true
         else
