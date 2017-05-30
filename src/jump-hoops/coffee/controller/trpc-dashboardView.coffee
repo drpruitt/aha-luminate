@@ -540,7 +540,4 @@ angular.module 'trPcControllers'
 
       $timeout initCarousel, 1000
 
-      console.log $scope.participantRegistration
-
-
   ]
