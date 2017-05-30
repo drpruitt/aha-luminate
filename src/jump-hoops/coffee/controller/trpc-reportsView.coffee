@@ -259,7 +259,7 @@ angular.module 'trPcControllers'
 
       console.log $scope.participantGifts
       $scope.toggleNote = (msg)->
-        console.log msg
+        console.log participantGift.showMessage
         ###
         if $scope.participantGift.showMessage is 'false'
           $scope.participantGift.showMessage = 'true'
