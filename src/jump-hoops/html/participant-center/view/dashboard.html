@@ -34,7 +34,7 @@
               </div>
             </div>
             <div ng-class="{'hidden': dashboardProgressType != 'personal'}" ng-cloak>
-              <div class="ym-progress__thermometer">
+              <div class="ym-progress__thermometer" name="Personal Progress Bar" aria-valuetext="Personal Progress Bar" role="progressbar" aria-valuenow="{{participantProgress.percent}}%" aria-valuemin="0%" aria-valuemax="100%">
                 <div class="ym-progress__thermometer--fill" ng-style="{'width': participantProgress.percent + '%'}"></div>
               </div>
               <div class="ym-progress-related clearfix">
@@ -61,7 +61,7 @@
               </div>
             </div>
             <div ng-class="{'hidden': dashboardProgressType != 'company'}" ng-cloak>
-              <div class="ym-progress__thermometer">
+              <div class="ym-progress__thermometer" name="School Progress Bar" aria-valuetext="School Progress Bar" role="progressbar" aria-valuenow="{{companyProgress.percent}}%" aria-valuemin="0%" aria-valuemax="100%">
                 <div class="ym-progress__thermometer--fill" ng-style="{'width': companyProgress.percent + '%'}"></div>
               </div>
               <div class="ym-progress-related clearfix">
@@ -78,7 +78,7 @@
               </div>
             </div>
             <div ng-class="{'hidden': dashboardProgressType != 'team'}" ng-if="companyInfo.teamCount > 1" ng-cloak>
-              <div class="ym-progress__thermometer">
+              <div class="ym-progress__thermometer" name="Class Progress Bar" aria-valuetext="Class Progress Bar" role="progressbar" aria-valuenow="{{teamProgress.percent}}%" aria-valuemin="0%" aria-valuemax="100%">
                 <div class="ym-progress__thermometer--fill" ng-style="{'width': teamProgress.percent + '%'}"></div>
               </div>
               <div class="ym-progress-related clearfix">
@@ -820,7 +820,7 @@
     </div>
     <div class="ym-pc-dashboard-spread-options">
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-sm-4">
           <div class="ym-pc-dashboard-section-header">
             <h3 class="h5">
               Download Mobile App
@@ -838,7 +838,7 @@
             </a>
           </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-sm-4">
           <div class="ym-pc-dashboard-section-header">
             <h3 class="h5">
               Facebook Fundraising
@@ -853,25 +853,7 @@
             </a>
           </div>
         </div>
-        <div class="col-md-3">
-          <div class="ym-pc-dashboard-section-header">
-            <h3 class="h5">
-              Email Signature
-            </h3>
-          </div>
-          <p>
-            Download a signature for your email!
-          </p>
-          <div class="text-center">
-            <a class="btn btn-md-wide btn-secondary" ng-href="http://www2.charitydynamics.com/site/PageServer?pagename=Boundless_Email_Client" target="_blank">
-              <strong>PC Instructions</strong>
-            </a> 
-            <a class="btn btn-md-wide btn-secondary" ng-href="http://www2.charitydynamics.com/site/PageServer?pagename=Boundless_Email_Client_Mac" target="_blank">
-              <strong>Mac Instructions</strong>
-            </a>
-          </div>
-        </div>
-        <div class="col-md-3">
+        <div class="col-sm-4">
           <div class="ym-pc-dashboard-section-header">
             <h3 class="h5">
               Email Badge
