@@ -686,7 +686,7 @@ main > .container {
       
       @media (min-width: $screen-md-min) {
         display: inline-block;
-        width: calc(100% - 175px);
+        width: calc(100% - 200px);
         padding-right: 15px;
         margin: 0;
       }
@@ -699,7 +699,7 @@ main > .container {
         display: inline-block;
         text-align: right;
         vertical-align: top;
-        width: 175px;
+        width: 200px;
       }
       
       .btn, 
@@ -710,7 +710,7 @@ main > .container {
         &:hover, 
         &:focus, 
         &:active {
-          width: 175px;
+          width: 200px;
           
           @media (min-width: $screen-md-min) {
             width: auto;
@@ -759,6 +759,11 @@ main > .container {
   &.ym-activity-box--challenge {
     .ym_my_challenge__current {
       padding-bottom: 20px;
+
+      .col-sm-4 {
+        max-width: 300px;
+        margin: auto;
+      }
     }
     
     .ym_my_challenge__actions {
@@ -903,6 +908,18 @@ main > .container {
   
   .ym-pc-dashboard-spread-options {
     text-align: center;
+
+    .row > div {
+      margin: 0 0 40px;
+
+      &:last-child {
+        margin: 0;
+      }
+
+      @media(min-width: $screen-md-min) {
+        margin: 0;
+      }
+    }
     
     .ym-pc-dashboard-section-header {
       .h5 {
@@ -918,35 +935,13 @@ main > .container {
       &:focus, 
       &:active {
         display: block;
-        margin: 0 auto;
-        
-        @media (min-width: 480px) {
-          display: inline-block;
-        }
-        
-        @media (min-width: $screen-sm-min) {
-          display: block;
-        }
-        
-        @media (min-width: $screen-lg-min) {
-          display: inline-block;
-        }
-      }
-      
-      &:first-child {
         margin: 0 auto 10px;
-        
-        @media (min-width: 480px) {
-          margin: 0 10px 0 0;
-        }
-        
-        @media (min-width: $screen-sm-min) {
-          margin: 0 auto 10px;
-        }
-        
-        @media (min-width: $screen-lg-min) {
-          margin: 0 10px 0 0;
-        }
+      }
+
+      &.btn {
+        max-width: 200px;
+        display: block;
+        margin: 0 auto 10px;
       }
     }
   }
@@ -1604,6 +1599,26 @@ main > .container {
     > .tab-pane {
       padding: 28px 0 0;
     }
+  }
+}
+
+.ym-pc-reports-lists__acknowledge {
+  > div {
+    display: inline-block;
+  }
+
+  .ym-pc-reports-lists__note {
+    position: relative;
+    margin: 0 0 0 20px;
+  }
+
+  .ym-pc-reports-lists__note--show {
+    width: 300px;
+    position: absolute;
+    top: 30px;
+    padding: 10px;
+    border: 1px solid $inactive-grey;
+    background: $brand-white;
   }
 }
 

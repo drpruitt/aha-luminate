@@ -190,10 +190,22 @@
                       <div ng-if="participantGift.name.first && participantGift.name.first != ''">
                         <span ng-bind-html="participantGift.name.first"></span> <span ng-bind-html="participantGift.name.last"></span>
                       </div>
-                      <div ng-if="participantGift.acknowledged != 'true'">
-                        <a class="btn btn-md-wide btn-primary" ng-click="thankParticipantDonor(participantGift)">
-                          <i class="fa fa-envelope" aria-hidden="true"></i> <strong>Thank</strong>
-                        </a>
+                      <div class="ym-pc-reports-lists__acknowledge">
+                        <div class="ym-pc-reports-lists__thanks" ng-if="participantGift.acknowledged != 'true'">
+                          <a class="btn btn-md-wide btn-primary" ng-click="thankParticipantDonor(participantGift)">
+                            <i class="fa fa-envelope" aria-hidden="true"></i> <strong>Thank</strong>
+                          </a>
+                        </div>
+                        <div class="ym-pc-reports-lists__note" ng-if="participantGift.giftMessage">
+                          <a ng-click="showMessage = ! showMessage">
+                            <strong> 
+                              See Note <i class="fa fa-chevron-up"></i>
+                            </strong>
+                          </a>
+                          <div class="ym-pc-reports-lists__note--show" ng-show="showMessage">
+                            {{participantGift.giftMessage}}
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </td>
