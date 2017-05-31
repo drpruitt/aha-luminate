@@ -69,7 +69,7 @@
         <div class="form-inline text-center">
           <label for="school-name-filter" class="sr-only">Start typing your school's name:</label>
           <input type="text" id="school-name-filter" name="school-name-filter" class="form-control" maxlength="40" placeholder="Start typing your school's name"
-            uib-typeahead="school.SCHOOL_NAME for school in schools | unique: 'school.SCHOOL_NAME' | filter: {SCHOOL_NAME:$viewValue}"
+            uib-typeahead="school.SCHOOL_NAME for school in schools | unique: 'SCHOOL_NAME' | filter: {SCHOOL_NAME:$viewValue}"
             typeahead-min-length="3"
             typeahead-editable="false"
             typeahead-focus-first="false"
@@ -209,19 +209,19 @@
             <h2 class="text-center">Your Impact</h2>
             <div class="ym-promo-block__item ym-promo-block__item--participants ym-promo-block--circle">
               <section>
-                <h2 class="ym-headline">{{totalStudents}}</h2>
+                <div class="h2 ym-headline">{{totalStudents}}</div>
                 <p>participants</p>
               </section>
             </div>
             <div class="ym-promo-block__item ym-promo-block__item--pledges ym-promo-block--circle">
               <section>
-                <h2 class="ym-headline">{{totalChallenges}}</h2>
+                <div class="h2 ym-headline">{{totalChallenges}}</div>
                 <p>pledges taken</p>
               </section>
             </div>
             <div class="ym-promo-block__item ym-promo-block__item--schools ym-promo-block--circle">
               <section>
-                <h2 class="ym-headline">{{totalSchools}}</h2>
+                <div class="h2 ym-headline">{{totalSchools}}</div>
                 <p>participating schools</p>
               </section>  
             </div>
