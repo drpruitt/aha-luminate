@@ -29,7 +29,7 @@
             Donate
           </a>
       </div>
-      <div class="ym-progress__thermometer" ng-if="teamProgress.goal && teamProgress.goal != 0" ng-cloak>
+      <div class="ym-progress__thermometer" ng-if="teamProgress.goal && teamProgress.goal != 0" name="Class Progress Bar" aria-valuetext="Class Progress Bar" role="progressbar" aria-valuenow="{{teamProgress.percent}}%" aria-valuemin="0%" aria-valuemax="100%" ng-cloak>
         <div class="ym-progress__thermometer--fill" ng-style="{'width': teamProgress.percent + '%'}"></div>
       </div>
       <div class="ym-progress__stats">
