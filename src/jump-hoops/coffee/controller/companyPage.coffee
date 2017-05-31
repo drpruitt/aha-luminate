@@ -16,8 +16,8 @@ angular.module 'ahaLuminateControllers'
     'PageContentService'
     '$sce'
     ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService, ZuriService, TeamraiserRegistrationService, TeamraiserCompanyPageService, PageContentService, $sce) ->
-      $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0]
-      domain = $location.absUrl().split('/site')[0]
+      $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0].split('#')[0]
+      domain = $location.absUrl().split('/site/')[0]
       $rootScope.companyName = ''
       $scope.companyTeams = []
       $scope.eventDate = ''
@@ -27,7 +27,7 @@ angular.module 'ahaLuminateControllers'
       $scope.activity1amt = ''
       $scope.activity2amt = ''
       $scope.activity3amt = ''
-
+      
       $scope.trustHtml = (html) ->
         return $sce.trustAsHtml(html)
       
