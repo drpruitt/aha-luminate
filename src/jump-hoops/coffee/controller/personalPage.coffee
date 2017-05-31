@@ -14,7 +14,7 @@ angular.module 'ahaLuminateControllers'
     'TeamraiserParticipantPageService'
     ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserParticipantService, TeamraiserCompanyService, ZuriService, ParticipantBadgesService, TeamraiserParticipantPageService) ->
       $dataRoot = angular.element '[data-aha-luminate-root]'
-      $scope.participantId = $location.absUrl().split('px=')[1].split('&')[0]
+      $scope.participantId = $location.absUrl().split('px=')[1].split('&')[0].split('#')[0]
       frId = $dataRoot.data('fr-id') if $dataRoot.data('fr-id') isnt ''
       $scope.companyId = $dataRoot.data('company-id') if $dataRoot.data('company-id') isnt ''
       $scope.teamId = $dataRoot.data('team-id') if $dataRoot.data('team-id') isnt ''
