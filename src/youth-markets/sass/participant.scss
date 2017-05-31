@@ -921,7 +921,7 @@ main > .container {
         margin: 0;
       }
 
-      @media(min-width: $screen-md-min) {
+      @media(min-width: $screen-sm-min) {
         margin: 0;
       }
     }
@@ -929,24 +929,6 @@ main > .container {
     .ym-pc-dashboard-section-header {
       .h5 {
         color: $event-secondary;
-      }
-    }
-    
-    a {
-      &, 
-      &:link, 
-      &:visited, 
-      &:hover, 
-      &:focus, 
-      &:active {
-        display: block;
-        margin: 0 auto 10px;
-      }
-
-      &.btn {
-        max-width: 200px;
-        display: block;
-        margin: 0 auto 10px;
       }
     }
   }
@@ -962,12 +944,8 @@ main > .container {
     &:hover, 
     &:focus, 
     &:active {
-      width: 110px;
-      
-      img {
-        display: inline-block;
-        width: 100%;
-      }
+      display:inline-block;
+      margin: 0 5px 5px;
     }
   }
 }
