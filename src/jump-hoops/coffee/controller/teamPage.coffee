@@ -13,7 +13,7 @@ angular.module 'ahaLuminateControllers'
     'ZuriService'
     'TeamraiserTeamPageService'
     ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserTeamService, TeamraiserParticipantService, TeamraiserCompanyService, ZuriService, TeamraiserTeamPageService) ->
-      $scope.teamId = $location.absUrl().split('team_id=')[1].split('&')[0]
+      $scope.teamId = $location.absUrl().split('team_id=')[1].split('&')[0].split('#')[0]
       $scope.teamParticipants = []
       $rootScope.teamName = ''
       $scope.eventDate = ''
