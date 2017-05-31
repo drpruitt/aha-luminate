@@ -43,6 +43,7 @@
   vertical-align: middle;
   background: $event-secondary;
 
+  .h2,
   h2 {
     color: #ffffff;
     font-size: 68px;
@@ -134,7 +135,8 @@
         }
       }
 
-      h2 {
+      h2,
+      .h2 {
         color: #ffffff;
         line-height: 0.75;
         margin: 60px 0 10px;
