@@ -623,8 +623,13 @@ main > .container {
 .ym-pc-dashboard-coordinators-message-section {
   background-color: $event-accent;
   text-align: center;
-  padding: 24px 172px;
   margin: 0 0 24px;
+  padding: 12px;
+
+  @media(min-width: $screen-sm-min){
+    padding: 24px 172px;
+    
+  }
   
   .ym-pc-dashboard-section-header {
     color: $brand-white;
