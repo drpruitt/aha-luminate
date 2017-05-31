@@ -37,7 +37,7 @@
       </script>
     ::
       <!-- company_id is not null -->
-      <div class="ym-registration-page-container ym-registration-page-container--tfind" ng-controller="RegistrationTfindCtrl" ng-init="teamSearch.companyId='[[T6:[[A36]]]]';ng_team_name='[[T6:[[A16]]]]';teamSearch.teamName='[[T6:[[A16]]]]';">
+      <div class="ym-registration-page-container ym-registration-page-container--tfind" ng-controller="RegistrationTfindCtrl" ng-init="teamSearch.companyId = '[[T6:[[A36]]]]'; teamSearch.ng_team_name = '[[T6:[[A16]]]]'; teamSearch.teamName = '[[T6:[[A16]]]]'">
         <div ng-if="teamList.teams" ng-cloak>
           <div class="ym-registration-page-header">
             <div class="manageable-editor" data-container="edit_title_container">
@@ -58,16 +58,16 @@
               Find your team in the list below or search:
             </p>
           </div>
-          <form class="form-inline ym-registration-tfind-form" method="POST" novalidate ng-submit="submitTfindSearch()">
+          <form class="form-inline ym-registration-tfind-form" name="teamSearchForm" method="POST" novalidate ng-submit="submitTfindSearch()">
             <div class="form-group">
-              <label class="sr-only" for="ng_team_name">
+              <label class="sr-only" for="teamSearch-ng_team_name">
                 [[?xx::x[[C1:fr_team_field]]x::
                   [[M0:friendraiser:team_field]]
                 ::
                   [[C1:fr_team_field]]
                 ]]
               </label>
-              <input type="text" class="form-control input-lg" name="ng_team_name" id="ng_team_name" ng-model="ng_team_name">
+              <input type="text" class="form-control input-lg" name="ng_team_name" id="teamSearch-ng_team_name" ng-model="teamSearch.ng_team_name">
             </div>
             <button type="submit" class="btn btn-md btn-secondary">
               <strong>[[C1:fr_team_search_button]]</strong>

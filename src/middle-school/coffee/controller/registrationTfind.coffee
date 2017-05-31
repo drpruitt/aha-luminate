@@ -55,5 +55,5 @@ angular.module 'ahaLuminateControllers'
           getTeams()
       
       $scope.submitTfindSearch = ->
-        $scope.teamSearch.teamName = $scope.ng_team_name
+        $scope.teamSearch.teamName = $scope.teamSearch.ng_team_name
   ]
