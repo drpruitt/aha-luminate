@@ -50,12 +50,15 @@ angular.module 'ahaLuminateControllers'
         levelAmountFormatted = null
         if not isOtherAmount and not isNoDonation
           levelAmountFormatted = $filter('currency')(Number(levelAmount.replace('$', '').replace(/,/g, '')), '$').replace '.00', ''
+        askMessage = $donationLevel.find('.donation-level-description-text').text()
+        if isOtherAmount
+          askMessage = 'Enter an amount that's meaningful for you.'
         $scope.donationLevels.levels.push
           amount: levelAmount
           amountFormatted: levelAmountFormatted
           isOtherAmount: isOtherAmount
           isNoDonation: isNoDonation
-          askMessage: $donationLevel.find('.donation-level-description-text').text()
+          askMessage: askMessage
         if $donationLevelRadio.is '[checked]'
           $scope.toggleDonationLevel levelAmount
         if isOtherAmount
