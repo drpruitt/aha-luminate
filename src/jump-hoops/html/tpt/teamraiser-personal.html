@@ -11,7 +11,7 @@
             <span class="fa fa-camera"></span> Edit Photo
           </button>
         ::]]
-        <img class="hidden-md hidden-lg" ng-src="{{personalPagePhoto1.customUrl && personalPagePhoto1.customUrl != '' ? personalPagePhoto1.customUrl : personalPagePhoto1.defaultUrl}}" alt="{{personalPagePhoto1.caption}}" ng-cloak>
+        <img class="hidden-md hidden-lg" ng-src="{{personalPagePhoto1.customUrl && personalPagePhoto1.customUrl != '' ? personalPagePhoto1.customUrl : personalPagePhoto1.defaultUrl}}" alt="{{personalPagePhoto1.caption != '' ? personalPagePhoto1.caption : 'Student Photo'}}" ng-cloak>
       </div>
       <div class="caption" ng-if="personalPagePhoto1.caption && personalPagePhoto1.caption != ''" ng-cloak>
         <span ng-bind-html="personalPagePhoto1.caption"></span>
@@ -49,7 +49,7 @@
     <div class="clearfix"></div>
   </div>
   <div class="ym-page-section ym-page-section__main">
-    <div class="col-md-6 ym-story">
+    <div class="ym-story" ng-class="prizes.length > 0 || challengeId != null ? 'col-md-6' : 'col-md-12'">
       <h3 class="ym-headline">
         My Story
       </h3>
@@ -92,7 +92,7 @@
         </div>
       ::]]
     </div>
-    <div class="col-md-6 ym-user-interactions">
+    <div class="col-md-6 ym-user-interactions" ng-if="prizes.length > 0 || challengeId != null">
       <div class="ym-badges" ng-if="prizes.length > 0">
         <h3 class="ym-headline">
           Check Out My Badges
@@ -169,7 +169,7 @@
     <div class="ym-list" ng-class="personalDonors.donors.length < 1 ? 'hidden' : 'col-sm-6'" role="list" aria-label="Top Donors List">
       <img class="img-responsive" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/hj-donors-graphic.png" alt="Saluting the following top donors">
       <div class="ym-donor-list">
-        <div class="ym-donor-list__row" ng-repeat="personalDonor in personalDonors.donors" ng-if="personalDonors.donors.length > 0" ng-cloak>
+        <div class="ym-donor-list__row" ng-repeat="personalDonor in personalDonors.donors" ng-if="personalDonors.donors.length > 0" role="listitem" ng-cloak>
           <span class="ym-donor-list__row--name">{{personalDonor.name}}</span>
           <span class="ym-donor-list__row--amount">{{personalDonor.amountFormatted}}</span>
           <div class="clearfix"></div>
