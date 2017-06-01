@@ -168,12 +168,12 @@
       <img ng-src="{{localSponsorImageSrc}}" class="image-responsive" alt="{{localSponsorImageAlt}}"/>
     </p>
   </div>
-  <div ng-if="companyTeams.totalNumber == 1" class="modal fade" id="schoolDonation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div ng-if="companyTeams.totalNumber == 1" class="modal fade" id="schoolDonation" tabindex="-1" role="dialog" aria-labelledby="schoolModalTitle" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-body text-center">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">X</span></button>
-          <h4 class="modal-title h3">
+          <h4 class="modal-title h3" id="schoolModalTitle">
             Donate
           </h4>
           <p>
