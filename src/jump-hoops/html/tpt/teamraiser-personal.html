@@ -169,7 +169,7 @@
     <div class="ym-list" ng-class="personalDonors.donors.length < 1 ? 'hidden' : 'col-sm-6'" role="list" aria-label="Top Donors List">
       <img class="img-responsive" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/hj-donors-graphic.png" alt="Saluting the following top donors">
       <div class="ym-donor-list">
-        <div class="ym-donor-list__row" ng-repeat="personalDonor in personalDonors.donors" ng-if="personalDonors.donors.length > 0" ng-cloak>
+        <div class="ym-donor-list__row" ng-repeat="personalDonor in personalDonors.donors" ng-if="personalDonors.donors.length > 0" role="listitem" ng-cloak>
           <span class="ym-donor-list__row--name">{{personalDonor.name}}</span>
           <span class="ym-donor-list__row--amount">{{personalDonor.amountFormatted}}</span>
           <div class="clearfix"></div>
