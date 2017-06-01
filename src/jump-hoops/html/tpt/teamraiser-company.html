@@ -137,7 +137,7 @@
         <div text-angular name="ng_rich_text" ng-model="companyPageContent.ng_rich_text" ta-toolbar="{{companyPageContent.textEditorToolbar}}"></div>
       </div>
     </div>
-    <div class="ym-list" ng-class="companyParticipants.totalFundraisers < 1 && companyTeams.totalNumber > 1 ? 'hidden' : 'col-md-6'">
+    <div class="ym-list" ng-class="companyParticipants.totalFundraisers < 1 && companyTeams.totalNumber > 1 ? 'hidden' : 'col-md-6'" role="list" aria-label="Top Fundarisers List">
       <img class="img-responsive" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/hj-fundraisers-graphic.png" alt="Check out these top fundraisers">
       <div class="ym-donor-list" ng-if="companyParticipants.totalFundraisers > 0" ng-cloak>
         <company-participant-list company-id="'[[T6:[[S334:company_id]]]]'" participants="companyParticipants.participants"></company-participant-list>
