@@ -34,7 +34,7 @@
               </div>
             </div>
             <div ng-class="{'hidden': dashboardProgressType != 'personal'}" ng-cloak>
-              <div class="ym-progress__thermometer">
+              <div class="ym-progress__thermometer" name="Personal Progress Bar" aria-valuetext="Personal Progress Bar" role="progressbar" aria-valuenow="{{participantProgress.percent}}%" aria-valuemin="0%" aria-valuemax="100%">
                 <div class="ym-progress__thermometer--fill" ng-style="{'width': participantProgress.percent + '%'}"></div>
               </div>
               <div class="ym-progress-related clearfix">
@@ -61,7 +61,7 @@
               </div>
             </div>
             <div ng-class="{'hidden': dashboardProgressType != 'company'}" ng-cloak>
-              <div class="ym-progress__thermometer">
+              <div class="ym-progress__thermometer" name="School Progress Bar" aria-valuetext="School Progress Bar" role="progressbar" aria-valuenow="{{companyProgress.percent}}%" aria-valuemin="0%" aria-valuemax="100%">
                 <div class="ym-progress__thermometer--fill" ng-style="{'width': companyProgress.percent + '%'}"></div>
               </div>
               <div class="ym-progress-related clearfix">
@@ -78,7 +78,7 @@
               </div>
             </div>
             <div ng-class="{'hidden': dashboardProgressType != 'team'}" ng-if="companyInfo.teamCount > 1" ng-cloak>
-              <div class="ym-progress__thermometer">
+              <div class="ym-progress__thermometer" name="Class Progress Bar" aria-valuetext="Class Progress Bar" role="progressbar" aria-valuenow="{{teamProgress.percent}}%" aria-valuemin="0%" aria-valuemax="100%">
                 <div class="ym-progress__thermometer--fill" ng-style="{'width': teamProgress.percent + '%'}"></div>
               </div>
               <div class="ym-progress-related clearfix">
@@ -389,12 +389,12 @@
         </div>
       </div>
     </section>
-    <section class="ym-pc-dashboard-coordinators-message-section" ng-if="coordinatorsMessage.message && coordinatorsMessage.message != ''" ng-cloak>
+    <section class="ym-pc-dashboard-coordinators-message-section" ng-if="coordinatorMessage.message && coordinatorMessage.message != ''" ng-cloak>
       <div class="ym-pc-dashboard-section-header">
         <h2 class="h5">
           Note From Your Teacher
         </h2>
-        <div ng-bind-html="coordinatorsMessage.message"></div>
+        <div ng-bind-html="coordinatorMessage.message"></div>
       </div>
     </section>
   </div>
@@ -531,7 +531,13 @@
               <p>
                 Create/Update an <strong>encouraging message</strong> for your student in their Headquarters.
               </p>
-              <a class="btn btn-md-wide btn-primary">
+              <div uib-alert class="alert-success" ng-if="coordinatorMessage.successMessage == true">
+                <p> 
+                  You have successfully updated you message to the following:
+                </p>
+                <strong ng-bind-html="coordinatorMessage.text"></strong>
+              </div>
+              <a class="btn btn-md-wide btn-primary" ng-click="editCoordinatorMessage()">
                 <strong>Create Message</strong>
               </a>
             </div>
@@ -850,21 +856,15 @@
         <div class="col-sm-4">
           <div class="ym-pc-dashboard-section-header">
             <h3 class="h5">
-              Email Signature
+              Email Badge
             </h3>
           </div>
           <p>
-            Download a signature for your email!
+            Download an email badge!
           </p>
-          <div class="text-center">
-            <a class="btn btn-md-wide btn-secondary" ng-href="http://www2.charitydynamics.com/site/PageServer?pagename=Boundless_Email_Client" target="_blank">
-              <strong>PC Instructions</strong>
-            </a> 
-            <a class="btn btn-md-wide btn-secondary" ng-href="http://www2.charitydynamics.com/site/PageServer?pagename=Boundless_Email_Client_Mac" target="_blank">
-              <strong>Mac Instructions</strong>
-            </a>
-          </div>
-        </div>
+          <a class="btn btn-md-wide btn-secondary" ng-href="PageServer?pagename=reus_bf_email_badge&trID={{frId}}" target="_blank">
+            <strong>Download Email Badge</strong> 
+          </a>
       </div>
     </div>
   </section>
