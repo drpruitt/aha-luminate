@@ -760,38 +760,41 @@ main > .container {
       margin: 25px;
     }
   }
-
+  
   &.ym-activity-box--challenge {
     .ym_my_challenge__current {
       padding-bottom: 20px;
-
+      
       .col-sm-4 {
         max-width: 300px;
         margin: auto;
       }
     }
-
+    
     .ym_my_challenge__actions {
       text-align: center;
       margin: 15px 0 0;
-
-      .btn,
-      a.btn {
+      
+      .btn {
         &,
         &:link,
         &:visited,
         &:hover,
         &:focus,
         &:active {
-          width: 216px;
+          font-size: 13px;
+          width: 236px;
           padding: 7px 0;
-
+          margin: 0 -20px;
+          
           @media (min-width: 360px) {
-            width: 240px;
+            font-size: inherit;
+            width: 250px;
+            margin: 0;
           }
         }
       }
-
+      
       .alert-success {
         width: 216px;
         padding: 7px 0;
