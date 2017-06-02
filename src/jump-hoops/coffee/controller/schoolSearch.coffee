@@ -81,9 +81,13 @@ angular.module('ahaLuminateControllers').controller 'SchoolSearchCtrl', [
 
     SchoolService.getSchools
       failure: (response) ->
+        console.log response
         return
       success: (csv) ->
+        console.log 'test'
+
         schools = Csv.toJson csv
+        console.log schools
         $scope.schools = schools
         $scope.setStates()
         return
