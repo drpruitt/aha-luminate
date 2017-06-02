@@ -547,6 +547,11 @@
     position: relative;
   }
 
+  .dropdown-menu {
+    max-height: 245px;
+    overflow-y: scroll; 
+  }
+
   > .form-group {
     margin-bottom: 50px;
   }

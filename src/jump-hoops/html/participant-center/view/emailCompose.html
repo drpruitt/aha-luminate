@@ -119,11 +119,12 @@
       </div>
       <form name="emailComposerForm" method="POST" novalidate ng-submit="previewEmail()">
         <div class="form-group">
-          <label class="sr-only">Recipients:</label>
-          <textarea class="form-control" placeholder="Recipients (separate multiple email addresses with a comma)" autocorrect="off" autocapitalize="off" spellcheck="false" ng-model="emailComposer.recipients"></textarea>
+          <label for="emailComposer-recipients" class="sr-only">Recipients:</label>
+          <textarea class="form-control" id="emailComposer-recipients" name="recipients" ng-model="emailComposer.recipients" placeholder="Recipients (separate multiple email addresses with a comma)" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
         </div>
         <div class="form-group" ng-if="suggestedMessages.length > 0">
-          <select class="form-control input-lg" ng-model="emailComposer.suggested_message_id" ng-change="loadSuggestedMessage()">
+          <label for="emailComposer-suggested_message_id" class="sr-only">Sample Message:</label>
+          <select class="form-control input-lg" id="emailComposer-suggested_message_id" name="suggested_message_id" ng-model="emailComposer.suggested_message_id" ng-change="loadSuggestedMessage()">
             <option value="">Choose a sample message</option>
             <option ng-repeat="suggestedMessage in suggestedMessages" value="{{suggestedMessage.messageId}}">
               {{suggestedMessage.name}}
@@ -131,8 +132,8 @@
           </select>
         </div>
         <div class="form-group">
-          <label class="sr-only">Subject</label>
-          <input type="text" class="form-control input-lg" placeholder="Subject" autocorrect="on" autocapitalize="on" spellcheck="true" ng-model="emailComposer.subject">
+          <label for="emailComposer-subject" class="sr-only">Subject</label>
+          <input type="text" class="form-control input-lg" id="emailComposer-subject" name="subject" ng-model="emailComposer.subject" placeholder="Subject" autocorrect="on" autocapitalize="on" spellcheck="true">
         </div>
         <div class="form-group">
           <div class="checkbox" ng-class="{'checked': emailComposer.prepend_salutation}" ng-if="personalizedSalutationEnabled">
