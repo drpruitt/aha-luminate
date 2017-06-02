@@ -101,7 +101,7 @@
             <table class="table table-responsive table-striped ym-list ym-list--school-list"
               summary="Results Matching Your School's Name">
               <thead class="ym-list__header">
-                <th class="ym-list__column ym-list__column--school">
+                <th class="ym-list__column ym-list__column--school" scope="col">
                     <a href="" ng-click="orderSchools('SCHOOL_NAME')">
                         School
                         <span ng-show="filtered.length && schoolList.sortProp == 'SCHOOL_NAME' && !schoolList.sortDesc" class="fa fa-caret-down"></span>
@@ -110,7 +110,7 @@
                     </a>
                 </td>
                 </th>
-                <th class="ym-list__column ym-list__column--city">
+                <th class="ym-list__column ym-list__column--city" scope="col">
                     <a href="" ng-click="orderSchools('SCHOOL_CITY')">
                         City
                         <span ng-show="filtered.length && schoolList.sortProp == 'SCHOOL_CITY' && !schoolList.sortDesc" class="fa fa-caret-down"></span>
@@ -118,7 +118,7 @@
                         <span ng-show="filtered.length && schoolList.sortProp != 'SCHOOL_CITY'" class="fa fa-caret-down inactive"></span>
                     </a>
                 </th>
-                <th class="ym-list__column ym-list__column--state">
+                <th class="ym-list__column ym-list__column--state" scope="col">
                     <a href="" ng-click="orderSchools('SCHOOL_STATE')">
                         State
                         <span ng-show="filtered.length && schoolList.sortProp == 'SCHOOL_STATE' && !schoolList.sortDesc" class="fa fa-caret-down"></span>
@@ -126,7 +126,7 @@
                         <span ng-show="filtered.length && schoolList.sortProp != 'SCHOOL_STATE'" class="fa fa-caret-down inactive"></span>
                     </a>
                 </th>
-                <th class="ym-list__column ym-list__column--team-leader text-right">
+                <th class="ym-list__column ym-list__column--team-leader text-right" scope="col">
                     <a href="" ng-click="orderSchools('COORDINATOR_LAST_NAME')">
                         Team Leader
                         <span ng-show="filtered.length && schoolList.sortProp == 'COORDINATOR_LAST_NAME' && !schoolList.sortDesc" class="fa fa-caret-down"></span>
