@@ -358,9 +358,9 @@
               </div>
             </div>
             <div class="ym_my_challenge__actions">
-              <a class="btn btn-md-wide btn-primary" ng-click="logChallenge()" ng-if="!personalChallenge.completedToday" ng-cloak>
+              <button type="button" class="btn btn-md-wide btn-primary" ng-click="logChallenge()" ng-if="!personalChallenge.completedToday" ng-cloak>
                 <strong>I have met this challenge today!</strong> <i class="fa fa-check" aria-hidden="true"></i>
-              </a>
+              </button>
               <div class="alert alert-success" ng-if="personalChallenge.completedToday" ng-cloak>
                 <strong>Challenge met</strong> <i class="fa fa-check" aria-hidden="true"></i>
               </div>
