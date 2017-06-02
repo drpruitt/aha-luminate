@@ -537,6 +537,14 @@ angular.module 'trPcControllers'
             '<span class="fa fa-chevron-left" aria-hidden="true" />',
             '<span class="fa fa-chevron-right" aria-hidden="true" />'
           ]
+          addClassActive: true
+          onInitialized: (event) ->
+            $('.owl-carousel').find('.owl-item').attr 'aria-selected', 'false'
+            $('.owl-carousel').find('.owl-item.active').attr 'aria-selected', 'true'
+            $('.owl-carousel').find('.owl-prev').attr('role', 'button').attr 'title', 'Previous'
+            $('.owl-carousel').find('.owl-next').attr('role', 'button').attr 'title', 'Next'
+            $('.owl-carousel, .owl-prev, .owl-next').attr 'tabindex', '0'
+            $('.owl-carousel').find('.owl-stage-outer').append '<p class="alert alert-success show-on-focus">Use left and right arrow keys to navigate.</p>'
 
       $timeout initCarousel, 1000
 
