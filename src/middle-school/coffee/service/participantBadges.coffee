@@ -5,7 +5,7 @@ angular.module 'ahaLuminateApp'
     ($http, $sce) ->            
       getBadges: (requestData) ->
         if luminateExtend.global.tablePrefix is 'heartdev'
-          url = 'AjaxProxy?cnv_url=' + encodeURIComponent('https://jumphoopsstaging.boundlessnetwork.com/api/badges/student/' + requestData) + '&auth=' + luminateExtend.global.ajaxProxyAuth
+          url = 'AjaxProxy?cnv_url=' + encodeURIComponent('https://thegreatreplaystaging.boundlessnetwork.com/api/badges/student/' + requestData) + '&auth=' + luminateExtend.global.ajaxProxyAuth
         else
           url = 'AjaxProxy?cnv_url=' + encodeURIComponent('https://jumphoopsstaging.boundlessnetwork.com/api/badges/student/' + requestData) + '&auth=' + luminateExtend.global.ajaxProxyAuth
         $http
@@ -17,7 +17,7 @@ angular.module 'ahaLuminateApp'
           response
       
       getRollupTotals: ->
-        url = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent('https://jumphoopsstaging.boundlessnetwork.com/api/schools/totals')
+        url = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent('https://thegreatreplaystaging.boundlessnetwork.com/api/schools/totals')
         $http
           method: 'GET'
           url: url
