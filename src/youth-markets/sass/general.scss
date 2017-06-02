@@ -1,3 +1,19 @@
+.skip-to-content {
+  padding: 20px;
+  position: absolute;
+  top: -50px;
+  left: 0;
+
+  &:focus {
+    top: 0px;
+    background: $event-primary;
+    color: $brand-white;
+    outline: 0;
+    -webkit-transition: top .1s ease-in, background .5s linear;
+    transition: top .1s ease-in, background .5s linear;
+  }
+}
+
 .event-primary {
   background: $event-primary;
 }
