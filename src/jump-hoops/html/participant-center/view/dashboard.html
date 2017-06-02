@@ -1,6 +1,6 @@
 <div cg-busy="dashboardPromises">
   <div ng-if="participantRegistration.companyInformation.isCompanyCoordinator != 'true' || location == '/dashboard-student'" ng-cloak>
-    <section class="ym-pc-dashboard-progress-section">
+    <section class="ym-pc-dashboard-progress-section" aria-label="Fundraising Progress Meters">
       <div class="ym-pc-dashboard-section-header">
         <h2 class="h3">
           My Fundraising
@@ -145,7 +145,7 @@
         </div>
       </div>
     </section>
-    <section class="ym-pc-dashboard-badges-section" ng-if="prizes && prizes.length > 0" ng-cloak>
+    <section class="ym-pc-dashboard-badges-section" ng-if="prizes && prizes.length > 0" ng-cloak aria-label="My Zoo Crew Badges">
       <div class="ym-pc-dashboard-section-header">
         <h2 class="h5">
           Badges
@@ -154,7 +154,7 @@
           <strong>Learn About Badges</strong>
         </a>
       </div>
-      <div class="ym-pc-dashboard-badges-icons ym-carousel--badges owl-carousel">
+      <div class="ym-pc-dashboard-badges-icons ym-carousel--badges owl-carousel" role="list" aria-label="Badge Carousel">
         <div class="ym-pc-dashboard-badges-icon" ng-repeat="prize in prizes" ng-cloak>
           <div ng-if="prize.earned != null">
             <img class="img-responsive" ng-src="//s3.amazonaws.com/aha-jumphoops-production/fy18/assets/badges/{{prize.id}}_delivered.png" alt="{{prize.label}}">
@@ -169,7 +169,7 @@
         <strong>You can also <a ng-href="http://heart.pub30.convio.net/jump-hoops/for-students/adoption-certificates/">download Adoption Certificates</a> for each badge level!</strong>
       </p>
     </section>
-    <section class="ym-pc-dashboard-activities-section">
+    <section class="ym-pc-dashboard-activities-section" aria-label="My Fundraising Activities">
       <div class="ym-pc-dashboard-section-header">
         <h2 class="h3">
           My Activities
@@ -389,7 +389,7 @@
         </div>
       </div>
     </section>
-    <section class="ym-pc-dashboard-coordinators-message-section" ng-if="coordinatorMessage.message && coordinatorMessage.message != ''" ng-cloak>
+    <section class="ym-pc-dashboard-coordinators-message-section" ng-if="coordinatorMessage.message && coordinatorMessage.message != ''" aria-label="Note From Your Teacher" ng-cloak>
       <div class="ym-pc-dashboard-section-header">
         <h2 class="h5">
           Note From Your Teacher
@@ -399,7 +399,7 @@
     </section>
   </div>
   <div ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true' && location != '/dashboard-student'" ng-cloak>
-    <section class="ym-pc-dashboard-coordinator-progress-section">
+    <section class="ym-pc-dashboard-coordinator-progress-section" aria-label="Fundraising Progress Meters">
       <div class="row">
         <div class="col-sm-6 ym-pc-dashboard-coordinator-progress-section__column event-secondary-medium">
           <div class="ym-pc-dashboard-coordinator-progress-box">
@@ -545,7 +545,7 @@
         </div>
       </div>
     </section>
-    <section class="ym-pc-dashboard-coordinator-steps-section">
+    <section class="ym-pc-dashboard-coordinator-steps-section" aria-label="Fundraising Steps">
       <div class="ym-pc-dashboard-section-header">
         <h2 class="h3">
           Coordinator Fundraising Steps
@@ -756,7 +756,7 @@
         </div>
       </div>
     </section>
-    <section class="ym-pc-dashboard-coordinator-resources-section">
+    <section class="ym-pc-dashboard-coordinator-resources-section" aria-label="Fundraising Resources">
       <div class="ym-pc-dashboard-section-header">
         <h2 class="h3">
           Coordinator Resources
@@ -812,7 +812,7 @@
       </div>
     </section>
   </div>
-  <section class="ym-pc-dashboard-spread-section event-secondary-medium--diagonal">
+  <section class="ym-pc-dashboard-spread-section event-secondary-medium--diagonal" aria-label="Resources for Spreading the Word">
     <div class="ym-pc-dashboard-section-header">
       <h2 class="h3">
         Spread the Word
