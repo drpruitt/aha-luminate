@@ -539,12 +539,38 @@ angular.module 'trPcControllers'
           ]
           addClassActive: true
           onInitialized: (event) ->
-            $('.owl-carousel').find('.owl-item').attr 'aria-selected', 'false'
-            $('.owl-carousel').find('.owl-item.active').attr 'aria-selected', 'true'
-            $('.owl-carousel').find('.owl-prev').attr('role', 'button').attr 'title', 'Previous'
-            $('.owl-carousel').find('.owl-next').attr('role', 'button').attr 'title', 'Next'
-            $('.owl-carousel, .owl-prev, .owl-next').attr 'tabindex', '0'
-            $('.owl-carousel').find('.owl-stage-outer').append '<p class="alert alert-success show-on-focus">Use left and right arrow keys to navigate.</p>'
+            angular.element('.owl-carousel').find('.owl-item').attr 'aria-selected', 'false'
+            angular.element('.owl-carousel').find('.owl-item').attr 'role', 'listitem'
+            angular.element('.owl-carousel').find('.owl-item.active').attr 'aria-selected', 'true'
+            angular.element('.owl-carousel').find('.owl-prev').attr('role', 'button').attr 'title', 'Previous'
+            angular.element('.owl-carousel').find('.owl-next').attr('role', 'button').attr 'title', 'Next'
+            angular.element('.owl-carousel, .owl-prev, .owl-next').attr 'tabindex', '0'
+            angular.element('.owl-carousel').find('.owl-stage-outer').append '<p class="sr-only">Use left and right arrow keys to navigate.</p>'
+            jQuery(document).on 'keydown', (e) ->
+              `var type`
+              `var type`
+              $focusedElement = jQuery(document.activeElement)
+              singleOwl = jQuery('.owl-carousel').data('owlCarousel')
+              type = if e.which == 39 then 'next' else null
+              type = if e.which == 37 then 'prev' else type
+              type = if e.which == 13 then 'enter' else type
+              # if the carousel is focused, use left and right arrow keys to navigate
+              if $focusedElement.attr('class') == 'owl-carousel'
+                if type == 'next'
+                  singleOwl.next()
+                else if type == 'prev'
+                  singleOwl.prev()
+                # if the prev and next buttons are focused, catch "Enter" and navigate in the right direction
+              else if type == 'enter'
+                if $focusedElement.hasClass('owl-next')
+                  singleOwl.next()
+                else if $focusedElement.hasClass('owl-prev')
+                  singleOwl.prev()
+              return
+            return
+          onChange: ->
+            angular.element('.owl-carousel').find('.owl-item').attr 'aria-selected', 'false'
+            angular.element('.owl-carousel').find('.owl-item.active').attr 'aria-selected', 'true'
 
       $timeout initCarousel, 1000
 

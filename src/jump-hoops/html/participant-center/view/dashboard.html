@@ -155,7 +155,7 @@
         </a>
       </div>
       <div class="ym-pc-dashboard-badges-icons ym-carousel--badges owl-carousel" role="list" aria-label="Badge Carousel">
-        <div class="ym-pc-dashboard-badges-icon" ng-repeat="prize in prizes" role="listitem" tabindex="0" ng-cloak>
+        <div class="ym-pc-dashboard-badges-icon" ng-repeat="prize in prizes" ng-cloak>
           <div ng-if="prize.earned != null">
             <img class="img-responsive" ng-src="//s3.amazonaws.com/aha-jumphoops-production/fy18/assets/badges/{{prize.id}}_delivered.png" alt="{{prize.label}}">
           </div>
