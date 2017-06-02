@@ -4,7 +4,9 @@ angular.module 'ahaLuminateControllers'
     '$httpParamSerializer'
     'AuthService'
     'TeamraiserParticipantService'
-    ($scope, $httpParamSerializer, AuthService, TeamraiserParticipantService) ->
+    '$anchorScroll'
+    '$location'
+    ($scope, $httpParamSerializer, AuthService, TeamraiserParticipantService, $anchorScroll, $location) ->
       $dataRoot = angular.element '[data-aha-luminate-root]'
       consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
       $scope.numberEvents = 0
@@ -78,4 +80,9 @@ angular.module 'ahaLuminateControllers'
       $scope.delegatedAddThis = (targetToolboxContainer, shareType) ->
         angular.element(targetToolboxContainer).find('.addthis_button_' + shareType).click()
         false
+
+      $scope.skipToContent = -> 
+        $location.hash 'contentStart' 
+        $anchorScroll()
+        
   ]
