@@ -34,50 +34,71 @@
                 <tr>
                   <th>
                     <div class="text-left">
-                      <a>
+                      <a href="" ng-click="orderSchoolDetailStudents('firstName')">
                         <strong>Name</strong>
+                        <span ng-show="schoolDetailStudents.students.length && schoolDetailStudents.sortColumn == 'firstName' && !schoolDetailStudents.sortAscending" class="fa fa-caret-down"></span>
+                        <span ng-show="schoolDetailStudents.students.length && schoolDetailStudents.sortColumn == 'firstName' && schoolDetailStudents.sortAscending" class="fa fa-caret-up"></span>
+                        <span ng-show="schoolDetailStudents.students.length && schoolDetailStudents.sortColumn != 'firstName'" class="fa fa-caret-down inactive"></span>
                       </a>
                     </div>
                   </th>
                   <th>
                     <div class="text-center">
-                      <a>
+                      <a href="" ng-click="orderSchoolDetailStudents('amount')">
                         <strong>Amount</strong>
+                        <span ng-show="schoolDetailStudents.students.length && schoolDetailStudents.sortColumn == 'amount' && !schoolDetailStudents.sortAscending" class="fa fa-caret-down"></span>
+                        <span ng-show="schoolDetailStudents.students.length && schoolDetailStudents.sortColumn == 'amount' && schoolDetailStudents.sortAscending" class="fa fa-caret-up"></span>
+                        <span ng-show="schoolDetailStudents.students.length && schoolDetailStudents.sortColumn != 'amount'" class="fa fa-caret-down inactive"></span>
                       </a>
                     </div>
                   </th>
                   <th>
                     <div class="text-center">
-                      <a>
+                      <a href="" ng-click="orderSchoolDetailStudents('ecardsSent')">
                         <strong>Ecards</strong>
+                        <span ng-show="schoolDetailStudents.students.length && schoolDetailStudents.sortColumn == 'ecardsSent' && !schoolDetailStudents.sortAscending" class="fa fa-caret-down"></span>
+                        <span ng-show="schoolDetailStudents.students.length && schoolDetailStudents.sortColumn == 'ecardsSent' && schoolDetailStudents.sortAscending" class="fa fa-caret-up"></span>
+                        <span ng-show="schoolDetailStudents.students.length && schoolDetailStudents.sortColumn != 'ecardsSent'" class="fa fa-caret-down inactive"></span>
                       </a>
                     </div>
                   </th>
                   <th>
                     <div class="text-center">
-                      <a>
+                      <a href="" ng-click="orderSchoolDetailStudents('emailsSent')">
                         <strong>Emails</strong>
+                        <span ng-show="schoolDetailStudents.students.length && schoolDetailStudents.sortColumn == 'emailsSent' && !schoolDetailStudents.sortAscending" class="fa fa-caret-down"></span>
+                        <span ng-show="schoolDetailStudents.students.length && schoolDetailStudents.sortColumn == 'emailsSent' && schoolDetailStudents.sortAscending" class="fa fa-caret-up"></span>
+                        <span ng-show="schoolDetailStudents.students.length && schoolDetailStudents.sortColumn != 'emailsSent'" class="fa fa-caret-down inactive"></span>
                       </a>
                     </div>
                   </th>
                   <th>
                     <div class="text-center">
-                      <a>
+                      <a href="" ng-click="orderSchoolDetailStudents('tshirtSize')">
                         <strong>T-shirt</strong>
+                        <span ng-show="schoolDetailStudents.students.length && schoolDetailStudents.sortColumn == 'tshirtSize' && !schoolDetailStudents.sortAscending" class="fa fa-caret-down"></span>
+                        <span ng-show="schoolDetailStudents.students.length && schoolDetailStudents.sortColumn == 'tshirtSize' && schoolDetailStudents.sortAscending" class="fa fa-caret-up"></span>
+                        <span ng-show="schoolDetailStudents.students.length && schoolDetailStudents.sortColumn != 'tshirtSize'" class="fa fa-caret-down inactive"></span>
                       </a>
                     </div>
                   </th>
                   <th>
                     <div class="text-center">
-                      <a>
+                      <a href="" ng-click="orderSchoolDetailStudents('teacherName')">
                         <strong>Teacher</strong>
+                        <span ng-show="schoolDetailStudents.students.length && schoolDetailStudents.sortColumn == 'teacherName' && !schoolDetailStudents.sortAscending" class="fa fa-caret-down"></span>
+                        <span ng-show="schoolDetailStudents.students.length && schoolDetailStudents.sortColumn == 'teacherName' && schoolDetailStudents.sortAscending" class="fa fa-caret-up"></span>
+                        <span ng-show="schoolDetailStudents.students.length && schoolDetailStudents.sortColumn != 'teacherName'" class="fa fa-caret-down inactive"></span>
                       </a>
                     </div>
                   </th>
                   <th>
                     <div class="text-right">
-                      <a>
+                      <a href="" ng-click="orderSchoolDetailStudents('challenge')">
                         <strong>Challenge</strong>
+                        <span ng-show="schoolDetailStudents.students.length && schoolDetailStudents.sortColumn == 'challenge' && !schoolDetailStudents.sortAscending" class="fa fa-caret-down"></span>
+                        <span ng-show="schoolDetailStudents.students.length && schoolDetailStudents.sortColumn == 'challenge' && schoolDetailStudents.sortAscending" class="fa fa-caret-up"></span>
+                        <span ng-show="schoolDetailStudents.students.length && schoolDetailStudents.sortColumn != 'challenge'" class="fa fa-caret-down inactive"></span>
                       </a>
                     </div>
                   </th>
