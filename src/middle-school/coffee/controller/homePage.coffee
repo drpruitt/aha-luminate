@@ -85,7 +85,7 @@ angular.module 'ahaLuminateControllers'
             totals = response.data.totals          
             $scope.totalStudents = totals.total_students
             $scope.totalSchools = totals.total_schools
-            $scope.totalChallenges = totals.total_online_emails_sent
+            $scope.totalEmails = totals.total_online_emails_sent
         , (response) ->
           $scope.showStats = false
       
