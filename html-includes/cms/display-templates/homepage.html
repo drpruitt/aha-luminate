@@ -2,7 +2,7 @@
 <div ng-controller="HomeCtrl">
   <div class="ym-hero-top__find-your-school text-center visible-xs">
     <a href="#scroll#JumpSearch" class="btn btn-primary btn-lg" role="button">
-      Studends &amp; Parents:<br />Find Your School to Sign Up
+      Students &amp; Parents:<br />Find Your School to Sign Up
     </a>
   </div>
   <t:if test="banner_image.length>0">
@@ -67,18 +67,20 @@
           <img class="img-responsive hidden-sm hidden-md hidden-lg" src="http://heart.pub30.convio.net/../assets/images/hoops-jump-search-graphic-mobile.jpg" alt="Find your school" />
         </t:else>
         <div class="form-inline text-center">
-          <label for="school-name-filter" class="sr-only">Start typing your school's name:</label>
-          <input type="text" id="school-name-filter" name="school-name-filter" class="form-control" maxlength="40" placeholder="Start typing your school's name"
-            uib-typeahead="school.SCHOOL_NAME for school in schools | unique: 'SCHOOL_NAME' | filter: {SCHOOL_NAME:$viewValue}"
-            typeahead-min-length="3"
-            typeahead-editable="false"
-            typeahead-focus-first="false"
-            typeahead-select-on-exact="true"
-            typeahead-no-results="schoolList.typeaheadNoResults"
-            typeahead-on-select="typeaheadFilter($item, $model, $label, $event)"
-            ng-model="schoolList.nameFilter"
-            ng-minlength="3"
-            >
+          <form autocomplete="off">
+            <label for="school-name-filter" class="sr-only">Start typing your school's name:</label>
+            <input type="text" id="school-name-filter" name="school-name-filter" class="form-control" maxlength="40" placeholder="Start typing your school's name"
+              uib-typeahead="school.SCHOOL_NAME for school in schools | unique: 'SCHOOL_NAME' | filter: {SCHOOL_NAME:$viewValue}"
+              typeahead-min-length="3"
+              typeahead-editable="false"
+              typeahead-focus-first="false"
+              typeahead-select-on-exact="true"
+              typeahead-no-results="schoolList.typeaheadNoResults"
+              typeahead-on-select="typeaheadFilter($item, $model, $label, $event)"
+              ng-model="schoolList.nameFilter"
+              ng-minlength="3"
+              >
+            </form>
         </div>
       </div>
       <div class="ym-page-section ym-page-section__roster" ng-class="schoolList.totalItems > 0 || schoolList.nameFilter.length > 2 || schoolList.typeaheadNoResults ? 'show' : 'hidden'">
@@ -164,7 +166,7 @@
             </ul>
           </div>
         </div> 
-        <div ng-show="filtered.length == 0 && schoolList.stateFilter != '0'" class="text-center" ng-class="schoolList.showHelp ? 'pb-md' : ''">
+        <div ng-show="filtered.length == 0 && schoolList.stateFilter != '0' && !schoolList.typeaheadNoResults" class="text-center" ng-class="schoolList.showHelp ? 'pb-md' : ''">
           <p>
             Hi! We couldn't locate a school with the name of <strong>{{schoolList.nameFilter}}</strong> in <strong>{{schoolList.stateFilter.SCHOOL_STATE}}</strong>. Your school may not be added to our list just yet.
           </p>      
@@ -205,26 +207,48 @@
     <div class="ym-page-section ym-page-section__main" ng-show="showStats == true" ng-cloak>
       <div class="container">
         <div class="ym-stats ym-promo-block">
-          <section>
+          <section aria-label="Your Impact Statistics">
             <h2 class="text-center">Your Impact</h2>
-            <div class="ym-promo-block__item ym-promo-block__item--participants ym-promo-block--circle">
-              <section>
-                <div class="h2 ym-headline">{{totalStudents}}</div>
-                <p>participants</p>
-              </section>
-            </div>
-            <div class="ym-promo-block__item ym-promo-block__item--pledges ym-promo-block--circle">
-              <section>
-                <div class="h2 ym-headline">{{totalChallenges}}</div>
-                <p>pledges taken</p>
-              </section>
-            </div>
-            <div class="ym-promo-block__item ym-promo-block__item--schools ym-promo-block--circle">
-              <section>
-                <div class="h2 ym-headline">{{totalSchools}}</div>
-                <p>participating schools</p>
-              </section>  
-            </div>
+            <t:if test="path =='/jump-hoops/'">
+              <div class="ym-promo-block__item ym-promo-block__item--participants ym-promo-block--circle">
+                <section>
+                  <div class="h2 ym-headline">{{totalStudents}}</div>
+                  <p>participants</p>
+                </section>
+              </div>
+              <div class="ym-promo-block__item ym-promo-block__item--pledges ym-promo-block--circle">
+                <section>
+                  <div class="h2 ym-headline">{{totalChallenges}}</div>
+                  <p>pledges taken</p>
+                </section>
+              </div>
+              <div class="ym-promo-block__item ym-promo-block__item--schools ym-promo-block--circle">
+                <section>
+                  <div class="h2 ym-headline">{{totalSchools}}</div>
+                  <p>participating schools</p>
+                </section>  
+              </div>
+            </t:if>
+            <t:else>
+              <div class="ym-promo-block__item ym-promo-block__item--participants ym-promo-block--circle">
+                <section>
+                  <div class="h2 ym-headline">{{totalStudents}}</div>
+                  <p>participants</p>
+                </section>
+              </div>
+              <div class="ym-promo-block__item ym-promo-block__item--pledges ym-promo-block--circle">
+                <section>
+                  <div class="h2 ym-headline">{{totalEmails}}</div>
+                  <p>emails sent</p>
+                </section>
+              </div>
+              <div class="ym-promo-block__item ym-promo-block__item--schools ym-promo-block--circle">
+                <section>
+                  <div class="h2 ym-headline">{{totalSchools}}</div>
+                  <p>participating schools</p>
+                </section>  
+              </div>
+            </t:else>
           </section>    
         </div>
       </div>
@@ -239,7 +263,7 @@
      ${body}
   </t:list>
   </t:if>
-  <div class="modal fade" id="noRegModal" tabindex="-1" role="dialog" aria-labelledby="roRegModelLabel">
+  <div class="modal fade" id="noRegModal" tabindex="-1" role="dialog" aria-labelledby="noRegModelLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
