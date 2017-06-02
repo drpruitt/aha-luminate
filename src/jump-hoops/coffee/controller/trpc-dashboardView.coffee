@@ -548,11 +548,9 @@ angular.module 'trPcControllers'
             jQuery(document).on 'keydown', (e) ->
               $focusedElement = jQuery(document.activeElement)
               if e.which is 13
-                console.log 'enter'
                 if $focusedElement.hasClass('owl-next')
                   owl.trigger('next.owl.carousel')
                 if $focusedElement.hasClass('owl-prev')
-                  console.log 'true'
                   owl.trigger('prev.owl.carousel')
             return
           onChange: ->
