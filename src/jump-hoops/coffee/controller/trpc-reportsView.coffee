@@ -218,7 +218,9 @@ angular.module 'trPcControllers'
             'T-shirt'
             'Teacher'
             'Challenge'
-        ]
+          ]
+          sortColumn: '',
+          sortAscending: false
         schoolDetailReportPromise = NgPcTeamraiserReportsService.getSchoolDetailReport()
           .then (response) ->
             if response.data.errorResponse
@@ -272,4 +274,12 @@ angular.module 'trPcControllers'
                   $scope.schoolDetailStudents.downloadData = schoolDetailDownloadData
             response
         $scope.reportPromises.push schoolDetailReportPromise
+
+        $scope.orderSchoolDetailStudents = (sortColumn) ->
+          $scope.schoolDetailStudents.sortAscending = !$scope.schoolDetailStudents.sortAscending
+          if $scope.schoolDetailStudents.sortColumn isnt sortColumn
+            $scope.schoolDetailStudents.sortAscending = false
+          $scope.schoolDetailStudents.sortColumn = sortColumn
+          orderBy = $filter 'orderBy'
+          $scope.schoolDetailStudents.students = orderBy $scope.schoolDetailStudents.students, sortColumn, not $scope.schoolDetailStudents.sortAscending
   ]
