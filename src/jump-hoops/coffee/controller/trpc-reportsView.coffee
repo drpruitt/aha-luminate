@@ -9,9 +9,9 @@ angular.module 'trPcControllers'
     'NgPcTeamraiserReportsService'
     ($rootScope, $scope, $filter, $location, NgPcTeamraiserEmailService, NgPcTeamraiserGiftService, NgPcTeamraiserReportsService) ->
       $scope.reportPromises = []
-      
+
       $scope.activeReportTab = if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true' then 0 else 1
-      
+
       NgPcTeamraiserEmailService.getSuggestedMessages()
         .then (response) ->
           suggestedMessages = response.data.getSuggestedMessagesResponse.suggestedMessage
@@ -32,7 +32,7 @@ angular.module 'trPcControllers'
             if messageType
               if messageType.toLowerCase() is 'thanks' and not $scope.thankYouMessageId
                 $scope.thankYouMessageId = suggestedMessage.messageId
-      
+
       $scope.participantGifts =
         sortColumn: 'date_recorded'
         sortAscending: false
@@ -65,7 +65,15 @@ angular.module 'trPcControllers'
             response
         $scope.reportPromises.push personalGiftsPromise
       $scope.getGifts()
-      
+
+      $scope.orderParticipantGifts = (sortColumn) ->
+        $scope.participantGifts.sortAscending = !$scope.participantGifts.sortAscending
+        if $scope.participantGifts.sortColumn isnt sortColumn
+          $scope.participantGifts.sortAscending = false
+        $scope.participantGifts.sortColumn = sortColumn
+        $scope.participantGifts.page = 1
+        $scope.getGifts()
+
       $scope.thankParticipantDonor = (participantGift) ->
         if not $rootScope.selectedContacts
           $rootScope.selectedContacts = {}
@@ -88,7 +96,7 @@ angular.module 'trPcControllers'
           $location.path '/email/compose/suggestedMessage/' + $scope.thankYouMessageId
         else
           $location.path '/email/compose/'
-      
+
       $scope.thankAllParticipantDonors = ->
         if not $rootScope.selectedContacts
           $rootScope.selectedContacts = {}
@@ -112,7 +120,7 @@ angular.module 'trPcControllers'
           $location.path '/email/compose/suggestedMessage/' + $scope.thankYouMessageId
         else
           $location.path '/email/compose/'
-      
+
       if $scope.participantRegistration.aTeamCaptain is 'true'
         $scope.teamGifts =
           sortColumn: 'date_recorded'
@@ -144,7 +152,15 @@ angular.module 'trPcControllers'
               response
           $scope.reportPromises.push personalGiftsPromise
         $scope.getTeamGifts()
-        
+
+        $scope.orderTeamGifts = (sortColumn) ->
+          $scope.teamGifts.sortAscending = !$scope.teamGifts.sortAscending
+          if $scope.teamGifts.sortColumn isnt sortColumn
+            $scope.teamGifts.sortAscending = false
+          $scope.teamGifts.sortColumn = sortColumn
+          $scope.teamGifts.page = 1
+          $scope.getTeamGifts()
+
         $scope.thankTeamDonor = (teamGift) ->
           if not $rootScope.selectedContacts
             $rootScope.selectedContacts = {}
@@ -167,7 +183,7 @@ angular.module 'trPcControllers'
             $location.path '/email/compose/suggestedMessage/' + $scope.thankYouMessageId
           else
             $location.path '/email/compose/'
-        
+
         $scope.thankAllTeamDonors = ->
           if not $rootScope.selectedContacts
             $rootScope.selectedContacts = {}
@@ -191,7 +207,7 @@ angular.module 'trPcControllers'
             $location.path '/email/compose/suggestedMessage/' + $scope.thankYouMessageId
           else
             $location.path '/email/compose/'
-      
+
       if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
         $scope.schoolDetailStudents =
           downloadHeaders: [

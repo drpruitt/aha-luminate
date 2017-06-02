@@ -11,7 +11,7 @@
             <span class="fa fa-camera"></span> Edit Photo
           </button>
         ::]]
-        <img class="hidden-md hidden-lg" ng-src="{{teamPagePhoto1.customUrl && teamPagePhoto1.customUrl != '' ? teamPagePhoto1.customUrl : teamPagePhoto1.defaultUrl}}" alt="{{teamPagePhoto1.caption}}" ng-cloak>
+        <img class="hidden-md hidden-lg" ng-src="{{teamPagePhoto1.customUrl && teamPagePhoto1.customUrl != '' ? teamPagePhoto1.customUrl : teamPagePhoto1.defaultUrl}}" alt="{{teamPagePhoto1.caption != '' ? teamPagePhoto1.caption : 'Class Photo'}}" ng-cloak>
       </div>
       <div class="caption" ng-if="teamPagePhoto1.caption && teamPagePhoto1.caption != ''" ng-cloak>
         <span ng-bind-html="teamPagePhoto1.caption"></span>
@@ -145,8 +145,8 @@
         </div>
       ::]]
     </div>
-    <div class="ym-list" ng-class="teamParticipants.totalFundraisers < 1 ? 'hidden' : 'col-md-6'">
-      <img class="img-responsive" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/hj-fundraisers-graphic.png" alt="">
+    <div class="ym-list" ng-class="teamParticipants.totalFundraisers < 1 ? 'hidden' : 'col-md-6'" role="list" aria-label="Top Fundarisers List">
+      <img class="img-responsive" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/hj-fundraisers-graphic.png" alt="Saluting these top fundraisers">
       <div class="ym-donor-list">
         <team-participant-list team-id="'[[T6:[[S334:team_id]]]]'" participants="teamParticipants.participants"></team-participant-list>
       </div>
