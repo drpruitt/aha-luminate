@@ -27,7 +27,7 @@ angular.module 'ahaLuminateControllers'
             label: 'Filter Results by State'
           }
         ]
-        angular.forEach $scope.schools, (school)
+        angular.forEach $scope.schools, (school) ->
           if school.SCHOOL_STATE and school.SCHOOL_STATE isnt '' and not list[school.SCHOOL_STATE]
             list[school.SCHOOL_STATE] = school.SCHOOL_STATE
             states.push

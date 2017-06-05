@@ -181,7 +181,7 @@ angular.module 'ahaLuminateControllers'
         if type is 'honor'
           angular.element('.btn-toggle--honor').toggleClass 'active'
           
-          if !angular.element('.btn-toggle--honor').hasClass 'active'
+          if not angular.element('.btn-toggle--honor').is '.active'
             document.activeElement.blur()
           
           if angular.element('.btn-toggle--honor').is '.active'
@@ -196,7 +196,7 @@ angular.module 'ahaLuminateControllers'
         else
           angular.element('.btn-toggle--memory').toggleClass 'active'
           
-          if !angular.element('.btn-toggle--memory').hasClass 'active'
+          if not angular.element('.btn-toggle--memory').is '.active'
             document.activeElement.blur()
           
           if angular.element('.btn-toggle--memory').is '.active'
@@ -305,12 +305,10 @@ angular.module 'ahaLuminateControllers'
                   levelLabel: levelLabel
                   levelChecked: levelChecked
           resolve()
-
-      finishLoad = loadLevels()
-
-      finishLoad.then ( ->
+      
+      loadLevels().then ->
         loadLocalStorage()
-        if $scope.donationInfo.giftType == 'onetime'
+        if $scope.donationInfo.giftType is 'onetime'
           angular.element('#level_installment_row').addClass 'hidden'
         angular.element('#tr_message_to_participant_row').addClass 'hidden'
         angular.element('#billing_info').parent().addClass 'billing_info_toggle'
@@ -323,7 +321,6 @@ angular.module 'ahaLuminateControllers'
         billingAddressFields()
         donorRecognitionFields()
         return
-      ), (reason) ->
-        #TO DO
-
+      , (reason) ->
+        # TODO
   ]
