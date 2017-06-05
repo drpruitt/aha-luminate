@@ -21,8 +21,7 @@ angular.module 'ahaLuminateControllers'
       $rootScope.numTeams = ''
       
       $scope.prizes = []
-      $scope.monsters = []
-      ParticipantBadgesService.getBadges $scope.participantId
+      ParticipantBadgesService.getBadges '2011'
       .then (response) ->
         if not response.data.status or response.data.status isnt 'success'
           # TODO
@@ -30,51 +29,38 @@ angular.module 'ahaLuminateControllers'
           prizes = response.data.prizes
           angular.forEach prizes, (prize) ->
             if prize.earned_datetime isnt null
-              if prize.id is '342' or prize.id is '343' or prize.id is '344'
-                $scope.monsters.push
+              if prize.id is '1000'
+                $scope.prizes.push
                   priority: 1
                   id: prize.id
                   label: prize.label
                   sku: prize.sku
                   status: prize.status
                   earned: prize.earned_datetime
-                $scope.monsters.sort (a, b) ->
-                  b.earned - a.earned
-              else
-                if prize.id is '352'
-                  $scope.prizes.push
-                    priority: 2
-                    id: prize.id
-                    label: prize.label
-                    sku: prize.sku
-                    status: prize.status
-                    earned: prize.earned_datetime
-                else if prize.id is '350'
-                  $scope.prizes.push
-                    priority: 3
-                    id: prize.id
-                    label: prize.label
-                    sku: prize.sku
-                    status: prize.status
-                    earned: prize.earned_datetime
-                else if prize.id is '353'
-                  $scope.prizes.push
-                    priority: 4
-                    id: prize.id
-                    label: prize.label
-                    sku: prize.sku
-                    status: prize.status
-                    earned: prize.earned_datetime
-                else if prize.id is '351'
-                  $scope.prizes.push
-                    priority: 5
-                    id: prize.id
-                    label: prize.label
-                    sku: prize.sku
-                    status: prize.status
-                    earned: prize.earned_datetime
-          if $scope.monsters.length > 0
-            $scope.prizes.push $scope.monsters[0]
+              else if prize.id is '1001'
+                $scope.prizes.push
+                  priority: 2
+                  id: prize.id
+                  label: prize.label
+                  sku: prize.sku
+                  status: prize.status
+                  earned: prize.earned_datetime
+              else if prize.id is '1004'
+                $scope.prizes.push
+                  priority: 3
+                  id: prize.id
+                  label: prize.label
+                  sku: prize.sku
+                  status: prize.status
+                  earned: prize.earned_datetime
+              else if prize.id is '1003'
+                $scope.prizes.push
+                  priority: 4
+                  id: prize.id
+                  label: prize.label
+                  sku: prize.sku
+                  status: prize.status
+                  earned: prize.earned_datetime
           if $scope.prizes.length > 0
             $scope.prizes.sort (a, b) ->
               a.priority - b.priority

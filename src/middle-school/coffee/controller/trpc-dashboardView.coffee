@@ -496,7 +496,7 @@ angular.module 'trPcControllers'
             getStudentChallenge()
 
       $scope.prizes = []
-      ParticipantBadgesService.getBadges $scope.consId
+      ParticipantBadgesService.getBadges '2011'
       .then (response) ->
         prizes = response.data.prizes
         angular.forEach prizes, (prize) ->
@@ -536,6 +536,25 @@ angular.module 'trPcControllers'
             '<span class="fa fa-chevron-left" aria-hidden="true" />',
             '<span class="fa fa-chevron-right" aria-hidden="true" />'
           ]
+          addClassActive: true
+          onInitialized: (event) ->
+            angular.element('.owl-carousel').find('.owl-item').attr 'aria-selected', 'false'
+            angular.element('.owl-carousel').find('.owl-item').attr 'role', 'listitem'
+            angular.element('.owl-carousel').find('.owl-item.active').attr 'aria-selected', 'true'
+            angular.element('.owl-carousel').find('.owl-prev').attr('role', 'button').attr 'title', 'Previous'
+            angular.element('.owl-carousel').find('.owl-next').attr('role', 'button').attr 'title', 'Next'
+            angular.element('.owl-item.active, .owl-prev, .owl-next').attr 'tabindex', '0'
+            jQuery(document).on 'keydown', (e) ->
+              $focusedElement = jQuery(document.activeElement)
+              if e.which is 13
+                if $focusedElement.hasClass('owl-next')
+                  owl.trigger('next.owl.carousel')
+                if $focusedElement.hasClass('owl-prev')
+                  owl.trigger('prev.owl.carousel')
+            return
+          onChange: ->
+            angular.element('.owl-carousel').find('.owl-item').attr 'aria-selected', 'false'
+            angular.element('.owl-carousel').find('.owl-item.active').attr 'aria-selected', 'true'
 
       $timeout initCarousel, 1000
   ]
