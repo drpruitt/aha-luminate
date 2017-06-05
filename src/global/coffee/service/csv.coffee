@@ -7,17 +7,12 @@ angular.module 'ahaLuminateApp'
         result = []
         headers = lines[0]
         lines.splice 0, 1
-        i = 0
-        while i < lines.length
-          currentline = lines[i]
+        angular.forEach lines, (line) ->
           obj = {}
-          if currentline.length is headers.length
-            j = 0
-            while j < headers.length
-              obj[headers[j]] = currentline[j]
-              j++
+          if line.length is headers.length
+            angular.forEach headers, (header, headerIndex) ->
+              obj[header] = line[headerIndex]
             result.push obj
-          i++
         result
       
       toArray: (csvStr) ->
