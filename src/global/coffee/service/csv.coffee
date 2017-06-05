@@ -3,6 +3,8 @@ angular.module 'ahaLuminateApp'
     '$rootScope'
     ($rootScope) ->
       toJson: (csvStr) ->
+        console.log 'enter csv'
+        console.log csvStr
         lines = this.toArray csvStr
         result = []
         headers = lines[0]
