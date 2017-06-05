@@ -61,7 +61,8 @@ angular.module 'trPcControllers'
       setEmailComposerDefaults = ->
         defaultStationeryId = $scope.teamraiserConfig.defaultStationeryId
         selectedContacts = $rootScope.selectedContacts.contacts
-        $scope.emailComposer = 
+        $scope.emailComposer =
+          serial: new Date().getTime()
           message_id: ''
           recipients: selectedContacts.join ', '
           suggested_message_id: ''
