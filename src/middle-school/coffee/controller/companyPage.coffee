@@ -37,7 +37,7 @@ angular.module 'ahaLuminateControllers'
         success: (response) ->
           companyItems = response.getCompanyListResponse.companyItem
           angular.forEach companyItems, (companyItem) ->
-            if companyItem.companyId == $scope.companyId
+            if companyItem.companyId is $scope.companyId
               parentId = companyItem.parentOrgEventId
               PageContentService.getPageContent 'middle_school_local_sponsors_'+ parentId
               .then (response) ->
