@@ -547,14 +547,14 @@ angular.module 'trPcControllers'
             jQuery(document).on 'keydown', (e) ->
               $focusedElement = jQuery(document.activeElement)
               if e.which is 13
-                if $focusedElement.hasClass('owl-next')
-                  owl.trigger('next.owl.carousel')
-                if $focusedElement.hasClass('owl-prev')
-                  owl.trigger('prev.owl.carousel')
+                if $focusedElement.is '.owl-next'
+                  owl.trigger 'next.owl.carousel'
+                if $focusedElement.is '.owl-prev'
+                  owl.trigger 'prev.owl.carousel'
             return
           onChange: ->
             angular.element('.owl-carousel').find('.owl-item').attr 'aria-selected', 'false'
             angular.element('.owl-carousel').find('.owl-item.active').attr 'aria-selected', 'true'
-
+      
       $timeout initCarousel, 1000
   ]
