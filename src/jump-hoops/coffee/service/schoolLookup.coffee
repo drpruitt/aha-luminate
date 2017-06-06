@@ -9,7 +9,7 @@ angular.module 'ahaLuminateApp'
           method: 'POST'
           # url: '/system/proxy.jsp?__proxyURL=' + encodeURIComponent(luminateExtend.global.path.secure + 'CRTeamraiserAPI')
           url: 'https://secure3.convio.net/heartdev/site/CRTeamraiserAPI'
-          data: 'v=1.0&api_key=' + $rootScope.apiKey + '&response_format=json&suppress_response_codes=true&method=getCompaniesByInfo&' + requestData
+          data: 'v=1.0&api_key=' + $rootScope.apiKey + '&response_format=json&suppress_response_codes=true&method=getCompaniesByInfo&event_type=' + encodeURIComponent('Jump Hoops') + '&' + requestData
           headers:
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
       

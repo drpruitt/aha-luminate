@@ -148,7 +148,7 @@ angular.module 'ahaLuminateControllers'
       
       $scope.orderSchools = (sortProp, keepSortOrder) ->
         schools = $scope.schoolList.schools
-        if schools.length
+        if schools.length > 0
           if not keepSortOrder
             $scope.schoolList.sortDesc = !$scope.schoolList.sortDesc
           if $scope.schoolList.sortProp isnt sortProp
