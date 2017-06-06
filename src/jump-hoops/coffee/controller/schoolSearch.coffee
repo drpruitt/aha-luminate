@@ -37,7 +37,7 @@ angular.module 'ahaLuminateControllers'
               $scope.schoolCompanyNameCache[firstThreeCharacters]
           else
             $scope.schoolCompanyNameCache[firstThreeCharacters] = 'pending'
-            SchoolLookupService.getSchoolCompanies 'company_name=' + firstThreeCharacters + '&list_page_size=500'
+            SchoolLookupService.getSchoolCompanies 'company_name=' + firstThreeCharacters + '&list_sort_column=company_name&list_page_size=500'
               .then (response) ->
                 companies = response.data.getCompaniesResponse?.company
                 schools = []
@@ -97,7 +97,7 @@ angular.module 'ahaLuminateControllers'
       $scope.getSchoolSearchResults = ->
         if $scope.schoolList.schools
           delete $scope.schoolList.schools
-        SchoolLookupService.getSchoolCompanies 'company_name=' + $scope.schoolList.nameFilter + '&list_page_size=10'
+        SchoolLookupService.getSchoolCompanies 'company_name=' + $scope.schoolList.nameFilter + '&list_sort_column=company_name&list_page_size=10'
           .then (response) ->
             companies = response.data.getCompaniesResponse?.company
             if not companies
