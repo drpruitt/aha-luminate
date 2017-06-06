@@ -5,10 +5,10 @@ angular.module 'ahaLuminateControllers'
     '$filter'
     'SchoolLookupService'
     ($rootScope, $scope, $filter, SchoolLookupService) ->
-      $scope.states = []
       $scope.schools = []
       $scope.filtered = []
       $scope.schoolList =
+        searchSubmitted: false
         sortProp: 'SCHOOL_STATE'
         sortDesc: true
         totalItems: 0
@@ -97,13 +97,14 @@ angular.module 'ahaLuminateControllers'
       $scope.submitSchoolSearch = ->
         $scope.schoolList.stateFilter = ''
         $scope.filterSchools()
+        $scope.schoolList.searchSubmitted = true
       
       $scope.filterSchools = ->
         schools = $scope.schools
         filtered = false
         if schools.length and $scope.schoolList.nameFilter
           filtered = true
-          schools = $filter('filter') schools, SCHOOL_NAME: $scope.schoolList.nameFilter, true
+          schools = $filter('filter') schools, SCHOOL_NAME: $scope.schoolList.nameFilter
         if schools.length and $scope.schoolList.stateFilter isnt ''
           filtered = true
           schools = $filter('filter') schools, SCHOOL_STATE: $scope.schoolList.stateFilter

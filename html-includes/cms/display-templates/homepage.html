@@ -76,8 +76,8 @@
         </form>
       </div>
     </div>
-    <div class="ym-page-section ym-page-section__roster" ng-class="schoolList.totalItems > 0 || schoolList.nameFilter.length > 2 || schoolList.typeaheadNoResults ? 'show' : 'hidden'">
-      <div ng-show="!schoolList.typeaheadNoResults">
+    <div class="ym-page-section ym-page-section__roster" ng-if="schoolList.searchSubmitted">
+      <div ng-if="!schoolList.typeaheadNoResults">
         <div class="ym-page-section__header">
           <section>
             <h2 class="h5 school-list__header">
@@ -207,7 +207,7 @@
           </ul>
         </div>
       </div>
-      <div ng-show="filtered.length == 0 && schoolList.stateFilter != '' && !schoolList.typeaheadNoResults" class="text-center" ng-class="{'pb-md': schoolList.showHelp}">
+      <div ng-if="filtered.length == 0 && schoolList.stateFilter != '' && !schoolList.typeaheadNoResults" class="text-center" ng-class="{'pb-md': schoolList.showHelp}">
         <p>
           Hi! We couldn't locate a school with the name of <strong>{{schoolList.nameFilter}}</strong> in <strong>{{schoolList.stateFilter}}</strong>. Your school may not be added to our list just yet.
         </p>
@@ -218,11 +218,11 @@
           <a class="btn btn-md btn-secondary ym-list--school-list--help" ng-href="{{noSchoolLink}}">Sign Up Today</a>
         </div>
       </div>
-      <div ng-show="!(filtered.length == 0 && schoolList.stateFilter != '')">
-        <div ng-show="schoolList.showHelp" class="text-center">
+      <div ng-if="!(filtered.length == 0 && schoolList.stateFilter != '')">
+        <div ng-if="schoolList.showHelp" class="text-center">
           Click <a ng-href="{{noSchoolLink}}">here</a> to sign up for "Jump Rope and Hoops for Heart" and a school coordinator will get in touch with you soon to confirm you've been properly signed up with your school.
         </div>
-        <div ng-show="schoolList.showHelp == false" class="text-center">
+        <div ng-if="!schoolList.showHelp" class="text-center">
           <button type="button" class="btn btn-md btn-secondary ym-list--school-list--help" ng-click="schoolList.showHelp = true;">
             Can't Find Your School
           </button>
