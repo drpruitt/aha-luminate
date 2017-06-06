@@ -200,6 +200,7 @@
     <!-- Stories Carousel -->
         <t:include id="templatelist-800141387" />
     </div>
+  <t:set id="currentpath" value="path"/>
   <t:if test="display_footer_promos.length>0">
   <t:list id="display_footer_promos">
   <t:if test="name != 'no'">
@@ -209,7 +210,8 @@
         <div class="ym-stats ym-promo-block">
           <section aria-label="Your Impact Statistics">
             <h2 class="text-center">Your Impact</h2>
-            <t:if test="path =='/jump-hoops/'">
+            <!-- here it is - ${currentpath} -->
+            <t:if test="currentpath == '/jump-hoops/'">
               <div class="ym-promo-block__item ym-promo-block__item--participants ym-promo-block--circle">
                 <section>
                   <div class="h2 ym-headline">{{totalStudents}}</div>
