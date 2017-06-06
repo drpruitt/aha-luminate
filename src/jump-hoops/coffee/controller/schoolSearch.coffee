@@ -14,7 +14,6 @@ angular.module 'ahaLuminateControllers'
         currentPage: 1
         numPerPage: 5
         showHelp: false
-        typeaheadNoResults: false
         stateFilter: ''
       $scope.schoolCompanyNameCache = {}
       
@@ -30,7 +29,7 @@ angular.module 'ahaLuminateControllers'
             COORDINATOR_FIRST_NAME: ""
             COORDINATOR_LAST_NAME: ""
         schools
-
+      
       $scope.getSchoolSuggestions = (newValue) ->
         firstThreeCharacters = newValue.substring 0, 3
         if newValue.length < 6
@@ -93,11 +92,11 @@ angular.module 'ahaLuminateControllers'
       
       $scope.submitSchoolSearch = ->
         $scope.schoolList.stateFilter = ''
-        $scope.filterSchools()
+        $scope.getSchoolSearchResults()
         $scope.schoolList.searchSubmitted = true
       
-      $scope.filterSchools = ->
-        SchoolLookupService.getSchoolCompanies 'company_name=' + $scope.schoolList.nameFilter + '&list_page_size=500'
+      $scope.getSchoolSearchResults = ->
+        SchoolLookupService.getSchoolCompanies 'company_name=' + $scope.schoolList.nameFilter + '&list_page_size=10'
           .then (response) ->
             companies = response.data.getCompaniesResponse?.company
             schools = []
@@ -107,7 +106,6 @@ angular.module 'ahaLuminateControllers'
             filtered = false
             if schools.length and $scope.schoolList.nameFilter
               filtered = true
-              schools = $filter('filter') schools, SCHOOL_NAME: $scope.schoolList.nameFilter
             if schools.length and $scope.schoolList.stateFilter isnt ''
               filtered = true
               schools = $filter('filter') schools, SCHOOL_STATE: $scope.schoolList.stateFilter

@@ -72,19 +72,19 @@
       <div class="form-inline text-center">
         <form method="POST" ng-submit="submitSchoolSearch()">
           <label for="school-name-filter" class="sr-only">Start typing your school's name:</label>
-          <input type="text" class="form-control" id="school-name-filter" name="school-name-filter" ng-model="schoolList.nameFilter" ng-minlength="3" placeholder="Start typing your school's name" autocomplete="off" uib-typeahead="school.SCHOOL_NAME for school in getSchoolSuggestions($viewValue) | unique: 'SCHOOL_NAME' | filter: {SCHOOL_NAME:$viewValue}" typeahead-min-length="3" typeahead-editable="true" typeahead-focus-first="false" typeahead-select-on-exact="true" typeahead-no-results="schoolList.typeaheadNoResults">
+          <input type="text" class="form-control" id="school-name-filter" name="school-name-filter" ng-model="schoolList.nameFilter" ng-minlength="3" placeholder="Start typing your school's name" autocomplete="off" uib-typeahead="school.SCHOOL_NAME for school in getSchoolSuggestions($viewValue) | unique: 'SCHOOL_NAME' | filter: {SCHOOL_NAME:$viewValue}" typeahead-min-length="3" typeahead-editable="true" typeahead-focus-first="false" typeahead-select-on-exact="true">
         </form>
       </div>
     </div>
     <div class="ym-page-section ym-page-section__roster" ng-if="schoolList.searchSubmitted">
-      <div ng-if="!schoolList.typeaheadNoResults">
+      <div ng-if="filtered.length > 0">
         <div class="ym-page-section__header">
           <section>
             <h2 class="h5 school-list__header">
               Results Matching Your School's Name
             </h2>
             <label for="school-state-filter" class="sr-only">School State Filter</label>
-            <select class="btn btn-sm btn-secondary" id="school-state-filter" name="stateFilter" ng-model="schoolList.stateFilter" ng-change="filterSchools()">
+            <select class="btn btn-sm btn-secondary" id="school-state-filter" name="stateFilter" ng-model="schoolList.stateFilter" ng-change="getSchoolSearchResults()">
               <option value="">Filter Results by State</option>
               <option value="AK">AK</option>
               <option value="AL">AL</option>
@@ -207,7 +207,7 @@
           </ul>
         </div>
       </div>
-      <div ng-if="filtered.length == 0 && schoolList.stateFilter != '' && !schoolList.typeaheadNoResults" class="text-center" ng-class="{'pb-md': schoolList.showHelp}">
+      <div ng-if="filtered.length == 0 && schoolList.stateFilter != ''" class="text-center" ng-class="{'pb-md': schoolList.showHelp}">
         <p>
           Hi! We couldn't locate a school with the name of <strong>{{schoolList.nameFilter}}</strong> in <strong>{{schoolList.stateFilter}}</strong>. Your school may not be added to our list just yet.
         </p>
