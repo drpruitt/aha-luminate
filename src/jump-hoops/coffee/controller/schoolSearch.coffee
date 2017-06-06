@@ -124,14 +124,8 @@ angular.module 'ahaLuminateControllers'
                           schools[schoolIndex].SCHOOL_STATE = detailedSchoolData[2]
                           schools[schoolIndex].COORDINATOR_FIRST_NAME = detailedSchoolData[3]
                           schools[schoolIndex].COORDINATOR_LAST_NAME = detailedSchoolData[4]
-                    filtered = false
-                    if schools.length and $scope.schoolList.nameFilter
-                      filtered = true
-                    if schools.length and $scope.schoolList.stateFilter isnt ''
-                      filtered = true
+                    if $scope.schoolList.stateFilter isnt ''
                       schools = $filter('filter') schools, SCHOOL_STATE: $scope.schoolList.stateFilter
-                    if not filtered
-                      schools = []
                     $scope.schoolList.totalItems = schools.length
                     $scope.schoolList.schools = schools
                     $scope.orderSchools $scope.schoolList.sortProp, true
