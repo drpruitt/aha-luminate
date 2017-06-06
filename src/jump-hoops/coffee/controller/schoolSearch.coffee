@@ -94,7 +94,7 @@ angular.module 'ahaLuminateControllers'
                   $scope.schools = schools
                   $scope.schoolCompanyNameCache[firstNineCharacters] = schools
       
-      $scope.typeaheadFilter = ->
+      $scope.submitSchoolSearch = ->
         $scope.schoolList.stateFilter = ''
         $scope.filterSchools()
       

@@ -13,11 +13,16 @@ angular.module 'ahaLuminateApp'
           headers:
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
       
-      getSchools: (callback) ->
-        url = $sce.trustAsResourceUrl luminateExtend.global.path.nonsecure + 'PageServer?pagename=jump_hoops_school_search&pgwrap=n'
-        $http.jsonp(url, jsonpCallbackParam: 'callback').then (response) ->
-          if not response.data.success
-            callback.failure response
-          else
-            callback.success decodeURIComponent(response.data.success.schools.replace(/\+/g, ' '))
+      getSchoolData: (companyIds) ->
+        requestData = ''
+        angular.forEach companyIds, (companyId, companyIdIndex) ->
+          if requestData isnt ''
+            requestData += '&'
+          requestData += 'company_id_' + (companyIdIndex + 1) + '=' + companyId
+        $http
+          method: 'GET'
+          # url: '/system/proxy.jsp?__proxyURL=' + encodeURIComponent(luminateExtend.global.path.secure + 'PageServer?pagename=getJumpHoopsSchoolSearchData&pgwrap=n&' + requestData)
+          url: 'https://secure3.convio.net/heartdev/site/PageServer?pagename=getJumpHoopsSchoolSearchData&pgwrap=n&' + requestData
+          headers:
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
   ]
