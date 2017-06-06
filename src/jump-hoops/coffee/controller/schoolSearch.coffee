@@ -88,12 +88,4 @@ angular.module 'ahaLuminateControllers'
         end = begin + $scope.schoolList.numPerPage
         index = $scope.filtered.indexOf value
         begin <= index and index < end
-      
-      SchoolLookupService.getSchools
-        failure: (response) ->
-          return
-        success: (csv) ->
-          schools = CsvService.toJson csv
-          $scope.schools = schools
-          return
   ]
