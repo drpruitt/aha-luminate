@@ -249,6 +249,15 @@ angular.module 'ahaLuminateControllers'
       loggedInForm = ->
         angular.element('#donor_first_namename').prop 'disabled', true
         angular.element('#donor_last_namename').prop 'disabled', true
+        angular.element('#donor_email_addressname').prop 'disabled', true
+        angular.element('#donor_phonename').prop 'disabled', true
+        angular.element('#donor_addr_street1name').prop 'disabled', true
+        angular.element('#donor_addr_street2name').prop 'disabled', true
+        angular.element('#donor_addr_cityname').prop 'disabled', true
+        angular.element('#donor_addr_state').prop 'disabled', true
+        angular.element('#donor_addr_zipname').prop 'disabled', true
+        angular.element('#donor_addr_country').prop 'disabled', true  
+
         angular.element('.billing-info').toggleClass 'hidden'
         angular.element('#billing_info').prop 'checked', false
         angular.element('#billing_info_same_as_donorname').prop 'checked', false
