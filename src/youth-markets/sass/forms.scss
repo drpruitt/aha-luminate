@@ -148,7 +148,7 @@ input[type="checkbox"] {
 }
 
 :disabled, 
-input[disabled] {
+div.responsive input[disabled] {
   background: $inactive-grey;
   cursor: not-allowed;
   color: $event-secondary;
