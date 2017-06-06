@@ -13,16 +13,11 @@ angular.module 'ahaLuminateApp'
           headers:
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
       
-      getSchoolData: (companyIds) ->
-        requestData = ''
-        angular.forEach companyIds, (companyId, companyIdIndex) ->
-          if requestData isnt ''
-            requestData += '&'
-          requestData += 'company_id_' + (companyIdIndex + 1) + '=' + companyId
+      getSchoolData: ->
         $http
           method: 'GET'
-          # url: '/system/proxy.jsp?__proxyURL=' + encodeURIComponent(luminateExtend.global.path.secure + 'PageServer?pagename=getJumpHoopsSchoolSearchData&pgwrap=n&' + requestData)
-          url: 'https://secure3.convio.net/heartdev/site/SPageServer?pagename=getJumpHoopsSchoolSearchData&pgwrap=n&' + requestData
+          # url: '/system/proxy.jsp?__proxyURL=' + encodeURIComponent(luminateExtend.global.path.secure + 'SPageServer?pagename=getJumpHoopsSchoolSearchData&pgwrap=n')
+          url: 'https://secure3.convio.net/heartdev/site/SPageServer?pagename=getJumpHoopsSchoolSearchData&pgwrap=n'
           headers:
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
   ]

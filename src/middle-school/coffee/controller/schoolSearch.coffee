@@ -14,8 +14,33 @@ angular.module 'ahaLuminateControllers'
         numPerPage: 5
         showHelp: false
         stateFilter: ''
+      $scope.schoolDataMap = {}
       $scope.schoolSuggestionCache = {}
-      $scope.schoolResultCache = {}
+      
+      SchoolLookupService.getSchoolData()
+        .then (response) ->
+          schoolDataRows = response.data.getSchoolSearchDataResponse.schoolData
+          schoolDataHeaders = {}
+          schoolDataMap = {}
+          angular.forEach schoolDataRows[0], (schoolDataHeader, schoolDataHeaderIndex) ->
+            schoolDataHeaders[schoolDataHeader] = schoolDataHeaderIndex
+          angular.forEach schoolDataRows, (schoolDataRow, schoolDataRowIndex) ->
+            if schoolDataRowIndex > 0
+              schoolDataMap['id' + schoolDataRow[schoolDataHeaders.COMPANY_ID]] =
+                SCHOOL_CITY: schoolDataRow[schoolDataHeaders.SCHOOL_CITY]
+                SCHOOL_STATE: schoolDataRow[schoolDataHeaders.SCHOOL_STATE]
+                COORDINATOR_FIRST_NAME: schoolDataRow[schoolDataHeaders.COORDINATOR_FIRST_NAME]
+                COORDINATOR_LAST_NAME: schoolDataRow[schoolDataHeaders.COORDINATOR_LAST_NAME]
+          $scope.schoolDataMap = schoolDataMap
+          if $scope.schoolList.schools?.length > 0
+            angular.forEach $scope.schoolList.schools, (school, schoolIndex) ->
+              schoolData = $scope.schoolDataMap['id' + school.companyId]
+              if schoolData
+                school.SCHOOL_CITY = schoolData.SCHOOL_CITY
+                school.SCHOOL_STATE = schoolData.SCHOOL_STATE
+                school.COORDINATOR_FIRST_NAME = schoolData.COORDINATOR_FIRST_NAME
+                school.COORDINATOR_LAST_NAME = schoolData.COORDINATOR_LAST_NAME
+                $scope.schoolList.schools[schoolIndex] = school
       
       setSchools = (companies) ->
         schools = []
@@ -24,10 +49,6 @@ angular.module 'ahaLuminateControllers'
             FR_ID: company.eventId
             COMPANY_ID: company.companyId
             SCHOOL_NAME: company.companyName
-            SCHOOL_CITY: ""
-            SCHOOL_STATE: ""
-            COORDINATOR_FIRST_NAME: ""
-            COORDINATOR_LAST_NAME: ""
         schools
       
       $scope.getSchoolSuggestions = (newValue) ->
@@ -98,47 +119,31 @@ angular.module 'ahaLuminateControllers'
       $scope.getSchoolSearchResults = ->
         if $scope.schoolList.schools
           delete $scope.schoolList.schools
-        nameFilter = $scope.schoolList.nameFilter
-        if $scope.schoolResultCache[nameFilter]
-          $scope.schoolList.totalItems = $scope.schoolResultCache[nameFilter].length
-          $scope.schoolList.schools = $scope.schoolResultCache[nameFilter]
-          $scope.orderSchools $scope.schoolList.sortProp, true
-        else
-          SchoolLookupService.getSchoolCompanies 'company_name=' + nameFilter + '&list_sort_column=company_name&list_page_size=5'
-            .then (response) ->
-              companies = response.data.getCompaniesResponse?.company
-              if not companies
+        SchoolLookupService.getSchoolCompanies 'company_name=' + $scope.schoolList.nameFilter + '&list_sort_column=company_name&list_page_size=500'
+          .then (response) ->
+            companies = response.data.getCompaniesResponse?.company
+            if not companies
+              $scope.schoolList.totalItems = 0
+              $scope.schoolList.schools = []
+            else
+              companies = [companies] if not angular.isArray companies
+              if companies.length is 0
                 $scope.schoolList.totalItems = 0
                 $scope.schoolList.schools = []
-                $scope.schoolResultCache[nameFilter] = []
               else
-                companies = [companies] if not angular.isArray companies
-                if companies.length is 0
-                  $scope.schoolList.totalItems = 0
-                  $scope.schoolList.schools = []
-                  $scope.schoolResultCache[nameFilter] = []
-                else
-                  schools = setSchools companies
-                  companyIds = []
-                  angular.forEach companies, (company) ->
-                    companyIds.push company.companyId
-                  SchoolLookupService.getSchoolData companyIds
-                    .then (response) ->
-                      detailedSchools = response.data.getSchoolSearchDataResponse.school
-                      angular.forEach detailedSchools, (detailedSchool) ->
-                        angular.forEach schools, (school, schoolIndex) ->
-                          if school.COMPANY_ID is detailedSchool.id
-                            detailedSchoolData = detailedSchool.schoolData
-                            schools[schoolIndex].SCHOOL_CITY = detailedSchoolData[1]
-                            schools[schoolIndex].SCHOOL_STATE = detailedSchoolData[2]
-                            schools[schoolIndex].COORDINATOR_FIRST_NAME = detailedSchoolData[3]
-                            schools[schoolIndex].COORDINATOR_LAST_NAME = detailedSchoolData[4]
-                      if $scope.schoolList.stateFilter isnt ''
-                        schools = $filter('filter') schools, SCHOOL_STATE: $scope.schoolList.stateFilter
-                      $scope.schoolList.totalItems = schools.length
-                      $scope.schoolList.schools = schools
-                      $scope.orderSchools $scope.schoolList.sortProp, true
-                      $scope.schoolResultCache[nameFilter] = schools
+                schools = setSchools companies
+                angular.forEach schools, (school) ->
+                  schoolData = $scope.schoolDataMap['id' + school.companyId]
+                  if schoolData
+                    school.SCHOOL_CITY = schoolData.SCHOOL_CITY
+                    school.SCHOOL_STATE = schoolData.SCHOOL_STATE
+                    school.COORDINATOR_FIRST_NAME = schoolData.COORDINATOR_FIRST_NAME
+                    school.COORDINATOR_LAST_NAME = schoolData.COORDINATOR_LAST_NAME
+                if $scope.schoolList.stateFilter isnt ''
+                  schools = $filter('filter') schools, SCHOOL_STATE: $scope.schoolList.stateFilter
+                $scope.schoolList.totalItems = schools.length
+                $scope.schoolList.schools = schools
+                $scope.orderSchools $scope.schoolList.sortProp, true
       
       $scope.orderSchools = (sortProp, keepSortOrder) ->
         schools = $scope.schoolList.schools
