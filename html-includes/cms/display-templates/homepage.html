@@ -72,7 +72,7 @@
       <div class="form-inline text-center">
         <form method="POST" ng-submit="submitSchoolSearch()">
           <label for="school-name-filter" class="sr-only">Start typing your school's name:</label>
-          <input type="text" class="form-control" id="school-name-filter" name="school-name-filter" ng-model="schoolList.nameFilter" ng-minlength="3" placeholder="Start typing your school's name" autocomplete="off" uib-typeahead="school.SCHOOL_NAME for school in getSchoolCompanies($viewValue) | unique: 'SCHOOL_NAME' | filter: {SCHOOL_NAME:$viewValue}" typeahead-min-length="3" typeahead-editable="true" typeahead-focus-first="false" typeahead-select-on-exact="true" typeahead-no-results="schoolList.typeaheadNoResults">
+          <input type="text" class="form-control" id="school-name-filter" name="school-name-filter" ng-model="schoolList.nameFilter" ng-minlength="3" placeholder="Start typing your school's name" autocomplete="off" uib-typeahead="school.SCHOOL_NAME for school in getSchoolSuggestions($viewValue) | unique: 'SCHOOL_NAME' | filter: {SCHOOL_NAME:$viewValue}" typeahead-min-length="3" typeahead-editable="true" typeahead-focus-first="false" typeahead-select-on-exact="true" typeahead-no-results="schoolList.typeaheadNoResults">
         </form>
       </div>
     </div>

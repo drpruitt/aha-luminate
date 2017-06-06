@@ -5,7 +5,6 @@ angular.module 'ahaLuminateControllers'
     '$filter'
     'SchoolLookupService'
     ($rootScope, $scope, $filter, SchoolLookupService) ->
-      $scope.schools = []
       $scope.filtered = []
       $scope.schoolList =
         searchSubmitted: false
@@ -31,12 +30,13 @@ angular.module 'ahaLuminateControllers'
             COORDINATOR_FIRST_NAME: ""
             COORDINATOR_LAST_NAME: ""
         schools
-      $scope.getSchoolCompanies = (newValue) ->
+
+      $scope.getSchoolSuggestions = (newValue) ->
         firstThreeCharacters = newValue.substring 0, 3
         if newValue.length < 6
           if $scope.schoolCompanyNameCache[firstThreeCharacters]
             if $scope.schoolCompanyNameCache[firstThreeCharacters] isnt 'pending'
-              $scope.schools = $scope.schoolCompanyNameCache[firstThreeCharacters]
+              $scope.schoolCompanyNameCache[firstThreeCharacters]
           else
             $scope.schoolCompanyNameCache[firstThreeCharacters] = 'pending'
             SchoolLookupService.getSchoolCompanies 'company_name=' + firstThreeCharacters + '&list_page_size=500'
@@ -46,7 +46,6 @@ angular.module 'ahaLuminateControllers'
                 if companies
                   companies = [companies] if not angular.isArray companies
                   schools = setSchools companies
-                $scope.schools = schools
                 $scope.schoolCompanyNameCache[firstThreeCharacters] = schools
         else
           firstSixCharacters = newValue.substring 0, 6
@@ -55,9 +54,9 @@ angular.module 'ahaLuminateControllers'
               if $scope.schoolCompanyNameCache[firstSixCharacters] is 'pending'
                 if $scope.schoolCompanyNameCache[firstThreeCharacters]
                   if $scope.schoolCompanyNameCache[firstThreeCharacters] isnt 'pending'
-                    $scope.schools = $scope.schoolCompanyNameCache[firstThreeCharacters]
+                    $scope.schoolCompanyNameCache[firstThreeCharacters]
               else
-                $scope.schools = $scope.schoolCompanyNameCache[firstSixCharacters]
+                $scope.schoolCompanyNameCache[firstSixCharacters]
             else
               $scope.schoolCompanyNameCache[firstSixCharacters] = 'pending'
               SchoolLookupService.getSchoolCompanies 'company_name=' + firstSixCharacters + '&list_page_size=500'
@@ -67,7 +66,6 @@ angular.module 'ahaLuminateControllers'
                   if companies
                     companies = [companies] if not angular.isArray companies
                     schools = setSchools companies
-                  $scope.schools = schools
                   $scope.schoolCompanyNameCache[firstSixCharacters] = schools
           else
             firstNineCharacters = newValue.substring 0, 9
@@ -77,11 +75,11 @@ angular.module 'ahaLuminateControllers'
                   if $scope.schoolCompanyNameCache[firstSixCharacters] is 'pending'
                     if $scope.schoolCompanyNameCache[firstThreeCharacters]
                       if $scope.schoolCompanyNameCache[firstThreeCharacters] isnt 'pending'
-                        $scope.schools = $scope.schoolCompanyNameCache[firstThreeCharacters]
+                        $scope.schoolCompanyNameCache[firstThreeCharacters]
                   else
-                    $scope.schools = $scope.schoolCompanyNameCache[firstSixCharacters]
+                    $scope.schoolCompanyNameCache[firstSixCharacters]
               else
-                $scope.schools = $scope.schoolCompanyNameCache[firstNineCharacters]
+                $scope.schoolCompanyNameCache[firstNineCharacters]
             else
               $scope.schoolCompanyNameCache[firstNineCharacters] = 'pending'
               SchoolLookupService.getSchoolCompanies 'company_name=' + firstNineCharacters + '&list_page_size=500'
@@ -91,7 +89,6 @@ angular.module 'ahaLuminateControllers'
                   if companies
                     companies = [companies] if not angular.isArray companies
                     schools = setSchools companies
-                  $scope.schools = schools
                   $scope.schoolCompanyNameCache[firstNineCharacters] = schools
       
       $scope.submitSchoolSearch = ->
@@ -100,19 +97,25 @@ angular.module 'ahaLuminateControllers'
         $scope.schoolList.searchSubmitted = true
       
       $scope.filterSchools = ->
-        schools = $scope.schools
-        filtered = false
-        if schools.length and $scope.schoolList.nameFilter
-          filtered = true
-          schools = $filter('filter') schools, SCHOOL_NAME: $scope.schoolList.nameFilter
-        if schools.length and $scope.schoolList.stateFilter isnt ''
-          filtered = true
-          schools = $filter('filter') schools, SCHOOL_STATE: $scope.schoolList.stateFilter
-        if not filtered
-          schools = []
-        $scope.schoolList.totalItems = schools.length
-        $scope.filtered = schools
-        $scope.orderSchools $scope.schoolList.sortProp, true
+        SchoolLookupService.getSchoolCompanies 'company_name=' + $scope.schoolList.nameFilter + '&list_page_size=500'
+          .then (response) ->
+            companies = response.data.getCompaniesResponse?.company
+            schools = []
+            if companies
+              companies = [companies] if not angular.isArray companies
+              schools = setSchools companies
+            filtered = false
+            if schools.length and $scope.schoolList.nameFilter
+              filtered = true
+              schools = $filter('filter') schools, SCHOOL_NAME: $scope.schoolList.nameFilter
+            if schools.length and $scope.schoolList.stateFilter isnt ''
+              filtered = true
+              schools = $filter('filter') schools, SCHOOL_STATE: $scope.schoolList.stateFilter
+            if not filtered
+              schools = []
+            $scope.schoolList.totalItems = schools.length
+            $scope.filtered = schools
+            $scope.orderSchools $scope.schoolList.sortProp, true
       
       $scope.orderSchools = (sortProp, keepSortOrder) ->
         schools = $scope.filtered
