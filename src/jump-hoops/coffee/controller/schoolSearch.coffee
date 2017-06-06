@@ -19,6 +19,18 @@ angular.module 'ahaLuminateControllers'
         stateFilter: ''
       $scope.schoolCompanyNameCache = {}
       
+      setSchools = (companies) ->
+        schools = []
+        angular.forEach companies, (company) ->
+          schools.push
+            FR_ID: company.eventId
+            COMPANY_ID: company.companyId
+            SCHOOL_NAME: company.companyName
+            SCHOOL_CITY: ""
+            SCHOOL_STATE: ""
+            COORDINATOR_FIRST_NAME: ""
+            COORDINATOR_LAST_NAME: ""
+        schools
       $scope.getSchoolCompanies = (newValue) ->
         firstThreeCharacters = newValue.substring 0, 3
         if newValue.length < 6
@@ -30,22 +42,12 @@ angular.module 'ahaLuminateControllers'
             SchoolLookupService.getSchoolCompanies 'company_name=' + firstThreeCharacters + '&list_page_size=500'
               .then (response) ->
                 companies = response.data.getCompaniesResponse?.company
-                if not companies
-                  # TODO
-                else
+                schools = []
+                if companies
                   companies = [companies] if not angular.isArray companies
-                  schools = []
-                  angular.forEach companies, (company) ->
-                    schools.push
-                      FR_ID: company.eventId
-                      COMPANY_ID: company.companyId
-                      SCHOOL_NAME: company.companyName
-                      SCHOOL_CITY: ""
-                      SCHOOL_STATE: ""
-                      COORDINATOR_FIRST_NAME: ""
-                      COORDINATOR_LAST_NAME: ""
-                  $scope.schools = schools
-                  $scope.schoolCompanyNameCache[firstThreeCharacters] = schools
+                  schools = setSchools companies
+                $scope.schools = schools
+                $scope.schoolCompanyNameCache[firstThreeCharacters] = schools
         else
           firstSixCharacters = newValue.substring 0, 6
           if newValue.length < 9
@@ -61,22 +63,12 @@ angular.module 'ahaLuminateControllers'
               SchoolLookupService.getSchoolCompanies 'company_name=' + firstSixCharacters + '&list_page_size=500'
                 .then (response) ->
                   companies = response.data.getCompaniesResponse?.company
-                  if not companies
-                    # TODO
-                  else
+                  schools = []
+                  if companies
                     companies = [companies] if not angular.isArray companies
-                    schools = []
-                    angular.forEach companies, (company) ->
-                      schools.push
-                        FR_ID: company.eventId
-                        COMPANY_ID: company.companyId
-                        SCHOOL_NAME: company.companyName
-                        SCHOOL_CITY: ""
-                        SCHOOL_STATE: ""
-                        COORDINATOR_FIRST_NAME: ""
-                        COORDINATOR_LAST_NAME: ""
-                    $scope.schools = schools
-                    $scope.schoolCompanyNameCache[firstSixCharacters] = schools
+                    schools = setSchools companies
+                  $scope.schools = schools
+                  $scope.schoolCompanyNameCache[firstSixCharacters] = schools
           else
             firstNineCharacters = newValue.substring 0, 9
             if $scope.schoolCompanyNameCache[firstNineCharacters]
@@ -95,22 +87,12 @@ angular.module 'ahaLuminateControllers'
               SchoolLookupService.getSchoolCompanies 'company_name=' + firstNineCharacters + '&list_page_size=500'
                 .then (response) ->
                   companies = response.data.getCompaniesResponse?.company
-                  if not companies
-                    # TODO
-                  else
+                  schools = []
+                  if companies
                     companies = [companies] if not angular.isArray companies
-                    schools = []
-                    angular.forEach companies, (company) ->
-                      schools.push
-                        FR_ID: company.eventId
-                        COMPANY_ID: company.companyId
-                        SCHOOL_NAME: company.companyName
-                        SCHOOL_CITY: ""
-                        SCHOOL_STATE: ""
-                        COORDINATOR_FIRST_NAME: ""
-                        COORDINATOR_LAST_NAME: ""
-                    $scope.schools = schools
-                    $scope.schoolCompanyNameCache[firstNineCharacters] = schools
+                    schools = setSchools companies
+                  $scope.schools = schools
+                  $scope.schoolCompanyNameCache[firstNineCharacters] = schools
       
       $scope.typeaheadFilter = ->
         $scope.schoolList.stateFilter = ''
