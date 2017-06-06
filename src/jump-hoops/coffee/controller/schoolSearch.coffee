@@ -144,7 +144,7 @@ angular.module 'ahaLuminateControllers'
                   schools = $filter('filter') schools, SCHOOL_STATE: $scope.schoolList.stateFilter
                 $scope.schoolList.totalItems = schools.length
                 $scope.schoolList.schools = schools
-                $scope.orderSchools $scope.schoolList.sortProp, true
+                $scope.orderSchools $scope.schoolList.sortProp
       
       $scope.orderSchools = (sortProp, keepSortOrder) ->
         schools = $scope.schoolList.schools
