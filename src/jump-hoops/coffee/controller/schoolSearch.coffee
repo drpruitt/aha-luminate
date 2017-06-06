@@ -26,13 +26,31 @@ angular.module 'ahaLuminateControllers'
         if newValue and newValue isnt '' and newValue.length > 2
           firstThreeCharacters = newValue.substring 0, 3
           if $scope.schoolCompanyNameCache[firstThreeCharacters]
-            # TODO
+            if $scope.schoolCompanyNameCache[firstThreeCharacters] isnt 'pending'
+              $scope.schools = $scope.schoolCompanyNameCache[firstThreeCharacters]
           else
-            TeamraiserCompanyService.getCompanies 'company_name=' + newValue,
+            $scope.schoolCompanyNameCache[firstThreeCharacters] = 'pending'
+            TeamraiserCompanyService.getCompanies 'company_name=' + newValue + '&list_page_size=500',
               error: ->
                 # TODO
               success: (response) ->
-                # TODO
+                companies = response.getCompaniesResponse?.company
+                if not companies
+                  # TODO
+                else
+                  companies = [companies] if not angular.isArray companies
+                  schools = []
+                  angular.forEach companies, (company) ->
+                    schools.push
+                      FR_ID: company.eventId
+                      COMPANY_ID: company.companyId
+                      SCHOOL_NAME: company.companyName
+                      SCHOOL_CITY: ""
+                      SCHOOL_STATE: ""
+                      COORDINATOR_FIRST_NAME: ""
+                      COORDINATOR_LAST_NAME: ""
+                  $scope.schools = $scope.schoolCompanyNameCache[firstThreeCharacters]
+                  $scope.schoolCompanyNameCache[firstThreeCharacters] = companies
       
       $scope.typeaheadFilter = ($item, $model, $label, $event) ->
         $scope.schoolList.stateFilter = ''
