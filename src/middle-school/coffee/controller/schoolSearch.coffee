@@ -35,7 +35,7 @@ angular.module 'ahaLuminateControllers'
               setSchools firstThreeCharacters, $scope.schoolCompanyNameCache[firstThreeCharacters]
           else
             $scope.schoolCompanyNameCache[firstThreeCharacters] = 'pending'
-            TeamraiserCompanyService.getCompanies 'company_name=' + newValue + '&list_page_size=500',
+            TeamraiserCompanyService.getCompaniesByInfo 'company_name=' + newValue + '&list_page_size=500',
               error: ->
                 # TODO
               success: (response) ->

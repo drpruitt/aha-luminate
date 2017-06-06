@@ -5,20 +5,25 @@ angular.module 'ahaLuminateApp'
     '$filter'
     (LuminateRESTService, $http, $filter) ->
       topCompanies = null
-
+      
       setTopCompanies = (companies) ->
         topCompanies = companies
-
+      
+      getCompaniesByInfo = (requestData, callback) ->
+        dataString = 'method=getCompaniesByInfo'
+        dataString += '&' + requestData if requestData and requestData isnt ''
+        LuminateRESTService.luminateExtendTeamraiserRequest dataString, false, false, callback
+      
       getCompanies = (requestData, callback) ->
         dataString = 'method=getCompaniesByInfo'
         dataString += '&' + requestData if requestData and requestData isnt ''
         LuminateRESTService.luminateExtendTeamraiserRequest dataString, false, true, callback
-
+      
       getCompanyList = (requestData, callback) ->
         dataString = 'method=getCompanyList'
         dataString += '&' + requestData if requestData and requestData isnt ''
         LuminateRESTService.luminateExtendTeamraiserRequest dataString, false, true, callback
-
+      
       getTopCompanies = (callback) ->
         if topCompanies
           callback.success topCompanies
@@ -85,16 +90,17 @@ angular.module 'ahaLuminateApp'
                         rootAncestorCompanies[rootAncestorCompanyIndex].teamCount = rootAncestorCompanies[rootAncestorCompanyIndex].teamCount + teamCount
                 setTopCompanies rootAncestorCompanies
                 callback.success topCompanies
-
+      
       {
+        getCompaniesByInfo: getCompaniesByInfo
         getCompanies: getCompanies
         getCompanyList: getCompanyList
         getTopCompanies: getTopCompanies,
         getCoordinatorQuestion: (coordinatorId, eventId) ->
           $http
             method: 'GET'
-            url: 'PageServer?pagename=ym_coordinator_data&pgwrap=n&consId='+coordinatorId+'&frId='+eventId
+            url: 'PageServer?pagename=ym_coordinator_data&pgwrap=n&consId=' + coordinatorId + '&frId=' + eventId
           .then (response) ->
             response
-      }      
+      }
   ]
