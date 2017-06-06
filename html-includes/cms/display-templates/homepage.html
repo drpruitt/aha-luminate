@@ -207,9 +207,9 @@
           </ul>
         </div>
       </div>
-      <div ng-show="filtered.length == 0 && schoolList.stateFilter != '0' && !schoolList.typeaheadNoResults" class="text-center" ng-class="{'pb-md': schoolList.showHelp}">
+      <div ng-show="filtered.length == 0 && schoolList.stateFilter != '' && !schoolList.typeaheadNoResults" class="text-center" ng-class="{'pb-md': schoolList.showHelp}">
         <p>
-          Hi! We couldn't locate a school with the name of <strong>{{schoolList.nameFilter}}</strong> in <strong>{{schoolList.stateFilter.SCHOOL_STATE}}</strong>. Your school may not be added to our list just yet.
+          Hi! We couldn't locate a school with the name of <strong>{{schoolList.nameFilter}}</strong> in <strong>{{schoolList.stateFilter}}</strong>. Your school may not be added to our list just yet.
         </p>
         <p>
           No worries though! You can still register today without designating a school, and a school coordinator from our team will make sure you're properly linked up with your school.
@@ -218,7 +218,7 @@
           <a class="btn btn-md btn-secondary ym-list--school-list--help" ng-href="{{noSchoolLink}}">Sign Up Today</a>
         </div>
       </div>
-      <div ng-show="!(filtered.length == 0 && schoolList.stateFilter != '0')">
+      <div ng-show="!(filtered.length == 0 && schoolList.stateFilter != '')">
         <div ng-show="schoolList.showHelp" class="text-center">
           Click <a ng-href="{{noSchoolLink}}">here</a> to sign up for "Jump Rope and Hoops for Heart" and a school coordinator will get in touch with you soon to confirm you've been properly signed up with your school.
         </div>

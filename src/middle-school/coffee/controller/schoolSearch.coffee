@@ -3,10 +3,11 @@ angular.module 'ahaLuminateControllers'
     '$rootScope'
     '$scope'
     '$filter'
+    'TeamraiserCompanyService'
     'CsvService'
     'UtilsService'
     'SchoolLookupService'
-    ($rootScope, $scope, $filter, CsvService, UtilsService, SchoolLookupService) ->
+    ($rootScope, $scope, $filter, TeamraiserCompanyService, CsvService, UtilsService, SchoolLookupService) ->
       $scope.states = []
       $scope.schools = []
       $scope.filtered = []
@@ -21,7 +22,7 @@ angular.module 'ahaLuminateControllers'
         stateFilter: ''
       
       $scope.typeaheadFilter = ($item, $model, $label, $event) ->
-        $scope.schoolList.stateFilter = '0'
+        $scope.schoolList.stateFilter = ''
         $scope.filterSchools()
       
       $scope.filterSchools = ->
