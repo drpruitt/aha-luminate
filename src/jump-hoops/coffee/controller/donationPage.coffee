@@ -252,7 +252,7 @@ angular.module 'ahaLuminateControllers'
         angular.element('#donor_email_addressname').prop 'disabled', true
         angular.element('#donor_phonename').prop 'disabled', true
         angular.element('#donor_addr_street1name').prop 'disabled', true
-        angular.element('#donor_addr_street2namee').prop 'disabled', true
+        angular.element('#donor_addr_street2name').prop 'disabled', true
         angular.element('#donor_addr_cityname').prop 'disabled', true
         angular.element('#donor_addr_state').prop 'disabled', true
         angular.element('#donor_addr_zipname').prop 'disabled', true

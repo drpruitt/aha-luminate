@@ -146,3 +146,10 @@ input[type="checkbox"] {
     border: 1px solid $event-secondary;
   }
 }
+
+:disabled, 
+input[disabled] {
+  background: $inactive-grey;
+  cursor: not-allowed;
+  color: $event-secondary;
+}
