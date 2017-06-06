@@ -555,17 +555,38 @@
   > .form-group {
     margin-bottom: 50px;
   }
-
+  
   .ym-page-section__roster {
     padding-top: 0;
   }
-
+  
   #school-name-filter {
+    display: block;
     font-size: $font-size-reg;
     text-align: center;
     width: 90%;
     max-width: 390px;
     height: 60px;
+    margin: 0 auto;
+    
+    @media (min-width: $screen-sm-min) {
+      display: inline-block;
+    }
+  }
+  
+  .school-name-filter-submit {
+    display: block;
+    font-size: $font-size-reg;
+    width: 90%;
+    max-width: 390px;
+    height: 60px;
+    margin: 12px auto 0;
+    
+    @media (min-width: $screen-sm-min) {
+      display: inline-block;
+      width: auto;
+      margin: 0 0 0 8px;
+    }
   }
   
   #school-state-filter {
@@ -665,10 +686,6 @@
 
     .ym-list--school-list {
       min-width: 600px;
-    }
-
-    #school-name-filter {
-      display: inline-block;
     }
   }
 }
