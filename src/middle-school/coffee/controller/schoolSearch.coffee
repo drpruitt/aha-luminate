@@ -11,7 +11,8 @@ angular.module 'ahaLuminateControllers'
         sortDesc: true
         totalItems: 0
         currentPage: 1
-        numPerPage: 5
+        paginationItemsPerPage: 5
+        paginationMaxSize: 5
         showHelp: false
         stateFilter: ''
       $scope.schoolDataMap = {}
@@ -158,8 +159,8 @@ angular.module 'ahaLuminateControllers'
           $scope.schoolList.currentPage = 1
       
       $scope.paginate = (value) ->
-        begin = ($scope.schoolList.currentPage - 1) * $scope.schoolList.numPerPage
-        end = begin + $scope.schoolList.numPerPage
+        begin = ($scope.schoolList.currentPage - 1) * $scope.schoolList.paginationItemsPerPage
+        end = begin + $scope.schoolList.paginationItemsPerPage
         index = $scope.schoolList.schools.indexOf value
         begin <= index and index < end
   ]
