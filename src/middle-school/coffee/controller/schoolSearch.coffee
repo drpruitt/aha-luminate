@@ -22,12 +22,17 @@ angular.module 'ahaLuminateControllers'
         stateFilter: ''
       $scope.schoolCompanyNameCache = {}
       
+      setSchools = (firstThreeCharacters, schools) ->
+        $scope.schools = schools
+        $scope.schoolCompanyNameCache[firstThreeCharacters] = schools
+        if not $scope.$$phase
+          $scope.$apply()
       $scope.$watch 'schoolList.nameFilter', (newValue) ->
         if newValue and newValue isnt '' and newValue.length > 2
           firstThreeCharacters = newValue.substring 0, 3
           if $scope.schoolCompanyNameCache[firstThreeCharacters]
             if $scope.schoolCompanyNameCache[firstThreeCharacters] isnt 'pending'
-              $scope.schools = $scope.schoolCompanyNameCache[firstThreeCharacters]
+              setSchools firstThreeCharacters, $scope.schoolCompanyNameCache[firstThreeCharacters]
           else
             $scope.schoolCompanyNameCache[firstThreeCharacters] = 'pending'
             TeamraiserCompanyService.getCompanies 'company_name=' + newValue + '&list_page_size=500',
@@ -49,10 +54,9 @@ angular.module 'ahaLuminateControllers'
                       SCHOOL_STATE: ""
                       COORDINATOR_FIRST_NAME: ""
                       COORDINATOR_LAST_NAME: ""
-                  $scope.schools = $scope.schoolCompanyNameCache[firstThreeCharacters]
-                  $scope.schoolCompanyNameCache[firstThreeCharacters] = companies
+                  setSchools firstThreeCharacters, schools
       
-      $scope.typeaheadFilter = ($item, $model, $label, $event) ->
+      $scope.typeaheadFilter = ->
         $scope.schoolList.stateFilter = ''
         $scope.filterSchools()
       
