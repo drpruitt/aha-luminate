@@ -5,7 +5,6 @@ angular.module 'ahaLuminateControllers'
     '$filter'
     'SchoolLookupService'
     ($rootScope, $scope, $filter, SchoolLookupService) ->
-      $scope.filtered = []
       $scope.schoolList =
         searchSubmitted: false
         sortProp: 'SCHOOL_STATE'
@@ -15,6 +14,7 @@ angular.module 'ahaLuminateControllers'
         numPerPage: 5
         showHelp: false
         stateFilter: ''
+        schools: []
       $scope.schoolCompanyNameCache = {}
       
       setSchools = (companies) ->
@@ -99,24 +99,44 @@ angular.module 'ahaLuminateControllers'
         SchoolLookupService.getSchoolCompanies 'company_name=' + $scope.schoolList.nameFilter + '&list_page_size=10'
           .then (response) ->
             companies = response.data.getCompaniesResponse?.company
-            schools = []
-            if companies
+            if not companies
+              $scope.schoolList.totalItems = 0
+              $scope.schoolList.schools = []
+            else
               companies = [companies] if not angular.isArray companies
-              schools = setSchools companies
-            filtered = false
-            if schools.length and $scope.schoolList.nameFilter
-              filtered = true
-            if schools.length and $scope.schoolList.stateFilter isnt ''
-              filtered = true
-              schools = $filter('filter') schools, SCHOOL_STATE: $scope.schoolList.stateFilter
-            if not filtered
-              schools = []
-            $scope.schoolList.totalItems = schools.length
-            $scope.filtered = schools
-            $scope.orderSchools $scope.schoolList.sortProp, true
+              if companies.length is 0
+                $scope.schoolList.totalItems = 0
+                $scope.schoolList.schools = []
+              else
+                schools = setSchools companies
+                companyIds = []
+                angular.forEach companies, (company) ->
+                  companyIds.push company.companyId
+                SchoolLookupService.getSchoolData companyIds
+                  .then (response) ->
+                    detailedSchools = response.data.getSchoolSearchDataResponse.school
+                    angular.forEach detailedSchools, (detailedSchool) ->
+                      angular.forEach schools, (school, schoolIndex) ->
+                        if school.COMPANY_ID is detailedSchool.id
+                          detailedSchoolData = detailedSchool.schoolData
+                          schools[schoolIndex].SCHOOL_CITY = detailedSchoolData[1]
+                          schools[schoolIndex].SCHOOL_STATE = detailedSchoolData[2]
+                          schools[schoolIndex].COORDINATOR_FIRST_NAME = detailedSchoolData[3]
+                          schools[schoolIndex].COORDINATOR_LAST_NAME = detailedSchoolData[4]
+                    filtered = false
+                    if schools.length and $scope.schoolList.nameFilter
+                      filtered = true
+                    if schools.length and $scope.schoolList.stateFilter isnt ''
+                      filtered = true
+                      schools = $filter('filter') schools, SCHOOL_STATE: $scope.schoolList.stateFilter
+                    if not filtered
+                      schools = []
+                    $scope.schoolList.totalItems = schools.length
+                    $scope.schoolList.schools = schools
+                    $scope.orderSchools $scope.schoolList.sortProp, true
       
       $scope.orderSchools = (sortProp, keepSortOrder) ->
-        schools = $scope.filtered
+        schools = $scope.schoolList.schools
         if schools.length
           if not keepSortOrder
             $scope.schoolList.sortDesc = !$scope.schoolList.sortDesc
@@ -124,12 +144,12 @@ angular.module 'ahaLuminateControllers'
             $scope.schoolList.sortProp = sortProp
             $scope.schoolList.sortDesc = true
           schools = $filter('orderBy') schools, sortProp, $scope.schoolList.sortDesc
-          $scope.filtered = schools
+          $scope.schoolList.schools = schools
           $scope.schoolList.currentPage = 1
       
       $scope.paginate = (value) ->
         begin = ($scope.schoolList.currentPage - 1) * $scope.schoolList.numPerPage
         end = begin + $scope.schoolList.numPerPage
-        index = $scope.filtered.indexOf value
+        index = $scope.schoolList.schools.indexOf value
         begin <= index and index < end
   ]

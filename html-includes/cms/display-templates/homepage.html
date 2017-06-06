@@ -77,7 +77,7 @@
       </div>
     </div>
     <div class="ym-page-section ym-page-section__roster" ng-if="schoolList.searchSubmitted">
-      <div ng-if="filtered.length > 0">
+      <div ng-if="schoolList.schools.length > 0">
         <div class="ym-page-section__header">
           <section>
             <h2 class="h5 school-list__header">
@@ -151,38 +151,38 @@
               <th class="ym-list__column ym-list__column--school" scope="col">
                 <a ng-click="orderSchools('SCHOOL_NAME')">
                   School 
-                  <span ng-show="filtered.length && schoolList.sortProp == 'SCHOOL_NAME' && !schoolList.sortDesc" class="fa fa-caret-down"></span>
-                  <span ng-show="filtered.length && schoolList.sortProp == 'SCHOOL_NAME' && schoolList.sortDesc" class="fa fa-caret-up"></span>
-                  <span ng-show="filtered.length && schoolList.sortProp != 'SCHOOL_NAME'" class="fa fa-caret-down inactive"></span>
+                  <span ng-show="schoolList.schools.length && schoolList.sortProp == 'SCHOOL_NAME' && !schoolList.sortDesc" class="fa fa-caret-down"></span>
+                  <span ng-show="schoolList.schools.length && schoolList.sortProp == 'SCHOOL_NAME' && schoolList.sortDesc" class="fa fa-caret-up"></span>
+                  <span ng-show="schoolList.schools.length && schoolList.sortProp != 'SCHOOL_NAME'" class="fa fa-caret-down inactive"></span>
                 </a>
               </th>
               <th class="ym-list__column ym-list__column--city" scope="col">
                 <a ng-click="orderSchools('SCHOOL_CITY')">
                   City 
-                  <span ng-show="filtered.length && schoolList.sortProp == 'SCHOOL_CITY' && !schoolList.sortDesc" class="fa fa-caret-down"></span>
-                  <span ng-show="filtered.length && schoolList.sortProp == 'SCHOOL_CITY' && schoolList.sortDesc" class="fa fa-caret-up"></span>
-                  <span ng-show="filtered.length && schoolList.sortProp != 'SCHOOL_CITY'" class="fa fa-caret-down inactive"></span>
+                  <span ng-show="schoolList.schools.length && schoolList.sortProp == 'SCHOOL_CITY' && !schoolList.sortDesc" class="fa fa-caret-down"></span>
+                  <span ng-show="schoolList.schools.length && schoolList.sortProp == 'SCHOOL_CITY' && schoolList.sortDesc" class="fa fa-caret-up"></span>
+                  <span ng-show="schoolList.schools.length && schoolList.sortProp != 'SCHOOL_CITY'" class="fa fa-caret-down inactive"></span>
                 </a>
               </th>
               <th class="ym-list__column ym-list__column--state" scope="col">
                 <a ng-click="orderSchools('SCHOOL_STATE')">
                   State 
-                  <span ng-show="filtered.length && schoolList.sortProp == 'SCHOOL_STATE' && !schoolList.sortDesc" class="fa fa-caret-down"></span>
-                  <span ng-show="filtered.length && schoolList.sortProp == 'SCHOOL_STATE' && schoolList.sortDesc" class="fa fa-caret-up"></span>
-                  <span ng-show="filtered.length && schoolList.sortProp != 'SCHOOL_STATE'" class="fa fa-caret-down inactive"></span>
+                  <span ng-show="schoolList.schools.length && schoolList.sortProp == 'SCHOOL_STATE' && !schoolList.sortDesc" class="fa fa-caret-down"></span>
+                  <span ng-show="schoolList.schools.length && schoolList.sortProp == 'SCHOOL_STATE' && schoolList.sortDesc" class="fa fa-caret-up"></span>
+                  <span ng-show="schoolList.schools.length && schoolList.sortProp != 'SCHOOL_STATE'" class="fa fa-caret-down inactive"></span>
                 </a>
               </th>
               <th class="ym-list__column ym-list__column--team-leader text-right" scope="col">
                 <a ng-click="orderSchools('COORDINATOR_LAST_NAME')">
                   Team Leader 
-                  <span ng-show="filtered.length && schoolList.sortProp == 'COORDINATOR_LAST_NAME' && !schoolList.sortDesc" class="fa fa-caret-down"></span>
-                  <span ng-show="filtered.length && schoolList.sortProp == 'COORDINATOR_LAST_NAME' && schoolList.sortDesc" class="fa fa-caret-up"></span>
-                  <span ng-show="filtered.length && schoolList.sortProp != 'COORDINATOR_LAST_NAME'" class="fa fa-caret-down inactive"></span>
+                  <span ng-show="schoolList.schools.length && schoolList.sortProp == 'COORDINATOR_LAST_NAME' && !schoolList.sortDesc" class="fa fa-caret-down"></span>
+                  <span ng-show="schoolList.schools.length && schoolList.sortProp == 'COORDINATOR_LAST_NAME' && schoolList.sortDesc" class="fa fa-caret-up"></span>
+                  <span ng-show="schoolList.schools.length && schoolList.sortProp != 'COORDINATOR_LAST_NAME'" class="fa fa-caret-down inactive"></span>
                 </a>
               </th>
             </thead>
             <tbody>
-              <tr class="ym-list__row" ng-repeat="school in filtered | filter:paginate">
+              <tr class="ym-list__row" ng-repeat="school in schoolList.schools | filter:paginate">
                 <td class="ym-list__column ym-list__column--school">
                   <a ng-href="{{nonSecureDomain}}/site/TR?pg=company&fr_id={{school.FR_ID}}&company_id={{school.COMPANY_ID}}"><span ng-bind-html="school.SCHOOL_NAME"></span></a><br>
                   <a class="btn btn-primary btn-md mt-sm" ng-href="{{nonSecureDomain}}/site/TRR?fr_id={{school.FR_ID}}&amp;pg=tfind&amp;fr_tm_opt=existing&s_frTJoin=&amp;company_id={{school.COMPANY_ID}}&amp;s_frCompanyId={{school.COMPANY_ID}}">
@@ -203,11 +203,11 @@
           </table>
         </div>
         <div class="ym-pagination text-center">
-          <ul uib-pagination total-items="schoolList.totalItems" items-per-page="schoolList.numPerPage" ng-show="filtered.length > schoolList.numPerPage" ng-model="schoolList.currentPage">
+          <ul uib-pagination total-items="schoolList.totalItems" items-per-page="schoolList.numPerPage" ng-show="schoolList.schools.length > schoolList.numPerPage" ng-model="schoolList.currentPage">
           </ul>
         </div>
       </div>
-      <div ng-if="filtered.length == 0 && schoolList.stateFilter != ''" class="text-center" ng-class="{'pb-md': schoolList.showHelp}">
+      <div ng-if="schoolList.schools.length == 0 && schoolList.stateFilter != ''" class="text-center" ng-class="{'pb-md': schoolList.showHelp}">
         <p>
           Hi! We couldn't locate a school with the name of <strong>{{schoolList.nameFilter}}</strong> in <strong>{{schoolList.stateFilter}}</strong>. Your school may not be added to our list just yet.
         </p>
@@ -218,7 +218,7 @@
           <a class="btn btn-md btn-secondary ym-list--school-list--help" ng-href="{{noSchoolLink}}">Sign Up Today</a>
         </div>
       </div>
-      <div ng-if="!(filtered.length == 0 && schoolList.stateFilter != '')">
+      <div ng-if="!(schoolList.schools.length == 0 && schoolList.stateFilter != '')">
         <div ng-if="schoolList.showHelp" class="text-center">
           Click <a ng-href="{{noSchoolLink}}">here</a> to sign up for "Jump Rope and Hoops for Heart" and a school coordinator will get in touch with you soon to confirm you've been properly signed up with your school.
         </div>

@@ -22,7 +22,7 @@ angular.module 'ahaLuminateApp'
         $http
           method: 'GET'
           # url: '/system/proxy.jsp?__proxyURL=' + encodeURIComponent(luminateExtend.global.path.secure + 'PageServer?pagename=getJumpHoopsSchoolSearchData&pgwrap=n&' + requestData)
-          url: 'https://secure3.convio.net/heartdev/site/PageServer?pagename=getJumpHoopsSchoolSearchData&pgwrap=n&' + requestData
+          url: 'https://secure3.convio.net/heartdev/site/SPageServer?pagename=getJumpHoopsSchoolSearchData&pgwrap=n&' + requestData
           headers:
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
   ]
