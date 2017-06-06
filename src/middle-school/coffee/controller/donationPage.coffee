@@ -247,6 +247,13 @@ angular.module 'ahaLuminateControllers'
         else
           angular.element('#billing_info_same_as_donorname').prop 'checked', false
 
+      loggedInForm = ->
+        angular.element('#donor_first_namename').prop 'disabled', true
+        angular.element('#donor_last_namename').prop 'disabled', true
+        angular.element('.billing-info').toggleClass 'hidden'
+        angular.element('#billing_info').prop 'checked', false
+        angular.element('#billing_info_same_as_donorname').prop 'checked', false
+
       loadLocalStorage = ->
         if localStorage['giftType']
           $scope.donationInfo.giftType = localStorage['giftType']
@@ -320,6 +327,8 @@ angular.module 'ahaLuminateControllers'
         employerMatchFields()
         billingAddressFields()
         donorRecognitionFields()
+        if angular.element('body').hasClass 'cons-logged-in'
+          loggedInForm()
         return
       , (reason) ->
         # TODO
