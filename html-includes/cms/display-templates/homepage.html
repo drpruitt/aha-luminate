@@ -72,7 +72,7 @@
       <div class="form-inline text-center">
         <form method="POST" ng-submit="submitSchoolSearch()">
           <label for="school-name-filter" class="sr-only">Start typing your school's name:</label>
-          <input type="text" class="form-control" id="school-name-filter" name="school-name-filter" ng-model="schoolList.nameFilter" ng-minlength="3" placeholder="Start typing your school's name" autocomplete="off" uib-typeahead="school.SCHOOL_NAME for school in getSchoolSuggestions($viewValue) | unique: 'SCHOOL_NAME' | filter: {SCHOOL_NAME:$viewValue}" typeahead-min-length="3" typeahead-editable="true" typeahead-focus-first="false" typeahead-select-on-exact="true">
+          <input type="text" class="form-control" id="school-name-filter" name="school-name-filter" ng-model="schoolList.nameFilter" ng-minlength="3" placeholder="Start typing your school's name" autocomplete="off" uib-typeahead="school.SCHOOL_NAME for school in getSchoolSuggestions($viewValue) | unique: 'SCHOOL_NAME' | filter: {SCHOOL_NAME:$viewValue}" typeahead-min-length="3" typeahead-editable="true" typeahead-focus-first="false">
         </form>
       </div>
     </div>
@@ -184,8 +184,8 @@
             <tbody>
               <tr class="ym-list__row" ng-repeat="school in schoolList.schools | filter:paginate">
                 <td class="ym-list__column ym-list__column--school">
-                  <a ng-href="{{nonSecureDomain}}/site/TR?pg=company&fr_id={{school.FR_ID}}&company_id={{school.COMPANY_ID}}"><span ng-bind-html="school.SCHOOL_NAME"></span></a><br>
-                  <a class="btn btn-primary btn-md mt-sm" ng-href="{{nonSecureDomain}}/site/TRR?fr_id={{school.FR_ID}}&amp;pg=tfind&amp;fr_tm_opt=existing&s_frTJoin=&amp;company_id={{school.COMPANY_ID}}&amp;s_frCompanyId={{school.COMPANY_ID}}">
+                  <a ng-href="{{nonSecureDomain}}site/TR?pg=company&fr_id={{school.FR_ID}}&company_id={{school.COMPANY_ID}}"><span ng-bind-html="school.SCHOOL_NAME"></span></a><br>
+                  <a class="btn btn-primary btn-md mt-sm" ng-href="{{nonSecureDomain}}site/TRR?fr_id={{school.FR_ID}}&amp;pg=tfind&amp;fr_tm_opt=existing&s_frTJoin=&amp;company_id={{school.COMPANY_ID}}&amp;s_frCompanyId={{school.COMPANY_ID}}">
                     Sign Up
                   </a>
                 </td>
@@ -207,9 +207,9 @@
           </ul>
         </div>
       </div>
-      <div ng-if="schoolList.schools.length == 0 && schoolList.stateFilter != ''" class="text-center" ng-class="{'pb-md': schoolList.showHelp}">
+      <div ng-if="schoolList.schools.length == 0" class="text-center" ng-class="{'pb-md': schoolList.showHelp}">
         <p>
-          Hi! We couldn't locate a school with the name of <strong>{{schoolList.nameFilter}}</strong> in <strong>{{schoolList.stateFilter}}</strong>. Your school may not be added to our list just yet.
+          Hi! We couldn't locate a school with the name of <strong>{{schoolList.nameFilter}}</strong><span ng-if="schoolList.stateFilter && schoolList.stateFilter != ''"> in <strong>{{schoolList.stateFilter}}</strong></span>. Your school may not be added to our list just yet.
         </p>
         <p>
           No worries though! You can still register today without designating a school, and a school coordinator from our team will make sure you're properly linked up with your school.
@@ -218,7 +218,7 @@
           <a class="btn btn-md btn-secondary ym-list--school-list--help" ng-href="{{noSchoolLink}}">Sign Up Today</a>
         </div>
       </div>
-      <div ng-if="!(schoolList.schools.length == 0 && schoolList.stateFilter != '')">
+      <div ng-if="schoolList.schools">
         <div ng-if="schoolList.showHelp" class="text-center">
           Click <a ng-href="{{noSchoolLink}}">here</a> to sign up for "Jump Rope and Hoops for Heart" and a school coordinator will get in touch with you soon to confirm you've been properly signed up with your school.
         </div>

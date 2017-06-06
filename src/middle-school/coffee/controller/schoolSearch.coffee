@@ -14,7 +14,6 @@ angular.module 'ahaLuminateControllers'
         numPerPage: 5
         showHelp: false
         stateFilter: ''
-        schools: []
       $scope.schoolCompanyNameCache = {}
       
       setSchools = (companies) ->
@@ -96,6 +95,8 @@ angular.module 'ahaLuminateControllers'
         $scope.schoolList.searchSubmitted = true
       
       $scope.getSchoolSearchResults = ->
+        if $scope.schoolList.schools
+          delete $scope.schoolList.schools
         SchoolLookupService.getSchoolCompanies 'company_name=' + $scope.schoolList.nameFilter + '&list_page_size=10'
           .then (response) ->
             companies = response.data.getCompaniesResponse?.company
