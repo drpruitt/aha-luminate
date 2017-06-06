@@ -3,11 +3,10 @@ angular.module 'ahaLuminateControllers'
     '$rootScope'
     '$scope'
     '$filter'
-    'TeamraiserCompanyService'
+    'SchoolLookupService'
     'CsvService'
     'UtilsService'
-    'SchoolLookupService'
-    ($rootScope, $scope, $filter, TeamraiserCompanyService, CsvService, UtilsService, SchoolLookupService) ->
+    ($rootScope, $scope, $filter, SchoolLookupService, CsvService, UtilsService) ->
       $scope.states = []
       $scope.schools = []
       $scope.filtered = []
@@ -22,24 +21,17 @@ angular.module 'ahaLuminateControllers'
         stateFilter: ''
       $scope.schoolCompanyNameCache = {}
       
-      setSchools = (firstThreeCharacters, schools) ->
-        $scope.schools = schools
-        $scope.schoolCompanyNameCache[firstThreeCharacters] = schools
-        if not $scope.$$phase
-          $scope.$apply()
-      $scope.$watch 'schoolList.nameFilter', (newValue) ->
-        if newValue and newValue isnt '' and newValue.length > 2
-          firstThreeCharacters = newValue.substring 0, 3
-          if $scope.schoolCompanyNameCache[firstThreeCharacters]
-            if $scope.schoolCompanyNameCache[firstThreeCharacters] isnt 'pending'
-              setSchools firstThreeCharacters, $scope.schoolCompanyNameCache[firstThreeCharacters]
+      $scope.getSchoolCompanies = (newValue) ->
+        if newValue.length < 5
+          firstTwoCharacters = newValue.substring 0, 2
+          if $scope.schoolCompanyNameCache[firstTwoCharacters]
+            if $scope.schoolCompanyNameCache[firstTwoCharacters] isnt 'pending'
+              $scope.schools = $scope.schoolCompanyNameCache[firstTwoCharacters]
           else
-            $scope.schoolCompanyNameCache[firstThreeCharacters] = 'pending'
-            TeamraiserCompanyService.getCompaniesByInfo 'company_name=' + newValue + '&list_page_size=500',
-              error: ->
-                # TODO
-              success: (response) ->
-                companies = response.getCompaniesResponse?.company
+            $scope.schoolCompanyNameCache[firstTwoCharacters] = 'pending'
+            SchoolLookupService.getSchoolCompanies 'company_name=' + firstTwoCharacters + '&list_page_size=500'
+              .then (response) ->
+                companies = response.data.getCompaniesResponse?.company
                 if not companies
                   # TODO
                 else
@@ -54,7 +46,40 @@ angular.module 'ahaLuminateControllers'
                       SCHOOL_STATE: ""
                       COORDINATOR_FIRST_NAME: ""
                       COORDINATOR_LAST_NAME: ""
-                  setSchools firstThreeCharacters, schools
+                  $scope.schools = schools
+                  $scope.schoolCompanyNameCache[firstTwoCharacters] = schools
+                  response.data.schools = schools
+                  response.data.schools.map (school) ->
+                    school
+        else
+          firstFiveCharacters = newValue.substring 0, 5
+          if $scope.schoolCompanyNameCache[firstFiveCharacters]
+            if $scope.schoolCompanyNameCache[firstFiveCharacters] isnt 'pending'
+              $scope.schools = $scope.schoolCompanyNameCache[firstFiveCharacters]
+          else
+            $scope.schoolCompanyNameCache[firstFiveCharacters] = 'pending'
+            SchoolLookupService.getSchoolCompanies 'company_name=' + firstFiveCharacters + '&list_page_size=500'
+              .then (response) ->
+                companies = response.data.getCompaniesResponse?.company
+                if not companies
+                  # TODO
+                else
+                  companies = [companies] if not angular.isArray companies
+                  schools = []
+                  angular.forEach companies, (company) ->
+                    schools.push
+                      FR_ID: company.eventId
+                      COMPANY_ID: company.companyId
+                      SCHOOL_NAME: company.companyName
+                      SCHOOL_CITY: ""
+                      SCHOOL_STATE: ""
+                      COORDINATOR_FIRST_NAME: ""
+                      COORDINATOR_LAST_NAME: ""
+                  $scope.schools = schools
+                  $scope.schoolCompanyNameCache[firstFiveCharacters] = schools
+                  response.data.schools = schools
+                  response.data.schools.map (school) ->
+                    school
       
       $scope.typeaheadFilter = ->
         $scope.schoolList.stateFilter = ''
