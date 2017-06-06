@@ -5,8 +5,8 @@ angular.module 'ahaLuminateControllers'
     '$filter'
     'CsvService'
     'UtilsService'
-    'SchoolService'
-    ($rootScope, $scope, $filter, Csv, Utils, SchoolService) ->
+    'SchoolLookupService'
+    ($rootScope, $scope, $filter, CsvService, UtilsService, SchoolLookupService) ->
       $scope.states = []
       $scope.schools = []
       $scope.filtered = []
@@ -18,27 +18,10 @@ angular.module 'ahaLuminateControllers'
         numPerPage: 5
         showHelp: false
         typeaheadNoResults: false
-      
-      $scope.setStates = ->
-        list = {}
-        states = [
-          {
-            id: '0'
-            label: 'Filter Results by State'
-          }
-        ]
-        angular.forEach $scope.schools, (school) ->
-          if school.SCHOOL_STATE and school.SCHOOL_STATE isnt '' and not list[school.SCHOOL_STATE]
-            list[school.SCHOOL_STATE] = school.SCHOOL_STATE
-            states.push
-              id: school.SCHOOL_STATE
-              label: school.SCHOOL_STATE
-              SCHOOL_STATE: school.SCHOOL_STATE
-        $scope.states = states
-        $scope.schoolList.stateFilter = states[0]
+        stateFilter: ''
       
       $scope.typeaheadFilter = ($item, $model, $label, $event) ->
-        $scope.schoolList.stateFilter = $scope.states[0]
+        $scope.schoolList.stateFilter = '0'
         $scope.filterSchools()
       
       $scope.filterSchools = ->
@@ -47,9 +30,9 @@ angular.module 'ahaLuminateControllers'
         if schools.length and $scope.schoolList.nameFilter
           filtered = true
           schools = $filter('filter') schools, SCHOOL_NAME: $scope.schoolList.nameFilter, true
-        if schools.length and $scope.schoolList.stateFilter.SCHOOL_STATE
+        if schools.length and $scope.schoolList.stateFilter isnt ''
           filtered = true
-          schools = $filter('filter') schools, SCHOOL_STATE: $scope.schoolList.stateFilter.SCHOOL_STATE
+          schools = $filter('filter') schools, SCHOOL_STATE: $scope.schoolList.stateFilter
         if not filtered
           schools = []
         $scope.schoolList.totalItems = schools.length
@@ -76,12 +59,11 @@ angular.module 'ahaLuminateControllers'
         index = $scope.filtered.indexOf value
         begin <= index and index < end
       
-      SchoolService.getSchools
+      SchoolLookupService.getSchools
         failure: (response) ->
           return
         success: (csv) ->
-          schools = Csv.toJson csv
+          schools = CsvService.toJson csv
           $scope.schools = schools
-          $scope.setStates()
           return
   ]

@@ -1,5 +1,5 @@
 angular.module 'ahaLuminateApp'
-  .factory 'SchoolService', [
+  .factory 'SchoolLookupService', [
     '$http'
     '$sce'
     ($http, $sce) ->
