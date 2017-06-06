@@ -20,6 +20,19 @@ angular.module 'ahaLuminateControllers'
         showHelp: false
         typeaheadNoResults: false
         stateFilter: ''
+      $scope.schoolCompanyNameCache = {}
+      
+      $scope.$watch 'schoolList.nameFilter', (newValue) ->
+        if newValue and newValue isnt '' and newValue.length > 2
+          firstThreeCharacters = newValue.substring 0, 3
+          if $scope.schoolCompanyNameCache[firstThreeCharacters]
+            # TODO
+          else
+            TeamraiserCompanyService.getCompanies 'company_name=' + newValue,
+              error: ->
+                # TODO
+              success: (response) ->
+                # TODO
       
       $scope.typeaheadFilter = ($item, $model, $label, $event) ->
         $scope.schoolList.stateFilter = ''
@@ -43,9 +56,7 @@ angular.module 'ahaLuminateControllers'
       $scope.orderSchools = (sortProp, keepSortOrder) ->
         schools = $scope.filtered
         if schools.length
-          if keepSortOrder
-            # OK
-          else
+          if not keepSortOrder
             $scope.schoolList.sortDesc = !$scope.schoolList.sortDesc
           if $scope.schoolList.sortProp isnt sortProp
             $scope.schoolList.sortProp = sortProp
