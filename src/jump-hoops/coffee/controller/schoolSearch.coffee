@@ -4,9 +4,7 @@ angular.module 'ahaLuminateControllers'
     '$scope'
     '$filter'
     'SchoolLookupService'
-    'CsvService'
-    'UtilsService'
-    ($rootScope, $scope, $filter, SchoolLookupService, CsvService, UtilsService) ->
+    ($rootScope, $scope, $filter, SchoolLookupService) ->
       $scope.states = []
       $scope.schools = []
       $scope.filtered = []
@@ -22,14 +20,14 @@ angular.module 'ahaLuminateControllers'
       $scope.schoolCompanyNameCache = {}
       
       $scope.getSchoolCompanies = (newValue) ->
-        if newValue.length < 5
-          firstTwoCharacters = newValue.substring 0, 2
-          if $scope.schoolCompanyNameCache[firstTwoCharacters]
-            if $scope.schoolCompanyNameCache[firstTwoCharacters] isnt 'pending'
-              $scope.schools = $scope.schoolCompanyNameCache[firstTwoCharacters]
+        firstThreeCharacters = newValue.substring 0, 3
+        if newValue.length < 6
+          if $scope.schoolCompanyNameCache[firstThreeCharacters]
+            if $scope.schoolCompanyNameCache[firstThreeCharacters] isnt 'pending'
+              $scope.schools = $scope.schoolCompanyNameCache[firstThreeCharacters]
           else
-            $scope.schoolCompanyNameCache[firstTwoCharacters] = 'pending'
-            SchoolLookupService.getSchoolCompanies 'company_name=' + firstTwoCharacters + '&list_page_size=500'
+            $scope.schoolCompanyNameCache[firstThreeCharacters] = 'pending'
+            SchoolLookupService.getSchoolCompanies 'company_name=' + firstThreeCharacters + '&list_page_size=500'
               .then (response) ->
                 companies = response.data.getCompaniesResponse?.company
                 if not companies
@@ -47,39 +45,72 @@ angular.module 'ahaLuminateControllers'
                       COORDINATOR_FIRST_NAME: ""
                       COORDINATOR_LAST_NAME: ""
                   $scope.schools = schools
-                  $scope.schoolCompanyNameCache[firstTwoCharacters] = schools
-                  response.data.schools = schools
-                  response.data.schools.map (school) ->
-                    school
+                  $scope.schoolCompanyNameCache[firstThreeCharacters] = schools
         else
-          firstFiveCharacters = newValue.substring 0, 5
-          if $scope.schoolCompanyNameCache[firstFiveCharacters]
-            if $scope.schoolCompanyNameCache[firstFiveCharacters] isnt 'pending'
-              $scope.schools = $scope.schoolCompanyNameCache[firstFiveCharacters]
+          firstSixCharacters = newValue.substring 0, 6
+          if newValue.length < 9
+            if $scope.schoolCompanyNameCache[firstSixCharacters]
+              if $scope.schoolCompanyNameCache[firstSixCharacters] is 'pending'
+                if $scope.schoolCompanyNameCache[firstThreeCharacters]
+                  if $scope.schoolCompanyNameCache[firstThreeCharacters] isnt 'pending'
+                    $scope.schools = $scope.schoolCompanyNameCache[firstThreeCharacters]
+              else
+                $scope.schools = $scope.schoolCompanyNameCache[firstSixCharacters]
+            else
+              $scope.schoolCompanyNameCache[firstSixCharacters] = 'pending'
+              SchoolLookupService.getSchoolCompanies 'company_name=' + firstSixCharacters + '&list_page_size=500'
+                .then (response) ->
+                  companies = response.data.getCompaniesResponse?.company
+                  if not companies
+                    # TODO
+                  else
+                    companies = [companies] if not angular.isArray companies
+                    schools = []
+                    angular.forEach companies, (company) ->
+                      schools.push
+                        FR_ID: company.eventId
+                        COMPANY_ID: company.companyId
+                        SCHOOL_NAME: company.companyName
+                        SCHOOL_CITY: ""
+                        SCHOOL_STATE: ""
+                        COORDINATOR_FIRST_NAME: ""
+                        COORDINATOR_LAST_NAME: ""
+                    $scope.schools = schools
+                    $scope.schoolCompanyNameCache[firstSixCharacters] = schools
           else
-            $scope.schoolCompanyNameCache[firstFiveCharacters] = 'pending'
-            SchoolLookupService.getSchoolCompanies 'company_name=' + firstFiveCharacters + '&list_page_size=500'
-              .then (response) ->
-                companies = response.data.getCompaniesResponse?.company
-                if not companies
-                  # TODO
-                else
-                  companies = [companies] if not angular.isArray companies
-                  schools = []
-                  angular.forEach companies, (company) ->
-                    schools.push
-                      FR_ID: company.eventId
-                      COMPANY_ID: company.companyId
-                      SCHOOL_NAME: company.companyName
-                      SCHOOL_CITY: ""
-                      SCHOOL_STATE: ""
-                      COORDINATOR_FIRST_NAME: ""
-                      COORDINATOR_LAST_NAME: ""
-                  $scope.schools = schools
-                  $scope.schoolCompanyNameCache[firstFiveCharacters] = schools
-                  response.data.schools = schools
-                  response.data.schools.map (school) ->
-                    school
+            firstNineCharacters = newValue.substring 0, 9
+            if $scope.schoolCompanyNameCache[firstNineCharacters]
+              if $scope.schoolCompanyNameCache[firstNineCharacters] is 'pending'
+                if $scope.schoolCompanyNameCache[firstSixCharacters]
+                  if $scope.schoolCompanyNameCache[firstSixCharacters] is 'pending'
+                    if $scope.schoolCompanyNameCache[firstThreeCharacters]
+                      if $scope.schoolCompanyNameCache[firstThreeCharacters] isnt 'pending'
+                        $scope.schools = $scope.schoolCompanyNameCache[firstThreeCharacters]
+                  else
+                    $scope.schools = $scope.schoolCompanyNameCache[firstSixCharacters]
+              else
+                $scope.schools = $scope.schoolCompanyNameCache[firstNineCharacters]
+            else
+              $scope.schoolCompanyNameCache[firstNineCharacters] = 'pending'
+              SchoolLookupService.getSchoolCompanies 'company_name=' + firstNineCharacters + '&list_page_size=500'
+                .then (response) ->
+                  companies = response.data.getCompaniesResponse?.company
+                  if not companies
+                    # TODO
+                  else
+                    companies = [companies] if not angular.isArray companies
+                    schools = []
+                    angular.forEach companies, (company) ->
+                      schools.push
+                        FR_ID: company.eventId
+                        COMPANY_ID: company.companyId
+                        SCHOOL_NAME: company.companyName
+                        SCHOOL_CITY: ""
+                        SCHOOL_STATE: ""
+                        COORDINATOR_FIRST_NAME: ""
+                        COORDINATOR_LAST_NAME: ""
+                    $scope.schools = schools
+                    $scope.schoolCompanyNameCache[firstNineCharacters] = schools
       
       $scope.typeaheadFilter = ->
         $scope.schoolList.stateFilter = ''

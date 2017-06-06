@@ -72,7 +72,7 @@
       <div class="form-inline text-center">
         <form method="POST">
           <label for="school-name-filter" class="sr-only">Start typing your school's name:</label>
-          <input type="text" class="form-control" id="school-name-filter" name="school-name-filter" placeholder="Start typing your school's name" autocomplete="off" uib-typeahead="school.SCHOOL_NAME for school in getSchoolCompanies($viewValue) | unique: 'SCHOOL_NAME' | filter: {SCHOOL_NAME:$viewValue}" typeahead-min-length="2" typeahead-editable="false" typeahead-focus-first="false" typeahead-select-on-exact="true" typeahead-no-results="schoolList.typeaheadNoResults" typeahead-on-select="typeaheadFilter($item, $model, $label, $event)" ng-model="schoolList.nameFilter" ng-minlength="2">
+          <input type="text" class="form-control" id="school-name-filter" name="school-name-filter" placeholder="Start typing your school's name" autocomplete="off" uib-typeahead="school.SCHOOL_NAME for school in getSchoolCompanies($viewValue) | unique: 'SCHOOL_NAME' | filter: {SCHOOL_NAME:$viewValue}" typeahead-min-length="3" typeahead-editable="false" typeahead-focus-first="false" typeahead-select-on-exact="true" typeahead-no-results="schoolList.typeaheadNoResults" typeahead-on-select="typeaheadFilter($item, $model, $label, $event)" ng-model="schoolList.nameFilter" ng-minlength="3">
         </form>
       </div>
     </div>
