@@ -34,7 +34,7 @@ angular.module 'ahaLuminateControllers'
           $scope.schoolDataMap = schoolDataMap
           if $scope.schoolList.schools?.length > 0
             angular.forEach $scope.schoolList.schools, (school, schoolIndex) ->
-              schoolData = $scope.schoolDataMap['id' + school.companyId]
+              schoolData = $scope.schoolDataMap['id' + school.COMPANY_ID]
               if schoolData
                 school.SCHOOL_CITY = schoolData.SCHOOL_CITY
                 school.SCHOOL_STATE = schoolData.SCHOOL_STATE
@@ -133,7 +133,7 @@ angular.module 'ahaLuminateControllers'
               else
                 schools = setSchools companies
                 angular.forEach schools, (school) ->
-                  schoolData = $scope.schoolDataMap['id' + school.companyId]
+                  schoolData = $scope.schoolDataMap['id' + school.COMPANY_ID]
                   if schoolData
                     school.SCHOOL_CITY = schoolData.SCHOOL_CITY
                     school.SCHOOL_STATE = schoolData.SCHOOL_STATE
