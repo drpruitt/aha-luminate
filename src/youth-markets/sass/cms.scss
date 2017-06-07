@@ -540,7 +540,11 @@
   }
   
   .img-responsive {
-    margin: 20px auto 10px;
+    margin: 0 auto 10px;
+    
+    @media(min-width: $screen-sm-min){
+      margin: 20px auto 10px;
+    }
   }
   
   .pos-r {
@@ -558,6 +562,19 @@
   
   .ym-page-section__roster {
     padding-top: 0;
+
+    @media(min-width: $screen-sm-min){
+      padding-top: 25px;
+    }
+
+    .h5 {
+      margin: 0 0 15px;
+
+      @media(min-width: $screen-sm-min) {
+        margin: 0 0 30px;
+      }
+    }
+
   }
   
   #school-name-filter {
@@ -607,7 +624,7 @@
       color: $event-grey !important;
     }
   }
-  
+
   .ym-page-section__header {
     position: relative;
 
@@ -652,6 +669,7 @@
 
   .ym-list--school-list {
     th {
+      min-width: 65px;
       a {
         &:hover {
           text-decoration: underline;
@@ -675,7 +693,7 @@
 
     #school-state-filter {
       position: relative;
-      margin-bottom: 30px;
+      margin-bottom: 10px;
     }
   }
 
