@@ -95,7 +95,7 @@ table {
 }
 
 .ym-school-search .pagination {
-  margin: 0 0 15px;
+  margin: 0 0 10px;
 
   @media(min-width: $screen-sm-min){
     margin: 0 0 30px;
@@ -152,6 +152,11 @@ table {
           text-align: center;
           width: 40px;
 
+          &:hover,
+          &:focus {
+            background-color: transparent;
+            text-decoration: none;
+          }
         }
       }
     }
