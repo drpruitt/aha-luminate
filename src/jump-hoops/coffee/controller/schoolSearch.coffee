@@ -135,6 +135,7 @@ angular.module 'ahaLuminateControllers'
                       schools2 = setSchoolsData schools2
                       if $scope.schoolList.stateFilter isnt ''
                         schools2 = $filter('filter') schools2, SCHOOL_STATE: $scope.schoolList.stateFilter
+                  schools = schools.concat schools2
                   if totalNumberResults <= 1000
                     $scope.schoolList.totalItems = schools.length
                     $scope.schoolList.schools = schools
