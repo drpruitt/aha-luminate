@@ -9,7 +9,7 @@ angular.module 'ahaLuminateControllers'
         searchSubmitted: false
         searchPending: false
         sortProp: 'SCHOOL_STATE'
-        sortDesc: true
+        sortDesc: false
         totalItems: 0
         currentPage: 1
         paginationItemsPerPage: 5
@@ -118,7 +118,7 @@ angular.module 'ahaLuminateControllers'
                   schools = $filter('filter') schools, SCHOOL_STATE: $scope.schoolList.stateFilter
                 $scope.schoolList.totalItems = schools.length
                 $scope.schoolList.schools = schools
-                $scope.orderSchools $scope.schoolList.sortProp
+                $scope.orderSchools $scope.schoolList.sortProp, true
                 delete $scope.schoolList.searchPending
       
       $scope.orderSchools = (sortProp, keepSortOrder) ->
