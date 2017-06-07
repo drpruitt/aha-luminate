@@ -124,40 +124,30 @@ angular.module 'ahaLuminateControllers'
               $scope.orderSchools $scope.schoolList.sortProp, true
               delete $scope.schoolList.searchPending
             else
-              SchoolLookupService.getSchoolCompanies 'company_name=' + nameFilter + '&list_sort_column=company_name&list_page_size=500&list_page_offset=1'
-                .then (response) ->
-                  companies2 = response.data.getCompaniesResponse?.company
-                  schools2 = []
-                  if companies2
-                    companies2 = [companies2] if not angular.isArray companies2
-                    if companies2.length > 0
-                      schools2 = setSchools companies2
-                      schools2 = setSchoolsData schools2
-                      if $scope.schoolList.stateFilter isnt ''
-                        schools2 = $filter('filter') schools2, SCHOOL_STATE: $scope.schoolList.stateFilter
-                  schools = schools.concat schools2
-                  if totalNumberResults <= 1000
-                    $scope.schoolList.totalItems = schools.length
-                    $scope.schoolList.schools = schools
-                    $scope.orderSchools $scope.schoolList.sortProp, true
-                    delete $scope.schoolList.searchPending
-                  else
-                    SchoolLookupService.getSchoolCompanies 'company_name=' + nameFilter + '&list_sort_column=company_name&list_page_size=500&list_page_offset=2'
-                      .then (response) ->
-                        companies3 = response.data.getCompaniesResponse?.company
-                        schools3 = []
-                        if companies3
-                          companies3 = [companies3] if not angular.isArray companies3
-                          if companies3.length > 0
-                            schools3 = setSchools companies3
-                            schools3 = setSchoolsData schools3
-                            if $scope.schoolList.stateFilter isnt ''
-                              schools3 = $filter('filter') schools3, SCHOOL_STATE: $scope.schoolList.stateFilter
-                        schools = schools.concat schools3
-                        $scope.schoolList.totalItems = schools.length
-                        $scope.schoolList.schools = schools
-                        $scope.orderSchools $scope.schoolList.sortProp, true
-                        delete $scope.schoolList.searchPending
+              additionalPages = []
+              angular.forEach [1, 2, 3, 4], (additionalPage) ->
+                if totalNumberResults > additionalPage * 500
+                  additionalPages.push additionalPage
+              additionalPagesComplete = 0
+              angular.forEach additionalPages, (additionalPage) ->
+                SchoolLookupService.getSchoolCompanies 'company_name=' + nameFilter + '&list_sort_column=company_name&list_page_size=500&list_page_offset=' + additionalPage
+                  .then (response) ->
+                    moreCompanies = response.data.getCompaniesResponse?.company
+                    moreSchools = []
+                    if moreCompanies
+                      moreCompanies = [moreCompanies] if not angular.isArray moreCompanies
+                      if moreCompanies.length > 0
+                        moreSchools = setSchools moreCompanies
+                        moreSchools = setSchoolsData moreSchools
+                        if $scope.schoolList.stateFilter isnt ''
+                          moreSchools = $filter('filter') moreSchools, SCHOOL_STATE: $scope.schoolList.stateFilter
+                    schools = schools.concat moreSchools
+                    additionalPagesComplete++
+                    if additionalPagesComplete is additionalPages.length
+                      $scope.schoolList.totalItems = schools.length
+                      $scope.schoolList.schools = schools
+                      $scope.orderSchools $scope.schoolList.sortProp, true
+                      delete $scope.schoolList.searchPending
       
       $scope.orderSchools = (sortProp, keepSortOrder) ->
         schools = $scope.schoolList.schools
