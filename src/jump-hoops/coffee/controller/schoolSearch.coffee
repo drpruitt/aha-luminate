@@ -80,7 +80,7 @@ angular.module 'ahaLuminateControllers'
                 $scope.schoolSuggestionCache[firstSixCharacters]
             else
               $scope.schoolSuggestionCache[firstSixCharacters] = 'pending'
-              SchoolLookupService.getSchoolCompanies 'company_name=' + firstSixCharacters + '&list_page_size=500'
+              SchoolLookupService.getSchoolCompanies 'company_name=' + firstSixCharacters + '&list_sort_column=company_name&list_page_size=500'
                 .then (response) ->
                   companies = response.data.getCompaniesResponse?.company
                   schools = []
@@ -103,7 +103,7 @@ angular.module 'ahaLuminateControllers'
                 $scope.schoolSuggestionCache[firstNineCharacters]
             else
               $scope.schoolSuggestionCache[firstNineCharacters] = 'pending'
-              SchoolLookupService.getSchoolCompanies 'company_name=' + firstNineCharacters + '&list_page_size=500'
+              SchoolLookupService.getSchoolCompanies 'company_name=' + firstNineCharacters + '&list_sort_column=company_name&list_page_size=500'
                 .then (response) ->
                   companies = response.data.getCompaniesResponse?.company
                   schools = []
