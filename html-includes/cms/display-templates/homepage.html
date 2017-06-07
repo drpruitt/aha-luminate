@@ -146,9 +146,6 @@
           </div>
         </div>
         <div ng-if="schoolList.schools.length > 0">
-          <div class="alert alert-info" ng-if="schoolList.totalNumberResults > 2500">
-            <strong>Your search returned more than 2,500 results. Please try again with a more specific keyword.</strong>
-          </div>
           <div class="text-center visible-xs-block">
             <em>Scroll right to view all information</em>
           </div>
@@ -215,7 +212,7 @@
         </div>
         <div ng-if="schoolList.schools.length == 0" class="text-center" ng-class="{'pb-md': schoolList.showHelp}">
           <p>
-            Hi! We couldn't locate a school with the name of <strong>{{schoolList.nameFilter}}</strong><span ng-if="schoolList.stateFilter && schoolList.stateFilter != ''"> in <strong>{{schoolList.stateFilter}}</strong></span>. Need help locating your school? Visit the <a href="https://jumphoops.zendesk.com/hc/en-us" target="_blank">help center</a> for assistance.
+            Hi! We couldn't locate a school with the name of <strong>{{schoolList.nameFilter}}</strong><span ng-if="schoolList.stateFilter && schoolList.stateFilter != ''"> in <strong>{{schoolList.stateFilter}}</strong></span>. <a href="https://jumphoops.zendesk.com/hc/en-us">Need Help locating your school</a>?
           </p>
           <p>
             You can still register today without designating a school, and a school coordinator from our team will make sure you're properly linked up with your school.
