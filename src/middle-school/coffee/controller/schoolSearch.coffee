@@ -95,10 +95,10 @@ angular.module 'ahaLuminateControllers'
         angular.forEach schools, (school, schoolIndex) ->
           schoolData = $scope.schoolDataMap['id' + school.COMPANY_ID]
           if schoolData
-            school[schoolIndex].SCHOOL_CITY = schoolData.SCHOOL_CITY
-            school[schoolIndex].SCHOOL_STATE = schoolData.SCHOOL_STATE
-            school[schoolIndex].COORDINATOR_FIRST_NAME = schoolData.COORDINATOR_FIRST_NAME
-            school[schoolIndex].COORDINATOR_LAST_NAME = schoolData.COORDINATOR_LAST_NAME
+            schools[schoolIndex].SCHOOL_CITY = schoolData.SCHOOL_CITY
+            schools[schoolIndex].SCHOOL_STATE = schoolData.SCHOOL_STATE
+            schools[schoolIndex].COORDINATOR_FIRST_NAME = schoolData.COORDINATOR_FIRST_NAME
+            schools[schoolIndex].COORDINATOR_LAST_NAME = schoolData.COORDINATOR_LAST_NAME
         schools
       
       $scope.getSchoolSearchResults = ->
