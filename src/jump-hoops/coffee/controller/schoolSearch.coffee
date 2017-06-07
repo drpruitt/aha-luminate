@@ -91,6 +91,16 @@ angular.module 'ahaLuminateControllers'
         $scope.getSchoolSearchResults()
         $scope.schoolList.searchSubmitted = true
       
+      setSchoolsData = (schools) ->
+        angular.forEach schools, (school, schoolIndex) ->
+          schoolData = $scope.schoolDataMap['id' + school.COMPANY_ID]
+          if schoolData
+            school[schoolIndex].SCHOOL_CITY = schoolData.SCHOOL_CITY
+            school[schoolIndex].SCHOOL_STATE = schoolData.SCHOOL_STATE
+            school[schoolIndex].COORDINATOR_FIRST_NAME = schoolData.COORDINATOR_FIRST_NAME
+            school[schoolIndex].COORDINATOR_LAST_NAME = schoolData.COORDINATOR_LAST_NAME
+        schools
+      
       $scope.getSchoolSearchResults = ->
         delete $scope.schoolList.schools
         $scope.schoolList.searchPending = true
@@ -98,24 +108,38 @@ angular.module 'ahaLuminateControllers'
         SchoolLookupService.getSchoolCompanies 'company_name=' + nameFilter + '&list_sort_column=company_name&list_page_size=500'
           .then (response) ->
             companies = response.data.getCompaniesResponse?.company
+            totalNumberResults = response.data.getCompaniesResponse?.totalNumberResults or '0'
+            totalNumberResults = Number totalNumberResults
             schools = []
             if companies
               companies = [companies] if not angular.isArray companies
               if companies.length > 0
                 schools = setSchools companies
-                angular.forEach schools, (school) ->
-                  schoolData = $scope.schoolDataMap['id' + school.COMPANY_ID]
-                  if schoolData
-                    school.SCHOOL_CITY = schoolData.SCHOOL_CITY
-                    school.SCHOOL_STATE = schoolData.SCHOOL_STATE
-                    school.COORDINATOR_FIRST_NAME = schoolData.COORDINATOR_FIRST_NAME
-                    school.COORDINATOR_LAST_NAME = schoolData.COORDINATOR_LAST_NAME
+                schools = setSchoolsData schools
                 if $scope.schoolList.stateFilter isnt ''
                   schools = $filter('filter') schools, SCHOOL_STATE: $scope.schoolList.stateFilter
-            $scope.schoolList.totalItems = schools.length
-            $scope.schoolList.schools = schools
-            $scope.orderSchools $scope.schoolList.sortProp, true
-            delete $scope.schoolList.searchPending
+            if totalNumberResults <= 500
+              $scope.schoolList.totalItems = schools.length
+              $scope.schoolList.schools = schools
+              $scope.orderSchools $scope.schoolList.sortProp, true
+              delete $scope.schoolList.searchPending
+            else
+              SchoolLookupService.getSchoolCompanies 'company_name=' + nameFilter + '&list_sort_column=company_name&list_page_size=500&list_page_offset=1'
+                .then (response) ->
+                  moreCompanies = response.data.getCompaniesResponse?.company
+                  moreSchools = []
+                  if moreCompanies
+                    moreCompanies = [moreCompanies] if not angular.isArray moreCompanies
+                    if moreCompanies.length > 0
+                      moreSchools = setSchools moreCompanies
+                      moreSchools = setSchoolsData moreSchools
+                      if $scope.schoolList.stateFilter isnt ''
+                        moreSchools = $filter('filter') moreSchools, SCHOOL_STATE: $scope.schoolList.stateFilter
+                  schools = schools.concat moreSchools
+                  $scope.schoolList.totalItems = schools.length
+                  $scope.schoolList.schools = schools
+                  $scope.orderSchools $scope.schoolList.sortProp, true
+                  delete $scope.schoolList.searchPending
       
       $scope.orderSchools = (sortProp, keepSortOrder) ->
         schools = $scope.schoolList.schools
