@@ -14,8 +14,10 @@ angular.module 'ahaLuminateControllers'
         currentPage: 1
         paginationItemsPerPage: 5
         paginationMaxSize: 5
-        showHelp: false
+        nameFilter: ''
+        ng_nameFilter: ''
         stateFilter: ''
+        showHelp: false
       $scope.schoolDataMap = {}
       $scope.schoolSuggestionCache = {}
       
@@ -79,9 +81,9 @@ angular.module 'ahaLuminateControllers'
                   if companies
                     companies = [companies] if not angular.isArray companies
                     schools = setSchools companies
-                  schools = $filter('unique') schools, 'SCHOOL_NAME'
+                    schools = $filter('unique') schools, 'SCHOOL_NAME'
                   $scope.schoolSuggestionCache[searchCharacters] = schools
-                  $filter('filter') $scope.schoolSuggestionCache[searchCharacters], SCHOOL_NAME: newValue
+                  $filter('filter') schools, SCHOOL_NAME: newValue
       
       $scope.submitSchoolSearch = ->
         $scope.schoolList.nameFilter = $scope.schoolList.ng_nameFilter
@@ -92,20 +94,14 @@ angular.module 'ahaLuminateControllers'
       $scope.getSchoolSearchResults = ->
         delete $scope.schoolList.schools
         $scope.schoolList.searchPending = true
-        SchoolLookupService.getSchoolCompanies 'company_name=' + $scope.schoolList.nameFilter + '&list_sort_column=company_name&list_page_size=500'
+        nameFilter = $scope.schoolList.nameFilter
+        SchoolLookupService.getSchoolCompanies 'company_name=' + nameFilter + '&list_sort_column=company_name&list_page_size=500'
           .then (response) ->
             companies = response.data.getCompaniesResponse?.company
-            if not companies
-              $scope.schoolList.totalItems = 0
-              $scope.schoolList.schools = []
-              delete $scope.schoolList.searchPending
-            else
+            schools = []
+            if companies
               companies = [companies] if not angular.isArray companies
-              if companies.length is 0
-                $scope.schoolList.totalItems = 0
-                $scope.schoolList.schools = []
-                delete $scope.schoolList.searchPending
-              else
+              if companies.length > 0
                 schools = setSchools companies
                 angular.forEach schools, (school) ->
                   schoolData = $scope.schoolDataMap['id' + school.COMPANY_ID]
@@ -116,10 +112,10 @@ angular.module 'ahaLuminateControllers'
                     school.COORDINATOR_LAST_NAME = schoolData.COORDINATOR_LAST_NAME
                 if $scope.schoolList.stateFilter isnt ''
                   schools = $filter('filter') schools, SCHOOL_STATE: $scope.schoolList.stateFilter
-                $scope.schoolList.totalItems = schools.length
-                $scope.schoolList.schools = schools
-                $scope.orderSchools $scope.schoolList.sortProp, true
-                delete $scope.schoolList.searchPending
+            $scope.schoolList.totalItems = schools.length
+            $scope.schoolList.schools = schools
+            $scope.orderSchools $scope.schoolList.sortProp, true
+            delete $scope.schoolList.searchPending
       
       $scope.orderSchools = (sortProp, keepSortOrder) ->
         schools = $scope.schoolList.schools
