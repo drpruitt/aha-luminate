@@ -79,6 +79,7 @@ angular.module 'ahaLuminateControllers'
                   if companies
                     companies = [companies] if not angular.isArray companies
                     schools = setSchools companies
+                  schools = $filter('unique') schools, 'SCHOOL_NAME'
                   $scope.schoolSuggestionCache[searchCharacters] = schools
       
       $scope.submitSchoolSearch = ->
