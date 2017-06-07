@@ -5,7 +5,8 @@ angular.module 'ahaLuminateApp'
     '$sce'
     ($rootScope, $http, $sce) ->
       getSchoolCompanies: (requestData) ->
-        requestUrl = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent(luminateExtend.global.path.secure + 'CRTeamraiserAPI')
+        # requestUrl = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent(luminateExtend.global.path.secure + 'CRTeamraiserAPI')
+        requestUrl = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent('https://secure3.convio.net/heartdev/site/CRTeamraiserAPI')
         if luminateExtend.global.tablePrefix is 'heartdev'
           requestUrl = 'https://secure3.convio.net/heartdev/site/CRTeamraiserAPI'
         $http
@@ -16,7 +17,8 @@ angular.module 'ahaLuminateApp'
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
       
       getSchoolData: ->
-        requestUrl = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent(luminateExtend.global.path.secure + 'SPageServer?pagename=getJumpHoopsSchoolSearchData&pgwrap=n')
+        # requestUrl = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent(luminateExtend.global.path.secure + 'SPageServer?pagename=getJumpHoopsSchoolSearchData&pgwrap=n')
+        requestUrl = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent('https://secure3.convio.net/heartdev/site/SPageServer?pagename=getJumpHoopsSchoolSearchData&pgwrap=n')
         if luminateExtend.global.tablePrefix is 'heartdev'
           requestUrl = 'https://secure3.convio.net/heartdev/site/SPageServer?pagename=getJumpHoopsSchoolSearchData&pgwrap=n'
         $http
