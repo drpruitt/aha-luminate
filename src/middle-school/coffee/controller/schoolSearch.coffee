@@ -74,7 +74,7 @@ angular.module 'ahaLuminateControllers'
               if newValue.length > 8
                 searchCharacters = firstSevenCharacters
               $scope.schoolSuggestionCache[searchCharacters] = 'pending'
-              SchoolLookupService.getSchoolCompanies 'company_name=' + searchCharacters + '&list_sort_column=company_name&list_page_size=500'
+              SchoolLookupService.getSchoolCompanies 'company_name=' + encodeURIComponent(searchCharacters) + '&list_sort_column=company_name&list_page_size=500'
                 .then (response) ->
                   companies = response.data.getCompaniesResponse?.company
                   schools = []
@@ -105,7 +105,7 @@ angular.module 'ahaLuminateControllers'
         delete $scope.schoolList.schools
         $scope.schoolList.searchPending = true
         nameFilter = $scope.schoolList.nameFilter
-        SchoolLookupService.getSchoolCompanies 'company_name=' + nameFilter + '&list_sort_column=company_name&list_page_size=500'
+        SchoolLookupService.getSchoolCompanies 'company_name=' + encodeURIComponent(nameFilter) + '&list_sort_column=company_name&list_page_size=500'
           .then (response) ->
             companies = response.data.getCompaniesResponse?.company
             totalNumberResults = response.data.getCompaniesResponse?.totalNumberResults or '0'
@@ -131,7 +131,7 @@ angular.module 'ahaLuminateControllers'
                   additionalPages.push additionalPage
               additionalPagesComplete = 0
               angular.forEach additionalPages, (additionalPage) ->
-                SchoolLookupService.getSchoolCompanies 'company_name=' + nameFilter + '&list_sort_column=company_name&list_page_size=500&list_page_offset=' + additionalPage
+                SchoolLookupService.getSchoolCompanies 'company_name=' + encodeURIComponent(nameFilter) + '&list_sort_column=company_name&list_page_size=500&list_page_offset=' + additionalPage
                   .then (response) ->
                     moreCompanies = response.data.getCompaniesResponse?.company
                     moreSchools = []
