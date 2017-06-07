@@ -65,7 +65,7 @@
   </t:if>
   <!-- School Search starts -->
   <a name="JumpSearch"></a>
-  <div class="ym-school-search" id="school-search" ng-controller="SchoolSearchCtrl" ng-cloak>
+  <div class="ym-school-search ym-page-section__main" id="school-search" ng-controller="SchoolSearchCtrl" ng-cloak>
     <form method="POST" ng-submit="submitSchoolSearch()">
       <div class="form-group">
         <img class="img-responsive hidden-xs" src="http://heart.pub30.convio.net/assets/images/hoops-jump-search-graphic.png" alt="Find your school">
@@ -146,7 +146,10 @@
           </div>
         </div>
         <div ng-if="schoolList.schools.length > 0">
-          <div class="text-center pb-lg visible-xs-block">
+          <div class="alert alert-info" ng-if="schoolList.totalNumberResults > 2500">
+            <strong>Your search returned more than 2,500 results. Please try again with a more specific keyword.</strong>
+          </div>
+          <div class="text-center visible-xs-block">
             <em>Scroll right to view all information</em>
           </div>
           <div class="ym-list__school-list-wrpr mb-lg">
@@ -212,10 +215,10 @@
         </div>
         <div ng-if="schoolList.schools.length == 0" class="text-center" ng-class="{'pb-md': schoolList.showHelp}">
           <p>
-            Hi! We couldn't locate a school with the name of <strong>{{schoolList.nameFilter}}</strong><span ng-if="schoolList.stateFilter && schoolList.stateFilter != ''"> in <strong>{{schoolList.stateFilter}}</strong></span>. Your school may not be added to our list just yet.
+            Hi! We couldn't locate a school with the name of <strong>{{schoolList.nameFilter}}</strong><span ng-if="schoolList.stateFilter && schoolList.stateFilter != ''"> in <strong>{{schoolList.stateFilter}}</strong></span>. Need help locating your school? Visit the <a href="https://jumphoops.zendesk.com/hc/en-us" target="_blank">help center</a> for assistance.
           </p>
           <p>
-            No worries though! You can still register today without designating a school, and a school coordinator from our team will make sure you're properly linked up with your school.
+            You can still register today without designating a school, and a school coordinator from our team will make sure you're properly linked up with your school.
           </p>
           <div class="pt-md">
             <a class="btn btn-md btn-secondary ym-list--school-list--help" ng-href="{{noSchoolLink}}">Sign Up Today</a>
