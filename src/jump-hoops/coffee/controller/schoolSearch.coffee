@@ -56,15 +56,15 @@ angular.module 'ahaLuminateControllers'
       $scope.getSchoolSuggestions = (newValue) ->
         firstThreeCharacters = newValue.substring 0, 3
         if $scope.schoolSuggestionCache[firstThreeCharacters] and $scope.schoolSuggestionCache[firstThreeCharacters] isnt 'pending' and (newValue.length < 6 or $scope.schoolSuggestionCache[firstThreeCharacters].length < 500)
-          $scope.schoolSuggestionCache[firstThreeCharacters]
+          $filter('filter') $scope.schoolSuggestionCache[firstThreeCharacters], SCHOOL_NAME: newValue
         else
           firstSixCharacters = newValue.substring 0, 6
           if $scope.schoolSuggestionCache[firstSixCharacters] and $scope.schoolSuggestionCache[firstSixCharacters] isnt 'pending' and (newValue.length < 9 or $scope.schoolSuggestionCache[firstSixCharacters].length < 500)
-            $scope.schoolSuggestionCache[firstSixCharacters]
+            $filter('filter') $scope.schoolSuggestionCache[firstSixCharacters], SCHOOL_NAME: newValue
           else
             firstNineCharacters = newValue.substring 0, 9
             if $scope.schoolSuggestionCache[firstNineCharacters] and $scope.schoolSuggestionCache[firstNineCharacters] isnt 'pending'
-              $scope.schoolSuggestionCache[firstNineCharacters]
+              $filter('filter') $scope.schoolSuggestionCache[firstNineCharacters], SCHOOL_NAME: newValue
             else
               searchCharacters = firstThreeCharacters
               if newValue.length > 5
@@ -81,6 +81,7 @@ angular.module 'ahaLuminateControllers'
                     schools = setSchools companies
                   schools = $filter('unique') schools, 'SCHOOL_NAME'
                   $scope.schoolSuggestionCache[searchCharacters] = schools
+                  $filter('filter') $scope.schoolSuggestionCache[searchCharacters], SCHOOL_NAME: newValue
       
       $scope.submitSchoolSearch = ->
         $scope.schoolList.nameFilter = $scope.schoolList.ng_nameFilter
