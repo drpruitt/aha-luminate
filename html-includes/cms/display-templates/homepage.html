@@ -72,8 +72,8 @@
         <img class="img-responsive hidden-sm hidden-md hidden-lg" src="http://heart.pub30.convio.net/assets/images/hoops-jump-search-graphic-mobile.jpg" alt="Find your school">
         <div class="form-inline text-center">
           <label for="school-name-filter" class="sr-only">School name:</label>
-          <input type="text" class="form-control" id="school-name-filter" name="school-name-filter" ng-model="schoolList.nameFilter" ng-minlength="3" placeholder="Start typing your school's name" autocomplete="off" uib-typeahead="school.SCHOOL_NAME for school in getSchoolSuggestions($viewValue) | unique: 'SCHOOL_NAME' | filter: {SCHOOL_NAME:$viewValue}" typeahead-min-length="3" typeahead-editable="true" typeahead-focus-first="false"> 
-          <button type="submit" class="btn btn-secondary school-name-filter-submit">
+          <input type="text" class="form-control" id="school-name-filter" name="school-name-filter" ng-model="schoolList.ng_nameFilter" ng-minlength="3" placeholder="Start typing your school's name" autocomplete="off" uib-typeahead="school.SCHOOL_NAME for school in getSchoolSuggestions($viewValue) | unique: 'SCHOOL_NAME' | filter: {SCHOOL_NAME:$viewValue}" typeahead-min-length="3" typeahead-editable="true" typeahead-focus-first="false" ng-class="{'disabled': schoolList.searchPending}" ng-disabled="schoolList.searchPending"> 
+          <button type="submit" class="btn btn-secondary school-name-filter-submit" ng-class="{'disabled': schoolList.searchPending}" ng-disabled="schoolList.searchPending">
             <strong>Search</strong>
           </button>
         </div>

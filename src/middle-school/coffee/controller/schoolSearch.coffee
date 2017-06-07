@@ -7,6 +7,7 @@ angular.module 'ahaLuminateControllers'
     ($rootScope, $scope, $filter, SchoolLookupService) ->
       $scope.schoolList =
         searchSubmitted: false
+        searchPending: false
         sortProp: 'SCHOOL_STATE'
         sortDesc: true
         totalItems: 0
@@ -81,24 +82,27 @@ angular.module 'ahaLuminateControllers'
                   $scope.schoolSuggestionCache[searchCharacters] = schools
       
       $scope.submitSchoolSearch = ->
+        $scope.schoolList.nameFilter = $scope.schoolList.ng_nameFilter
         $scope.schoolList.stateFilter = ''
         $scope.getSchoolSearchResults()
         $scope.schoolList.searchSubmitted = true
       
       $scope.getSchoolSearchResults = ->
-        if $scope.schoolList.schools
-          delete $scope.schoolList.schools
+        delete $scope.schoolList.schools
+        $scope.schoolList.searchPending = true
         SchoolLookupService.getSchoolCompanies 'company_name=' + $scope.schoolList.nameFilter + '&list_sort_column=company_name&list_page_size=500'
           .then (response) ->
             companies = response.data.getCompaniesResponse?.company
             if not companies
               $scope.schoolList.totalItems = 0
               $scope.schoolList.schools = []
+              delete $scope.schoolList.searchPending
             else
               companies = [companies] if not angular.isArray companies
               if companies.length is 0
                 $scope.schoolList.totalItems = 0
                 $scope.schoolList.schools = []
+                delete $scope.schoolList.searchPending
               else
                 schools = setSchools companies
                 angular.forEach schools, (school) ->
@@ -113,6 +117,7 @@ angular.module 'ahaLuminateControllers'
                 $scope.schoolList.totalItems = schools.length
                 $scope.schoolList.schools = schools
                 $scope.orderSchools $scope.schoolList.sortProp
+                delete $scope.schoolList.searchPending
       
       $scope.orderSchools = (sortProp, keepSortOrder) ->
         schools = $scope.schoolList.schools
