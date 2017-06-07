@@ -72,7 +72,7 @@
         <img class="img-responsive hidden-sm hidden-md hidden-lg" src="http://heart.pub30.convio.net/assets/images/hoops-jump-search-graphic-mobile.jpg" alt="Find your school">
         <div class="form-inline text-center">
           <label for="school-name-filter" class="sr-only">School name:</label>
-          <input type="text" class="form-control" id="school-name-filter" name="school-name-filter" ng-model="schoolList.ng_nameFilter" ng-minlength="3" placeholder="Start typing your school's name" autocomplete="off" uib-typeahead="school.SCHOOL_NAME for school in getSchoolSuggestions($viewValue)" typeahead-min-length="3" typeahead-editable="true" typeahead-focus-first="false" ng-class="{'disabled': schoolList.searchPending}" ng-disabled="schoolList.searchPending"> 
+          <input type="text" class="form-control" id="school-name-filter" name="school-name-filter" ng-model="schoolList.ng_nameFilter" placeholder="Start typing your school's name" autocomplete="off" uib-typeahead="school.SCHOOL_NAME for school in getSchoolSuggestions($viewValue)" typeahead-min-length="3" typeahead-editable="true" typeahead-focus-first="false" ng-class="{'disabled': schoolList.searchPending}" ng-disabled="schoolList.searchPending"> 
           <button type="submit" class="btn btn-secondary school-name-filter-submit" ng-class="{'disabled': schoolList.searchPending}" ng-disabled="schoolList.searchPending">
             <strong>Search</strong>
           </button>
@@ -146,10 +146,13 @@
           </div>
         </div>
         <div ng-if="schoolList.schools.length > 0">
+          <div class="alert alert-info" ng-if="schoolList.totalNumberResults > 2500">
+            <strong>Your search returned more than 2,500 results. Please try again with a more specific keyword.</strong>
+          </div>
           <div class="text-center visible-xs-block">
             <em>Scroll right to view all information</em>
           </div>
-          <div class="ym-list__school-list-wrpr mb-lg">
+          <div class="ym-list__school-list-wrpr">
             <table class="table table-responsive table-striped ym-list ym-list--school-list" summary="Results Matching Your School's Name">
               <thead class="ym-list__header">
                 <th class="ym-list__column ym-list__column--school" scope="col">
@@ -212,7 +215,7 @@
         </div>
         <div ng-if="schoolList.schools.length == 0" class="text-center" ng-class="{'pb-md': schoolList.showHelp}">
           <p>
-            Hi! We couldn't locate a school with the name of <strong>{{schoolList.nameFilter}}</strong><span ng-if="schoolList.stateFilter && schoolList.stateFilter != ''"> in <strong>{{schoolList.stateFilter}}</strong></span>. <a href="https://jumphoops.zendesk.com/hc/en-us">Need Help locating your school</a>?
+            Hi! We couldn't locate a school with the name of <strong>{{schoolList.nameFilter}}</strong><span ng-if="schoolList.stateFilter && schoolList.stateFilter != ''"> in <strong>{{schoolList.stateFilter}}</strong></span>. Need Help locating your school? Visit the <a href="https://jumphoops.zendesk.com/hc/en-us" target="_blank">help center</a> for assistance.
           </p>
           <p>
             You can still register today without designating a school, and a school coordinator from our team will make sure you're properly linked up with your school.
