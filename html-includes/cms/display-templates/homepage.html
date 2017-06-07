@@ -207,7 +207,7 @@
             </table>
           </div>
           <div class="ym-pagination text-center" ng-show="schoolList.schools.length > schoolList.paginationItemsPerPage">
-            <ul uib-pagination ng-model="schoolList.currentPage" total-items="schoolList.totalItems" items-per-page="schoolList.paginationItemsPerPage" max-size="schoolList.paginationMaxSize" boundary-links="true"></ul>
+            <ul uib-pagination ng-model="schoolList.currentPage" total-items="schoolList.totalItems" items-per-page="schoolList.paginationItemsPerPage" max-size="schoolList.paginationMaxSize" boundary-links="schoolList.schools.length > (schoolList.paginationItemsPerPage * schoolList.paginationMaxSize)"></ul>
           </div>
         </div>
         <div ng-if="schoolList.schools.length == 0" class="text-center" ng-class="{'pb-md': schoolList.showHelp}">
