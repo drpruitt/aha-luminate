@@ -8,7 +8,7 @@ angular.module 'ahaLuminateControllers'
       $scope.schoolList =
         searchSubmitted: false
         searchPending: false
-        sortProp: 'SCHOOL_STATE'
+        sortProp: 'SCHOOL_NAME'
         sortDesc: false
         totalItems: 0
         currentPage: 1
@@ -65,25 +65,31 @@ angular.module 'ahaLuminateControllers'
             $filter('filter') $scope.schoolSuggestionCache[firstFiveCharacters], SCHOOL_NAME: newValue
           else
             firstSevenCharacters = newValue.substring 0, 7
-            if $scope.schoolSuggestionCache[firstSevenCharacters] and $scope.schoolSuggestionCache[firstSevenCharacters] isnt 'pending'
+            if $scope.schoolSuggestionCache[firstSevenCharacters] and $scope.schoolSuggestionCache[firstSevenCharacters] isnt 'pending' and (newValue.length < 9 or $scope.schoolSuggestionCache[firstSevenCharacters].length < 500)
               $filter('filter') $scope.schoolSuggestionCache[firstSevenCharacters], SCHOOL_NAME: newValue
             else
-              searchCharacters = firstThreeCharacters
-              if newValue.length > 5
-                searchCharacters = firstFiveCharacters
-              if newValue.length > 8
-                searchCharacters = firstSevenCharacters
-              $scope.schoolSuggestionCache[searchCharacters] = 'pending'
-              SchoolLookupService.getSchoolCompanies 'company_name=' + encodeURIComponent(searchCharacters) + '&list_sort_column=company_name&list_page_size=500'
-                .then (response) ->
-                  companies = response.data.getCompaniesResponse?.company
-                  schools = []
-                  if companies
-                    companies = [companies] if not angular.isArray companies
-                    schools = setSchools companies
-                    schools = $filter('unique') schools, 'SCHOOL_NAME'
-                  $scope.schoolSuggestionCache[searchCharacters] = schools
-                  $filter('filter') schools, SCHOOL_NAME: newValue
+              firstNineCharacters = newValue.substring 0, 9
+              if $scope.schoolSuggestionCache[firstNineCharacters] and $scope.schoolSuggestionCache[firstNineCharacters] isnt 'pending'
+                $filter('filter') $scope.schoolSuggestionCache[firstNineCharacters], SCHOOL_NAME: newValue
+              else
+                searchCharacters = firstThreeCharacters
+                if newValue.length > 4
+                  searchCharacters = firstFiveCharacters
+                if newValue.length > 6
+                  searchCharacters = firstSevenCharacters
+                if newValue.length > 8
+                  searchCharacters = firstNineCharacters
+                $scope.schoolSuggestionCache[searchCharacters] = 'pending'
+                SchoolLookupService.getSchoolCompanies 'company_name=' + encodeURIComponent(searchCharacters) + '&list_sort_column=company_name&list_page_size=500'
+                  .then (response) ->
+                    companies = response.data.getCompaniesResponse?.company
+                    schools = []
+                    if companies
+                      companies = [companies] if not angular.isArray companies
+                      schools = setSchools companies
+                      schools = $filter('unique') schools, 'SCHOOL_NAME'
+                    $scope.schoolSuggestionCache[searchCharacters] = schools
+                    $filter('filter') schools, SCHOOL_NAME: newValue
       
       $scope.submitSchoolSearch = ->
         $scope.schoolList.nameFilter = $scope.schoolList.ng_nameFilter
