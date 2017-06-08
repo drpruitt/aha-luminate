@@ -495,7 +495,7 @@ angular.module 'trPcControllers'
             # TODO
           success: (response) ->
             getStudentChallenge()
-
+      
       $scope.prizes = []
       ParticipantBadgesService.getBadges $scope.consId
       .then (response) ->
@@ -509,7 +509,7 @@ angular.module 'trPcControllers'
             earned: prize.earned_datetime
       , (response) ->
         # TODO
-
+      
       initCarousel = ->
         owl = jQuery '.owl-carousel'
         owl.owlCarousel
@@ -556,6 +556,6 @@ angular.module 'trPcControllers'
           onChange: ->
             angular.element('.owl-carousel').find('.owl-item').attr 'aria-selected', 'false'
             angular.element('.owl-carousel').find('.owl-item.active').attr 'aria-selected', 'true'
-
+      
       $timeout initCarousel, 1000
   ]
