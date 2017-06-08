@@ -5,7 +5,6 @@ angular.module 'trPcControllers'
     '$filter'
     '$uibModal'
     'APP_INFO'
-    'ZuriService'
     'ParticipantBadgesService'
     'NgPcTeamraiserRegistrationService'
     'NgPcTeamraiserProgressService'
@@ -16,7 +15,7 @@ angular.module 'trPcControllers'
     'NgPcInteractionService'
     'NgPcTeamraiserCompanyService'
     '$timeout'
-    ($rootScope, $scope, $filter, $uibModal, APP_INFO, ZuriService, ParticipantBadgesService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserGiftService, NgPcContactService, NgPcTeamraiserShortcutURLService, NgPcInteractionService, NgPcTeamraiserCompanyService, $timeout) ->
+    ($rootScope, $scope, $filter, $uibModal, APP_INFO, ParticipantBadgesService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserGiftService, NgPcContactService, NgPcTeamraiserShortcutURLService, NgPcInteractionService, NgPcTeamraiserCompanyService, $timeout) ->
       $scope.dashboardPromises = []
       
       if $scope.participantRegistration.lastPC2Login is '0'
@@ -426,75 +425,6 @@ angular.module 'trPcControllers'
               response
           $scope.dashboardPromises.push updateCompanyUrlPromise
       
-      $scope.personalChallenge = {}
-      $scope.updatedPersonalChallenge = {}
-      setPersonalChallenge = (id = '-1', name = '', numCompleted = 0, completedToday = false) ->
-        if id is '-1' and $scope.challengeTaken and $scope.challengeTaken isnt ''
-          if $scope.challengeTaken.indexOf('1. ') isnt -1
-            id = '1'
-            name = $scope.challengeTaken.split('1. ')[1]
-          else if $scope.challengeTaken.indexOf('2. ') isnt -1
-            id = '2'
-            name = $scope.challengeTaken.split('2. ')[1]
-          else if $scope.challengeTaken.indexOf('3. ') isnt -1
-            id = '3'
-            name = $scope.challengeTaken.split('3. ')[1]
-        $scope.personalChallenge.id = id
-        $scope.personalChallenge.name = name
-        $scope.personalChallenge.numCompleted = numCompleted
-        $scope.personalChallenge.completedToday = completedToday
-        if id is '-1'
-          $scope.updatedPersonalChallenge.id = ''
-        else
-          $scope.updatedPersonalChallenge.id = id
-        if not $scope.$$phase
-          $scope.$apply()
-      getStudentChallenge = ->
-        ZuriService.getZooStudent $scope.frId + '/' + $scope.consId,
-          failure: (response) ->
-            setPersonalChallenge()
-          error: (response) ->
-            setPersonalChallenge()
-          success: (response) ->
-            personalChallenges = response.data.challenges
-            if not personalChallenges
-              setPersonalChallenge()
-            else
-              id = personalChallenges.current
-              if id isnt '1' and id isnt '2' and id isnt '3'
-                setPersonalChallenge()
-              else
-                numCompleted = if personalChallenges.completed then Number(personalChallenges.completed) else 0
-                setPersonalChallenge id, personalChallenges.text, numCompleted, personalChallenges.completedToday
-      getStudentChallenge()
-      
-      $scope.challenges = []
-      ZuriService.getChallenges $scope.frId + '/' + $scope.consId,
-        failure: (response) ->
-          # TODO
-        error: (response) ->
-          # TODO
-        success: (response) ->
-          challenges = response.data.challenges
-          angular.forEach challenges, (challenge, challengeIndex) ->
-            $scope.challenges.push
-              id: challengeIndex
-              name: challenge
-      
-      $scope.updateChallenge = ->
-        ZuriService.updateChallenge $scope.frId + '/' + $scope.consId + '?challenge=' + $scope.updatedPersonalChallenge.id,
-          failure: (response) ->
-            # TODO
-          success: (response) ->
-            getStudentChallenge()
-      
-      $scope.logChallenge = ->
-        ZuriService.logChallenge $scope.frId + '/' + $scope.consId + '/' + $scope.personalChallenge.id,
-          failure: (response) ->
-            # TODO
-          success: (response) ->
-            getStudentChallenge()
-
       $scope.prizes = []
       ParticipantBadgesService.getBadges '2011'
       .then (response) ->
@@ -508,7 +438,7 @@ angular.module 'trPcControllers'
             earned: prize.earned_datetime
       , (response) ->
         # TODO
-
+      
       initCarousel = ->
         owl = jQuery '.owl-carousel'
         owl.owlCarousel
