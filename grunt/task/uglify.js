@@ -19,6 +19,18 @@ module.exports = {
           'dist/heart-walk/js/main.js'
         ], 
         dest: 'dist/heart-walk/js/main.' + '<%= timestamp %>' + '.min.js'
+      }, 
+      {
+        src: [
+          'dist/heart-walk/js/participant.js'
+        ], 
+        dest: 'dist/heart-walk/js/participant.' + '<%= timestamp %>' + '.min.js'
+      }, 
+      {
+        src: [
+          'dist/heart-walk/js/pageEdit.js'
+        ], 
+        dest: 'dist/heart-walk/js/pageEdit.' + '<%= timestamp %>' + '.min.js'
       }
     ]
   }, 

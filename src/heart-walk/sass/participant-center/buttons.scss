@@ -1,0 +1,17 @@
+.ng-pc-container, 
+.ng-pc-modal {
+  .btn.form-control {
+    height: auto;
+  }
+  
+  .btn, 
+  a.btn {
+    &, 
+    &:link, 
+    &:visited, 
+    &:hover, 
+    &:focus {
+      border-width: 1px;
+    }
+  }
+}
