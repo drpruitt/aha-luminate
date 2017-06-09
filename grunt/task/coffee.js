@@ -27,12 +27,22 @@ module.exports = {
         'src/heart-walk/coffee/init.coffee', 
         'src/global/coffee/config/*.*', 
         'src/heart-walk/coffee/config/*.*', 
+        '!src/heart-walk/coffee/config/trpc-*.*', 
         'src/global/coffee/service/*.*', 
         '!src/global/coffee/service/trpc-*.*', 
         'src/heart-walk/coffee/service/*.*', 
+        '!src/heart-walk/coffee/service/trpc-*.*', 
         'src/global/coffee/directive/*.*', 
         'src/heart-walk/coffee/directive/*.*', 
-        'src/heart-walk/coffee/**/*.*'
+        '!src/heart-walk/coffee/directive/trpc-*.*', 
+        'src/heart-walk/coffee/**/*.*', 
+        '!src/heart-walk/coffee/**/trpc-*.*'
+      ], 
+      'dist/heart-walk/js/participant.js': [
+        'src/heart-walk/coffee/trpc-init.coffee', 
+        'src/heart-walk/coffee/config/trpc-*.*', 
+        'src/global/coffee/service/trpc-*.*', 
+        'src/heart-walk/coffee/**/trpc-*.*'
       ]
     }
   }, 

@@ -13,6 +13,9 @@ module.exports = {
     files: {
       'dist/heart-walk/css/main.css': [
         'src/heart-walk/sass/main.scss'
+      ], 
+      'dist/heart-walk/css/participant.css': [
+        'src/heart-walk/sass/participant.scss'
       ]
     }
   }, 
