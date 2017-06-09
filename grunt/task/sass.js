@@ -15,7 +15,10 @@ module.exports = {
         'src/heart-walk/sass/main.scss'
       ], 
       'dist/heart-walk/css/participant.css': [
-        'src/heart-walk/sass/participant.scss'
+        'src/jump-hoops/sass/participant-center/main.scss'
+      ], 
+      'dist/heart-walk/css/pageEdit.css': [
+        'src/heart-walk/sass/page-edit/main.scss'
       ]
     }
   }, 
@@ -26,7 +29,7 @@ module.exports = {
         'src/jump-hoops/sass/main.scss'
       ], 
       'dist/jump-hoops/css/participant.css': [
-        'src/jump-hoops/sass/participant-center/main.scss'
+        'src/jump-hoops/sass/participant.scss'
       ]
     }
   }, 

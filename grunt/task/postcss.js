@@ -44,6 +44,14 @@ module.exports = {
           'participant.css'
         ], 
         dest: 'dist/heart-walk/css/'
+      }, 
+      {
+        expand: true, 
+        cwd: 'dist/heart-walk/css/', 
+        src: [
+          'pageEdit.css'
+        ], 
+        dest: 'dist/heart-walk/css/'
       }
     ]
   }, 
