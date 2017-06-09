@@ -15,7 +15,7 @@ module.exports = {
         'src/heart-walk/sass/main.scss'
       ], 
       'dist/heart-walk/css/participant.css': [
-        'src/jump-hoops/sass/participant-center/main.scss'
+        'src/heart-walk/sass/participant-center/main.scss'
       ], 
       'dist/heart-walk/css/pageEdit.css': [
         'src/heart-walk/sass/page-edit/main.scss'

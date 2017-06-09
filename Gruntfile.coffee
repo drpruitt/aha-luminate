@@ -49,6 +49,11 @@ module.exports = (grunt) ->
       'htmlmin'
     ], taskTarget
     return
+  grunt.registerTask 'translation-copy', (taskTarget) ->
+    runTargetedTask [
+      'copy'
+    ], taskTarget
+    return
   grunt.registerTask 'img-copy', (taskTarget) ->
     runTargetedTask [
       'copy'
@@ -80,6 +85,7 @@ module.exports = (grunt) ->
       'uglify'
       'replace'
       'htmlmin'
+      'translation-copy'
       'imagemin'
     ], 'heart-walk'
     runTargetedTask [
