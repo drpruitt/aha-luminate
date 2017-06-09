@@ -88,7 +88,8 @@
         ]]
       ::T::
         <div class="ym-page-content-editor" ng-show="personalPageContent.mode == 'edit'" ng-cloak>
-          <div text-angular name="ng_rich_text" ng-model="personalPageContent.ng_rich_text" ta-toolbar="{{personalPageContent.textEditorToolbar}}"></div>
+          <label for="taHtmlElement{{personalPageContent.serial}}" class="sr-only">Edit your personal story:</label>
+          <div text-angular name="ng_rich_text" ng-model="personalPageContent.ng_rich_text" ta-toolbar="{{personalPageContent.textEditorToolbar}}" serial="{{personalPageContent.serial}}"></div>
         </div>
       ::]]
     </div>
