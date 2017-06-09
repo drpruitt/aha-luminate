@@ -61,6 +61,7 @@ module.exports = {
       'css-dist:heart-walk', 
       'js-dist:heart-walk', 
       'html-dist:heart-walk', 
+      'translation-copy:heart-walk-translations', 
       'img-copy:heart-walk-images', 
       'notify:heart-walk'
     ]

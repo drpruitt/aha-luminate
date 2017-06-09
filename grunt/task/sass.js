@@ -13,6 +13,12 @@ module.exports = {
     files: {
       'dist/heart-walk/css/main.css': [
         'src/heart-walk/sass/main.scss'
+      ], 
+      'dist/heart-walk/css/participant.css': [
+        'src/heart-walk/sass/participant-center/main.scss'
+      ], 
+      'dist/heart-walk/css/pageEdit.css': [
+        'src/heart-walk/sass/page-edit/main.scss'
       ]
     }
   }, 
