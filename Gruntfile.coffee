@@ -88,7 +88,7 @@ module.exports = (grunt) ->
       'imagemin'
     ], 'heart-walk'
     runTargetedTask [
-      'translation-copy'
+      'copy'
     ], 'heart-walk-translations'
     runTargetedTask [
       'clean'
