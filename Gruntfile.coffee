@@ -3,12 +3,12 @@ module.exports = (grunt) ->
   
   require('time-grunt') grunt
   
-  config = 
+  config =
     timestamp: new Date().getTime()
   loadConfig = (path) ->
     glob = require 'glob'
     object = {}
-    glob.sync '*', 
+    glob.sync '*',
       cwd: path
     .forEach (option) ->
       key = option.replace /\.js$/, ''
@@ -49,6 +49,11 @@ module.exports = (grunt) ->
       'htmlmin'
     ], taskTarget
     return
+  grunt.registerTask 'translation-copy', (taskTarget) ->
+    runTargetedTask [
+      'copy'
+    ], taskTarget
+    return
   grunt.registerTask 'img-copy', (taskTarget) ->
     runTargetedTask [
       'copy'
@@ -82,6 +87,9 @@ module.exports = (grunt) ->
       'htmlmin'
       'imagemin'
     ], 'heart-walk'
+    runTargetedTask [
+      'copy'
+    ], 'heart-walk-translations'
     runTargetedTask [
       'clean'
       'replace'

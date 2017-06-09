@@ -1,0 +1,9 @@
+.ng-pc-container {
+  [ng-view] {
+    padding: 20px;
+    
+    @media (min-width: $screen-sm-min) {
+      padding: 48px;
+    }
+  }
+}
