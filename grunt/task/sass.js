@@ -26,7 +26,7 @@ module.exports = {
         'src/jump-hoops/sass/main.scss'
       ], 
       'dist/jump-hoops/css/participant.css': [
-        'src/jump-hoops/sass/participant.scss'
+        'src/jump-hoops/sass/participant-center/main.scss'
       ]
     }
   }, 
