@@ -85,9 +85,11 @@ module.exports = (grunt) ->
       'uglify'
       'replace'
       'htmlmin'
-      'translation-copy'
       'imagemin'
     ], 'heart-walk'
+    runTargetedTask [
+      'translation-copy'
+    ], 'heart-walk-translations'
     runTargetedTask [
       'clean'
       'replace'
