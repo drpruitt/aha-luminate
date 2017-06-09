@@ -3,12 +3,12 @@ module.exports = (grunt) ->
   
   require('time-grunt') grunt
   
-  config = 
+  config =
     timestamp: new Date().getTime()
   loadConfig = (path) ->
     glob = require 'glob'
     object = {}
-    glob.sync '*', 
+    glob.sync '*',
       cwd: path
     .forEach (option) ->
       key = option.replace /\.js$/, ''

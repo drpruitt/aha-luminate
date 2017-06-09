@@ -20,7 +20,7 @@ module.exports = {
         expand: true, 
         cwd: 'src/heart-walk/translation/', 
         src: [
-          '*.json'
+          '*.json', 
           '**/*.json'
         ], 
         dest: 'dist/heart-walk/translation/'
