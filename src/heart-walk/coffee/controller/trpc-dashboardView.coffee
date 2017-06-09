@@ -528,8 +528,9 @@ angular.module 'trPcControllers'
               if response.data.errorResponse
                 # TODO
               else
-                addressBookContacts = response.data.getTeamraiserAddressBookContactsResponse.addressBookContact
-                addressBookContacts = [addressBookContacts] if not angular.isArray addressBookContacts
+                addressBookContacts = response.data.getTeamraiserAddressBookContactsResponse?.addressBookContact
+                if addressBookContacts
+                  addressBookContacts = [addressBookContacts] if not angular.isArray addressBookContacts
               $scope.allTeamMemberContacts = []
               $scope.allTeamMemberContacts.push
                 firstName: $scope.constituent?.name?.first or ''
@@ -760,8 +761,9 @@ angular.module 'trPcControllers'
               if response.data.errorResponse
                 # TODO
               else
-                addressBookContacts = response.data.getTeamraiserAddressBookContactsResponse.addressBookContact
-                addressBookContacts = [addressBookContacts] if not angular.isArray addressBookContacts
+                addressBookContacts = response.data.getTeamraiserAddressBookContactsResponse?.addressBookContact
+                if addressBookContacts
+                  addressBookContacts = [addressBookContacts] if not angular.isArray addressBookContacts
               $scope.allCompanyParticipantContacts = []
               $scope.allCompanyParticipantContacts.push
                 firstName: $scope.constituent?.name?.first or ''
