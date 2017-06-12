@@ -245,6 +245,7 @@ angular.module 'ahaLuminateControllers'
       
       $scope.companyPageContent =
         mode: 'view'
+        serial: new Date().getTime()
         textEditorToolbar: [
           [
             'bold'

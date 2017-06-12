@@ -1,0 +1,59 @@
+.contacts-list__actions {
+  margin: 0 0 15px;
+  
+  .contacts-list__actions-selected {
+    float: left;
+    
+    .btn {
+      padding: 10px;
+      
+      @media (min-width: 360px) {
+        padding: 12px 14px;
+      }
+      
+      @media (min-width: $screen-sm-min) {
+        padding: 12px 18px;
+      }
+      
+      @media (min-width: $screen-md-min) {
+        padding: 12px 24px;
+      }
+    }
+  }
+  
+  .contacts-list__actions-manage {
+    float: right;
+    
+    .btn {
+      padding: 10px;
+      margin: 0 0 0 6px;
+      
+      @media (min-width: 360px) {
+        padding: 12px 14px;
+      }
+      
+      @media (min-width: $screen-sm-min) {
+        padding: 12px 18px;
+        margin: 0 0 0 10px;
+      }
+      
+      @media (min-width: $screen-md-min) {
+        padding: 12px 24px;
+        margin: 0 0 0 12px;
+      }
+    }
+  }
+}
+
+.import-contacts__list-wrap {
+  max-height: 250px;
+  overflow-y: scroll;
+  
+  .list-group-item {
+    border-radius: 0;
+    
+    .checkbox {
+      margin: 0;
+    }
+  }
+}

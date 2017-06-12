@@ -141,7 +141,8 @@
         ]]
       ::T::
         <div class="ym-page-content-editor" ng-show="teamPageContent.mode == 'edit'" ng-cloak>
-          <div text-angular name="ng_rich_text" ng-model="teamPageContent.ng_rich_text" ta-toolbar="{{teamPageContent.textEditorToolbar}}"></div>
+          <label for="taHtmlElement{{teamPageContent.serial}}" class="sr-only">Edit your team's story:</label>
+          <div text-angular name="ng_rich_text" ng-model="teamPageContent.ng_rich_text" ta-toolbar="{{teamPageContent.textEditorToolbar}}" serial="{{teamPageContent.serial}}"></div>
         </div>
       ::]]
     </div>

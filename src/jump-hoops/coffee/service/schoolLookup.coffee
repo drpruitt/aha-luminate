@@ -7,8 +7,8 @@ angular.module 'ahaLuminateApp'
       getSchoolCompanies: (requestData) ->
         # requestUrl = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent(luminateExtend.global.path.secure + 'CRTeamraiserAPI')
         requestUrl = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent('https://secure3.convio.net/heartdev/site/CRTeamraiserAPI')
-        if luminateExtend.global.tablePrefix is 'heartdev'
-          requestUrl = 'https://secure3.convio.net/heartdev/site/CRTeamraiserAPI'
+        if window.location.href.indexOf(luminateExtend.global.path.secure) is 0
+          requestUrl = 'CRTeamraiserAPI'
         $http
           method: 'POST'
           url: $sce.trustAsResourceUrl requestUrl
@@ -19,8 +19,8 @@ angular.module 'ahaLuminateApp'
       getSchoolData: ->
         # requestUrl = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent(luminateExtend.global.path.secure + 'SPageServer?pagename=getJumpHoopsSchoolSearchData&pgwrap=n')
         requestUrl = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent('https://secure3.convio.net/heartdev/site/SPageServer?pagename=getJumpHoopsSchoolSearchData&pgwrap=n')
-        if luminateExtend.global.tablePrefix is 'heartdev'
-          requestUrl = 'https://secure3.convio.net/heartdev/site/SPageServer?pagename=getJumpHoopsSchoolSearchData&pgwrap=n'
+        if window.location.href.indexOf(luminateExtend.global.path.secure) is 0
+          requestUrl = 'SPageServer?pagename=getJumpHoopsSchoolSearchData&pgwrap=n'
         $http
           method: 'GET'
           url: $sce.trustAsResourceUrl requestUrl

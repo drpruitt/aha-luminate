@@ -799,32 +799,34 @@ main > .container {
         width: 216px;
         padding: 7px 0;
         margin: 0 auto;
-
+        
         @media (min-width: 360px) {
           width: 240px;
         }
       }
     }
-
+    
     .ym_my_challenge__update {
+      text-align: center;
+      
       button {
-        margin: 10px auto 0;
+        margin: 12px auto 0;
       }
     }
   }
-
+  
   &.ym-activity-box--page {
     > div.text-center {
       margin: 20px 0 30px;
     }
-
+    
     .ym-activity-url {
       word-break: break-all;
-
+      
       p {
         font-size: 14px;
         margin: 0 0 3px;
-
+        
         &.small {
           font-size: 12px;
           line-height: 14px;
