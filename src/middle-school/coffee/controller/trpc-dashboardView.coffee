@@ -113,9 +113,8 @@ angular.module 'trPcControllers'
             response
         $scope.dashboardPromises.push fundraisingProgressPromise
       $scope.refreshFundraisingProgress()
-
-      interactionTypeId = $dataRoot.data('coordinator-message-id')
       
+      interactionTypeId = $dataRoot.data 'coordinator-message-id'
       $scope.coordinatorMessage = {
         'text' : ''
         'errorMessage' : null
@@ -123,7 +122,7 @@ angular.module 'trPcControllers'
         'message' : ''
         'interactionId' : ''
       }
-
+      
       if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
         interactionData = 'interaction_type_id=' + interactionTypeId + '&cons_id=' + $scope.participantRegistration.consId + '&list_page_size=1'
         NgPcInteractionService.getUserInteractions interactionData
@@ -134,15 +133,15 @@ angular.module 'trPcControllers'
             else
               $scope.coordinatorMessage.text = ''
               $scope.coordinatorMessage.interactionId = ''
-
+        
         $scope.editCoordinatorMessage = ->
           $scope.editCoordinatorMessageModal = $uibModal.open
             scope: $scope
-            templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/editCoordinatorMessage.html'
-
+            templateUrl: APP_INFO.rootPath + 'dist/middle-school/html/participant-center/modal/editCoordinatorMessage.html'
+        
         $scope.cancelEditCoordinatorMessage = ->
           $scope.editCoordinatorMessageModal.close()
-
+        
         $scope.updateCoordinatorMessage = ->
           if $scope.coordinatorMessage.interactionId is ''
             NgPcInteractionService.logInteraction 'interaction_type_id=' + interactionTypeId + '&cons_id=' + $scope.participantRegistration.consId + '&interaction_subject=' + $scope.participantRegistration.companyInformation.companyId + '&interaction_body=' + $scope.coordinatorMessage.text
