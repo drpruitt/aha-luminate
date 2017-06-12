@@ -18,6 +18,7 @@ angular.module 'trPcControllers'
     '$timeout'
     ($rootScope, $scope, $filter, $uibModal, APP_INFO, ZuriService, ParticipantBadgesService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserGiftService, NgPcContactService, NgPcTeamraiserShortcutURLService, NgPcInteractionService, NgPcTeamraiserCompanyService, $timeout) ->
       $scope.dashboardPromises = []
+      
       $dataRoot = angular.element '[data-embed-root]'
       
       if $scope.participantRegistration.lastPC2Login is '0'
