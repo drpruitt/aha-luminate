@@ -181,6 +181,7 @@ angular.module 'ahaLuminateControllers'
       
       $scope.teamPageContent =
         mode: 'view'
+        serial: new Date().getTime()
         textEditorToolbar: [
           [
             'bold'

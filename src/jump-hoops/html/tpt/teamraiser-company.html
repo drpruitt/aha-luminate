@@ -134,7 +134,8 @@
         </div>
       </div>
       <div class="ym-page-content-editor" ng-show="companyPageContent.mode == 'edit'" ng-cloak>
-        <div text-angular name="ng_rich_text" ng-model="companyPageContent.ng_rich_text" ta-toolbar="{{companyPageContent.textEditorToolbar}}"></div>
+        <label for="taHtmlElement{{companyPageContent.serial}}" class="sr-only">Edit your school's story:</label>
+        <div text-angular name="ng_rich_text" ng-model="companyPageContent.ng_rich_text" ta-toolbar="{{companyPageContent.textEditorToolbar}}" serial="{{companyPageContent.serial}}"></div>
       </div>
     </div>
     <div class="ym-list" ng-class="companyParticipants.totalFundraisers < 1 && companyTeams.totalNumber > 1 ? 'hidden' : 'col-md-6'" role="list" aria-label="Top Fundarisers List">
