@@ -3,3 +3,21 @@
 @import "../../youth-markets/sass/mixins.scss";
 
 @import "../../youth-markets/sass/participant.scss";
+
+.ym-pc-dashboard-coordinator-resources-section {
+  .ym-pc-dashboard-section-header {
+    h3, 
+    .h3 {
+      margin: 0 0 32px;
+    }
+  }
+}
+
+.ym-pc-dashboard-spread-section {
+  .ym-pc-dashboard-section-header {
+    h3, 
+    .h3 {
+      margin: 0 0 22px;
+    }
+  }
+}
