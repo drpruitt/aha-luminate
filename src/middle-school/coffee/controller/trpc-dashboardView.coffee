@@ -115,6 +115,7 @@ angular.module 'trPcControllers'
       $scope.refreshFundraisingProgress()
       
       interactionTypeId = $dataRoot.data 'coordinator-message-id'
+      
       $scope.coordinatorMessage = {
         'text' : ''
         'errorMessage' : null
@@ -124,10 +125,9 @@ angular.module 'trPcControllers'
       }
       
       if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
-        interactionData = 'interaction_type_id=' + interactionTypeId + '&cons_id=' + $scope.participantRegistration.consId + '&list_page_size=1'
-        NgPcInteractionService.getUserInteractions interactionData
+        NgPcInteractionService.getUserInteractions 'interaction_type_id=' + interactionTypeId + '&cons_id=' + $scope.participantRegistration.consId + '&list_page_size=1'
           .then (response) ->
-            if response.data.getUserInteractionsResponse.interaction
+            if response.data.getUserInteractionsResponse?.interaction?.note?.text
               $scope.coordinatorMessage.text = response.data.getUserInteractionsResponse.interaction.note.text
               $scope.coordinatorMessage.interactionId = response.data.getUserInteractionsResponse.interaction.interactionId
             else
