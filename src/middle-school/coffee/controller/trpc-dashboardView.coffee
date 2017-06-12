@@ -429,64 +429,15 @@ angular.module 'trPcControllers'
       
       $scope.prizes = []
       ParticipantBadgesService.getBadges '2011'
-      .then (response) ->
-        prizes = response.data.prizes
-        angular.forEach prizes, (prize) ->
-          $scope.prizes.push
-            id: prize.id
-            label: prize.label
-            sku: prize.sku
-            status: prize.status
-            earned: prize.earned_datetime
-      , (response) ->
-        # TODO
-      
-      initCarousel = ->
-        owl = jQuery '.owl-carousel'
-        owl.owlCarousel
-          mouseDrag: false
-          nav: true
-          loop: true
-          responsive:
-            0:
-              items: 2
-              stagePadding: 30
-              margin : 15
-            480:
-              items: 3
-              stagePadding: 30
-              margin: 15
-            768:
-              items: 5
-              margin: 30
-              stagePadding: 60
-            1024:
-              items: 7
-              margin: 30
-              stagePadding: 60
-          navText: [
-            '<span class="fa fa-chevron-left" aria-hidden="true" />',
-            '<span class="fa fa-chevron-right" aria-hidden="true" />'
-          ]
-          addClassActive: true
-          onInitialized: (event) ->
-            angular.element('.owl-carousel').find('.owl-item').attr 'aria-selected', 'false'
-            angular.element('.owl-carousel').find('.owl-item').attr 'role', 'listitem'
-            angular.element('.owl-carousel').find('.owl-item.active').attr 'aria-selected', 'true'
-            angular.element('.owl-carousel').find('.owl-prev').attr('role', 'button').attr 'title', 'Previous'
-            angular.element('.owl-carousel').find('.owl-next').attr('role', 'button').attr 'title', 'Next'
-            angular.element('.owl-item.active, .owl-prev, .owl-next').attr 'tabindex', '0'
-            jQuery(document).on 'keydown', (e) ->
-              $focusedElement = jQuery(document.activeElement)
-              if e.which is 13
-                if $focusedElement.is '.owl-next'
-                  owl.trigger 'next.owl.carousel'
-                if $focusedElement.is '.owl-prev'
-                  owl.trigger 'prev.owl.carousel'
-            return
-          onChange: ->
-            angular.element('.owl-carousel').find('.owl-item').attr 'aria-selected', 'false'
-            angular.element('.owl-carousel').find('.owl-item.active').attr 'aria-selected', 'true'
-      
-      $timeout initCarousel, 1000
+        .then (response) ->
+          prizes = response.data.prizes
+          angular.forEach prizes, (prize) ->
+            $scope.prizes.push
+              id: prize.id
+              label: prize.label
+              sku: prize.sku
+              status: prize.status
+              earned: prize.earned_datetime
+        , (response) ->
+          # TODO
   ]
