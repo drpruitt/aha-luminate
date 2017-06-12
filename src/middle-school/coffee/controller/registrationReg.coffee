@@ -187,11 +187,11 @@ angular.module 'ahaLuminateControllers'
           setRegistrationQuestionSurveyKey = (questionName, surveyKey) ->
             $scope.registrationQuestions[questionName].surveyKey = surveyKey
             questionLegend = $scope.registrationQuestions[questionName].legend
-            if surveyKey is 'ym_hoops_jump_email_type' or surveyKey is 'ym_hoops_jump_grade' or surveyKey is 'ym_hoops_jump_school' or surveyKey is 'ym_hoops_jump_teacher_name' or surveyKey is 'ym_hoops_jump_school_address'
+            if surveyKey is 'ym_middle_school_email_type' or surveyKey is 'ym_middle_school_grade' or surveyKey is 'ym_middle_school_school' or surveyKey is 'ym_middle_school_teacher_name' or surveyKey is 'ym_middle_school_school_address'
               if not $scope.registrationCustomQuestions
                 $scope.registrationCustomQuestions = {}
               $scope.registrationCustomQuestions[surveyKey] = questionName
-            else if questionLegend isnt 'Event Date' and surveyKey isnt 'ym_hoops_jump_challenge_info' and surveyKey isnt 'ym_hoops_jump_ecards_sent' and surveyKey isnt 'ym_hoops_jump_ecards_shared' and surveyKey isnt 'ym_hoops_jump_ecards_open' and surveyKey isnt 'ym_hoops_jump_ecards_clicked'
+            else if questionLegend isnt 'Event Date' and surveyKey isnt 'ym_middle_school_challenge_info' and surveyKey isnt 'ym_middle_school_ecards_sent' and surveyKey isnt 'ym_middle_school_ecards_shared' and surveyKey isnt 'ym_middle_school_ecards_open' and surveyKey isnt 'ym_middle_school_ecards_clicked'
               if not $scope.registrationAdditionalQuestions
                 $scope.registrationAdditionalQuestions = {}
               $scope.registrationAdditionalQuestions[questionName] = questionName
