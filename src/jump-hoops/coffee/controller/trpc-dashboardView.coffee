@@ -114,8 +114,8 @@ angular.module 'trPcControllers'
             response
         $scope.dashboardPromises.push fundraisingProgressPromise
       $scope.refreshFundraisingProgress()
-
-      interactionTypeId = $dataRoot.data('coordinator-message-id')
+      
+      interactionTypeId = $dataRoot.data 'coordinator-message-id'
       
       $scope.coordinatorMessage = {
         'text' : ''
@@ -124,26 +124,25 @@ angular.module 'trPcControllers'
         'message' : ''
         'interactionId' : ''
       }
-
+      
       if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
-        interactionData = 'interaction_type_id=' + interactionTypeId + '&cons_id=' + $scope.participantRegistration.consId + '&list_page_size=1'
-        NgPcInteractionService.getUserInteractions interactionData
+        NgPcInteractionService.getUserInteractions 'interaction_type_id=' + interactionTypeId + '&cons_id=' + $scope.participantRegistration.consId + '&list_page_size=1'
           .then (response) ->
-            if response.data.getUserInteractionsResponse.interaction
+            if response.data.getUserInteractionsResponse?.interaction?.note?.text
               $scope.coordinatorMessage.text = response.data.getUserInteractionsResponse.interaction.note.text
               $scope.coordinatorMessage.interactionId = response.data.getUserInteractionsResponse.interaction.interactionId
             else
               $scope.coordinatorMessage.text = ''
               $scope.coordinatorMessage.interactionId = ''
-
+        
         $scope.editCoordinatorMessage = ->
           $scope.editCoordinatorMessageModal = $uibModal.open
             scope: $scope
             templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/editCoordinatorMessage.html'
-
+        
         $scope.cancelEditCoordinatorMessage = ->
           $scope.editCoordinatorMessageModal.close()
-
+        
         $scope.updateCoordinatorMessage = ->
           if $scope.coordinatorMessage.interactionId is ''
             NgPcInteractionService.logInteraction 'interaction_type_id=' + interactionTypeId + '&cons_id=' + $scope.participantRegistration.consId + '&interaction_subject=' + $scope.participantRegistration.companyInformation.companyId + '&interaction_body=' + $scope.coordinatorMessage.text
@@ -170,7 +169,7 @@ angular.module 'trPcControllers'
             else
               $scope.coordinatorMessage.message = ''
               $scope.coordinatorMessage.interactionId = ''
-
+      
       $scope.personalGoalInfo = {}
       
       $scope.editPersonalGoal = ->
