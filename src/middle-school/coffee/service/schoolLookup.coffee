@@ -17,10 +17,10 @@ angular.module 'ahaLuminateApp'
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
       
       getSchoolData: ->
-        # requestUrl = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent(luminateExtend.global.path.secure + 'SPageServer?pagename=getJumpHoopsSchoolSearchData&pgwrap=n')
+        # requestUrl = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent(luminateExtend.global.path.secure + 'SPageServer?pagename=getMiddleSchoolSearchData&pgwrap=n')
         requestUrl = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent('https://secure3.convio.net/heartdev/site/SPageServer?pagename=getMiddleSchoolSearchData&pgwrap=n')
         if window.location.href.indexOf(luminateExtend.global.path.secure) is 0
-          requestUrl = 'SPageServer?pagename=getJumpHoopsSchoolSearchData&pgwrap=n'
+          requestUrl = 'SPageServer?pagename=getMiddleSchoolSearchData&pgwrap=n'
         $http
           method: 'GET'
           url: $sce.trustAsResourceUrl requestUrl
