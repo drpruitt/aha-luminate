@@ -50,16 +50,14 @@ angular.module 'ahaLuminateControllers'
                     $scope.localSponsorImageSrc = src[1].split('"')[0]
                     $scope.localSponsorImageAlt = alt[1].split('"')[0]
       
+      #hiding this til data is avalible in staging
+      #ParticipantBadgesService.getSchoolRollupTotals $scope.companyId
       ParticipantBadgesService.getSchoolRollupTotals '1121'
       .then (response) ->
         totals = response.data.totals
         if response.data.status is 'success'
-          $scope.totalTeams = totals.total_teams
-          $scope.totalStudents = totals.total_students
           $scope.totalEmails = totals.total_online_emails_sent
         else
-          $scope.totalTeams = 0
-          $scope.totalStudents = 0
           $scope.totalEmails = 0
          
       setCompanyProgress = (amountRaised, goal) ->

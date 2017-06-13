@@ -51,30 +51,15 @@
     </div>
     <div class="clearfix"></div>
   </div>
-  <div class="ym-page-section ym-page-section__main" ng-show="totalTeams > 0 && totalStudents > 0" ng-cloak>
+    <div class="ym-page-section ym-page-section__main" ng-show="participantCount > 0" ng-cloak>
     <div class="container">
       <div class="ym-our-stats ym-promo-block">
         <h2 class="ym-headline">
           Our Stats
         </h2>
-        <div class="ym-promo-block__item ym-promo-block__item--members ym-promo-block--circle">
-          <div class="h2 ym-headline">
-            {{totalTeams}}
-          </div>
-          <div ng-if="totalTeams == 1">
-            <p>
-              team registered.
-            </p>
-          </div>
-          <div ng-if="totalTeams > 1">
-            <p>
-              teams registered
-            </p>
-          </div>
-        </div>
         <div class="ym-promo-block__item ym-promo-block__item--exercise ym-promo-block--circle">
           <div class="h2 ym-headline">
-            {{totalStudents}}
+            {{participantCount}}
           </div>
           <p>
             students registered
