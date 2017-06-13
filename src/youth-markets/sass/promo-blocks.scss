@@ -46,7 +46,7 @@
   .h2,
   h2 {
     font-size: 68px;
-    line-height: 0.75;
+    line-height: 1;
 
     @media(min-width: $screen-sm-min) {
       color: $brand-white;
