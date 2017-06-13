@@ -116,16 +116,26 @@ angular.module 'trPcControllers'
       
       $scope.emailChallenge = {}
       setEmailSampleText = ->
-        $scope.emailChallenge.sampleText = 'Hello friends! I am excited to be participating in the American Heart Association\'s District Heart Challenge. It is their mission to improve the lives of all Americans, by providing public health education and research. Some of those ways are right here in my own school by passing on a message of healthy eating and physical activity to the kids we see every day!\n\n' + 
-        'As I make some personal changes towards heart-health, like logging active minutes and getting my blood pressure checked, I am also raising money. I am trying to hit my fundraising goal of $250.00. By making a donation to my fundraising page you support our district, our school and the American Heart Association. No matter the size of your gift - it will make a difference.\n\n' + 
-        'Thank You!\nMargaret\n\n' + 
-        '***Did you know you might be able to double your gift to the American Heart Association? Ask your employer if you have an Employee Matching Gift program.\n\n' + 
-        'Visit my personal fundraising page:\n' + 
-        $scope.personalPageUrl
+        sampleText = 'Hello friends! I am excited to be participating in the American Heart Association\'s District Heart Challenge. It is their mission to improve the lives of all Americans, by providing public health education and research. Some of those ways are right here in my own school by passing on a message of healthy eating and physical activity to the kids we see every day!\n\n' + 
+        'As I make some personal changes towards heart-health, like logging active minutes and getting my blood pressure checked, I am also raising money. I am trying to hit my fundraising goal'
+        if not $scope.personalGoalInfo.goal or $scope.personalGoalInfo.goal is ''
+          sampleText += '.'
+        else
+          sampleText += 'of ' + $scope.personalGoalInfo.goal + '.'
+        sampleText += 'By making a donation to my fundraising page you support our district, our school and the American Heart Association. No matter the size of your gift - it will make a difference.\n\n' + 
+        'Thank You!\n' + 
+        $scope.consName + '\n\n' + 
+        '***Did you know you might be able to double your gift to the American Heart Association? Ask your employer if you have an Employee Matching Gift program.'
+        if $scope.personalPageUrl
+          sampleText += '\n\n' + 
+          'Visit my personal fundraising page:\n' + 
+          $scope.personalPageUrl
+        $scope.emailChallenge.sampleText = sampleText
       setEmailSampleText()
-      $scope.$watch 'personalPageUrl', (newValue) ->
-        if newValue
-          setEmailSampleText()
+      $scope.$watch 'personalGoalInfo.goal', ->
+        setEmailSampleText()
+      $scope.$watch 'personalPageUrl', ->
+        setEmailSampleText()
       
       interactionTypeId = $dataRoot.data 'coordinator-message-id'
       
