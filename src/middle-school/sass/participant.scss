@@ -30,6 +30,19 @@
   }
 }
 
+.ym-pc-dashboard-progress-type {
+  a {
+    &, 
+    &:link, 
+    &:visited {
+      background-color: rgb(40, 79, 73);
+      background-color: rgba(40, 79, 73, 0.2);
+      color: rgb(255, 255, 255);
+      color: rgba(40, 79, 73, 1);
+    }
+  }
+}
+
 .ym-pc-dashboard-badges-box {
   padding: 20px;
   
@@ -47,6 +60,29 @@
       position: absolute;
       right: 0;
       top: 0;
+      padding: 7px 10px;
+    }
+  }
+  
+  .ym-pc-dashboard-badges-icons {
+    width: 450px;
+    margin: 0 auto;
+  }
+  
+  .ym-pc-dashboard-badges-icon {
+    float: left;
+    text-align: center;
+    width: 110px;
+    margin: 0 20px 20px;
+    
+    &:nth-child(4), 
+    &:nth-child(7) {
+      clear: both;
+    }
+    
+    img {
+      display: block;
+      width: 100%;
     }
   }
 }
@@ -58,14 +94,17 @@
       text-transform: none;
     }
   }
-
+  
   .ym-pc-dashboard-email-challenge-option {
+    text-align: center;
     margin: 0 0 18px;
   }
   
   form {
     textarea.form-control[readonly] {
       background-color: $brand-white;
+      border: 0;
+      border-radius: 0;
       font-size: 13px;
       height: 395px;
       
