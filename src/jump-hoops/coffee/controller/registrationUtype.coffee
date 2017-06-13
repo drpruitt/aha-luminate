@@ -10,7 +10,7 @@ angular.module 'ahaLuminateControllers'
         $rootScope.companyName = companyName
         if not $rootScope.$$phase
           $rootScope.$apply()
-      TeamraiserCompanyService.getCompanies 'company_id=' + $scope.companyId,
+      TeamraiserCompanyService.getCompanies 'company_id=' + regCompanyId,
         error: ->
           # TODO
         success: (response) ->
