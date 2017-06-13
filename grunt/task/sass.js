@@ -43,5 +43,16 @@ module.exports = {
         'src/middle-school/sass/participant.scss'
       ]
     }
+  }, 
+  
+  "district-heart": {
+    files: {
+      'dist/district-heart/css/main.css': [
+        'src/district-heart/sass/main.scss'
+      ], 
+      'dist/district-heart/css/participant.css': [
+        'src/district-heart/sass/participant.scss'
+      ]
+    }
   }
 }

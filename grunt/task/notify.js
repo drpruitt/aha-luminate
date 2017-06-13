@@ -48,5 +48,12 @@ module.exports = {
       title: 'AHA Luminate Framework', 
       message: 'Middle School files updated.'
     }
+  }, 
+  
+  "district-heart": {
+    options: {
+      title: 'AHA Luminate Framework', 
+      message: 'District Heart Challenge files updated.'
+    }
   }
 }
