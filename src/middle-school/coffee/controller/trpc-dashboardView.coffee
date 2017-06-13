@@ -118,7 +118,7 @@ angular.module 'trPcControllers'
       setEmailSampleText = ->
         sampleText = 'Hello friends! I am excited to be participating in the American Heart Association\'s District Heart Challenge. It is their mission to improve the lives of all Americans, by providing public health education and research. Some of those ways are right here in my own school by passing on a message of healthy eating and physical activity to the kids we see every day!\n\n' + 
         'As I make some personal changes towards heart-health, like logging active minutes and getting my blood pressure checked, I am also raising money. I am trying to hit my fundraising goal'
-        if not $scope.personalGoalInfo.goal or $scope.personalGoalInfo.goal is ''
+        if not $scope.personalGoalInfo or not $scope.personalGoalInfo.goal or $scope.personalGoalInfo.goal is ''
           sampleText += '.'
         else
           sampleText += 'of ' + $scope.personalGoalInfo.goal + '.'
