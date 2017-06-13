@@ -4,6 +4,24 @@
 
 @import "../../youth-markets/sass/participant.scss";
 
+.ym-pc-dashboard-progress-section {
+  .row {
+    .ym-pc-dashboard-progress-section__column {
+      &:first-child {
+        padding: 0;
+      }
+    }
+  }
+}
+
+.ym-pc-dashboard-progress-box {
+  padding: 20px;
+}
+
+.ym-pc-dashboard-badges-box {
+  padding: 20px;
+}
+
 .ym-pc-dashboard-email-challenge-box {
   .ym-pc-dashboard-email-challenge-option {
     margin: 0 0 18px;
