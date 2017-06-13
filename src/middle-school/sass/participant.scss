@@ -4,6 +4,19 @@
 
 @import "../../youth-markets/sass/participant.scss";
 
+.ym-pc-dashboard-email-challenge-box {
+  .ym-pc-dashboard-email-challenge-option {
+    margin: 0 0 18px;
+  }
+  
+  form {
+    textarea.form-control {
+      font-size: 13px;
+      height: 395px;
+    }
+  }
+}
+
 .ym-pc-dashboard-coordinator-resources-section {
   .ym-pc-dashboard-section-header {
     h3, 
