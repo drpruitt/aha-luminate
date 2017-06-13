@@ -96,5 +96,26 @@ module.exports = {
         dest: 'dist/middle-school/css/'
       }
     ]
+  }, 
+  
+  "district-heart": {
+    files: [
+      {
+        expand: true, 
+        cwd: 'dist/district-heart/css/', 
+        src: [
+          'main.css'
+        ], 
+        dest: 'dist/district-heart/css/'
+      }, 
+      {
+        expand: true, 
+        cwd: 'dist/district-heart/css/', 
+        src: [
+          'participant.css'
+        ], 
+        dest: 'dist/district-heart/css/'
+      }
+    ]
   }
 }

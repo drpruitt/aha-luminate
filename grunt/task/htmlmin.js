@@ -75,5 +75,18 @@ module.exports = {
         dest: "dist/middle-school/html/"
       }
     ]
+  }, 
+  
+  "district-heart": {
+    files: [
+      {
+        expand: true, 
+        cwd: 'dist/district-heart/html/', 
+        src: [
+          '**/*.*'
+        ], 
+        dest: "dist/district-heart/html/"
+      }
+    ]
   }
 }

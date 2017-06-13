@@ -67,5 +67,22 @@ module.exports = {
         dest: 'dist/middle-school/js/participant.' + '<%= timestamp %>' + '.min.js'
       }
     ]
+  }, 
+  
+  "district-heart": {
+    files: [
+      {
+        src: [
+          'dist/district-heart/js/main.js'
+        ], 
+        dest: 'dist/district-heart/js/main.' + '<%= timestamp %>' + '.min.js'
+      }, 
+      {
+        src: [
+          'dist/district-heart/js/participant.js'
+        ], 
+        dest: 'dist/district-heart/js/participant.' + '<%= timestamp %>' + '.min.js'
+      }
+    ]
   }
 }
