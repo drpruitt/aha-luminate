@@ -533,12 +533,6 @@
               <p>
                 Create/Update an <strong>encouraging message</strong> for your student in their Headquarters.
               </p>
-              <div uib-alert class="alert-success" ng-if="coordinatorMessage.successMessage == true">
-                <p> 
-                  You have successfully updated you message to the following:
-                </p>
-                <strong ng-bind-html="coordinatorMessage.text"></strong>
-              </div>
               <button type="button" class="btn btn-md-wide btn-primary" ng-click="editCoordinatorMessage()">
                 <strong>Create Message</strong>
               </button>

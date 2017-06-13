@@ -10,9 +10,18 @@
   }
   
   form {
-    textarea.form-control {
+    textarea.form-control[readonly] {
+      background-color: $brand-white;
       font-size: 13px;
       height: 395px;
+      
+      &::-moz-selection {
+        background: transparent;
+      }
+      
+      &::selection {
+        background: transparent;
+      }
     }
   }
 }
