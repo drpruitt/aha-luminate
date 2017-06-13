@@ -16,13 +16,49 @@
 
 .ym-pc-dashboard-progress-box {
   padding: 20px;
+  margin: 0 0 15px;
+  
+  @media (min-width: $screen-md-min) {
+    margin: 0 0 30px;
+  }
+  
+  .ym-pc-dashboard-section-header {
+    h5, 
+    .h5 {
+      text-transform: none;
+    }
+  }
 }
 
 .ym-pc-dashboard-badges-box {
   padding: 20px;
+  
+  .ym-pc-dashboard-section-header {
+    position: relative;
+    
+    h5, 
+    .h5 {
+      text-transform: none;
+    }
+  }
+  
+  .btn {
+    @media (min-width: $screen-md-min) {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
 }
 
 .ym-pc-dashboard-email-challenge-box {
+  .ym-pc-dashboard-section-header {
+    h5, 
+    .h5 {
+      text-transform: none;
+    }
+  }
+
   .ym-pc-dashboard-email-challenge-option {
     margin: 0 0 18px;
   }
@@ -44,12 +80,10 @@
   }
 }
 
-.ym-pc-dashboard-coordinator-resources-section {
-  .ym-pc-dashboard-section-header {
-    h3, 
-    .h3 {
-      margin: 0 0 32px;
-    }
+.ym-activity-box {
+  h5, 
+  .h5 {
+    text-transform: none;
   }
 }
 
@@ -58,6 +92,51 @@
     h3, 
     .h3 {
       margin: 0 0 22px;
+    }
+  }
+  
+  .ym-pc-dashboard-spread-options {
+    .ym-pc-dashboard-section-header {
+      h5, 
+      .h5 {
+        text-transform: none;
+      }
+    }
+  }
+}
+
+.ym-pc-dashboard-coordinator-progress-box {
+  .ym-pc-dashboard-section-header {
+    h5, 
+    .h5 {
+      text-transform: none;
+    }
+  }
+}
+
+.ym-pc-dashboard-coordinator-students-box {
+  .ym-pc-dashboard-section-header {
+    h5, 
+    .h5 {
+      text-transform: none;
+    }
+  }
+}
+
+.ym-pc-dashboard-coordinator-resources-section {
+  .ym-pc-dashboard-section-header {
+    h3, 
+    .h3 {
+      margin: 0 0 32px;
+    }
+  }
+  
+  .ym-pc-dashboard-coordinator-resources-options {
+    .ym-pc-dashboard-section-header {
+      h5, 
+      .h5 {
+        text-transform: none;
+      }
     }
   }
 }
