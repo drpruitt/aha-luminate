@@ -120,7 +120,7 @@ angular.module 'trPcControllers'
         'As I make some personal changes towards heart-health, like logging active minutes and getting my blood pressure checked, I am also raising money. I am trying to hit my fundraising goal of $250.00. By making a donation to my fundraising page you support our district, our school and the American Heart Association. No matter the size of your gift - it will make a difference.\n\n' + 
         'Thank You!\nMargaret\n\n' + 
         '***Did you know you might be able to double your gift to the American Heart Association? Ask your employer if you have an Employee Matching Gift program.\n\n' + 
-        'Visit my personal fundraising page:\n'
+        'Visit my personal fundraising page:\n' + 
         $scope.personalPageUrl
       setEmailSampleText()
       $scope.$watch 'personalPageUrl', (newValue) ->
@@ -129,23 +129,26 @@ angular.module 'trPcControllers'
       
       interactionTypeId = $dataRoot.data 'coordinator-message-id'
       
-      $scope.coordinatorMessage = {
-        'text' : ''
-        'errorMessage' : null
-        'successMessage': false
-        'message' : ''
-        'interactionId' : ''
-      }
+      $scope.coordinatorMessage =
+        text: ''
+        errorMessage: null
+        successMessage: false
+        message: ''
+        interactionId: ''
       
       if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
         NgPcInteractionService.getUserInteractions 'interaction_type_id=' + interactionTypeId + '&cons_id=' + $scope.participantRegistration.consId + '&list_page_size=1'
           .then (response) ->
-            if response.data.getUserInteractionsResponse?.interaction?.note?.text
-              $scope.coordinatorMessage.text = response.data.getUserInteractionsResponse.interaction.note.text
-              $scope.coordinatorMessage.interactionId = response.data.getUserInteractionsResponse.interaction.interactionId
-            else
-              $scope.coordinatorMessage.text = ''
-              $scope.coordinatorMessage.interactionId = ''
+            $scope.coordinatorMessage.text = ''
+            $scope.coordinatorMessage.interactionId = ''
+            if not response.data.errorResponse
+              interactions = response.data.getUserInteractionsResponse?.interaction
+              if interactions
+                interactions = [interactions] if not angular.isArray interactions
+                if interactions.length > 0
+                  interaction = interactions[0]
+                  $scope.coordinatorMessage.text = interaction.note?.text or ''
+                  $scope.coordinatorMessage.interactionId = interaction.interactionId? or ''
         
         $scope.editCoordinatorMessage = ->
           $scope.editCoordinatorMessageModal = $uibModal.open
@@ -171,16 +174,20 @@ angular.module 'trPcControllers'
                   $scope.coordinatorMessage.errorMessage = 'There was an error processing your update. Please try again later.' 
                 else
                   $scope.coordinatorMessage.successMessage = true
-                  $scope.editCoordinatorMessageModal.close()         
+                  $scope.editCoordinatorMessageModal.close()
       else
         NgPcInteractionService.listInteractions 'interaction_type_id=' + interactionTypeId + '&interaction_subject=' + $scope.participantRegistration.companyInformation.companyId
           .then (response) ->
-            if response.data.listInteractionsResponse.interaction
-              $scope.coordinatorMessage.message = response.data.listInteractionsResponse.interaction.note.text
-              $scope.coordinatorMessage.interactionId = response.data.listInteractionsResponse.interaction.interactionId
-            else
-              $scope.coordinatorMessage.message = ''
-              $scope.coordinatorMessage.interactionId = ''
+            $scope.coordinatorMessage.message = ''
+            $scope.coordinatorMessage.interactionId = ''
+            if not response.data.errorResponse
+              interactions = response.data.getUserInteractionsResponse?.interaction
+              if interactions
+                interactions = [interactions] if not angular.isArray interactions
+                if interactions.length > 0
+                  interaction = interactions[0]
+                  $scope.coordinatorMessage.message = interaction.note?.text or ''
+                  $scope.coordinatorMessage.interactionId = interaction.interactionId or ''
       
       $scope.personalGoalInfo = {}
       
