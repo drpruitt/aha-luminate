@@ -40,7 +40,6 @@ angular.module 'ahaLuminateControllers'
         , 500
       
       getTeamData = ->
-        console.log 'get team data'
         TeamraiserTeamService.getTeams 'team_id=' + $scope.teamId, 
           error: ->
             setTeamProgress()
@@ -49,10 +48,9 @@ angular.module 'ahaLuminateControllers'
             companyId = teamInfo.companyId
             $scope.participantCount = teamInfo.numMembers
             #hiding this til data is avalible in staging
-            ParticipantBadgesService.getSchoolRollupTotals 'companyId/$scope.teamId'
-            #ParticipantBadgesService.getSchoolRollupTotals '1121/1110'
+            #ParticipantBadgesService.getSchoolRollupTotals companyId+'/'+$scope.teamId
+            ParticipantBadgesService.getSchoolRollupTotals '1121/1110'
             .then (response) ->
-              console.log response
               totals = response.data.totals
               if response.data.status is 'success'
                 $scope.totalEmails = totals.total_online_emails_sent

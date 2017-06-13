@@ -53,7 +53,7 @@
     </div>
     <div class="clearfix"></div>
   </div>
-  <div class="ym-page-section ym-page-section__main" ng-show="participantCount > 0" ng-cloak>
+  <div class="ym-page-section ym-page-section__main" ng-show="participantCount > 0 && totalEmails > 0" ng-cloak>
     <div class="container">
       <div class="ym-our-stats ym-promo-block">
         <h2 class="ym-headline">
@@ -67,7 +67,7 @@
             students registered
           </p>
         </div>
-        <div class="ym-promo-block__item ym-promo-block__item--water ym-promo-block--circle" ng-if="totalEmails != 0" ng-cloak>
+        <div class="ym-promo-block__item ym-promo-block__item--water ym-promo-block--circle">
           <div class="h2 ym-headline">
             {{totalEmails}}
           </div>
