@@ -165,9 +165,11 @@
           <div ng-bind-html="prize.label"></div>
         </div>
       </div>
-      <p class="text-center">
-        <strong>You can also <a ng-href="http://heart.pub30.convio.net/jump-hoops/for-students/adoption-certificates/">download Adoption Certificates</a> for each badge level!</strong>
-      </p>
+      <div class="text-center">
+        <p>
+          <strong>You can also <a ng-href="http://heart.pub30.convio.net/jump-hoops/for-students/adoption-certificates/">download Adoption Certificates</a> for each badge level!</strong>
+        </p>
+      </div>
     </section>
     <section class="ym-pc-dashboard-activities-section" aria-label="My Fundraising Activities">
       <div class="ym-pc-dashboard-section-header">
@@ -531,15 +533,9 @@
               <p>
                 Create/Update an <strong>encouraging message</strong> for your student in their Headquarters.
               </p>
-              <div uib-alert class="alert-success" ng-if="coordinatorMessage.successMessage == true">
-                <p> 
-                  You have successfully updated you message to the following:
-                </p>
-                <strong ng-bind-html="coordinatorMessage.text"></strong>
-              </div>
-              <a class="btn btn-md-wide btn-primary" ng-click="editCoordinatorMessage()">
+              <button type="button" class="btn btn-md-wide btn-primary" ng-click="editCoordinatorMessage()">
                 <strong>Create Message</strong>
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -862,9 +858,12 @@
           <p>
             Download an email badge!
           </p>
-          <a class="btn btn-md-wide btn-secondary" ng-href="PageServer?pagename=reus_bf_email_badge&trID={{frId}}" target="_blank">
-            <strong>Download Email Badge</strong> 
-          </a>
+          <div class="text-center">
+            <a class="btn btn-md-wide btn-secondary" ng-href="PageServer?pagename=reus_bf_email_badge&amp;trID={{frId}}" target="_blank">
+              <strong>Download Email Badge</strong> 
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </section>

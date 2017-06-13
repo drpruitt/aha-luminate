@@ -73,7 +73,7 @@ angular.module 'ahaLuminateControllers'
       
       $scope.totalStudents = ''
       $scope.totalSchools = ''
-      $scope.totalChallenges = ''
+      $scope.totalEmail = ''
       $scope.showStats = true
       
       ParticipantBadgesService.getRollupTotals()
@@ -82,10 +82,18 @@ angular.module 'ahaLuminateControllers'
             $scope.showStats = false
           else
             $scope.showStats = true
-            totals = response.data.totals          
+            totals = response.data.totals 
             $scope.totalStudents = totals.total_students
+            if $scope.totalStudents.toString().length > 4
+              $scope.totalStudents = Math.round($scope.totalStudents/1000)+ 'K'
+
             $scope.totalSchools = totals.total_schools
+            if $scope.totalSchools.toString().length > 4
+              $scope.totalSchools = Math.round($scope.totalSchools/1000)+ 'K'
+
             $scope.totalEmails = totals.total_online_emails_sent
+            if $scope.totalEmails.toString().length > 4
+              $scope.totalEmails = Math.round($scope.totalEmails/1000)+ 'K'
         , (response) ->
           $scope.showStats = false
       

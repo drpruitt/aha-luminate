@@ -118,5 +118,25 @@ module.exports = {
       'img-copy:middle-school-images', 
       'notify:middle-school'
     ]
+  }, 
+  
+  "district-heart": {
+    files: [
+      'src/youth-markets/sass/**/*', 
+      'src/global/coffee/**/*', 
+      'src/youth-markets/coffee/**/*', 
+      'src/district-heart/html/**/*', 
+      'src/district-heart/image/**/*', 
+      'src/district-heart/sass/**/*', 
+      'src/district-heart/coffee/**/*'
+    ], 
+    tasks: [
+      'clean:district-heart',  
+      'css-dist:district-heart', 
+      'js-dist:district-heart', 
+      'html-dist:district-heart', 
+      'img-copy:district-heart-images', 
+      'notify:district-heart'
+    ]
   }
 }
