@@ -78,5 +78,18 @@ module.exports = {
         dest: 'dist/middle-school/image/'
       }
     ]
+  }, 
+  
+  "district-heart-images": {
+    files: [
+      {
+        expand: true, 
+        cwd: 'src/district-heart/image/', 
+        src: [
+          '*.{gif,GIF,jpg,JPG,png,PNG,svg,SVG}'
+        ], 
+        dest: 'dist/district-heart/image/'
+      }
+    ]
   }
 }

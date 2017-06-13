@@ -105,5 +105,30 @@ module.exports = {
         'src/middle-school/coffee/**/trpc-*.*'
       ]
     }
+  }, 
+  
+  "district-heart": {
+    files: {
+      'dist/district-heart/js/main.js': [
+        'src/district-heart/coffee/init.coffee', 
+        'src/district-heart/coffee/config/*.*', 
+        '!src/district-heart/coffee/config/trpc-*.*', 
+        'src/global/coffee/service/*.*', 
+        '!src/global/coffee/service/trpc-*.*', 
+        'src/district-heart/coffee/service/*.*', 
+        '!src/district-heart/coffee/service/trpc-*.*', 
+        'src/global/coffee/directive/*.*', 
+        'src/district-heart/coffee/directive/*.*', 
+        '!src/district-heart/coffee/directive/trpc-*.*', 
+        'src/district-heart/coffee/**/*.*', 
+        '!src/district-heart/coffee/**/trpc-*.*'
+      ], 
+      'dist/district-heart/js/participant.js': [
+        'src/district-heart/coffee/trpc-init.coffee', 
+        'src/district-heart/coffee/config/trpc-*.*', 
+        'src/global/coffee/service/trpc-*.*', 
+        'src/district-heart/coffee/**/trpc-*.*'
+      ]
+    }
   }
 }
