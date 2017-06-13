@@ -68,8 +68,13 @@
   <div class="ym-school-search ym-page-section__main" id="school-search" ng-controller="SchoolSearchCtrl" ng-cloak>
     <form method="POST" ng-submit="submitSchoolSearch()">
       <div class="form-group">
-        <img class="img-responsive hidden-xs" src="http://heart.pub30.convio.net/assets/images/hoops-jump-search-graphic.png" alt="Find your school">
-        <img class="img-responsive hidden-sm hidden-md hidden-lg" src="http://heart.pub30.convio.net/assets/images/hoops-jump-search-graphic-mobile.jpg" alt="Find your school">
+        <t:if test="path == '/middle-school/'">
+          <img class="img-responsive" src="http://heart.pub30.convio.net/assets/images/middle-school/find-school-graphic.png" alt="Find your school">
+        </t:if>
+        <t:else>
+          <img class="img-responsive hidden-xs" src="http://heart.pub30.convio.net/assets/images/hoops-jump-search-graphic.png" alt="Find your school">
+          <img class="img-responsive hidden-sm hidden-md hidden-lg" src="http://heart.pub30.convio.net/assets/images/hoops-jump-search-graphic-mobile.jpg" alt="Find your school">
+        </t:else>
         <div class="form-inline text-center">
           <label for="school-name-filter" class="sr-only">School name:</label>
           <input type="text" class="form-control" id="school-name-filter" name="school-name-filter" ng-model="schoolList.ng_nameFilter" placeholder="Start typing your school's name" autocomplete="off" uib-typeahead="school.SCHOOL_NAME for school in getSchoolSuggestions($viewValue)" typeahead-min-length="3" typeahead-editable="true" typeahead-focus-first="false" ng-class="{'disabled': schoolList.searchPending}" ng-disabled="schoolList.searchPending"> 

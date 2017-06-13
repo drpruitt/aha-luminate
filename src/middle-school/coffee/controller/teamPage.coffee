@@ -10,40 +10,14 @@ angular.module 'ahaLuminateControllers'
     'TeamraiserTeamService'
     'TeamraiserParticipantService'
     'TeamraiserCompanyService'
-    'ZuriService'
+    'ParticipantBadgesService'
     'TeamraiserTeamPageService'
-    ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserTeamService, TeamraiserParticipantService, TeamraiserCompanyService, ZuriService, TeamraiserTeamPageService) ->
+    ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserTeamService, TeamraiserParticipantService, TeamraiserCompanyService, ParticipantBadgesService, TeamraiserTeamPageService) ->
       $scope.teamId = $location.absUrl().split('team_id=')[1].split('&')[0].split('#')[0]
       $scope.teamParticipants = []
       $rootScope.teamName = ''
       $scope.eventDate = ''
       $scope.participantCount = ''
-      $scope.studentsPledgedTotal = ''
-      $scope.activity1amt = ''
-      $scope.activity2amt = ''
-      $scope.activity3amt = ''
-      
-      ZuriService.getZooTeam $scope.teamId,
-        error: (response) ->
-          $scope.studentsPledgedTotal = 0
-          $scope.activity1amt = 0
-          $scope.activity2amt = 0
-          $scope.activity3amt = 0
-        success: (response) ->
-          $scope.studentsPledgedTotal = response.data.studentsPledged
-          studentsPledgedActivities = response.data.studentsPledgedByActivity
-          if studentsPledgedActivities['1']
-            $scope.activity1amt = studentsPledgedActivities['1'].count
-          else
-            $scope.activity1amt = 0
-          if studentsPledgedActivities['2']
-            $scope.activity2amt = studentsPledgedActivities['2'].count
-          else
-            $scope.activity2amt = 0
-          if studentsPledgedActivities['3']
-            $scope.activity3amt = studentsPledgedActivities['3'].count
-          else
-            $scope.activity3amt = 0
       
       setTeamProgress = (amountRaised, goal) ->
         $scope.teamProgress = 
@@ -73,6 +47,15 @@ angular.module 'ahaLuminateControllers'
             teamInfo = response.getTeamSearchByInfoResponse?.team
             companyId = teamInfo.companyId
             $scope.participantCount = teamInfo.numMembers
+            #hiding this til data is avalible in staging
+            #ParticipantBadgesService.getSchoolRollupTotals companyId+'/'+$scope.teamId
+            ParticipantBadgesService.getSchoolRollupTotals '1121/1110'
+            .then (response) ->
+              totals = response.data.totals
+              if response.data.status is 'success'
+                $scope.totalEmails = totals.total_online_emails_sent
+              else
+                $scope.totalEmails = 0
             
             if not teamInfo
               setTeamProgress()
