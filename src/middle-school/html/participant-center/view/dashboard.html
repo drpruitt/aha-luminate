@@ -7,8 +7,8 @@
         </h2>
       </div>
       <div class="row">
-        <div class="col-sm-6 ym-pc-dashboard-progress-section__column event-secondary-medium">
-          <div class="ym-pc-dashboard-progress-box">
+        <div class="col-sm-6 ym-pc-dashboard-progress-section__column">
+          <div class="ym-pc-dashboard-progress-box event-secondary-medium">
             <div class="ym-pc-dashboard-section-header">
               <h3 class="h5">
                 Progress
@@ -112,16 +112,16 @@
               </div>
             </div>
           </div>
-          <div class="ym-pc-dashboard-badges-box" ng-if="prizes && prizes.length > 0" ng-cloak aria-label="My Badges">
+          <div class="ym-pc-dashboard-badges-box event-secondary-medium" ng-if="prizes && prizes.length > 0" ng-cloak>
             <div class="ym-pc-dashboard-section-header">
               <h2 class="h5">
                 Badges
               </h2>
-              <a class="btn btn-md-wide btn-secondary" ng-href="http://heart.pub30.convio.net/jump-hoops/for-students/earn-badges/">
+              <a class="btn btn-md-wide btn-secondary" ng-href="{{baseUrl}}#">
                 <strong>Learn About Badges</strong>
               </a>
             </div>
-            <div class="ym-pc-dashboard-badges-icons ym-carousel--badges owl-carousel">
+            <div class="ym-pc-dashboard-badges-icons">
               <div class="ym-pc-dashboard-badges-icon" ng-repeat="prize in prizes" ng-cloak>
                 <div ng-if="prize.earned != null">
                   <img class="img-responsive" ng-src="//s3.amazonaws.com/aha-jumphoops-production/fy18/assets/badges/tgr/{{prize.id}}_delivered.png" alt="{{prize.label}}">
