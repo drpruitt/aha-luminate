@@ -397,10 +397,10 @@ angular.module 'ahaLuminateControllers'
           lastName = $scope.companyParticipantSearch.participant_name.split(' ')[1].trim()
         if participants.length
           if firstName.length and lastName.length
-            participants = filter(participants, name: {first: firstName})
-            participants = filter(participants, name: {last: lastName})
+            participants = filter participants, name: {first: firstName}
+            participants = filter participants, name: {last: lastName}
           else if firstName.length
-            participants = filter(participants, name: {full: firstName})
+            participants = filter participants, name: {full: firstName}
         participants
       
       $scope.paginateCompanyParticipants = (companyIndex) ->
