@@ -327,6 +327,11 @@ angular.module 'ahaLuminateControllers'
         loadLocalStorage()
         if $scope.donationInfo.giftType is 'onetime'
           angular.element('#level_installment_row').addClass 'hidden'
+        $requiredField = angular.element '.field-required'
+        angular.forEach $requiredField, (required) ->
+          $req = angular.element required
+          if not angular.element($req).parent().parent().parent().hasClass 'payment-field-container' or angular.element($req).hasClass('.btn')
+            angular.element($req).parent().parent().addClass 'form-row-required'
         angular.element('#tr_message_to_participant_row').addClass 'hidden'
         angular.element('#billing_info').parent().addClass 'billing_info_toggle'
         angular.element('#payment_cc_container').append '<div class="clearfix" />'
@@ -338,7 +343,17 @@ angular.module 'ahaLuminateControllers'
         billingAddressFields()
         donorRecognitionFields()
         if angular.element('body').hasClass 'cons-logged-in'
-          loggedInForm()
+          hideDonorInfo = true
+          $reqInput = angular.element '.form-row-required input[type="text"]'
+          $reqSelect = angular.element '.form-row-required select'
+          angular.forEach $reqInput, (req) ->
+            if angular.element(req).val() is ''
+              hideDonorInfo = false
+          angular.forEach $reqSelect, (req) ->
+            if angular.element(req).val() is ''
+              hideDonorInfo = false
+          if hideDonorInfo is true
+            loggedInForm()  
         return
       , (reason) ->
         # TODO
