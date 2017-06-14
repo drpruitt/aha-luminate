@@ -17,7 +17,10 @@ angular.module 'ahaLuminateApp'
           response
       
       getRollupTotals: ->
-        url = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent('https://thegreatreplaystaging.boundlessnetwork.com/api/schools/totals')
+        if luminateExtend.global.tablePrefix is 'heartdev'
+          url = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent('https://thegreatreplaystaging.boundlessnetwork.com/api/schools/totals')
+        else
+          url = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent('https://thegreatreplay.heart.org/api/schools/totals')
         $http
           method: 'GET'
           url: url
@@ -25,24 +28,17 @@ angular.module 'ahaLuminateApp'
             'Content-Type': 'application/json'
         .then (response) ->
           response
-
+      
       getSchoolRollupTotals: (requestData) ->
         if luminateExtend.global.tablePrefix is 'heartdev'
           url = 'AjaxProxy?cnv_url=' + encodeURIComponent('https://thegreatreplaystaging.boundlessnetwork.com/api/schools/totals/' + requestData) + '&auth=' + luminateExtend.global.ajaxProxyAuth
-          $http
-            method: 'GET'
-            url: url
-            headers:
-              'Content-Type': 'application/json'
-          .then (response) ->
-            response
         else
           url = 'AjaxProxy?cnv_url=' + encodeURIComponent('https://thegreatreplay.heart.org/api/schools/totals/' + requestData) + '&auth=' + luminateExtend.global.ajaxProxyAuth
-          $http
-            method: 'GET'
-            url: url
-            headers:
-              'Content-Type': 'application/json'
-          .then (response) ->
-            response
+        $http
+          method: 'GET'
+          url: url
+          headers:
+            'Content-Type': 'application/json'
+        .then (response) ->
+          response
   ]
