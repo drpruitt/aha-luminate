@@ -347,18 +347,13 @@ angular.module 'ahaLuminateControllers'
           $reqInput = angular.element '.form-row-required input[type="text"]'
           $reqSelect = angular.element '.form-row-required select'
           angular.forEach $reqInput, (req) ->
-            console.log angular.element(req).val()
             if angular.element(req).val() is ''
-              console.log angular.element(req)
               hideDonorInfo = false
           angular.forEach $reqSelect, (req) ->
-            console.log angular.element(req).val()
             if angular.element(req).val() is ''
-              console.log angular.element(req)
               hideDonorInfo = false
           if hideDonorInfo is true
-            loggedInForm()
-        
+            loggedInForm()  
         return
       , (reason) ->
         # TODO
