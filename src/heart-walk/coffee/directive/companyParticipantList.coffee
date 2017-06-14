@@ -16,7 +16,7 @@ angular.module 'ahaLuminateApp'
       controller: [
         '$scope'
         ($scope) ->
-          $scope.companyParticipantSearch = 
+          $scope.companyParticipantSearch =
             participant_name: ''
           
           $scope.toggleCompanyParticipantList = ->
