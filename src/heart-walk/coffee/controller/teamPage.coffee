@@ -41,6 +41,7 @@ angular.module 'ahaLuminateControllers'
             setTeamFundraisingProgress teamInfo.amountRaised, teamInfo.goal
       
       $scope.teamMemberSearch =
+        ng_member_name: ''
         member_name: ''
       
       $scope.teamMembers = 
@@ -89,6 +90,7 @@ angular.module 'ahaLuminateControllers'
       $scope.getTeamMembers()
       
       $scope.searchTeamMembers = (teamMemberSearch) ->
+        $scope.teamMemberSearch.ng_member_name = teamMemberSearch?.ng_member_name or ''
         $scope.teamMemberSearch.member_name = teamMemberSearch?.ng_member_name or ''
         $scope.teamMembers.page = 1
         $scope.getTeamMembers()
