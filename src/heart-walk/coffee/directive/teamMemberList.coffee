@@ -10,4 +10,11 @@ angular.module 'ahaLuminateApp'
         teamGiftsLabel: '='
         teamGiftsAmount: '='
         teamGiftsAmountFormatted: '='
-    ]
+        searchTeamMembers: '='
+      controller: [
+        '$scope'
+        ($scope) ->
+          $scope.teamMemberSearch = 
+            member_name: ''
+      ]
+  ]
