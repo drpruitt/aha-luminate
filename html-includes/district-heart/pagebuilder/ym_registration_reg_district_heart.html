@@ -48,7 +48,7 @@
         <div class="col-sm-6">
           <div class="form-group" ng-class="{'has-error': registrationQuestions.cons_first_name.hasError}" ng-if="registrationQuestions.cons_first_name" ng-cloak>
             <label class="control-label" for="registrationInfo-cons_first_name">
-              Student First Name:
+              First Name:
             </label>
             <input type="text" class="form-control input-lg" name="ng_cons_first_name" id="registrationInfo-cons_first_name" ng-model="registrationInfo.cons_first_name" maxlength="{{registrationQuestions.cons_first_name.maxLength}}">
           </div>
@@ -56,7 +56,7 @@
         <div class="col-sm-6">
           <div class="form-group" ng-class="{'has-error': registrationQuestions.cons_last_name.hasError}" ng-if="registrationQuestions.cons_last_name" ng-cloak>
             <label class="control-label" for="registrationInfo-cons_last_name">
-              Student Last Name:
+              Last Name:
             </label>
             <input type="text" class="form-control input-lg" name="ng_cons_last_name" id="registrationInfo-cons_last_name" ng-model="registrationInfo.cons_last_name" maxlength="{{registrationQuestions.cons_last_name.maxLength}}">
           </div>
@@ -72,16 +72,7 @@
               <input type="email" class="form-control input-lg" name="ng_cons_email" id="registrationInfo-cons_email" ng-model="registrationInfo.cons_email" maxlength="{{registrationQuestions.cons_email.maxLength}}">
             </div>
           </div>
-          <div class="col-sm-6">
-            <div class="form-group" ng-class="{'has-error': registrationQuestions[registrationCustomQuestions.ym_district_heart_email_type].hasError}" ng-if="registrationCustomQuestions.ym_district_heart_email_type" ng-cloak>
-              <label class="control-label" for="registrationInfo-{{registrationCustomQuestions.ym_district_heart_email_type}}">
-                <span ng-bind-html="registrationQuestions[registrationCustomQuestions.ym_district_heart_email_type].label"></span>
-              </label>
-              <select class="form-control input-lg" name="ng_{{registrationCustomQuestions.ym_district_heart_email_type}}" id="registrationInfo-{{registrationCustomQuestions.ym_district_heart_email_type}}" ng-model="registrationInfo[registrationCustomQuestions.ym_district_heart_email_type]">
-                <option ng-repeat="questionOption in registrationQuestions[registrationCustomQuestions.ym_district_heart_email_type].options" value="{{questionOption.value}}">{{questionOption.text}}</option>
-              </select>
-            </div>
-          </div>
+          <div class="col-sm-6"></div>
         </div>
       </div>
       <div class="hidden js--registration-reg-opt-ins">
@@ -117,28 +108,6 @@
           <input type="checkbox" name="ng_cons_email_opt_in" id="registrationInfo-cons_email_opt_in" ng-model="registrationInfo.cons_email_opt_in"> 
           <span ng-bind-html="registrationQuestions.cons_email_opt_in.label"></span>
         </label>
-      </div>
-      <div class="ym-registration-row--bottomed" ng-cloak>
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="form-group" ng-class="{'has-error': registrationQuestions[registrationCustomQuestions.ym_district_heart_grade].hasError}" ng-if="registrationCustomQuestions.ym_district_heart_grade" ng-cloak>
-              <label class="control-label" for="registrationInfo-{{registrationCustomQuestions.ym_district_heart_grade}}">
-                <span ng-bind-html="registrationQuestions[registrationCustomQuestions.ym_district_heart_grade].label"></span>
-              </label>
-              <select class="form-control input-lg" name="ng_{{registrationCustomQuestions.ym_district_heart_grade}}" id="registrationInfo-{{registrationCustomQuestions.ym_district_heart_grade}}" ng-model="registrationInfo[registrationCustomQuestions.ym_district_heart_grade]">
-                <option ng-repeat="questionOption in registrationQuestions[registrationCustomQuestions.ym_district_heart_grade].options" value="{{questionOption.value}}">{{questionOption.text}}</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="form-group" ng-class="{'has-error': registrationQuestions[registrationCustomQuestions.ym_district_heart_teacher_name].hasError}" ng-if="registrationCustomQuestions.ym_district_heart_teacher_name" ng-cloak>
-              <label class="control-label" for="registrationInfo-{{registrationCustomQuestions.ym_district_heart_teacher_name}}">
-                <span ng-bind-html="registrationQuestions[registrationCustomQuestions.ym_district_heart_teacher_name].label"></span>
-              </label>
-              <input type="text" class="form-control input-lg" name="ng_{{registrationCustomQuestions.ym_district_heart_teacher_name}}" id="registrationInfo-{{registrationCustomQuestions.ym_district_heart_teacher_name}}" ng-model="registrationInfo[registrationCustomQuestions.ym_district_heart_teacher_name]" maxlength="{{registrationQuestions[registrationCustomQuestions.ym_district_heart_teacher_name].maxLength}}">
-            </div>
-          </div>
-        </div>
       </div>
       <div class="row" ng-cloak>
         <div class="col-sm-6">
