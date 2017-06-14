@@ -200,7 +200,6 @@ angular.module 'trPageEditControllers'
             if $scope.personalVideoEmbedUrl isnt ''
               $personalVideoIframe.replaceWith $compile($personalVideoIframe.clone().attr('ng-src', '{{personalVideoEmbedUrl}}'))($scope)
           if videoUrl and videoUrl.indexOf('vidyard') is -1
-            console.log(videoUrl)
             videoUrl = videoUrl.replace '&amp;v=', '&v='
             videoId = ''
             if videoUrl.indexOf('?v=') isnt -1
@@ -242,9 +241,7 @@ angular.module 'trPageEditControllers'
           $scope.updatePersonalVideoError = 
             message: errorMessage
         $scope.updatePersonalVideo = ->
-          console.log($scope.personalVideo.type)
           if $scope.personalVideo.type is 'youtube'
-            console.log('youtube code is going')
             angular.element('.js--remove-personalized-video-form').submit()
             TeamraiserParticipantPageService.updatePersonalVideoUrl 'video_url=' + $scope.personalMedia.videoUrl, 
               error: (response) ->
@@ -254,19 +251,16 @@ angular.module 'trPageEditControllers'
                 $scope.setPersonalVideoUrl videoUrl
                 $scope.closePersonalVideoModal()
           else if $scope.personalVideo.type is 'personalized'
-            console.log('personalized code is going')
             TeamraiserParticipantPageService.updatePersonalVideoUrl 'video_url=http://www.youtube.com/'
             formData = { auth_token: "Jep8QrDjpqwOnI5rpsAbJw", email: $rootScope.email, fields: {firstname: $rootScope.firstName, why: $scope.personalMedia.myWhy, cons_id: $rootScope.consId} }
-            console.log(formData)
             $scope.submitVidyardCallback = (data) ->
-              console.log(data)
               jQuery.ajax 'http://hearttools.heart.org/vidyard/vy_pv_callback_to_bb.php',
                 type: 'POST'
                 data: JSON.stringify( { uuid: data.unit.uuid, cons_id: $rootScope.consId } ),
                 contentType: 'application/json',
                 dataType: 'json',
                 success: (data) ->
-                  console.log(success)
+                  # TODO
             $scope.submitVidyard = ->
               jQuery.ajax 'http://blender.vidyard.com/forms/pd5MsBtKJwfrReeWz7d8v4/submit.json',
                 type: 'POST'
@@ -274,7 +268,6 @@ angular.module 'trPageEditControllers'
                 contentType: 'application/json',
                 dataType: 'json',
                 success: (response) ->
-                  console.log(response)
                   $scope.submitVidyardCallback response
             $scope.submitVidyard()
             angular.element('.js--submit-personalized-video-LO-form').submit()
@@ -283,7 +276,6 @@ angular.module 'trPageEditControllers'
             ), 500
             
           else if $scope.personalVideo.type is 'default'
-            console.log('default code is going')
             angular.element('.js--remove-personalized-video-form').submit()
             TeamraiserParticipantPageService.updatePersonalVideoUrl 'video_url=http://www.youtube.com/'
             setTimeout ( ->
