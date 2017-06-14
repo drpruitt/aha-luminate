@@ -47,6 +47,8 @@ angular.module 'ahaLuminateControllers'
             teamInfo = response.getTeamSearchByInfoResponse?.team
             companyId = teamInfo.companyId
             $scope.participantCount = teamInfo.numMembers
+            if $scope.participantCount.toString().length > 4
+              $scope.participantCount = Math.round($scope.participantCount/1000)+ 'K'
             #hiding this til data is avalible in staging
             #ParticipantBadgesService.getSchoolRollupTotals companyId+'/'+$scope.teamId
             ParticipantBadgesService.getSchoolRollupTotals '1121/1110'
@@ -54,6 +56,8 @@ angular.module 'ahaLuminateControllers'
               totals = response.data.totals
               if response.data.status is 'success'
                 $scope.totalEmails = totals.total_online_emails_sent
+                if $scope.totalEmails.toString().length > 4
+                  $scope.totalEmails = Math.round($scope.totalEmails/1000)+ 'K'
               else
                 $scope.totalEmails = 0
             
