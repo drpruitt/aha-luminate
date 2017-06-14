@@ -61,8 +61,11 @@ angular.module 'ahaLuminateControllers'
       
       $scope.getTeamMembers = ->
         # TODO: scroll to top of list
+        firstNameFilter = $scope.teamMemberSearch?.member_name or ''
+        while firstNameFilter.length < 3
+          firstNameFilter += '%'
         pageNumber = $scope.teamMembers.page - 1
-        TeamraiserParticipantService.getParticipants 'first_name=' + encodeURIComponent('%%%') + '&list_filter_column=reg.team_id&list_filter_text=' + $scope.teamId + '&list_sort_column=first_name&list_ascending=true&list_page_size=4&list_page_offset=' + pageNumber, 
+        TeamraiserParticipantService.getParticipants 'first_name=' + encodeURIComponent(firstNameFilter) + '&list_filter_column=reg.team_id&list_filter_text=' + $scope.teamId + '&list_sort_column=first_name&list_ascending=true&list_page_size=4&list_page_offset=' + pageNumber, 
           error: ->
             setTeamMembers()
           success: (response) ->
@@ -82,5 +85,8 @@ angular.module 'ahaLuminateControllers'
               setTeamMembers teamMembers, response.getParticipantsResponse.totalNumberResults
       $scope.getTeamMembers()
       
-      # TODO: search form submit
+      $scope.searchTeamMembers = (teamMemberSearch) ->
+        $scope.teamMemberSearch.member_name = teamMemberSearch?.member_name or ''
+        $scope.teamMembers.page = 1
+        $scope.getTeamMembers()
   ]
