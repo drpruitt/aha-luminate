@@ -40,6 +40,9 @@ angular.module 'ahaLuminateControllers'
           else
             setTeamFundraisingProgress teamInfo.amountRaised, teamInfo.goal
       
+      $scope.teamMemberSearch =
+        member_name: ''
+      
       $scope.teamMembers = 
         page: 1
       
