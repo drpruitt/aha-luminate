@@ -66,6 +66,8 @@ angular.module 'trPcControllers'
         'email_rpt_show_donors'
         'email_rpt_show_nondonors'
       ]
+      if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
+        contactFilters.push 'email_rpt_show_company_coordinator_participants'
       $scope.addressBookContacts = 
         page: 1
         allContactsSelected: false
@@ -126,6 +128,7 @@ angular.module 'trPcControllers'
         email_rpt_show_unthanked_donors: 'Unthanked Donors'
         email_rpt_show_donors: 'Donors'
         email_rpt_show_nondonors: 'Non-Donors'
+        email_rpt_show_company_coordinator_participants: 'School Participants'
       
       $scope.filterName = filterNames[$scope.filter]
       
