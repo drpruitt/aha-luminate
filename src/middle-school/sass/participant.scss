@@ -60,15 +60,23 @@
     }
   }
   
-  .btn {
-    margin: 0 0 4px;
-    
-    @media (min-width: $screen-lg-min) {
-      position: absolute;
-      right: 0;
-      top: 0;
-      padding: 7px 10px;
-      margin: 0;
+  .btn, 
+  a.btn {
+    &, 
+    &:link, 
+    &:visited, 
+    &:hover, 
+    &:focus, 
+    &:active {
+      margin: 0 0 4px;
+      
+      @media (min-width: $screen-lg-min) {
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 7px 10px;
+        margin: 0;
+      }
     }
   }
   
@@ -152,14 +160,6 @@
       font-size: 13px;
       height: 470px;
       padding: 28px;
-      
-      &::-moz-selection {
-        background: transparent;
-      }
-      
-      &::selection {
-        background: transparent;
-      }
     }
   }
 }
