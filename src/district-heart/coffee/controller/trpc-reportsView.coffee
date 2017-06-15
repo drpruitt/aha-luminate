@@ -57,12 +57,22 @@ angular.module 'trPcControllers'
                     lastName: gift.name.last
                     email: gift.email
                   gift.giftAmountFormatted = $filter('currency') gift.giftAmount / 100, '$', 0
+                  if gift.giftMessage
+                    gift.showMessage = 'false'
                   participantGifts.push gift
                 $scope.participantGifts.gifts = participantGifts
               $scope.participantGifts.totalNumber = if response.data.getGiftsResponse.totalNumberResults then Number(response.data.getGiftsResponse.totalNumberResults) else 0
             response
         $scope.reportPromises.push personalGiftsPromise
       $scope.getGifts()
+      
+      $scope.orderParticipantGifts = (sortColumn) ->
+        $scope.participantGifts.sortAscending = !$scope.participantGifts.sortAscending
+        if $scope.participantGifts.sortColumn isnt sortColumn
+          $scope.participantGifts.sortAscending = false
+        $scope.participantGifts.sortColumn = sortColumn
+        $scope.participantGifts.page = 1
+        $scope.getGifts()
       
       $scope.thankParticipantDonor = (participantGift) ->
         if not $rootScope.selectedContacts
@@ -143,6 +153,14 @@ angular.module 'trPcControllers'
           $scope.reportPromises.push personalGiftsPromise
         $scope.getTeamGifts()
         
+        $scope.orderTeamGifts = (sortColumn) ->
+          $scope.teamGifts.sortAscending = !$scope.teamGifts.sortAscending
+          if $scope.teamGifts.sortColumn isnt sortColumn
+            $scope.teamGifts.sortAscending = false
+          $scope.teamGifts.sortColumn = sortColumn
+          $scope.teamGifts.page = 1
+          $scope.getTeamGifts()
+        
         $scope.thankTeamDonor = (teamGift) ->
           if not $rootScope.selectedContacts
             $rootScope.selectedContacts = {}
@@ -200,7 +218,9 @@ angular.module 'trPcControllers'
             'T-shirt'
             'Teacher'
             'Challenge'
-        ]
+          ]
+          sortColumn: '',
+          sortAscending: false
         schoolDetailReportPromise = NgPcTeamraiserReportsService.getSchoolDetailReport()
           .then (response) ->
             if response.data.errorResponse
@@ -254,4 +274,12 @@ angular.module 'trPcControllers'
                   $scope.schoolDetailStudents.downloadData = schoolDetailDownloadData
             response
         $scope.reportPromises.push schoolDetailReportPromise
+        
+        $scope.orderSchoolDetailStudents = (sortColumn) ->
+          $scope.schoolDetailStudents.sortAscending = !$scope.schoolDetailStudents.sortAscending
+          if $scope.schoolDetailStudents.sortColumn isnt sortColumn
+            $scope.schoolDetailStudents.sortAscending = false
+          $scope.schoolDetailStudents.sortColumn = sortColumn
+          orderBy = $filter 'orderBy'
+          $scope.schoolDetailStudents.students = orderBy $scope.schoolDetailStudents.students, sortColumn, not $scope.schoolDetailStudents.sortAscending
   ]
