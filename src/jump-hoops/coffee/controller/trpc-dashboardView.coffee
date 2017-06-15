@@ -551,7 +551,7 @@ angular.module 'trPcControllers'
             angular.element('.owl-carousel').find('.owl-item.active').attr 'aria-selected', 'true'
             angular.element('.owl-carousel').find('.owl-prev').attr('role', 'button').attr 'title', 'Previous'
             angular.element('.owl-carousel').find('.owl-next').attr('role', 'button').attr 'title', 'Next'
-            angular.element('.owl-item.active, .owl-prev, .owl-next').attr 'tabindex', '0'
+            angular.element('.owl-item, .owl-prev, .owl-next').attr 'tabindex', '0'
             jQuery(document).on 'keydown', (e) ->
               $focusedElement = jQuery(document.activeElement)
               if e.which is 13
@@ -563,6 +563,6 @@ angular.module 'trPcControllers'
           onChange: ->
             angular.element('.owl-carousel').find('.owl-item').attr 'aria-selected', 'false'
             angular.element('.owl-carousel').find('.owl-item.active').attr 'aria-selected', 'true'
-      
+            angular.element('.owl-item.active').attr 'tabindex', '0'
       $timeout initCarousel, 1000
   ]
