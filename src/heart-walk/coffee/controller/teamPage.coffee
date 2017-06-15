@@ -69,9 +69,31 @@ angular.module 'ahaLuminateControllers'
         while memberNameFilter.length < 3
           memberNameFilter += '%'
         pageNumber = $scope.teamMembers.page - 1
-        TeamraiserParticipantService.getParticipants 'first_name=' + encodeURIComponent(memberNameFilter) + '&list_filter_column=reg.team_id&list_filter_text=' + $scope.teamId + '&list_sort_column=first_name&list_ascending=true&list_page_size=4&list_page_offset=' + pageNumber, 
+        TeamraiserParticipantService.getParticipants 'first_name=' + encodeURIComponent(memberNameFilter) + '&list_filter_column=reg.team_id&list_filter_text=' + $scope.teamId + '&list_sort_column=first_name&list_ascending=true&list_page_size=4&list_page_offset=' + pageNumber,
           error: ->
-            setTeamMembers()
+            if memberNameFilter is '%%%'
+              setTeamMembers()
+            else
+              TeamraiserParticipantService.getParticipants 'last_name=' + encodeURIComponent(memberNameFilter) + '&list_filter_column=reg.team_id&list_filter_text=' + $scope.teamId + '&list_sort_column=first_name&list_ascending=true&list_page_size=4&list_page_offset=' + pageNumber,
+                error: ->
+                  setTeamMembers teamMembers, totalNumberResults
+                success: (response) ->
+                  setTeamMembers()
+                  teamParticipants = response.getParticipantsResponse?.participant
+                  totalNumberResults = response.getParticipantsResponse?.totalNumberResults or 0
+                  totalNumberResults = Number totalNumberLastNameResults
+                  if teamParticipants
+                    teamParticipants = [teamParticipants] if not angular.isArray teamParticipants
+                    teamMembers = []
+                    angular.forEach teamParticipants, (teamParticipant) ->
+                      if teamParticipant.name?.first
+                        teamParticipant.amountRaised = Number teamParticipant.amountRaised
+                        teamParticipant.amountRaisedFormatted = $filter('currency') teamParticipant.amountRaised / 100, '$', 0
+                        donationUrl = teamParticipant.donationUrl
+                        if donationUrl?
+                          teamParticipant.donationUrl = donationUrl.split('/site/')[1]
+                        teamMembers.push teamParticipant
+                    setTeamMembers teamMembers, totalNumberResults
           success: (response) ->
             setTeamMembers()
             teamParticipants = response.getParticipantsResponse?.participant
@@ -91,7 +113,7 @@ angular.module 'ahaLuminateControllers'
               if memberNameFilter is '%%%'
                 setTeamMembers teamMembers, totalNumberResults
               else
-                TeamraiserParticipantService.getParticipants 'last_name=' + encodeURIComponent(memberNameFilter) + '&list_filter_column=reg.team_id&list_filter_text=' + $scope.teamId + '&list_sort_column=first_name&list_ascending=true&list_page_size=4&list_page_offset=' + pageNumber, 
+                TeamraiserParticipantService.getParticipants 'last_name=' + encodeURIComponent(memberNameFilter) + '&list_filter_column=reg.team_id&list_filter_text=' + $scope.teamId + '&list_sort_column=first_name&list_ascending=true&list_page_size=4&list_page_offset=' + pageNumber,
                   error: ->
                     setTeamMembers teamMembers, totalNumberResults
                   success: (response) ->
