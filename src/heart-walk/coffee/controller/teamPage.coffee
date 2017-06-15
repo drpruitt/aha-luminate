@@ -131,7 +131,7 @@ angular.module 'ahaLuminateControllers'
                         if donationUrl?
                           teamParticipant.donationUrl = donationUrl.split('/site/')[1]
                         teamMembers.push teamParticipant
-                    setTeamMembers teamMembers, totalNumberResults
+                  setTeamMembers teamMembers, totalNumberResults
       $scope.getTeamMembers()
       
       $scope.searchTeamMembers = (teamMemberSearch) ->
