@@ -120,7 +120,7 @@
               <div class="ym-pc-report-header-buttons" ng-if="participantGifts.gifts && participantGifts.gifts.length > 0" ng-cloak>
                 <a class="btn btn-md-wide btn-secondary" ng-href="TRParticipantDownload/Personal_Donations.csv?download_type=personal_donations&amp;fr_id={{frId}}" target="_blank">
                   <i class="fa fa-download" aria-hidden="true"></i> <strong>Download</strong>
-                </a> 
+                </a>
                 <a class="btn btn-md-wide btn-secondary" ng-click="thankAllParticipantDonors()">
                   <i class="fa fa-envelope" aria-hidden="true"></i> <strong>Thank All</strong>
                 </a>
@@ -140,22 +140,25 @@
                 <tr>
                   <th scope="col">
                     <div class="text-left">
-                      <a>
-                        <strong>Name</strong>
+                      <a ng-href="{{baseUrl}}#" ng-click="orderParticipantGifts('cons_first_name')">
+                        <strong>Name</strong> 
+                        <span class="fa" ng-class="{'fa-caret-down': (participantGifts.sortColumn == 'cons_first_name' && !participantGifts.sortAscending) || participantGifts.sortColumn != 'cons_first_name', 'fa-caret-up': participantGifts.sortColumn == 'cons_first_name' && participantGifts.sortAscending, 'inactive': participantGifts.sortColumn != 'cons_first_name'}" ng-if="participantGifts.gifts.length"></span>
                       </a>
                     </div>
                   </th>
                   <th scope="col">
                     <div class="text-center">
-                      <a>
-                        <strong>Amount</strong>
+                      <a ng-href="{{baseUrl}}#" ng-click="orderParticipantGifts('amount')">
+                        <strong>Amount</strong> 
+                        <span class="fa" ng-class="{'fa-caret-down': (participantGifts.sortColumn == 'amount' && !participantGifts.sortAscending) || participantGifts.sortColumn != 'amount', 'fa-caret-up': participantGifts.sortColumn == 'amount' && participantGifts.sortAscending, 'inactive': participantGifts.sortColumn != 'amount'}" ng-if="participantGifts.gifts.length"></span>
                       </a>
                     </div>
                   </th>
                   <th scope="col">
                     <div class="text-right">
-                      <a>
-                        <strong>Date</strong>
+                      <a ng-href="{{baseUrl}}#" ng-click="orderParticipantGifts('date_recorded')">
+                        <strong>Date</strong> 
+                        <span class="fa" ng-class="{'fa-caret-down': (participantGifts.sortColumn == 'date_recorded' && !participantGifts.sortAscending) || participantGifts.sortColumn != 'date_recorded', 'fa-caret-up': participantGifts.sortColumn == 'date_recorded' && participantGifts.sortAscending, 'inactive': participantGifts.sortColumn != 'date_recorded'}" ng-if="participantGifts.gifts.length"></span>
                       </a>
                     </div>
                   </th>
@@ -179,7 +182,7 @@
                         </div>
                         <div class="ym-pc-reports-lists__note" ng-if="participantGift.giftMessage">
                           <a ng-click="showMessage = ! showMessage">
-                            <strong> 
+                            <strong>
                               See Note <i class="fa fa-chevron-up"></i>
                             </strong>
                           </a>
@@ -219,7 +222,7 @@
               <div class="ym-pc-report-header-buttons" ng-if="teamGifts.gifts && teamGifts.gifts.length > 0" ng-cloak>
                 <a class="btn btn-md-wide btn-secondary" ng-href="TRParticipantDownload/Team_Donations.csv?download_type=team_donations&amp;fr_id={{frId}}" target="_blank">
                   <i class="fa fa-download" aria-hidden="true"></i> <strong>Download</strong>
-                </a> 
+                </a>
                 <a class="btn btn-md-wide btn-secondary" ng-click="thankAllTeamDonors()">
                   <i class="fa fa-envelope" aria-hidden="true"></i> <strong>Thank All</strong>
                 </a>
@@ -239,22 +242,25 @@
                 <tr>
                   <th scope="col">
                     <div class="text-left">
-                      <a>
-                        <strong>Name</strong>
+                      <a ng-href="{{baseUrl}}#" ng-click="orderTeamGifts('cons_first_name')">
+                        <strong>Name</strong> 
+                        <span class="fa" ng-class="{'fa-caret-down': (teamGifts.sortColumn == 'cons_first_name' && !teamGifts.sortAscending) || teamGifts.sortColumn != 'cons_first_name', 'fa-caret-up': teamGifts.sortColumn == 'cons_first_name' && teamGifts.sortAscending, 'inactive': teamGifts.sortColumn != 'cons_first_name'}" ng-if="teamGifts.gifts.length"></span>
                       </a>
                     </div>
                   </th>
                   <th scope="col">
                     <div class="text-center">
-                      <a>
-                        <strong>Amount</strong>
+                      <a ng-href="{{baseUrl}}#" ng-click="orderTeamGifts('amount')">
+                        <strong>Amount</strong> 
+                        <span class="fa" ng-class="{'fa-caret-down': (teamGifts.sortColumn == 'amount' && !teamGifts.sortAscending) || teamGifts.sortColumn != 'amount', 'fa-caret-up': teamGifts.sortColumn == 'amount' && teamGifts.sortAscending, 'inactive': teamGifts.sortColumn != 'amount'}" ng-if="teamGifts.gifts.length"></span>
                       </a>
                     </div>
                   </th>
                   <th scope="col">
                     <div class="text-right">
-                      <a>
-                        <strong>Date</strong>
+                      <a ng-href="{{baseUrl}}#" ng-click="orderTeamGifts('date_recorded')">
+                        <strong>Date</strong> 
+                        <span class="fa" ng-class="{'fa-caret-down': (teamGifts.sortColumn == 'date_recorded' && !teamGifts.sortAscending) || teamGifts.sortColumn != 'date_recorded', 'fa-caret-up': teamGifts.sortColumn == 'date_recorded' && teamGifts.sortAscending, 'inactive': teamGifts.sortColumn != 'date_recorded'}" ng-if="teamGifts.gifts.length"></span>
                       </a>
                     </div>
                   </th>
