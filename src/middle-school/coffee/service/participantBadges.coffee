@@ -17,10 +17,7 @@ angular.module 'ahaLuminateApp'
           response
       
       getRollupTotals: ->
-        if luminateExtend.global.tablePrefix is 'heartdev'
-          url = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent('https://thegreatreplaystaging.boundlessnetwork.com/api/schools/totals')
-        else
-          url = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent('https://thegreatreplay.heart.org/api/schools/totals')
+        url = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent('https://thegreatreplaystaging.boundlessnetwork.com/api/schools/totals')
         $http
           method: 'GET'
           url: url
