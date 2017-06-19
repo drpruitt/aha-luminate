@@ -119,7 +119,7 @@ angular.module 'trPcControllers'
                 customFieldType = fieldName.slice(7).replace(/\d+/g,"")
                 if $scope.constituent.custom? and $scope.constituent.custom[customFieldType]?
                   angular.forEach $scope.constituent.custom[customFieldType], (customField) ->
-                    if fieldName == customField.id 
+                    if fieldName is customField.id 
                       fieldValue = customField.content
               else if fieldName.indexOf(".") > -1
               # next check for "nested" fields
@@ -231,7 +231,7 @@ angular.module 'trPcControllers'
             if response.data.errorResponse?
               $scope.updateProfileSuccess = false
               $scope.updateProfileFailure = true
-              $scope.updateProfileFailureMessage = response.data.errorResponse.message || "An unexpected error occurred while updating your profile."
+              $scope.updateProfileFailureMessage = response.data.errorResponse.message or "An unexpected error occurred while updating your profile."
             else
               $scope.updateProfileSuccess = true
               $scope.updateProfileFailure = false
@@ -245,7 +245,7 @@ angular.module 'trPcControllers'
             if response.data.errorResponse?
               $scope.updatePasswordSuccess = false
               $scope.updatePasswordFailure = true
-              $scope.updatePasswordFailureMessage = response.data.errorResponse.message || "An unexpected error occurred while updating your profile."
+              $scope.updatePasswordFailureMessage = response.data.errorResponse.message or "An unexpected error occurred while updating your profile."
               $scope.cpvm.passwordOptions.resetModel()
             else
               $scope.updatePasswordSuccess = true

@@ -165,7 +165,7 @@
         </div>
       </div>
     </section>
-    <section class="ym-pc-dashboard-activities-section" aria-label="My Fundraising Activities">
+    <section class="ym-pc-dashboard-activities-section" aria-label="My Fundraising Activities" ng-if="participantRegistration.aTeamCaptain != 'true'" ng-cloak>
       <div class="ym-pc-dashboard-section-header">
         <h2 class="h3">
           My Activities
@@ -330,10 +330,27 @@
         </div>
       </div>
     </section>
-    <section class="ym-pc-dashboard-coordinators-message-section" ng-if="coordinatorsMessage.message && coordinatorsMessage.message != ''" ng-cloak aria-label="Note From Your Teacher">
+    <section class="ym-pc-dashboard-captain-activities-section" aria-label="Team Champion Activities" ng-if="participantRegistration.aTeamCaptain == 'true'" ng-cloak>
+      <div class="ym-pc-dashboard-section-header">
+        <h2 class="h3">
+          Team Champion Activities
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 ym-activity-box ym-activity-box--captain-pages">
+          <h3 class="h5">
+            <span class="ym-activity-box-number">1</span> Edit My Pages
+          </h3>
+          <p>
+            Edit your pages to encourage students and parents to join and donate!
+          </p>
+        </div>
+      </div>
+    </section>
+    <section class="ym-pc-dashboard-coordinators-message-section" aria-label="Note From Your Superintendent" ng-if="coordinatorsMessage.message && coordinatorsMessage.message != ''" ng-cloak>
       <div class="ym-pc-dashboard-section-header">
         <h2 class="h5">
-          Note From Your Teacher
+          Note From Your Superintendent
         </h2>
         <div ng-bind-html="coordinatorsMessage.message"></div>
       </div>
@@ -684,7 +701,10 @@
             Visit our Thank-You Gift portal to manage and order gifts for your students.
           </p>
           <div class="ym-activity-box-cta">
-            <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#" target="_blank">
+            <a class="btn btn-md-wide btn-primary" ng-href="https://districtheartchallengestaging.boundlessnetwork.com/coordinator/login/{{authToken}}/{{sessionCookie}}" target="_blank" ng-if="tablePrefix == 'heartdev'" ng-cloak>
+              <strong>Thank You Gifts</strong>
+            </a>
+            <a class="btn btn-md-wide btn-primary" ng-href="https://districtheartchallenge.heart.org/coordinator/login/{{authToken}}/{{sessionCookie}}" target="_blank" ng-if="tablePrefix == 'heart'" ng-cloak> 
               <strong>Thank You Gifts</strong>
             </a>
           </div>

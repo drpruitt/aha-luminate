@@ -111,7 +111,7 @@ angular.module 'trPcControllers'
           suggestedMessages = [suggestedMessages] if not angular.isArray suggestedMessages
           $scope.suggestedMessages = []
           angular.forEach suggestedMessages, (message) ->
-            if message.active == 'true'
+            if message.active is 'true'
               $scope.suggestedMessages.push message
           response
       $scope.emailPromises.push suggestedMessagesPromise

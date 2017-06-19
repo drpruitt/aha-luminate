@@ -330,7 +330,7 @@
         </div>
       </div>
     </section>
-    <section class="ym-pc-dashboard-coordinators-message-section" ng-if="coordinatorsMessage.message && coordinatorsMessage.message != ''" ng-cloak aria-label="Note From Your Teacher">
+    <section class="ym-pc-dashboard-coordinators-message-section" aria-label="Note From Your Teacher" ng-if="coordinatorsMessage.message && coordinatorsMessage.message != ''" ng-cloak>
       <div class="ym-pc-dashboard-section-header">
         <h2 class="h5">
           Note From Your Teacher
@@ -684,10 +684,10 @@
             Visit our Thank-You Gift portal to manage and order gifts for your students.
           </p>
           <div class="ym-activity-box-cta">
-            <a class="btn btn-md-wide btn-primary" ng-if="tablePrefix == 'heartdev'" ng-href="https://thegreatreplaystaging.boundlessnetwork.com/coordinator/login/{{authToken}}/{{sessionCookie}}" target="_blank">
+            <a class="btn btn-md-wide btn-primary" ng-href="https://thegreatreplaystaging.boundlessnetwork.com/coordinator/login/{{authToken}}/{{sessionCookie}}" target="_blank" ng-if="tablePrefix == 'heartdev'" ng-cloak>
               <strong>Thank You Gifts</strong>
             </a>
-            <a class="btn btn-md-wide btn-primary" ng-if="tablePrefix == 'heart'" ng-href="https://thegreatreplay.heart.org/coordinator/login/{{authToken}}/{{sessionCookie}}" target="_blank">
+            <a class="btn btn-md-wide btn-primary" ng-href="https://thegreatreplay.heart.org/coordinator/login/{{authToken}}/{{sessionCookie}}" target="_blank" ng-if="tablePrefix == 'heart'" ng-cloak>
               <strong>Thank You Gifts</strong>
             </a>
           </div>
