@@ -252,6 +252,7 @@
   }
 }
 
+.ym-pc-dashboard-captain-resources-section, 
 .ym-pc-dashboard-coordinator-resources-section {
   .ym-pc-dashboard-section-header {
     h3, 
@@ -259,13 +260,14 @@
       margin: 0 0 32px;
     }
   }
-  
-  .ym-pc-dashboard-coordinator-resources-options {
-    .ym-pc-dashboard-section-header {
-      h5, 
-      .h5 {
-        text-transform: none;
-      }
+}
+
+.ym-pc-dashboard-captain-resources-options, 
+.ym-pc-dashboard-coordinator-resources-options {
+  .ym-pc-dashboard-section-header {
+    h5, 
+    .h5 {
+      text-transform: none;
     }
   }
 }
