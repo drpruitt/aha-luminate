@@ -745,10 +745,10 @@
             Visit our Thank-You Gift portal to manage and order gifts for your students.
           </p>
           <div class="ym-activity-box-cta">
-            <a class="btn btn-md-wide btn-primary" ng-if="tablePrefix == 'heartdev'" ng-href="https://jumphoopsstaging.boundlessnetwork.com/coordinator/login/{{authToken}}/{{sessionCookie}}" target="_blank">
+            <a class="btn btn-md-wide btn-primary" ng-href="https://jumphoopsstaging.boundlessnetwork.com/coordinator/login/{{authToken}}/{{sessionCookie}}" target="_blank" ng-if="tablePrefix == 'heartdev'" ng-cloak>
               <strong>Thank You Gifts</strong>
             </a>
-            <a class="btn btn-md-wide btn-primary" ng-if="tablePrefix == 'heart'" ng-href="https://jumphoops.org/coordinator/login/{{authToken}}/{{sessionCookie}}" target="_blank">
+            <a class="btn btn-md-wide btn-primary" ng-href="https://jumphoops.heart.org/coordinator/login/{{authToken}}/{{sessionCookie}}" target="_blank" ng-if="tablePrefix == 'heart'" ng-cloak> 
               <strong>Thank You Gifts</strong>
             </a>
           </div>

@@ -85,7 +85,7 @@ angular.module 'trPageEditControllers'
             $scope.personalPhoto2IsDefault = $scope.personalPhoto2Url.indexOf(defaultPhotoUrl.replace('..', '')) isnt -1
           if not $scope.$$phase
             $scope.$apply()
-        if $personalPhoto2.css('background-image') && $personalPhoto2.css('background-image').indexOf('(') isnt -1
+        if $personalPhoto2.css('background-image') and $personalPhoto2.css('background-image').indexOf('(') isnt -1
           $scope.setPersonalPhoto2Url $personalPhoto2.css('background-image').split('(')[1].split(')')[0]
           $personalPhoto2.replaceWith $compile($personalPhoto2.clone().attr('ng-style', "{'background-image': 'url(' + personalPhoto2Url + ')'}"))($scope)
           $personalPhoto2 = angular.element '.kd-user-cover__bg'
