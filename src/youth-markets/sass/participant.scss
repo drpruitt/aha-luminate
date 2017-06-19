@@ -1550,38 +1550,41 @@ main > .container {
   }
 }
 
+.ym-pc-dashboard-captain-resources-section, 
 .ym-pc-dashboard-coordinator-resources-section {
   background-color: $event-accent-light;
   padding: 36px;
   margin: 0 0 30px;
+}
 
-  .ym-pc-dashboard-coordinator-resources-options {
-    text-align: center;
-
-    .ym-pc-dashboard-section-header {
-      .h5 {
-        color: $event-secondary;
-        margin: 0 0 18px;
-
-        @media (min-width: $screen-sm-min) {
-          margin: 0 0 20px;
-        }
+.ym-pc-dashboard-captain-resources-options, 
+.ym-pc-dashboard-coordinator-resources-options {
+  text-align: center;
+  
+  .ym-pc-dashboard-section-header {
+    .h5 {
+      color: $event-secondary;
+      margin: 0 0 18px;
+      
+      @media (min-width: $screen-sm-min) {
+        margin: 0 0 20px;
       }
     }
-
-    .btn {
-      margin: 0 0 32px;
-
-      @media (min-width: $screen-sm-min) {
-        margin: 0;
-      }
+  }
+  
+  .btn {
+    margin: 0 0 32px;
+    
+    @media (min-width: $screen-sm-min) {
+      margin: 0;
     }
   }
 }
 
+.ym-pc-dashboard-captain-resources-more, 
 .ym-pc-dashboard-coordinator-resources-more {
   text-align: center;
-
+  
   @media (min-width: $screen-sm-min) {
     margin: 32px 0 0;
   }
