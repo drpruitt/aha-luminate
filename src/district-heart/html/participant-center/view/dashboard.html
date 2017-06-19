@@ -452,7 +452,7 @@
         <div ng-bind-html="coordinatorsMessage.message"></div>
       </div>
     </section>
-    <section class="ym-pc-dashboard-captain-resources-section" aria-label="Fundriasing Resources">
+    <section class="ym-pc-dashboard-captain-resources-section" aria-label="Fundriasing Resources" ng-if="participantRegistration.aTeamCaptain == 'true' && location != '/dashboard-student'" ng-cloak>
       <div class="ym-pc-dashboard-section-header">
         <h2 class="h3">
           Team Champion Resources

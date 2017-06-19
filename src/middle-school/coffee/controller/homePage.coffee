@@ -114,8 +114,8 @@ angular.module 'ahaLuminateControllers'
             1050:
               stagePadding: 290
           navText: [
-            '<i class="fa fa-chevron-left" aria-hidden="true" />'
-            '<i class="fa fa-chevron-right" aria-hidden="true" />'
+            '<i class="fa fa-chevron-left" hidden aria-hidden="true" />'
+            '<i class="fa fa-chevron-right" hidden aria-hidden="true" />'
           ]
       $timeout initCarousel, 1000
       
@@ -130,8 +130,8 @@ angular.module 'ahaLuminateControllers'
               loop: true
               center: true
               navText: [
-                '<i class="fa fa-chevron-left" aria-hidden="true" />'
-                '<i class="fa fa-chevron-right" aria-hidden="true" />'
+                '<i class="fa fa-chevron-left" hidden aria-hidden="true" />'
+                '<i class="fa fa-chevron-right" hidden aria-hidden="true" />'
               ]
       $timeout initHeroCarousel, 1000
   ]
