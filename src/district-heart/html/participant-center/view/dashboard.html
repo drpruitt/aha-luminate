@@ -96,12 +96,12 @@
                       <strong><span ng-bind-html="teamProgress.goalFormatted"></span></strong> goal
                     </p>
                   </div>
-                  <div ng-if="participantRegistration.aTeamCaptain != 'true' || participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
+                  <div ng-if="participantRegistration.aTeamCaptain != 'true' || location == '/dashboard-student'" ng-cloak>
                     <p>
                       &nbsp;
                     </p>
                   </div>
-                  <div ng-if="participantRegistration.aTeamCaptain == 'true' && participantRegistration.companyInformation.isCompanyCoordinator != 'true'" ng-cloak>
+                  <div ng-if="participantRegistration.aTeamCaptain == 'true' && location != '/dashboard-student'" ng-cloak>
                     <p>
                       <a ng-click="editTeamGoal()">
                         <strong>Update Team Goal</strong>
@@ -165,7 +165,7 @@
         </div>
       </div>
     </section>
-    <section class="ym-pc-dashboard-activities-section" aria-label="My Fundraising Activities" ng-if="participantRegistration.aTeamCaptain != 'true'" ng-cloak>
+    <section class="ym-pc-dashboard-activities-section" aria-label="My Fundraising Activities" ng-if="participantRegistration.aTeamCaptain != 'true' || location == '/dashboard-student'" ng-cloak>
       <div class="ym-pc-dashboard-section-header">
         <h2 class="h3">
           My Activities
@@ -330,7 +330,7 @@
         </div>
       </div>
     </section>
-    <section class="ym-pc-dashboard-captain-activities-section" aria-label="Team Champion Activities" ng-if="participantRegistration.aTeamCaptain == 'true'" ng-cloak>
+    <section class="ym-pc-dashboard-captain-activities-section" aria-label="Team Champion Activities" ng-if="participantRegistration.aTeamCaptain == 'true' && location != '/dashboard-student'" ng-cloak>
       <div class="ym-pc-dashboard-section-header">
         <h2 class="h3">
           Team Champion Activities
@@ -346,7 +346,7 @@
           </p>
           <div class="ym-pc-dashboard-captain-page-types">
             <div class="clearfix">
-              <div class="ym-pc-dashboard-captain-page-type" ng-class="{'active': dashboardPageType == 'team'}" ng-if="companyInfo.teamCount > 1">
+              <div class="ym-pc-dashboard-captain-page-type" ng-class="{'active': dashboardPageType == 'team'}">
                 <a ng-click="togglePageType('team')">
                   <strong>Team</strong>
                 </a>
@@ -355,6 +355,84 @@
                 <a ng-click="togglePageType('personal')">
                   <strong>Personal</strong>
                 </a>
+              </div>
+            </div>
+          </div>
+          <div ng-class="{'hidden': dashboardPageType != 'team'}">
+            <div class="ym-pc-dashboard-captain-page-view">
+              <div class="text-center">
+                <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=team&amp;team_id={{participantRegistration.teamId}}">
+                  <strong>View and Edit Team Page</strong>
+                </a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-7">
+                <div class="ym-activity-url">
+                  <p>
+                    <strong>Team Page URL:</strong>
+                  </p>
+                  <p class="small">
+                    <span ng-bind-html="teamPageUrl"></span>
+                  </p>
+                  <a class="btn btn-md-wide btn-primary" ng-click="editTeamUrl()">
+                    <strong>Edit</strong>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-5">
+                <div class="clearfix">
+                  <div class="ym-activity-share-page">
+                    <p>
+                      <strong>Share My Team&nbsp;Page:</strong>
+                    </p>
+                    <a ng-href="{{baseUrl}}#" ng-click="delegatedAddThis('.js--team-social-share', 'facebook')">
+                      <img src="../aha-luminate/dist/youth-markets/image/facebook-logo.png" alt="Facebook">
+                    </a> 
+                    <a ng-href="{{baseUrl}}#" ng-click="delegatedAddThis('.js--team-social-share', 'twitter')">
+                      <img src="../aha-luminate/dist/youth-markets/image/twitter-logo.png" alt="Twitter">
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div ng-class="{'hidden': dashboardPageType != 'personal'}" ng-cloak>
+            <div class="ym-pc-dashboard-captain-page-view">
+              <div class="text-center">
+                <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=personal&amp;px={{consId}}">
+                  <strong>View and Edit Your Page</strong>
+                </a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-7">
+                <div class="ym-activity-url">
+                  <p>
+                    <strong>Personal Page URL:</strong>
+                  </p>
+                  <p class="small">
+                    <span ng-bind-html="personalPageUrl"></span>
+                  </p>
+                  <a class="btn btn-md-wide btn-primary" ng-click="editPersonalUrl()">
+                    <strong>Edit</strong>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-5">
+                <div class="clearfix">
+                  <div class="ym-activity-share-page">
+                    <p>
+                      <strong>Share My Personal&nbsp;Page:</strong>
+                    </p>
+                    <a ng-href="{{baseUrl}}#" ng-click="delegatedAddThis('.js--personal-social-share', 'facebook')">
+                      <img src="../aha-luminate/dist/youth-markets/image/facebook-logo.png" alt="Facebook">
+                    </a> 
+                    <a ng-href="{{baseUrl}}#" ng-click="delegatedAddThis('.js--personal-social-share', 'twitter')">
+                      <img src="../aha-luminate/dist/youth-markets/image/twitter-logo.png" alt="Twitter">
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
