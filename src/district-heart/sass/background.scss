@@ -1,5 +1,7 @@
 main {
-  background: url('../image/bkrd.png') repeat top left scroll;
+  @media (min-width: $screen-md-min) {
+    background: url('../image/bkrd.png') repeat top left scroll;
+  }
 }
 
 .event-secondary-medium--diagonal {
