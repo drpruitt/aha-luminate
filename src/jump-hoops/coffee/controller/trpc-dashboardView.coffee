@@ -136,7 +136,7 @@ angular.module 'trPcControllers'
                 if interactions.length > 0
                   interaction = interactions[0]
                   $scope.coordinatorMessage.text = interaction.note?.text or ''
-                  $scope.coordinatorMessage.interactionId = interaction.interactionId? or ''
+                  $scope.coordinatorMessage.interactionId = interaction.interactionId or ''
         
         $scope.editCoordinatorMessage = ->
           $scope.editCoordinatorMessageModal = $uibModal.open
