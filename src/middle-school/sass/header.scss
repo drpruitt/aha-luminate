@@ -5,4 +5,18 @@ header {
     padding-left: 10px;
 
   }
+
+  @media(max-width: $screen-xs) {
+    .ym-header-logo--aha > a img {
+      max-width: 100px;
+    }
+    
+    .ym-header-logo--middle-school {
+      max-width: 150px;
+
+      img {
+        max-width: 100%;
+      }
+    }
+  }
 }
