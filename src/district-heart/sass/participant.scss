@@ -12,6 +12,10 @@
     &:hover,
     &:focus,
     &:active {
+      @media (min-width: 670px) {
+        width: 20%;
+      }
+
       &.ng-pc-nav-item--resources {
         padding: 12px 6px 0;
         
