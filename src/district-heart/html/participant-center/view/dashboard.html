@@ -290,7 +290,7 @@
             My Page
           </h3>
           <p>
-            Personalize your fundraising page to share your heart-healthy journey. Students who personalize their page raise more money!
+            Personalize your fundraising page to share your heart-healthy journey. Participants who personalize their page raise more money!
           </p>
           <div class="text-center">
             <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=personal&amp;px={{consId}}">
@@ -571,12 +571,12 @@
           <div class="ym-pc-dashboard-coordinator-students-box" ng-if="companyInfo.participantCount" ng-cloak>
             <div class="ym-pc-dashboard-section-header">
               <h3 class="h5">
-                My Students
+                My Participants
               </h3>
             </div>
             <div>
               <p>
-                You have <strong><span ng-bind-html="companyInfo.participantCount"></span></strong> students registered. Keep recruiting to meet your goal of <strong><span><span ng-bind-html="studentRegGoal"></span></span></strong> students!
+                You have <strong><span ng-bind-html="companyInfo.participantCount"></span></strong> participants registered. Keep recruiting to meet your goal of <strong><span><span ng-bind-html="studentRegGoal"></span></span></strong> participants!
               </p>
               <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email">
                 <strong>Send Emails</strong>
@@ -584,7 +584,7 @@
             </div>
             <div class="ym-pc-dashboard-coordinator-create-message">
               <p>
-                Create/Update an <strong>encouraging message</strong> for your student in their Headquarters.
+                Create/Update an <strong>encouraging message</strong> for your participants in their Headquarters.
               </p>
               <button type="button" class="btn btn-md-wide btn-primary" ng-click="editCoordinatorMessage()">
                 <strong>Create Message</strong>
@@ -606,7 +606,7 @@
             <span class="ym-activity-box-number">1</span> Edit My Pages
           </h3>
           <p>
-            Edit your pages to encourage students and parents to join and donate!
+            Edit your pages to encourage participants to join and donate!
           </p>
           <div class="ym-pc-dashboard-coordinator-page-types" ng-class="{'ym-pc-dashboard-coordinator-page-types--multi-team': companyInfo.teamCount > 1}">
             <div class="clearfix">
@@ -747,12 +747,12 @@
         </div>
         <div class="col-sm-6 ym-activity-box ym-activity-box--coordinator-student-view">
           <h3 class="h5">
-            <span class="ym-activity-box-number">2</span> Show your Students
+            <span class="ym-activity-box-number">2</span> Show your Participants
           </h3>
           <div class="clearfix">
             <div class="ym-pc-student-view-text">
               <p>
-                Use the "Participant View" to show your students all of the great tools and games in their Headquarters and encourage them to fundraise!
+                Use the "Participant View" to show your participants all of the great tools and games in their Headquarters and encourage them to fundraise!
               </p>
               <div class="hidden-xs">
                 <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/dashboard-student">
@@ -782,7 +782,7 @@
             <span class="ym-activity-box-number">3</span> Check Progress
           </h3>
           <p>
-            Check out the reports page to see which students have completed challenges and who has earned donations.
+            Check out the reports page to see which participants have completed challenges and who has earned donations.
           </p>
           <div class="ym-activity-box-cta">
             <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/reports">
@@ -795,7 +795,7 @@
             <span class="ym-activity-box-number">4</span> Order Thank-You Gifts
           </h3>
           <p>
-            Visit our Thank-You Gift portal to manage and order gifts for your students.
+            Visit our Thank-You Gift portal to manage and order gifts for your participants.
           </p>
           <div class="ym-activity-box-cta">
             <a class="btn btn-md-wide btn-primary" ng-href="https://districtheartchallengestaging.boundlessnetwork.com/coordinator/login/{{authToken}}/{{sessionCookie}}" target="_blank" ng-if="tablePrefix == 'heartdev'" ng-cloak>

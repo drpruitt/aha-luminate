@@ -153,21 +153,21 @@ angular.module 'trPcControllers'
           {
             type: 'input'
             key: 'check_number'
-            hideExpression: "model.payment_type != 'check'"
+            hideExpression: "model.payment_type isnt 'check'"
             templateOptions:
               label: 'Check Number:'
           }
           {
             type: 'input'
             key: 'credit_card_number'
-            hideExpression: "model.payment_type != 'credit'"
+            hideExpression: "model.payment_type isnt 'credit'"
             templateOptions:
               label: 'Credit Card Number:'
           }
           {
             type: 'select'
             key: 'credit_card_month'
-            hideExpression: "model.payment_type != 'credit'"
+            hideExpression: "model.payment_type isnt 'credit'"
             defaultValue: ccExpMonthDefault
             templateOptions:
               label: 'Credit Card Expiration Month:'
@@ -177,7 +177,7 @@ angular.module 'trPcControllers'
           {
             type: 'select'
             key: 'credit_card_year'
-            hideExpression: "model.payment_type != 'credit'"
+            hideExpression: "model.payment_type isnt 'credit'"
             defaultValue: ccExpYearDefault
             templateOptions:
               label: 'Credit Card Expiration Year:'
@@ -187,56 +187,56 @@ angular.module 'trPcControllers'
           {
             type: 'input'
             key: 'credit_card_verification_code'
-            hideExpression: "model.payment_type != 'credit'"
+            hideExpression: "model.payment_type isnt 'credit'"
             templateOptions:
               label: 'Verification Code:'
           }
           {
             type: 'input'
             key: 'billing_first_name'
-            hideExpression: "model.payment_type != 'credit'"
+            hideExpression: "model.payment_type isnt 'credit'"
             templateOptions:
               label: 'Billing First Name:'
           }
           {
             type: 'input'
             key: 'billing_last_name'
-            hideExpression: "model.payment_type != 'credit'"
+            hideExpression: "model.payment_type isnt 'credit'"
             templateOptions:
               label: 'Billing Last Name:'
           }
           {
             type: 'input'
             key: 'billing_street1'
-            hideExpression: "model.payment_type != 'credit'"
+            hideExpression: "model.payment_type isnt 'credit'"
             templateOptions:
               label: 'Billing Address:'
           }
           {
             type: 'input'
             key: 'billing_street2'
-            hideExpression: "model.payment_type != 'credit'"
+            hideExpression: "model.payment_type isnt 'credit'"
             templateOptions:
               label: 'Billing Address 2:'
           }
           {
             type: 'input'
             key: 'billing_city'
-            hideExpression: "model.payment_type != 'credit'"
+            hideExpression: "model.payment_type isnt 'credit'"
             templateOptions:
               label: 'Billing City:'
           }
           {
             type: 'input'
             key: 'billing_state'
-            hideExpression: "model.payment_type != 'credit'"
+            hideExpression: "model.payment_type isnt 'credit'"
             templateOptions:
               label: 'Billing State:'
           }
           {
             type: 'input'
             key: 'billing_zip'
-            hideExpression: "model.payment_type != 'credit'"
+            hideExpression: "model.payment_type isnt 'credit'"
             templateOptions:
               label: 'Billing Zip:'
           }
