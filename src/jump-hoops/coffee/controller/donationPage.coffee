@@ -330,8 +330,8 @@ angular.module 'ahaLuminateControllers'
         $requiredField = angular.element '.field-required'
         angular.forEach $requiredField, (required) ->
           $req = angular.element required
-          if not angular.element($req).parent().parent().parent().hasClass 'payment-field-container' or angular.element($req).hasClass '.btn' 
-            if not angular.element($req).parent().parent().hasClass 'form-donation-level'
+          if not angular.element($req).parent().parent().parent().is '.payment-field-container' or angular.element($req).is '.btn' 
+            if not angular.element($req).parent().parent().is '.form-donation-level'
               angular.element($req).parent().parent().addClass 'form-row-required'
         angular.element('#tr_message_to_participant_row').addClass 'hidden'
         angular.element('#billing_info').parent().addClass 'billing_info_toggle'
@@ -343,7 +343,7 @@ angular.module 'ahaLuminateControllers'
         employerMatchFields()
         billingAddressFields()
         donorRecognitionFields()
-        if angular.element('body').hasClass 'cons-logged-in'
+        if angular.element('body').is '.cons-logged-in'
           hideDonorInfo = true
           $reqInput = angular.element '.form-row-required input[type="text"]'
           $reqSelect = angular.element '.form-row-required select'
