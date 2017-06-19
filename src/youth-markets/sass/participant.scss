@@ -31,7 +31,7 @@ main > .container {
     max-width: 320px;
     margin: 0 auto 7px;
   }
-
+  
   a {
     &,
     &:link,
@@ -49,11 +49,11 @@ main > .container {
       padding: 12px 6px 0;
       margin: 0 3px 5px;
       vertical-align: bottom;
-
+      
       @media (max-width: 350px) {
         max-width: 85px;
       }
-
+      
       @media (min-width: 560px) {
         border-right: 2px solid $event-accent;
         font-size: 18px;
@@ -64,48 +64,48 @@ main > .container {
         margin: 0;
       }
     }
-
+    
     &,
     &:link,
     &:visited {
       background: $event-secondary;
       color: $brand-white;
-
+      
       @media (min-width: 560px) {
         background: $event-secondary-medium;
         color: $event-secondary;
         font-size: 17px;
       }
-
+      
       @media (min-width: 590px) {
         font-size: 18px;
       }
     }
-
+    
     &:hover,
     &:focus,
     &:active {
       background: $event-secondary;
       color: $brand-white;
-
+      
       @media (min-width: 560px) {
         background: $event-secondary;
         color: $brand-white;
       }
     }
-
+    
     &:last-child {
       @media (min-width: 560px) {
         border-right: 0;
         margin: 0;
       }
     }
-
+    
     &.active {
       background: $brand-white;
       color: $event-secondary;
     }
-
+    
     > span {
       display: inline-block;
       margin: 0 auto;
@@ -119,7 +119,7 @@ main > .container {
     max-width: 320px;
     margin: 0 auto 7px;
   }
-
+  
   a {
     &,
     &:link,
@@ -136,65 +136,65 @@ main > .container {
         padding: 12px 6px 0;
         margin: 0 3px 5px;
       }
-
+      
       @media (min-width: 670px) {
         font-size: 17px;
         width: 16.66666667%;
       }
-
+      
       @media (min-width: 690px) {
         font-size: 18px;
       }
-
+      
       &.ng-pc-nav-item--resources {
         padding: 3px 6px 0;
-
+        
         @media (min-width: 670px) {
           padding: 3px 12px 0;
         }
-
+        
         @media (min-width: 1170px) {
           padding: 14px 12px 0;
         }
-
+        
         > span {
           max-width: 80px;
-
+          
           @media (min-width: 670px) {
             max-width: 100px;
           }
-
+          
           @media (min-width: 1170px) {
             max-width: none;
           }
         }
       }
-
+      
       &.ng-pc-nav-item--student-view {
         padding: 3px 6px 0;
-
+        
         @media (min-width: 670px) {
           padding: 3px 12px 0;
         }
-
+        
         @media (min-width: 890px) {
           padding: 14px 12px 0;
         }
-
+        
         > span {
           max-width: 65px;
-
+          
           @media (min-width: 670px) {
             max-width: 80px;
           }
-
+          
           @media (min-width: 890px) {
             max-width: none;
           }
         }
       }
     }
-
+    
     &,
     &:link,
     &:visited {
@@ -203,7 +203,7 @@ main > .container {
         color: $brand-white;
       }
     }
-
+    
     &:hover,
     &:focus,
     &:active {
@@ -212,13 +212,13 @@ main > .container {
         color: $brand-white;
       }
     }
-
+    
     &:last-child {
       @media (min-width: 560px) and (max-width: 669px) {
         margin: 0 3px 5px;
       }
     }
-
+    
     &.active {
       @media (max-width: 669px) {
         background: $brand-white;
