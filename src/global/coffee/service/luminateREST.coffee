@@ -41,7 +41,7 @@ angular.module 'ahaLuminateApp'
               api: apiServlet
               data: requestData
               requiresAuth: includeAuth
-              callback: callback || angular.noop
+              callback: callback or angular.noop
       
       teamraiserRequest: (requestData, includeAuth, includeFrId) ->
         this.request 'CRTeamraiserAPI', requestData, includeAuth, includeFrId

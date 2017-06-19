@@ -17,7 +17,11 @@ angular.module 'ahaLuminateApp'
           response
       
       getRollupTotals: ->
-        url = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent('https://jumphoopsstaging.boundlessnetwork.com/api/schools/totals')
+        if luminateExtend.global.tablePrefix is 'heartdev'
+          url = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent('https://jumphoopsstaging.boundlessnetwork.com/api/schools/totals')
+        else
+          # url = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent('https://jumphoops.heart.org/api/schools/totals')
+          url = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent('https://jumphoopsstaging.boundlessnetwork.com/api/schools/totals')
         $http
           method: 'GET'
           url: url

@@ -333,12 +333,12 @@ angular.module 'trPcControllers'
       else
         $scope.egvm.giftModel.hideGiftCategoriesOption = true
 
-      $scope.egvm.originalFields = angular.copy($scope.egvm.giftFields)
+      $scope.egvm.originalFields = angular.copy $scope.egvm.giftFields
       
-      $scope.egvm.giftModel.hideTeamGiftOption = !($scope.teamraiserConfig.offlineTeamGifts == 'MEMBERS' || ($scope.teamraiserConfig.offlineTeamGifts == 'CAPTAINS' && $scope.participantRegistration.aTeamCaptain == 'true'))
+      $scope.egvm.giftModel.hideTeamGiftOption = !($scope.teamraiserConfig.offlineTeamGifts is 'MEMBERS' or ($scope.teamraiserConfig.offlineTeamGifts is 'CAPTAINS' and $scope.participantRegistration.aTeamCaptain is 'true'))
 
       $scope.clearGiftAlerts = ->
-        autoclose = $scope.egvm.giftAlerts?.addGiftSuccess? && $scope.egvm.giftAlerts.addGiftSuccess
+        autoclose = $scope.egvm.giftAlerts?.addGiftSuccess
         $scope.egvm.giftAlerts =
           addGiftAttempt: false
           addGiftSuccess: false

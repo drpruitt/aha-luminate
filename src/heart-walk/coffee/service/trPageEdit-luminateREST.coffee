@@ -43,7 +43,7 @@ angular.module 'trPageEditApp'
               api: apiServlet
               data: requestData
               requiresAuth: includeAuth
-              callback: callback || angular.noop
+              callback: callback or angular.noop
       
       contentRequest: (requestData, includeAuth) ->
         this.request 'CRContentAPI', requestData, includeAuth, false
