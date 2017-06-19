@@ -165,7 +165,7 @@
         </div>
       </div>
     </section>
-    <section class="ym-pc-dashboard-activities-section" aria-label="My Fundraising Activities">
+    <section class="ym-pc-dashboard-activities-section" aria-label="My Fundraising Activities" ng-if="participantRegistration.aTeamCaptain != 'true'" ng-cloak>
       <div class="ym-pc-dashboard-section-header">
         <h2 class="h3">
           My Activities
@@ -330,10 +330,19 @@
         </div>
       </div>
     </section>
-    <section class="ym-pc-dashboard-coordinators-message-section" ng-if="coordinatorsMessage.message && coordinatorsMessage.message != ''" ng-cloak aria-label="Note From Your Teacher">
+    <section class="ym-pc-dashboard-activities-section" aria-label="Team Champion Activities" ng-if="participantRegistration.aTeamCaptain == 'true'" ng-cloak>
+      <div class="ym-pc-dashboard-section-header">
+        <h2 class="h3">
+          Team Champion Activities
+        </h2>
+      </div>
+      <div class="row">
+      </div>
+    </section>
+    <section class="ym-pc-dashboard-coordinators-message-section" aria-label="Note From Your Superintendent" ng-if="coordinatorsMessage.message && coordinatorsMessage.message != ''" ng-cloak>
       <div class="ym-pc-dashboard-section-header">
         <h2 class="h5">
-          Note From Your Teacher
+          Note From Your Superintendent
         </h2>
         <div ng-bind-html="coordinatorsMessage.message"></div>
       </div>
