@@ -117,7 +117,7 @@ angular.module 'trPcControllers'
               # first check for "custom" fields
               if fieldName.indexOf("custom_") > -1
                 customFieldType = fieldName.slice(7).replace(/\d+/g,"")
-                if $scope.constituent.custom? and $scope.constituent.custom[customFieldType]?
+                if $scope.constituent.custom and $scope.constituent.custom[customFieldType]?
                   angular.forEach $scope.constituent.custom[customFieldType], (customField) ->
                     if fieldName is customField.id 
                       fieldValue = customField.content
@@ -128,9 +128,9 @@ angular.module 'trPcControllers'
                 for i in [0..fieldName.length-1]
                   if tempPath[fieldName[i]]?
                     tempPath = tempPath[fieldName[i]]
-                if tempPath? and not angular.isObject(tempPath)
+                if tempPath and not angular.isObject(tempPath)
                   fieldValue = tempPath
-              else if $scope.constituent[fieldName]? and not angular.isObject($scope.constituent[fieldName])
+              else if $scope.constituent[fieldName] and not angular.isObject($scope.constituent[fieldName])
               # next check to see if the field exists in getUser response
                 fieldValue = $scope.constituent[fieldName]
               if fieldValue?
