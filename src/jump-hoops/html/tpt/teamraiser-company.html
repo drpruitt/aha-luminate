@@ -123,7 +123,7 @@
           </button>
         </div>
       </div>
-      <div class="hidden js--default-page-content" aria-hidden="true" ng-non-bindable>
+      <div class="hidden js--default-page-content" hidden aria-hidden="true" ng-non-bindable>
         [[C6:fr_rich_text]]
       </div>
       <div ng-show="companyPageContent.mode == 'view'">
@@ -166,11 +166,11 @@
       <img ng-src="{{localSponsorImageSrc}}" class="image-responsive" alt="{{localSponsorImageAlt}}"/>
     </p>
   </div>
-  <div ng-if="companyTeams.totalNumber == 1" class="modal fade" id="schoolDonation" tabindex="-1" role="dialog" aria-labelledby="schoolModalTitle" aria-hidden="true" style="display: none;">
+  <div ng-if="companyTeams.totalNumber == 1" class="modal fade" id="schoolDonation" tabindex="-1" role="dialog" aria-labelledby="schoolModalTitle" hidden aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-body text-center">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">X</span></button>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span hidden aria-hidden="true">X</span></button>
           <h4 class="modal-title h3" id="schoolModalTitle">
             Donate
           </h4>

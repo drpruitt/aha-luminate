@@ -25,8 +25,8 @@ angular.module 'ahaLuminateControllers'
               stagePadding: 120
               margin: 60
           navText: [
-            '<i class="fa fa-chevron-left" aria-hidden="true" />',
-            '<i class="fa fa-chevron-right" aria-hidden="true" />'
+            '<i class="fa fa-chevron-left" hidden aria-hidden="true" />',
+            '<i class="fa fa-chevron-right" hidden aria-hidden="true" />'
           ]
       
       if angular.element('ym-carousel--internal')

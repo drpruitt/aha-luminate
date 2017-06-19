@@ -541,8 +541,8 @@ angular.module 'trPcControllers'
               margin: 30
               stagePadding: 60
           navText: [
-            '<span class="fa fa-chevron-left" aria-hidden="true" />',
-            '<span class="fa fa-chevron-right" aria-hidden="true" />'
+            '<span class="fa fa-chevron-left" hidden aria-hidden="true" />',
+            '<span class="fa fa-chevron-right" hidden aria-hidden="true" />'
           ]
           addClassActive: true
           onInitialized: (event) ->
