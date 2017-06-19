@@ -144,10 +144,10 @@ angular.module 'ahaLuminateControllers'
         angular.element('#pstep_finish span').remove()
         if $scope.donationInfo.giftType is 'onetime'
           if type is 'level'
-            levelAmt = ' <span>' + $scope.donationInfo.amount + ' <i class="fa fa-chevron-right" aria-hidden="true"></i></span>'
+            levelAmt = ' <span>' + $scope.donationInfo.amount + ' <i class="fa fa-chevron-right" hidden aria-hidden="true"></i></span>'
             angular.element('#pstep_finish').append levelAmt
           else
-            angular.element('#pstep_finish').append '<span> <i class="fa fa-chevron-right" aria-hidden="true"></i></span>'
+            angular.element('#pstep_finish').append '<span> <i class="fa fa-chevron-right" hidden aria-hidden="true"></i></span>'
       
       employerMatchFields = ->
         angular.element('.employer-address-container').addClass 'hidden'
@@ -311,9 +311,9 @@ angular.module 'ahaLuminateControllers'
                       $scope.donationInfo.installmentAmount = level.amount.decimal
                   $scope.donationInfo.levelChecked = classLevel
                   if $scope.donationInfo.monthly is false
-                    angular.element('.finish-step').append '<span> '+ amount + ' <i class="fa fa-chevron-right" aria-hidden="true"></i></span>'
+                    angular.element('.finish-step').append '<span> '+ amount + ' <i class="fa fa-chevron-right" hidden aria-hidden="true"></i></span>'
                   else
-                    angular.element('.finish-step').append '<span> <i class="fa fa-chevron-right" aria-hidden="true"></i></span>'
+                    angular.element('.finish-step').append '<span> <i class="fa fa-chevron-right" hidden aria-hidden="true"></i></span>'
                 $scope.donationLevels.push
                   levelId: levelId
                   classLevel: classLevel
