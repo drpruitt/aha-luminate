@@ -1361,19 +1361,20 @@ main > .container {
   margin: 20px 0 0;
 }
 
+.ym-pc-dashboard-captain-activities-section, 
 .ym-pc-dashboard-coordinator-steps-section {
   margin: 10px 0 40px;
   clear: both;
-
+  
   > .row {
     padding: 0;
     margin: 0;
-
+    
     @media (min-width: $screen-sm-min) {
       display: flex;
       margin-bottom: 25px;
     }
-
+    
     @media (min-width: $screen-md-min) {
       padding: 0 25px;
       margin: 0;
@@ -1381,20 +1382,21 @@ main > .container {
   }
 }
 
+.ym-activity-box--captain-pages, 
 .ym-activity-box--coordinator-pages {
   .ym-activity-url {
     word-break: break-all;
-
+    
     p {
       font-size: 14px;
       margin: 0 0 3px;
-
+      
       &.small {
         font-size: 12px;
         line-height: 14px;
       }
     }
-
+    
     .btn,
     a.btn {
       &,
@@ -1408,30 +1410,30 @@ main > .container {
       }
     }
   }
-
+  
   .ym-activity-share-page {
     margin: 15px 0 0;
-
+    
     @media (min-width: $screen-sm-min) {
       float: right;
       text-align: right;
       max-width: 105px;
       margin: 0;
     }
-
+    
     p {
       display: inline-block;
       font-size: 14px;
       line-height: 18px;
       margin: 0;
       vertical-align: bottom;
-
+      
       @media (min-width: $screen-sm-min) {
         display: block;
         margin: 0 0 8px;
       }
     }
-
+    
     a {
       display: inline-block;
       margin-left: 5px;
@@ -1439,17 +1441,19 @@ main > .container {
   }
 }
 
+.ym-pc-dashboard-captain-page-types, 
 .ym-pc-dashboard-coordinator-page-types {
   margin: 0 0 32px;
 }
 
+.ym-pc-dashboard-captain-page-type, 
 .ym-pc-dashboard-coordinator-page-type {
   float: left;
   border-right: 1px solid transparent;
   border-left: 1px solid transparent;
   text-align: center;
   width: 50%;
-
+  
   a {
     &,
     &:link,
@@ -1461,7 +1465,7 @@ main > .container {
       padding: 8px;
       width: 100%;
     }
-
+    
     &:hover,
     &:focus,
     &:active {
@@ -1470,7 +1474,7 @@ main > .container {
       text-decoration: none;
     }
   }
-
+  
   &.active {
     a {
       &,
@@ -1489,6 +1493,7 @@ main > .container {
   }
 }
 
+.ym-pc-dashboard-captain-page-view, 
 .ym-pc-dashboard-coordinator-page-view {
   margin: 0 0 30px;
 }
