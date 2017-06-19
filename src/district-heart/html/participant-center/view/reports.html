@@ -1,13 +1,14 @@
 <div cg-busy="reportPromises">
   <div class="ym-pc-reports-lists" ng-class="{'ym-pc-reports--no-tabs': participantRegistration.aTeamCaptain != 'true' && participantRegistration.companyInformation.isCompanyCoordinator != 'true'}">
     <uib-tabset active="activeReportTab">
-      <uib-tab index="0" heading="School Detail" ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
+      <uib-tab index="0" heading="School Detail" ng-if="participantRegistration.aTeamCaptain == 'true' || participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
         <div class="ym-pc-report-header">
           <div class="row clearfix">
             <div class="col-md-4"></div>
             <div class="col-md-4">
               <h2 class="h5">
-                School Detail Report
+                <span ng-if="participantRegistration.companyInformation.isCompanyCoordinator != 'true'" ng-cloak>Team Detail Report</span>
+                <span ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>School Detail Report</span>
               </h2>
             </div>
             <div class="col-md-4">
@@ -16,7 +17,7 @@
                   <i class="fa fa-download" hidden aria-hidden="true"></i> <strong>Download</strong>
                 </button> 
                 <a class="btn btn-md-wide btn-secondary" ng-href="{{baseUrl}}#/email">
-                  <i class="fa fa-envelope" hidden aria-hidden="true"></i> <strong>Email Students</strong>
+                  <i class="fa fa-envelope" hidden aria-hidden="true"></i> <strong>Email Participants</strong>
                 </a>
               </div>
             </div>
@@ -24,7 +25,7 @@
         </div>
         <div ng-if="schoolDetailStudents.students && schoolDetailStudents.students.length == 0" ng-cloak>
           <div class="text-center">
-            No students to display.
+            No participants to display.
           </div>
         </div>
         <div ng-if="schoolDetailStudents.students && schoolDetailStudents.students.length > 0" ng-cloak>
