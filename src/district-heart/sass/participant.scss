@@ -307,7 +307,7 @@
   
   .ym-pc-dashboard-coordinator-email-challenge-option {
     text-align: center;
-    margin: 0 0 20px;
+    margin: 20px 0;
     
     p {
       margin: 0 0 18px;
@@ -322,6 +322,14 @@
       font-size: 13px;
       height: 470px;
       padding: 28px;
+      
+      @media (min-width: $screen-sm-min) {
+        height: 326px;
+      }
+      
+      @media (min-width: $screen-lg-min) {
+        height: 302px;
+      }
     }
   }
 }
