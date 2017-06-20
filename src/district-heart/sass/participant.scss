@@ -238,7 +238,24 @@
   }
 }
 
+.ym-pc-dashboard-coordinator-progress-section {
+  .row {
+    .ym-pc-dashboard-coordinator-progress-section__column {
+      &:first-child {
+        padding: 0;
+      }
+    }
+  }
+}
+
 .ym-pc-dashboard-coordinator-progress-box {
+  padding: 20px;
+  margin: 0 0 15px;
+  
+  @media (min-width: $screen-md-min) {
+    margin: 0 0 30px;
+  }
+  
   .ym-pc-dashboard-section-header {
     h5, 
     .h5 {
