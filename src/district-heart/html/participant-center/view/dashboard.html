@@ -508,10 +508,48 @@
             </div>
           </div>
           <div ng-if="((participantGifts.gifts && participantGifts.gifts.length == 1 && participantRegistration.selfDonor == 'false') || (participantGifts.gifts && participantGifts.gifts.length > 1)) && donorContactCounts.email_rpt_show_unthanked_donors == 0 && donorContactCounts.email_rpt_show_nondonors_followup == 0" ng-cloak>
-            <!-- TODO -->
+            <div class="ym-next-step" ng-if="donorContactCounts.email_rpt_show_donors > 0" ng-cloak>
+              <div class="ym-next-step__step">
+                You're a natural fundraiser! Keep up your awesome efforts!
+              </div>
+              <div class="ym-next-step__action">
+                <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email">
+                  <strong>Send More Emails</strong>
+                </a>
+              </div>
+            </div>
+            <div class="ym-next-step" ng-if="donorContactCounts.email_rpt_show_donors > 0" ng-cloak>
+              <div class="ym-next-step__step">
+                Reaching out to family and friends is easy when you import your email address book.
+              </div>
+              <div class="ym-next-step__action">
+                <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_all/list">
+                  <strong>Import Contacts</strong>
+                </a>
+              </div>
+            </div>
           </div>
           <div ng-if="((participantGifts.gifts && participantGifts.gifts.length == 1 && participantRegistration.selfDonor == 'false') || (participantGifts.gifts && participantGifts.gifts.length > 1)) && (donorContactCounts.email_rpt_show_unthanked_donors > 0 || donorContactCounts.email_rpt_show_nondonors_followup > 0)" ng-cloak>
-            <!-- TODO -->
+            <div class="ym-next-step ym-next-step--sm" ng-if="donorContactCounts.email_rpt_show_unthanked_donors > 0" ng-cloak>
+              <div class="ym-next-step__step">
+                You have new donors who haven't received a thank-you email!
+              </div>
+              <div class="ym-next-step__action">
+                <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_unthanked_donors/list">
+                  <strong>Say Thanks</strong>
+                </a>
+              </div>
+            </div>
+            <div class="ym-next-step ym-next-step--sm" ng-if="donorContactCounts.email_rpt_show_nondonors_followup > 0" ng-cloak>
+              <div class="ym-next-step__step">
+                Great job sending emails. Some of your friends haven't donated!
+              </div>
+              <div class="ym-next-step__action">
+                <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_nondonors_followup/list">
+                  <strong>Follow Up</strong>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
