@@ -23,7 +23,7 @@
                 </div>
                 <div class="ym-pc-dashboard-progress-type" ng-class="{'active': dashboardProgressType == 'company'}">
                   <a ng-click="toggleProgressType('company')">
-                    <strong>School</strong>
+                    <strong>District</strong>
                   </a>
                 </div>
                 <div class="ym-pc-dashboard-progress-type" ng-class="{'active': dashboardProgressType == 'team'}" ng-if="companyInfo.teamCount > 1">
@@ -61,7 +61,7 @@
               </div>
             </div>
             <div ng-class="{'hidden': dashboardProgressType != 'company'}" ng-cloak>
-              <div class="ym-progress__thermometer" name="School Progress Bar" aria-valuetext="School Progress Bar" role="progressbar" aria-valuenow="{{companyProgress.percent}}%" aria-valuemin="0%" aria-valuemax="100%">
+              <div class="ym-progress__thermometer" name="District Progress Bar" aria-valuetext="District Progress Bar" role="progressbar" aria-valuenow="{{companyProgress.percent}}%" aria-valuemin="0%" aria-valuemax="100%">
                 <div class="ym-progress__thermometer--fill" ng-style="{'width': companyProgress.percent + '%'}"></div>
               </div>
               <div class="ym-progress-related clearfix">
@@ -522,7 +522,7 @@
               <div class="clearfix">
                 <div class="ym-pc-dashboard-progress-type" ng-class="{'active': dashboardProgressType == 'company'}">
                   <a ng-click="toggleProgressType('company')">
-                    <strong>School</strong>
+                    <strong>District</strong>
                   </a>
                 </div>
                 <div class="ym-pc-dashboard-progress-type" ng-class="{'active': dashboardProgressType == 'team'}" ng-if="companyInfo.teamCount > 1">
@@ -553,7 +553,7 @@
                   </div>
                   <p>
                     <a ng-href="NTM?tr.ntmgmt=company_cservice_main&amp;company_id={{participantRegistration.companyInformation.companyId}}">
-                      <strong>Update School Goal</strong>
+                      <strong>Update District Goal</strong>
                     </a>
                   </p>
                 </div>
@@ -649,10 +649,10 @@
         </div>
       </div>
     </section>
-    <section class="ym-pc-dashboard-coordinator-steps-section" aria-label="Fundraising Steps">
+    <section class="ym-pc-dashboard-coordinator-steps-section" aria-label="Coordinator Activities">
       <div class="ym-pc-dashboard-section-header">
         <h2 class="h3">
-          Coordinator Fundraising Steps
+          Coordinator Activities
         </h2>
       </div>
       <div class="row">
@@ -667,7 +667,7 @@
             <div class="clearfix">
               <div class="ym-pc-dashboard-coordinator-page-type" ng-class="{'active': dashboardPageType == 'company'}">
                 <a ng-click="togglePageType('company')">
-                  <strong>School</strong>
+                  <strong>District</strong>
                 </a>
               </div>
               <div class="ym-pc-dashboard-coordinator-page-type" ng-class="{'active': dashboardPageType == 'team'}" ng-if="companyInfo.teamCount > 1">
@@ -686,7 +686,7 @@
             <div class="ym-pc-dashboard-coordinator-page-view">
               <div class="text-center">
                 <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=company&amp;company_id={{participantRegistration.companyInformation.companyId}}">
-                  <strong>View and Edit School Page</strong>
+                  <strong>View and Edit District Page</strong>
                 </a>
               </div>
             </div>
@@ -694,7 +694,7 @@
               <div class="col-sm-7">
                 <div class="ym-activity-url">
                   <p>
-                    <strong>School Page URL:</strong>
+                    <strong>District Page URL:</strong>
                   </p>
                   <p class="small">
                     <span ng-bind-html="companyPageUrl"></span>
@@ -708,7 +708,7 @@
                 <div class="clearfix">
                   <div class="ym-activity-share-page">
                     <p>
-                      <strong>Share My School&nbsp;Page:</strong>
+                      <strong>Share My District&nbsp;Page:</strong>
                     </p>
                     <a ng-href="{{baseUrl}}#" ng-click="delegatedAddThis('.js--company-social-share', 'facebook')">
                       <img src="../aha-luminate/dist/youth-markets/image/facebook-logo.png" alt="Facebook">
@@ -863,7 +863,7 @@
         </div>
       </div>
     </section>
-    <section class="ym-pc-dashboard-coordinator-resources-section" aria-label="Fundriasing Resources">
+    <section class="ym-pc-dashboard-coordinator-resources-section" aria-label="Coordinator Resources">
       <div class="ym-pc-dashboard-section-header">
         <h2 class="h3">
           Coordinator Resources

@@ -33,39 +33,57 @@
               </a>
             </li>
             <li>
-              <a ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_never_emailed/list"">
+              <a ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_never_emailed/list">
                 <span class="badge">{{contactCounts.email_rpt_show_never_emailed}}</span>
                 Never Emailed
               </a>
             </li>
             <li>
-              <a ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_nondonors_followup/list"">
+              <a ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_nondonors_followup/list">
                 <span class="badge">{{contactCounts.email_rpt_show_nondonors_followup}}</span>
                 Needs Follow-Up
               </a>
             </li>
             <li>
-              <a ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_unthanked_donors/list"">
+              <a ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_unthanked_donors/list">
                 <span class="badge">{{contactCounts.email_rpt_show_unthanked_donors}}</span>
                 Unthanked Donors
               </a>
             </li>
             <li>
-              <a ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_donors/list"">
+              <a ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_donors/list">
                 <span class="badge">{{contactCounts.email_rpt_show_donors}}</span>
                 Donors
               </a>
             </li>
             <li>
-              <a ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_nondonors/list"">
+              <a ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_nondonors/list">
                 <span class="badge">{{contactCounts.email_rpt_show_nondonors}}</span>
                 Non-Donors
               </a>
             </li>
+            <li ng-if="participantRegistration.aTeamCaptain == 'true'" ng-cloak>
+              <a ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_teammates/list">
+                <span class="badge">{{contactCounts.email_rpt_show_teammates}}</span>
+                Teammates
+              </a>
+            </li>
+            <li ng-if="participantRegistration.aTeamCaptain == 'true'" ng-cloak>
+              <a ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_nonteammates/list">
+                <span class="badge">{{contactCounts.email_rpt_show_nonteammates}}</span>
+                Non-Teammates
+              </a>
+            </li>
             <li ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
-              <a ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_company_coordinator_participants/list"">
+              <a ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_company_coordinator_captains/list">
+                <span class="badge">{{contactCounts.email_rpt_show_company_coordinator_captains}}</span>
+                District Team Champions
+              </a>
+            </li>
+            <li ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
+              <a ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_company_coordinator_participants/list">
                 <span class="badge">{{contactCounts.email_rpt_show_company_coordinator_participants}}</span>
-                School Participants
+                District Participants
               </a>
             </li>
           </ul>
@@ -93,29 +111,41 @@
             <span class="badge">{{contactCounts.email_rpt_show_all}}</span>
             All Contacts
           </a>
-          <a class="list-group-item" ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_never_emailed/list"">
+          <a class="list-group-item" ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_never_emailed/list">
             <span class="badge">{{contactCounts.email_rpt_show_never_emailed}}</span>
             Never Emailed
           </a>
-          <a class="list-group-item" ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_nondonors_followup/list"">
+          <a class="list-group-item" ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_nondonors_followup/list">
             <span class="badge">{{contactCounts.email_rpt_show_nondonors_followup}}</span>
             Needs Follow-Up
           </a>
-          <a class="list-group-item" ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_unthanked_donors/list"">
+          <a class="list-group-item" ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_unthanked_donors/list">
             <span class="badge">{{contactCounts.email_rpt_show_unthanked_donors}}</span>
             Unthanked Donors
           </a>
-          <a class="list-group-item" ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_donors/list"">
+          <a class="list-group-item" ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_donors/list">
             <span class="badge">{{contactCounts.email_rpt_show_donors}}</span>
             Donors
           </a>
-          <a class="list-group-item" ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_nondonors/list"">
+          <a class="list-group-item" ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_nondonors/list">
             <span class="badge">{{contactCounts.email_rpt_show_nondonors}}</span>
             Non-Donors
           </a>
+          <a class="list-group-item" ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_teammates/list" ng-if="participantRegistration.aTeamCaptain == 'true'" ng-cloak>
+            <span class="badge">{{contactCounts.email_rpt_show_teammates}}</span>
+            Teammates
+          </a>
+          <a class="list-group-item" ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_nonteammates/list" ng-if="participantRegistration.aTeamCaptain == 'true'" ng-cloak>
+            <span class="badge">{{contactCounts.email_rpt_show_nonteammates}}</span>
+            Non-Teammates
+          </a>
+          <a class="list-group-item" ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_company_coordinator_captains/list" ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
+            <span class="badge">{{contactCounts.email_rpt_show_company_coordinator_captains}}</span>
+            District Team Champions
+          </a>
           <a class="list-group-item" ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_company_coordinator_participants/list" ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
             <span class="badge">{{contactCounts.email_rpt_show_company_coordinator_participants}}</span>
-            School Participants
+            District Participants
           </a>
         </div>
       </div>

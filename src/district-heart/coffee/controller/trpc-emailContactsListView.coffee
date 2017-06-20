@@ -66,7 +66,11 @@ angular.module 'trPcControllers'
         'email_rpt_show_donors'
         'email_rpt_show_nondonors'
       ]
+      if $scope.participantRegistration.aTeamCaptain is 'true'
+        contactFilters.push 'email_rpt_show_teammates'
+        contactFilters.push 'email_rpt_show_nonteammates'
       if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
+        contactFilters.push 'email_rpt_show_company_coordinator_captains'
         contactFilters.push 'email_rpt_show_company_coordinator_participants'
       $scope.addressBookContacts = 
         page: 1
@@ -128,7 +132,10 @@ angular.module 'trPcControllers'
         email_rpt_show_unthanked_donors: 'Unthanked Donors'
         email_rpt_show_donors: 'Donors'
         email_rpt_show_nondonors: 'Non-Donors'
-        email_rpt_show_company_coordinator_participants: 'School Participants'
+        email_rpt_show_teammates: 'Teammates'
+        email_rpt_show_nonteammates: 'Non-Teammates'
+        email_rpt_show_company_coordinator_captains: 'District Team Champions'
+        email_rpt_show_company_coordinator_participants: 'District Participants'
       
       $scope.filterName = filterNames[$scope.filter]
       

@@ -1,14 +1,14 @@
 <div cg-busy="reportPromises">
   <div class="ym-pc-reports-lists" ng-class="{'ym-pc-reports--no-tabs': participantRegistration.aTeamCaptain != 'true' && participantRegistration.companyInformation.isCompanyCoordinator != 'true'}">
     <uib-tabset active="activeReportTab">
-      <uib-tab index="0" heading="School Detail" ng-if="participantRegistration.aTeamCaptain == 'true' || participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
+      <uib-tab index="0" heading="{{participantRegistration.companyInformation.isCompanyCoordinator != 'true' ? 'Team Detail' : 'District Detail'}}" ng-if="participantRegistration.aTeamCaptain == 'true' || participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
         <div class="ym-pc-report-header">
           <div class="row clearfix">
             <div class="col-md-4"></div>
             <div class="col-md-4">
               <h2 class="h5">
                 <span ng-if="participantRegistration.companyInformation.isCompanyCoordinator != 'true'" ng-cloak>Team Detail Report</span>
-                <span ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>School Detail Report</span>
+                <span ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>District Detail Report</span>
               </h2>
             </div>
             <div class="col-md-4">
