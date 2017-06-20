@@ -453,6 +453,46 @@
           <h3 class="h5">
             <span class="ym-activity-box-number">2</span> Check Progress
           </h3>
+          <div class="ym-next-step">
+            <div class="ym-next-step__step">
+              Check out the reports page to see which team members have completed challenges and earned donations.
+            </div>
+            <div class="ym-next-step__action">
+              <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/reports">
+                <strong>View Reports</strong>
+              </a>
+            </div>
+          </div>
+          <div ng-if="participantGifts.gifts && participantGifts.gifts.length == 0" ng-cloak>
+            <div class="ym-next-step">
+              <div class="ym-next-step__step">
+                You have no donations yet.
+              </div>
+              <div class="ym-next-step__action">
+                <a class="btn btn-md-wide btn-primary" ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{consId}}" target="_blank">
+                  <strong>Be the first to donate!</strong>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div ng-if="participantGifts.gifts && participantGifts.gifts.length == 1 && participantRegistration.selfDonor == 'true'" ng-cloak>
+            <div class="ym-next-step">
+              <div class="ym-next-step__step">
+                You're the only donor so far.
+              </div>
+              <div class="ym-next-step__action">
+                <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email">
+                  <strong>Send Some Emails</strong>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div ng-if="((participantGifts.gifts && participantGifts.gifts.length == 1 && participantRegistration.selfDonor == 'false') || (participantGifts.gifts && participantGifts.gifts.length > 1)) && donorContactCounts.email_rpt_show_unthanked_donors == 0 && donorContactCounts.email_rpt_show_nondonors_followup == 0" ng-cloak>
+            <!-- TODO -->
+          </div>
+          <div ng-if="((participantGifts.gifts && participantGifts.gifts.length == 1 && participantRegistration.selfDonor == 'false') || (participantGifts.gifts && participantGifts.gifts.length > 1)) && (donorContactCounts.email_rpt_show_unthanked_donors > 0 || donorContactCounts.email_rpt_show_nondonors_followup > 0)" ng-cloak>
+            <!-- TODO -->
+          </div>
         </div>
       </div>
     </section>
