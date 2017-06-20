@@ -1644,13 +1644,14 @@ main > .container {
 
 .ym-pc-report-header-buttons {
   margin: 16px 0 0;
-
+  
   @media (min-width: $screen-md-min) {
     text-align: right;
     margin: 0;
   }
-
-  a {
+  
+  .btn, 
+  a.btn {
     &,
     &:link,
     &:visited,
@@ -1659,7 +1660,7 @@ main > .container {
     &:active {
       display: block;
       margin: 0 0 12px;
-
+      
       @media (min-width: 375px) {
         display: inline-block;
         margin: 0 0 0 10px;
