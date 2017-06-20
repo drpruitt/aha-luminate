@@ -207,7 +207,7 @@ angular.module 'trPcControllers'
             $scope.coordinatorMessage.message = ''
             $scope.coordinatorMessage.interactionId = ''
             if not response.data.errorResponse
-              interactions = response.data.getUserInteractionsResponse?.interaction
+              interactions = response.data.listInteractionsResponse?.interaction
               if interactions
                 interactions = [interactions] if not angular.isArray interactions
                 if interactions.length > 0
