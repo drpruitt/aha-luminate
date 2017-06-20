@@ -10,7 +10,7 @@ angular.module 'trPcControllers'
     ($rootScope, $scope, $filter, $location, NgPcTeamraiserEmailService, NgPcTeamraiserGiftService, NgPcTeamraiserReportsService) ->
       $scope.reportPromises = []
       
-      $scope.activeReportTab = if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true' then 0 else 1
+      $scope.activeReportTab = if $scope.participantRegistration.aTeamCaptain is 'true' or $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true' then 0 else 1
       
       NgPcTeamraiserEmailService.getSuggestedMessages()
         .then (response) ->
@@ -21,10 +21,10 @@ angular.module 'trPcControllers'
             if message.active is 'true'
               if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
                 if message.name.indexOf('Coordinator:') is -1
-                  message.name = message.name.split('Student: ')[1]
+                  message.name = message.name.split('Participant: ')[1]
                   $scope.suggestedMessages.push message
               else
-                if message.name.indexOf('Student:') is -1
+                if message.name.indexOf('Participant:') is -1
                   message.name = message.name.split('Coordinator: ')[1]
                   $scope.suggestedMessages.push message
           angular.forEach $scope.suggestedMessages, (suggestedMessage) ->
@@ -208,7 +208,7 @@ angular.module 'trPcControllers'
           else
             $location.path '/email/compose/'
       
-      if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
+      if $scope.participantRegistration.aTeamCaptain is 'true' or $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
         $scope.schoolDetailStudents =
           downloadHeaders: [
             'Name'
