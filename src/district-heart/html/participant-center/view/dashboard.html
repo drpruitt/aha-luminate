@@ -227,7 +227,7 @@
               </div>
               <div class="ym-next-step__action">
                 <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_all/list">
-                  Import Contacts
+                  <strong>Import Contacts</strong>
                 </a>
               </div>
             </div>
@@ -453,17 +453,17 @@
           <h3 class="h5">
             <span class="ym-activity-box-number">2</span> Check Progress
           </h3>
-          <div class="ym-next-step">
-            <div class="ym-next-step__step">
-              Check out the reports page to see which team members have completed challenges and earned donations.
-            </div>
-            <div class="ym-next-step__action">
-              <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/reports">
-                <strong>View Reports</strong>
-              </a>
-            </div>
-          </div>
           <div ng-if="participantGifts.gifts && participantGifts.gifts.length == 0" ng-cloak>
+            <div class="ym-next-step">
+              <div class="ym-next-step__step">
+                Check out the reports page to see which team members have completed challenges and earned donations.
+              </div>
+              <div class="ym-next-step__action">
+                <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/reports">
+                  <strong>View Reports</strong>
+                </a>
+              </div>
+            </div>
             <div class="ym-next-step">
               <div class="ym-next-step__step">
                 You have no donations yet.
@@ -488,6 +488,16 @@
           <div ng-if="participantGifts.gifts && participantGifts.gifts.length == 1 && participantRegistration.selfDonor == 'true'" ng-cloak>
             <div class="ym-next-step">
               <div class="ym-next-step__step">
+                Check out the reports page to see which team members have completed challenges and earned donations.
+              </div>
+              <div class="ym-next-step__action">
+                <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/reports">
+                  <strong>View Reports</strong>
+                </a>
+              </div>
+            </div>
+            <div class="ym-next-step">
+              <div class="ym-next-step__step">
                 You're the only donor so far.
               </div>
               <div class="ym-next-step__action">
@@ -502,12 +512,22 @@
               </div>
               <div class="ym-next-step__action">
                 <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_all/list">
-                  Import Contacts
+                  <strong>Import Contacts</strong>
                 </a>
               </div>
             </div>
           </div>
           <div ng-if="((participantGifts.gifts && participantGifts.gifts.length == 1 && participantRegistration.selfDonor == 'false') || (participantGifts.gifts && participantGifts.gifts.length > 1)) && donorContactCounts.email_rpt_show_unthanked_donors == 0 && donorContactCounts.email_rpt_show_nondonors_followup == 0" ng-cloak>
+            <div class="ym-next-step">
+              <div class="ym-next-step__step">
+                Check out the reports page to see which team members have completed challenges and earned donations.
+              </div>
+              <div class="ym-next-step__action">
+                <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/reports">
+                  <strong>View Reports</strong>
+                </a>
+              </div>
+            </div>
             <div class="ym-next-step" ng-if="donorContactCounts.email_rpt_show_donors > 0" ng-cloak>
               <div class="ym-next-step__step">
                 You're a natural fundraiser! Keep up your awesome efforts!
@@ -530,6 +550,16 @@
             </div>
           </div>
           <div ng-if="((participantGifts.gifts && participantGifts.gifts.length == 1 && participantRegistration.selfDonor == 'false') || (participantGifts.gifts && participantGifts.gifts.length > 1)) && (donorContactCounts.email_rpt_show_unthanked_donors > 0 || donorContactCounts.email_rpt_show_nondonors_followup > 0)" ng-cloak>
+            <div class="ym-next-step ym-next-step--sm">
+              <div class="ym-next-step__step">
+                Check out the reports page to see which team members have completed challenges and earned donations.
+              </div>
+              <div class="ym-next-step__action">
+                <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/reports">
+                  <strong>View Reports</strong>
+                </a>
+              </div>
+            </div>
             <div class="ym-next-step ym-next-step--sm" ng-if="donorContactCounts.email_rpt_show_unthanked_donors > 0" ng-cloak>
               <div class="ym-next-step__step">
                 You have new donors who haven't received a thank-you email!
