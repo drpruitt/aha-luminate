@@ -651,8 +651,8 @@
   <div ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true' && location != '/dashboard-student'" ng-cloak>
     <section class="ym-pc-dashboard-coordinator-progress-section" aria-label="Fundraising Progress Meters">
       <div class="row">
-        <div class="col-sm-6 ym-pc-dashboard-coordinator-progress-section__column event-secondary-medium">
-          <div class="ym-pc-dashboard-coordinator-progress-box">
+        <div class="col-sm-6 ym-pc-dashboard-coordinator-progress-section__column">
+          <div class="ym-pc-dashboard-coordinator-progress-box event-secondary-medium">
             <div class="ym-pc-dashboard-section-header">
               <h3 class="h5">
                 Fundraising
@@ -761,6 +761,150 @@
               </div>
             </div>
           </div>
+          <div class="col-sm-6 ym-activity-box ym-activity-box--coordinator-pages event-secondary-medium">
+            <h3 class="h5">
+              <span class="ym-activity-box-number">1</span> Edit My Pages
+            </h3>
+            <p>
+              Edit your pages to encourage participants to join and donate!
+            </p>
+            <div class="ym-pc-dashboard-coordinator-page-types" ng-class="{'ym-pc-dashboard-coordinator-page-types--multi-team': companyInfo.teamCount > 1}">
+              <div class="clearfix">
+                <div class="ym-pc-dashboard-coordinator-page-type" ng-class="{'active': dashboardPageType == 'company'}">
+                  <a ng-click="togglePageType('company')">
+                    <strong>District</strong>
+                  </a>
+                </div>
+                <div class="ym-pc-dashboard-coordinator-page-type" ng-class="{'active': dashboardPageType == 'team'}" ng-if="companyInfo.teamCount > 1">
+                  <a ng-click="togglePageType('team')">
+                    <strong>Team</strong>
+                  </a>
+                </div>
+                <div class="ym-pc-dashboard-coordinator-page-type" ng-class="{'active': dashboardPageType == 'personal'}">
+                  <a ng-click="togglePageType('personal')">
+                    <strong>Personal</strong>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div ng-class="{'hidden': dashboardPageType != 'company'}" ng-cloak>
+              <div class="ym-pc-dashboard-coordinator-page-view">
+                <div class="text-center">
+                  <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=company&amp;company_id={{participantRegistration.companyInformation.companyId}}">
+                    <strong>View and Edit District Page</strong>
+                  </a>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-7">
+                  <div class="ym-activity-url">
+                    <p>
+                      <strong>District Page URL:</strong>
+                    </p>
+                    <p class="small">
+                      <span ng-bind-html="companyPageUrl"></span>
+                    </p>
+                    <a class="btn btn-md-wide btn-primary" ng-click="editCompanyUrl()">
+                      <strong>Edit</strong>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-sm-5">
+                  <div class="clearfix">
+                    <div class="ym-activity-share-page">
+                      <p>
+                        <strong>Share My District&nbsp;Page:</strong>
+                      </p>
+                      <a ng-href="{{baseUrl}}#" ng-click="delegatedAddThis('.js--company-social-share', 'facebook')">
+                        <img src="../aha-luminate/dist/youth-markets/image/facebook-logo.png" alt="Facebook">
+                      </a> 
+                      <a ng-href="{{baseUrl}}#" ng-click="delegatedAddThis('.js--company-social-share', 'twitter')">
+                        <img src="../aha-luminate/dist/youth-markets/image/twitter-logo.png" alt="Twitter">
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div ng-class="{'hidden': dashboardPageType != 'team'}" ng-if="companyInfo.teamCount > 1" ng-cloak>
+              <div class="ym-pc-dashboard-coordinator-page-view">
+                <div class="text-center">
+                  <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=team&amp;team_id={{participantRegistration.teamId}}">
+                    <strong>View and Edit Team Page</strong>
+                  </a>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-7">
+                  <div class="ym-activity-url">
+                    <p>
+                      <strong>Team Page URL:</strong>
+                    </p>
+                    <p class="small">
+                      <span ng-bind-html="teamPageUrl"></span>
+                    </p>
+                    <a class="btn btn-md-wide btn-primary" ng-click="editTeamUrl()">
+                      <strong>Edit</strong>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-sm-5">
+                  <div class="clearfix">
+                    <div class="ym-activity-share-page">
+                      <p>
+                        <strong>Share My Team&nbsp;Page:</strong>
+                      </p>
+                      <a ng-href="{{baseUrl}}#" ng-click="delegatedAddThis('.js--team-social-share', 'facebook')">
+                        <img src="../aha-luminate/dist/youth-markets/image/facebook-logo.png" alt="Facebook">
+                      </a> 
+                      <a ng-href="{{baseUrl}}#" ng-click="delegatedAddThis('.js--team-social-share', 'twitter')">
+                        <img src="../aha-luminate/dist/youth-markets/image/twitter-logo.png" alt="Twitter">
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div ng-class="{'hidden': dashboardPageType != 'personal'}" ng-cloak>
+              <div class="ym-pc-dashboard-coordinator-page-view">
+                <div class="text-center">
+                  <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=personal&amp;px={{consId}}">
+                    <strong>View and Edit Your Page</strong>
+                  </a>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-7">
+                  <div class="ym-activity-url">
+                    <p>
+                      <strong>Personal Page URL:</strong>
+                    </p>
+                    <p class="small">
+                      <span ng-bind-html="personalPageUrl"></span>
+                    </p>
+                    <a class="btn btn-md-wide btn-primary" ng-click="editPersonalUrl()">
+                      <strong>Edit</strong>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-sm-5">
+                  <div class="clearfix">
+                    <div class="ym-activity-share-page">
+                      <p>
+                        <strong>Share My Personal&nbsp;Page:</strong>
+                      </p>
+                      <a ng-href="{{baseUrl}}#" ng-click="delegatedAddThis('.js--personal-social-share', 'facebook')">
+                        <img src="../aha-luminate/dist/youth-markets/image/facebook-logo.png" alt="Facebook">
+                      </a> 
+                      <a ng-href="{{baseUrl}}#" ng-click="delegatedAddThis('.js--personal-social-share', 'twitter')">
+                        <img src="../aha-luminate/dist/youth-markets/image/twitter-logo.png" alt="Twitter">
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="col-sm-6 ym-pc-dashboard-coordinator-progress-section__column event-secondary-medium">
           <div class="ym-pc-dashboard-coordinator-students-box" ng-if="companyInfo.participantCount" ng-cloak>
@@ -794,154 +938,6 @@
         <h2 class="h3">
           Coordinator Activities
         </h2>
-      </div>
-      <div class="row">
-        <div class="col-sm-6 ym-activity-box ym-activity-box--coordinator-pages">
-          <h3 class="h5">
-            <span class="ym-activity-box-number">1</span> Edit My Pages
-          </h3>
-          <p>
-            Edit your pages to encourage participants to join and donate!
-          </p>
-          <div class="ym-pc-dashboard-coordinator-page-types" ng-class="{'ym-pc-dashboard-coordinator-page-types--multi-team': companyInfo.teamCount > 1}">
-            <div class="clearfix">
-              <div class="ym-pc-dashboard-coordinator-page-type" ng-class="{'active': dashboardPageType == 'company'}">
-                <a ng-click="togglePageType('company')">
-                  <strong>District</strong>
-                </a>
-              </div>
-              <div class="ym-pc-dashboard-coordinator-page-type" ng-class="{'active': dashboardPageType == 'team'}" ng-if="companyInfo.teamCount > 1">
-                <a ng-click="togglePageType('team')">
-                  <strong>Team</strong>
-                </a>
-              </div>
-              <div class="ym-pc-dashboard-coordinator-page-type" ng-class="{'active': dashboardPageType == 'personal'}">
-                <a ng-click="togglePageType('personal')">
-                  <strong>Personal</strong>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div ng-class="{'hidden': dashboardPageType != 'company'}" ng-cloak>
-            <div class="ym-pc-dashboard-coordinator-page-view">
-              <div class="text-center">
-                <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=company&amp;company_id={{participantRegistration.companyInformation.companyId}}">
-                  <strong>View and Edit District Page</strong>
-                </a>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-7">
-                <div class="ym-activity-url">
-                  <p>
-                    <strong>District Page URL:</strong>
-                  </p>
-                  <p class="small">
-                    <span ng-bind-html="companyPageUrl"></span>
-                  </p>
-                  <a class="btn btn-md-wide btn-primary" ng-click="editCompanyUrl()">
-                    <strong>Edit</strong>
-                  </a>
-                </div>
-              </div>
-              <div class="col-sm-5">
-                <div class="clearfix">
-                  <div class="ym-activity-share-page">
-                    <p>
-                      <strong>Share My District&nbsp;Page:</strong>
-                    </p>
-                    <a ng-href="{{baseUrl}}#" ng-click="delegatedAddThis('.js--company-social-share', 'facebook')">
-                      <img src="../aha-luminate/dist/youth-markets/image/facebook-logo.png" alt="Facebook">
-                    </a> 
-                    <a ng-href="{{baseUrl}}#" ng-click="delegatedAddThis('.js--company-social-share', 'twitter')">
-                      <img src="../aha-luminate/dist/youth-markets/image/twitter-logo.png" alt="Twitter">
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div ng-class="{'hidden': dashboardPageType != 'team'}" ng-if="companyInfo.teamCount > 1" ng-cloak>
-            <div class="ym-pc-dashboard-coordinator-page-view">
-              <div class="text-center">
-                <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=team&amp;team_id={{participantRegistration.teamId}}">
-                  <strong>View and Edit Team Page</strong>
-                </a>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-7">
-                <div class="ym-activity-url">
-                  <p>
-                    <strong>Team Page URL:</strong>
-                  </p>
-                  <p class="small">
-                    <span ng-bind-html="teamPageUrl"></span>
-                  </p>
-                  <a class="btn btn-md-wide btn-primary" ng-click="editTeamUrl()">
-                    <strong>Edit</strong>
-                  </a>
-                </div>
-              </div>
-              <div class="col-sm-5">
-                <div class="clearfix">
-                  <div class="ym-activity-share-page">
-                    <p>
-                      <strong>Share My Team&nbsp;Page:</strong>
-                    </p>
-                    <a ng-href="{{baseUrl}}#" ng-click="delegatedAddThis('.js--team-social-share', 'facebook')">
-                      <img src="../aha-luminate/dist/youth-markets/image/facebook-logo.png" alt="Facebook">
-                    </a> 
-                    <a ng-href="{{baseUrl}}#" ng-click="delegatedAddThis('.js--team-social-share', 'twitter')">
-                      <img src="../aha-luminate/dist/youth-markets/image/twitter-logo.png" alt="Twitter">
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div ng-class="{'hidden': dashboardPageType != 'personal'}" ng-cloak>
-            <div class="ym-pc-dashboard-coordinator-page-view">
-              <div class="text-center">
-                <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=personal&amp;px={{consId}}">
-                  <strong>View and Edit Your Page</strong>
-                </a>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-7">
-                <div class="ym-activity-url">
-                  <p>
-                    <strong>Personal Page URL:</strong>
-                  </p>
-                  <p class="small">
-                    <span ng-bind-html="personalPageUrl"></span>
-                  </p>
-                  <a class="btn btn-md-wide btn-primary" ng-click="editPersonalUrl()">
-                    <strong>Edit</strong>
-                  </a>
-                </div>
-              </div>
-              <div class="col-sm-5">
-                <div class="clearfix">
-                  <div class="ym-activity-share-page">
-                    <p>
-                      <strong>Share My Personal&nbsp;Page:</strong>
-                    </p>
-                    <a ng-href="{{baseUrl}}#" ng-click="delegatedAddThis('.js--personal-social-share', 'facebook')">
-                      <img src="../aha-luminate/dist/youth-markets/image/facebook-logo.png" alt="Facebook">
-                    </a> 
-                    <a ng-href="{{baseUrl}}#" ng-click="delegatedAddThis('.js--personal-social-share', 'twitter')">
-                      <img src="../aha-luminate/dist/youth-markets/image/twitter-logo.png" alt="Twitter">
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 ym-activity-box">
-        </div>
       </div>
       <div class="row">
         <div class="col-sm-6 ym-activity-box ym-activity-box--coordinator-reports">
