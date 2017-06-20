@@ -135,16 +135,28 @@
           </div>
         </div>
         <div class="col-sm-6 ym-pc-dashboard-progress-section__column event-secondary-medium">
-          <div class="ym-pc-dashboard-email-challenge-box">
+          <div class="ym-pc-dashboard-email-challenge-box" ng-if="participantRegistration.aTeamCaptain != 'true' || teamInfo.numMembers" ng-cloak>
             <div class="ym-pc-dashboard-section-header">
               <h3 class="h5">
                 Email Challenge
               </h3>
             </div>
             <div class="ym-pc-dashboard-email-challenge-option">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit!
-              </p>
+              <div ng-if="participantRegistration.aTeamCaptain != 'true' || location == '/dashboard-student'" ng-cloak>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit!
+                </p>
+              </div>
+              <div ng-if="participantRegistration.aTeamCaptain == 'true' && location != '/dashboard-student'" ng-cloak>
+                <div ng-if="teamInfo.numMembers && teamInfo.numMembers != '0'">
+                  <p>
+                    <strong>For your team:</strong> You have <strong><span ng-bind-html="teamInfo.numMembers"></span> team members</strong> registered. Keep recruiting to meet your goal of <span ng-bind-html="teamMemberRegGoal"></span> participants!
+                  </p>
+                </div>
+                <p>
+                  <strong>For your friends and family:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit!
+                </p>
+              </div>
               <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email">
                 <strong>Send Email</strong>
               </a>
