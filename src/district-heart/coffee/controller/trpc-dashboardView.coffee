@@ -328,8 +328,10 @@ angular.module 'trPcControllers'
             response
         $scope.dashboardPromises.push donorContactCountPromise
       
-      if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
+      if $scope.participantRegistration.aTeamCaptain isnt 'true' and $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
         $scope.dashboardPageType = 'personal'
+      else if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
+        $scope.dashboardPageType = 'team'
       else
         $scope.dashboardPageType = 'company'
       $scope.togglePageType = (pageType) ->
