@@ -275,3 +275,20 @@
     }
   }
 }
+
+.ym-pc-report-header-buttons {
+  .btn, 
+  a.btn {
+    &,
+    &:link,
+    &:visited,
+    &:hover,
+    &:focus,
+    &:active {
+      @media (max-width: 413px) {
+        display: block;
+        margin: 0 0 12px;
+      }
+    }
+  }
+}
