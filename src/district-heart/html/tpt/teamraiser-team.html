@@ -63,12 +63,12 @@
           <h2 class="ym-headline">
             {{participantCount}}
           </h2>
-          <div ng-if="participantCount == 1">
+          <div ng-if="participantCount == 1" ng-cloak>
             <p>
               team member registered.
             </p>
           </div>
-          <div ng-if="participantCount > 1">
+          <div ng-if="participantCount > 1" ng-cloak>
             <p>
               team members registered.
             </p>

@@ -61,12 +61,12 @@
           <div class="h2 ym-headline">
             {{participantCount}}
           </div>
-          <div ng-if="participantCount == 1">
+          <div ng-if="participantCount == 1" ng-cloak>
             <p>
               team member registered.
             </p>
           </div>
-          <div ng-if="participantCount > 1">
+          <div ng-if="participantCount > 1" ng-cloak>
             <p>
               team members registered.
             </p>
@@ -163,7 +163,7 @@
       Thank You to Our Local Sponsors
     </h5>
     <p class="text-center">
-      <img ng-src="{{localSponsorImageSrc}}" class="image-responsive" alt="{{localSponsorImageAlt}}"/>
+      <img class="image-responsive" ng-src="{{localSponsorImageSrc}}" alt="{{localSponsorImageAlt}}">
     </p>
   </div>
   <div ng-if="companyTeams.totalNumber == 1" class="modal fade" id="schoolDonation" tabindex="-1" role="dialog" aria-labelledby="schoolModalTitle" hidden aria-hidden="true" style="display: none;">
