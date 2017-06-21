@@ -107,7 +107,6 @@ angular.module 'ahaLuminateControllers'
               TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
                 .then (response) ->
                   $scope.eventDate = response.data.coordinator.event_date
-                  
                   if totalTeams = 1
                     $scope.teamId = response.data.coordinator.team_id
       getCompanyTotals()
@@ -119,9 +118,10 @@ angular.module 'ahaLuminateControllers'
         $scope.totalTeams = totalNumber
         if not $scope.$$phase
           $scope.$apply()
-      
       getCompanyTeams = ->
         TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId,
+          error: ->
+            setCompanyTeams()
           success: (response) ->
             companyTeams = response.getTeamSearchByInfoResponse.team
             if companyTeams
@@ -131,11 +131,9 @@ angular.module 'ahaLuminateControllers'
                 companyTeam.amountRaisedFormatted = $filter('currency')(companyTeam.amountRaised / 100, '$').replace '.00', ''
               totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults
               setCompanyTeams companyTeams, totalNumberTeams
-          error: ->
-            setCompanyTeams()
       getCompanyTeams()
-
-      $scope.companyParticipants = []
+      
+      $scope.companyParticipants = {}
       setCompanyParticipants = (participants, totalNumber, totalFundraisers) ->
         $scope.companyParticipants.participants = participants or []
         totalNumber = totalNumber or 0
@@ -143,14 +141,10 @@ angular.module 'ahaLuminateControllers'
         $scope.companyParticipants.totalFundraisers = Number totalFundraisers
         if not $scope.$$phase
           $scope.$apply()
-      
       getCompanyParticipants = ->
         TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%%%') + '&first_name=' + encodeURIComponent('%%%') + '&last_name=' + encodeURIComponent('%%%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=50',
             error: ->
               setCompanyParticipants()
-              numCompaniesParticipantRequestComplete++
-              if numCompaniesParticipantRequestComplete is numCompanies
-                setCompanyNumParticipants numParticipants
             success: (response) ->
               participants = response.getParticipantsResponse?.participant
               companyParticipants = []
@@ -161,7 +155,7 @@ angular.module 'ahaLuminateControllers'
                   if participant.amountRaised > 1
                     participant.amountRaised = Number participant.amountRaised
                     participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
-                    participant.name.last = participant.name.last.substring(0,1)+'.'
+                    participant.name.last = participant.name.last.substring(0, 1) + '.'
                     companyParticipants.push participant
                     totalFundraisers++
               totalNumberParticipants = response.getParticipantsResponse.totalNumberResults

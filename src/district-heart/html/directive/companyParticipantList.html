@@ -19,7 +19,7 @@
     <tbody>
       <tr class="ym-list__row" ng-repeat="team in teams">
         <td class="ym-list__column ym-list__column--name">
-          <a ng-href="TR?fr_id={{participant.eventId}}&amp;pg=personal&amp;px={{participant.consId}}">{{participant.name.first + ' ' + participant.name.last}}</a>
+          <a ng-href="TR?fr_id={{participant.eventId}}&amp;pg=personal&amp;px={{participant.consId}}"><span ng-bind-html="participant.name.first"></span> <span ng-bind-html="participant.name.last"></span></a>
         </td>
         <td class="ym-list__column ym-list__column--amount hidden-xs">
           <span>{{participant.amountRaisedFormatted}}</span>
