@@ -238,11 +238,61 @@
   }
 }
 
+.ym-pc-dashboard-coordinator-progress-section {
+  .row {
+    .ym-pc-dashboard-coordinator-progress-section__column {
+      &:first-child {
+        padding: 0;
+      }
+    }
+  }
+}
+
 .ym-pc-dashboard-coordinator-progress-box {
+  padding: 20px;
+  margin: 0 0 15px;
+  
+  @media (min-width: $screen-md-min) {
+    margin: 0 0 30px;
+  }
+  
   .ym-pc-dashboard-section-header {
     h5, 
     .h5 {
       text-transform: none;
+    }
+  }
+}
+
+.ym-activity-box.ym-activity-box--coordinator-pages {
+  background: $event-secondary-medium;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  
+  @media (min-width: $screen-sm-min) {
+    margin: 0;
+  }
+  
+  @media (min-width: $screen-md-min) {
+    margin: 0;
+  }
+  
+  h5, 
+  .h5 {
+    text-align: center;
+  }
+}
+
+.ym-pc-dashboard-captain-page-type {
+  a {
+    &,
+    &:link,
+    &:visited {
+      background-color: rgb(40, 79, 73);
+      background-color: rgba(40, 79, 73, 0.2);
+      color: rgb(255, 255, 255);
+      color: rgba(40, 79, 73, 1);
     }
   }
 }
@@ -252,6 +302,34 @@
     h5, 
     .h5 {
       text-transform: none;
+    }
+  }
+  
+  .ym-pc-dashboard-coordinator-email-challenge-option {
+    text-align: center;
+    margin: 20px 0;
+    
+    p {
+      margin: 0 0 18px;
+    }
+  }
+  
+  form {
+    textarea.form-control[readonly] {
+      background-color: $brand-white;
+      border: 0;
+      border-radius: 0;
+      font-size: 13px;
+      height: 470px;
+      padding: 28px;
+      
+      @media (min-width: $screen-sm-min) {
+        height: 326px;
+      }
+      
+      @media (min-width: $screen-lg-min) {
+        height: 302px;
+      }
     }
   }
 }
@@ -272,6 +350,23 @@
     h5, 
     .h5 {
       text-transform: none;
+    }
+  }
+}
+
+.ym-pc-report-header-buttons {
+  .btn, 
+  a.btn {
+    &,
+    &:link,
+    &:visited,
+    &:hover,
+    &:focus,
+    &:active {
+      @media (max-width: 413px) {
+        display: block;
+        margin: 0 0 12px;
+      }
     }
   }
 }

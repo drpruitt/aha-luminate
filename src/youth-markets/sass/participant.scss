@@ -664,31 +664,32 @@ main > .container {
   box-shadow: 0 5px 0 0 rgba(50, 50, 50, 1);
   padding: 25px 20px;
   margin: 0 0 20px;
-
+  
   @media (min-width: $screen-sm-min) {
     margin: 0;
   }
-
+  
   @media (min-width: $screen-md-min) {
     margin: 25px;
   }
-
-  &.ym-activity-box--next-step {
+  
+  &.ym-activity-box--next-step, 
+  &.ym-activity-box--captain-next-step {
     .ym-next-step {
       border-bottom: 1px solid $event-secondary;
       padding: 0 0 20px;
       margin: 0 0 20px;
-
+      
       &:last-child {
         border: 0;
         padding: 0;
         margin: 0;
       }
     }
-
+    
     .ym-next-step__step {
       margin: 0 0 15px;
-
+      
       @media (min-width: $screen-md-min) {
         display: inline-block;
         width: calc(100% - 200px);
@@ -696,17 +697,17 @@ main > .container {
         margin: 0;
       }
     }
-
+    
     .ym-next-step__action {
       text-align: center;
-
+      
       @media (min-width: $screen-md-min) {
         display: inline-block;
         text-align: right;
         vertical-align: top;
         width: 200px;
       }
-
+      
       .btn,
       a.btn {
         &,
@@ -716,7 +717,7 @@ main > .container {
         &:focus,
         &:active {
           width: 200px;
-
+          
           @media (min-width: $screen-md-min) {
             width: auto;
             min-width: 125px;
@@ -724,7 +725,7 @@ main > .container {
         }
       }
     }
-
+    
     .ym-next-step--sm {
       .ym-next-step__step {
         @media (min-width: $screen-md-min) {
@@ -732,12 +733,12 @@ main > .container {
           padding-right: 40px;
         }
       }
-
+      
       .ym-next-step__action {
         @media (min-width: $screen-md-min) {
           width: 125px;
         }
-
+        
         .btn,
         a.btn {
           @media (min-width: $screen-md-min) {
@@ -747,15 +748,16 @@ main > .container {
       }
     }
   }
-
-  &.ym-activity-box--next-step,
-  &.ym-activity-box--challenge,
-  &.ym-activity-box--coordinator-pages,
+  
+  &.ym-activity-box--next-step, 
+  &.ym-activity-box--challenge, 
+  &.ym-activity-box--captain-pages, 
+  &.ym-activity-box--coordinator-pages, 
   &.ym-activity-box--coordinator-reports {
     @media (min-width: $screen-sm-min) {
       margin: 0 20px 0 0;
     }
-
+    
     @media (min-width: $screen-md-min) {
       margin: 25px;
     }
@@ -1642,13 +1644,14 @@ main > .container {
 
 .ym-pc-report-header-buttons {
   margin: 16px 0 0;
-
+  
   @media (min-width: $screen-md-min) {
     text-align: right;
     margin: 0;
   }
-
-  a {
+  
+  .btn, 
+  a.btn {
     &,
     &:link,
     &:visited,
@@ -1657,7 +1660,7 @@ main > .container {
     &:active {
       display: block;
       margin: 0 0 12px;
-
+      
       @media (min-width: 375px) {
         display: inline-block;
         margin: 0 0 0 10px;

@@ -114,6 +114,22 @@ angular.module 'trPcControllers'
         $scope.dashboardPromises.push fundraisingProgressPromise
       $scope.refreshFundraisingProgress()
       
+      $scope.teamInfo = {}
+      if $scope.participantRegistration.teamId and $scope.participantRegistration.teamId isnt '-1'
+        teamInfoPromise = NgPcTeamraiserTeamService.getTeam()
+          .then (response) ->
+            teams = response.data.getTeamSearchByInfoResponse?.team
+            if not teams
+              $scope.teamInfo.numMembers = '0'
+            else
+              teams = [teams] if not angular.isArray teams
+              if teams.length is 0
+                $scope.teamInfo.numMembers = '0'
+              else
+                team = teams[0]
+                $scope.teamInfo = team
+        $scope.dashboardPromises.push teamInfoPromise
+      
       $scope.emailChallenge = {}
       setEmailSampleText = ->
         sampleText = 'Hello friends! I am excited to be participating in the American Heart Association\'s District Heart Challenge. It is their mission to improve the lives of all Americans, by providing public health education and research. Some of those ways are right here in my own school by passing on a message of healthy eating and physical activity to the kids we see every day!\n\n' + 
@@ -191,7 +207,7 @@ angular.module 'trPcControllers'
             $scope.coordinatorMessage.message = ''
             $scope.coordinatorMessage.interactionId = ''
             if not response.data.errorResponse
-              interactions = response.data.getUserInteractionsResponse?.interaction
+              interactions = response.data.listInteractionsResponse?.interaction
               if interactions
                 interactions = [interactions] if not angular.isArray interactions
                 if interactions.length > 0
@@ -312,8 +328,10 @@ angular.module 'trPcControllers'
             response
         $scope.dashboardPromises.push donorContactCountPromise
       
-      if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
+      if $scope.participantRegistration.aTeamCaptain isnt 'true' and $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
         $scope.dashboardPageType = 'personal'
+      else if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
+        $scope.dashboardPageType = 'team'
       else
         $scope.dashboardPageType = 'company'
       $scope.togglePageType = (pageType) ->

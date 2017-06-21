@@ -10,7 +10,7 @@ angular.module 'trPcControllers'
     ($rootScope, $scope, $filter, $location, NgPcTeamraiserEmailService, NgPcTeamraiserGiftService, NgPcTeamraiserReportsService) ->
       $scope.reportPromises = []
       
-      $scope.activeReportTab = if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true' then 0 else 1
+      $scope.activeReportTab = if $scope.participantRegistration.aTeamCaptain is 'true' or $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true' then 0 else 1
       
       NgPcTeamraiserEmailService.getSuggestedMessages()
         .then (response) ->
@@ -21,10 +21,10 @@ angular.module 'trPcControllers'
             if message.active is 'true'
               if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
                 if message.name.indexOf('Coordinator:') is -1
-                  message.name = message.name.split('Student: ')[1]
+                  message.name = message.name.split('Participant: ')[1]
                   $scope.suggestedMessages.push message
               else
-                if message.name.indexOf('Student:') is -1
+                if message.name.indexOf('Participant:') is -1
                   message.name = message.name.split('Coordinator: ')[1]
                   $scope.suggestedMessages.push message
           angular.forEach $scope.suggestedMessages, (suggestedMessage) ->
@@ -208,8 +208,8 @@ angular.module 'trPcControllers'
           else
             $location.path '/email/compose/'
       
-      if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
-        $scope.schoolDetailStudents =
+      if $scope.participantRegistration.aTeamCaptain is 'true' or $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
+        $scope.districtDetailParticipants =
           downloadHeaders: [
             'Name'
             'Amount'
@@ -221,25 +221,25 @@ angular.module 'trPcControllers'
           ]
           sortColumn: '',
           sortAscending: false
-        schoolDetailReportPromise = NgPcTeamraiserReportsService.getSchoolDetailReport()
+        districtDetailReportPromise = NgPcTeamraiserReportsService.getDistrictDetailReport()
           .then (response) ->
             if response.data.errorResponse
-              $scope.schoolDetailStudents.students = []
-              $scope.schoolDetailStudents.downloadData = []
+              $scope.districtDetailParticipants.participants = []
+              $scope.districtDetailParticipants.downloadData = []
             else
-              reportHtml = response.data.getSchoolDetailReport.report
+              reportHtml = response.data.getDistrictDetailReport.report
               $reportTable = angular.element('<div>' + reportHtml + '</div>').find 'table'
               if $reportTable.length is 0
-                $scope.schoolDetailStudents.students = []
-                $scope.schoolDetailStudents.downloadData = []
+                $scope.districtDetailParticipants.participants = []
+                $scope.districtDetailParticipants.downloadData = []
               else
                 $reportTableRows = $reportTable.find 'tr'
                 if $reportTableRows.length is 0
-                  $scope.schoolDetailStudents.students = []
-                  $scope.schoolDetailStudents.downloadData = []
+                  $scope.districtDetailParticipants.participants = []
+                  $scope.districtDetailParticipants.downloadData = []
                 else
-                  schoolDetailStudents = []
-                  schoolDetailDownloadData = []
+                  districtDetailParticipants = []
+                  districtDetailDownloadData = []
                   angular.forEach $reportTableRows, (reportTableRow) ->
                     $reportTableRow = angular.element reportTableRow
                     firstName = jQuery.trim $reportTableRow.find('td').eq(8).text()
@@ -251,7 +251,7 @@ angular.module 'trPcControllers'
                     tshirtSize = jQuery.trim $reportTableRow.find('td').eq(14).text()
                     teacherName = jQuery.trim $reportTableRow.find('td').eq(6).text()
                     challenge = jQuery.trim($reportTableRow.find('td').eq(15).text()).replace('1. ', '').replace('2. ', '').replace('3. ', '').replace '4. ', ''
-                    schoolDetailStudents.push
+                    districtDetailParticipants.push
                       firstName: firstName
                       lastName: lastName
                       amount: amount
@@ -261,7 +261,7 @@ angular.module 'trPcControllers'
                       tshirtSize: tshirtSize
                       teacherName: teacherName
                       challenge: challenge
-                    schoolDetailDownloadData.push [
+                    districtDetailDownloadData.push [
                       firstName + ' ' + jQuery.trim $reportTableRow.find('td').eq(9).text()
                       amountFormatted.replace('$', '').replace /,/g, ''
                       ecardsSent
@@ -270,16 +270,16 @@ angular.module 'trPcControllers'
                       teacherName
                       challenge
                     ]
-                  $scope.schoolDetailStudents.students = schoolDetailStudents
-                  $scope.schoolDetailStudents.downloadData = schoolDetailDownloadData
+                  $scope.districtDetailParticipants.participants = districtDetailParticipants
+                  $scope.districtDetailParticipants.downloadData = districtDetailDownloadData
             response
-        $scope.reportPromises.push schoolDetailReportPromise
+        $scope.reportPromises.push districtDetailReportPromise
         
-        $scope.orderSchoolDetailStudents = (sortColumn) ->
-          $scope.schoolDetailStudents.sortAscending = !$scope.schoolDetailStudents.sortAscending
-          if $scope.schoolDetailStudents.sortColumn isnt sortColumn
-            $scope.schoolDetailStudents.sortAscending = false
-          $scope.schoolDetailStudents.sortColumn = sortColumn
+        $scope.orderdistrictDetailParticipants = (sortColumn) ->
+          $scope.districtDetailParticipants.sortAscending = !$scope.districtDetailParticipants.sortAscending
+          if $scope.districtDetailParticipants.sortColumn isnt sortColumn
+            $scope.districtDetailParticipants.sortAscending = false
+          $scope.districtDetailParticipants.sortColumn = sortColumn
           orderBy = $filter 'orderBy'
-          $scope.schoolDetailStudents.students = orderBy $scope.schoolDetailStudents.students, sortColumn, not $scope.schoolDetailStudents.sortAscending
+          $scope.districtDetailParticipants.participants = orderBy $scope.districtDetailParticipants.participants, sortColumn, not $scope.districtDetailParticipants.sortAscending
   ]

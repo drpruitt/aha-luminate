@@ -1,19 +1,19 @@
 <div cg-busy="reportPromises">
   <div class="ym-pc-reports-lists" ng-class="{'ym-pc-reports--no-tabs': participantRegistration.aTeamCaptain != 'true' && participantRegistration.companyInformation.isCompanyCoordinator != 'true'}">
     <uib-tabset active="activeReportTab">
-      <uib-tab index="0" heading="School Detail" ng-if="participantRegistration.aTeamCaptain == 'true' || participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
+      <uib-tab index="0" heading="{{participantRegistration.companyInformation.isCompanyCoordinator != 'true' ? 'Team Detail' : 'District Detail'}}" ng-if="participantRegistration.aTeamCaptain == 'true' || participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
         <div class="ym-pc-report-header">
           <div class="row clearfix">
             <div class="col-md-4"></div>
             <div class="col-md-4">
               <h2 class="h5">
                 <span ng-if="participantRegistration.companyInformation.isCompanyCoordinator != 'true'" ng-cloak>Team Detail Report</span>
-                <span ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>School Detail Report</span>
+                <span ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>District Detail Report</span>
               </h2>
             </div>
             <div class="col-md-4">
-              <div class="ym-pc-report-header-buttons" ng-if="schoolDetailStudents.students && schoolDetailStudents.students.length > 0" ng-cloak>
-                <button type="button" class="btn btn-md-wide btn-secondary" csv-header="schoolDetailStudents.downloadHeaders" ng-csv="schoolDetailStudents.downloadData" filename="School_Detail_Report.csv">
+              <div class="ym-pc-report-header-buttons" ng-if="districtDetailParticipants.participants && districtDetailParticipants.participants.length > 0" ng-cloak>
+                <button type="button" class="btn btn-md-wide btn-secondary" csv-header="districtDetailParticipants.downloadHeaders" ng-csv="districtDetailParticipants.downloadData" filename="District_Detail_Report.csv">
                   <i class="fa fa-download" hidden aria-hidden="true"></i> <strong>Download</strong>
                 </button> 
                 <a class="btn btn-md-wide btn-secondary" ng-href="{{baseUrl}}#/email">
@@ -23,70 +23,70 @@
             </div>
           </div>
         </div>
-        <div ng-if="schoolDetailStudents.students && schoolDetailStudents.students.length == 0" ng-cloak>
+        <div ng-if="districtDetailParticipants.participants && districtDetailParticipants.participants.length == 0" ng-cloak>
           <div class="text-center">
             No participants to display.
           </div>
         </div>
-        <div ng-if="schoolDetailStudents.students && schoolDetailStudents.students.length > 0" ng-cloak>
+        <div ng-if="districtDetailParticipants.participants && districtDetailParticipants.participants.length > 0" ng-cloak>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
                 <tr>
                   <th scope="col">
                     <div class="text-left">
-                      <a href="" ng-click="orderSchoolDetailStudents('firstName')">
+                      <a href="" ng-click="orderdistrictDetailParticipants('firstName')">
                         <strong>Name</strong> 
-                        <span class="fa" ng-class="{'fa-caret-down': (schoolDetailStudents.sortColumn == 'firstName' && !schoolDetailStudents.sortAscending) || schoolDetailStudents.sortColumn != 'firstName', 'fa-caret-up': schoolDetailStudents.sortColumn == 'firstName' && schoolDetailStudents.sortAscending, 'inactive': schoolDetailStudents.sortColumn != 'firstName'}" ng-if="schoolDetailStudents.students.length"></span>
+                        <span class="fa" ng-class="{'fa-caret-down': (districtDetailParticipants.sortColumn == 'firstName' && !districtDetailParticipants.sortAscending) || districtDetailParticipants.sortColumn != 'firstName', 'fa-caret-up': districtDetailParticipants.sortColumn == 'firstName' && districtDetailParticipants.sortAscending, 'inactive': districtDetailParticipants.sortColumn != 'firstName'}" ng-if="districtDetailParticipants.participants.length"></span>
                       </a>
                     </div>
                   </th>
                   <th scope="col">
                     <div class="text-center">
-                      <a href="" ng-click="orderSchoolDetailStudents('amount')">
+                      <a href="" ng-click="orderdistrictDetailParticipants('amount')">
                         <strong>Amount</strong> 
-                        <span class="fa" ng-class="{'fa-caret-down': (schoolDetailStudents.sortColumn == 'amount' && !schoolDetailStudents.sortAscending) || schoolDetailStudents.sortColumn != 'amount', 'fa-caret-up': schoolDetailStudents.sortColumn == 'amount' && schoolDetailStudents.sortAscending, 'inactive': schoolDetailStudents.sortColumn != 'amount'}" ng-if="schoolDetailStudents.students.length"></span>
+                        <span class="fa" ng-class="{'fa-caret-down': (districtDetailParticipants.sortColumn == 'amount' && !districtDetailParticipants.sortAscending) || districtDetailParticipants.sortColumn != 'amount', 'fa-caret-up': districtDetailParticipants.sortColumn == 'amount' && districtDetailParticipants.sortAscending, 'inactive': districtDetailParticipants.sortColumn != 'amount'}" ng-if="districtDetailParticipants.participants.length"></span>
                       </a>
                     </div>
                   </th>
                   <th scope="col">
                     <div class="text-center">
-                      <a href="" ng-click="orderSchoolDetailStudents('emailsSent')">
+                      <a href="" ng-click="orderdistrictDetailParticipants('emailsSent')">
                         <strong>Emails</strong> 
-                        <span class="fa" ng-class="{'fa-caret-down': (schoolDetailStudents.sortColumn == 'emailsSent' && !schoolDetailStudents.sortAscending) || schoolDetailStudents.sortColumn != 'emailsSent', 'fa-caret-up': schoolDetailStudents.sortColumn == 'emailsSent' && schoolDetailStudents.sortAscending, 'inactive': schoolDetailStudents.sortColumn != 'emailsSent'}" ng-if="schoolDetailStudents.students.length"></span>
+                        <span class="fa" ng-class="{'fa-caret-down': (districtDetailParticipants.sortColumn == 'emailsSent' && !districtDetailParticipants.sortAscending) || districtDetailParticipants.sortColumn != 'emailsSent', 'fa-caret-up': districtDetailParticipants.sortColumn == 'emailsSent' && districtDetailParticipants.sortAscending, 'inactive': districtDetailParticipants.sortColumn != 'emailsSent'}" ng-if="districtDetailParticipants.participants.length"></span>
                       </a>
                     </div>
                   </th>
                   <th scope="col">
                     <div class="text-center">
-                      <a href="" ng-click="orderSchoolDetailStudents('tshirtSize')">
+                      <a href="" ng-click="orderdistrictDetailParticipants('tshirtSize')">
                         <strong>T-shirt</strong> 
-                        <span class="fa" ng-class="{'fa-caret-down': (schoolDetailStudents.sortColumn == 'tshirtSize' && !schoolDetailStudents.sortAscending) || schoolDetailStudents.sortColumn != 'tshirtSize', 'fa-caret-up': schoolDetailStudents.sortColumn == 'tshirtSize' && schoolDetailStudents.sortAscending, 'inactive': schoolDetailStudents.sortColumn != 'tshirtSize'}" ng-if="schoolDetailStudents.students.length"></span>
+                        <span class="fa" ng-class="{'fa-caret-down': (districtDetailParticipants.sortColumn == 'tshirtSize' && !districtDetailParticipants.sortAscending) || districtDetailParticipants.sortColumn != 'tshirtSize', 'fa-caret-up': districtDetailParticipants.sortColumn == 'tshirtSize' && districtDetailParticipants.sortAscending, 'inactive': districtDetailParticipants.sortColumn != 'tshirtSize'}" ng-if="districtDetailParticipants.participants.length"></span>
                       </a>
                     </div>
                   </th>
                 </tr>
               </thead>
               <tbody>
-                <tr ng-repeat="schoolDetailStudent in schoolDetailStudents.students">
+                <tr ng-repeat="districtDetailParticipant in districtDetailParticipants.participants">
                   <td>
                     <div class="text-left">
-                      <span ng-bind-html="schoolDetailStudent.firstName"></span> <span ng-bind-html="schoolDetailStudent.lastName"></span>
+                      <span ng-bind-html="districtDetailParticipant.firstName"></span> <span ng-bind-html="districtDetailParticipant.lastName"></span>
                     </div>
                   </td>
                   <td>
                     <div class="text-center">
-                      {{schoolDetailStudent.amountFormatted}}
+                      {{districtDetailParticipant.amountFormatted}}
                     </div>
                   </td>
                   <td>
                     <div class="text-center">
-                      {{schoolDetailStudent.emailsSent}}
+                      {{districtDetailParticipant.emailsSent}}
                     </div>
                   </td>
                   <td>
                     <div class="text-center">
-                      <span ng-bind-html="schoolDetailStudent.tshirtSize"></span>
+                      <span ng-bind-html="districtDetailParticipant.tshirtSize"></span>
                     </div>
                   </td>
                 </tr>

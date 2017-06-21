@@ -43,7 +43,11 @@ angular.module 'trPcControllers'
           'email_rpt_show_donors'
           'email_rpt_show_nondonors'
         ]
+        if $scope.participantRegistration.aTeamCaptain is 'true'
+          contactFilters.push 'email_rpt_show_teammates'
+          contactFilters.push 'email_rpt_show_nonteammates'
         if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
+          contactFilters.push 'email_rpt_show_company_coordinator_captains'
           contactFilters.push 'email_rpt_show_company_coordinator_participants'
         angular.forEach contactFilters, (filter) ->
           contactCountPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=1'
@@ -129,10 +133,10 @@ angular.module 'trPcControllers'
             if message.active is 'true'
               if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
                 if message.name.indexOf('Coordinator:') is -1
-                  message.name = message.name.split('Student: ')[1]
+                  message.name = message.name.split('Participant: ')[1]
                   $scope.suggestedMessages.push message
               else
-                if message.name.indexOf('Student:') is -1
+                if message.name.indexOf('Participant:') is -1
                   message.name = message.name.split('Coordinator: ')[1]
                   $scope.suggestedMessages.push message
           response
