@@ -39,9 +39,11 @@
           </p>
         </div>
         <div class="ym-progress__goal col-sm-6">
-          <p>
-            Our goal is <strong><span ng-bind-html="teamProgress.goalFormatted"></span></strong>
-          </p>
+          <div ng-if="teamProgress.goalFormatted && teamProgress.goalFormatted != '' && teamProgress.goalFormatted != '$0'" ng-cloak>
+            <p>
+              Our goal is <strong><span ng-bind-html="teamProgress.goalFormatted"></span></strong>
+            </p>
+          </div>
         </div>
         <div class="clearfix"></div>
         <div class="ym-progress__date" ng-if="eventDate != '' && eventDate != 'User Provided No Response'" ng-cloak>
@@ -127,9 +129,9 @@
       <h3 class="h5">
         Top Fundraisers
       </h3>
-      <div class="ym-donor-list">
+      <ul class="ym-donor-list">
         <team-participant-list team-id="'[[T6:[[S334:team_id]]]]'" participants="teamParticipants.participants"></team-participant-list>
-      </div>
+      </ul>
     </div>
     <div class="clearfix"></div>
   </div>

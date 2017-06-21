@@ -6,7 +6,6 @@ angular.module 'ahaLuminateApp'
       restrict: 'E'
       replace: true
       scope:
-        companyName: '='
         companyId: '='
         frId: '='
         teams: '='
