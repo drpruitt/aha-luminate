@@ -5,7 +5,7 @@
         <button type="button" class="btn btn-md-wide btn-toggle" ng-click="editCompanyPhoto1()" ng-if="participantRegistration.companyInformation.companyId == '[[S334:company_id]]' && participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
           <span class="fa fa-camera"></span> Edit Photo
         </button>
-        <img class="hidden-md hidden-lg" ng-src="{{companyPagePhoto1.customUrl && companyPagePhoto1.customUrl != '' ? companyPagePhoto1.customUrl : companyPagePhoto1.defaultUrl}}" alt="School Photo" ng-cloak>
+        <img class="hidden-md hidden-lg" ng-src="{{companyPagePhoto1.customUrl && companyPagePhoto1.customUrl != '' ? companyPagePhoto1.customUrl : companyPagePhoto1.defaultUrl}}" alt="District Photo" ng-cloak>
       </div>
     </div>
     <div class="col-md-6 ym-progress ym-secondary-medium-color">
@@ -27,7 +27,7 @@
           </a>
         </div>
       </div>
-      <div class="ym-progress__thermometer" name="School Progress Bar" aria-valuetext="School Progress Bar" role="progressbar" ng-if="companyProgress.goal && companyProgress.goal != 0" aria-valuenow="{{companyProgress.percent}}%" aria-valuemin="0%" aria-valuemax="100%" ng-cloak>
+      <div class="ym-progress__thermometer" name="District Progress Bar" aria-valuetext="District Progress Bar" role="progressbar" ng-if="companyProgress.goal && companyProgress.goal != 0" aria-valuenow="{{companyProgress.percent}}%" aria-valuemin="0%" aria-valuemax="100%" ng-cloak>
         <div class="ym-progress__thermometer--fill" ng-style="{'width': companyProgress.percent + '%'}"></div>
       </div>
       <div class="ym-progress__stats">
@@ -61,12 +61,12 @@
           <div class="h2 ym-headline">
             {{participantCount}}
           </div>
-          <div ng-if="participantCount == 1">
+          <div ng-if="participantCount == 1" ng-cloak>
             <p>
               team member registered.
             </p>
           </div>
-          <div ng-if="participantCount > 1">
+          <div ng-if="participantCount > 1" ng-cloak>
             <p>
               team members registered.
             </p>
@@ -100,55 +100,40 @@
     </div>
   </div>
   <div class="ym-page-section ym-page-section__list ym-accent-color">
-    <div class="ym-story" ng-class="companyParticipants.totalFundraisers < 1 && companyTeams.totalNumber > 1 ? 'col-md-12' : 'col-md-6'">
-      <h3 class="h5">
-        Our School is Heart Healthy!
-      </h3>
-      <div class="ym-story-edit-btns" ng-if="participantRegistration.companyInformation.companyId == '[[S334:company_id]]' && participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
-        <button type="button" class="btn btn-md-wide btn-toggle" ng-click="editCompanyPageContent()" ng-if="companyPageContent.mode == 'view'">
-          <span class="fa fa-pencil"></span> Edit Story
-        </button>
-        <div ng-if="companyPageContent.mode == 'edit'" ng-cloak>
-          <button type="button" class="btn btn-md-wide btn-primary" ng-click="saveCompanyPageContent()">
-            <span class="fa fa-pencil"></span> <strong>Save Story</strong>
-          </button> 
-          <button type="button" class="btn btn-md-wide btn-toggle" ng-click="resetCompanyPageContent()">
-            Cancel
+    <div class="row">
+      <div class="col-xs-12 ym-story">
+        <h3 class="h5">
+          Our District is Heart Healthy!
+        </h3>
+        <div class="ym-story-edit-btns" ng-if="participantRegistration.companyInformation.companyId == '[[S334:company_id]]' && participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
+          <button type="button" class="btn btn-md-wide btn-toggle" ng-click="editCompanyPageContent()" ng-if="companyPageContent.mode == 'view'">
+            <span class="fa fa-pencil"></span> Edit Story
           </button>
-        </div>
-      </div>
-      <div class="hidden js--default-page-content" hidden aria-hidden="true" ng-non-bindable>
-        [[C6:fr_rich_text]]
-      </div>
-      <div ng-show="companyPageContent.mode == 'view'">
-        <div ng-bind-html="companyPageContent.rich_text">
-          <div ng-non-bindable>
-            [[C6:fr_rich_text]]
+          <div ng-if="companyPageContent.mode == 'edit'" ng-cloak>
+            <button type="button" class="btn btn-md-wide btn-primary" ng-click="saveCompanyPageContent()">
+              <span class="fa fa-pencil"></span> <strong>Save Story</strong>
+            </button> 
+            <button type="button" class="btn btn-md-wide btn-toggle" ng-click="resetCompanyPageContent()">
+              Cancel
+            </button>
           </div>
         </div>
-      </div>
-      <div class="ym-page-content-editor" ng-show="companyPageContent.mode == 'edit'" ng-cloak>
-        <label for="taHtmlElement{{companyPageContent.serial}}" class="sr-only">Edit your school's story:</label>
-        <div text-angular name="ng_rich_text" ng-model="companyPageContent.ng_rich_text" ta-toolbar="{{companyPageContent.textEditorToolbar}}" serial="{{companyPageContent.serial}}"></div>
-      </div>
-    </div>
-    <div class="ym-list" ng-class="companyParticipants.totalFundraisers < 1 && companyTeams.totalNumber > 1 ? 'hidden' : 'col-md-6'" role="list" aria-label="Top Fundarisers List">
-      <h3 class="h5">
-        Top Fundraisers
-      </h3>
-      <div class="ym-donor-list" ng-if="companyParticipants.totalFundraisers > 0" ng-cloak>
-        <company-participant-list company-id="'[[T6:[[S334:company_id]]]]'" participants="companyParticipants.participants"></company-participant-list>
-      </div>
-      <div class="text-center" ng-if="companyParticipants.totalFundraisers < 1 && companyTeams.totalNumber == 1" ng-cloak>
-        <p>
-          Your School has no donations yet. Be the first to donate.
-        </p>
-        <a class="btn btn-primary btn-lg" ng-href="[[S8]]#" data-toggle="modal" data-target="#schoolDonation">
-          Donate
-        </a>
+        <div class="hidden js--default-page-content" hidden aria-hidden="true" ng-non-bindable>
+          [[C6:fr_rich_text]]
+        </div>
+        <div ng-show="companyPageContent.mode == 'view'">
+          <div ng-bind-html="companyPageContent.rich_text">
+            <div ng-non-bindable>
+              [[C6:fr_rich_text]]
+            </div>
+          </div>
+        </div>
+        <div class="ym-page-content-editor" ng-show="companyPageContent.mode == 'edit'" ng-cloak>
+          <label for="taHtmlElement{{companyPageContent.serial}}" class="sr-only">Edit your district's story:</label>
+          <div text-angular name="ng_rich_text" ng-model="companyPageContent.ng_rich_text" ta-toolbar="{{companyPageContent.textEditorToolbar}}" serial="{{companyPageContent.serial}}"></div>
+        </div>
       </div>
     </div>
-    <div class="clearfix"></div>
   </div>
   <div class="ym-page-section ym-page-section__roster" ng-if="companyTeams.totalNumber > 1">
     <company-team-list company-id="'[[T6:[[S334:company_id]]]]'" teams="companyTeams.teams"></company-team-list>
@@ -159,7 +144,7 @@
       Thank You to Our Local Sponsors
     </h5>
     <p class="text-center">
-      <img ng-src="{{localSponsorImageSrc}}" class="image-responsive" alt="{{localSponsorImageAlt}}"/>
+      <img class="image-responsive" ng-src="{{localSponsorImageSrc}}" alt="{{localSponsorImageAlt}}">
     </p>
   </div>
   <div ng-if="companyTeams.totalNumber == 1" class="modal fade" id="schoolDonation" tabindex="-1" role="dialog" aria-labelledby="schoolModalTitle" hidden aria-hidden="true" style="display: none;">
@@ -171,13 +156,13 @@
             Donate
           </h4>
           <p>
-            If you'd like to donate directly to an individual, ask them (or their parent/guardian) to send you a donation request email containing a link to their secure personal fundraising page.
+            If you'd like to donate directly to an individual, ask them to send you a donation request email containing a link to their secure personal fundraising page.
           </p>
           <p>
-            You can also make a general donation to a school:
+            You can also make a general donation to a district:
           </p>
           <a class="btn btn-lg btn-primary" ng-href="Donation2?df_id=[[E42:[[S80:trID]]:form-id]]&amp;FR_ID=[[S80:trID]]&amp;PROXY_ID={{teamId}}&amp;PROXY_TYPE=22">
-            Donate to Our School
+            Donate to Our District
           </a>
         </div>
       </div>
