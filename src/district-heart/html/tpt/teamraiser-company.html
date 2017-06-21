@@ -103,7 +103,7 @@
   </div>
   <div class="ym-page-section ym-page-section__list ym-accent-color">
     <div class="row">
-      <div class="col-xs-12 ym-story">
+      <div class="col-xs-12 ym-story text-center">
         <h3 class="h5">
           Our District is Heart Healthy!
         </h3>
@@ -140,7 +140,7 @@
   <div class="ym-page-section ym-page-section__roster" ng-if="companyTeams.totalNumber > 1" ng-cloak>
     <company-team-list fr-id="'[[S80:trID]]'" company-id="'[[T6:[[S334:company_id]]]]'" teams="companyTeams.teams"></company-team-list>
   </div>
-  <div class="ym-page-section ym-page-section__roster" ng-if="companyParticipants.totalNumber > 1" ng-cloak>
+  <div class="ym-page-section ym-page-section__roster" ng-if="companyParticipants.totalNumber > 0" ng-cloak>
     <company-participant-list fr-id="'[[S80:trID]]'" company-id="'[[T6:[[S334:company_id]]]]'" participants="companyParticipants.participants"></company-participant-list>
   </div>
   <div class="ym-page-section ym-page-section__sponsor" ng-if="localSponsorShow == true">
