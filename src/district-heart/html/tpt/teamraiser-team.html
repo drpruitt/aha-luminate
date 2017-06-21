@@ -104,58 +104,54 @@
     </div>
   </div>
   <div class="ym-page-section ym-page-section__list ym-accent-color">
-    <div class="ym-story" ng-class="teamParticipants.totalFundraisers < 1 ? 'col-md-12' : 'col-md-6'">
-      <h3 class="h5">
-        Our Class is Heart Healthy!
-      </h3>
-      [[?
-        [[?xx::x[[S1:cons_id]]x::::
-          [[?x[[E48:[[S80:trID]]:team-id]]xTRUEx::x[[S334:team_id]]x[[E48:[[S80:trID]]-[[S1:cons_id]]:if-is-captain]]x::T::]]
-        ]]
-      ::T::
-        <div class="ym-story-edit-btns">
-          <button type="button" class="btn btn-md-wide btn-toggle" ng-click="editTeamPageContent()" ng-if="teamPageContent.mode == 'view'">
-            <span class="fa fa-pencil"></span> Edit Story
-          </button>
-          <div ng-if="teamPageContent.mode == 'edit'" ng-cloak>
-            <button type="button" class="btn btn-md-wide btn-primary" ng-click="saveTeamPageContent()">
-              <span class="fa fa-pencil"></span> <strong>Save Story</strong>
-            </button> 
-            <button type="button" class="btn btn-md-wide btn-toggle" ng-click="resetTeamPageContent()">
-              Cancel
+    <div class="row">
+      <div class="col-xs-12 ym-story">
+        <h3 class="h5">
+          Our Class is Heart Healthy!
+        </h3>
+        [[?
+          [[?xx::x[[S1:cons_id]]x::::
+            [[?x[[E48:[[S80:trID]]:team-id]]xTRUEx::x[[S334:team_id]]x[[E48:[[S80:trID]]-[[S1:cons_id]]:if-is-captain]]x::T::]]
+          ]]
+        ::T::
+          <div class="ym-story-edit-btns">
+            <button type="button" class="btn btn-md-wide btn-toggle" ng-click="editTeamPageContent()" ng-if="teamPageContent.mode == 'view'">
+              <span class="fa fa-pencil"></span> Edit Story
             </button>
+            <div ng-if="teamPageContent.mode == 'edit'" ng-cloak>
+              <button type="button" class="btn btn-md-wide btn-primary" ng-click="saveTeamPageContent()">
+                <span class="fa fa-pencil"></span> <strong>Save Story</strong>
+              </button> 
+              <button type="button" class="btn btn-md-wide btn-toggle" ng-click="resetTeamPageContent()">
+                Cancel
+              </button>
+            </div>
+          </div>
+        ::]]
+        <div class="hidden js--default-page-content" hidden aria-hidden="true" ng-non-bindable>
+          [[C6:fr_rich_text]]
+        </div>
+        <div ng-show="teamPageContent.mode == 'view'">
+          <div ng-bind-html="teamPageContent.rich_text">
+            <div ng-non-bindable>
+              [[C6:fr_rich_text]]
+            </div>
           </div>
         </div>
-      ::]]
-      <div class="hidden js--default-page-content" hidden aria-hidden="true" ng-non-bindable>
-        [[C6:fr_rich_text]]
-      </div>
-      <div ng-show="teamPageContent.mode == 'view'">
-        <div ng-bind-html="teamPageContent.rich_text">
-          <div ng-non-bindable>
-            [[C6:fr_rich_text]]
+        [[?
+          [[?xx::x[[S1:cons_id]]x::::
+            [[?x[[E48:[[S80:trID]]:team-id]]xTRUEx::x[[S334:team_id]]x[[E48:[[S80:trID]]-[[S1:cons_id]]:if-is-captain]]x::T::]]
+          ]]
+        ::T::
+          <div class="ym-page-content-editor" ng-show="teamPageContent.mode == 'edit'" ng-cloak>
+            <label for="taHtmlElement{{teamPageContent.serial}}" class="sr-only">Edit your team's story:</label>
+            <div text-angular name="ng_rich_text" ng-model="teamPageContent.ng_rich_text" ta-toolbar="{{teamPageContent.textEditorToolbar}}" serial="{{teamPageContent.serial}}"></div>
           </div>
-        </div>
-      </div>
-      [[?
-        [[?xx::x[[S1:cons_id]]x::::
-          [[?x[[E48:[[S80:trID]]:team-id]]xTRUEx::x[[S334:team_id]]x[[E48:[[S80:trID]]-[[S1:cons_id]]:if-is-captain]]x::T::]]
-        ]]
-      ::T::
-        <div class="ym-page-content-editor" ng-show="teamPageContent.mode == 'edit'" ng-cloak>
-          <label for="taHtmlElement{{teamPageContent.serial}}" class="sr-only">Edit your team's story:</label>
-          <div text-angular name="ng_rich_text" ng-model="teamPageContent.ng_rich_text" ta-toolbar="{{teamPageContent.textEditorToolbar}}" serial="{{teamPageContent.serial}}"></div>
-        </div>
-      ::]]
-    </div>
-    <div class="ym-list" ng-class="teamParticipants.totalFundraisers < 1 ? 'hidden' : 'col-md-6'" role="list" aria-label="Top Fundarisers List">
-      <h3 class="h5">
-        Top Fundraisers
-      </h3>
-      <div class="ym-donor-list">
-        <team-participant-list team-id="'[[T6:[[S334:team_id]]]]'" participants="teamParticipants.participants"></team-participant-list>
+        ::]]
       </div>
     </div>
-    <div class="clearfix"></div>
+  </div>
+  <div class="ym-page-section ym-page-section__roster" ng-if="teamParticipants.totalNumber > 1" ng-cloak>
+    <team-participant-list fr-id="'[[S80:trID]]'" team-id="'[[T6:[[S334:team_id]]]]'" participants="teamParticipants.participants"></team-participant-list>
   </div>
 </div>
