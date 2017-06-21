@@ -1,3 +1,9 @@
+.ym-page-section__top {
+  .ym-progress {
+    background: $event-accent-medium;
+  }
+}
+
 .ym-section-divider {
   border: 0;
   border-top: 1px solid $event-secondary;
@@ -7,6 +13,10 @@
 
 .ym-page-section__list {
   background: $event-accent;
+}
+
+.ym-story {
+  text-align: center;
 }
 
 .ym-my-challenge {

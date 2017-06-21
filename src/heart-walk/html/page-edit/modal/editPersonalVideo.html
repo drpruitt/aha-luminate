@@ -12,7 +12,7 @@
         <option value="personalized">Personalized Video</option>
         <option value="youtube">YouTube Video</option>
       </select>
-      <br />
+      <br>
       <div uib-alert class="alert-danger" ng-if="updatePersonalVideoError.message">
         {{updatePersonalVideoError.message}}
       </div>
@@ -32,7 +32,10 @@
           Your Why:
         </label>
         <input type="text" class="form-control" id="" ng-model="personalMedia.myWhy">
-        <p>Your personalized video will take 5-10mins to generate.<br />Please refresh your browser to see your personalized video.</p>
+        <p>
+          Your personalized video will take 5-10mins to generate.<br>
+          Please refresh your browser to see your personalized video.
+        </p>
       </div>
     </div>
     <div class="modal-footer">
