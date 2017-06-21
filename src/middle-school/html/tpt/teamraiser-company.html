@@ -115,9 +115,9 @@
       <h3 class="h5">
         Top Fundraisers
       </h3>
-      <div class="ym-donor-list" ng-if="companyParticipants.totalFundraisers > 0" ng-cloak>
+      <ul class="ym-donor-list" ng-if="companyParticipants.totalFundraisers > 0" ng-cloak>
         <company-participant-list fr-id="'[[S80:trID]]'" company-id="'[[T6:[[S334:company_id]]]]'" participants="companyParticipants.participants"></company-participant-list>
-      </div>
+      </ul>
       <div class="text-center" ng-if="companyParticipants.totalFundraisers < 1 && companyTeams.totalNumber == 1" ng-cloak>
         <p>
           Your School has no donations yet. Be the first to donate.
