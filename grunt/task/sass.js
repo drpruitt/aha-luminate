@@ -13,6 +13,12 @@ module.exports = {
     files: {
       'dist/heart-walk/css/main.css': [
         'src/heart-walk/sass/main.scss'
+      ], 
+      'dist/heart-walk/css/participant.css': [
+        'src/heart-walk/sass/participant-center/main.scss'
+      ], 
+      'dist/heart-walk/css/pageEdit.css': [
+        'src/heart-walk/sass/page-edit/main.scss'
       ]
     }
   }, 
@@ -35,6 +41,17 @@ module.exports = {
       ], 
       'dist/middle-school/css/participant.css': [
         'src/middle-school/sass/participant.scss'
+      ]
+    }
+  }, 
+  
+  "district-heart": {
+    files: {
+      'dist/district-heart/css/main.css': [
+        'src/district-heart/sass/main.scss'
+      ], 
+      'dist/district-heart/css/participant.css': [
+        'src/district-heart/sass/participant.scss'
       ]
     }
   }

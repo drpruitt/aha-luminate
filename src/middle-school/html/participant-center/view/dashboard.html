@@ -7,8 +7,8 @@
         </h2>
       </div>
       <div class="row">
-        <div class="col-sm-6 ym-pc-dashboard-progress-section__column event-secondary-medium">
-          <div class="ym-pc-dashboard-progress-box">
+        <div class="col-sm-6 ym-pc-dashboard-progress-section__column">
+          <div class="ym-pc-dashboard-progress-box event-secondary-medium">
             <div class="ym-pc-dashboard-section-header">
               <h3 class="h5">
                 Progress
@@ -112,6 +112,27 @@
               </div>
             </div>
           </div>
+          <div class="ym-pc-dashboard-badges-box event-secondary-medium" ng-if="prizes && prizes.length > 0" ng-cloak>
+            <div class="ym-pc-dashboard-section-header">
+              <h2 class="h5">
+                Badges
+              </h2>
+              <a class="btn btn-md-wide btn-secondary" ng-href="{{baseUrl}}#">
+                <strong>Learn About Badges</strong>
+              </a>
+            </div>
+            <div class="ym-pc-dashboard-badges-icons clearfix">
+              <div class="ym-pc-dashboard-badges-icon" ng-repeat="prize in prizes" ng-cloak>
+                <div ng-if="prize.earned != null">
+                  <img class="img-responsive" ng-src="//s3.amazonaws.com/aha-jumphoops-production/fy18/assets/badges/tgr/{{prize.id}}_delivered.png" alt="{{prize.label}}">
+                </div>
+                <div ng-if="prize.earned == null">
+                  <img class="img-responsive" ng-src="//s3.amazonaws.com/aha-jumphoops-production/fy18/assets/badges/tgr/{{prize.id}}_earned.png" alt="{{prize.label}}">
+                </div>
+                <div ng-bind-html="prize.label"></div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="col-sm-6 ym-pc-dashboard-progress-section__column event-secondary-medium">
           <div class="ym-pc-dashboard-email-challenge-box">
@@ -120,54 +141,29 @@
                 Email Challenge
               </h3>
             </div>
-            <div class="text-center">
+            <div class="ym-pc-dashboard-email-challenge-option">
               <p>
-                Send 10 emails or Ecards to friends and family.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit!
               </p>
-              <div class="ym-pc-dashboard-email-challenge-images">
-                <a ng-href="{{baseUrl}}#/email">
-                  <img src="../aha-luminate/dist/middle-school/image/send-emails.png" alt="Send Email">
-                </a> 
-                <a ng-href="http://hearttools.heart.org/aha_ym18?eid={{frId}}&amp;sid={{consId}}&amp;name={{consName}}" target="_blank">
-                  <img src="../aha-luminate/dist/middle-school/image/send-ecards.png" alt="Send Ecard">
-                </a>
-              </div>
-              <div class="ym-pc-dashboard-email-challenge-buttons">
-                <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email">
-                  <strong>Send Email</strong>
-                </a> 
-                <a class="btn btn-md-wide btn-primary" ng-href="http://hearttools.heart.org/aha_ym18?eid={{frId}}&amp;sid={{consId}}&amp;name={{consName}}" target="_blank">
-                  <strong>Send Ecard</strong>
-                </a>
-              </div>
+              <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email">
+                <strong>Send Email</strong>
+              </a>
             </div>
+            <div class="ym-pc-dashboard-email-challenge-option">
+              <p>
+                Or copy and paste the text below into your favorite email client!
+              </p>
+              <button type="button" class="btn btn-md-wide btn-primary" data-clipboard-target="#emailChallenge-sampleText">
+                <strong>Copy Email Text</strong>
+              </button>
+            </div>
+            <form method="POST">
+              <label for="emailChallenge-sampleText" class="sr-only">Email text:</label>
+              <textarea class="form-control" id="emailChallenge-sampleText" name="sampleText" ng-model="emailChallenge.sampleText" readonly></textarea>
+            </form>
           </div>
         </div>
       </div>
-    </section>
-    <section class="ym-pc-dashboard-badges-section" ng-if="prizes && prizes.length > 0" ng-cloak aria-label="My Badges">
-      <div class="ym-pc-dashboard-section-header">
-        <h2 class="h5">
-          Badges
-        </h2>
-        <a class="btn btn-md-wide btn-secondary" ng-href="http://heart.pub30.convio.net/jump-hoops/for-students/earn-badges/">
-          <strong>Learn About Badges</strong>
-        </a>
-      </div>
-      <div class="ym-pc-dashboard-badges-icons ym-carousel--badges owl-carousel">
-        <div class="ym-pc-dashboard-badges-icon" ng-repeat="prize in prizes" ng-cloak>
-          <div ng-if="prize.earned != null">
-            <img class="img-responsive" ng-src="//s3.amazonaws.com/aha-jumphoops-production/fy18/assets/badges/tgr/{{prize.id}}_delivered.png" alt="{{prize.label}}">
-          </div>
-          <div ng-if="prize.earned == null">
-            <img class="img-responsive" ng-src="//s3.amazonaws.com/aha-jumphoops-production/fy18/assets/badges/{{prize.id}}_earned.png" alt="{{prize.label}}">
-          </div>
-          <div ng-bind-html="prize.label"></div>
-        </div>
-      </div>
-      <p class="text-center">
-        <strong>You can also <a ng-href="http://heart.pub30.convio.net/jump-hoops/for-students/adoption-certificates/">download Adoption Certificates</a> for each badge level!</strong>
-      </p>
     </section>
     <section class="ym-pc-dashboard-activities-section" aria-label="My Fundraising Activities">
       <div class="ym-pc-dashboard-section-header">
@@ -219,7 +215,7 @@
               </div>
               <div class="ym-next-step__action">
                 <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_all/list">
-                  Import Contacts
+                  <strong>Import Contacts</strong>
                 </a>
               </div>
             </div>
@@ -334,7 +330,7 @@
         </div>
       </div>
     </section>
-    <section class="ym-pc-dashboard-coordinators-message-section" ng-if="coordinatorsMessage.message && coordinatorsMessage.message != ''" ng-cloak aria-label="Note From Your Teacher">
+    <section class="ym-pc-dashboard-coordinators-message-section" aria-label="Note From Your Teacher" ng-if="coordinatorsMessage.message && coordinatorsMessage.message != ''" ng-cloak>
       <div class="ym-pc-dashboard-section-header">
         <h2 class="h5">
           Note From Your Teacher
@@ -474,11 +470,11 @@
             </div>
             <div class="ym-pc-dashboard-coordinator-create-message">
               <p>
-                Create/Update an <strong>encouraging message</strong> for your student in their Headquarters.
+                Create/Update an <strong>encouraging message</strong> for your students in their Headquarters.
               </p>
-              <a class="btn btn-md-wide btn-primary">
+              <button type="button" class="btn btn-md-wide btn-primary" ng-click="editCoordinatorMessage()">
                 <strong>Create Message</strong>
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -688,7 +684,10 @@
             Visit our Thank-You Gift portal to manage and order gifts for your students.
           </p>
           <div class="ym-activity-box-cta">
-            <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#" target="_blank">
+            <a class="btn btn-md-wide btn-primary" ng-href="https://thegreatreplaystaging.boundlessnetwork.com/coordinator/login/{{authToken}}/{{sessionCookie}}" target="_blank" ng-if="tablePrefix == 'heartdev'" ng-cloak>
+              <strong>Thank You Gifts</strong>
+            </a>
+            <a class="btn btn-md-wide btn-primary" ng-href="https://thegreatreplay.heart.org/coordinator/login/{{authToken}}/{{sessionCookie}}" target="_blank" ng-if="tablePrefix == 'heart'" ng-cloak>
               <strong>Thank You Gifts</strong>
             </a>
           </div>
@@ -751,7 +750,7 @@
       </div>
     </section>
   </div>
-  <section class="ym-pc-dashboard-spread-section event-secondary-medium--diagonal" aria-label="Resources to Spread the Word">
+  <section class="ym-pc-dashboard-spread-section event-secondary-medium event-secondary-medium--grid" aria-label="Resources to Spread the Word">
     <div class="ym-pc-dashboard-section-header">
       <h2 class="h3">
         Spread the Word
@@ -777,18 +776,15 @@
         <div class="col-sm-6">
           <div class="ym-pc-dashboard-section-header">
             <h3 class="h5">
-              Email Signature
+              Email Badge
             </h3>
           </div>
           <p>
-            Download a signature for your email!
+            Download an email badge!
           </p>
           <div class="text-center">
-            <a class="btn btn-md-wide btn-secondary" ng-href="http://www2.charitydynamics.com/site/PageServer?pagename=Boundless_Email_Client" target="_blank">
-              <strong>PC Instructions</strong>
-            </a> 
-            <a class="btn btn-md-wide btn-secondary" ng-href="http://www2.charitydynamics.com/site/PageServer?pagename=Boundless_Email_Client_Mac" target="_blank">
-              <strong>Mac Instructions</strong>
+            <a class="btn btn-md-wide btn-secondary" ng-href="{{baseUrl}}#" target="_blank">
+              <strong>Download Email Badge</strong> 
             </a>
           </div>
         </div>

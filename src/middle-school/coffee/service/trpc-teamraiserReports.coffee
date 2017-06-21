@@ -6,7 +6,7 @@ angular.module 'trPcApp'
       getSchoolDetailReport: ->
         $http
           method: 'GET'
-          url: 'SPageServer?pagename=getJumpHoopsSchoolDetailReport&pgwrap=n&fr_id=' + $rootScope.frId + '&response_format=json'
+          url: 'SPageServer?pagename=getMiddleSchoolDetailReport&pgwrap=n&fr_id=' + $rootScope.frId + '&response_format=json'
         .then (response) ->
           response
   ]

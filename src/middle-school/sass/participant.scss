@@ -3,3 +3,224 @@
 @import "../../youth-markets/sass/mixins.scss";
 
 @import "../../youth-markets/sass/participant.scss";
+
+.ym-pc-dashboard-progress-section {
+  .row {
+    .ym-pc-dashboard-progress-section__column {
+      &:first-child {
+        padding: 0;
+      }
+    }
+  }
+}
+
+.ym-pc-dashboard-progress-box {
+  padding: 20px;
+  margin: 0 0 15px;
+  
+  @media (min-width: $screen-md-min) {
+    margin: 0 0 30px;
+  }
+  
+  .ym-pc-dashboard-section-header {
+    h5, 
+    .h5 {
+      text-transform: none;
+    }
+  }
+}
+
+.ym-pc-dashboard-progress-type {
+  a {
+    &, 
+    &:link, 
+    &:visited {
+      background-color: rgb(40, 79, 73);
+      background-color: rgba(40, 79, 73, 0.2);
+      color: rgb(255, 255, 255);
+      color: rgba(40, 79, 73, 1);
+    }
+  }
+}
+
+.ym-pc-dashboard-badges-box {
+  padding: 20px;
+  
+  .ym-pc-dashboard-section-header {
+    position: relative;
+    
+    h5, 
+    .h5 {
+      text-transform: none;
+      margin: 0 0 18px !important;
+      
+      @media (min-width: $screen-lg-min) {
+        margin: 0 0 12px !important;
+      }
+    }
+  }
+  
+  .btn, 
+  a.btn {
+    &, 
+    &:link, 
+    &:visited, 
+    &:hover, 
+    &:focus, 
+    &:active {
+      margin: 0 0 4px;
+      
+      @media (min-width: $screen-lg-min) {
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 7px 10px;
+        margin: 0;
+      }
+    }
+  }
+  
+  .ym-pc-dashboard-badges-icons {
+    width: 212px;
+    margin: 0 auto;
+    
+    @media (min-width: 414px) {
+      width: 318px;
+    }
+    
+    @media (min-width: $screen-md-min) {
+      width: 414px;
+    }
+    
+    @media (min-width: $screen-lg-min) {
+      width: 450px;
+    }
+  }
+  
+  .ym-pc-dashboard-badges-icon {
+    float: left;
+    text-align: center;
+    width: 76px;
+    margin: 20px 15px 0;
+    
+    @media (min-width: $screen-md-min) {
+      width: 98px;
+      margin: 20px 20px 0;
+    }
+    
+    @media (min-width: $screen-lg-min) {
+      width: 110px;
+    }
+    
+    &:nth-child(3), 
+    &:nth-child(5), 
+    &:nth-child(7), 
+    &:nth-child(9) {
+      @media (max-width: 413px) {
+        clear: both;
+      }
+    }
+    
+    &:nth-child(4), 
+    &:nth-child(7) {
+      @media (min-width: 414px) {
+        clear: both;
+      }
+    }
+    
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+}
+
+.ym-pc-dashboard-email-challenge-box {
+  .ym-pc-dashboard-section-header {
+    h5, 
+    .h5 {
+      text-transform: none;
+    }
+  }
+  
+  .ym-pc-dashboard-email-challenge-option {
+    text-align: center;
+    margin: 0 0 20px;
+    
+    p {
+      margin: 0 0 18px;
+    }
+  }
+  
+  form {
+    textarea.form-control[readonly] {
+      background-color: $brand-white;
+      border: 0;
+      border-radius: 0;
+      font-size: 13px;
+      height: 470px;
+      padding: 28px;
+    }
+  }
+}
+
+.ym-activity-box {
+  h5, 
+  .h5 {
+    text-transform: none;
+  }
+}
+
+.ym-pc-dashboard-spread-section {
+  .ym-pc-dashboard-section-header {
+    h3, 
+    .h3 {
+      margin: 0 0 22px;
+    }
+  }
+  
+  .ym-pc-dashboard-spread-options {
+    .ym-pc-dashboard-section-header {
+      h5, 
+      .h5 {
+        text-transform: none;
+      }
+    }
+  }
+}
+
+.ym-pc-dashboard-coordinator-progress-box {
+  .ym-pc-dashboard-section-header {
+    h5, 
+    .h5 {
+      text-transform: none;
+    }
+  }
+}
+
+.ym-pc-dashboard-coordinator-students-box {
+  .ym-pc-dashboard-section-header {
+    h5, 
+    .h5 {
+      text-transform: none;
+    }
+  }
+}
+
+.ym-pc-dashboard-coordinator-resources-section {
+  .ym-pc-dashboard-section-header {
+    h3, 
+    .h3 {
+      margin: 0 0 32px;
+    }
+  }
+  
+  .ym-pc-dashboard-coordinator-resources-options {
+    .ym-pc-dashboard-section-header {
+      h5, 
+      .h5 {
+        text-transform: none;
+      }
+    }
+  }
+}

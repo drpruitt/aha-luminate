@@ -2,7 +2,7 @@
 <div ng-controller="HomeCtrl">
   <div class="ym-hero-top__find-your-school text-center visible-xs">
     <a href="#scroll#JumpSearch" class="btn btn-primary btn-lg" role="button">
-      Students &amp; Parents:<br />Find Your School to Sign Up
+      Students &amp; Parents:<br>Find Your School to Sign Up
     </a>
   </div>
   <t:if test="banner_image.length>0">
@@ -13,15 +13,19 @@
             <t:if test="overlay_location.length>0">
               <section>
                 <t:list id="overlay_location">
-                  <t:if test="name=='bottom-left'">
-                    <div class="ym-hero__text ym-hero__text--left hidden-xs">
-                  </t:if>
-                  <t:else>
-                    <div class="ym-hero__text ym-hero__text--right hidden-xs">
-                  </t:else>
-                </t:list>   
-                  <h1>${title}</h1>
-                  <p>${description}</p>
+                <t:if test="name=='bottom-left'">
+                <div class="ym-hero__text ym-hero__text--left hidden-xs">
+                </t:if>
+                <t:else>
+                <div class="ym-hero__text ym-hero__text--right hidden-xs">
+                </t:else>
+                </t:list>
+                  <h1>
+                    ${title}
+                  </h1>
+                  <p>
+                    ${description}
+                  </p>
                 </div>
               </section>
             </t:if>
@@ -29,9 +33,13 @@
           <t:if test="overlay_location.length>0">
             <div class="ym-hero__text hidden-sm hidden-md hidden-lg">
               <section>
-                <h1>${title}</h1>
-                <p>${description}</p>
-              </section>  
+                <h1>
+                  ${title}
+                </h1>
+                <p>
+                  ${description}
+                </p>
+              </section>
             </div>
           </t:if>
         </div>
@@ -39,236 +47,319 @@
     </div>
   </t:if>
   <t:if test="!isNull(body)">
-  <div class="ym-page-section ym-page-section__block ym-page-section__block--slim">
-   <div class="col-sm-12">
-   ${body}
-  </div>
-  </div>
+    <div class="ym-page-section ym-page-section__block ym-page-section__block--slim">
+      <div class="col-sm-12">
+        ${body}
+      </div>
+    </div>
   </t:if>
   <t:if test="full_width_promo_1.length>0">
-  <t:list id="full_width_promo_1">
-  ${body}
-  </t:list>
+    <t:list id="full_width_promo_1">
+      ${body}
+    </t:list>
   </t:if>
   <t:if test="full_width_promo_2.length>0">
-  <t:list id="full_width_promo_2">
-  ${body}
-  </t:list>
+    <t:list id="full_width_promo_2">
+      ${body}
+    </t:list>
   </t:if>
-  <!-- School Search starts --> 
-    <a name="JumpSearch"></a> 
-    <div class="ym-school-search" id="school-search" ng-controller="SchoolSearchCtrl" ng-cloak>
+  <!-- School Search starts -->
+  <a name="JumpSearch"></a>
+  <div class="ym-school-search ym-page-section__main" id="school-search" ng-controller="SchoolSearchCtrl" ng-cloak>
+    <form method="POST" ng-submit="submitSchoolSearch()">
       <div class="form-group">
-        <t:if test="path =='/middle-school/'">
-          <img class="img-responsive" src="http://heart.pub30.convio.net/assets/images/middle-school/find-school-graphic.png" alt="Find your school" />
+        <t:if test="path == '/middle-school/'">
+          <img class="img-responsive" src="http://heart.pub30.convio.net/assets/images/middle-school/find-school-graphic.png" alt="Find your school">
         </t:if>
-        <t:else>
-          <img class="img-responsive hidden-xs" src="http://heart.pub30.convio.net/../assets/images/hoops-jump-search-graphic.png" alt="Find your school" />
-          <img class="img-responsive hidden-sm hidden-md hidden-lg" src="http://heart.pub30.convio.net/../assets/images/hoops-jump-search-graphic-mobile.jpg" alt="Find your school" />
-        </t:else>
+        <t:if test="path == '/district-heart-challenge/'">
+          <img class="img-responsive" src="http://heart.pub30.convio.net/assets/images/district-heart-challenge/find-school-graphic.png" alt="Find your school">
+        </t:if>
+        <t:if test="path == '/high-school/'">
+          <img class="img-responsive" src="http://heart.pub30.convio.net/assets/images/high-school/find-school-graphic.png" alt="Find your school">
+        </t:if>
+        <t:if test="path == '/jump-hoops/'">
+          <img class="img-responsive hidden-xs" src="http://heart.pub30.convio.net/assets/images/hoops-jump-search-graphic.png" alt="Find your school">
+          <img class="img-responsive hidden-sm hidden-md hidden-lg" src="http://heart.pub30.convio.net/assets/images/hoops-jump-search-graphic-mobile.jpg" alt="Find your school">
+        </t:if>
         <div class="form-inline text-center">
-          <form autocomplete="off">
-            <label for="school-name-filter" class="sr-only">Start typing your school's name:</label>
-            <input type="text" id="school-name-filter" name="school-name-filter" class="form-control" maxlength="40" placeholder="Start typing your school's name"
-              uib-typeahead="school.SCHOOL_NAME for school in schools | unique: 'SCHOOL_NAME' | filter: {SCHOOL_NAME:$viewValue}"
-              typeahead-min-length="3"
-              typeahead-editable="false"
-              typeahead-focus-first="false"
-              typeahead-select-on-exact="true"
-              typeahead-no-results="schoolList.typeaheadNoResults"
-              typeahead-on-select="typeaheadFilter($item, $model, $label, $event)"
-              ng-model="schoolList.nameFilter"
-              ng-minlength="3"
-              >
-            </form>
+          <label for="school-name-filter" class="sr-only">School name:</label>
+          <input type="text" class="form-control" id="school-name-filter" name="school-name-filter" ng-model="schoolList.ng_nameFilter" placeholder="Start typing your school's name" autocomplete="off" uib-typeahead="school.SCHOOL_NAME for school in getSchoolSuggestions($viewValue)" typeahead-min-length="3" typeahead-editable="true" typeahead-focus-first="false" ng-class="{'disabled': schoolList.searchPending}" ng-disabled="schoolList.searchPending"> 
+          <button type="submit" class="btn btn-secondary school-name-filter-submit" ng-class="{'disabled': schoolList.searchPending}" ng-disabled="schoolList.searchPending">
+            <strong>Search</strong>
+          </button>
         </div>
       </div>
-      <div class="ym-page-section ym-page-section__roster" ng-class="schoolList.totalItems > 0 || schoolList.nameFilter.length > 2 || schoolList.typeaheadNoResults ? 'show' : 'hidden'">
-        <div ng-show="!schoolList.typeaheadNoResults">
+      <div class="ym-page-section ym-page-section__roster" ng-if="schoolList.searchSubmitted">
+        <div ng-if="schoolList.schools.length > 0 || (schoolList.schools.length == 0 && schoolList.stateFilter && schoolList.stateFilter != '')">
           <div class="ym-page-section__header">
             <section>
-              <h2 class="h5 school-list__header">Results Matching Your School's Name</h2>
-              <select id="school-state-filter" class="btn btn-sm btn-secondary" name="school-state-filter" title="School State Filter"
-                ng-model="schoolList.stateFilter"
-                ng-change="filterSchools()"
-                ng-options="state as state.label for state in states | orderBy:'id' track by state.id"
-                >
+              <h2 class="h5 school-list__header">
+                Results Matching Your School's Name
+              </h2>
+              <label for="school-state-filter" class="sr-only">School State Filter</label>
+              <select class="btn btn-sm btn-secondary" id="school-state-filter" name="stateFilter" ng-model="schoolList.stateFilter" ng-change="getSchoolSearchResults()">
+                <option value="">Filter Results by State</option>
+                <option value="AK">AK</option>
+                <option value="AL">AL</option>
+                <option value="AR">AR</option>
+                <option value="AZ">AZ</option>
+                <option value="CA">CA</option>
+                <option value="CO">CO</option>
+                <option value="CT">CT</option>
+                <option value="DC">DC</option>
+                <option value="DE">DE</option>
+                <option value="FL">FL</option>
+                <option value="GA">GA</option>
+                <option value="HI">HI</option>
+                <option value="IA">IA</option>
+                <option value="ID">ID</option>
+                <option value="IL">IL</option>
+                <option value="IN">IN</option>
+                <option value="KS">KS</option>
+                <option value="KY">KY</option>
+                <option value="LA">LA</option>
+                <option value="MA">MA</option>
+                <option value="MD">MD</option>
+                <option value="ME">ME</option>
+                <option value="MI">MI</option>
+                <option value="MN">MN</option>
+                <option value="MO">MO</option>
+                <option value="MS">MS</option>
+                <option value="MT">MT</option>
+                <option value="NC">NC</option>
+                <option value="ND">ND</option>
+                <option value="NE">NE</option>
+                <option value="NH">NH</option>
+                <option value="NJ">NJ</option>
+                <option value="NM">NM</option>
+                <option value="NV">NV</option>
+                <option value="NY">NY</option>
+                <option value="OH">OH</option>
+                <option value="OK">OK</option>
+                <option value="OR">OR</option>
+                <option value="PA">PA</option>
+                <option value="RI">RI</option>
+                <option value="SC">SC</option>
+                <option value="SD">SD</option>
+                <option value="TN">TN</option>
+                <option value="TX">TX</option>
+                <option value="UT">UT</option>
+                <option value="VT">VT</option>
+                <option value="VA">VA</option>
+                <option value="WA">WA</option>
+                <option value="WI">WI</option>
+                <option value="WV">WV</option>
+                <option value="WY">WY</option>
+                <option value="GU">Guam</option>
+                <option value="PR">Puerto Rico</option>
               </select>
-            </section>  
+            </section>
           </div>
-          <div class="text-center pb-lg visible-xs-block">
+        </div>
+        <div ng-if="schoolList.schools.length > 0">
+          <div class="alert alert-info" ng-if="schoolList.totalNumberResults > 2500">
+            <strong>Your search returned more than 2,500 results. Please try again with a more specific keyword.</strong>
+          </div>
+          <div class="text-center visible-xs-block">
             <em>Scroll right to view all information</em>
           </div>
-          <div class="ym-list__school-list-wrpr mb-lg">
-            <table class="table table-responsive table-striped ym-list ym-list--school-list"
-              summary="Results Matching Your School's Name">
+          <div class="ym-list__school-list-wrpr">
+            <table class="table table-responsive table-striped ym-list ym-list--school-list" summary="Results Matching Your School's Name">
               <thead class="ym-list__header">
                 <th class="ym-list__column ym-list__column--school" scope="col">
-                    <a href="" ng-click="orderSchools('SCHOOL_NAME')">
-                        School
-                        <span ng-show="filtered.length && schoolList.sortProp == 'SCHOOL_NAME' && !schoolList.sortDesc" class="fa fa-caret-down"></span>
-                        <span ng-show="filtered.length && schoolList.sortProp == 'SCHOOL_NAME' && schoolList.sortDesc" class="fa fa-caret-up"></span>
-                        <span ng-show="filtered.length && schoolList.sortProp != 'SCHOOL_NAME'" class="fa fa-caret-down inactive"></span>
-                    </a>
-                </td>
+                  <a ng-click="orderSchools('SCHOOL_NAME')">
+                    School 
+                    <span ng-show="schoolList.schools.length && schoolList.sortProp == 'SCHOOL_NAME' && !schoolList.sortDesc" class="fa fa-caret-down"></span>
+                    <span ng-show="schoolList.schools.length && schoolList.sortProp == 'SCHOOL_NAME' && schoolList.sortDesc" class="fa fa-caret-up"></span>
+                    <span ng-show="schoolList.schools.length && schoolList.sortProp != 'SCHOOL_NAME'" class="fa fa-caret-down inactive"></span>
+                  </a>
                 </th>
                 <th class="ym-list__column ym-list__column--city" scope="col">
-                    <a href="" ng-click="orderSchools('SCHOOL_CITY')">
-                        City
-                        <span ng-show="filtered.length && schoolList.sortProp == 'SCHOOL_CITY' && !schoolList.sortDesc" class="fa fa-caret-down"></span>
-                        <span ng-show="filtered.length && schoolList.sortProp == 'SCHOOL_CITY' && schoolList.sortDesc" class="fa fa-caret-up"></span>
-                        <span ng-show="filtered.length && schoolList.sortProp != 'SCHOOL_CITY'" class="fa fa-caret-down inactive"></span>
-                    </a>
+                  <a ng-click="orderSchools('SCHOOL_CITY')">
+                    City 
+                    <span ng-show="schoolList.schools.length && schoolList.sortProp == 'SCHOOL_CITY' && !schoolList.sortDesc" class="fa fa-caret-down"></span>
+                    <span ng-show="schoolList.schools.length && schoolList.sortProp == 'SCHOOL_CITY' && schoolList.sortDesc" class="fa fa-caret-up"></span>
+                    <span ng-show="schoolList.schools.length && schoolList.sortProp != 'SCHOOL_CITY'" class="fa fa-caret-down inactive"></span>
+                  </a>
                 </th>
                 <th class="ym-list__column ym-list__column--state" scope="col">
-                    <a href="" ng-click="orderSchools('SCHOOL_STATE')">
-                        State
-                        <span ng-show="filtered.length && schoolList.sortProp == 'SCHOOL_STATE' && !schoolList.sortDesc" class="fa fa-caret-down"></span>
-                        <span ng-show="filtered.length && schoolList.sortProp == 'SCHOOL_STATE' && schoolList.sortDesc" class="fa fa-caret-up"></span>
-                        <span ng-show="filtered.length && schoolList.sortProp != 'SCHOOL_STATE'" class="fa fa-caret-down inactive"></span>
-                    </a>
+                  <a ng-click="orderSchools('SCHOOL_STATE')">
+                    State 
+                    <span ng-show="schoolList.schools.length && schoolList.sortProp == 'SCHOOL_STATE' && !schoolList.sortDesc" class="fa fa-caret-down"></span>
+                    <span ng-show="schoolList.schools.length && schoolList.sortProp == 'SCHOOL_STATE' && schoolList.sortDesc" class="fa fa-caret-up"></span>
+                    <span ng-show="schoolList.schools.length && schoolList.sortProp != 'SCHOOL_STATE'" class="fa fa-caret-down inactive"></span>
+                  </a>
                 </th>
                 <th class="ym-list__column ym-list__column--team-leader text-right" scope="col">
-                    <a href="" ng-click="orderSchools('COORDINATOR_LAST_NAME')">
-                        Team Leader
-                        <span ng-show="filtered.length && schoolList.sortProp == 'COORDINATOR_LAST_NAME' && !schoolList.sortDesc" class="fa fa-caret-down"></span>
-                        <span ng-show="filtered.length && schoolList.sortProp == 'COORDINATOR_LAST_NAME' && schoolList.sortDesc" class="fa fa-caret-up"></span>
-                        <span ng-show="filtered.length && schoolList.sortProp != 'COORDINATOR_LAST_NAME'" class="fa fa-caret-down inactive"></span>
-                    </a>
+                  <a ng-click="orderSchools('COORDINATOR_LAST_NAME')">
+                    Team Leader 
+                    <span ng-show="schoolList.schools.length && schoolList.sortProp == 'COORDINATOR_LAST_NAME' && !schoolList.sortDesc" class="fa fa-caret-down"></span>
+                    <span ng-show="schoolList.schools.length && schoolList.sortProp == 'COORDINATOR_LAST_NAME' && schoolList.sortDesc" class="fa fa-caret-up"></span>
+                    <span ng-show="schoolList.schools.length && schoolList.sortProp != 'COORDINATOR_LAST_NAME'" class="fa fa-caret-down inactive"></span>
+                  </a>
                 </th>
               </thead>
               <tbody>
-                <tr class="ym-list__row"
-                  ng-repeat="school in filtered | filter:paginate"
-                  >
+                <tr class="ym-list__row" ng-repeat="school in schoolList.schools | filter:paginate">
                   <td class="ym-list__column ym-list__column--school">
-                   <a ng-href="{{nonSecureDomain}}/site/TR?pg=company&fr_id={{school.FR_ID}}&company_id={{school.COMPANY_ID}}">{{school.SCHOOL_NAME}}</a><br />
-                    <a class="btn btn-primary btn-md mt-sm" ng-href="{{nonSecureDomain}}/site/TRR?fr_id={{school.FR_ID}}&amp;pg=tfind&amp;fr_tm_opt=existing&s_frTJoin=&amp;company_id={{school.COMPANY_ID}}&amp;s_frCompanyId={{school.COMPANY_ID}}">Sign Up</a>
+                    <a ng-href="{{nonSecureDomain}}site/TR?pg=company&fr_id={{school.FR_ID}}&company_id={{school.COMPANY_ID}}"><span ng-bind-html="school.SCHOOL_NAME"></span></a><br>
+                    <a class="btn btn-primary btn-md mt-sm" ng-href="{{nonSecureDomain}}site/TRR?fr_id={{school.FR_ID}}&amp;pg=tfind&amp;fr_tm_opt=existing&s_frTJoin=&amp;company_id={{school.COMPANY_ID}}&amp;s_frCompanyId={{school.COMPANY_ID}}">
+                      Sign Up
+                    </a>
                   </td>
                   <td class="ym-list__column ym-list__column--city">
-                    {{school.SCHOOL_CITY}}
+                    <span ng-bind-html="school.SCHOOL_CITY"></span>
                   </td>
                   <td class="ym-list__column ym-list__column--state">
-                    {{school.SCHOOL_STATE}}
+                    <span ng-bind-html="school.SCHOOL_STATE"></span>
                   </td>
                   <td class="ym-list__column ym-list__column--team-leader text-right">
-                    {{school.COORDINATOR_LAST_NAME}}, {{school.COORDINATOR_FIRST_NAME}}
+                    <span ng-bind-html="school.COORDINATOR_LAST_NAME"></span>, <span ng-bind-html="school.COORDINATOR_FIRST_NAME"></span>
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <div class="ym-pagination text-center">
-            <ul uib-pagination total-items="schoolList.totalItems" items-per-page="schoolList.numPerPage"
-              ng-show="filtered.length > schoolList.numPerPage"
-              ng-model="schoolList.currentPage"
-              >
-            </ul>
+          <div class="ym-pagination text-center" ng-show="schoolList.schools.length > schoolList.paginationItemsPerPage">
+            <ul uib-pagination ng-model="schoolList.currentPage" total-items="schoolList.totalItems" items-per-page="schoolList.paginationItemsPerPage" max-size="schoolList.paginationMaxSize" boundary-links="schoolList.schools.length > (schoolList.paginationItemsPerPage * schoolList.paginationMaxSize)"></ul>
           </div>
-        </div> 
-        <div ng-show="filtered.length == 0 && schoolList.stateFilter != '0' && !schoolList.typeaheadNoResults" class="text-center" ng-class="schoolList.showHelp ? 'pb-md' : ''">
+        </div>
+        <div ng-if="schoolList.schools.length == 0" class="text-center" ng-class="{'pb-md': schoolList.showHelp}">
           <p>
-            Hi! We couldn't locate a school with the name of <strong>{{schoolList.nameFilter}}</strong> in <strong>{{schoolList.stateFilter.SCHOOL_STATE}}</strong>. Your school may not be added to our list just yet.
-          </p>      
+            Hi! We couldn't locate a school with the name of <strong>{{schoolList.nameFilter}}</strong><span ng-if="schoolList.stateFilter && schoolList.stateFilter != ''"> in <strong>{{schoolList.stateFilter}}</strong></span>. Need Help locating your school? Visit the <a href="https://jumphoops.zendesk.com/hc/en-us" target="_blank">help center</a> for assistance.
+          </p>
           <p>
-            No worries though! You can still register today without designating a school, and a school coordinator from our team will make sure you're properly linked up with your school.
+            You can still register today without designating a school, and a school coordinator from our team will make sure you're properly linked up with your school.
           </p>
           <div class="pt-md">
-            <a ng-href="{{noSchoolLink}}" class="btn btn-md btn-secondary ym-list--school-list--help">Sign Up Today</a>
-          </div>   
-        </div>   
-        <div ng-show="!(filtered.length == 0 && schoolList.stateFilter != '0')">      
-          <div ng-show="schoolList.showHelp" class="text-center">
-            Click <a ng-href="{{noSchoolLink}}">here</a> to sign up for “Jump Rope and Hoops for Heart” and a school coordinator will get in touch with you soon to confirm you’ve been properly signed up with your school.
+            <a class="btn btn-md btn-secondary ym-list--school-list--help" ng-href="{{noSchoolLink}}">Sign Up Today</a>
           </div>
-          <div ng-show="schoolList.showHelp == false" class="text-center">
-            <a ng-click="schoolList.showHelp = true;" class="btn btn-md btn-secondary ym-list--school-list--help">Can't Find Your School</a>
+        </div>
+        <div ng-if="schoolList.schools.length > 0">
+          <div ng-if="schoolList.showHelp" class="text-center">
+            Click <a ng-href="{{noSchoolLink}}">here</a> to sign up for "Jump Rope and Hoops for Heart" and a school coordinator will get in touch with you soon to confirm you've been properly signed up with your school.
           </div>
-        </div>  
+          <div ng-if="!schoolList.showHelp" class="text-center">
+            <button type="button" class="btn btn-md btn-secondary ym-list--school-list--help" ng-click="schoolList.showHelp = true;">
+              Can't Find Your School
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
-    <!-- School Search ends -->
-    <div class="ym-home-feature ym-carousel--home event-accent">
+    </form>
+  </div>
+  <!-- School Search ends -->
+  <div class="ym-home-feature ym-carousel--home event-accent">
     <t:if test="!isNull(section_title) && !isNull(section_intro_text)">
       <div class="container">
         <section>
-           <t:if test="!isNull(section_title)"><h2 class="text-center">${section_title}</h2></t:if>
-           <t:if test="!isNull(section_intro_text)"><p class="text-center">${section_intro_text}</p></t:if>
-        </section>   
+          <t:if test="!isNull(section_title)"><h2 class="text-center">${section_title}</h2></t:if>
+          <t:if test="!isNull(section_intro_text)"><p class="text-center">${section_intro_text}</p></t:if>
+        </section>
       </div>
     </t:if>
     <!-- Stories Carousel -->
-        <t:include id="templatelist-800141387" />
-    </div>
+    <t:include id="templatelist-800141387" />
+  </div>
+  <t:set id="currentpath" value="path" />
   <t:if test="display_footer_promos.length>0">
-  <t:list id="display_footer_promos">
-  <t:if test="name != 'no'">
-    <!-- Our Impact --> 
-    <div class="ym-page-section ym-page-section__main" ng-show="showStats == true" ng-cloak>
-      <div class="container">
-        <div class="ym-stats ym-promo-block">
-          <section aria-label="Your Impact Statistics">
-            <h2 class="text-center">Your Impact</h2>
-            <t:if test="path =='/jump-hoops/'">
-              <div class="ym-promo-block__item ym-promo-block__item--participants ym-promo-block--circle">
-                <section>
-                  <div class="h2 ym-headline">{{totalStudents}}</div>
-                  <p>participants</p>
-                </section>
-              </div>
-              <div class="ym-promo-block__item ym-promo-block__item--pledges ym-promo-block--circle">
-                <section>
-                  <div class="h2 ym-headline">{{totalChallenges}}</div>
-                  <p>pledges taken</p>
-                </section>
-              </div>
-              <div class="ym-promo-block__item ym-promo-block__item--schools ym-promo-block--circle">
-                <section>
-                  <div class="h2 ym-headline">{{totalSchools}}</div>
-                  <p>participating schools</p>
-                </section>  
-              </div>
-            </t:if>
-            <t:else>
-              <div class="ym-promo-block__item ym-promo-block__item--participants ym-promo-block--circle">
-                <section>
-                  <div class="h2 ym-headline">{{totalStudents}}</div>
-                  <p>participants</p>
-                </section>
-              </div>
-              <div class="ym-promo-block__item ym-promo-block__item--pledges ym-promo-block--circle">
-                <section>
-                  <div class="h2 ym-headline">{{totalEmails}}</div>
-                  <p>emails sent</p>
-                </section>
-              </div>
-              <div class="ym-promo-block__item ym-promo-block__item--schools ym-promo-block--circle">
-                <section>
-                  <div class="h2 ym-headline">{{totalSchools}}</div>
-                  <p>participating schools</p>
-                </section>  
-              </div>
-            </t:else>
-          </section>    
+    <t:list id="display_footer_promos">
+      <t:if test="name != 'no'">
+        <!-- Our Impact -->
+        <div class="ym-page-section ym-page-section__main" ng-show="showStats == true" ng-cloak>
+          <div class="container">
+            <div class="ym-stats ym-promo-block">
+              <section aria-label="Your Impact Statistics">
+                <h2 class="text-center">
+                  Your Impact
+                </h2>
+                <!-- here it is - ${currentpath} -->
+                <t:if test="currentpath == '/jump-hoops/'">
+                  <div class="ym-promo-block__item ym-promo-block__item--participants ym-promo-block--circle">
+                    <section>
+                      <div class="h2 ym-headline">
+                        {{totalStudents}}
+                      </div>
+                      <p>
+                        participants
+                      </p>
+                    </section>
+                  </div>
+                  <div class="ym-promo-block__item ym-promo-block__item--pledges ym-promo-block--circle">
+                    <section>
+                      <div class="h2 ym-headline">
+                        {{totalChallenges}}
+                      </div>
+                      <p>
+                        pledges taken
+                      </p>
+                    </section>
+                  </div>
+                  <div class="ym-promo-block__item ym-promo-block__item--schools ym-promo-block--circle">
+                    <section>
+                      <div class="h2 ym-headline">
+                        {{totalSchools}}
+                      </div>
+                      <p>
+                        participating schools
+                      </p>
+                    </section>
+                  </div>
+                </t:if>
+                <t:else>
+                  <div class="ym-promo-block__item ym-promo-block__item--participants ym-promo-block--circle">
+                    <section>
+                      <div class="h2 ym-headline">
+                        {{totalStudents}}
+                      </div>
+                      <p>
+                        participants
+                      </p>
+                    </section>
+                  </div>
+                  <div class="ym-promo-block__item ym-promo-block__item--pledges ym-promo-block--circle">
+                    <section>
+                      <div class="h2 ym-headline">
+                        {{totalEmails}}
+                      </div>
+                      <p>
+                        emails sent
+                      </p>
+                    </section>
+                  </div>
+                  <div class="ym-promo-block__item ym-promo-block__item--schools ym-promo-block--circle">
+                    <section>
+                      <div class="h2 ym-headline">
+                        {{totalSchools}}
+                      </div>
+                      <p>
+                        participating schools
+                      </p>
+                    </section>
+                  </div>
+                </t:else>
+              </section>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    <!-- Our Impact ends -->
-  </t:if>
-  </t:list>
+        <!-- Our Impact ends -->
+      </t:if>
+    </t:list>
   </t:if>
   <!-- National Sponsor -->
   <t:if test="footer_promos.length>0">
-  <t:list id="footer_promos">
-     ${body}
-  </t:list>
+    <t:list id="footer_promos">
+      ${body}
+    </t:list>
   </t:if>
   <div class="modal fade" id="noRegModal" tabindex="-1" role="dialog" aria-labelledby="noRegModelLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h3 class="modal-title" id="noRegModalLabel">Welcome, ${cons.name.first}</h3>
+          <h3 class="modal-title" id="noRegModalLabel">
+            Welcome, ${cons.name.first}
+          </h3>
         </div>
         <div class="modal-body">
           <p class="text-center">
@@ -276,7 +367,9 @@
           </p>
         </div>
         <div class="modal-footer text-center">
-          <a class="btn btn-primary btn-lg" href="#school-search" ng-click="closeModal();"> ${modal_btn}</a>
+          <a class="btn btn-primary btn-lg" href="#school-search" ng-click="closeModal()">
+            ${modal_btn}
+          </a>
         </div>
       </div>
     </div>

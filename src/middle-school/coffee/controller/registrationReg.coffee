@@ -12,7 +12,7 @@ angular.module 'ahaLuminateControllers'
         $rootScope.companyName = companyName
         if not $rootScope.$$phase
           $rootScope.$apply()
-      TeamraiserCompanyService.getCompanies 'company_id=' + $scope.companyId,
+      TeamraiserCompanyService.getCompanies 'company_id=' + regCompanyId,
         error: ->
           # TODO
         success: (response) ->
@@ -184,14 +184,18 @@ angular.module 'ahaLuminateControllers'
           setParticipationType participationType
       $scope.$watch 'participationType.id', (newValue) ->
         if newValue
+          initCustomQuestions = ->
+            if not $scope.registrationCustomQuestions
+              $scope.registrationCustomQuestions = {}
+            if not $scope.$$phase
+              $scope.$apply()
           setRegistrationQuestionSurveyKey = (questionName, surveyKey) ->
             $scope.registrationQuestions[questionName].surveyKey = surveyKey
             questionLegend = $scope.registrationQuestions[questionName].legend
-            if surveyKey is 'ym_hoops_jump_email_type' or surveyKey is 'ym_hoops_jump_grade' or surveyKey is 'ym_hoops_jump_school' or surveyKey is 'ym_hoops_jump_teacher_name' or surveyKey is 'ym_hoops_jump_school_address'
-              if not $scope.registrationCustomQuestions
-                $scope.registrationCustomQuestions = {}
+            if surveyKey is 'ym_middle_school_email_type' or surveyKey is 'ym_middle_school_grade' or surveyKey is 'ym_middle_school_school' or surveyKey is 'ym_middle_school_teacher_name' or surveyKey is 'ym_middle_school_school_address'
+              initCustomQuestions()
               $scope.registrationCustomQuestions[surveyKey] = questionName
-            else if questionLegend isnt 'Event Date' and surveyKey isnt 'ym_hoops_jump_challenge_info' and surveyKey isnt 'ym_hoops_jump_ecards_sent' and surveyKey isnt 'ym_hoops_jump_ecards_shared' and surveyKey isnt 'ym_hoops_jump_ecards_open' and surveyKey isnt 'ym_hoops_jump_ecards_clicked'
+            else if questionLegend isnt 'Event Date' and surveyKey isnt 'ym_middle_school_challenge_info' and surveyKey isnt 'ym_middle_school_ecards_sent' and surveyKey isnt 'ym_middle_school_ecards_shared' and surveyKey isnt 'ym_middle_school_ecards_open' and surveyKey isnt 'ym_middle_school_ecards_clicked'
               if not $scope.registrationAdditionalQuestions
                 $scope.registrationAdditionalQuestions = {}
               $scope.registrationAdditionalQuestions[questionName] = questionName
@@ -214,6 +218,7 @@ angular.module 'ahaLuminateControllers'
                 angular.forEach registrationQuestions, (registrationQuestion) ->
                   if registrationQuestion.ng_questionName
                     setRegistrationQuestionSurveyKey registrationQuestion.ng_questionName, registrationQuestion.key
+              initCustomQuestions()
       
       $scope.toggleAcceptWaiver = (acceptWaiver) ->
         $scope.acceptWaiver = acceptWaiver

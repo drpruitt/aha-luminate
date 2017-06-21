@@ -36,6 +36,22 @@ module.exports = {
           'main.css'
         ], 
         dest: 'dist/heart-walk/css/'
+      }, 
+      {
+        expand: true, 
+        cwd: 'dist/heart-walk/css/', 
+        src: [
+          'participant.css'
+        ], 
+        dest: 'dist/heart-walk/css/'
+      }, 
+      {
+        expand: true, 
+        cwd: 'dist/heart-walk/css/', 
+        src: [
+          'pageEdit.css'
+        ], 
+        dest: 'dist/heart-walk/css/'
       }
     ]
   }, 
@@ -78,6 +94,27 @@ module.exports = {
           'participant.css'
         ], 
         dest: 'dist/middle-school/css/'
+      }
+    ]
+  }, 
+  
+  "district-heart": {
+    files: [
+      {
+        expand: true, 
+        cwd: 'dist/district-heart/css/', 
+        src: [
+          'main.css'
+        ], 
+        dest: 'dist/district-heart/css/'
+      }, 
+      {
+        expand: true, 
+        cwd: 'dist/district-heart/css/', 
+        src: [
+          'participant.css'
+        ], 
+        dest: 'dist/district-heart/css/'
       }
     ]
   }

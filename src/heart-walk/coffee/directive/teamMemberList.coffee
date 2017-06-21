@@ -10,4 +10,6 @@ angular.module 'ahaLuminateApp'
         teamGiftsLabel: '='
         teamGiftsAmount: '='
         teamGiftsAmountFormatted: '='
-    ]
+        teamMemberSearch: '='
+        searchTeamMembers: '='
+  ]

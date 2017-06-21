@@ -24,12 +24,16 @@
   }
   
   h1 {
-    font-size: 32px;
+    font-size: 26px;
     margin: 0 0 18px;
     
     @media (min-width: $screen-sm-min) {
-      font-size: 60px;
+      font-size: 38px;
       margin: 0 0 22px;
+    }
+
+    @media (min-width: $screen-md-min) {
+      font-size: 50px;
     }
   }
   

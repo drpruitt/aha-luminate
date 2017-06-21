@@ -26,12 +26,7 @@ angular.module 'ahaLuminateControllers'
             else
               teamraisers = [teamraisers] if not angular.isArray teamraisers
               teamraiserInfo = teamraisers[0]
-              ###
-              hard coding link to dev for testing, remove comment and use dynamic when go live
               setNoSchoolLink $scope.nonSecureDomain + '/site/TRR?fr_id=' + teamraiserInfo.id + '&pg=tfind&fr_tm_opt=existing&s_frTJoin=&s_frCompanyId='
-              ###
-              setNoSchoolLink 'https://secure3.convio.net/heartdev/site/TRR?pg=tfind&fr_id=2613&fr_tm_opt=none'
-      
       if consId
         TeamraiserParticipantService.getRegisteredTeamraisers 'cons_id=' + consId + '&event_type=' + encodeURIComponent('Jump Hoops'),
           error: ->
@@ -87,9 +82,19 @@ angular.module 'ahaLuminateControllers'
           else
             $scope.showStats = true
             totals = response.data.totals          
+            
             $scope.totalStudents = totals.total_students
+            if $scope.totalStudents.toString().length > 4
+              $scope.totalStudents = Math.round($scope.totalStudents/1000)+ 'K'
+
             $scope.totalSchools = totals.total_schools
+            if $scope.totalSchools.toString().length > 4
+              $scope.totalSchools = Math.round($scope.totalSchools/1000)+ 'K'
+
             $scope.totalChallenges = totals.total_challenge_taken_students
+            if $scope.totalChallenges.toString().length > 4
+              $scope.totalChallenges = Math.round($scope.totalChallengess/1000)+ 'K'
+            
         , (response) ->
           $scope.showStats = false
       
@@ -110,8 +115,8 @@ angular.module 'ahaLuminateControllers'
             1050:
               stagePadding: 290
           navText: [
-            '<i class="fa fa-chevron-left" aria-hidden="true" />'
-            '<i class="fa fa-chevron-right" aria-hidden="true" />'
+            '<i class="fa fa-chevron-left" hidden aria-hidden="true" />'
+            '<i class="fa fa-chevron-right" hidden aria-hidden="true" />'
           ]
       $timeout initCarousel, 1000
       
@@ -126,8 +131,8 @@ angular.module 'ahaLuminateControllers'
               loop: true
               center: true
               navText: [
-                '<i class="fa fa-chevron-left" aria-hidden="true" />'
-                '<i class="fa fa-chevron-right" aria-hidden="true" />'
+                '<i class="fa fa-chevron-left" hidden aria-hidden="true" />'
+                '<i class="fa fa-chevron-right" hidden aria-hidden="true" />'
               ]
       $timeout initHeroCarousel, 1000
   ]

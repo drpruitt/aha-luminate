@@ -31,7 +31,7 @@ main > .container {
     max-width: 320px;
     margin: 0 auto 7px;
   }
-
+  
   a {
     &,
     &:link,
@@ -49,11 +49,11 @@ main > .container {
       padding: 12px 6px 0;
       margin: 0 3px 5px;
       vertical-align: bottom;
-
+      
       @media (max-width: 350px) {
         max-width: 85px;
       }
-
+      
       @media (min-width: 560px) {
         border-right: 2px solid $event-accent;
         font-size: 18px;
@@ -64,48 +64,48 @@ main > .container {
         margin: 0;
       }
     }
-
+    
     &,
     &:link,
     &:visited {
       background: $event-secondary;
       color: $brand-white;
-
+      
       @media (min-width: 560px) {
         background: $event-secondary-medium;
         color: $event-secondary;
         font-size: 17px;
       }
-
+      
       @media (min-width: 590px) {
         font-size: 18px;
       }
     }
-
+    
     &:hover,
     &:focus,
     &:active {
       background: $event-secondary;
       color: $brand-white;
-
+      
       @media (min-width: 560px) {
         background: $event-secondary;
         color: $brand-white;
       }
     }
-
+    
     &:last-child {
       @media (min-width: 560px) {
         border-right: 0;
         margin: 0;
       }
     }
-
+    
     &.active {
       background: $brand-white;
       color: $event-secondary;
     }
-
+    
     > span {
       display: inline-block;
       margin: 0 auto;
@@ -119,7 +119,7 @@ main > .container {
     max-width: 320px;
     margin: 0 auto 7px;
   }
-
+  
   a {
     &,
     &:link,
@@ -136,65 +136,65 @@ main > .container {
         padding: 12px 6px 0;
         margin: 0 3px 5px;
       }
-
+      
       @media (min-width: 670px) {
         font-size: 17px;
         width: 16.66666667%;
       }
-
+      
       @media (min-width: 690px) {
         font-size: 18px;
       }
-
+      
       &.ng-pc-nav-item--resources {
         padding: 3px 6px 0;
-
+        
         @media (min-width: 670px) {
           padding: 3px 12px 0;
         }
-
+        
         @media (min-width: 1170px) {
           padding: 14px 12px 0;
         }
-
+        
         > span {
           max-width: 80px;
-
+          
           @media (min-width: 670px) {
             max-width: 100px;
           }
-
+          
           @media (min-width: 1170px) {
             max-width: none;
           }
         }
       }
-
+      
       &.ng-pc-nav-item--student-view {
         padding: 3px 6px 0;
-
+        
         @media (min-width: 670px) {
           padding: 3px 12px 0;
         }
-
+        
         @media (min-width: 890px) {
           padding: 14px 12px 0;
         }
-
+        
         > span {
           max-width: 65px;
-
+          
           @media (min-width: 670px) {
             max-width: 80px;
           }
-
+          
           @media (min-width: 890px) {
             max-width: none;
           }
         }
       }
     }
-
+    
     &,
     &:link,
     &:visited {
@@ -203,7 +203,7 @@ main > .container {
         color: $brand-white;
       }
     }
-
+    
     &:hover,
     &:focus,
     &:active {
@@ -212,13 +212,13 @@ main > .container {
         color: $brand-white;
       }
     }
-
+    
     &:last-child {
       @media (min-width: 560px) and (max-width: 669px) {
         margin: 0 3px 5px;
       }
     }
-
+    
     &.active {
       @media (max-width: 669px) {
         background: $brand-white;
@@ -341,44 +341,44 @@ main > .container {
 .ym-pc-dashboard-progress-section {
   .h3 {
     margin: 14px 0;
-
+    
     @media (min-width: $screen-sm-min) {
       margin: 0 0 35px;
     }
   }
-
+  
   .row {
     margin: 0;
-
+    
     @media (min-width: $screen-sm-min) {
       display: flex;
       margin: 0 0 30px;
     }
-
+    
     .ym-pc-dashboard-progress-section__column {
       padding: 20px;
       margin: 0 0 15px;
-
+      
       @media (min-width: $screen-sm-min) {
         margin: 0;
       }
-
+      
       &:first-child {
         @media (min-width: $screen-sm-min) {
           margin: 0 15px 0 0;
         }
-
+        
         @media (min-width: $screen-md-min) {
           margin: 0 30px 0 0;
         }
       }
-
+      
       .h5 {
         margin: 0 0 25px;
       }
     }
   }
-
+  
   .ym-progress-related {
     position: relative;
     margin: 30px 0 0;
@@ -515,17 +515,17 @@ main > .container {
   background-color: $event-accent-medium;
   padding: 28px 0;
   margin: 0 0 30px;
-
+  
   @media (min-width: $screen-sm-min) {
     margin: 0 0 40px;
   }
-
+  
   .ym-pc-dashboard-section-header {
     position: relative;
     color: $event-secondary;
     margin: 0 0 32px;
   }
-
+  
   .btn {
     @media (min-width: $screen-md-min) {
       position: absolute;
@@ -664,31 +664,32 @@ main > .container {
   box-shadow: 0 5px 0 0 rgba(50, 50, 50, 1);
   padding: 25px 20px;
   margin: 0 0 20px;
-
+  
   @media (min-width: $screen-sm-min) {
     margin: 0;
   }
-
+  
   @media (min-width: $screen-md-min) {
     margin: 25px;
   }
-
-  &.ym-activity-box--next-step {
+  
+  &.ym-activity-box--next-step, 
+  &.ym-activity-box--captain-next-step {
     .ym-next-step {
       border-bottom: 1px solid $event-secondary;
       padding: 0 0 20px;
       margin: 0 0 20px;
-
+      
       &:last-child {
         border: 0;
         padding: 0;
         margin: 0;
       }
     }
-
+    
     .ym-next-step__step {
       margin: 0 0 15px;
-
+      
       @media (min-width: $screen-md-min) {
         display: inline-block;
         width: calc(100% - 200px);
@@ -696,17 +697,17 @@ main > .container {
         margin: 0;
       }
     }
-
+    
     .ym-next-step__action {
       text-align: center;
-
+      
       @media (min-width: $screen-md-min) {
         display: inline-block;
         text-align: right;
         vertical-align: top;
         width: 200px;
       }
-
+      
       .btn,
       a.btn {
         &,
@@ -716,7 +717,7 @@ main > .container {
         &:focus,
         &:active {
           width: 200px;
-
+          
           @media (min-width: $screen-md-min) {
             width: auto;
             min-width: 125px;
@@ -724,7 +725,7 @@ main > .container {
         }
       }
     }
-
+    
     .ym-next-step--sm {
       .ym-next-step__step {
         @media (min-width: $screen-md-min) {
@@ -732,12 +733,12 @@ main > .container {
           padding-right: 40px;
         }
       }
-
+      
       .ym-next-step__action {
         @media (min-width: $screen-md-min) {
           width: 125px;
         }
-
+        
         .btn,
         a.btn {
           @media (min-width: $screen-md-min) {
@@ -747,15 +748,16 @@ main > .container {
       }
     }
   }
-
-  &.ym-activity-box--next-step,
-  &.ym-activity-box--challenge,
-  &.ym-activity-box--coordinator-pages,
+  
+  &.ym-activity-box--next-step, 
+  &.ym-activity-box--challenge, 
+  &.ym-activity-box--captain-pages, 
+  &.ym-activity-box--coordinator-pages, 
   &.ym-activity-box--coordinator-reports {
     @media (min-width: $screen-sm-min) {
       margin: 0 20px 0 0;
     }
-
+    
     @media (min-width: $screen-md-min) {
       margin: 25px;
     }
@@ -799,32 +801,34 @@ main > .container {
         width: 216px;
         padding: 7px 0;
         margin: 0 auto;
-
+        
         @media (min-width: 360px) {
           width: 240px;
         }
       }
     }
-
+    
     .ym_my_challenge__update {
+      text-align: center;
+      
       button {
-        margin: 10px auto 0;
+        margin: 12px auto 0;
       }
     }
   }
-
+  
   &.ym-activity-box--page {
     > div.text-center {
       margin: 20px 0 30px;
     }
-
+    
     .ym-activity-url {
       word-break: break-all;
-
+      
       p {
         font-size: 14px;
         margin: 0 0 3px;
-
+        
         &.small {
           font-size: 12px;
           line-height: 14px;
@@ -1359,19 +1363,20 @@ main > .container {
   margin: 20px 0 0;
 }
 
+.ym-pc-dashboard-captain-activities-section, 
 .ym-pc-dashboard-coordinator-steps-section {
   margin: 10px 0 40px;
   clear: both;
-
+  
   > .row {
     padding: 0;
     margin: 0;
-
+    
     @media (min-width: $screen-sm-min) {
       display: flex;
       margin-bottom: 25px;
     }
-
+    
     @media (min-width: $screen-md-min) {
       padding: 0 25px;
       margin: 0;
@@ -1379,20 +1384,21 @@ main > .container {
   }
 }
 
+.ym-activity-box--captain-pages, 
 .ym-activity-box--coordinator-pages {
   .ym-activity-url {
     word-break: break-all;
-
+    
     p {
       font-size: 14px;
       margin: 0 0 3px;
-
+      
       &.small {
         font-size: 12px;
         line-height: 14px;
       }
     }
-
+    
     .btn,
     a.btn {
       &,
@@ -1406,30 +1412,30 @@ main > .container {
       }
     }
   }
-
+  
   .ym-activity-share-page {
     margin: 15px 0 0;
-
+    
     @media (min-width: $screen-sm-min) {
       float: right;
       text-align: right;
       max-width: 105px;
       margin: 0;
     }
-
+    
     p {
       display: inline-block;
       font-size: 14px;
       line-height: 18px;
       margin: 0;
       vertical-align: bottom;
-
+      
       @media (min-width: $screen-sm-min) {
         display: block;
         margin: 0 0 8px;
       }
     }
-
+    
     a {
       display: inline-block;
       margin-left: 5px;
@@ -1437,17 +1443,19 @@ main > .container {
   }
 }
 
+.ym-pc-dashboard-captain-page-types, 
 .ym-pc-dashboard-coordinator-page-types {
   margin: 0 0 32px;
 }
 
+.ym-pc-dashboard-captain-page-type, 
 .ym-pc-dashboard-coordinator-page-type {
   float: left;
   border-right: 1px solid transparent;
   border-left: 1px solid transparent;
   text-align: center;
   width: 50%;
-
+  
   a {
     &,
     &:link,
@@ -1459,7 +1467,7 @@ main > .container {
       padding: 8px;
       width: 100%;
     }
-
+    
     &:hover,
     &:focus,
     &:active {
@@ -1468,7 +1476,7 @@ main > .container {
       text-decoration: none;
     }
   }
-
+  
   &.active {
     a {
       &,
@@ -1487,6 +1495,7 @@ main > .container {
   }
 }
 
+.ym-pc-dashboard-captain-page-view, 
 .ym-pc-dashboard-coordinator-page-view {
   margin: 0 0 30px;
 }
@@ -1543,38 +1552,41 @@ main > .container {
   }
 }
 
+.ym-pc-dashboard-captain-resources-section, 
 .ym-pc-dashboard-coordinator-resources-section {
   background-color: $event-accent-light;
   padding: 36px;
   margin: 0 0 30px;
+}
 
-  .ym-pc-dashboard-coordinator-resources-options {
-    text-align: center;
-
-    .ym-pc-dashboard-section-header {
-      .h5 {
-        color: $event-secondary;
-        margin: 0 0 18px;
-
-        @media (min-width: $screen-sm-min) {
-          margin: 0 0 20px;
-        }
+.ym-pc-dashboard-captain-resources-options, 
+.ym-pc-dashboard-coordinator-resources-options {
+  text-align: center;
+  
+  .ym-pc-dashboard-section-header {
+    .h5 {
+      color: $event-secondary;
+      margin: 0 0 18px;
+      
+      @media (min-width: $screen-sm-min) {
+        margin: 0 0 20px;
       }
     }
-
-    .btn {
-      margin: 0 0 32px;
-
-      @media (min-width: $screen-sm-min) {
-        margin: 0;
-      }
+  }
+  
+  .btn {
+    margin: 0 0 32px;
+    
+    @media (min-width: $screen-sm-min) {
+      margin: 0;
     }
   }
 }
 
+.ym-pc-dashboard-captain-resources-more, 
 .ym-pc-dashboard-coordinator-resources-more {
   text-align: center;
-
+  
   @media (min-width: $screen-sm-min) {
     margin: 32px 0 0;
   }
@@ -1632,13 +1644,14 @@ main > .container {
 
 .ym-pc-report-header-buttons {
   margin: 16px 0 0;
-
+  
   @media (min-width: $screen-md-min) {
     text-align: right;
     margin: 0;
   }
-
-  a {
+  
+  .btn, 
+  a.btn {
     &,
     &:link,
     &:visited,
@@ -1647,7 +1660,7 @@ main > .container {
     &:active {
       display: block;
       margin: 0 0 12px;
-
+      
       @media (min-width: 375px) {
         display: inline-block;
         margin: 0 0 0 10px;

@@ -61,6 +61,7 @@ module.exports = {
       'css-dist:heart-walk', 
       'js-dist:heart-walk', 
       'html-dist:heart-walk', 
+      'translation-copy:heart-walk-translations', 
       'img-copy:heart-walk-images', 
       'notify:heart-walk'
     ]
@@ -116,6 +117,26 @@ module.exports = {
       'html-dist:middle-school', 
       'img-copy:middle-school-images', 
       'notify:middle-school'
+    ]
+  }, 
+  
+  "district-heart": {
+    files: [
+      'src/youth-markets/sass/**/*', 
+      'src/global/coffee/**/*', 
+      'src/youth-markets/coffee/**/*', 
+      'src/district-heart/html/**/*', 
+      'src/district-heart/image/**/*', 
+      'src/district-heart/sass/**/*', 
+      'src/district-heart/coffee/**/*'
+    ], 
+    tasks: [
+      'clean:district-heart',  
+      'css-dist:district-heart', 
+      'js-dist:district-heart', 
+      'html-dist:district-heart', 
+      'img-copy:district-heart-images', 
+      'notify:district-heart'
     ]
   }
 }

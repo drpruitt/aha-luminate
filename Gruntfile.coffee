@@ -3,12 +3,12 @@ module.exports = (grunt) ->
   
   require('time-grunt') grunt
   
-  config = 
+  config =
     timestamp: new Date().getTime()
   loadConfig = (path) ->
     glob = require 'glob'
     object = {}
-    glob.sync '*', 
+    glob.sync '*',
       cwd: path
     .forEach (option) ->
       key = option.replace /\.js$/, ''
@@ -49,6 +49,11 @@ module.exports = (grunt) ->
       'htmlmin'
     ], taskTarget
     return
+  grunt.registerTask 'translation-copy', (taskTarget) ->
+    runTargetedTask [
+      'copy'
+    ], taskTarget
+    return
   grunt.registerTask 'img-copy', (taskTarget) ->
     runTargetedTask [
       'copy'
@@ -83,6 +88,9 @@ module.exports = (grunt) ->
       'imagemin'
     ], 'heart-walk'
     runTargetedTask [
+      'copy'
+    ], 'heart-walk-translations'
+    runTargetedTask [
       'clean'
       'replace'
       'htmlmin'
@@ -110,6 +118,17 @@ module.exports = (grunt) ->
       'htmlmin'
       'imagemin'
     ], 'middle-school'
+    runTargetedTask [
+      'clean'
+      'sass'
+      'postcss'
+      'cssmin'
+      'coffee'
+      'uglify'
+      'replace'
+      'htmlmin'
+      'imagemin'
+    ], 'district-heart'
     return
   grunt.registerTask 'dev', ->
     devTasks = [
@@ -129,6 +148,9 @@ module.exports = (grunt) ->
       if task.indexOf('notify:') is -1
         devTasks.push task
     config.watch['middle-school'].tasks.forEach (task) ->
+      if task.indexOf('notify:') is -1
+        devTasks.push task
+    config.watch['district-heart'].tasks.forEach (task) ->
       if task.indexOf('notify:') is -1
         devTasks.push task
     devTasks.push 'watch'

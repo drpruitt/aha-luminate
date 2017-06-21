@@ -18,6 +18,7 @@ angular.module 'trPcControllers'
     '$timeout'
     ($rootScope, $scope, $filter, $uibModal, APP_INFO, ZuriService, ParticipantBadgesService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserGiftService, NgPcContactService, NgPcTeamraiserShortcutURLService, NgPcInteractionService, NgPcTeamraiserCompanyService, $timeout) ->
       $scope.dashboardPromises = []
+      
       $dataRoot = angular.element '[data-embed-root]'
       
       if $scope.participantRegistration.lastPC2Login is '0'
@@ -113,36 +114,38 @@ angular.module 'trPcControllers'
             response
         $scope.dashboardPromises.push fundraisingProgressPromise
       $scope.refreshFundraisingProgress()
-
-      interactionTypeId = $dataRoot.data('coordinator-message-id')
       
-      $scope.coordinatorMessage = {
-        'text' : ''
-        'errorMessage' : null
-        'successMessage': false
-        'message' : ''
-        'interactionId' : ''
-      }
-
+      interactionTypeId = $dataRoot.data 'coordinator-message-id'
+      
+      $scope.coordinatorMessage =
+        text: ''
+        errorMessage: null
+        successMessage: false
+        message: ''
+        interactionId: ''
+      
       if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
-        interactionData = 'interaction_type_id=' + interactionTypeId + '&cons_id=' + $scope.participantRegistration.consId + '&list_page_size=1'
-        NgPcInteractionService.getUserInteractions interactionData
+        NgPcInteractionService.getUserInteractions 'interaction_type_id=' + interactionTypeId + '&cons_id=' + $scope.participantRegistration.consId + '&list_page_size=1'
           .then (response) ->
-            if response.data.getUserInteractionsResponse.interaction
-              $scope.coordinatorMessage.text = response.data.getUserInteractionsResponse.interaction.note.text
-              $scope.coordinatorMessage.interactionId = response.data.getUserInteractionsResponse.interaction.interactionId
-            else
-              $scope.coordinatorMessage.text = ''
-              $scope.coordinatorMessage.interactionId = ''
-
+            $scope.coordinatorMessage.text = ''
+            $scope.coordinatorMessage.interactionId = ''
+            if not response.data.errorResponse
+              interactions = response.data.getUserInteractionsResponse?.interaction
+              if interactions
+                interactions = [interactions] if not angular.isArray interactions
+                if interactions.length > 0
+                  interaction = interactions[0]
+                  $scope.coordinatorMessage.text = interaction.note?.text or ''
+                  $scope.coordinatorMessage.interactionId = interaction.interactionId or ''
+        
         $scope.editCoordinatorMessage = ->
           $scope.editCoordinatorMessageModal = $uibModal.open
             scope: $scope
             templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/editCoordinatorMessage.html'
-
+        
         $scope.cancelEditCoordinatorMessage = ->
           $scope.editCoordinatorMessageModal.close()
-
+        
         $scope.updateCoordinatorMessage = ->
           if $scope.coordinatorMessage.interactionId is ''
             NgPcInteractionService.logInteraction 'interaction_type_id=' + interactionTypeId + '&cons_id=' + $scope.participantRegistration.consId + '&interaction_subject=' + $scope.participantRegistration.companyInformation.companyId + '&interaction_body=' + $scope.coordinatorMessage.text
@@ -159,17 +162,21 @@ angular.module 'trPcControllers'
                   $scope.coordinatorMessage.errorMessage = 'There was an error processing your update. Please try again later.' 
                 else
                   $scope.coordinatorMessage.successMessage = true
-                  $scope.editCoordinatorMessageModal.close()         
+                  $scope.editCoordinatorMessageModal.close()
       else
         NgPcInteractionService.listInteractions 'interaction_type_id=' + interactionTypeId + '&interaction_subject=' + $scope.participantRegistration.companyInformation.companyId
           .then (response) ->
-            if response.data.listInteractionsResponse.interaction
-              $scope.coordinatorMessage.message = response.data.listInteractionsResponse.interaction.note.text
-              $scope.coordinatorMessage.interactionId = response.data.listInteractionsResponse.interaction.interactionId
-            else
-              $scope.coordinatorMessage.message = ''
-              $scope.coordinatorMessage.interactionId = ''
-
+            $scope.coordinatorMessage.message = ''
+            $scope.coordinatorMessage.interactionId = ''
+            if not response.data.errorResponse
+              interactions = response.data.listInteractionsResponse?.interaction
+              if interactions
+                interactions = [interactions] if not angular.isArray interactions
+                if interactions.length > 0
+                  interaction = interactions[0]
+                  $scope.coordinatorMessage.message = interaction.note?.text or ''
+                  $scope.coordinatorMessage.interactionId = interaction.interactionId or ''
+      
       $scope.personalGoalInfo = {}
       
       $scope.editPersonalGoal = ->
@@ -495,7 +502,7 @@ angular.module 'trPcControllers'
             # TODO
           success: (response) ->
             getStudentChallenge()
-
+      
       $scope.prizes = []
       ParticipantBadgesService.getBadges $scope.consId
       .then (response) ->
@@ -509,7 +516,7 @@ angular.module 'trPcControllers'
             earned: prize.earned_datetime
       , (response) ->
         # TODO
-
+      
       initCarousel = ->
         owl = jQuery '.owl-carousel'
         owl.owlCarousel
@@ -534,8 +541,8 @@ angular.module 'trPcControllers'
               margin: 30
               stagePadding: 60
           navText: [
-            '<span class="fa fa-chevron-left" aria-hidden="true" />',
-            '<span class="fa fa-chevron-right" aria-hidden="true" />'
+            '<span class="fa fa-chevron-left" hidden aria-hidden="true" />',
+            '<span class="fa fa-chevron-right" hidden aria-hidden="true" />'
           ]
           addClassActive: true
           onInitialized: (event) ->
@@ -544,7 +551,7 @@ angular.module 'trPcControllers'
             angular.element('.owl-carousel').find('.owl-item.active').attr 'aria-selected', 'true'
             angular.element('.owl-carousel').find('.owl-prev').attr('role', 'button').attr 'title', 'Previous'
             angular.element('.owl-carousel').find('.owl-next').attr('role', 'button').attr 'title', 'Next'
-            angular.element('.owl-item.active, .owl-prev, .owl-next').attr 'tabindex', '0'
+            angular.element('.owl-item, .owl-prev, .owl-next').attr 'tabindex', '0'
             jQuery(document).on 'keydown', (e) ->
               $focusedElement = jQuery(document.activeElement)
               if e.which is 13
@@ -556,6 +563,6 @@ angular.module 'trPcControllers'
           onChange: ->
             angular.element('.owl-carousel').find('.owl-item').attr 'aria-selected', 'false'
             angular.element('.owl-carousel').find('.owl-item.active').attr 'aria-selected', 'true'
-
+            angular.element('.owl-item.active').attr 'tabindex', '0'
       $timeout initCarousel, 1000
   ]

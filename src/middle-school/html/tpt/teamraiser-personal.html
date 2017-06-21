@@ -39,7 +39,7 @@
           </p>
         </div>
         <div class="clearfix"></div>
-        <div class="ym-progress__date" ng-if="eventDate != 'User Provided No Response'" ng-cloak>
+        <div class="ym-progress__date" ng-if="eventDate != '' && eventDate != 'User Provided No Response'" ng-cloak>
           <p>
             My event date is <strong><span ng-bind-html="eventDate"></span></strong>
           </p>
@@ -72,7 +72,7 @@
           </div>
         </div>
       ::]]
-      <div class="hidden js--default-page-content" ng-non-bindable>
+      <div class="hidden js--default-page-content" hidden aria-hidden="true" ng-non-bindable>
         [[C6:fr_rich_text]]
       </div>
       <div ng-show="personalPageContent.mode == 'view'">
@@ -88,7 +88,8 @@
         ]]
       ::T::
         <div class="ym-page-content-editor" ng-show="personalPageContent.mode == 'edit'" ng-cloak>
-          <div text-angular name="ng_rich_text" ng-model="personalPageContent.ng_rich_text" ta-toolbar="{{personalPageContent.textEditorToolbar}}"></div>
+          <label for="taHtmlElement{{personalPageContent.serial}}" class="sr-only">Edit your personal story:</label>
+          <div text-angular name="ng_rich_text" ng-model="personalPageContent.ng_rich_text" ta-toolbar="{{personalPageContent.textEditorToolbar}}" serial="{{personalPageContent.serial}}"></div>
         </div>
       ::]]
     </div>
@@ -140,7 +141,7 @@
     </div>
     <div class="clearfix"></div>
   </div>
-  <div class="hidden">
+  <div class="hidden" hidden aria-hidden="true">
     <div class="js--personal-donors">
       [[C5:fr_status_2]]
     </div>
