@@ -1,5 +1,5 @@
 <div class="table-responsive">
-  <table class="table table-striped table--padded ym-list ym-list--team-list">
+  <table class="table table-striped table--padded ym-list ym-list--participant-list">
     <caption class="h5">
       Our Participants
     </caption>
@@ -17,7 +17,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="ym-list__row" ng-repeat="team in teams">
+      <tr class="ym-list__row" ng-repeat="participant in participants">
         <td class="ym-list__column ym-list__column--name">
           <a ng-href="TR?fr_id={{participant.eventId}}&amp;pg=personal&amp;px={{participant.consId}}"><span ng-bind-html="participant.name.first"></span> <span ng-bind-html="participant.name.last"></span></a>
         </td>
