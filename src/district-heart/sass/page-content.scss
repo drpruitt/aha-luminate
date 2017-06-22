@@ -29,6 +29,7 @@
 
 .ym-team-coordinator-thanks-inner {
   background-color: $event-accent;
+  color: $brand-white;
   margin: 12px 12px 0;
 }
 
@@ -39,5 +40,15 @@
 
 .ym-team-page-options-inner {
   background-color: $event-accent-medium;
+  text-align: center;
   margin: 0 12px 12px;
+  
+  h5, 
+  .h5 {
+    color: $event-secondary;
+    margin: 0;
+  }
+  
+  .btn {
+  }
 }
