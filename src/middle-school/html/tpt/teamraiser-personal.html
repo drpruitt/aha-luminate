@@ -127,15 +127,16 @@
         Donate
       </a>
     </div>
-    <div class="ym-list" ng-class="personalDonors.donors.length < 1 ? 'hidden' : 'col-sm-6'" role="list" aria-label="Top Donors List">
+    <div class="ym-list" ng-class="!personalDonors.donors || personalDonors.donors.length == 0 ? 'hidden' : 'col-sm-6'" role="list" aria-label="Top Donors List" ng-cloak>
       <h3 class="h5">
-        Top Fundraisers
+        Top Donors
       </h3>
       <ul class="ym-donor-list">
         <li class="ym-donor-list__row" ng-repeat="personalDonor in personalDonors.donors" ng-if="personalDonors.donors.length > 0" role="listitem" ng-cloak>
-          <span class="ym-donor-list__row--name">{{personalDonor.name}}</span>
-          <span class="ym-donor-list__row--amount">{{personalDonor.amountFormatted}}</span>
-          <div class="clearfix"></div>
+          <div class="clearfix">
+            <span class="ym-donor-list__row--name">{{personalDonor.name}}</span> 
+            <span class="ym-donor-list__row--amount">{{personalDonor.amountFormatted}}</span>
+          </div>
         </li>
       </ul>
     </div>
