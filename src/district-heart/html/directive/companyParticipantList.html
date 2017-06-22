@@ -11,7 +11,7 @@
             <span class="fa" ng-class="{'fa-caret-down': (participantList.sortColumn == 'fullName' && !participantList.sortAscending) || participantList.sortColumn != 'fullName', 'fa-caret-up': participantList.sortColumn == 'fullName' && participantList.sortAscending, 'inactive': participantList.sortColumn != 'fullName'}"></span>
           </a>
         </th>
-        <th class="ym-list__column ym-list__column--amount hidden-xs" scope="col">
+        <th class="ym-list__column ym-list__column--amount" scope="col">
           <a href="" ng-click="orderParticipants('amountRaised')">
             <strong>Amount</strong> 
             <span class="fa" ng-class="{'fa-caret-down': (participantList.sortColumn == 'amountRaised' && !participantList.sortAscending) || participantList.sortColumn != 'amountRaised', 'fa-caret-up': participantList.sortColumn == 'amountRaised' && participantList.sortAscending, 'inactive': participantList.sortColumn != 'amountRaised'}"></span>
@@ -28,14 +28,14 @@
     <tbody>
       <tr class="ym-list__row" ng-repeat="participant in participants">
         <td class="ym-list__column ym-list__column--name">
-          <a ng-href="TR?fr_id={{participant.eventId}}&amp;pg=personal&amp;px={{participant.consId}}"><span ng-bind-html="participant.name.first"></span> <span ng-bind-html="participant.name.last"></span></a>
+          <a ng-href="TR?fr_id={{participant.eventId}}&amp;pg=personal&amp;px={{participant.consId}}"><span ng-bind-html="participant.fullName"></span></a>
           <div>
             <a class="btn btn-primary btn-md" ng-href="Donation2?df_id={{participant.donationFormId}}&amp;FR_ID={{participant.eventId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{participant.consId}}">
               <strong>Donate</strong>
             </a>
           </div>
         </td>
-        <td class="ym-list__column ym-list__column--amount hidden-xs">
+        <td class="ym-list__column ym-list__column--amount">
           <span>{{participant.amountRaisedFormatted}}</span>
         </td>
         <td class="ym-list__column ym-list__column--cta">

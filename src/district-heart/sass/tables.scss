@@ -11,8 +11,12 @@
     max-width: 970px;
     margin: auto;
     
-    &.ym-list tbody a {
-      font-weight: 500;
+    &.ym-list {
+      tbody {
+        a {
+          font-weight: 500;
+        }
+      }
     }
   }
   
@@ -25,6 +29,7 @@
     }
     
     .btn {
+      width: 80px;
       margin-top: 3px;
     }
   }
