@@ -30,6 +30,8 @@
 .ym-team-coordinator-thanks-inner {
   background-color: $event-accent;
   color: $brand-white;
+  text-align: center;
+  padding: 24px 30px;
   margin: 12px 12px 0;
 }
 
@@ -41,12 +43,13 @@
 .ym-team-page-options-inner {
   background-color: $event-accent-medium;
   text-align: center;
+  padding: 30px;
   margin: 0 12px 12px;
   
   h5, 
   .h5 {
     color: $event-secondary;
-    margin: 0;
+    margin: 0 0 18px;
   }
   
   .btn {
