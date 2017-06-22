@@ -105,9 +105,10 @@ angular.module 'ahaLuminateControllers'
                 participants = [participants] if not angular.isArray participants
                 teamParticipants = []
                 angular.forEach participants, (participant) ->
-                  participant.amountRaised = Number participant.amountRaised
-                  participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
-                  teamParticipants.push participant
+                  if participant.name?.first
+                    participant.amountRaised = Number participant.amountRaised
+                    participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
+                    teamParticipants.push participant
                 totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
                 setTeamParticipants teamParticipants, totalNumberParticipants
       getTeamParticipants()

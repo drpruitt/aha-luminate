@@ -162,9 +162,10 @@ angular.module 'ahaLuminateControllers'
               if participants
                 participants = [participants] if not angular.isArray participants
                 angular.forEach participants, (participant) ->
-                  participant.amountRaised = Number participant.amountRaised
-                  participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
-                  companyParticipants.push participant
+                  if participant.name?.first
+                    participant.amountRaised = Number participant.amountRaised
+                    participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
+                    companyParticipants.push participant
               totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
               setCompanyParticipants companyParticipants, totalNumberParticipants
       getCompanyParticipants()
