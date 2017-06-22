@@ -57,7 +57,7 @@ angular.module 'ahaLuminateControllers'
         if response.data.status is 'success'
           $scope.totalEmails = totals.total_online_emails_sent
           if $scope.totalEmails.toString().length > 4
-              $scope.totalEmails = Math.round($scope.totalEmails/1000)+ 'K'
+              $scope.totalEmails = Math.round($scope.totalEmails / 1000) + 'K'
         else
           $scope.totalEmails = 0
          
@@ -91,9 +91,10 @@ angular.module 'ahaLuminateControllers'
               # TODO
             else
               companies = [companies] if not angular.isArray companies
-              $scope.participantCount = companies[0].participantCount 
+              participantCount = companies[0].participantCount or '0'
+              $scope.participantCount = Number participantCount
               if $scope.participantCount.toString().length > 4
-                $scope.participantCount = Math.round($scope.participantCount/1000)+ 'K'
+                $scope.participantCount = Math.round($scope.participantCount / 1000) + 'K'
               totalTeams = companies[0].teamCount
               eventId = companies[0].eventId
               amountRaised = companies[0].amountRaised
@@ -106,7 +107,7 @@ angular.module 'ahaLuminateControllers'
               TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
                 .then (response) ->
                   $scope.eventDate = response.data.coordinator.event_date
-                  if totalTeams = 1
+                  if totalTeams is 1
                     $scope.teamId = response.data.coordinator.team_id
       getCompanyTotals()
       
