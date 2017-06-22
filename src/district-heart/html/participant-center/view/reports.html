@@ -33,7 +33,7 @@
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th scope="col">
+                  <th scope="col" role="columnheader" aria-sort="{{districtDetailParticipants.sortColumn != 'firstName' ? 'none' : (districtDetailParticipants.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-left">
                       <a href="" ng-click="orderDistrictDetailParticipants('firstName')">
                         <strong>Name</strong> 
@@ -41,7 +41,7 @@
                       </a>
                     </div>
                   </th>
-                  <th scope="col">
+                  <th scope="col" role="columnheader" aria-sort="{{districtDetailParticipants.sortColumn != 'amount' ? 'none' : (districtDetailParticipants.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-center">
                       <a href="" ng-click="orderDistrictDetailParticipants('amount')">
                         <strong>Amount</strong> 
@@ -49,7 +49,7 @@
                       </a>
                     </div>
                   </th>
-                  <th scope="col">
+                  <th scope="col" role="columnheader" aria-sort="{{districtDetailParticipants.sortColumn != 'emailsSent' ? 'none' : (districtDetailParticipants.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-center">
                       <a href="" ng-click="orderDistrictDetailParticipants('emailsSent')">
                         <strong>Emails</strong> 
@@ -57,7 +57,7 @@
                       </a>
                     </div>
                   </th>
-                  <th scope="col">
+                  <th scope="col" role="columnheader" aria-sort="{{districtDetailParticipants.sortColumn != 'tshirtSize' ? 'none' : (districtDetailParticipants.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-center">
                       <a href="" ng-click="orderDistrictDetailParticipants('tshirtSize')">
                         <strong>T-shirt</strong> 
@@ -126,7 +126,7 @@
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th scope="col">
+                  <th scope="col" role="columnheader" aria-sort="{{participantGifts.sortColumn != 'cons_first_name' ? 'none' : (participantGifts.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-left">
                       <a href="" ng-click="orderParticipantGifts('cons_first_name')">
                         <strong>Name</strong> 
@@ -134,7 +134,7 @@
                       </a>
                     </div>
                   </th>
-                  <th scope="col">
+                  <th scope="col" role="columnheader" aria-sort="{{participantGifts.sortColumn != 'amount' ? 'none' : (participantGifts.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-center">
                       <a href="" ng-click="orderParticipantGifts('amount')">
                         <strong>Amount</strong> 
@@ -142,7 +142,7 @@
                       </a>
                     </div>
                   </th>
-                  <th scope="col">
+                  <th scope="col" role="columnheader" aria-sort="{{participantGifts.sortColumn != 'date_recorded' ? 'none' : (participantGifts.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-right">
                       <a href="" ng-click="orderParticipantGifts('date_recorded')">
                         <strong>Date</strong> 
@@ -228,7 +228,7 @@
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th scope="col">
+                  <th scope="col" role="columnheader" aria-sort="{{teamGifts.sortColumn != 'cons_first_name' ? 'none' : (teamGifts.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-left">
                       <a href="" ng-click="orderTeamGifts('cons_first_name')">
                         <strong>Name</strong> 
@@ -236,7 +236,7 @@
                       </a>
                     </div>
                   </th>
-                  <th scope="col">
+                  <th scope="col" role="columnheader" aria-sort="{{teamGifts.sortColumn != 'amount' ? 'none' : (teamGifts.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-center">
                       <a href="" ng-click="orderTeamGifts('amount')">
                         <strong>Amount</strong> 
@@ -244,7 +244,7 @@
                       </a>
                     </div>
                   </th>
-                  <th scope="col">
+                  <th scope="col" role="columnheader" aria-sort="{{teamGifts.sortColumn != 'date_recorded' ? 'none' : (teamGifts.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-right">
                       <a href="" ng-click="orderTeamGifts('date_recorded')">
                         <strong>Date</strong> 

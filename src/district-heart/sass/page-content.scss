@@ -24,7 +24,7 @@
 
 .ym-team-coordinator-thanks {
   background: $brand-white;
-  padding: 12px;
+  padding: 12px 0;
   
   @media (min-width: $screen-sm-min) {
     padding: 18px;
@@ -45,7 +45,7 @@
 
 .ym-team-page-options {
   background: $brand-white;
-  padding: 12px;
+  padding: 12px 0;
   
   @media (min-width: $screen-sm-min) {
     padding: 18px;
@@ -60,6 +60,18 @@
   
   @media (min-width: $screen-sm-min) {
     margin: 0 12px 12px;
+  }
+  
+  .col-sm-4 {
+    @media (max-width: $screen-xs-max) {
+      margin: 0 0 40px;
+    }
+    
+    &:last-child {
+      @media (max-width: $screen-xs-max) {
+        margin: 0;
+      }
+    }
   }
   
   h5, 
