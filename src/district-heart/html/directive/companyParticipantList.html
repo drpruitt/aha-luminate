@@ -5,19 +5,19 @@
     </caption>
     <thead class="ym-list__header">
       <tr>
-        <th class="ym-list__column ym-list__column--name" scope="col">
+        <th class="ym-list__column ym-list__column--name" scope="col" role="columnheader" aria-sort="{{participantList.sortColumn != 'fullName' ? 'none' : (participantList.sortAscending ? 'ascending' : 'descending')}}">
           <a href="" ng-click="orderParticipants('fullName')">
             <strong>Participant Name</strong> 
             <span class="fa" ng-class="{'fa-caret-down': (participantList.sortColumn == 'fullName' && !participantList.sortAscending) || participantList.sortColumn != 'fullName', 'fa-caret-up': participantList.sortColumn == 'fullName' && participantList.sortAscending, 'inactive': participantList.sortColumn != 'fullName'}"></span>
           </a>
         </th>
-        <th class="ym-list__column ym-list__column--amount" scope="col">
+        <th class="ym-list__column ym-list__column--amount" scope="col" role="columnheader" aria-sort="{{participantList.sortColumn != 'amountRaised' ? 'none' : (participantList.sortAscending ? 'ascending' : 'descending')}}">
           <a href="" ng-click="orderParticipants('amountRaised')">
             <strong>Amount</strong> 
             <span class="fa" ng-class="{'fa-caret-down': (participantList.sortColumn == 'amountRaised' && !participantList.sortAscending) || participantList.sortColumn != 'amountRaised', 'fa-caret-up': participantList.sortColumn == 'amountRaised' && participantList.sortAscending, 'inactive': participantList.sortColumn != 'amountRaised'}"></span>
           </a>
         </th>
-        <th class="ym-list__column ym-list__column--cta" scope="col">
+        <th class="ym-list__column ym-list__column--cta" scope="col" role="columnheader" aria-sort="{{participantList.sortColumn != 'minsActivity' ? 'none' : (participantList.sortAscending ? 'ascending' : 'descending')}}">
           <a href="" ng-click="orderParticipants('minsActivity')">
             <strong>Min. of Activity</strong> 
             <span class="fa" ng-class="{'fa-caret-down': (participantList.sortColumn == 'minsActivity' && !participantList.sortAscending) || participantList.sortColumn != 'minsActivity', 'fa-caret-up': participantList.sortColumn == 'minsActivity' && participantList.sortAscending, 'inactive': participantList.sortColumn != 'minsActivity'}"></span>
