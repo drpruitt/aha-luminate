@@ -19,7 +19,6 @@ angular.module 'ahaLuminateControllers'
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0].split('#')[0]
       domain = $location.absUrl().split('/site/')[0]
       $rootScope.companyName = ''
-      $scope.companyTeams = []
       $scope.eventDate = ''
       $scope.totalTeams = ''
       $scope.teamId = ''
@@ -58,7 +57,7 @@ angular.module 'ahaLuminateControllers'
         if response.data.status is 'success'
           $scope.totalEmails = totals.total_online_emails_sent
           if $scope.totalEmails.toString().length > 4
-              $scope.totalEmails = Math.round($scope.totalEmails/1000)+ 'K'
+              $scope.totalEmails = Math.round($scope.totalEmails / 1000) + 'K'
         else
           $scope.totalEmails = 0
          
@@ -92,9 +91,10 @@ angular.module 'ahaLuminateControllers'
               # TODO
             else
               companies = [companies] if not angular.isArray companies
-              $scope.participantCount = companies[0].participantCount 
+              participantCount = companies[0].participantCount or '0'
+              $scope.participantCount = Number participantCount
               if $scope.participantCount.toString().length > 4
-                $scope.participantCount = Math.round($scope.participantCount/1000)+ 'K'
+                $scope.participantCount = Math.round($scope.participantCount / 1000) + 'K'
               totalTeams = companies[0].teamCount
               eventId = companies[0].eventId
               amountRaised = companies[0].amountRaised
@@ -107,10 +107,11 @@ angular.module 'ahaLuminateControllers'
               TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
                 .then (response) ->
                   $scope.eventDate = response.data.coordinator.event_date
-                  if totalTeams = 1
+                  if totalTeams is 1
                     $scope.teamId = response.data.coordinator.team_id
       getCompanyTotals()
       
+      $scope.companyTeams = {}
       setCompanyTeams = (teams, totalNumber) ->
         $scope.companyTeams.teams = teams or []
         totalNumber = totalNumber or 0
@@ -119,7 +120,7 @@ angular.module 'ahaLuminateControllers'
         if not $scope.$$phase
           $scope.$apply()
       getCompanyTeams = ->
-        TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId,
+        TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId + '&list_page_size=500',
           error: ->
             setCompanyTeams()
           success: (response) ->
@@ -142,7 +143,7 @@ angular.module 'ahaLuminateControllers'
         if not $scope.$$phase
           $scope.$apply()
       getCompanyParticipants = ->
-        TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%%%') + '&first_name=' + encodeURIComponent('%%%') + '&last_name=' + encodeURIComponent('%%%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=50',
+        TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%') + '&first_name=' + encodeURIComponent('%%') + '&last_name=' + encodeURIComponent('%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=50',
             error: ->
               setCompanyParticipants()
             success: (response) ->
@@ -152,10 +153,12 @@ angular.module 'ahaLuminateControllers'
               if participants
                 participants = [participants] if not angular.isArray participants
                 angular.forEach participants, (participant) ->
-                  if participant.amountRaised > 1
-                    participant.amountRaised = Number participant.amountRaised
-                    participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
+                  participant.amountRaised = Number participant.amountRaised
+                  if participant.name?.first and participant.amountRaised > 1
                     participant.name.last = participant.name.last.substring(0, 1) + '.'
+                    participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
+                    if participant.donationUrl
+                      participant.donationFormId = participant.donationUrl.split('df_id=')[1].split('&')[0]
                     companyParticipants.push participant
                     totalFundraisers++
               totalNumberParticipants = response.getParticipantsResponse.totalNumberResults

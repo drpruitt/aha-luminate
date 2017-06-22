@@ -6,13 +6,13 @@
     <thead class="ym-list__header">
       <tr>
         <th class="ym-list__column ym-list__column--name" scope="col">
-          Name
+          Participant Name
         </th>
         <th class="ym-list__column ym-list__column--amount hidden-xs" scope="col">
-          Amount Raised
+          Amount
         </th>
         <th class="ym-list__column ym-list__column--cta" scope="col">
-          Action
+          Min. of Activity
         </th>
       </tr>
     </thead>
@@ -20,6 +20,11 @@
       <tr class="ym-list__row" ng-repeat="participant in participants">
         <td class="ym-list__column ym-list__column--name">
           <a ng-href="TR?fr_id={{participant.eventId}}&amp;pg=personal&amp;px={{participant.consId}}"><span ng-bind-html="participant.name.first"></span> <span ng-bind-html="participant.name.last"></span></a>
+          <div>
+            <a class="btn btn-primary btn-md" ng-href="Donation2?df_id={{participant.donationFormId}}&amp;FR_ID={{participant.eventId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{participant.consId}}">
+              <strong>Donate</strong>
+            </a>
+          </div>
         </td>
         <td class="ym-list__column ym-list__column--amount hidden-xs">
           <span>{{participant.amountRaisedFormatted}}</span>

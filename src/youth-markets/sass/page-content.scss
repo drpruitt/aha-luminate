@@ -292,23 +292,23 @@
     display: flex;
     align-items: center;
   }
-
+  
   > div {
     padding: 0 20px;
-
+    
     @media (min-width: $screen-sm-min) {
       padding: 0;
     }
-
+    
     &.ym-list {
       @media (min-width: $screen-sm-min) {
         padding-right: 20px;
       }
-
+      
       @media (min-width: $screen-md-min) {
-        padding-right: 40px
+        padding-right: 40px;
       }
-
+      
       @media (min-width: $screen-lg-min) {
         padding-right: 0;
       }
@@ -317,28 +317,37 @@
 }
 
 .ym-page-section__roster {
-  padding: 50px;
-
+  padding: 25px;
+  
   &.hidden {
-    padding-bottom: 0px;
+    padding-bottom: 0;
   }
-
+  
+  @media (min-width: $screen-sm-min) {
+    padding: 50px;
+  }
+  
   .h5 {
     text-align: center;
-    margin: 0 0 30px;
     padding: 0;
-
+    margin: 0 0 15px;
+    
     &.text-left {
       text-align: left;
     }
-
-    @media (max-width: $screen-xs) {
-      margin: 0 0 15px;
+    
+    @media (min-width: $screen-sm-min) {
+      margin: 0 0 30px;
     }
   }
-
-  @media (max-width: $screen-xs) {
-    padding: 25px;
+  
+  .ym-section-divider {
+    border-top: 1px solid $border-gray;
+    margin: 25px -25px 0;
+    
+    @media (min-width: $screen-sm-min) {
+      margin: 50px -50px 0;
+    }
   }
 }
 

@@ -6,26 +6,30 @@
     <thead class="ym-list__header">
       <tr>
         <th class="ym-list__column ym-list__column--name" scope="col">
-          Name
+          Team Name
         </th>
         <th class="ym-list__column ym-list__column--amount hidden-xs" scope="col">
-          Amount Raised
+          Amount
         </th>
         <th class="ym-list__column ym-list__column--cta" scope="col">
-          Action
+          Min. of Activity
         </th>
       </tr>
     </thead>
     <tbody>
       <tr class="ym-list__row" ng-repeat="team in teams">
         <td class="ym-list__column ym-list__column--name">
-          <a ng-href="TR?fr_id={{team.EventId}}&amp;pg=team&amp;team_id={{team.id}}">{{team.name}}</a>
+          <a ng-href="TR?fr_id={{team.EventId}}&amp;pg=team&amp;team_id={{team.id}}"><span ng-bind-html="team.name"></span></a>
+          <div>
+            <a class="btn btn-primary btn-md" ng-href="TRR?fr_id={{team.EventId}}&amp;pg=tfind&amp;fr_tm_opt=existing&amp;fr_tjoin={{team.id}}&amp;s_frTJoin={{team.id}}&amp;s_frCompanyId={{team.companyId}}">
+              <strong>Join</strong>
+            </a>
+          </div>
         </td>
         <td class="ym-list__column ym-list__column--amount hidden-xs">
           <span>{{team.amountRaisedFormatted}}</span>
         </td>
         <td class="ym-list__column ym-list__column--cta">
-          <a class="btn btn-primary btn-md" ng-href="TRR?fr_id={{team.EventId}}&amp;pg=tfind&amp;fr_tm_opt=existing&amp;fr_tjoin={{team.id}}&amp;s_frTJoin={{team.id}}&amp;s_frCompanyId={{team.companyId}}">Join Team</a>
         </td>
       </tr>
     </tbody>
