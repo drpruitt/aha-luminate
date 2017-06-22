@@ -68,28 +68,28 @@ div.table {
   .table {
     max-width: 970px;
     margin: auto;
-
+    
     &.ym-list tbody a {
       font-weight: 500;
     }
   }
-
+  
   .ym-list__column--name {
     width: 80%;
     text-align: left;
-
+    
     @media (min-width: $screen-sm-min) {
       width: 43%;
     }
   }
-
+  
   .ym-list__column--amount {
     text-align: center;
     width: 120px;
     padding-left: 0;
     padding-right: 0;
   }
-
+  
   .ym-list__column--cta {
     text-align: right;
     padding-right: 15px;
