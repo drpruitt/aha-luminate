@@ -293,7 +293,7 @@
                   </th>
                   <th scope="col">
                     <div class="text-right">
-                      <a href="" ng-click="orderTeamGifts('date_recorded')">
+                      <a href="" ng-click="orderTeamGifts('date_recorded')" ng-aria-sort="{'descending': (teamGifts.sortColumn == 'date_recorded' && !teamGifts.sortAscending) || teamGifts.sortColumn != 'date_recorded', 'ascending': teamGifts.sortColumn == 'date_recorded' && teamGifts.sortAscending, 'inactive': teamGifts.sortColumn != 'date_recorded'}">
                         <strong>Date</strong> 
                         <span class="fa" ng-class="{'fa-caret-down': (teamGifts.sortColumn == 'date_recorded' && !teamGifts.sortAscending) || teamGifts.sortColumn != 'date_recorded', 'fa-caret-up': teamGifts.sortColumn == 'date_recorded' && teamGifts.sortAscending, 'inactive': teamGifts.sortColumn != 'date_recorded'}" ng-if="teamGifts.gifts.length"></span>
                       </a>
