@@ -105,7 +105,8 @@ angular.module 'ahaLuminateControllers'
               # TODO
             else
               companies = [companies] if not angular.isArray companies
-              $scope.participantCount = companies[0].participantCount 
+              participantCount = companies[0].participantCount or '0'
+              $scope.participantCount = Number participantCount
               totalTeams = companies[0].teamCount
               eventId = companies[0].eventId
               amountRaised = companies[0].amountRaised
@@ -118,7 +119,7 @@ angular.module 'ahaLuminateControllers'
               TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
                 .then (response) ->
                   $scope.eventDate = response.data.coordinator.event_date
-                  if totalTeams = 1
+                  if totalTeams is 1
                     $scope.teamId = response.data.coordinator.team_id
       getCompanyTotals()
       
