@@ -78,7 +78,7 @@
               </div>
             </div>
             <div ng-class="{'hidden': dashboardProgressType != 'team'}" ng-if="companyInfo.teamCount > 1" ng-cloak>
-              <div class="ym-progress__thermometer" name="Class Progress Bar" aria-valuetext="Class Progress Bar" role="progressbar" aria-valuenow="{{teamProgress.percent}}%" aria-valuemin="0%" aria-valuemax="100%">
+              <div class="ym-progress__thermometer" name="Team Progress Bar" aria-valuetext="Team Progress Bar" role="progressbar" aria-valuenow="{{teamProgress.percent}}%" aria-valuemin="0%" aria-valuemax="100%">
                 <div class="ym-progress__thermometer--fill" ng-style="{'width': teamProgress.percent + '%'}"></div>
               </div>
               <div class="ym-progress-related clearfix">
@@ -159,7 +159,7 @@
             </div>
             <form method="POST">
               <label for="emailChallenge-sampleText" class="sr-only">Email text:</label>
-              <textarea class="form-control" id="emailChallenge-sampleText" name="sampleText" ng-model="emailChallenge.sampleText" readonly></textarea>
+              <textarea class="form-control" id="emailChallenge-sampleText" name="sampleText" ng-model="emailChallenge.sampleText" readonly aria-readonly="true"></textarea>
             </form>
           </div>
         </div>
