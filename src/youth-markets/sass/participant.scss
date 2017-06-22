@@ -626,7 +626,7 @@ main > .container {
   margin: 0 0 24px;
   padding: 12px;
 
-  @media(min-width: $screen-sm-min){
+  @media (min-width: $screen-sm-min){
     padding: 24px 172px;
 
   }
@@ -928,7 +928,7 @@ main > .container {
         margin: 0;
       }
 
-      @media(min-width: $screen-sm-min) {
+      @media (min-width: $screen-sm-min) {
         margin: 0;
       }
     }

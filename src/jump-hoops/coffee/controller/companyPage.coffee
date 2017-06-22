@@ -19,7 +19,6 @@ angular.module 'ahaLuminateControllers'
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0].split('#')[0]
       domain = $location.absUrl().split('/site/')[0]
       $rootScope.companyName = ''
-      $scope.companyTeams = []
       $scope.eventDate = ''
       $scope.totalTeams = ''
       $scope.teamId = ''
@@ -123,6 +122,7 @@ angular.module 'ahaLuminateControllers'
                     $scope.teamId = response.data.coordinator.team_id
       getCompanyTotals()
       
+      $scope.companyTeams = {}
       setCompanyTeams = (teams, totalNumber) ->
         $scope.companyTeams.teams = teams or []
         totalNumber = totalNumber or 0
@@ -131,7 +131,7 @@ angular.module 'ahaLuminateControllers'
         if not $scope.$$phase
           $scope.$apply()
       getCompanyTeams = ->
-        TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId,
+        TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId + '&list_page_size=500',
           error: ->
             setCompanyTeams()
           success: (response) ->

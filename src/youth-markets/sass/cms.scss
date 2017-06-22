@@ -5,7 +5,7 @@
   .h5-heading {
     margin: 0 0 30px;
 
-    @media(max-width: $screen-sm-max) {
+    @media (max-width: $screen-sm-max) {
       margin: 0 0 20px;
     }
   }
@@ -415,7 +415,7 @@
       width: 150px;
     }
 
-    @media (max-width: $screen-xs) {
+    @media (max-width: $screen-xs-max) {
       float:none;
     }
   }
@@ -427,7 +427,7 @@
       width: calc(100% - 150px);
     }
 
-    @media (max-width: $screen-xs) {
+    @media (max-width: $screen-xs-max) {
       width: 100%;
       float: none;
       clear: both;
@@ -542,7 +542,7 @@
   .img-responsive {
     margin: 0 auto 10px;
 
-    @media(min-width: $screen-sm-min){
+    @media (min-width: $screen-sm-min){
       margin: 20px auto 10px;
     }
   }
@@ -563,14 +563,14 @@
   .ym-page-section__roster {
     padding-top: 0;
 
-    @media(min-width: $screen-sm-min){
+    @media (min-width: $screen-sm-min){
       padding-top: 25px;
     }
 
     .h5 {
       margin: 0 0 15px;
 
-      @media(min-width: $screen-sm-min) {
+      @media (min-width: $screen-sm-min) {
         margin: 0 0 30px;
       }
     }

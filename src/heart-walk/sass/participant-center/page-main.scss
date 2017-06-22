@@ -2,31 +2,31 @@
   font-size: 15px;
   margin: 32px 0 0;
   
-  @media(min-width: $screen-sm-min) {
+  @media (min-width: $screen-sm-min) {
     float: right;
     width: 58%;
     margin: 32px 0 0 40px;
   }
   
-  @media(min-width: 830px) {
+  @media (min-width: 830px) {
     width: 60%;
   }
   
-  @media(min-width: 880px) {
+  @media (min-width: 880px) {
     width: 62%;
   }
   
-  @media(min-width: 940px) {
+  @media (min-width: 940px) {
     width: 65%;
   }
   
-  @media(min-width: $screen-md-min) {
+  @media (min-width: $screen-md-min) {
     float: left;
     width: 520px;
     margin: 0 0 0 48px;
   }
   
-  @media(min-width: $screen-lg-min) {
+  @media (min-width: $screen-lg-min) {
     width: 720px;
     margin: 0 0 0 48px;
   }
