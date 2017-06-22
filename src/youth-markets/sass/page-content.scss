@@ -319,12 +319,16 @@
 .ym-page-section__roster {
   padding: 25px;
   
+  @media (min-width: $screen-sm-min) {
+    padding: 50px;
+  }
+  
   &.hidden {
     padding-bottom: 0;
   }
   
-  @media (min-width: $screen-sm-min) {
-    padding: 50px;
+  & + .ym-page-section__roster {
+    padding-top: 0;
   }
   
   .h5 {
@@ -332,12 +336,12 @@
     padding: 0;
     margin: 0 0 15px;
     
-    &.text-left {
-      text-align: left;
-    }
-    
     @media (min-width: $screen-sm-min) {
       margin: 0 0 30px;
+    }
+    
+    &.text-left {
+      text-align: left;
     }
   }
   
