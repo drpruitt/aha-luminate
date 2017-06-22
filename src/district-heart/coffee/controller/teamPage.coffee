@@ -112,6 +112,7 @@ angular.module 'ahaLuminateControllers'
                 teamParticipants = []
                 angular.forEach participants, (participant) ->
                   if participant.name?.first
+                    participant.fullName = participant.name.first + ' ' + participant.name.last
                     participant.amountRaised = Number participant.amountRaised
                     participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
                     if participant.donationUrl
