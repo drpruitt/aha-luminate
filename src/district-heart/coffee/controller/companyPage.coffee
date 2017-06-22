@@ -17,7 +17,6 @@ angular.module 'ahaLuminateControllers'
     '$sce'
     ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService, ZuriService, TeamraiserRegistrationService, TeamraiserCompanyPageService, PageContentService, $sce) ->
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0].split('#')[0]
-      domain = $location.absUrl().split('/site/')[0]
       $rootScope.companyName = ''
       $scope.eventDate = ''
       $scope.totalTeams = ''
@@ -132,7 +131,7 @@ angular.module 'ahaLuminateControllers'
         if not $scope.$$phase
           $scope.$apply()
       getCompanyTeams = ->
-        TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId + '&list_page_size=500',
+        TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=500',
           error: ->
             setCompanyTeams()
           success: (response) ->

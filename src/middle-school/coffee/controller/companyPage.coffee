@@ -17,7 +17,6 @@ angular.module 'ahaLuminateControllers'
     '$sce'
     ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService, ParticipantBadgesService, TeamraiserRegistrationService, TeamraiserCompanyPageService, PageContentService, $sce) ->
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0].split('#')[0]
-      domain = $location.absUrl().split('/site/')[0]
       $rootScope.companyName = ''
       $scope.eventDate = ''
       $scope.totalTeams = ''
