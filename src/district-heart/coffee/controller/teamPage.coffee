@@ -95,7 +95,7 @@ angular.module 'ahaLuminateControllers'
         if not $scope.$$phase
           $scope.$apply()
       getTeamParticipants = ->
-        TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%%%') + '&first_name=' + encodeURIComponent('%%%') + '&last_name=' + encodeURIComponent('%%%') + '&list_filter_column=reg.team_id&list_filter_text=' + $scope.teamId + '&list_sort_column=total&list_ascending=false&list_page_size=50', 
+        TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%') + '&first_name=' + encodeURIComponent('%%') + '&last_name=' + encodeURIComponent('%') + '&list_filter_column=reg.team_id&list_filter_text=' + $scope.teamId + '&list_sort_column=total&list_ascending=false&list_page_size=500', 
             error: (response) ->
               setTeamMembers()
             success: (response) ->
@@ -108,6 +108,8 @@ angular.module 'ahaLuminateControllers'
                   if participant.name?.first
                     participant.amountRaised = Number participant.amountRaised
                     participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
+                    if participant.donationUrl
+                      participant.donationFormId = participant.donationUrl.split('df_id=')[1].split('&')[0]
                     teamParticipants.push participant
                 totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
                 setTeamParticipants teamParticipants, totalNumberParticipants
