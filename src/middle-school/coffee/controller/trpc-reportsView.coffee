@@ -281,5 +281,5 @@ angular.module 'trPcControllers'
             $scope.schoolDetailStudents.sortAscending = false
           $scope.schoolDetailStudents.sortColumn = sortColumn
           orderBy = $filter 'orderBy'
-          $scope.schoolDetailStudents.students = orderBy $scope.schoolDetailStudents.students, sortColumn, not $scope.schoolDetailStudents.sortAscending
+          $scope.schoolDetailStudents.students = orderBy $scope.schoolDetailStudents.students, sortColumn, !$scope.schoolDetailStudents.sortAscending
   ]
