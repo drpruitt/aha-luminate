@@ -11,7 +11,7 @@
             <span class="fa" ng-class="{'fa-caret-down': (teamList.sortColumn == 'name' && !teamList.sortAscending) || teamList.sortColumn != 'name', 'fa-caret-up': teamList.sortColumn == 'name' && teamList.sortAscending, 'inactive': teamList.sortColumn != 'name'}"></span>
           </a>
         </th>
-        <th class="ym-list__column ym-list__column--amount hidden-xs" scope="col">
+        <th class="ym-list__column ym-list__column--amount" scope="col">
           <a href="" ng-click="orderTeams('amountRaised')">
             <strong>Amount</strong> 
             <span class="fa" ng-class="{'fa-caret-down': (teamList.sortColumn == 'amountRaised' && !teamList.sortAscending) || teamList.sortColumn != 'amountRaised', 'fa-caret-up': teamList.sortColumn == 'amountRaised' && teamList.sortAscending, 'inactive': teamList.sortColumn != 'amountRaised'}"></span>
@@ -35,7 +35,7 @@
             </a>
           </div>
         </td>
-        <td class="ym-list__column ym-list__column--amount hidden-xs">
+        <td class="ym-list__column ym-list__column--amount">
           <span>{{team.amountRaisedFormatted}}</span>
         </td>
         <td class="ym-list__column ym-list__column--cta">
