@@ -6,21 +6,21 @@
     <thead class="ym-list__header">
       <tr>
         <th class="ym-list__column ym-list__column--name" scope="col">
-          <a>
+          <a href="" ng-click="orderTeams('name')">
             <strong>Team Name</strong> 
             <span class="fa" ng-class="{'fa-caret-down': (teamList.sortColumn == 'name' && !teamList.sortAscending) || teamList.sortColumn != 'name', 'fa-caret-up': teamList.sortColumn == 'name' && teamList.sortAscending, 'inactive': teamList.sortColumn != 'name'}"></span>
           </a>
         </th>
         <th class="ym-list__column ym-list__column--amount hidden-xs" scope="col">
-          <a>
+          <a href="" ng-click="orderTeams('amountRaised')">
             <strong>Amount</strong> 
             <span class="fa" ng-class="{'fa-caret-down': (teamList.sortColumn == 'amountRaised' && !teamList.sortAscending) || teamList.sortColumn != 'amountRaised', 'fa-caret-up': teamList.sortColumn == 'amountRaised' && teamList.sortAscending, 'inactive': teamList.sortColumn != 'amountRaised'}"></span>
           </a>
         </th>
         <th class="ym-list__column ym-list__column--cta" scope="col">
-          <a>
+          <a href="" ng-click="orderTeams('minsActivity')">
             <strong>Min. of Activity</strong> 
-            <span class="fa" ng-class="{'fa-caret-down': (teamList.sortColumn == 'minActivity' && !teamList.sortAscending) || teamList.sortColumn != 'minActivity', 'fa-caret-up': teamList.sortColumn == 'minActivity' && teamList.sortAscending, 'inactive': teamList.sortColumn != 'minActivity'}"></span>
+            <span class="fa" ng-class="{'fa-caret-down': (teamList.sortColumn == 'minsActivity' && !teamList.sortAscending) || teamList.sortColumn != 'minsActivity', 'fa-caret-up': teamList.sortColumn == 'minsActivity' && teamList.sortAscending, 'inactive': teamList.sortColumn != 'minsActivity'}"></span>
           </a>
         </th>
       </tr>

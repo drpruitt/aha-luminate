@@ -275,11 +275,11 @@ angular.module 'trPcControllers'
             response
         $scope.reportPromises.push districtDetailReportPromise
         
-        $scope.orderdistrictDetailParticipants = (sortColumn) ->
+        $scope.orderDistrictDetailParticipants = (sortColumn) ->
           $scope.districtDetailParticipants.sortAscending = !$scope.districtDetailParticipants.sortAscending
           if $scope.districtDetailParticipants.sortColumn isnt sortColumn
             $scope.districtDetailParticipants.sortAscending = false
           $scope.districtDetailParticipants.sortColumn = sortColumn
           orderBy = $filter 'orderBy'
-          $scope.districtDetailParticipants.participants = orderBy $scope.districtDetailParticipants.participants, sortColumn, not $scope.districtDetailParticipants.sortAscending
+          $scope.districtDetailParticipants.participants = orderBy $scope.districtDetailParticipants.participants, sortColumn, !$scope.districtDetailParticipants.sortAscending
   ]
