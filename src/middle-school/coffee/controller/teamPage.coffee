@@ -1,7 +1,7 @@
 angular.module 'ahaLuminateControllers'
   .controller 'TeamPageCtrl', [
-    '$scope'
     '$rootScope'
+    '$scope'
     '$location'
     '$filter'
     '$timeout'
@@ -12,7 +12,7 @@ angular.module 'ahaLuminateControllers'
     'TeamraiserCompanyService'
     'ParticipantBadgesService'
     'TeamraiserTeamPageService'
-    ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserTeamService, TeamraiserParticipantService, TeamraiserCompanyService, ParticipantBadgesService, TeamraiserTeamPageService) ->
+    ($rootScope, $scope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserTeamService, TeamraiserParticipantService, TeamraiserCompanyService, ParticipantBadgesService, TeamraiserTeamPageService) ->
       $scope.teamId = $location.absUrl().split('team_id=')[1].split('&')[0].split('#')[0]
       $scope.teamParticipants = []
       $rootScope.teamName = ''
@@ -38,7 +38,11 @@ angular.module 'ahaLuminateControllers'
           if not $scope.$$phase
             $scope.$apply()
         , 500
-      
+      setCoordinatorInfo = ->
+        if not $rootScope.$$phase
+          $rootScope.$apply()
+        if not $scope.$$phase
+          $scope.$apply()
       getTeamData = ->
         TeamraiserTeamService.getTeams 'team_id=' + $scope.teamId, 
           error: ->
@@ -74,6 +78,7 @@ angular.module 'ahaLuminateControllers'
                 TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
                   .then (response) ->
                     $scope.eventDate = response.data.coordinator.event_date
+                    setCoordinatorInfo()
       getTeamData()
       
       setTeamParticipants = (participants, totalNumber, totalFundraisers) ->
