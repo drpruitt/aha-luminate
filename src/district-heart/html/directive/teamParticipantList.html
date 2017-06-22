@@ -7,17 +7,20 @@
       <tr>
         <th class="ym-list__column ym-list__column--name" scope="col">
           <a>
-            Participant Name
+            <strong>Participant Name</strong> 
+            <span class="fa" ng-class="{'fa-caret-down': (participantList.sortColumn == 'fullName' && !participantList.sortAscending) || participantList.sortColumn != 'fullName', 'fa-caret-up': participantList.sortColumn == 'fullName' && participantList.sortAscending, 'inactive': participantList.sortColumn != 'fullName'}"></span>
           </a>
         </th>
         <th class="ym-list__column ym-list__column--amount hidden-xs" scope="col">
           <a>
-            Amount
+            <strong>Amount</strong> 
+            <span class="fa" ng-class="{'fa-caret-down': (participantList.sortColumn == 'amountRaised' && !participantList.sortAscending) || participantList.sortColumn != 'amountRaised', 'fa-caret-up': participantList.sortColumn == 'amountRaised' && participantList.sortAscending, 'inactive': participantList.sortColumn != 'amountRaised'}"></span>
           </a>
         </th>
         <th class="ym-list__column ym-list__column--cta" scope="col">
           <a>
-            Min. of Activity
+            <strong>Min. of Activity</strong> 
+            <span class="fa" ng-class="{'fa-caret-down': (participantList.sortColumn == 'minActivity' && !participantList.sortAscending) || participantList.sortColumn != 'minActivity', 'fa-caret-up': participantList.sortColumn == 'minActivity' && participantList.sortAscending, 'inactive': participantList.sortColumn != 'minActivity'}"></span>
           </a>
         </th>
       </tr>
