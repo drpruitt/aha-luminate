@@ -834,7 +834,7 @@ main > .container {
           line-height: 14px;
         }
       }
-
+      
       .btn,
       a.btn {
         &,
@@ -848,17 +848,17 @@ main > .container {
         }
       }
     }
-
+    
     .ym-activity-share-page {
       margin: 15px 0 0;
-
+      
       @media (min-width: $screen-sm-min) {
         float: right;
         text-align: right;
         max-width: 105px;
         margin: 0;
       }
-
+      
       p {
         display: inline-block;
         font-size: 14px;
