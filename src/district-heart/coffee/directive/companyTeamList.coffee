@@ -9,4 +9,18 @@ angular.module 'ahaLuminateApp'
         companyId: '='
         frId: '='
         teams: '='
+      controller: [
+        '$scope'
+        '$filter'
+        ($scope, $filter) ->
+          $scope.teamList =
+            sortColumn: 'amountRaised'
+            sortAscending: false
+          $scope.orderTeams = (sortColumn) ->
+            $scope.teamList.sortAscending = !$scope.teamList.sortAscending
+            if $scope.teamList.sortColumn isnt sortColumn
+              $scope.teamList.sortAscending = false
+            $scope.teamList.sortColumn = sortColumn
+            $scope.teams = $filter('orderBy') $scope.teams, sortColumn, !$scope.teamList.sortAscending
+      ]
   ]
