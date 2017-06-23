@@ -1,2 +1,6 @@
 angular.module 'trPcControllers'
-  .controller 'NgPcLoadErrorViewCtrl', []
+  .controller 'NgPcLoadErrorViewCtrl', [
+    '$scope'
+    ($scope) ->
+      # TODO
+  ]
