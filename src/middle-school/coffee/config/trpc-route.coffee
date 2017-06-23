@@ -94,7 +94,6 @@ if window.location.href.indexOf('pagename=middle_school_participant_center') isn
           
           # load error
           if $rootScope.loadError
-            console.log next
             if next.originalPath isnt '/load-error'
               $event.preventDefault()
               redirectRoute '/load-error'

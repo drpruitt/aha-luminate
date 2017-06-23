@@ -25,9 +25,22 @@
             <h1>
               [[S1:first_name]]'s Headquarters
             </h1>
-            [[?xx::x[[E48:[[S80:trID]]-[[S1:cons_id]]:team-id]]x::::
+            [[?xx::x[[E48:[[S80:trID]]-[[S1:cons_id]]:team-id]]x::
+              <!-- team ID is null -->
+              <p class="school-name">
+                &nbsp;
+              </p>
+              <p class="team-name">
+                &nbsp;
+              </p>
+            ::
               <!-- team ID is non-null -->
-              [[?xx::x[[E43:[[S80:trID]]:company-id:[[E48:[[S80:trID]]-[[S1:cons_id]]:team-id]]]]x::::
+              [[?xx::x[[E43:[[S80:trID]]:company-id:[[E48:[[S80:trID]]-[[S1:cons_id]]:team-id]]]]x::
+                <!-- company ID is null -->
+                <p class="school-name">
+                  &nbsp;
+                </p>
+              ::
                 <!-- company ID is non-null -->
                 <p class="school-name">
                   My School: <a href="TR?fr_id=[[S80:trID]]&pg=company&company_id=[[E43:[[S80:trID]]:company-id:[[E48:[[S80:trID]]-[[S1:cons_id]]:team-id]]]]">[[E43:[[S80:trID]]:company-name:[[E48:[[S80:trID]]-[[S1:cons_id]]:team-id]]]]</a>
