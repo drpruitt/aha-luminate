@@ -94,7 +94,6 @@ if window.location.href.indexOf('pagename=district_heart_challenge_participant_c
           
           # load error
           if $rootScope.loadError
-            console.log next
             if next.originalPath isnt '/load-error'
               $event.preventDefault()
               redirectRoute '/load-error'
