@@ -1598,7 +1598,7 @@ main > .container {
       padding: 28px 0 0;
     }
   }
-
+  
   .fa {
     color: $event-primary;
     &.inactive {
@@ -1611,19 +1611,19 @@ main > .container {
   > div {
     display: inline-block;
   }
-
+  
   .ym-pc-reports-lists__note {
     position: relative;
     margin: 0 0 0 20px;
   }
-
+  
   .ym-pc-reports-lists__note--show {
-    width: 300px;
     position: absolute;
     top: 30px;
-    padding: 10px;
-    border: 1px solid $inactive-grey;
     background: $brand-white;
+    border: 1px solid $inactive-grey;
+    width: 300px;
+    padding: 10px;
   }
 }
 
@@ -1652,11 +1652,11 @@ main > .container {
   
   .btn, 
   a.btn {
-    &,
-    &:link,
-    &:visited,
-    &:hover,
-    &:focus,
+    &, 
+    &:link, 
+    &:visited, 
+    &:hover, 
+    &:focus, 
     &:active {
       display: block;
       margin: 0 0 12px;
@@ -1673,6 +1673,8 @@ main > .container {
   > thead {
     > tr {
       > th {
+        white-space: nowrap;
+        
         a {
           &,
           &:link,
@@ -1686,7 +1688,7 @@ main > .container {
       }
     }
   }
-
+  
   > tbody {
     > tr {
       > td {
