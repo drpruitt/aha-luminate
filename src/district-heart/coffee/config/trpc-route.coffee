@@ -99,10 +99,6 @@ if window.location.href.indexOf('pagename=district_heart_challenge_participant_c
               $event.preventDefault()
               redirectRoute '/load-error'
           
-          # no load error
-          else if next.originalPath is '/load-error'
-            redirectRoute '/dashboard'
-          
           # event config unknown
           else if not $rootScope.teamraiserConfig
             $event.preventDefault()
@@ -189,4 +185,9 @@ if window.location.href.indexOf('pagename=district_heart_challenge_participant_c
             $event.preventDefault()
             $rootScope.loadError = true
             reloadRoute()
+          
+          # no load error
+          else if next.originalPath is '/load-error'
+            $event.preventDefault()
+            redirectRoute '/dashboard'
     ]

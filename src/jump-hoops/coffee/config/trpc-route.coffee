@@ -99,10 +99,6 @@ if window.location.href.indexOf('pagename=jump_hoops_participant_center') isnt -
               $event.preventDefault()
               redirectRoute '/load-error'
           
-          # no load error
-          else if next.originalPath is '/load-error'
-            redirectRoute '/dashboard'
-          
           # event config unknown
           else if not $rootScope.teamraiserConfig
             $event.preventDefault()
@@ -189,4 +185,9 @@ if window.location.href.indexOf('pagename=jump_hoops_participant_center') isnt -
             $event.preventDefault()
             $rootScope.loadError = true
             reloadRoute()
+          
+          # no load error
+          else if next.originalPath is '/load-error'
+            $event.preventDefault()
+            redirectRoute '/dashboard'
     ]
