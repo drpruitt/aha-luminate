@@ -54,7 +54,7 @@ angular.module 'ahaLuminateControllers'
                       $scope.localSponsorImageSrc = src[1].split('"')[0]
                       $scope.localSponsorImageAlt = alt[1].split('"')[0]
       
-      ZuriService.getZooSchool $scope.companyId,
+      ZuriService.getSchool $scope.companyId,
         error: (response) ->
           $scope.studentsPledgedTotal = 0
           $scope.activity1amt = 0
