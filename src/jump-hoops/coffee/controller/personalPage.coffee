@@ -83,7 +83,7 @@ angular.module 'ahaLuminateControllers'
             $scope.prizes.sort (a, b) ->
               a.priority - b.priority
 
-      ZuriService.getZooStudent frId + '/' + $scope.participantId,
+      ZuriService.getStudent frId + '/' + $scope.participantId,
         error: (response) ->
           $scope.challengeName = null
           $scope.challengeId = null
