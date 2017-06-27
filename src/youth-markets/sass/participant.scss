@@ -40,7 +40,7 @@ main > .container {
     &:focus,
     &:active {
       display: inline-block;
-      font-size: 14px;
+      font-size: $font-size-sm;
       line-height: 16px;
       text-align: center;
       text-decoration: none;
@@ -129,7 +129,7 @@ main > .container {
     &:active {
       @media (max-width: 669px) {
         border-right: 0;
-        font-size: 14px;
+        font-size: $font-size-sm;
         line-height: 16px;
         width: 100px;
         height: 40px;
@@ -398,7 +398,7 @@ main > .container {
       &:focus,
       &:active {
         display: block;
-        font-size: 14px;
+        font-size: $font-size-sm;
         max-width: 200px;
         margin: 0 auto 15px;
 
@@ -626,9 +626,8 @@ main > .container {
   margin: 0 0 24px;
   padding: 12px;
 
-  @media (min-width: $screen-sm-min){
+  @media (min-width: $screen-sm-min) {
     padding: 24px 172px;
-
   }
 
   .ym-pc-dashboard-section-header {
@@ -826,7 +825,7 @@ main > .container {
       word-break: break-all;
       
       p {
-        font-size: 14px;
+        font-size: $font-size-sm;
         margin: 0 0 3px;
         
         &.small {
@@ -861,7 +860,7 @@ main > .container {
       
       p {
         display: inline-block;
-        font-size: 14px;
+        font-size: $font-size-sm;
         line-height: 18px;
         margin: 0;
         vertical-align: bottom;
@@ -1297,7 +1296,7 @@ main > .container {
       &:focus,
       &:active {
         display: block;
-        font-size: 14px;
+        font-size: $font-size-sm;
         max-width: 200px;
         margin: 0 auto 15px;
 
@@ -1390,7 +1389,7 @@ main > .container {
     word-break: break-all;
     
     p {
-      font-size: 14px;
+      font-size: $font-size-sm;
       margin: 0 0 3px;
       
       &.small {
@@ -1425,7 +1424,7 @@ main > .container {
     
     p {
       display: inline-block;
-      font-size: 14px;
+      font-size: $font-size-sm;
       line-height: 18px;
       margin: 0;
       vertical-align: bottom;

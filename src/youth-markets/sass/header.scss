@@ -2,12 +2,12 @@ header {
   > .container {
     padding-top: 10px;
     
-    @media (min-width: $screen-sm-min) {
-      padding-top: 20px;
-    }
-    
     @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
       width: auto;
+    }
+    
+    @media (min-width: $screen-sm-min) {
+      padding-top: 20px;
     }
   }
   
@@ -149,14 +149,14 @@ header {
       float: left;
       position: relative;
       
+      @media (min-width: $screen-sm-min) {
+        float: right;
+      }
+
       > a {
         &.ym-header-login-toggle {
           padding-top: 14px;
         }
-      }
-      
-      @media (min-width: $screen-sm-min) {
-        float: right;
       }
     }
     
@@ -177,9 +177,9 @@ header {
       display: none;
       position: absolute;
       top: 100%;
-      background: #ffffff;
+      background: $brand-white;
       border: 1px solid #c9cccc;
-      font-size: 14px;
+      font-size: $font-size-sm;
       width: 266px;
       padding: 0;
       z-index: 1000;
@@ -235,6 +235,11 @@ header {
     .ym-header-logged-in {
       float: right;
       
+      @media (max-width: $screen-xs-max) {
+        float: left;
+        width: calc(100% - 71px);
+      }
+
       ul {
         a {
           &,
@@ -246,11 +251,6 @@ header {
             color: $brand-primary;
           }
         }
-      }
-      
-      @media (max-width: $screen-xs-max) {
-        float: left;
-        width: calc(100% - 71px);
       }
     }
     
@@ -305,9 +305,9 @@ header {
       display: none;
       position: absolute;
       top: 100%;
-      background: #ffffff;
+      background: $brand-white;
       border: 1px solid #c9cccc;
-      font-size: 14px;
+      font-size: $font-size-sm;
       padding: 0;
       z-index: 1000;
       
@@ -415,10 +415,10 @@ header {
       position: absolute;
       top: 100%;
       right: 0;
-      background: #ffffff;
+      background: $brand-white;
       border: 1px solid #c9cccc;
       border-right: 0;
-      font-size: 14px;
+      font-size: $font-size-sm;
       width: 140px;
       padding: 0;
       z-index: 1000;
