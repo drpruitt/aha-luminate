@@ -23,7 +23,7 @@ angular.module 'ahaLuminateControllers'
       $scope.activity2amt = ''
       $scope.activity3amt = ''
       
-      ZuriService.getZooTeam $scope.teamId,
+      ZuriService.getTeam $scope.teamId,
         error: (response) ->
           $scope.studentsPledgedTotal = 0
           $scope.activity1amt = 0
