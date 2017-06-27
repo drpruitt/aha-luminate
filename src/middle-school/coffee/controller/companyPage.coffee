@@ -27,7 +27,7 @@ angular.module 'ahaLuminateControllers'
       
       getLocalSponsors = ->
         if $scope.parentCompanyId and $scope.parentCompanyId isnt ''
-          PageContentService.getPageContent 'middle_school_local_sponsors_' + parentId
+          PageContentService.getPageContent 'middle_school_local_sponsors_' + $scope.parentCompanyId
             .then (response) ->
               if response.includes('No data') is true
                 $scope.localSponsorShow = false
