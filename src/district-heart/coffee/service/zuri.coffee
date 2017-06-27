@@ -81,11 +81,4 @@ angular.module 'ahaLuminateApp'
               callback.success response
           , (response) ->
             callback.failure response
-      
-      eCardTracking: (requestData) ->
-        url = '//hearttools.heart.org/aha_ym18/visitlink_record.php?ecard_linktrack=' + requestData
-        urlSCE = $sce.trustAsResourceUrl url
-        $http
-          method: 'POST'
-          url: urlSCE
   ]
