@@ -3,7 +3,7 @@
 }
 
 .ym-donor-list {
-  background: #ffffff;
+  background: $brand-white;
   text-align: left;
   max-width: 490px;
   height: 200px;
@@ -37,4 +37,3 @@
 .ym-stripe-list__header {
   border-bottom: 7px solid $event-secondary;
 }
-
