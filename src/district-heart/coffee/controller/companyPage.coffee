@@ -58,10 +58,15 @@ angular.module 'ahaLuminateControllers'
         error: (response) ->
           $scope.activity1amt = 0
         success: (response) ->
+          console.log 'test'
           if response.data.data.total
             $scope.activity1amt = response.data.data.total
           else
             $scope.activity1amt = 0
+
+          console.log response.data.data.list
+
+
       
       setCompanyProgress = (amountRaised, goal) ->
         $scope.companyProgress = 
