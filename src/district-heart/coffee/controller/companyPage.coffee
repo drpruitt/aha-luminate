@@ -36,23 +36,25 @@ angular.module 'ahaLuminateControllers'
           companyItems = response.getCompanyListResponse.companyItem
           angular.forEach companyItems, (companyItem) ->
             if companyItem.companyId is $scope.companyId
-              parentId = companyItem.parentOrgEventId
+              parentId = companyItem.parentOrgEventId or '0'
+              if parentId is '0'
+                parentId = $scope.companyId
               PageContentService.getPageContent 'district_heart_challenge_local_sponsors_' + parentId
-              .then (response) ->
-                if response.includes('No data') is true
-                  $scope.localSponsorShow = false
-                else
-                  img = response.split('/>')[0]
-                  if img is undefined
+                .then (response) ->
+                  if response.includes('No data') is true
                     $scope.localSponsorShow = false
                   else
-                    alt = img.split('alt="')
-                    src = alt[0].split('src="')
-                    $scope.localSponsorShow = true
-                    $scope.localSponsorImageSrc = src[1].split('"')[0]
-                    $scope.localSponsorImageAlt = alt[1].split('"')[0]
+                    img = response.split('/>')[0]
+                    if img is undefined
+                      $scope.localSponsorShow = false
+                    else
+                      alt = img.split('alt="')
+                      src = alt[0].split('src="')
+                      $scope.localSponsorShow = true
+                      $scope.localSponsorImageSrc = src[1].split('"')[0]
+                      $scope.localSponsorImageAlt = alt[1].split('"')[0]
       
-      ZuriService.getZooSchool $scope.companyId,
+      ZuriService.getSchool $scope.companyId,
         error: (response) ->
           $scope.studentsPledgedTotal = 0
           $scope.activity1amt = 0

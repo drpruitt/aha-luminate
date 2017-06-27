@@ -13,10 +13,10 @@
             <div class="col-md-4">
               <div class="ym-pc-report-header-buttons" ng-if="schoolDetailStudents.students && schoolDetailStudents.students.length > 0" ng-cloak>
                 <button type="button" class="btn btn-md-wide btn-secondary" csv-header="schoolDetailStudents.downloadHeaders" ng-csv="schoolDetailStudents.downloadData" filename="School_Detail_Report.csv">
-                  <i class="fa fa-download" hidden aria-hidden="true"></i> <strong>Download</strong>
+                  <i class="fa fa-download" hidden aria-hidden="true"></i>&nbsp;<strong>Download</strong>
                 </button>
                 <a class="btn btn-md-wide btn-secondary" ng-href="{{baseUrl}}#/email">
-                  <i class="fa fa-envelope" hidden aria-hidden="true"></i> <strong>Email Students</strong>
+                  <i class="fa fa-envelope" hidden aria-hidden="true"></i>&nbsp;<strong>Email Students</strong>
                 </a>
               </div>
             </div>
@@ -38,56 +38,49 @@
                   <th scope="col" role="columnheader" aria-sort="{{schoolDetailStudents.sortColumn != 'firstName' ? 'none' : (schoolDetailStudents.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-left">
                       <a href="" ng-click="orderSchoolDetailStudents('firstName')">
-                        <strong>Name</strong> 
-                        <span class="fa" ng-class="{'fa-caret-down': (schoolDetailStudents.sortColumn == 'firstName' && !schoolDetailStudents.sortAscending) || schoolDetailStudents.sortColumn != 'firstName', 'fa-caret-up': schoolDetailStudents.sortColumn == 'firstName' && schoolDetailStudents.sortAscending, 'inactive': schoolDetailStudents.sortColumn != 'firstName'}" ng-if="schoolDetailStudents.students.length"></span>
+                        <strong>Name</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (schoolDetailStudents.sortColumn == 'firstName' && !schoolDetailStudents.sortAscending) || schoolDetailStudents.sortColumn != 'firstName', 'fa-caret-up': schoolDetailStudents.sortColumn == 'firstName' && schoolDetailStudents.sortAscending, 'inactive': schoolDetailStudents.sortColumn != 'firstName'}" ng-if="schoolDetailStudents.students.length"></span>
                       </a>
                     </div>
                   </th>
                   <th scope="col" role="columnheader" aria-sort="{{schoolDetailStudents.sortColumn != 'amount' ? 'none' : (schoolDetailStudents.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-center">
                       <a href="" ng-click="orderSchoolDetailStudents('amount')">
-                        <strong>Amount</strong> 
-                        <span class="fa" ng-class="{'fa-caret-down': (schoolDetailStudents.sortColumn == 'amount' && !schoolDetailStudents.sortAscending) || schoolDetailStudents.sortColumn != 'amount', 'fa-caret-up': schoolDetailStudents.sortColumn == 'amount' && schoolDetailStudents.sortAscending, 'inactive': schoolDetailStudents.sortColumn != 'amount'}" ng-if="schoolDetailStudents.students.length"></span>
+                        <strong>Amount</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (schoolDetailStudents.sortColumn == 'amount' && !schoolDetailStudents.sortAscending) || schoolDetailStudents.sortColumn != 'amount', 'fa-caret-up': schoolDetailStudents.sortColumn == 'amount' && schoolDetailStudents.sortAscending, 'inactive': schoolDetailStudents.sortColumn != 'amount'}" ng-if="schoolDetailStudents.students.length"></span>
                       </a>
                     </div>
                   </th>
                   <th scope="col" role="columnheader" aria-sort="{{schoolDetailStudents.sortColumn != 'ecardsSent' ? 'none' : (schoolDetailStudents.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-center">
                       <a href="" ng-click="orderSchoolDetailStudents('ecardsSent')">
-                        <strong>Ecards</strong> 
-                        <span class="fa" ng-class="{'fa-caret-down': (schoolDetailStudents.sortColumn == 'ecardsSent' && !schoolDetailStudents.sortAscending) || schoolDetailStudents.sortColumn != 'ecardsSent', 'fa-caret-up': schoolDetailStudents.sortColumn == 'ecardsSent' && schoolDetailStudents.sortAscending, 'inactive': schoolDetailStudents.sortColumn != 'ecardsSent'}" ng-if="schoolDetailStudents.students.length"></span>
+                        <strong>Ecards</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (schoolDetailStudents.sortColumn == 'ecardsSent' && !schoolDetailStudents.sortAscending) || schoolDetailStudents.sortColumn != 'ecardsSent', 'fa-caret-up': schoolDetailStudents.sortColumn == 'ecardsSent' && schoolDetailStudents.sortAscending, 'inactive': schoolDetailStudents.sortColumn != 'ecardsSent'}" ng-if="schoolDetailStudents.students.length"></span>
                       </a>
                     </div>
                   </th>
                   <th scope="col" role="columnheader" aria-sort="{{schoolDetailStudents.sortColumn != 'emailsSent' ? 'none' : (schoolDetailStudents.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-center">
                       <a href="" ng-click="orderSchoolDetailStudents('emailsSent')">
-                        <strong>Emails</strong> 
-                        <span class="fa" ng-class="{'fa-caret-down': (schoolDetailStudents.sortColumn == 'emailsSent' && !schoolDetailStudents.sortAscending) || schoolDetailStudents.sortColumn != 'emailsSent', 'fa-caret-up': schoolDetailStudents.sortColumn == 'emailsSent' && schoolDetailStudents.sortAscending, 'inactive': schoolDetailStudents.sortColumn != 'emailsSent'}" ng-if="schoolDetailStudents.students.length"></span>
+                        <strong>Emails</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (schoolDetailStudents.sortColumn == 'emailsSent' && !schoolDetailStudents.sortAscending) || schoolDetailStudents.sortColumn != 'emailsSent', 'fa-caret-up': schoolDetailStudents.sortColumn == 'emailsSent' && schoolDetailStudents.sortAscending, 'inactive': schoolDetailStudents.sortColumn != 'emailsSent'}" ng-if="schoolDetailStudents.students.length"></span>
                       </a>
                     </div>
                   </th>
                   <th scope="col" role="columnheader" aria-sort="{{schoolDetailStudents.sortColumn != 'tshirtSize' ? 'none' : (schoolDetailStudents.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-center">
                       <a href="" ng-click="orderSchoolDetailStudents('tshirtSize')">
-                        <strong>T-shirt</strong> 
-                        <span class="fa" ng-class="{'fa-caret-down': (schoolDetailStudents.sortColumn == 'tshirtSize' && !schoolDetailStudents.sortAscending) || schoolDetailStudents.sortColumn != 'tshirtSize', 'fa-caret-up': schoolDetailStudents.sortColumn == 'tshirtSize' && schoolDetailStudents.sortAscending, 'inactive': schoolDetailStudents.sortColumn != 'tshirtSize'}" ng-if="schoolDetailStudents.students.length"></span>
+                        <strong>T-shirt</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (schoolDetailStudents.sortColumn == 'tshirtSize' && !schoolDetailStudents.sortAscending) || schoolDetailStudents.sortColumn != 'tshirtSize', 'fa-caret-up': schoolDetailStudents.sortColumn == 'tshirtSize' && schoolDetailStudents.sortAscending, 'inactive': schoolDetailStudents.sortColumn != 'tshirtSize'}" ng-if="schoolDetailStudents.students.length"></span>
                       </a>
                     </div>
                   </th>
                   <th scope="col" role="columnheader" aria-sort="{{schoolDetailStudents.sortColumn != 'teacherName' ? 'none' : (schoolDetailStudents.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-center">
                       <a href="" ng-click="orderSchoolDetailStudents('teacherName')">
-                        <strong>Teacher</strong> 
-                        <span class="fa" ng-class="{'fa-caret-down': (schoolDetailStudents.sortColumn == 'teacherName' && !schoolDetailStudents.sortAscending) || schoolDetailStudents.sortColumn != 'teacherName', 'fa-caret-up': schoolDetailStudents.sortColumn == 'teacherName' && schoolDetailStudents.sortAscending, 'inactive': schoolDetailStudents.sortColumn != 'teacherName'}" ng-if="schoolDetailStudents.students.length"></span>
+                        <strong>Teacher</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (schoolDetailStudents.sortColumn == 'teacherName' && !schoolDetailStudents.sortAscending) || schoolDetailStudents.sortColumn != 'teacherName', 'fa-caret-up': schoolDetailStudents.sortColumn == 'teacherName' && schoolDetailStudents.sortAscending, 'inactive': schoolDetailStudents.sortColumn != 'teacherName'}" ng-if="schoolDetailStudents.students.length"></span>
                       </a>
                     </div>
                   </th>
                   <th scope="col" role="columnheader" aria-sort="{{schoolDetailStudents.sortColumn != 'challenge' ? 'none' : (schoolDetailStudents.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-right">
                       <a href="" ng-click="orderSchoolDetailStudents('challenge')">
-                        <strong>Challenge</strong> 
-                        <span class="fa" ng-class="{'fa-caret-down': (schoolDetailStudents.sortColumn == 'challenge' && !schoolDetailStudents.sortAscending) || schoolDetailStudents.sortColumn != 'challenge', 'fa-caret-up': schoolDetailStudents.sortColumn == 'challenge' && schoolDetailStudents.sortAscending, 'inactive': schoolDetailStudents.sortColumn != 'challenge'}" ng-if="schoolDetailStudents.students.length"></span>
+                        <strong>Challenge</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (schoolDetailStudents.sortColumn == 'challenge' && !schoolDetailStudents.sortAscending) || schoolDetailStudents.sortColumn != 'challenge', 'fa-caret-up': schoolDetailStudents.sortColumn == 'challenge' && schoolDetailStudents.sortAscending, 'inactive': schoolDetailStudents.sortColumn != 'challenge'}" ng-if="schoolDetailStudents.students.length"></span>
                       </a>
                     </div>
                   </th>
@@ -148,11 +141,11 @@
             <div class="col-md-4">
               <div class="ym-pc-report-header-buttons" ng-if="participantGifts.gifts && participantGifts.gifts.length > 0" ng-cloak>
                 <a class="btn btn-md-wide btn-secondary" ng-href="TRParticipantDownload/Personal_Donations.csv?download_type=personal_donations&amp;fr_id={{frId}}" target="_blank">
-                  <i class="fa fa-download" hidden aria-hidden="true"></i> <strong>Download</strong>
+                  <i class="fa fa-download" hidden aria-hidden="true"></i>&nbsp;<strong>Download</strong>
                 </a>
-                <a class="btn btn-md-wide btn-secondary" ng-click="thankAllParticipantDonors()">
-                  <i class="fa fa-envelope" hidden aria-hidden="true"></i> <strong>Thank All</strong>
-                </a>
+                <button type="button" class="btn btn-md-wide btn-secondary" ng-click="thankAllParticipantDonors()">
+                  <i class="fa fa-envelope" hidden aria-hidden="true"></i>&nbsp;<strong>Thank All</strong>
+                </button>
               </div>
             </div>
           </div>
@@ -173,24 +166,21 @@
                   <th scope="col" role="columnheader" aria-sort="{{participantGifts.sortColumn != 'cons_first_name' ? 'none' : (participantGifts.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-left">
                       <a href="" ng-click="orderParticipantGifts('cons_first_name')">
-                        <strong>Name</strong> 
-                        <span class="fa" ng-class="{'fa-caret-down': (participantGifts.sortColumn == 'cons_first_name' && !participantGifts.sortAscending) || participantGifts.sortColumn != 'cons_first_name', 'fa-caret-up': participantGifts.sortColumn == 'cons_first_name' && participantGifts.sortAscending, 'inactive': participantGifts.sortColumn != 'cons_first_name'}" ng-if="participantGifts.gifts.length"></span>
+                        <strong>Name</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (participantGifts.sortColumn == 'cons_first_name' && !participantGifts.sortAscending) || participantGifts.sortColumn != 'cons_first_name', 'fa-caret-up': participantGifts.sortColumn == 'cons_first_name' && participantGifts.sortAscending, 'inactive': participantGifts.sortColumn != 'cons_first_name'}" ng-if="participantGifts.gifts.length"></span>
                       </a>
                     </div>
                   </th>
                   <th scope="col" role="columnheader" aria-sort="{{participantGifts.sortColumn != 'amount' ? 'none' : (participantGifts.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-center">
                       <a href="" ng-click="orderParticipantGifts('amount')">
-                        <strong>Amount</strong> 
-                        <span class="fa" ng-class="{'fa-caret-down': (participantGifts.sortColumn == 'amount' && !participantGifts.sortAscending) || participantGifts.sortColumn != 'amount', 'fa-caret-up': participantGifts.sortColumn == 'amount' && participantGifts.sortAscending, 'inactive': participantGifts.sortColumn != 'amount'}" ng-if="participantGifts.gifts.length"></span>
+                        <strong>Amount</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (participantGifts.sortColumn == 'amount' && !participantGifts.sortAscending) || participantGifts.sortColumn != 'amount', 'fa-caret-up': participantGifts.sortColumn == 'amount' && participantGifts.sortAscending, 'inactive': participantGifts.sortColumn != 'amount'}" ng-if="participantGifts.gifts.length"></span>
                       </a>
                     </div>
                   </th>
                   <th scope="col" role="columnheader" aria-sort="{{participantGifts.sortColumn != 'date_recorded' ? 'none' : (participantGifts.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-right">
                       <a href="" ng-click="orderParticipantGifts('date_recorded')">
-                        <strong>Date</strong> 
-                        <span class="fa" ng-class="{'fa-caret-down': (participantGifts.sortColumn == 'date_recorded' && !participantGifts.sortAscending) || participantGifts.sortColumn != 'date_recorded', 'fa-caret-up': participantGifts.sortColumn == 'date_recorded' && participantGifts.sortAscending, 'inactive': participantGifts.sortColumn != 'date_recorded'}" ng-if="participantGifts.gifts.length"></span>
+                        <strong>Date</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (participantGifts.sortColumn == 'date_recorded' && !participantGifts.sortAscending) || participantGifts.sortColumn != 'date_recorded', 'fa-caret-up': participantGifts.sortColumn == 'date_recorded' && participantGifts.sortAscending, 'inactive': participantGifts.sortColumn != 'date_recorded'}" ng-if="participantGifts.gifts.length"></span>
                       </a>
                     </div>
                   </th>
@@ -208,14 +198,14 @@
                       </div>
                       <div class="ym-pc-reports-lists__acknowledge">
                         <div class="ym-pc-reports-lists__thanks" ng-if="participantGift.acknowledged != 'true'">
-                          <a href="" class="btn btn-md-wide btn-primary" ng-click="thankParticipantDonor(participantGift)">
-                            <i class="fa fa-envelope" hidden aria-hidden="true"></i> <strong>Thank</strong>
-                          </a>
+                          <button type="button" class="btn btn-md-wide btn-primary" ng-click="thankParticipantDonor(participantGift)">
+                            <i class="fa fa-envelope" hidden aria-hidden="true"></i>&nbsp;<strong>Thank</strong>
+                          </button>
                         </div>
                         <div class="ym-pc-reports-lists__note" ng-if="participantGift.giftMessage">
                           <a href="" ng-click="showMessage = ! showMessage">
                             <strong>
-                              See Note <i class="fa fa-chevron-up"></i>
+                              See Note&nbsp;<i class="fa fa-chevron-up"></i>
                             </strong>
                           </a>
                           <div class="ym-pc-reports-lists__note--show" ng-show="showMessage">
@@ -253,11 +243,11 @@
             <div class="col-md-4">
               <div class="ym-pc-report-header-buttons" ng-if="teamGifts.gifts && teamGifts.gifts.length > 0" ng-cloak>
                 <a class="btn btn-md-wide btn-secondary" ng-href="TRParticipantDownload/Team_Donations.csv?download_type=team_donations&amp;fr_id={{frId}}" target="_blank">
-                  <i class="fa fa-download" hidden aria-hidden="true"></i> <strong>Download</strong>
+                  <i class="fa fa-download" hidden aria-hidden="true"></i>&nbsp;<strong>Download</strong>
                 </a>
-                <a class="btn btn-md-wide btn-secondary" ng-click="thankAllTeamDonors()">
-                  <i class="fa fa-envelope" hidden aria-hidden="true"></i> <strong>Thank All</strong>
-                </a>
+                <button type="button" class="btn btn-md-wide btn-secondary" ng-click="thankAllTeamDonors()">
+                  <i class="fa fa-envelope" hidden aria-hidden="true"></i>&nbsp;<strong>Thank All</strong>
+                </button>
               </div>
             </div>
           </div>
@@ -312,9 +302,9 @@
                         <span ng-bind-html="teamGift.name.first"></span> <span ng-bind-html="teamGift.name.last"></span>
                       </div>
                       <div ng-if="teamGift.acknowledged != 'true'">
-                        <a href="" class="btn btn-md-wide btn-primary" ng-click="thankTeamDonor(teamGift)">
-                          <i class="fa fa-envelope" hidden aria-hidden="true"></i> <strong>Thank</strong>
-                        </a>
+                        <button type="button" class="btn btn-md-wide btn-primary" ng-click="thankTeamDonor(teamGift)">
+                          <i class="fa fa-envelope" hidden aria-hidden="true"></i>&nbsp;<strong>Thank</strong>
+                        </button>
                       </div>
                     </div>
                   </td>

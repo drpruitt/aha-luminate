@@ -458,7 +458,7 @@ angular.module 'trPcControllers'
         if not $scope.$$phase
           $scope.$apply()
       getStudentChallenge = ->
-        ZuriService.getZooStudent $scope.frId + '/' + $scope.consId,
+        ZuriService.getStudent $scope.frId + '/' + $scope.consId,
           failure: (response) ->
             setPersonalChallenge()
           error: (response) ->

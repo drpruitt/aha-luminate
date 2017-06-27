@@ -13,6 +13,8 @@ angular.module 'trPcApp'
             else
               participantRegistration.goalFormatted = if participantRegistration.goal then $filter('currency')(participantRegistration.goal / 100, '$').replace('.00', '') else '$0'
               $rootScope.participantRegistration = participantRegistration
+              if not participantRegistration.companyInformation?.companyId
+                $rootScope.companyInfo = -1
             response
       
       updateRegistration: (requestData) ->
