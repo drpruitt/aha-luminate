@@ -55,7 +55,7 @@
   }
 
   p {
-    color: #ffffff;
+    color: $brand-white;
     font-weight: 700;
     line-height: 1.25;
     max-width: 175px;
@@ -140,19 +140,19 @@
 
       h2,
       .h2 {
-        color: #ffffff;
+        color: $brand-white;
         line-height: 1;
         margin: 60px 0 10px;
       }
 
       p {
-        color: #ffffff;
+        color: $brand-white;
       }
 
       @media (max-width: $screen-sm-max) {
         width: 200px;
         height: 200px;
-        margin: 20px 20px 20px 0px;
+        margin: 20px 20px 20px 0;
       }
 
       @media (max-width: $screen-xs-max) {
@@ -244,11 +244,11 @@
       a,
       a:link,
       a:visited {
-        color: #fff;
+        color: $brand-white;
       }
     }
     .ym-sidebar-promo__text {
-      font-size: 14px;
+      font-size: $font-size-sm;
       padding: 20px 20px 30px;
 
       & > a {
