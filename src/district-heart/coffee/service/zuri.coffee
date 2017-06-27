@@ -16,8 +16,8 @@ angular.module 'ahaLuminateApp'
           , (response) ->
             callback.failure response
        
-      logMinutes: (requestData, minutes, callback) ->
-        url = '//hearttools.heart.org/dhc18/participant/update/' + requestData + '?minutes=' + minutes +'&key=N24DEcjHQkez6NAf'
+      logMinutes: (requestData, callback) ->
+        url = '//hearttools.heart.org/dhc18/participant/update/' + requestData + '&key=N24DEcjHQkez6NAf'
         urlSCE = $sce.trustAsResourceUrl url
         $http.jsonp(urlSCE, jsonpCallbackParam: 'callback')
           .then (response) ->
