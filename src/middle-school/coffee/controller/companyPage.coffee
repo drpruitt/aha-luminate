@@ -45,9 +45,7 @@ angular.module 'ahaLuminateControllers'
       $scope.$watch 'parentCompanyId', ->
         getLocalSponsors()
       
-      #hiding this til data is avalible in staging
-      #ParticipantBadgesService.getSchoolRollupTotals $scope.companyId
-      ParticipantBadgesService.getSchoolRollupTotals '1121'
+      ParticipantBadgesService.getSchoolRollupTotals $scope.companyId
       .then (response) ->
         totals = response.data.totals
         if response.data.status is 'success'
