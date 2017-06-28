@@ -68,9 +68,18 @@ div.table {
   .table {
     max-width: 970px;
     margin: auto;
+    min-width: 350px;
     
     &.ym-list tbody a {
       font-weight: 500;
+    }
+
+    .small {
+      display: none;
+
+      @media(max-width: 480px) {
+        display: block;
+      }
     }
   }
   
