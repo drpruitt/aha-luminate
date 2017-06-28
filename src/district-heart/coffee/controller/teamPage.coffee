@@ -99,7 +99,8 @@ angular.module 'ahaLuminateControllers'
         ng_first_name: ''
         last_name: ''
         ng_last_name: ''
-      $scope.teamParticipants = {}
+      $scope.teamParticipants =
+        page_number: 0
       setTeamParticipants = (participants, totalNumber) ->
         $scope.teamParticipants.participants = participants or []
         $scope.teamParticipants.totalNumber = totalNumber or 0

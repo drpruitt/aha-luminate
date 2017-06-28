@@ -122,7 +122,8 @@ angular.module 'ahaLuminateControllers'
       $scope.companyTeamSearch =
         team_name: ''
         ng_team_name: ''
-      $scope.companyTeams = {}
+      $scope.companyTeams =
+        page_number: 0
       setCompanyTeams = (teams, totalNumber) ->
         $scope.companyTeams.teams = teams or []
         totalNumber = totalNumber or 0
@@ -153,7 +154,8 @@ angular.module 'ahaLuminateControllers'
         ng_first_name: ''
         last_name: ''
         ng_last_name: ''
-      $scope.companyParticipants = {}
+      $scope.companyParticipants =
+        page_number: 0
       setCompanyParticipants = (participants, totalNumber) ->
         $scope.companyParticipants.participants = participants or []
         totalNumber = totalNumber or 0
