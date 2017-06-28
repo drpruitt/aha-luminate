@@ -331,7 +331,8 @@
     padding-top: 0;
   }
   
-  .h5 {
+  .h5, 
+  h5 {
     text-align: center;
     padding: 0;
     margin: 0 0 15px;
@@ -342,6 +343,15 @@
     
     &.text-left {
       text-align: left;
+    }
+  }
+
+  .small {
+    display: none;
+
+    @media(max-width: 450px) {
+      display: block;
+      margin: 10px 0 0;
     }
   }
   

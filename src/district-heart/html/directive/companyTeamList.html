@@ -1,40 +1,51 @@
-<div class="table-responsive">
-  <table class="table table-striped table--padded ym-list ym-list--team-list">
-    <thead class="ym-list__header">
-      <tr>
-        <th class="ym-list__column ym-list__column--name" scope="col" role="columnheader" aria-sort="{{teamList.sortColumn != 'name' ? 'none' : (teamList.sortAscending ? 'ascending' : 'descending')}}">
-          <a href="" ng-click="orderTeams('name')">
-            <strong>Team Name</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (teamList.sortColumn == 'name' && !teamList.sortAscending) || teamList.sortColumn != 'name', 'fa-caret-up': teamList.sortColumn == 'name' && teamList.sortAscending, 'inactive': teamList.sortColumn != 'name'}"></span>
-          </a>
-        </th>
-        <th class="ym-list__column ym-list__column--amount" scope="col" role="columnheader" aria-sort="{{teamList.sortColumn != 'amountRaised' ? 'none' : (teamList.sortAscending ? 'ascending' : 'descending')}}">
-          <a href="" ng-click="orderTeams('amountRaised')">
-            <strong>Amount</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (teamList.sortColumn == 'amountRaised' && !teamList.sortAscending) || teamList.sortColumn != 'amountRaised', 'fa-caret-up': teamList.sortColumn == 'amountRaised' && teamList.sortAscending, 'inactive': teamList.sortColumn != 'amountRaised'}"></span>
-          </a>
-        </th>
-        <th class="ym-list__column ym-list__column--cta" scope="col" role="columnheader" aria-sort="{{teamList.sortColumn != 'minsActivity' ? 'none' : (teamList.sortAscending ? 'ascending' : 'descending')}}">
-          <a href="" ng-click="orderTeams('minsActivity')">
-            <strong>Min. of Activity</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (teamList.sortColumn == 'minsActivity' && !teamList.sortAscending) || teamList.sortColumn != 'minsActivity', 'fa-caret-up': teamList.sortColumn == 'minsActivity' && teamList.sortAscending, 'inactive': teamList.sortColumn != 'minsActivity'}"></span>
-          </a>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="ym-list__row" ng-repeat="team in teams">
-        <td class="ym-list__column ym-list__column--name">
-          <a ng-href="TR?fr_id={{team.EventId}}&amp;pg=team&amp;team_id={{team.id}}"><span ng-bind-html="team.name"></span></a>
-          <div>
-            <a class="btn btn-primary btn-md" ng-href="TRR?fr_id={{team.EventId}}&amp;pg=tfind&amp;fr_tjoin={{team.id}}&amp;s_frTJoin={{team.id}}&amp;s_frCompanyId={{team.companyId}}">
-              <strong>Join</strong>
+<div>
+  <h5>
+    Our Teams
+  </h5>
+  <div class="table-responsive">
+    <table class="table table-striped table--padded ym-list ym-list--team-list">
+      <caption class="sr-only">
+        Our Teams
+      </caption>
+      <thead class="ym-list__header">
+        <tr>
+          <th class="ym-list__column ym-list__column--name" scope="col" role="columnheader" aria-sort="{{teamList.sortColumn != 'name' ? 'none' : (teamList.sortAscending ? 'ascending' : 'descending')}}">
+            <a href="" ng-click="orderTeams('name')">
+              <strong>Team Name</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (teamList.sortColumn == 'name' && !teamList.sortAscending) || teamList.sortColumn != 'name', 'fa-caret-up': teamList.sortColumn == 'name' && teamList.sortAscending, 'inactive': teamList.sortColumn != 'name'}"></span>
             </a>
-          </div>
-        </td>
-        <td class="ym-list__column ym-list__column--amount">
-          <span>{{team.amountRaisedFormatted}}</span>
-        </td>
-        <td class="ym-list__column ym-list__column--cta">
-        </td>
-      </tr>
-    </tbody>
-  </table>
+          </th>
+          <th class="ym-list__column ym-list__column--amount" scope="col" role="columnheader" aria-sort="{{teamList.sortColumn != 'amountRaised' ? 'none' : (teamList.sortAscending ? 'ascending' : 'descending')}}">
+            <a href="" ng-click="orderTeams('amountRaised')">
+              <strong>Amount</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (teamList.sortColumn == 'amountRaised' && !teamList.sortAscending) || teamList.sortColumn != 'amountRaised', 'fa-caret-up': teamList.sortColumn == 'amountRaised' && teamList.sortAscending, 'inactive': teamList.sortColumn != 'amountRaised'}"></span>
+            </a>
+          </th>
+          <th class="ym-list__column ym-list__column--cta" scope="col" role="columnheader" aria-sort="{{teamList.sortColumn != 'minsActivity' ? 'none' : (teamList.sortAscending ? 'ascending' : 'descending')}}">
+            <a href="" ng-click="orderTeams('minsActivity')">
+              <strong>Min. of Activity</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (teamList.sortColumn == 'minsActivity' && !teamList.sortAscending) || teamList.sortColumn != 'minsActivity', 'fa-caret-up': teamList.sortColumn == 'minsActivity' && teamList.sortAscending, 'inactive': teamList.sortColumn != 'minsActivity'}"></span>
+            </a>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="ym-list__row" ng-repeat="team in teams">
+          <td class="ym-list__column ym-list__column--name">
+            <a ng-href="TR?fr_id={{team.EventId}}&amp;pg=team&amp;team_id={{team.id}}"><span ng-bind-html="team.name"></span></a>
+            <div>
+              <a class="btn btn-primary btn-md" ng-href="TRR?fr_id={{team.EventId}}&amp;pg=tfind&amp;fr_tjoin={{team.id}}&amp;s_frTJoin={{team.id}}&amp;s_frCompanyId={{team.companyId}}">
+                <strong>Join</strong>
+              </a>
+            </div>
+          </td>
+          <td class="ym-list__column ym-list__column--amount">
+            <span>{{team.amountRaisedFormatted}}</span>
+          </td>
+          <td class="ym-list__column ym-list__column--cta">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="text-center small">
+    <em>Scroll right to view all information</em>
+  </p>
 </div>
