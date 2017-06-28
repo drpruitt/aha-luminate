@@ -114,7 +114,7 @@ angular.module 'ahaLuminateControllers'
         $scope.totalTeams = totalNumber
         if not $scope.$$phase
           $scope.$apply()
-      $scope.getCompanyTeams = ->
+      getCompanyTeams = ->
         TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=500',
           error: ->
             setCompanyTeams()
@@ -127,10 +127,11 @@ angular.module 'ahaLuminateControllers'
                 companyTeam.amountRaisedFormatted = $filter('currency')(companyTeam.amountRaised / 100, '$').replace '.00', ''
               totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults
               setCompanyTeams companyTeams, totalNumberTeams
-      $scope.getCompanyTeams()
+      getCompanyTeams()
+      
       $scope.searchCompanyTeams = ->
         $scope.companyTeamSearch.team_name = $scope.companyTeamSearch.ng_team_name
-        $scope.getCompanyTeams()
+        getCompanyTeams()
       
       $scope.companyParticipantSearch =
         first_name: ''
@@ -145,7 +146,7 @@ angular.module 'ahaLuminateControllers'
         $scope.companyParticipants.totalNumber = Number totalNumber
         if not $scope.$$phase
           $scope.$apply()
-      $scope.getCompanyParticipants = ->
+      getCompanyParticipants = ->
         TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%') + '&first_name=' + encodeURIComponent('%%') + '&last_name=' + encodeURIComponent('%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=500',
             error: ->
               setCompanyParticipants()
@@ -166,11 +167,12 @@ angular.module 'ahaLuminateControllers'
                     companyParticipants.push participant
               totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
               setCompanyParticipants companyParticipants, totalNumberParticipants
-      $scope.getCompanyParticipants()
+      getCompanyParticipants()
+      
       $scope.searchCompanyParticipants = ->
         $scope.companyParticipantSearch.first_name = $scope.companyParticipantSearch.ng_first_name
         $scope.companyParticipantSearch.last_name = $scope.companyParticipantSearch.ng_last_name
-        $scope.getCompanyParticipants()
+        getCompanyParticipants()
       
       if $scope.consId
         TeamraiserRegistrationService.getRegistration
