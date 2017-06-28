@@ -103,16 +103,18 @@ angular.module 'ahaLuminateControllers'
                     teamParticipants.push participant
                 totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
                 setTeamParticipants teamParticipants, totalNumberParticipants
-        ZuriService.getTeam $scope.teamId,
+        ZuriService.getTeamParticipants $scope.teamId,
           error: (response) ->
             $scope.activity1amt = 0
           success: (response) ->
-            totalMinutesOfActivity = response.data.data?.total
-            $scope.activity1amt = totalMinutesOfActivity or 0
-            $scope.teamParticipants.participantMinsActivityMap = []
+            totalMinsActivity = response.data.data?.total or '0'
+            totalMinsActivity = Number totalMinsActivity
+            $scope.activity1amt = totalMinsActivity
+            participantMinsActivityMap = response.data.data?.list or []
+            $scope.teamParticipants.participantMinsActivityMap = participantMinsActivityMap
       getTeamParticipants()
       
-      setParticipantMinsActivity = ->
+      setParticipantsMinsActivity = ->
         participants = $scope.teamParticipants.participants
         participantMinsActivityMap = $scope.teamParticipants.participantMinsActivityMap
         if participants and participants.length > 0 and participantMinsActivityMap
@@ -123,9 +125,9 @@ angular.module 'ahaLuminateControllers'
                 if participantMinsActivityData.constituent_id is participant.consId
                   minsActivity = participantMinsActivityData.minutes or 0
             $scope.teamParticipants.participants[participantIndex].minsActivity = minsActivity
-      setParticipantMinsActivity()
+      setParticipantsMinsActivity()
       $scope.$watchGroup ['teamParticipants.participants', 'teamParticipants.participantMinsActivityMap'], ->
-        setParticipantMinsActivity()
+        setParticipantsMinsActivity()
       
       $scope.searchTeamParticipants = ->
         $scope.teamParticipantSearch.first_name = $scope.teamParticipantSearch.ng_first_name
