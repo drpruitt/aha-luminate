@@ -31,6 +31,16 @@
     width: 630px;
     margin: 0 auto;
     
+    .ym-roster-search-title {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 5px;
+    }
+    
+    .form-group {
+      margin-right: 5px;
+    }
+    
     .btn {
       background-color: #004d68;
       color: $brand-white;

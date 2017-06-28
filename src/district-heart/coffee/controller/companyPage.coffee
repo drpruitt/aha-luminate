@@ -127,7 +127,7 @@ angular.module 'ahaLuminateControllers'
         $scope.totalTeams = totalNumber
         if not $scope.$$phase
           $scope.$apply()
-      getCompanyTeams = ->
+      $scope.getCompanyTeams = ->
         TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=500',
           error: ->
             setCompanyTeams()
@@ -140,7 +140,7 @@ angular.module 'ahaLuminateControllers'
                 companyTeam.amountRaisedFormatted = $filter('currency')(companyTeam.amountRaised / 100, '$').replace '.00', ''
               totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults
               setCompanyTeams companyTeams, totalNumberTeams
-      getCompanyTeams()
+      $scope.getCompanyTeams()
       
       $scope.companyParticipants = {}
       setCompanyParticipants = (participants, totalNumber) ->
@@ -149,7 +149,7 @@ angular.module 'ahaLuminateControllers'
         $scope.companyParticipants.totalNumber = Number totalNumber
         if not $scope.$$phase
           $scope.$apply()
-      getCompanyParticipants = ->
+      $scope.getCompanyParticipants = ->
         TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%') + '&first_name=' + encodeURIComponent('%%') + '&last_name=' + encodeURIComponent('%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=500',
             error: ->
               setCompanyParticipants()
@@ -168,7 +168,7 @@ angular.module 'ahaLuminateControllers'
                     companyParticipants.push participant
               totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
               setCompanyParticipants companyParticipants, totalNumberParticipants
-      getCompanyParticipants()
+      $scope.getCompanyParticipants()
       
       if $scope.consId
         TeamraiserRegistrationService.getRegistration

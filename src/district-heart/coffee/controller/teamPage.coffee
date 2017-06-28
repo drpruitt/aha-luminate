@@ -100,7 +100,7 @@ angular.module 'ahaLuminateControllers'
         $scope.teamParticipants.totalNumber = totalNumber or 0
         if not $scope.$$phase
           $scope.$apply()
-      getTeamParticipants = ->
+      $scope.getTeamParticipants = ->
         TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%') + '&first_name=' + encodeURIComponent('%%') + '&last_name=' + encodeURIComponent('%') + '&list_filter_column=reg.team_id&list_filter_text=' + $scope.teamId + '&list_sort_column=total&list_ascending=false&list_page_size=500', 
             error: (response) ->
               setTeamMembers()
@@ -120,7 +120,7 @@ angular.module 'ahaLuminateControllers'
                     teamParticipants.push participant
                 totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
                 setTeamParticipants teamParticipants, totalNumberParticipants
-      getTeamParticipants()
+      $scope.getTeamParticipants()
       
       $scope.teamPagePhoto1 =
         defaultUrl: APP_INFO.rootPath + 'dist/district-heart/image/team-default.jpg'
