@@ -10,7 +10,7 @@ header {
       padding-top: 20px;
     }
 
-    @media (min-width: $screen-lg-min){
+    @media (min-width: $screen-lg-min) {
       padding: 20px 0 0;
     }
   }
@@ -110,7 +110,7 @@ header {
         padding-right: 0;
       }
 
-      @media (min-width: $screen-lg-min){
+      @media (min-width: $screen-lg-min) {
         padding: 0;
       }
     }
