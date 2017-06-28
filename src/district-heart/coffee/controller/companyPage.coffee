@@ -123,10 +123,12 @@ angular.module 'ahaLuminateControllers'
         ZuriService.getDistrictTeams $scope.companyId,
           error: (response) ->
             $scope.activity1amt = 0
+            $scope.companyTeams.teamMinsActivityMap = []
           success: (response) ->
             totalMinsActivity = response.data.data?.total or '0'
             totalMinsActivity = Number totalMinsActivity
             $scope.activity1amt = totalMinsActivity
+            teamMinsActivityMap = response.data.data?.list or []
             $scope.companyTeams.teamMinsActivityMap = teamMinsActivityMap
       getCompanyTeams()
       
@@ -186,10 +188,12 @@ angular.module 'ahaLuminateControllers'
         ZuriService.getDistrictParticipants $scope.companyId,
           error: (response) ->
             $scope.activity1amt = 0
+            $scope.companyParticipants.participantMinsActivityMap = []
           success: (response) ->
             totalMinsActivity = response.data.data?.total or '0'
             totalMinsActivity = Number totalMinsActivity
             $scope.activity1amt = totalMinsActivity
+            participantMinsActivityMap = response.data.data?.list or []
             $scope.companyParticipants.participantMinsActivityMap = participantMinsActivityMap
       getCompanyParticipants()
       
