@@ -14,7 +14,7 @@
   &.owl-carousel {
     display: block;
   }
-
+  
   > .item {
     &:nth-child(n+2) {
       display: none;
@@ -26,22 +26,53 @@
   background-color: $event-accent;
   margin-top: -48px;
   padding-bottom: 24px;
-
+  
+  @media (min-width: $screen-sm-min) {
+    margin-top: -28px;
+    padding-bottom: 20px;
+  }
+  
+  @media (min-width: $screen-sm-min) and (max-width: 877px) and (min-height: 680px) {
+    display: none;
+  }
+  
+  @media (min-width: 878px) and (max-width: 931px) and (min-height: 706px) {
+    display: none;
+  }
+  
+  @media (min-width: 932px) and (max-width: 959px) and (min-height: 718px) {
+    display: none;
+  }
+  
+  @media (min-width: 960px) and (max-width: 991px) and (min-height: 732px) {
+    display: none;
+  }
+  
+  @media (min-width: $screen-md-min) and (min-height: 768px) {
+    display: none;
+  }
+  
   a {
     &.btn {
-      -webkit-box-shadow: 0 0 30px 7px rgba(250, 250, 250, 0.5);
-      -moz-box-shadow: 0 0 30px 7px rgba(250, 250, 250, 0.5);
-      box-shadow: 0 0 30px 7px rgba(250, 250, 250, 0.5);
+      &, 
+      &:link, 
+      &:visited, 
+      &:hover, 
+      &:focus, 
+      &:active {
+        box-shadow: 0 0 30px 7px rgba(250, 250, 250, 0.5);
+        font-size: $font-size-sm;
+      }
     }
   }
 }
 
 .ym-page-banner {
   position: relative;
+  background-position: center;
   background-size: cover;
   padding-top: 45.2991452%;
-  background-position: center;
-
+  
   @media (min-width: $screen-md-min) {
     height: 280px;
     padding: 0;
@@ -51,7 +82,7 @@
 .ym-hero__text {
   background: $brand-white;
   padding: 20px 20px 0;
-
+  
   @media (min-width: $screen-sm-min) {
     position: absolute;
     bottom: 20px;
@@ -60,7 +91,7 @@
     width: 300px;
     padding: 15px;
   }
-
+  
   @media (min-width: $screen-md-min) {
     width: 430px;
     padding: 20px;
