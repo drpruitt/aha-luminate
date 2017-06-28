@@ -119,7 +119,11 @@ angular.module 'ahaLuminateControllers'
                     $scope.teamId = response.data.coordinator.team_id
       getCompanyTotals()
       
-      $scope.companyTeams = {}
+      $scope.companyTeamSearch =
+        team_name: ''
+        ng_team_name: ''
+      $scope.companyTeams =
+        page_number: 0
       setCompanyTeams = (teams, totalNumber) ->
         $scope.companyTeams.teams = teams or []
         totalNumber = totalNumber or 0
@@ -141,8 +145,17 @@ angular.module 'ahaLuminateControllers'
               totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults
               setCompanyTeams companyTeams, totalNumberTeams
       $scope.getCompanyTeams()
+      $scope.searchCompanyTeams = ->
+        $scope.companyTeamSearch.team_name = $scope.companyTeamSearch.ng_team_name
+        $scope.getCompanyTeams()
       
-      $scope.companyParticipants = {}
+      $scope.companyParticipantSearch =
+        first_name: ''
+        ng_first_name: ''
+        last_name: ''
+        ng_last_name: ''
+      $scope.companyParticipants =
+        page_number: 0
       setCompanyParticipants = (participants, totalNumber) ->
         $scope.companyParticipants.participants = participants or []
         totalNumber = totalNumber or 0
@@ -160,6 +173,8 @@ angular.module 'ahaLuminateControllers'
                 participants = [participants] if not angular.isArray participants
                 angular.forEach participants, (participant) ->
                   if participant.name?.first
+                    participant.firstName = participant.name.first
+                    participant.lastName = participant.name.last
                     participant.fullName = participant.name.first + ' ' + participant.name.last
                     participant.amountRaised = Number participant.amountRaised
                     participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
@@ -169,6 +184,10 @@ angular.module 'ahaLuminateControllers'
               totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
               setCompanyParticipants companyParticipants, totalNumberParticipants
       $scope.getCompanyParticipants()
+      $scope.searchCompanyParticipants = ->
+        $scope.companyParticipantSearch.first_name = $scope.companyParticipantSearch.ng_first_name
+        $scope.companyParticipantSearch.last_name = $scope.companyParticipantSearch.ng_last_name
+        $scope.getCompanyParticipants()
       
       if $scope.consId
         TeamraiserRegistrationService.getRegistration

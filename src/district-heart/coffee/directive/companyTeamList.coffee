@@ -9,6 +9,8 @@ angular.module 'ahaLuminateApp'
         companyId: '='
         frId: '='
         teams: '='
+        teamNameFilter: '='
+        pageNumber: '='
       controller: [
         '$scope'
         '$filter'
