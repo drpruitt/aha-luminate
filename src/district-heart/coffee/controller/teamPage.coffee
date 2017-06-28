@@ -123,7 +123,7 @@ angular.module 'ahaLuminateControllers'
             minsActivity = 0
             if participantMinsActivityMap.length > 0
               angular.forEach participantMinsActivityMap, (participantMinsActivityData) ->
-                if participantMinsActivityData.constituent_id is participant.consId
+                if participantMinsActivityData.constituent_id and Number(participantMinsActivityData.constituent_id) is Number(participant.consId)
                   minsActivity = participantMinsActivityData.minutes or 0
             $scope.teamParticipants.participants[participantIndex].minsActivity = minsActivity
       setParticipantsMinsActivity()
