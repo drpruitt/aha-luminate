@@ -14,7 +14,7 @@
   &.owl-carousel {
     display: block;
   }
-
+  
   > .item {
     &:nth-child(n+2) {
       display: none;
@@ -24,24 +24,28 @@
 
 .ym-hero-top__find-your-school {
   background-color: $event-accent;
-  margin-top: -48px;
-  padding-bottom: 24px;
-
+  
   a {
     &.btn {
-      -webkit-box-shadow: 0 0 30px 7px rgba(250, 250, 250, 0.5);
-      -moz-box-shadow: 0 0 30px 7px rgba(250, 250, 250, 0.5);
-      box-shadow: 0 0 30px 7px rgba(250, 250, 250, 0.5);
+      &, 
+      &:link, 
+      &:visited, 
+      &:hover, 
+      &:focus, 
+      &:active {
+        box-shadow: 0 0 30px 7px rgba(250, 250, 250, 0.5);
+        font-size: $font-size-sm;
+      }
     }
   }
 }
 
 .ym-page-banner {
   position: relative;
+  background-position: center;
   background-size: cover;
   padding-top: 45.2991452%;
-  background-position: center;
-
+  
   @media (min-width: $screen-md-min) {
     height: 280px;
     padding: 0;
@@ -51,7 +55,7 @@
 .ym-hero__text {
   background: $brand-white;
   padding: 20px 20px 0;
-
+  
   @media (min-width: $screen-sm-min) {
     position: absolute;
     bottom: 20px;
@@ -60,7 +64,7 @@
     width: 300px;
     padding: 15px;
   }
-
+  
   @media (min-width: $screen-md-min) {
     width: 430px;
     padding: 20px;

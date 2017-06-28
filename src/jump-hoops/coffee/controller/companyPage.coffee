@@ -30,30 +30,25 @@ angular.module 'ahaLuminateControllers'
       $scope.trustHtml = (html) ->
         return $sce.trustAsHtml(html)
       
-      # TeamraiserCompanyService.getCompanyList 'include_all_companies=true', 
-        # error: ->
-          # $scope.localSponsorShow = false
-        # success: (response) ->
-          # companyItems = response.getCompanyListResponse.companyItem
-          # angular.forEach companyItems, (companyItem) ->
-            # if companyItem.companyId is $scope.companyId
-              # parentId = companyItem.parentOrgEventId or '0'
-              # if parentId is '0'
-                # parentId = $scope.companyId
-              # PageContentService.getPageContent 'jump_hoops_local_sponsors_' + parentId
-                # .then (response) ->
-                  # if response.includes('No data') is true
-                    # $scope.localSponsorShow = false
-                  # else
-                    # img = response.split('/>')[0]
-                    # if img is undefined
-                      # $scope.localSponsorShow = false
-                    # else
-                      # alt = img.split('alt="')
-                      # src = alt[0].split('src="')
-                      # $scope.localSponsorShow = true
-                      # scope.localSponsorImageSrc = src[1].split('"')[0]
-                      # $scope.localSponsorImageAlt = alt[1].split('"')[0]
+      getLocalSponsors = ->
+        if $scope.parentCompanyId and $scope.parentCompanyId isnt ''
+          PageContentService.getPageContent 'jump_hoops_local_sponsors_' + $scope.parentCompanyId
+            .then (response) ->
+              if response.includes('No data') is true
+                $scope.localSponsorShow = false
+              else
+                img = response.split('/>')[0]
+                if img is undefined
+                  $scope.localSponsorShow = false
+                else
+                  alt = img.split('alt="')
+                  src = alt[0].split('src="')
+                  $scope.localSponsorShow = true
+                  $scope.localSponsorImageSrc = src[1].split('"')[0]
+                  $scope.localSponsorImageAlt = alt[1].split('"')[0]
+      getLocalSponsors()
+      $scope.$watch 'parentCompanyId', ->
+        getLocalSponsors()
       
       ZuriService.getSchool $scope.companyId,
         error: (response) ->
@@ -179,7 +174,10 @@ angular.module 'ahaLuminateControllers'
                 angular.forEach participants, (participant) ->
                   participant.amountRaised = Number participant.amountRaised
                   if participant.name?.first and participant.amountRaised > 1
+                    participant.firstName = participant.name.first
+                    participant.lastName = participant.name.last
                     participant.name.last = participant.name.last.substring(0, 1) + '.'
+                    participant.fullName = participant.name.first + ' ' + participant.name.last
                     participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
                     if participant.donationUrl
                       participant.donationFormId = participant.donationUrl.split('df_id=')[1].split('&')[0]
