@@ -149,15 +149,15 @@
       Our Teams
     </h3>
     <div class="ym-roster-search">
-      <form class="form-inline" method="POST">
+      <form class="form-inline" name="companyTeamSearchForm" method="POST" ng-submit="getCompanyTeams()">
         <div class="ym-roster-search-title">
           Team Search:
         </div>
         <div class="form-group">
-          <label for="" class="sr-only">Team Name:</label>
-          <input type="text" class="form-control" placeholder="Team Name">
+          <label for="companyTeamSearch-ng_team_name" class="sr-only">Team Name:</label>
+          <input type="text" class="form-control" id="companyTeamSearch-ng_team_name" name="ng_team_name" ng-model="companyTeamSearch.ng_team_name" placeholder="Team Name">
         </div>
-        <button type="submit" class="btn">
+        <button type="submit" class="btn btn-md-wide">
           <strong>Search</strong>
         </button>
       </form>
@@ -170,19 +170,19 @@
       Our Participants
     </h3>
     <div class="ym-roster-search">
-      <form class="form-inline" method="POST">
+      <form class="form-inline" name="companyParticipantSearchForm" method="POST" ng-submit="getCompanyParticipants()">
         <div class="ym-roster-search-title">
           Participant Search:
         </div>
         <div class="form-group">
-          <label for="" class="sr-only">First Name:</label>
-          <input type="text" class="form-control" placeholder="First Name">
+          <label for="companyParticipantSearch-ng_first_name" class="sr-only">First Name:</label>
+          <input type="text" class="form-control" id="companyParticipantSearch-ng_first_name" name="ng_first_name" ng-model="companyParticipantSearch.ng_first_name" placeholder="First Name">
         </div>
         <div class="form-group">
-          <label for="" class="sr-only">Last Name:</label>
-          <input type="text" class="form-control" placeholder="Last Name">
+          <label for="companyParticipantSearch-ng_last_name" class="sr-only">Last Name:</label>
+          <input type="text" class="form-control" id="companyParticipantSearch-ng_last_name" name="ng_last_name" ng-model="companyParticipantSearch.ng_last_name" placeholder="Last Name">
         </div>
-        <button type="submit" class="btn">
+        <button type="submit" class="btn btn-md-wide">
           <strong>Search</strong>
         </button>
       </form>
