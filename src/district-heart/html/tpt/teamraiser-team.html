@@ -156,6 +156,22 @@
       Our Team Members
     </h3>
     <div class="ym-roster-search">
+      <form class="form-inline" name="teamParticipantSearchForm" method="POST" ng-submit="getTeamParticipants()">
+        <div class="ym-roster-search-title">
+          Participant Search:
+        </div>
+        <div class="form-group">
+          <label for="teamParticipantSearch-ng_first_name" class="sr-only">First Name:</label>
+          <input type="text" class="form-control" id="teamParticipantSearch-ng_first_name" name="ng_first_name" ng-model="teamParticipantSearch.ng_first_name" placeholder="First Name">
+        </div>
+        <div class="form-group">
+          <label for="teamParticipantSearch-ng_last_name" class="sr-only">Last Name:</label>
+          <input type="text" class="form-control" id="teamParticipantSearch-ng_last_name" name="ng_last_name" ng-model="teamParticipantSearch.ng_last_name" placeholder="Last Name">
+        </div>
+        <button type="submit" class="btn btn-md-wide">
+          <strong>Search</strong>
+        </button>
+      </form>
     </div>
     <team-participant-list fr-id="'[[S80:trID]]'" team-id="'[[T6:[[S334:team_id]]]]'" participants="teamParticipants.participants"></team-participant-list>
     <hr class="ym-section-divider">
