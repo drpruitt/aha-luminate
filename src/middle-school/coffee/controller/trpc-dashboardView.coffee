@@ -457,7 +457,7 @@ angular.module 'trPcControllers'
           $scope.dashboardPromises.push updateCompanyUrlPromise
       
       $scope.prizes = []
-      ParticipantBadgesService.getBadges '2011'
+      ParticipantBadgesService.getBadges $scope.consId
         .then (response) ->
           prizes = response.data.prizes
           angular.forEach prizes, (prize) ->

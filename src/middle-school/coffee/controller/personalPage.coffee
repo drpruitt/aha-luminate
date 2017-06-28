@@ -21,7 +21,7 @@ angular.module 'ahaLuminateControllers'
       $rootScope.numTeams = ''
       
       $scope.prizes = []
-      ParticipantBadgesService.getBadges '2011'
+      ParticipantBadgesService.getBadges $scope.participantId
       .then (response) ->
         if not response.data.status or response.data.status isnt 'success'
           # TODO
