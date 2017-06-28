@@ -174,7 +174,10 @@ angular.module 'ahaLuminateControllers'
                 angular.forEach participants, (participant) ->
                   participant.amountRaised = Number participant.amountRaised
                   if participant.name?.first and participant.amountRaised > 1
+                    participant.firstName = participant.name.first
+                    participant.lastName = participant.name.last
                     participant.name.last = participant.name.last.substring(0, 1) + '.'
+                    participant.fullName = participant.name.first + ' ' + participant.name.last
                     participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
                     if participant.donationUrl
                       participant.donationFormId = participant.donationUrl.split('df_id=')[1].split('&')[0]

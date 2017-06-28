@@ -173,7 +173,7 @@
         </button>
       </form>
     </div>
-    <team-participant-list fr-id="'[[S80:trID]]'" team-id="'[[T6:[[S334:team_id]]]]'" participants="teamParticipants.participants|filter:{name:{first: teamParticipantSearch.first_name, last: teamParticipantSearch.last_name}}|limitTo:4:(teamParticipants.page_number * 4)"></team-participant-list>
+    <team-participant-list fr-id="'[[S80:trID]]'" team-id="'[[T6:[[S334:team_id]]]]'" participants="teamParticipants.participants|filter:{firstName: teamParticipantSearch.first_name, lastName: teamParticipantSearch.last_name}|limitTo:4:(teamParticipants.page_number * 4)"></team-participant-list>
     <hr class="ym-section-divider">
   </div>
   <div class="ym-page-section ym-team-coordinator-thanks" ng-if="coordinatorName && coordinatorName != ''" ng-cloak>

@@ -187,7 +187,7 @@
         </button>
       </form>
     </div>
-    <company-participant-list fr-id="'[[S80:trID]]'" company-id="'[[T6:[[S334:company_id]]]]'" participants="companyParticipants.participants|filter:{name:{first: companyParticipantSearch.first_name, last: companyParticipantSearch.last_name}}|limitTo:4:(companyParticipants.page_number * 4)"></company-participant-list>
+    <company-participant-list fr-id="'[[S80:trID]]'" company-id="'[[T6:[[S334:company_id]]]]'" participants="companyParticipants.participants|filter:{firstName: companyParticipantSearch.first_name, lastName: companyParticipantSearch.last_name}|limitTo:4:(companyParticipants.page_number * 4)"></company-participant-list>
     <hr class="ym-section-divider" ng-if="localSponsorShow" ng-cloak>
   </div>
   <div class="ym-page-section ym-page-section__sponsor" ng-if="localSponsorShow">
