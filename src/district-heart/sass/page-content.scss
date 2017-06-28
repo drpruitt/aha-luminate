@@ -23,6 +23,7 @@
 }
 
 .ym-roster-search {
+  text-align: center;
   margin: 0 0 18px;
   
   .form-inline {
@@ -39,6 +40,11 @@
     
     .form-group {
       margin-right: 5px;
+      
+      .form-control {
+        text-align: left;
+        max-width: 162px;
+      }
     }
     
     .btn {

@@ -119,6 +119,9 @@ angular.module 'ahaLuminateControllers'
                     $scope.teamId = response.data.coordinator.team_id
       getCompanyTotals()
       
+      $scope.companyTeamSearch =
+        team_name: ''
+        ng_team_name: ''
       $scope.companyTeams = {}
       setCompanyTeams = (teams, totalNumber) ->
         $scope.companyTeams.teams = teams or []
@@ -141,7 +144,15 @@ angular.module 'ahaLuminateControllers'
               totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults
               setCompanyTeams companyTeams, totalNumberTeams
       $scope.getCompanyTeams()
+      $scope.searchCompanyTeams = ->
+        $scope.companyTeamSearch.team_name = $scope.companyTeamSearch.ng_team_name
+        $scope.getCompanyTeams()
       
+      $scope.companyParticipantSearch =
+        first_name: ''
+        ng_first_name: ''
+        last_name: ''
+        ng_last_name: ''
       $scope.companyParticipants = {}
       setCompanyParticipants = (participants, totalNumber) ->
         $scope.companyParticipants.participants = participants or []
@@ -169,6 +180,10 @@ angular.module 'ahaLuminateControllers'
               totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
               setCompanyParticipants companyParticipants, totalNumberParticipants
       $scope.getCompanyParticipants()
+      $scope.searchCompanyParticipants = ->
+        $scope.companyParticipantSearch.first_name = $scope.companyParticipantSearch.ng_first_name
+        $scope.companyParticipantSearch.last_name = $scope.companyParticipantSearch.ng_last_name
+        $scope.getCompanyParticipants()
       
       if $scope.consId
         TeamraiserRegistrationService.getRegistration
