@@ -9,6 +9,13 @@
     @media (min-width: $screen-sm-min) {
       margin: 0 40px;
     }
+    
+    h2, 
+    .h2 {
+      @media (min-width: $screen-sm-min) {
+        margin-top: 30px;
+      }
+    }
   }
 }
 
@@ -16,6 +23,13 @@
   .ym-promo-block__item {
     @media (min-width: $screen-sm-min) {
       margin: 0 40px;
+    }
+    
+    h2, 
+    .h2 {
+      @media (min-width: $screen-sm-min) {
+        margin-top: 30px;
+      }
     }
   }
 }
