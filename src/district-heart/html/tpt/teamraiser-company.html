@@ -145,10 +145,20 @@
     </div>
   </div>
   <div class="ym-page-section ym-page-section__roster" ng-if="companyTeams.totalNumber > 1" ng-cloak>
+    <h3 class="h5">
+      Our Teams
+    </h3>
+    <div class="ym-roster-search">
+    </div>
     <company-team-list fr-id="'[[S80:trID]]'" company-id="'[[T6:[[S334:company_id]]]]'" teams="companyTeams.teams"></company-team-list>
     <hr class="ym-section-divider" ng-if="companyParticipants.totalNumber > 0 || localSponsorShow" ng-cloak>
   </div>
   <div class="ym-page-section ym-page-section__roster" ng-if="companyParticipants.totalNumber > 0" ng-cloak>
+    <h3 class="h5">
+      Our Participants
+    </h3>
+    <div class="ym-roster-search">
+    </div>
     <company-participant-list fr-id="'[[S80:trID]]'" company-id="'[[T6:[[S334:company_id]]]]'" participants="companyParticipants.participants"></company-participant-list>
     <hr class="ym-section-divider" ng-if="localSponsorShow" ng-cloak>
   </div>
