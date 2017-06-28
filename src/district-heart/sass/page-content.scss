@@ -23,8 +23,19 @@
 }
 
 .ym-roster-search {
-  background-color: #e1f5fa;
-  padding: 14px 22px;
+  margin: 0 0 18px;
+  
+  .form-inline {
+    background-color: #e1f5fa;
+    padding: 14px 22px;
+    width: 630px;
+    margin: 0 auto;
+    
+    .btn {
+      background-color: #004d68;
+      color: $brand-white;
+    }
+  }
 }
 
 .ym-team-coordinator-thanks {

@@ -43,7 +43,7 @@
               ::
                 <!-- company ID is non-null -->
                 <p class="school-name">
-                  My School: <a href="TR?fr_id=[[S80:trID]]&pg=company&company_id=[[E43:[[S80:trID]]:company-id:[[E48:[[S80:trID]]-[[S1:cons_id]]:team-id]]]]">[[E43:[[S80:trID]]:company-name:[[E48:[[S80:trID]]-[[S1:cons_id]]:team-id]]]]</a>
+                  My District: <a href="TR?fr_id=[[S80:trID]]&pg=company&company_id=[[E43:[[S80:trID]]:company-id:[[E48:[[S80:trID]]-[[S1:cons_id]]:team-id]]]]">[[E43:[[S80:trID]]:company-name:[[E48:[[S80:trID]]-[[S1:cons_id]]:team-id]]]]</a>
                 </p>
               ]]
               <p class="team-name" ng-if="companyInfo.teamCount > 1" ng-cloak>
@@ -73,7 +73,7 @@
                 [[?xx::x[[E43:[[S80:trID]]:company-id:[[E48:[[S80:trID]]-[[S334:px]]:team-id]]]]x::::
                   <!-- company ID is non-null -->
                   <p class="school-name">
-                    My School: <a href="TR?fr_id=[[S80:trID]]&pg=company&company_id=[[E43:[[S80:trID]]:company-id:[[E48:[[S80:trID]]-[[S334:px]]:team-id]]]]">[[E43:[[S80:trID]]:company-name:[[E48:[[S80:trID]]-[[S334:px]]:team-id]]]]</a>
+                    My District: <a href="TR?fr_id=[[S80:trID]]&pg=company&company_id=[[E43:[[S80:trID]]:company-id:[[E48:[[S80:trID]]-[[S334:px]]:team-id]]]]">[[E43:[[S80:trID]]:company-name:[[E48:[[S80:trID]]-[[S334:px]]:team-id]]]]</a>
                   </p>
                 ]]
                 <p class="team-name" ng-if="numTeams > 1" ng-cloak>
@@ -89,7 +89,7 @@
               [[?xx::x[[E43:[[S80:trID]]:company-id:[[S334:team_id]]]]x::::
                 <!-- company ID is non-null -->
                 <p class="school-name">
-                  School: <a href="TR?fr_id=[[S80:trID]]&pg=company&company_id=[[E43:[[S80:trID]]:company-id:[[S334:team_id]]]]">[[E43:[[S80:trID]]:company-name:[[S334:team_id]]]]</a>
+                  District: <a href="TR?fr_id=[[S80:trID]]&pg=company&company_id=[[E43:[[S80:trID]]:company-id:[[S334:team_id]]]]">[[E43:[[S80:trID]]:company-name:[[S334:team_id]]]]</a>
                 </p>
               ]]
             ::]]
@@ -113,7 +113,7 @@
           [[?xx::x[[S80:frCompanyId]]x::::
             <div ng-if="companyName" ng-cloak>
               <p class="school-name">
-                My School: <a href="TR?fr_id=[[S80:trID]]&pg=company&company_id=[[S80:frCompanyId]]"><span ng-bind-html="companyName"></span></a>
+                My District: <a href="TR?fr_id=[[S80:trID]]&pg=company&company_id=[[S80:frCompanyId]]"><span ng-bind-html="companyName"></span></a>
               </p>
               [[?xx::x[[S80:frTJoin]]x::::
                 <p class="team-name">
@@ -140,7 +140,7 @@
             </div>
             <div ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
               <p>
-                <strong>Share my School Page:</strong>
+                <strong>Share my District Page:</strong>
               </p>
               <a ng-href="{{baseUrl}}#" ng-click="delegatedAddThis('.js--company-social-share', 'facebook')">
                 <img src="../aha-luminate/dist/youth-markets/image/facebook-logo.png" alt="Facebook">
