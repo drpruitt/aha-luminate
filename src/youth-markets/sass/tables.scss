@@ -64,6 +64,15 @@ div.table {
   }
 }
 
+.table tbody tr.ym-list__row--no-results, 
+.table-striped tbody tr.ym-list__row--no-results {
+  background-color: transparent;
+  
+  td {
+    text-align: center;
+  }
+}
+
 .pg-company {
   .table {
     max-width: 970px;
