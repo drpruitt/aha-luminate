@@ -162,7 +162,7 @@
         </button>
       </form>
     </div>
-    <company-team-list fr-id="'[[S80:trID]]'" company-id="'[[T6:[[S334:company_id]]]]'" teams="companyTeams.teams"></company-team-list>
+    <company-team-list fr-id="'[[S80:trID]]'" company-id="'[[T6:[[S334:company_id]]]]'" teams="companyTeams.teams|filter:{name: companyTeamSearch.team_name}"></company-team-list>
     <hr class="ym-section-divider" ng-if="companyParticipants.totalNumber > 0 || localSponsorShow" ng-cloak>
   </div>
   <div class="ym-page-section ym-page-section__roster" ng-if="companyParticipants.totalNumber > 0" ng-cloak>
@@ -187,7 +187,7 @@
         </button>
       </form>
     </div>
-    <company-participant-list fr-id="'[[S80:trID]]'" company-id="'[[T6:[[S334:company_id]]]]'" participants="companyParticipants.participants"></company-participant-list>
+    <company-participant-list fr-id="'[[S80:trID]]'" company-id="'[[T6:[[S334:company_id]]]]'" participants="companyParticipants.participants|filter:{name.first: companyParticipantSearch.first_name, name.last: companyParticipantSearch.last_name}"></company-participant-list>
     <hr class="ym-section-divider" ng-if="localSponsorShow" ng-cloak>
   </div>
   <div class="ym-page-section ym-page-section__sponsor" ng-if="localSponsorShow">
