@@ -20,7 +20,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="ym-list__row" ng-repeat="participant in participants|filter:{firstName: firstNameFilter, lastName: lastNameFilter}|limitTo:4:(pageNumber * 4)">
+      <tr class="ym-list__row" ng-if="participantList.participants && participantList.participants.length == 0" ng-cloak>
+        <td class="ym-list__column" colspan="3">
+          No participants found.
+        </td>
+      </tr>
+      <tr class="ym-list__row" ng-repeat="participant in participantList.participants" ng-cloak>
         <td class="ym-list__column ym-list__column--name">
           <a ng-href="TR?fr_id={{participant.eventId}}&amp;pg=personal&amp;px={{participant.consId}}"><span ng-bind-html="participant.fullName"></span></a>
           <div>
