@@ -156,7 +156,7 @@
       Our Team Members
     </h3>
     <div class="ym-roster-search">
-      <form class="form-inline" name="teamParticipantSearchForm" method="POST" ng-submit="getTeamParticipants()">
+      <form class="form-inline" name="teamParticipantSearchForm" method="POST" ng-submit="searchTeamParticipants()">
         <div class="ym-roster-search-title">
           Participant Search:
         </div>
@@ -173,7 +173,7 @@
         </button>
       </form>
     </div>
-    <team-participant-list fr-id="'[[S80:trID]]'" team-id="'[[T6:[[S334:team_id]]]]'" participants="teamParticipants.participants"></team-participant-list>
+    <team-participant-list fr-id="'[[S80:trID]]'" team-id="'[[T6:[[S334:team_id]]]]'" participants="teamParticipants.participants" first-name-filter="teamParticipantSearch.first_name" last-name-filter="teamParticipantSearch.last_name" page-number="teamParticipants.page_number"></team-participant-list>
     <hr class="ym-section-divider">
   </div>
   <div class="ym-page-section ym-team-coordinator-thanks" ng-if="coordinatorName && coordinatorName != ''" ng-cloak>

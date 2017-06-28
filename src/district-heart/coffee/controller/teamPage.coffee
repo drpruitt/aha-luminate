@@ -14,7 +14,6 @@ angular.module 'ahaLuminateControllers'
     'TeamraiserTeamPageService'
     ($rootScope, $scope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserTeamService, TeamraiserParticipantService, TeamraiserCompanyService, ZuriService, TeamraiserTeamPageService) ->
       $scope.teamId = $location.absUrl().split('team_id=')[1].split('&')[0].split('#')[0]
-      $scope.teamParticipants = []
       $rootScope.teamName = ''
       $scope.eventDate = ''
       $scope.participantCount = ''
@@ -95,6 +94,13 @@ angular.module 'ahaLuminateControllers'
                     setCoordinatorInfo()
       getTeamData()
       
+      $scope.teamParticipantSearch =
+        first_name: ''
+        ng_first_name: ''
+        last_name: ''
+        ng_last_name: ''
+      $scope.teamParticipants =
+        page_number: 0
       setTeamParticipants = (participants, totalNumber) ->
         $scope.teamParticipants.participants = participants or []
         $scope.teamParticipants.totalNumber = totalNumber or 0
@@ -112,6 +118,8 @@ angular.module 'ahaLuminateControllers'
                 teamParticipants = []
                 angular.forEach participants, (participant) ->
                   if participant.name?.first
+                    participant.firstName = participant.name.first
+                    participant.lastName = participant.name.last
                     participant.fullName = participant.name.first + ' ' + participant.name.last
                     participant.amountRaised = Number participant.amountRaised
                     participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
@@ -121,6 +129,10 @@ angular.module 'ahaLuminateControllers'
                 totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
                 setTeamParticipants teamParticipants, totalNumberParticipants
       $scope.getTeamParticipants()
+      $scope.searchTeamParticipants = ->
+        $scope.teamParticipantSearch.first_name = $scope.teamParticipantSearch.ng_first_name
+        $scope.teamParticipantSearch.last_name = $scope.teamParticipantSearch.ng_last_name
+        $scope.getTeamParticipants()
       
       $scope.teamPagePhoto1 =
         defaultUrl: APP_INFO.rootPath + 'dist/district-heart/image/team-default.jpg'
