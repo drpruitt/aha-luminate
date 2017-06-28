@@ -106,6 +106,7 @@ angular.module 'ahaLuminateControllers'
         ZuriService.getTeamParticipants $scope.teamId,
           error: (response) ->
             $scope.activity1amt = 0
+            $scope.teamParticipants.participantMinsActivityMap = []
           success: (response) ->
             totalMinsActivity = response.data.data?.total or '0'
             totalMinsActivity = Number totalMinsActivity
