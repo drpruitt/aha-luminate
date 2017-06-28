@@ -21,10 +21,8 @@ angular.module 'ahaLuminateControllers'
       $scope.eventDate = ''
       $scope.totalTeams = ''
       $scope.teamId = ''
-      $scope.studentsPledgedTotal = ''
       $scope.activity1amt = ''
       $scope.activity2amt = ''
-      $scope.activity3amt = ''
       
       $scope.trustHtml = (html) ->
         return $sce.trustAsHtml(html)
@@ -49,27 +47,12 @@ angular.module 'ahaLuminateControllers'
       $scope.$watch 'parentCompanyId', ->
         getLocalSponsors()
       
-      ZuriService.getSchool $scope.companyId,
+      ZuriService.getDistrict $scope.companyId,
         error: (response) ->
-          $scope.studentsPledgedTotal = 0
           $scope.activity1amt = 0
-          $scope.activity2amt = 0
-          $scope.activity3amt = 0
         success: (response) ->
-          $scope.studentsPledgedTotal = response.data.studentsPledged
-          studentsPledgedActivities = response.data.studentsPledgedByActivity
-          if studentsPledgedActivities['1']
-            $scope.activity1amt = studentsPledgedActivities['1'].count
-          else
-            $scope.activity1amt = 0
-          if studentsPledgedActivities['2']
-            $scope.activity2amt = studentsPledgedActivities['2'].count
-          else
-            $scope.activity2amt = 0
-          if studentsPledgedActivities['3']
-            $scope.activity3amt = studentsPledgedActivities['3'].count
-          else
-            $scope.activity3amt = 0
+          totalMinutesOfActivity = response.data.data?.total
+          $scope.activity1amt = totalMinutesOfActivity or 0
       
       setCompanyProgress = (amountRaised, goal) ->
         $scope.companyProgress = 
