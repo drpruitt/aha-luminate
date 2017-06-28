@@ -24,33 +24,6 @@
 
 .ym-hero-top__find-your-school {
   background-color: $event-accent;
-  margin-top: -48px;
-  padding-bottom: 24px;
-  
-  @media (min-width: $screen-sm-min) {
-    margin-top: -28px;
-    padding-bottom: 20px;
-  }
-  
-  @media (min-width: $screen-sm-min) and (max-width: 877px) and (min-height: 680px) {
-    display: none;
-  }
-  
-  @media (min-width: 878px) and (max-width: 931px) and (min-height: 706px) {
-    display: none;
-  }
-  
-  @media (min-width: 932px) and (max-width: 959px) and (min-height: 718px) {
-    display: none;
-  }
-  
-  @media (min-width: 960px) and (max-width: 991px) and (min-height: 732px) {
-    display: none;
-  }
-  
-  @media (min-width: $screen-md-min) and (min-height: 768px) {
-    display: none;
-  }
   
   a {
     &.btn {
