@@ -5,6 +5,11 @@
       margin-top: 3px;
     }
   }
+  
+  .ym-list__column--mins {
+    text-align: right;
+    padding-right: 15px;
+  }
 }
 
 .pg-team {
@@ -42,7 +47,7 @@
     padding-right: 0;
   }
   
-  .ym-list__column--cta {
+  .ym-list__column--mins {
     text-align: right;
     padding-right: 15px;
   }

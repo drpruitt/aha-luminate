@@ -129,6 +129,21 @@ angular.module 'ahaLuminateControllers'
               setCompanyTeams companyTeams, totalNumberTeams
       getCompanyTeams()
       
+      setTeamMinsActivity = ->
+        teams = $scope.companyTeams.teams
+        teamMinsActivityMap = $scope.companyTeams.teamMinsActivityMap
+        if teams and teams.length > 0 and teamMinsActivityMap
+          angular.forEach teams, (team, teamIndex) ->
+            minsActivity = 0
+            if teamMinsActivityMap.length > 0
+              angular.forEach teamMinsActivityMap, (teamMinsActivityData) ->
+                if teamMinsActivityData.team_id is team.id
+                  minsActivity = teamMinsActivityData.minutes or 0
+            $scope.companyteams.teams[teamIndex].minsActivity = minsActivity
+      setTeamMinsActivity()
+      $scope.$watchGroup ['companyTeams.teams', 'companyTeams.teamMinsActivityMap'], ->
+        setTeamMinsActivity()
+      
       $scope.searchCompanyTeams = ->
         $scope.companyTeamSearch.team_name = $scope.companyTeamSearch.ng_team_name
         getCompanyTeams()
@@ -168,6 +183,21 @@ angular.module 'ahaLuminateControllers'
               totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
               setCompanyParticipants companyParticipants, totalNumberParticipants
       getCompanyParticipants()
+      
+      setParticipantMinsActivity = ->
+        participants = $scope.companyParticipants.participants
+        participantMinsActivityMap = $scope.companyParticipants.participantMinsActivityMap
+        if participants and participants.length > 0 and participantMinsActivityMap
+          angular.forEach participants, (participant, participantIndex) ->
+            minsActivity = 0
+            if participantMinsActivityMap.length > 0
+              angular.forEach participantMinsActivityMap, (participantMinsActivityData) ->
+                if participantMinsActivityData.constituent_id is participant.consId
+                  minsActivity = participantMinsActivityData.minutes or 0
+            $scope.companyParticipants.participants[participantIndex].minsActivity = minsActivity
+      setParticipantMinsActivity()
+      $scope.$watchGroup ['companyParticipants.participants', 'companyParticipants.participantMinsActivityMap'], ->
+        setParticipantMinsActivity()
       
       $scope.searchCompanyParticipants = ->
         $scope.companyParticipantSearch.first_name = $scope.companyParticipantSearch.ng_first_name
