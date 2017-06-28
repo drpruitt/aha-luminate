@@ -162,7 +162,7 @@
         </button>
       </form>
     </div>
-    <company-team-list fr-id="'[[S80:trID]]'" company-id="'[[T6:[[S334:company_id]]]]'" teams="companyTeams.teams|filter:{name: companyTeamSearch.team_name}|limitTo:4:(companyTeams.page_number * 4)"></company-team-list>
+    <company-team-list fr-id="'[[S80:trID]]'" company-id="'[[T6:[[S334:company_id]]]]'" teams="companyTeams.teams" team-name-filter="companyTeamSearch.team_name" page-number="companyTeams.page_number"></company-team-list>
     <hr class="ym-section-divider" ng-if="companyParticipants.totalNumber > 0 || localSponsorShow" ng-cloak>
   </div>
   <div class="ym-page-section ym-page-section__roster" ng-if="companyParticipants.totalNumber > 0" ng-cloak>
@@ -187,7 +187,7 @@
         </button>
       </form>
     </div>
-    <company-participant-list fr-id="'[[S80:trID]]'" company-id="'[[T6:[[S334:company_id]]]]'" participants="companyParticipants.participants|filter:{firstName: companyParticipantSearch.first_name, lastName: companyParticipantSearch.last_name}|limitTo:4:(companyParticipants.page_number * 4)"></company-participant-list>
+    <company-participant-list fr-id="'[[S80:trID]]'" company-id="'[[T6:[[S334:company_id]]]]'" participants="companyParticipants.participants" first-name-filter="companyParticipantSearch.first_name" last-name-filter="companyParticipantSearch.last_name" page-number="companyParticipants.page_number"></company-participant-list>
     <hr class="ym-section-divider" ng-if="localSponsorShow" ng-cloak>
   </div>
   <div class="ym-page-section ym-page-section__sponsor" ng-if="localSponsorShow">
