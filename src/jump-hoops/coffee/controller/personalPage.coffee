@@ -274,18 +274,13 @@ angular.module 'ahaLuminateControllers'
         $scope.personalPageContent.ng_rich_text = richText
         $scope.personalPageContent.mode = 'edit'
         $timeout ->
-          $taToolbar = jQuery 'div.ta-toolbar'
-          $taToolbar.find('.btn-group > button').each ->
-            $bttn = jQuery this
-            $bttn.attr 'tabindex', 0
-            # $bttn.removeAttr 'tabindex'
           angular.element('[ta-bind][contenteditable]').focus()
         , 500
-
+      
       $scope.resetPersonalPageContent = ->
         $scope.personalPageContent.ng_rich_text = $scope.personalPageContent.rich_text
         $scope.personalPageContent.mode = 'view'
-
+      
       $scope.savePersonalPageContent = (isRetry) ->
         richText = $scope.personalPageContent.ng_rich_text
         $richText = jQuery '<div />',

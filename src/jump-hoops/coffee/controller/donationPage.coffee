@@ -175,7 +175,7 @@ angular.module 'ahaLuminateControllers'
         angular.element('.ym-donor-recognition__fields').toggleClass 'hidden'
       
       $scope.togglePersonalNote = ->
-        angular.element('#tr_message_to_participant_row').toggleClass 'hidden ym-border'
+        angular.element('#tr_message_to_participant_row').toggleClass 'hidden'
       
       $scope.tributeGift = (type) ->
         if type is 'honor'

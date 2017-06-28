@@ -22,6 +22,38 @@
   background: $event-accent;
 }
 
+.ym-roster-search {
+  text-align: center;
+  margin: 0 0 18px;
+  
+  .form-inline {
+    background-color: #e1f5fa;
+    padding: 14px 22px;
+    width: 630px;
+    margin: 0 auto;
+    
+    .ym-roster-search-title {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 5px;
+    }
+    
+    .form-group {
+      margin-right: 5px;
+      
+      .form-control {
+        text-align: left;
+        max-width: 162px;
+      }
+    }
+    
+    .btn {
+      background-color: #004d68;
+      color: $brand-white;
+    }
+  }
+}
+
 .ym-team-coordinator-thanks {
   background: $brand-white;
   padding: 12px 0;

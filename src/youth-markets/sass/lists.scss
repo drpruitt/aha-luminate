@@ -1,9 +1,17 @@
+.ym-page-section__list .h5{
+  margin-top: 30px;
+
+  @media (min-width: $screen-md-min) {
+    margin-top: 0;
+  }
+}
+
 .ym-list {
   text-align: center;
 }
 
 .ym-donor-list {
-  background: #ffffff;
+  background: $brand-white;
   text-align: left;
   max-width: 490px;
   height: 200px;
@@ -37,4 +45,3 @@
 .ym-stripe-list__header {
   border-bottom: 7px solid $event-secondary;
 }
-

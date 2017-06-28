@@ -47,7 +47,7 @@
 
   div {
     & > .ym-page-section__block:last-of-type {
-      margin-bottom: 0px;
+      margin-bottom: 0;
     }
   }
 
@@ -60,7 +60,7 @@
   }
 
   .ym-page-section__block {
-    padding: 0px 40px;
+    padding: 0 40px;
     margin-bottom: 50px;
 
     &.ym-page-section__block--narrow {
@@ -191,7 +191,7 @@
         a {
           position: relative;
           display: block;
-          font-size: 14px;
+          font-size: $font-size-sm;
           font-weight: 700;
           text-decoration: none;
           padding-right: 30px;
@@ -203,7 +203,7 @@
           .fa-chevron-right {
             position: absolute;
             top: 4px;
-            right: 0px;
+            right: 0;
             color: $event-primary;
           }
         }
@@ -218,7 +218,7 @@
 
       .fa-ul {
         & > li {
-          font-size: 14px;
+          font-size: $font-size-sm;
         }
       }
     }
@@ -232,7 +232,7 @@
     h5,
     .h5-heading {
       color: $event-secondary;
-      margin-top: 0px;
+      margin-top: 0;
       margin-bottom: 20px;
     }
   }
@@ -307,12 +307,12 @@
       padding-bottom: 20px;
 
       &:last-child {
-        padding-bottom: 0px;
+        padding-bottom: 0;
       }
 
       .input-group {
         display: block;
-        padding-right: 0px;
+        padding-right: 0;
       }
     }
 
@@ -362,9 +362,9 @@
     }
 
     p {
-      font-size: 14px;
+      font-size: $font-size-sm;
       padding-top: 15px;
-      margin-bottom: 0px;
+      margin-bottom: 0;
     }
   }
 
@@ -375,8 +375,8 @@
       width: 100%;
       max-width: 249px;
       float: none;
-      padding: 0px 0px 25px 0px;
-      margin: 0px auto;
+      padding: 0 0 25px 0;
+      margin: 0 auto;
     }
   }
 }
@@ -390,7 +390,7 @@
 
   > .container {
     max-width: 970px;
-    padding: 0px 20px 20px 20px;
+    padding: 0 20px 20px 20px;
 
     @media (min-width: $screen-sm-min) {
       padding-left: 50px;
@@ -543,7 +543,7 @@
   
   .visible-xs-block {
     em {
-      font-size: 14px;
+      font-size: $font-size-sm;
     }
   }
   

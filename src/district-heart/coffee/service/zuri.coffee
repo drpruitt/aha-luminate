@@ -60,6 +60,4 @@ angular.module 'ahaLuminateApp'
               callback.success response
           , (response) ->
             callback.failure response
-
-      
   ]

@@ -2,12 +2,16 @@ header {
   > .container {
     padding-top: 10px;
     
+    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+      width: auto;
+    }
+    
     @media (min-width: $screen-sm-min) {
       padding-top: 20px;
     }
-    
-    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-      width: auto;
+
+    @media (min-width: $screen-lg-min){
+      padding: 20px 0 0;
     }
   }
   
@@ -57,7 +61,9 @@ header {
     }
   }
   
-  .ym-header-logo--aha {
+  .ym-header-logo.ym-header-logo--aha {
+    padding-left: 0;
+    
     > a,
     > span {
       margin: 0 10px 0 0;
@@ -89,7 +95,7 @@ header {
     font-weight: 500;
     margin: 0 0 16px;
   }
-  
+
   nav {
     border-top: 1px solid #e8e8e8;
     border-bottom: 1px solid #e8e8e8;
@@ -102,6 +108,10 @@ header {
       @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
         width: auto;
         padding-right: 0;
+      }
+
+      @media (min-width: $screen-lg-min){
+        padding: 0;
       }
     }
     
@@ -149,14 +159,14 @@ header {
       float: left;
       position: relative;
       
+      @media (min-width: $screen-sm-min) {
+        float: right;
+      }
+
       > a {
         &.ym-header-login-toggle {
           padding-top: 14px;
         }
-      }
-      
-      @media (min-width: $screen-sm-min) {
-        float: right;
       }
     }
     
@@ -177,9 +187,9 @@ header {
       display: none;
       position: absolute;
       top: 100%;
-      background: #ffffff;
+      background: $brand-white;
       border: 1px solid #c9cccc;
-      font-size: 14px;
+      font-size: $font-size-sm;
       width: 266px;
       padding: 0;
       z-index: 1000;
@@ -235,6 +245,11 @@ header {
     .ym-header-logged-in {
       float: right;
       
+      @media (max-width: $screen-xs-max) {
+        float: left;
+        width: calc(100% - 71px);
+      }
+
       ul {
         a {
           &,
@@ -246,11 +261,6 @@ header {
             color: $brand-primary;
           }
         }
-      }
-      
-      @media (max-width: $screen-xs-max) {
-        float: left;
-        width: calc(100% - 71px);
       }
     }
     
@@ -305,9 +315,9 @@ header {
       display: none;
       position: absolute;
       top: 100%;
-      background: #ffffff;
+      background: $brand-white;
       border: 1px solid #c9cccc;
-      font-size: 14px;
+      font-size: $font-size-sm;
       padding: 0;
       z-index: 1000;
       
@@ -415,10 +425,10 @@ header {
       position: absolute;
       top: 100%;
       right: 0;
-      background: #ffffff;
+      background: $brand-white;
       border: 1px solid #c9cccc;
       border-right: 0;
-      font-size: 14px;
+      font-size: $font-size-sm;
       width: 140px;
       padding: 0;
       z-index: 1000;
