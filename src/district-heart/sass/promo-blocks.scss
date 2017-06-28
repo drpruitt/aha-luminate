@@ -6,12 +6,16 @@
 
 .pg-company {
   .ym-promo-block__item {
-    margin: 0 40px;
+    @media (min-width: $screen-sm-min) {
+      margin: 0 40px;
+    }
   }
 }
 
 .pg-team {
   .ym-promo-block__item {
-    margin: 0 40px;
+    @media (min-width: $screen-sm-min) {
+      margin: 0 40px;
+    }
   }
 }
