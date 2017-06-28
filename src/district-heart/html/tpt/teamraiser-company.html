@@ -62,7 +62,8 @@
         </h2>
         <div class="ym-promo-block__item ym-promo-block__item--members ym-promo-block--circle">
           <div class="h2 ym-headline">
-            {{participantCount}}
+            <span ng-if="participantCount < 1000" ng-cloak>{{participantCount}}</span>
+            <span ng-if="participantCount > 999" ng-cloak>{{participantCount}}</span>
           </div>
           <div ng-if="participantCount == 1" ng-cloak>
             <p>
@@ -77,7 +78,8 @@
         </div>
         <div class="ym-promo-block__item ym-promo-block__item--exercise ym-promo-block--circle" ng-if="activity1amt != 0" ng-cloak>
           <div class="h2 ym-headline">
-            {{activity1amt}}
+            <span ng-if="activity1amt < 1000" ng-cloak>{{activity1amt}}</span>
+            <span ng-if="activity1amt > 999" ng-cloak>{{activity1amt}}</span>
           </div>
           <div ng-if="activity1amt == 1" ng-cloak>
             <p>
@@ -92,7 +94,8 @@
         </div>
         <div class="ym-promo-block__item ym-promo-block__item--water ym-promo-block--circle" ng-if="activity2amt != 0" ng-cloak>
           <div class="h2 ym-headline">
-            {{activity2amt}}
+            <span ng-if="activity2amt < 1000" ng-cloak>{{activity2amt}}</span>
+            <span ng-if="activity2amt > 999" ng-cloak>{{activity2amt}}</span>
           </div>
           <div ng-if="activity2amt == 1" ng-cloak>
             <p>

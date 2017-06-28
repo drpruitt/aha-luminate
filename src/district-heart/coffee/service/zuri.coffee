@@ -38,7 +38,7 @@ angular.module 'ahaLuminateApp'
             callback.failure response
       
       getDistrictParticipants: (requestData, callback) ->
-        url = '//hearttools.heart.org/dhc18/group/company/' + requestData + '?key=N24DEcjHQkez6NAf'
+        url = '//hearttools.heart.org/dhc18/group/company/' + requestData + '?group_by=constituent&key=N24DEcjHQkez6NAf'
         urlSCE = $sce.trustAsResourceUrl url
         $http.jsonp(urlSCE, jsonpCallbackParam: 'callback')
           .then (response) ->
