@@ -140,9 +140,9 @@ angular.module 'ahaLuminateControllers'
             minsActivity = 0
             if teamMinsActivityMap.length > 0
               angular.forEach teamMinsActivityMap, (teamMinsActivityData) ->
-                if teamMinsActivityData.team_id is team.id
+                if teamMinsActivityData.team_id and Number(teamMinsActivityData.team_id) is Number(team.id)
                   minsActivity = teamMinsActivityData.minutes or 0
-            $scope.companyteams.teams[teamIndex].minsActivity = minsActivity
+            $scope.companyTeams.teams[teamIndex].minsActivity = minsActivity
       setTeamsMinsActivity()
       $scope.$watchGroup ['companyTeams.teams', 'companyTeams.teamMinsActivityMap'], ->
         setTeamsMinsActivity()
@@ -205,7 +205,7 @@ angular.module 'ahaLuminateControllers'
             minsActivity = 0
             if participantMinsActivityMap.length > 0
               angular.forEach participantMinsActivityMap, (participantMinsActivityData) ->
-                if participantMinsActivityData.constituent_id is participant.consId
+                if participantMinsActivityData.constituent_id and Number(participantMinsActivityData.constituent_id) is Number(participant.consId)
                   minsActivity = participantMinsActivityData.minutes or 0
             $scope.companyParticipants.participants[participantIndex].minsActivity = minsActivity
       setParticipantsMinsActivity()
