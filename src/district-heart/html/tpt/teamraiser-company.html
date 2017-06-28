@@ -54,7 +54,7 @@
     </div>
     <div class="clearfix"></div>
   </div>
-  <div class="ym-page-section ym-page-section__main" ng-show="participantCount > 0 && (activity1amt != 0 || activity2amt != 0 || activity3amt != 0)" ng-cloak>
+  <div class="ym-page-section ym-page-section__main" ng-show="participantCount > 0 && (activity1amt != 0 || activity2amt != 0)" ng-cloak>
     <div class="container">
       <div class="ym-our-stats ym-promo-block">
         <h2 class="ym-headline">
@@ -66,12 +66,12 @@
           </div>
           <div ng-if="participantCount == 1" ng-cloak>
             <p>
-              team member registered. Help us meet our goal of 0 team members!
+              participant registered. Help us meet our goal of 0 participants!
             </p>
           </div>
           <div ng-if="participantCount > 1" ng-cloak>
             <p>
-              team members registered. Help us meet our goal of 0 team members!
+              participants registered. Help us meet our goal of 0 participants!
             </p>
           </div>
         </div>
@@ -149,7 +149,7 @@
       Our Teams
     </h3>
     <div class="ym-roster-search">
-      <form class="form-inline" name="companyTeamSearchForm" method="POST" ng-submit="getCompanyTeams()">
+      <form class="form-inline" name="companyTeamSearchForm" method="POST" ng-submit="searchCompanyTeams()">
         <div class="ym-roster-search-title">
           Team Search:
         </div>
@@ -162,7 +162,7 @@
         </button>
       </form>
     </div>
-    <company-team-list fr-id="'[[S80:trID]]'" company-id="'[[T6:[[S334:company_id]]]]'" teams="companyTeams.teams"></company-team-list>
+    <company-team-list fr-id="'[[S80:trID]]'" company-id="'[[T6:[[S334:company_id]]]]'" teams="companyTeams.teams" team-name-filter="companyTeamSearch.team_name" page-number="companyTeams.page_number"></company-team-list>
     <hr class="ym-section-divider" ng-if="companyParticipants.totalNumber > 0 || localSponsorShow" ng-cloak>
   </div>
   <div class="ym-page-section ym-page-section__roster" ng-if="companyParticipants.totalNumber > 0" ng-cloak>
@@ -170,7 +170,7 @@
       Our Participants
     </h3>
     <div class="ym-roster-search">
-      <form class="form-inline" name="companyParticipantSearchForm" method="POST" ng-submit="getCompanyParticipants()">
+      <form class="form-inline" name="companyParticipantSearchForm" method="POST" ng-submit="searchCompanyParticipants()">
         <div class="ym-roster-search-title">
           Participant Search:
         </div>
@@ -187,7 +187,7 @@
         </button>
       </form>
     </div>
-    <company-participant-list fr-id="'[[S80:trID]]'" company-id="'[[T6:[[S334:company_id]]]]'" participants="companyParticipants.participants"></company-participant-list>
+    <company-participant-list fr-id="'[[S80:trID]]'" company-id="'[[T6:[[S334:company_id]]]]'" participants="companyParticipants.participants" first-name-filter="companyParticipantSearch.first_name" last-name-filter="companyParticipantSearch.last_name" page-number="companyParticipants.page_number"></company-participant-list>
     <hr class="ym-section-divider" ng-if="localSponsorShow" ng-cloak>
   </div>
   <div class="ym-page-section ym-page-section__sponsor" ng-if="localSponsorShow">

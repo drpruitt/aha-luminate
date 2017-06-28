@@ -14,36 +14,10 @@ angular.module 'ahaLuminateControllers'
     'TeamraiserTeamPageService'
     ($rootScope, $scope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserTeamService, TeamraiserParticipantService, TeamraiserCompanyService, ZuriService, TeamraiserTeamPageService) ->
       $scope.teamId = $location.absUrl().split('team_id=')[1].split('&')[0].split('#')[0]
-      $scope.teamParticipants = []
       $rootScope.teamName = ''
       $scope.eventDate = ''
-      $scope.participantCount = ''
-      $scope.studentsPledgedTotal = ''
       $scope.activity1amt = ''
       $scope.activity2amt = ''
-      $scope.activity3amt = ''
-      
-      ZuriService.getTeam $scope.teamId,
-        error: (response) ->
-          $scope.studentsPledgedTotal = 0
-          $scope.activity1amt = 0
-          $scope.activity2amt = 0
-          $scope.activity3amt = 0
-        success: (response) ->
-          $scope.studentsPledgedTotal = response.data.studentsPledged
-          studentsPledgedActivities = response.data.studentsPledgedByActivity
-          if studentsPledgedActivities['1']
-            $scope.activity1amt = studentsPledgedActivities['1'].count
-          else
-            $scope.activity1amt = 0
-          if studentsPledgedActivities['2']
-            $scope.activity2amt = studentsPledgedActivities['2'].count
-          else
-            $scope.activity2amt = 0
-          if studentsPledgedActivities['3']
-            $scope.activity3amt = studentsPledgedActivities['3'].count
-          else
-            $scope.activity3amt = 0
       
       setTeamProgress = (amountRaised, goal) ->
         $scope.teamProgress = 
@@ -95,12 +69,19 @@ angular.module 'ahaLuminateControllers'
                     setCoordinatorInfo()
       getTeamData()
       
+      $scope.teamParticipantSearch =
+        first_name: ''
+        ng_first_name: ''
+        last_name: ''
+        ng_last_name: ''
+      $scope.teamParticipants =
+        page_number: 0
       setTeamParticipants = (participants, totalNumber) ->
         $scope.teamParticipants.participants = participants or []
         $scope.teamParticipants.totalNumber = totalNumber or 0
         if not $scope.$$phase
           $scope.$apply()
-      $scope.getTeamParticipants = ->
+      getTeamParticipants = ->
         TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%') + '&first_name=' + encodeURIComponent('%%') + '&last_name=' + encodeURIComponent('%') + '&list_filter_column=reg.team_id&list_filter_text=' + $scope.teamId + '&list_sort_column=total&list_ascending=false&list_page_size=500', 
             error: (response) ->
               setTeamMembers()
@@ -112,6 +93,8 @@ angular.module 'ahaLuminateControllers'
                 teamParticipants = []
                 angular.forEach participants, (participant) ->
                   if participant.name?.first
+                    participant.firstName = participant.name.first
+                    participant.lastName = participant.name.last
                     participant.fullName = participant.name.first + ' ' + participant.name.last
                     participant.amountRaised = Number participant.amountRaised
                     participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
@@ -120,7 +103,34 @@ angular.module 'ahaLuminateControllers'
                     teamParticipants.push participant
                 totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
                 setTeamParticipants teamParticipants, totalNumberParticipants
-      $scope.getTeamParticipants()
+        ZuriService.getTeam $scope.teamId,
+          error: (response) ->
+            $scope.activity1amt = 0
+          success: (response) ->
+            totalMinutesOfActivity = response.data.data?.total
+            $scope.activity1amt = totalMinutesOfActivity or 0
+            $scope.teamParticipants.participantMinsActivityMap = []
+      getTeamParticipants()
+      
+      setParticipantMinsActivity = ->
+        participants = $scope.teamParticipants.participants
+        participantMinsActivityMap = $scope.teamParticipants.participantMinsActivityMap
+        if participants and participants.length > 0 and participantMinsActivityMap
+          angular.forEach participants, (participant, participantIndex) ->
+            minsActivity = 0
+            if participantMinsActivityMap.length > 0
+              angular.forEach participantMinsActivityMap, (participantMinsActivityData) ->
+                if participantMinsActivityData.constituent_id is participant.consId
+                  minsActivity = participantMinsActivityData.minutes or 0
+            $scope.teamParticipants.participants[participantIndex].minsActivity = minsActivity
+      setParticipantMinsActivity()
+      $scope.$watchGroup ['teamParticipants.participants', 'teamParticipants.participantMinsActivityMap'], ->
+        setParticipantMinsActivity()
+      
+      $scope.searchTeamParticipants = ->
+        $scope.teamParticipantSearch.first_name = $scope.teamParticipantSearch.ng_first_name
+        $scope.teamParticipantSearch.last_name = $scope.teamParticipantSearch.ng_last_name
+        getTeamParticipants()
       
       $scope.teamPagePhoto1 =
         defaultUrl: APP_INFO.rootPath + 'dist/district-heart/image/team-default.jpg'

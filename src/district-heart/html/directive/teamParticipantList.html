@@ -12,7 +12,7 @@
             <strong>Amount</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (participantList.sortColumn == 'amountRaised' && !participantList.sortAscending) || participantList.sortColumn != 'amountRaised', 'fa-caret-up': participantList.sortColumn == 'amountRaised' && participantList.sortAscending, 'inactive': participantList.sortColumn != 'amountRaised'}"></span>
           </a>
         </th>
-        <th class="ym-list__column ym-list__column--cta" scope="col" role="columnheader" aria-sort="{{participantList.sortColumn != 'minsActivity' ? 'none' : (participantList.sortAscending ? 'ascending' : 'descending')}}">
+        <th class="ym-list__column ym-list__column--mins" scope="col" role="columnheader" aria-sort="{{participantList.sortColumn != 'minsActivity' ? 'none' : (participantList.sortAscending ? 'ascending' : 'descending')}}">
           <a href="" ng-click="orderParticipants('minsActivity')">
             <strong>Min. of Activity</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (participantList.sortColumn == 'minsActivity' && !participantList.sortAscending) || participantList.sortColumn != 'minsActivity', 'fa-caret-up': participantList.sortColumn == 'minsActivity' && participantList.sortAscending, 'inactive': participantList.sortColumn != 'minsActivity'}"></span>
           </a>
@@ -20,7 +20,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="ym-list__row" ng-repeat="participant in participants">
+      <tr class="ym-list__row ym-list__row--no-results" ng-if="participantList.participants && participantList.participants.length == 0" ng-cloak>
+        <td class="ym-list__column" colspan="3">
+          No team members found.
+        </td>
+      </tr>
+      <tr class="ym-list__row" ng-repeat="participant in participantList.participants" ng-cloak>
         <td class="ym-list__column ym-list__column--name">
           <a ng-href="TR?fr_id={{participant.eventId}}&amp;pg=personal&amp;px={{participant.consId}}"><span ng-bind-html="participant.fullName"></span></a>
           <div>
@@ -32,7 +37,8 @@
         <td class="ym-list__column ym-list__column--amount">
           <span>{{participant.amountRaisedFormatted}}</span>
         </td>
-        <td class="ym-list__column ym-list__column--cta">
+        <td class="ym-list__column ym-list__column--mins">
+          <span>{{participant.minsActivity}}</span>
         </td>
       </tr>
     </tbody>

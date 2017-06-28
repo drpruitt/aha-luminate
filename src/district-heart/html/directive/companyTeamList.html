@@ -12,7 +12,7 @@
             <strong>Amount</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (teamList.sortColumn == 'amountRaised' && !teamList.sortAscending) || teamList.sortColumn != 'amountRaised', 'fa-caret-up': teamList.sortColumn == 'amountRaised' && teamList.sortAscending, 'inactive': teamList.sortColumn != 'amountRaised'}"></span>
           </a>
         </th>
-        <th class="ym-list__column ym-list__column--cta" scope="col" role="columnheader" aria-sort="{{teamList.sortColumn != 'minsActivity' ? 'none' : (teamList.sortAscending ? 'ascending' : 'descending')}}">
+        <th class="ym-list__column ym-list__column--mins" scope="col" role="columnheader" aria-sort="{{teamList.sortColumn != 'minsActivity' ? 'none' : (teamList.sortAscending ? 'ascending' : 'descending')}}">
           <a href="" ng-click="orderTeams('minsActivity')">
             <strong>Min. of Activity</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (teamList.sortColumn == 'minsActivity' && !teamList.sortAscending) || teamList.sortColumn != 'minsActivity', 'fa-caret-up': teamList.sortColumn == 'minsActivity' && teamList.sortAscending, 'inactive': teamList.sortColumn != 'minsActivity'}"></span>
           </a>
@@ -20,7 +20,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="ym-list__row" ng-repeat="team in teams">
+      <tr class="ym-list__row ym-list__row--no-results" ng-if="teamList.teams && teamList.teams.length == 0" ng-cloak>
+        <td class="ym-list__column" colspan="3">
+          No teams found.
+        </td>
+      </tr>
+      <tr class="ym-list__row" ng-repeat="team in teamList.teams" ng-cloak>
         <td class="ym-list__column ym-list__column--name">
           <a ng-href="TR?fr_id={{team.EventId}}&amp;pg=team&amp;team_id={{team.id}}"><span ng-bind-html="team.name"></span></a>
           <div>
@@ -32,7 +37,8 @@
         <td class="ym-list__column ym-list__column--amount">
           <span>{{team.amountRaisedFormatted}}</span>
         </td>
-        <td class="ym-list__column ym-list__column--cta">
+        <td class="ym-list__column ym-list__column--mins">
+          <span>{{team.minsActivity}}</span>
         </td>
       </tr>
     </tbody>
