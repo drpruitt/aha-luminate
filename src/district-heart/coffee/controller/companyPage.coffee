@@ -21,10 +21,8 @@ angular.module 'ahaLuminateControllers'
       $scope.eventDate = ''
       $scope.totalTeams = ''
       $scope.teamId = ''
-      $scope.studentsPledgedTotal = ''
       $scope.activity1amt = ''
       $scope.activity2amt = ''
-      $scope.activity3amt = ''
       
       $scope.trustHtml = (html) ->
         return $sce.trustAsHtml(html)
@@ -53,15 +51,8 @@ angular.module 'ahaLuminateControllers'
         error: (response) ->
           $scope.activity1amt = 0
         success: (response) ->
-          console.log 'test'
-          if response.data.data.total
-            $scope.activity1amt = response.data.data.total
-          else
-            $scope.activity1amt = 0
-
-          console.log response.data.data.list
-
-
+          totalMinutesOfActivity = response.data.data?.total
+          $scope.activity1amt = totalMinutesOfActivity or 0
       
       setCompanyProgress = (amountRaised, goal) ->
         $scope.companyProgress = 
