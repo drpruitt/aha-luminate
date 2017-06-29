@@ -1573,9 +1573,11 @@ main > .container {
 .ym-pc-student-view-image {
   float: right;
   width: 115px;
+  margin: 0 0 15px;
 
   @media (min-width: $screen-sm-min) {
     width: 135px;
+    margin: 0;
   }
 }
 
