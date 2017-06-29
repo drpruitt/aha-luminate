@@ -11,6 +11,18 @@
   }
 }
 
+.pg-company {
+  .ym-story {
+    padding-bottom: 0;
+  }
+}
+
+.pg-team {
+  .ym-story {
+    padding-bottom: 0;
+  }
+}
+
 .ym-section-divider {
   border: 0;
   border-top: 1px solid $event-secondary;
@@ -39,11 +51,17 @@
     }
     
     .form-group {
+      display: inline-block;
+      margin-bottom: 0;
       margin-right: 5px;
+      vertical-align: middle;
       
       .form-control {
+        display: inline-block;
         text-align: left;
+        width: auto;
         max-width: 162px;
+        vertical-align: middle;
       }
     }
     
