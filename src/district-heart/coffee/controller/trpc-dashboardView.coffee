@@ -546,18 +546,26 @@ angular.module 'trPcControllers'
       
       $scope.bloodPressureLog = {}
       $scope.updateBloodPressureChecked = ->
+        console.log 'updateBloodPressureChecked()'
         NgPcTeamraiserSurveyResponseService.getSurveyResponses()
           .then (response) ->
+            console.log 'getSurveyResponses response', response
             if response.data.errorResponse
+              console.log 'getSurveyResponses errorResponse'
               $scope.bloodPressureLog.errorMessage = 'An unexpected error occurred. Please try again later.'
             else
+              console.log 'no getSurveyResponses errorResponse'
               surveyResponses = response.data.getSurveyResponsesResponse?.responses
+              console.log 'getSurveyResponses surveyResponses', surveyResponses
               if not surveyResponses
+                console.log 'getSurveyResponses no surveyResponses'
                 $scope.bloodPressureLog.errorMessage = 'An unexpected error occurred. Please try again later.'
               else
+                console.log 'getSurveyResponses has surveyResponses'
                 surveyResponses = [surveyResponses] if not angular.isArray surveyResponses
-                console.log surveyResponses
+                console.log 'getSurveyResponses surveyResponses array', surveyResponses
                 surveyQuestionResponseMap = undefined
+                console.log 'getSurveyResponses surveyQuestionResponseMap init', surveyQuestionResponseMap
                 angular.forEach surveyResponses, (surveyResponse) ->
                   if not surveyResponse.responseValue or surveyResponse.responseValue is 'User Provided No Response' or not angular.isString surveyResponse.responseValue
                     surveyResponse.responseValue = ''
@@ -565,10 +573,12 @@ angular.module 'trPcControllers'
                     surveyQuestionResponseMap['question_' + surveyResponse.questionId] = surveyResponse.responseValue
                   else if surveyResponse.key is 'ym_district_checked'
                     surveyQuestionResponseMap['question_' + surveyResponse.questionId] = 'true'
-                console.log surveyQuestionResponseMap
+                console.log 'getSurveyResponses surveyQuestionResponseMap complete', surveyQuestionResponseMap
                 if not surveyQuestionResponseMap
+                  console.log 'getSurveyResponses no surveyQuestionResponseMap'
                   $scope.bloodPressureLog.errorMessage = 'An unexpected error occurred. Please try again later.'
                 else
+                  console.log 'getSurveyResponses has surveyQuestionResponseMap', surveyQuestionResponseMap, $httpParamSerializer(surveyQuestionResponseMap)
                   NgPcTeamraiserSurveyResponseService.updateSurveyResponses $httpParamSerializer(surveyQuestionResponseMap)
                     .then (response) ->
                       if response.data.errorResponse
