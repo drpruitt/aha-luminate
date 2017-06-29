@@ -3,6 +3,7 @@ angular.module 'trPcControllers'
     '$rootScope'
     '$scope'
     '$filter'
+    '$httpParamSerializer'
     '$uibModal'
     'APP_INFO'
     'ParticipantBadgesService'
@@ -17,7 +18,7 @@ angular.module 'trPcControllers'
     'NgPcTeamraiserCompanyService'
     'NgPcTeamraiserSurveyResponseService'
     '$timeout'
-    ($rootScope, $scope, $filter, $uibModal, APP_INFO, ParticipantBadgesService, ZuriService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserGiftService, NgPcContactService, NgPcTeamraiserShortcutURLService, NgPcInteractionService, NgPcTeamraiserCompanyService, NgPcTeamraiserSurveyResponseService, $timeout) ->
+    ($rootScope, $scope, $filter, $httpParamSerializer, $uibModal, APP_INFO, ParticipantBadgesService, ZuriService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserGiftService, NgPcContactService, NgPcTeamraiserShortcutURLService, NgPcInteractionService, NgPcTeamraiserCompanyService, NgPcTeamraiserSurveyResponseService, $timeout) ->
       $scope.dashboardPromises = []
       
       $dataRoot = angular.element '[data-embed-root]'
@@ -554,10 +555,21 @@ angular.module 'trPcControllers'
                 # TODO
               else
                 surveyResponses = [surveyResponses] if not angular.isArray surveyResponses
-                # NgPcTeamraiserSurveyResponseService.updateSurveyResponses()
-                  # .then (response) ->
-                    # if response.data.errorResponse
-                      # # TODO
-                    # else
-                      # $rootScope.bloodPressureChecked = true
+                surveyQuestions = {}
+                angular.forEach surveyResponses, (surveyResponse) ->
+                  if not surveyResponse.responseValue or surveyResponse.responseValue is 'User Provided No Response' or not angular.isString surveyResponse.responseValue
+                    surveyResponse.responseValue = ''
+                  if surveyResponse.isHidden is 'false' and surveyResponse.key isnt 'ym_district_checked'
+                    surveyQuestions['question_' + surveyResponse.questionId] = surveyResponse.responseValue
+                  else if surveyResponse.key is 'ym_district_checked'
+                    surveyQuestions['question_' + surveyResponse.questionId] = 'true'
+                NgPcTeamraiserSurveyResponseService.updateSurveyResponses $httpParamSerializer(surveyQuestions)
+                  .then (response) ->
+                    if response.data.errorResponse
+                      # TODO
+                    else
+                      if response.data.updateSurveyResponsesResponse?.success isnt 'true'
+                        # TODO
+                      else
+                        $rootScope.bloodPressureChecked = true
   ]
