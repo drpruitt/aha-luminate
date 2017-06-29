@@ -236,7 +236,7 @@
 .ym-pc-dashboard-heart-challenge-title {
   color: $event-secondary;
   margin: 0 0 18px;
-
+  
   span {
     font-size: inherit;
   }
@@ -255,6 +255,7 @@
     margin: 0;
   }
   
+  .alert-danger, 
   .alert-success {
     border-radius: 10px;
     text-align: center;
