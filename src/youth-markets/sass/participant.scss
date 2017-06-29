@@ -1029,12 +1029,14 @@ main > .container {
     position: absolute;
     right: -10px;
     top:-10px;
+    text-align: center;
+    text-decoration: none;
 
     span {
       color: $brand-white;
       font-size: 35px;
       font-weight: normal;
-      line-height: 18px;
+      line-height: 20px;
     }
   }
 
@@ -1074,10 +1076,18 @@ main > .container {
 }
 
 .ym-pc-first-login-url {
-  margin: 20px 0 24px;
+  margin: 20px 0;
 
   @media (min-width: $screen-sm-min) {
-    margin: 30px 0 36px;
+    margin: 30px 0;
+  }
+}
+
+.ym-pc-first-login-self-donor {
+  margin: 0 0 10px;
+
+  @media(min-width: $screen-sm-min) {
+      margin: 0 0 20px;
   }
 }
 
