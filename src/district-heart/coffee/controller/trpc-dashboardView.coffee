@@ -504,7 +504,12 @@ angular.module 'trPcControllers'
           $scope.minsActivityLog.ng_activity_minutes = ''
       $scope.updateMinsActivity = ->
         activityDate = '2017-06-29'
-        ZuriService.logMinutes $scope.frId + '/' + $scope.consId + '/' + activityDate,
+        minsActivity = $scope.minsActivityLog.ng_activity_minutes
+        companyId = $scope.participantRegistration.companyInformation?.companyId or ''
+        teamId = $scope.participantRegistration.teamId or ''
+        if minsActivity is ''
+          minsActivity = 0
+        ZuriService.logMinutes $scope.frId + '/' + $scope.consId + '/' + activityDate + '?minutes=' + minsActivity + '&company_id=' + companyId + '&team_id=' + teamId,
           error: ->
             # TODO
           success: ->
