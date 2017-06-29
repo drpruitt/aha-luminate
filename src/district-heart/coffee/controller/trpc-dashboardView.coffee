@@ -523,7 +523,9 @@ angular.module 'trPcControllers'
         teamId = $scope.participantRegistration.teamId or ''
         ZuriService.logMinutes $scope.frId + '/' + $scope.consId + '/' + activityDateFormatted + '?minutes=' + minsActivity + '&company_id=' + companyId + '&team_id=' + teamId,
           error: ->
+            delete $scope.minsActivityLog.hasSuccess
             $scope.getMinsActivity()
           success: ->
+            $scope.minsActivityLog.hasSuccess = true
             $scope.getMinsActivity()
   ]

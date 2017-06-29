@@ -941,6 +941,9 @@
                     Enter your active minutes for today or update your log for another day.
                   </p>
                 </div>
+                <div class="alert alert-success" ng-if="minsActivityLog.hasSuccess" ng-cloak>
+                  <strong>Minutes successfully updated</strong>
+                </div>
                 <form class="form-inline" name="minsActivityLogForm" method="POST" ng-submit="updateMinsActivity()">
                   <div class="form-group">
                     <label for="minsActivityLog-ng_activity_date" class="sr-only">Activity Date:</label>
@@ -951,7 +954,7 @@
                     <input type="number" class="form-control" id="minsActivityLog-ng_activity_minutes" name="ng_activity_minutes" ng-model="minsActivityLog.ng_activity_minutes" placeholder="Minutes">
                   </div>
                   <div>
-                    <button type="button" class="btn btn-md-wide btn-primary">
+                    <button type="submit" class="btn btn-md-wide btn-primary">
                       <strong>Update Your Log</strong>
                     </button>
                   </div>
