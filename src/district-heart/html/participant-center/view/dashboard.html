@@ -945,7 +945,7 @@
                   </p>
                 </div>
                 <div class="alert alert-danger" ng-if="minsActivityLog.errorMessage && minsActivityLog.errorMessage != ''" ng-cloak>
-                  <strong><span ng-bind-html="minsActivityLog.errorMessage"></span></strong>
+                  <span ng-bind-html="minsActivityLog.errorMessage"></span>
                 </div>
                 <div class="alert alert-success" ng-if="minsActivityLog.hasSuccess" ng-cloak>
                   <strong>Activity updated</strong>
@@ -976,7 +976,7 @@
         </div>
         <div class="clearfix">
           <div class="ym-pc-dashboard-heart-challenge-icon">
-            <img class="img-responsive" src="../aha-luminate/dist/district-heart/image/dh-blood-pressure-icon.png" alt="">
+            <img class="img-responsive" src="../aha-luminate/dist/district-heart/image/dh-blood-pressure-challenge-icon.png" alt="">
           </div>
           <div class="ym-pc-dashboard-heart-challenge-body">
             <div class="ym-pc-dashboard-heart-challenge-blood-pressure">
@@ -985,7 +985,10 @@
                   Knowing your numbers can add 5 years to your life!
                 </p>
               </div>
-              <button type="button" class="btn btn-md-wide btn-primary" ng-if="!bloodPressureChecked" ng-cloak>
+              <div class="alert alert-danger" ng-if="bloodPressureLog.errorMessage && bloodPressureLog.errorMessage != ''" ng-cloak>
+                <span ng-bind-html="bloodPressureLog.errorMessage"></span>
+              </div>
+              <button type="button" class="btn btn-md-wide btn-primary" ng-if="!bloodPressureChecked" ng-click="updateBloodPressureChecked()" ng-cloak>
                 <strong>I Have Met This Challenge!</strong> <i class="fa fa-check" hidden aria-hidden="true"></i>
               </button>
               <div class="alert alert-success" ng-if="bloodPressureChecked" ng-cloak>
