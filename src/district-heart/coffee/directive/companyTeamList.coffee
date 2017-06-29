@@ -36,6 +36,12 @@ angular.module 'ahaLuminateApp'
             if $scope.teamList.sortColumn isnt sortColumn
               $scope.teamList.sortAscending = false
             $scope.teamList.sortColumn = sortColumn
-            $scope.teamList.teams = $filter('orderBy') $scope.teamList.teams, sortColumn, !$scope.teamList.sortAscending
+            sortColumnExpression = sortColumn
+            if sortColumn isnt 'name'
+              sortColumnExpression = [
+                sortColumn
+                'name'
+              ]
+            $scope.teamList.teams = $filter('orderBy') $scope.teamList.teams, sortColumnExpression, !$scope.teamList.sortAscending
       ]
   ]

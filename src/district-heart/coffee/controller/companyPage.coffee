@@ -47,13 +47,6 @@ angular.module 'ahaLuminateControllers'
       $scope.$watch 'parentCompanyId', ->
         getLocalSponsors()
       
-      ZuriService.getDistrict $scope.companyId,
-        error: (response) ->
-          $scope.activity1amt = 0
-        success: (response) ->
-          totalMinutesOfActivity = response.data.data?.total
-          $scope.activity1amt = totalMinutesOfActivity or 0
-      
       setCompanyProgress = (amountRaised, goal) ->
         $scope.companyProgress = 
           amountRaised: if amountRaised then Number(amountRaised) else 0
@@ -127,9 +120,19 @@ angular.module 'ahaLuminateControllers'
                 companyTeam.amountRaisedFormatted = $filter('currency')(companyTeam.amountRaised / 100, '$').replace '.00', ''
               totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults
               setCompanyTeams companyTeams, totalNumberTeams
+        ZuriService.getDistrictTeams $scope.companyId,
+          error: (response) ->
+            $scope.activity1amt = 0
+            $scope.companyTeams.teamMinsActivityMap = []
+          success: (response) ->
+            totalMinsActivity = response.data.data?.total or '0'
+            totalMinsActivity = Number totalMinsActivity
+            $scope.activity1amt = totalMinsActivity
+            teamMinsActivityMap = response.data.data?.list or []
+            $scope.companyTeams.teamMinsActivityMap = teamMinsActivityMap
       getCompanyTeams()
       
-      setTeamMinsActivity = ->
+      setTeamsMinsActivity = ->
         teams = $scope.companyTeams.teams
         teamMinsActivityMap = $scope.companyTeams.teamMinsActivityMap
         if teams and teams.length > 0 and teamMinsActivityMap
@@ -137,12 +140,12 @@ angular.module 'ahaLuminateControllers'
             minsActivity = 0
             if teamMinsActivityMap.length > 0
               angular.forEach teamMinsActivityMap, (teamMinsActivityData) ->
-                if teamMinsActivityData.team_id is team.id
+                if teamMinsActivityData.team_id and Number(teamMinsActivityData.team_id) is Number(team.id)
                   minsActivity = teamMinsActivityData.minutes or 0
-            $scope.companyteams.teams[teamIndex].minsActivity = minsActivity
-      setTeamMinsActivity()
+            $scope.companyTeams.teams[teamIndex].minsActivity = minsActivity
+      setTeamsMinsActivity()
       $scope.$watchGroup ['companyTeams.teams', 'companyTeams.teamMinsActivityMap'], ->
-        setTeamMinsActivity()
+        setTeamsMinsActivity()
       
       $scope.searchCompanyTeams = ->
         $scope.companyTeamSearch.team_name = $scope.companyTeamSearch.ng_team_name
@@ -182,9 +185,19 @@ angular.module 'ahaLuminateControllers'
                     companyParticipants.push participant
               totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
               setCompanyParticipants companyParticipants, totalNumberParticipants
+        ZuriService.getDistrictParticipants $scope.companyId,
+          error: (response) ->
+            $scope.activity1amt = 0
+            $scope.companyParticipants.participantMinsActivityMap = []
+          success: (response) ->
+            totalMinsActivity = response.data.data?.total or '0'
+            totalMinsActivity = Number totalMinsActivity
+            $scope.activity1amt = totalMinsActivity
+            participantMinsActivityMap = response.data.data?.list or []
+            $scope.companyParticipants.participantMinsActivityMap = participantMinsActivityMap
       getCompanyParticipants()
       
-      setParticipantMinsActivity = ->
+      setParticipantsMinsActivity = ->
         participants = $scope.companyParticipants.participants
         participantMinsActivityMap = $scope.companyParticipants.participantMinsActivityMap
         if participants and participants.length > 0 and participantMinsActivityMap
@@ -192,12 +205,12 @@ angular.module 'ahaLuminateControllers'
             minsActivity = 0
             if participantMinsActivityMap.length > 0
               angular.forEach participantMinsActivityMap, (participantMinsActivityData) ->
-                if participantMinsActivityData.constituent_id is participant.consId
+                if participantMinsActivityData.constituent_id and Number(participantMinsActivityData.constituent_id) is Number(participant.consId)
                   minsActivity = participantMinsActivityData.minutes or 0
             $scope.companyParticipants.participants[participantIndex].minsActivity = minsActivity
-      setParticipantMinsActivity()
+      setParticipantsMinsActivity()
       $scope.$watchGroup ['companyParticipants.participants', 'companyParticipants.participantMinsActivityMap'], ->
-        setParticipantMinsActivity()
+        setParticipantsMinsActivity()
       
       $scope.searchCompanyParticipants = ->
         $scope.companyParticipantSearch.first_name = $scope.companyParticipantSearch.ng_first_name

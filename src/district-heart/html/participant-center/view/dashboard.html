@@ -584,6 +584,34 @@
         </div>
       </div>
     </section>
+    <section class="ym-pc-dashboard-heart-challenge-section" aria-label="My Heart-Healthy Challenge">
+      <div class="ym-pc-dashboard-section-header">
+        <h2 class="h3">
+          My Heart-Healthy Challenges
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div>
+            Challenge: Log your minutes of activity every day!
+          </div>
+          <button type="button" class="btn btn-primary">
+            <strong>Update Your Log</strong>
+          </button>
+        </div>
+        <div class="col-sm-6">
+          <div>
+            Challenge: Get your blood pressure checked!
+          </div>
+          <button type="button" class="btn btn-primary" ng-if="!bloodPressureChecked" ng-cloak>
+            <strong>I Have Met This Challenge!</strong> <i class="fa fa-check" hidden aria-hidden="true"></i>
+          </button>
+          <div class="alert alert-success" ng-if="bloodPressureChecked" ng-cloak>
+            <strong>Challenge met</strong> <i class="fa fa-check" hidden aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+    </section>
     <section class="ym-pc-dashboard-coordinators-message-section" aria-label="Note From Your Superintendent" ng-if="coordinatorsMessage.message && coordinatorsMessage.message != ''" ng-cloak>
       <div class="ym-pc-dashboard-section-header">
         <h2 class="h5">
@@ -979,6 +1007,34 @@
             <a class="btn btn-md-wide btn-primary" ng-href="https://districtheartchallenge.heart.org/coordinator/login/{{authToken}}/{{sessionCookie}}" target="_blank" ng-if="tablePrefix == 'heart'" ng-cloak> 
               <strong>Thank You Gifts</strong>
             </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="ym-pc-dashboard-heart-challenge-section" aria-label="My Heart-Healthy Challenge">
+      <div class="ym-pc-dashboard-section-header">
+        <h2 class="h3">
+          My Heart-Healthy Challenges
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div>
+            Challenge: Log your minutes of activity every day!
+          </div>
+          <button type="button" class="btn btn-primary">
+            <strong>Update Your Log</strong>
+          </button>
+        </div>
+        <div class="col-sm-6">
+          <div>
+            Challenge: Get your blood pressure checked!
+          </div>
+          <button type="button" class="btn btn-primary" ng-if="!bloodPressureChecked" ng-cloak>
+            <strong>I Have Met This Challenge!</strong> <i class="fa fa-check" hidden aria-hidden="true"></i>
+          </button>
+          <div class="alert alert-success" ng-if="bloodPressureChecked" ng-cloak>
+            <strong>Challenge met</strong> <i class="fa fa-check" hidden aria-hidden="true"></i>
           </div>
         </div>
       </div>

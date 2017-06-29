@@ -39,6 +39,11 @@ angular.module 'ahaLuminateApp'
             if $scope.participantList.sortColumn isnt sortColumn
               $scope.participantList.sortAscending = false
             $scope.participantList.sortColumn = sortColumn
-            $scope.participantList.participants = $filter('orderBy') $scope.participantList.participants, sortColumn, !$scope.participantList.sortAscending
+            if sortColumn isnt 'fullName'
+              sortColumnExpression = [
+                sortColumn
+                'fullName'
+              ]
+            $scope.participantList.participants = $filter('orderBy') $scope.participantList.participants, sortColumnExpression, !$scope.participantList.sortAscending
       ]
   ]
