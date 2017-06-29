@@ -524,8 +524,10 @@ angular.module 'trPcControllers'
         if not minsActivity or minsActivity is ''
           minsActivity = 0
         if not activityDate or activityDate is ''
+          delete $scope.minsActivityLog.hasSuccess
           $scope.minsActivityLog.errorMessage = 'Please select a date'
         else if isNaN(minsActivity) or Number(minsActivity) < 0
+          delete $scope.minsActivityLog.hasSuccess
           $scope.minsActivityLog.errorMessage = 'Please enter a valid number of minutes'
         else
           activityDateFormatted = $filter('date') activityDate, 'yyyy-MM-dd'
@@ -542,5 +544,20 @@ angular.module 'trPcControllers'
               $scope.getMinsActivity()
       
       $scope.updateBloodPressureChecked = ->
-        $rootScope.bloodPressureChecked = true
+        NgPcTeamraiserSurveyResponseService.getSurveyResponses()
+          .then (response) ->
+            if response.data.errorResponse
+              # TODO
+            else
+              surveyResponses = response.getSurveyResponsesResponse?.responses
+              if not surveyResponses
+                # TODO
+              else
+                surveyResponses = [surveyResponses] if not angular.isArray surveyResponses
+                # NgPcTeamraiserSurveyResponseService.updateSurveyResponses()
+                  # .then (response) ->
+                    # if response.data.errorResponse
+                      # # TODO
+                    # else
+                      # $rootScope.bloodPressureChecked = true
   ]
