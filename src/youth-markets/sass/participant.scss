@@ -1461,11 +1461,15 @@ main > .container {
     }
     
     p {
-      display: inline-block;
+      display: block;
       font-size: $font-size-sm;
       line-height: 18px;
       margin: 0;
       vertical-align: bottom;
+
+      @media (min-width: $screen-xs-min) {
+        display: inline-block;
+      }
       
       @media (min-width: $screen-sm-min) {
         display: block;
@@ -1511,6 +1515,10 @@ main > .container {
       background: $event-secondary;
       color: $brand-white;
       text-decoration: none;
+    }
+
+    @media(max-width: $screen-xs){
+      font-size: 14px;
     }
   }
   
@@ -1688,7 +1696,8 @@ main > .container {
   }
   
   .btn, 
-  a.btn {
+  a.btn,
+  button {
     &, 
     &:link, 
     &:visited, 
@@ -1697,10 +1706,12 @@ main > .container {
     &:active {
       display: block;
       margin: 0 0 12px;
+      width: 100%;
       
-      @media (min-width: 375px) {
+      @media (min-width: $screen-xs-min) {
         display: inline-block;
         margin: 0 0 0 10px;
+        width: auto;
       }
     }
   }
