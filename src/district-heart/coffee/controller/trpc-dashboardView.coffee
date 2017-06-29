@@ -491,7 +491,6 @@ angular.module 'trPcControllers'
       
       $scope.minsActivityLog =
         ng_activity_date: new Date()
-        ng_activity_minutes: ''
       $scope.getMinsActivity = ->
         ZuriService.getMinutes $scope.frId + '/' + $scope.consId,
           error: ->
