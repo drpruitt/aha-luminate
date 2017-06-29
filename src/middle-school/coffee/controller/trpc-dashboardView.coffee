@@ -19,8 +19,6 @@ angular.module 'trPcControllers'
       $scope.dashboardPromises = []
       
       $dataRoot = angular.element '[data-embed-root]'
-
-      $scope.selfDonor = $dataRoot.data 'self-donor'
       
       if $scope.participantRegistration.lastPC2Login is '0'
         $scope.firstLoginModal = $uibModal.open
@@ -149,7 +147,7 @@ angular.module 'trPcControllers'
         interactionId: ''
       
       if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
-        NgPcInteractionService.getUserInteractions 'interaction_type_id=' + interactionTypeId + '&cons_id=' + $scope.participantRegistration.consId + '&list_page_size=1'
+        NgPcInteractionService.getUserInteractions 'interaction_type_id=' + interactionTypeId + '&cons_id=' + $scope.consId + '&list_page_size=1'
           .then (response) ->
             $scope.coordinatorMessage.text = ''
             $scope.coordinatorMessage.interactionId = ''
@@ -172,7 +170,7 @@ angular.module 'trPcControllers'
         
         $scope.updateCoordinatorMessage = ->
           if $scope.coordinatorMessage.interactionId is ''
-            NgPcInteractionService.logInteraction 'interaction_type_id=' + interactionTypeId + '&cons_id=' + $scope.participantRegistration.consId + '&interaction_subject=' + $scope.participantRegistration.companyInformation.companyId + '&interaction_body=' + $scope.coordinatorMessage.text
+            NgPcInteractionService.logInteraction 'interaction_type_id=' + interactionTypeId + '&cons_id=' + $scope.consId + '&interaction_subject=' + $scope.participantRegistration.companyInformation.companyId + '&interaction_body=' + $scope.coordinatorMessage.text
                 .then (response) ->
                   if response.data.updateConsResponse.message 
                     $scope.coordinatorMessage.successMessage = true
@@ -180,7 +178,7 @@ angular.module 'trPcControllers'
                   else
                     $scope.coordinatorMessage.errorMessage = 'There was an error processing your update. Please try again later.' 
           else
-            NgPcInteractionService.updateInteraction 'interaction_id=' + $scope.coordinatorMessage.interactionId + '&cons_id=' + $scope.participantRegistration.consId + '&interaction_subject=' + $scope.participantRegistration.companyInformation.companyId + '&interaction_body=' + $scope.coordinatorMessage.text
+            NgPcInteractionService.updateInteraction 'interaction_id=' + $scope.coordinatorMessage.interactionId + '&cons_id=' + $scope.consId + '&interaction_subject=' + $scope.participantRegistration.companyInformation.companyId + '&interaction_body=' + $scope.coordinatorMessage.text
               .then (response) ->
                 if response.data.errorResponse 
                   $scope.coordinatorMessage.errorMessage = 'There was an error processing your update. Please try again later.' 
