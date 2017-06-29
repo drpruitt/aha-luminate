@@ -28,6 +28,7 @@ angular.module 'trPcApp'
       $rootScope.consName = $embedRoot.data('cons-name') or ''
       $rootScope.teamMemberRegGoal = $embedRoot.data('team-member-reg-goal') or '0'
       $rootScope.participantRegGoal = $embedRoot.data('participant-reg-goal') or '0'
+      $rootScope.bloodPressureChecked = $embedRoot.data('blood-pressure-checked')
   ]
 
 angular.element(document).ready ->
