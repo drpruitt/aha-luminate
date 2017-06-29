@@ -561,8 +561,12 @@ angular.module 'trPcControllers'
                   if not surveyResponse.responseValue or surveyResponse.responseValue is 'User Provided No Response' or not angular.isString surveyResponse.responseValue
                     surveyResponse.responseValue = ''
                   if surveyResponse.isHidden isnt 'true' and surveyResponse.key isnt 'ym_district_checked'
+                    if not surveyQuestionResponseMap
+                      surveyQuestionResponseMap = {}
                     surveyQuestionResponseMap['question_' + surveyResponse.questionId] = surveyResponse.responseValue
                   else if surveyResponse.key is 'ym_district_checked'
+                    if not surveyQuestionResponseMap
+                      surveyQuestionResponseMap = {}
                     surveyQuestionResponseMap['question_' + surveyResponse.questionId] = 'true'
                 if not surveyQuestionResponseMap
                   $scope.bloodPressureLog.errorMessage = 'An unexpected error occurred. Please try again later.'
