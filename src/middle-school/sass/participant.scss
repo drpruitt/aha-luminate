@@ -4,6 +4,13 @@
 
 @import "../../youth-markets/sass/participant.scss";
 
+.ym-pc-dashboard-section-header {
+  h2, 
+  .h2 {
+    text-transform: uppercase;
+  }
+}
+
 .ym-pc-dashboard-progress-section {
   .row {
     .ym-pc-dashboard-progress-section__column {
@@ -225,8 +232,4 @@
       }
     }
   }
-}
-
-.ym-pc-dashboard-section-header h2 {
-  text-transform: uppercase;
 }

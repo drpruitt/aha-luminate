@@ -985,7 +985,7 @@
                   Knowing your numbers can add 5 years to your life!
                 </p>
               </div>
-              <button type="button" class="btn btn-md-wide btn-primary" ng-if="!bloodPressureChecked" ng-cloak>
+              <button type="button" class="btn btn-md-wide btn-primary" ng-if="!bloodPressureChecked" ng-click="updateBloodPressureChecked()" ng-cloak>
                 <strong>I Have Met This Challenge!</strong> <i class="fa fa-check" hidden aria-hidden="true"></i>
               </button>
               <div class="alert alert-success" ng-if="bloodPressureChecked" ng-cloak>
