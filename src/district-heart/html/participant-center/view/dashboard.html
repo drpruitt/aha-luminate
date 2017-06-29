@@ -929,32 +929,34 @@
     </div>
     <div class="row">
       <div class="col-sm-6">
-        <div class="ym-pc-dashboard-heart-challenge-title">
-          <strong><span>Challenge:</span> Log your minutes of activity every day!</strong>
-        </div>
-        <div class="clearfix">
-          <div>
-            <div class="ym-pc-dashboard-heart-challenge-mins-activity">
-              <div class="ym-pc-dashboard-heart-challenge-text">
-                <p>
-                  Enter your active minutes for today or update your log for another day.
-                </p>
+        <div ng-if="minsActivityLog.minsActivityMap" ng-cloak>
+          <div class="ym-pc-dashboard-heart-challenge-title">
+            <strong><span>Challenge:</span> Log your minutes of activity every day!</strong>
+          </div>
+          <div class="clearfix">
+            <div>
+              <div class="ym-pc-dashboard-heart-challenge-mins-activity">
+                <div class="ym-pc-dashboard-heart-challenge-text">
+                  <p>
+                    Enter your active minutes for today or update your log for another day.
+                  </p>
+                </div>
+                <form class="form-inline" name="minsActivityLogForm" method="POST" ng-submit="updateMinsActivity()">
+                  <div class="form-group">
+                    <label for="minsActivityLog-ng_activity_date" class="sr-only">Activity Date:</label>
+                    <input type="date" class="form-control" id="minsActivityLog-ng_activity_date" name="ng_activity_date" ng-model="minsActivityLog.ng_activity_date" placeholder="mm/dd/yyyy">
+                  </div>
+                  <div class="form-group">
+                    <label for="minsActivityLog-ng_activity_minutes" class="sr-only">Minutes of Activity:</label>
+                    <input type="number" class="form-control" id="minsActivityLog-ng_activity_minutes" name="ng_activity_minutes" ng-model="minsActivityLog.ng_activity_minutes" placeholder="Minutes">
+                  </div>
+                  <div>
+                    <button type="button" class="btn btn-md-wide btn-primary">
+                      <strong>Update Your Log</strong>
+                    </button>
+                  </div>
+                </form>
               </div>
-              <form class="form-inline" name="minsActivityLogForm" method="POST" ng-submit="updateMinsActivity()">
-                <div class="form-group">
-                  <label for="minsActivityLog-ng_activity_date" class="sr-only">Activity Date:</label>
-                  <input type="date" class="form-control" id="minsActivityLog-ng_activity_date" name="ng_activity_date" ng-model="minsActivityLog.ng_activity_date" placeholder="mm/dd/yyyy">
-                </div>
-                <div class="form-group">
-                  <label for="minsActivityLog-ng_activity_minutes" class="sr-only">Minutes of Activity:</label>
-                  <input type="number" class="form-control" id="minsActivityLog-ng_activity_minutes" name="ng_activity_minutes" ng-model="minsActivityLog.ng_activity_minutes" placeholder="Minutes">
-                </div>
-                <div>
-                  <button type="button" class="btn btn-md-wide btn-primary">
-                    <strong>Update Your Log</strong>
-                  </button>
-                </div>
-              </form>
             </div>
           </div>
         </div>
