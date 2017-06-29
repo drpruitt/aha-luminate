@@ -1415,6 +1415,12 @@ main > .container {
   }
 }
 
+.ym-pc-dashboard-coordinator-steps-section h2 {
+  @media(max-width: $scree-xs-max){
+    margin-bottom: 20px;
+  }
+}
+
 .ym-activity-box--captain-pages, 
 .ym-activity-box--coordinator-pages {
   .ym-activity-url {
