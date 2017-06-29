@@ -549,28 +549,29 @@ angular.module 'trPcControllers'
         NgPcTeamraiserSurveyResponseService.getSurveyResponses()
           .then (response) ->
             if response.data.errorResponse
-              $scope.bloodPressureLog.errorMessage = ''
+              $scope.bloodPressureLog.errorMessage = 'An error occurred saving your response. Please try again later.'
             else
               surveyResponses = response.getSurveyResponsesResponse?.responses
               if not surveyResponses
-                $scope.bloodPressureLog.errorMessage = ''
+                $scope.bloodPressureLog.errorMessage = 'An error occurred saving your response. Please try again later.'
               else
                 surveyResponses = [surveyResponses] if not angular.isArray surveyResponses
-                surveyQuestions = {}
+                surveyQuestionResponseMap = {}
                 angular.forEach surveyResponses, (surveyResponse) ->
                   if not surveyResponse.responseValue or surveyResponse.responseValue is 'User Provided No Response' or not angular.isString surveyResponse.responseValue
                     surveyResponse.responseValue = ''
                   if surveyResponse.isHidden isnt 'true' and surveyResponse.key isnt 'ym_district_checked'
-                    surveyQuestions['question_' + surveyResponse.questionId] = surveyResponse.responseValue
+                    surveyQuestionResponseMap['question_' + surveyResponse.questionId] = surveyResponse.responseValue
                   else if surveyResponse.key is 'ym_district_checked'
-                    surveyQuestions['question_' + surveyResponse.questionId] = 'true'
-                NgPcTeamraiserSurveyResponseService.updateSurveyResponses $httpParamSerializer(surveyQuestions)
+                    surveyQuestionResponseMap['question_' + surveyResponse.questionId] = 'true'
+                console.log surveyQuestionResponseMap
+                NgPcTeamraiserSurveyResponseService.updateSurveyResponses $httpParamSerializer(surveyQuestionResponseMap)
                   .then (response) ->
                     if response.data.errorResponse
-                      $scope.bloodPressureLog.errorMessage = ''
+                      $scope.bloodPressureLog.errorMessage = 'An error occurred saving your response. Please try again later.'
                     else
                       if response.data.updateSurveyResponsesResponse?.success isnt 'true'
-                        $scope.bloodPressureLog.errorMessage = ''
+                        $scope.bloodPressureLog.errorMessage = 'An error occurred saving your response. Please try again later.'
                       else
                         delete $scope.bloodPressureLog.errorMessage
                         $rootScope.bloodPressureChecked = true
