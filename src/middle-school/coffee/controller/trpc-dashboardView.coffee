@@ -19,8 +19,6 @@ angular.module 'trPcControllers'
       $scope.dashboardPromises = []
       
       $dataRoot = angular.element '[data-embed-root]'
-
-      $scope.selfDonor = $dataRoot.data 'self-donor'
       
       if $scope.participantRegistration.lastPC2Login is '0'
         $scope.firstLoginModal = $uibModal.open
