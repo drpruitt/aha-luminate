@@ -898,7 +898,6 @@ main > .container {
     margin: 0 0 20px;
 
     .ym-activity-box-number {
-      display: inline-block;
       background: $event-secondary;
       border-radius: 100%;
       color: $brand-white;
@@ -908,7 +907,12 @@ main > .container {
       width: 42px;
       height: 42px;
       padding: 8px;
-      margin-right: 3px;
+      display: block;
+      margin-right: 10px;
+      @media (min-width: $screen-xs-min){
+        display: inline-block;
+        margin-right: 3px;
+      }
     }
   }
 }
