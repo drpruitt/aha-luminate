@@ -1416,7 +1416,7 @@ main > .container {
 }
 
 .ym-pc-dashboard-coordinator-steps-section h2 {
-  @media(max-width: $scree-xs-max){
+  @media (max-width: $screen-xs-max) {
     margin-bottom: 20px;
   }
 }
