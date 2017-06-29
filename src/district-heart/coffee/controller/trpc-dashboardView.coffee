@@ -544,32 +544,34 @@ angular.module 'trPcControllers'
               $scope.minsActivityLog.hasSuccess = true
               $scope.getMinsActivity()
       
+      $scope.bloodPressureLog = {}
       $scope.updateBloodPressureChecked = ->
         NgPcTeamraiserSurveyResponseService.getSurveyResponses()
           .then (response) ->
             if response.data.errorResponse
-              # TODO
+              $scope.bloodPressureLog.errorMessage = ''
             else
               surveyResponses = response.getSurveyResponsesResponse?.responses
               if not surveyResponses
-                # TODO
+                $scope.bloodPressureLog.errorMessage = ''
               else
                 surveyResponses = [surveyResponses] if not angular.isArray surveyResponses
                 surveyQuestions = {}
                 angular.forEach surveyResponses, (surveyResponse) ->
                   if not surveyResponse.responseValue or surveyResponse.responseValue is 'User Provided No Response' or not angular.isString surveyResponse.responseValue
                     surveyResponse.responseValue = ''
-                  if surveyResponse.isHidden is 'false' and surveyResponse.key isnt 'ym_district_checked'
+                  if surveyResponse.isHidden isnt 'true' and surveyResponse.key isnt 'ym_district_checked'
                     surveyQuestions['question_' + surveyResponse.questionId] = surveyResponse.responseValue
                   else if surveyResponse.key is 'ym_district_checked'
                     surveyQuestions['question_' + surveyResponse.questionId] = 'true'
                 NgPcTeamraiserSurveyResponseService.updateSurveyResponses $httpParamSerializer(surveyQuestions)
                   .then (response) ->
                     if response.data.errorResponse
-                      # TODO
+                      $scope.bloodPressureLog.errorMessage = ''
                     else
                       if response.data.updateSurveyResponsesResponse?.success isnt 'true'
-                        # TODO
+                        $scope.bloodPressureLog.errorMessage = ''
                       else
+                        delete $scope.bloodPressureLog.errorMessage
                         $rootScope.bloodPressureChecked = true
   ]
