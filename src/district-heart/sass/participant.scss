@@ -249,6 +249,19 @@
 }
 
 .ym-pc-dashboard-heart-challenge-mins-activity {
+  margin: 0 0 20px;
+  
+  @media (min-width: $screen-sm-min) {
+    margin: 0;
+  }
+  
+  .alert-success {
+    border-radius: 10px;
+    text-align: center;
+    width: 305px;
+    padding: 7px 25px;
+  }
+  
   .form-inline {
     .form-group {
       margin: 0 10px 10px 0;

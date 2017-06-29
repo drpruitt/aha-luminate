@@ -491,15 +491,7 @@ angular.module 'trPcControllers'
       
       $scope.minsActivityLog =
         ng_activity_date: new Date()
-      $scope.getMinsActivity = ->
-        ZuriService.getMinutes $scope.frId + '/' + $scope.consId,
-          error: ->
-            $scope.minsActivityLog.minsActivityMap = []
-          success: (response) ->
-            minsActivityMap = response.data.data?.list or []
-            $scope.minsActivityLog.minsActivityMap = minsActivityMap
-      $scope.getMinsActivity()
-      $scope.$watch 'minsActivityLog.ng_activity_date', ->
+      setMinsActivityForDate = ->
         activityDate = $scope.minsActivityLog.ng_activity_date
         minsActivity = ''
         if activityDate and activityDate isnt ''
@@ -510,6 +502,18 @@ angular.module 'trPcControllers'
         if minsActivity is 0
           minsActivity = ''
         $scope.minsActivityLog.ng_activity_minutes = minsActivity
+      setMinsActivityForDate()
+      $scope.getMinsActivity = ->
+        ZuriService.getMinutes $scope.frId + '/' + $scope.consId,
+          error: ->
+            $scope.minsActivityLog.minsActivityMap = []
+          success: (response) ->
+            minsActivityMap = response.data.data?.list or []
+            $scope.minsActivityLog.minsActivityMap = minsActivityMap
+            setMinsActivityForDate()
+      $scope.getMinsActivity()
+      $scope.$watch 'minsActivityLog.ng_activity_date', ->
+        setMinsActivityForDate()
       $scope.updateMinsActivity = ->
         activityDate = $scope.minsActivityLog.ng_activity_date
         if not activityDate or activityDate is ''
