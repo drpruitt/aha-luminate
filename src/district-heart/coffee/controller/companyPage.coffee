@@ -21,10 +21,8 @@ angular.module 'ahaLuminateControllers'
       $scope.eventDate = ''
       $scope.totalTeams = ''
       $scope.teamId = ''
-      $scope.studentsPledgedTotal = ''
       $scope.activity1amt = ''
       $scope.activity2amt = ''
-      $scope.activity3amt = ''
       
       $scope.trustHtml = (html) ->
         return $sce.trustAsHtml(html)
@@ -48,20 +46,6 @@ angular.module 'ahaLuminateControllers'
       getLocalSponsors()
       $scope.$watch 'parentCompanyId', ->
         getLocalSponsors()
-      
-      ZuriService.getDistrict $scope.companyId,
-        error: (response) ->
-          $scope.activity1amt = 0
-        success: (response) ->
-          console.log 'test'
-          if response.data.data.total
-            $scope.activity1amt = response.data.data.total
-          else
-            $scope.activity1amt = 0
-
-          console.log response.data.data.list
-
-
       
       setCompanyProgress = (amountRaised, goal) ->
         $scope.companyProgress = 
@@ -123,7 +107,7 @@ angular.module 'ahaLuminateControllers'
         $scope.totalTeams = totalNumber
         if not $scope.$$phase
           $scope.$apply()
-      $scope.getCompanyTeams = ->
+      getCompanyTeams = ->
         TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=500',
           error: ->
             setCompanyTeams()
@@ -136,10 +120,36 @@ angular.module 'ahaLuminateControllers'
                 companyTeam.amountRaisedFormatted = $filter('currency')(companyTeam.amountRaised / 100, '$').replace '.00', ''
               totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults
               setCompanyTeams companyTeams, totalNumberTeams
-      $scope.getCompanyTeams()
+        ZuriService.getDistrictTeams $scope.companyId,
+          error: (response) ->
+            $scope.activity1amt = 0
+            $scope.companyTeams.teamMinsActivityMap = []
+          success: (response) ->
+            totalMinsActivity = response.data.data?.total or '0'
+            totalMinsActivity = Number totalMinsActivity
+            $scope.activity1amt = totalMinsActivity
+            teamMinsActivityMap = response.data.data?.list or []
+            $scope.companyTeams.teamMinsActivityMap = teamMinsActivityMap
+      getCompanyTeams()
+      
+      setTeamsMinsActivity = ->
+        teams = $scope.companyTeams.teams
+        teamMinsActivityMap = $scope.companyTeams.teamMinsActivityMap
+        if teams and teams.length > 0 and teamMinsActivityMap
+          angular.forEach teams, (team, teamIndex) ->
+            minsActivity = 0
+            if teamMinsActivityMap.length > 0
+              angular.forEach teamMinsActivityMap, (teamMinsActivityData) ->
+                if teamMinsActivityData.team_id and Number(teamMinsActivityData.team_id) is Number(team.id)
+                  minsActivity = teamMinsActivityData.minutes or 0
+            $scope.companyTeams.teams[teamIndex].minsActivity = minsActivity
+      setTeamsMinsActivity()
+      $scope.$watchGroup ['companyTeams.teams', 'companyTeams.teamMinsActivityMap'], ->
+        setTeamsMinsActivity()
+      
       $scope.searchCompanyTeams = ->
         $scope.companyTeamSearch.team_name = $scope.companyTeamSearch.ng_team_name
-        $scope.getCompanyTeams()
+        getCompanyTeams()
       
       $scope.companyParticipantSearch =
         first_name: ''
@@ -154,7 +164,7 @@ angular.module 'ahaLuminateControllers'
         $scope.companyParticipants.totalNumber = Number totalNumber
         if not $scope.$$phase
           $scope.$apply()
-      $scope.getCompanyParticipants = ->
+      getCompanyParticipants = ->
         TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%') + '&first_name=' + encodeURIComponent('%%') + '&last_name=' + encodeURIComponent('%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=500',
             error: ->
               setCompanyParticipants()
@@ -175,11 +185,37 @@ angular.module 'ahaLuminateControllers'
                     companyParticipants.push participant
               totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
               setCompanyParticipants companyParticipants, totalNumberParticipants
-      $scope.getCompanyParticipants()
+        ZuriService.getDistrictParticipants $scope.companyId,
+          error: (response) ->
+            $scope.activity1amt = 0
+            $scope.companyParticipants.participantMinsActivityMap = []
+          success: (response) ->
+            totalMinsActivity = response.data.data?.total or '0'
+            totalMinsActivity = Number totalMinsActivity
+            $scope.activity1amt = totalMinsActivity
+            participantMinsActivityMap = response.data.data?.list or []
+            $scope.companyParticipants.participantMinsActivityMap = participantMinsActivityMap
+      getCompanyParticipants()
+      
+      setParticipantsMinsActivity = ->
+        participants = $scope.companyParticipants.participants
+        participantMinsActivityMap = $scope.companyParticipants.participantMinsActivityMap
+        if participants and participants.length > 0 and participantMinsActivityMap
+          angular.forEach participants, (participant, participantIndex) ->
+            minsActivity = 0
+            if participantMinsActivityMap.length > 0
+              angular.forEach participantMinsActivityMap, (participantMinsActivityData) ->
+                if participantMinsActivityData.constituent_id and Number(participantMinsActivityData.constituent_id) is Number(participant.consId)
+                  minsActivity = participantMinsActivityData.minutes or 0
+            $scope.companyParticipants.participants[participantIndex].minsActivity = minsActivity
+      setParticipantsMinsActivity()
+      $scope.$watchGroup ['companyParticipants.participants', 'companyParticipants.participantMinsActivityMap'], ->
+        setParticipantsMinsActivity()
+      
       $scope.searchCompanyParticipants = ->
         $scope.companyParticipantSearch.first_name = $scope.companyParticipantSearch.ng_first_name
         $scope.companyParticipantSearch.last_name = $scope.companyParticipantSearch.ng_last_name
-        $scope.getCompanyParticipants()
+        getCompanyParticipants()
       
       if $scope.consId
         TeamraiserRegistrationService.getRegistration

@@ -10,7 +10,7 @@ header {
       padding-top: 20px;
     }
 
-    @media (min-width: $screen-lg-min){
+    @media (min-width: $screen-lg-min) {
       padding: 20px 0 0;
     }
   }
@@ -110,7 +110,7 @@ header {
         padding-right: 0;
       }
 
-      @media (min-width: $screen-lg-min){
+      @media (min-width: $screen-lg-min) {
         padding: 0;
       }
     }
@@ -454,5 +454,44 @@ header {
         }
       }
     }
+  }
+}
+
+.app-27 {
+  header nav {
+    @media(max-width: $screen-sm) {
+      .ym-header-logged-in {
+        float: none;
+        width: 100%;
+      }
+      .ym-header-welcome{
+        float: none;
+        text-align: right;
+        width: 99%;
+      }
+      .ym-header-welcome-toggle {
+        &,
+        &:focus,
+        &:hover,
+        &:visited {
+          position: static;
+          padding-bottom: 17px;
+
+          .fa {
+            position: static;
+          }
+        }
+      }
+
+      .ym-header-welcome-dropdown {
+        left: inherit;
+        right: 0;
+      }
+
+      .ym-header-hq-btn {
+        display: none;
+      }
+    }
+
   }
 }

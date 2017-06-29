@@ -77,7 +77,9 @@
   }
 }
 
-.ym-pc-dashboard-progress-type {
+.ym-pc-dashboard-progress-type,
+.ym-pc-dashboard-captain-page-type, 
+.ym-pc-dashboard-coordinator-page-type {
   a {
     &, 
     &:link, 
@@ -217,6 +219,85 @@
   h5, 
   .h5 {
     text-transform: none;
+  }
+}
+
+.ym-pc-dashboard-heart-challenge-section {
+  background-color: $event-secondary-medium;
+  padding: 30px 30px 45px;
+  margin: 0 0 30px;
+  
+  .ym-pc-dashboard-section-header {
+    h3, 
+    .h3 {
+      margin: 0 0 30px;
+    }
+  }
+}
+
+.ym-pc-dashboard-heart-challenge-title {
+  color: $event-secondary;
+  margin: 0 0 18px;
+  
+  span {
+    font-size: inherit;
+  }
+}
+
+.ym-pc-dashboard-heart-challenge-text {
+  p {
+    margin: 0 0 16px;
+  }
+}
+
+.ym-pc-dashboard-heart-challenge-mins-activity {
+  margin: 0 0 20px;
+  
+  @media (min-width: $screen-sm-min) {
+    margin: 0;
+  }
+  
+  .alert-danger, 
+  .alert-success {
+    border-radius: 10px;
+    text-align: center;
+    width: 305px;
+    padding: 7px 25px;
+  }
+  
+  .form-inline {
+    .form-group {
+      margin: 0 10px 10px 0;
+      
+      input[type="date"].form-control {
+        width: 165px;
+        max-width: 165px;
+      }
+      
+      input[type="number"].form-control {
+        width: 130px;
+        max-width: 130px;
+      }
+    }
+    
+    .btn {
+      text-align: center;
+      width: 165px;
+    }
+  }
+}
+
+.ym-pc-dashboard-heart-challenge-blood-pressure {
+  .btn {
+    text-align: center;
+    width: 246px;
+  }
+  
+  .alert-success {
+    border-radius: 10px;
+    text-align: center;
+    width: 246px;
+    padding: 7px 25px;
   }
 }
 
@@ -369,4 +450,8 @@
       }
     }
   }
+}
+
+.ym-pc-dashboard-section-header h2 {
+  text-transform: uppercase;
 }

@@ -21,7 +21,7 @@
       <h2 class="ym-progress__title h4">
         Help us raise more life-saving donations!
       </h2>
-      <div class="ym-progress__cta">         
+      <div class="ym-progress__cta">
           <a class="btn btn-lg btn-primary" href="TRR?fr_id=[[S334:fr_id]]&amp;pg=tfind&amp;fr_tjoin=[[S334:team_id]]&amp;s_frTJoin=[[S334:team_id]]&amp;s_frCompanyId=[[E43:[[S80:trID]]:company-id:[[S334:team_id]]]]">
             Sign Up
           </a>
@@ -55,7 +55,7 @@
     </div>
     <div class="clearfix"></div>
   </div>
-  <div class="ym-page-section ym-page-section__main" ng-show="participantCount > 0 && (activity1amt != 0 || activity2amt != 0 || activity3amt != 0)" ng-cloak>
+  <div class="ym-page-section ym-page-section__main" ng-show="participantCount > 0 && (activity1amt != 0 || activity2amt != 0)" ng-cloak>
     <div class="container">
       <div class="ym-our-stats ym-promo-block">
         <h2 class="ym-headline">
@@ -63,7 +63,8 @@
         </h2>
         <div class="ym-promo-block__item ym-promo-block__item--members ym-promo-block--circle">
           <h2 class="ym-headline">
-            {{participantCount}}
+            <span ng-if="participantCount < 1000" ng-cloak>{{participantCount}}</span>
+            <span ng-if="participantCount > 999" ng-cloak>{{participantCount}}</span>
           </h2>
           <div ng-if="participantCount == 1" ng-cloak>
             <p>
@@ -78,27 +79,35 @@
         </div>
         <div class="ym-promo-block__item ym-promo-block__item--exercise ym-promo-block--circle" ng-if="activity1amt != 0" ng-cloak>
           <div class="h2 ym-headline">
-            {{activity1amt}}
+            <span ng-if="activity1amt < 1000" ng-cloak>{{activity1amt}}</span>
+            <span ng-if="activity1amt > 999" ng-cloak>{{activity1amt}}</span>
           </div>
-          <p>
-            daily challenges of excersing 60 minutes a day!
-          </p>
+          <div ng-if="activity1amt == 1" ng-cloak>
+            <p>
+              total minute of activity achieved by all of our team members!
+            </p>
+          </div>
+          <div ng-if="activity1amt > 1" ng-cloak>
+            <p>
+              total minutes of activity achieved by all of our team members!
+            </p>
+          </div>
         </div>
         <div class="ym-promo-block__item ym-promo-block__item--water ym-promo-block--circle" ng-if="activity2amt != 0" ng-cloak>
           <div class="h2 ym-headline">
-            {{activity2amt}}
+            <span ng-if="activity2amt < 1000" ng-cloak>{{activity2amt}}</span>
+            <span ng-if="activity2amt > 999" ng-cloak>{{activity2amt}}</span>
           </div>
-          <p>
-            daily challenges of choosing water over sugar drinks
-          </p>
-        </div>
-        <div class="ym-promo-block__item ym-promo-block__item--food ym-promo-block--circle" ng-if="activity3amt != 0" ng-cloak>
-          <div class="h2 ym-headline">
-            {{activity3amt}}
+          <div ng-if="activity2amt == 1" ng-cloak>
+            <p>
+              team member has had their blood pressure checked!
+            </p>
           </div>
-          <p>
-            daily challenges of fruits and veggies at every meal
-          </p>
+          <div ng-if="activity2amt > 1" ng-cloak>
+            <p>
+              team members have had their blood pressure checked!
+            </p>
+          </div>
         </div>
       </div>
     </div>

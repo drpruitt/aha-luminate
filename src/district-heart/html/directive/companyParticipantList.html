@@ -12,7 +12,7 @@
             <strong>Amount</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (participantList.sortColumn == 'amountRaised' && !participantList.sortAscending) || participantList.sortColumn != 'amountRaised', 'fa-caret-up': participantList.sortColumn == 'amountRaised' && participantList.sortAscending, 'inactive': participantList.sortColumn != 'amountRaised'}"></span>
           </a>
         </th>
-        <th class="ym-list__column ym-list__column--cta" scope="col" role="columnheader" aria-sort="{{participantList.sortColumn != 'minsActivity' ? 'none' : (participantList.sortAscending ? 'ascending' : 'descending')}}">
+        <th class="ym-list__column ym-list__column--mins" scope="col" role="columnheader" aria-sort="{{participantList.sortColumn != 'minsActivity' ? 'none' : (participantList.sortAscending ? 'ascending' : 'descending')}}">
           <a href="" ng-click="orderParticipants('minsActivity')">
             <strong>Min. of Activity</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (participantList.sortColumn == 'minsActivity' && !participantList.sortAscending) || participantList.sortColumn != 'minsActivity', 'fa-caret-up': participantList.sortColumn == 'minsActivity' && participantList.sortAscending, 'inactive': participantList.sortColumn != 'minsActivity'}"></span>
           </a>
@@ -37,8 +37,8 @@
         <td class="ym-list__column ym-list__column--amount">
           <span>{{participant.amountRaisedFormatted}}</span>
         </td>
-        <td class="ym-list__column ym-list__column--cta">
-          <span>{{participant.minActivity}}
+        <td class="ym-list__column ym-list__column--mins">
+          <span>{{participant.minsActivity|number}}</span>
         </td>
       </tr>
     </tbody>
