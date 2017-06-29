@@ -500,21 +500,28 @@ angular.module 'trPcControllers'
             $scope.minsActivityLog.minsActivityMap = minsActivityMap
       $scope.getMinsActivity()
       $scope.$watch 'minsActivityLog.ng_activity_date', ->
+        activityDate = $scope.minsActivityLog.ng_activity_date
         minsActivity = ''
-        angular.forEach $scope.minsActivityLog.minsActivityMap, (minsActivityData) ->
+        if activityDate and activityDate isnt ''
+          activityDateFormatted = $filter('date') activityDate, 'yyyy-MM-dd'
+          angular.forEach $scope.minsActivityLog.minsActivityMap, (minsActivityData) ->
+            if minsActivityData.date is activityDateFormatted
+              minsActivity = minsActivityData.minutes
+        if minsActivity is 0
           minsActivity = ''
         $scope.minsActivityLog.ng_activity_minutes = minsActivity
       $scope.updateMinsActivity = ->
         activityDate = $scope.minsActivityLog.ng_activity_date
         if not activityDate or activityDate is ''
           activityDate = new Date()
-        console.log activityDate
+          $scope.minsActivityLog.ng_activity_date = activityDate
+        activityDateFormatted = $filter('date') activityDate, 'yyyy-MM-dd'
         minsActivity = $scope.minsActivityLog.ng_activity_minutes
         if not minsActivity or minsActivity is '' or isNaN(minsActivity)
           minsActivity = 0
         companyId = $scope.participantRegistration.companyInformation?.companyId or ''
         teamId = $scope.participantRegistration.teamId or ''
-        ZuriService.logMinutes $scope.frId + '/' + $scope.consId + '/' + activityDate + '?minutes=' + minsActivity + '&company_id=' + companyId + '&team_id=' + teamId,
+        ZuriService.logMinutes $scope.frId + '/' + $scope.consId + '/' + activityDateFormatted + '?minutes=' + minsActivity + '&company_id=' + companyId + '&team_id=' + teamId,
           error: ->
             $scope.getMinsActivity()
           success: ->
