@@ -331,7 +331,15 @@ header {
       }
       
       &.my-hq {
-        right: 180px;
+        left: 115px;
+        
+        @media(min-width: $screen-sm-min){
+          right: 115px;
+          left: inherit;
+        }
+        @media(min-width: $screen-md-min){
+          right: 180px;
+        }
       }
       
       &.my-events {
