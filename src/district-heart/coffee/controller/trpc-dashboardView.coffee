@@ -537,7 +537,7 @@ angular.module 'trPcControllers'
           ZuriService.logMinutes $scope.frId + '/' + $scope.consId + '/' + activityDateFormatted + '?minutes=' + minsActivity + '&company_id=' + companyId + '&team_id=' + teamId,
             error: ->
               delete $scope.minsActivityLog.hasSuccess
-              $scope.minsActivityLog.errorMessage = ''
+              $scope.minsActivityLog.errorMessage = 'An unexpected error occurred. Please try again later.'
               $scope.getMinsActivity()
             success: ->
               delete $scope.minsActivityLog.errorMessage
@@ -549,11 +549,11 @@ angular.module 'trPcControllers'
         NgPcTeamraiserSurveyResponseService.getSurveyResponses()
           .then (response) ->
             if response.data.errorResponse
-              $scope.bloodPressureLog.errorMessage = 'An error occurred saving your response. Please try again later.'
+              $scope.bloodPressureLog.errorMessage = 'An unexpected error occurred. Please try again later.'
             else
-              surveyResponses = response.getSurveyResponsesResponse?.responses
+              surveyResponses = response.data.getSurveyResponsesResponse?.responses
               if not surveyResponses
-                $scope.bloodPressureLog.errorMessage = 'An error occurred saving your response. Please try again later.'
+                $scope.bloodPressureLog.errorMessage = 'An unexpected error occurred. Please try again later.'
               else
                 surveyResponses = [surveyResponses] if not angular.isArray surveyResponses
                 surveyQuestionResponseMap = {}
@@ -564,14 +564,13 @@ angular.module 'trPcControllers'
                     surveyQuestionResponseMap['question_' + surveyResponse.questionId] = surveyResponse.responseValue
                   else if surveyResponse.key is 'ym_district_checked'
                     surveyQuestionResponseMap['question_' + surveyResponse.questionId] = 'true'
-                console.log surveyQuestionResponseMap
                 NgPcTeamraiserSurveyResponseService.updateSurveyResponses $httpParamSerializer(surveyQuestionResponseMap)
                   .then (response) ->
                     if response.data.errorResponse
-                      $scope.bloodPressureLog.errorMessage = 'An error occurred saving your response. Please try again later.'
+                      $scope.bloodPressureLog.errorMessage = 'An unexpected error occurred. Please try again later.'
                     else
                       if response.data.updateSurveyResponsesResponse?.success isnt 'true'
-                        $scope.bloodPressureLog.errorMessage = 'An error occurred saving your response. Please try again later.'
+                        $scope.bloodPressureLog.errorMessage = 'An unexpected error occurred. Please try again later.'
                       else
                         delete $scope.bloodPressureLog.errorMessage
                         $rootScope.bloodPressureChecked = true
