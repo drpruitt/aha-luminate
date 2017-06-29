@@ -556,7 +556,8 @@ angular.module 'trPcControllers'
                 $scope.bloodPressureLog.errorMessage = 'An unexpected error occurred. Please try again later.'
               else
                 surveyResponses = [surveyResponses] if not angular.isArray surveyResponses
-                surveyQuestionResponseMap = {}
+                console.log surveyResponses
+                surveyQuestionResponseMap = undefined
                 angular.forEach surveyResponses, (surveyResponse) ->
                   if not surveyResponse.responseValue or surveyResponse.responseValue is 'User Provided No Response' or not angular.isString surveyResponse.responseValue
                     surveyResponse.responseValue = ''
@@ -564,14 +565,18 @@ angular.module 'trPcControllers'
                     surveyQuestionResponseMap['question_' + surveyResponse.questionId] = surveyResponse.responseValue
                   else if surveyResponse.key is 'ym_district_checked'
                     surveyQuestionResponseMap['question_' + surveyResponse.questionId] = 'true'
-                NgPcTeamraiserSurveyResponseService.updateSurveyResponses $httpParamSerializer(surveyQuestionResponseMap)
-                  .then (response) ->
-                    if response.data.errorResponse
-                      $scope.bloodPressureLog.errorMessage = 'An unexpected error occurred. Please try again later.'
-                    else
-                      if response.data.updateSurveyResponsesResponse?.success isnt 'true'
+                console.log surveyQuestionResponseMap
+                if not surveyQuestionResponseMap
+                  $scope.bloodPressureLog.errorMessage = 'An unexpected error occurred. Please try again later.'
+                else
+                  NgPcTeamraiserSurveyResponseService.updateSurveyResponses $httpParamSerializer(surveyQuestionResponseMap)
+                    .then (response) ->
+                      if response.data.errorResponse
                         $scope.bloodPressureLog.errorMessage = 'An unexpected error occurred. Please try again later.'
                       else
-                        delete $scope.bloodPressureLog.errorMessage
-                        $rootScope.bloodPressureChecked = true
+                        if response.data.updateSurveyResponsesResponse?.success isnt 'true'
+                          $scope.bloodPressureLog.errorMessage = 'An unexpected error occurred. Please try again later.'
+                        else
+                          delete $scope.bloodPressureLog.errorMessage
+                          $rootScope.bloodPressureChecked = true
   ]
