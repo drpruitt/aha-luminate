@@ -478,7 +478,7 @@ header {
           padding-bottom: 17px;
 
           .fa {
-            top: 28%;
+            position: static;
           }
         }
       }
@@ -486,6 +486,10 @@ header {
       .ym-header-welcome-dropdown {
         left: inherit;
         right: 0;
+      }
+
+      .ym-header-hq-btn {
+        display: none;
       }
     }
 
