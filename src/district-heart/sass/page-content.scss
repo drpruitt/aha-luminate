@@ -40,14 +40,20 @@
   
   .form-inline {
     background-color: #e1f5fa;
-    padding: 14px 22px;
-    width: 630px;
+    padding: 15px 20px;
     margin: 0 auto;
     
+    @media (min-width: $screen-sm-min) {
+      width: 630px;
+      padding: 14px 22px;
+    }
+    
     .ym-roster-search-title {
-      display: inline-block;
-      vertical-align: middle;
-      margin-right: 5px;
+      @media (min-width: $screen-sm-min) {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 5px;
+      }
     }
     
     .form-group {
@@ -60,8 +66,23 @@
         display: inline-block;
         text-align: left;
         width: auto;
-        max-width: 162px;
+        max-width: 125px;
+        margin-bottom: 10px;
         vertical-align: middle;
+        
+        @media (min-width: $screen-sm-min) {
+          max-width: 162px;
+          margin-bottom: 0;
+        }
+      }
+      
+      .form-control--wide {
+        max-width: 155px;
+        margin-bottom: 0;
+        
+        @media (min-width: $screen-sm-min) {
+          max-width: 162px;
+        }
       }
     }
     
