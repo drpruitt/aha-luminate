@@ -246,11 +246,13 @@
 
 .ym-pc-dashboard-heart-challenge-icon {
   float: left;
-  margin: 0 30px 0 12px;
+  width: 102px;
+  padding: 0 30px 0 12px;
 }
 
 .ym-pc-dashboard-heart-challenge-body {
   float: left;
+  width: calc(100% - 102px);
 }
 
 .ym-pc-dashboard-heart-challenge-text {
