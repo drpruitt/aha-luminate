@@ -51,6 +51,13 @@
   }
 }
 
+.ym-pc-dashboard-section-header {
+  h2, 
+  .h2 {
+    text-transform: uppercase;
+  }
+}
+
 .ym-pc-dashboard-progress-section {
   .row {
     .ym-pc-dashboard-progress-section__column {
@@ -231,6 +238,20 @@
     h3, 
     .h3 {
       margin: 0 0 30px;
+    }
+  }
+  
+  > .row {
+    > [class*="col-sm-"] {
+      @media (min-width: $screen-sm-min) {
+        border-right: 1px solid #9cbcc5;
+      }
+      
+      &:last-child {
+        @media (min-width: $screen-sm-min) {
+          border-right: 0;
+        }
+      }
     }
   }
 }
@@ -461,8 +482,4 @@
       }
     }
   }
-}
-
-.ym-pc-dashboard-section-header h2 {
-  text-transform: uppercase;
 }
