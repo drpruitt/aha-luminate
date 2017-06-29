@@ -307,7 +307,21 @@ angular.module 'trPageEditControllers'
           closePersonalContent()
           $scope.ng_personalContent = $scope.prevPersonalContent
         $scope.updatePersonalContent = ->
-          TeamraiserParticipantPageService.updatePersonalPageInfo 'rich_text=' + encodeURIComponent($scope.ng_personalContent), 
+          richText = $scope.ng_personalContent
+          $richText = jQuery '<div />', 
+            html: richText
+          richText = $richText.html()
+          richText = richText.replace /<\/?[A-Z]+.*?>/g, (m) ->
+            m.toLowerCase()
+          .replace(/<font>/g, '<span>').replace(/<font /g, '<span ').replace /<\/font>/g, '</span>'
+          .replace(/<b>/g, '<strong>').replace(/<b /g, '<strong ').replace /<\/b>/g, '</strong>'
+          .replace(/<i>/g, '<em>').replace(/<i /g, '<em ').replace /<\/i>/g, '</em>'
+          .replace(/<u>/g, '<span style="text-decoration: underline;">').replace(/<u /g, '<span style="text-decoration: underline;" ').replace /<\/u>/g, '</span>'
+          .replace /[\u00A0-\u9999\&]/gm, (i) ->
+            '&#' + i.charCodeAt(0) + ';'
+          .replace /&#38;/g, '&'
+          .replace /<!--[\s\S]*?-->/g, ''
+          TeamraiserParticipantPageService.updatePersonalPageInfo 'rich_text=' + encodeURIComponent(richText), 
             error: (response) ->
               # TODO
             success: (response) ->
@@ -315,7 +329,7 @@ angular.module 'trPageEditControllers'
               if not success or success isnt 'true'
                 # TODO
               else
-                $scope.personalContent = $scope.ng_personalContent
+                $scope.personalContent = richText
                 closePersonalContent()
         $personalTextContainer.append $compile('<form method="POST" novalidate ng-class="{\'hidden\': !personalContentOpen}" ng-submit="updatePersonalContent()"><div class="form-group"><button type="button" class="btn btn-primary-inverted btn-raised" ng-click="cancelEditPersonalContent()">Cancel</button> <button type="submit" class="btn btn-primary btn-raised">Save</button></div><div class="form-group"><div text-angular ng-model="ng_personalContent" ta-toolbar="{{textEditorToolbar}}" ta-text-editor-class="border-around" ta-html-editor-class="border-around"></div></div></form>')($scope)
       
@@ -384,7 +398,21 @@ angular.module 'trPageEditControllers'
           closeTeamContent()
           $scope.ng_teamContent = $scope.prevTeamContent
         $scope.updateTeamContent = ->
-          TeamraiserTeamPageService.updateTeamPageInfo 'rich_text=' + encodeURIComponent($scope.ng_teamContent), 
+          richText = $scope.ng_teamContent
+          $richText = jQuery '<div />', 
+            html: richText
+          richText = $richText.html()
+          richText = richText.replace /<\/?[A-Z]+.*?>/g, (m) ->
+            m.toLowerCase()
+          .replace(/<font>/g, '<span>').replace(/<font /g, '<span ').replace /<\/font>/g, '</span>'
+          .replace(/<b>/g, '<strong>').replace(/<b /g, '<strong ').replace /<\/b>/g, '</strong>'
+          .replace(/<i>/g, '<em>').replace(/<i /g, '<em ').replace /<\/i>/g, '</em>'
+          .replace(/<u>/g, '<span style="text-decoration: underline;">').replace(/<u /g, '<span style="text-decoration: underline;" ').replace /<\/u>/g, '</span>'
+          .replace /[\u00A0-\u9999\&]/gm, (i) ->
+            '&#' + i.charCodeAt(0) + ';'
+          .replace /&#38;/g, '&'
+          .replace /<!--[\s\S]*?-->/g, ''
+          TeamraiserTeamPageService.updateTeamPageInfo 'rich_text=' + encodeURIComponent(richText), 
             error: (response) ->
               # TODO
             success: (response) ->
@@ -392,7 +420,7 @@ angular.module 'trPageEditControllers'
               if not success or success isnt 'true'
                 # TODO
               else
-                $scope.teamContent = $scope.ng_teamContent
+                $scope.teamContent = richText
                 closeTeamContent()
         $teamPageTextContainer.append $compile('<form method="POST" novalidate ng-class="{\'hidden\': !teamContentOpen}" ng-submit="updateTeamContent()"><div class="form-group"><button type="button" class="btn btn-primary-inverted btn-raised" ng-click="cancelEditTeamContent()">Cancel</button> <button type="submit" class="btn btn-primary btn-raised">Save</button></div><div class="form-group"><div text-angular ng-model="ng_teamContent" ta-toolbar="{{textEditorToolbar}}" ta-text-editor-class="border-around" ta-html-editor-class="border-around"></div></div></form>')($scope)
       
@@ -471,7 +499,21 @@ angular.module 'trPageEditControllers'
                   closeCompanyContent()
                   $scope.ng_companyContent = $scope.prevCompanyContent
                 $scope.updateCompanyContent = ->
-                  TeamraiserCompanyPageService.updateCompanyPageInfo 'rich_text=' + encodeURIComponent($scope.ng_companyContent), 
+                  richText = $scope.ng_companyContent
+                  $richText = jQuery '<div />', 
+                    html: richText
+                  richText = $richText.html()
+                  richText = richText.replace /<\/?[A-Z]+.*?>/g, (m) ->
+                    m.toLowerCase()
+                  .replace(/<font>/g, '<span>').replace(/<font /g, '<span ').replace /<\/font>/g, '</span>'
+                  .replace(/<b>/g, '<strong>').replace(/<b /g, '<strong ').replace /<\/b>/g, '</strong>'
+                  .replace(/<i>/g, '<em>').replace(/<i /g, '<em ').replace /<\/i>/g, '</em>'
+                  .replace(/<u>/g, '<span style="text-decoration: underline;">').replace(/<u /g, '<span style="text-decoration: underline;" ').replace /<\/u>/g, '</span>'
+                  .replace /[\u00A0-\u9999\&]/gm, (i) ->
+                    '&#' + i.charCodeAt(0) + ';'
+                  .replace /&#38;/g, '&'
+                  .replace /<!--[\s\S]*?-->/g, ''
+                  TeamraiserCompanyPageService.updateCompanyPageInfo 'rich_text=' + encodeURIComponent(richText), 
                     error: (response) ->
                       # TODO
                     success: (response) ->
@@ -479,7 +521,7 @@ angular.module 'trPageEditControllers'
                       if not success or success isnt 'true'
                         # TODO
                       else
-                        $scope.companyContent = $scope.ng_companyContent
+                        $scope.companyContent = richText
                         closeCompanyContent()
                 $companyPageTextContainer.append $compile('<form method="POST" novalidate ng-class="{\'hidden\': !companyContentOpen}" ng-submit="updateCompanyContent()"><div class="form-group"><button type="button" class="btn btn-primary-inverted btn-raised" ng-click="cancelEditCompanyContent()">Cancel</button> <button type="submit" class="btn btn-primary btn-raised">Save</button></div><div class="form-group"><div text-angular ng-model="ng_companyContent" ta-toolbar="{{textEditorToolbar}}" ta-text-editor-class="border-around" ta-html-editor-class="border-around"></div></div></form>')($scope)
       

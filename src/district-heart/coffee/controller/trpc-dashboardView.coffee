@@ -6,6 +6,7 @@ angular.module 'trPcControllers'
     '$uibModal'
     'APP_INFO'
     'ParticipantBadgesService'
+    'ZuriService'
     'NgPcTeamraiserRegistrationService'
     'NgPcTeamraiserProgressService'
     'NgPcTeamraiserTeamService'
@@ -15,7 +16,7 @@ angular.module 'trPcControllers'
     'NgPcInteractionService'
     'NgPcTeamraiserCompanyService'
     '$timeout'
-    ($rootScope, $scope, $filter, $uibModal, APP_INFO, ParticipantBadgesService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserGiftService, NgPcContactService, NgPcTeamraiserShortcutURLService, NgPcInteractionService, NgPcTeamraiserCompanyService, $timeout) ->
+    ($rootScope, $scope, $filter, $uibModal, APP_INFO, ParticipantBadgesService, ZuriService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserGiftService, NgPcContactService, NgPcTeamraiserShortcutURLService, NgPcInteractionService, NgPcTeamraiserCompanyService, $timeout) ->
       $scope.dashboardPromises = []
       
       $dataRoot = angular.element '[data-embed-root]'
@@ -163,7 +164,7 @@ angular.module 'trPcControllers'
         interactionId: ''
       
       if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
-        NgPcInteractionService.getUserInteractions 'interaction_type_id=' + interactionTypeId + '&cons_id=' + $scope.participantRegistration.consId + '&list_page_size=1'
+        NgPcInteractionService.getUserInteractions 'interaction_type_id=' + interactionTypeId + '&cons_id=' + $scope.consId + '&list_page_size=1'
           .then (response) ->
             $scope.coordinatorMessage.text = ''
             $scope.coordinatorMessage.interactionId = ''
@@ -186,7 +187,7 @@ angular.module 'trPcControllers'
         
         $scope.updateCoordinatorMessage = ->
           if $scope.coordinatorMessage.interactionId is ''
-            NgPcInteractionService.logInteraction 'interaction_type_id=' + interactionTypeId + '&cons_id=' + $scope.participantRegistration.consId + '&interaction_subject=' + $scope.participantRegistration.companyInformation.companyId + '&interaction_body=' + $scope.coordinatorMessage.text
+            NgPcInteractionService.logInteraction 'interaction_type_id=' + interactionTypeId + '&cons_id=' + $scope.consId + '&interaction_subject=' + $scope.participantRegistration.companyInformation.companyId + '&interaction_body=' + $scope.coordinatorMessage.text
                 .then (response) ->
                   if response.data.updateConsResponse.message 
                     $scope.coordinatorMessage.successMessage = true
@@ -194,7 +195,7 @@ angular.module 'trPcControllers'
                   else
                     $scope.coordinatorMessage.errorMessage = 'There was an error processing your update. Please try again later.' 
           else
-            NgPcInteractionService.updateInteraction 'interaction_id=' + $scope.coordinatorMessage.interactionId + '&cons_id=' + $scope.participantRegistration.consId + '&interaction_subject=' + $scope.participantRegistration.companyInformation.companyId + '&interaction_body=' + $scope.coordinatorMessage.text
+            NgPcInteractionService.updateInteraction 'interaction_id=' + $scope.coordinatorMessage.interactionId + '&cons_id=' + $scope.consId + '&interaction_subject=' + $scope.participantRegistration.companyInformation.companyId + '&interaction_body=' + $scope.coordinatorMessage.text
               .then (response) ->
                 if response.data.errorResponse 
                   $scope.coordinatorMessage.errorMessage = 'There was an error processing your update. Please try again later.' 
@@ -487,4 +488,48 @@ angular.module 'trPcControllers'
               earned: prize.earned_datetime
         , (response) ->
           # TODO
+      
+      $scope.minsActivityLog =
+        ng_activity_date: new Date()
+      setMinsActivityForDate = ->
+        activityDate = $scope.minsActivityLog.ng_activity_date
+        minsActivity = ''
+        if activityDate and activityDate isnt ''
+          activityDateFormatted = $filter('date') activityDate, 'yyyy-MM-dd'
+          angular.forEach $scope.minsActivityLog.minsActivityMap, (minsActivityData) ->
+            if minsActivityData.date is activityDateFormatted
+              minsActivity = minsActivityData.minutes
+        if minsActivity is 0
+          minsActivity = ''
+        $scope.minsActivityLog.ng_activity_minutes = minsActivity
+      setMinsActivityForDate()
+      $scope.getMinsActivity = ->
+        ZuriService.getMinutes $scope.frId + '/' + $scope.consId,
+          error: ->
+            $scope.minsActivityLog.minsActivityMap = []
+          success: (response) ->
+            minsActivityMap = response.data.data?.list or []
+            $scope.minsActivityLog.minsActivityMap = minsActivityMap
+            setMinsActivityForDate()
+      $scope.getMinsActivity()
+      $scope.$watch 'minsActivityLog.ng_activity_date', ->
+        setMinsActivityForDate()
+      $scope.updateMinsActivity = ->
+        activityDate = $scope.minsActivityLog.ng_activity_date
+        if not activityDate or activityDate is ''
+          activityDate = new Date()
+          $scope.minsActivityLog.ng_activity_date = activityDate
+        activityDateFormatted = $filter('date') activityDate, 'yyyy-MM-dd'
+        minsActivity = $scope.minsActivityLog.ng_activity_minutes
+        if not minsActivity or minsActivity is '' or isNaN(minsActivity)
+          minsActivity = 0
+        companyId = $scope.participantRegistration.companyInformation?.companyId or ''
+        teamId = $scope.participantRegistration.teamId or ''
+        ZuriService.logMinutes $scope.frId + '/' + $scope.consId + '/' + activityDateFormatted + '?minutes=' + minsActivity + '&company_id=' + companyId + '&team_id=' + teamId,
+          error: ->
+            delete $scope.minsActivityLog.hasSuccess
+            $scope.getMinsActivity()
+          success: ->
+            $scope.minsActivityLog.hasSuccess = true
+            $scope.getMinsActivity()
   ]
