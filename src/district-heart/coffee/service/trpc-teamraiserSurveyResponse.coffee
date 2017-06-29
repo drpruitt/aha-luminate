@@ -8,8 +8,8 @@ angular.module 'trPcApp'
         NgPcLuminateRESTService.teamraiserRequest dataString, true, true
           .then (response) ->
             response
-        
-        updateSurveyResponses: (requestData) ->
+      
+      updateSurveyResponses: (requestData) ->
         dataString = 'method=updateSurveyResponses'
         dataString += '&' + requestData if requestData and requestData isnt ''
         NgPcLuminateRESTService.teamraiserRequest dataString, true, true
