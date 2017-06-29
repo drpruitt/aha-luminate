@@ -254,12 +254,19 @@
       margin: 0 10px 10px 0;
       
       input[type="date"].form-control {
+        width: 165px;
         max-width: 165px;
       }
       
       input[type="number"].form-control {
+        width: 130px;
         max-width: 130px;
       }
+    }
+    
+    .btn {
+      text-align: center;
+      width: 165px;
     }
   }
 }
