@@ -495,12 +495,18 @@ angular.module 'trPcControllers'
         ZuriService.getMinutes $scope.frId + '/' + $scope.consId,
           error: ->
             $scope.minsActivityLog.minsActivityMap = []
-          success: ->
-            $scope.minsActivityLog.minsActivityMap = []
+          success: (response) ->
+            minsActivityMap = response.data.data?.list or []
+            $scope.minsActivityLog.minsActivityMap = minsActivityMap
       $scope.getMinsActivity()
       $scope.$watch 'minsActivityLog.ng_activity_date', ->
         angular.forEach $scope.minsActivityLog.minsActivityMap, (minsActivityData) ->
           $scope.minsActivityLog.ng_activity_minutes = ''
       $scope.updateMinsActivity = ->
-        # TODO
+        activityDate = '2017-06-29'
+        ZuriService.logMinutes $scope.frId + '/' + $scope.consId + '/' + activityDate,
+          error: ->
+            # TODO
+          success: ->
+            # TODO
   ]
