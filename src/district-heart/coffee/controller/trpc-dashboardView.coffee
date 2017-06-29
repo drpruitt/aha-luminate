@@ -6,6 +6,7 @@ angular.module 'trPcControllers'
     '$uibModal'
     'APP_INFO'
     'ParticipantBadgesService'
+    'ZuriService'
     'NgPcTeamraiserRegistrationService'
     'NgPcTeamraiserProgressService'
     'NgPcTeamraiserTeamService'
@@ -15,7 +16,7 @@ angular.module 'trPcControllers'
     'NgPcInteractionService'
     'NgPcTeamraiserCompanyService'
     '$timeout'
-    ($rootScope, $scope, $filter, $uibModal, APP_INFO, ParticipantBadgesService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserGiftService, NgPcContactService, NgPcTeamraiserShortcutURLService, NgPcInteractionService, NgPcTeamraiserCompanyService, $timeout) ->
+    ($rootScope, $scope, $filter, $uibModal, APP_INFO, ParticipantBadgesService, ZuriService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserGiftService, NgPcContactService, NgPcTeamraiserShortcutURLService, NgPcInteractionService, NgPcTeamraiserCompanyService, $timeout) ->
       $scope.dashboardPromises = []
       
       $dataRoot = angular.element '[data-embed-root]'
@@ -163,7 +164,7 @@ angular.module 'trPcControllers'
         interactionId: ''
       
       if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
-        NgPcInteractionService.getUserInteractions 'interaction_type_id=' + interactionTypeId + '&cons_id=' + $scope.participantRegistration.consId + '&list_page_size=1'
+        NgPcInteractionService.getUserInteractions 'interaction_type_id=' + interactionTypeId + '&cons_id=' + $scope.consId + '&list_page_size=1'
           .then (response) ->
             $scope.coordinatorMessage.text = ''
             $scope.coordinatorMessage.interactionId = ''
@@ -186,7 +187,7 @@ angular.module 'trPcControllers'
         
         $scope.updateCoordinatorMessage = ->
           if $scope.coordinatorMessage.interactionId is ''
-            NgPcInteractionService.logInteraction 'interaction_type_id=' + interactionTypeId + '&cons_id=' + $scope.participantRegistration.consId + '&interaction_subject=' + $scope.participantRegistration.companyInformation.companyId + '&interaction_body=' + $scope.coordinatorMessage.text
+            NgPcInteractionService.logInteraction 'interaction_type_id=' + interactionTypeId + '&cons_id=' + $scope.consId + '&interaction_subject=' + $scope.participantRegistration.companyInformation.companyId + '&interaction_body=' + $scope.coordinatorMessage.text
                 .then (response) ->
                   if response.data.updateConsResponse.message 
                     $scope.coordinatorMessage.successMessage = true
@@ -194,7 +195,7 @@ angular.module 'trPcControllers'
                   else
                     $scope.coordinatorMessage.errorMessage = 'There was an error processing your update. Please try again later.' 
           else
-            NgPcInteractionService.updateInteraction 'interaction_id=' + $scope.coordinatorMessage.interactionId + '&cons_id=' + $scope.participantRegistration.consId + '&interaction_subject=' + $scope.participantRegistration.companyInformation.companyId + '&interaction_body=' + $scope.coordinatorMessage.text
+            NgPcInteractionService.updateInteraction 'interaction_id=' + $scope.coordinatorMessage.interactionId + '&cons_id=' + $scope.consId + '&interaction_subject=' + $scope.participantRegistration.companyInformation.companyId + '&interaction_body=' + $scope.coordinatorMessage.text
               .then (response) ->
                 if response.data.errorResponse 
                   $scope.coordinatorMessage.errorMessage = 'There was an error processing your update. Please try again later.' 
@@ -487,4 +488,16 @@ angular.module 'trPcControllers'
               earned: prize.earned_datetime
         , (response) ->
           # TODO
+      
+      $scope.minsActivityLog =
+        ng_activity_date: new Date()
+        ng_activity_minutes: ''
+      $scope.getMinsActivity = ->
+        ZuriService.getMinutes $scope.frId + '/' + $scope.consId,
+          error: ->
+            # TODO
+          success: ->
+            # TODO
+      $scope.$watch 'minsActivityLog.ng_activity_date', ->
+        # TODO
   ]
