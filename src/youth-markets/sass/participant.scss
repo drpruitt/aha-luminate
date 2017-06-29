@@ -1019,6 +1019,25 @@ main > .container {
     font-size: 15px;
   }
 
+  .close {
+    background: $event-primary;
+    border: 2px solid $brand-white;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    opacity: 1;
+    position: absolute;
+    right: -10px;
+    top:-10px;
+
+    span {
+      color: $brand-white;
+      font-size: 35px;
+      font-weight: normal;
+      line-height: 18px;
+    }
+  }
+
   .modal-header__btns {
     float: right;
 
