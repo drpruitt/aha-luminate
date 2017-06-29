@@ -456,3 +456,38 @@ header {
     }
   }
 }
+
+.app-27 {
+  header nav {
+    @media(max-width: $screen-sm) {
+      .ym-header-logged-in {
+        float: none;
+        width: 100%;
+      }
+      .ym-header-welcome{
+        float: none;
+        text-align: right;
+        width: 99%;
+      }
+      .ym-header-welcome-toggle {
+        &,
+        &:focus,
+        &:hover,
+        &:visited {
+          position: static;
+          padding-bottom: 17px;
+
+          .fa {
+            top: 28%;
+          }
+        }
+      }
+
+      .ym-header-welcome-dropdown {
+        left: inherit;
+        right: 0;
+      }
+    }
+
+  }
+}
