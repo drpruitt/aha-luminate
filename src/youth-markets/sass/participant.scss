@@ -471,6 +471,9 @@ main > .container {
   width: 50%;
 
   a {
+    @media(max-width: $screen-xs){
+      font-size: 13px;
+    }
     &,
     &:link,
     &:visited {
@@ -898,7 +901,6 @@ main > .container {
     margin: 0 0 20px;
 
     .ym-activity-box-number {
-      display: inline-block;
       background: $event-secondary;
       border-radius: 100%;
       color: $brand-white;
@@ -908,7 +910,14 @@ main > .container {
       width: 42px;
       height: 42px;
       padding: 8px;
-      margin-right: 3px;
+      display: block;
+      margin-right: 10px;
+      float: left;
+      @media (min-width: $screen-xs-min){
+        display: inline-block;
+        float: none;
+        margin-right: 3px;
+      }
     }
   }
 }
@@ -1415,6 +1424,12 @@ main > .container {
   }
 }
 
+.ym-pc-dashboard-coordinator-steps-section h2 {
+  @media (max-width: $screen-sm-max) {
+    margin-bottom: 20px;
+  }
+}
+
 .ym-activity-box--captain-pages, 
 .ym-activity-box--coordinator-pages {
   .ym-activity-url {
@@ -1455,11 +1470,15 @@ main > .container {
     }
     
     p {
-      display: inline-block;
+      display: block;
       font-size: $font-size-sm;
       line-height: 18px;
       margin: 0;
       vertical-align: bottom;
+
+      @media (min-width: $screen-xs-min) {
+        display: inline-block;
+      }
       
       @media (min-width: $screen-sm-min) {
         display: block;
@@ -1505,6 +1524,10 @@ main > .container {
       background: $event-secondary;
       color: $brand-white;
       text-decoration: none;
+    }
+
+    @media(max-width: $screen-xs){
+      font-size: 13px;
     }
   }
   
@@ -1682,7 +1705,8 @@ main > .container {
   }
   
   .btn, 
-  a.btn {
+  a.btn,
+  button {
     &, 
     &:link, 
     &:visited, 
@@ -1690,11 +1714,14 @@ main > .container {
     &:focus, 
     &:active {
       display: block;
-      margin: 0 0 12px;
+      margin: 0 auto 12px;
+      width: 100%;
+      max-width: 250px;
       
-      @media (min-width: 375px) {
+      @media (min-width: $screen-xs-min) {
         display: inline-block;
         margin: 0 0 0 10px;
+        width: auto;
       }
     }
   }
