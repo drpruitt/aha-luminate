@@ -941,6 +941,9 @@
                     Enter your active minutes for today or update your log for another day.
                   </p>
                 </div>
+                <div class="alert alert-danger" ng-if="minsActivityLog.errorMessage && minsActivityLog.errorMessage != ''" ng-cloak>
+                  <strong><span ng-bind-html="minsActivityLog.errorMessage"></span></strong>
+                </div>
                 <div class="alert alert-success" ng-if="minsActivityLog.hasSuccess" ng-cloak>
                   <strong>Activity updated</strong>
                 </div>

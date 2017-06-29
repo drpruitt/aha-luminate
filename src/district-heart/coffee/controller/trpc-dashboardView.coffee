@@ -513,23 +513,28 @@ angular.module 'trPcControllers'
             setMinsActivityForDate()
       $scope.getMinsActivity()
       $scope.$watch 'minsActivityLog.ng_activity_date', ->
+        delete $scope.minsActivityLog.errorMessage
+        delete $scope.minsActivityLog.hasSuccess
         setMinsActivityForDate()
+      # TODO: reset errorMessage and hasSuccess when ng_activity_minutes changes
       $scope.updateMinsActivity = ->
         activityDate = $scope.minsActivityLog.ng_activity_date
         if not activityDate or activityDate is ''
-          activityDate = new Date()
-          $scope.minsActivityLog.ng_activity_date = activityDate
-        activityDateFormatted = $filter('date') activityDate, 'yyyy-MM-dd'
-        minsActivity = $scope.minsActivityLog.ng_activity_minutes
-        if not minsActivity or minsActivity is '' or isNaN(minsActivity)
-          minsActivity = 0
-        companyId = $scope.participantRegistration.companyInformation?.companyId or ''
-        teamId = $scope.participantRegistration.teamId or ''
-        ZuriService.logMinutes $scope.frId + '/' + $scope.consId + '/' + activityDateFormatted + '?minutes=' + minsActivity + '&company_id=' + companyId + '&team_id=' + teamId,
-          error: ->
-            delete $scope.minsActivityLog.hasSuccess
-            $scope.getMinsActivity()
-          success: ->
-            $scope.minsActivityLog.hasSuccess = true
-            $scope.getMinsActivity()
+          $scope.minsActivityLog.errorMessage = 'Please select a date'
+        else
+          activityDateFormatted = $filter('date') activityDate, 'yyyy-MM-dd'
+          minsActivity = $scope.minsActivityLog.ng_activity_minutes
+          if not minsActivity or minsActivity is '' or isNaN(minsActivity)
+            minsActivity = 0
+          companyId = $scope.participantRegistration.companyInformation?.companyId or ''
+          teamId = $scope.participantRegistration.teamId or ''
+          ZuriService.logMinutes $scope.frId + '/' + $scope.consId + '/' + activityDateFormatted + '?minutes=' + minsActivity + '&company_id=' + companyId + '&team_id=' + teamId,
+            error: ->
+              delete $scope.minsActivityLog.hasSuccess
+              $scope.minsActivityLog.errorMessage = ''
+              $scope.getMinsActivity()
+            success: ->
+              delete $scope.minsActivityLog.errorMessage
+              $scope.minsActivityLog.hasSuccess = true
+              $scope.getMinsActivity()
   ]
