@@ -929,44 +929,54 @@
     </div>
     <div class="row">
       <div class="col-sm-6">
-        <div>
-          Challenge: Log your minutes of activity every day!
+        <div class="ym-pc-dashboard-heart-challenge-title">
+          <span>Challenge:</span> Log your minutes of activity every day!
         </div>
         <div class="clearfix">
           <div>
-            <div>
-              Enter your active minutes for today or update your log for another day.
+            <div class="ym-pc-dashboard-heart-challenge-mins-activity">
+              <div class="ym-pc-dashboard-heart-challenge-text">
+                <p>
+                  Enter your active minutes for today or update your log for another day.
+                </p>
+              </div>
+              <form class="form-inline" name="minsActivityLogForm" method="POST">
+                <div class="form-group">
+                  <label for="minsActivityLog-ng_activity_date" class="sr-only">Activity Date:</label>
+                  <input type="date" class="form-control" id="minsActivityLog-ng_activity_date" name="ng_activity_date" ng-model="minsActivityLog.ng_activity_date" placeholder="mm/dd/yyyy">
+                </div>
+                <div class="form-group">
+                  <label for="minsActivityLog-ng_activity_minutes" class="sr-only">Minutes of Activity:</label>
+                  <input type="number" class="form-control" id="minsActivityLog-ng_activity_minutes" name="ng_activity_minutes" ng-model="minsActivityLog.ng_activity_minutes" placeholder="Minutes">
+                </div>
+                <div>
+                  <button type="button" class="btn btn-md-wide btn-primary">
+                    <strong>Update Your Log</strong>
+                  </button>
+                </div>
+              </form>
             </div>
-            <form class="form-inline" name="minsActivityLogForm" method="POST">
-              <div class="form-group">
-                <label for="minsActivityLog-ng_activity_date" class="sr-only">Activity Date:</label>
-                <input type="date" class="form-control" id="minsActivityLog-ng_activity_date" name="ng_activity_date" ng-model="minsActivityLog.ng_activity_date" placeholder="Enter Date">
-              </div>
-              <div class="form-group">
-                <label for="minsActivityLog-ng_activity_minutes" class="sr-only">Minutes of Activity:</label>
-                <input type="number" class="form-control" id="minsActivityLog-ng_activity_minutes" name="ng_activity_minutes" ng-model="minsActivityLog.ng_activity_minutes" placeholder="Minutes">
-              </div>
-              <button type="button" class="btn btn-primary">
-                <strong>Update Your Log</strong>
-              </button>
-            </form>
           </div>
         </div>
       </div>
       <div class="col-sm-6">
-        <div>
-          Challenge: Get your blood pressure checked!
+        <div class="ym-pc-dashboard-heart-challenge-title">
+          <span>Challenge:</span> Get your blood pressure checked!
         </div>
         <div class="clearfix">
           <div>
-            <div>
-              Knowing your numbers can add 5 years to your life!
-            </div>
-            <button type="button" class="btn btn-primary" ng-if="!bloodPressureChecked" ng-cloak>
-              <strong>I Have Met This Challenge!</strong> <i class="fa fa-check" hidden aria-hidden="true"></i>
-            </button>
-            <div class="alert alert-success" ng-if="bloodPressureChecked" ng-cloak>
-              <strong>Challenge met</strong> <i class="fa fa-check" hidden aria-hidden="true"></i>
+            <div class="ym-pc-dashboard-heart-challenge-blood-pressure">
+              <div class="ym-pc-dashboard-heart-challenge-text">
+                <p>
+                  Knowing your numbers can add 5 years to your life!
+                </p>
+              </div>
+              <button type="button" class="btn btn-primary" ng-if="!bloodPressureChecked" ng-cloak>
+                <strong>I Have Met This Challenge!</strong> <i class="fa fa-check" hidden aria-hidden="true"></i>
+              </button>
+              <div class="alert alert-success" ng-if="bloodPressureChecked" ng-cloak>
+                <strong>Challenge met</strong> <i class="fa fa-check" hidden aria-hidden="true"></i>
+              </div>
             </div>
           </div>
         </div>
