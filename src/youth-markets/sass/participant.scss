@@ -864,13 +864,17 @@ main > .container {
         margin: 0;
       }
       
-      p {
-        display: inline-block;
+     p {
+        display: block;
         font-size: $font-size-sm;
         line-height: 18px;
         margin: 0;
         vertical-align: bottom;
 
+        @media (min-width: $screen-xs-min) {
+          display: inline-block;
+        }
+        
         @media (min-width: $screen-sm-min) {
           display: block;
           margin: 0 0 8px;
