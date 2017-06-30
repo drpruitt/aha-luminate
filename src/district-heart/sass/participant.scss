@@ -15,7 +15,7 @@
       @media (min-width: 670px) {
         width: 20%;
       }
-
+      
       &.ng-pc-nav-item--resources {
         padding: 12px 6px 0;
         
@@ -242,14 +242,21 @@
   }
   
   > .row {
-    > [class*="col-sm-"] {
+    .col-sm-6 {
       @media (min-width: $screen-sm-min) {
         border-right: 1px solid #9cbcc5;
+      }
+      
+      &:first-child {
+        @media (min-width: $screen-sm-min) {
+          padding-right: 32px;
+        }
       }
       
       &:last-child {
         @media (min-width: $screen-sm-min) {
           border-right: 0;
+          padding-left: 32px;
         }
       }
     }
