@@ -56,11 +56,12 @@ angular.module 'trPcApp'
     '$location'
     '$route'
     '$uibModal'
+    'APP_INFO'
     'AuthService'
     'TeamraiserEventService'
     'TeamraiserRegistrationService'
     'CoachingMarkService'
-    ($rootScope, $location, $route, $uibModal, AuthService, TeamraiserEventService, TeamraiserRegistrationService, CoachingMarkService) ->
+    ($rootScope, $location, $route, $uibModal, APP_INFO, AuthService, TeamraiserEventService, TeamraiserRegistrationService, CoachingMarkService) ->
       $rootScope.$on '$routeChangeStart', ($event, next, current) ->
         # set active tab
         if next.originalPath
