@@ -98,6 +98,27 @@ module.exports = {
     ]
   }, 
   
+  "high-school": {
+    files: [
+      {
+        expand: true, 
+        cwd: 'dist/high-school/css/', 
+        src: [
+          'main.css'
+        ], 
+        dest: 'dist/high-school/css/'
+      }, 
+      {
+        expand: true, 
+        cwd: 'dist/high-school/css/', 
+        src: [
+          'participant.css'
+        ], 
+        dest: 'dist/high-school/css/'
+      }
+    ]
+  }, 
+  
   "district-heart": {
     files: [
       {

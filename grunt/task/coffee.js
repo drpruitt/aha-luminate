@@ -107,6 +107,31 @@ module.exports = {
     }
   }, 
   
+  "high-school": {
+    files: {
+      'dist/high-school/js/main.js': [
+        'src/high-school/coffee/init.coffee', 
+        'src/high-school/coffee/config/*.*', 
+        '!src/high-school/coffee/config/trpc-*.*', 
+        'src/global/coffee/service/*.*', 
+        '!src/global/coffee/service/trpc-*.*', 
+        'src/high-school/coffee/service/*.*', 
+        '!src/high-school/coffee/service/trpc-*.*', 
+        'src/global/coffee/directive/*.*', 
+        'src/high-school/coffee/directive/*.*', 
+        '!src/high-school/coffee/directive/trpc-*.*', 
+        'src/high-school/coffee/**/*.*', 
+        '!src/high-school/coffee/**/trpc-*.*'
+      ], 
+      'dist/high-school/js/participant.js': [
+        'src/high-school/coffee/trpc-init.coffee', 
+        'src/high-school/coffee/config/trpc-*.*', 
+        'src/global/coffee/service/trpc-*.*', 
+        'src/high-school/coffee/**/trpc-*.*'
+      ]
+    }
+  }, 
+  
   "district-heart": {
     files: {
       'dist/district-heart/js/main.js': [
