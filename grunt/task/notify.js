@@ -50,6 +50,13 @@ module.exports = {
     }
   }, 
   
+  "high-school": {
+    options: {
+      title: 'AHA Luminate Framework', 
+      message: 'High School files updated.'
+    }
+  }, 
+  
   "district-heart": {
     options: {
       title: 'AHA Luminate Framework', 

@@ -75,6 +75,19 @@ module.exports = {
     ]
   }, 
   
+  "high-school": {
+    files: [
+      {
+        expand: true, 
+        cwd: 'src/high-school/html/', 
+        src: [
+          '**/*.*'
+        ], 
+        dest: "dist/high-school/html/"
+      }
+    ]
+  }, 
+  
   "district-heart": {
     files: [
       {

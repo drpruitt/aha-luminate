@@ -57,6 +57,19 @@ module.exports = {
     ]
   }, 
   
+  "high-school": {
+    files: [
+      {
+        src: 'dist/high-school/css/main.css', 
+        dest: 'dist/high-school/css/main.'+ '<%= timestamp %>' +'.min.css'
+      }, 
+      {
+        src: 'dist/high-school/css/participant.css', 
+        dest: 'dist/high-school/css/participant.'+'<%= timestamp %>'+'.min.css'
+      }
+    ]
+  }, 
+  
   "district-heart": {
     files: [
       {

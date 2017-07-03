@@ -69,6 +69,23 @@ module.exports = {
     ]
   }, 
   
+  "high-school": {
+    files: [
+      {
+        src: [
+          'dist/high-school/js/main.js'
+        ], 
+        dest: 'dist/high-school/js/main.' + '<%= timestamp %>' + '.min.js'
+      }, 
+      {
+        src: [
+          'dist/high-school/js/participant.js'
+        ], 
+        dest: 'dist/high-school/js/participant.' + '<%= timestamp %>' + '.min.js'
+      }
+    ]
+  }, 
+  
   "district-heart": {
     files: [
       {

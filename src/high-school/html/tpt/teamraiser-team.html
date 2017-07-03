@@ -1,0 +1,223 @@
+<div ng-controller="TeamPageCtrl" ng-cloak>
+  <div class="ym-page-section ym-page-section__top">
+    <div class="col-md-6 ym-user-image" ng-init="teamPagePhoto1.customUrl = '[[C4:graphic_upload]]'; teamPagePhoto1.caption = '[[T6:[[C1:graphic_caption]]]]'" ng-style="{'background-image': (teamPagePhoto1.customUrl && teamPagePhoto1.customUrl != '') ? ('url(' + teamPagePhoto1.customUrl + ')') : ('url(' + teamPagePhoto1.defaultUrl + ')')}">
+      <div class="ym-user-image-inner">
+        [[?
+          [[?xx::x[[S1:cons_id]]x::::
+            [[?x[[E48:[[S80:trID]]:team-id]]xTRUEx::x[[S334:team_id]]x[[E48:[[S80:trID]]-[[S1:cons_id]]:if-is-captain]]x::T::]]
+          ]]
+        ::T::
+          <button type="button" class="btn btn-md-wide btn-toggle" ng-click="editTeamPhoto1()">
+            <span class="fa fa-camera"></span> Edit Photo
+          </button>
+        ::]]
+        <img class="hidden-md hidden-lg" ng-src="{{teamPagePhoto1.customUrl && teamPagePhoto1.customUrl != '' ? teamPagePhoto1.customUrl : teamPagePhoto1.defaultUrl}}" alt="{{teamPagePhoto1.caption != '' ? teamPagePhoto1.caption : 'Team Photo'}}" ng-cloak>
+      </div>
+      <div class="caption" ng-if="teamPagePhoto1.caption && teamPagePhoto1.caption != ''" ng-cloak>
+        <span ng-bind-html="teamPagePhoto1.caption"></span>
+      </div>
+    </div>
+    <div class="col-md-6 ym-progress ym-secondary-medium-color">
+      <h2 class="ym-progress__title h4">
+        Help us raise more life-saving donations!
+      </h2>
+      <div class="ym-progress__cta">
+          <a class="btn btn-lg btn-primary" href="TRR?fr_id=[[S334:fr_id]]&amp;pg=tfind&amp;fr_tjoin=[[S334:team_id]]&amp;s_frTJoin=[[S334:team_id]]&amp;s_frCompanyId=[[E43:[[S80:trID]]:company-id:[[S334:team_id]]]]">
+            Sign Up
+          </a>
+          <a class="btn btn-lg btn-primary" href="Donation2?df_id=[[E42:[[S334:fr_id]]:form-id]]&amp;FR_ID=[[S334:fr_id]]&amp;PROXY_TYPE=22&amp;PROXY_ID=[[S334:team_id]]">
+            Donate
+          </a>
+      </div>
+      <div class="ym-progress__thermometer" ng-if="teamProgress.goal && teamProgress.goal != 0" name="Class Progress Bar" aria-valuetext="{{teamProgress.percent}} percent of fundraising progress" role="progressbar" aria-valuenow="{{teamProgress.percent}}" aria-valuemin="0" aria-valuemax="100" ng-cloak>
+        <div class="ym-progress__thermometer--fill" ng-style="{'width': teamProgress.percent + '%'}"></div>
+      </div>
+      <div class="ym-progress__stats">
+        <div class="ym-progress__amount col-sm-6">
+          <p>
+            We've raised <strong><span ng-bind-html="teamProgress.amountRaisedFormatted"></span></strong>
+          </p>
+        </div>
+        <div class="ym-progress__goal col-sm-6">
+          <div ng-if="teamProgress.goalFormatted && teamProgress.goalFormatted != '' && teamProgress.goalFormatted != '$0'" ng-cloak>
+            <p>
+              Our goal is <strong><span ng-bind-html="teamProgress.goalFormatted"></span></strong>
+            </p>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="ym-progress__date" ng-if="eventDate != '' && eventDate != 'User Provided No Response'" ng-cloak>
+          <p>
+            Our event date is <strong><span ng-bind-html="eventDate"></span></strong>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="ym-page-section ym-page-section__main" ng-show="participantCount > 0 && (activity1amt != 0 || activity2amt != 0)" ng-cloak>
+    <div class="container">
+      <div class="ym-our-stats ym-promo-block">
+        <h2 class="ym-headline">
+          Our Stats
+        </h2>
+        <div class="ym-promo-block__item ym-promo-block__item--members ym-promo-block--circle">
+          <h2 class="ym-headline">
+            <span ng-if="participantCount < 1000" ng-cloak>{{participantCount}}</span>
+            <span ng-if="participantCount > 999" ng-cloak>{{participantCount}}</span>
+          </h2>
+          <div ng-if="participantCount == 1" ng-cloak>
+            <p>
+              team member registered. Help us meet our goal of 0 team members!
+            </p>
+          </div>
+          <div ng-if="participantCount > 1" ng-cloak>
+            <p>
+              team members registered. Help us meet our goal of 0 team members!
+            </p>
+          </div>
+        </div>
+        <div class="ym-promo-block__item ym-promo-block__item--exercise ym-promo-block--circle" ng-if="activity1amt != 0" ng-cloak>
+          <div class="h2 ym-headline">
+            <span ng-if="activity1amt < 1000" ng-cloak>{{activity1amt}}</span>
+            <span ng-if="activity1amt > 999" ng-cloak>{{activity1amt}}</span>
+          </div>
+          <div ng-if="activity1amt == 1" ng-cloak>
+            <p>
+              total minute of activity achieved by all of our team members!
+            </p>
+          </div>
+          <div ng-if="activity1amt > 1" ng-cloak>
+            <p>
+              total minutes of activity achieved by all of our team members!
+            </p>
+          </div>
+        </div>
+        <div class="ym-promo-block__item ym-promo-block__item--water ym-promo-block--circle" ng-if="activity2amt != 0" ng-cloak>
+          <div class="h2 ym-headline">
+            <span ng-if="activity2amt < 1000" ng-cloak>{{activity2amt}}</span>
+            <span ng-if="activity2amt > 999" ng-cloak>{{activity2amt}}</span>
+          </div>
+          <div ng-if="activity2amt == 1" ng-cloak>
+            <p>
+              team member has had their blood pressure checked!
+            </p>
+          </div>
+          <div ng-if="activity2amt > 1" ng-cloak>
+            <p>
+              team members have had their blood pressure checked!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ym-page-section ym-page-section__list ym-accent-color">
+    <div class="row">
+      <div class="col-xs-12 ym-story text-center">
+        <h3 class="h1">
+          Our Team is Heart Healthy!
+        </h3>
+        [[?
+          [[?xx::x[[S1:cons_id]]x::::
+            [[?x[[E48:[[S80:trID]]:team-id]]xTRUEx::x[[S334:team_id]]x[[E48:[[S80:trID]]-[[S1:cons_id]]:if-is-captain]]x::T::]]
+          ]]
+        ::T::
+          <div class="ym-story-edit-btns">
+            <button type="button" class="btn btn-md-wide btn-toggle" ng-click="editTeamPageContent()" ng-if="teamPageContent.mode == 'view'">
+              <span class="fa fa-pencil"></span> Edit Story
+            </button>
+            <div ng-if="teamPageContent.mode == 'edit'" ng-cloak>
+              <button type="button" class="btn btn-md-wide btn-primary" ng-click="saveTeamPageContent()">
+                <span class="fa fa-pencil"></span> <strong>Save Story</strong>
+              </button> 
+              <button type="button" class="btn btn-md-wide btn-toggle" ng-click="resetTeamPageContent()">
+                Cancel
+              </button>
+            </div>
+          </div>
+        ::]]
+        <div class="hidden js--default-page-content" hidden aria-hidden="true" ng-non-bindable>
+          [[C6:fr_rich_text]]
+        </div>
+        <div ng-show="teamPageContent.mode == 'view'">
+          <div ng-bind-html="teamPageContent.rich_text">
+            <div ng-non-bindable>
+              [[C6:fr_rich_text]]
+            </div>
+          </div>
+        </div>
+        [[?
+          [[?xx::x[[S1:cons_id]]x::::
+            [[?x[[E48:[[S80:trID]]:team-id]]xTRUEx::x[[S334:team_id]]x[[E48:[[S80:trID]]-[[S1:cons_id]]:if-is-captain]]x::T::]]
+          ]]
+        ::T::
+          <div class="ym-page-content-editor" ng-show="teamPageContent.mode == 'edit'" ng-cloak>
+            <label for="taHtmlElement{{teamPageContent.serial}}" class="sr-only">Edit your team's story:</label>
+            <div text-angular name="ng_rich_text" ng-model="teamPageContent.ng_rich_text" ta-toolbar="{{teamPageContent.textEditorToolbar}}" serial="{{teamPageContent.serial}}"></div>
+          </div>
+        ::]]
+      </div>
+    </div>
+  </div>
+  <div class="ym-page-section ym-page-section__roster" ng-if="teamParticipants.totalNumber > 0" ng-cloak>
+    <h3 class="h5">
+      Our Team Members
+    </h3>
+    <div class="ym-roster-search">
+      <form class="form-inline" name="teamParticipantSearchForm" method="POST" ng-submit="searchTeamParticipants()">
+        <div class="ym-roster-search-title">
+          Participant Search:
+        </div>
+        <div class="form-group">
+          <label for="teamParticipantSearch-ng_first_name" class="sr-only">First Name:</label>
+          <input type="text" class="form-control" id="teamParticipantSearch-ng_first_name" name="ng_first_name" ng-model="teamParticipantSearch.ng_first_name" placeholder="First Name">
+        </div>
+        <div class="form-group">
+          <label for="teamParticipantSearch-ng_last_name" class="sr-only">Last Name:</label>
+          <input type="text" class="form-control" id="teamParticipantSearch-ng_last_name" name="ng_last_name" ng-model="teamParticipantSearch.ng_last_name" placeholder="Last Name">
+        </div>
+        <button type="submit" class="btn btn-md-wide">
+          <strong>Search</strong>
+        </button>
+      </form>
+    </div>
+    <team-participant-list fr-id="'[[S80:trID]]'" team-id="'[[T6:[[S334:team_id]]]]'" participants="teamParticipants.participants" first-name-filter="teamParticipantSearch.first_name" last-name-filter="teamParticipantSearch.last_name" page-number="teamParticipants.page_number"></team-participant-list>
+    <hr class="ym-section-divider">
+  </div>
+  <div class="ym-page-section ym-team-coordinator-thanks" ng-if="coordinatorName && coordinatorName != ''" ng-cloak>
+    <div class="ym-team-coordinator-thanks-inner">
+      Thank you to our coordinator, <span ng-bind-html="coordinatorName"></span>, for leading our heart-healthy challenge!
+    </div>
+  </div>
+  <div class="ym-page-section ym-team-page-options">
+    <div class="ym-team-page-options-inner">
+      <div class="row">
+        <div class="col-sm-4">
+          <h3 class="h5">
+            Join Our Team
+          </h3>
+          <a class="btn btn-primary btn-md" href="TRR?fr_id=[[S334:fr_id]]&amp;pg=tfind&amp;fr_tjoin=[[S334:team_id]]&amp;s_frTJoin=[[S334:team_id]]&amp;s_frCompanyId=[[E43:[[S80:trID]]:company-id:[[S334:team_id]]]]">
+            <strong>Sign Up</strong>
+          </a>
+        </div>
+        <div class="col-sm-4">
+          <h3 class="h5">
+            Donate to Our Team
+          </h3>
+          <a class="btn btn-primary btn-md" href="Donation2?df_id=[[E42:[[S334:fr_id]]:form-id]]&amp;FR_ID=[[S334:fr_id]]&amp;PROXY_TYPE=22&amp;PROXY_ID=[[S334:team_id]]">
+            <strong>Donate</strong>
+          </a>
+        </div>
+        <div class="col-sm-4">
+          <h3 class="h5">
+            Visit Our School Page
+          </h3>
+          <a class="btn btn-primary btn-md" href="TR?fr_id=[[S334:fr_id]]&amp;pg=company&amp;company_id=[[E43:[[S80:trID]]:company-id:[[S334:team_id]]]]">
+            <strong>School Page</strong>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
