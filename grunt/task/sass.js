@@ -45,6 +45,17 @@ module.exports = {
     }
   }, 
   
+  "high-school": {
+    files: {
+      'dist/high-school/css/main.css': [
+        'src/high-school/sass/main.scss'
+      ], 
+      'dist/high-school/css/participant.css': [
+        'src/high-school/sass/participant.scss'
+      ]
+    }
+  }, 
+  
   "district-heart": {
     files: {
       'dist/district-heart/css/main.css': [

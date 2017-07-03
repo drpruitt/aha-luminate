@@ -80,6 +80,19 @@ module.exports = {
     ]
   }, 
   
+  "high-school-images": {
+    files: [
+      {
+        expand: true, 
+        cwd: 'src/high-school/image/', 
+        src: [
+          '*.{gif,GIF,jpg,JPG,png,PNG,svg,SVG}'
+        ], 
+        dest: 'dist/high-school/image/'
+      }
+    ]
+  }, 
+  
   "district-heart-images": {
     files: [
       {
