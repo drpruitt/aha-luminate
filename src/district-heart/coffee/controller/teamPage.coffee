@@ -12,12 +12,21 @@ angular.module 'ahaLuminateControllers'
     'TeamraiserCompanyService'
     'ZuriService'
     'TeamraiserTeamPageService'
-    ($rootScope, $scope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserTeamService, TeamraiserParticipantService, TeamraiserCompanyService, ZuriService, TeamraiserTeamPageService) ->
+    'BoundlessService'
+    ($rootScope, $scope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserTeamService, TeamraiserParticipantService, TeamraiserCompanyService, ZuriService, TeamraiserTeamPageService, BoundlessService) ->
+      $dataRoot = angular.element '[data-aha-luminate-root]'
+      $scope.companyId = $dataRoot.data('company-id') if $dataRoot.data('company-id') isnt ''
       $scope.teamId = $location.absUrl().split('team_id=')[1].split('&')[0].split('#')[0]
+       
       $rootScope.teamName = ''
       $scope.eventDate = ''
       $scope.activity1amt = ''
       $scope.activity2amt = ''
+
+      BoundlessService.getDistrictRollupTotals $scope.companyId + '/' + $scope.teamId
+        .then (response) ->
+          if response.data.status is 'success'
+            $scope.activity2amt = response.data.totals.total_challenge_taken_students
       
       setTeamProgress = (amountRaised, goal) ->
         $scope.teamProgress = 
