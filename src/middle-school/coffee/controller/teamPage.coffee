@@ -10,9 +10,9 @@ angular.module 'ahaLuminateControllers'
     'TeamraiserTeamService'
     'TeamraiserParticipantService'
     'TeamraiserCompanyService'
-    'ParticipantBadgesService'
+    'BoundlessService'
     'TeamraiserTeamPageService'
-    ($rootScope, $scope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserTeamService, TeamraiserParticipantService, TeamraiserCompanyService, ParticipantBadgesService, TeamraiserTeamPageService) ->
+    ($rootScope, $scope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserTeamService, TeamraiserParticipantService, TeamraiserCompanyService, BoundlessService, TeamraiserTeamPageService) ->
       $scope.teamId = $location.absUrl().split('team_id=')[1].split('&')[0].split('#')[0]
       $scope.teamParticipants = []
       $rootScope.teamName = ''
@@ -54,7 +54,7 @@ angular.module 'ahaLuminateControllers'
             if $scope.participantCount.toString().length > 4
               $scope.participantCount = Math.round($scope.participantCount / 1000) + 'K'
             
-            ParticipantBadgesService.getSchoolRollupTotals companyId + '/' + $scope.teamId
+            BoundlessService.getSchoolRollupTotals companyId + '/' + $scope.teamId
             .then (response) ->
               totals = response.data.totals
               if response.data.status is 'success'
