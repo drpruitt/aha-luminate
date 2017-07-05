@@ -168,7 +168,8 @@ angular.module 'ahaLuminateControllers'
             success: (response) ->
               participants = response.getParticipantsResponse?.participant
               companyParticipants = []
-              totalFundraisers = ''
+              totalNumberParticipants = response.getParticipantsResponse?.totalNumberResults or '0'
+              totalFundraisers = 0
               if participants
                 participants = [participants] if not angular.isArray participants
                 angular.forEach participants, (participant) ->
@@ -183,7 +184,6 @@ angular.module 'ahaLuminateControllers'
                       participant.donationFormId = participant.donationUrl.split('df_id=')[1].split('&')[0]
                     companyParticipants.push participant
                     totalFundraisers++
-              totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
               setCompanyParticipants companyParticipants, totalNumberParticipants, totalFundraisers
       getCompanyParticipants()
       
