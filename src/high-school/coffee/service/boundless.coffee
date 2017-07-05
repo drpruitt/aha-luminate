@@ -1,5 +1,5 @@
 angular.module 'ahaLuminateApp'
-  .factory 'ParticipantBadgesService', [
+  .factory 'BoundlessService', [
     '$http'
     '$sce'
     ($http, $sce) ->            

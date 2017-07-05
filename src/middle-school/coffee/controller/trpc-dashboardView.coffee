@@ -5,7 +5,7 @@ angular.module 'trPcControllers'
     '$filter'
     '$uibModal'
     'APP_INFO'
-    'ParticipantBadgesService'
+    'BoundlessService'
     'NgPcTeamraiserRegistrationService'
     'NgPcTeamraiserProgressService'
     'NgPcTeamraiserTeamService'
@@ -15,7 +15,7 @@ angular.module 'trPcControllers'
     'NgPcInteractionService'
     'NgPcTeamraiserCompanyService'
     '$timeout'
-    ($rootScope, $scope, $filter, $uibModal, APP_INFO, ParticipantBadgesService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserGiftService, NgPcContactService, NgPcTeamraiserShortcutURLService, NgPcInteractionService, NgPcTeamraiserCompanyService, $timeout) ->
+    ($rootScope, $scope, $filter, $uibModal, APP_INFO, BoundlessService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserGiftService, NgPcContactService, NgPcTeamraiserShortcutURLService, NgPcInteractionService, NgPcTeamraiserCompanyService, $timeout) ->
       $scope.dashboardPromises = []
       
       $dataRoot = angular.element '[data-embed-root]'
@@ -457,7 +457,7 @@ angular.module 'trPcControllers'
           $scope.dashboardPromises.push updateCompanyUrlPromise
       
       $scope.prizes = []
-      ParticipantBadgesService.getBadges $scope.consId
+      BoundlessService.getBadges $scope.consId
         .then (response) ->
           prizes = response.data.prizes
           angular.forEach prizes, (prize) ->

@@ -1,5 +1,5 @@
 angular.module 'ahaLuminateApp'
-  .factory 'ParticipantBadgesService', [
+  .factory 'BoundlessService', [
     '$http'
     '$sce'
     ($http, $sce) ->            
@@ -30,7 +30,7 @@ angular.module 'ahaLuminateApp'
         .then (response) ->
           response
       
-      getSchoolRollupTotals: (requestData) ->
+      getDistrictRollupTotals: (requestData) ->
         if luminateExtend.global.tablePrefix is 'heartdev'
           url = 'AjaxProxy?cnv_url=' + encodeURIComponent('https://districtheartchallengestaging.boundlessnetwork.com/api/schools/totals/' + requestData) + '&auth=' + luminateExtend.global.ajaxProxyAuth
         else

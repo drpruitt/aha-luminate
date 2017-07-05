@@ -10,12 +10,13 @@ angular.module 'ahaLuminateControllers'
     'TeamraiserCompanyService'
     'TeamraiserTeamService'
     'TeamraiserParticipantService'
+    'BoundlessService'
     'ZuriService'
     'TeamraiserRegistrationService'
     'TeamraiserCompanyPageService'
     'PageContentService'
     '$sce'
-    ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService, ZuriService, TeamraiserRegistrationService, TeamraiserCompanyPageService, PageContentService, $sce) ->
+    ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService, BoundlessService, ZuriService, TeamraiserRegistrationService, TeamraiserCompanyPageService, PageContentService, $sce) ->
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0].split('#')[0]
       $rootScope.companyName = ''
       $scope.eventDate = ''
@@ -46,6 +47,10 @@ angular.module 'ahaLuminateControllers'
       getLocalSponsors()
       $scope.$watch 'parentCompanyId', ->
         getLocalSponsors()
+      
+      BoundlessService.getDistrictRollupTotals $scope.companyId
+        .then (response) ->
+          totals = response.data.totals
       
       setCompanyProgress = (amountRaised, goal) ->
         $scope.companyProgress = 

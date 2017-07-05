@@ -10,12 +10,12 @@ angular.module 'ahaLuminateControllers'
     'TeamraiserCompanyService'
     'TeamraiserTeamService'
     'TeamraiserParticipantService'
-    'ParticipantBadgesService'
+    'BoundlessService'
     'TeamraiserRegistrationService'
     'TeamraiserCompanyPageService'
     'PageContentService'
     '$sce'
-    ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService, ParticipantBadgesService, TeamraiserRegistrationService, TeamraiserCompanyPageService, PageContentService, $sce) ->
+    ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService, BoundlessService, TeamraiserRegistrationService, TeamraiserCompanyPageService, PageContentService, $sce) ->
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0].split('#')[0]
       $rootScope.companyName = ''
       $scope.eventDate = ''
@@ -45,16 +45,16 @@ angular.module 'ahaLuminateControllers'
       $scope.$watch 'parentCompanyId', ->
         getLocalSponsors()
       
-      ParticipantBadgesService.getSchoolRollupTotals $scope.companyId
-      .then (response) ->
-        totals = response.data.totals
-        if response.data.status is 'success'
-          $scope.totalEmails = totals.total_online_emails_sent
-          if $scope.totalEmails.toString().length > 4
+      BoundlessService.getSchoolRollupTotals $scope.companyId
+        .then (response) ->
+          totals = response.data.totals
+          if response.data.status is 'success'
+            $scope.totalEmails = totals.total_online_emails_sent
+            if $scope.totalEmails.toString().length > 4
               $scope.totalEmails = Math.round($scope.totalEmails / 1000) + 'K'
-        else
-          $scope.totalEmails = 0
-         
+          else
+            $scope.totalEmails = 0
+      
       setCompanyProgress = (amountRaised, goal) ->
         $scope.companyProgress = 
           amountRaised: if amountRaised then Number(amountRaised) else 0

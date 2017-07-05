@@ -6,9 +6,9 @@ angular.module 'ahaLuminateControllers'
     '$rootScope'
     '$location'
     '$anchorScroll'
-    'ParticipantBadgesService'
+    'BoundlessService'
     'TeamraiserService'
-    ($scope, $timeout, TeamraiserParticipantService, $rootScope, $location, $anchorScroll, ParticipantBadgesService, TeamraiserService) ->
+    ($scope, $timeout, TeamraiserParticipantService, $rootScope, $location, $anchorScroll, BoundlessService, TeamraiserService) ->
       $dataRoot = angular.element '[data-aha-luminate-root]'
       consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
       
@@ -76,7 +76,7 @@ angular.module 'ahaLuminateControllers'
       $scope.totalEmail = ''
       $scope.showStats = true
       
-      ParticipantBadgesService.getRollupTotals()
+      BoundlessService.getRollupTotals()
         .then (response) ->
           if not response.data.status or response.data.status isnt 'success'
             $scope.showStats = false
