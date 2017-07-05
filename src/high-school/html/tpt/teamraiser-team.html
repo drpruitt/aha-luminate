@@ -127,7 +127,7 @@
         </div>
       ::]]
     </div>
-    <div class="ym-list" ng-class="teamParticipants.totalFundraisers < 1 ? 'hidden' : 'col-md-6'" role="list" aria-label="Top Fundarisers List">
+    <div class="ym-list" class="col-md-6" role="list" aria-label="Top Fundarisers List" ng-if="teamParticipants.totalFundraisers > 0" ng-cloak>
       <h3 class="h5">
         Top Fundraisers
       </h3>
