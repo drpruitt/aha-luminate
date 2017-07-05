@@ -82,7 +82,7 @@
     </div>
   </div>
   <div class="ym-page-section ym-page-section__list ym-accent-color">
-    <div class="ym-story" ng-class="companyParticipants.totalFundraisers < 1 && companyTeams.totalNumber > 1 ? 'col-md-12' : 'col-md-6'">
+    <div class="ym-story" ng-class="companyParticipants.totalFundraisers > 0 ? 'col-md-6' : 'col-md-12'">
       <h3 class="h5">
         Our School is Heart Healthy!
       </h3>
@@ -114,25 +114,17 @@
         <div text-angular name="ng_rich_text" ng-model="companyPageContent.ng_rich_text" ta-toolbar="{{companyPageContent.textEditorToolbar}}" serial="{{companyPageContent.serial}}"></div>
       </div>
     </div>
-    <div class="ym-list" class="col-md-6" role="list" aria-label="Top Fundarisers List" ng-if="companyParticipants.totalFundraisers > 0" ng-cloak>
+    <div class="ym-list" class="col-md-6" role="list" aria-label="Top Fundraisers List" ng-if="companyParticipants.totalFundraisers > 0" ng-cloak>
       <h3 class="h5">
         Top Fundraisers
       </h3>
-      <ul class="ym-donor-list" ng-if="companyParticipants.totalFundraisers > 0" ng-cloak>
+      <ul class="ym-donor-list">
         <company-participant-list fr-id="'[[S80:trID]]'" company-id="'[[T6:[[S334:company_id]]]]'" participants="companyParticipants.participants"></company-participant-list>
       </ul>
-      <div class="text-center" ng-if="companyParticipants.totalFundraisers < 1 && companyTeams.totalNumber == 1" ng-cloak>
-        <p>
-          Your School has no donations yet. Be the first to donate.
-        </p>
-        <a class="btn btn-primary btn-lg" ng-href="[[S8]]#" data-toggle="modal" data-target="#schoolDonation">
-          Donate
-        </a>
-      </div>
     </div>
     <div class="clearfix"></div>
   </div>
-  <div class="ym-page-section ym-page-section__roster" ng-if="companyTeams.totalNumber > 1">
+  <div class="ym-page-section ym-page-section__roster" ng-if="companyTeams.totalNumber > 1" ng-cloak>
     <company-team-list fr-id="'[[S80:trID]]'" company-id="'[[T6:[[S334:company_id]]]]'" teams="companyTeams.teams"></company-team-list>
   </div>
   <div class="ym-page-section ym-page-section__sponsor" ng-if="localSponsorShow">
