@@ -83,7 +83,7 @@
     </div>
   </div>
   <div class="ym-page-section ym-page-section__list ym-accent-color">
-    <div class="ym-story" ng-class="teamParticipants.totalFundraisers < 1 ? 'col-md-12' : 'col-md-6'">
+    <div class="ym-story" ng-class="teamParticipants.totalFundraisers > 0 ? 'col-md-6' : 'col-md-12'">
       <h3 class="h5">
         Our Class is Heart Healthy!
       </h3>
@@ -127,7 +127,7 @@
         </div>
       ::]]
     </div>
-    <div class="ym-list" class="col-md-6" role="list" aria-label="Top Fundarisers List" ng-if="teamParticipants.totalFundraisers > 0" ng-cloak>
+    <div class="ym-list" class="col-md-6" role="list" aria-label="Top Fundraisers List" ng-if="teamParticipants.totalFundraisers > 0" ng-cloak>
       <h3 class="h5">
         Top Fundraisers
       </h3>
