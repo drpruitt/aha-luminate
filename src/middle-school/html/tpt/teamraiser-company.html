@@ -60,17 +60,19 @@
         <h2 class="ym-headline">
           Our Stats
         </h2>
-        <div class="ym-promo-block__item ym-promo-block__item--exercise ym-promo-block--circle">
+        <div class="ym-promo-block__item ym-promo-block--circle">
           <div class="h2 ym-headline">
-            {{participantCount}}
+            <span ng-if="participantCount < 1000" ng-cloak>{{participantCount}}</span>
+            <span ng-if="participantCount > 999" ng-cloak>{{participantCount}}</span>
           </div>
           <p>
             students registered
           </p>
         </div>
-        <div class="ym-promo-block__item ym-promo-block__item--water ym-promo-block--circle">
+        <div class="ym-promo-block__item ym-promo-block--circle">
           <div class="h2 ym-headline">
-            {{totalEmails}}
+            <span ng-if="totalEmails < 1000">{{totalEmails}}</span>
+            <span ng-if="totalEmails > 999">{{totalEmails}}</span>
           </div>
           <p>
             emails sent

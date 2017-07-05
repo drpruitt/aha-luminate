@@ -10,25 +10,24 @@ angular.module 'ahaLuminateControllers'
     'TeamraiserCompanyService'
     'TeamraiserTeamService'
     'TeamraiserParticipantService'
+    'BoundlessService'
     'TeamraiserRegistrationService'
     'TeamraiserCompanyPageService'
     'PageContentService'
     '$sce'
-    ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService, TeamraiserRegistrationService, TeamraiserCompanyPageService, PageContentService, $sce) ->
+    ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService, BoundlessService, TeamraiserRegistrationService, TeamraiserCompanyPageService, PageContentService, $sce) ->
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0].split('#')[0]
       $rootScope.companyName = ''
       $scope.eventDate = ''
       $scope.totalTeams = ''
       $scope.teamId = ''
-      $scope.activity1amt = ''
-      $scope.activity2amt = ''
       
       $scope.trustHtml = (html) ->
         return $sce.trustAsHtml(html)
       
       getLocalSponsors = ->
         if $scope.parentCompanyId and $scope.parentCompanyId isnt ''
-          PageContentService.getPageContent 'high_school_challenge_local_sponsors_' + $scope.parentCompanyId
+          PageContentService.getPageContent 'high_school_local_sponsors_' + $scope.parentCompanyId
             .then (response) ->
               if response.includes('No data') is true
                 $scope.localSponsorShow = false
@@ -45,6 +44,15 @@ angular.module 'ahaLuminateControllers'
       getLocalSponsors()
       $scope.$watch 'parentCompanyId', ->
         getLocalSponsors()
+      
+      BoundlessService.getSchoolRollupTotals $scope.companyId
+        .then (response) ->
+          if response.data.status isnt 'success'
+            $scope.totalEmails = 0
+          else
+            totals = response.data.totals
+            totalEmails = totals?.total_online_emails_sent or '0'
+            $scope.totalEmails = Number totalEmails
       
       setCompanyProgress = (amountRaised, goal) ->
         $scope.companyProgress = 
@@ -94,11 +102,7 @@ angular.module 'ahaLuminateControllers'
                     $scope.teamId = response.data.coordinator.team_id
       getCompanyTotals()
       
-      $scope.companyTeamSearch =
-        team_name: ''
-        ng_team_name: ''
-      $scope.companyTeams =
-        page_number: 0
+      $scope.companyTeams = {}
       setCompanyTeams = (teams, totalNumber) ->
         $scope.companyTeams.teams = teams or []
         totalNumber = totalNumber or 0
@@ -107,7 +111,7 @@ angular.module 'ahaLuminateControllers'
         if not $scope.$$phase
           $scope.$apply()
       getCompanyTeams = ->
-        TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=500',
+        TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId + '&list_page_size=500',
           error: ->
             setCompanyTeams()
           success: (response) ->
@@ -121,50 +125,39 @@ angular.module 'ahaLuminateControllers'
               setCompanyTeams companyTeams, totalNumberTeams
       getCompanyTeams()
       
-      $scope.searchCompanyTeams = ->
-        $scope.companyTeamSearch.team_name = $scope.companyTeamSearch.ng_team_name
-        getCompanyTeams()
-      
-      $scope.companyParticipantSearch =
-        first_name: ''
-        ng_first_name: ''
-        last_name: ''
-        ng_last_name: ''
-      $scope.companyParticipants =
-        page_number: 0
-      setCompanyParticipants = (participants, totalNumber) ->
+      $scope.companyParticipants = {}
+      setCompanyParticipants = (participants, totalNumber, totalFundraisers) ->
         $scope.companyParticipants.participants = participants or []
         totalNumber = totalNumber or 0
         $scope.companyParticipants.totalNumber = Number totalNumber
+        $scope.companyParticipants.totalFundraisers = Number totalFundraisers
         if not $scope.$$phase
           $scope.$apply()
       getCompanyParticipants = ->
-        TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%') + '&first_name=' + encodeURIComponent('%%') + '&last_name=' + encodeURIComponent('%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=500',
+        TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%') + '&first_name=' + encodeURIComponent('%%') + '&last_name=' + encodeURIComponent('%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=50',
             error: ->
               setCompanyParticipants()
             success: (response) ->
               participants = response.getParticipantsResponse?.participant
               companyParticipants = []
+              totalFundraisers = ''
               if participants
                 participants = [participants] if not angular.isArray participants
                 angular.forEach participants, (participant) ->
-                  if participant.name?.first
+                  participant.amountRaised = Number participant.amountRaised
+                  if participant.name?.first and participant.amountRaised > 1
                     participant.firstName = participant.name.first
                     participant.lastName = participant.name.last
+                    participant.name.last = participant.name.last.substring(0, 1) + '.'
                     participant.fullName = participant.name.first + ' ' + participant.name.last
-                    participant.amountRaised = Number participant.amountRaised
                     participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
                     if participant.donationUrl
                       participant.donationFormId = participant.donationUrl.split('df_id=')[1].split('&')[0]
                     companyParticipants.push participant
+                    totalFundraisers++
               totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
-              setCompanyParticipants companyParticipants, totalNumberParticipants
+              setCompanyParticipants companyParticipants, totalNumberParticipants, totalFundraisers
       getCompanyParticipants()
-      
-      $scope.searchCompanyParticipants = ->
-        $scope.companyParticipantSearch.first_name = $scope.companyParticipantSearch.ng_first_name
-        $scope.companyParticipantSearch.last_name = $scope.companyParticipantSearch.ng_last_name
-        getCompanyParticipants()
       
       if $scope.consId
         TeamraiserRegistrationService.getRegistration
