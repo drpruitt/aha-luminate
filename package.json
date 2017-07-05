@@ -8,6 +8,12 @@
       "url": "https://github.com/chiragchhita/aha-luminate.git"
     }
   ],
+  "engines": {
+    "node": "^6.11.0"
+  },
+  "dependencies": {
+    "load-grunt-tasks": "^3.5.2"
+  },
   "devDependencies": {
     "autoprefixer": "^7.1.1",
     "glob": "^7.1.2",
@@ -29,8 +35,5 @@
     "grunt-replace": "^1.0.1",
     "grunt-sass": "^2.0.0",
     "time-grunt": "^1.4.0"
-  },
-  "dependencies": {
-    "load-grunt-tasks": "^3.5.2"
   }
 }
