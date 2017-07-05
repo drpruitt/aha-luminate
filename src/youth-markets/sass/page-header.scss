@@ -102,22 +102,14 @@
     margin: 0 0 8px;
   }
   
-  a {
-    &, 
-    &:link, 
-    &:visited, 
-    &:hover, 
-    &:focus, 
-    &:active {
+  button {
+    display: inline-block;
+    width: 24px;
+    margin: 0 0 0 12px;
+    
+    img {
       display: inline-block;
-      text-decoration: none;
-      width: 24px;
-      margin: 0 0 0 12px;
-      
-      img {
-        display: inline-block;
-        width: 100%;
-      }
+      width: 100%;
     }
   }
 }

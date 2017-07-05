@@ -131,23 +131,23 @@
               <p>
                 <strong>Share my Personal Page:</strong>
               </p>
-              <a ng-href="{{baseUrl}}#" ng-click="delegatedAddThis('.js--personal-social-share', 'facebook')">
+              <button type="button" ng-click="delegatedAddThis('.js--personal-social-share', 'facebook')">
                 <img src="../aha-luminate/dist/youth-markets/image/facebook-logo.png" alt="Facebook">
-              </a> 
-              <a ng-href="{{baseUrl}}#" ng-click="delegatedAddThis('.js--personal-social-share', 'twitter')">
+              </button> 
+              <button type="button" ng-click="delegatedAddThis('.js--personal-social-share', 'twitter')">
                 <img src="../aha-luminate/dist/youth-markets/image/twitter-logo.png" alt="Twitter">
-              </a>
+              </button>
             </div>
             <div ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
               <p>
                 <strong>Share my District Page:</strong>
               </p>
-              <a ng-href="{{baseUrl}}#" ng-click="delegatedAddThis('.js--company-social-share', 'facebook')">
+              <button type="button" ng-click="delegatedAddThis('.js--company-social-share', 'facebook')">
                 <img src="../aha-luminate/dist/youth-markets/image/facebook-logo.png" alt="Facebook">
-              </a> 
-              <a ng-href="{{baseUrl}}#" ng-click="delegatedAddThis('.js--company-social-share', 'twitter')">
+              </button> 
+              <button type="button" ng-click="delegatedAddThis('.js--company-social-share', 'twitter')">
                 <img src="../aha-luminate/dist/youth-markets/image/twitter-logo.png" alt="Twitter">
-              </a>
+              </button>
             </div>
           </div>
         </div>
