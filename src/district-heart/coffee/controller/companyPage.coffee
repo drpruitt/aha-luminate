@@ -50,7 +50,8 @@ angular.module 'ahaLuminateControllers'
       
       BoundlessService.getDistrictRollupTotals $scope.companyId
         .then (response) ->
-          totals = response.data.totals
+          if response.data.status is 'success'
+            $scope.activity2amt = response.data.totals.total_challenge_taken_students
       
       setCompanyProgress = (amountRaised, goal) ->
         $scope.companyProgress = 
@@ -125,6 +126,7 @@ angular.module 'ahaLuminateControllers'
                 companyTeam.amountRaisedFormatted = $filter('currency')(companyTeam.amountRaised / 100, '$').replace '.00', ''
               totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults
               setCompanyTeams companyTeams, totalNumberTeams
+        
         ZuriService.getDistrictTeams $scope.companyId,
           error: (response) ->
             $scope.activity1amt = 0
