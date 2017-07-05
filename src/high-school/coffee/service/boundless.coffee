@@ -2,7 +2,7 @@ angular.module 'ahaLuminateApp'
   .factory 'BoundlessService', [
     '$http'
     '$sce'
-    ($http, $sce) ->            
+    ($http, $sce) ->
       getBadges: (requestData) ->
         if luminateExtend.global.tablePrefix is 'heartdev'
           url = 'AjaxProxy?cnv_url=' + encodeURIComponent('https://aha-hs-staging.boundlessnetwork.com/api/badges/student/' + requestData) + '&auth=' + luminateExtend.global.ajaxProxyAuth

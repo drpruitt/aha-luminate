@@ -51,18 +51,15 @@ angular.module 'ahaLuminateControllers'
             teamInfo = response.getTeamSearchByInfoResponse?.team
             companyId = teamInfo.companyId
             $scope.participantCount = teamInfo.numMembers
-            if $scope.participantCount.toString().length > 4
-              $scope.participantCount = Math.round($scope.participantCount / 1000) + 'K'
             
             BoundlessService.getSchoolRollupTotals companyId + '/' + $scope.teamId
             .then (response) ->
-              totals = response.data.totals
-              if response.data.status is 'success'
-                $scope.totalEmails = totals.total_online_emails_sent
-                if $scope.totalEmails.toString().length > 4
-                  $scope.totalEmails = Math.round($scope.totalEmails / 1000) + 'K'
-              else
+              if response.data.status isnt 'success'
                 $scope.totalEmails = 0
+              else
+                totals = response.data.totals
+                totalEmails = totals?.total_online_emails_sent or '0'
+                $scope.totalEmails = Number totalEmails
             
             if not teamInfo
               setTeamProgress()
