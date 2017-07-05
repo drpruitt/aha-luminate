@@ -7,7 +7,6 @@ angular.module 'trPcControllers'
     '$uibModal'
     'APP_INFO'
     'BoundlessService'
-    'ZuriService'
     'NgPcTeamraiserRegistrationService'
     'NgPcTeamraiserProgressService'
     'NgPcTeamraiserTeamService'
@@ -16,9 +15,8 @@ angular.module 'trPcControllers'
     'NgPcTeamraiserShortcutURLService'
     'NgPcInteractionService'
     'NgPcTeamraiserCompanyService'
-    'NgPcTeamraiserSurveyResponseService'
     '$timeout'
-    ($rootScope, $scope, $filter, $httpParamSerializer, $uibModal, APP_INFO, BoundlessService, ZuriService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserGiftService, NgPcContactService, NgPcTeamraiserShortcutURLService, NgPcInteractionService, NgPcTeamraiserCompanyService, NgPcTeamraiserSurveyResponseService, $timeout) ->
+    ($rootScope, $scope, $filter, $httpParamSerializer, $uibModal, APP_INFO, BoundlessService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserGiftService, NgPcContactService, NgPcTeamraiserShortcutURLService, NgPcInteractionService, NgPcTeamraiserCompanyService, $timeout) ->
       $scope.dashboardPromises = []
       
       $dataRoot = angular.element '[data-embed-root]'
@@ -490,95 +488,4 @@ angular.module 'trPcControllers'
               earned: prize.earned_datetime
         , (response) ->
           # TODO
-      
-      $scope.minsActivityLog =
-        ng_activity_date: new Date()
-      setMinsActivityForDate = ->
-        activityDate = $scope.minsActivityLog.ng_activity_date
-        minsActivity = ''
-        if activityDate and activityDate isnt ''
-          activityDateFormatted = $filter('date') activityDate, 'yyyy-MM-dd'
-          angular.forEach $scope.minsActivityLog.minsActivityMap, (minsActivityData) ->
-            if minsActivityData.date is activityDateFormatted
-              minsActivity = minsActivityData.minutes
-        if minsActivity is 0
-          minsActivity = ''
-        $scope.minsActivityLog.ng_activity_minutes = minsActivity
-      setMinsActivityForDate()
-      $scope.getMinsActivity = ->
-        ZuriService.getMinutes $scope.frId + '/' + $scope.consId,
-          error: ->
-            $scope.minsActivityLog.minsActivityMap = []
-          success: (response) ->
-            minsActivityMap = response.data.data?.list or []
-            $scope.minsActivityLog.minsActivityMap = minsActivityMap
-            setMinsActivityForDate()
-      $scope.getMinsActivity()
-      $scope.$watch 'minsActivityLog.ng_activity_date', ->
-        delete $scope.minsActivityLog.errorMessage
-        delete $scope.minsActivityLog.hasSuccess
-        setMinsActivityForDate()
-      # TODO: reset errorMessage and hasSuccess when ng_activity_minutes changes
-      $scope.updateMinsActivity = ->
-        activityDate = $scope.minsActivityLog.ng_activity_date
-        minsActivity = $scope.minsActivityLog.ng_activity_minutes
-        if not minsActivity or minsActivity is ''
-          minsActivity = 0
-        if not activityDate or activityDate is ''
-          delete $scope.minsActivityLog.hasSuccess
-          $scope.minsActivityLog.errorMessage = 'Please select a date'
-        else if isNaN(minsActivity) or Number(minsActivity) < 0
-          delete $scope.minsActivityLog.hasSuccess
-          $scope.minsActivityLog.errorMessage = 'Please enter a valid number of minutes'
-        else
-          activityDateFormatted = $filter('date') activityDate, 'yyyy-MM-dd'
-          companyId = $scope.participantRegistration.companyInformation?.companyId or ''
-          teamId = $scope.participantRegistration.teamId or ''
-          ZuriService.logMinutes $scope.frId + '/' + $scope.consId + '/' + activityDateFormatted + '?minutes=' + minsActivity + '&company_id=' + companyId + '&team_id=' + teamId,
-            error: ->
-              delete $scope.minsActivityLog.hasSuccess
-              $scope.minsActivityLog.errorMessage = 'An unexpected error occurred. Please try again later.'
-              $scope.getMinsActivity()
-            success: ->
-              delete $scope.minsActivityLog.errorMessage
-              $scope.minsActivityLog.hasSuccess = true
-              $scope.getMinsActivity()
-      
-      $scope.bloodPressureLog = {}
-      $scope.updateBloodPressureChecked = ->
-        NgPcTeamraiserSurveyResponseService.getSurveyResponses()
-          .then (response) ->
-            if response.data.errorResponse
-              $scope.bloodPressureLog.errorMessage = 'An unexpected error occurred. Please try again later.'
-            else
-              surveyResponses = response.data.getSurveyResponsesResponse?.responses
-              if not surveyResponses
-                $scope.bloodPressureLog.errorMessage = 'An unexpected error occurred. Please try again later.'
-              else
-                surveyResponses = [surveyResponses] if not angular.isArray surveyResponses
-                surveyQuestionResponseMap = undefined
-                angular.forEach surveyResponses, (surveyResponse) ->
-                  if not surveyResponse.responseValue or surveyResponse.responseValue is 'User Provided No Response' or not angular.isString surveyResponse.responseValue
-                    surveyResponse.responseValue = ''
-                  if surveyResponse.isHidden isnt 'true' and surveyResponse.key isnt 'ym_district_checked'
-                    if not surveyQuestionResponseMap
-                      surveyQuestionResponseMap = {}
-                    surveyQuestionResponseMap['question_' + surveyResponse.questionId] = surveyResponse.responseValue
-                  else if surveyResponse.key is 'ym_district_checked'
-                    if not surveyQuestionResponseMap
-                      surveyQuestionResponseMap = {}
-                    surveyQuestionResponseMap['question_' + surveyResponse.questionId] = 'true'
-                if not surveyQuestionResponseMap
-                  $scope.bloodPressureLog.errorMessage = 'An unexpected error occurred. Please try again later.'
-                else
-                  NgPcTeamraiserSurveyResponseService.updateSurveyResponses $httpParamSerializer(surveyQuestionResponseMap)
-                    .then (response) ->
-                      if response.data.errorResponse
-                        $scope.bloodPressureLog.errorMessage = 'An unexpected error occurred. Please try again later.'
-                      else
-                        if response.data.updateSurveyResponsesResponse?.success isnt 'true'
-                          $scope.bloodPressureLog.errorMessage = 'An unexpected error occurred. Please try again later.'
-                        else
-                          delete $scope.bloodPressureLog.errorMessage
-                          $rootScope.bloodPressureChecked = true
   ]
