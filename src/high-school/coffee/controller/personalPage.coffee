@@ -9,9 +9,9 @@ angular.module 'ahaLuminateControllers'
     'APP_INFO'
     'TeamraiserParticipantService'
     'TeamraiserCompanyService'
-    'ParticipantBadgesService'
+    'BoundlessService'
     'TeamraiserParticipantPageService'
-    ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserParticipantService, TeamraiserCompanyService, ParticipantBadgesService, TeamraiserParticipantPageService) ->
+    ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserParticipantService, TeamraiserCompanyService, BoundlessService, TeamraiserParticipantPageService) ->
       $dataRoot = angular.element '[data-aha-luminate-root]'
       $scope.participantId = $location.absUrl().split('px=')[1].split('&')[0].split('#')[0]
       frId = $dataRoot.data('fr-id') if $dataRoot.data('fr-id') isnt ''
@@ -21,7 +21,7 @@ angular.module 'ahaLuminateControllers'
       $rootScope.numTeams = ''
       
       $scope.prizes = []
-      ParticipantBadgesService.getBadges '2011'
+      BoundlessService.getBadges '2011'
       .then (response) ->
         if not response.data.status or response.data.status isnt 'success'
           # TODO
