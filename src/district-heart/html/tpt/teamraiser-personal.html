@@ -1,4 +1,14 @@
-<div ng-controller="PersonalPageCtrl" ng-cloak>
+<div itemscope itemtype="http://schema.org/Person" ng-controller="PersonalPageCtrl" ng-cloak>
+  <div class="hidden" hidden aria-hidden="true">
+    <div itemprop="name">
+      [[E48:[[S80:trID]]-[[S334:px]]:cons.first_name]] [[E48:[[S80:trID]]-[[S334:px]]:cons.last_name]]
+    </div>
+    [[?xx::x[[C4:graphic_upload]]x::
+      <img src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/district-heart/image/personal-default.jpg" alt="" itemprop="image">
+    ::
+      <img src="[[C4:graphic_upload]]" alt="" itemprop="image">
+    ]]
+  </div>
   <div class="ym-page-section ym-page-section__top">
     <div class="col-md-6 ym-user-image" ng-init="personalPagePhoto1.customUrl = '[[C4:graphic_upload]]'; personalPagePhoto1.caption = '[[T6:[[C1:graphic_caption]]]]'" ng-style="{'background-image': (personalPagePhoto1.customUrl && personalPagePhoto1.customUrl != '') ? ('url(' + personalPagePhoto1.customUrl + ')') : ('url(' + personalPagePhoto1.defaultUrl + ')')}">
       <div class="ym-user-image-inner">

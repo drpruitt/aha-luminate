@@ -5,6 +5,7 @@ angular.module 'ahaLuminateControllers'
     '$location'
     '$filter'
     '$timeout'
+    '$sce'
     '$uibModal'
     'APP_INFO'
     'TeamraiserCompanyService'
@@ -15,8 +16,7 @@ angular.module 'ahaLuminateControllers'
     'TeamraiserRegistrationService'
     'TeamraiserCompanyPageService'
     'PageContentService'
-    '$sce'
-    ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService, BoundlessService, ZuriService, TeamraiserRegistrationService, TeamraiserCompanyPageService, PageContentService, $sce) ->
+    ($scope, $rootScope, $location, $filter, $timeout, $sce, $uibModal, APP_INFO, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService, BoundlessService, ZuriService, TeamraiserRegistrationService, TeamraiserCompanyPageService, PageContentService) ->
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0].split('#')[0]
       $rootScope.companyName = ''
       $scope.eventDate = ''
@@ -50,8 +50,12 @@ angular.module 'ahaLuminateControllers'
       
       BoundlessService.getDistrictRollupTotals $scope.companyId
         .then (response) ->
-          if response.data.status is 'success'
-            $scope.activity2amt = response.data.totals.total_challenge_taken_students
+          if response.data.status isnt 'success'
+            $scope.activity2amt = 0
+          else
+            totals = response.data.totals
+            totalChallengesTaken = totals?.total_challenge_taken_students or '0'
+            $scope.activity2amt = Number totalChallengesTaken
       
       setCompanyProgress = (amountRaised, goal) ->
         $scope.companyProgress = 
