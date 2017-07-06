@@ -852,7 +852,7 @@
             </div>
             <div>
               <p>
-                You have <strong><span ng-bind-html="companyInfo.participantCount"></span></strong> participants registered. Keep recruiting to meet your goal of <strong><span><span ng-bind-html="participantRegGoal"></span></span></strong> participants!
+                You have <strong><span ng-bind-html="companyInfo.participantCount"></span></strong> students registered. Keep recruiting to meet your goal of <strong><span><span ng-bind-html="participantRegGoal"></span></span></strong> students!
               </p>
               <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email">
                 <strong>Send Emails</strong>
@@ -860,41 +860,31 @@
             </div>
             <div class="ym-pc-dashboard-coordinator-create-message">
               <p>
-                Create/Update an <strong>encouraging message</strong> for your participants in their Headquarters.
+                Create/Update an <strong>encouraging message</strong> for your students in their Headquarters.
               </p>
               <button type="button" class="btn btn-md-wide btn-primary" ng-click="editCoordinatorMessage()">
                 <strong>Create Message</strong>
               </button>
             </div>
-            <div class="ym-pc-dashboard-coordinator-email-challenge-option">
-              <p>
-                Copy and paste the text below into your favorite email client.
-              </p>
-              <button type="button" class="btn btn-md-wide btn-primary" data-clipboard-target="#emailChallenge-sampleText">
-                <strong>Copy Email Text</strong>
-              </button>
-            </div>
-            <form method="POST">
-              <label for="emailChallenge-sampleText" class="sr-only">Email text:</label>
-              <textarea class="form-control" id="emailChallenge-sampleText" name="sampleText" ng-model="emailChallenge.sampleText" readonly></textarea>
-            </form>
           </div>
         </div>
       </div>
     </section>
-    <section class="ym-pc-dashboard-coordinator-steps-section" aria-label="Coordinator Activities">
+    <section class="ym-pc-dashboard-coordinator-steps-section" aria-label="Coordinator Fundraising Steps">
       <div class="ym-pc-dashboard-section-header">
         <h2 class="h3">
-          Coordinator Activities
+          Coordinator Fundraising Steps
         </h2>
+      </div>
+      <div class="row">
       </div>
       <div class="row">
         <div class="col-sm-6 ym-activity-box ym-activity-box--coordinator-reports">
           <h3 class="h5">
-            <span class="ym-activity-box-number">1</span> Check Progress
+            <span class="ym-activity-box-number">3</span> Check Progress
           </h3>
           <p>
-            Check out the reports page to see which participants have completed challenges and who has earned donations.
+            Check out the reports page to see which students have completed challenges and who has earned donations.
           </p>
           <div class="ym-activity-box-cta">
             <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/reports">
@@ -904,10 +894,10 @@
         </div>
         <div class="col-sm-6 ym-activity-box ym-activity-box--coordinator-prizes">
           <h3 class="h5">
-            <span class="ym-activity-box-number">2</span> Order Thank-You Gifts
+            <span class="ym-activity-box-number">4</span> Order Thank-You Gifts
           </h3>
           <p>
-            Visit our Thank-You Gift portal to manage and order gifts for your participants.
+            Visit our Thank-You Gift portal to manage and order gifts for your students.
           </p>
           <div class="ym-activity-box-cta">
             <a class="btn btn-md-wide btn-primary" ng-href="https://aha-hs-staging.boundlessnetwork.com/coordinator/login/{{authToken}}/{{sessionCookie}}" target="_blank" ng-if="tablePrefix == 'heartdev'" ng-cloak>
@@ -1061,6 +1051,12 @@
             Share your fundraising page to raise even more!
           </p>
           <div class="text-center">
+            <button type="button" ng-click="delegatedAddThis('.js--personal-social-share', 'facebook')">
+              <img src="../aha-luminate/dist/youth-markets/image/facebook-logo.png" alt="Facebook">
+            </button> 
+            <button type="button" ng-click="delegatedAddThis('.js--personal-social-share', 'twitter')">
+              <img src="../aha-luminate/dist/youth-markets/image/twitter-logo.png" alt="Twitter">
+            </button>
           </div>
         </div>
         <div class="col-sm-6">

@@ -356,6 +356,21 @@
         text-transform: none;
       }
     }
+    
+    button {
+      &:not(.btn) {
+        display: inline-block;
+        border: 0;
+        width: 24px;
+        padding: 0;
+        margin: 0 6px;
+        
+        img {
+          display: inline-block;
+          width: 100%;
+        }
+      }
+    }
   }
 }
 
@@ -423,34 +438,6 @@
     h5, 
     .h5 {
       text-transform: none;
-    }
-  }
-  
-  .ym-pc-dashboard-coordinator-email-challenge-option {
-    text-align: center;
-    margin: 20px 0;
-    
-    p {
-      margin: 0 0 18px;
-    }
-  }
-  
-  form {
-    textarea.form-control[readonly] {
-      background-color: $brand-white;
-      border: 0;
-      border-radius: 0;
-      font-size: 13px;
-      height: 470px;
-      padding: 28px;
-      
-      @media (min-width: $screen-sm-min) {
-        height: 326px;
-      }
-      
-      @media (min-width: $screen-lg-min) {
-        height: 302px;
-      }
     }
   }
 }

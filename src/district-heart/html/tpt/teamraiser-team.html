@@ -1,4 +1,19 @@
-<div ng-controller="TeamPageCtrl" ng-cloak>
+<div itemscope itemtype="http://schema.org/Organization" ng-controller="TeamPageCtrl" ng-cloak>
+  <div class="hidden" hidden aria-hidden="true">
+    <div itemprop="name">
+      [[E43:[[S80:trID]]:name:[[S334:team_id]]]]
+    </div>
+    [[?xx::x[[E43:[[S80:trID]]:company-id:[[S334:team_id]]]]x::::
+      <div itemprop="parentOrganization" itemscope itemtype="http://schema.org/Organization">
+        <span itemprop="name">[[E43:[[S80:trID]]:company-name:[[S334:team_id]]]]</span>
+      </div>
+    ]]
+    [[?xx::x[[C4:graphic_upload]]x::
+      <img src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/district-heart/image/team-default.jpg" alt="" itemprop="image">
+    ::
+      <img src="[[C4:graphic_upload]]" alt="" itemprop="image">
+    ]]
+  </div>
   <div class="ym-page-section ym-page-section__top">
     <div class="col-md-6 ym-user-image" ng-init="teamPagePhoto1.customUrl = '[[C4:graphic_upload]]'; teamPagePhoto1.caption = '[[T6:[[C1:graphic_caption]]]]'" ng-style="{'background-image': (teamPagePhoto1.customUrl && teamPagePhoto1.customUrl != '') ? ('url(' + teamPagePhoto1.customUrl + ')') : ('url(' + teamPagePhoto1.defaultUrl + ')')}">
       <div class="ym-user-image-inner">
