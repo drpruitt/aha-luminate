@@ -3,6 +3,16 @@
     <div itemprop="name">
       [[E48:[[S80:trID]]-[[S334:px]]:cons.first_name]] [[E48:[[S80:trID]]-[[S334:px]]:cons.last_name]]
     </div>
+    [[?xx::x[[E48:[[S80:trID]]-[[S334:px]]:team-id]]x::::
+      <div itemprop="memberOf" itemscope itemtype="http://schema.org/Organization">
+        <span itemprop="name">[[E48:[[S80:trID]]-[[S334:px]]:team-name]]</span>
+      </div>
+      [[?xx::x[[E43:[[S80:trID]]:company-id:[[E48:[[S80:trID]]-[[S334:px]]:team-id]]]]x::::
+        <div itemprop="memberOf" itemscope itemtype="http://schema.org/Organization">
+          <span itemprop="name">[[E43:[[S80:trID]]:company-name:[[E48:[[S80:trID]]-[[S334:px]]:team-id]]]]</span>
+        </div>
+      ]]
+    ]]
     [[?xx::x[[C4:graphic_upload]]x::
       <img src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/district-heart/image/personal-default.jpg" alt="" itemprop="image">
     ::
