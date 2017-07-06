@@ -8,9 +8,23 @@ angular.module 'ahaLuminateControllers'
     '$anchorScroll'
     'BoundlessService'
     'TeamraiserService'
-    ($scope, $timeout, TeamraiserParticipantService, $rootScope, $location, $anchorScroll, BoundlessService, TeamraiserService) ->
+    'DonorSearchService'
+    ($scope, $timeout, TeamraiserParticipantService, $rootScope, $location, $anchorScroll, BoundlessService, TeamraiserService, DonorSearchService) ->
       $dataRoot = angular.element '[data-aha-luminate-root]'
       consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
+
+      $scope.participantSearch = {}
+      $scope.searchParticipants = ->
+        DonorSearchService.getParticipants $scope.participantSearch.ng_first_name, $scope.participantSearch.ng_last_name
+        .then (response) ->
+          participants = response.data?.getParticipantsResponse
+          if not participants
+            #TODO
+          else
+            $scope.participantList = participants.participant
+            console.log $scope.participantList
+
+
       
       setNoSchoolLink = (noSchoolLink) ->
         $scope.noSchoolLink = noSchoolLink
