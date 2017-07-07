@@ -9,5 +9,9 @@ main {
 }
 
 .event-secondary-medium--grid {
-  background: url('../image/event-secondary-medium--grid-bkgrd.png') repeat top left scroll;
+  background-color: transparent;
+  background-image: url('../image/event-secondary-medium--grid-bkgrd.png');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
