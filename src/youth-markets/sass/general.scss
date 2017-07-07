@@ -1,9 +1,9 @@
 .skip-to-content {
-  padding: 20px;
   position: absolute;
   top: -50px;
   left: 0;
-
+  padding: 20px;
+  
   &:focus {
     top: 0;
     background: $event-primary;
@@ -40,7 +40,7 @@
 
 .event-accent {
   background: $event-accent;
-
+  
   a,
   a:link,
   a:visited,
