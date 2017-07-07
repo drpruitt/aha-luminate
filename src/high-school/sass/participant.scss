@@ -4,53 +4,6 @@
 
 @import "../../youth-markets/sass/participant.scss";
 
-.ng-pc-nav--coordinator {
-  a {
-    &,
-    &:link,
-    &:visited,
-    &:hover,
-    &:focus,
-    &:active {
-      @media (min-width: 670px) {
-        width: 20%;
-      }
-      
-      &.ng-pc-nav-item--resources {
-        padding: 12px 6px 0;
-        
-        @media (min-width: 670px) {
-          padding: 14px 12px 0;
-        }
-      }
-      
-      &.ng-pc-nav-item--student-view {
-        padding: 3px 6px 0;
-        
-        @media (min-width: 670px) {
-          padding: 3px 6px 0;
-        }
-        
-        @media (min-width: 1035px) {
-          padding: 14px 12px 0;
-        }
-        
-        > span {
-          max-width: 74px;
-          
-          @media (min-width: 670px) {
-            max-width: 90px;
-          }
-          
-          @media (min-width: 1035px) {
-            max-width: none;
-          }
-        }
-      }
-    }
-  }
-}
-
 .ym-pc-dashboard-section-header {
   h2, 
   .h2 {
@@ -361,9 +314,9 @@
       &:not(.btn) {
         display: inline-block;
         border: 0;
-        width: 24px;
+        width: 32px;
         padding: 0;
-        margin: 0 6px;
+        margin: 0 8px;
         
         img {
           display: inline-block;
@@ -374,61 +327,11 @@
   }
 }
 
-.ym-pc-dashboard-coordinator-progress-section {
-  .row {
-    .ym-pc-dashboard-coordinator-progress-section__column {
-      &:first-child {
-        padding: 0;
-      }
-    }
-  }
-}
-
 .ym-pc-dashboard-coordinator-progress-box {
-  padding: 20px;
-  margin: 0 0 15px;
-  
-  @media (min-width: $screen-md-min) {
-    margin: 0 0 30px;
-  }
-  
   .ym-pc-dashboard-section-header {
     h5, 
     .h5 {
       text-transform: none;
-    }
-  }
-}
-
-.ym-activity-box.ym-activity-box--coordinator-pages {
-  background: $event-secondary-medium;
-  border: 0;
-  border-radius: 0;
-  box-shadow: none;
-  
-  @media (min-width: $screen-sm-min) {
-    margin: 0;
-  }
-  
-  @media (min-width: $screen-md-min) {
-    margin: 0;
-  }
-  
-  h5, 
-  .h5 {
-    text-align: center;
-  }
-}
-
-.ym-pc-dashboard-coordinator-page-type {
-  a {
-    &,
-    &:link,
-    &:visited {
-      background-color: rgb(40, 79, 73);
-      background-color: rgba(40, 79, 73, 0.2);
-      color: rgb(255, 255, 255);
-      color: rgba(40, 79, 73, 1);
     }
   }
 }
