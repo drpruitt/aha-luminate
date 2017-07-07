@@ -35,10 +35,9 @@ angular.module 'ahaLuminateControllers'
             $scope.totalParticipants = '0'
           else if participants
             if $scope.totalParticipants is '1'
-              $scope.participant = participants
+              $scope.participant = participants.participant
             else
               $scope.participantList = participants.participant
-              console.log $scope.participantList
 
       $scope.orderParticipants = (sortProp, keepSortOrder) ->
         participants = $scope.participantList

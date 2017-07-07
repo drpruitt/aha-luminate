@@ -296,7 +296,9 @@
                 <tr>
                   <th class="ym-list__column ym-list__column--name" scope="col" role="columnheader" aria-sort="{{participantList.sortColumn != 'fullName' ? 'none' : (participantList.sortAscending ? 'ascending' : 'descending')}}">
                     <a href="" ng-click="orderParticipants('fullName')">
-                      <strong>Participant Name</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (participantList.sortColumn == 'fullName' && !participantList.sortAscending) || participantList.sortColumn != 'fullName', 'fa-caret-up': participantList.sortColumn == 'fullName' && participantList.sortAscending, 'inactive': participantList.sortColumn != 'fullName'}"></span>
+                      <strong>Participant Name</strong>&nbsp;
+                      <span ng-show="totalParticipants > 1 && participantListSetting.sortProp == 'fullName' && !participantListSetting.sortDesc" class="fa fa-caret-down"></span>
+                      <span ng-show="totalParticipants > 1 && participantListSetting.sortProp == 'fullName' && participantListSetting.sortDesc" class="fa fa-caret-up"></span>
                     </a>
                   </th>
                 </tr>
