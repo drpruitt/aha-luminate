@@ -1,6 +1,6 @@
 main {
   @media (min-width: $screen-md-min) {
-    background: url('../image/bkrd.png') repeat top left scroll;
+    background: #215478;
   }
 }
 
@@ -11,9 +11,3 @@ main {
 .event-secondary-medium--grid {
   background: url('../image/event-secondary-medium--grid-bkgrd.png') repeat top left scroll;
 }
-/*
-.event-secondary-medium--grid {
-  background-image: linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, .5) 25%, rgba(255, 255, 255, .5) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .5) 75%, rgba(255, 255, 255, .5) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, .5) 25%, rgba(255, 255, 255, .5) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .5) 75%, rgba(255, 255, 255, .5) 76%, transparent 77%, transparent);
-  background-size: 32px 32px;
-}
-*/
