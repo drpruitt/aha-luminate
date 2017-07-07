@@ -4,6 +4,25 @@
 
 @import "../../youth-markets/sass/participant.scss";
 
+.ng-pc-nav--coordinator {
+  a {
+    &,
+    &:link,
+    &:visited,
+    &:hover,
+    &:focus,
+    &:active {
+      &.ng-pc-nav-item--resources {
+        padding: 12px 6px 0;
+        
+        @media (min-width: 670px) {
+          padding: 14px 12px 0;
+        }
+      }
+    }
+  }
+}
+
 .ym-pc-dashboard-section-header {
   h2, 
   .h2 {
