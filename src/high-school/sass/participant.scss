@@ -400,39 +400,6 @@
   }
 }
 
-.ym-activity-box.ym-activity-box--coordinator-pages {
-  background: $event-secondary-medium;
-  border: 0;
-  border-radius: 0;
-  box-shadow: none;
-  
-  @media (min-width: $screen-sm-min) {
-    margin: 0;
-  }
-  
-  @media (min-width: $screen-md-min) {
-    margin: 0;
-  }
-  
-  h5, 
-  .h5 {
-    text-align: center;
-  }
-}
-
-.ym-pc-dashboard-coordinator-page-type {
-  a {
-    &,
-    &:link,
-    &:visited {
-      background-color: rgb(40, 79, 73);
-      background-color: rgba(40, 79, 73, 0.2);
-      color: rgb(255, 255, 255);
-      color: rgba(40, 79, 73, 1);
-    }
-  }
-}
-
 .ym-pc-dashboard-coordinator-students-box {
   .ym-pc-dashboard-section-header {
     h5, 
