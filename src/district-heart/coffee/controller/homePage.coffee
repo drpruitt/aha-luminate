@@ -44,16 +44,17 @@ angular.module 'ahaLuminateControllers'
               console.log $scope.participantList
 
       $scope.orderParticipants = (sortProp, keepSortOrder) ->
-        schools = $scope.schoolList.schools
-        if schools.length > 0
+        participants = $scope.participantList
+        console.log 'click'
+        if participants.length > 0
           if not keepSortOrder
-            $scope.schoolList.sortDesc = !$scope.schoolList.sortDesc
-          if $scope.schoolList.sortProp isnt sortProp
-            $scope.schoolList.sortProp = sortProp
-            $scope.schoolList.sortDesc = true
-          schools = $filter('orderBy') schools, sortProp, $scope.schoolList.sortDesc
-          $scope.schoolList.schools = schools
-          $scope.schoolList.currentPage = 1
+            $scope.participantListSetting.sortDesc = !$scope.participantListSetting.sortDesc
+          if $scope.participantListSetting.sortProp isnt sortProp
+            $scope.participantListSetting.sortProp = sortProp
+            $scope.participantListSetting.sortDesc = true
+          participants = $filter('orderBy') participants, sortProp, $scope.participantListSetting.sortDesc
+          $scope.participantList.participant = participants
+          $scope.participantListSetting.currentPage = 1
       
       $scope.participantPaginate = (value) ->
         begin = ($scope.participantListSetting.currentPage - 1) * $scope.participantListSetting.paginationItemsPerPage
