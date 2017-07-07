@@ -17,7 +17,7 @@ angular.module 'ahaLuminateControllers'
       $scope.participantListSetting =
         searchSubmitted: false
         searchPending: false
-        sortProp: 'PARTICIPANT_NAME'
+        sortProp: 'fullName'
         sortDesc: false
         totalItems: 0
         currentPage: 1
@@ -28,24 +28,22 @@ angular.module 'ahaLuminateControllers'
       $scope.searchParticipants = ->
         DonorSearchService.getParticipants $scope.participantSearch.ng_first_name, $scope.participantSearch.ng_last_name
         .then (response) ->
-          console.log response
           participants = response.data?.getParticipantsResponse
           $scope.totalParticipants = participants.totalNumberResults
           $scope.participantListSetting.totalItems = $scope.totalParticipants
           if not participants
-            console.log 'nothin'
-            #TODO
+            $scope.totalParticipants = '0'
           else if participants
             if $scope.totalParticipants is '1'
               $scope.participant = participants
-              console.log $scope.participant
             else
               $scope.participantList = participants.participant
               console.log $scope.participantList
 
       $scope.orderParticipants = (sortProp, keepSortOrder) ->
         participants = $scope.participantList
-        console.log 'click'
+        angular.forEach participants, (participant) ->
+          participant.fullName = participant.name.first + ' ' + participant.name.last
         if participants.length > 0
           if not keepSortOrder
             $scope.participantListSetting.sortDesc = !$scope.participantListSetting.sortDesc
@@ -53,7 +51,7 @@ angular.module 'ahaLuminateControllers'
             $scope.participantListSetting.sortProp = sortProp
             $scope.participantListSetting.sortDesc = true
           participants = $filter('orderBy') participants, sortProp, $scope.participantListSetting.sortDesc
-          $scope.participantList.participant = participants
+          $scope.participantList = participants
           $scope.participantListSetting.currentPage = 1
       
       $scope.participantPaginate = (value) ->
@@ -61,7 +59,6 @@ angular.module 'ahaLuminateControllers'
         end = begin + $scope.participantListSetting.paginationItemsPerPage
         index = $scope.participantList.indexOf value
         begin <= index and index < end
-
 
       
       setNoSchoolLink = (noSchoolLink) ->
