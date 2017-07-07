@@ -4,53 +4,6 @@
 
 @import "../../youth-markets/sass/participant.scss";
 
-.ng-pc-nav--coordinator {
-  a {
-    &,
-    &:link,
-    &:visited,
-    &:hover,
-    &:focus,
-    &:active {
-      @media (min-width: 670px) {
-        width: 20%;
-      }
-      
-      &.ng-pc-nav-item--resources {
-        padding: 12px 6px 0;
-        
-        @media (min-width: 670px) {
-          padding: 14px 12px 0;
-        }
-      }
-      
-      &.ng-pc-nav-item--student-view {
-        padding: 3px 6px 0;
-        
-        @media (min-width: 670px) {
-          padding: 3px 6px 0;
-        }
-        
-        @media (min-width: 1035px) {
-          padding: 14px 12px 0;
-        }
-        
-        > span {
-          max-width: 74px;
-          
-          @media (min-width: 670px) {
-            max-width: 90px;
-          }
-          
-          @media (min-width: 1035px) {
-            max-width: none;
-          }
-        }
-      }
-    }
-  }
-}
-
 .ym-pc-dashboard-section-header {
   h2, 
   .h2 {
