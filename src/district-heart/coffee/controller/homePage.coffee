@@ -9,20 +9,57 @@ angular.module 'ahaLuminateControllers'
     'BoundlessService'
     'TeamraiserService'
     'DonorSearchService'
-    ($scope, $timeout, TeamraiserParticipantService, $rootScope, $location, $anchorScroll, BoundlessService, TeamraiserService, DonorSearchService) ->
+    '$filter'
+    ($scope, $timeout, TeamraiserParticipantService, $rootScope, $location, $anchorScroll, BoundlessService, TeamraiserService, DonorSearchService, $filter) ->
       $dataRoot = angular.element '[data-aha-luminate-root]'
       consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
+
+      $scope.participantListSetting =
+        searchSubmitted: false
+        searchPending: false
+        sortProp: 'PARTICIPANT_NAME'
+        sortDesc: false
+        totalItems: 0
+        currentPage: 1
+        paginationItemsPerPage: 5
+        paginationMaxSize: 5
 
       $scope.participantSearch = {}
       $scope.searchParticipants = ->
         DonorSearchService.getParticipants $scope.participantSearch.ng_first_name, $scope.participantSearch.ng_last_name
         .then (response) ->
+          console.log response
           participants = response.data?.getParticipantsResponse
+          $scope.totalParticipants = participants.totalNumberResults
+          $scope.participantListSetting.totalItems = $scope.totalParticipants
           if not participants
+            console.log 'nothin'
             #TODO
-          else
-            $scope.participantList = participants.participant
-            console.log $scope.participantList
+          else if participants
+            if $scope.totalParticipants is '1'
+              $scope.participant = participants
+              console.log $scope.participant
+            else
+              $scope.participantList = participants.participant
+              console.log $scope.participantList
+
+      $scope.orderParticipants = (sortProp, keepSortOrder) ->
+        schools = $scope.schoolList.schools
+        if schools.length > 0
+          if not keepSortOrder
+            $scope.schoolList.sortDesc = !$scope.schoolList.sortDesc
+          if $scope.schoolList.sortProp isnt sortProp
+            $scope.schoolList.sortProp = sortProp
+            $scope.schoolList.sortDesc = true
+          schools = $filter('orderBy') schools, sortProp, $scope.schoolList.sortDesc
+          $scope.schoolList.schools = schools
+          $scope.schoolList.currentPage = 1
+      
+      $scope.participantPaginate = (value) ->
+        begin = ($scope.participantListSetting.currentPage - 1) * $scope.participantListSetting.paginationItemsPerPage
+        end = begin + $scope.participantListSetting.paginationItemsPerPage
+        index = $scope.participantList.indexOf value
+        begin <= index and index < end
 
 
       
