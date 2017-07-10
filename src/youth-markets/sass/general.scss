@@ -26,6 +26,10 @@
   background: $event-secondary;
 }
 
+hr.event-secondary {
+  border-color: $event-secondary;
+}
+
 .event-secondary-medium {
   background: $event-secondary-medium;
 }
