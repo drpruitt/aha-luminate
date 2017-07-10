@@ -59,6 +59,52 @@ angular.module 'ahaLuminateControllers'
         index = $scope.participantList.indexOf value
         begin <= index and index < end
 
+
+      $scope.teamListSetting =
+        searchSubmitted: false
+        searchPending: false
+        sortProp: 'fullName'
+        sortDesc: false
+        totalItems: 0
+        currentPage: 1
+        paginationItemsPerPage: 5
+        paginationMaxSize: 5
+
+      $scope.teamSearch = {}
+      $scope.searchTeams = ->
+        DonorSearchService.getTeams $scope.teamSearch.ng_team_name
+        .then (response) ->
+          teams = response.data?.getTeamsResponse
+          $scope.totalTeams = teams.totalNumberResults
+          $scope.teamListSetting.totalItems = $scope.totalTeams
+          if not teams
+            $scope.totalTeams = '0'
+          else if teams
+            if $scope.totalTeams is '1'
+              $scope.team = teams.team
+            else
+              $scope.teamList = teams.team        
+
+      $scope.orderTeams = (sortProp, keepSortOrder) ->
+        teams = $scope.teamList
+        angular.forEach teams, (team) ->
+          participant.fullName = participant.name.first + ' ' + participant.name.last
+        if participants.length > 0
+          if not keepSortOrder
+            $scope.participantListSetting.sortDesc = !$scope.participantListSetting.sortDesc
+          if $scope.participantListSetting.sortProp isnt sortProp
+            $scope.participantListSetting.sortProp = sortProp
+            $scope.participantListSetting.sortDesc = true
+          participants = $filter('orderBy') participants, sortProp, $scope.participantListSetting.sortDesc
+          $scope.participantList = participants
+          $scope.participantListSetting.currentPage = 1
+      
+      $scope.teamPaginate = (value) ->
+        begin = ($scope.teamListSetting.currentPage - 1) * $scope.teamListSetting.paginationItemsPerPage
+        end = begin + $scope.teamListSetting.paginationItemsPerPage
+        index = $scope.teamList.indexOf value
+        begin <= index and index < end
+
       
       setNoSchoolLink = (noSchoolLink) ->
         $scope.noSchoolLink = noSchoolLink
