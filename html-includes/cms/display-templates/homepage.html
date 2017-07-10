@@ -265,10 +265,10 @@
   <t:if test="currentpath == '/district-heart-challenge/'">
     <div class="ym-page-section ym-page-section__main">
       <div class="container">
+        <h2 class='text-center'>
+          Find a Participant or Team to Support
+        </h2>
         <section aria-label="Participant search">
-          <h2 class='text-center'>
-            Find a Participant or Team to Support
-          </h2>
           <div class="ym-roster-search">
             <form class="form-inline" name="companyParticipantSearchForm" method="POST" ng-submit="searchParticipants()">
               <div class="ym-roster-search-title">
@@ -299,6 +299,15 @@
                       <strong>Participant Name</strong>&nbsp;
                       <span ng-show="totalParticipants > 1 && participantListSetting.sortProp == 'fullName' && !participantListSetting.sortDesc" class="fa fa-caret-down"></span>
                       <span ng-show="totalParticipants > 1 && participantListSetting.sortProp == 'fullName' && participantListSetting.sortDesc" class="fa fa-caret-up"></span>
+                      <span ng-show="totalParticipants > 1 && participantListSetting.sortProp != 'fullName'" class="fa fa-caret-down inactive"></span>
+                    </a>
+                  </th>
+                  <th class="ym-list__column ym-list__column--team" scope="col" role="columnheader" aria-sort="{{participantList.sortColumn != 'teamName' ? 'none' : (participantList.sortAscending ? 'ascending' : 'descending')}}">
+                    <a href="" ng-click="orderParticipants('teamName')">
+                      <strong>Team Name</strong>&nbsp;
+                      <span ng-show="totalParticipants > 1 && participantListSetting.sortProp == 'teamName' && !participantListSetting.sortDesc" class="fa fa-caret-down"></span>
+                      <span ng-show="totalParticipants > 1 && participantListSetting.sortProp == 'teamName' && participantListSetting.sortDesc" class="fa fa-caret-up"></span>
+                      <span ng-show="totalParticipants > 1 && participantListSetting.sortProp != 'teamName'" class="fa fa-caret-down inactive"></span>
                     </a>
                   </th>
                 </tr>
@@ -311,6 +320,11 @@
                       <span ng-bind-html="participant.name.last"></span>
                     </a>
                   </td> 
+                  <td class="ym-list__column ym-list__column--team">
+                    <a ng-href="{{participant.teamPageUrl}}">
+                      <span ng-bind-html="participant.teamName"></span>
+                    </a>
+                  </td>
                   <td class="ym-list__column ym-list__column--donate">
                     <a class="btn btn-primary btn-md" ng-href="{{participant.donationUrl}}">
                       <strong>Donate</strong>
@@ -324,6 +338,11 @@
                       <span ng-bind-html="participant.name.last"></span>
                     </a>
                   </td> 
+                  <td class="ym-list__column ym-list__column--team">
+                    <a ng-href="{{participant.teamPageUrl}}">
+                      <span ng-bind-html="participant.teamName"></span>
+                    </a>
+                  </td>
                   <td class="ym-list__column ym-list__column--donate">
                     <a class="btn btn-primary btn-md" ng-href="{{participant.donationUrl}}">
                       <strong>Donate</strong>
@@ -334,6 +353,79 @@
             </table>
             <div class="ym-pagination text-center" ng-show="participantListSetting.totalItems > participantListSetting.paginationItemsPerPage">
               <ul uib-pagination ng-model="participantListSetting.currentPage" total-items="participantListSetting.totalItems" items-per-page="participantListSetting.paginationItemsPerPage" max-size="participantListSetting.paginationMaxSize" boundary-links="participantListSetting.participants.length > (participantListSetting.paginationItemsPerPage * participantListSetting.paginationMaxSize)"></ul>
+            </div>
+          </div>
+        </section>
+        <hr />
+        <section aria-label="Team search">
+          <div class="ym-roster-search">
+            <form class="form-inline" method="POST" ng-submit="searchTeams()">
+              <div class="ym-roster-search-title">
+                Team Search:
+              </div>
+              <div class="form-group">
+                <label for="teamSearch-ng_first_name" class="sr-only">Team Name:</label>
+                <input type="text" class="form-control" id="teamSearch-ng_team_name" name="ng_first_name" ng-model="teamSearch.ng_first_name" placeholder="Team Name">
+              </div>
+              <button type="submit" class="btn btn-md-wide">
+                <strong>Search</strong>
+              </button>
+            </form>
+          </div>
+          <div class="alert alert-danger" ng-if="totalTeams == 0" ng-cloak>
+            No teams found.
+          </div>
+          <div class="table-responsive" ng-if="totalTeams > 0" ng-cloak>
+            <table class="table table-striped table--padded ym-list ym-list--team-list" summary="Results for team search">
+              <thead class="ym-list__header">
+                <tr>
+                  <th class="ym-list__column ym-list__column--name" scope="col" role="columnheader" aria-sort="{{teamList.sortColumn != 'fullName' ? 'none' : (teamList.sortAscending ? 'ascending' : 'descending')}}">
+                    <a href="" ng-click="orderteams('fullName')">
+                      <strong>team Name</strong>&nbsp;
+                      <span ng-show="totalTeams > 1 && teamListSetting.sortProp == 'fullName' && !teamListSetting.sortDesc" class="fa fa-caret-down"></span>
+                      <span ng-show="totalTeams > 1 && teamListSetting.sortProp == 'fullName' && teamListSetting.sortDesc" class="fa fa-caret-up"></span>
+                      <span ng-show="totalTeams > 1 && teamListSetting.sortProp != 'fullName'" class="fa fa-caret-down inactive"></span>
+                    </a>
+                  </th>
+                  <th class="ym-list__column ym-list__column--team" scope="col" role="columnheader" aria-sort="{{teamList.sortColumn != 'teamName' ? 'none' : (teamList.sortAscending ? 'ascending' : 'descending')}}">
+                    <a href="" ng-click="orderteams('teamName')">
+                      <strong>Team Name</strong>&nbsp;
+                      <span ng-show="totalTeams > 1 && teamListSetting.sortProp == 'teamName' && !teamListSetting.sortDesc" class="fa fa-caret-down"></span>
+                      <span ng-show="totalTeams > 1 && teamListSetting.sortProp == 'teamName' && teamListSetting.sortDesc" class="fa fa-caret-up"></span>
+                      <span ng-show="totalTeams > 1 && teamListSetting.sortProp != 'teamName'" class="fa fa-caret-down inactive"></span>
+                    </a>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="ym-list__row" ng-if="totalTeams == 1">
+                  <td class="ym-list__column ym-list__column--name">
+                    <a ng-href="{{team.teamPageUrl}}">
+                      <span ng-bind-html="team.teamName"></span>
+                    </a>
+                  </td> 
+                  <td class="ym-list__column ym-list__column--donate">
+                    <a class="btn btn-primary btn-md" ng-href="{{team.donationUrl}}">
+                      <strong>Donate</strong>
+                    </a>
+                  </td>
+                </tr>
+                <tr class="ym-list__row" ng-repeat="team in teamList | filter:teamPaginate" ng-if="totalTeams > 1">
+                  <td class="ym-list__column ym-list__column--name">
+                    <a ng-href="{{team.teamPageUrl}}">
+                      <span ng-bind-html="team.teamName"></span>
+                    </a>
+                  </td>
+                  <td class="ym-list__column ym-list__column--donate">
+                    <a class="btn btn-primary btn-md" ng-href="{{team.donationUrl}}">
+                      <strong>Donate</strong>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="ym-pagination text-center" ng-show="teamListSetting.totalItems > teamListSetting.paginationItemsPerPage">
+              <ul uib-pagination ng-model="teamListSetting.currentPage" total-items="teamListSetting.totalItems" items-per-page="teamListSetting.paginationItemsPerPage" max-size="teamListSetting.paginationMaxSize" boundary-links="teamListSetting.teams.length > (teamListSetting.paginationItemsPerPage * teamListSetting.paginationMaxSize)"></ul>
             </div>
           </div>
         </section>
