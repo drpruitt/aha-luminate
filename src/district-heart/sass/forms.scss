@@ -16,6 +16,17 @@ select {
   }
 }
 
-.ym-roster-search .form-inline {
-  width: 675px;
+.cms .ym-roster-search .form-inline {
+  @media(min-width: $screen-sm-min) {
+    .form-group .form-control {
+      max-width: 110px;
+    }
+  }  
+
+  @media(max-width: 631px) {
+    .btn {
+      display: block;
+      margin: 5px auto 0;
+    }
+  }
 }
