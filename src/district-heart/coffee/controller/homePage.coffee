@@ -15,7 +15,6 @@ angular.module 'ahaLuminateControllers'
       consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
 
       $scope.participantListSetting =
-        searchSubmitted: false
         searchPending: false
         sortProp: 'fullName'
         sortDesc: false
@@ -26,6 +25,7 @@ angular.module 'ahaLuminateControllers'
 
       $scope.participantSearch = {}
       $scope.searchParticipants = ->
+        $scope.participantListSetting.searchPending = true
         DonorSearchService.getParticipants $scope.participantSearch.ng_first_name, $scope.participantSearch.ng_last_name
         .then (response) ->
           participants = response.data?.getParticipantsResponse
@@ -38,6 +38,7 @@ angular.module 'ahaLuminateControllers'
               $scope.participant = participants.participant
             else
               $scope.participantList = participants.participant
+          $scope.participantListSetting.searchPending = false
 
       $scope.orderParticipants = (sortProp, keepSortOrder) ->
         participants = $scope.participantList
@@ -57,6 +58,50 @@ angular.module 'ahaLuminateControllers'
         begin = ($scope.participantListSetting.currentPage - 1) * $scope.participantListSetting.paginationItemsPerPage
         end = begin + $scope.participantListSetting.paginationItemsPerPage
         index = $scope.participantList.indexOf value
+        begin <= index and index < end
+
+
+      $scope.teamListSetting =
+        searchPending: false
+        sortProp: 'teamName'
+        sortDesc: false
+        totalItems: 0
+        currentPage: 1
+        paginationItemsPerPage: 5
+        paginationMaxSize: 5
+
+      $scope.teamSearch = {}
+      $scope.searchTeams = ->
+        DonorSearchService.getTeams $scope.teamSearch.ng_team_name
+        .then (response) ->
+          console.log response
+          teams = response.data?.getTeamSearchByInfoResponse
+          $scope.totalTeams = teams.totalNumberResults
+          $scope.teamListSetting.totalItems = $scope.totalTeams
+          if not teams
+            $scope.totalTeams = '0'
+          else if teams
+            if $scope.totalTeams is '1'
+              $scope.team = teams.team
+            else
+              $scope.teamList = teams.team         
+
+      $scope.orderTeams = (sortProp, keepSortOrder) ->
+        teams = $scope.teamList
+        if teams.length > 0
+          if not keepSortOrder
+            $scope.teamListSetting.sortDesc = !$scope.teamListSetting.sortDesc
+          if $scope.teamListSetting.sortProp isnt sortProp
+            $scope.teamListSetting.sortProp = sortProp
+            $scope.teamListSetting.sortDesc = true
+          participants = $filter('orderBy') teams, sortProp, $scope.teamListSetting.sortDesc
+          $scope.teamList = teams
+          $scope.teamListSetting.currentPage = 1
+      
+      $scope.teamPaginate = (value) ->
+        begin = ($scope.teamListSetting.currentPage - 1) * $scope.teamListSetting.paginationItemsPerPage
+        end = begin + $scope.teamListSetting.paginationItemsPerPage
+        index = $scope.teamList.indexOf value
         begin <= index and index < end
 
       
