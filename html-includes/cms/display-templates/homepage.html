@@ -263,7 +263,7 @@
   </div>
   <t:set id="currentpath" value="path" />
   <t:if test="currentpath == '/district-heart-challenge/'">
-    <div class="ym-page-section ym-page-section__main">
+    <div class="ym-page-section ym-page-section__main ym-page-section__donor-search">
       <div class="container">
         <h2 class='text-center'>
           Find a Participant or Team to Support
@@ -290,7 +290,7 @@
           <div class="alert alert-danger" ng-if="totalParticipants == 0" ng-cloak>
             No participants found.
           </div>
-          <div class="text-center visible-xs-block" ng-if="totalTeams > 0" ng-cloak>
+          <div class="text-center visible-xs-block" ng-if="totalParticipants > 0" ng-cloak>
             <em>Scroll right to view all information</em>
           </div>
           <div class="table-responsive" ng-if="totalParticipants > 0" ng-cloak>
@@ -520,7 +520,7 @@
       ${body}
     </t:list>
   </t:if>
-  <div class="modal fade" id="noRegModal" tabindex="-1" role="dialog" aria-labelledby="noRegModelLabel">
+  <div class="modal fade" id="noRegModal" tabindex="-1" role="dialog" aria-labelledby="noRegModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
