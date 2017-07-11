@@ -1,6 +1,7 @@
 angular.module 'ahaLuminateApp'
-  .factory 'AriaCarousel', ->
-    {
+  .factory 'AriaCarousel', [ 
+    '$timeout'
+    ($timeout)  ->
       init: (elem)->
         angular.element(elem).find('.owl-item').attr 'aria-selected', 'false'
         angular.element(elem).find('.owl-item').attr 'role', 'listitem'
@@ -18,9 +19,11 @@ angular.module 'ahaLuminateApp'
               jQuery(elem).trigger 'prev.owl.carousel'
         return
       onChange: (elem) ->
-        angular.element(elem).find('.owl-item').attr 'aria-selected', 'false'
-        angular.element(elem).find('.owl-item, .owl-item a').attr 'tabindex', '-1' 
-        angular.element(elem).find('.owl-item.active').attr 'aria-selected', 'true'
-        angular.element(elem).find('.owl-item.active, .owl-item.active a').attr 'tabindex', '0' 
-    }
+        changeCarousel = ->
+          angular.element(elem).find('.owl-item').attr 'aria-selected', 'false'
+          angular.element(elem).find('.owl-item, .owl-item a').attr 'tabindex', '-1' 
+          angular.element(elem).find('.owl-item.active').attr 'aria-selected', 'true'
+          angular.element(elem).find('.owl-item.active, .owl-item.active a').attr 'tabindex', '0' 
+        $timeout changeCarousel, 500
+  ]
   
