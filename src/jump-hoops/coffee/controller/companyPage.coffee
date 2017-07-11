@@ -174,7 +174,7 @@ angular.module 'ahaLuminateControllers'
                 participants = [participants] if not angular.isArray participants
                 angular.forEach participants, (participant) ->
                   participant.amountRaised = Number participant.amountRaised
-                  if participant.name?.first and participant.amountRaised > 1
+                  if participant.name?.first and participant.amountRaised > 0
                     participant.firstName = participant.name.first
                     participant.lastName = participant.name.last
                     participant.name.last = participant.name.last.substring(0, 1) + '.'
