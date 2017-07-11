@@ -194,6 +194,8 @@
 
 .ym-activity-box {
   background: $event-accent-medium;
+  border: 5px solid $event-accent;
+  box-shadow: 0 5px 0 0 #cf831f;
   
   h5, 
   .h5 {

@@ -475,6 +475,7 @@ angular.module 'trPcControllers'
           $scope.dashboardPromises.push updateCompanyUrlPromise
       
       $scope.prizes = []
+      # BoundlessService.getBadges $scope.consId
       BoundlessService.getBadges '2011'
         .then (response) ->
           prizes = response.data.prizes
