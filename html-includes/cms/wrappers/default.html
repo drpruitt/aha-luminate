@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><t:value id="title">title</t:value></title>
+<t:include id="convio-content-810312856"/>
+
+  <meta property="og:title" content="American Heart Association | ${title}">
+  <t:if test="!isNull(description)"><meta property="og:description" content = "${description}"></t:if><t:else><meta property="og:descrtiption" content = "The American Heart Association offers programs for the classroom and for the gym to get help kids healthy and performing better in school."> </t:else>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
+</head>
+<t:if test="templateid=='Single Display Template:  Jump/Hoops Event Home Page'">
+<t:set id="ishome" value="'jump-hoops-home'"/>
+</t:if>
+<body class="aha-luminate cms ${ishome}" data-aha-luminate-root data-api-key="wDB09SQODRpVIOvX" data-cons-id="${cons.cons_id}" ng-controller="MainCtrl">
+<a href="javascript:void(0);" ng-click="skipToContent()" class="skip-to-content">Skip to content</a>
+<t:include id="convio-content-810312965" />
+<main>
+  <div id="contentStart"></div>
+  <div class="ym-page-header">
+    <div class="container">
+    <t:if test="templateid=='Single Display Template: General Landing Page and Youth Market Homepage' || templateid=='Single Display Template: Default with Right Sidebar'">
+    <div id="breadcrumb-800363792" class="templateComponent" style="display: inline;"></div>
+    </t:if>
+    <t:if test="templateid=='Single Display Template: General Landing Page and Youth Market Homepage'">
+    <t:if test="banner_image.length>0"></t:if><t:else><h1>${title}</h1></t:else>
+    </t:if>
+    </div>
+  </div>
+  <div class="container">
+    <div class="ym-page-content">
+      <div class="templateComponent" id="body"></div>
+    </div>
+  </div>
+</main>
+<div class="templateComponent" id="convio-content-793430287" style="display: inline;"></div>
+<div class="templateComponent" id="poweredBy" style="display: none;"></div>
+</body>
+</html>
