@@ -6,6 +6,7 @@
   }
 
   @media (min-width: $screen-sm-min) {
+    box-shadow: 0 10px 0 0 rgb(50, 50, 50);
     box-shadow: 0 10px 0 0 rgba(50, 50, 50, 1);
   }
 }
