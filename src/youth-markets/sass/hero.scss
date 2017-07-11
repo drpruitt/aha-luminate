@@ -33,6 +33,7 @@
       &:hover, 
       &:focus, 
       &:active {
+        box-shadow: 0 0 30px 7px rgb(250, 250, 250);
         box-shadow: 0 0 30px 7px rgba(250, 250, 250, 0.5);
         font-size: $font-size-sm;
       }
