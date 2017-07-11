@@ -80,9 +80,4 @@ angular.module 'ahaLuminateControllers'
       $scope.delegatedAddThis = (targetToolboxContainer, shareType) ->
         angular.element(targetToolboxContainer).find('.addthis_button_' + shareType).click()
         false
-
-      $scope.skipToContent = -> 
-        $location.hash 'contentStart' 
-        $anchorScroll()
-        
   ]
