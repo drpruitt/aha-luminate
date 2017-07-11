@@ -32,7 +32,7 @@ angular.module 'ahaLuminateControllers'
           ]
           onInitialized: (event) ->
             AriaCarousel.init(owlStr)
-          onChange: ->
+          onChanged: ->
             AriaCarousel.onChange(owlStr)
       
       if angular.element('ym-carousel--internal')
