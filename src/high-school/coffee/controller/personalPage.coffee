@@ -14,56 +14,56 @@ angular.module 'ahaLuminateControllers'
     ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserParticipantService, TeamraiserCompanyService, BoundlessService, TeamraiserParticipantPageService) ->
       $dataRoot = angular.element '[data-aha-luminate-root]'
       $scope.participantId = $location.absUrl().split('px=')[1].split('&')[0].split('#')[0]
-      frId = $dataRoot.data('fr-id') if $dataRoot.data('fr-id') isnt ''
       $scope.companyId = $dataRoot.data('company-id') if $dataRoot.data('company-id') isnt ''
       $scope.teamId = $dataRoot.data('team-id') if $dataRoot.data('team-id') isnt ''
       $scope.eventDate =''
       $rootScope.numTeams = ''
       
       $scope.prizes = []
+      # BoundlessService.getBadges $scope.participantId
       BoundlessService.getBadges '2011'
-      .then (response) ->
-        if not response.data.status or response.data.status isnt 'success'
-          # TODO
-        else
-          prizes = response.data.prizes
-          angular.forEach prizes, (prize) ->
-            if prize.earned_datetime isnt null
-              if prize.id is '1000'
-                $scope.prizes.push
-                  priority: 1
-                  id: prize.id
-                  label: prize.label
-                  sku: prize.sku
-                  status: prize.status
-                  earned: prize.earned_datetime
-              else if prize.id is '1001'
-                $scope.prizes.push
-                  priority: 2
-                  id: prize.id
-                  label: prize.label
-                  sku: prize.sku
-                  status: prize.status
-                  earned: prize.earned_datetime
-              else if prize.id is '1004'
-                $scope.prizes.push
-                  priority: 3
-                  id: prize.id
-                  label: prize.label
-                  sku: prize.sku
-                  status: prize.status
-                  earned: prize.earned_datetime
-              else if prize.id is '1003'
-                $scope.prizes.push
-                  priority: 4
-                  id: prize.id
-                  label: prize.label
-                  sku: prize.sku
-                  status: prize.status
-                  earned: prize.earned_datetime
-          if $scope.prizes.length > 0
-            $scope.prizes.sort (a, b) ->
-              a.priority - b.priority
+        .then (response) ->
+          if not response.data.status or response.data.status isnt 'success'
+            # TODO
+          else
+            prizes = response.data.prizes
+            angular.forEach prizes, (prize) ->
+              if prize.earned_datetime isnt null
+                if prize.id is '1000'
+                  $scope.prizes.push
+                    priority: 1
+                    id: prize.id
+                    label: prize.label
+                    sku: prize.sku
+                    status: prize.status
+                    earned: prize.earned_datetime
+                else if prize.id is '1001'
+                  $scope.prizes.push
+                    priority: 2
+                    id: prize.id
+                    label: prize.label
+                    sku: prize.sku
+                    status: prize.status
+                    earned: prize.earned_datetime
+                else if prize.id is '1004'
+                  $scope.prizes.push
+                    priority: 3
+                    id: prize.id
+                    label: prize.label
+                    sku: prize.sku
+                    status: prize.status
+                    earned: prize.earned_datetime
+                else if prize.id is '1003'
+                  $scope.prizes.push
+                    priority: 4
+                    id: prize.id
+                    label: prize.label
+                    sku: prize.sku
+                    status: prize.status
+                    earned: prize.earned_datetime
+            if $scope.prizes.length > 0
+              $scope.prizes.sort (a, b) ->
+                a.priority - b.priority
       
       TeamraiserCompanyService.getCompanies 'company_id=' + $scope.companyId,
         success: (response) ->
