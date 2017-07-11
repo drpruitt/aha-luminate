@@ -8,7 +8,8 @@ angular.module 'ahaLuminateControllers'
     '$anchorScroll'
     'BoundlessService'
     'TeamraiserService'
-    ($scope, $timeout, TeamraiserParticipantService, $rootScope, $location, $anchorScroll, BoundlessService, TeamraiserService) ->
+    'AriaCarousel'
+    ($scope, $timeout, TeamraiserParticipantService, $rootScope, $location, $anchorScroll, BoundlessService, TeamraiserService, AriaCarousel) ->
       $dataRoot = angular.element '[data-aha-luminate-root]'
       consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
       
@@ -99,6 +100,7 @@ angular.module 'ahaLuminateControllers'
       
       initCarousel = ->
         owl = jQuery '.ym-home-feature .owl-carousel'
+        owlStr = '.ym-home-feature .owl-carousel'
         owl.owlCarousel
           items: 1
           nav: true
@@ -117,10 +119,17 @@ angular.module 'ahaLuminateControllers'
             '<i class="fa fa-chevron-left" hidden aria-hidden="true" />'
             '<i class="fa fa-chevron-right" hidden aria-hidden="true" />'
           ]
+          addClassActive: true
+          onInitialized: (event) ->
+            AriaCarousel.init(owlStr)
+          onChanged: ->
+            AriaCarousel.onChange(owlStr)
+
       $timeout initCarousel, 1000
       
       initHeroCarousel = ->
         owl = jQuery '.ym-carousel--hero'
+        owlStr = '.ym-carousel--hero.owl-carousel'
         if owl.length
           items = owl.find '> .item'
           if items.length > 1
@@ -133,5 +142,11 @@ angular.module 'ahaLuminateControllers'
                 '<i class="fa fa-chevron-left" hidden aria-hidden="true" />'
                 '<i class="fa fa-chevron-right" hidden aria-hidden="true" />'
               ]
+              addClassActive: true
+              onInitialized: (event) ->
+                AriaCarousel.init(owlStr)
+              onChanged: ->
+                AriaCarousel.onChange(owlStr)
+              
       $timeout initHeroCarousel, 1000
   ]
