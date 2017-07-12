@@ -15,8 +15,7 @@ angular.module 'trPcControllers'
     'NgPcTeamraiserShortcutURLService'
     'NgPcInteractionService'
     'NgPcTeamraiserCompanyService'
-    'ngAria'
-    ($rootScope, $scope, $filter, $timeout, $uibModal, APP_INFO, BoundlessService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserGiftService, NgPcContactService, NgPcTeamraiserShortcutURLService, NgPcInteractionService, NgPcTeamraiserCompanyService, ngAria) ->
+    ($rootScope, $scope, $filter, $timeout, $uibModal, APP_INFO, BoundlessService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserGiftService, NgPcContactService, NgPcTeamraiserShortcutURLService, NgPcInteractionService, NgPcTeamraiserCompanyService) ->
       $scope.dashboardPromises = []
       
       $dataRoot = angular.element '[data-embed-root]'

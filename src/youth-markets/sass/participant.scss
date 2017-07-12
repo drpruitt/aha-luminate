@@ -470,7 +470,8 @@ main > .container {
   text-align: center;
   width: 50%;
 
-  a {
+  a,
+  button {
     @media(max-width: $screen-xs){
       font-size: 13px;
     }
@@ -495,7 +496,8 @@ main > .container {
   }
 
   &.active {
-    a {
+    a,
+    button {
       &,
       &:link,
       &:visited {
