@@ -354,6 +354,7 @@
   .ym-pc-dashboard-section-header {
     h3, 
     .h3 {
+      color: $event-grey;
       margin: 0 0 22px;
     }
   }
@@ -362,6 +363,7 @@
     .ym-pc-dashboard-section-header {
       h5, 
       .h5 {
+        color: $event-grey;
         text-transform: none;
       }
     }
@@ -403,9 +405,12 @@
 
 .ym-pc-dashboard-captain-resources-section, 
 .ym-pc-dashboard-coordinator-resources-section {
+  background-color: #c4d7e5;
+  
   .ym-pc-dashboard-section-header {
     h3, 
     .h3 {
+      color: $event-grey;
       margin: 0 0 32px;
     }
   }
@@ -416,6 +421,7 @@
   .ym-pc-dashboard-section-header {
     h5, 
     .h5 {
+      color: $event-grey;
       text-transform: none;
     }
   }
