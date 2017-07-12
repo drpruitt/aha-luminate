@@ -2,8 +2,8 @@ angular.module 'ahaLuminateControllers'
   .controller 'CmsCtrl', [
     '$scope'
     '$timeout'
-    'AriaCarousel'
-    ($scope, $timeout, AriaCarousel) ->
+    'AriaCarouselService'
+    ($scope, $timeout, AriaCarouselService) ->
       initCarousel = ->
         owl = jQuery '.owl-carousel'
         owlStr = '.owl-carousel'
@@ -27,13 +27,13 @@ angular.module 'ahaLuminateControllers'
               stagePadding: 120
               margin: 60
           navText: [
-            '<i class="fa fa-chevron-left" hidden aria-hidden="true" />',
+            '<i class="fa fa-chevron-left" hidden aria-hidden="true" />'
             '<i class="fa fa-chevron-right" hidden aria-hidden="true" />'
           ]
           onInitialized: (event) ->
-            AriaCarousel.init(owlStr)
+            AriaCarouselService.init(owlStr)
           onChanged: ->
-            AriaCarousel.onChange(owlStr)
+            AriaCarouselService.onChange(owlStr)
       
       if angular.element('ym-carousel--internal')
         $timeout initCarousel, 1000

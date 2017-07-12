@@ -112,9 +112,9 @@ angular.module 'ahaLuminateControllers'
           ]
           addClassActive: true
           onInitialized: (event) ->
-            AriaCarousel.init(owlStr)
+            AriaCarouselService.init(owlStr)
           onChanged: ->
-            AriaCarousel.onChange(owlStr)
+            AriaCarouselService.onChange(owlStr)
 
       $timeout initCarousel, 1000
       
@@ -135,9 +135,9 @@ angular.module 'ahaLuminateControllers'
               ]
               addClassActive: true
               onInitialized: (event) ->
-                AriaCarousel.init(owlStr)
+                AriaCarouselService.init(owlStr)
               onChanged: ->
-                AriaCarousel.onChange(owlStr)
+                AriaCarouselService.onChange(owlStr)
               
       $timeout initHeroCarousel, 1000
   ]
