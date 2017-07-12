@@ -16,6 +16,8 @@ angular.module 'ahaLuminateApp'
         rootPath = '../' + devBranch + '/aha-luminate/'
       else
         rootPath = '../aha-luminate/'
+      rootPath
+    programKey: 'heart-walk'
 
 angular.module 'ahaLuminateApp'
   .run [

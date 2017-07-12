@@ -78,7 +78,7 @@
               </div>
             </div>
             <div ng-class="{'hidden': dashboardProgressType != 'team'}" ng-if="companyInfo.teamCount > 1" ng-cloak>
-              <div class="ym-progress__thermometer" name="Class Progress Bar" aria-valuetext="{{teamProgress.percent} percent of fundraising progress" role="progressbar" aria-valuenow="{{teamProgress.percent}}" aria-valuemin="0" aria-valuemax="100">
+              <div class="ym-progress__thermometer" name="Team Progress Bar" aria-valuetext="{{teamProgress.percent} percent of fundraising progress" role="progressbar" aria-valuenow="{{teamProgress.percent}}" aria-valuemin="0" aria-valuemax="100">
                 <div class="ym-progress__thermometer--fill" ng-style="{'width': teamProgress.percent + '%'}"></div>
               </div>
               <div class="ym-progress-related clearfix">
@@ -431,7 +431,7 @@
               </div>
             </div>
             <div ng-class="{'hidden': dashboardProgressType != 'company'}" ng-cloak>
-              <div class="ym-progress__thermometer">
+              <div class="ym-progress__thermometer" name="School Progress Bar" aria-valuetext="{{companyProgress.percent}} percent of fundraising progress" role="progressbar" aria-valuenow="{{companyProgress.percent}}" aria-valuemin="0" aria-valuemax="100">
                 <div class="ym-progress__thermometer--fill" ng-style="{'width': companyProgress.percent + '%'}"></div>
               </div>
               <div class="ym-progress-related clearfix">
@@ -453,7 +453,7 @@
               </div>
             </div>
             <div ng-class="{'hidden': dashboardProgressType != 'team'}" ng-if="companyInfo.teamCount > 1" ng-cloak>
-              <div class="ym-progress__thermometer">
+              <div class="ym-progress__thermometer" name="Team Progress Bar" aria-valuetext="{{teamProgress.percent}} percent of fundraising progress" role="progressbar" aria-valuenow="{{teamProgress.percent}}" aria-valuemin="0" aria-valuemax="100">
                 <div class="ym-progress__thermometer--fill" ng-style="{'width': teamProgress.percent + '%'}"></div>
               </div>
               <div class="ym-progress-related clearfix">
@@ -487,7 +487,7 @@
               </div>
             </div>
             <div ng-class="{'hidden': dashboardProgressType != 'personal'}" ng-cloak>
-              <div class="ym-progress__thermometer">
+              <div class="ym-progress__thermometer" name="Personal Progress Bar" aria-valuetext="{{participantProgress.percent}} percent of fundraising progress" role="progressbar" aria-valuenow="{{participantProgress.percent}}" aria-valuemin="0" aria-valuemax="100">
                 <div class="ym-progress__thermometer--fill" ng-style="{'width': participantProgress.percent + '%'}"></div>
               </div>
               <div class="ym-progress-related clearfix">
@@ -710,10 +710,10 @@
             </div>
             <div class="ym-pc-student-view-image">
               <div class="visible-xs">
-                <img class="img-responsive" src="//placeholdit.imgix.net/~text?txt=mobile+placeholder&amp;txtsize=28&amp;&bg=ffff00&amp;txtclr=000000&amp;w=115&amp;h=200&amp;txttrack=0" alt="">
+                <img class="img-responsive" src="../aha-luminate/dist/jump-hoops/image/student-view_113x230.jpg" alt="Student View">
               </div>
               <div class="hidden-xs">
-                <img class="img-responsive" src="//placeholdit.imgix.net/~text?txt=placeholder&amp;txtsize=28&amp;&bg=ffff00&amp;txtclr=000000&amp;w=135&amp;h=230&amp;txttrack=0" alt="">
+                <img class="img-responsive" src="../aha-luminate/dist/jump-hoops/image/student-view.jpg" alt="Student View">
               </div>
             </div>
           </div>
