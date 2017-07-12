@@ -12,15 +12,26 @@
     &:hover, 
     &:focus, 
     &:active {
-      @media (min-width: 560px) {
+      @media (min-width: 670px) {
         border-right: 2px solid #26516f;
+      }
+    }
+    
+    &:last-child {
+      &, 
+      &:link, 
+      &:visited, 
+      &:hover, 
+      &:focus, 
+      &:active {
+        border-right: 0;
       }
     }
     
     &, 
     &:link, 
     &:visited {
-      @media (min-width: 560px) {
+      @media (min-width: 670px) {
         color: $event-grey;
       }
     }
@@ -28,7 +39,7 @@
     &:hover, 
     &:focus, 
     &:active {
-      @media (min-width: 560px) {
+      @media (min-width: 670px) {
         color: $brand-white;
       }
     }
@@ -91,17 +102,61 @@
   }
 }
 
-.ym-pc-dashboard-progress-type,
+.ym-pc-dashboard-progress-type {
+  a {
+    &, 
+    &:link, 
+    &:visited {
+      background-color: #abc7dc;
+      color: $event-grey;
+    }
+    
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: $event-secondary;
+      color: $brand-white;
+    }
+  }
+  
+  &.active {
+    a {
+      &,
+      &:link,
+      &:visited {
+        background-color: $event-secondary;
+        color: $brand-white;
+      }
+    }
+  }
+}
+
 .ym-pc-dashboard-captain-page-type, 
 .ym-pc-dashboard-coordinator-page-type {
   a {
     &, 
     &:link, 
     &:visited {
-      background-color: rgb(40, 79, 73);
-      background-color: rgba(40, 79, 73, 0.2);
-      color: rgb(255, 255, 255);
-      color: rgba(40, 79, 73, 1);
+      background-color: #fcd7a8;
+      color: $event-grey;
+    }
+    
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: #faa73a;
+      color: $brand-white;
+    }
+  }
+  
+  &.active {
+    a {
+      &,
+      &:link,
+      &:visited {
+        background-color: #faa73a;
+        color: $brand-white;
+      }
     }
   }
 }
@@ -229,12 +284,19 @@
 
 .ym-activity-box {
   background: $event-accent-medium;
-  border: 5px solid $event-accent;
+  border: 5px solid #faa73a;
   box-shadow: 0 5px 0 0 #cf831f;
   
   h5, 
   .h5 {
+    color: $event-grey;
     text-transform: none;
+  }
+  
+  .h5 {
+    .ym-activity-box-number {
+      background: #faa73a;
+    }
   }
 }
 
@@ -438,7 +500,20 @@
     &:active {
       @media (max-width: 413px) {
         display: block;
-        margin: 0 0 12px;
+        margin: 0 auto 12px;
+      }
+    }
+    
+    &:first-child {
+      &,
+      &:link,
+      &:visited,
+      &:hover,
+      &:focus,
+      &:active {
+        @media (max-width: 413px) {
+          margin: 0 auto 12px;
+        }
       }
     }
   }
