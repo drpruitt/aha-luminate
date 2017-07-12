@@ -21,9 +21,14 @@
       <h2 class="ym-progress__title h4">
         Help me raise more life-saving donations
       </h2>
-      <a class="btn btn-primary btn-lg" href="Donation2?df_id=[[E42:[[S80:trID]]:form-id]]&amp;FR_ID=[[S80:trID]]&amp;PROXY_ID=[[S334:px]]&amp;PROXY_TYPE=20">
-        Donate
-      </a>
+      <div class="ym-progress__cta">
+        <a class="btn btn-primary btn-lg" href="Donation2?df_id=[[E42:[[S80:trID]]:form-id]]&amp;FR_ID=[[S80:trID]]&amp;PROXY_ID=[[S334:px]]&amp;PROXY_TYPE=20">
+          Donate
+        </a>
+        <a class="btn btn-primary btn-lg" href="TRR?fr_id=[[S80:trID]]&amp;pg=tfind&amp;fr_tm_opt=existing&amp;fr_tjoin=[[E48:[[S80:trID]]-[[S334:px]]:team-id]]&amp;s_frTJoin=[[E48:[[S80:trID]]-[[S334:px]]:team-id]]&amp;s_frCompanyId=[[E43:[[S80:trID]]:company-id:[[E48:[[S80:trID]]-[[S334:px]]:team-id]]]]">
+          Join My Team
+        </a>
+      </div>
       <div class="ym-progress__thermometer" name="Personal Progress Bar" aria-valuetext="{{personalProgress.percent}} percent of fundraising progress" role="progressbar" aria-valuenow="{{personalProgress.percent}}" aria-valuemin="0" aria-valuemax="100">
         <div class="ym-progress__thermometer--fill" ng-style="{'width': personalProgress.percent + '%'}"></div>
       </div>
