@@ -55,9 +55,9 @@
   </div>
   <div class="ym-page-section ym-page-section__main">
     <div class="ym-story" ng-class="prizes.length == 0 ? 'col-md-12' : 'col-md-6'">
-      <h3 class="ym-headline">
+      <h2 class="ym-headline">
         My Story
-      </h3>
+      </h2>
       [[?
         [[?xx::x[[S1:cons_id]]x::::
           [[?x[[S1:cons_id]]x::x[[S334:px]]x::T::]]
@@ -100,9 +100,9 @@
     </div>
     <div class="col-md-6 ym-user-interactions" ng-if="prizes.length > 0">
       <div class="ym-badges" >
-        <h3 class="ym-headline">
+        <h2 class="ym-headline">
           Check Out My Badges
-        </h3>
+        </h2>
         <div class="ym-badges__item" ng-repeat="prize in prizes" ng-cloak>
           <img class="img-responsive" ng-src="https://s3.amazonaws.com/aha-jumphoops-production/fy18/assets/badges/dhc/{{prize.id}}_delivered.png" alt="{{prize.label}}">
           <div ng-bind-html="prize.label"></div>
@@ -115,9 +115,9 @@
   </div>
   <div class="ym-page-section ym-page-section__list ym-accent-color">
     <div class="ym-donate-cta" ng-class="personalDonors.donors.length < 1 ? 'col-sm-12' : 'col-sm-6'">
-      <h3 class="h5">
+      <h2 class="h5">
         Donate to [[E48:[[S80:trID]]-[[S334:px]]:cons.first_name]]
-      </h3>
+      </h2>
       <div ng-if="personalDonors.donors.length > 0" ng-cloak>
         <p>
           <strong>Add your name to the list</strong>
@@ -133,9 +133,9 @@
       </a>
     </div>
     <div class="ym-list" ng-class="!personalDonors.donors || personalDonors.donors.length == 0 ? 'hidden' : 'col-sm-6'" role="list" aria-label="Top Donors List" ng-cloak>
-      <h3 class="h5">
+      <h2 class="h5">
         Top Donors
-      </h3>
+      </h2>
       <ul class="ym-donor-list">
         <li class="ym-donor-list__row" ng-repeat="personalDonor in personalDonors.donors" role="listitem" ng-if="personalDonors.donors.length > 0" ng-cloak>
           <div class="clearfix">
