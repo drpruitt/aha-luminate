@@ -44,7 +44,7 @@ angular.module 'trPcApp'
                     $rootScope.loginModal = $uibModal.open 
                       scope: $rootScope
                       backdrop: 'static'
-                      templateUrl: APP_INFO.rootPath + 'dist/middle-school/html/participant-center/modal/login.html'
+                      templateUrl: APP_INFO.rootPath + 'dist/' + APP_INFO.programKey + '/html/participant-center/modal/login.html'
                   $q.reject()
                 else
                   response
