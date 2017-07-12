@@ -254,7 +254,7 @@ angular.module 'ahaLuminateControllers'
       initCompanyParticipantLists = ->
         TeamraiserCompanyService.getCompanyTree $scope.companyId, $scope.childCompanies,
           success: (company) ->
-            if company.companyId
+            if company.companyId and company.companyId is $scope.companyId
               $scope.currentCompany = company
               $scope.companyProgress.amountRaisedFormatted = company.amountRaisedFormatted
               setCompanyNumParticipants company.participantCount or 0

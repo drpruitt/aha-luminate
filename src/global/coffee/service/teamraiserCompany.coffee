@@ -29,7 +29,7 @@ angular.module 'ahaLuminateApp'
             hits = []
             hits.push companyId.toString()
             root =
-              companyId: companyId
+              companyId: null
               companyName: ''
               amountRaised: 0
               teamCount: 0
@@ -40,6 +40,7 @@ angular.module 'ahaLuminateApp'
               if hits.indexOf(companyItem.companyId) > -1
                 root.amountRaised = root.amountRaised + (if companyItem.amountRaised then Number(companyItem.amountRaised) else 0)
                 if companyItem.companyId is companyId
+                  root.companyId = companyId
                   root.companyName = companyItem.companyName
             getCompanies 'list_sort_column=total&list_ascending=false&list_page_size=500',
               error: ->
