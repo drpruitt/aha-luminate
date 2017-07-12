@@ -16,3 +16,11 @@ h5,
 .h5 {
   font-weight: 700;
 }
+
+.event-secondary-medium {
+  h5, 
+  .h5, 
+  .h5-heading {
+    color: $event-grey;
+  }
+}

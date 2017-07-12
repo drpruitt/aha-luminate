@@ -2,6 +2,11 @@
   background: $event-secondary-medium;
 }
 
+h4.ym-progress__title, 
+.h4.ym-progress__title {
+  color: $event-grey;
+}
+
 .ym-progress__thermometer {
   border: 8px solid #4689bb;
   box-shadow: 0 2px 0 0 #165077;
