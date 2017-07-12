@@ -8,8 +8,8 @@ angular.module 'ahaLuminateControllers'
     '$anchorScroll'
     'BoundlessService'
     'TeamraiserService'
-    'AriaCarousel'
-    ($scope, $timeout, TeamraiserParticipantService, $rootScope, $location, $anchorScroll, BoundlessService, TeamraiserService, AriaCarousel) ->
+    'AriaCarouselService'
+    ($scope, $timeout, TeamraiserParticipantService, $rootScope, $location, $anchorScroll, BoundlessService, TeamraiserService, AriaCarouselService) ->
       $dataRoot = angular.element '[data-aha-luminate-root]'
       consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
       
@@ -121,9 +121,9 @@ angular.module 'ahaLuminateControllers'
           ]
           addClassActive: true
           onInitialized: (event) ->
-            AriaCarousel.init(owlStr)
+            AriaCarouselService.init(owlStr)
           onChanged: ->
-            AriaCarousel.onChange(owlStr)
+            AriaCarouselService.onChange(owlStr)
 
       $timeout initCarousel, 1000
       
@@ -144,9 +144,9 @@ angular.module 'ahaLuminateControllers'
               ]
               addClassActive: true
               onInitialized: (event) ->
-                AriaCarousel.init(owlStr)
+                AriaCarouselService.init(owlStr)
               onChanged: ->
-                AriaCarousel.onChange(owlStr)
+                AriaCarouselService.onChange(owlStr)
               
       $timeout initHeroCarousel, 1000
   ]
