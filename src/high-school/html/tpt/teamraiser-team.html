@@ -99,9 +99,9 @@
   </div>
   <div class="ym-page-section ym-page-section__list ym-accent-color">
     <div class="ym-story" ng-class="teamParticipants.totalFundraisers > 0 ? 'col-md-6' : 'col-md-12'">
-      <h3 class="h5">
+      <h2 class="h5">
         Our Class is Heart Healthy!
-      </h3>
+      </h2>
       [[?
         [[?xx::x[[S1:cons_id]]x::::
           [[?x[[E48:[[S80:trID]]:team-id]]xTRUEx::x[[S334:team_id]]x[[E48:[[S80:trID]]-[[S1:cons_id]]:if-is-captain]]x::T::]]
@@ -143,9 +143,9 @@
       ::]]
     </div>
     <div class="ym-list" class="col-md-6" role="list" aria-label="Top Fundraisers List" ng-if="teamParticipants.totalFundraisers > 0" ng-cloak>
-      <h3 class="h5">
+      <h2 class="h5">
         Top Fundraisers
-      </h3>
+      </h2>
       <ul class="ym-donor-list">
         <team-participant-list fr-id="'[[S80:trID]]'" team-id="'[[T6:[[S334:team_id]]]]'" participants="teamParticipants.participants"></team-participant-list>
       </ul>

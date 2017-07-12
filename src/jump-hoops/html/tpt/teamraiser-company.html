@@ -110,9 +110,9 @@
   </div>
   <div class="ym-page-section ym-page-section__list ym-accent-color">
     <div class="ym-story" ng-class="companyParticipants.totalFundraisers > 0 ? 'col-md-6' : 'col-md-12'">
-      <h3 class="ym-headline">
+      <h2 class="ym-headline">
         Our School is Heart Healthy!
-      </h3>
+      </h2>
       <div class="ym-story-edit-btns" ng-if="participantRegistration.companyInformation.companyId == '[[S334:company_id]]' && participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
         <button type="button" class="btn btn-md-wide btn-toggle" ng-click="editCompanyPageContent()" ng-if="companyPageContent.mode == 'view'">
           <span class="fa fa-pencil"></span> Edit Story
@@ -156,9 +156,9 @@
   </div>
   <div class="ym-page-section ym-page-section__sponsor" ng-if="localSponsorShow">
     <hr>
-    <h5>
+    <h2 class="h5">
       Thank You to Our Local Sponsors
-    </h5>
+    </h2>
     <p class="text-center">
       <img class="image-responsive" ng-src="{{localSponsorImageSrc}}" alt="{{localSponsorImageAlt}}">
     </p>
@@ -168,9 +168,9 @@
       <div class="modal-content">
         <div class="modal-body text-center">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span hidden aria-hidden="true">X</span></button>
-          <h4 class="modal-title h3" id="schoolModalTitle">
+          <h2 class="modal-title h3" id="schoolModalTitle">
             Donate
-          </h4>
+          </h2>
           <p>
             If you'd like to donate directly to an individual, ask them (or their parent/guardian) to send you a donation request email containing a link to their secure personal fundraising page.
           </p>
