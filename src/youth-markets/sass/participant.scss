@@ -1730,6 +1730,19 @@ main > .container {
         width: auto;
       }
     }
+    
+    &:first-child {
+      &, 
+      &:link, 
+      &:visited, 
+      &:hover, 
+      &:focus, 
+      &:active {
+        @media (min-width: $screen-xs-min) {
+          margin: 0;
+        }
+      }
+    }
   }
 }
 

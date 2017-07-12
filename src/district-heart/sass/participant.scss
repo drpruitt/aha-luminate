@@ -486,7 +486,20 @@
     &:active {
       @media (max-width: 413px) {
         display: block;
-        margin: 0 0 12px;
+        margin: 0 auto 12px;
+      }
+    }
+    
+    &:first-child {
+      &,
+      &:link,
+      &:visited,
+      &:hover,
+      &:focus,
+      &:active {
+        @media (max-width: 413px) {
+          margin: 0 auto 12px;
+        }
       }
     }
   }
