@@ -20,13 +20,21 @@
     &, 
     &:link, 
     &:visited {
-      color: $event-grey;
+      @media (min-width: 560px) {
+        color: $event-grey;
+      }
     }
     
     &:hover, 
     &:focus, 
     &:active {
-      color: $brand-white;
+      @media (min-width: 560px) {
+        color: $brand-white;
+      }
+    }
+    
+    &.active {
+      color: $event-grey;
     }
   }
 }
