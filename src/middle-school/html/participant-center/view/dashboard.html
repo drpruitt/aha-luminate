@@ -14,26 +14,26 @@
                 Progress
               </h3>
             </div>
-            <div class="ym-pc-dashboard-progress-types" ng-class="{'ym-pc-dashboard-progress-types--multi-team': companyInfo.teamCount > 1}">
+            <div class="ym-pc-dashboard-progress-types" role="tablist" ng-class="{'ym-pc-dashboard-progress-types--multi-team': companyInfo.teamCount > 1}">
               <div class="clearfix">
                 <div class="ym-pc-dashboard-progress-type" ng-class="{'active': dashboardProgressType == 'personal'}">
-                  <a ng-click="toggleProgressType('personal')">
+                  <a id="ym-pc-dashboard-personal-tab--student" ng-click="toggleProgressType('personal')" role="tab" aria-controls="ym-pc-dashboard-personal-panel--student" tabindex="0">
                     <strong>Personal</strong>
                   </a>
                 </div>
                 <div class="ym-pc-dashboard-progress-type" ng-class="{'active': dashboardProgressType == 'company'}">
-                  <a ng-click="toggleProgressType('company')">
+                  <a id="ym-pc-dashboard-company-tab--student" ng-click="toggleProgressType('company')" role="tab" aria-controls="ym-pc-dashboard-company-panel--student" tabindex="0">
                     <strong>School</strong>
                   </a>
                 </div>
                 <div class="ym-pc-dashboard-progress-type" ng-class="{'active': dashboardProgressType == 'team'}" ng-if="companyInfo.teamCount > 1">
-                  <a ng-click="toggleProgressType('team')">
+                  <a id="ym-pc-dashboard-team-tab--student" ng-click="toggleProgressType('team')" role="tab" aria-controls="ym-pc-dashboard-team-panel--student" tabindex="0">
                     <strong>Team</strong>
                   </a>
                 </div>
               </div>
             </div>
-            <div ng-class="{'hidden': dashboardProgressType != 'personal'}" ng-cloak>
+            <div ng-class="{'hidden': dashboardProgressType != 'personal'}" ng-cloak role="tabpanel" aria-labeledby="ym-pc-dashboard-personal-panel--student">
               <div class="ym-progress__thermometer" name="Personal Progress Bar" aria-valuetext="{{participantProgress.percent}} percent of fundraising progress" role="progressbar" aria-valuenow="{{participantProgress.percent}}" aria-valuemin="0" aria-valuemax="100">
                 <div class="ym-progress__thermometer--fill" ng-style="{'width': participantProgress.percent + '%'}"></div>
               </div>
@@ -53,14 +53,14 @@
                     </p>
                   </div>
                   <p>
-                    <a ng-click="editPersonalGoal()">
+                    <a ng-click="editPersonalGoal()" tabindex="0">
                       <strong>Update Personal Goal</strong>
                     </a>
                   </p>
                 </div>
               </div>
             </div>
-            <div ng-class="{'hidden': dashboardProgressType != 'company'}" ng-cloak>
+            <div ng-class="{'hidden': dashboardProgressType != 'company'}" ng-cloak role="panel" aria-labeledby="ym-pc-dashboard-company-panel--student">
               <div class="ym-progress__thermometer" name="School Progress Bar" aria-valuetext="{{companyProgress.percent}} percent of fundraising progress" role="progressbar" aria-valuenow="{{companyProgress.percent}}" aria-valuemin="0" aria-valuemax="100">
                 <div class="ym-progress__thermometer--fill" ng-style="{'width': companyProgress.percent + '%'}"></div>
               </div>
@@ -77,7 +77,7 @@
                 </div>
               </div>
             </div>
-            <div ng-class="{'hidden': dashboardProgressType != 'team'}" ng-if="companyInfo.teamCount > 1" ng-cloak>
+            <div ng-class="{'hidden': dashboardProgressType != 'team'}" ng-if="companyInfo.teamCount > 1" ng-cloak role="panel" aria-labeledby="ym-pc-dashboard-team-panel--student">
               <div class="ym-progress__thermometer" name="Team Progress Bar" aria-valuetext="{{teamProgress.percent}} percent of fundraising progress" role="progressbar" aria-valuenow="{{teamProgress.percent}}" aria-valuemin="0" aria-valuemax="100">
                 <div class="ym-progress__thermometer--fill" ng-style="{'width': teamProgress.percent + '%'}"></div>
               </div>
@@ -103,7 +103,7 @@
                   </div>
                   <div ng-if="participantRegistration.aTeamCaptain == 'true' && participantRegistration.companyInformation.isCompanyCoordinator != 'true'" ng-cloak>
                     <p>
-                      <a ng-click="editTeamGoal()">
+                      <a ng-click="editTeamGoal()" tabindex="0">
                         <strong>Update Team Goal</strong>
                       </a>
                     </p>
