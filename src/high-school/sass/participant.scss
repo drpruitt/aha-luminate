@@ -4,13 +4,40 @@
 
 @import "../../youth-markets/sass/participant.scss";
 
+.ng-pc-nav {
+  a {
+    &, 
+    &:link, 
+    &:visited, 
+    &:hover, 
+    &:focus, 
+    &:active {
+      @media (min-width: 560px) {
+        border-right: 2px solid #26516f;
+      }
+    }
+    
+    &, 
+    &:link, 
+    &:visited {
+      color: $event-grey;
+    }
+    
+    &:hover, 
+    &:focus, 
+    &:active {
+      color: $brand-white;
+    }
+  }
+}
+
 .ng-pc-nav--coordinator {
   a {
-    &,
-    &:link,
-    &:visited,
-    &:hover,
-    &:focus,
+    &, 
+    &:link, 
+    &:visited, 
+    &:hover, 
+    &:focus, 
     &:active {
       &.ng-pc-nav-item--resources {
         padding: 12px 6px 0;
