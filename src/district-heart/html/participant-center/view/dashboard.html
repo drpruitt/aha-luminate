@@ -53,7 +53,7 @@
                     </p>
                   </div>
                   <p>
-                    <a ng-click="editPersonalGoal()">
+                    <a href="" ng-click="editPersonalGoal()">
                       <strong>Update Personal Goal</strong>
                     </a>
                   </p>
@@ -103,7 +103,7 @@
                   </div>
                   <div ng-if="participantRegistration.aTeamCaptain == 'true' && location != '/dashboard-student'" ng-cloak>
                     <p>
-                      <a ng-click="editTeamGoal()">
+                      <a href="" ng-click="editTeamGoal()">
                         <strong>Update Team Goal</strong>
                       </a>
                     </p>
@@ -359,12 +359,12 @@
           <div class="ym-pc-dashboard-captain-page-types">
             <div class="clearfix">
               <div class="ym-pc-dashboard-captain-page-type" ng-class="{'active': dashboardPageType == 'team'}">
-                <a ng-click="togglePageType('team')">
+                <a href="" ng-click="togglePageType('team')">
                   <strong>Team</strong>
                 </a>
               </div>
               <div class="ym-pc-dashboard-captain-page-type" ng-class="{'active': dashboardPageType == 'personal'}">
-                <a ng-click="togglePageType('personal')">
+                <a href="" ng-click="togglePageType('personal')">
                   <strong>Personal</strong>
                 </a>
               </div>
@@ -662,7 +662,7 @@
                   </div>
                   <div ng-if="participantRegistration.aTeamCaptain == 'true'" ng-cloak>
                     <p>
-                      <a ng-click="editTeamGoal()">
+                      <a href="" ng-click="editTeamGoal()">
                         <strong>Update Team Goal</strong>
                       </a>
                     </p>
@@ -690,7 +690,7 @@
                     </p>
                   </div>
                   <p>
-                    <a ng-click="editPersonalGoal()">
+                    <a href="" ng-click="editPersonalGoal()">
                       <strong>Update Personal Goal</strong>
                     </a>
                   </p>
@@ -725,7 +725,6 @@
               </div>
             </div>
             <div ng-class="{'hidden': dashboardPageType != 'company'}" ng-cloak aria-label="District Panel">
-            <div class="ym-pc-dashboard-coordinator-page-view">
               <div class="ym-pc-dashboard-coordinator-page-view">
                 <div class="text-center">
                   <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=company&amp;company_id={{participantRegistration.companyInformation.companyId}}">
@@ -765,7 +764,6 @@
               </div>
             </div>
             <div ng-class="{'hidden': dashboardPageType != 'team'}" ng-if="companyInfo.teamCount > 1" ng-cloak aria-label="Team Panel">
-            <div class="ym-pc-dashboard-coordinator-page-view">
               <div class="ym-pc-dashboard-coordinator-page-view">
                 <div class="text-center">
                   <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=team&amp;team_id={{participantRegistration.teamId}}">
@@ -805,7 +803,6 @@
               </div>
             </div>
             <div ng-class="{'hidden': dashboardPageType != 'personal'}" ng-cloak aria-label="Personal Panel">
-            <div class="ym-pc-dashboard-coordinator-page-view">
               <div class="ym-pc-dashboard-coordinator-page-view">
                 <div class="text-center">
                   <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=personal&amp;px={{consId}}">
