@@ -69,7 +69,7 @@ angular.module 'trPcControllers'
       if $scope.participantRegistration.aTeamCaptain is 'true'
         contactFilters.push 'email_rpt_show_teammates'
         contactFilters.push 'email_rpt_show_nonteammates'
-      if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
+      if $scope.participantRegistration.companyInformation?.isCompanyCoordinator is 'true'
         contactFilters.push 'email_rpt_show_company_coordinator_captains'
         contactFilters.push 'email_rpt_show_company_coordinator_participants'
       $scope.addressBookContacts = 

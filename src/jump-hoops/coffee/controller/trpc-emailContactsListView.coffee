@@ -66,7 +66,7 @@ angular.module 'trPcControllers'
         'email_rpt_show_donors'
         'email_rpt_show_nondonors'
       ]
-      if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
+      if $scope.participantRegistration.companyInformation?.isCompanyCoordinator is 'true'
         contactFilters.push 'email_rpt_show_company_coordinator_participants'
       $scope.addressBookContacts = 
         page: 1
