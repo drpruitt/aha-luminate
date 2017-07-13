@@ -8,8 +8,6 @@
     top: 0;
     background: $event-primary;
     color: $brand-white;
-    outline: 0;
-    -webkit-transition: top .1s ease-in, background .5s linear;
     transition: top .1s ease-in, background .5s linear;
   }
 }
