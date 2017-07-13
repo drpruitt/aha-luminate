@@ -470,7 +470,8 @@ main > .container {
   text-align: center;
   width: 50%;
 
-  a {
+  a,
+  button {
     @media(max-width: $screen-xs){
       font-size: 13px;
     }
@@ -483,6 +484,7 @@ main > .container {
       text-decoration: none;
       padding: 8px;
       width: 100%;
+      border: 0 none;
     }
 
     &:hover,
@@ -491,11 +493,13 @@ main > .container {
       background: $event-secondary;
       color: $brand-white;
       text-decoration: none;
+      border: 0 none;
     }
   }
 
   &.active {
-    a {
+    a,
+    button {
       &,
       &:link,
       &:visited {
@@ -1510,7 +1514,8 @@ main > .container {
   text-align: center;
   width: 50%;
   
-  a {
+  a,
+  button {
     &,
     &:link,
     &:visited {
@@ -1536,7 +1541,8 @@ main > .container {
   }
   
   &.active {
-    a {
+    a,
+    button {
       &,
       &:link,
       &:visited {
