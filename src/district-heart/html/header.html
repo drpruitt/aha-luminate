@@ -80,6 +80,20 @@
                   <button type="button" class="btn btn-link ym-header-welcome-toggle" ng-click="toggleWelcomeMenu()">
                     Welcome[[?xx::x[[S1:first_name]]x::::, [[S1:first_name]]]]! <span class="fa fa-chevron-down" ng-class="{'fa-chevron-down': !welcomeMenuOpen, 'fa-chevron-up': welcomeMenuOpen}"></span>
                   </button>
+                  <div class="ym-header-welcome-dropdown" ng-class="{'open': welcomeMenuOpen, 'my-events': numberEvents > 1, 'my-hq' : numberEvents == 1}" ng-cloak role="menubar" title="Weclome Menu">
+                    <ul role="menu">
+                      <li role="menuitem">
+                        <a href="ConsProfileUser?dispMode=edit&amp;NEXTURL=[[T1:[[E130:[[T8:[[S8]]]] [[T8:&amp;]] [[T8:&]] replaceall]]]]">
+                          Edit Profile
+                        </a>
+                      </li>
+                      <li role="menuitem">
+                        <a href="UserLogin?logout=&amp;NEXTURL=[[T1:[[E130:[[T8:[[S8]]]] [[T8:&amp;]] [[T8:&]] replaceall]]]]">
+                          Log Out
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
                   <a class="btn btn-global-primary ym-header-hq-btn" href="PageServer?pagename=district_heart_challenge_my_events" ng-if="numberEvents > 1">
                     My Events
                   </a>
@@ -87,20 +101,6 @@
                     <span class="visible-xs visible-sm">My HQ</span>
                     <span class="hidden-xs hidden-sm">My Headquarters</span>
                   </a>
-                  <div class="ym-header-welcome-dropdown" ng-class="{'open': welcomeMenuOpen, 'my-events': numberEvents > 1, 'my-hq' : numberEvents == 1}" ng-cloak>
-                    <ul>
-                      <li>
-                        <a href="ConsProfileUser?dispMode=edit&amp;NEXTURL=[[T1:[[E130:[[T8:[[S8]]]] [[T8:&amp;]] [[T8:&]] replaceall]]]]">
-                          Edit Profile
-                        </a>
-                      </li>
-                      <li>
-                        <a href="UserLogin?logout=&amp;NEXTURL=[[T1:[[E130:[[T8:[[S8]]]] [[T8:&amp;]] [[T8:&]] replaceall]]]]">
-                          Log Out
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
                 </div>
               </div>
             </div>
