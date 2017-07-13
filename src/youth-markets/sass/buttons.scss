@@ -20,15 +20,6 @@ a.btn {
   }
 }
 
-button.btn {
-  &:focus,
-  &:active,
-  &:focus:active,
-  &:focus.active {
-    outline: none;
-  }
-}
-
 span.btn {
   &,
   &:link,
