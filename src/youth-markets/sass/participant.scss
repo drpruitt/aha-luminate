@@ -1514,7 +1514,8 @@ main > .container {
   text-align: center;
   width: 50%;
   
-  a {
+  a,
+  button {
     &,
     &:link,
     &:visited {
@@ -1540,7 +1541,8 @@ main > .container {
   }
   
   &.active {
-    a {
+    a,
+    button {
       &,
       &:link,
       &:visited {
