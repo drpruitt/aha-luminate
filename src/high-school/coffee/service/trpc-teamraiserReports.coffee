@@ -5,7 +5,7 @@ angular.module 'trPcApp'
     ($rootScope, $http) ->
       getSchoolDetailReport: ->
         pagename = 'getHighSchoolTeamDetailReport'
-        if $rootScope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
+        if $rootScope.participantRegistration.companyInformation?.isCompanyCoordinator is 'true'
           pagename = 'getHighSchoolDetailReport'
         $http
           method: 'GET'
