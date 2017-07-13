@@ -281,7 +281,6 @@ header {
       &:active:focus {
         color: $brand-primary;
         height: 50px;
-        outline: 0;
         font-weight: 700;
         
         @media (max-width: $screen-xs-max) {
@@ -401,7 +400,6 @@ header {
       &:active:focus {
         background: transparent;
         box-shadow: none;
-        outline: 0;
       }
       
       .ym-site-menu-bar {
