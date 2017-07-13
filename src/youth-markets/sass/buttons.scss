@@ -2,11 +2,11 @@
 a.btn {
   @include button-size($padding-base-vertical, $padding-base-horizontal, 14px);
   
-  &,
-  &:link,
-  &:visited,
-  &:hover,
-  &:focus,
+  &, 
+  &:link, 
+  &:visited, 
+  &:hover, 
+  &:focus, 
   &:active {
     border-radius: 10px;
     border-width: 0;
@@ -15,15 +15,17 @@ a.btn {
     text-decoration: none;
   }
   
+  > * {
+    color: inherit !important;
+  }
+}
+
+button.btn {
   &:focus,
   &:active,
   &:focus:active,
   &:focus.active {
     outline: none;
-  }
-  
-  > * {
-    color: inherit !important;
   }
 }
 
