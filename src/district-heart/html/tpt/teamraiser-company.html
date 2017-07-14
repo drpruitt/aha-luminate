@@ -62,15 +62,14 @@
         </h2>
         <div class="ym-promo-block__item ym-promo-block__item--members ym-promo-block--circle">
           <div class="h2 ym-headline">
-            <span ng-if="participantCount < 1000" ng-cloak>{{participantCount}}</span>
-            <span ng-if="participantCount > 999" ng-cloak>{{participantCount}}</span>
+            {{participantCount}}
           </div>
           <div ng-if="participantCount == 1" ng-cloak>
             <p>
-              participant registered. Help us meet our goal of [[?xxUser Provided No Responsex::x[[E48:[[S80:trID]]-[[S1:cons_id]]:question:Participant registration goal:]]x::0::[[E48:[[S80:trID]]-[[S1:cons_id]]:question:Participant registration goal:]]]] participants!
+              participant registered. <span ng-if="participantGoal">Help us meet our goal of {{participantGoal}} participants!</span>
             </p>
           </div>
-          <div ng-if="participantCount > 1" ng-cloak>
+          <div ng-if="participantCount != 1" ng-cloak>
             <p>
               participants registered. Help us meet our goal of [[?xxUser Provided No Responsex::x[[E48:[[S80:trID]]-[[S1:cons_id]]:question:Participant registration goal:]]x::0::[[E48:[[S80:trID]]-[[S1:cons_id]]:question:Participant registration goal:]]]] participants!
             </p>
@@ -78,15 +77,14 @@
         </div>
         <div class="ym-promo-block__item ym-promo-block--circle" ng-if="activity1amt != 0" ng-cloak>
           <div class="h2 ym-headline">
-            <span ng-if="activity1amt < 1000" ng-cloak>{{activity1amt}}</span>
-            <span ng-if="activity1amt > 999" ng-cloak>{{activity1amt}}</span>
+            {{activity1amt}}
           </div>
           <div ng-if="activity1amt == 1" ng-cloak>
             <p>
               total minute of activity achieved by all of our participants!
             </p>
           </div>
-          <div ng-if="activity1amt > 1" ng-cloak>
+          <div ng-if="activity1amt != 1" ng-cloak>
             <p>
               total minutes of activity achieved by all of our participants!
             </p>
@@ -94,15 +92,14 @@
         </div>
         <div class="ym-promo-block__item ym-promo-block--circle" ng-if="activity2amt != 0" ng-cloak>
           <div class="h2 ym-headline">
-            <span ng-if="activity2amt < 1000" ng-cloak>{{activity2amt}}</span>
-            <span ng-if="activity2amt > 999" ng-cloak>{{activity2amt}}</span>
+            {{activity2amt}}
           </div>
           <div ng-if="activity2amt == 1" ng-cloak>
             <p>
               participant has had their blood pressure checked!
             </p>
           </div>
-          <div ng-if="activity2amt > 1" ng-cloak>
+          <div ng-if="activity2amt != 1" ng-cloak>
             <p>
               participants have had their blood pressure checked!
             </p>
