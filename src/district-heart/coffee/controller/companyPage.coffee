@@ -146,9 +146,12 @@ angular.module 'ahaLuminateControllers'
             totalMinsActivity = response.data.data?.total or '0'
             totalMinsActivity = Number totalMinsActivity
             $scope.activity1amt = totalMinsActivity
+            if $scope.activity1amt.toString().length > 4
+              $scope.activity1amt = Math.round($scope.activity1amt / 1000) + 'K'
             teamMinsActivityMap = response.data.data?.list or []
             $scope.companyTeams.teamMinsActivityMap = teamMinsActivityMap
       getCompanyTeams()
+      console.log 'get comp teams'
       
       setTeamsMinsActivity = ->
         teams = $scope.companyTeams.teams
@@ -210,7 +213,7 @@ angular.module 'ahaLuminateControllers'
           success: (response) ->
             totalMinsActivity = response.data.data?.total or '0'
             totalMinsActivity = Number totalMinsActivity
-            $scope.activity1amt = totalMinsActivity
+            #$scope.activity1amt = totalMinsActivity
             participantMinsActivityMap = response.data.data?.list or []
             $scope.companyParticipants.participantMinsActivityMap = participantMinsActivityMap
       getCompanyParticipants()
