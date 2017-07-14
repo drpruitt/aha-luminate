@@ -10,7 +10,8 @@ angular.module 'ahaLuminateControllers'
     'TeamraiserService'
     'DonorSearchService'
     '$filter'
-    ($scope, $timeout, TeamraiserParticipantService, $rootScope, $location, $anchorScroll, BoundlessService, TeamraiserService, DonorSearchService, $filter) ->
+    'AriaCarouselService'
+    ($scope, $timeout, TeamraiserParticipantService, $rootScope, $location, $anchorScroll, BoundlessService, TeamraiserService, DonorSearchService, $filter, AriaCarouselService) ->
       $dataRoot = angular.element '[data-aha-luminate-root]'
       consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
 
