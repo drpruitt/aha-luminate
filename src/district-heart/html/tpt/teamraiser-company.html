@@ -214,7 +214,7 @@
               No participants found.
             </td>
           </tr>
-          <tr class="ym-list__row" ng-repeat="participant in companyParticipants.participants" ng-cloak>
+          <tr class="ym-list__row" ng-repeat="participant in companyParticipants.participants | filter:participantPaginate" ng-cloak>
             <td class="ym-list__column ym-list__column--name">
               <a ng-href="TR?fr_id={{participant.eventId}}&amp;pg=personal&amp;px={{participant.consId}}"><span ng-bind-html="participant.fullName"></span></a>
               <div>

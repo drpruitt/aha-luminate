@@ -179,7 +179,8 @@ angular.module 'ahaLuminateControllers'
       $scope.companyParticipants = []
       $scope.participantListSetting =
         searchPending: false
-        sortProp: 'fullName'
+        sortProp: 'amountRaised'
+        sortColumn: 'amountRaised'
         sortDesc: false
         totalItems: 0
         currentPage: 1
@@ -223,7 +224,28 @@ angular.module 'ahaLuminateControllers'
             #$scope.activity1amt = totalMinsActivity
             participantMinsActivityMap = response.data.data?.list or []
             $scope.companyParticipants.participantMinsActivityMap = participantMinsActivityMap
+        console.log $scope.participantListSetting
       getCompanyParticipants()
+      console.log 'get'
+      $scope.orderParticipants = (sortProp, keepSortOrder) ->
+        participants = $scope.companyParticipants
+        angular.forEach participants, (participant) ->
+          participant.fullName = participant.name.first + ' ' + participant.name.last
+        if participants.length > 0
+          if not keepSortOrder
+            $scope.participantListSetting.sortDesc = !$scope.participantListSetting.sortDesc
+          if $scope.participantListSetting.sortProp isnt sortProp
+            $scope.participantListSetting.sortProp = sortProp
+            $scope.participantListSetting.sortDesc = true
+          participants = $filter('orderBy') participants, sortProp, $scope.participantListSetting.sortDesc
+          $scope.companyParticipants = participants
+          $scope.participantListSetting.currentPage = 1
+      
+      $scope.participantPaginate = (value) ->
+        begin = ($scope.participantListSetting.currentPage - 1) * $scope.participantListSetting.paginationItemsPerPage
+        end = begin + $scope.participantListSetting.paginationItemsPerPage
+        index = $scope.participantList.indexOf value
+        begin <= index and index < end
       
       setParticipantsMinsActivity = ->
         participants = $scope.companyParticipants.participants
