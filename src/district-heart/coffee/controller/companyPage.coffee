@@ -238,7 +238,7 @@ angular.module 'ahaLuminateControllers'
             $scope.participantListSetting.sortProp = sortProp
             $scope.participantListSetting.sortDesc = true
           participants = $filter('orderBy') participants, sortProp, $scope.participantListSetting.sortDesc
-          $scope.companyParticipants = participants
+          $scope.companyParticipants.participants = participants
           $scope.participantListSetting.currentPage = 1
       
       $scope.participantPaginate = (value) ->
