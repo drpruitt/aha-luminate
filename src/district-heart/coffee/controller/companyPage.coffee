@@ -182,10 +182,10 @@ angular.module 'ahaLuminateControllers'
         sortProp: 'amountRaised'
         sortColumn: 'amountRaised'
         sortDesc: false
-        totalItems: 0
+        totalItems: 5
         currentPage: 1
-        paginationItemsPerPage: 3
-        paginationMaxSize: 3
+        paginationItemsPerPage: 4
+        paginationMaxSize: 4
       setCompanyParticipants = (participants, totalNumber) ->
         $scope.companyParticipants.participants = participants or []
         totalNumber = totalNumber or 0
@@ -198,6 +198,7 @@ angular.module 'ahaLuminateControllers'
             error: ->
               setCompanyParticipants()
             success: (response) ->
+              console.log response
               participants = response.getParticipantsResponse?.participant
               companyParticipants = []
               if participants
@@ -226,9 +227,8 @@ angular.module 'ahaLuminateControllers'
             $scope.companyParticipants.participantMinsActivityMap = participantMinsActivityMap
         console.log $scope.participantListSetting
       getCompanyParticipants()
-      console.log 'get'
       $scope.orderParticipants = (sortProp, keepSortOrder) ->
-        participants = $scope.companyParticipants
+        participants = $scope.companyParticipants.participants
         angular.forEach participants, (participant) ->
           participant.fullName = participant.name.first + ' ' + participant.name.last
         if participants.length > 0
@@ -244,7 +244,7 @@ angular.module 'ahaLuminateControllers'
       $scope.participantPaginate = (value) ->
         begin = ($scope.participantListSetting.currentPage - 1) * $scope.participantListSetting.paginationItemsPerPage
         end = begin + $scope.participantListSetting.paginationItemsPerPage
-        index = $scope.participantList.indexOf value
+        index = $scope.companyParticipants.participants.indexOf value
         begin <= index and index < end
       
       setParticipantsMinsActivity = ->
