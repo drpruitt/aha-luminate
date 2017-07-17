@@ -43,4 +43,7 @@
       </tr>
     </tbody>
   </table>
+  <div class="ym-pagination text-center" ng-show="participantList.totalNumber > participantList.paginationItemsPerPage">
+    <ul uib-pagination ng-model="participantList.pageNumber" total-items="participantList.totalNumber" items-per-page="participantList.paginationItemsPerPage" max-size="participantList.paginationMaxSize" boundary-links="participantList.totalNumber > (participantList.paginationItemsPerPage * participantList.paginationMaxSize)"></ul>
+  </div>
 </div>

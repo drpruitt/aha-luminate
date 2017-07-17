@@ -151,7 +151,6 @@ angular.module 'ahaLuminateControllers'
             teamMinsActivityMap = response.data.data?.list or []
             $scope.companyTeams.teamMinsActivityMap = teamMinsActivityMap
       getCompanyTeams()
-      console.log 'get comp teams'
       
       setTeamsMinsActivity = ->
         teams = $scope.companyTeams.teams
@@ -177,12 +176,20 @@ angular.module 'ahaLuminateControllers'
         ng_first_name: ''
         last_name: ''
         ng_last_name: ''
-      $scope.companyParticipants =
-        page_number: 0
+      $scope.companyParticipants = []
+      $scope.participantListSetting =
+        searchPending: false
+        sortProp: 'fullName'
+        sortDesc: false
+        totalItems: 0
+        currentPage: 1
+        paginationItemsPerPage: 3
+        paginationMaxSize: 3
       setCompanyParticipants = (participants, totalNumber) ->
         $scope.companyParticipants.participants = participants or []
         totalNumber = totalNumber or 0
         $scope.companyParticipants.totalNumber = Number totalNumber
+        $scope.participantListSetting.totalItems = Number totalNumber
         if not $scope.$$phase
           $scope.$apply()
       getCompanyParticipants = ->
