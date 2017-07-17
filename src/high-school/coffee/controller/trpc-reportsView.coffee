@@ -95,7 +95,7 @@ angular.module 'trPcControllers'
             giftContact = participantGift.contact.firstName
             if participantGift.contact.lastName
               giftContact += ' ' + participantGift.contact.lastName
-          if participantGift.contact.email
+          if participantGift.contact.email and participantGift.contact.email isnt ''
             if not giftContact
               giftContact = '<'
             else
@@ -119,7 +119,7 @@ angular.module 'trPcControllers'
               giftContact = participantGift.contact.firstName
               if participantGift.contact.lastName
                 giftContact += ' ' + participantGift.contact.lastName
-            if participantGift.contact.email
+            if participantGift.contact.email and participantGift.contact.email isnt ''
               if not giftContact
                 giftContact = '<'
               else
@@ -182,7 +182,7 @@ angular.module 'trPcControllers'
               giftContact = teamGift.contact.firstName
               if teamGift.contact.lastName
                 giftContact += ' ' + teamGift.contact.lastName
-            if teamGift.contact.email
+            if teamGift.contact.email and teamGift.contact.email isnt ''
               if not giftContact
                 giftContact = '<'
               else
@@ -206,7 +206,7 @@ angular.module 'trPcControllers'
                 giftContact = teamGift.contact.firstName
                 if teamGift.contact.lastName
                   giftContact += ' ' + teamGift.contact.lastName
-              if teamGift.contact.email
+              if teamGift.contact.email and teamGift.contact.email isnt ''
                 if not giftContact
                   giftContact = '<'
                 else
@@ -310,7 +310,7 @@ angular.module 'trPcControllers'
                 companyParticipantContact = companyParticipant.firstName
                 if companyParticipant.lastName
                   companyParticipantContact += ' ' + companyParticipant.lastName
-              if companyParticipant.email
+              if companyParticipant.email and companyParticipant.email isnt ''
                 if not companyParticipantContact
                   companyParticipantContact = '<'
                 else
