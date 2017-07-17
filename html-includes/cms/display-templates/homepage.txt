@@ -42,8 +42,8 @@ ${body}
 <!-- School Search starts --> 
   <div class="ym-school-search" ng-controller="SchoolSearchCtrl" ng-cloak>
     <div class="form-group">
-      <img class="img-responsive hidden-xs" src="http://heart.pub30.convio.net/../assets/images/hoops-jump-search-graphic.png" alt="Find your school" />
-      <img class="img-responsive hidden-sm hidden-md hidden-lg" src="http://heart.pub30.convio.net/../assets/images/hoops-jump-search-graphic-mobile.jpg" alt="Find your school" />
+      <img class="img-responsive hidden-xs" src="http://american.heart.org/../assets/images/hoops-jump-search-graphic.png" alt="Find your school" />
+      <img class="img-responsive hidden-sm hidden-md hidden-lg" src="http://american.heart.org/../assets/images/hoops-jump-search-graphic-mobile.jpg" alt="Find your school" />
       <div class="form-inline text-center">
         <label for="school-name-filter" class="sr-only">Start typing your school's name:</label>
         <input type="text" id="school-name-filter" name="school-name-filter" class="form-control" maxlength="40" placeholder="Start typing your school's name"
