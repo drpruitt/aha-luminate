@@ -95,7 +95,7 @@ angular.module 'trPcControllers'
             giftContact = participantGift.contact.firstName
             if participantGift.contact.lastName
               giftContact += ' ' + participantGift.contact.lastName
-          if participantGift.contact.email
+          if participantGift.contact.email and participantGift.contact.email isnt ''
             if not giftContact
               giftContact = '<'
             else
@@ -119,7 +119,7 @@ angular.module 'trPcControllers'
               giftContact = participantGift.contact.firstName
               if participantGift.contact.lastName
                 giftContact += ' ' + participantGift.contact.lastName
-            if participantGift.contact.email
+            if participantGift.contact.email and participantGift.contact.email isnt ''
               if not giftContact
                 giftContact = '<'
               else
@@ -182,7 +182,7 @@ angular.module 'trPcControllers'
               giftContact = teamGift.contact.firstName
               if teamGift.contact.lastName
                 giftContact += ' ' + teamGift.contact.lastName
-            if teamGift.contact.email
+            if teamGift.contact.email and teamGift.contact.email isnt ''
               if not giftContact
                 giftContact = '<'
               else
@@ -206,7 +206,7 @@ angular.module 'trPcControllers'
                 giftContact = teamGift.contact.firstName
                 if teamGift.contact.lastName
                   giftContact += ' ' + teamGift.contact.lastName
-              if teamGift.contact.email
+              if teamGift.contact.email and teamGift.contact.email isnt ''
                 if not giftContact
                   giftContact = '<'
                 else
@@ -269,6 +269,7 @@ angular.module 'trPcControllers'
                       districtDetailParticipants.push
                         firstName: firstName
                         lastName: lastName
+                        email: ''
                         amount: amount
                         amountFormatted: amountFormatted.replace '.00', ''
                         ecardsSent: ecardsSent
@@ -297,4 +298,25 @@ angular.module 'trPcControllers'
           $scope.districtDetailParticipants.sortColumn = sortColumn
           orderBy = $filter 'orderBy'
           $scope.districtDetailParticipants.participants = orderBy $scope.districtDetailParticipants.participants, sortColumn, !$scope.districtDetailParticipants.sortAscending
+        
+        $scope.emailAllCompanyParticipants = ->
+          if not $rootScope.selectedContacts
+            $rootScope.selectedContacts = {}
+          $rootScope.selectedContacts.contacts = []
+          if $scope.districtDetailParticipants.participants.length > 0
+            angular.forEach $scope.districtDetailParticipants.participants, (companyParticipant) ->
+              companyParticipantContact = null
+              if companyParticipant.firstName
+                companyParticipantContact = companyParticipant.firstName
+                if companyParticipant.lastName
+                  companyParticipantContact += ' ' + companyParticipant.lastName
+              if companyParticipant.email and companyParticipant.email isnt ''
+                if not companyParticipantContact
+                  companyParticipantContact = '<'
+                else
+                  companyParticipantContact += ' <'
+                companyParticipantContact += companyParticipant.email + '>'
+              if companyParticipantContact
+                $rootScope.selectedContacts.contacts.push companyParticipantContact
+          $location.path '/email/compose/'
   ]
