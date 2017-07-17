@@ -2,10 +2,12 @@ angular.module 'ahaLuminateControllers'
   .controller 'SchoolSearchCtrl', [
     '$rootScope'
     '$scope'
+    '$sce'
     '$filter'
     'SchoolLookupService'
-    ($rootScope, $scope, $filter, SchoolLookupService) ->
+    ($rootScope, $scope, $sce, $filter, SchoolLookupService) ->
       $scope.schoolList =
+        typeaheadPopupUrl: $sce.trustAsResourceUrl('http://www2.heart.org/aha-luminate/dist/youth-markets/html/typeaheadPopup.html')
         searchSubmitted: false
         searchPending: false
         sortProp: 'SCHOOL_NAME'
