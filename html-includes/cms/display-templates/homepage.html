@@ -83,7 +83,7 @@
         </t:if>
         <div class="form-inline text-center">
           <label for="school-name-filter" class="sr-only">School name:</label>
-          <input type="text" class="form-control" id="school-name-filter" name="school-name-filter" ng-model="schoolList.ng_nameFilter" placeholder="Start typing your school's name" autocomplete="off" uib-typeahead="school.SCHOOL_NAME for school in getSchoolSuggestions($viewValue)" typeahead-min-length="3" typeahead-editable="true" typeahead-popup-template-url="http://www2.heart.org/aha-luminate/dist/youth-markets/html/typeaheadPopup.html" typeahead-focus-first="false" ng-class="{'disabled': schoolList.searchPending}" ng-disabled="schoolList.searchPending"> 
+          <input type="text" class="form-control" id="school-name-filter" name="school-name-filter" ng-model="schoolList.ng_nameFilter" placeholder="Start typing your school's name" autocomplete="off" uib-typeahead="school.SCHOOL_NAME for school in getSchoolSuggestions($viewValue)" typeahead-min-length="3" typeahead-editable="true" typeahead-popup-template-url="schoolList.typeaheadPopupUrl" typeahead-focus-first="false" ng-class="{'disabled': schoolList.searchPending}" ng-disabled="schoolList.searchPending"> 
           <button type="submit" class="btn btn-secondary school-name-filter-submit" ng-class="{'disabled': schoolList.searchPending}" ng-disabled="schoolList.searchPending">
             <strong>Search</strong>
           </button>
