@@ -178,11 +178,10 @@ angular.module 'ahaLuminateControllers'
         ng_last_name: ''
       $scope.companyParticipants = []
       $scope.participantListSetting =
-        searchPending: false
         sortProp: 'amountRaised'
         sortColumn: 'amountRaised'
-        sortDesc: false
-        totalItems: 5
+        sortAscending: false
+        totalNumber: 5
         currentPage: 1
         paginationItemsPerPage: 4
         paginationMaxSize: 4
@@ -193,8 +192,8 @@ angular.module 'ahaLuminateControllers'
         $scope.participantListSetting.totalItems = Number totalNumber
         if not $scope.$$phase
           $scope.$apply()
-      getCompanyParticipants = ->
-        TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%') + '&first_name=' + encodeURIComponent('%%') + '&last_name=' + encodeURIComponent('%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=500',
+      getCompanyParticipants = (first, last)->
+        TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%') + '&first_name=' + encodeURIComponent(first) + '&last_name=' + encodeURIComponent(last) + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=500',
             error: ->
               setCompanyParticipants()
             success: (response) ->
@@ -222,25 +221,19 @@ angular.module 'ahaLuminateControllers'
           success: (response) ->
             totalMinsActivity = response.data.data?.total or '0'
             totalMinsActivity = Number totalMinsActivity
-            #$scope.activity1amt = totalMinsActivity
             participantMinsActivityMap = response.data.data?.list or []
             $scope.companyParticipants.participantMinsActivityMap = participantMinsActivityMap
         console.log $scope.participantListSetting
-      getCompanyParticipants()
-      $scope.orderParticipants = (sortProp, keepSortOrder) ->
+      getCompanyParticipants('%%','%')
+
+      $scope.orderParticipants = (sortColumn) ->
         participants = $scope.companyParticipants.participants
-        angular.forEach participants, (participant) ->
-          participant.fullName = participant.name.first + ' ' + participant.name.last
-        if participants.length > 0
-          if not keepSortOrder
-            $scope.participantListSetting.sortDesc = !$scope.participantListSetting.sortDesc
-          if $scope.participantListSetting.sortProp isnt sortProp
-            $scope.participantListSetting.sortProp = sortProp
-            $scope.participantListSetting.sortDesc = true
-          participants = $filter('orderBy') participants, sortProp, $scope.participantListSetting.sortDesc
-          $scope.companyParticipants.participants = participants
-          $scope.participantListSetting.currentPage = 1
-      
+        $scope.participantListSetting.sortAscending = !$scope.participantListSetting.sortAscending
+        if $scope.participantListSetting.sortColumn isnt sortColumn
+          $scope.participantListSetting.sortAscending = false
+        $scope.participantListSetting.sortColumn = sortColumn
+        $scope.companyParticipants.participants = $filter('orderBy') participants, sortColumn, !$scope.participantListSetting.sortAscending
+        $scope.participantListSetting.currentPage = 1  
       $scope.participantPaginate = (value) ->
         begin = ($scope.participantListSetting.currentPage - 1) * $scope.participantListSetting.paginationItemsPerPage
         end = begin + $scope.participantListSetting.paginationItemsPerPage
@@ -265,7 +258,7 @@ angular.module 'ahaLuminateControllers'
       $scope.searchCompanyParticipants = ->
         $scope.companyParticipantSearch.first_name = $scope.companyParticipantSearch.ng_first_name
         $scope.companyParticipantSearch.last_name = $scope.companyParticipantSearch.ng_last_name
-        getCompanyParticipants()
+        getCompanyParticipants($scope.companyParticipantSearch.ng_first_name, $scope.companyParticipantSearch.ng_last_name)
       
       if $scope.consId
         TeamraiserRegistrationService.getRegistration
