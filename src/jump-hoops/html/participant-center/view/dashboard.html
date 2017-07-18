@@ -128,7 +128,7 @@
                 <a ng-href="{{baseUrl}}#/email">
                   <img src="../aha-luminate/dist/jump-hoops/image/send-emails.png" alt="Send Email">
                 </a> 
-                <a ng-href="http://hearttools.heart.org/aha_ym18?eid={{frId}}&amp;sid={{consId}}&amp;name={{consName}}" target="_blank">
+                <a ng-href="http://hearttools.heart.org/aha_ym18{{tablePrefix == 'heartdev' ? '_dev' : ''}}/?eid={{frId}}&amp;sid={{consId}}&amp;name={{consName}}" target="_blank">
                   <img src="../aha-luminate/dist/jump-hoops/image/send-ecards.png" alt="Send Ecard">
                 </a>
               </div>
@@ -136,7 +136,7 @@
                 <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email">
                   <strong>Send Email</strong>
                 </a> 
-                <a class="btn btn-md-wide btn-primary" ng-href="http://hearttools.heart.org/aha_ym18?eid={{frId}}&amp;sid={{consId}}&amp;name={{consName}}" target="_blank">
+                <a class="btn btn-md-wide btn-primary" ng-href="http://hearttools.heart.org/aha_ym18{{tablePrefix == 'heartdev' ? '_dev' : ''}}/?eid={{frId}}&amp;sid={{consId}}&amp;name={{consName}}" target="_blank">
                   <strong>Send Ecard</strong>
                 </a>
               </div>
@@ -384,7 +384,7 @@
             My Virtual World
           </h3>
           <div>
-            <!--<a ng-href="http://hearttools.heart.org/aha_ym18/expedition/?eid={{frId}}&amp;sid={{consId}}&amp;name={{consName}}" target="_blank">-->
+            <!--<a ng-href="http://hearttools.heart.org/aha_ym18{{tablePrefix == 'heartdev' ? '_dev' : ''}}/expedition/?eid={{frId}}&amp;sid={{consId}}&amp;name={{consName}}" target="_blank">-->
               <img src="../aha-luminate/dist/jump-hoops/image/virtual-world-coming-soon.png" alt="View virtual world">
             <!--</a>-->
           </div>
