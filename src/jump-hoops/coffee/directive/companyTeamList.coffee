@@ -10,17 +10,19 @@ angular.module 'ahaLuminateApp'
         companyId: '='
         frId: '='
         teams: '='
-
-      $scope.teamListSetting =
-        sortColumn: 'amountRaised'
-        sortAscending: false
-        totalNumber: 0
-        currentPage: 1
-        paginationItemsPerPage: 3
-        paginationMaxSize: 3
-      $scope.teamPaginate = (value) ->
-        begin = ($scope.teamListSetting.currentPage - 1) * $scope.teamListSetting.paginationItemsPerPage
-        end = begin + $scope.teamListSetting.paginationItemsPerPage
-        index = teams.indexOf value
-        begin <= index and index < end
+      controller: [
+        '$scope'
+        '$filter'
+        ($scope, $filter) ->
+          $scope.teamListSetting =
+            totalNumber: $scope.teams.length
+            currentPage: 1
+            paginationItemsPerPage: 4
+            paginationMaxSize: 4
+          $scope.teamPaginate = (value) ->
+            begin = ($scope.teamListSetting.currentPage - 1) * $scope.teamListSetting.paginationItemsPerPage
+            end = begin + $scope.teamListSetting.paginationItemsPerPage
+            index = $scope.teams.indexOf value
+            begin <= index and index < end
+      ]
   ]
