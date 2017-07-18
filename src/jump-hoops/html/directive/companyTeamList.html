@@ -24,7 +24,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="ym-list__row" ng-repeat="team in teams">
+      <tr class="ym-list__row" ng-repeat="team in teams | filter: teamPaginate">
         <td class="ym-list__column ym-list__column--name">
           <a ng-href="TR?fr_id={{team.EventId}}&amp;pg=team&amp;team_id={{team.id}}"><span ng-bind-html="team.name"></span></a>
         </td>
@@ -39,5 +39,8 @@
       </tr>
     </tbody>
   </table>
+  <div class="ym-pagination text-center" ng-show="teamListSetting.totalNumber > teamListSetting.paginationItemsPerPage">
+    <ul uib-pagination ng-model="teamListSetting.currentPage" total-items="teamListSetting.totalNumber" items-per-page="teamListSetting.paginationItemsPerPage" max-size="teamListSetting.paginationMaxSize" boundary-links="teamListSetting.totalNumber > (teamListSetting.paginationItemsPerPage * teamListSetting.paginationMaxSize)"></ul>
+  </div>
 </div>
 </div>
