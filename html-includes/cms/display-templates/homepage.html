@@ -334,7 +334,7 @@
                     </a>
                   </td>
                 </tr>
-                <tr class="ym-list__row" ng-repeat="participant in participantList | filter:participantPaginate" ng-if="totalParticipants > 1">
+                <tr class="ym-list__row" ng-repeat="participant in participantList | filter:paginateParticipants" ng-if="totalParticipants > 1">
                   <td class="ym-list__column ym-list__column--name">
                     <a ng-href="{{participant.personalPageUrl}}">
                       <span ng-bind-html="participant.name.first"></span>
@@ -407,7 +407,7 @@
                     </a>
                   </td>
                 </tr>
-                <tr class="ym-list__row" ng-repeat="team in teamList | filter:teamPaginate" ng-if="totalTeams > 1">
+                <tr class="ym-list__row" ng-repeat="team in teamList | filter:paginateTeams" ng-if="totalTeams > 1">
                   <td class="ym-list__column ym-list__column--name">
                     <a ng-href="{{team.teamPageUrl}}">
                       <span ng-bind-html="team.name"></span>

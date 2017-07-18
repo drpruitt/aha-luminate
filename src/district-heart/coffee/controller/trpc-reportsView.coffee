@@ -259,13 +259,14 @@ angular.module 'trPcControllers'
                       $reportTableRow = angular.element reportTableRow
                       firstName = jQuery.trim $reportTableRow.find('td').eq(8).text()
                       lastName = jQuery.trim $reportTableRow.find('td').eq(9).text()
-                      amount = Number jQuery.trim($reportTableRow.find('td').eq(10).text())
-                      amountFormatted = $filter('currency') jQuery.trim($reportTableRow.find('td').eq(10).text()), '$'
-                      ecardsSent = Number jQuery.trim($reportTableRow.find('td').eq(13).text())
-                      emailsSent = Number jQuery.trim($reportTableRow.find('td').eq(12).text())
-                      tshirtSize = jQuery.trim $reportTableRow.find('td').eq(14).text()
+                      email = jQuery.trim $reportTableRow.find('td').eq(10).text()
+                      amount = Number jQuery.trim($reportTableRow.find('td').eq(11).text())
+                      amountFormatted = $filter('currency') jQuery.trim($reportTableRow.find('td').eq(11).text()), '$'
+                      ecardsSent = Number jQuery.trim($reportTableRow.find('td').eq(14).text())
+                      emailsSent = Number jQuery.trim($reportTableRow.find('td').eq(13).text())
+                      tshirtSize = jQuery.trim $reportTableRow.find('td').eq(15).text()
                       teacherName = jQuery.trim $reportTableRow.find('td').eq(6).text()
-                      challenge = jQuery.trim($reportTableRow.find('td').eq(15).text()).replace('1. ', '').replace('2. ', '').replace('3. ', '').replace '4. ', ''
+                      challenge = jQuery.trim($reportTableRow.find('td').eq(16).text()).replace('1. ', '').replace('2. ', '').replace('3. ', '').replace '4. ', ''
                       districtDetailParticipants.push
                         firstName: firstName
                         lastName: lastName
@@ -278,7 +279,7 @@ angular.module 'trPcControllers'
                         teacherName: teacherName
                         challenge: challenge
                       districtDetailDownloadData.push [
-                        firstName + ' ' + jQuery.trim $reportTableRow.find('td').eq(9).text()
+                        firstName + ' ' + lastName
                         amountFormatted.replace('$', '').replace /,/g, ''
                         ecardsSent
                         emailsSent
