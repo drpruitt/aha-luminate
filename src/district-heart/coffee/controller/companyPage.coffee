@@ -121,17 +121,17 @@ angular.module 'ahaLuminateControllers'
         sortAscending: false
         totalNumber: 0
         currentPage: 1
-        paginationItemsPerPage: 4
-        paginationMaxSize: 4
+        paginationItemsPerPage: 3
+        paginationMaxSize: 3
       setCompanyTeams = (teams, totalNumber) ->
         $scope.companyTeams.teams = teams or []
         totalNumber = totalNumber or 0
         $scope.companyTeams.totalNumber = Number totalNumber
-        $scope.teamListSetting = Number totalNumber
+        $scope.teamListSetting.totalNumber = Number totalNumber
         if not $scope.$$phase
           $scope.$apply()
-      getCompanyTeams = ->
-        TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=500',
+      getCompanyTeams = (teamName) ->
+        TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId + '&team_name=' + teamName + '&list_sort_column=total&list_ascending=false&list_page_size=500',
           error: ->
             setCompanyTeams()
           success: (response) ->
@@ -156,7 +156,7 @@ angular.module 'ahaLuminateControllers'
               $scope.activity1amt = Math.round($scope.activity1amt / 1000) + 'K'
             teamMinsActivityMap = response.data.data?.list or []
             $scope.companyTeams.teamMinsActivityMap = teamMinsActivityMap
-      getCompanyTeams()
+      getCompanyTeams('%')
       
       setTeamsMinsActivity = ->
         teams = $scope.companyTeams.teams
@@ -175,10 +175,12 @@ angular.module 'ahaLuminateControllers'
       
       $scope.searchCompanyTeams = ->
         $scope.companyTeamSearch.team_name = $scope.companyTeamSearch.ng_team_name
-        getCompanyTeams()
+        getCompanyTeams($scope.companyTeamSearch.ng_team_name)
+        $scope.teamListSetting.sortColumn = 'amountRaised'
+        $scope.teamListSetting.sortAscending = false
 
       $scope.orderTeams = (sortColumn) ->
-        teamss = $scope.companyTeams.teams
+        teams = $scope.companyTeams.teams
         $scope.teamListSetting.sortAscending = !$scope.teamListSetting.sortAscending
         if $scope.teamListSetting.sortColumn isnt sortColumn
           $scope.teamListSetting.sortAscending = false

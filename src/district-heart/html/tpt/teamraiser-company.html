@@ -144,7 +144,7 @@
       </div>
     </div>
   </div>
-  <div class="ym-page-section ym-page-section__roster" ng-if="companyTeams.totalNumber > 1" ng-cloak>
+  <div class="ym-page-section ym-page-section__roster" ng-if="companyTeams.totalNumber > 0" ng-cloak>
     <h2 class="h5">
       Our Teams
     </h2>
@@ -162,7 +162,6 @@
         </button>
       </form>
     </div>
-    <!--<company-team-list fr-id="'[[S80:trID]]'" company-id="'[[T6:[[S334:company_id]]]]'" teams="companyTeams.teams" team-name-filter="companyTeamSearch.team_name" page-number="companyTeams.page_number"></company-team-list>-->
     <div class="table-responsive">
       <table class="table table-striped table--padded ym-list ym-list--team-list">
         <thead class="ym-list__header">
