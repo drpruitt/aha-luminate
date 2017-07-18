@@ -94,7 +94,12 @@
           <div class="ym-page-section__header">
             <section>
               <h2 class="h5 school-list__header">
-                Results Matching Your School's Name
+                <t:if test="path == '/district-heart-challenge/'">
+                  Results Matching Your District's Name
+                </t:if>
+                <t:else>
+                  Results Matching Your School's Name
+                </t:else>
               </h2>
               <label for="school-state-filter" class="sr-only">School State Filter</label>
               <select class="btn btn-sm btn-secondary" id="school-state-filter" name="stateFilter" ng-model="schoolList.stateFilter" ng-change="getSchoolSearchResults()">
@@ -168,7 +173,12 @@
               <thead class="ym-list__header">
                 <th class="ym-list__column ym-list__column--school" scope="col">
                   <a ng-click="orderSchools('SCHOOL_NAME')">
-                    School 
+                    <t:if test="path == '/district-heart-challenge/'">
+                      District
+                    </t:if>
+                    <t:else>
+                      School
+                    </t:else> 
                     <span ng-show="schoolList.schools.length && schoolList.sortProp == 'SCHOOL_NAME' && !schoolList.sortDesc" class="fa fa-caret-down"></span>
                     <span ng-show="schoolList.schools.length && schoolList.sortProp == 'SCHOOL_NAME' && schoolList.sortDesc" class="fa fa-caret-up"></span>
                     <span ng-show="schoolList.schools.length && schoolList.sortProp != 'SCHOOL_NAME'" class="fa fa-caret-down inactive"></span>
@@ -226,10 +236,10 @@
         </div>
         <div ng-if="schoolList.schools.length == 0" class="text-center" ng-class="{'pb-md': schoolList.showHelp}">
           <p>
-            Hi! We couldn't locate a school with the name of <strong>{{schoolList.nameFilter}}</strong><span ng-if="schoolList.stateFilter && schoolList.stateFilter != ''"> in <strong>{{schoolList.stateFilter}}</strong></span>. Need Help locating your school? Visit the <a href="https://jumphoops.zendesk.com/hc/en-us" target="_blank">help center</a> for assistance.
+            Hi! We couldn't locate a <t:if test="path == '/district-heart-challenge/'">              District</t:if><t:else>School</t:else> with the name of <strong>{{schoolList.nameFilter}}</strong><span ng-if="schoolList.stateFilter && schoolList.stateFilter != ''"> in <strong>{{schoolList.stateFilter}}</strong></span>. Need Help locating your <t:if test="path == '/district-heart-challenge/'">district</t:if><t:else>school</t:else>? Visit the <a href="https://jumphoops.zendesk.com/hc/en-us" target="_blank">help center</a> for assistance.
           </p>
           <p>
-            You can still register today without designating a school, and a school coordinator from our team will make sure you're properly linked up with your school.
+            You can still register today without designating a <t:if test="path == '/district-heart-challenge/'">district</t:if><t:else>school</t:else>, and a coordinator from our team will make sure you're properly linked up with your <t:if test="path == '/district-heart-challenge/'">district</t:if><t:else>school</t:else>.
           </p>
           <div class="pt-md">
             <a class="btn btn-md btn-secondary ym-list--school-list--help" ng-href="{{noSchoolLink}}">Sign Up Today</a>
@@ -241,7 +251,7 @@
           </div>
           <div ng-if="!schoolList.showHelp" class="text-center">
             <button type="button" class="btn btn-md btn-secondary ym-list--school-list--help" ng-click="schoolList.showHelp = true;">
-              Can't Find Your School
+              Can't Find Your <t:if test="path == '/district-heart-challenge/'">District</t:if><t:else>School</t:else>
             </button>
           </div>
         </div>
@@ -334,7 +344,7 @@
                     </a>
                   </td>
                 </tr>
-                <tr class="ym-list__row" ng-repeat="participant in participantList | filter:participantPaginate" ng-if="totalParticipants > 1">
+                <tr class="ym-list__row" ng-repeat="participant in participantList | filter:paginateParticipants" ng-if="totalParticipants > 1">
                   <td class="ym-list__column ym-list__column--name">
                     <a ng-href="{{participant.personalPageUrl}}">
                       <span ng-bind-html="participant.name.first"></span>
@@ -407,7 +417,7 @@
                     </a>
                   </td>
                 </tr>
-                <tr class="ym-list__row" ng-repeat="team in teamList | filter:teamPaginate" ng-if="totalTeams > 1">
+                <tr class="ym-list__row" ng-repeat="team in teamList | filter:paginateTeams" ng-if="totalTeams > 1">
                   <td class="ym-list__column ym-list__column--name">
                     <a ng-href="{{team.teamPageUrl}}">
                       <span ng-bind-html="team.name"></span>
