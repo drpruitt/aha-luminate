@@ -78,17 +78,17 @@ angular.module 'ahaLuminateControllers'
                     $scope.eventDate = response.data.coordinator.event_date
                     $scope.coordinatorName = response.data.coordinator.fullName
                     setCoordinatorInfo()
-
+            
             TeamraiserCompanyService.getCoordinatorQuestion captainId, eventId
               .then (response) ->
-                teamGoal = response.data.coordinator.team_goal
-                if teamGoal is 'User Provided No Response'
-                  $scope.participantGoal = null
+                participantGoal = response.data.coordinator?.team_goal or '0'
+                participantGoal = participantGoal.replace /,/g, ''
+                if isNaN participantGoal
+                  $scope.participantGoal = 0
                 else
-                  $scope.participantGoal = teamGoal
-
+                  $scope.participantGoal = Number participantGoal
       getTeamData()
-
+      
       $scope.teamParticipantSearch =
         first_name: ''
         ng_first_name: ''
