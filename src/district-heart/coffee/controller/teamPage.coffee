@@ -135,7 +135,7 @@ angular.module 'ahaLuminateControllers'
               $scope.activity1amt = Math.round($scope.activity1amt / 1000) + 'K'
             participantMinsActivityMap = response.data.data?.list or []
             $scope.teamParticipants.participantMinsActivityMap = participantMinsActivityMap
-      getTeamParticipants('%','%')
+      getTeamParticipants('%', '%')
       
       setParticipantsMinsActivity = ->
         participants = $scope.teamParticipants.participants
@@ -151,7 +151,7 @@ angular.module 'ahaLuminateControllers'
       setParticipantsMinsActivity()
       $scope.$watchGroup ['teamParticipants.participants', 'teamParticipants.participantMinsActivityMap'], ->
         setParticipantsMinsActivity()
-
+      
       $scope.orderParticipants = (sortColumn) ->
         participants = $scope.teamParticipants.participants
         $scope.participantListSetting.sortAscending = !$scope.participantListSetting.sortAscending
@@ -160,13 +160,12 @@ angular.module 'ahaLuminateControllers'
         $scope.participantListSetting.sortColumn = sortColumn
         $scope.teamParticipants.participants = $filter('orderBy') participants, sortColumn, !$scope.participantListSetting.sortAscending
         $scope.participantListSetting.currentPage = 1
-
-      $scope.participantPaginate = (value) ->
+      
+      $scope.paginateParticipants = (value) ->
         begin = ($scope.participantListSetting.currentPage - 1) * $scope.participantListSetting.paginationItemsPerPage
         end = begin + $scope.participantListSetting.paginationItemsPerPage
         index = $scope.teamParticipants.participants.indexOf value
         begin <= index and index < end
-        
       
       $scope.searchTeamParticipants = ->
         $scope.teamParticipantSearch.first_name = $scope.teamParticipantSearch.ng_first_name

@@ -102,11 +102,12 @@ angular.module 'ahaLuminateControllers'
               
               TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
                 .then (response) ->
-                  participantGoal = response.data.coordinator.participant_goal
-                  if participantGoal is 'User Provided No Response'
-                    $scope.participantGoal = null
+                  participantGoal = response.data.coordinator?.participant_goal or '0'
+                  participantGoal = participantGoal.replace /,/g, ''
+                  if isNaN participantGoal
+                    $scope.participantGoal = 0
                   else
-                    $scope.participantGoal = participantGoal
+                    $scope.participantGoal = Number participantGoal
                   $scope.eventDate = response.data.coordinator.event_date
                   if totalTeams is 1
                     $scope.teamId = response.data.coordinator.team_id

@@ -219,7 +219,7 @@ angular.module 'trPcControllers'
             'Teacher'
             'Challenge'
           ]
-          sortColumn: '',
+          sortColumn: ''
           sortAscending: false
         schoolDetailReportPromise = NgPcTeamraiserReportsService.getSchoolDetailReport()
           .then (response) ->
