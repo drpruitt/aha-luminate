@@ -24,8 +24,7 @@ angular.module 'ahaLuminateControllers'
             setCompanyName companyInfo.companyName
       
       checkFrTmOpt = ->
-        frTmOpt = $scope.frTmOpt
-        if frTmOpt is 'new'
+        if $scope.frTmOpt is 'new'
           angular.element('body').removeClass 'hidden'
         else
           if not $scope.teamSearch
@@ -61,4 +60,7 @@ angular.module 'ahaLuminateControllers'
           
           $scope.submitTfindSearch = ->
             $scope.teamSearch.teamName = $scope.teamSearch.ng_team_name
+      checkFrTmOpt()
+      $scope.$watch 'frTmOpt', ->
+        checkFrTmOpt()
   ]
