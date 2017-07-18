@@ -178,10 +178,9 @@ angular.module 'ahaLuminateControllers'
         ng_last_name: ''
       $scope.companyParticipants = []
       $scope.participantListSetting =
-        sortProp: 'amountRaised'
         sortColumn: 'amountRaised'
         sortAscending: false
-        totalNumber: 5
+        totalNumber: 0
         currentPage: 1
         paginationItemsPerPage: 4
         paginationMaxSize: 4
@@ -189,7 +188,7 @@ angular.module 'ahaLuminateControllers'
         $scope.companyParticipants.participants = participants or []
         totalNumber = totalNumber or 0
         $scope.companyParticipants.totalNumber = Number totalNumber
-        $scope.participantListSetting.totalItems = Number totalNumber
+        $scope.participantListSetting.totalNumber = Number totalNumber
         if not $scope.$$phase
           $scope.$apply()
       getCompanyParticipants = (first, last)->
@@ -197,7 +196,6 @@ angular.module 'ahaLuminateControllers'
             error: ->
               setCompanyParticipants()
             success: (response) ->
-              console.log response
               participants = response.getParticipantsResponse?.participant
               companyParticipants = []
               if participants
@@ -223,22 +221,7 @@ angular.module 'ahaLuminateControllers'
             totalMinsActivity = Number totalMinsActivity
             participantMinsActivityMap = response.data.data?.list or []
             $scope.companyParticipants.participantMinsActivityMap = participantMinsActivityMap
-        console.log $scope.participantListSetting
       getCompanyParticipants('%%','%')
-
-      $scope.orderParticipants = (sortColumn) ->
-        participants = $scope.companyParticipants.participants
-        $scope.participantListSetting.sortAscending = !$scope.participantListSetting.sortAscending
-        if $scope.participantListSetting.sortColumn isnt sortColumn
-          $scope.participantListSetting.sortAscending = false
-        $scope.participantListSetting.sortColumn = sortColumn
-        $scope.companyParticipants.participants = $filter('orderBy') participants, sortColumn, !$scope.participantListSetting.sortAscending
-        $scope.participantListSetting.currentPage = 1  
-      $scope.participantPaginate = (value) ->
-        begin = ($scope.participantListSetting.currentPage - 1) * $scope.participantListSetting.paginationItemsPerPage
-        end = begin + $scope.participantListSetting.paginationItemsPerPage
-        index = $scope.companyParticipants.participants.indexOf value
-        begin <= index and index < end
       
       setParticipantsMinsActivity = ->
         participants = $scope.companyParticipants.participants
@@ -254,11 +237,28 @@ angular.module 'ahaLuminateControllers'
       setParticipantsMinsActivity()
       $scope.$watchGroup ['companyParticipants.participants', 'companyParticipants.participantMinsActivityMap'], ->
         setParticipantsMinsActivity()
+
+      $scope.orderParticipants = (sortColumn) ->
+        participants = $scope.companyParticipants.participants
+        $scope.participantListSetting.sortAscending = !$scope.participantListSetting.sortAscending
+        if $scope.participantListSetting.sortColumn isnt sortColumn
+          $scope.participantListSetting.sortAscending = false
+        $scope.participantListSetting.sortColumn = sortColumn
+        $scope.companyParticipants.participants = $filter('orderBy') participants, sortColumn, !$scope.participantListSetting.sortAscending
+        $scope.participantListSetting.currentPage = 1 
+
+      $scope.participantPaginate = (value) ->
+        begin = ($scope.participantListSetting.currentPage - 1) * $scope.participantListSetting.paginationItemsPerPage
+        end = begin + $scope.participantListSetting.paginationItemsPerPage
+        index = $scope.companyParticipants.participants.indexOf value
+        begin <= index and index < end
       
       $scope.searchCompanyParticipants = ->
         $scope.companyParticipantSearch.first_name = $scope.companyParticipantSearch.ng_first_name
         $scope.companyParticipantSearch.last_name = $scope.companyParticipantSearch.ng_last_name
         getCompanyParticipants($scope.companyParticipantSearch.ng_first_name, $scope.companyParticipantSearch.ng_last_name)
+        $scope.participantListSetting.sortColumn = 'amountRaised'
+        $scope.participantListSetting.sortAscending = false
       
       if $scope.consId
         TeamraiserRegistrationService.getRegistration
