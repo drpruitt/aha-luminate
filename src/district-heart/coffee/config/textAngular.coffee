@@ -6,7 +6,7 @@ if luminateExtend.global.hasTextEditor
         $provide.decorator 'taOptions', [
           '$delegate'
           ($delegate) ->
-            taOptions.keyMappings = [
+            $delegate.keyMappings = [
               {
                 commandKeyCode: 'TabKey'
                 testForKey: (event) ->
