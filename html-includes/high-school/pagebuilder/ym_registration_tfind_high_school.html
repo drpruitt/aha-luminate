@@ -27,7 +27,7 @@
       </script>
     ::
       <!-- company_id is not null -->
-      <div class="ym-registration-page-container ym-registration-page-container--tfind" ng-controller="RegistrationTfindCtrl" ng-init="newTeam.companyId = '[[T6:[[A36]]]]'">
+      <div class="ym-registration-page-container ym-registration-page-container--tfind" ng-controller="RegistrationTfindCtrl" ng-init="frTmOpt = 'new'; newTeam.companyId = '[[T6:[[A36]]]]'">
       </div>
     ]]
   ::
@@ -44,7 +44,7 @@
       </script>
     ::
       <!-- company_id is not null -->
-      <div class="ym-registration-page-container ym-registration-page-container--tfind" ng-controller="RegistrationTfindCtrl" ng-init="teamSearch.companyId = '[[T6:[[A36]]]]'; teamSearch.ng_team_name = '[[T6:[[A16]]]]'; teamSearch.teamName = '[[T6:[[A16]]]]'">
+      <div class="ym-registration-page-container ym-registration-page-container--tfind" ng-controller="RegistrationTfindCtrl" ng-init="frTmOpt = 'existing'; teamSearch.companyId = '[[T6:[[A36]]]]'; teamSearch.ng_team_name = '[[T6:[[A16]]]]'; teamSearch.teamName = '[[T6:[[A16]]]]'">
         <div ng-if="teamList.teams" ng-cloak>
           <div class="ym-registration-page-header">
             <div class="manageable-editor" data-container="edit_title_container">
