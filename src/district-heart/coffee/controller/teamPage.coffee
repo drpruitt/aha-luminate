@@ -88,6 +88,13 @@ angular.module 'ahaLuminateControllers'
         ng_last_name: ''
       $scope.teamParticipants =
         page_number: 0
+      $scope.participantListSetting =
+        sortColumn: 'amountRaised'
+        sortAscending: false
+        totalNumber: 0
+        currentPage: 1
+        paginationItemsPerPage: 4
+        paginationMaxSize: 4
       setTeamParticipants = (participants, totalNumber) ->
         $scope.teamParticipants.participants = participants or []
         $scope.teamParticipants.totalNumber = totalNumber or 0
@@ -123,6 +130,8 @@ angular.module 'ahaLuminateControllers'
             totalMinsActivity = response.data.data?.total or '0'
             totalMinsActivity = Number totalMinsActivity
             $scope.activity1amt = totalMinsActivity
+            if $scope.activity1amt.toString().length > 4
+              $scope.activity1amt = Math.round($scope.activity1amt / 1000) + 'K'
             participantMinsActivityMap = response.data.data?.list or []
             $scope.teamParticipants.participantMinsActivityMap = participantMinsActivityMap
       getTeamParticipants()
@@ -141,6 +150,12 @@ angular.module 'ahaLuminateControllers'
       setParticipantsMinsActivity()
       $scope.$watchGroup ['teamParticipants.participants', 'teamParticipants.participantMinsActivityMap'], ->
         setParticipantsMinsActivity()
+
+      $scope.participantPaginate = (value) ->
+        begin = ($scope.participantListSetting.currentPage - 1) * $scope.participantListSetting.paginationItemsPerPage
+        end = begin + $scope.participantListSetting.paginationItemsPerPage
+        index = $scope.companyParticipants.participants.indexOf value
+        begin <= index and index < end
       
       $scope.searchTeamParticipants = ->
         $scope.teamParticipantSearch.first_name = $scope.teamParticipantSearch.ng_first_name
