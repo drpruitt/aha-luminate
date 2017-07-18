@@ -270,7 +270,7 @@ angular.module 'trPcControllers'
                       districtDetailParticipants.push
                         firstName: firstName
                         lastName: lastName
-                        email: ''
+                        email: email
                         amount: amount
                         amountFormatted: amountFormatted.replace '.00', ''
                         ecardsSent: ecardsSent
