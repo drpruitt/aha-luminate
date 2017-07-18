@@ -89,6 +89,8 @@ angular.module 'ahaLuminateControllers'
               companies = [companies] if not angular.isArray companies
               participantCount = companies[0].participantCount or '0'
               $scope.participantCount = Number participantCount
+              if $scope.participantCount.toString().length > 4
+                $scope.participantCount = Math.round($scope.participantCount / 1000) + 'K'
               totalTeams = companies[0].teamCount
               eventId = companies[0].eventId
               amountRaised = companies[0].amountRaised
@@ -100,6 +102,11 @@ angular.module 'ahaLuminateControllers'
               
               TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
                 .then (response) ->
+                  participantGoal = response.data.coordinator.participant_goal
+                  if participantGoal is 'User Provided No Response'
+                    $scope.participantGoal = null
+                  else
+                    $scope.participantGoal = participantGoal
                   $scope.eventDate = response.data.coordinator.event_date
                   if totalTeams is 1
                     $scope.teamId = response.data.coordinator.team_id
@@ -139,9 +146,12 @@ angular.module 'ahaLuminateControllers'
             totalMinsActivity = response.data.data?.total or '0'
             totalMinsActivity = Number totalMinsActivity
             $scope.activity1amt = totalMinsActivity
+            if $scope.activity1amt.toString().length > 4
+              $scope.activity1amt = Math.round($scope.activity1amt / 1000) + 'K'
             teamMinsActivityMap = response.data.data?.list or []
             $scope.companyTeams.teamMinsActivityMap = teamMinsActivityMap
       getCompanyTeams()
+      console.log 'get comp teams'
       
       setTeamsMinsActivity = ->
         teams = $scope.companyTeams.teams
@@ -203,7 +213,7 @@ angular.module 'ahaLuminateControllers'
           success: (response) ->
             totalMinsActivity = response.data.data?.total or '0'
             totalMinsActivity = Number totalMinsActivity
-            $scope.activity1amt = totalMinsActivity
+            #$scope.activity1amt = totalMinsActivity
             participantMinsActivityMap = response.data.data?.list or []
             $scope.companyParticipants.participantMinsActivityMap = participantMinsActivityMap
       getCompanyParticipants()
