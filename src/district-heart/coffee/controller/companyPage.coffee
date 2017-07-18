@@ -121,8 +121,8 @@ angular.module 'ahaLuminateControllers'
         sortAscending: false
         totalNumber: 0
         currentPage: 1
-        paginationItemsPerPage: 3
-        paginationMaxSize: 3
+        paginationItemsPerPage: 4
+        paginationMaxSize: 4
       setCompanyTeams = (teams, totalNumber) ->
         $scope.companyTeams.teams = teams or []
         totalNumber = totalNumber or 0
