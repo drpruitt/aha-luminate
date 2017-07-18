@@ -63,7 +63,8 @@ angular.module 'ahaLuminateControllers'
             teamInfo = response.getTeamSearchByInfoResponse?.team
             companyId = teamInfo.companyId
             $scope.participantCount = teamInfo.numMembers
-            
+            captainId = response.getTeamSearchByInfoResponse?.team.captainConsId
+            eventId = response.getTeamSearchByInfoResponse?.team.EventId
             if not teamInfo
               setTeamProgress()
             else
@@ -72,15 +73,22 @@ angular.module 'ahaLuminateControllers'
             TeamraiserCompanyService.getCompanies 'company_id=' + companyId, 
               success: (response) ->
                 coordinatorId = response.getCompaniesResponse?.company.coordinatorId
-                eventId = response.getCompaniesResponse?.company.eventId
-                
                 TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
                   .then (response) ->
                     $scope.eventDate = response.data.coordinator.event_date
                     $scope.coordinatorName = response.data.coordinator.fullName
                     setCoordinatorInfo()
+
+            TeamraiserCompanyService.getCoordinatorQuestion captainId, eventId
+              .then (response) ->
+                teamGoal = response.data.coordinator.team_goal
+                if teamGoal is 'User Provided No Response'
+                  $scope.participantGoal = null
+                else
+                  $scope.participantGoal = teamGoal
+
       getTeamData()
-      
+
       $scope.teamParticipantSearch =
         first_name: ''
         ng_first_name: ''
