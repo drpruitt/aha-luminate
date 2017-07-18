@@ -66,12 +66,12 @@
           </div>
           <div ng-if="participantCount == 1" ng-cloak>
             <p>
-              participant registered. <span ng-if="participantGoal">Help us meet our goal of {{participantGoal}} participants!</span>
+              participant registered. <span ng-if="participantGoal && participantGoal != 0" ng-cloak>Help us meet our goal of {{participantGoal|number}} participants!</span>
             </p>
           </div>
           <div ng-if="participantCount != 1" ng-cloak>
             <p>
-              participants registered. <span ng-if="participantGoal">Help us meet our goal of {{participantGoal}} participants!</span>
+              participants registered. <span ng-if="participantGoal && participantGoal != 0" ng-cloak>Help us meet our goal of {{participantGoal|number}} participants!</span>
             </p>
           </div>
         </div>
