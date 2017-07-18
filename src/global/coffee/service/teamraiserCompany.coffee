@@ -5,17 +5,17 @@ angular.module 'ahaLuminateApp'
     '$filter'
     (LuminateRESTService, $http, $filter) ->
       companyTree = {}
-
+      
       getCompanies = (requestData, callback) ->
         dataString = 'method=getCompaniesByInfo'
         dataString += '&' + requestData if requestData and requestData isnt ''
         LuminateRESTService.luminateExtendTeamraiserRequest dataString, false, true, callback
-
+      
       getCompanyList = (requestData, callback) ->
         dataString = 'method=getCompanyList'
         dataString += '&' + requestData if requestData and requestData isnt ''
         LuminateRESTService.luminateExtendTeamraiserRequest dataString, false, true, callback
-
+      
       getCompanyTree = (companyId, childCompanies, callback) ->
         if companyTree[companyId]
           callback.success companyTree[companyId]
@@ -55,11 +55,11 @@ angular.module 'ahaLuminateApp'
                 root.amountRaisedFormatted = $filter('currency') root.amountRaised / 100, '$', 0
                 companyTree[companyId] = root
                 callback.success companyTree[companyId]
-
+      
       {
         getCompanies: getCompanies
         getCompanyList: getCompanyList
-        getCompanyTree: getCompanyTree,
+        getCompanyTree: getCompanyTree
         getCoordinatorQuestion: (coordinatorId, eventId) ->
           $http
             method: 'GET'
