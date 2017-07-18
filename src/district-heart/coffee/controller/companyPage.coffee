@@ -112,6 +112,7 @@ angular.module 'ahaLuminateControllers'
                     $scope.teamId = response.data.coordinator.team_id
       getCompanyTotals()
       
+      $scope.companyTeams = {}
       $scope.companyTeamSearch =
         team_name: ''
         ng_team_name: ''
