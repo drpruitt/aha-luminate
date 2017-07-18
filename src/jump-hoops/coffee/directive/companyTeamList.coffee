@@ -19,7 +19,8 @@ angular.module 'ahaLuminateApp'
             currentPage: 1
             paginationItemsPerPage: 4
             paginationMaxSize: 4
-          $scope.teamPaginate = (value) ->
+          
+          $scope.paginateTeams = (value) ->
             begin = ($scope.teamListSetting.currentPage - 1) * $scope.teamListSetting.paginationItemsPerPage
             end = begin + $scope.teamListSetting.paginationItemsPerPage
             index = $scope.teams.indexOf value
