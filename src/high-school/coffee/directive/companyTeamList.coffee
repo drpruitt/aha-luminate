@@ -26,4 +26,3 @@ angular.module 'ahaLuminateApp'
             begin <= index and index < end
       ]
   ]
-  ]
