@@ -115,13 +115,18 @@ angular.module 'ahaLuminateControllers'
       $scope.companyTeamSearch =
         team_name: ''
         ng_team_name: ''
-      $scope.companyTeams =
-        page_number: 0
+      $scope.teamListSetting =
+        sortColumn: 'amountRaised'
+        sortAscending: false
+        totalNumber: 0
+        currentPage: 1
+        paginationItemsPerPage: 4
+        paginationMaxSize: 4
       setCompanyTeams = (teams, totalNumber) ->
         $scope.companyTeams.teams = teams or []
         totalNumber = totalNumber or 0
         $scope.companyTeams.totalNumber = Number totalNumber
-        $scope.totalTeams = totalNumber
+        $scope.teamListSetting = Number totalNumber
         if not $scope.$$phase
           $scope.$apply()
       getCompanyTeams = ->
@@ -170,6 +175,21 @@ angular.module 'ahaLuminateControllers'
       $scope.searchCompanyTeams = ->
         $scope.companyTeamSearch.team_name = $scope.companyTeamSearch.ng_team_name
         getCompanyTeams()
+
+      $scope.orderTeams = (sortColumn) ->
+        teamss = $scope.companyTeams.teams
+        $scope.teamListSetting.sortAscending = !$scope.teamListSetting.sortAscending
+        if $scope.teamListSetting.sortColumn isnt sortColumn
+          $scope.teamListSetting.sortAscending = false
+        $scope.teamListSetting.sortColumn = sortColumn
+        $scope.companyTeams.teams = $filter('orderBy') teams, sortColumn, !$scope.teamListSetting.sortAscending
+        $scope.teamListSetting.currentPage = 1 
+
+      $scope.teamPaginate = (value) ->
+        begin = ($scope.teamListSetting.currentPage - 1) * $scope.teamListSetting.paginationItemsPerPage
+        end = begin + $scope.teamListSetting.paginationItemsPerPage
+        index = $scope.companyTeams.teams.indexOf value
+        begin <= index and index < end
       
       $scope.companyParticipantSearch =
         first_name: ''
