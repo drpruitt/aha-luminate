@@ -121,8 +121,8 @@ angular.module 'ahaLuminateControllers'
         sortAscending: false
         totalNumber: 0
         currentPage: 1
-        paginationItemsPerPage: 3
-        paginationMaxSize: 3
+        paginationItemsPerPage: 4
+        paginationMaxSize: 4
       setCompanyTeams = (teams, totalNumber) ->
         $scope.companyTeams.teams = teams or []
         totalNumber = totalNumber or 0
@@ -178,7 +178,7 @@ angular.module 'ahaLuminateControllers'
         getCompanyTeams($scope.companyTeamSearch.ng_team_name)
         $scope.teamListSetting.sortColumn = 'amountRaised'
         $scope.teamListSetting.sortAscending = false
-
+      
       $scope.orderTeams = (sortColumn) ->
         teams = $scope.companyTeams.teams
         $scope.teamListSetting.sortAscending = !$scope.teamListSetting.sortAscending
@@ -187,8 +187,8 @@ angular.module 'ahaLuminateControllers'
         $scope.teamListSetting.sortColumn = sortColumn
         $scope.companyTeams.teams = $filter('orderBy') teams, sortColumn, !$scope.teamListSetting.sortAscending
         $scope.teamListSetting.currentPage = 1 
-
-      $scope.teamPaginate = (value) ->
+      
+      $scope.paginateTeams = (value) ->
         begin = ($scope.teamListSetting.currentPage - 1) * $scope.teamListSetting.paginationItemsPerPage
         end = begin + $scope.teamListSetting.paginationItemsPerPage
         index = $scope.companyTeams.teams.indexOf value
@@ -260,7 +260,7 @@ angular.module 'ahaLuminateControllers'
       setParticipantsMinsActivity()
       $scope.$watchGroup ['companyParticipants.participants', 'companyParticipants.participantMinsActivityMap'], ->
         setParticipantsMinsActivity()
-
+      
       $scope.orderParticipants = (sortColumn) ->
         participants = $scope.companyParticipants.participants
         $scope.participantListSetting.sortAscending = !$scope.participantListSetting.sortAscending
@@ -269,8 +269,8 @@ angular.module 'ahaLuminateControllers'
         $scope.participantListSetting.sortColumn = sortColumn
         $scope.companyParticipants.participants = $filter('orderBy') participants, sortColumn, !$scope.participantListSetting.sortAscending
         $scope.participantListSetting.currentPage = 1 
-
-      $scope.participantPaginate = (value) ->
+      
+      $scope.paginateParticipants = (value) ->
         begin = ($scope.participantListSetting.currentPage - 1) * $scope.participantListSetting.paginationItemsPerPage
         end = begin + $scope.participantListSetting.paginationItemsPerPage
         index = $scope.companyParticipants.participants.indexOf value

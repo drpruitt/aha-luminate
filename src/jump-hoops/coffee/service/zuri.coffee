@@ -24,6 +24,7 @@ angular.module 'ahaLuminateApp'
         else
           url = '//hearttools.heart.org/aha_ym18/api/student/challenge/' + requestData + '&key=6Mwqh5dFV39HLDq7'
         $http.jsonp($sce.trustAsResourceUrl(url), jsonpCallbackParam: 'callback')
+
           .then (response) ->
             callback.success response
           , (response) ->
