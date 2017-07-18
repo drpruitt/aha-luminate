@@ -1,10 +1,11 @@
 angular.module 'ahaLuminateApp'
   .factory 'BoundlessService', [
+    '$rootScope'
     '$http'
     '$sce'
-    ($http, $sce) ->
+    ($rootScope, $http, $sce) ->
       getBadges: (requestData) ->
-        if luminateExtend.global.tablePrefix is 'heartdev'
+        if $rootScope.tablePrefix is 'heartdev'
           url = 'AjaxProxy?cnv_url=' + encodeURIComponent('https://districtheartchallengestaging.boundlessnetwork.com/api/badges/student/' + requestData) + '&auth=' + luminateExtend.global.ajaxProxyAuth
         else
           url = 'AjaxProxy?cnv_url=' + encodeURIComponent('https://districtheartchallenge.heart.org/api/badges/student/' + requestData) + '&auth=' + luminateExtend.global.ajaxProxyAuth
@@ -17,7 +18,7 @@ angular.module 'ahaLuminateApp'
           response
       
       getRollupTotals: ->
-        if luminateExtend.global.tablePrefix is 'heartdev'
+        if $rootScope.tablePrefix is 'heartdev'
           url = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent('https://districtheartchallengestaging.boundlessnetwork.com/api/schools/totals')
         else
           # url = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent('https://districtheartchallenge.heart.org/api/schools/totals')
@@ -31,7 +32,7 @@ angular.module 'ahaLuminateApp'
           response
       
       getDistrictRollupTotals: (requestData) ->
-        if luminateExtend.global.tablePrefix is 'heartdev'
+        if $rootScope.tablePrefix is 'heartdev'
           url = 'AjaxProxy?cnv_url=' + encodeURIComponent('https://districtheartchallengestaging.boundlessnetwork.com/api/schools/totals/' + requestData) + '&auth=' + luminateExtend.global.ajaxProxyAuth
         else
           url = 'AjaxProxy?cnv_url=' + encodeURIComponent('https://districtheartchallenge.heart.org/api/schools/totals/' + requestData) + '&auth=' + luminateExtend.global.ajaxProxyAuth
