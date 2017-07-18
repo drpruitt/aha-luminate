@@ -144,7 +144,7 @@
       </div>
     </div>
   </div>
-  <div class="ym-page-section ym-page-section__roster" ng-if="companyTeams.totalNumber > 1" ng-cloak>
+  <div class="ym-page-section ym-page-section__roster" ng-if="companyTeams.totalNumber > 0" ng-cloak>
     <h2 class="h5">
       Our Teams
     </h2>
@@ -162,7 +162,55 @@
         </button>
       </form>
     </div>
-    <company-team-list fr-id="'[[S80:trID]]'" company-id="'[[T6:[[S334:company_id]]]]'" teams="companyTeams.teams" team-name-filter="companyTeamSearch.team_name" page-number="companyTeams.page_number"></company-team-list>
+    <div class="table-responsive">
+      <table class="table table-striped table--padded ym-list ym-list--team-list">
+        <thead class="ym-list__header">
+          <tr>
+            <th class="ym-list__column ym-list__column--name" scope="col" role="columnheader" aria-sort="{{teamListSetting.sortColumn != 'name' ? 'none' : (teamListSetting.sortAscending ? 'ascending' : 'descending')}}">
+              <a href="" ng-click="orderTeams('name')">
+                <strong>Team Name</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (teamListSetting.sortColumn == 'name' && !teamListSetting.sortAscending) || teamListSetting.sortColumn != 'name', 'fa-caret-up': teamListSetting.sortColumn == 'name' && teamListSetting.sortAscending, 'inactive': teamListSetting.sortColumn != 'name'}"></span>
+              </a>
+            </th>
+            <th class="ym-list__column ym-list__column--amount" scope="col" role="columnheader" aria-sort="{{teamListSetting.sortColumn != 'amountRaised' ? 'none' : (teamListSetting.sortAscending ? 'ascending' : 'descending')}}">
+              <a href="" ng-click="orderTeams('amountRaised')">
+                <strong>Amount</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (teamListSetting.sortColumn == 'amountRaised' && !teamListSetting.sortAscending) || teamListSetting.sortColumn != 'amountRaised', 'fa-caret-up': teamListSetting.sortColumn == 'amountRaised' && teamListSetting.sortAscending, 'inactive': teamListSetting.sortColumn != 'amountRaised'}"></span>
+              </a>
+            </th>
+            <th class="ym-list__column ym-list__column--mins" scope="col" role="columnheader" aria-sort="{{teamListSetting.sortColumn != 'minsActivity' ? 'none' : (teamListSetting.sortAscending ? 'ascending' : 'descending')}}">
+              <a href="" ng-click="orderTeams('minsActivity')">
+                <strong>Min. of Activity</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (teamListSetting.sortColumn == 'minsActivity' && !teamListSetting.sortAscending) || teamListSetting.sortColumn != 'minsActivity', 'fa-caret-up': teamListSetting.sortColumn == 'minsActivity' && teamListSetting.sortAscending, 'inactive': teamListSetting.sortColumn != 'minsActivity'}"></span>
+              </a>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="ym-list__row ym-list__row--no-results" ng-if="companyTeams.teams && companyTeams.teams.length == 0" ng-cloak>
+            <td class="ym-list__column" colspan="3">
+              No teams found.
+            </td>
+          </tr>
+          <tr class="ym-list__row" ng-repeat="team in companyTeams.teams | filter:teamPaginate" ng-cloak>
+            <td class="ym-list__column ym-list__column--name">
+              <a ng-href="TR?fr_id={{team.EventId}}&amp;pg=team&amp;team_id={{team.id}}"><span ng-bind-html="team.name"></span></a>
+              <div>
+                <a class="btn btn-primary btn-md" ng-href="TRR?fr_id={{team.EventId}}&amp;pg=tfind&amp;fr_tjoin={{team.id}}&amp;s_frTJoin={{team.id}}&amp;s_frCompanyId={{team.companyId}}">
+                  <strong>Join</strong>
+                </a>
+              </div>
+            </td>
+            <td class="ym-list__column ym-list__column--amount">
+              <span>{{team.amountRaisedFormatted}}</span>
+            </td>
+            <td class="ym-list__column ym-list__column--mins">
+              <span>{{team.minsActivity|number}}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="ym-pagination text-center" ng-show="teamListSetting.totalNumber > teamListSetting.paginationItemsPerPage">
+        <ul uib-pagination ng-model="teamListSetting.currentPage" total-items="teamListSetting.totalNumber" items-per-page="teamListSetting.paginationItemsPerPage" max-size="teamListSetting.paginationMaxSize" boundary-links="teamListSetting.totalNumber > (teamListSetting.paginationItemsPerPage * teamListSetting.paginationMaxSize)"></ul>
+      </div>
+    </div>
     <hr class="ym-section-divider" ng-if="companyParticipants.totalNumber > 0 || localSponsorShow" ng-cloak>
   </div>
   <div class="ym-page-section ym-page-section__roster" ng-if="companyParticipants.totalNumber > 0" ng-cloak>
@@ -187,7 +235,55 @@
         </button>
       </form>
     </div>
-    <company-participant-list fr-id="'[[S80:trID]]'" company-id="'[[T6:[[S334:company_id]]]]'" participants="companyParticipants.participants" first-name-filter="companyParticipantSearch.first_name" last-name-filter="companyParticipantSearch.last_name" page-number="companyParticipants.page_number"></company-participant-list>
+    <div class="table-responsive">
+      <table class="table table-striped table--padded ym-list ym-list--participant-list">
+        <thead class="ym-list__header">
+          <tr>
+            <th class="ym-list__column ym-list__column--name" scope="col" role="columnheader" aria-sort="{{participantListSetting.sortColumn != 'fullName' ? 'none' : (participantListSetting.sortAscending ? 'ascending' : 'descending')}}">
+              <a href="" ng-click="orderParticipants('fullName')">
+                <strong>Participant Name</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (participantListSetting.sortColumn == 'fullName' && !participantListSetting.sortAscending) || participantListSetting.sortColumn != 'fullName', 'fa-caret-up': participantListSetting.sortColumn == 'fullName' && participantListSetting.sortAscending, 'inactive': participantListSetting.sortColumn != 'fullName'}"></span>
+              </a>
+            </th>
+            <th class="ym-list__column ym-list__column--amount" scope="col" role="columnheader" aria-sort="{{participantListSetting.sortColumn != 'amountRaised' ? 'none' : (participantListSetting.sortAscending ? 'ascending' : 'descending')}}">
+              <a href="" ng-click="orderParticipants('amountRaised')">
+                <strong>Amount</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (participantListSetting.sortColumn == 'amountRaised' && !participantListSetting.sortAscending) || participantListSetting.sortColumn != 'amountRaised', 'fa-caret-up': participantListSetting.sortColumn == 'amountRaised' && participantListSetting.sortAscending, 'inactive': participantListSetting.sortColumn != 'amountRaised'}"></span>
+              </a>
+            </th>
+            <th class="ym-list__column ym-list__column--mins" scope="col" role="columnheader" aria-sort="{{participantListSetting.sortColumn != 'minsActivity' ? 'none' : (participantListSetting.sortAscending ? 'ascending' : 'descending')}}">
+              <a href="" ng-click="orderParticipants('minsActivity')">
+                <strong>Min. of Activity</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (participantListSetting.sortColumn == 'minsActivity' && !participantListSetting.sortAscending) || participantListSetting.sortColumn != 'minsActivity', 'fa-caret-up': participantListSetting.sortColumn == 'minsActivity' && participantListSetting.sortAscending, 'inactive': participantListSetting.sortColumn != 'minsActivity'}"></span>
+              </a>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="ym-list__row ym-list__row--no-results" ng-if="companyParticipants.participants && companyParticipants.participants.length == 0" ng-cloak>
+            <td class="ym-list__column" colspan="3">
+              No participants found.
+            </td>
+          </tr>
+          <tr class="ym-list__row" ng-repeat="participant in companyParticipants.participants | filter:participantPaginate" ng-cloak>
+            <td class="ym-list__column ym-list__column--name">
+              <a ng-href="TR?fr_id={{participant.eventId}}&amp;pg=personal&amp;px={{participant.consId}}"><span ng-bind-html="participant.fullName"></span></a>
+              <div>
+                <a class="btn btn-primary btn-md" ng-href="Donation2?df_id={{participant.donationFormId}}&amp;FR_ID={{participant.eventId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{participant.consId}}">
+                  <strong>Donate</strong>
+                </a>
+              </div>
+            </td>
+            <td class="ym-list__column ym-list__column--amount">
+              <span>{{participant.amountRaisedFormatted}}</span>
+            </td>
+            <td class="ym-list__column ym-list__column--mins">
+              <span>{{participant.minsActivity|number}}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="ym-pagination text-center" ng-show="participantListSetting.totalNumber > participantListSetting.paginationItemsPerPage">
+        <ul uib-pagination ng-model="participantListSetting.currentPage" total-items="participantListSetting.totalNumber" items-per-page="participantListSetting.paginationItemsPerPage" max-size="participantListSetting.paginationMaxSize" boundary-links="participantListSetting.totalNumber > (participantListSetting.paginationItemsPerPage * participantListSetting.paginationMaxSize)"></ul>
+      </div>
+    </div>
     <hr class="ym-section-divider" ng-if="localSponsorShow" ng-cloak>
   </div>
   <div class="ym-page-section ym-page-section__sponsor" ng-if="localSponsorShow">

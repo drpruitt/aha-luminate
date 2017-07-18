@@ -112,20 +112,26 @@ angular.module 'ahaLuminateControllers'
                     $scope.teamId = response.data.coordinator.team_id
       getCompanyTotals()
       
+      $scope.companyTeams = {}
       $scope.companyTeamSearch =
         team_name: ''
         ng_team_name: ''
-      $scope.companyTeams =
-        page_number: 0
+      $scope.teamListSetting =
+        sortColumn: 'amountRaised'
+        sortAscending: false
+        totalNumber: 0
+        currentPage: 1
+        paginationItemsPerPage: 3
+        paginationMaxSize: 3
       setCompanyTeams = (teams, totalNumber) ->
         $scope.companyTeams.teams = teams or []
         totalNumber = totalNumber or 0
         $scope.companyTeams.totalNumber = Number totalNumber
-        $scope.totalTeams = totalNumber
+        $scope.teamListSetting.totalNumber = Number totalNumber
         if not $scope.$$phase
           $scope.$apply()
-      getCompanyTeams = ->
-        TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=500',
+      getCompanyTeams = (teamName) ->
+        TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId + '&team_name=' + teamName + '&list_sort_column=total&list_ascending=false&list_page_size=500',
           error: ->
             setCompanyTeams()
           success: (response) ->
@@ -150,8 +156,7 @@ angular.module 'ahaLuminateControllers'
               $scope.activity1amt = Math.round($scope.activity1amt / 1000) + 'K'
             teamMinsActivityMap = response.data.data?.list or []
             $scope.companyTeams.teamMinsActivityMap = teamMinsActivityMap
-      getCompanyTeams()
-      console.log 'get comp teams'
+      getCompanyTeams('%')
       
       setTeamsMinsActivity = ->
         teams = $scope.companyTeams.teams
@@ -170,23 +175,47 @@ angular.module 'ahaLuminateControllers'
       
       $scope.searchCompanyTeams = ->
         $scope.companyTeamSearch.team_name = $scope.companyTeamSearch.ng_team_name
-        getCompanyTeams()
+        getCompanyTeams($scope.companyTeamSearch.ng_team_name)
+        $scope.teamListSetting.sortColumn = 'amountRaised'
+        $scope.teamListSetting.sortAscending = false
+
+      $scope.orderTeams = (sortColumn) ->
+        teams = $scope.companyTeams.teams
+        $scope.teamListSetting.sortAscending = !$scope.teamListSetting.sortAscending
+        if $scope.teamListSetting.sortColumn isnt sortColumn
+          $scope.teamListSetting.sortAscending = false
+        $scope.teamListSetting.sortColumn = sortColumn
+        $scope.companyTeams.teams = $filter('orderBy') teams, sortColumn, !$scope.teamListSetting.sortAscending
+        $scope.teamListSetting.currentPage = 1 
+
+      $scope.teamPaginate = (value) ->
+        begin = ($scope.teamListSetting.currentPage - 1) * $scope.teamListSetting.paginationItemsPerPage
+        end = begin + $scope.teamListSetting.paginationItemsPerPage
+        index = $scope.companyTeams.teams.indexOf value
+        begin <= index and index < end
       
       $scope.companyParticipantSearch =
         first_name: ''
         ng_first_name: ''
         last_name: ''
         ng_last_name: ''
-      $scope.companyParticipants =
-        page_number: 0
+      $scope.companyParticipants = []
+      $scope.participantListSetting =
+        sortColumn: 'amountRaised'
+        sortAscending: false
+        totalNumber: 0
+        currentPage: 1
+        paginationItemsPerPage: 4
+        paginationMaxSize: 4
       setCompanyParticipants = (participants, totalNumber) ->
         $scope.companyParticipants.participants = participants or []
         totalNumber = totalNumber or 0
         $scope.companyParticipants.totalNumber = Number totalNumber
+        $scope.participantListSetting.totalNumber = Number totalNumber
         if not $scope.$$phase
           $scope.$apply()
-      getCompanyParticipants = ->
-        TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%') + '&first_name=' + encodeURIComponent('%%') + '&last_name=' + encodeURIComponent('%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=500',
+      getCompanyParticipants = (first, last)->
+        TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%') + '&first_name=' + encodeURIComponent(first) + '&last_name=' + encodeURIComponent(last) + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=500',
             error: ->
               setCompanyParticipants()
             success: (response) ->
@@ -213,10 +242,9 @@ angular.module 'ahaLuminateControllers'
           success: (response) ->
             totalMinsActivity = response.data.data?.total or '0'
             totalMinsActivity = Number totalMinsActivity
-            #$scope.activity1amt = totalMinsActivity
             participantMinsActivityMap = response.data.data?.list or []
             $scope.companyParticipants.participantMinsActivityMap = participantMinsActivityMap
-      getCompanyParticipants()
+      getCompanyParticipants('%%','%')
       
       setParticipantsMinsActivity = ->
         participants = $scope.companyParticipants.participants
@@ -232,11 +260,28 @@ angular.module 'ahaLuminateControllers'
       setParticipantsMinsActivity()
       $scope.$watchGroup ['companyParticipants.participants', 'companyParticipants.participantMinsActivityMap'], ->
         setParticipantsMinsActivity()
+
+      $scope.orderParticipants = (sortColumn) ->
+        participants = $scope.companyParticipants.participants
+        $scope.participantListSetting.sortAscending = !$scope.participantListSetting.sortAscending
+        if $scope.participantListSetting.sortColumn isnt sortColumn
+          $scope.participantListSetting.sortAscending = false
+        $scope.participantListSetting.sortColumn = sortColumn
+        $scope.companyParticipants.participants = $filter('orderBy') participants, sortColumn, !$scope.participantListSetting.sortAscending
+        $scope.participantListSetting.currentPage = 1 
+
+      $scope.participantPaginate = (value) ->
+        begin = ($scope.participantListSetting.currentPage - 1) * $scope.participantListSetting.paginationItemsPerPage
+        end = begin + $scope.participantListSetting.paginationItemsPerPage
+        index = $scope.companyParticipants.participants.indexOf value
+        begin <= index and index < end
       
       $scope.searchCompanyParticipants = ->
         $scope.companyParticipantSearch.first_name = $scope.companyParticipantSearch.ng_first_name
         $scope.companyParticipantSearch.last_name = $scope.companyParticipantSearch.ng_last_name
-        getCompanyParticipants()
+        getCompanyParticipants($scope.companyParticipantSearch.ng_first_name, $scope.companyParticipantSearch.ng_last_name)
+        $scope.participantListSetting.sortColumn = 'amountRaised'
+        $scope.participantListSetting.sortAscending = false
       
       if $scope.consId
         TeamraiserRegistrationService.getRegistration
