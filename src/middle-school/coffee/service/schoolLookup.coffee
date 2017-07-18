@@ -11,7 +11,7 @@ angular.module 'ahaLuminateApp'
           requestUrl = 'CRTeamraiserAPI'
         $http
           method: 'POST'
-          url: $sce.trustAsResourceUrl requestUrl
+          url: $sce.trustAsResourceUrl(requestUrl)
           data: 'v=1.0&api_key=' + $rootScope.apiKey + '&response_format=json&suppress_response_codes=true&method=getCompaniesByInfo&event_type=' + encodeURIComponent('Middle School') + '&' + requestData
           headers:
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
@@ -23,7 +23,7 @@ angular.module 'ahaLuminateApp'
           requestUrl = 'SPageServer?pagename=getMiddleSchoolSearchData&pgwrap=n'
         $http
           method: 'GET'
-          url: $sce.trustAsResourceUrl requestUrl
+          url: $sce.trustAsResourceUrl(requestUrl)
           headers:
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
   ]
