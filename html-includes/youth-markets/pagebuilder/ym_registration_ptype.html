@@ -15,7 +15,7 @@
   document.hide_addons = [];
 </script>
 <div class="ym-registration-page-container ym-registration-page-container--ptype" ng-controller="RegistrationPtypeCtrl">
-  <div ng-init="participationOptions.fr_goal = '[[T6:[[A15]]]]'"></div>
+  <div class="hidden" hidden aria-hidden="true" ng-init="participationOptions.fr_goal = '[[T6:[[A15]]]]'"></div>
   <div class="ym-registration-page-header">
     <div class="manageable-content" data-container="edit_pt_title_container">
       [[?xx::x[[S1:cons_id]]x::::
@@ -124,7 +124,7 @@
         <div class="form-group [[?[[A6]]::ERR_BAD_GOAL::has-error::]]" ng-class="{'has-error': participationOptionsForm.$submitted && participationOptionsForm.fr_goal.$invalid}">
           <div class="sr-only">
             <div class="manageable-content" data-container="edit_fund_goal_container">
-              <label class="control-label" id="fund_goal_container" for="fr_goal">
+              <label class="control-label" id="fund_goal_container" for="participationOptions-fr_goal">
                 [[?xx::x[[C1:fr_your_fundraising_goal_field]]x::[[M0:friendraiser:your_fundraising_goal_field]]::[[C1:fr_your_fundraising_goal_field]]]]
               </label>
             </div>

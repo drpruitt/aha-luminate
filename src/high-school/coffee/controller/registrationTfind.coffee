@@ -27,6 +27,9 @@ angular.module 'ahaLuminateControllers'
         if $scope.frTmOpt is 'new'
           angular.element('body').removeClass 'hidden'
           
+          if not $scope.newTeamInfo
+            $scope.newTeamInfo = {}
+          
           $scope.submitTfindCreate = ->
             angular.element('.js--default-tfind-form').submit()
             false
