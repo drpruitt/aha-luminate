@@ -87,16 +87,16 @@
               </div>
             </div>
           </div>
-          <div>
-            <p>
-              Prefer not to start a team?
-            </p>
-            <a class="btn btn-primary" href="TRR?fr_id=[[A2]]&amp;pg=tfind&amp;fr_tm_opt=existing&amp;s_frTJoin=&amp;company_id=[[S80:frCompanyId]]&amp;s_frCompanyId=[[S80:frCompanyId]]">
-              Join a Team
-            </a>
-          </div>
           [[S66:util/SpamControlComponentResponsive.tpt]]
         </form>
+        <div class="text-center">
+          <p>
+            Prefer not to start a team?
+          </p>
+          <a class="btn btn-primary" href="TRR?fr_id=[[A2]]&amp;pg=tfind&amp;fr_tm_opt=existing&amp;skip_login_page=true&amp;s_frTJoin=&amp;company_id=[[S80:frCompanyId]]&amp;s_frCompanyId=[[S80:frCompanyId]]">
+            <strong>Join a Team</strong>
+          </a>
+        </div>
         <div class="hidden" hidden aria-hidden="true">
           <form class="js--default-tfind-create-form" action="[[A1]]" method="POST">
             <input type="hidden" name="fr_id" value="[[A2]]">
