@@ -267,17 +267,17 @@ input[type="text"].btn-enter {
 
   &::-webkit-input-placeholder {
     color: $event-primary !important;
-    opacity: 1 !important;
+    opacity: .75 !important;
   }
   
   &:-moz-placeholder {
     color: $event-primary !important;
-    opacity: 1 !important;
+    opacity: .75 !important;
   }
   
   &::-moz-placeholder {
     color: $event-primary !important;
-    opacity: 1 !important;
+    opacity: .75 !important;
   }
   
   &::-ms-input-placeholder {
@@ -287,12 +287,12 @@ input[type="text"].btn-enter {
   
   &:placeholder {
     color: $event-primary !important;
-    opacity: 1 !important;
+    opacity: .75 !important;
   }
   
   &::placeholder {
     color: $event-primary !important;
-    opacity: 1 !important;
+    opacity: .75 !important;
   }
   
   &:hover, 
@@ -303,26 +303,32 @@ input[type="text"].btn-enter {
     
     &::-webkit-input-placeholder {
       color: $brand-white !important;
+      opacity: 1 !important;
     }
     
     &:-moz-placeholder {
       color: $brand-white !important;
+      opacity: 1 !important;
     }
     
     &::-moz-placeholder {
       color: $brand-white !important;
+      opacity: 1 !important;
     }
     
     &::-ms-input-placeholder {
       color: $brand-white !important;
+      opacity: 1 !important;
     }
     
     &:placeholder {
       color: $brand-white !important;
+      opacity: 1 !important;
     }
     
     &::placeholder {
       color: $brand-white !important;
+      opacity: 1 !important;
     }
   }
 }

@@ -97,12 +97,16 @@
             <legend>Donation levels</legend>
             [[A33]]
           </fieldset>
-          </div>
-          <div class="ym-registration-ptype-donation-levels" ng-class="{'active': donationLevels.activeLevel}">
+          </div>          
+          <div class="ym-registration-ptype-donation-levels ym-donation-levels__levels" ng-class="{'active': donationLevels.activeLevel}">
             <button type="button" class="btn btn-toggle" ng-class="{'active': donationLevels.activeLevel.amount == donationLevel.amount}" ng-repeat="donationLevel in donationLevels.levels" ng-click="toggleDonationLevel(donationLevel.amount)" ng-if="!donationLevel.isOtherAmount && !donationLevel.isNoDonation" ng-cloak>
               <span ng-bind-html="donationLevel.amountFormatted"></span>
             </button>
-            <input type="text" class="btn btn-enter" ng-class="{'active': donationLevels.activeLevel.amount == donationLevel.amount}" name="ng_donation_level_other_amount" ng-model="participationOptions.ng_donation_level_other_amount" ng-repeat="donationLevel in donationLevels.levels" placeholder="Other" ng-focus="toggleDonationLevel(donationLevel.amount)" ng-if="donationLevel.isOtherAmount" ng-cloak>
+            <div class="ym-donation-levels__amount" ng-class="{'active': donationLevels.activeLevel.amount == donationLevel.amount}" ng-repeat="donationLevel in donationLevels.levels" ng-if="donationLevel.isOtherAmount" ng-cloak>
+              <label class="sr-only" for="ng_donation_level_other_amount">Other Amount</label>
+              <span class="ym-donation-levels__dollar-sign">$</span>
+              <input type="text" class="btn btn-enter" ng-class="{'active': donationLevels.activeLevel.amount == donationLevel.amount}" name="ng_donation_level_other_amount" ng-model="participationOptions.ng_donation_level_other_amount" ng-repeat="donationLevel in donationLevels.levels" placeholder="Other" ng-focus="toggleDonationLevel(donationLevel.amount)" ng-if="donationLevel.isOtherAmount" ng-cloak>
+            </div>
             <button type="button" class="btn btn-toggle" ng-class="{'active': donationLevels.activeLevel.amount == donationLevel.amount}" ng-repeat="donationLevel in donationLevels.levels" ng-click="toggleDonationLevel(donationLevel.amount)" ng-if="donationLevel.isNoDonation" ng-cloak>
               <span>No, Thanks</span>
             </button>
@@ -110,6 +114,7 @@
               <span ng-bind-html="donationLevels.activeLevel.askMessage"></span>
             </div>
           </div>
+          
         ]]
       </div>
     ::]]
