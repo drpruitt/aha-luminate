@@ -31,12 +31,12 @@
     </div>
     <hr>
     <div class="ym-donation-levels__levels">
-      <div class="ym-donation-levels__amount" ng-repeat="donationLevel in donationLevels">
+      <div class="ym-donation-levels__amount" ng-repeat="donationLevel in donationLevels" ng-class="{'active': donationInfo.levelChecked == donationLevel.classLevel}">
         <button type="button" class="btn btn-toggle btn-lg {{donationLevel.classLevel}}" ng-class="{'active': donationInfo.levelChecked == donationLevel.classLevel}" ng-if="donationLevel.userSpecified == 'false'" ng-click="selectLevel('level', donationLevel.levelId, donationLevel.amount);">
           {{donationLevel.amount}}
         </button>
         <label ng-if="donationLevel.userSpecified == 'true'" class="sr-only" for="other_amount">Other Amount</label>
-        <span ng-if="donationLevel.userSpecified == 'true'" class="ym-donation-levels__dollar-sign">$</span>
+        <span ng-if="donationLevel.userSpecified == 'true'" class="ym-donation-levels__dollar-sign bold">$</span>
         <input type="text" class="btn btn-toggle btn-enter {{donationLevel.classLevel}}" ng-class="{'active': donationInfo.levelChecked == donationLevel.classLevel}" title="other_amount" ng-if="donationLevel.userSpecified == 'true'" ng-keyup="enterAmount(otherAmt)" ng-model="otherAmt" ng-click="selectLevel('other', donationLevel.levelId);" placeholder="Other" ng-value="donationInfo.otherAmt">
       </div>
     </div>

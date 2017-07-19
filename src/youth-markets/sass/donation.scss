@@ -732,16 +732,39 @@ div.donation-form-container {
     }
   }  
 }
+.ym-donation-levels__levels {
+  .ym-donation-levels__amount {
+    position: relative;
 
-.ym-donation-levels__amount {
-  position: relative;
+    .ym-donation-levels__dollar-sign {
+      /*display: none;*/
+      position: absolute;
+      color: $event-primary;
+      font-size: 20px;
+      top: 11px;
+      left: 18px;
+      font-weight: bold;
+    }
+    .btn-toggle.btn-enter {
+      text-align: left;
+      padding-left: 25px;
+    }
 
-  .ym-donation-levels__dollar-sign {
-    position: absolute;
-    color: $event-primary;
+    &:hover,
+    &:focus,
+    &:active,
+    .active {
+      .ym-donation-levels__dollar-sign {
+        color: $brand-white;
 
+        &:hover {
+          color: $event-primary;
+        }
+      }
+    }
   }
 }
+
 .ym-donation-sidebar__text {
   text-align: center;
   padding: 0 20px;
