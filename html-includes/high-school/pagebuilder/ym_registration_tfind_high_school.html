@@ -27,9 +27,81 @@
       </script>
     ::
       <!-- company_id is not null -->
-      <div class="ym-registration-page-container ym-registration-page-container--tfind" ng-controller="RegistrationTfindCtrl" ng-init="frTmOpt = 'new'; newTeam.companyId = '[[T6:[[A36]]]]'">
+      <div class="ym-registration-page-container ym-registration-page-container--tfind" ng-controller="RegistrationTfindCtrl" ng-init="frTmOpt = 'new'; newTeamInfo.companyId = '[[T6:[[A36]]]]'; newTeamInfo.fr_team_name = '[[T6:[[A16]]]]'; newTeamInfo.fr_team_goal = '[[T6:[[A17]]]]'">
+        <div class="ym-registration-page-header">
+          <h2 class="h4">
+            Start a Team
+          </h2>
+          [[?xyz.xnullynullz.xynullz.xnullyz::x[[A4]]y[[A6]]z::::
+            <div class="alert alert-danger">
+              [[?xy.xnully::x[[A4]]y::
+                [[M0:friendraiser:generic_error]]
+              ::
+                [[A4]]
+              ]]
+            </div>
+          ]]
+        </div>
+        <form class="ym-registration-tfind-create-form" name="newTeamForm" method="POST" novalidate ng-submit="submitTfindCreate()">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label class="control-label" for="newTeamInfo-fr_team_name">
+                  [[?xx::x[[C1:fr_team_field]]x::
+                    [[M0:friendraiser:team_field]]
+                  ::
+                    [[C1:fr_team_field]]
+                  ]]
+                </label>
+                <input type="text" class="form-control input-lg" name="fr_team_name" id="newTeamInfo-fr_team_name" ng-model="newTeamInfo.fr_team_name" maxlength="50" required>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label class="control-label" for="newTeamInfo-fr_team_goal">
+                  [[?xx::x[[C1:fr_team_goal_field]]x::
+                    [[M0:friendraiser:team_goal_field]]
+                  ::
+                    [[C1:fr_team_goal_field]]
+                  ]]
+                </label>
+                <input type="text" class="form-control input-lg" name="fr_team_goal" id="newTeamInfo-fr_team_goal" ng-model="newTeamInfo.fr_team_goal" placeholder="[[?xx::x[[A39]]x::::[[M0:friendraiser:suggested_team_goal_field]] [[A39]]]]" maxlength="17" required>
+              </div>
+            </div>
+          </div>
+          <div class="ym-registration-form-footer">
+            <div class="ym-registration-form-footer-btns">
+              <div class="clearfix">
+                <div class="visible-xs">
+                  <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-primary">
+                    <strong>Next</strong> <i class="fa fa-chevron-right"></i>
+                  </button>
+                </div>
+                <div class="pull-right hidden-xs">
+                  <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-primary">
+                    <strong>Next</strong> <i class="fa fa-chevron-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          [[S66:util/SpamControlComponentResponsive.tpt]]
+        </form>
         <div class="hidden" hidden aria-hidden="true">
-          <form class="js--default-tfind-form" method="POST">
+          <form class="js--default-tfind-form" action="[[A1]]" method="POST">
+            <input type="hidden" name="fr_id" value="[[A2]]">
+            <input type="hidden" name="pg" value="[[A7]]">
+            <input type="hidden" name="fr_cstm_tm" value="t">
+            <input type="hidden" name="fr_tm_opt" value="[[A13]]">
+            <input type="hidden" name="company_id" value="[[A36]]">
+            <input type="text" name="fr_team_name" ng-model="newTeamInfo.fr_team_name">
+            <input type="text" name="fr_team_goal" ng-model="newTeamInfo.fr_team_goal">
+            <input type="hidden" name="fr_co_list" value="[[S80:frCompanyId]]">
+            <input type="hidden" name="s_frCompanyId" value="[[S80:frCompanyId]]">
+            <input type="hidden" name="s_frTJoin" value="">
+            <input type="hidden" name="next_step.x" value="[[M1:friendraiser:join_team_step_next_button]]">
           </form>
         </form>
       </div>
