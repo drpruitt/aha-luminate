@@ -45,7 +45,7 @@
         <form class="ym-registration-tfind-create-form" name="newTeamForm" method="POST" novalidate ng-submit="submitTfindCreate()">
           <div class="row">
             <div class="col-xs-12">
-              <div class="form-group">
+              <div class="form-group" ng-class="{'has-error': newTeamForm.$submitted && newTeamForm.fr_team_name.$invalid}">
                 <label class="control-label" for="newTeamInfo-fr_team_name">
                   [[?xx::x[[C1:fr_team_field]]x::
                     [[M0:friendraiser:team_field]]
@@ -59,7 +59,7 @@
           </div>
           <div class="row">
             <div class="col-xs-12">
-              <div class="form-group">
+              <div class="form-group" ng-class="{'has-error': newTeamForm.$submitted && newTeamForm.fr_team_goal.$invalid}">
                 <label class="control-label" for="newTeamInfo-fr_team_goal">
                   [[?xx::x[[C1:fr_team_goal_field]]x::
                     [[M0:friendraiser:team_goal_field]]
@@ -98,7 +98,7 @@
           [[S66:util/SpamControlComponentResponsive.tpt]]
         </form>
         <div class="hidden" hidden aria-hidden="true">
-          <form class="js--default-tfind-form" action="[[A1]]" method="POST">
+          <form class="js--default-tfind-create-form" action="[[A1]]" method="POST">
             <input type="hidden" name="fr_id" value="[[A2]]">
             <input type="hidden" name="pg" value="[[A7]]">
             <input type="hidden" name="fr_cstm_tm" value="t">

@@ -92,12 +92,14 @@
           ]]
         ]]
         [[?xx::x[[A33]]x::::
-          <div class="hidden js--registration-ptype-donation-levels">
-          <fieldset>
-            <legend>Donation levels</legend>
-            [[A33]]
-          </fieldset>
-          </div>          
+          <div class="hidden js--registration-ptype-donation-levels" hidden aria-hidden="true">
+            <fieldset>
+              <legend>
+                Donation levels
+              </legend>
+              [[A33]]
+            </fieldset>
+          </div>
           <div class="ym-registration-ptype-donation-levels ym-donation-levels__levels" ng-class="{'active': donationLevels.activeLevel}">
             <button type="button" class="btn btn-toggle" ng-class="{'active': donationLevels.activeLevel.amount == donationLevel.amount}" ng-repeat="donationLevel in donationLevels.levels" ng-click="toggleDonationLevel(donationLevel.amount)" ng-if="!donationLevel.isOtherAmount && !donationLevel.isNoDonation" ng-cloak>
               <span ng-bind-html="donationLevel.amountFormatted"></span>
@@ -114,7 +116,6 @@
               <span ng-bind-html="donationLevels.activeLevel.askMessage"></span>
             </div>
           </div>
-          
         ]]
       </div>
     ::]]
