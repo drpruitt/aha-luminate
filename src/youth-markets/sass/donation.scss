@@ -735,6 +735,7 @@ div.donation-form-container {
 .ym-donation-levels__levels {
   .ym-donation-levels__amount {
     position: relative;
+    display: inline-block;
 
     .ym-donation-levels__dollar-sign {
       position: absolute;
@@ -753,7 +754,7 @@ div.donation-form-container {
     }
     .btn-toggle.btn-enter {
       text-align: left;
-      padding-left: 25px;
+      padding-left: 30px;
     }
 
     &:hover {
