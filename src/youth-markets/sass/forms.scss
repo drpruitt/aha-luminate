@@ -153,3 +153,53 @@ div.responsive input[disabled] {
   cursor: not-allowed;
   color: $event-secondary;
 }
+
+
+.ym-donation-levels__levels {
+  .ym-donation-levels__amount {
+    position: relative;
+    display: inline-block;
+
+    .ym-donation-levels__dollar-sign {
+      position: absolute;
+      color: $event-primary;
+      font-size: 20px;
+      top: 0;
+      left: 0;
+      padding-left: 20px;
+      height: 50px;
+      line-height: 50px;
+      font-weight: bold;
+
+      &:hover {
+        color: $event-primary;
+      }
+    }
+
+    .btn-toggle.btn-enter,
+    input[type="text"].btn-enter {
+      text-align: left;
+      padding-left: 30px;
+    }
+
+    &:hover {
+      .ym-donation-levels__dollar-sign {
+        color: $brand-white;
+
+        &:hover {
+          color: $event-primary;
+        }
+      }
+    }
+
+    &.active {
+      .ym-donation-levels__dollar-sign {
+        color: $brand-white;
+
+        &:hover {
+          color: $brand-white;
+        }
+      }
+    }
+  }
+}
