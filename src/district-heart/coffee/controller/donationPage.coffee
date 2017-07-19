@@ -7,6 +7,7 @@ angular.module 'ahaLuminateControllers'
     '$timeout'
     '$q'
     ($scope, $rootScope, $location, DonationService, $timeout, $q) ->
+      
       $scope.paymentInfoErrors =
         errors: []
       angular.element('.page-error').remove()
@@ -94,6 +95,8 @@ angular.module 'ahaLuminateControllers'
       $scope.selectLevel = (type, level, amount) ->
         angular.element('.ym-donation-levels__amount .btn-toggle.active').removeClass 'active'
         angular.element('.ym-donation-levels__amount .btn-toggle.level' + level).addClass 'active'
+        angular.element('.ym-donation-levels__amount').removeClass 'active'
+        angular.element('.ym-donation-levels__amount .btn-toggle.level' + level).parent().addClass 'active'
         angular.element('.ym-donation-levels__message').removeClass 'active'
         angular.element('.ym-donation-levels__message.level' + level).addClass 'active'
         angular.element('.donation-level-container.level' + level + ' input').click()
@@ -272,7 +275,10 @@ angular.module 'ahaLuminateControllers'
             $scope.donationInfo.installmentAmount = localStorage['installmentAmount']
             $scope.donationInfo.numberPayments = localStorage['numberPayments']
         if localStorage['amount']
-          $scope.donationInfo.amount = localStorage['amount']
+          if localStorage['amount'] is 'undefined'
+            $scope.donationInfo.otherAmt = ''
+          else
+            $scope.donationInfo.amount = localStorage['amount']
         if localStorage['levelType']
           $scope.donationInfo.levelType = localStorage['levelType']
           if localStorage['levelType'] is 'other'
