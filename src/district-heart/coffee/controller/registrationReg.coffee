@@ -195,7 +195,7 @@ angular.module 'ahaLuminateControllers'
             if surveyKey is 'ym_district_heart_school' or surveyKey is 'ym_district_heart_school_address'
               initCustomQuestions()
               $scope.registrationCustomQuestions[surveyKey] = questionName
-            else if questionLegend isnt 'Event Date' and surveyKey isnt 'ym_district_heart_challenge_info' and surveyKey isnt 'ym_district_heart_ecards_sent' and surveyKey isnt 'ym_district_heart_ecards_shared' and surveyKey isnt 'ym_district_heart_ecards_open' and surveyKey isnt 'ym_district_heart_ecards_clicked'
+            else if questionLegend isnt 'Event Date' and surveyKey isnt 'ym_district_heart_challenge_info' and surveyKey isnt 'ym_district_heart_ecards_sent' and surveyKey isnt 'ym_district_heart_ecards_shared' and surveyKey isnt 'ym_district_heart_ecards_open' and surveyKey isnt 'ym_district_heart_ecards_clicked' and surveyKey isnt 'ym_district_checked' and surveyKey isnt 'ym_district_minutes'
               if not $scope.registrationAdditionalQuestions
                 $scope.registrationAdditionalQuestions = {}
               $scope.registrationAdditionalQuestions[questionName] = questionName

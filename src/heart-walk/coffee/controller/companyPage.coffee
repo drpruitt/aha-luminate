@@ -8,7 +8,7 @@ angular.module 'ahaLuminateControllers'
     'TeamraiserTeamService'
     'TeamraiserParticipantService'
     ($scope, $location, $filter, $timeout, TeamraiserCompanyService, TeamraiserTeamService, TeamraiserParticipantService) ->
-      $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0]
+      $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0].split('#')[0]
       $scope.currentCompany = null
 
       $defaultCompanyHierarchy = angular.element '.js--default-company-hierarchy'

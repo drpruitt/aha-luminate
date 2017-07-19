@@ -84,7 +84,7 @@ angular.module 'trPcControllers'
             giftContact = participantGift.contact.firstName
             if participantGift.contact.lastName
               giftContact += ' ' + participantGift.contact.lastName
-          if participantGift.contact.email
+          if participantGift.contact.email and participantGift.contact.email isnt ''
             if not giftContact
               giftContact = '<'
             else
@@ -108,7 +108,7 @@ angular.module 'trPcControllers'
               giftContact = participantGift.contact.firstName
               if participantGift.contact.lastName
                 giftContact += ' ' + participantGift.contact.lastName
-            if participantGift.contact.email
+            if participantGift.contact.email and participantGift.contact.email isnt ''
               if not giftContact
                 giftContact = '<'
               else
@@ -171,7 +171,7 @@ angular.module 'trPcControllers'
               giftContact = teamGift.contact.firstName
               if teamGift.contact.lastName
                 giftContact += ' ' + teamGift.contact.lastName
-            if teamGift.contact.email
+            if teamGift.contact.email and teamGift.contact.email isnt ''
               if not giftContact
                 giftContact = '<'
               else
@@ -195,7 +195,7 @@ angular.module 'trPcControllers'
                 giftContact = teamGift.contact.firstName
                 if teamGift.contact.lastName
                   giftContact += ' ' + teamGift.contact.lastName
-              if teamGift.contact.email
+              if teamGift.contact.email and teamGift.contact.email isnt ''
                 if not giftContact
                   giftContact = '<'
                 else
@@ -219,7 +219,7 @@ angular.module 'trPcControllers'
             'Teacher'
             'Challenge'
           ]
-          sortColumn: '',
+          sortColumn: ''
           sortAscending: false
         schoolDetailReportPromise = NgPcTeamraiserReportsService.getSchoolDetailReport()
           .then (response) ->
@@ -248,16 +248,18 @@ angular.module 'trPcControllers'
                       $reportTableRow = angular.element reportTableRow
                       firstName = jQuery.trim $reportTableRow.find('td').eq(8).text()
                       lastName = jQuery.trim $reportTableRow.find('td').eq(9).text()
-                      amount = Number jQuery.trim($reportTableRow.find('td').eq(10).text())
-                      amountFormatted = $filter('currency') jQuery.trim($reportTableRow.find('td').eq(10).text()), '$'
-                      ecardsSent = Number jQuery.trim($reportTableRow.find('td').eq(13).text())
-                      emailsSent = Number jQuery.trim($reportTableRow.find('td').eq(12).text())
-                      tshirtSize = jQuery.trim $reportTableRow.find('td').eq(14).text()
+                      email = jQuery.trim $reportTableRow.find('td').eq(10).text()
+                      amount = Number jQuery.trim($reportTableRow.find('td').eq(11).text())
+                      amountFormatted = $filter('currency') jQuery.trim($reportTableRow.find('td').eq(11).text()), '$'
+                      ecardsSent = Number jQuery.trim($reportTableRow.find('td').eq(14).text())
+                      emailsSent = Number jQuery.trim($reportTableRow.find('td').eq(13).text())
+                      tshirtSize = jQuery.trim $reportTableRow.find('td').eq(16).text()
                       teacherName = jQuery.trim $reportTableRow.find('td').eq(6).text()
-                      challenge = jQuery.trim($reportTableRow.find('td').eq(15).text()).replace('1. ', '').replace('2. ', '').replace('3. ', '').replace '4. ', ''
+                      challenge = jQuery.trim($reportTableRow.find('td').eq(17).text()).replace('1. ', '').replace('2. ', '').replace('3. ', '').replace '4. ', ''
                       schoolDetailStudents.push
                         firstName: firstName
                         lastName: lastName
+                        email: email
                         amount: amount
                         amountFormatted: amountFormatted.replace '.00', ''
                         ecardsSent: ecardsSent
@@ -266,7 +268,7 @@ angular.module 'trPcControllers'
                         teacherName: teacherName
                         challenge: challenge
                       schoolDetailDownloadData.push [
-                        firstName + ' ' + jQuery.trim $reportTableRow.find('td').eq(9).text()
+                        firstName + ' ' + lastName
                         amountFormatted.replace('$', '').replace /,/g, ''
                         ecardsSent
                         emailsSent
@@ -286,4 +288,25 @@ angular.module 'trPcControllers'
           $scope.schoolDetailStudents.sortColumn = sortColumn
           orderBy = $filter 'orderBy'
           $scope.schoolDetailStudents.students = orderBy $scope.schoolDetailStudents.students, sortColumn, !$scope.schoolDetailStudents.sortAscending
+        
+        $scope.emailAllCompanyParticipants = ->
+          if not $rootScope.selectedContacts
+            $rootScope.selectedContacts = {}
+          $rootScope.selectedContacts.contacts = []
+          if $scope.schoolDetailStudents.students.length > 0
+            angular.forEach $scope.schoolDetailStudents.students, (companyParticipant) ->
+              companyParticipantContact = null
+              if companyParticipant.firstName
+                companyParticipantContact = companyParticipant.firstName
+                if companyParticipant.lastName
+                  companyParticipantContact += ' ' + companyParticipant.lastName
+              if companyParticipant.email and companyParticipant.email isnt ''
+                if not companyParticipantContact
+                  companyParticipantContact = '<'
+                else
+                  companyParticipantContact += ' <'
+                companyParticipantContact += companyParticipant.email + '>'
+              if companyParticipantContact
+                $rootScope.selectedContacts.contacts.push companyParticipantContact
+          $location.path '/email/compose/'
   ]

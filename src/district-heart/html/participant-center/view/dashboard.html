@@ -150,7 +150,7 @@
               <div ng-if="participantRegistration.aTeamCaptain == 'true' && location != '/dashboard-student'" ng-cloak>
                 <div ng-if="teamInfo.numMembers && teamInfo.numMembers != '0'">
                   <p>
-                    <strong>For your team:</strong> You have <strong><span ng-bind-html="teamInfo.numMembers"></span> team members</strong> registered. Keep recruiting to meet your goal of <span ng-bind-html="teamMemberRegGoal"></span> participants!
+                    <strong>For your team:</strong> You have <strong>{{teamInfo.numMembers|number}} team members</strong> registered. <span ng-if="teamMemberRegGoal && teamMemberRegGoal != 0" ng-cloak>Keep recruiting to meet your goal of {{teamMemberRegGoal|number}} participants!</span>
                   </p>
                 </div>
                 <p>
@@ -591,9 +591,9 @@
         <div class="col-sm-6 ym-pc-dashboard-coordinator-progress-section__column">
           <div class="ym-pc-dashboard-coordinator-progress-box event-secondary-medium">
             <div class="ym-pc-dashboard-section-header">
-              <h3 class="h5">
+              <h2 class="h5">
                 Fundraising
-              </h3>
+              </h2>
             </div>
             <div class="ym-pc-dashboard-progress-types" ng-class="{'ym-pc-dashboard-progress-types--multi-team': companyInfo.teamCount > 1}" role="tablist">
               <div class="clearfix">
@@ -699,9 +699,9 @@
             </div>
           </div>
           <div class="ym-activity-box ym-activity-box--coordinator-pages">
-            <h3 class="h5">
+            <h2 class="h5">
               Edit My Pages
-            </h3>
+            </h2>
             <p>
               Edit your pages to encourage participants to join and donate!
             </p>
@@ -846,13 +846,13 @@
         <div class="col-sm-6 ym-pc-dashboard-coordinator-progress-section__column event-secondary-medium">
           <div class="ym-pc-dashboard-coordinator-students-box" ng-if="companyInfo.participantCount" ng-cloak>
             <div class="ym-pc-dashboard-section-header">
-              <h3 class="h5">
+              <h2 class="h5">
                 My Participants
-              </h3>
+              </h2>
             </div>
             <div>
               <p>
-                You have <strong><span ng-bind-html="companyInfo.participantCount"></span></strong> participants registered. Keep recruiting to meet your goal of <strong><span><span ng-bind-html="participantRegGoal"></span></span></strong> participants!
+                You have <strong>{{companyInfo.participantCount|number}}</strong> participants registered. <span ng-if="participantRegGoal && participantRegGoal != 0" ng-cloak>Keep recruiting to meet your goal of <strong>{{participantRegGoal|number}}</strong> participants!</span>
               </p>
               <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email">
                 <strong>Send Emails</strong>
