@@ -272,7 +272,10 @@ angular.module 'ahaLuminateControllers'
             $scope.donationInfo.installmentAmount = localStorage['installmentAmount']
             $scope.donationInfo.numberPayments = localStorage['numberPayments']
         if localStorage['amount']
-          $scope.donationInfo.amount = localStorage['amount']
+          if localStorage['amount'] is 'undefined'
+            $scope.donationInfo.otherAmt = ''
+          else
+            $scope.donationInfo.amount = localStorage['amount']
         if localStorage['levelType']
           $scope.donationInfo.levelType = localStorage['levelType']
           if localStorage['levelType'] is 'other'
