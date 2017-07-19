@@ -66,12 +66,12 @@
           </div>
           <div ng-if="participantCount == 1" ng-cloak>
             <p>
-              participant registered. <span ng-if="participantGoal">Help us meet our goal of {{participantGoal}} participants!</span>
+              participant registered. <span ng-if="participantGoal && participantGoal != 0" ng-cloak>Help us meet our goal of {{participantGoal|number}} participants!</span>
             </p>
           </div>
           <div ng-if="participantCount != 1" ng-cloak>
             <p>
-              participants registered. <span ng-if="participantGoal">Help us meet our goal of {{participantGoal}} participants!</span>
+              participants registered. <span ng-if="participantGoal && participantGoal != 0" ng-cloak>Help us meet our goal of {{participantGoal|number}} participants!</span>
             </p>
           </div>
         </div>
@@ -189,7 +189,7 @@
               No teams found.
             </td>
           </tr>
-          <tr class="ym-list__row" ng-repeat="team in companyTeams.teams | filter:teamPaginate" ng-cloak>
+          <tr class="ym-list__row" ng-repeat="team in companyTeams.teams | filter:paginateTeams" ng-cloak>
             <td class="ym-list__column ym-list__column--name">
               <a ng-href="TR?fr_id={{team.EventId}}&amp;pg=team&amp;team_id={{team.id}}"><span ng-bind-html="team.name"></span></a>
               <div>
@@ -262,7 +262,7 @@
               No participants found.
             </td>
           </tr>
-          <tr class="ym-list__row" ng-repeat="participant in companyParticipants.participants | filter:participantPaginate" ng-cloak>
+          <tr class="ym-list__row" ng-repeat="participant in companyParticipants.participants | filter:paginateParticipants" ng-cloak>
             <td class="ym-list__column ym-list__column--name">
               <a ng-href="TR?fr_id={{participant.eventId}}&amp;pg=personal&amp;px={{participant.consId}}"><span ng-bind-html="participant.fullName"></span></a>
               <div>

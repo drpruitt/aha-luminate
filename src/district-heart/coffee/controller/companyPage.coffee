@@ -102,11 +102,12 @@ angular.module 'ahaLuminateControllers'
               
               TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
                 .then (response) ->
-                  participantGoal = response.data.coordinator.participant_goal
-                  if participantGoal is 'User Provided No Response'
-                    $scope.participantGoal = null
+                  participantGoal = response.data.coordinator?.participant_goal or '0'
+                  participantGoal = participantGoal.replace /,/g, ''
+                  if isNaN participantGoal
+                    $scope.participantGoal = 0
                   else
-                    $scope.participantGoal = participantGoal
+                    $scope.participantGoal = Number participantGoal
                   $scope.eventDate = response.data.coordinator.event_date
                   if totalTeams is 1
                     $scope.teamId = response.data.coordinator.team_id
@@ -178,7 +179,7 @@ angular.module 'ahaLuminateControllers'
         getCompanyTeams($scope.companyTeamSearch.ng_team_name)
         $scope.teamListSetting.sortColumn = 'amountRaised'
         $scope.teamListSetting.sortAscending = false
-
+      
       $scope.orderTeams = (sortColumn) ->
         teams = $scope.companyTeams.teams
         $scope.teamListSetting.sortAscending = !$scope.teamListSetting.sortAscending
@@ -187,8 +188,8 @@ angular.module 'ahaLuminateControllers'
         $scope.teamListSetting.sortColumn = sortColumn
         $scope.companyTeams.teams = $filter('orderBy') teams, sortColumn, !$scope.teamListSetting.sortAscending
         $scope.teamListSetting.currentPage = 1 
-
-      $scope.teamPaginate = (value) ->
+      
+      $scope.paginateTeams = (value) ->
         begin = ($scope.teamListSetting.currentPage - 1) * $scope.teamListSetting.paginationItemsPerPage
         end = begin + $scope.teamListSetting.paginationItemsPerPage
         index = $scope.companyTeams.teams.indexOf value
@@ -260,7 +261,7 @@ angular.module 'ahaLuminateControllers'
       setParticipantsMinsActivity()
       $scope.$watchGroup ['companyParticipants.participants', 'companyParticipants.participantMinsActivityMap'], ->
         setParticipantsMinsActivity()
-
+      
       $scope.orderParticipants = (sortColumn) ->
         participants = $scope.companyParticipants.participants
         $scope.participantListSetting.sortAscending = !$scope.participantListSetting.sortAscending
@@ -269,8 +270,8 @@ angular.module 'ahaLuminateControllers'
         $scope.participantListSetting.sortColumn = sortColumn
         $scope.companyParticipants.participants = $filter('orderBy') participants, sortColumn, !$scope.participantListSetting.sortAscending
         $scope.participantListSetting.currentPage = 1 
-
-      $scope.participantPaginate = (value) ->
+      
+      $scope.paginateParticipants = (value) ->
         begin = ($scope.participantListSetting.currentPage - 1) * $scope.participantListSetting.paginationItemsPerPage
         end = begin + $scope.participantListSetting.paginationItemsPerPage
         index = $scope.companyParticipants.participants.indexOf value

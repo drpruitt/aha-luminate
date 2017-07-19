@@ -7,7 +7,7 @@ angular.module 'ahaLuminateControllers'
     'TeamraiserTeamService'
     'TeamraiserParticipantService'
     ($scope, $location, $timeout, $filter, TeamraiserTeamService, TeamraiserParticipantService) ->
-      $scope.teamId = $location.absUrl().split('team_id=')[1].split('&')[0]
+      $scope.teamId = $location.absUrl().split('team_id=')[1].split('&')[0].split('#')[0]
       
       $scope.teamProgress = {}
       

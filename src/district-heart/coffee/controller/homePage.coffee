@@ -14,7 +14,7 @@ angular.module 'ahaLuminateControllers'
     ($scope, $timeout, TeamraiserParticipantService, $rootScope, $location, $anchorScroll, BoundlessService, TeamraiserService, DonorSearchService, $filter, AriaCarouselService) ->
       $dataRoot = angular.element '[data-aha-luminate-root]'
       consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
-
+      
       $scope.participantListSetting =
         searchPending: false
         sortProp: 'fullName'
@@ -23,7 +23,7 @@ angular.module 'ahaLuminateControllers'
         currentPage: 1
         paginationItemsPerPage: 5
         paginationMaxSize: 5
-
+      
       $scope.participantSearch = {}
       $scope.searchParticipants = ->
         $scope.participantListSetting.searchPending = true
@@ -40,7 +40,7 @@ angular.module 'ahaLuminateControllers'
             else
               $scope.participantList = participants.participant
           $scope.participantListSetting.searchPending = false
-
+      
       $scope.orderParticipants = (sortProp, keepSortOrder) ->
         participants = $scope.participantList
         angular.forEach participants, (participant) ->
@@ -55,13 +55,12 @@ angular.module 'ahaLuminateControllers'
           $scope.participantList = participants
           $scope.participantListSetting.currentPage = 1
       
-      $scope.participantPaginate = (value) ->
+      $scope.paginateParticipants = (value) ->
         begin = ($scope.participantListSetting.currentPage - 1) * $scope.participantListSetting.paginationItemsPerPage
         end = begin + $scope.participantListSetting.paginationItemsPerPage
         index = $scope.participantList.indexOf value
         begin <= index and index < end
-
-
+      
       $scope.teamListSetting =
         searchPending: false
         sortProp: 'teamName'
@@ -70,7 +69,7 @@ angular.module 'ahaLuminateControllers'
         currentPage: 1
         paginationItemsPerPage: 5
         paginationMaxSize: 5
-
+      
       $scope.teamSearch = {}
       $scope.searchTeams = ->
         DonorSearchService.getTeams $scope.teamSearch.ng_team_name
@@ -86,7 +85,7 @@ angular.module 'ahaLuminateControllers'
               $scope.team = teams.team
             else
               $scope.teamList = teams.team         
-
+      
       $scope.orderTeams = (sortProp, keepSortOrder) ->
         teams = $scope.teamList
         if teams.length > 0
@@ -99,12 +98,11 @@ angular.module 'ahaLuminateControllers'
           $scope.teamList = teams
           $scope.teamListSetting.currentPage = 1
       
-      $scope.teamPaginate = (value) ->
+      $scope.paginateTeams = (value) ->
         begin = ($scope.teamListSetting.currentPage - 1) * $scope.teamListSetting.paginationItemsPerPage
         end = begin + $scope.teamListSetting.paginationItemsPerPage
         index = $scope.teamList.indexOf value
         begin <= index and index < end
-
       
       setNoSchoolLink = (noSchoolLink) ->
         $scope.noSchoolLink = noSchoolLink
@@ -209,7 +207,7 @@ angular.module 'ahaLuminateControllers'
             AriaCarouselService.init(owlStr)
           onChanged: ->
             AriaCarouselService.onChange(owlStr)
-
+      
       $timeout initCarousel, 1000
       
       initHeroCarousel = ->

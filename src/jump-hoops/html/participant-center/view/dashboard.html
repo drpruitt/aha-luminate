@@ -407,9 +407,9 @@
         <div class="col-sm-6 ym-pc-dashboard-coordinator-progress-section__column event-secondary-medium">
           <div class="ym-pc-dashboard-coordinator-progress-box">
             <div class="ym-pc-dashboard-section-header">
-              <h3 class="h5">
+              <h2 class="h5">
                 Fundraising
-              </h3>
+              </h2>
             </div>
             <div class="ym-pc-dashboard-progress-types" ng-class="{'ym-pc-dashboard-progress-types--multi-team': companyInfo.teamCount > 1}" role="tablist">
               <div class="clearfix">
@@ -444,11 +444,12 @@
                       <strong><span ng-bind-html="companyProgress.goalFormatted"></span></strong> goal
                     </p>
                   </div>
-                  <!--<p>
-                    <a ng-href="NTM?tr.ntmgmt=company_cservice_main&amp;company_id={{participantRegistration.companyInformation.companyId}}">
+                  <p>
+                    <!-- <a ng-href="NTM?tr.ntmgmt=company_cservice_main&amp;company_id={{participantRegistration.companyInformation.companyId}}">
                       <strong>Update School Goal</strong>
-                    </a>
-                  </p>-->
+                    </a> -->
+                    &nbsp;
+                  </p>
                 </div>
               </div>
             </div>
@@ -518,13 +519,13 @@
         <div class="col-sm-6 ym-pc-dashboard-coordinator-progress-section__column event-secondary-medium">
           <div class="ym-pc-dashboard-coordinator-students-box" ng-if="companyInfo.participantCount" ng-cloak>
             <div class="ym-pc-dashboard-section-header">
-              <h3 class="h5">
+              <h2 class="h5">
                 My Students
-              </h3>
+              </h2>
             </div>
             <div>
               <p>
-                You have <strong><span ng-bind-html="companyInfo.participantCount"></span></strong> students registered. Keep recruiting to meet your goal of <strong><span><span ng-bind-html="studentRegGoal"></span></span></strong> students!
+                You have <strong>{{companyInfo.participantCount|number}}</strong> students registered. <span ng-if="studentRegGoal && studentRegGoal != 0" ng-cloak>Keep recruiting to meet your goal of <strong>{{studentRegGoal|number}}</strong> students!</span>
               </p>
               <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email">
                 <strong>Send Emails</strong>
