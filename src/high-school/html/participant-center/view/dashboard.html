@@ -150,7 +150,7 @@
               <div ng-if="participantRegistration.aTeamCaptain == 'true' && location != '/dashboard-student'" ng-cloak>
                 <div ng-if="teamInfo.numMembers && teamInfo.numMembers != '0'">
                   <p>
-                    <strong>For your team:</strong> You have <strong><span ng-bind-html="teamInfo.numMembers"></span> team members</strong> registered. Keep recruiting to meet your goal of <span ng-bind-html="teamMemberRegGoal"></span> participants!
+                    <strong>For your team:</strong> You have <strong>{{teamInfo.numMembers|number}} team members</strong> registered. <span ng-if="teamMemberRegGoal && teamMemberRegGoal != 0" ng-cloak>Keep recruiting to meet your goal of {{teamMemberRegGoal|number}} participants!</span>
                   </p>
                 </div>
                 <p>
@@ -708,7 +708,7 @@
             </div>
             <div>
               <p>
-                You have <strong><span ng-bind-html="companyInfo.participantCount"></span></strong> students registered. Keep recruiting to meet your goal of <strong><span><span ng-bind-html="participantRegGoal"></span></span></strong> students!
+                You have <strong>{{companyInfo.participantCount|number}}</strong> students registered. <span ng-if="participantRegGoal && participantRegGoal != 0" ng-cloak>Keep recruiting to meet your goal of <strong>{{participantRegGoal|number}}</strong> students!</span>
               </p>
               <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email">
                 <strong>Send Emails</strong>
