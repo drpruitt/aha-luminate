@@ -525,7 +525,7 @@
             </div>
             <div>
               <p>
-                You have <strong><span ng-bind-html="companyInfo.participantCount"></span></strong> students registered. Keep recruiting to meet your goal of <strong><span><span ng-bind-html="studentRegGoal"></span></span></strong> students!
+                You have <strong>{{companyInfo.participantCount|number}}</strong> students registered. <span ng-if="studentRegGoal && studentRegGoal != 0" ng-cloak>Keep recruiting to meet your goal of <strong>{{studentRegGoal|number}}</strong> students!</span>
               </p>
               <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email">
                 <strong>Send Emails</strong>
