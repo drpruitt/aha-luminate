@@ -34,6 +34,34 @@
           </h2>
         </div>
         <form class="ym-registration-reg-form" method="POST" novalidate ng-submit="submitTfindCreate()">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label class="control-label" for="fr_team_name">
+                  [[?xx::x[[C1:fr_team_field]]x::
+                    [[M0:friendraiser:team_field]]
+                  ::
+                    [[C1:fr_team_field]]
+                  ]]
+                </label>
+                <input type="text" class="form-control input-lg" name="fr_team_name" id="fr_team_name" value="[[A16]]" maxlength="50">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label class="control-label" for="fr_team_goal">
+                  [[?xx::x[[C1:fr_team_goal_field]]x::
+                    [[M0:friendraiser:team_goal_field]]
+                  ::
+                    [[C1:fr_team_goal_field]]
+                  ]]
+                </label>
+                <input type="text" class="form-control input-lg" name="fr_team_goal" id="fr_team_goal" value="[[?xx::x[[A17]]x::[[A39]]::[[A17]]]]" maxlength="17">
+              </div>
+            </div>
+          </div>
           <div class="ym-registration-form-footer">
             <div class="ym-registration-form-footer-btns">
               <div class="clearfix">
@@ -50,6 +78,7 @@
               </div>
             </div>
           </div>
+          [[S66:util/SpamControlComponentResponsive.tpt]]
         </form>
         <div class="hidden" hidden aria-hidden="true">
           <form class="js--default-tfind-form" method="POST">
@@ -58,6 +87,7 @@
             <input type="hidden" name="fr_cstm_tm" value="t">
             <input type="hidden" name="fr_tm_opt" value="[[A13]]">
             <input type="hidden" name="company_id" value="[[A36]]">
+            <input type="hidden" name="next_step.x" value="[[M1:friendraiser:join_team_step_next_button]]">
           </form>
         </form>
       </div>
