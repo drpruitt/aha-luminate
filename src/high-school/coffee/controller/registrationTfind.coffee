@@ -31,8 +31,11 @@ angular.module 'ahaLuminateControllers'
             $scope.newTeamInfo = {}
           
           $scope.submitTfindCreate = ->
-            angular.element('.js--default-tfind-form').submit()
-            false
+            if not $scope.newTeamForm.$valid
+              window.scrollTo 0, 0
+            else
+              angular.element('.js--default-tfind-form').submit()
+              false
         else
           if not $scope.teamSearch
             $scope.teamSearch = {}
