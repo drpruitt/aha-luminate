@@ -28,8 +28,36 @@
     ::
       <!-- company_id is not null -->
       <div class="ym-registration-page-container ym-registration-page-container--tfind" ng-controller="RegistrationTfindCtrl" ng-init="frTmOpt = 'new'; newTeam.companyId = '[[T6:[[A36]]]]'">
+        <div class="ym-registration-page-header">
+          <h2 class="h4">
+            Start a Team
+          </h2>
+        </div>
+        <form class="ym-registration-reg-form" method="POST" novalidate ng-submit="submitTfindCreate()">
+          <div class="ym-registration-form-footer">
+            <div class="ym-registration-form-footer-btns">
+              <div class="clearfix">
+                <div class="visible-xs">
+                  <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-primary">
+                    <strong>Next</strong> <i class="fa fa-chevron-right"></i>
+                  </button>
+                </div>
+                <div class="pull-right hidden-xs">
+                  <button type="[[?xTx::x[[A12]]x::button::submit]]" class="btn btn-primary">
+                    <strong>Next</strong> <i class="fa fa-chevron-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
         <div class="hidden" hidden aria-hidden="true">
           <form class="js--default-tfind-form" method="POST">
+            <input type="hidden" name="fr_id" value="[[A2]]">
+            <input type="hidden" name="pg" value="[[A7]]">
+            <input type="hidden" name="fr_cstm_tm" value="t">
+            <input type="hidden" name="fr_tm_opt" value="[[A13]]">
+            <input type="hidden" name="company_id" value="[[A36]]">
           </form>
         </form>
       </div>
