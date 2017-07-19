@@ -733,6 +733,15 @@ div.donation-form-container {
   }  
 }
 
+.ym-donation-levels__amount {
+  position: relative;
+
+  .ym-donation-levels__dollar-sign {
+    position: absolute;
+    color: $event-primary;
+
+  }
+}
 .ym-donation-sidebar__text {
   text-align: center;
   padding: 0 20px;
