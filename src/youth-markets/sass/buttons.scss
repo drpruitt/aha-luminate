@@ -282,7 +282,7 @@ input[type="text"].btn-enter {
   
   &::-ms-input-placeholder {
     color: $event-primary !important;
-    opacity: .75 !important;
+    opacity: 1 !important;
   }
   
   &:placeholder {
