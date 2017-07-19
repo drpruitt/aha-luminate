@@ -752,7 +752,8 @@ div.donation-form-container {
         color: $event-primary;
       }
     }
-    .btn-toggle.btn-enter {
+    .btn-toggle.btn-enter,
+    input[type="text"].btn-enter {
       text-align: left;
       padding-left: 30px;
     }
