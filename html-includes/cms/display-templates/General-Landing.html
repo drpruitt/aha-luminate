@@ -43,7 +43,7 @@
 <t:if test="section_features.length>0">
   <div class="ym-carousel--internal ym-section-features event-accent">
     <div class="container">
-      <h3 class="text-center">In This Section</h2>
+      <h2 class="text-center h3">IN THIS SECTION</h2>
     </div>
     <div class="owl-carousel owl-theme">
     <t:list id="section_features">
@@ -60,7 +60,7 @@
            <t:list id="standard_image"><img class="img-responsive" src="${url}" alt="${title}"></t:list>
            </t:if>
          </t:else>
-        <span class="h5-heading">${title}</span>
+        <h2 class="h5-heading">${title}</h2>
         <p>${description}</p>
         <a class="btn btn-md-wide btn-primary" href="${url}">Learn More</a>
       </div> 
@@ -104,7 +104,7 @@ ${body}
 </t:list>
 <t:if test="displaypromo==1">
 <div class="ym-carousel--internal ym-promo-block--footer event-secondary-medium">
-<t:if test="!isNull(footer_promos_section_title)"><span class="h3-heading text-center">${footer_promos_section_title}</span></t:if><t:else><span class="h3-heading text-center">Our Promotions</span></t:else>
+<t:if test="!isNull(footer_promos_section_title)"><span class="h3-heading text-center">${footer_promos_section_title}</span></t:if><t:else><span class="h3-heading text-center bold">OUR PROMOTIONS</span></t:else>
 <t:list id="footer_promo_style">
 <t:set id="circleorsquare"  value="0" />
 <t:if test="name=='circles'"><t:set id="circleorsquare"  value="1" /></t:if>
@@ -131,7 +131,7 @@ ${body}
 <t:if test="!isNull(customlink)"></a></t:if>
  </t:list>
   </t:if>
-    <span class="h5-heading"><t:if test="!isNull(customlink)"><a href="${customlink}"></t:if>${title}<t:if test="!isNull(customlink)"></a></t:if></span>
+    <h2 class="h5-heading h5"><t:if test="!isNull(customlink)"><a href="${customlink}"></t:if>${title}<t:if test="!isNull(customlink)"></a></t:if></h2>
     <p>${description}</p>
     <t:list id="action_button_color"><t:if test="name=='purple'"><t:set id="btncolor" value="'btn-secondary'"/></t:if><t:else><t:set id="btncolor" value="'btn-primary'"/></t:else></t:list>
     <t:if test="!isNull(action_button_link)">
