@@ -30,12 +30,12 @@
         </div>
         <div ng-if="schoolDetailParticipants.participants && schoolDetailParticipants.participants.length > 0" ng-cloak>
           <div class="table-responsive">
-            <table class="table table-striped">
+            <table role="grid" class="table table-striped">
               <caption class="sr-only">
                 School Detail Report
               </caption>
               <thead>
-                <tr>
+                <tr role="row">
                   <th scope="col" role="columnheader" aria-sort="{{schoolDetailParticipants.sortColumn != 'firstName' ? 'none' : (schoolDetailParticipants.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-left">
                       <a href="" ng-click="orderschoolDetailParticipants('firstName')">
@@ -67,23 +67,23 @@
                 </tr>
               </thead>
               <tbody>
-                <tr ng-repeat="schoolDetailParticipant in schoolDetailParticipants.participants">
-                  <td>
+                <tr role="row" ng-repeat="schoolDetailParticipant in schoolDetailParticipants.participants">
+                  <td role="gridcell">
                     <div class="text-left">
                       <span ng-bind-html="schoolDetailParticipant.firstName"></span> <span ng-bind-html="schoolDetailParticipant.lastName"></span>
                     </div>
                   </td>
-                  <td>
+                  <td role="gridcell">
                     <div class="text-center">
                       {{schoolDetailParticipant.amountFormatted}}
                     </div>
                   </td>
-                  <td>
+                  <td role="gridcell">
                     <div class="text-center">
                       {{schoolDetailParticipant.emailsSent}}
                     </div>
                   </td>
-                  <td>
+                  <td role="gridcell">
                     <div class="text-center">
                       <span ng-bind-html="schoolDetailParticipant.tshirtSize"></span>
                     </div>
@@ -122,12 +122,12 @@
         </div>
         <div ng-if="participantGifts.gifts && participantGifts.gifts.length > 0" ng-cloak>
           <div class="table-responsive">
-            <table class="table table-striped">
+            <table role="grid" class="table table-striped">
               <caption class="sr-only">
                 My Donors Report
               </caption>
               <thead>
-                <tr>
+                <tr role="row">
                   <th scope="col" role="columnheader" aria-sort="{{participantGifts.sortColumn != 'cons_first_name' ? 'none' : (participantGifts.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-left">
                       <a href="" ng-click="orderParticipantGifts('cons_first_name')">
@@ -152,8 +152,8 @@
                 </tr>
               </thead>
               <tbody>
-                <tr ng-repeat="participantGift in participantGifts.gifts">
-                  <td>
+                <tr role="row" ng-repeat="participantGift in participantGifts.gifts">
+                  <td role="gridcell">
                     <div class="text-left">
                       <div ng-if="!participantGift.name.first || participantGift.name.first == ''">
                         (no name)
@@ -180,12 +180,12 @@
                       </div>
                     </div>
                   </td>
-                  <td>
+                  <td role="gridcell">
                     <div class="text-center">
                       {{participantGift.giftAmountFormatted}}
                     </div>
                   </td>
-                  <td>
+                  <td role="gridcell">
                     <div class="text-right">
                       {{participantGift.date | date : 'M/d/yy'}}
                     </div>
@@ -224,12 +224,12 @@
         </div>
         <div ng-if="teamGifts.gifts && teamGifts.gifts.length > 0" ng-cloak>
           <div class="table-responsive">
-            <table class="table table-striped">
+            <table role="grid" class="table table-striped">
               <caption class="sr-only">
                 Team Donors Report
               </caption>
               <thead>
-                <tr>
+                <tr role="row">
                   <th scope="col" role="columnheader" aria-sort="{{teamGifts.sortColumn != 'cons_first_name' ? 'none' : (teamGifts.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-left">
                       <a href="" ng-click="orderTeamGifts('cons_first_name')">
@@ -254,8 +254,8 @@
                 </tr>
               </thead>
               <tbody>
-                <tr ng-repeat="teamGift in teamGifts.gifts">
-                  <td>
+                <tr role="row" ng-repeat="teamGift in teamGifts.gifts">
+                  <td role="gridcell">
                     <div class="text-left">
                       <div ng-if="!teamGift.name.first || teamGift.name.first == ''">
                         (no name)
@@ -270,12 +270,12 @@
                       </div>
                     </div>
                   </td>
-                  <td>
+                  <td role="gridcell">
                     <div class="text-center">
                       {{teamGift.giftAmountFormatted}}
                     </div>
                   </td>
-                  <td>
+                  <td role="gridcell">
                     <div class="text-right">
                       {{teamGift.date | date : 'M/d/yy'}}
                     </div>
