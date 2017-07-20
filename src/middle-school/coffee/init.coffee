@@ -4,6 +4,7 @@ appDependencies = [
   'angular.filter'
   'ui.bootstrap'
   'ahaLuminateControllers'
+  'ngMaterial'
   'ngAria'
 ]
 
