@@ -1665,13 +1665,6 @@ main > .container {
       padding: 28px 0 0;
     }
   }
-  
-  .fa {
-    color: $event-primary;
-    &.inactive {
-      color: $inactive-grey;
-    }
-  }
 }
 
 .ym-pc-reports-lists__acknowledge {
@@ -1759,14 +1752,22 @@ main > .container {
       > th {
         white-space: nowrap;
         
-        a {
+        .btn {
           &,
           &:link,
           &:visited,
           &:hover,
           &:focus,
           &:active {
-            text-decoration: none;
+            color: $event-primary;
+            font-size: inherit;
+            padding: 0;
+          }
+          
+          .fa {
+            &.inactive {
+              color: $inactive-grey !important;
+            }
           }
         }
       }
