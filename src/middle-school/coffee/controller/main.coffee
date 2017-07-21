@@ -11,6 +11,14 @@ angular.module 'ahaLuminateControllers'
       consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
       $scope.numberEvents = 0
       $scope.regEventId = ''
+
+
+      console.log 'test'
+      checkbox = angular.element('input[type="checkbox"]')
+      checkbox.onfocus = () ->
+        console.log 'trigger'
+        angular.element(this).addClass 'focused'
+        return
       
       if consId
         TeamraiserParticipantService.getRegisteredTeamraisers 'cons_id=' + consId + '&event_type=' + encodeURIComponent('Middle School'),

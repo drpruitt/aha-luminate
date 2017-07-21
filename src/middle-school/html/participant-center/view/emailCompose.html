@@ -147,6 +147,11 @@
         </div>
         <div class="form-group">
           <div class="checkbox" ng-class="{'checked': emailComposer.prepend_salutation}" ng-if="personalizedSalutationEnabled">
+            <label>
+              <input type="checkbox" ng-model="emailComposer.prepend_salutation"> Include personalized greeting
+            </label>
+          </div>
+          <div class="checkbox" ng-class="{'checked': emailComposer.prepend_salutation}" ng-if="personalizedSalutationEnabled">
             <input type="checkbox" id="prepend_salutation" ng-model="emailComposer.prepend_salutation">
             <label for="prepend_salutation">
                Include personalized greeting
