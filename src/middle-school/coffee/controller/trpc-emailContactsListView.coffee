@@ -28,6 +28,9 @@ angular.module 'trPcControllers'
             response
         $scope.emailPromises.push messageCountPromise
       
+      $scope.setFocus = (elem) ->
+        elem.focus()
+        
       getContactString = (contact) ->
         contactData = ''
         if contact?.firstName?
