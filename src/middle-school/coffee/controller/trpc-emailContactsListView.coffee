@@ -10,7 +10,8 @@ angular.module 'trPcControllers'
     'APP_INFO'
     'NgPcTeamraiserEmailService'
     'NgPcContactService'
-    ($rootScope, $scope, $window, $routeParams, $location, $httpParamSerializer, $uibModal, APP_INFO, NgPcTeamraiserEmailService, NgPcContactService) ->
+    '$timeout'
+    ($rootScope, $scope, $window, $routeParams, $location, $httpParamSerializer, $uibModal, APP_INFO, NgPcTeamraiserEmailService, NgPcContactService, $timeout) ->
       $scope.filter = $routeParams.filter
       
       $scope.emailPromises = []
@@ -28,9 +29,17 @@ angular.module 'trPcControllers'
             response
         $scope.emailPromises.push messageCountPromise
       
+      focusPanel = ->
+        elem = document.getElementById('contact_select_all')
+        if elem isnt null
+          elem.focus()
+      $timeout focusPanel, 500
+
+
       $scope.setFocus = (elem) ->
-        elem.focus()
-        
+        #console.log 'focus'+elem
+        #angular.element('.panel').focus()
+
       getContactString = (contact) ->
         contactData = ''
         if contact?.firstName?
