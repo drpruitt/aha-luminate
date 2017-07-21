@@ -135,7 +135,7 @@
           <input type="text" class="form-control" placeholder="Subject" autocorrect="on" autocapitalize="on" spellcheck="true" ng-model="emailComposer.subject">
         </div>
         <div class="form-group">
-          <div class="checkbox" ng-if="personalizedSalutationEnabled">
+          <div class="checkbox" custom-checkbox ng-if="personalizedSalutationEnabled">
             <label>
               <input type="checkbox" ng-model="emailComposer.prepend_salutation"> Include personalized greeting
             </label>
