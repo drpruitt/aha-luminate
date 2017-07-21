@@ -34,54 +34,54 @@
                 School Detail Report
               </caption>
               <thead>
-                <tr role="row">
-                  <th scope="col" role="columnheader" aria-sort="{{schoolDetailStudents.sortColumn != 'firstName' ? 'none' : (schoolDetailStudents.sortAscending ? 'ascending' : 'descending')}}">
+                <tr>
+                  <th scope="col" aria-sort="{{schoolDetailStudents.sortColumn != 'firstName' ? 'none' : (schoolDetailStudents.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-left">
-                      <a href="" ng-click="orderSchoolDetailStudents('firstName')">
-                        <strong>Name</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (schoolDetailStudents.sortColumn == 'firstName' && !schoolDetailStudents.sortAscending) || schoolDetailStudents.sortColumn != 'firstName', 'fa-caret-up': schoolDetailStudents.sortColumn == 'firstName' && schoolDetailStudents.sortAscending, 'inactive': schoolDetailStudents.sortColumn != 'firstName'}" ng-if="schoolDetailStudents.students.length"></span>
-                      </a>
+                      <button type="button" class="btn btn-link" ng-click="orderSchoolDetailStudents('firstName')">
+                        <span class="sr-only">Sort by</span> <strong>Name</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (schoolDetailStudents.sortColumn == 'firstName' && !schoolDetailStudents.sortAscending) || schoolDetailStudents.sortColumn != 'firstName', 'fa-caret-up': schoolDetailStudents.sortColumn == 'firstName' && schoolDetailStudents.sortAscending, 'inactive': schoolDetailStudents.sortColumn != 'firstName'}" ng-if="schoolDetailStudents.students.length"><span class="sr-only">in {{schoolDetailStudents.sortColumn != 'firstName' ? 'descending' : (schoolDetailStudents.sortAscending ? 'descending' : 'ascending')}}</span></span>
+                      </button>
                     </div>
                   </th>
-                  <th scope="col" role="columnheader" aria-sort="{{schoolDetailStudents.sortColumn != 'amount' ? 'none' : (schoolDetailStudents.sortAscending ? 'ascending' : 'descending')}}">
+                  <th scope="col" aria-sort="{{schoolDetailStudents.sortColumn != 'amount' ? 'none' : (schoolDetailStudents.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-center">
-                      <a href="" ng-click="orderSchoolDetailStudents('amount')">
-                        <strong>Amount</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (schoolDetailStudents.sortColumn == 'amount' && !schoolDetailStudents.sortAscending) || schoolDetailStudents.sortColumn != 'amount', 'fa-caret-up': schoolDetailStudents.sortColumn == 'amount' && schoolDetailStudents.sortAscending, 'inactive': schoolDetailStudents.sortColumn != 'amount'}" ng-if="schoolDetailStudents.students.length"></span>
-                      </a>
+                      <button type="button" class="btn btn-link" ng-click="orderSchoolDetailStudents('amount')">
+                        <span class="sr-only">Sort by</span> <strong>Amount</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (schoolDetailStudents.sortColumn == 'amount' && !schoolDetailStudents.sortAscending) || schoolDetailStudents.sortColumn != 'amount', 'fa-caret-up': schoolDetailStudents.sortColumn == 'amount' && schoolDetailStudents.sortAscending, 'inactive': schoolDetailStudents.sortColumn != 'amount'}" ng-if="schoolDetailStudents.students.length"></span>
+                      </button>
                     </div>
                   </th>
-                  <th scope="col" role="columnheader" aria-sort="{{schoolDetailStudents.sortColumn != 'ecardsSent' ? 'none' : (schoolDetailStudents.sortAscending ? 'ascending' : 'descending')}}">
+                  <th scope="col" aria-sort="{{schoolDetailStudents.sortColumn != 'ecardsSent' ? 'none' : (schoolDetailStudents.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-center">
-                      <a href="" ng-click="orderSchoolDetailStudents('ecardsSent')">
-                        <strong>Ecards</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (schoolDetailStudents.sortColumn == 'ecardsSent' && !schoolDetailStudents.sortAscending) || schoolDetailStudents.sortColumn != 'ecardsSent', 'fa-caret-up': schoolDetailStudents.sortColumn == 'ecardsSent' && schoolDetailStudents.sortAscending, 'inactive': schoolDetailStudents.sortColumn != 'ecardsSent'}" ng-if="schoolDetailStudents.students.length"></span>
-                      </a>
+                      <button type="button" class="btn btn-link" ng-click="orderSchoolDetailStudents('ecardsSent')">
+                        <span class="sr-only">Sort by</span> <strong>Ecards</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (schoolDetailStudents.sortColumn == 'ecardsSent' && !schoolDetailStudents.sortAscending) || schoolDetailStudents.sortColumn != 'ecardsSent', 'fa-caret-up': schoolDetailStudents.sortColumn == 'ecardsSent' && schoolDetailStudents.sortAscending, 'inactive': schoolDetailStudents.sortColumn != 'ecardsSent'}" ng-if="schoolDetailStudents.students.length"></span>
+                      </button>
                     </div>
                   </th>
-                  <th scope="col" role="columnheader" aria-sort="{{schoolDetailStudents.sortColumn != 'emailsSent' ? 'none' : (schoolDetailStudents.sortAscending ? 'ascending' : 'descending')}}">
+                  <th scope="col" aria-sort="{{schoolDetailStudents.sortColumn != 'emailsSent' ? 'none' : (schoolDetailStudents.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-center">
-                      <a href="" ng-click="orderSchoolDetailStudents('emailsSent')">
-                        <strong>Emails</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (schoolDetailStudents.sortColumn == 'emailsSent' && !schoolDetailStudents.sortAscending) || schoolDetailStudents.sortColumn != 'emailsSent', 'fa-caret-up': schoolDetailStudents.sortColumn == 'emailsSent' && schoolDetailStudents.sortAscending, 'inactive': schoolDetailStudents.sortColumn != 'emailsSent'}" ng-if="schoolDetailStudents.students.length"></span>
-                      </a>
+                      <button type="button" class="btn btn-link" ng-click="orderSchoolDetailStudents('emailsSent')">
+                        <span class="sr-only">Sort by</span> <strong>Emails</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (schoolDetailStudents.sortColumn == 'emailsSent' && !schoolDetailStudents.sortAscending) || schoolDetailStudents.sortColumn != 'emailsSent', 'fa-caret-up': schoolDetailStudents.sortColumn == 'emailsSent' && schoolDetailStudents.sortAscending, 'inactive': schoolDetailStudents.sortColumn != 'emailsSent'}" ng-if="schoolDetailStudents.students.length"></span>
+                      </button>
                     </div>
                   </th>
-                  <th scope="col" role="columnheader" aria-sort="{{schoolDetailStudents.sortColumn != 'tshirtSize' ? 'none' : (schoolDetailStudents.sortAscending ? 'ascending' : 'descending')}}">
+                  <th scope="col" aria-sort="{{schoolDetailStudents.sortColumn != 'tshirtSize' ? 'none' : (schoolDetailStudents.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-center">
-                      <a href="" ng-click="orderSchoolDetailStudents('tshirtSize')">
-                        <strong>T-shirt</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (schoolDetailStudents.sortColumn == 'tshirtSize' && !schoolDetailStudents.sortAscending) || schoolDetailStudents.sortColumn != 'tshirtSize', 'fa-caret-up': schoolDetailStudents.sortColumn == 'tshirtSize' && schoolDetailStudents.sortAscending, 'inactive': schoolDetailStudents.sortColumn != 'tshirtSize'}" ng-if="schoolDetailStudents.students.length"></span>
-                      </a>
+                      <button type="button" class="btn btn-link" ng-click="orderSchoolDetailStudents('tshirtSize')">
+                        <span class="sr-only">Sort by</span> <strong>T-shirt</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (schoolDetailStudents.sortColumn == 'tshirtSize' && !schoolDetailStudents.sortAscending) || schoolDetailStudents.sortColumn != 'tshirtSize', 'fa-caret-up': schoolDetailStudents.sortColumn == 'tshirtSize' && schoolDetailStudents.sortAscending, 'inactive': schoolDetailStudents.sortColumn != 'tshirtSize'}" ng-if="schoolDetailStudents.students.length"></span>
+                      </button>
                     </div>
                   </th>
-                  <th scope="col" role="columnheader" aria-sort="{{schoolDetailStudents.sortColumn != 'teacherName' ? 'none' : (schoolDetailStudents.sortAscending ? 'ascending' : 'descending')}}">
+                  <th scope="col" aria-sort="{{schoolDetailStudents.sortColumn != 'teacherName' ? 'none' : (schoolDetailStudents.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-center">
-                      <a href="" ng-click="orderSchoolDetailStudents('teacherName')">
-                        <strong>Teacher</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (schoolDetailStudents.sortColumn == 'teacherName' && !schoolDetailStudents.sortAscending) || schoolDetailStudents.sortColumn != 'teacherName', 'fa-caret-up': schoolDetailStudents.sortColumn == 'teacherName' && schoolDetailStudents.sortAscending, 'inactive': schoolDetailStudents.sortColumn != 'teacherName'}" ng-if="schoolDetailStudents.students.length"></span>
-                      </a>
+                      <button type="button" class="btn btn-link" ng-click="orderSchoolDetailStudents('teacherName')">
+                        <span class="sr-only">Sort by</span> <strong>Teacher</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (schoolDetailStudents.sortColumn == 'teacherName' && !schoolDetailStudents.sortAscending) || schoolDetailStudents.sortColumn != 'teacherName', 'fa-caret-up': schoolDetailStudents.sortColumn == 'teacherName' && schoolDetailStudents.sortAscending, 'inactive': schoolDetailStudents.sortColumn != 'teacherName'}" ng-if="schoolDetailStudents.students.length"></span>
+                      </button>
                     </div>
                   </th>
-                  <th scope="col" role="columnheader" aria-sort="{{schoolDetailStudents.sortColumn != 'challenge' ? 'none' : (schoolDetailStudents.sortAscending ? 'ascending' : 'descending')}}">
+                  <th scope="col" aria-sort="{{schoolDetailStudents.sortColumn != 'challenge' ? 'none' : (schoolDetailStudents.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-right">
-                      <a href="" ng-click="orderSchoolDetailStudents('challenge')">
-                        <strong>Challenge</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (schoolDetailStudents.sortColumn == 'challenge' && !schoolDetailStudents.sortAscending) || schoolDetailStudents.sortColumn != 'challenge', 'fa-caret-up': schoolDetailStudents.sortColumn == 'challenge' && schoolDetailStudents.sortAscending, 'inactive': schoolDetailStudents.sortColumn != 'challenge'}" ng-if="schoolDetailStudents.students.length"></span>
-                      </a>
+                      <button type="button" class="btn btn-link" ng-click="orderSchoolDetailStudents('challenge')">
+                        <span class="sr-only">Sort by</span> <strong>Challenge</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (schoolDetailStudents.sortColumn == 'challenge' && !schoolDetailStudents.sortAscending) || schoolDetailStudents.sortColumn != 'challenge', 'fa-caret-up': schoolDetailStudents.sortColumn == 'challenge' && schoolDetailStudents.sortAscending, 'inactive': schoolDetailStudents.sortColumn != 'challenge'}" ng-if="schoolDetailStudents.students.length"></span>
+                      </button>
                     </div>
                   </th>
                 </tr>
@@ -162,26 +162,26 @@
                 My Donors Report
               </caption>
               <thead>
-                <tr role="row">
-                  <th scope="col" role="columnheader" aria-sort="{{participantGifts.sortColumn != 'cons_first_name' ? 'none' : (participantGifts.sortAscending ? 'ascending' : 'descending')}}">
+                <tr>
+                  <th scope="col" aria-sort="{{participantGifts.sortColumn != 'cons_first_name' ? 'none' : (participantGifts.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-left">
-                      <a href="" ng-click="orderParticipantGifts('cons_first_name')">
+                      <button type="button" class="btn btn-link" ng-click="orderParticipantGifts('cons_first_name')">
                         <strong>Name</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (participantGifts.sortColumn == 'cons_first_name' && !participantGifts.sortAscending) || participantGifts.sortColumn != 'cons_first_name', 'fa-caret-up': participantGifts.sortColumn == 'cons_first_name' && participantGifts.sortAscending, 'inactive': participantGifts.sortColumn != 'cons_first_name'}" ng-if="participantGifts.gifts.length"></span>
-                      </a>
+                      </button>
                     </div>
                   </th>
-                  <th scope="col" role="columnheader" aria-sort="{{participantGifts.sortColumn != 'amount' ? 'none' : (participantGifts.sortAscending ? 'ascending' : 'descending')}}">
+                  <th scope="col" aria-sort="{{participantGifts.sortColumn != 'amount' ? 'none' : (participantGifts.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-center">
-                      <a href="" ng-click="orderParticipantGifts('amount')">
+                      <button type="button" class="btn btn-link" ng-click="orderParticipantGifts('amount')">
                         <strong>Amount</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (participantGifts.sortColumn == 'amount' && !participantGifts.sortAscending) || participantGifts.sortColumn != 'amount', 'fa-caret-up': participantGifts.sortColumn == 'amount' && participantGifts.sortAscending, 'inactive': participantGifts.sortColumn != 'amount'}" ng-if="participantGifts.gifts.length"></span>
-                      </a>
+                      </button>
                     </div>
                   </th>
-                  <th scope="col" role="columnheader" aria-sort="{{participantGifts.sortColumn != 'date_recorded' ? 'none' : (participantGifts.sortAscending ? 'ascending' : 'descending')}}">
+                  <th scope="col" aria-sort="{{participantGifts.sortColumn != 'date_recorded' ? 'none' : (participantGifts.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-right">
-                      <a href="" ng-click="orderParticipantGifts('date_recorded')">
+                      <button type="button" class="btn btn-link" ng-click="orderParticipantGifts('date_recorded')">
                         <strong>Date</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (participantGifts.sortColumn == 'date_recorded' && !participantGifts.sortAscending) || participantGifts.sortColumn != 'date_recorded', 'fa-caret-up': participantGifts.sortColumn == 'date_recorded' && participantGifts.sortAscending, 'inactive': participantGifts.sortColumn != 'date_recorded'}" ng-if="participantGifts.gifts.length"></span>
-                      </a>
+                      </button>
                     </div>
                   </th>
                 </tr>
@@ -264,29 +264,29 @@
                 Team Donors Report
               </caption>
               <thead>
-                <tr role="row">
-                  <th scope="col" role="columnheader" aria-sort="{{teamGifts.sortColumn != 'cons_first_name' ? 'none' : (teamGifts.sortAscending ? 'ascending' : 'descending')}}">
+                <tr>
+                  <th scope="col" aria-sort="{{teamGifts.sortColumn != 'cons_first_name' ? 'none' : (teamGifts.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-left">
-                      <a href="" ng-click="orderTeamGifts('cons_first_name')">
+                      <button type="button" class="btn btn-link" ng-click="orderTeamGifts('cons_first_name')">
                         <strong>Name</strong> 
                         <span class="fa" ng-class="{'fa-caret-down': (teamGifts.sortColumn == 'cons_first_name' && !teamGifts.sortAscending) || teamGifts.sortColumn != 'cons_first_name', 'fa-caret-up': teamGifts.sortColumn == 'cons_first_name' && teamGifts.sortAscending, 'inactive': teamGifts.sortColumn != 'cons_first_name'}" ng-if="teamGifts.gifts.length"></span>
-                      </a>
+                      </button>
                     </div>
                   </th>
-                  <th scope="col" role="columnheader" aria-sort="{{teamGifts.sortColumn != 'amount' ? 'none' : (teamGifts.sortAscending ? 'ascending' : 'descending')}}">
+                  <th scope="col" aria-sort="{{teamGifts.sortColumn != 'amount' ? 'none' : (teamGifts.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-center">
-                      <a href="" ng-click="orderTeamGifts('amount')">
+                      <button type="button" class="btn btn-link" ng-click="orderTeamGifts('amount')">
                         <strong>Amount</strong> 
                         <span class="fa" ng-class="{'fa-caret-down': (teamGifts.sortColumn == 'amount' && !teamGifts.sortAscending) || teamGifts.sortColumn != 'amount', 'fa-caret-up': teamGifts.sortColumn == 'amount' && teamGifts.sortAscending, 'inactive': teamGifts.sortColumn != 'amount'}" ng-if="teamGifts.gifts.length"></span>
-                      </a>
+                      </button>
                     </div>
                   </th>
-                  <th scope="col" role="columnheader" aria-sort="{{teamGifts.sortColumn != 'date_recorded' ? 'none' : (teamGifts.sortAscending ? 'ascending' : 'descending')}}">
+                  <th scope="col" aria-sort="{{teamGifts.sortColumn != 'date_recorded' ? 'none' : (teamGifts.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-right">
-                      <a href="" ng-click="orderTeamGifts('date_recorded')">
+                      <button type="button" class="btn btn-link" ng-click="orderTeamGifts('date_recorded')">
                         <strong>Date</strong> 
                         <span class="fa" ng-class="{'fa-caret-down': (teamGifts.sortColumn == 'date_recorded' && !teamGifts.sortAscending) || teamGifts.sortColumn != 'date_recorded', 'fa-caret-up': teamGifts.sortColumn == 'date_recorded' && teamGifts.sortAscending, 'inactive': teamGifts.sortColumn != 'date_recorded'}" ng-if="teamGifts.gifts.length"></span>
-                      </a>
+                      </button>
                     </div>
                   </th>
                 </tr>
