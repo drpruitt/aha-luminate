@@ -3,6 +3,7 @@ angular.module 'trPcApp', [
   'ngCsv'
   'textAngular'
   'trPcControllers'
+  'ngAria'
 ]
 
 angular.module 'trPcControllers', []
