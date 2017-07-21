@@ -45,7 +45,7 @@
         <form class="ym-registration-tfind-create-form" name="newTeamForm" method="POST" novalidate ng-submit="submitTfindCreate()">
           <div class="row">
             <div class="col-xs-12">
-              <div class="form-group">
+              <div class="form-group [[?[[?[[A6]]::error_team_name_required::T::]][[?[[A6]]::error_team_name_not_unique::T::]]::T::has-error::]]" ng-class="{'has-error': newTeamForm.$submitted && newTeamForm.fr_team_name.$invalid}">
                 <label class="control-label" for="newTeamInfo-fr_team_name">
                   [[?xx::x[[C1:fr_team_field]]x::
                     [[M0:friendraiser:team_field]]
@@ -59,7 +59,7 @@
           </div>
           <div class="row">
             <div class="col-xs-12">
-              <div class="form-group">
+              <div class="form-group [[?[[?[[A6]]::error_invalid_team_goal::T::]][[?[[A6]]::error_invalid_fund_goal::T::]][[?[[A6]]::error_bad_goal::T::]]::T::has-error::]]" ng-class="{'has-error': newTeamForm.$submitted && newTeamForm.fr_team_goal.$invalid}">
                 <label class="control-label" for="newTeamInfo-fr_team_goal">
                   [[?xx::x[[C1:fr_team_goal_field]]x::
                     [[M0:friendraiser:team_goal_field]]
@@ -89,8 +89,16 @@
           </div>
           [[S66:util/SpamControlComponentResponsive.tpt]]
         </form>
+        <div class="text-center">
+          <p>
+            Prefer not to start a team?
+          </p>
+          <a class="btn btn-primary" href="TRR?fr_id=[[A2]]&amp;pg=tfind&amp;fr_tm_opt=existing&amp;skip_login_page=true&amp;s_frTJoin=&amp;company_id=[[S80:frCompanyId]]&amp;s_frCompanyId=[[S80:frCompanyId]]">
+            <strong>Join a Team</strong>
+          </a>
+        </div>
         <div class="hidden" hidden aria-hidden="true">
-          <form class="js--default-tfind-form" action="[[A1]]" method="POST">
+          <form class="js--default-tfind-create-form" action="[[A1]]" method="POST">
             <input type="hidden" name="fr_id" value="[[A2]]">
             <input type="hidden" name="pg" value="[[A7]]">
             <input type="hidden" name="fr_cstm_tm" value="t">

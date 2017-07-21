@@ -29,12 +29,12 @@
         </div>
         <div ng-if="schoolDetailStudents.students && schoolDetailStudents.students.length > 0" ng-cloak>
           <div class="table-responsive">
-            <table class="table table-striped">
+            <table role="grid" class="table table-striped">
               <caption class="sr-only">
                 School Detail Report
               </caption>
               <thead>
-                <tr>
+                <tr role="row">
                   <th scope="col" role="columnheader" aria-sort="{{schoolDetailStudents.sortColumn != 'firstName' ? 'none' : (schoolDetailStudents.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-left">
                       <a href="" ng-click="orderSchoolDetailStudents('firstName')">
@@ -87,38 +87,38 @@
                 </tr>
               </thead>
               <tbody>
-                <tr ng-repeat="schoolDetailStudent in schoolDetailStudents.students">
-                  <td>
+                <tr role="row" ng-repeat="schoolDetailStudent in schoolDetailStudents.students">
+                  <td role="gridcell">
                     <div class="text-left">
                       <span ng-bind-html="schoolDetailStudent.firstName"></span> <span ng-bind-html="schoolDetailStudent.lastName"></span>
                     </div>
                   </td>
-                  <td>
+                  <td role="gridcell">
                     <div class="text-center">
                       {{schoolDetailStudent.amountFormatted}}
                     </div>
                   </td>
-                  <td>
+                  <td role="gridcell">
                     <div class="text-center">
                       {{schoolDetailStudent.ecardsSent}}
                     </div>
                   </td>
-                  <td>
+                  <td role="gridcell">
                     <div class="text-center">
                       {{schoolDetailStudent.emailsSent}}
                     </div>
                   </td>
-                  <td>
+                  <td role="gridcell">
                     <div class="text-center">
                       <span ng-bind-html="schoolDetailStudent.tshirtSize"></span>
                     </div>
                   </td>
-                  <td>
+                  <td role="gridcell">
                     <div class="text-center">
                       <span ng-bind-html="schoolDetailStudent.teacherName"></span>
                     </div>
                   </td>
-                  <td>
+                  <td role="gridcell">
                     <div class="text-right">
                       <span ng-bind-html="schoolDetailStudent.challenge"></span>
                     </div>
@@ -157,12 +157,12 @@
         </div>
         <div ng-if="participantGifts.gifts && participantGifts.gifts.length > 0" ng-cloak>
           <div class="table-responsive">
-            <table class="table table-striped">
+            <table role="grid" class="table table-striped">
               <caption class="sr-only">
                 My Donors Report
               </caption>
               <thead>
-                <tr>
+                <tr role="row">
                   <th scope="col" role="columnheader" aria-sort="{{participantGifts.sortColumn != 'cons_first_name' ? 'none' : (participantGifts.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-left">
                       <a href="" ng-click="orderParticipantGifts('cons_first_name')">
@@ -187,8 +187,8 @@
                 </tr>
               </thead>
               <tbody>
-                <tr ng-repeat="participantGift in participantGifts.gifts">
-                  <td>
+                <tr role="row" ng-repeat="participantGift in participantGifts.gifts">
+                  <td role="gridcell">
                     <div class="text-left">
                       <div ng-if="!participantGift.name.first || participantGift.name.first == ''">
                         (no name)
@@ -215,12 +215,12 @@
                       </div>
                     </div>
                   </td>
-                  <td>
+                  <td role="gridcell">
                     <div class="text-center">
                       {{participantGift.giftAmountFormatted}}
                     </div>
                   </td>
-                  <td>
+                  <td role="gridcell">
                     <div class="text-right">
                       {{participantGift.date | date : 'M/d/yy'}}
                     </div>
@@ -259,12 +259,12 @@
         </div>
         <div ng-if="teamGifts.gifts && teamGifts.gifts.length > 0" ng-cloak>
           <div class="table-responsive">
-            <table class="table table-striped">
+            <table role="grid" class="table table-striped">
               <caption class="sr-only">
                 Team Donors Report
               </caption>
               <thead>
-                <tr>
+                <tr role="row">
                   <th scope="col" role="columnheader" aria-sort="{{teamGifts.sortColumn != 'cons_first_name' ? 'none' : (teamGifts.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-left">
                       <a href="" ng-click="orderTeamGifts('cons_first_name')">
@@ -292,8 +292,8 @@
                 </tr>
               </thead>
               <tbody>
-                <tr ng-repeat="teamGift in teamGifts.gifts">
-                  <td>
+                <tr role="row" ng-repeat="teamGift in teamGifts.gifts">
+                  <td role="gridcell">
                     <div class="text-left">
                       <div ng-if="!teamGift.name.first || teamGift.name.first == ''">
                         (no name)
@@ -308,12 +308,12 @@
                       </div>
                     </div>
                   </td>
-                  <td>
+                  <td role="gridcell">
                     <div class="text-center">
                       {{teamGift.giftAmountFormatted}}
                     </div>
                   </td>
-                  <td>
+                  <td role="gridcell">
                     <div class="text-right">
                       {{teamGift.date | date : 'M/d/yy'}}
                     </div>
