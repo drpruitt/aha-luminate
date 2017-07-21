@@ -12,7 +12,7 @@
 </t:else>
 </t:list>
 <t:list id="banner_image">
-  <div class="${bannerdisplay}" style="background-image:url(${url});">
+  <div class="${bannerdisplay}" style="background-image: url(${url});">
   <t:if test="bannerdisplay == 'ym-hero'">
     <t:if test="overlay_location.length>0">
         <t:list id="overlay_location">
@@ -43,7 +43,11 @@
 <t:if test="section_features.length>0">
   <div class="ym-carousel--internal ym-section-features event-accent">
     <div class="container">
-      <h2 class="text-center h3">IN THIS SECTION</h2>
+      <div class="text-center">
+        <h2 class="h3">
+          <span class="text-uppercase">In This Section</span>
+        </h2>
+      </div>
     </div>
     <div class="owl-carousel owl-theme">
     <t:list id="section_features">
@@ -60,7 +64,9 @@
            <t:list id="standard_image"><img class="img-responsive" src="${url}" alt="${title}"></t:list>
            </t:if>
          </t:else>
-        <h2 class="h5-heading">${title}</h2>
+        <h2 class="h5-heading">
+          ${title}
+        </h2>
         <p>${description}</p>
         <a class="btn btn-md-wide btn-primary" href="${url}">Learn More</a>
       </div> 
@@ -153,9 +159,3 @@ ${body}
 </t:else>
 </div>
 </t:if>
-
-
-
-
-
-
