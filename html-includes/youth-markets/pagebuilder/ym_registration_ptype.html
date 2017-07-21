@@ -15,7 +15,7 @@
   document.hide_addons = [];
 </script>
 <div class="ym-registration-page-container ym-registration-page-container--ptype" ng-controller="RegistrationPtypeCtrl">
-  <div ng-init="participationOptions.fr_goal = '[[T6:[[A15]]]]'"></div>
+  <div class="hidden" hidden aria-hidden="true" ng-init="participationOptions.fr_goal = '[[T6:[[A15]]]]'"></div>
   <div class="ym-registration-page-header">
     <div class="manageable-content" data-container="edit_pt_title_container">
       [[?xx::x[[S1:cons_id]]x::::
@@ -92,12 +92,14 @@
           ]]
         ]]
         [[?xx::x[[A33]]x::::
-          <div class="hidden js--registration-ptype-donation-levels">
-          <fieldset>
-            <legend>Donation levels</legend>
-            [[A33]]
-          </fieldset>
-          </div>          
+          <div class="hidden js--registration-ptype-donation-levels" hidden aria-hidden="true">
+            <fieldset>
+              <legend>
+                Donation levels
+              </legend>
+              [[A33]]
+            </fieldset>
+          </div>
           <div class="ym-registration-ptype-donation-levels ym-donation-levels__levels" ng-class="{'active': donationLevels.activeLevel}">
             <button type="button" class="btn btn-toggle" ng-class="{'active': donationLevels.activeLevel.amount == donationLevel.amount}" ng-repeat="donationLevel in donationLevels.levels" ng-click="toggleDonationLevel(donationLevel.amount)" ng-if="!donationLevel.isOtherAmount && !donationLevel.isNoDonation" ng-cloak>
               <span ng-bind-html="donationLevel.amountFormatted"></span>
@@ -114,7 +116,6 @@
               <span ng-bind-html="donationLevels.activeLevel.askMessage"></span>
             </div>
           </div>
-          
         ]]
       </div>
     ::]]
@@ -129,7 +130,7 @@
         <div class="form-group [[?[[A6]]::ERR_BAD_GOAL::has-error::]]" ng-class="{'has-error': participationOptionsForm.$submitted && participationOptionsForm.fr_goal.$invalid}">
           <div class="sr-only">
             <div class="manageable-content" data-container="edit_fund_goal_container">
-              <label class="control-label" id="fund_goal_container" for="fr_goal">
+              <label class="control-label" id="fund_goal_container" for="participationOptions-fr_goal">
                 [[?xx::x[[C1:fr_your_fundraising_goal_field]]x::[[M0:friendraiser:your_fundraising_goal_field]]::[[C1:fr_your_fundraising_goal_field]]]]
               </label>
             </div>
