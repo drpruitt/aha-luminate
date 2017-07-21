@@ -68,18 +68,32 @@
             <span ng-if="participantCount < 1000" ng-cloak>{{participantCount}}</span>
             <span ng-if="participantCount > 999" ng-cloak>{{participantCount}}</span>
           </div>
-          <p>
-            students registered
-          </p>
+          <div ng-if="participantCount == 1" ng-cloak>
+            <p>
+              student registered
+            </p>
+          </div>
+          <div ng-if="participantCount != 1" ng-cloak>
+            <p>
+              students registered
+            </p>
+          </div>
         </div>
         <div class="ym-promo-block__item ym-promo-block--circle">
           <div class="h2 ym-headline">
             <span ng-if="totalEmails < 1000">{{totalEmails}}</span>
             <span ng-if="totalEmails > 999">{{totalEmails}}</span>
           </div>
-          <p>
-            emails sent
-          </p>
+          <div ng-if="participantCount == 1" ng-cloak>
+            <p>
+              email sent
+            </p>
+          </div>
+          <div ng-if="participantCount != 1" ng-cloak>
+            <p>
+              emails sent
+            </p>
+          </div>
         </div>
       </div>
     </div>
