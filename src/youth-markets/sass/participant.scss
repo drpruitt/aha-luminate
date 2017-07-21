@@ -1765,7 +1765,7 @@ main > .container {
           }
           
           .fa {
-            color: $event-primary;
+            color: $event-primary !important;
             
             &.inactive {
               color: $inactive-grey;
