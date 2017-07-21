@@ -84,12 +84,12 @@
             <span ng-if="totalEmails < 1000">{{totalEmails}}</span>
             <span ng-if="totalEmails > 999">{{totalEmails}}</span>
           </div>
-          <div ng-if="participantCount == 1" ng-cloak>
+          <div ng-if="totalEmails == 1" ng-cloak>
             <p>
               email sent
             </p>
           </div>
-          <div ng-if="participantCount != 1" ng-cloak>
+          <div ng-if="totalEmails != 1" ng-cloak>
             <p>
               emails sent
             </p>
