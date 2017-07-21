@@ -45,7 +45,7 @@
         <form class="ym-registration-tfind-create-form" name="newTeamForm" method="POST" novalidate ng-submit="submitTfindCreate()">
           <div class="row">
             <div class="col-xs-12">
-              <div class="form-group" ng-class="{'has-error': newTeamForm.$submitted && newTeamForm.fr_team_name.$invalid}">
+              <div class="form-group [[?[[?[[A6]]::error_team_name_required::T::]][[?[[A6]]::error_team_name_not_unique::T::]]::T::has-error::]]" ng-class="{'has-error': newTeamForm.$submitted && newTeamForm.fr_team_name.$invalid}">
                 <label class="control-label" for="newTeamInfo-fr_team_name">
                   [[?xx::x[[C1:fr_team_field]]x::
                     [[M0:friendraiser:team_field]]
@@ -59,7 +59,7 @@
           </div>
           <div class="row">
             <div class="col-xs-12">
-              <div class="form-group" ng-class="{'has-error': newTeamForm.$submitted && newTeamForm.fr_team_goal.$invalid}">
+              <div class="form-group [[?[[?[[A6]]::error_invalid_team_goal::T::]][[?[[A6]]::error_invalid_fund_goal::T::]][[?[[A6]]::error_bad_goal::T::]]::T::has-error::]]" ng-class="{'has-error': newTeamForm.$submitted && newTeamForm.fr_team_goal.$invalid}">
                 <label class="control-label" for="newTeamInfo-fr_team_goal">
                   [[?xx::x[[C1:fr_team_goal_field]]x::
                     [[M0:friendraiser:team_goal_field]]
