@@ -25,6 +25,11 @@ main > .container {
     @media (min-width: $screen-md-min) {
       padding: 36px 28px;
     }
+
+    .btn-link {
+      color: $event-primary;
+      padding: 0;
+    }
   }
 }
 

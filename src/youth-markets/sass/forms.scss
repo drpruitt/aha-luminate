@@ -87,16 +87,7 @@ input[type="checkbox"]:focus + label:before {
   outline: 5px auto -webkit-focus-ring-color;
 } 
 
-.checkbox {
-  &:not(.checked) {
-    label {
-      &:after {
-         /*opacity: 0;
-          transform: scale(0);*/
-      }
-    }
-  }
-  
+.checkbox {  
   &.checked {
     label {
       &:after {
@@ -121,6 +112,14 @@ input[type="checkbox"] {
       &:after {
         content: '\f00c';
         font-family: 'FontAwesome';
+        position: absolute;
+        top: 0.15em;
+        left: 0.1em;
+        font-size: 1.1em;
+        line-height: 0.8;
+        transition: all 0.2s;
+        color: $event-primary;
+        display: inline-block;
       }
     }
   }
