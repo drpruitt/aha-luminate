@@ -2,8 +2,8 @@
   <li class="list-group-item" ng-repeat="contact in contacts">
     <div class="clearfix">
       <div class="checkbox" ng-class="{'checked': contact.selected}">
-        <label>
-          <input type="checkbox" value="{{contact.id}}" ng-checked="contact.selected" ng-click="toggleContact(contact)"> 
+        <input type="checkbox" id="ym-import-contact--{{contact.id}}" value="{{contact.id}}" ng-checked="contact.selected" ng-click="toggleContact(contact)"> 
+        <label for="ym-import-contact--{{contact.id}}">          
           <span ng-if="contact.firstName">
             {{contact.firstName}}{{contact.lastName ? ' ' + contact.lastName : ''}}{{contact.email ? ' &lt;' + contact.email + '&gt;' : ''}}
           </span>
