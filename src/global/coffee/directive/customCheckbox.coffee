@@ -4,8 +4,10 @@ angular.module 'ahaLuminateApp'
     scope: {}
     link: (scope, element) ->
       $checkboxContainer = angular.element element
-      $checkboxes = $checkboxContainer.find 'input[type="checkbox]'
+      $checkboxes = $checkboxContainer.find 'input[type="checkbox"]'
       angular.forEach $checkboxes, (checkbox) ->
         $checkbox = angular.element checkbox
         $checkbox.on 'focus', ->
           $checkboxContainer.addClass 'focused'
+        $checkbox.on 'blur', ->
+          $checkboxContainer.removeClass 'focused'
