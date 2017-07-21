@@ -82,9 +82,10 @@ input[type="checkbox"] + label {
   }
 }
 
-.focused label:before {
+.focused label:before, 
+input[type="checkbox"]:focus + label:before {
   outline: 5px auto -webkit-focus-ring-color;
-}
+} 
 
 .checkbox {
   &:not(.checked) {
