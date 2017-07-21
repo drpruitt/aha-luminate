@@ -1765,10 +1765,8 @@ main > .container {
           }
           
           .fa {
-            color: $event-primary !important;
-            
             &.inactive {
-              color: $inactive-grey;
+              color: $inactive-grey !important;
             }
           }
         }
