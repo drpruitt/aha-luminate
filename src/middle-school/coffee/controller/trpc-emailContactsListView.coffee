@@ -35,11 +35,6 @@ angular.module 'trPcControllers'
           elem.focus()
       $timeout focusPanel, 500
 
-
-      $scope.setFocus = (elem) ->
-        #console.log 'focus'+elem
-        #angular.element('.panel').focus()
-
       getContactString = (contact) ->
         contactData = ''
         if contact?.firstName?
