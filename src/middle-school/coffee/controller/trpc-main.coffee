@@ -4,7 +4,6 @@ angular.module 'trPcControllers'
     '$scope'
     '$location'
     'APP_INFO'
-    '$anchorScroll'
     ($rootScope, $scope, $location, APP_INFO) ->
       $rootScope.$location = $location
       $rootScope.baseUrl = $location.absUrl().split('#')[0]
