@@ -121,7 +121,8 @@
   }
   
   &.active {
-    a {
+    a, 
+    button {
       &,
       &:link,
       &:visited {
@@ -134,7 +135,8 @@
 
 .ym-pc-dashboard-captain-page-type, 
 .ym-pc-dashboard-coordinator-page-type {
-  a {
+  a, 
+  button {
     &, 
     &:link, 
     &:visited {
@@ -145,17 +147,18 @@
     &:hover,
     &:focus,
     &:active {
-      background-color: #faa73a;
+      background-color: $event-accent;
       color: $brand-white;
     }
   }
   
   &.active {
-    a {
+    a, 
+    button {
       &,
       &:link,
       &:visited {
-        background-color: #faa73a;
+        background-color: $event-accent;
         color: $brand-white;
       }
     }

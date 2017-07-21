@@ -17,17 +17,17 @@
             <div class="ym-pc-dashboard-progress-types" role="tablist" ng-class="{'ym-pc-dashboard-progress-types--multi-team': companyInfo.teamCount > 1}">
               <div class="clearfix">
                 <div class="ym-pc-dashboard-progress-type" ng-class="{'active': dashboardProgressType == 'personal'}">
-                  <button ng-click="toggleProgressType('personal')" role="tab" aria-controls="ym-pc-dashboard-personal-panel--student">
+                  <button type="button" ng-click="toggleProgressType('personal')" role="tab" aria-controls="ym-pc-dashboard-personal-panel--student">
                     <strong>Personal</strong>
                   </button>
                 </div>
                 <div class="ym-pc-dashboard-progress-type" ng-class="{'active': dashboardProgressType == 'company'}">
-                  <button ng-click="toggleProgressType('company')" role="tab" aria-controls="ym-pc-dashboard-company-panel--student">
+                  <button type="button" ng-click="toggleProgressType('company')" role="tab" aria-controls="ym-pc-dashboard-company-panel--student">
                     <strong>School</strong>
                   </button>
                 </div>
                 <div class="ym-pc-dashboard-progress-type" ng-class="{'active': dashboardProgressType == 'team'}" ng-if="companyInfo.teamCount > 1">
-                  <button ng-click="toggleProgressType('team')" role="tab" aria-controls="ym-pc-dashboard-team-panel--student">
+                  <button type="button" ng-click="toggleProgressType('team')" role="tab" aria-controls="ym-pc-dashboard-team-panel--student">
                     <strong>Team</strong>
                   </button>
                 </div>
@@ -414,17 +414,17 @@
             <div class="ym-pc-dashboard-progress-types" ng-class="{'ym-pc-dashboard-progress-types--multi-team': companyInfo.teamCount > 1}" role="tablist">
               <div class="clearfix">
                 <div class="ym-pc-dashboard-progress-type" ng-class="{'active': dashboardProgressType == 'company'}">
-                  <button ng-click="toggleProgressType('company')" role="tab" aria-controls="ym-pc-dashboard-company-panel--coordinator">
+                  <button type="button" ng-click="toggleProgressType('company')" role="tab" aria-controls="ym-pc-dashboard-company-panel--coordinator">
                     <strong>School</strong>
                   </button>
                 </div>
                 <div class="ym-pc-dashboard-progress-type" ng-class="{'active': dashboardProgressType == 'team'}" ng-if="companyInfo.teamCount > 1">
-                  <button ng-click="toggleProgressType('team')" role="tab" aria-controls="ym-pc-dashboard-team-panel--coordinator">
+                  <button type="button" ng-click="toggleProgressType('team')" role="tab" aria-controls="ym-pc-dashboard-team-panel--coordinator">
                     <strong>Team</strong>
                   </button>
                 </div>
                 <div class="ym-pc-dashboard-progress-type" ng-class="{'active': dashboardProgressType == 'personal'}">
-                  <button ng-click="toggleProgressType('personal')" role="tab" aria-controls="ym-pc-dashboard-personal-panel--coordinator">
+                  <button type="button" ng-click="toggleProgressType('personal')" role="tab" aria-controls="ym-pc-dashboard-personal-panel--coordinator">
                     <strong>Personal</strong>
                   </button>
                 </div>
@@ -560,17 +560,17 @@
           <div class="ym-pc-dashboard-coordinator-page-types" ng-class="{'ym-pc-dashboard-coordinator-page-types--multi-team': companyInfo.teamCount > 1}" role="tablist">
             <div class="clearfix">
               <div class="ym-pc-dashboard-coordinator-page-type" ng-class="{'active': dashboardPageType == 'company'}">
-                <button ng-click="togglePageType('company')" role="tab" aria-controls="ym-pc-dashboard-update-school-panel">
+                <button type="button" ng-click="togglePageType('company')" role="tab" aria-controls="ym-pc-dashboard-update-school-panel">
                   <strong>School</strong>
                 </button>
               </div>
               <div class="ym-pc-dashboard-coordinator-page-type" ng-class="{'active': dashboardPageType == 'team'}" ng-if="companyInfo.teamCount > 1">
-                <button ng-click="togglePageType('team')" role="tab" aria-controls="ym-pc-dashboard-update-team-panel">
+                <button type="button" ng-click="togglePageType('team')" role="tab" aria-controls="ym-pc-dashboard-update-team-panel">
                   <strong>Team</strong>
                 </button>
               </div>
               <div class="ym-pc-dashboard-coordinator-page-type" ng-class="{'active': dashboardPageType == 'personal'}">
-                <button ng-click="togglePageType('personal')" role="tab" aria-controls="ym-pc-dashboard-update-personal-panel">
+                <button type="button" ng-click="togglePageType('personal')" role="tab" aria-controls="ym-pc-dashboard-update-personal-panel">
                   <strong>Personal</strong>
                 </button>
               </div>
