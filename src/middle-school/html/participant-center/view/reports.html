@@ -29,7 +29,7 @@
         </div>
         <div ng-if="schoolDetailStudents.students && schoolDetailStudents.students.length > 0" ng-cloak>
           <div class="table-responsive">
-            <table role="grid" class="table table-striped">
+            <table class="table table-striped">
               <caption class="sr-only">
                 School Detail Report
               </caption>
@@ -73,7 +73,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr role="row" ng-repeat="schoolDetailStudent in schoolDetailStudents.students">
+                <tr ng-repeat="schoolDetailStudent in schoolDetailStudents.students">
                   <td>
                     <div class="text-left">
                       <span ng-bind-html="schoolDetailStudent.firstName"></span> <span ng-bind-html="schoolDetailStudent.lastName"></span>
@@ -133,7 +133,7 @@
         </div>
         <div ng-if="participantGifts.gifts && participantGifts.gifts.length > 0" ng-cloak>
           <div class="table-responsive">
-            <table role="grid" class="table table-striped">
+            <table class="table table-striped">
               <caption class="sr-only">
                 My Donors Report
               </caption>
@@ -163,7 +163,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr role="row" ng-repeat="participantGift in participantGifts.gifts">
+                <tr ng-repeat="participantGift in participantGifts.gifts">
                   <td>
                     <div class="text-left">
                       <div ng-if="!participantGift.name.first || participantGift.name.first == ''">
@@ -235,7 +235,7 @@
         </div>
         <div ng-if="teamGifts.gifts && teamGifts.gifts.length > 0" ng-cloak>
           <div class="table-responsive">
-            <table role="grid" class="table table-striped">
+            <table class="table table-striped">
               <caption class="sr-only">
                 Team Donors Report
               </caption>
@@ -265,7 +265,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr role="row" ng-repeat="teamGift in teamGifts.gifts">
+                <tr ng-repeat="teamGift in teamGifts.gifts">
                   <td>
                     <div class="text-left">
                       <div ng-if="!teamGift.name.first || teamGift.name.first == ''">
