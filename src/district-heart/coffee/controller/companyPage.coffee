@@ -91,7 +91,8 @@ angular.module 'ahaLuminateControllers'
               $scope.participantCount = Number participantCount
               if $scope.participantCount.toString().length > 4
                 $scope.participantCount = Math.round($scope.participantCount / 1000) + 'K'
-              totalTeams = companies[0].teamCount
+              totalTeams = companies[0].teamCount or '0'
+              totalTeams = Number totalTeams
               eventId = companies[0].eventId
               amountRaised = companies[0].amountRaised
               goal = companies[0].goal
@@ -108,9 +109,9 @@ angular.module 'ahaLuminateControllers'
                     $scope.participantGoal = 0
                   else
                     $scope.participantGoal = Number participantGoal
-                  $scope.eventDate = response.data.coordinator.event_date
+                  $scope.eventDate = response.data.coordinator?.event_date
                   if totalTeams is 1
-                    $scope.teamId = response.data.coordinator.team_id
+                    $scope.teamId = response.data.coordinator?.team_id
       getCompanyTotals()
       
       $scope.companyTeams = {}
