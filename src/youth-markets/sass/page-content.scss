@@ -101,9 +101,18 @@
         margin: 0 10px 10px;
         
         &.btn-md {
+          display: block;
           font-size: 14px;
           font-weight: 700;
+          width: 120px;
+          min-width: 120px;
           padding: 10px 12px;
+          margin: 0 auto 10px;
+          
+          @media (min-width: 490px) {
+            width: auto;
+            margin: 0 10px 10px;
+          }
           
           @media (min-width: $screen-sm-min) {
             font-size: 18px;
