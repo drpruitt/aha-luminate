@@ -68,8 +68,7 @@
         </h2>
         <div class="ym-promo-block__item ym-promo-block--circle">
           <div class="h2 ym-headline">
-            <span ng-if="participantCount < 1000" ng-cloak>{{participantCount}}</span>
-            <span ng-if="participantCount > 999" ng-cloak>{{participantCount}}</span>
+            {{participantCount}}
           </div>
           <div ng-if="participantCount == 1" ng-cloak>
             <p>
@@ -84,8 +83,7 @@
         </div>
         <div class="ym-promo-block__item ym-promo-block--circle">
           <div class="h2 ym-headline">
-            <span ng-if="totalEmails < 1000">{{totalEmails}}</span>
-            <span ng-if="totalEmails > 999">{{totalEmails}}</span>
+            {{totalEmails}}
           </div>
           <div ng-if="totalEmails == 1" ng-cloak>
             <p>
