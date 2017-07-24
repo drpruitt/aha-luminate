@@ -75,8 +75,8 @@ angular.module 'ahaLuminateControllers'
                 coordinatorId = response.getCompaniesResponse?.company.coordinatorId
                 TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
                   .then (response) ->
-                    $scope.eventDate = response.data.coordinator.event_date
-                    $scope.coordinatorName = response.data.coordinator.fullName
+                    $scope.eventDate = response.data?.coordinator.event_date
+                    $scope.coordinatorName = response.data.coordinator?.fullName
                     setCoordinatorInfo()
             
             TeamraiserCompanyService.getCoordinatorQuestion captainId, eventId
