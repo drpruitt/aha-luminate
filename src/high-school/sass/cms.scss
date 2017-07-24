@@ -1,3 +1,14 @@
-.ym-school-search .img-responsive {
-  margin: 20px 0 -90px;
+.ym-school-search {
+  .img-responsive {
+    margin: 20px auto -90px;
+  }
+
+  #school-name-filter,
+  .school-name-filter-submit {
+    display: inline-block;
+  }
+}
+
+.ym-hero-top__find-your-school a.btn {
+  margin-top: 20px;
 }
