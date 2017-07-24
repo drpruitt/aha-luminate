@@ -1,3 +1,10 @@
-.ym-school-search .img-responsive {
-  margin: 20px auto -90px;
+.ym-school-search {
+  .img-responsive {
+    margin: 20px auto -90px;
+  }
+
+  #school-name-filter,
+  .school-name-filter-submit {
+    display: inline-block;
+  }
 }
