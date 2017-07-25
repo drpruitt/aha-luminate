@@ -157,7 +157,7 @@
                   <th scope="col" aria-sort="{{participantGifts.sortColumn != 'date_recorded' ? 'none' : (participantGifts.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-right">
                       <button type="button" class="btn btn-link" ng-click="orderParticipantGifts('date_recorded')">
-                        <span class="sr-only">Sortable. {{participantGifts.sortColumn != 'date_recorded' ? 'Not sorted.' : (participantGifts.sortAscending ? 'Sorted ascending.' : 'Sorted descending.')}}</span>
+                        <strong>Date</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (participantGifts.sortColumn == 'date_recorded' && !participantGifts.sortAscending) || participantGifts.sortColumn != 'date_recorded', 'fa-caret-up': participantGifts.sortColumn == 'date_recorded' && participantGifts.sortAscending, 'inactive': participantGifts.sortColumn != 'date_recorded'}" ng-if="participantGifts.gifts.length"><span class="sr-only">Sortable. {{participantGifts.sortColumn != 'date_recorded' ? 'Not sorted.' : (participantGifts.sortAscending ? 'Sorted ascending.' : 'Sorted descending.')}}</span></span>
                       </button>
                     </div>
                   </th>
