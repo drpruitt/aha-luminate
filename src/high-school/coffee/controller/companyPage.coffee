@@ -52,7 +52,12 @@ angular.module 'ahaLuminateControllers'
           else
             totals = response.data.totals
             totalEmails = totals?.total_online_emails_sent or '0'
+            ###hard coding total emails while in QA
             $scope.totalEmails = Number totalEmails
+            if $scope.totalEmails .toString().length > 4
+              $scope.totalEmails  = Math.round($scope.totalEmails  / 1000) + 'K'
+            ###
+            $scope.totalEmails = 10
       
       setCompanyProgress = (amountRaised, goal) ->
         $scope.companyProgress = 
