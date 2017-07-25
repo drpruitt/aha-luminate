@@ -1,5 +1,5 @@
 select {
-  &, 
+  &,
   &.form-control {
     -moz-appearance: none;
     -webkit-appearance: none;
@@ -9,7 +9,7 @@ select {
     background-image: none\9;
     background: url('../image/ym-select-carot.png') right 0.75rem center no-repeat $brand-white;
     color: $event-secondary;
-    
+
     &::-ms-expand {
       display: none;
     }
@@ -22,7 +22,7 @@ select {
       .form-group .form-control {
         max-width: 110px;
       }
-    }  
+    }
 
     @media(max-width: 631px) {
       .btn {
@@ -34,5 +34,25 @@ select {
 
   .table {
     min-width: 650px;
+  }
+
+  .ym-roster-search {
+    @media(max-width: $screen-xs) {
+      .ym-roster-search-title {
+        margin-bottom: 10px;
+      }
+
+      .form-inline {
+        .form-group {
+          display: block;
+
+          .form-control {
+            width: 100%;
+            max-width: none;
+            margin-right: 0;
+          }
+        }
+      }
+    }
   }
 }
