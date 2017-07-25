@@ -29,11 +29,14 @@ angular.module 'trPcControllers'
             response
         $scope.emailPromises.push messageCountPromise
       
-      focusPanel = ->
-        $elem = angular.element '#contact_select_all'
-        if $elem.length > 0
-          $elem.focus()
-      $timeout focusPanel, 500
+      $scope.focusPanel = ->
+        $elem = angular.element '.contacts-list__actions-selected .btn'
+        if $elem.length is 0
+          $timeout $scope.focusPanel, 500
+        else
+          $elem[0].focus()
+        false
+      $scope.focusPanel()
       
       getContactString = (contact) ->
         contactData = ''
