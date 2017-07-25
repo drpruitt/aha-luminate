@@ -44,12 +44,12 @@
                     <form method="POST" name="headerLoginForm" ng-submit="submitHeaderLogin()" novalidate>
                       <input type="hidden" name="ng_nexturl" ng-model="headerLoginInfo.ng_nexturl" value="[[E130:[[T8:[[S8]]]] [[T8:&amp;]] [[T8:&]] replaceall]]">
                       <div class="form-group">
-                        <label class="sr-only" for="user_name">Username:</label>
-                        <input type="text" class="form-control" name="user_name" title="user_name" ng-model="headerLoginInfo.user_name" placeholder="Username" maxlength="[[S0:USER_MAX_LOGIN_LEN]]" autocorrect="off" autocapitalize="off" spellcheck="false" required>
+                        <label class="sr-only" for="headerLoginInfo-user_name">Username:</label>
+                        <input type="text" class="form-control" name="USERNAME" id="headerLoginInfo-user_name" ng-model="headerLoginInfo.user_name" placeholder="Username" maxlength="[[S0:USER_MAX_LOGIN_LEN]]" autocorrect="off" autocapitalize="off" spellcheck="false" required>
                       </div>
                       <div class="form-group">
-                        <label class="sr-only" for="password">Password:</label>
-                        <input type="password" class="form-control" title="password" ng-model="headerLoginInfo.password" placeholder="Password" maxlength="[[S0:USER_MAX_PASSWD_LEN]]" autocorrect="off" autocapitalize="off" spellcheck="false" required>
+                        <label class="sr-only" for="headerLoginInfo-password">Password:</label>
+                        <input type="password" class="form-control" name="Password" id="headerLoginInfo-password" ng-model="headerLoginInfo.password" placeholder="Password" maxlength="[[S0:USER_MAX_PASSWD_LEN]]" autocorrect="off" autocapitalize="off" spellcheck="false" required>
                       </div>
                       <div class="ym-header-login-footer clearfix">
                         <button type="submit" class="btn btn-global-primary pull-left">
