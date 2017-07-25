@@ -1,4 +1,6 @@
 main {
+  background: #5abde1;
+
   @media (min-width: $screen-md-min) {
     background: url('../image/bkrd.png') repeat top left scroll;
   }
