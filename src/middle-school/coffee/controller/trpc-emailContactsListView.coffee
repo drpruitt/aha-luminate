@@ -31,9 +31,10 @@ angular.module 'trPcControllers'
       
       focusPanel = ->
         $elem = angular.element '.contacts-list__actions-selected .btn'
+        console.log $elem.length
         if $elem.length > 0
           $elem[0].focus()
-      $timeout focusPanel, 500
+      $timeout focusPanel, 1000
       
       getContactString = (contact) ->
         contactData = ''
