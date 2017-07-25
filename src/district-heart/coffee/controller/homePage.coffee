@@ -74,7 +74,6 @@ angular.module 'ahaLuminateControllers'
       $scope.searchTeams = ->
         DonorSearchService.getTeams $scope.teamSearch.ng_team_name
         .then (response) ->
-          console.log response
           teams = response.data?.getTeamSearchByInfoResponse
           $scope.totalTeams = teams.totalNumberResults
           $scope.teamListSetting.totalItems = $scope.totalTeams
@@ -84,7 +83,7 @@ angular.module 'ahaLuminateControllers'
             if $scope.totalTeams is '1'
               $scope.team = teams.team
             else
-              $scope.teamList = teams.team         
+              $scope.teamList = teams.team
       
       $scope.orderTeams = (sortProp, keepSortOrder) ->
         teams = $scope.teamList
@@ -204,9 +203,9 @@ angular.module 'ahaLuminateControllers'
           ]
           addClassActive: true
           onInitialized: (event) ->
-            AriaCarouselService.init(owlStr)
+            AriaCarouselService.init owlStr
           onChanged: ->
-            AriaCarouselService.onChange(owlStr)
+            AriaCarouselService.onChange owlStr
       
       $timeout initCarousel, 1000
       
@@ -227,9 +226,9 @@ angular.module 'ahaLuminateControllers'
               ]
               addClassActive: true
               onInitialized: (event) ->
-                AriaCarouselService.init(owlStr)
+                AriaCarouselService.init owlStr
               onChanged: ->
-                AriaCarouselService.onChange(owlStr)
-              
+                AriaCarouselService.onChange owlStr
+      
       $timeout initHeroCarousel, 1000
   ]
