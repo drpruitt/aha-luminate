@@ -12,9 +12,11 @@
   }
 }
 
-.pg-team {
+.pg-team,
+.pg-company {
   .table {
     max-width: 970px;
+    min-width: 500px;
     margin: auto;
     
     &.ym-list {
@@ -27,12 +29,8 @@
   }
   
   .ym-list__column--name {
-    width: 80%;
+    width: 40%;
     text-align: left;
-    
-    @media (min-width: $screen-sm-min) {
-      width: 43%;
-    }
     
     .btn {
       width: 80px;
@@ -42,13 +40,20 @@
   
   .ym-list__column--amount {
     text-align: center;
-    width: 120px;
     padding-left: 0;
     padding-right: 0;
+    width: 30%;
   }
   
   .ym-list__column--mins {
     text-align: right;
     padding-right: 15px;
+    width: 30%;
+  }
+
+  .ym-list__column {
+    @media(max-width: $screen-xs-max) {
+      width: 33%;
+    }
   }
 }
