@@ -124,5 +124,22 @@ select {
     @media (min-width: $screen-sm-min) {
       margin: 0 auto;
     }
+
+    .btn {
+      margin: 10px auto 0;
+      display: block;
+    }
+  }
+
+  &.ym-roster-search--participant {
+    .form-inline--mobile-full-width .btn {
+      margin: 10px auto 0;
+      display: block;
+
+      @media(min-width: $screen-xs) {
+        margin: 0;
+        display: inline-block;
+      }
+    }
   }
 }

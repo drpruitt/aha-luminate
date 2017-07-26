@@ -148,7 +148,7 @@
     <h2 class="h5">
       Our Teams
     </h2>
-    <div class="ym-roster-search">
+    <div class="ym-roster-search ym-roster-search--team">
       <form class="form-inline form-inline--mobile-full-width" name="companyTeamSearchForm" method="POST" ng-submit="searchCompanyTeams()">
         <div class="ym-roster-search-title">
           Team Search:
@@ -220,7 +220,7 @@
     <h2 class="h5">
       Our Participants
     </h2>
-    <div class="ym-roster-search">
+    <div class="ym-roster-search ym-roster-search--participant">
       <form class="form-inline form-inline--mobile-full-width" name="companyParticipantSearchForm" method="POST" ng-submit="searchCompanyParticipants()">
         <div class="ym-roster-search-title">
           Participant Search:
@@ -286,7 +286,6 @@
           </tr>
         </tbody>
       </table>
-
     </div>
     <div class="ym-pagination text-center" ng-show="participantListSetting.totalNumber > participantListSetting.paginationItemsPerPage">
       <ul uib-pagination ng-model="participantListSetting.currentPage" total-items="participantListSetting.totalNumber" items-per-page="participantListSetting.paginationItemsPerPage" max-size="participantListSetting.paginationMaxSize" boundary-links="participantListSetting.totalNumber > (participantListSetting.paginationItemsPerPage * participantListSetting.paginationMaxSize)"></ul>
