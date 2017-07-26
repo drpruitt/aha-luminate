@@ -72,10 +72,13 @@ select {
     }
 
     .ym-roster-search-title {
+      margin: 0 0 5px 0;
+
       @media (min-width: 630px) {
         display: inline-block;
         vertical-align: middle;
-        margin-right: 5px;
+        margin: 0 5px 0 0;
+
       }
     }
     
@@ -120,24 +123,21 @@ select {
 
   .form-inline--mobile-full-width {
     margin: 0 -25px;
-    
+    padding: 15px 5px;
+
     @media (min-width: $screen-sm-min) {
       margin: 0 auto;
+      padding: 15px 20px;
     }
 
-    .btn {
-      margin: 10px auto 0;
-      display: block;
-    }
   }
 
   &.ym-roster-search--participant {
     .form-inline--mobile-full-width .btn {
-      margin: 10px auto 0;
+      margin: 0 auto;
       display: block;
 
       @media(min-width: $screen-xs) {
-        margin: 0;
         display: inline-block;
       }
     }
