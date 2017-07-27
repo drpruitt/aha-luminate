@@ -36,16 +36,22 @@
 
 .ym-team-coordinator-thanks {
   background: $brand-white;
-  padding: 12px 0;
+  padding: 12px 25px;
   
   @media (min-width: $screen-sm-min) {
-    padding: 18px;
+    padding: 18px 25px;
+  } 
+
+  img {
+    margin: 0 auto -20px;
   }
 }
 
 .ym-team-coordinator-thanks-inner {
   background-color: $event-accent;
   color: $brand-white;
+  font-size: 18px;
+  font-weight: 700;
   text-align: center;
   padding: 24px 30px;
   margin: 0 0 3px;
@@ -57,10 +63,10 @@
 
 .ym-team-page-options {
   background: $brand-white;
-  padding: 12px 0;
+  padding: 12px 25px;
   
   @media (min-width: $screen-sm-min) {
-    padding: 18px;
+    padding: 18px 25px;
   }
 }
 
@@ -72,9 +78,16 @@
   
   @media (min-width: $screen-sm-min) {
     margin: 0 12px 12px;
+    display: table;
   }
   
+  .row {
+    @media(min-width: $screen-sm-min){ 
+      display: table-row;
+    }
+  }
   .col-sm-4 {
+    display: table-cell;
     @media (max-width: $screen-xs-max) {
       margin: 0 0 40px;
     }
@@ -82,6 +95,12 @@
     &:last-child {
       @media (max-width: $screen-xs-max) {
         margin: 0;
+      }
+    }
+
+    .btn {
+      @media (min-width: $screen-sm-min) {
+        vertical-align: bottom;
       }
     }
   }
