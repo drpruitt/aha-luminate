@@ -81,7 +81,6 @@
   }
   
   .col-sm-4 {
-    display: table-cell;
     @media (max-width: $screen-xs-max) {
       margin: 0 0 40px;
     }
@@ -109,3 +108,11 @@
     width: 154px;
   }
 }
+
+.ym-donor-search {
+  .ym-donor-search__buttons{
+    margin-bottom: 20px;
+  }
+}
+
+
