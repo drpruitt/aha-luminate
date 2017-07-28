@@ -78,14 +78,8 @@
   
   @media (min-width: $screen-sm-min) {
     margin: 0 12px 12px;
-    display: table;
   }
   
-  .row {
-    @media(min-width: $screen-sm-min){ 
-      display: table-row;
-    }
-  }
   .col-sm-4 {
     display: table-cell;
     @media (max-width: $screen-xs-max) {
