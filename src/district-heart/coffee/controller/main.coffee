@@ -6,26 +6,31 @@ angular.module 'ahaLuminateControllers'
     'TeamraiserParticipantService'
     '$anchorScroll'
     '$location'
-    ($scope, $httpParamSerializer, AuthService, TeamraiserParticipantService, $anchorScroll, $location) ->
+    '$timeout'
+    ($scope, $httpParamSerializer, AuthService, TeamraiserParticipantService, $anchorScroll, $location, $timeout) ->
       $dataRoot = angular.element '[data-aha-luminate-root]'
       consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
-      $scope.numberEvents = 0
       $scope.regEventId = ''
       
       if consId
         TeamraiserParticipantService.getRegisteredTeamraisers 'cons_id=' + consId + '&event_type=' + encodeURIComponent('District Heart Challenge'),
           success: (response) ->
             teamraisers = response.getRegisteredTeamraisersResponse.teamraiser
-            if not teamraisers
-              $scope.numberEvents = 0
-            else
-              teamraisers = [teamraisers] if not angular.isArray teamraisers
-              $scope.numberEvents = teamraisers.length
-            if $scope.numberEvents is 0
-              # TODO
-            else
-              if $scope.numberEvents is 1
-                $scope.regEventId = teamraisers[0].id
+            setNumber = ->
+              if not teamraisers
+                $scope.numberEvents = 0
+              else
+                teamraisers = [teamraisers] if not angular.isArray teamraisers
+                $scope.numberEvents = teamraisers.length
+              if $scope.numberEvents is 0
+                # TODO
+              else
+                if $scope.numberEvents is 1
+                  $scope.regEventId = teamraisers[0].id
+            console.log $scope.numberEvents
+            $timeout setNumber, 1000
+      else
+        $scope.numberEvents = 0
       
       $scope.toggleLoginMenu = ->
         if $scope.loginMenuOpen
