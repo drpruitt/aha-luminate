@@ -56,3 +56,90 @@ select {
     }
   }
 }
+
+.ym-roster-search {
+  text-align: center;
+  margin: 0 0 18px;
+  
+  .form-inline {
+    background-color: #e1f5fa;
+    padding: 15px 20px;
+    margin: 0 auto;
+    
+    @media (min-width: $screen-sm-min) {
+      width: 630px;
+      padding: 14px 22px;
+    }
+
+    .ym-roster-search-title {
+      margin: 0 0 5px 0;
+
+      @media (min-width: 630px) {
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 5px 0 0;
+
+      }
+    }
+    
+    .form-group {
+      display: inline-block;
+      margin-bottom: 0;
+      margin-right: 5px;
+      vertical-align: middle;
+      
+      .form-control {
+        display: inline-block;
+        text-align: left;
+        width: auto;
+        max-width: 125px;
+        margin-bottom: 10px;
+        vertical-align: middle;
+        
+        @media (min-width: 480px) {
+          margin-bottom: 0;
+        }
+        
+        @media (min-width: $screen-sm-min) {
+          max-width: 162px;
+        }
+      }
+      
+      .form-control--wide {
+        max-width: 155px;
+        margin-bottom: 0;
+        
+        @media (min-width: $screen-sm-min) {
+          max-width: 162px;
+        }
+      }
+    }
+    
+    .btn {
+      background-color: #004d68;
+      color: $brand-white;
+    }
+  }
+
+  .form-inline--mobile-full-width {
+    margin: 0 -25px;
+    padding: 15px 5px;
+
+    @media (min-width: $screen-sm-min) {
+      margin: 0 auto;
+      padding: 15px 20px;
+    }
+
+  }
+
+  &.ym-roster-search--participant {
+    .form-inline--mobile-full-width .btn {
+      margin: 0 auto;
+      display: block;
+
+      @media(min-width: $screen-xs) {
+        display: inline-block;
+      }
+    }
+  }
+}
