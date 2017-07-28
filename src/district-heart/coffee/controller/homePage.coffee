@@ -18,7 +18,7 @@ angular.module 'ahaLuminateControllers'
       $scope.participantListSetting =
         searchPending: false
         sortProp: 'fullName'
-        sortDesc: false
+        sortDesc: true
         totalItems: 0
         currentPage: 1
         paginationItemsPerPage: 5
@@ -26,11 +26,7 @@ angular.module 'ahaLuminateControllers'
       
       $scope.participantSearch = {}
       $scope.searchParticipants = ->
-        $scope.participantListSetting.searchPending = true
-        if $scope.participantSearch.ng_first_name is ''
-          $scope.participantSearch.ng_first_name = '%'
-        if $scope.participantSearch.ng_last_name is ''
-          $scope.participantSearch.ng_last_name = '%'
+        $scope.participantListSetting.searchPending = true       
         DonorSearchService.getParticipants $scope.participantSearch.ng_first_name, $scope.participantSearch.ng_last_name
         .then (response) ->
           participants = response.data?.getParticipantsResponse
@@ -43,8 +39,9 @@ angular.module 'ahaLuminateControllers'
               $scope.participant = participants.participant
             else
               $scope.participantList = participants.participant
-          $scope.participantListSetting.searchPending = false
-      
+              $scope.orderParticipants('fullName')
+        $scope.participantListSetting.searchPending = false
+          
       $scope.orderParticipants = (sortProp, keepSortOrder) ->
         participants = $scope.participantList
         angular.forEach participants, (participant) ->
@@ -54,7 +51,6 @@ angular.module 'ahaLuminateControllers'
             $scope.participantListSetting.sortDesc = !$scope.participantListSetting.sortDesc
           if $scope.participantListSetting.sortProp isnt sortProp
             $scope.participantListSetting.sortProp = sortProp
-            $scope.participantListSetting.sortDesc = true
           participants = $filter('orderBy') participants, sortProp, $scope.participantListSetting.sortDesc
           $scope.participantList = participants
           $scope.participantListSetting.currentPage = 1
@@ -67,8 +63,7 @@ angular.module 'ahaLuminateControllers'
       
       $scope.teamListSetting =
         searchPending: false
-        sortProp: 'teamName'
-        sortDesc: false
+        sortDesc: true
         totalItems: 0
         currentPage: 1
         paginationItemsPerPage: 5
@@ -76,8 +71,7 @@ angular.module 'ahaLuminateControllers'
       
       $scope.teamSearch = {}
       $scope.searchTeams = ->
-        if $scope.teamSearch.ng_team_name is ''
-          $scope.teamSearch.ng_team_name = '%'
+        $scope.teamListSetting.searchPending = true 
         DonorSearchService.getTeams $scope.teamSearch.ng_team_name
         .then (response) ->
           teams = response.data?.getTeamSearchByInfoResponse
@@ -90,19 +84,17 @@ angular.module 'ahaLuminateControllers'
               $scope.team = teams.team
             else
               $scope.teamList = teams.team
+              $scope.orderTeams('teamName')
+        $scope.teamListSetting.searchPending = false 
       
-      $scope.orderTeams = (sortProp, keepSortOrder) ->
+      $scope.orderTeams = ->
         teams = $scope.teamList
         if teams.length > 0
-          if not keepSortOrder
-            $scope.teamListSetting.sortDesc = !$scope.teamListSetting.sortDesc
-          if $scope.teamListSetting.sortProp isnt sortProp
-            $scope.teamListSetting.sortProp = sortProp
-            $scope.teamListSetting.sortDesc = true
-          participants = $filter('orderBy') teams, sortProp, $scope.teamListSetting.sortDesc
+          $scope.teamListSetting.sortDesc = !$scope.teamListSetting.sortDesc
+          teams = $filter('orderBy') teams, 'name', $scope.teamListSetting.sortDesc
           $scope.teamList = teams
           $scope.teamListSetting.currentPage = 1
-      
+
       $scope.paginateTeams = (value) ->
         begin = ($scope.teamListSetting.currentPage - 1) * $scope.teamListSetting.paginationItemsPerPage
         end = begin + $scope.teamListSetting.paginationItemsPerPage
