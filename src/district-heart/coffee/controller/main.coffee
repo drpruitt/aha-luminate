@@ -27,7 +27,6 @@ angular.module 'ahaLuminateControllers'
               else
                 if $scope.numberEvents is 1
                   $scope.regEventId = teamraisers[0].id
-            console.log $scope.numberEvents
             $timeout setNumber, 1000
       else
         $scope.numberEvents = 0
