@@ -127,7 +127,7 @@
   <div class="ym-page-section ym-page-section__list ym-accent-color">
     <div class="row">
       <div class="col-xs-12 ym-story text-center">
-        <h2 class="h1">
+        <h2 class="h3">
           Our Team is Heart Healthy!
         </h2>
         [[?
@@ -176,8 +176,8 @@
     <h2 class="h5">
       Our Team Members
     </h2>
-    <div class="ym-roster-search">
-      <form class="form-inline" name="teamParticipantSearchForm" method="POST" ng-submit="searchTeamParticipants()">
+    <div class="ym-roster-search ym-roster-search--participant">
+      <form class="form-inline form-inline--mobile-full-width" name="teamParticipantSearchForm" method="POST" ng-submit="searchTeamParticipants()">
         <div class="ym-roster-search-title">
           Participant Search:
         </div>
@@ -246,6 +246,7 @@
     <hr class="ym-section-divider">
   </div>
   <div class="ym-page-section ym-team-coordinator-thanks" ng-if="coordinatorName && coordinatorName != ''" ng-cloak>
+    <img src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/district-heart/image/district-torch-graphic.png"" class="img-responsive" alt="Torch Graphic" />
     <div class="ym-team-coordinator-thanks-inner">
       Thank you to our coordinator, <span ng-bind-html="coordinatorName"></span>, for leading our heart-healthy challenge!
     </div>

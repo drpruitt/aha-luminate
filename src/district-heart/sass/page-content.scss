@@ -34,80 +34,24 @@
   background: $event-accent;
 }
 
-.ym-roster-search {
-  text-align: center;
-  margin: 0 0 18px;
-  
-  .form-inline {
-    background-color: #e1f5fa;
-    padding: 15px 20px;
-    margin: 0 auto;
-    
-    @media (min-width: $screen-sm-min) {
-      width: 630px;
-      padding: 14px 22px;
-    }
-    
-    .ym-roster-search-title {
-      @media (min-width: 630px) {
-        display: inline-block;
-        vertical-align: middle;
-        margin-right: 5px;
-      }
-    }
-    
-    .form-group {
-      display: inline-block;
-      margin-bottom: 0;
-      margin-right: 5px;
-      vertical-align: middle;
-      
-      .form-control {
-        display: inline-block;
-        text-align: left;
-        width: auto;
-        max-width: 125px;
-        margin-bottom: 10px;
-        vertical-align: middle;
-        
-        @media (min-width: 480px) {
-          margin-bottom: 0;
-        }
-        
-        @media (min-width: $screen-sm-min) {
-          max-width: 162px;
-        }
-      }
-      
-      .form-control--wide {
-        max-width: 155px;
-        margin-bottom: 0;
-        
-        @media (min-width: $screen-sm-min) {
-          max-width: 162px;
-        }
-      }
-    }
-    
-    .btn {
-      background-color: #004d68;
-      color: $brand-white;
-    }
-  }
-}
-
 .ym-team-coordinator-thanks {
   background: $brand-white;
-  padding: 12px 0;
+  padding: 12px 25px;
   
   @media (min-width: $screen-sm-min) {
-    padding: 18px;
+    padding: 18px 25px;
+  } 
+
+  img {
+    margin: 0 auto -20px;
   }
 }
 
 .ym-team-coordinator-thanks-inner {
   background-color: $event-accent;
   color: $brand-white;
+  font-size: 18px;
+  font-weight: 700;
   text-align: center;
   padding: 24px 30px;
   margin: 0 0 3px;
@@ -119,10 +63,10 @@
 
 .ym-team-page-options {
   background: $brand-white;
-  padding: 12px 0;
+  padding: 12px 25px;
   
   @media (min-width: $screen-sm-min) {
-    padding: 18px;
+    padding: 18px 25px;
   }
 }
 
@@ -146,6 +90,12 @@
         margin: 0;
       }
     }
+
+    .btn {
+      @media (min-width: $screen-sm-min) {
+        vertical-align: bottom;
+      }
+    }
   }
   
   h5, 
@@ -158,3 +108,11 @@
     width: 154px;
   }
 }
+
+.ym-donor-search {
+  .ym-donor-search__buttons{
+    margin-bottom: 20px;
+  }
+}
+
+
