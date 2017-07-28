@@ -27,6 +27,10 @@ angular.module 'ahaLuminateControllers'
       $scope.participantSearch = {}
       $scope.searchParticipants = ->
         $scope.participantListSetting.searchPending = true
+        if $scope.participantSearch.ng_first_name is ''
+          $scope.participantSearch.ng_first_name = '%'
+        if $scope.participantSearch.ng_last_name is ''
+          $scope.participantSearch.ng_last_name = '%'
         DonorSearchService.getParticipants $scope.participantSearch.ng_first_name, $scope.participantSearch.ng_last_name
         .then (response) ->
           participants = response.data?.getParticipantsResponse
@@ -72,6 +76,8 @@ angular.module 'ahaLuminateControllers'
       
       $scope.teamSearch = {}
       $scope.searchTeams = ->
+        if $scope.teamSearch.ng_team_name is ''
+          $scope.teamSearch.ng_team_name = '%'
         DonorSearchService.getTeams $scope.teamSearch.ng_team_name
         .then (response) ->
           teams = response.data?.getTeamSearchByInfoResponse
@@ -231,4 +237,9 @@ angular.module 'ahaLuminateControllers'
                 AriaCarouselService.onChange owlStr
       
       $timeout initHeroCarousel, 1000
+
+
+      $scope.showSearch = 'participant'
+      $scope.toggleSearch = (type) ->
+        $scope.showSearch = type
   ]
