@@ -1,6 +1,6 @@
 .pg-company {
   .ym-list__column--name {
-    .btn {
+    .btn:not(.btn-link) {
       width: 80px;
       margin-top: 3px;
     }
@@ -32,7 +32,7 @@
     width: 40%;
     text-align: left;
     
-    .btn {
+    .btn:not(.btn-link) {
       width: 80px;
       margin-top: 3px;
     }
