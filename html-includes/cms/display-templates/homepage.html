@@ -172,41 +172,41 @@
             <table class="table table-responsive table-striped ym-list ym-list--school-list" summary="Results Matching Your School's Name">
               <thead class="ym-list__header">
                 <th class="ym-list__column ym-list__column--school" scope="col">
-                  <a ng-click="orderSchools('SCHOOL_NAME')">
+                  <button type="button" class="btn btn-link" ng-click="orderSchools('SCHOOL_NAME')">
                     <t:if test="path == '/district-heart-challenge/'">
                       District
                     </t:if>
                     <t:else>
                       School
                     </t:else> 
-                    <span ng-show="schoolList.schools.length && schoolList.sortProp == 'SCHOOL_NAME' && !schoolList.sortDesc" class="fa fa-caret-down"></span>
-                    <span ng-show="schoolList.schools.length && schoolList.sortProp == 'SCHOOL_NAME' && schoolList.sortDesc" class="fa fa-caret-up"></span>
-                    <span ng-show="schoolList.schools.length && schoolList.sortProp != 'SCHOOL_NAME'" class="fa fa-caret-down inactive"></span>
-                  </a>
+                    <span ng-show="schoolList.schools.length && schoolList.sortProp == 'SCHOOL_NAME' && !schoolList.sortDesc" class="fa fa-caret-down"><span class="sr-only">Sortable. Sorted descending.</span></span>
+                    <span ng-show="schoolList.schools.length && schoolList.sortProp == 'SCHOOL_NAME' && schoolList.sortDesc" class="fa fa-caret-up"><span class="sr-only">Sortable. Sorted ascending.</span></span>
+                    <span ng-show="schoolList.schools.length && schoolList.sortProp != 'SCHOOL_NAME'" class="fa fa-caret-down inactive"><span class="sr-only">Sortable. Not sorted.</span></span>
+                  </button>
                 </th>
                 <th class="ym-list__column ym-list__column--city" scope="col">
-                  <a ng-click="orderSchools('SCHOOL_CITY')">
+                  <button type="button" class="btn btn-link" ng-click="orderSchools('SCHOOL_CITY')">
                     City 
-                    <span ng-show="schoolList.schools.length && schoolList.sortProp == 'SCHOOL_CITY' && !schoolList.sortDesc" class="fa fa-caret-down"></span>
-                    <span ng-show="schoolList.schools.length && schoolList.sortProp == 'SCHOOL_CITY' && schoolList.sortDesc" class="fa fa-caret-up"></span>
-                    <span ng-show="schoolList.schools.length && schoolList.sortProp != 'SCHOOL_CITY'" class="fa fa-caret-down inactive"></span>
-                  </a>
+                    <span ng-show="schoolList.schools.length && schoolList.sortProp == 'SCHOOL_CITY' && !schoolList.sortDesc" class="fa fa-caret-down"><span class="sr-only">Sortable. Sorted descending.</span></span>
+                    <span ng-show="schoolList.schools.length && schoolList.sortProp == 'SCHOOL_CITY' && schoolList.sortDesc" class="fa fa-caret-up"><span class="sr-only">Sortable. Sorted ascending.</span></span>
+                    <span ng-show="schoolList.schools.length && schoolList.sortProp != 'SCHOOL_CITY'" class="fa fa-caret-down inactive"><span class="sr-only">Sortable. Not sorted.</span></span>
+                  </button>
                 </th>
                 <th class="ym-list__column ym-list__column--state" scope="col">
-                  <a ng-click="orderSchools('SCHOOL_STATE')">
+                  <button type="button" class="btn btn-link"  ng-click="orderSchools('SCHOOL_STATE')">
                     State 
-                    <span ng-show="schoolList.schools.length && schoolList.sortProp == 'SCHOOL_STATE' && !schoolList.sortDesc" class="fa fa-caret-down"></span>
-                    <span ng-show="schoolList.schools.length && schoolList.sortProp == 'SCHOOL_STATE' && schoolList.sortDesc" class="fa fa-caret-up"></span>
-                    <span ng-show="schoolList.schools.length && schoolList.sortProp != 'SCHOOL_STATE'" class="fa fa-caret-down inactive"></span>
-                  </a>
+                    <span ng-show="schoolList.schools.length && schoolList.sortProp == 'SCHOOL_STATE' && !schoolList.sortDesc" class="fa fa-caret-down"><span class="sr-only">Sortable. Sorted descending.</span></span>
+                    <span ng-show="schoolList.schools.length && schoolList.sortProp == 'SCHOOL_STATE' && schoolList.sortDesc" class="fa fa-caret-up"><span class="sr-only">Sortable. Sorted ascending.</span></span>
+                    <span ng-show="schoolList.schools.length && schoolList.sortProp != 'SCHOOL_STATE'" class="fa fa-caret-down inactive"><span class="sr-only">Sortable. Not sorted.</span></span>
+                  </button>
                 </th>
                 <th class="ym-list__column ym-list__column--team-leader text-right" scope="col">
-                  <a ng-click="orderSchools('COORDINATOR_LAST_NAME')">
+                  <button type="button" class="btn btn-link"  ng-click="orderSchools('COORDINATOR_LAST_NAME')">
                     Team Leader 
-                    <span ng-show="schoolList.schools.length && schoolList.sortProp == 'COORDINATOR_LAST_NAME' && !schoolList.sortDesc" class="fa fa-caret-down"></span>
-                    <span ng-show="schoolList.schools.length && schoolList.sortProp == 'COORDINATOR_LAST_NAME' && schoolList.sortDesc" class="fa fa-caret-up"></span>
-                    <span ng-show="schoolList.schools.length && schoolList.sortProp != 'COORDINATOR_LAST_NAME'" class="fa fa-caret-down inactive"></span>
-                  </a>
+                    <span ng-show="schoolList.schools.length && schoolList.sortProp == 'COORDINATOR_LAST_NAME' && !schoolList.sortDesc" class="fa fa-caret-down"><span class="sr-only">Sortable. Sorted descending.</span></span>
+                    <span ng-show="schoolList.schools.length && schoolList.sortProp == 'COORDINATOR_LAST_NAME' && schoolList.sortDesc" class="fa fa-caret-up"><span class="sr-only">Sortable. Sorted ascending.</span></span>
+                    <span ng-show="schoolList.schools.length && schoolList.sortProp != 'COORDINATOR_LAST_NAME'" class="fa fa-caret-down inactive"><span class="sr-only">Sortable. Not sorted.</span></span>
+                  </button>
                 </th>
               </thead>
               <tbody>
@@ -315,17 +315,17 @@
                     <th class="ym-list__column ym-list__column--name" scope="col" role="columnheader" aria-sort="{{participantListSetting.sortProp != 'fullName' ? 'none' : (participantListSetting.sortDesc ? 'descending' : 'ascending')}}">
                       <button type="button" class="btn btn-link" ng-click="orderParticipants('fullName')">
                         <strong>Participant Name</strong>&nbsp;
-                        <span ng-show="totalParticipants > 1 && participantListSetting.sortProp == 'fullName' && !participantListSetting.sortDesc" class="fa fa-caret-down"></span>
-                        <span ng-show="totalParticipants > 1 && participantListSetting.sortProp == 'fullName' && participantListSetting.sortDesc" class="fa fa-caret-up"></span>
-                        <span ng-show="totalParticipants > 1 && participantListSetting.sortProp != 'fullName'" class="fa fa-caret-down inactive"></span>
+                        <span ng-show="totalParticipants > 1 && participantListSetting.sortProp == 'fullName' && !participantListSetting.sortDesc" class="fa fa-caret-down"><span class="sr-only">Sortable. Sorted descending.</span></span>
+                        <span ng-show="totalParticipants > 1 && participantListSetting.sortProp == 'fullName' && participantListSetting.sortDesc" class="fa fa-caret-up"><span class="sr-only">Sortable. Sorted ascending.</span></span>
+                        <span ng-show="totalParticipants > 1 && participantListSetting.sortProp != 'fullName'" class="fa fa-caret-down inactive"><span class="sr-only">Sortable. Not sorted.</span></span>
                       </button>
                     </th>
                     <th class="ym-list__column ym-list__column--team" scope="col" role="columnheader" aria-sort="{{participantListSetting.sortProp != 'teamName' ? 'none' : (participantListSetting.sortDesc ? 'descending' : 'ascending')}}">
                       <button type="button" class="btn btn-link" ng-click="orderParticipants('teamName')">
                         <strong>Team Name</strong>&nbsp;
-                        <span ng-show="totalParticipants > 1 && participantListSetting.sortProp == 'teamName' && !participantListSetting.sortDesc" class="fa fa-caret-down"></span>
-                        <span ng-show="totalParticipants > 1 && participantListSetting.sortProp == 'teamName' && participantListSetting.sortDesc" class="fa fa-caret-up"></span>
-                        <span ng-show="totalParticipants > 1 && participantListSetting.sortProp != 'teamName'" class="fa fa-caret-down inactive"></span>
+                        <span ng-show="totalParticipants > 1 && participantListSetting.sortProp == 'teamName' && !participantListSetting.sortDesc" class="fa fa-caret-down"><span class="sr-only">Sortable. Sorted descending.</span></span>
+                        <span ng-show="totalParticipants > 1 && participantListSetting.sortProp == 'teamName' && participantListSetting.sortDesc" class="fa fa-caret-up"><span class="sr-only">Sortable. Sorted ascending.</span></span>
+                        <span ng-show="totalParticipants > 1 && participantListSetting.sortProp != 'teamName'" class="fa fa-caret-down inactive"><span class="sr-only">Sortable. Not sorted.</span></span>
                       </button>
                     </th>
                   </tr>
@@ -402,8 +402,8 @@
                     <th class="ym-list__column ym-list__column--name" scope="col" role="columnheader" aria-sort="{{teamListSetting.sortDesc ? 'descending' : 'ascending'}}">
                       <button type="button" class="btn btn-link" ng-click="orderTeams('teamName')">
                         <strong>Team Name</strong>&nbsp;
-                        <span ng-show="totalTeams > 1 && !teamListSetting.sortDesc" class="fa fa-caret-down"></span>
-                        <span ng-show="totalTeams > 1 && teamListSetting.sortDesc" class="fa fa-caret-up"></span>
+                        <span ng-show="totalTeams > 1 && !teamListSetting.sortDesc" class="fa fa-caret-down"><span class="sr-only">Sortable. Sorted descending.</span></span>
+                        <span ng-show="totalTeams > 1 && teamListSetting.sortDesc" class="fa fa-caret-up"><span class="sr-only">Sortable. Sorted ascending.</span></span>
                       </button>
                     </th>
                   </tr>

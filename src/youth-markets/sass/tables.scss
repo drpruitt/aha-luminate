@@ -58,11 +58,6 @@ div.table {
 }
 
 .ym-list__column {
-  a[ng-click]:link {
-    text-decoration: none;
-    cursor: pointer;
-  }
-  
   .btn-link {
     color: $event-primary;
     padding: 0;
