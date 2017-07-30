@@ -210,9 +210,9 @@
           </tr>
         </tbody>
       </table>
-      <div class="ym-pagination text-center" ng-show="teamListSetting.totalNumber > teamListSetting.paginationItemsPerPage">
-        <ul uib-pagination ng-model="teamListSetting.currentPage" total-items="teamListSetting.totalNumber" items-per-page="teamListSetting.paginationItemsPerPage" max-size="teamListSetting.paginationMaxSize" boundary-links="teamListSetting.totalNumber > (teamListSetting.paginationItemsPerPage * teamListSetting.paginationMaxSize)"></ul>
-      </div>
+    </div>
+    <div class="ym-pagination text-center" ng-show="teamListSetting.totalNumber > teamListSetting.paginationItemsPerPage">
+      <ul uib-pagination ng-model="teamListSetting.currentPage" total-items="teamListSetting.totalNumber" items-per-page="teamListSetting.paginationItemsPerPage" max-size="teamListSetting.paginationMaxSize" boundary-links="teamListSetting.totalNumber > (teamListSetting.paginationItemsPerPage * teamListSetting.paginationMaxSize)"></ul>
     </div>
     <hr class="ym-section-divider" ng-if="companyParticipants.totalNumber > 0 || localSponsorShow" ng-cloak>
   </div>
@@ -286,10 +286,10 @@
           </tr>
         </tbody>
       </table>
-      <div class="ym-pagination text-center" ng-show="participantListSetting.totalNumber > participantListSetting.paginationItemsPerPage">
-        <ul uib-pagination ng-model="participantListSetting.currentPage" total-items="participantListSetting.totalNumber" items-per-page="participantListSetting.paginationItemsPerPage" max-size="participantListSetting.paginationMaxSize" boundary-links="participantListSetting.totalNumber > (participantListSetting.paginationItemsPerPage * participantListSetting.paginationMaxSize)"></ul>
-      </div>
-    </div>    
+    </div>  
+    <div class="ym-pagination text-center" ng-show="participantListSetting.totalNumber > participantListSetting.paginationItemsPerPage">
+      <ul uib-pagination ng-model="participantListSetting.currentPage" total-items="participantListSetting.totalNumber" items-per-page="participantListSetting.paginationItemsPerPage" max-size="participantListSetting.paginationMaxSize" boundary-links="participantListSetting.totalNumber > (participantListSetting.paginationItemsPerPage * participantListSetting.paginationMaxSize)"></ul>
+    </div>  
     <hr class="ym-section-divider" ng-if="localSponsorShow" ng-cloak>
   </div>
   <div class="ym-page-section ym-page-section__sponsor" ng-if="localSponsorShow">

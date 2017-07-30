@@ -4,28 +4,33 @@ angular.module 'ahaLuminateControllers'
     '$httpParamSerializer'
     'AuthService'
     'TeamraiserParticipantService'
-    '$anchorScroll'
-    '$location'
-    ($scope, $httpParamSerializer, AuthService, TeamraiserParticipantService, $anchorScroll, $location) ->
+    ($scope, $httpParamSerializer, AuthService, TeamraiserParticipantService) ->
       $dataRoot = angular.element '[data-aha-luminate-root]'
       consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
-      $scope.numberEvents = 0
       $scope.regEventId = ''
       
-      if consId
+      setRegEventId = (numberEvents = 0, regEventId = '') ->
+        $scope.numberEvents = numberEvents
+        $scope.regEventId = regEventId
+        if not $scope.$$phase
+          $scope.$apply()
+      if not consId
+        setRegEventId()
+      else
         TeamraiserParticipantService.getRegisteredTeamraisers 'cons_id=' + consId + '&event_type=' + encodeURIComponent('Jump Hoops'),
+          error: ->
+            setRegEventId()
           success: (response) ->
-            teamraisers = response.getRegisteredTeamraisersResponse.teamraiser
+            teamraisers = response.getRegisteredTeamraisersResponse?.teamraiser
             if not teamraisers
-              $scope.numberEvents = 0
+              setRegEventId()
             else
               teamraisers = [teamraisers] if not angular.isArray teamraisers
-              $scope.numberEvents = teamraisers.length
-            if $scope.numberEvents is 0
-              # TODO
-            else
-              if $scope.numberEvents is 1
-                $scope.regEventId = teamraisers[0].id
+              numberEvents = teamraisers.length
+              regEventId = ''
+              if numberEvents is 1
+                regEventId = teamraisers[0].id
+              setRegEventId numberEvents, regEventId
       
       $scope.toggleLoginMenu = ->
         if $scope.loginMenuOpen
