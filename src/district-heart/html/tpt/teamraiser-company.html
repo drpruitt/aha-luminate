@@ -170,19 +170,19 @@
         <thead class="ym-list__header">
           <tr>
             <th class="ym-list__column ym-list__column--name" scope="col" aria-sort="{{teamListSetting.sortColumn != 'name' ? 'none' : (teamListSetting.sortAscending ? 'ascending' : 'descending')}}">
-              <a href="" ng-click="orderTeams('name')">
-                <strong>Team Name</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (teamListSetting.sortColumn == 'name' && !teamListSetting.sortAscending) || teamListSetting.sortColumn != 'name', 'fa-caret-up': teamListSetting.sortColumn == 'name' && teamListSetting.sortAscending, 'inactive': teamListSetting.sortColumn != 'name'}"></span>
-              </a>
+              <button type="button" class="btn btn-link" ng-click="orderTeams('name')">
+                <strong>Team Name</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (teamListSetting.sortColumn == 'name' && !teamListSetting.sortAscending) || teamListSetting.sortColumn != 'name', 'fa-caret-up': teamListSetting.sortColumn == 'name' && teamListSetting.sortAscending, 'inactive': teamListSetting.sortColumn != 'name'}"><span class="sr-only">Sortable. {{teamListSetting.sortColumn != 'name' ? 'Not sorted.' : (teamListSetting.sortAscending ? 'Sorted ascending.' : 'Sorted descending.')}}</span></span>
+              </button>
             </th>
             <th class="ym-list__column ym-list__column--amount" scope="col" aria-sort="{{teamListSetting.sortColumn != 'amountRaised' ? 'none' : (teamListSetting.sortAscending ? 'ascending' : 'descending')}}">
-              <a href="" ng-click="orderTeams('amountRaised')">
-                <strong>Amount</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (teamListSetting.sortColumn == 'amountRaised' && !teamListSetting.sortAscending) || teamListSetting.sortColumn != 'amountRaised', 'fa-caret-up': teamListSetting.sortColumn == 'amountRaised' && teamListSetting.sortAscending, 'inactive': teamListSetting.sortColumn != 'amountRaised'}"></span>
-              </a>
+              <button type="button" class="btn btn-link" ng-click="orderTeams('amountRaised')">
+                <strong>Amount</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (teamListSetting.sortColumn == 'amountRaised' && !teamListSetting.sortAscending) || teamListSetting.sortColumn != 'amountRaised', 'fa-caret-up': teamListSetting.sortColumn == 'amountRaised' && teamListSetting.sortAscending, 'inactive': teamListSetting.sortColumn != 'amountRaised'}"><span class="sr-only">Sortable. {{teamListSetting.sortColumn != 'amountRaised' ? 'Not sorted.' : (teamListSetting.sortAscending ? 'Sorted ascending.' : 'Sorted descending.')}}</span></span>
+              </button>
             </th>
             <th class="ym-list__column ym-list__column--mins" scope="col" aria-sort="{{teamListSetting.sortColumn != 'minsActivity' ? 'none' : (teamListSetting.sortAscending ? 'ascending' : 'descending')}}">
-              <a href="" ng-click="orderTeams('minsActivity')">
-                <strong>Min. of Activity</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (teamListSetting.sortColumn == 'minsActivity' && !teamListSetting.sortAscending) || teamListSetting.sortColumn != 'minsActivity', 'fa-caret-up': teamListSetting.sortColumn == 'minsActivity' && teamListSetting.sortAscending, 'inactive': teamListSetting.sortColumn != 'minsActivity'}"></span>
-              </a>
+              <button type="button" class="btn btn-link" ng-click="orderTeams('minsActivity')">
+                <strong>Min. of Activity</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (teamListSetting.sortColumn == 'minsActivity' && !teamListSetting.sortAscending) || teamListSetting.sortColumn != 'minsActivity', 'fa-caret-up': teamListSetting.sortColumn == 'minsActivity' && teamListSetting.sortAscending, 'inactive': teamListSetting.sortColumn != 'minsActivity'}"><span class="sr-only">Sortable. {{teamListSetting.sortColumn != 'minsActivity' ? 'Not sorted.' : (teamListSetting.sortAscending ? 'Sorted ascending.' : 'Sorted descending.')}}</span></span>
+              </button>
             </th>
           </tr>
         </thead>
@@ -246,19 +246,19 @@
         <thead class="ym-list__header">
           <tr>
             <th class="ym-list__column ym-list__column--name" scope="col" aria-sort="{{participantListSetting.sortColumn != 'fullName' ? 'none' : (participantListSetting.sortAscending ? 'ascending' : 'descending')}}">
-              <a href="" ng-click="orderParticipants('fullName')">
-                <strong>Participant Name</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (participantListSetting.sortColumn == 'fullName' && !participantListSetting.sortAscending) || participantListSetting.sortColumn != 'fullName', 'fa-caret-up': participantListSetting.sortColumn == 'fullName' && participantListSetting.sortAscending, 'inactive': participantListSetting.sortColumn != 'fullName'}"></span>
-              </a>
+              <button type="button" class="btn btn-link" ng-click="orderParticipants('fullName')">
+                <strong>Participant Name</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (participantListSetting.sortColumn == 'fullName' && !participantListSetting.sortAscending) || participantListSetting.sortColumn != 'fullName', 'fa-caret-up': participantListSetting.sortColumn == 'fullName' && participantListSetting.sortAscending, 'inactive': participantListSetting.sortColumn != 'fullName'}"><span class="sr-only">Sortable. {{participantListSetting.sortColumn != 'fullName' ? 'Not sorted.' : (participantListSetting.sortAscending ? 'Sorted ascending.' : 'Sorted descending.')}}</span></span>
+              </button>
             </th>
             <th class="ym-list__column ym-list__column--amount" scope="col" aria-sort="{{participantListSetting.sortColumn != 'amountRaised' ? 'none' : (participantListSetting.sortAscending ? 'ascending' : 'descending')}}">
-              <a href="" ng-click="orderParticipants('amountRaised')">
-                <strong>Amount</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (participantListSetting.sortColumn == 'amountRaised' && !participantListSetting.sortAscending) || participantListSetting.sortColumn != 'amountRaised', 'fa-caret-up': participantListSetting.sortColumn == 'amountRaised' && participantListSetting.sortAscending, 'inactive': participantListSetting.sortColumn != 'amountRaised'}"></span>
-              </a>
+              <button type="button" class="btn btn-link" href="" ng-click="orderParticipants('amountRaised')">
+                <strong>Amount</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (participantListSetting.sortColumn == 'amountRaised' && !participantListSetting.sortAscending) || participantListSetting.sortColumn != 'amountRaised', 'fa-caret-up': participantListSetting.sortColumn == 'amountRaised' && participantListSetting.sortAscending, 'inactive': participantListSetting.sortColumn != 'amountRaised'}"><span class="sr-only">Sortable. {{participantListSetting.sortColumn != 'amountRaised' ? 'Not sorted.' : (participantListSetting.sortAscending ? 'Sorted ascending.' : 'Sorted descending.')}}</span></span>
+              </button>
             </th>
             <th class="ym-list__column ym-list__column--mins" scope="col" aria-sort="{{participantListSetting.sortColumn != 'minsActivity' ? 'none' : (participantListSetting.sortAscending ? 'ascending' : 'descending')}}">
-              <a href="" ng-click="orderParticipants('minsActivity')">
-                <strong>Min. of Activity</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (participantListSetting.sortColumn == 'minsActivity' && !participantListSetting.sortAscending) || participantListSetting.sortColumn != 'minsActivity', 'fa-caret-up': participantListSetting.sortColumn == 'minsActivity' && participantListSetting.sortAscending, 'inactive': participantListSetting.sortColumn != 'minsActivity'}"></span>
-              </a>
+              <button type="button" class="btn btn-link" ng-click="orderParticipants('minsActivity')">
+                <strong>Min. of Activity</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (participantListSetting.sortColumn == 'minsActivity' && !participantListSetting.sortAscending) || participantListSetting.sortColumn != 'minsActivity', 'fa-caret-up': participantListSetting.sortColumn == 'minsActivity' && participantListSetting.sortAscending, 'inactive': participantListSetting.sortColumn != 'minsActivity'}"><span class="sr-only">Sortable. {{participantListSetting.sortColumn != 'minsActivity' ? 'Not sorted.' : (participantListSetting.sortAscending ? 'Sorted ascending.' : 'Sorted descending.')}}</span></span>
+              </button>
             </th>
           </tr>
         </thead>
