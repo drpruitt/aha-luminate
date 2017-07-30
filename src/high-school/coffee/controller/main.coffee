@@ -4,32 +4,33 @@ angular.module 'ahaLuminateControllers'
     '$httpParamSerializer'
     'AuthService'
     'TeamraiserParticipantService'
-    '$anchorScroll'
-    '$location'
-    '$timeout'
-    ($scope, $httpParamSerializer, AuthService, TeamraiserParticipantService, $anchorScroll, $location, $timeout) ->
+    ($scope, $httpParamSerializer, AuthService, TeamraiserParticipantService) ->
       $dataRoot = angular.element '[data-aha-luminate-root]'
       consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
       $scope.regEventId = ''
       
-      if consId
-        TeamraiserParticipantService.getRegisteredTeamraisers 'cons_id=' + consId + '&event_type=' + encodeURIComponent('High School'),
-          success: (response) ->
-            teamraisers = response.getRegisteredTeamraisersResponse.teamraiser
-            setNumber = ->
-              if not teamraisers
-                $scope.numberEvents = 0
-              else
-                teamraisers = [teamraisers] if not angular.isArray teamraisers
-                $scope.numberEvents = teamraisers.length
-              if $scope.numberEvents is 0
-                # TODO
-              else
-                if $scope.numberEvents is 1
-                  $scope.regEventId = teamraisers[0].id
-            $timeout setNumber, 1000
+      setRegEventId = (numberEvents = 0, regEventId = '') ->
+        $scope.numberEvents = numberEvents
+        $scope.regEventId = regEventId
+        if not $scope.$$phase
+          $scope.$apply()
+      if not consId
+        setRegEventId()
       else
-        $scope.numberEvents = 0
+        TeamraiserParticipantService.getRegisteredTeamraisers 'cons_id=' + consId + '&event_type=' + encodeURIComponent('High School'),
+          error: ->
+            setRegEventId()
+          success: (response) ->
+            teamraisers = response.getRegisteredTeamraisersResponse?.teamraiser
+            if not teamraisers
+              setRegEventId()
+            else
+              teamraisers = [teamraisers] if not angular.isArray teamraisers
+              numberEvents = teamraisers.length
+              regEventId = ''
+              if numberEvents is 1
+                regEventId = teamraisers[0].id
+              setRegEventId numberEvents, regEventId
       
       $scope.toggleLoginMenu = ->
         if $scope.loginMenuOpen
