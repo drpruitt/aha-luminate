@@ -66,6 +66,12 @@ div.table {
   .btn-link {
     color: $event-primary;
     padding: 0;
+    
+    .fa {
+      &.inactive {
+        color: $inactive-grey !important;
+      }
+    }
   }
 }
 

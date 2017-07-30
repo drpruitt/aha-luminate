@@ -313,20 +313,20 @@
                 <thead class="ym-list__header">
                   <tr>
                     <th class="ym-list__column ym-list__column--name" scope="col" role="columnheader" aria-sort="{{participantListSetting.sortProp != 'fullName' ? 'none' : (participantListSetting.sortDesc ? 'descending' : 'ascending')}}">
-                      <a href="" ng-click="orderParticipants('fullName')">
+                      <button type="button" class="btn btn-link" ng-click="orderParticipants('fullName')">
                         <strong>Participant Name</strong>&nbsp;
                         <span ng-show="totalParticipants > 1 && participantListSetting.sortProp == 'fullName' && !participantListSetting.sortDesc" class="fa fa-caret-down"></span>
                         <span ng-show="totalParticipants > 1 && participantListSetting.sortProp == 'fullName' && participantListSetting.sortDesc" class="fa fa-caret-up"></span>
                         <span ng-show="totalParticipants > 1 && participantListSetting.sortProp != 'fullName'" class="fa fa-caret-down inactive"></span>
-                      </a>
+                      </button>
                     </th>
                     <th class="ym-list__column ym-list__column--team" scope="col" role="columnheader" aria-sort="{{participantListSetting.sortProp != 'teamName' ? 'none' : (participantListSetting.sortDesc ? 'descending' : 'ascending')}}">
-                      <a href="" ng-click="orderParticipants('teamName')">
+                      <button type="button" class="btn btn-link" ng-click="orderParticipants('teamName')">
                         <strong>Team Name</strong>&nbsp;
                         <span ng-show="totalParticipants > 1 && participantListSetting.sortProp == 'teamName' && !participantListSetting.sortDesc" class="fa fa-caret-down"></span>
                         <span ng-show="totalParticipants > 1 && participantListSetting.sortProp == 'teamName' && participantListSetting.sortDesc" class="fa fa-caret-up"></span>
                         <span ng-show="totalParticipants > 1 && participantListSetting.sortProp != 'teamName'" class="fa fa-caret-down inactive"></span>
-                      </a>
+                      </button>
                     </th>
                   </tr>
                 </thead>
@@ -400,11 +400,11 @@
                 <thead class="ym-list__header">
                   <tr>
                     <th class="ym-list__column ym-list__column--name" scope="col" role="columnheader" aria-sort="{{teamListSetting.sortDesc ? 'descending' : 'ascending'}}">
-                      <a href="" ng-click="orderTeams('teamName')">
+                      <button type="button" class="btn btn-link" ng-click="orderTeams('teamName')">
                         <strong>Team Name</strong>&nbsp;
                         <span ng-show="totalTeams > 1 && !teamListSetting.sortDesc" class="fa fa-caret-down"></span>
                         <span ng-show="totalTeams > 1 && teamListSetting.sortDesc" class="fa fa-caret-up"></span>
-                      </a>
+                      </button>
                     </th>
                   </tr>
                 </thead>
