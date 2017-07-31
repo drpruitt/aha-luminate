@@ -690,6 +690,11 @@ main > .container {
   @media (min-width: $screen-md-min) {
     margin: 25px;
   }
+
+  .col-sm-7,
+  .col-sm-5 {
+    padding: 0;
+  }
   
   &.ym-activity-box--next-step, 
   &.ym-activity-box--captain-next-step {
@@ -881,7 +886,7 @@ main > .container {
         display: block;
         font-size: $font-size-sm;
         line-height: 18px;
-        margin: 0;
+        margin: 0 0 5px;
         vertical-align: bottom;
 
         @media (min-width: $screen-xs-min) {
@@ -890,7 +895,6 @@ main > .container {
         
         @media (min-width: $screen-sm-min) {
           display: block;
-          margin: 0 0 8px;
         }
       }
 
