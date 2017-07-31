@@ -330,15 +330,15 @@
 .ym-pc-dashboard-heart-challenge-blood-pressure {
   .btn {
     text-align: center;
-    width: 246px;
+    max-width: 250px;
   }
   
   .alert-danger, 
   .alert-success {
     border-radius: 10px;
     text-align: center;
-    width: 246px;
     padding: 7px 25px;
+    max-width: 250px;
   }
 }
 
