@@ -281,7 +281,9 @@
 
 .ym-pc-dashboard-heart-challenge-body {
   float: left;
-  width: calc(100% - 102px);
+  @media(min-width: $screen-sm-min){
+    width: calc(100% - 102px);
+  }
 }
 
 .ym-pc-dashboard-heart-challenge-text {
