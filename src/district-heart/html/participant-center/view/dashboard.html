@@ -96,11 +96,6 @@
                       <strong><span ng-bind-html="teamProgress.goalFormatted"></span></strong> goal
                     </p>
                   </div>
-                  <div ng-if="participantRegistration.aTeamCaptain != 'true' || location == '/dashboard-student'" ng-cloak>
-                    <p>
-                      &nbsp;
-                    </p>
-                  </div>
                   <div ng-if="participantRegistration.aTeamCaptain == 'true' && location != '/dashboard-student'" ng-cloak>
                     <p>
                       <a href="" ng-click="editTeamGoal()">
