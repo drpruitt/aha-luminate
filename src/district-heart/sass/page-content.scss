@@ -84,6 +84,10 @@
     @media (max-width: $screen-xs-max) {
       margin: 0 0 40px;
     }
+
+    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+      min-height: 100px;
+    }
     
     &:last-child {
       @media (max-width: $screen-xs-max) {
@@ -92,8 +96,12 @@
     }
 
     .btn {
-      @media (min-width: $screen-sm-min) {
-        vertical-align: bottom;
+      @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
       }
     }
   }
