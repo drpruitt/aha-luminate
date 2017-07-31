@@ -690,6 +690,10 @@ main > .container {
   @media (min-width: $screen-md-min) {
     margin: 25px;
   }
+
+  .col-sm-5 {
+    padding: 0;
+  }
   
   &.ym-activity-box--next-step, 
   &.ym-activity-box--captain-next-step {
