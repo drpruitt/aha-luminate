@@ -169,17 +169,17 @@ table {
             }
           }
         }
-
-        .pagination-next,
-        .pagination-prev,
-        .pagination-last,
-        .pagination-first {
-          a:focus,
-          a:hover {        
-            background: transparent;
-          }
-        }
       }
+    }
+  }
+  
+  .pagination-next,
+  .pagination-prev,
+  .pagination-last,
+  .pagination-first {
+    a:focus,
+    a:hover {        
+      background: transparent;
     }
   }
 }
