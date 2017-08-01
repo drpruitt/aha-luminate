@@ -118,6 +118,11 @@ select {
     .btn {
       background-color: #004d68;
       color: $brand-white;
+      margin-bottom: 10px;
+
+      @media (min-width: 480px) {
+        margin-bottom: 0;
+      }
     }
   }
 
