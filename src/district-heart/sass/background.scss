@@ -1,8 +1,12 @@
 main {
-  background: $event-secondary-light;
+  /*background: $event-secondary-light;*/
+  background: yellow;
+  height: 100%;
+  overflow: hidden;
+
 
   @media (min-width: $screen-md-min) {
-    background: url('../image/bkrd.png') repeat top left scroll;
+    /*background: url('../image/bkrd.png') repeat top left scroll;*/
   }
 }
 

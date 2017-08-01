@@ -1,7 +1,7 @@
 main {
   padding: 18px 0;
   height: 100%;
-  overflow: auto;
+  overflow: hidden;
   
   @media (min-width: $screen-sm-min) {
     padding: 22px 0;
