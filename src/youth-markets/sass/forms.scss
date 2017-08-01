@@ -154,11 +154,10 @@ div.responsive input[disabled] {
       position: absolute;
       color: $event-primary;
       font-size: 20px;
-      top: 0;
+      top: 15px;
       left: 0;
       padding-left: 20px;
-      height: 50px;
-      line-height: 50px;
+      line-height: 1;
       font-weight: bold;
 
       &:hover {
