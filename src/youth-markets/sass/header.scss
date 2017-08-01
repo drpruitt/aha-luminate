@@ -501,6 +501,10 @@ header {
             position: static;
           }
         }
+
+        .ym-header-welcome-toggle--first-name {
+          display: inline-block;
+        }
       }
 
       .ym-header-welcome-dropdown {
