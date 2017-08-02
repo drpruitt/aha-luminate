@@ -116,7 +116,7 @@ angular.module 'trPcControllers'
         else
           contactCountPromise = ContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true'
             .then (response) ->
-              $scope.contactCounts[filter] = response.data.getTeamraiserAddressBookContactsResponse.totalNumberResults
+              $scope.contactCounts[filter] = response.data.getTeamraiserAddressBookContactsResponse?.totalNumberResults or '0'
               response
           $scope.emailPromises.push contactCountPromise
       
