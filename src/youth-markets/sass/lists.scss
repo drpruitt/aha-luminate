@@ -1,4 +1,6 @@
 .ym-list {
+  text-align: center;
+
   .fa-ul {
     margin-left: 1.6em;
   }
@@ -43,10 +45,6 @@
   }
 }
 
-.ym-list {
-  text-align: center;
-}
-
 .ym-donor-list {
   background: $brand-white;
   text-align: left;
@@ -81,5 +79,70 @@
 
 .ym-stripe-list__header {
   border-bottom: 7px solid $event-secondary;
+}
+
+.ym-accordion-list {
+  .panel-group {
+    @media (max-width: $screen-xs-max) {
+      margin-bottom: 40px;
+    }
+  }
+
+  .panel {
+    border-radius: 0;
+    margin-top: 0;
+    border: 0 none;
+    border-bottom: 1px solid $event-secondary;
+  }
+
+  .panel + .panel {
+    margin: 0;
+  }
+
+  .panel-heading {
+    background: transparent;
+    border-radius: 0;
+    border: 0 none;
+    padding: 14px 15px;
+
+    &.active {
+      background: $event-secondary;
+
+      a.panel-title {
+        color: $brand-white;
+        pointer-events: none;
+        cursor: default;
+
+        .fa-chevron-down {
+          display: none;
+        }
+
+        .fa-chevron-up {
+          display: inline-block;
+        }
+      }
+    }
+
+    a.panel-title {
+      display: block;
+      text-decoration: none;
+      font-weight: 700;
+
+      &:hover,
+      &:visited,
+      &:focus,
+      &:active {
+        text-decoration: underline;
+      }
+
+      .fa-chevron-up {
+        display: none;
+      }
+
+      .fa-chevron-down {
+        display: inline-block;
+      }
+    }
+  }
 }
 
