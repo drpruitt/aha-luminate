@@ -651,8 +651,12 @@ main > .container {
 }
 
 .ym-pc-dashboard-activities-section {
-  margin: 0 0 24px;
+  margin: 24px 0;
   clear: both;
+  
+  @media(min-width: $screen-sm-min) {
+    margin: 0 0 24px;
+  }
 
   > .row {
     padding: 0;
@@ -685,6 +689,15 @@ main > .container {
   
   @media (min-width: $screen-md-min) {
     margin: 25px;
+  }
+
+  .row {
+    margin: 0;
+  }
+  
+  .col-sm-7,
+  .col-sm-5 {
+    padding: 0;
   }
   
   &.ym-activity-box--next-step, 
@@ -877,7 +890,7 @@ main > .container {
         display: block;
         font-size: $font-size-sm;
         line-height: 18px;
-        margin: 0;
+        margin: 0 0 5px;
         vertical-align: bottom;
 
         @media (min-width: $screen-xs-min) {
@@ -886,7 +899,6 @@ main > .container {
         
         @media (min-width: $screen-sm-min) {
           display: block;
-          margin: 0 0 8px;
         }
       }
 

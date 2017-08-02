@@ -96,11 +96,6 @@
                       <strong><span ng-bind-html="teamProgress.goalFormatted"></span></strong> goal
                     </p>
                   </div>
-                  <div ng-if="participantRegistration.aTeamCaptain != 'true' || location == '/dashboard-student'" ng-cloak>
-                    <p>
-                      &nbsp;
-                    </p>
-                  </div>
                   <div ng-if="participantRegistration.aTeamCaptain == 'true' && location != '/dashboard-student'" ng-cloak>
                     <p>
                       <a href="" ng-click="editTeamGoal()">
@@ -934,7 +929,7 @@
             <strong><span>Challenge:</span> Log your minutes of activity every day!</strong>
           </div>
           <div class="clearfix">
-            <div class="ym-pc-dashboard-heart-challenge-icon">
+            <div class="ym-pc-dashboard-heart-challenge-icon hidden-xs">
               <img class="img-responsive" src="../aha-luminate/dist/district-heart/image/dh-activity-challenge-icon.png" alt="">
             </div>
             <div class="ym-pc-dashboard-heart-challenge-body">
@@ -975,7 +970,7 @@
           <strong><span>Challenge:</span> Get your blood pressure checked!</strong>
         </div>
         <div class="clearfix">
-          <div class="ym-pc-dashboard-heart-challenge-icon">
+          <div class="ym-pc-dashboard-heart-challenge-icon hidden-xs">
             <img class="img-responsive" src="../aha-luminate/dist/district-heart/image/dh-blood-pressure-challenge-icon.png" alt="">
           </div>
           <div class="ym-pc-dashboard-heart-challenge-body">

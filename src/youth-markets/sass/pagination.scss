@@ -97,12 +97,11 @@ table {
 .ym-school-search,
 .ym-donor-search,
 .ym-page-section__roster {
-  backgoru
   .table {
-    margin: 0 0 10px;
+    margin: 0 auto 10px;
 
     @media (min-width: $screen-sm-min) {
-      margin: 0 0 30px;
+      margin: 0 auto 30px;
     }
   }
   
@@ -166,12 +165,21 @@ table {
 
             &:hover,
             &:focus {
-              background-color: transparent;
               text-decoration: none;
             }
           }
         }
       }
+    }
+  }
+  
+  .pagination-next,
+  .pagination-prev,
+  .pagination-last,
+  .pagination-first {
+    a:focus,
+    a:hover {        
+      background: transparent;
     }
   }
 }
