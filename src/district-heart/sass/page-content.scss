@@ -117,9 +117,23 @@
   }
 }
 
+.ym-page-section__roster.ym-page-section__donor-search {
+  padding: 25px 10px;
+
+  @media(min-width: $screen-sm-min) {
+    padding: 50px;
+  }
+}
+
 .ym-donor-search {
   .ym-donor-search__buttons{
     margin-bottom: 20px;
+
+    button:first-child {
+      @media(min-width: $screen-xs-min){
+        margin: 0 10px 0 0;
+      }
+    }
   }
 }
 
