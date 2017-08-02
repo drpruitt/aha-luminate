@@ -321,7 +321,8 @@
         max-width: 130px;
       }
 
-      input[type=date].form-control, input[type=number].form-control {
+      input {
+        line-height: normal;
         line-height: 1.2em;
         height: 36px;
       }
