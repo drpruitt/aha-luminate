@@ -320,6 +320,12 @@
         width: 130px;
         max-width: 130px;
       }
+
+      input[type=date].form-control, input[type=number].form-control {
+        line-height: 1.2em;
+        height: 36px;
+      }
+  }
     }
     
     .btn {
