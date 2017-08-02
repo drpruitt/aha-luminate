@@ -94,6 +94,10 @@ angular.module 'trPcControllers'
                 # TODO
               else
                 NgPcTeamraiserCompanyService.getCompanies 'fr_id=' + $scope.prevFrId + '&company_name=' + encodeURIComponent('org_for_company_id=' + $scope.participantRegistration.companyInformation.companyId)
+                  .then (response) ->
+                    companies = response.data.getCompaniesResponse?.company
+                    if companies
+                      companies = [companies] if not angular.isArray companies
             else
               contactsPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=10&list_page_offset=' + pageNumber
                 .then (response) ->
@@ -122,6 +126,10 @@ angular.module 'trPcControllers'
                 # TODO
               else
                 NgPcTeamraiserCompanyService.getCompanies 'fr_id=' + $scope.prevFrId + '&company_name=' + encodeURIComponent('org_for_company_id=' + $scope.participantRegistration.companyInformation.companyId)
+                  .then (response) ->
+                    companies = response.data.getCompaniesResponse?.company
+                    if companies
+                      companies = [companies] if not angular.isArray companies
             else
               allContactsPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=200&list_page_offset=' + pageNumber
                 .then (response) ->
