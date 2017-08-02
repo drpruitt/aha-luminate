@@ -81,6 +81,9 @@
               <div class="ym-registration-tfind-no-results" ng-if="(teamList.teams|filter:{name: teamSearch.teamName}).length == 0">
                 No teams found matching "<span ng-bind-html="teamSearch.teamName"></span>".
               </div>
+              <div class="text-center visible-xs-block">
+                <em>Scroll right to view all information</em>
+              </div>
               <div class="table-responsive">
                 <div class="table table-striped" ng-if="(teamList.teams|filter:{name: teamSearch.teamName}).length > 0">
                   <div class="table-body">
