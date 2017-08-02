@@ -1,3 +1,29 @@
+.ym-list {
+  .fa-ul {
+    margin-left: 1.6em;
+  }
+
+  .fa {
+    color: $event-primary;
+    &.inactive {
+      color: $inactive-grey;
+    }
+  }
+
+  li {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+
+  li:last-child{
+    margin-bottom: 0;
+  }
+
+  a {
+    font-weight: 700;
+  }
+}
+
 .ym-page-section__list {
   .ym-donate-cta,
   .ym-story {
@@ -56,3 +82,4 @@
 .ym-stripe-list__header {
   border-bottom: 7px solid $event-secondary;
 }
+

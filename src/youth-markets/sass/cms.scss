@@ -509,32 +509,6 @@
   }
 }
 
-.ym-list {
-  .fa-ul {
-    margin-left: 1.6em;
-  }
-
-  .fa {
-    color: $event-primary;
-    &.inactive {
-      color: $inactive-grey;
-    }
-  }
-
-  li {
-    margin-bottom: 15px;
-    text-align: left;
-  }
-
-  li:last-child{
-    margin-bottom: 0;
-  }
-
-  a {
-    font-weight: 700;
-  }
-}
-
 .ym-school-search {
   @media (min-width: $screen-sm-min) {
     padding: 10px 0 40px;
