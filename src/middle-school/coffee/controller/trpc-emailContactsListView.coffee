@@ -90,6 +90,8 @@ angular.module 'trPcControllers'
             if filter is 'email_custom_rpt_show_past_company_coordinator_participants'
               if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
                 # TODO
+              else if not $scope.prevFrId or $scope.prevFrId is ''
+                # TODO
               else
                 NgPcTeamraiserCompanyService.getCompanies 'fr_id=' + $scope.prevFrId + '&company_name=' + encodeURIComponent('org_for_company_id=' + $scope.participantRegistration.companyInformation.companyId)
             else
@@ -115,6 +117,8 @@ angular.module 'trPcControllers'
               pageNumber = 0
             if filter is 'email_custom_rpt_show_past_company_coordinator_participants'
               if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
+                # TODO
+              else if not $scope.prevFrId or $scope.prevFrId is ''
                 # TODO
               else
                 NgPcTeamraiserCompanyService.getCompanies 'fr_id=' + $scope.prevFrId + '&company_name=' + encodeURIComponent('org_for_company_id=' + $scope.participantRegistration.companyInformation.companyId)
