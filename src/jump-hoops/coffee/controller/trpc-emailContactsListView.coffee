@@ -11,7 +11,8 @@ angular.module 'trPcControllers'
     'APP_INFO'
     'NgPcTeamraiserEmailService'
     'NgPcContactService'
-    ($rootScope, $scope, $window, $routeParams, $location, $timeout, $httpParamSerializer, $uibModal, APP_INFO, NgPcTeamraiserEmailService, NgPcContactService) ->
+    'NgPcTeamraiserCompanyService'
+    ($rootScope, $scope, $window, $routeParams, $location, $timeout, $httpParamSerializer, $uibModal, APP_INFO, NgPcTeamraiserEmailService, NgPcContactService, NgPcTeamraiserCompanyService) ->
       $scope.filter = $routeParams.filter
       
       $scope.emailPromises = []
@@ -78,6 +79,7 @@ angular.module 'trPcControllers'
       ]
       if $scope.participantRegistration.companyInformation?.isCompanyCoordinator is 'true'
         contactFilters.push 'email_rpt_show_company_coordinator_participants'
+        contactFilters.push 'email_custom_rpt_show_past_company_coordinator_participants'
       $scope.addressBookContacts = 
         page: 1
         allContactsSelected: false
@@ -139,6 +141,7 @@ angular.module 'trPcControllers'
         email_rpt_show_donors: 'Donors'
         email_rpt_show_nondonors: 'Non-Donors'
         email_rpt_show_company_coordinator_participants: 'School Participants'
+        email_custom_rpt_show_past_company_coordinator_participants: 'Past School Participants'
       
       $scope.filterName = filterNames[$scope.filter]
       
