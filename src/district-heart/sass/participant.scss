@@ -520,12 +520,15 @@
   }
 }
 
-.ng-pc-nav a:active, 
+ 
 .ng-pc-nav a:focus, 
 .ng-pc-nav a:hover {
   @media(min-width: 560px){
     background: $event-secondary;
   }
+}
+.ng-pc-nav a.active {
+  background: $brand-white;
 }
 
 .ym-pc-dashboard-torch-graphic {
