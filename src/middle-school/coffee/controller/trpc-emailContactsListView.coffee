@@ -41,13 +41,13 @@ angular.module 'trPcControllers'
       
       getContactString = (contact) ->
         contactData = ''
-        if contact?.firstName?
+        if contact?.firstName
           contactData += contact.firstName
-        if contact?.lastName?
+        if contact?.lastName
           if contactData isnt ''
             contactData += ' '
           contactData += contact.lastName
-        if contact?.email?
+        if contact?.email
           if contactData isnt ''
             contactData += ' '
           contactData += '<' + contact.email + '>'
@@ -87,44 +87,56 @@ angular.module 'trPcControllers'
         if filter is $scope.filter
           $scope.getContacts = ->
             pageNumber = $scope.addressBookContacts.page - 1
-            contactsPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=10&list_page_offset=' + pageNumber
-              .then (response) ->
-                $scope.contactCounts[filter] = $scope.addressBookContacts.totalNumber = response.data.getTeamraiserAddressBookContactsResponse.totalNumberResults
-                addressBookContacts = response.data.getTeamraiserAddressBookContactsResponse.addressBookContact
-                addressBookContacts = [addressBookContacts] if not angular.isArray addressBookContacts
-                contacts = []
-                angular.forEach addressBookContacts, (contact) ->
-                  if contact?
-                    contact.selected = isContactSelected contact
-                    contacts.push contact
-                $scope.addressBookContacts.contacts = contacts
-                response
-            $scope.emailPromises.push contactsPromise
+            if filter is 'email_custom_rpt_show_past_company_coordinator_participants'
+              if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
+                # TODO
+              else
+                NgPcTeamraiserCompanyService.getCompanies 'fr_id=' + $scope.frId + '&company_name=' + encodeURIComponent('org_for_company_id=' + $scope.participantRegistration.companyInformation.companyId)
+            else
+              contactsPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=10&list_page_offset=' + pageNumber
+                .then (response) ->
+                  $scope.contactCounts[filter] = $scope.addressBookContacts.totalNumber = response.data.getTeamraiserAddressBookContactsResponse.totalNumberResults
+                  addressBookContacts = response.data.getTeamraiserAddressBookContactsResponse.addressBookContact
+                  addressBookContacts = [addressBookContacts] if not angular.isArray addressBookContacts
+                  contacts = []
+                  angular.forEach addressBookContacts, (contact) ->
+                    if contact
+                      contact.selected = isContactSelected contact
+                      contacts.push contact
+                  $scope.addressBookContacts.contacts = contacts
+                  response
+              $scope.emailPromises.push contactsPromise
           $scope.getContacts()
           $scope.getAllContacts = ->
-            if $scope.addressBookContacts.getAllPage?
+            if $scope.addressBookContacts.getAllPage
               pageNumber = $scope.addressBookContacts.getAllPage
             else
               $scope.addressBookContacts.allContacts = []
               pageNumber = 0
-            allContactsPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=200&list_page_offset=' + pageNumber
-              .then (response) ->
-                totalNumber = response.data.getTeamraiserAddressBookContactsResponse.totalNumberResults
-                addressBookContacts = response.data.getTeamraiserAddressBookContactsResponse.addressBookContact
-                addressBookContacts = [addressBookContacts] if not angular.isArray addressBookContacts
-                contacts = []
-                angular.forEach addressBookContacts, (contact) ->
-                  if contact?
-                    contact.selected = isContactSelected contact
-                    $scope.addressBookContacts.allContacts.push contact
-                if $scope.addressBookContacts.allContacts.length < totalNumber
-                  $scope.addressBookContacts.getAllPage = $scope.addressBookContacts.getAllPage + 1
-                  $scope.getAllContacts()
-                else
-                  delete $scope.addressBookContacts.getAllPage
-                  $scope.addressBookContacts.allContactsSelected = isAllContactsSelected()
-                  response
-            $scope.emailPromises.push allContactsPromise
+            if filter is 'email_custom_rpt_show_past_company_coordinator_participants'
+              if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
+                # TODO
+              else
+                NgPcTeamraiserCompanyService.getCompanies 'fr_id=' + $scope.frId + '&company_name=' + encodeURIComponent('org_for_company_id=' + $scope.participantRegistration.companyInformation.companyId)
+            else
+              allContactsPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=200&list_page_offset=' + pageNumber
+                .then (response) ->
+                  totalNumber = response.data.getTeamraiserAddressBookContactsResponse.totalNumberResults
+                  addressBookContacts = response.data.getTeamraiserAddressBookContactsResponse.addressBookContact
+                  addressBookContacts = [addressBookContacts] if not angular.isArray addressBookContacts
+                  contacts = []
+                  angular.forEach addressBookContacts, (contact) ->
+                    if contact
+                      contact.selected = isContactSelected contact
+                      $scope.addressBookContacts.allContacts.push contact
+                  if $scope.addressBookContacts.allContacts.length < totalNumber
+                    $scope.addressBookContacts.getAllPage = $scope.addressBookContacts.getAllPage + 1
+                    $scope.getAllContacts()
+                  else
+                    delete $scope.addressBookContacts.getAllPage
+                    $scope.addressBookContacts.allContactsSelected = isAllContactsSelected()
+                    response
+              $scope.emailPromises.push allContactsPromise
           $scope.getAllContacts()
         else
           if filter is 'email_custom_rpt_show_past_company_coordinator_participants'
