@@ -512,7 +512,9 @@
   background: $event-secondary-light;
 }
 
-.ng-pc-nav a, .ng-pc-nav a:link, .ng-pc-nav a:visited {
+.ng-pc-nav a, 
+.ng-pc-nav a:link, 
+.ng-pc-nav a:visited {
   @media(min-width: 560px){
     background: $event-secondary-light;
   }
