@@ -91,7 +91,7 @@ angular.module 'trPcControllers'
               if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
                 # TODO
               else
-                NgPcTeamraiserCompanyService.getCompanies 'fr_id=' + $scope.frId + '&company_name=' + encodeURIComponent('org_for_company_id=' + $scope.participantRegistration.companyInformation.companyId)
+                NgPcTeamraiserCompanyService.getCompanies 'fr_id=' + $scope.prevFrId + '&company_name=' + encodeURIComponent('org_for_company_id=' + $scope.participantRegistration.companyInformation.companyId)
             else
               contactsPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=10&list_page_offset=' + pageNumber
                 .then (response) ->
@@ -117,7 +117,7 @@ angular.module 'trPcControllers'
               if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
                 # TODO
               else
-                NgPcTeamraiserCompanyService.getCompanies 'fr_id=' + $scope.frId + '&company_name=' + encodeURIComponent('org_for_company_id=' + $scope.participantRegistration.companyInformation.companyId)
+                NgPcTeamraiserCompanyService.getCompanies 'fr_id=' + $scope.prevFrId + '&company_name=' + encodeURIComponent('org_for_company_id=' + $scope.participantRegistration.companyInformation.companyId)
             else
               allContactsPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=200&list_page_offset=' + pageNumber
                 .then (response) ->
