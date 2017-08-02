@@ -36,7 +36,7 @@ select.form-control {
 
 .input-lg, 
 select.input-lg {
-  line-height: 1;
+  line-height: normal;
   height: 40px;
   
   @media (min-width: $screen-sm-min) {
