@@ -320,6 +320,12 @@
         width: 130px;
         max-width: 130px;
       }
+
+      input[type=date].form-control, input[type=number].form-control {
+        line-height: 1.2em;
+        height: 36px;
+      }
+  }
     }
     
     .btn {
@@ -520,12 +526,15 @@
   }
 }
 
-.ng-pc-nav a:active, 
+ 
 .ng-pc-nav a:focus, 
 .ng-pc-nav a:hover {
   @media(min-width: 560px){
     background: $event-secondary;
   }
+}
+.ng-pc-nav a.active {
+  background: $brand-white;
 }
 
 .ym-pc-dashboard-torch-graphic {
