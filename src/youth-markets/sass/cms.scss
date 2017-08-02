@@ -491,7 +491,10 @@
       text-decoration: none;
       font-weight: 700;
 
-      &:hover {
+      &:hover,
+      &:visited,
+      &:focus,
+      &:active {
         text-decoration: underline;
       }
 
