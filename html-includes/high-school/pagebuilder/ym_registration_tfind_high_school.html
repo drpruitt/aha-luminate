@@ -27,7 +27,7 @@
       </script>
     ::
       <!-- company_id is not null -->
-      <div class="ym-registration-page-container ym-registration-page-container--tfind" ng-controller="RegistrationTfindCtrl" ng-init="frTmOpt = 'new'; newTeamInfo.companyId = '[[T6:[[A36]]]]'; newTeamInfo.fr_team_name = '[[T6:[[A16]]]]'; newTeamInfo.fr_team_goal = '[[T6:[[A17]]]]'">
+      <div class="ym-registration-page-container ym-registration-page-container--tfind" ng-controller="RegistrationTfindCtrl" ng-init="frTmOpt = 'new'; newTeamInfo.companyId = '[[T6:[[A36]]]]'; newTeamInfo.fr_team_name = '[[T6:[[A16]]]]'; newTeamInfo.fr_team_goal = '[[?xx::x[[A17]]x::[[T6:[[A39]]]]::[[T6:[[A17]]]]]]'">
         <div class="ym-registration-page-header">
           <h2 class="h4">
             Start a Team
@@ -206,6 +206,9 @@
             <div ng-if="teamList.teams.length > 0" ng-cloak>
               <div class="ym-registration-tfind-no-results" ng-if="(teamList.teams|filter:{name: teamSearch.teamName}).length == 0">
                 No teams found matching "<span ng-bind-html="teamSearch.teamName"></span>".
+              </div>
+              <div class="text-center visible-xs-block" ng-if="totalTeams > 0" ng-cloak>
+                <p><em>Scroll right to view all information</em></p>p>
               </div>
               <div class="table-responsive">
                 <div class="table table-striped" ng-if="(teamList.teams|filter:{name: teamSearch.teamName}).length > 0">

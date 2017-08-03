@@ -30,13 +30,13 @@ angular.module 'ahaLuminateControllers'
             schoolDataHeaders[schoolDataHeader] = schoolDataHeaderIndex
           angular.forEach schoolDataRows, (schoolDataRow, schoolDataRowIndex) ->
             if schoolDataRowIndex > 0
-              if schoolDataRow[schoolDataHeaders.HAS_CHILDREN] is '0'
+              if schoolDataRow[schoolDataHeaders.HAS_CHILDREN] isnt '1'
                 schoolDataMap['id' + schoolDataRow[schoolDataHeaders.COMPANY_ID]] =
                   SCHOOL_CITY: schoolDataRow[schoolDataHeaders.SCHOOL_CITY]
                   SCHOOL_STATE: schoolDataRow[schoolDataHeaders.SCHOOL_STATE]
                   COORDINATOR_FIRST_NAME: schoolDataRow[schoolDataHeaders.COORDINATOR_FIRST_NAME]
                   COORDINATOR_LAST_NAME: schoolDataRow[schoolDataHeaders.COORDINATOR_LAST_NAME]
-                  HAS_CHILDREN: schoolDataRow[schoolDataHeaders.HAS_CHILDREN]
+          
           $scope.schoolDataMap = schoolDataMap
           if $scope.schoolList.schools?.length > 0
             angular.forEach $scope.schoolList.schools, (school, schoolIndex) ->
@@ -46,18 +46,16 @@ angular.module 'ahaLuminateControllers'
                 school.SCHOOL_STATE = schoolData.SCHOOL_STATE
                 school.COORDINATOR_FIRST_NAME = schoolData.COORDINATOR_FIRST_NAME
                 school.COORDINATOR_LAST_NAME = schoolData.COORDINATOR_LAST_NAME
-                school.HAS_CHILDREN = schoolData.HAS_CHILDREN
                 $scope.schoolList.schools[schoolIndex] = school
       
       setSchools = (companies) ->
         schools = []
         angular.forEach companies, (company) ->
-          if company.coordinatorId isnt '0'
+          if company.coordinatorId and company.coordinatorId isnt '0'
             schools.push
               FR_ID: company.eventId
               COMPANY_ID: company.companyId
               SCHOOL_NAME: company.companyName
-              COORDINATOR_ID: company.coordinatorId
         schools
       
       $scope.getSchoolSuggestions = (newValue) ->
@@ -123,7 +121,6 @@ angular.module 'ahaLuminateControllers'
             schools[schoolIndex].SCHOOL_STATE = schoolData.SCHOOL_STATE
             schools[schoolIndex].COORDINATOR_FIRST_NAME = schoolData.COORDINATOR_FIRST_NAME
             schools[schoolIndex].COORDINATOR_LAST_NAME = schoolData.COORDINATOR_LAST_NAME
-            schools[schoolIndex].HAS_CHILDREN = schoolData.HAS_CHILDREN
         schools
       
       $scope.getSchoolSearchResults = ->
