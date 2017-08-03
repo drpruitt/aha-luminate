@@ -2,7 +2,8 @@
 <div ng-controller="HomeCtrl">
   <div class="ym-hero-top__find-your-school text-center visible-xs">
     <a href="#/scroll#JumpSearch" class="btn btn-primary btn-lg" role="button">
-      Students &amp; Parents:<br>Find Your School to Sign Up
+      Students &amp; Parents:<br>
+      Find Your School to Sign Up
     </a>
   </div>
   <t:if test="banner_image.length>0">
@@ -224,7 +225,7 @@
                     <span ng-bind-html="school.SCHOOL_STATE"></span>
                   </td>
                   <td class="ym-list__column ym-list__column--team-leader text-right">
-                    <span ng-bind-html="school.COORDINATOR_LAST_NAME"></span>, <span ng-bind-html="school.COORDINATOR_FIRST_NAME"></span>
+                    <span ng-bind-html="school.COORDINATOR_LAST_NAME"></span><span ng-if="school.COORDINATOR_LAST_NAME && school.COORDINATOR_LAST_NAME != '' && school.COORDINATOR_FIRST_NAME && school.COORDINATOR_FIRST_NAME != ''">, </span><span ng-bind-html="school.COORDINATOR_FIRST_NAME"></span>
                   </td>
                 </tr>
               </tbody>
@@ -274,7 +275,6 @@
   <t:set id="currentpath" value="path" />
   <t:if test="currentpath == '/district-heart-challenge/'">
     <div class="ym-page-section ym-page-section__main ym-page-section__donor-search ym-page-section__roster" ng-cloak>
-      
         <h4 class='text-center mb-lg'>
           Find a Participant or Team to Support
         </h4>
