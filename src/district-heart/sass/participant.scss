@@ -334,8 +334,8 @@
       margin: 0 10px 10px 0;
       
       input[type="number"].form-control {
-        width: 130px;
-        max-width: 130px;
+        width: 140px;
+        max-width: 140px;
       }
 
       input, 
@@ -345,31 +345,42 @@
         padding-top: 0;
         padding-bottom: 0;
       }
+    }
 
-      .input-group {
-        max-width: 130px;
-        
-        .form-control {
-          border-radius: 7px 0 0 7px;
-          max-width: 105px;
-        }
+    .input-group {
+      max-width: 140px;
 
-        .input-group-btn .btn{
-          height: 34px;
-          border: 1px solid $event-secondary;
-          padding: 0 10px;
-        }
+      .form-control {
+        border-radius: 7px 0 0 7px;
+      }
+
+      .input-group-btn .btn{
+        height: 34px;
+        border: 1px solid $event-secondary;
+        padding: 0 10px;
       }
     }
     
     .btn {
       text-align: center;
-      width: 165px;
     }
 
     .uib-datepicker-popup {
       button { 
         width: auto
+      }
+      .btn-success,
+      .btn-danger {
+        background: $event-primary;
+        border-color: $event-primary;
+
+        &:hover,
+        &:active,
+        &:focus,
+        .active {
+          background: $event-primary-dark;
+          border-color: $event-primary-dark;
+        }
       }
       .btn-info {
         background: $event-secondary;
