@@ -12,7 +12,8 @@ angular.module 'trPcControllers'
     'NgPcTeamraiserEmailService'
     'NgPcContactService'
     'NgPcTeamraiserCompanyService'
-    ($rootScope, $scope, $window, $routeParams, $location, $timeout, $httpParamSerializer, $uibModal, APP_INFO, NgPcTeamraiserEmailService, NgPcContactService, NgPcTeamraiserCompanyService) ->
+    'NgPcTeamraiserReportsService'
+    ($rootScope, $scope, $window, $routeParams, $location, $timeout, $httpParamSerializer, $uibModal, APP_INFO, NgPcTeamraiserEmailService, NgPcContactService, NgPcTeamraiserCompanyService, NgPcTeamraiserReportsService) ->
       $scope.filter = $routeParams.filter
       
       $scope.emailPromises = []
@@ -98,6 +99,7 @@ angular.module 'trPcControllers'
                     companies = response.data.getCompaniesResponse?.company
                     if companies
                       companies = [companies] if not angular.isArray companies
+                      previousCompany = companies[0]
             else
               contactsPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=10&list_page_offset=' + pageNumber
                 .then (response) ->
@@ -130,6 +132,7 @@ angular.module 'trPcControllers'
                     companies = response.data.getCompaniesResponse?.company
                     if companies
                       companies = [companies] if not angular.isArray companies
+                      previousCompany = companies[0]
             else
               allContactsPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=200&list_page_offset=' + pageNumber
                 .then (response) ->

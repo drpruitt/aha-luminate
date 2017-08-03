@@ -4,6 +4,29 @@
 
 @import "../../youth-markets/sass/participant.scss";
 
+.ng-pc-nav {
+  a {
+    &, 
+    &:link, 
+    &:visited {
+      @media(min-width: 560px) {
+        background: $event-secondary-light;
+      }
+    }
+    
+    &:hover, 
+    &:focus {
+      @media(min-width: 560px) {
+        background: $event-secondary;
+      }
+    }
+    
+    &.active {
+      background: $brand-white;
+    }
+  }
+}
+
 .ng-pc-nav--coordinator {
   a {
     &,
@@ -516,25 +539,6 @@
 
 .event-secondary-medium {
   background: $event-secondary-light;
-}
-
-.ng-pc-nav a, 
-.ng-pc-nav a:link, 
-.ng-pc-nav a:visited {
-  @media(min-width: 560px){
-    background: $event-secondary-light;
-  }
-}
-
- 
-.ng-pc-nav a:focus, 
-.ng-pc-nav a:hover {
-  @media(min-width: 560px){
-    background: $event-secondary;
-  }
-}
-.ng-pc-nav a.active {
-  background: $brand-white;
 }
 
 .ym-pc-dashboard-torch-graphic {
