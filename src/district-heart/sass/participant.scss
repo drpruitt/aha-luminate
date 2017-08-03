@@ -333,11 +333,6 @@
     .form-group {
       margin: 0 10px 10px 0;
       
-      input[type="date"].form-control {
-        width: 165px;
-        max-width: 165px;
-      }
-      
       input[type="number"].form-control {
         width: 130px;
         max-width: 130px;
@@ -350,12 +345,28 @@
         padding-top: 0;
         padding-bottom: 0;
       }
+
+      .input-group {
+        max-width: 130px;
+        
+        .form-control {
+          border-radius: 7px 0 0 7px;
+          max-width: 105px;
+        }
+
+        .input-group-btn .btn{
+          height: 34px;
+          border: 1px solid $event-secondary;
+          padding: 0 10px;
+        }
+      }
     }
     
     .btn {
       text-align: center;
       width: 165px;
     }
+
     .uib-datepicker-popup {
       button { 
         width: auto
