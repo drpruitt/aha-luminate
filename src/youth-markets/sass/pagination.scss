@@ -183,3 +183,9 @@ table {
     }
   }
 }
+
+.ym-pagination.text-center {
+  @media(max-width: $screen-xs-max) {
+    text-align: left;
+  }
+}
