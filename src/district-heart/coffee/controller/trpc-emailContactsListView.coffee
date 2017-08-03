@@ -106,6 +106,8 @@ angular.module 'trPcControllers'
                       previousCompany = companies[0]
                       previousCompanyId = previousCompany.companyId
                       NgPcTeamraiserReportsService.getDistrictDetailReport $scope.prevFrId, previousCompanyId
+                        .then (response) ->
+                          $scope.addressBookContacts.contacts = []
             else
               contactsPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=10&list_page_offset=' + pageNumber
                 .then (response) ->
@@ -141,6 +143,8 @@ angular.module 'trPcControllers'
                       previousCompany = companies[0]
                       previousCompanyId = previousCompany.companyId
                       NgPcTeamraiserReportsService.getDistrictDetailReport $scope.prevFrId, previousCompanyId
+                        .then (response) ->
+                          $scope.addressBookContacts.contacts = []
             else
               allContactsPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=200&list_page_offset=' + pageNumber
                 .then (response) ->

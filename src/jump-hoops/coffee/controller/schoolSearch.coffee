@@ -30,13 +30,12 @@ angular.module 'ahaLuminateControllers'
             schoolDataHeaders[schoolDataHeader] = schoolDataHeaderIndex
           angular.forEach schoolDataRows, (schoolDataRow, schoolDataRowIndex) ->
             if schoolDataRowIndex > 0
-              if schoolDataRow[schoolDataHeaders.HAS_CHILDREN] isnt '1'
-                schoolDataMap['id' + schoolDataRow[schoolDataHeaders.COMPANY_ID]] =
-                  SCHOOL_CITY: schoolDataRow[schoolDataHeaders.SCHOOL_CITY]
-                  SCHOOL_STATE: schoolDataRow[schoolDataHeaders.SCHOOL_STATE]
-                  COORDINATOR_FIRST_NAME: schoolDataRow[schoolDataHeaders.COORDINATOR_FIRST_NAME]
-                  COORDINATOR_LAST_NAME: schoolDataRow[schoolDataHeaders.COORDINATOR_LAST_NAME]
-          
+              schoolDataMap['id' + schoolDataRow[schoolDataHeaders.COMPANY_ID]] =
+                SCHOOL_CITY: schoolDataRow[schoolDataHeaders.SCHOOL_CITY]
+                SCHOOL_STATE: schoolDataRow[schoolDataHeaders.SCHOOL_STATE]
+                COORDINATOR_FIRST_NAME: schoolDataRow[schoolDataHeaders.COORDINATOR_FIRST_NAME]
+                COORDINATOR_LAST_NAME: schoolDataRow[schoolDataHeaders.COORDINATOR_LAST_NAME]
+        
           $scope.schoolDataMap = schoolDataMap
           if $scope.schoolList.schools?.length > 0
             angular.forEach $scope.schoolList.schools, (school, schoolIndex) ->
