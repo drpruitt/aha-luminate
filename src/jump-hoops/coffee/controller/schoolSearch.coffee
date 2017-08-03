@@ -35,7 +35,7 @@ angular.module 'ahaLuminateControllers'
                 SCHOOL_STATE: schoolDataRow[schoolDataHeaders.SCHOOL_STATE]
                 COORDINATOR_FIRST_NAME: schoolDataRow[schoolDataHeaders.COORDINATOR_FIRST_NAME]
                 COORDINATOR_LAST_NAME: schoolDataRow[schoolDataHeaders.COORDINATOR_LAST_NAME]
-        
+          
           $scope.schoolDataMap = schoolDataMap
           if $scope.schoolList.schools?.length > 0
             angular.forEach $scope.schoolList.schools, (school, schoolIndex) ->
