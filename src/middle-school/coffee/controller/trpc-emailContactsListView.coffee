@@ -100,6 +100,8 @@ angular.module 'trPcControllers'
                     if companies
                       companies = [companies] if not angular.isArray companies
                       previousCompany = companies[0]
+                      previousCompanyId = previousCompany.companyId
+                      NgPcTeamraiserReportsService.getSchoolDetailReport $scope.prevFrId, previousCompanyId
             else
               contactsPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=10&list_page_offset=' + pageNumber
                 .then (response) ->
@@ -133,6 +135,8 @@ angular.module 'trPcControllers'
                     if companies
                       companies = [companies] if not angular.isArray companies
                       previousCompany = companies[0]
+                      previousCompanyId = previousCompany.companyId
+                      NgPcTeamraiserReportsService.getSchoolDetailReport $scope.prevFrId, previousCompanyId
             else
               allContactsPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=200&list_page_offset=' + pageNumber
                 .then (response) ->
