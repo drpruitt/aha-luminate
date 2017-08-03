@@ -1,7 +1,6 @@
 @import "../../youth-markets/sass/variables.scss";
 @import "variables.scss";
 @import "../../youth-markets/sass/mixins.scss";
-
 @import "../../youth-markets/sass/participant.scss";
 
 .ng-pc-nav {
@@ -334,14 +333,9 @@
     .form-group {
       margin: 0 10px 10px 0;
       
-      input[type="date"].form-control {
-        width: 165px;
-        max-width: 165px;
-      }
-      
       input[type="number"].form-control {
-        width: 130px;
-        max-width: 130px;
+        width: 140px;
+        max-width: 140px;
       }
 
       input, 
@@ -352,10 +346,54 @@
         padding-bottom: 0;
       }
     }
+
+    .input-group {
+      max-width: 140px;
+
+      .form-control {
+        border-radius: 7px 0 0 7px;
+      }
+
+      .input-group-btn .btn{
+        height: 34px;
+        border: 1px solid $event-secondary;
+        padding: 0 10px;
+      }
+    }
     
     .btn {
       text-align: center;
-      width: 165px;
+    }
+
+    .uib-datepicker-popup {
+      button { 
+        width: auto
+      }
+      .btn-success,
+      .btn-danger {
+        background: $event-primary;
+        border-color: $event-primary;
+
+        &:hover,
+        &:active,
+        &:focus,
+        .active {
+          background: $event-primary-dark;
+          border-color: $event-primary-dark;
+        }
+      }
+      .btn-info {
+        background: $event-secondary;
+        border-color: $event-secondary;
+
+        &:hover,
+        &:active,
+        &:focus,
+        .active {
+          background: $event-secondary-dark;
+          border-color: $event-secondary-dark;
+        }
+      }
     }
   }
 }
