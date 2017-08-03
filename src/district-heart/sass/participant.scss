@@ -1,7 +1,6 @@
 @import "../../youth-markets/sass/variables.scss";
 @import "variables.scss";
 @import "../../youth-markets/sass/mixins.scss";
-
 @import "../../youth-markets/sass/participant.scss";
 
 .ng-pc-nav {
@@ -356,6 +355,23 @@
     .btn {
       text-align: center;
       width: 165px;
+    }
+    .uib-datepicker-popup {
+      button { 
+        width: auto
+      }
+      .btn-info {
+        background: $event-secondary;
+        border-color: $event-secondary;
+
+        &:hover,
+        &:active,
+        &:focus,
+        .active {
+          background: $event-secondary-dark;
+          border-color: $event-secondary-dark;
+        }
+      }
     }
   }
 }

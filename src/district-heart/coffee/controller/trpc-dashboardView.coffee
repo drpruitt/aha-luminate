@@ -496,12 +496,8 @@ angular.module 'trPcControllers'
         $scope.popup1.opened = true
         return
       $scope.popup1 = opened: false
-      console.log 'test'
       $scope.dateOptions =
-        formatYear: 'yy'
-        maxDate: new Date(2020, 5, 22)
-        minDate: new Date
-        startingDay: 1
+        formatYear: 'yyyy'
 
       $scope.minsActivityLog =
         ng_activity_date: new Date()
