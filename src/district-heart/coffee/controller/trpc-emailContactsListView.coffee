@@ -108,6 +108,7 @@ angular.module 'trPcControllers'
                       NgPcTeamraiserReportsService.getDistrictDetailReport $scope.prevFrId, previousCompanyId
                         .then (response) ->
                           previousParticipants = []
+                          totalNumberResults = 0
                           reportHtml = response.data.getDistrictDetailReport?.report
                           if reportHtml
                             $reportTable = angular.element('<div>' + reportHtml + '</div>').find 'table'
@@ -115,11 +116,13 @@ angular.module 'trPcControllers'
                               $reportTableRows = $reportTable.find 'tr'
                               if $reportTableRows.length > 0
                                 angular.forEach $reportTableRows, (reportTableRow) ->
+                                  totalNumberResults++
                                   $reportTableRow = angular.element reportTableRow
                                   firstName = jQuery.trim $reportTableRow.find('td').eq(8).text()
                                   lastName = jQuery.trim $reportTableRow.find('td').eq(9).text()
                                   email = jQuery.trim $reportTableRow.find('td').eq(10).text()
                           $scope.addressBookContacts.contacts = previousParticipants
+                          $scope.addressBookContacts.totalNumber = totalNumberResults
             else
               contactsPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=10&list_page_offset=' + pageNumber
                 .then (response) ->
@@ -157,6 +160,7 @@ angular.module 'trPcControllers'
                       NgPcTeamraiserReportsService.getDistrictDetailReport $scope.prevFrId, previousCompanyId
                         .then (response) ->
                           previousParticipants = []
+                          totalNumberResults = 0
                           reportHtml = response.data.getDistrictDetailReport?.report
                           if reportHtml
                             $reportTable = angular.element('<div>' + reportHtml + '</div>').find 'table'
@@ -164,11 +168,13 @@ angular.module 'trPcControllers'
                               $reportTableRows = $reportTable.find 'tr'
                               if $reportTableRows.length > 0
                                 angular.forEach $reportTableRows, (reportTableRow) ->
+                                  totalNumberResults++
                                   $reportTableRow = angular.element reportTableRow
                                   firstName = jQuery.trim $reportTableRow.find('td').eq(8).text()
                                   lastName = jQuery.trim $reportTableRow.find('td').eq(9).text()
                                   email = jQuery.trim $reportTableRow.find('td').eq(10).text()
                           $scope.addressBookContacts.contacts = previousParticipants
+                          $scope.addressBookContacts.totalNumber = totalNumberResults
             else
               allContactsPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=200&list_page_offset=' + pageNumber
                 .then (response) ->
