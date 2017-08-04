@@ -33,7 +33,7 @@
                 </div>
               </div>
             </div>
-            <div ng-class="{'hidden': dashboardProgressType != 'personal'}" ng-cloak role="tabpanel" aria-label="Personal Panel">
+            <div id="ym-pc-dashboard-personal-panel--student" role="tabpanel" aria-label="Personal Panel" ng-show="dashboardProgressType == 'personal'" ng-cloak>
               <div class="ym-progress__thermometer" name="Personal Progress Bar" aria-valuetext="{{participantProgress.percent}} percent of fundriasing progress" role="progressbar" aria-valuenow="{{participantProgress.percent}}" aria-valuemin="0" aria-valuemax="100">
                 <div class="ym-progress__thermometer--fill" ng-style="{'width': participantProgress.percent + '%'}"></div>
               </div>
@@ -60,7 +60,7 @@
                 </div>
               </div>
             </div>
-            <div ng-class="{'hidden': dashboardProgressType != 'company'}" ng-cloak role="tabpanel" aria-label="School Panel">
+            <div id="ym-pc-dashboard-company-panel--student" role="tabpanel" aria-label="School Panel" ng-show="dashboardProgressType == 'company'" ng-cloak>
               <div class="ym-progress__thermometer" name="School Progress Bar" aria-valuetext="{{companyProgress.percent}} percent of fundraising progress" role="progressbar" aria-valuenow="{{companyProgress.percent}}" aria-valuemin="0" aria-valuemax="100">
                 <div class="ym-progress__thermometer--fill" ng-style="{'width': companyProgress.percent + '%'}"></div>
               </div>
@@ -77,7 +77,7 @@
                 </div>
               </div>
             </div>
-            <div ng-class="{'hidden': dashboardProgressType != 'team'}" ng-if="companyInfo.teamCount > 1" ng-cloak role="tabpanel" aria-label="Team Panel">
+            <div id="ym-pc-dashboard-team-panel--student" role="tabpanel" aria-label="Team Panel" ng-if="companyInfo.teamCount > 1" ng-show="dashboardProgressType == 'team'" ng-cloak>
               <div class="ym-progress__thermometer" name="Team Progress Bar" aria-valuetext="{{teamProgress.percent}} percent of fundraising progress" role="progressbar" aria-valuenow="{{teamProgress.percent}}" aria-valuemin="0" aria-valuemax="100">
                 <div class="ym-progress__thermometer--fill" ng-style="{'width': teamProgress.percent + '%'}"></div>
               </div>
@@ -351,21 +351,21 @@
           <p>
             Edit your pages to encourage team members to join and donate!
           </p>
-          <div class="ym-pc-dashboard-captain-page-types">
+          <div class="ym-pc-dashboard-captain-page-types" role="tablist">
             <div class="clearfix">
               <div class="ym-pc-dashboard-captain-page-type" ng-class="{'active': dashboardPageType == 'team'}">
-                <a href="" ng-click="togglePageType('team')">
+                <button type="button" ng-click="togglePageType('team')" role="tab" aria-controls="ym-pc-dashboard-team-panel--captain">
                   <strong>Team</strong>
-                </a>
+                </button>
               </div>
               <div class="ym-pc-dashboard-captain-page-type" ng-class="{'active': dashboardPageType == 'personal'}">
-                <a href="" ng-click="togglePageType('personal')">
+                <button type="button" ng-click="togglePageType('personal')" role="tab" aria-controls="ym-pc-dashboard-personal-panel--captain">
                   <strong>Personal</strong>
-                </a>
+                </button>
               </div>
             </div>
           </div>
-          <div ng-class="{'hidden': dashboardPageType != 'team'}">
+          <div id="ym-pc-dashboard-team-panel--captain" role="tabpanel" aria-label="Team Panel" ng-show="dashboardPageType == 'team'" ng-cloak>
             <div class="ym-pc-dashboard-captain-page-view">
               <div class="text-center">
                 <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=team&amp;team_id={{participantRegistration.teamId}}">
@@ -404,7 +404,7 @@
               </div>
             </div>
           </div>
-          <div ng-class="{'hidden': dashboardPageType != 'personal'}" ng-cloak>
+          <div id="ym-pc-dashboard-personal-panel--captain" role="tabpanel" aria-label="Personal Panel" ng-show="dashboardPageType == 'personal'" ng-cloak>
             <div class="ym-pc-dashboard-captain-page-view">
               <div class="text-center">
                 <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=personal&amp;px={{consId}}">
@@ -609,7 +609,7 @@
                 </div>
               </div>
             </div>
-            <div ng-class="{'hidden': dashboardProgressType != 'company'}" ng-cloak role="tabpanel" aria-label="School Panel">
+            <div id="ym-pc-dashboard-company-panel--coordinator" role="tabpanel" aria-label="School Panel" ng-show="dashboardProgressType == 'company'" ng-cloak>
               <div class="ym-progress__thermometer" name="School Progress Bar" aria-valuetext="{{companyProgress.percent}} percent of fundraising progress" role="progressbar" aria-valuenow="{{companyProgress.percent}}" aria-valuemin="0" aria-valuemax="100">
                 <div class="ym-progress__thermometer--fill" ng-style="{'width': companyProgress.percent + '%'}"></div>
               </div>
@@ -624,14 +624,15 @@
                     </p>
                   </div>
                   <p>
-                    <a ng-href="NTM?tr.ntmgmt=company_cservice_main&amp;company_id={{participantRegistration.companyInformation.companyId}}">
+                    <!-- <a ng-href="NTM?tr.ntmgmt=company_cservice_main&amp;company_id={{participantRegistration.companyInformation.companyId}}">
                       <strong>Update School Goal</strong>
-                    </a>
+                    </a> -->
+                    &nbsp;
                   </p>
                 </div>
               </div>
             </div>
-            <div ng-class="{'hidden': dashboardProgressType != 'team'}" ng-if="companyInfo.teamCount > 1" ng-cloak role="tabpanel" aria-label="Team Panel">
+            <div id="ym-pc-dashboard-team-panel--coordinator" role="tabpanel" aria-label="Team Panel" ng-if="companyInfo.teamCount > 1" ng-show="dashboardProgressType == 'team'" ng-cloak>
               <div class="ym-progress__thermometer" name="Team Progress Bar" aria-valuetext="{{teamProgress.percent}} percent of fundraising progress" role="progressbar" aria-valuenow="{{teamProgress.percent}}" aria-valuemin="0" aria-valuemax="100">
                 <div class="ym-progress__thermometer--fill" ng-style="{'width': teamProgress.percent + '%'}"></div>
               </div>
@@ -665,7 +666,7 @@
                 </div>
               </div>
             </div>
-            <div ng-class="{'hidden': dashboardProgressType != 'personal'}" ng-cloak role="tabpanel" aria-label="Personal Panel">
+            <div id="ym-pc-dashboard-personal-panel--coordinator" role="tabpanel" aria-label="Personal Panel" ng-show="dashboardProgressType == 'personal'" ng-cloak>
               <div class="ym-progress__thermometer" name="Personal Progress Bar" aria-valuetext="{{participantProgress.percent}} percent of fundraising progress" role="progressbar" aria-valuenow="{{participantProgress.percent}}" aria-valuemin="0" aria-valuemax="100">
                 <div class="ym-progress__thermometer--fill" ng-style="{'width': participantProgress.percent + '%'}"></div>
               </div>
@@ -738,23 +739,23 @@
           <div class="ym-pc-dashboard-coordinator-page-types" ng-class="{'ym-pc-dashboard-coordinator-page-types--multi-team': companyInfo.teamCount > 1}" role="tablist">
             <div class="clearfix">
               <div class="ym-pc-dashboard-coordinator-page-type" ng-class="{'active': dashboardPageType == 'company'}">
-                <button type="button" ng-click="togglePageType('company')" aria-controls="ym-pc-dashboard-update-school-panel">
+                <button type="button" ng-click="togglePageType('company')" role="tab" aria-controls="ym-pc-dashboard-update-school-panel">
                   <strong>School</strong>
                 </button>
               </div>
               <div class="ym-pc-dashboard-coordinator-page-type" ng-class="{'active': dashboardPageType == 'team'}" ng-if="companyInfo.teamCount > 1">
-                <button type="button" ng-click="togglePageType('team')" aria-controls="ym-pc-dashboard-update-team-panel">
+                <button type="button" ng-click="togglePageType('team')" role="tab" aria-controls="ym-pc-dashboard-update-team-panel">
                   <strong>Team</strong>
                 </button>
               </div>
               <div class="ym-pc-dashboard-coordinator-page-type" ng-class="{'active': dashboardPageType == 'personal'}">
-                <button type="button" ng-click="togglePageType('personal')" aria-controls="ym-pc-dashboard-update-personal-panel">
+                <button type="button" ng-click="togglePageType('personal')" role="tab" aria-controls="ym-pc-dashboard-update-personal-panel">
                   <strong>Personal</strong>
                 </button>
               </div>
             </div>
           </div>
-          <div ng-class="{'hidden': dashboardPageType != 'company'}" ng-cloak role="tabpanel" aria-label="School Panel">
+          <div id="ym-pc-dashboard-update-school-panel" role="tabpanel" aria-label="School Panel" ng-show="dashboardPageType == 'company'" ng-cloak>
             <div class="ym-pc-dashboard-coordinator-page-view">
               <div class="text-center">
                 <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=company&amp;company_id={{participantRegistration.companyInformation.companyId}}">
@@ -793,7 +794,7 @@
               </div>
             </div>
           </div>
-          <div ng-class="{'hidden': dashboardPageType != 'team'}" ng-if="companyInfo.teamCount > 1" ng-cloak role="tabpanel" aria-label="Team Panel">
+          <div id="ym-pc-dashboard-update-team-panel" role="tabpanel" aria-label="Team Panel" ng-if="companyInfo.teamCount > 1" ng-show="dashboardPageType == 'team'" ng-cloak>
             <div class="ym-pc-dashboard-coordinator-page-view">
               <div class="text-center">
                 <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=team&amp;team_id={{participantRegistration.teamId}}">
@@ -832,7 +833,7 @@
               </div>
             </div>
           </div>
-          <div ng-class="{'hidden': dashboardPageType != 'personal'}" ng-cloak role="tabpanel" aria-label="Personal Panel">
+          <div id="ym-pc-dashboard-update-personal-panel" role="tabpanel" aria-label="Personal Panel" ng-show="dashboardPageType == 'personal'" ng-cloak>
             <div class="ym-pc-dashboard-coordinator-page-view">
               <div class="text-center">
                 <a class="btn btn-md-wide btn-primary" ng-href="TR?fr_id={{frId}}&amp;pg=personal&amp;px={{consId}}">
