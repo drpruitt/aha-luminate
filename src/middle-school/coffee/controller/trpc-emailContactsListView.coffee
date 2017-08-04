@@ -111,18 +111,20 @@ angular.module 'trPcControllers'
                             if $reportTable.length > 0
                               $reportTableRows = $reportTable.find 'tr'
                               if $reportTableRows.length > 0
-                                angular.forEach $reportTableRows, (reportTableRow) ->
+                                angular.forEach $reportTableRows, (reportTableRow, reportTableRowIndex) ->
                                   totalNumberResults++
-                                  $reportTableRow = angular.element reportTableRow
-                                  consId = jQuery.trim $reportTableRow.find('td').eq(7).text()
-                                  firstName = jQuery.trim $reportTableRow.find('td').eq(8).text()
-                                  lastName = jQuery.trim $reportTableRow.find('td').eq(9).text()
-                                  email = jQuery.trim $reportTableRow.find('td').eq(10).text()
-                                  contact =
-                                    firstName: firstName
-                                    lastName: lastName
-                                    email: email
-                                  previousParticipants.push contact
+                                  if reportTableRowIndex >= pageNumber * 10
+                                    $reportTableRow = angular.element reportTableRow
+                                    consId = jQuery.trim $reportTableRow.find('td').eq(7).text()
+                                    firstName = jQuery.trim $reportTableRow.find('td').eq(8).text()
+                                    lastName = jQuery.trim $reportTableRow.find('td').eq(9).text()
+                                    email = jQuery.trim $reportTableRow.find('td').eq(10).text()
+                                    if previousParticipants.length < 10
+                                      contact =
+                                        firstName: firstName
+                                        lastName: lastName
+                                        email: email
+                                      previousParticipants.push contact
                           $scope.addressBookContacts.contacts = previousParticipants
                           $scope.addressBookContacts.totalNumber = totalNumberResults
             else
