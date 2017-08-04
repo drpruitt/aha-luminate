@@ -492,13 +492,14 @@ angular.module 'trPcControllers'
           # TODO
       
       $scope.dateFormat = 'MM/dd/yyyy'
-      $scope.open1 = ->
-        $scope.popup1.opened = true
+      $scope.activityDatePicker =
+        opened: false
+      $scope.openActivityDatePicker = ->
+        $scope.activityDatePicker.opened = true
         return
-      $scope.popup1 = opened: false
-      $scope.dateOptions =
+      $scope.activityDateOptions =
         showWeeks: false
-
+      
       $scope.minsActivityLog =
         ng_activity_date: new Date()
       setMinsActivityForDate = ->
