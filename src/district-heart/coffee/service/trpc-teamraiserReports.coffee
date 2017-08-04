@@ -3,13 +3,21 @@ angular.module 'trPcApp'
     '$rootScope'
     '$http'
     ($rootScope, $http) ->
-      getDistrictDetailReport: (frId = $rootScope.frId, companyId = $rootScope.participantRegistration.companyInformation.companyId) ->
-        pagename = 'getDistrictHeartTeamDetailReport'
-        if $rootScope.participantRegistration.companyInformation?.isCompanyCoordinator is 'true'
-          pagename = 'getDistrictHeartDistrictDetailReport'
+      getDistrictDetailReport: (prevFrId, prevCompanyId) ->
+        requestUrl = 'SPageServer?pagename='
+        if $rootScope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
+          requestUrl += 'getDistrictHeartTeamDetailReport'
+        else
+          requestUrl += 'getDistrictHeartDistrictDetailReport'
+        requestUrl += '&pgwrap=n&fr_id=' + $rootScope.frId
+        if prevFrId
+          requestUrl += '&prev_fr_id=' + prevFrId
+        if prevCompanyId
+          requestUrl += '&prev_company_id=' + prevCompanyId
+        requestUrl += '&response_format=json'
         $http
           method: 'GET'
-          url: 'SPageServer?pagename=' + pagename + '&pgwrap=n&fr_id=' + frId + '&company_id=' + companyId + '&response_format=json'
+          url: requestUrl
         .then (response) ->
           response
   ]
