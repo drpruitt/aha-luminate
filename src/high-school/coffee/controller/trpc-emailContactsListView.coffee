@@ -118,9 +118,15 @@ angular.module 'trPcControllers'
                                 angular.forEach $reportTableRows, (reportTableRow) ->
                                   totalNumberResults++
                                   $reportTableRow = angular.element reportTableRow
+                                  consId = jQuery.trim $reportTableRow.find('td').eq(7).text()
                                   firstName = jQuery.trim $reportTableRow.find('td').eq(8).text()
                                   lastName = jQuery.trim $reportTableRow.find('td').eq(9).text()
                                   email = jQuery.trim $reportTableRow.find('td').eq(10).text()
+                                  contact =
+                                    firstName: firstName
+                                    lastName: lastName
+                                    email: email
+                                  previousParticipants.push contact
                           $scope.addressBookContacts.contacts = previousParticipants
                           $scope.addressBookContacts.totalNumber = totalNumberResults
             else
@@ -170,9 +176,15 @@ angular.module 'trPcControllers'
                                 angular.forEach $reportTableRows, (reportTableRow) ->
                                   totalNumberResults++
                                   $reportTableRow = angular.element reportTableRow
+                                  consId = jQuery.trim $reportTableRow.find('td').eq(7).text()
                                   firstName = jQuery.trim $reportTableRow.find('td').eq(8).text()
                                   lastName = jQuery.trim $reportTableRow.find('td').eq(9).text()
                                   email = jQuery.trim $reportTableRow.find('td').eq(10).text()
+                                  contact =
+                                    firstName: firstName
+                                    lastName: lastName
+                                    email: email
+                                  previousParticipants.push contact
                           $scope.addressBookContacts.contacts = previousParticipants
                           $scope.addressBookContacts.totalNumber = totalNumberResults
             else
