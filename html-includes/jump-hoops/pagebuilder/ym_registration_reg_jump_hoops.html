@@ -98,7 +98,7 @@
           ]]
         ]]
       </div>
-      <div class="checkbox" ng-class="{'checked': registrationInfo.fr_email_opt_in}" ng-if="registrationQuestions.fr_email_opt_in" ng-cloak>
+      <div class="checkbox" custom-checkbox ng-class="{'checked': registrationInfo.fr_email_opt_in}" ng-if="registrationQuestions.fr_email_opt_in" ng-cloak>
         <label for="registrationInfo-fr_email_opt_in">
           <input type="checkbox" name="ng_fr_email_opt_in" id="registrationInfo-fr_email_opt_in" ng-model="registrationInfo.fr_email_opt_in"> 
           <span class="manageable-content" data-container="edit_opt_in_container">
@@ -112,7 +112,7 @@
           </span>
         </label>
       </div>
-      <div class="checkbox" ng-class="{'checked': registrationInfo.cons_email_opt_in}" ng-if="registrationQuestions.cons_email_opt_in" ng-cloak>
+      <div class="checkbox" custom-checkbox ng-class="{'checked': registrationInfo.cons_email_opt_in}" ng-if="registrationQuestions.cons_email_opt_in" ng-cloak>
         <label for="registrationInfo-cons_email_opt_in">
           <input type="checkbox" name="ng_cons_email_opt_in" id="registrationInfo-cons_email_opt_in" ng-model="registrationInfo.cons_email_opt_in"> 
           <span ng-bind-html="registrationQuestions.cons_email_opt_in.label"></span>
@@ -205,7 +205,7 @@
           <div class="row">
             <div class="col-xs-12">
               <div class="help-block">
-                Password may contain letters, digits, and '!', '#', '$', '%', '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '=', '?', '@', '[', '\', ']', '^', '_', '`', '{', '|', '}', '~'.
+                Password must be 5-20 characters. Password may contain letters, digits, and '!', '#', '$', '%', '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '=', '?', '@', '[', '\', ']', '^', '_', '`', '{', '|', '}', '~'.
               </div>
             </div>
           </div>
@@ -303,7 +303,7 @@
       [[S66:util/SpamControlComponentResponsive.tpt]]
     </form>
   </div>
-  <div class="hidden">
+  <div class="hidden" hidden aria-hidden="true">
     <form class="js--default-reg-form" action="[[A1]]" method="POST">
       <input type="hidden" name="fr_id" value="[[A2]]">
       <input type="hidden" name="pg" value="[[A7]]">

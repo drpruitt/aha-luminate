@@ -118,6 +118,28 @@ module.exports = (grunt) ->
       'htmlmin'
       'imagemin'
     ], 'middle-school'
+    runTargetedTask [
+      'clean'
+      'sass'
+      'postcss'
+      'cssmin'
+      'coffee'
+      'uglify'
+      'replace'
+      'htmlmin'
+      'imagemin'
+    ], 'high-school'
+    runTargetedTask [
+      'clean'
+      'sass'
+      'postcss'
+      'cssmin'
+      'coffee'
+      'uglify'
+      'replace'
+      'htmlmin'
+      'imagemin'
+    ], 'district-heart'
     return
   grunt.registerTask 'dev', ->
     devTasks = [
@@ -137,6 +159,12 @@ module.exports = (grunt) ->
       if task.indexOf('notify:') is -1
         devTasks.push task
     config.watch['middle-school'].tasks.forEach (task) ->
+      if task.indexOf('notify:') is -1
+        devTasks.push task
+    config.watch['high-school'].tasks.forEach (task) ->
+      if task.indexOf('notify:') is -1
+        devTasks.push task
+    config.watch['district-heart'].tasks.forEach (task) ->
       if task.indexOf('notify:') is -1
         devTasks.push task
     devTasks.push 'watch'

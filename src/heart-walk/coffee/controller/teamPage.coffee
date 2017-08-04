@@ -7,7 +7,7 @@ angular.module 'ahaLuminateControllers'
     'TeamraiserTeamService'
     'TeamraiserParticipantService'
     ($scope, $location, $timeout, $filter, TeamraiserTeamService, TeamraiserParticipantService) ->
-      $scope.teamId = $location.absUrl().split('team_id=')[1].split('&')[0]
+      $scope.teamId = $location.absUrl().split('team_id=')[1].split('&')[0].split('#')[0]
       
       $scope.teamProgress = {}
       
@@ -40,6 +40,10 @@ angular.module 'ahaLuminateControllers'
           else
             setTeamFundraisingProgress teamInfo.amountRaised, teamInfo.goal
       
+      $scope.teamMemberSearch =
+        ng_member_name: ''
+        member_name: ''
+      
       $scope.teamMembers = 
         page: 1
       
@@ -61,26 +65,78 @@ angular.module 'ahaLuminateControllers'
       
       $scope.getTeamMembers = ->
         # TODO: scroll to top of list
+        memberNameFilter = jQuery.trim $scope.teamMemberSearch?.member_name
+        while memberNameFilter.length < 3
+          memberNameFilter += '%'
         pageNumber = $scope.teamMembers.page - 1
-        TeamraiserParticipantService.getParticipants 'first_name=' + encodeURIComponent('%%%') + '&list_filter_column=reg.team_id&list_filter_text=' + $scope.teamId + '&list_sort_column=first_name&list_ascending=true&list_page_size=4&list_page_offset=' + pageNumber, 
+        TeamraiserParticipantService.getParticipants 'first_name=' + encodeURIComponent(memberNameFilter) + '&list_filter_column=reg.team_id&list_filter_text=' + $scope.teamId + '&list_sort_column=first_name&list_ascending=true&list_page_size=4&list_page_offset=' + pageNumber,
           error: ->
-            setTeamMembers()
+            if memberNameFilter is '%%%'
+              setTeamMembers()
+            else
+              TeamraiserParticipantService.getParticipants 'last_name=' + encodeURIComponent(memberNameFilter) + '&list_filter_column=reg.team_id&list_filter_text=' + $scope.teamId + '&list_sort_column=first_name&list_ascending=true&list_page_size=4&list_page_offset=' + pageNumber,
+                error: ->
+                  setTeamMembers teamMembers, totalNumberResults
+                success: (response) ->
+                  setTeamMembers()
+                  teamParticipants = response.getParticipantsResponse?.participant
+                  totalNumberResults = response.getParticipantsResponse?.totalNumberResults or 0
+                  totalNumberResults = Number totalNumberLastNameResults
+                  if teamParticipants
+                    teamParticipants = [teamParticipants] if not angular.isArray teamParticipants
+                    teamMembers = []
+                    angular.forEach teamParticipants, (teamParticipant) ->
+                      if teamParticipant.name?.first
+                        teamParticipant.amountRaised = Number teamParticipant.amountRaised
+                        teamParticipant.amountRaisedFormatted = $filter('currency') teamParticipant.amountRaised / 100, '$', 0
+                        donationUrl = teamParticipant.donationUrl
+                        if donationUrl?
+                          teamParticipant.donationUrl = donationUrl.split('/site/')[1]
+                        teamMembers.push teamParticipant
+                    setTeamMembers teamMembers, totalNumberResults
           success: (response) ->
             setTeamMembers()
             teamParticipants = response.getParticipantsResponse?.participant
-            if teamParticipants?
+            teamMembers = []
+            totalNumberResults = response.getParticipantsResponse?.totalNumberResults or 0
+            totalNumberResults = Number totalNumberResults
+            if teamParticipants
               teamParticipants = [teamParticipants] if not angular.isArray teamParticipants
-              teamMembers = []
               angular.forEach teamParticipants, (teamParticipant) ->
                 if teamParticipant.name?.first
                   teamParticipant.amountRaised = Number teamParticipant.amountRaised
-                  teamParticipant.amountRaisedFormatted = $filter('currency')(teamParticipant.amountRaised / 100, '$', 0)
+                  teamParticipant.amountRaisedFormatted = $filter('currency') teamParticipant.amountRaised / 100, '$', 0
                   donationUrl = teamParticipant.donationUrl
                   if donationUrl?
                     teamParticipant.donationUrl = donationUrl.split('/site/')[1]
                   teamMembers.push teamParticipant
-              setTeamMembers teamMembers, response.getParticipantsResponse.totalNumberResults
+            if memberNameFilter is '%%%'
+              setTeamMembers teamMembers, totalNumberResults
+            else
+              TeamraiserParticipantService.getParticipants 'last_name=' + encodeURIComponent(memberNameFilter) + '&list_filter_column=reg.team_id&list_filter_text=' + $scope.teamId + '&list_sort_column=first_name&list_ascending=true&list_page_size=4&list_page_offset=' + pageNumber,
+                error: ->
+                  setTeamMembers teamMembers, totalNumberResults
+                success: (response) ->
+                  teamParticipants = response.getParticipantsResponse?.participant
+                  totalNumberLastNameResults = response.getParticipantsResponse?.totalNumberResults or 0
+                  totalNumberLastNameResults = Number totalNumberLastNameResults
+                  totalNumberResults = totalNumberResults + totalNumberLastNameResults
+                  if teamParticipants
+                    teamParticipants = [teamParticipants] if not angular.isArray teamParticipants
+                    angular.forEach teamParticipants, (teamParticipant) ->
+                      if teamParticipant.name?.first
+                        teamParticipant.amountRaised = Number teamParticipant.amountRaised
+                        teamParticipant.amountRaisedFormatted = $filter('currency') teamParticipant.amountRaised / 100, '$', 0
+                        donationUrl = teamParticipant.donationUrl
+                        if donationUrl?
+                          teamParticipant.donationUrl = donationUrl.split('/site/')[1]
+                        teamMembers.push teamParticipant
+                  setTeamMembers teamMembers, totalNumberResults
       $scope.getTeamMembers()
       
-      # TODO: search form submit
+      $scope.searchTeamMembers = (teamMemberSearch) ->
+        $scope.teamMemberSearch.ng_member_name = teamMemberSearch?.ng_member_name or ''
+        $scope.teamMemberSearch.member_name = teamMemberSearch?.ng_member_name or ''
+        $scope.teamMembers.page = 1
+        $scope.getTeamMembers()
   ]

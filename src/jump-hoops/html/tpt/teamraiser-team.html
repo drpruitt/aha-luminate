@@ -1,4 +1,19 @@
-<div ng-controller="TeamPageCtrl" ng-cloak>
+<div itemscope itemtype="http://schema.org/Organization" ng-controller="TeamPageCtrl" ng-cloak>
+  <div class="hidden" hidden aria-hidden="true">
+    <div itemprop="name">
+      [[E43:[[S80:trID]]:name:[[S334:team_id]]]]
+    </div>
+    [[?xx::x[[E43:[[S80:trID]]:company-id:[[S334:team_id]]]]x::::
+      <div itemprop="parentOrganization" itemscope itemtype="http://schema.org/Organization">
+        <span itemprop="name">[[E43:[[S80:trID]]:company-name:[[S334:team_id]]]]</span>
+      </div>
+    ]]
+    [[?xx::x[[C4:graphic_upload]]x::
+      <img src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/team-default.jpg" alt="" itemprop="image">
+    ::
+      <img src="[[C4:graphic_upload]]" alt="" itemprop="image">
+    ]]
+  </div>
   <div class="ym-page-section ym-page-section__top">
     <div class="col-md-6 ym-user-image" ng-init="teamPagePhoto1.customUrl = '[[C4:graphic_upload]]'; teamPagePhoto1.caption = '[[T6:[[C1:graphic_caption]]]]'" ng-style="{'background-image': (teamPagePhoto1.customUrl && teamPagePhoto1.customUrl != '') ? ('url(' + teamPagePhoto1.customUrl + ')') : ('url(' + teamPagePhoto1.defaultUrl + ')')}">
       <div class="ym-user-image-inner">
@@ -11,7 +26,7 @@
             <span class="fa fa-camera"></span> Edit Photo
           </button>
         ::]]
-        <img class="hidden-md hidden-lg" ng-src="{{teamPagePhoto1.customUrl && teamPagePhoto1.customUrl != '' ? teamPagePhoto1.customUrl : teamPagePhoto1.defaultUrl}}" alt="{{teamPagePhoto1.caption != '' ? teamPagePhoto1.caption : 'Class Photo'}}" ng-cloak>
+        <img class="hidden-md hidden-lg" ng-src="{{teamPagePhoto1.customUrl && teamPagePhoto1.customUrl != '' ? teamPagePhoto1.customUrl : teamPagePhoto1.defaultUrl}}" alt="{{teamPagePhoto1.caption != '' ? teamPagePhoto1.caption : 'Team Photo'}}" ng-cloak>
       </div>
       <div class="caption" ng-if="teamPagePhoto1.caption && teamPagePhoto1.caption != ''" ng-cloak>
         <span ng-bind-html="teamPagePhoto1.caption"></span>
@@ -21,15 +36,15 @@
       <h2 class="ym-progress__title h4">
         Help us raise more life-saving donations!
       </h2>
-      <div class="ym-progress__cta">         
-          <a class="btn btn-lg btn-primary" href="TRR?fr_id=[[S334:fr_id]]&amp;pg=tfind&amp;fr_tm_opt=existing&amp;fr_tjoin=[[S334:team_id]]&amp;s_frTJoin=[[S334:team_id]]&amp;s_frCompanyId=[[E43:[[S80:trID]]:company-id:[[S334:team_id]]]]">
+      <div class="ym-progress__cta">
+          <a class="btn btn-lg btn-primary" href="TRR?fr_id=[[S334:fr_id]]&amp;pg=tfind&amp;fr_tjoin=[[S334:team_id]]&amp;s_frTJoin=[[S334:team_id]]&amp;s_frCompanyId=[[E43:[[S80:trID]]:company-id:[[S334:team_id]]]]">
             Sign Up
           </a>
           <a class="btn btn-lg btn-primary" href="Donation2?df_id=[[E42:[[S334:fr_id]]:form-id]]&amp;FR_ID=[[S334:fr_id]]&amp;PROXY_ID=[[S334:team_id]]&amp;PROXY_TYPE=22">
             Donate
           </a>
       </div>
-      <div class="ym-progress__thermometer" ng-if="teamProgress.goal && teamProgress.goal != 0" name="Class Progress Bar" aria-valuetext="Class Progress Bar" role="progressbar" aria-valuenow="{{teamProgress.percent}}%" aria-valuemin="0%" aria-valuemax="100%" ng-cloak>
+      <div class="ym-progress__thermometer" ng-if="teamProgress.goal && teamProgress.goal != 0" name="Team Progress Bar" aria-valuetext="{{teamProgress.percent}} percent of fundraising progress" role="progressbar" aria-valuenow="{{teamProgress.percent}}" aria-valuemin="0" aria-valuemax="100" ng-cloak>
         <div class="ym-progress__thermometer--fill" ng-style="{'width': teamProgress.percent + '%'}"></div>
       </div>
       <div class="ym-progress__stats">
@@ -39,12 +54,14 @@
           </p>
         </div>
         <div class="ym-progress__goal col-sm-6">
-          <p>
-            Our goal is <strong><span ng-bind-html="teamProgress.goalFormatted"></span></strong>
-          </p>
+          <div ng-if="teamProgress.goalFormatted && teamProgress.goalFormatted != '' && teamProgress.goalFormatted != '$0'" ng-cloak>
+            <p>
+              Our goal is <strong><span ng-bind-html="teamProgress.goalFormatted"></span></strong>
+            </p>
+          </div>
         </div>
         <div class="clearfix"></div>
-        <div class="ym-progress__date" ng-if="eventDate != 'User Provided No Response'" ng-cloak>
+        <div class="ym-progress__date" ng-if="eventDate && eventDate != '' && eventDate != 'User Provided No Response'" ng-cloak>
           <p>
             Our event date is <strong><span ng-bind-html="eventDate"></span></strong>
           </p>
@@ -63,18 +80,18 @@
           <div class="h2 ym-headline">
             {{participantCount}}
           </div>
-          <div ng-if="participantCount == 1">
+          <div ng-if="participantCount == 1" ng-cloak>
             <p>
               team member registered.
             </p>
           </div>
-          <div ng-if="participantCount > 1">
+          <div ng-if="participantCount > 1" ng-cloak>
             <p>
               team members registered.
             </p>
           </div>
         </div>
-        <div class="ym-promo-block__item ym-promo-block__item--exercise ym-promo-block--circle" ng-if="activity1amt != 0" ng-cloak>
+        <div class="ym-promo-block__item ym-promo-block--circle" ng-if="activity1amt != 0" ng-cloak>
           <div class="h2 ym-headline">
             {{activity1amt}}
           </div>
@@ -82,7 +99,7 @@
             daily challenges of excersing 60 minutes a day!
           </p>
         </div>
-        <div class="ym-promo-block__item ym-promo-block__item--water ym-promo-block--circle" ng-if="activity2amt != 0" ng-cloak>
+        <div class="ym-promo-block__item ym-promo-block--circle" ng-if="activity2amt != 0" ng-cloak>
           <div class="h2 ym-headline">
             {{activity2amt}}
           </div>
@@ -102,10 +119,10 @@
     </div>
   </div>
   <div class="ym-page-section ym-page-section__list ym-accent-color">
-    <div class="ym-story" ng-class="teamParticipants.totalFundraisers < 1 ? 'col-md-12' : 'col-md-6'">
-      <h3 class="ym-headline">
+    <div class="ym-story" ng-class="teamParticipants.totalFundraisers > 0 ? 'col-md-6' : 'col-md-12'">
+      <h2 class="ym-headline">
         Our Class is Heart Healthy!
-      </h3>
+      </h2>
       [[?
         [[?xx::x[[S1:cons_id]]x::::
           [[?x[[E48:[[S80:trID]]:team-id]]xTRUEx::x[[S334:team_id]]x[[E48:[[S80:trID]]-[[S1:cons_id]]:if-is-captain]]x::T::]]
@@ -125,7 +142,7 @@
           </div>
         </div>
       ::]]
-      <div class="hidden js--default-page-content" ng-non-bindable>
+      <div class="hidden js--default-page-content" hidden aria-hidden="true" ng-non-bindable>
         [[C6:fr_rich_text]]
       </div>
       <div ng-show="teamPageContent.mode == 'view'">
@@ -146,11 +163,13 @@
         </div>
       ::]]
     </div>
-    <div class="ym-list" ng-class="teamParticipants.totalFundraisers < 1 ? 'hidden' : 'col-md-6'" role="list" aria-label="Top Fundarisers List">
-      <img class="img-responsive" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/hj-fundraisers-graphic.png" alt="Saluting these top fundraisers">
-      <div class="ym-donor-list">
-        <team-participant-list team-id="'[[T6:[[S334:team_id]]]]'" participants="teamParticipants.participants"></team-participant-list>
-      </div>
+    <div class="ym-list" class="col-md-6" role="list" aria-label="Top Fundraisers List" ng-if="teamParticipants.totalFundraisers > 0" ng-cloak>
+      <h2>
+        <img class="img-responsive" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/hj-fundraisers-graphic.png" alt="Saluting these top fundraisers:">
+      </h2>
+      <ul class="ym-donor-list">
+        <team-participant-list fr-id="'[[S80:trID]]'" team-id="'[[T6:[[S334:team_id]]]]'" participants="teamParticipants.participants"></team-participant-list>
+      </ul>
     </div>
     <div class="clearfix"></div>
   </div>

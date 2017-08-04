@@ -1,7 +1,7 @@
 angular.module 'ahaLuminateControllers'
   .controller 'TeamPageCtrl', [
-    '$scope'
     '$rootScope'
+    '$scope'
     '$location'
     '$filter'
     '$timeout'
@@ -12,7 +12,7 @@ angular.module 'ahaLuminateControllers'
     'TeamraiserCompanyService'
     'ZuriService'
     'TeamraiserTeamPageService'
-    ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserTeamService, TeamraiserParticipantService, TeamraiserCompanyService, ZuriService, TeamraiserTeamPageService) ->
+    ($rootScope, $scope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserTeamService, TeamraiserParticipantService, TeamraiserCompanyService, ZuriService, TeamraiserTeamPageService) ->
       $scope.teamId = $location.absUrl().split('team_id=')[1].split('&')[0].split('#')[0]
       $scope.teamParticipants = []
       $rootScope.teamName = ''
@@ -23,7 +23,7 @@ angular.module 'ahaLuminateControllers'
       $scope.activity2amt = ''
       $scope.activity3amt = ''
       
-      ZuriService.getZooTeam $scope.teamId,
+      ZuriService.getTeam $scope.teamId,
         error: (response) ->
           $scope.studentsPledgedTotal = 0
           $scope.activity1amt = 0
@@ -64,7 +64,11 @@ angular.module 'ahaLuminateControllers'
           if not $scope.$$phase
             $scope.$apply()
         , 500
-      
+      setCoordinatorInfo = ->
+        if not $rootScope.$$phase
+          $rootScope.$apply()
+        if not $scope.$$phase
+          $scope.$apply()
       getTeamData = ->
         TeamraiserTeamService.getTeams 'team_id=' + $scope.teamId, 
           error: ->
@@ -86,7 +90,8 @@ angular.module 'ahaLuminateControllers'
                 
                 TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
                   .then (response) ->
-                    $scope.eventDate = response.data.coordinator.event_date
+                    $scope.eventDate = response.data.coordinator?.event_date
+                    setCoordinatorInfo()
       getTeamData()
       
       setTeamParticipants = (participants, totalNumber, totalFundraisers) ->
@@ -95,12 +100,10 @@ angular.module 'ahaLuminateControllers'
         $scope.teamParticipants.totalFundraisers = totalFundraisers or 0
         if not $scope.$$phase
           $scope.$apply()
-      
       getTeamParticipants = ->
-        TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%%%') + '&first_name=' + encodeURIComponent('%%%') + '&last_name=' + encodeURIComponent('%%%') + '&list_filter_column=reg.team_id&list_filter_text=' + $scope.teamId + '&list_sort_column=total&list_ascending=false&list_page_size=50', 
+        TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%') + '&first_name=' + encodeURIComponent('%%') + '&last_name=' + encodeURIComponent('%') + '&list_filter_column=reg.team_id&list_filter_text=' + $scope.teamId + '&list_sort_column=total&list_ascending=false&list_page_size=50', 
             error: (response) ->
-              setTeamMembers()
-            
+              setTeamParticipants()
             success: (response) ->
               $scope.studentsRegisteredTotal = response.getParticipantsResponse.totalNumberResults
               participants = response.getParticipantsResponse?.participant
@@ -109,10 +112,15 @@ angular.module 'ahaLuminateControllers'
                 teamParticipants = []
                 totalFundraisers = 0
                 angular.forEach participants, (participant) ->
-                  if participant.amountRaised > 1
-                    participant.amountRaised = Number participant.amountRaised
+                  participant.amountRaised = Number participant.amountRaised
+                  if participant.name?.first and participant.amountRaised > 1
+                    participant.firstName = participant.name.first
+                    participant.lastName = participant.name.last
+                    participant.name.last = participant.name.last.substring(0, 1) + '.'
+                    participant.fullName = participant.name.first + ' ' + participant.name.last
                     participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
-                    participant.name.last = participant.name.last.substring(0,1)+'.'
+                    if participant.donationUrl
+                      participant.donationFormId = participant.donationUrl.split('df_id=')[1].split('&')[0]
                     teamParticipants.push participant
                     totalFundraisers++
                 totalNumberParticipants = response.getParticipantsResponse.totalNumberResults

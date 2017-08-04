@@ -1,0 +1,20 @@
+header {
+  .ym-header-logo {
+    height: 70px;
+    line-height: 70px;
+    padding-left: 10px;
+  }
+
+  @media(max-width: 370px) {
+    .ym-header-logo--district-heart {
+      width: 45%;
+
+      a {
+        img {
+          width: auto;
+          max-width: 100%;
+        }
+      }
+    }
+  }
+}

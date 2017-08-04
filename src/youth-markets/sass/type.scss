@@ -47,22 +47,7 @@ h3,
 h2,
 .h2,
 .h2-heading {
-  font-size: 32px;
-  margin-top: 0;
-
-  @media (min-width: $screen-sm-min) {
-    font-size: 42px;
-  }
-
-  @media (min-width: $screen-md-min) {
-    font-size: 48px;
-  }
-}
-
-h3,
-.h3,
-.h3-heading {
-  font-size: 28px;
+  font-size: 26px;
   margin-top: 0;
 
   @media (min-width: $screen-sm-min) {
@@ -70,7 +55,22 @@ h3,
   }
 
   @media (min-width: $screen-md-min) {
-    font-size: 36px;
+    font-size: 40px;
+  }
+}
+
+h3,
+.h3,
+.h3-heading {
+  font-size: 23px;
+  margin-top: 0;
+
+  @media (min-width: $screen-sm-min) {
+    font-size: 26px;
+  }
+
+  @media (min-width: $screen-md-min) {
+    font-size: 30px;
   }
 }
 
@@ -114,31 +114,18 @@ h6,
   display: block;
 }
 
-.h1-heading {
-}
-.h2-heading {
-}
-.h3-heading {
-}
-.h4-heading {
-}
-.h5-heading {
-}
-.h6-heading {
-}
-
 p {
   line-height: 1.5;
 
   @media (max-width: $screen-sm-max) {
-    font-size: 14px;
+    font-size: $font-size-sm;
   }
 }
 
 .text-large {
   font-size: 16px;
 
-  @media(min-width: $screen-md-min) {
+  @media (min-width: $screen-md-min) {
     font-size: 18px;
   }
 }
@@ -201,7 +188,7 @@ a {
   h5,
   .h5,
   .h5-heading {
-    color:$event-secondary;
+    color: $event-secondary;
   }
 }
 
@@ -215,4 +202,8 @@ a {
     line-height: 32px;
     margin: 0 0 24px;
   }
+}
+
+.bold {
+  font-weight: bold;
 }

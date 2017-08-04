@@ -3,11 +3,11 @@
     <h2>
       Members
     </h2>
-    <form class="form-inline" name="teamMemberSearchForm" method="POST">
+    <form class="form-inline" name="teamMemberSearchForm" method="POST" ng-submit="searchTeamMembers(teamMemberSearch)">
       <label class="sr-only">
         Search for a team member:
       </label>
-      <input type="text" class="form-control" placeholder="Search for a team member" ng-model="teamMemberSearch.member_name"> 
+      <input type="text" class="form-control" placeholder="Search for a team member" ng-model="teamMemberSearch.ng_member_name"> 
       <button type="submit" class="btn btn-primary">Search</button>
     </form>
   </div>

@@ -5,6 +5,9 @@ if window.location.href.indexOf('pagename=jump_hoops_participant_center') isnt -
       'APP_INFO'
       ($routeProvider, APP_INFO) ->
         $routeProvider
+          .when '/load-error', 
+            templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/view/loadError.html'
+            controller: 'NgPcLoadErrorViewCtrl'
           .when '/dashboard', 
             templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/view/dashboard.html'
             controller: 'NgPcDashboardViewCtrl'
@@ -89,20 +92,26 @@ if window.location.href.indexOf('pagename=jump_hoops_participant_center') isnt -
                 backdrop: 'static'
                 templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/login.html'
           
+          # load error
+          if $rootScope.loadError
+            if next.originalPath isnt '/load-error'
+              $event.preventDefault()
+              redirectRoute '/load-error'
+          
           # event config unknown
-          if not $rootScope.teamraiserConfig
+          else if not $rootScope.teamraiserConfig
             $event.preventDefault()
             NgPcTeamraiserEventService.getConfig()
               .then ->
                 if $rootScope.teamraiserConfig is -1
-                  # TODO
-                else
-                  reloadRoute()
+                  $rootScope.loadError = true
+                reloadRoute()
           
           # no event config
           else if $rootScope.teamraiserConfig is -1
             $event.preventDefault()
-            # TODO
+            $rootScope.loadError = true
+            reloadRoute()
           
           # event closed
           else if $rootScope.teamraiserConfig.acceptingDonations isnt 'true' and $rootScope.teamraiserConfig.acceptingRegistrations isnt 'true'
@@ -152,14 +161,14 @@ if window.location.href.indexOf('pagename=jump_hoops_participant_center') isnt -
             NgPcTeamraiserEventService.getTeamraiser()
               .then (response) ->
                 if $rootScope.eventInfo is -1
-                  # TODO
-                else
-                  reloadRoute()
+                  $rootScope.loadError = true
+                reloadRoute()
           
           # no event info
           else if $rootScope.eventInfo is -1
             $event.preventDefault()
-            # TODO
+            $rootScope.loadError = true
+            reloadRoute()
           
           # company info unknown
           else if not $rootScope.companyInfo
@@ -167,12 +176,17 @@ if window.location.href.indexOf('pagename=jump_hoops_participant_center') isnt -
             NgPcTeamraiserCompanyService.getCompany()
               .then (response) ->
                 if $rootScope.companyInfo is -1
-                  # TODO
-                else
-                  reloadRoute()
+                  $rootScope.loadError = true
+                reloadRoute()
           
           # no company info
           else if $rootScope.companyInfo is -1
             $event.preventDefault()
-            # TODO
+            $rootScope.loadError = true
+            reloadRoute()
+          
+          # no load error
+          else if next.originalPath is '/load-error'
+            $event.preventDefault()
+            redirectRoute '/dashboard'
     ]

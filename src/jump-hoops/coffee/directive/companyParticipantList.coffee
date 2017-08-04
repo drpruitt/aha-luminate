@@ -6,17 +6,7 @@ angular.module 'ahaLuminateApp'
       restrict: 'E'
       replace: true
       scope:
-        companyName: '='
         companyId: '='
         frId: '='
         participants: '='
-      controller: [
-        '$scope'
-        ($scope) ->
-          $scope.companyParticipantSearch = 
-            participant_name: ''
-          
-          $scope.toggleCompanyParticipantList = ->
-            $scope.isOpen = !$scope.isOpen
-    ]
   ]

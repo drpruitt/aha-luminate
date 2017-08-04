@@ -4,6 +4,7 @@ appDependencies = [
   'angular.filter'
   'ui.bootstrap'
   'ahaLuminateControllers'
+  'ngAria'
 ]
 
 angular.forEach ['textAngular'], (appDependency) ->
@@ -26,6 +27,8 @@ angular.module 'ahaLuminateApp'
         rootPath = '../' + devBranch + '/aha-luminate/'
       else
         rootPath = '../aha-luminate/'
+      rootPath
+    programKey: 'middle-school'
 
 angular.module 'ahaLuminateApp'
   .run [
@@ -33,6 +36,7 @@ angular.module 'ahaLuminateApp'
     '$sce'
     'APP_INFO'
     ($rootScope, $sce, APP_INFO) ->
+      $rootScope.tablePrefix = luminateExtend.global.tablePrefix
       $rootScope.nonSecureDomain = luminateExtend.global.path.nonsecure.split('/site/')[0] + '/'
       $rootScope.secureDomain = luminateExtend.global.path.secure.split('/site/')[0] + '/'
       $rootScope.teamraiserAPIPath = $sce.trustAsResourceUrl luminateExtend.global.path.secure + 'CRTeamraiserAPI'

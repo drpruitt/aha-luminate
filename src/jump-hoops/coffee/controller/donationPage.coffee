@@ -94,6 +94,8 @@ angular.module 'ahaLuminateControllers'
       $scope.selectLevel = (type, level, amount) ->
         angular.element('.ym-donation-levels__amount .btn-toggle.active').removeClass 'active'
         angular.element('.ym-donation-levels__amount .btn-toggle.level' + level).addClass 'active'
+        angular.element('.ym-donation-levels__amount').removeClass 'active'
+        angular.element('.ym-donation-levels__amount .btn-toggle.level' + level).parent().addClass 'active'
         angular.element('.ym-donation-levels__message').removeClass 'active'
         angular.element('.ym-donation-levels__message.level' + level).addClass 'active'
         angular.element('.donation-level-container.level' + level + ' input').click()
@@ -144,10 +146,10 @@ angular.module 'ahaLuminateControllers'
         angular.element('#pstep_finish span').remove()
         if $scope.donationInfo.giftType is 'onetime'
           if type is 'level'
-            levelAmt = ' <span>' + $scope.donationInfo.amount + ' <i class="fa fa-chevron-right" aria-hidden="true"></i></span>'
+            levelAmt = ' <span>' + $scope.donationInfo.amount + ' <i class="fa fa-chevron-right" hidden aria-hidden="true"></i></span>'
             angular.element('#pstep_finish').append levelAmt
           else
-            angular.element('#pstep_finish').append '<span> <i class="fa fa-chevron-right" aria-hidden="true"></i></span>'
+            angular.element('#pstep_finish').append '<span> <i class="fa fa-chevron-right" hidden aria-hidden="true"></i></span>'
       
       employerMatchFields = ->
         angular.element('.employer-address-container').addClass 'hidden'
@@ -175,7 +177,7 @@ angular.module 'ahaLuminateControllers'
         angular.element('.ym-donor-recognition__fields').toggleClass 'hidden'
       
       $scope.togglePersonalNote = ->
-        angular.element('#tr_message_to_participant_row').toggleClass 'hidden ym-border'
+        angular.element('#tr_message_to_participant_row').toggleClass 'hidden'
       
       $scope.tributeGift = (type) ->
         if type is 'honor'
@@ -240,7 +242,8 @@ angular.module 'ahaLuminateControllers'
       
       $scope.toggleBillingInfo = ->
         angular.element('.billing-info').toggleClass 'hidden'
-        inputStatus = angular.element('#billing_info').prop 'checked'      
+        inputStatus = angular.element('#billing_info').prop 'checked'
+        
         if inputStatus is true
           angular.element('#billing_info_same_as_donorname').prop 'checked', true
         else
@@ -271,7 +274,10 @@ angular.module 'ahaLuminateControllers'
             $scope.donationInfo.installmentAmount = localStorage['installmentAmount']
             $scope.donationInfo.numberPayments = localStorage['numberPayments']
         if localStorage['amount']
-          $scope.donationInfo.amount = localStorage['amount']
+          if localStorage['amount'] is 'undefined'
+            $scope.donationInfo.otherAmt = ''
+          else
+            $scope.donationInfo.amount = localStorage['amount']
         if localStorage['levelType']
           $scope.donationInfo.levelType = localStorage['levelType']
           if localStorage['levelType'] is 'other'
@@ -310,9 +316,9 @@ angular.module 'ahaLuminateControllers'
                       $scope.donationInfo.installmentAmount = level.amount.decimal
                   $scope.donationInfo.levelChecked = classLevel
                   if $scope.donationInfo.monthly is false
-                    angular.element('.finish-step').append '<span> '+ amount + ' <i class="fa fa-chevron-right" aria-hidden="true"></i></span>'
+                    angular.element('.finish-step').append '<span> '+ amount + ' <i class="fa fa-chevron-right" hidden aria-hidden="true"></i></span>'
                   else
-                    angular.element('.finish-step').append '<span> <i class="fa fa-chevron-right" aria-hidden="true"></i></span>'
+                    angular.element('.finish-step').append '<span> <i class="fa fa-chevron-right" hidden aria-hidden="true"></i></span>'
                 $scope.donationLevels.push
                   levelId: levelId
                   classLevel: classLevel
@@ -326,18 +332,34 @@ angular.module 'ahaLuminateControllers'
         loadLocalStorage()
         if $scope.donationInfo.giftType is 'onetime'
           angular.element('#level_installment_row').addClass 'hidden'
+        $requiredField = angular.element '.field-required'
+        angular.forEach $requiredField, (required) ->
+          $req = angular.element required
+          if not angular.element($req).parent().parent().parent().is '.payment-field-container' or angular.element($req).is '.btn' 
+            if not angular.element($req).parent().parent().is '.form-donation-level'
+              angular.element($req).parent().parent().addClass 'form-row-required'
         angular.element('#tr_message_to_participant_row').addClass 'hidden'
         angular.element('#billing_info').parent().addClass 'billing_info_toggle'
         angular.element('#payment_cc_container').append '<div class="clearfix" />'
         angular.element('#responsive_payment_typecc_cvv_row .FormLabelText').text 'CVV:'
-        angular.element('#tr_recognition_namerec_namename').attr 'placeholder', 'If different from your name'
+        angular.element('#tr_recognition_namerec_namename').attr 'placeholder', 'Example: In honor of Grandma'
         angular.element('#tr_message_to_participantname').attr 'placeholder', 'Write a message of encouragement. 255 characters max.'
         addOptional()
         employerMatchFields()
         billingAddressFields()
         donorRecognitionFields()
-        if angular.element('body').hasClass 'cons-logged-in'
-          loggedInForm()
+        if angular.element('body').is '.cons-logged-in'
+          hideDonorInfo = true
+          $reqInput = angular.element '.form-row-required input[type="text"]'
+          $reqSelect = angular.element '.form-row-required select'
+          angular.forEach $reqInput, (req) ->
+            if angular.element(req).val() is ''
+              hideDonorInfo = false
+          angular.forEach $reqSelect, (req) ->
+            if angular.element(req).val() is ''
+              hideDonorInfo = false
+          if hideDonorInfo is true
+            loggedInForm() 
         return
       , (reason) ->
         # TODO

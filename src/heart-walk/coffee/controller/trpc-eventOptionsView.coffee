@@ -192,7 +192,7 @@ angular.module 'trPcControllers'
         $scope.eventOptionsPromises.push searchTeamsPromise
 
       $scope.joinTeam = (teamId, requiresPassword, teamPassword) ->
-        if requiresPassword? and requiresPassword is 'true' and (!teamPassword? or teamPassword.length is 0)
+        if requiresPassword and requiresPassword is 'true' and (!teamPassword or teamPassword.length is 0)
           $scope.manageTeamMembership.joinTeamSearch.joinTeamId = teamId
           $scope.manageTeamMembership.joinTeamSearch.joinTeamPassword = ''
           $scope.joinTeamPasswordModal = $uibModal.open
@@ -200,7 +200,7 @@ angular.module 'trPcControllers'
             templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/joinTeamPassword.html'
         else
           dataStr = 'team_id=' + teamId
-          if requiresPassword? and requiresPassword is 'true' and teamPassword? and teamPassword.length > 0
+          if requiresPassword and requiresPassword is 'true' and teamPassword and teamPassword.length > 0
             dataStr += '&team_password=' + teamPassword
           joinTeamPromise = TeamraiserTeamService.joinTeam dataStr
             .then (response) ->

@@ -3,3 +3,21 @@
 @import "../../youth-markets/sass/mixins.scss";
 
 @import "../../youth-markets/sass/participant.scss";
+
+.ym-page-header-related {
+  bottom: -20px;
+}
+
+.ym-pc-dashboard-activities-section {
+  margin: 0;
+}
+
+.ym-coordinator-message-monster {
+  display: block;
+  max-width: 200px;
+  margin: 0 auto -10px;
+}
+
+.ym-pc-dashboard-activities-section {
+  margin: 0 0 24px;
+}

@@ -63,7 +63,7 @@
 
 .ym-carousel--hero {
   .owl-nav > div {
-    @media(max-width: 568px) {
+    @media (max-width: 568px) {
       top: 15%;
     }
   }
@@ -84,7 +84,7 @@
     text-align: center;
 
     img {
-      border-right: 1px solid #ffffff;
+      border-right: 1px solid $brand-white;
     }
 
     p,
@@ -96,7 +96,7 @@
     }
 
     .item {
-      @media(max-width: $screen-xs-max) {
+      @media (max-width: $screen-xs-max) {
         > p,
         > .h5-heading {
           padding-left: 10px;

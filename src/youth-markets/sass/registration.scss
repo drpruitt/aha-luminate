@@ -1,4 +1,3 @@
-
 .ym-registration-ptype-donation-levels {
   &.active {
     background: $event-secondary-light;
@@ -8,8 +7,9 @@
 .ym-registration-ptype-donation-message {
   color: $event-secondary;
 }
+
 .ym-registration-page-container {
-  font-size: 14px;
+  font-size: $font-size-sm;
   text-align: center;
   max-width: 630px;
   padding: 0 8px;
@@ -42,6 +42,17 @@
     
     ul {
       padding-left: 20px;
+    }
+    
+    a {
+      &, 
+      &:link, 
+      &:visited, 
+      &:hover, 
+      &:focus, 
+      &:active {
+        text-decoration: underline;
+      }
     }
   }
 }
@@ -154,7 +165,7 @@
   margin: 0 2px;
   
   @media (min-width: 360px) {
-    font-size: 14px;
+    font-size: $font-size-sm;
     width: 136px;
     margin: 0 3px;
   }
@@ -171,7 +182,7 @@
     padding-left: 0;
     
     @media (min-width: 360px) {
-      font-size: 14px;
+      font-size: $font-size-sm;
     }
   }
 }
@@ -244,6 +255,11 @@
   @media (min-width: $screen-sm-min) {
     margin: 12px 0 0;
   }
+}
+
+.ym-registration-tfind-create-form {
+  text-align: left;
+  margin: 0 0 24px;
 }
 
 .ym-registration-tfind-form {
@@ -345,6 +361,7 @@
     font-size: 18px;
     padding: 8px 14px;
     margin: 0 5px 15px;
+    height: 50px;
     
     @media (min-width: 360px) {
       padding: 12px 20px;
@@ -402,7 +419,7 @@
   }
   
   .help-block {
-    color: #6153a3;
+    color: $event-secondary;
     font-size: 12px;
     margin-top: -10px;
   }

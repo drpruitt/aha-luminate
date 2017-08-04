@@ -46,7 +46,7 @@ angular.module 'trPcControllers'
         angular.forEach contactFilters, (filter) ->
           contactCountPromise = ContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=1'
             .then (response) ->
-              $scope.contactCounts[filter] = response.data.getTeamraiserAddressBookContactsResponse.totalNumberResults
+              $scope.contactCounts[filter] = response.data.getTeamraiserAddressBookContactsResponse?.totalNumberResults or '0'
               response
           $scope.emailPromises.push contactCountPromise
       $scope.getContactCounts()
@@ -111,7 +111,7 @@ angular.module 'trPcControllers'
           suggestedMessages = [suggestedMessages] if not angular.isArray suggestedMessages
           $scope.suggestedMessages = []
           angular.forEach suggestedMessages, (message) ->
-            if message.active == 'true'
+            if message.active is 'true'
               $scope.suggestedMessages.push message
           response
       $scope.emailPromises.push suggestedMessagesPromise

@@ -150,5 +150,71 @@ module.exports = {
         ]
       }
     ]
+  }, 
+  
+  "high-school": {
+    files: [
+      {
+        expand: true, 
+        cwd: 'dist/high-school/css/', 
+        src: [
+          '**/*'
+        ]
+      }, 
+      {
+        expand: true, 
+        cwd: 'dist/high-school/js/', 
+        src: [
+          '**/*'
+        ]
+      }, 
+      {
+        expand: true, 
+        cwd: 'dist/high-school/html/', 
+        src: [
+          '**/*'
+        ]
+      }, 
+      {
+        expand: true, 
+        cwd: 'dist/high-school/image/', 
+        src: [
+          '**/*'
+        ]
+      }
+    ]
+  }, 
+  
+  "district-heart": {
+    files: [
+      {
+        expand: true, 
+        cwd: 'dist/district-heart/css/', 
+        src: [
+          '**/*'
+        ]
+      }, 
+      {
+        expand: true, 
+        cwd: 'dist/district-heart/js/', 
+        src: [
+          '**/*'
+        ]
+      }, 
+      {
+        expand: true, 
+        cwd: 'dist/district-heart/html/', 
+        src: [
+          '**/*'
+        ]
+      }, 
+      {
+        expand: true, 
+        cwd: 'dist/district-heart/image/', 
+        src: [
+          '**/*'
+        ]
+      }
+    ]
   }
 }

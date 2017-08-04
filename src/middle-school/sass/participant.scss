@@ -4,6 +4,13 @@
 
 @import "../../youth-markets/sass/participant.scss";
 
+.ym-pc-dashboard-section-header {
+  h2, 
+  .h2 {
+    text-transform: uppercase;
+  }
+}
+
 .ym-pc-dashboard-progress-section {
   .row {
     .ym-pc-dashboard-progress-section__column {
@@ -30,8 +37,11 @@
   }
 }
 
-.ym-pc-dashboard-progress-type {
-  a {
+.ym-pc-dashboard-progress-type,
+.ym-pc-dashboard-captain-page-type, 
+.ym-pc-dashboard-coordinator-page-type {
+  a,
+  button {
     &, 
     &:link, 
     &:visited {
@@ -60,15 +70,23 @@
     }
   }
   
-  .btn {
-    margin: 0 0 4px;
-    
-    @media (min-width: $screen-lg-min) {
-      position: absolute;
-      right: 0;
-      top: 0;
-      padding: 7px 10px;
-      margin: 0;
+  .btn, 
+  a.btn {
+    &, 
+    &:link, 
+    &:visited, 
+    &:hover, 
+    &:focus, 
+    &:active {
+      margin: 0 0 4px;
+      
+      @media (min-width: $screen-lg-min) {
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 7px 10px;
+        margin: 0;
+      }
     }
   }
   
@@ -152,14 +170,6 @@
       font-size: 13px;
       height: 470px;
       padding: 28px;
-      
-      &::-moz-selection {
-        background: transparent;
-      }
-      
-      &::selection {
-        background: transparent;
-      }
     }
   }
 }

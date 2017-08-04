@@ -2,7 +2,7 @@
   <li class="list-group-item" ng-repeat="contact in contacts">
     <div class="clearfix">
       <div class="pull-left">
-        <div class="checkbox" ng-class="{'checked': contact.selected}">
+        <div class="checkbox" custom-checkbox ng-class="{'checked': contact.selected}">
           <label>
             <input type="checkbox" value="{{contact.id}}" ng-checked="contact.selected" ng-click="toggleContact(contact)"> 
             <a ng-click="selectContact(contact)">
@@ -25,9 +25,9 @@
         </div>
       </div>
       <div class="pull-right">
-        <a ng-click="deleteContact(contact.id)">
-          <i class="fa fa-trash-o"></i>
-        </a>
+        <button type="button" class="btn btn-link" ng-click="deleteContact(contact.id)">
+          <span class="fa fa-trash-o"><span class="sr-only">Delete</span></span>
+        </button>
       </div>
     </div>
   </li>

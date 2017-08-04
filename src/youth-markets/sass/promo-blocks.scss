@@ -6,6 +6,7 @@
   }
 
   @media (min-width: $screen-sm-min) {
+    box-shadow: 0 10px 0 0 rgb(50, 50, 50);
     box-shadow: 0 10px 0 0 rgba(50, 50, 50, 1);
   }
 }
@@ -46,16 +47,16 @@
   .h2,
   h2 {
     font-size: 68px;
-    line-height: 0.75;
+    line-height: 1;
 
-    @media(min-width: $screen-sm-min) {
+    @media (min-width: $screen-sm-min) {
       color: $brand-white;
       margin: 50px 0 10px;
     }
   }
 
   p {
-    color: #ffffff;
+    color: $brand-white;
     font-weight: 700;
     line-height: 1.25;
     max-width: 175px;
@@ -140,19 +141,19 @@
 
       h2,
       .h2 {
-        color: #ffffff;
-        line-height: 0.75;
+        color: $brand-white;
+        line-height: 1;
         margin: 60px 0 10px;
       }
 
       p {
-        color: #ffffff;
+        color: $brand-white;
       }
 
       @media (max-width: $screen-sm-max) {
         width: 200px;
         height: 200px;
-        margin: 20px 20px 20px 0px;
+        margin: 20px 20px 20px 0;
       }
 
       @media (max-width: $screen-xs-max) {
@@ -244,11 +245,11 @@
       a,
       a:link,
       a:visited {
-        color: #fff;
+        color: $brand-white;
       }
     }
     .ym-sidebar-promo__text {
-      font-size: 14px;
+      font-size: $font-size-sm;
       padding: 20px 20px 30px;
 
       & > a {

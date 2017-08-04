@@ -1,4 +1,18 @@
-body.aha-luminate #at4-share,
-body.aha-luminate #at4-soc {
-  top: 402px !important;
+body.aha-luminate {
+  #at4-share,
+  #at4-soc {
+    @media (max-width: 979px) {
+      display: none;
+    }
+    
+    @media (min-width: 980px) {
+      top: 402px !important;
+    }
+  }
+  
+  .at-share-dock-outer {
+    @media (min-width: 980px) {
+      display: none !important;
+    }
+  }
 }

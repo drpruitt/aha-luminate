@@ -24,7 +24,7 @@
       <a class="btn btn-primary btn-lg" href="Donation2?df_id=[[E42:[[S80:trID]]:form-id]]&amp;FR_ID=[[S80:trID]]&amp;PROXY_ID=[[S334:px]]&amp;PROXY_TYPE=20">
         Donate
       </a>
-      <div class="ym-progress__thermometer" name="Personal Progress Bar" aria-valuetext="Personal Progress Bar" role="progressbar" aria-valuenow="{{personalProgress.percent}}%" aria-valuemin="0%" aria-valuemax="100%">
+      <div class="ym-progress__thermometer" name="Personal Progress Bar" aria-valuetext="{{personalProgress.percent}} percent of fundraising progress" role="progressbar" aria-valuenow="{{personalProgress.percent}}" aria-valuemin="0" aria-valuemax="100">
         <div class="ym-progress__thermometer--fill" ng-style="{'width': personalProgress.percent + '%'}"></div>
       </div>
       <div class="ym-progress__stats">
@@ -39,7 +39,7 @@
           </p>
         </div>
         <div class="clearfix"></div>
-        <div class="ym-progress__date" ng-if="eventDate != 'User Provided No Response'" ng-cloak>
+        <div class="ym-progress__date" ng-if="eventDate && eventDate != '' && eventDate != 'User Provided No Response'" ng-cloak>
           <p>
             My event date is <strong><span ng-bind-html="eventDate"></span></strong>
           </p>
@@ -50,9 +50,9 @@
   </div>
   <div class="ym-page-section ym-page-section__main">
     <div class="ym-story" ng-class="prizes.length > 0 || challengeId != null ? 'col-md-6' : 'col-md-12'">
-      <h3 class="ym-headline">
+      <h2 class="ym-headline h3">
         My Story
-      </h3>
+      </h2>
       [[?
         [[?xx::x[[S1:cons_id]]x::::
           [[?x[[S1:cons_id]]x::x[[S334:px]]x::T::]]
@@ -72,7 +72,7 @@
           </div>
         </div>
       ::]]
-      <div class="hidden js--default-page-content" ng-non-bindable>
+      <div class="hidden js--default-page-content" hidden aria-hidden="true" ng-non-bindable>
         [[C6:fr_rich_text]]
       </div>
       <div ng-show="personalPageContent.mode == 'view'">
@@ -95,19 +95,19 @@
     </div>
     <div class="col-md-6 ym-user-interactions" ng-if="prizes.length > 0 || challengeId != null">
       <div class="ym-badges" ng-if="prizes.length > 0">
-        <h3 class="ym-headline">
+        <h2 class="ym-headline h3">
           Check Out My Badges
-        </h3>
+        </h2>
         <div class="ym-badges__item" ng-repeat="prize in prizes | limitTo: 3" ng-cloak>
-          <img class="img-responsive" ng-src="https://s3.amazonaws.com/aha-jumphoops-production/fy18/assets/badges/{{prize.id}}_delivered.png" alt="{{prize.label}}" />
+          <img class="img-responsive" ng-src="https://s3.amazonaws.com/aha-jumphoops-production/fy18/assets/badges/{{prize.id}}_delivered.png" alt="{{prize.label}}">
           <div ng-bind-html="prize.label"></div>
         </div>
         <div class="clearfix"></div>
       </div>
       <div class="ym-my-challenge ym-secondary-medium-color" ng-if="challengeId != null" ng-cloak>
-        <h3 class="ym-headline">
+        <h2 class="ym-headline">
           My Challenge
-        </h3>
+        </h2>
         <div class="col-sm-4">
           <img class="img-responsive" ng-if="challengeId == 1 || challengeId == 4" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/my-challenge-exercise.png" alt="{{challengeName}}" ng-cloak>
           <img class="img-responsive" ng-if="challengeId == 2" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/my-challenge-water.png" alt="{{challengeName}}" ng-cloak>
@@ -130,9 +130,9 @@
       [[?[[E48:[[S80:trID]]-[[S334:px]]:question:Pick from one of the choices below and we will customize your message letting friends and family know you have taken the challenge. We will also send you some information to help you meet your goal.]]::::
       ::
         <div class="ym-my-challenge ym-secondary-medium-color" ng-if="challengeId == null" ng-cloak>
-          <h3 class="ym-headline">
+          <h2 class="ym-headline">
             My Challenge
-          </h3>
+          </h2>
           <div class="col-sm-4">
             <img class="img-responsive" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/my-challenge-water.png" alt="">
           </div>
@@ -150,9 +150,9 @@
   </div>
   <div class="ym-page-section ym-page-section__list ym-accent-color">
     <div class="ym-donate-cta" ng-class="personalDonors.donors.length < 1 ? 'col-sm-12' : 'col-sm-6'">
-      <h4 class="h5">
+      <h2 class="h5">
         Donate to [[E48:[[S80:trID]]-[[S334:px]]:cons.first_name]]
-      </h4>
+      </h2>
       <div ng-if="personalDonors.donors.length > 0" ng-cloak>
         <p>
           <strong>Add your name to the list!</strong>
@@ -167,19 +167,22 @@
         Donate
       </a>
     </div>
-    <div class="ym-list" ng-class="personalDonors.donors.length < 1 ? 'hidden' : 'col-sm-6'" role="list" aria-label="Top Donors List">
-      <img class="img-responsive" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/hj-donors-graphic.png" alt="Saluting the following top donors">
-      <div class="ym-donor-list">
-        <div class="ym-donor-list__row" ng-repeat="personalDonor in personalDonors.donors" ng-if="personalDonors.donors.length > 0" role="listitem" ng-cloak>
-          <span class="ym-donor-list__row--name">{{personalDonor.name}}</span>
-          <span class="ym-donor-list__row--amount">{{personalDonor.amountFormatted}}</span>
-          <div class="clearfix"></div>
-        </div>
-      </div>
+    <div class="ym-list" ng-class="!personalDonors.donors || personalDonors.donors.length == 0 ? 'hidden' : 'col-sm-6'" role="list" aria-label="Top Donors List" ng-cloak>
+      <h2>
+        <img class="img-responsive" src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/hj-donors-graphic.png" alt="Saluting these top donors:">
+      </h2>
+      <ul class="ym-donor-list">
+        <li class="ym-donor-list__row" ng-repeat="personalDonor in personalDonors.donors" role="listitem" ng-if="personalDonors.donors.length > 0" ng-cloak>
+          <div class="clearfix">
+            <span class="ym-donor-list__row--name">{{personalDonor.name}}</span> 
+            <span class="ym-donor-list__row--amount">{{personalDonor.amountFormatted}}</span>
+          </div>
+        </li>
+      </ul>
     </div>
     <div class="clearfix"></div>
   </div>
-  <div class="hidden">
+  <div class="hidden" hidden aria-hidden="true">
     <div class="js--personal-donors">
       [[C5:fr_status_2]]
     </div>

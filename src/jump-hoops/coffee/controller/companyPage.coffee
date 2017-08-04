@@ -19,7 +19,6 @@ angular.module 'ahaLuminateControllers'
       $scope.companyId = $location.absUrl().split('company_id=')[1].split('&')[0].split('#')[0]
       domain = $location.absUrl().split('/site/')[0]
       $rootScope.companyName = ''
-      $scope.companyTeams = []
       $scope.eventDate = ''
       $scope.totalTeams = ''
       $scope.teamId = ''
@@ -31,30 +30,27 @@ angular.module 'ahaLuminateControllers'
       $scope.trustHtml = (html) ->
         return $sce.trustAsHtml(html)
       
-      TeamraiserCompanyService.getCompanyList 'include_all_companies=true', 
-        error: ->
-          $scope.localSponsorShow = false
-        success: (response) ->
-          companyItems = response.getCompanyListResponse.companyItem
-          angular.forEach companyItems, (companyItem) ->
-            if companyItem.companyId is $scope.companyId
-              parentId = companyItem.parentOrgEventId
-              PageContentService.getPageContent 'jump_hoops_local_sponsors_'+ parentId
-              .then (response) ->
-                if response.includes('No data') is true
+      getLocalSponsors = ->
+        if $scope.parentCompanyId and $scope.parentCompanyId isnt ''
+          PageContentService.getPageContent 'jump_hoops_local_sponsors_' + $scope.parentCompanyId
+            .then (response) ->
+              if response.includes('No data') is true
+                $scope.localSponsorShow = false
+              else
+                img = response.split('/>')[0]
+                if img is undefined
                   $scope.localSponsorShow = false
                 else
-                  img = response.split('/>')[0]
-                  if img is undefined
-                    $scope.localSponsorShow = false
-                  else
-                    alt = img.split('alt="')
-                    src = alt[0].split('src="')
-                    $scope.localSponsorShow = true
-                    $scope.localSponsorImageSrc = src[1].split('"')[0]
-                    $scope.localSponsorImageAlt = alt[1].split('"')[0]
-                    
-      ZuriService.getZooSchool $scope.companyId,
+                  alt = img.split('alt="')
+                  src = alt[0].split('src="')
+                  $scope.localSponsorShow = true
+                  $scope.localSponsorImageSrc = src[1].split('"')[0]
+                  $scope.localSponsorImageAlt = alt[1].split('"')[0]
+      getLocalSponsors()
+      $scope.$watch 'parentCompanyId', ->
+        getLocalSponsors()
+      
+      ZuriService.getSchool $scope.companyId,
         error: (response) ->
           $scope.studentsPledgedTotal = 0
           $scope.activity1amt = 0
@@ -106,8 +102,10 @@ angular.module 'ahaLuminateControllers'
               # TODO
             else
               companies = [companies] if not angular.isArray companies
-              $scope.participantCount = companies[0].participantCount 
-              totalTeams = companies[0].teamCount
+              participantCount = companies[0].participantCount or '0'
+              $scope.participantCount = Number participantCount
+              totalTeams = companies[0].teamCount or '0'
+              totalTeams = Number totalTeams
               eventId = companies[0].eventId
               amountRaised = companies[0].amountRaised
               goal = companies[0].goal
@@ -118,12 +116,12 @@ angular.module 'ahaLuminateControllers'
               
               TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
                 .then (response) ->
-                  $scope.eventDate = response.data.coordinator.event_date
-                  
-                  if totalTeams = 1
-                    $scope.teamId = response.data.coordinator.team_id
+                  $scope.eventDate = response.data.coordinator?.event_date
+                  if totalTeams is 1
+                    $scope.teamId = response.data.coordinator?.team_id
       getCompanyTotals()
       
+      $scope.companyTeams = {}
       setCompanyTeams = (teams, totalNumber) ->
         $scope.companyTeams.teams = teams or []
         totalNumber = totalNumber or 0
@@ -131,9 +129,10 @@ angular.module 'ahaLuminateControllers'
         $scope.totalTeams = totalNumber
         if not $scope.$$phase
           $scope.$apply()
-      
       getCompanyTeams = ->
-        TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId,
+        TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId + '&list_page_size=500',
+          error: ->
+            setCompanyTeams()
           success: (response) ->
             companyTeams = response.getTeamSearchByInfoResponse.team
             if companyTeams
@@ -143,12 +142,10 @@ angular.module 'ahaLuminateControllers'
                 companyTeam.amountRaisedFormatted = $filter('currency')(companyTeam.amountRaised / 100, '$').replace '.00', ''
               totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults
               setCompanyTeams companyTeams, totalNumberTeams
-          error: ->
-            setCompanyTeams()
       getCompanyTeams()
       
       participantsString = ''
-      $scope.companyParticipants = []
+      $scope.companyParticipants = {}
       setCompanyParticipants = (participants, totalNumber, totalFundraisers) ->
         $scope.companyParticipants.participants = participants or []
         totalNumber = totalNumber or 0
@@ -156,7 +153,6 @@ angular.module 'ahaLuminateControllers'
         $scope.companyParticipants.totalFundraisers = Number totalFundraisers
         if not $scope.$$phase
           $scope.$apply()
-        
         if participants and participants.length > 0
           angular.forEach participants, (participant, participantIndex) ->
             participantsString += '{name: "' + participant.name.first + ' ' + participant.name.last + '", raised: "' + participant.amountRaisedFormatted + '"}'
@@ -166,28 +162,29 @@ angular.module 'ahaLuminateControllers'
           angular.element('.ym-school-animation iframe')[0].contentWindow.postMessage companyParticipantsString, domain
           angular.element('.ym-school-animation iframe').on 'load', ->
             angular.element('.ym-school-animation iframe')[0].contentWindow.postMessage companyParticipantsString, domain
-      
       getCompanyParticipants = ->
-        TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%%%') + '&first_name=' + encodeURIComponent('%%%') + '&last_name=' + encodeURIComponent('%%%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=50',
+        TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%') + '&first_name=' + encodeURIComponent('%%') + '&last_name=' + encodeURIComponent('%') + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=50',
             error: ->
               setCompanyParticipants()
-              numCompaniesParticipantRequestComplete++
-              if numCompaniesParticipantRequestComplete is numCompanies
-                setCompanyNumParticipants numParticipants
             success: (response) ->
               participants = response.getParticipantsResponse?.participant
               companyParticipants = []
-              totalFundraisers = ''
+              totalNumberParticipants = response.getParticipantsResponse?.totalNumberResults or '0'
+              totalFundraisers = 0
               if participants
                 participants = [participants] if not angular.isArray participants
                 angular.forEach participants, (participant) ->
-                  if participant.amountRaised > 1
-                    participant.amountRaised = Number participant.amountRaised
+                  participant.amountRaised = Number participant.amountRaised
+                  if participant.name?.first and participant.amountRaised > 0
+                    participant.firstName = participant.name.first
+                    participant.lastName = participant.name.last
+                    participant.name.last = participant.name.last.substring(0, 1) + '.'
+                    participant.fullName = participant.name.first + ' ' + participant.name.last
                     participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
-                    participant.name.last = participant.name.last.substring(0,1)+'.'
+                    if participant.donationUrl
+                      participant.donationFormId = participant.donationUrl.split('df_id=')[1].split('&')[0]
                     companyParticipants.push participant
                     totalFundraisers++
-              totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
               setCompanyParticipants companyParticipants, totalNumberParticipants, totalFundraisers
       getCompanyParticipants()
       

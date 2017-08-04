@@ -19,7 +19,7 @@ angular.module 'trPcApp'
       (options) ->
         deferred = $q.defer()
         loadFile = (file) ->
-          if not file? or not angular.isString file.prefix or not angular.isString file.suffix
+          if not file or not angular.isString file.prefix or not angular.isString file.suffix
             throw new Error "Couldn't load static file, no prefix or suffix specified"
           $http angular.extend {
             url: [
@@ -35,14 +35,14 @@ angular.module 'trPcApp'
             , () ->
               $q.reject options.key
         loadMsgCat = (data) ->
-          if not data?.keys? or not angular.isArray data.keys
+          if not data?.keys or not angular.isArray data.keys
             throw new Error "Couldn't load message catalog bundle, no keys specified"
           dataStr = 'bundle='
           if data?.bundle?
             dataStr += data.bundle
           else
             dataStr += 'trpc'
-          dataStr += '&keys=' + data?.keys?.toString() if data?.keys? and angular.isArray data.keys
+          dataStr += '&keys=' + data?.keys?.toString() if data?.keys and angular.isArray data.keys
           ContentService.getMessageBundle dataStr
             .then (response) ->
               messageBundle = {}
@@ -53,7 +53,7 @@ angular.module 'trPcApp'
                 messageValues = [messageValues] if not angular.isArray messageValues
                 messageBundle[msg.key] = stripHtml msg.value for msg in messageValues
               messageBundle
-        if options?.messages? and angular.isArray options.messages
+        if options?.messages and angular.isArray options.messages
           promises = []
           for message in options.messages
             switch message.type

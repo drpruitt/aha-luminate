@@ -65,6 +65,8 @@ module.exports = {
         '!src/jump-hoops/coffee/config/trpc-*.*', 
         'src/global/coffee/service/*.*', 
         '!src/global/coffee/service/trpc-*.*', 
+        'src/youth-markets/coffee/service/*.*', 
+        '!src/youth-markets/coffee/service/trpc-*.*', 
         'src/jump-hoops/coffee/service/*.*', 
         '!src/jump-hoops/coffee/service/trpc-*.*', 
         'src/global/coffee/directive/*.*', 
@@ -77,6 +79,7 @@ module.exports = {
         'src/jump-hoops/coffee/trpc-init.coffee', 
         'src/jump-hoops/coffee/config/trpc-*.*', 
         'src/global/coffee/service/trpc-*.*', 
+        'src/youth-markets/coffee/service/trpc-*.*', 
         'src/jump-hoops/coffee/**/trpc-*.*'
       ]
     }
@@ -90,6 +93,8 @@ module.exports = {
         '!src/middle-school/coffee/config/trpc-*.*', 
         'src/global/coffee/service/*.*', 
         '!src/global/coffee/service/trpc-*.*', 
+        'src/youth-markets/coffee/service/*.*', 
+        '!src/youth-markets/coffee/service/trpc-*.*', 
         'src/middle-school/coffee/service/*.*', 
         '!src/middle-school/coffee/service/trpc-*.*', 
         'src/global/coffee/directive/*.*', 
@@ -102,7 +107,64 @@ module.exports = {
         'src/middle-school/coffee/trpc-init.coffee', 
         'src/middle-school/coffee/config/trpc-*.*', 
         'src/global/coffee/service/trpc-*.*', 
+        'src/youth-markets/coffee/service/trpc-*.*', 
         'src/middle-school/coffee/**/trpc-*.*'
+      ]
+    }
+  }, 
+  
+  "high-school": {
+    files: {
+      'dist/high-school/js/main.js': [
+        'src/high-school/coffee/init.coffee', 
+        'src/high-school/coffee/config/*.*', 
+        '!src/high-school/coffee/config/trpc-*.*', 
+        'src/global/coffee/service/*.*', 
+        '!src/global/coffee/service/trpc-*.*', 
+        'src/youth-markets/coffee/service/*.*', 
+        '!src/youth-markets/coffee/service/trpc-*.*', 
+        'src/high-school/coffee/service/*.*', 
+        '!src/high-school/coffee/service/trpc-*.*', 
+        'src/global/coffee/directive/*.*', 
+        'src/high-school/coffee/directive/*.*', 
+        '!src/high-school/coffee/directive/trpc-*.*', 
+        'src/high-school/coffee/**/*.*', 
+        '!src/high-school/coffee/**/trpc-*.*'
+      ], 
+      'dist/high-school/js/participant.js': [
+        'src/high-school/coffee/trpc-init.coffee', 
+        'src/high-school/coffee/config/trpc-*.*', 
+        'src/global/coffee/service/trpc-*.*', 
+        'src/youth-markets/coffee/service/trpc-*.*', 
+        'src/high-school/coffee/**/trpc-*.*'
+      ]
+    }
+  }, 
+  
+  "district-heart": {
+    files: {
+      'dist/district-heart/js/main.js': [
+        'src/district-heart/coffee/init.coffee', 
+        'src/district-heart/coffee/config/*.*', 
+        '!src/district-heart/coffee/config/trpc-*.*', 
+        'src/global/coffee/service/*.*', 
+        '!src/global/coffee/service/trpc-*.*', 
+        'src/youth-markets/coffee/service/*.*', 
+        '!src/youth-markets/coffee/service/trpc-*.*', 
+        'src/district-heart/coffee/service/*.*', 
+        '!src/district-heart/coffee/service/trpc-*.*', 
+        'src/global/coffee/directive/*.*', 
+        'src/district-heart/coffee/directive/*.*', 
+        '!src/district-heart/coffee/directive/trpc-*.*', 
+        'src/district-heart/coffee/**/*.*', 
+        '!src/district-heart/coffee/**/trpc-*.*'
+      ], 
+      'dist/district-heart/js/participant.js': [
+        'src/district-heart/coffee/trpc-init.coffee', 
+        'src/district-heart/coffee/config/trpc-*.*', 
+        'src/global/coffee/service/trpc-*.*', 
+        'src/youth-markets/coffee/service/trpc-*.*', 
+        'src/district-heart/coffee/**/trpc-*.*'
       ]
     }
   }

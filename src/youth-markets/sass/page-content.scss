@@ -92,12 +92,40 @@
   @media (min-width: $screen-md-min) {
     display: flex;
   }
-
+  
   .ym-progress {
     padding: 20px;
-
-    .ym-progress__cta .btn {
-      margin: 0 10px 10px;
+    
+    .ym-progress__cta {
+      .btn {
+        margin: 0 10px 10px;
+        
+        &.btn-md {
+          display: block;
+          font-size: 14px;
+          font-weight: 700;
+          width: 120px;
+          min-width: 120px;
+          padding: 10px 12px;
+          margin: 0 auto 10px;
+          
+          @media (min-width: 500px) {
+            display: inline-block;
+            width: auto;
+            margin: 0 10px 10px;
+          }
+          
+          @media (min-width: $screen-sm-min) {
+            font-size: 18px;
+            padding: 12px 16px;
+          }
+          
+          @media (min-width: $screen-lg-min) {
+            font-size: 20px;
+            padding: 12px 24px;
+          }
+        }
+      }
     }
   }
 }
@@ -159,7 +187,7 @@
     width: 100%;
     padding: 15px 0;
     margin: 0;
-
+    
     @media (min-width: 630px) and (max-width: $screen-sm-max) {
       margin: 0 0 20px;
     }
@@ -167,28 +195,28 @@
 }
 
 .ym-page-section__main {
-  padding: 50px 0;
-
-  @media (max-width: $screen-sm-max) {
+  padding: 30px 0;
+  
+  @media (max-width: $screen-sm-min) {
    padding: 40px 0;
   }
-
-  @media (max-width: $screen-xs-max) {
-    padding: 30px 0;
+  
+  @media (max-width: $screen-md-min) {
+    padding: 50px 0;
   }
-
+  
   > .col-md-6,
   > .col-md-12 {
     padding: 0 40px;
-
+    
     @media (max-width: $screen-sm-max) {
       padding: 0 60px;
     }
-
+    
     @media (max-width: $screen-xs-max) {
       padding: 0 20px;
     }
-
+    
     .ym-my-challenge > div {
         padding: 0;
     }
@@ -292,23 +320,23 @@
     display: flex;
     align-items: center;
   }
-
+  
   > div {
     padding: 0 20px;
-
+    
     @media (min-width: $screen-sm-min) {
       padding: 0;
     }
-
+    
     &.ym-list {
       @media (min-width: $screen-sm-min) {
         padding-right: 20px;
       }
-
+      
       @media (min-width: $screen-md-min) {
-        padding-right: 40px
+        padding-right: 40px;
       }
-
+      
       @media (min-width: $screen-lg-min) {
         padding-right: 0;
       }
@@ -317,28 +345,51 @@
 }
 
 .ym-page-section__roster {
-  padding: 50px;
-
-  &.hidden {
-    padding-bottom: 0px;
+  padding: 25px;
+  
+  @media (min-width: $screen-sm-min) {
+    padding: 50px;
   }
-
-  .h5 {
+  
+  &.hidden {
+    padding-bottom: 0;
+  }
+  
+  & + .ym-page-section__roster {
+    padding-top: 0;
+  }
+  
+  .h5, 
+  h5 {
     text-align: center;
-    margin: 0 0 30px;
     padding: 0;
-
+    margin: 0 0 15px;
+    
+    @media (min-width: $screen-sm-min) {
+      margin: 0 0 30px;
+    }
+    
     &.text-left {
       text-align: left;
     }
-
-    @media (max-width: $screen-xs) {
-      margin: 0 0 15px;
-    }
   }
 
-  @media (max-width: $screen-xs) {
-    padding: 25px;
+  .small {
+    display: none;
+
+    @media(max-width: 450px) {
+      display: block;
+      margin: 10px 0 0;
+    }
+  }
+  
+  .ym-section-divider {
+    border-top: 1px solid $border-gray;
+    margin: 25px 0 0;
+    
+    @media (min-width: $screen-sm-min) {
+      margin: 50px -40px 0;
+    }
   }
 }
 
