@@ -15,7 +15,7 @@
       </h2>
       <div class="ym-progress__cta">
         <div ng-if="(companyTeams.totalNumber == 1 && !teamId) || companyTeams.totalNumber > 1" ng-cloak>
-          <a class="btn btn-primary btn-lg" href="TRR?fr_id=[[S80:trID]]&amp;pg=tfind&amp;fr_tm_opt=new&amp;s_frTJoin=&amp;company_id=[[S334:company_id]]&amp;s_frCompanyId=[[S334:company_id]]">
+          <a class="btn btn-primary btn-lg" href="TRR?fr_id=[[S80:trID]]&amp;pg=tfind&amp;fr_tm_opt=new&amp;s_frTJoin=&amp;company_id=[[S334:company_id]]&amp;s_frCompanyId=[[S334:company_id]]" ng-if="createTeam != 'False">
             Start a Team
           </a> 
           <a class="btn btn-primary btn-lg" href="TRR?fr_id=[[S80:trID]]&amp;pg=tfind&amp;fr_tm_opt=existing&amp;s_frTJoin=&amp;company_id=[[S334:company_id]]&amp;s_frCompanyId=[[S334:company_id]]">
@@ -26,7 +26,7 @@
           <a class="btn btn-primary btn-md" href="[[S8]]#" data-toggle="modal" data-target="#schoolDonation">
             Donate
           </a> 
-          <a class="btn btn-primary btn-md" href="TRR?fr_id=[[S80:trID]]&amp;pg=tfind&amp;fr_tm_opt=new&amp;s_frTJoin=&amp;company_id=[[S334:company_id]]&amp;s_frCompanyId=[[S334:company_id]]">
+          <a class="btn btn-primary btn-md" href="TRR?fr_id=[[S80:trID]]&amp;pg=tfind&amp;fr_tm_opt=new&amp;s_frTJoin=&amp;company_id=[[S334:company_id]]&amp;s_frCompanyId=[[S334:company_id]]" ng-if="createTeam != 'False">
             Start a Team
           </a> 
           <a class="btn btn-primary btn-md" href="TRR?fr_id=[[S80:trID]]&amp;pg=tfind&amp;fr_tm_opt=existing&amp;s_frTJoin=&amp;company_id=[[S334:company_id]]&amp;s_frCompanyId=[[S334:company_id]]">
