@@ -204,7 +204,7 @@ angular.module 'ahaLuminateControllers'
               .then (response) ->
                 createTeam = response.data.coordinator.enable_team
                 if createTeam is 'False'
-                  window.location = 'http://heartdev.convio.net/site/TRR?fr_id=' + eventId +'&pg=tfind&fr_tm_opt=existing&s_frTJoin=&company_id=' + schoolId + '&s_frCompanyId=' + schoolId
+                  window.location = 'http://heartdev.convio.net/site/TRR?fr_id=' + eventId + '&pg=tfind&fr_tm_opt=existing&s_frTJoin=&company_id=' + schoolId + '&s_frCompanyId=' + schoolId
                 else
                   $rootScope.createTeam.joinUrl = 'http://heartdev.convio.net/site/TRR?fr_id=' + eventId + '&pg=tfind&fr_tm_opt=existing&s_frTJoin=&company_id=' + schoolId + '&s_frCompanyId=' + schoolId
                   $rootScope.createTeam.createUrl = 'http://heartdev.convio.net/site/TRR?fr_id=' + eventId + '&pg=tfind&fr_tm_opt=new&s_frTJoin=&company_id=' + schoolId + '&s_frCompanyId=' + schoolId
