@@ -214,9 +214,16 @@
                 <tr class="ym-list__row" ng-repeat="school in schoolList.schools | filter:paginate">
                   <td class="ym-list__column ym-list__column--school">
                     <a ng-href="{{nonSecureDomain}}site/TR?pg=company&fr_id={{school.FR_ID}}&company_id={{school.COMPANY_ID}}"><span ng-bind-html="school.SCHOOL_NAME"></span></a><br>
-                    <a class="btn btn-primary btn-md mt-sm" ng-href="{{nonSecureDomain}}site/TRR?fr_id={{school.FR_ID}}&amp;pg=tfind&amp;fr_tm_opt=existing&s_frTJoin=&amp;company_id={{school.COMPANY_ID}}&amp;s_frCompanyId={{school.COMPANY_ID}}">
-                      Sign Up
-                    </a>
+                    <t:if test="path == '/high-school/'">
+                      <button class="btn btn-primary btn-md mt-sm" ng-click="checkCreateTeam()">
+                        <strong>Sign Up</strong>
+                      </button>
+                    </t:if>
+                    <t:else>
+                      <a class="btn btn-primary btn-md mt-sm" ng-href="{{nonSecureDomain}}site/TRR?fr_id={{school.FR_ID}}&amp;pg=tfind&amp;fr_tm_opt=existing&s_frTJoin=&amp;company_id={{school.COMPANY_ID}}&amp;s_frCompanyId={{school.COMPANY_ID}}">
+                        Sign Up
+                      </a>
+                    </t:else>
                   </td>
                   <td class="ym-list__column ym-list__column--city">
                     <span ng-bind-html="school.SCHOOL_CITY"></span>
