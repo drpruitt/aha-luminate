@@ -26,4 +26,15 @@ angular.module 'ahaLuminateApp'
           url: $sce.trustAsResourceUrl(requestUrl)
           headers:
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+
+      getCreateTeamData: (requestData) ->
+        # requestUrl = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent('luminateExtend.global.path.secure + 'SPageServer?pagename=ym_coordinator_data&pgwrap=n')
+        requestUrl = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent('https://secure3.convio.net/heartdev/site/SPageServer?pagename=ym_coordinator_data&pgwrap=n'+requestData)
+        if window.location.href.indexOf(luminateExtend.global.path.secure) is 0
+          requestUrl = 'SPageServer?pagename=getHighSchoolSearchData&pgwrap=n'
+        $http
+          method: 'GET'
+          url: $sce.trustAsResourceUrl(requestUrl)
+          headers:
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
   ]
