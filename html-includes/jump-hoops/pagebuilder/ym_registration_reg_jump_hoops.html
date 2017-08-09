@@ -164,6 +164,9 @@
             <label class="control-label" for="registrationInfo-{{registrationCustomQuestions.ym_hoops_jump_school_state}}">
               <span ng-bind-html="registrationQuestions[registrationCustomQuestions.ym_hoops_jump_school_state].label"></span>
             </label>
+            <select class="form-control input-lg" name="ng_{{registrationCustomQuestions.ym_hoops_jump_school_state}}" id="registrationInfo-{{registrationCustomQuestions.ym_hoops_jump_school_state}}" ng-model="registrationInfo[registrationCustomQuestions.ym_hoops_jump_school_state]">
+              <option ng-repeat="questionOption in registrationQuestions[registrationCustomQuestions.ym_hoops_jump_school_state].options" value="{{questionOption.value}}">{{questionOption.text}}</option>
+            </select>
           </div>
         </div>
       </div>
