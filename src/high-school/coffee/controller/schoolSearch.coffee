@@ -4,10 +4,7 @@ angular.module 'ahaLuminateControllers'
     '$scope'
     '$filter'
     'SchoolLookupService'
-    'APP_INFO'
-    '$uibModal'
-    '$sce'
-    ($rootScope, $scope, $filter, SchoolLookupService, APP_INFO, $uibModal, $sce) ->
+    ($rootScope, $scope, $filter, SchoolLookupService) ->
       $scope.schoolList =
         searchSubmitted: false
         searchPending: false
