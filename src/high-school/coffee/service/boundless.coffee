@@ -16,20 +16,17 @@ angular.module 'ahaLuminateApp'
             'Content-Type': 'application/json'
         .then (response) ->
           response
-      
+
       getRollupTotals: ->
-        if $rootScope.tablePrefix is 'heartdev'
-          url = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent('https://aha-hs-staging.boundlessnetwork.com/api/schools/totals')
-        else
-          # url = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent('https://aha-highschool.boundlessnetwork.com/api/schools/totals')
-          url = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent('https://aha-hs-staging.boundlessnetwork.com/api/schools/totals')
-        $http
-          method: 'GET'
-          url: url
-          headers:
-            'Content-Type': 'application/json'
-        .then (response) ->
-          response
+        #url = $sce.trustAsResourceUrl('https://aha-highschool.boundlessnetwork.com/api/schools/totals')
+        url = $sce.trustAsResourceUrl('https://aha-hs-staging.boundlessnetwork.com/api/schools/totals')
+        $http.jsonp(url, {jsonpCallbackParam: 'callback'}).then ((response) ->
+          return response
+        ), (response) ->
+          console.log 'JSONP ERROR!'
+          return response
+
+
       
       getSchoolRollupTotals: (requestData) ->
         if $rootScope.tablePrefix is 'heartdev'
