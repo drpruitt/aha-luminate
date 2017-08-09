@@ -4,8 +4,10 @@ angular.module 'ahaLuminateControllers'
     '$scope'
     '$filter'
     'SchoolLookupService'
+    'APP_INFO'
     '$uibModal'
-    ($rootScope, $scope, $filter, SchoolLookupService, $uibModal) ->
+    '$sce'
+    ($rootScope, $scope, $filter, SchoolLookupService, APP_INFO, $uibModal, $sce) ->
       $scope.schoolList =
         searchSubmitted: false
         searchPending: false
@@ -210,8 +212,6 @@ angular.module 'ahaLuminateControllers'
               $rootScope.createTeam.createUrl = 'http://heartdev.convio.net/site/TRR?fr_id=' + frId + '&pg=tfind&fr_tm_opt=new&s_frTJoin=&company_id=' + schoolId + '&s_frCompanyId=' + schoolId
               if not $scope.$$phase
                 $scope.$apply()
-              #angular.element('#createTeamModal').modal()
-              $scope.createTeamModal = $uibModal.open
-                scope: $scope
-                templateUrl: APP_INFO.rootPath + 'dist/high-school/html/modal/createTeam.html'
+              angular.element('#createTeamModal').modal()
+              
   ]
