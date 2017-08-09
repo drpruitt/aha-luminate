@@ -30,6 +30,15 @@ angular.module 'ahaLuminateApp'
             'Content-Type': 'application/json'
         .then (response) ->
           response
+
+      getRollupTotals: ->
+        #url = $sce.trustAsResourceUrl('https://districtheartchallenge.heart.org/api/schools/totals')
+        url = $sce.trustAsResourceUrl('https://districtheartchallengestaging.boundlessnetwork.com/api/schools/totals')
+        $http.jsonp(url, {jsonpCallbackParam: 'callback'}).then ((response) ->
+          return response
+        ), (response) ->
+          console.log 'JSONP ERROR!'
+          return response
       
       getDistrictRollupTotals: (requestData) ->
         if $rootScope.tablePrefix is 'heartdev'
