@@ -4,7 +4,8 @@ angular.module 'ahaLuminateControllers'
     '$scope'
     '$filter'
     'SchoolLookupService'
-    ($rootScope, $scope, $filter, SchoolLookupService) ->
+    '$uibModal'
+    ($rootScope, $scope, $filter, SchoolLookupService, $uibModal) ->
       $scope.schoolList =
         searchSubmitted: false
         searchPending: false
@@ -47,16 +48,18 @@ angular.module 'ahaLuminateControllers'
                 school.COORDINATOR_LAST_NAME = schoolData.COORDINATOR_LAST_NAME
                 $scope.schoolList.schools[schoolIndex] = school
       
+      schools = []
       setSchools = (companies) ->
-        schools = []
         angular.forEach companies, (company) ->
           if company.coordinatorId and company.coordinatorId isnt '0'
             schools.push
               FR_ID: company.eventId
               COMPANY_ID: company.companyId
               SCHOOL_NAME: company.companyName
+              COORDINATOR_ID: company.coordinatorId
         schools
-      
+
+
       $scope.getSchoolSuggestions = (newValue) ->
         newValue = newValue or ''
         if newValue isnt '' and $scope.schoolSuggestionCache[newValue] and $scope.schoolSuggestionCache[newValue] isnt 'pending'
@@ -121,6 +124,7 @@ angular.module 'ahaLuminateControllers'
             schools[schoolIndex].COORDINATOR_FIRST_NAME = schoolData.COORDINATOR_FIRST_NAME
             schools[schoolIndex].COORDINATOR_LAST_NAME = schoolData.COORDINATOR_LAST_NAME
         schools
+
       
       $scope.getSchoolSearchResults = ->
         delete $scope.schoolList.schools
@@ -194,21 +198,20 @@ angular.module 'ahaLuminateControllers'
         createUrl: ''
         joinUrl: ''
 
-      $scope.checkCreateTeam = (schoolId)->
-        SchoolLookupService.getSchoolCompanies 'company_id=' + schoolId
+      $scope.checkCreateTeam = (schoolId, frId, coordinatorId)->
+        SchoolLookupService.getCreateTeamData '&consId=' + coordinatorId + '&frId=' + frId
           .then (response) ->
-            $rootScope.createTeam.schoolName = response.data.getCompaniesResponse.company.companyName
-            coordinatorId = response.data.getCompaniesResponse.company.coordinatorId
-            eventId = response.data.getCompaniesResponse.company.eventId
-            SchoolLookupService.getCreateTeamData '&consId=' + coordinatorId + '&frId=' + eventId
-              .then (response) ->
-                createTeam = response.data.coordinator.enable_team
-                if createTeam is 'False'
-                  window.location = 'http://heartdev.convio.net/site/TRR?fr_id=' + eventId + '&pg=tfind&fr_tm_opt=existing&s_frTJoin=&company_id=' + schoolId + '&s_frCompanyId=' + schoolId
-                else
-                  $rootScope.createTeam.joinUrl = 'http://heartdev.convio.net/site/TRR?fr_id=' + eventId + '&pg=tfind&fr_tm_opt=existing&s_frTJoin=&company_id=' + schoolId + '&s_frCompanyId=' + schoolId
-                  $rootScope.createTeam.createUrl = 'http://heartdev.convio.net/site/TRR?fr_id=' + eventId + '&pg=tfind&fr_tm_opt=new&s_frTJoin=&company_id=' + schoolId + '&s_frCompanyId=' + schoolId
-                  if not $scope.$$phase
-                    $scope.$apply()
-                  angular.element('#createTeamModal').modal()
+            createTeam = response.data.coordinator.enable_team
+            $rootScope.createTeam.schoolName = response.data.coordinator.company_name
+            if createTeam is 'False'
+              window.location = 'http://heartdev.convio.net/site/TRR?fr_id=' + frId + '&pg=tfind&fr_tm_opt=existing&s_frTJoin=&company_id=' + schoolId + '&s_frCompanyId=' + schoolId
+            else
+              $rootScope.createTeam.joinUrl = 'http://heartdev.convio.net/site/TRR?fr_id=' + frId + '&pg=tfind&fr_tm_opt=existing&s_frTJoin=&company_id=' + schoolId + '&s_frCompanyId=' + schoolId
+              $rootScope.createTeam.createUrl = 'http://heartdev.convio.net/site/TRR?fr_id=' + frId + '&pg=tfind&fr_tm_opt=new&s_frTJoin=&company_id=' + schoolId + '&s_frCompanyId=' + schoolId
+              if not $scope.$$phase
+                $scope.$apply()
+              #angular.element('#createTeamModal').modal()
+              $scope.createTeamModal = $uibModal.open
+                scope: $scope
+                templateUrl: APP_INFO.rootPath + 'dist/high-school/html/modal/createTeam.html'
   ]
