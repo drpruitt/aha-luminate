@@ -215,7 +215,7 @@
                   <td class="ym-list__column ym-list__column--school">
                     <a ng-href="{{nonSecureDomain}}site/TR?pg=company&fr_id={{school.FR_ID}}&company_id={{school.COMPANY_ID}}"><span ng-bind-html="school.SCHOOL_NAME"></span></a><br>
                     <t:if test="path == '/high-school/'">
-                      <button type="button" class="btn btn-primary btn-md mt-sm" ng-click="checkCreateTeam(school.COMPANY_ID)">
+                      <button type="button" class="btn btn-primary btn-md mt-sm" ng-click="checkCreateTeam(school.COMPANY_ID, school.FR_ID, school.COORDINATOR_ID)">
                         <strong>Sign Up</strong>
                       </button>
                     </t:if>
