@@ -31,9 +31,8 @@
     &, 
     &:link, 
     &:visited {
-      @media (min-width: 670px) {
-        color: $event-grey;
-      }
+      background: $event-secondary-medium;
+      color: $event-grey;
     }
     
     &:hover, 
@@ -41,11 +40,13 @@
     &:active {
       @media (min-width: 670px) {
         color: $brand-white;
+        background: $event-secondary-dark
       }
     }
     
     &.active {
       color: $event-grey;
+      background: $brand-white;
     }
   }
 }
@@ -304,6 +305,11 @@
   }
 }
 
+.ym-activity-box.ym-activity-box--captain-next-step .ym-next-step, 
+.ym-activity-box.ym-activity-box--next-step .ym-next-step {
+  border-color: #faa73a;
+}
+
 .ym-pc-dashboard-heart-challenge-section {
   background-color: $event-secondary-medium;
   padding: 30px 30px 45px;
@@ -521,4 +527,19 @@
       }
     }
   }
+}
+
+.ym-pc-dashboard-coordinators-message-section {
+  background: #468abc;
+  padding: 30px 12px;
+  
+  @media(min-width: $screen-sm-min) {
+    padding-top: 45px;
+    padding-bottom: 45px;
+  }
+  
+}
+
+.ym-pc-dashboard-torch-graphic {
+  margin: 0 auto -30px;
 }

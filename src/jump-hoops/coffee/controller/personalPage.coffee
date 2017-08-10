@@ -179,13 +179,13 @@ angular.module 'ahaLuminateControllers'
           $scope.personalDonors.totalNumber = $defaultPersonalDonors.length
 
       $scope.personalPagePhoto1 =
-        defaultUrl: APP_INFO.rootPath + 'dist/middle-school/image/personal-default.jpg'
+        defaultUrl: APP_INFO.rootPath + 'dist/jump-hoops/image/personal-default.jpg'
 
       $scope.editPersonalPhoto1 = ->
         delete $scope.updatePersonalPhoto1Error
         $scope.editPersonalPhoto1Modal = $uibModal.open
           scope: $scope
-          templateUrl: APP_INFO.rootPath + 'dist/middle-school/html/modal/editPersonalPhoto1.html'
+          templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/modal/editPersonalPhoto1.html'
 
       $scope.closePersonalPhoto1Modal = ->
         delete $scope.updatePersonalPhoto1Error
