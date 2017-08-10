@@ -531,4 +531,15 @@
 
 .ym-pc-dashboard-coordinators-message-section {
   background: #468abc;
+  padding: 30px 12px;
+  
+  @media(min-width: $screen-sm-min) {
+    padding-top: 45px;
+    padding-bottom: 45px;
+  }
+  
+}
+
+.ym-pc-dashboard-torch-graphic {
+  margin: 0 auto -30px;
 }
