@@ -182,7 +182,7 @@ main > .container {
         padding: 3px 6px 0;
         
         @media (min-width: 670px) {
-          padding: 3px 12px 0;
+          padding: 8px 12px 0;
         }
         
         @media (min-width: 890px) {
@@ -194,10 +194,14 @@ main > .container {
           
           @media (min-width: 670px) {
             max-width: 80px;
+            font-size: 16px;
+            line-height: 18px;
           }
           
           @media (min-width: 890px) {
             max-width: none;
+            font-size: 18px;
+            line-height: 22px;
           }
         }
       }
