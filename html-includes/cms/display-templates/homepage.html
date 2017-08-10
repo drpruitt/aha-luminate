@@ -215,7 +215,7 @@
                   <td class="ym-list__column ym-list__column--school">
                     <a ng-href="{{nonSecureDomain}}site/TR?pg=company&fr_id={{school.FR_ID}}&company_id={{school.COMPANY_ID}}"><span ng-bind-html="school.SCHOOL_NAME"></span></a><br>
                     <t:if test="path == '/high-school/'">
-                      <button class="btn btn-primary btn-md mt-sm" ng-click="checkCreateTeam()">
+                      <button type="button" class="btn btn-primary btn-md mt-sm" ng-click="checkCreateTeam(school.COMPANY_ID, school.FR_ID, school.COORDINATOR_ID)">
                         <strong>Sign Up</strong>
                       </button>
                     </t:if>
@@ -565,4 +565,29 @@
       </div>
     </div>
   </div>
+  <t:if test="path == '/high-school/'">
+    <div class="modal fade" id="createTeamModal" tabindex="-1" role="dialog" aria-labelledby="createTeamModalLabel" ng-model="createTeam">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h3 class="modal-title" id="createTeamModalLabel">
+              Register for <span ng-bind-html="createTeam.schoolName"></span>
+            </h3>
+          </div>
+          <div class="modal-body text-center">
+            <p>
+              How would you like to register for this event?
+            </p>
+            <a class="btn btn-primary btn-lg" ng-href="{{createTeam.createUrl}}">
+              Create a Team
+            </a>
+            <a class="btn btn-primary btn-lg" ng-href="{{createTeam.joinUrl}}">
+              Join a Team
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </t:if>
 </div>
