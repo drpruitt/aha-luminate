@@ -31,9 +31,8 @@
     &, 
     &:link, 
     &:visited {
-      @media (min-width: 670px) {
-        color: $event-grey;
-      }
+      background: $event-secondary-medium;
+      color: $event-grey;
     }
     
     &:hover, 
@@ -41,11 +40,13 @@
     &:active {
       @media (min-width: 670px) {
         color: $brand-white;
+        background: $event-secondary-dark
       }
     }
     
     &.active {
       color: $event-grey;
+      background: $brand-white;
     }
   }
 }
@@ -306,7 +307,7 @@
 
 .ym-activity-box.ym-activity-box--captain-next-step .ym-next-step, 
 .ym-activity-box.ym-activity-box--next-step .ym-next-step {
-  border-color: $event-accent-medium;
+  border-color: #faa73a;
 }
 
 .ym-pc-dashboard-heart-challenge-section {
