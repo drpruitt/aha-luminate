@@ -28,7 +28,7 @@ angular.module 'ahaLuminateControllers'
             prizes = response.data.prizes
             angular.forEach prizes, (prize) ->
               if prize.earned_datetime isnt null
-                if prize.id is '2001'
+                if prize.id is 2001
                   $scope.prizes.push
                     priority: 1
                     id: prize.id
@@ -36,7 +36,7 @@ angular.module 'ahaLuminateControllers'
                     sku: prize.sku
                     status: prize.status
                     earned: prize.earned_datetime
-                else if prize.id is '2003'
+                else if prize.id is 2003
                   $scope.prizes.push
                     priority: 2
                     id: prize.id
@@ -44,7 +44,7 @@ angular.module 'ahaLuminateControllers'
                     sku: prize.sku
                     status: prize.status
                     earned: prize.earned_datetime
-                else if prize.id is '2005'
+                else if prize.id is 2005
                   $scope.prizes.push
                     priority: 3
                     id: prize.id
@@ -52,7 +52,7 @@ angular.module 'ahaLuminateControllers'
                     sku: prize.sku
                     status: prize.status
                     earned: prize.earned_datetime
-                else if prize.id is '2004'
+                else if prize.id is 2004
                   $scope.prizes.push
                     priority: 4
                     id: prize.id
@@ -60,7 +60,7 @@ angular.module 'ahaLuminateControllers'
                     sku: prize.sku
                     status: prize.status
                     earned: prize.earned_datetime
-                else if prize.id is '2000'
+                else if prize.id is 2000
                   $scope.prizes.push
                     priority: 5
                     id: prize.id
