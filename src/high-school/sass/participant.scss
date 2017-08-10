@@ -304,6 +304,11 @@
   }
 }
 
+.ym-activity-box.ym-activity-box--captain-next-step .ym-next-step, 
+.ym-activity-box.ym-activity-box--next-step .ym-next-step {
+  border-color: $event-accent-medium;
+}
+
 .ym-pc-dashboard-heart-challenge-section {
   background-color: $event-secondary-medium;
   padding: 30px 30px 45px;
@@ -521,4 +526,8 @@
       }
     }
   }
+}
+
+.ym-pc-dashboard-coordinators-message-section {
+  background: #468abc;
 }
