@@ -94,6 +94,8 @@ angular.module 'ahaLuminateControllers'
 
             $scope.totalEmails = totals.total_challenge_taken_students
             if $scope.totalEmails.toString().length > 4
+              $scope.totalEmails = Math.round($scope.totalEmails / 1000) + 'K' 
+
         , (response) ->
           $scope.showStats = false
       
