@@ -118,7 +118,7 @@ angular.module 'ahaLuminateControllers'
               ###hardcoding to dev tr for UAT
               setNoSchoolLink $scope.nonSecureDomain + '/site/TRR?fr_id=' + teamraiserInfo.id + '&pg=tfind&fr_tm_opt=none&s_frTJoin=&s_frCompanyId='
               ###
-              setNoSchoolLink 'http://heartdev.convio.net/site/TRR?fr_id=2773&pg=tfind&fr_tm_opt=none&s_frTJoin=&s_frCompanyId='
+              setNoSchoolLink 'http://heartdev.convio.net/site/TRR?fr_id=2774&pg=tfind&fr_tm_opt=none&s_frTJoin=&s_frCompanyId='
       
       if consId
         TeamraiserParticipantService.getRegisteredTeamraisers 'cons_id=' + consId + '&event_type=' + encodeURIComponent('District Heart Challenge'),
