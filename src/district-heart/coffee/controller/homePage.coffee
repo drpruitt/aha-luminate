@@ -94,16 +94,16 @@ angular.module 'ahaLuminateControllers'
           teams = $filter('orderBy') teams, 'name', $scope.teamListSetting.sortDesc
           $scope.teamList = teams
           $scope.teamListSetting.currentPage = 1
-
+      
       $scope.paginateTeams = (value) ->
         begin = ($scope.teamListSetting.currentPage - 1) * $scope.teamListSetting.paginationItemsPerPage
         end = begin + $scope.teamListSetting.paginationItemsPerPage
         index = $scope.teamList.indexOf value
         begin <= index and index < end
       
-      #hardcoding to dev tr for UAT
+      # hardcoding to dev tr for UAT
       $scope.noSchoolLink = 'http://heartdev.convio.net/site/TRR?fr_id=2774&pg=tfind&fr_tm_opt=none&s_frTJoin=&s_frCompanyId='
-
+      
       setNoSchoolLink = (noSchoolLink) ->
         $scope.noSchoolLink = noSchoolLink
         if not $scope.$$phase
@@ -118,10 +118,8 @@ angular.module 'ahaLuminateControllers'
             else
               teamraisers = [teamraisers] if not angular.isArray teamraisers
               teamraiserInfo = teamraisers[0]
-              ###hardcoding to dev tr for UAT
-              setNoSchoolLink $scope.nonSecureDomain + '/site/TRR?fr_id=' + teamraiserInfo.id + '&pg=tfind&fr_tm_opt=none&s_frTJoin=&s_frCompanyId='
-              ###
-              
+              # hardcoding to dev tr for UAT
+              # setNoSchoolLink $scope.nonSecureDomain + '/site/TRR?fr_id=' + teamraiserInfo.id + '&pg=tfind&fr_tm_opt=none&s_frTJoin=&s_frCompanyId=' 
       
       if consId
         TeamraiserParticipantService.getRegisteredTeamraisers 'cons_id=' + consId + '&event_type=' + encodeURIComponent('District Heart Challenge'),
@@ -235,8 +233,7 @@ angular.module 'ahaLuminateControllers'
                 AriaCarouselService.onChange owlStr
       
       $timeout initHeroCarousel, 1000
-
-
+      
       $scope.showSearch = 'participant'
       $scope.toggleSearch = (type) ->
         $scope.showSearch = type

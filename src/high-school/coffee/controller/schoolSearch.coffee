@@ -47,8 +47,8 @@ angular.module 'ahaLuminateControllers'
                 school.COORDINATOR_LAST_NAME = schoolData.COORDINATOR_LAST_NAME
                 $scope.schoolList.schools[schoolIndex] = school
       
-      schools = []
       setSchools = (companies) ->
+        schools = []
         angular.forEach companies, (company) ->
           if company.coordinatorId and company.coordinatorId isnt '0'
             schools.push
@@ -57,8 +57,7 @@ angular.module 'ahaLuminateControllers'
               SCHOOL_NAME: company.companyName
               COORDINATOR_ID: company.coordinatorId
         schools
-
-
+      
       $scope.getSchoolSuggestions = (newValue) ->
         newValue = newValue or ''
         if newValue isnt '' and $scope.schoolSuggestionCache[newValue] and $scope.schoolSuggestionCache[newValue] isnt 'pending'
@@ -123,7 +122,6 @@ angular.module 'ahaLuminateControllers'
             schools[schoolIndex].COORDINATOR_FIRST_NAME = schoolData.COORDINATOR_FIRST_NAME
             schools[schoolIndex].COORDINATOR_LAST_NAME = schoolData.COORDINATOR_LAST_NAME
         schools
-
       
       $scope.getSchoolSearchResults = ->
         delete $scope.schoolList.schools
@@ -191,12 +189,12 @@ angular.module 'ahaLuminateControllers'
         end = begin + $scope.schoolList.paginationItemsPerPage
         index = $scope.schoolList.schools.indexOf value
         begin <= index and index < end
-
+      
       $rootScope.createTeam =
         schoolName: ''
         createUrl: ''
         joinUrl: ''
-
+      
       $scope.checkCreateTeam = (schoolId, frId, coordinatorId)->
         SchoolLookupService.getCreateTeamData '&consId=' + coordinatorId + '&frId=' + frId
           .then (response) ->
@@ -216,5 +214,4 @@ angular.module 'ahaLuminateControllers'
               if not $scope.$$phase
                 $scope.$apply()
               angular.element('#createTeamModal').modal()
-              
   ]
