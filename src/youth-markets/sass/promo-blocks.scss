@@ -1,7 +1,7 @@
 .ym-promo-block--circle {
   border-radius: 100%;
 
-  & > section {
+  > .ym-promo-block--circle-inner {
     padding: 1px;
   }
 
@@ -113,8 +113,8 @@
   .ym-promo-block {
     max-width: 830px;
 
-    section {
-      & > h2 {
+    .ym-promo-block--circle-inner {
+      > h2 {
         @media (max-width: $screen-xs-max) {
           margin-bottom: 40px;
         }
@@ -252,7 +252,7 @@
       font-size: $font-size-sm;
       padding: 20px 20px 30px;
 
-      & > a {
+      > a {
         font-weight: 700;
       }
     }
