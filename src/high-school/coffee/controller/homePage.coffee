@@ -13,9 +13,9 @@ angular.module 'ahaLuminateControllers'
       $dataRoot = angular.element '[data-aha-luminate-root]'
       consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
       
-      #hardcoding to dev tr for UAT
+      # hardcoding to dev tr for UAT
       $scope.noSchoolLink = 'http://heartdev.convio.net/site/TRR?fr_id=2773&pg=tfind&fr_tm_opt=none&s_frTJoin=&s_frCompanyId='
-
+      
       setNoSchoolLink = (noSchoolLink) ->
         $scope.noSchoolLink = noSchoolLink
         if not $scope.$$phase
@@ -30,9 +30,8 @@ angular.module 'ahaLuminateControllers'
             else
               teamraisers = [teamraisers] if not angular.isArray teamraisers
               teamraiserInfo = teamraisers[0]
-              ###hardcoding to dev tr for UAT
-              setNoSchoolLink $scope.nonSecureDomain + '/site/TRR?fr_id=' + teamraiserInfo.id + '&pg=tfind&fr_tm_opt=none&s_frTJoin=&s_frCompanyId='
-              ###
+              # hardcoding to dev tr for UAT
+              # setNoSchoolLink $scope.nonSecureDomain + '/site/TRR?fr_id=' + teamraiserInfo.id + '&pg=tfind&fr_tm_opt=none&s_frTJoin=&s_frCompanyId='
       
       if consId
         TeamraiserParticipantService.getRegisteredTeamraisers 'cons_id=' + consId + '&event_type=' + encodeURIComponent('High School'),
@@ -92,15 +91,14 @@ angular.module 'ahaLuminateControllers'
             $scope.totalStudents = totals.total_students
             if $scope.totalStudents.toString().length > 4
               $scope.totalStudents = Math.round($scope.totalStudents / 1000) + 'K'
-
+            
             $scope.totalSchools = totals.total_schools
             if $scope.totalSchools.toString().length > 4
               $scope.totalSchools = Math.round($scope.totalSchools / 1000) + 'K'
-
+            
             $scope.totalEmails = totals.total_challenge_taken_students
             if $scope.totalEmails.toString().length > 4
               $scope.totalEmails = Math.round($scope.totalEmails / 1000) + 'K' 
-
         , (response) ->
           $scope.showStats = false
       
@@ -130,7 +128,7 @@ angular.module 'ahaLuminateControllers'
             AriaCarouselService.init(owlStr)
           onChanged: ->
             AriaCarouselService.onChange(owlStr)
-
+      
       $timeout initCarousel, 1000
       
       initHeroCarousel = ->
