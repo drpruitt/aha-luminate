@@ -1,6 +1,17 @@
 .ym-school-search {
   .img-responsive {
-    margin: 20px auto -90px;
+    width: 250px;
+    margin: 0 auto -35px;
+
+    @media(min-width: $screen-xs-min) {
+      width: 375px;
+      margin: 0 auto -50px;
+    }
+
+    @media(min-width: $screen-sm-min) {
+      width: auto;
+      margin: 20px auto -90px;
+    }
   }
 
   #school-name-filter,

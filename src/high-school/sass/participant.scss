@@ -31,9 +31,8 @@
     &, 
     &:link, 
     &:visited {
-      @media (min-width: 670px) {
-        color: $event-grey;
-      }
+      background: $event-secondary-medium;
+      color: $event-grey;
     }
     
     &:hover, 
@@ -41,11 +40,13 @@
     &:active {
       @media (min-width: 670px) {
         color: $brand-white;
+        background: $event-secondary-dark
       }
     }
     
     &.active {
       color: $event-grey;
+      background: $brand-white;
     }
   }
 }
@@ -167,6 +168,13 @@
 
 .ym-pc-dashboard-badges-box {
   padding: 20px;
+
+  .ym-pc-dashboard-badges-icon {
+    float: none;
+    display: inline-block;
+    vertical-align: bottom;
+    min-height: 165px;
+  }
   
   .ym-pc-dashboard-section-header {
     position: relative;
@@ -302,6 +310,11 @@
       background: #faa73a;
     }
   }
+}
+
+.ym-activity-box.ym-activity-box--captain-next-step .ym-next-step, 
+.ym-activity-box.ym-activity-box--next-step .ym-next-step {
+  border-color: #faa73a;
 }
 
 .ym-pc-dashboard-heart-challenge-section {
@@ -520,5 +533,24 @@
         }
       }
     }
+  }
+}
+
+.ym-pc-dashboard-coordinators-message-section {
+  background: #468abc;
+  padding: 30px 12px;
+  
+  @media(min-width: $screen-sm-min) {
+    padding-top: 45px;
+    padding-bottom: 45px;
+  }
+  
+}
+
+.ym-pc-dashboard-torch-graphic {
+  margin: 0 auto -30px;
+
+  @media(min-width: $screen-sm-min){
+    margin: 0 auto -50px;
   }
 }
