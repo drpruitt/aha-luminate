@@ -23,11 +23,10 @@ angular.module 'ahaLuminateApp'
         else
           # url = 'https://aha-highschool.boundlessnetwork.com/api/schools/totals'
           url = 'https://aha-hs-staging.boundlessnetwork.com/api/schools/totals'
-        $http.jsonp($sce.trustAsResourceUrl(url), {sonpCallbackParam: 'callback')
+        $http.jsonp($sce.trustAsResourceUrl(url), jsonpCallbackParam: 'callback')
           .then (response) ->
             response
           , (response) ->
-            console.log 'JSONP ERROR!'
             response
       
       getSchoolRollupTotals: (requestData) ->

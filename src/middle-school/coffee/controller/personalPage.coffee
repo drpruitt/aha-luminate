@@ -26,7 +26,6 @@ angular.module 'ahaLuminateControllers'
             # TODO
           else
             prizes = response.data.prizes
-            console.log prizes
             angular.forEach prizes, (prize) ->
               if prize.earned_datetime isnt null
                 if prize.id is 1000

@@ -26,6 +26,5 @@ angular.module 'ahaLuminateApp'
           .then (response) ->
             response
           , (response) ->
-            console.log 'JSONP ERROR!'
             response
   ]
