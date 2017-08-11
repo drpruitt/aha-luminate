@@ -18,10 +18,14 @@ angular.module 'ahaLuminateApp'
           response
       
       getRollupTotals: ->
-        url = $sce.trustAsResourceUrl('https://jumphoops.heart.org/api/schools/totals/')
-        $http.jsonp(url, {jsonpCallbackParam: 'callback'}).then ((response) ->
-          return response
-        ), (response) ->
-          console.log 'JSONP ERROR!'
-          return response
+        if $rootScope.tablePrefix is 'heartdev'
+          url = 'https://jumphoopsstaging.boundlessnetwork.com/api/schools/totals/'
+        else
+          url = 'https://jumphoops.heart.org/api/schools/totals/'
+        $http.jsonp($sce.trustAsResourceUrl(url), jsonpCallbackParam: 'callback')
+          .then (response) ->
+            response
+          , (response) ->
+            console.log 'JSONP ERROR!'
+            response
   ]
