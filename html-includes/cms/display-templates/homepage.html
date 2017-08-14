@@ -7,12 +7,11 @@
     </a>
   </div>
   <t:if test="banner_image.length>0">
-    <div class="ym-hero__owl-carousel ym-carousel--hero owl-carousel owl-theme">
+    <section role="region" aria-label="Home Page Banner" class="ym-hero__owl-carousel ym-carousel--hero owl-carousel owl-theme">
       <t:list id="banner_image">
         <div class="item">
           <div class="ym-hero" style="background-image: url(${url});">
             <t:if test="overlay_location.length>0">
-              <section>
                 <t:list id="overlay_location">
                 <t:if test="name=='bottom-left'">
                 <div class="ym-hero__text ym-hero__text--left hidden-xs">
@@ -28,24 +27,21 @@
                     ${description}
                   </p>
                 </div>
-              </section>
             </t:if>
           </div>
           <t:if test="overlay_location.length>0">
             <div class="ym-hero__text hidden-sm hidden-md hidden-lg">
-              <section>
-                <h1>
-                  ${title}
-                </h1>
-                <p>
-                  ${description}
-                </p>
-              </section>
+              <h1>
+                ${title}
+              </h1>
+              <p>
+                ${description}
+              </p>
             </div>
           </t:if>
         </div>
       </t:list>
-    </div>
+    </section>
   </t:if>
   <t:if test="!isNull(body)">
     <div class="ym-page-section ym-page-section__block ym-page-section__block--slim">
@@ -92,74 +88,72 @@
       </div>
       <div class="ym-page-section ym-page-section__roster" ng-if="schoolList.searchSubmitted">
         <div ng-if="schoolList.schools.length > 0 || (schoolList.schools.length == 0 && schoolList.stateFilter && schoolList.stateFilter != '')">
-          <div class="ym-page-section__header">
-            <section>
-              <h2 class="h5 school-list__header">
-                <t:if test="path == '/district-heart-challenge/'">
-                  Results Matching Your District's Name
-                </t:if>
-                <t:else>
-                  Results Matching Your School's Name
-                </t:else>
-              </h2>
-              <label for="school-state-filter" class="sr-only">School State Filter</label>
-              <select class="btn btn-sm btn-secondary" id="school-state-filter" name="stateFilter" ng-model="schoolList.stateFilter" ng-change="getSchoolSearchResults()">
-                <option value="">Filter Results by State</option>
-                <option value="AK">AK</option>
-                <option value="AL">AL</option>
-                <option value="AR">AR</option>
-                <option value="AZ">AZ</option>
-                <option value="CA">CA</option>
-                <option value="CO">CO</option>
-                <option value="CT">CT</option>
-                <option value="DC">DC</option>
-                <option value="DE">DE</option>
-                <option value="FL">FL</option>
-                <option value="GA">GA</option>
-                <option value="HI">HI</option>
-                <option value="IA">IA</option>
-                <option value="ID">ID</option>
-                <option value="IL">IL</option>
-                <option value="IN">IN</option>
-                <option value="KS">KS</option>
-                <option value="KY">KY</option>
-                <option value="LA">LA</option>
-                <option value="MA">MA</option>
-                <option value="MD">MD</option>
-                <option value="ME">ME</option>
-                <option value="MI">MI</option>
-                <option value="MN">MN</option>
-                <option value="MO">MO</option>
-                <option value="MS">MS</option>
-                <option value="MT">MT</option>
-                <option value="NC">NC</option>
-                <option value="ND">ND</option>
-                <option value="NE">NE</option>
-                <option value="NH">NH</option>
-                <option value="NJ">NJ</option>
-                <option value="NM">NM</option>
-                <option value="NV">NV</option>
-                <option value="NY">NY</option>
-                <option value="OH">OH</option>
-                <option value="OK">OK</option>
-                <option value="OR">OR</option>
-                <option value="PA">PA</option>
-                <option value="RI">RI</option>
-                <option value="SC">SC</option>
-                <option value="SD">SD</option>
-                <option value="TN">TN</option>
-                <option value="TX">TX</option>
-                <option value="UT">UT</option>
-                <option value="VT">VT</option>
-                <option value="VA">VA</option>
-                <option value="WA">WA</option>
-                <option value="WI">WI</option>
-                <option value="WV">WV</option>
-                <option value="WY">WY</option>
-                <option value="GU">Guam</option>
-                <option value="PR">Puerto Rico</option>
-              </select>
-            </section>
+          <div class="ym-page-section__header"> 
+            <h2 class="h5 school-list__header">
+              <t:if test="path == '/district-heart-challenge/'">
+                Results Matching Your District's Name
+              </t:if>
+              <t:else>
+                Results Matching Your School's Name
+              </t:else>
+            </h2>
+            <label for="school-state-filter" class="sr-only">School State Filter</label>
+            <select class="btn btn-sm btn-secondary" id="school-state-filter" name="stateFilter" ng-model="schoolList.stateFilter" ng-change="getSchoolSearchResults()">
+              <option value="">Filter Results by State</option>
+              <option value="AK">AK</option>
+              <option value="AL">AL</option>
+              <option value="AR">AR</option>
+              <option value="AZ">AZ</option>
+              <option value="CA">CA</option>
+              <option value="CO">CO</option>
+              <option value="CT">CT</option>
+              <option value="DC">DC</option>
+              <option value="DE">DE</option>
+              <option value="FL">FL</option>
+              <option value="GA">GA</option>
+              <option value="HI">HI</option>
+              <option value="IA">IA</option>
+              <option value="ID">ID</option>
+              <option value="IL">IL</option>
+              <option value="IN">IN</option>
+              <option value="KS">KS</option>
+              <option value="KY">KY</option>
+              <option value="LA">LA</option>
+              <option value="MA">MA</option>
+              <option value="MD">MD</option>
+              <option value="ME">ME</option>
+              <option value="MI">MI</option>
+              <option value="MN">MN</option>
+              <option value="MO">MO</option>
+              <option value="MS">MS</option>
+              <option value="MT">MT</option>
+              <option value="NC">NC</option>
+              <option value="ND">ND</option>
+              <option value="NE">NE</option>
+              <option value="NH">NH</option>
+              <option value="NJ">NJ</option>
+              <option value="NM">NM</option>
+              <option value="NV">NV</option>
+              <option value="NY">NY</option>
+              <option value="OH">OH</option>
+              <option value="OK">OK</option>
+              <option value="OR">OR</option>
+              <option value="PA">PA</option>
+              <option value="RI">RI</option>
+              <option value="SC">SC</option>
+              <option value="SD">SD</option>
+              <option value="TN">TN</option>
+              <option value="TX">TX</option>
+              <option value="UT">UT</option>
+              <option value="VT">VT</option>
+              <option value="VA">VA</option>
+              <option value="WA">WA</option>
+              <option value="WI">WI</option>
+              <option value="WV">WV</option>
+              <option value="WY">WY</option>
+              <option value="GU">Guam</option>
+              <option value="PR">Puerto Rico</option>
+            </select>
           </div>
         </div>
         <div ng-if="schoolList.schools.length > 0">
@@ -169,76 +163,74 @@
           <div class="text-center visible-xs-block">
             <em>Scroll right to view all information</em>
           </div>
-          <div class="ym-list__school-list-wrpr">
-            <div class="table-responsive">
-              <table class="table table-striped ym-list ym-list--school-list" summary="Results Matching Your School's Name">
-                <thead class="ym-list__header">
-                  <th class="ym-list__column ym-list__column--school" scope="col">
-                    <button type="button" class="btn btn-link" ng-click="orderSchools('SCHOOL_NAME')">
-                      <t:if test="path == '/district-heart-challenge/'">
-                        <strong>District</strong>
-                      </t:if>
-                      <t:else>
-                        <strong>School</strong>
-                      </t:else> 
-                      <span ng-show="schoolList.schools.length && schoolList.sortProp == 'SCHOOL_NAME' && !schoolList.sortDesc" class="fa fa-caret-down"><span class="sr-only">Sortable. Sorted descending.</span></span>
-                      <span ng-show="schoolList.schools.length && schoolList.sortProp == 'SCHOOL_NAME' && schoolList.sortDesc" class="fa fa-caret-up"><span class="sr-only">Sortable. Sorted ascending.</span></span>
-                      <span ng-show="schoolList.schools.length && schoolList.sortProp != 'SCHOOL_NAME'" class="fa fa-caret-down inactive"><span class="sr-only">Sortable. Not sorted.</span></span>
-                    </button>
-                  </th>
-                  <th class="ym-list__column ym-list__column--city" scope="col">
-                    <button type="button" class="btn btn-link" ng-click="orderSchools('SCHOOL_CITY')">
-                      <strong>City</strong> 
-                      <span ng-show="schoolList.schools.length && schoolList.sortProp == 'SCHOOL_CITY' && !schoolList.sortDesc" class="fa fa-caret-down"><span class="sr-only">Sortable. Sorted descending.</span></span>
-                      <span ng-show="schoolList.schools.length && schoolList.sortProp == 'SCHOOL_CITY' && schoolList.sortDesc" class="fa fa-caret-up"><span class="sr-only">Sortable. Sorted ascending.</span></span>
-                      <span ng-show="schoolList.schools.length && schoolList.sortProp != 'SCHOOL_CITY'" class="fa fa-caret-down inactive"><span class="sr-only">Sortable. Not sorted.</span></span>
-                    </button>
-                  </th>
-                  <th class="ym-list__column ym-list__column--state" scope="col">
-                    <button type="button" class="btn btn-link"  ng-click="orderSchools('SCHOOL_STATE')">
-                      <strong>State</strong> 
-                      <span ng-show="schoolList.schools.length && schoolList.sortProp == 'SCHOOL_STATE' && !schoolList.sortDesc" class="fa fa-caret-down"><span class="sr-only">Sortable. Sorted descending.</span></span>
-                      <span ng-show="schoolList.schools.length && schoolList.sortProp == 'SCHOOL_STATE' && schoolList.sortDesc" class="fa fa-caret-up"><span class="sr-only">Sortable. Sorted ascending.</span></span>
-                      <span ng-show="schoolList.schools.length && schoolList.sortProp != 'SCHOOL_STATE'" class="fa fa-caret-down inactive"><span class="sr-only">Sortable. Not sorted.</span></span>
-                    </button>
-                  </th>
-                  <th class="ym-list__column ym-list__column--team-leader text-right" scope="col">
-                    <button type="button" class="btn btn-link"  ng-click="orderSchools('COORDINATOR_LAST_NAME')">
-                      <strong>Team Leader</strong> 
-                      <span ng-show="schoolList.schools.length && schoolList.sortProp == 'COORDINATOR_LAST_NAME' && !schoolList.sortDesc" class="fa fa-caret-down"><span class="sr-only">Sortable. Sorted descending.</span></span>
-                      <span ng-show="schoolList.schools.length && schoolList.sortProp == 'COORDINATOR_LAST_NAME' && schoolList.sortDesc" class="fa fa-caret-up"><span class="sr-only">Sortable. Sorted ascending.</span></span>
-                      <span ng-show="schoolList.schools.length && schoolList.sortProp != 'COORDINATOR_LAST_NAME'" class="fa fa-caret-down inactive"><span class="sr-only">Sortable. Not sorted.</span></span>
-                    </button>
-                  </th>
-                </thead>
-                <tbody>
-                  <tr class="ym-list__row" ng-repeat="school in schoolList.schools | filter:paginate">
-                    <td class="ym-list__column ym-list__column--school">
-                      <a ng-href="{{nonSecureDomain}}site/TR?pg=company&fr_id={{school.FR_ID}}&company_id={{school.COMPANY_ID}}"><span ng-bind-html="school.SCHOOL_NAME"></span></a><br>
-                      <t:if test="path == '/high-school/'">
-                        <button type="button" class="btn btn-primary btn-md mt-sm" ng-click="checkCreateTeam(school.COMPANY_ID, school.FR_ID, school.COORDINATOR_ID)">
-                          <strong>Sign Up</strong>
-                        </button>
-                      </t:if>
-                      <t:else>
-                        <a class="btn btn-primary btn-md mt-sm" ng-href="{{nonSecureDomain}}site/TRR?fr_id={{school.FR_ID}}&amp;pg=tfind&amp;fr_tm_opt=existing&s_frTJoin=&amp;company_id={{school.COMPANY_ID}}&amp;s_frCompanyId={{school.COMPANY_ID}}">
-                          Sign Up
-                        </a>
-                      </t:else>
-                    </td>
-                    <td class="ym-list__column ym-list__column--city">
-                      <span ng-bind-html="school.SCHOOL_CITY"></span>
-                    </td>
-                    <td class="ym-list__column ym-list__column--state">
-                      <span ng-bind-html="school.SCHOOL_STATE"></span>
-                    </td>
-                    <td class="ym-list__column ym-list__column--team-leader text-right">
-                      <span ng-bind-html="school.COORDINATOR_LAST_NAME"></span><span ng-if="school.COORDINATOR_LAST_NAME && school.COORDINATOR_LAST_NAME != '' && school.COORDINATOR_FIRST_NAME && school.COORDINATOR_FIRST_NAME != ''">, </span><span ng-bind-html="school.COORDINATOR_FIRST_NAME"></span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+          <div class="table-responsive">
+            <table class="table table-striped ym-list ym-list--school-list" summary="Results Matching Your School's Name">
+              <thead class="ym-list__header">
+                <th class="ym-list__column ym-list__column--school" scope="col">
+                  <button type="button" class="btn btn-link" ng-click="orderSchools('SCHOOL_NAME')">
+                    <t:if test="path == '/district-heart-challenge/'">
+                      <strong>District</strong>
+                    </t:if>
+                    <t:else>
+                      <strong>School</strong>
+                    </t:else> 
+                    <span ng-show="schoolList.schools.length && schoolList.sortProp == 'SCHOOL_NAME' && !schoolList.sortDesc" class="fa fa-caret-down"><span class="sr-only">Sortable. Sorted descending.</span></span>
+                    <span ng-show="schoolList.schools.length && schoolList.sortProp == 'SCHOOL_NAME' && schoolList.sortDesc" class="fa fa-caret-up"><span class="sr-only">Sortable. Sorted ascending.</span></span>
+                    <span ng-show="schoolList.schools.length && schoolList.sortProp != 'SCHOOL_NAME'" class="fa fa-caret-down inactive"><span class="sr-only">Sortable. Not sorted.</span></span>
+                  </button>
+                </th>
+                <th class="ym-list__column ym-list__column--city" scope="col">
+                  <button type="button" class="btn btn-link" ng-click="orderSchools('SCHOOL_CITY')">
+                    <strong>City</strong> 
+                    <span ng-show="schoolList.schools.length && schoolList.sortProp == 'SCHOOL_CITY' && !schoolList.sortDesc" class="fa fa-caret-down"><span class="sr-only">Sortable. Sorted descending.</span></span>
+                    <span ng-show="schoolList.schools.length && schoolList.sortProp == 'SCHOOL_CITY' && schoolList.sortDesc" class="fa fa-caret-up"><span class="sr-only">Sortable. Sorted ascending.</span></span>
+                    <span ng-show="schoolList.schools.length && schoolList.sortProp != 'SCHOOL_CITY'" class="fa fa-caret-down inactive"><span class="sr-only">Sortable. Not sorted.</span></span>
+                  </button>
+                </th>
+                <th class="ym-list__column ym-list__column--state" scope="col">
+                  <button type="button" class="btn btn-link"  ng-click="orderSchools('SCHOOL_STATE')">
+                    <strong>State</strong> 
+                    <span ng-show="schoolList.schools.length && schoolList.sortProp == 'SCHOOL_STATE' && !schoolList.sortDesc" class="fa fa-caret-down"><span class="sr-only">Sortable. Sorted descending.</span></span>
+                    <span ng-show="schoolList.schools.length && schoolList.sortProp == 'SCHOOL_STATE' && schoolList.sortDesc" class="fa fa-caret-up"><span class="sr-only">Sortable. Sorted ascending.</span></span>
+                    <span ng-show="schoolList.schools.length && schoolList.sortProp != 'SCHOOL_STATE'" class="fa fa-caret-down inactive"><span class="sr-only">Sortable. Not sorted.</span></span>
+                  </button>
+                </th>
+                <th class="ym-list__column ym-list__column--team-leader text-right" scope="col">
+                  <button type="button" class="btn btn-link"  ng-click="orderSchools('COORDINATOR_LAST_NAME')">
+                    <strong>Team Leader</strong> 
+                    <span ng-show="schoolList.schools.length && schoolList.sortProp == 'COORDINATOR_LAST_NAME' && !schoolList.sortDesc" class="fa fa-caret-down"><span class="sr-only">Sortable. Sorted descending.</span></span>
+                    <span ng-show="schoolList.schools.length && schoolList.sortProp == 'COORDINATOR_LAST_NAME' && schoolList.sortDesc" class="fa fa-caret-up"><span class="sr-only">Sortable. Sorted ascending.</span></span>
+                    <span ng-show="schoolList.schools.length && schoolList.sortProp != 'COORDINATOR_LAST_NAME'" class="fa fa-caret-down inactive"><span class="sr-only">Sortable. Not sorted.</span></span>
+                  </button>
+                </th>
+              </thead>
+              <tbody>
+                <tr class="ym-list__row" ng-repeat="school in schoolList.schools | filter:paginate">
+                  <td class="ym-list__column ym-list__column--school">
+                    <a ng-href="{{nonSecureDomain}}site/TR?pg=company&fr_id={{school.FR_ID}}&company_id={{school.COMPANY_ID}}"><span ng-bind-html="school.SCHOOL_NAME"></span></a><br>
+                    <t:if test="path == '/high-school/'">
+                      <button type="button" class="btn btn-primary btn-md mt-sm" ng-click="checkCreateTeam(school.COMPANY_ID, school.FR_ID, school.COORDINATOR_ID)">
+                        <strong>Sign Up</strong>
+                      </button>
+                    </t:if>
+                    <t:else>
+                      <a class="btn btn-primary btn-md mt-sm" ng-href="{{nonSecureDomain}}site/TRR?fr_id={{school.FR_ID}}&amp;pg=tfind&amp;fr_tm_opt=existing&s_frTJoin=&amp;company_id={{school.COMPANY_ID}}&amp;s_frCompanyId={{school.COMPANY_ID}}">
+                        Sign Up
+                      </a>
+                    </t:else>
+                  </td>
+                  <td class="ym-list__column ym-list__column--city">
+                    <span ng-bind-html="school.SCHOOL_CITY"></span>
+                  </td>
+                  <td class="ym-list__column ym-list__column--state">
+                    <span ng-bind-html="school.SCHOOL_STATE"></span>
+                  </td>
+                  <td class="ym-list__column ym-list__column--team-leader text-right">
+                    <span ng-bind-html="school.COORDINATOR_LAST_NAME"></span><span ng-if="school.COORDINATOR_LAST_NAME && school.COORDINATOR_LAST_NAME != '' && school.COORDINATOR_FIRST_NAME && school.COORDINATOR_FIRST_NAME != ''">, </span><span ng-bind-html="school.COORDINATOR_FIRST_NAME"></span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
           <div class="ym-pagination text-center" ng-show="schoolList.schools.length > schoolList.paginationItemsPerPage">
             <ul uib-pagination ng-model="schoolList.currentPage" total-items="schoolList.totalItems" items-per-page="schoolList.paginationItemsPerPage" max-size="schoolList.paginationMaxSize" boundary-links="schoolList.schools.length > (schoolList.paginationItemsPerPage * schoolList.paginationMaxSize)"></ul>
@@ -272,8 +264,8 @@
   <div class="ym-home-feature ym-carousel--home event-accent">
     <t:if test="!isNull(section_title) && !isNull(section_intro_text)">
       <div class="container">
-        <section>
-          <t:if test="!isNull(section_title)"><h2 class="text-center">${section_title}</h2></t:if>
+        <section role="region" aria-label="Our Mission">
+          <t:if test="!isNull(section_title)"><h2 class="text-center" id="ym-our-mission">${section_title}</h2></t:if>
           <t:if test="!isNull(section_intro_text)"><p class="text-center">${section_intro_text}</p></t:if>
         </section>
       </div>
@@ -292,10 +284,10 @@
             <button class="btn btn-lg btn-toggle" ng-class="{'active': showSearch == 'participant'}" ng-click="toggleSearch('participant')">Participant</button>
             <button class="btn btn-lg btn-toggle" ng-class="{'active': showSearch == 'team'}" ng-click="toggleSearch('team')">Team</button>
           </div>
-          <section aria-label="Participant search" ng-show="showSearch == 'participant'">
+          <section aria-labelledby="ym-participant-search-title" role="search" ng-show="showSearch == 'participant'">
             <div class="ym-roster-search">
               <form class="form-inline" class="ym-search-participants" method="POST" ng-submit="searchParticipants()">
-                <div class="ym-roster-search-title">
+                <div class="ym-roster-search-title" id="ym-participant-search-title">
                   Participant Search:
                 </div>
                 <div class="form-group">
@@ -383,10 +375,10 @@
               <ul uib-pagination ng-model="participantListSetting.currentPage" total-items="participantListSetting.totalItems" items-per-page="participantListSetting.paginationItemsPerPage" max-size="participantListSetting.paginationMaxSize" boundary-links="participantListSetting.participants.length > (participantListSetting.paginationItemsPerPage * participantListSetting.paginationMaxSize)"></ul>
             </div>
           </section>
-          <section aria-label="Team search" ng-show="showSearch == 'team'">
+          <section aria-labelledby="ym-team-search-title" role="search" ng-show="showSearch == 'team'">
             <div class="ym-roster-search">
               <form class="form-inline" method="POST" ng-submit="searchTeams()" class="ym-search-teams">
-                <div class="ym-roster-search-title">
+                <div class="ym-roster-search-title" id="ym-team-search-title">
                   Team Search:
                 </div>
                 <div class="form-group">
@@ -462,8 +454,8 @@
         <div class="ym-page-section ym-page-section__main" ng-show="showStats == true" ng-cloak>
           <div class="container">
             <div class="ym-stats ym-promo-block">
-              <section aria-label="Your Impact Statistics">
-                <h2 class="text-center">
+              <section aria-label="Your Impact" role="region">
+                <h2 class="text-center" id="ym-your-impact">
                   YOUR IMPACT
                 </h2>
                 <!-- here it is - ${currentpath} -->
