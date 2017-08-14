@@ -128,19 +128,17 @@
           Thank you for being a Heart Hero!
         </p>
         <div class="form-group [[?[[A6]]::ERR_BAD_GOAL::has-error::]]" ng-class="{'has-error': participationOptionsForm.$submitted && participationOptionsForm.fr_goal.$invalid}">
-          <div class="sr-only">
-            <div class="manageable-content" data-container="edit_fund_goal_container">
-              <label class="control-label" id="fund_goal_container" for="participationOptions-fr_goal">
-                [[?xx::x[[C1:fr_your_fundraising_goal_field]]x::[[M0:friendraiser:your_fundraising_goal_field]]::[[C1:fr_your_fundraising_goal_field]]]]
-              </label>
-            </div>
-          </div>
           <div class="row">
-            <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3">
-              <input type="text" class="form-control input-lg" name="fr_goal" id="participationOptions-fr_goal" ng-model="participationOptions.fr_goal" placeholder="[[?xx::x[[A18]]x::::[[?xx::x[[C1:fr_suggested_goal_field]]x::[[M0:friendraiser:suggested_goal_field]]::[[C1:fr_suggested_goal_field]]]] [[A18]]]]" maxlength="15" required aria-required="true">
-              <label class="help-block" for="participationOptions-fr_goal" role="alert" ng-if="participationOptionsForm.$submitted && participationOptionsForm.fr_goal.$invalid" ng-cloak>
-                [[E130:[[T8:[[M0:friendraiser:error_invalid_goal_amt]]]] "Error: " "" replaceall]]
+            <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3" data-container="edit_fund_goal_container">
+              <label for="participationOptions-fr_goal">
+                <span class="sr-only">
+                  [[?xx::x[[C1:fr_your_fundraising_goal_field]]x::[[M0:friendraiser:your_fundraising_goal_field]]::[[C1:fr_your_fundraising_goal_field]]]]
+                </span>
+                <span class="help-block" role="alert" ng-if="participationOptionsForm.$submitted && participationOptionsForm.fr_goal.$invalid" ng-cloak>
+                  [[E130:[[T8:[[M0:friendraiser:error_invalid_goal_amt]]]] "Error: " "" replaceall]]
+                </span>
               </label>
+              <input type="text" class="form-control input-lg" name="fr_goal" id="participationOptions-fr_goal" ng-model="participationOptions.fr_goal" placeholder="[[?xx::x[[A18]]x::::[[?xx::x[[C1:fr_suggested_goal_field]]x::[[M0:friendraiser:suggested_goal_field]]::[[C1:fr_suggested_goal_field]]]] [[A18]]]]" maxlength="15" required aria-required="true">
             </div>
           </div>
         </div>
