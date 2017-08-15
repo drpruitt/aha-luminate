@@ -228,12 +228,12 @@
                   <td class="ym-list__column ym-list__column--school">
                     <a ng-href="{{nonSecureDomain}}site/TR?pg=company&fr_id={{school.FR_ID}}&company_id={{school.COMPANY_ID}}"><span ng-bind-html="school.SCHOOL_NAME"></span></a><br>
                     <t:if test="path == '/high-school/'">
-                      <button type="button" class="btn btn-primary btn-md mt-sm" ng-click="checkCreateTeam(school.COMPANY_ID, school.FR_ID, school.COORDINATOR_ID)">
+                      <button type="button" class="btn btn-primary btn-md mt-sm" aria-label="Sign Up with {{school.SCHOOL_NAME}}" ng-click="checkCreateTeam(school.COMPANY_ID, school.FR_ID, school.COORDINATOR_ID)">
                         <strong>Sign Up</strong>
                       </button>
                     </t:if>
                     <t:else>
-                      <a class="btn btn-primary btn-md mt-sm" ng-href="{{nonSecureDomain}}site/TRR?fr_id={{school.FR_ID}}&amp;pg=tfind&amp;fr_tm_opt=existing&s_frTJoin=&amp;company_id={{school.COMPANY_ID}}&amp;s_frCompanyId={{school.COMPANY_ID}}">
+                      <a class="btn btn-primary btn-md mt-sm" aria-label="Sign Up with {{school.SCHOOL_NAME}}" ng-href="{{nonSecureDomain}}site/TRR?fr_id={{school.FR_ID}}&amp;pg=tfind&amp;fr_tm_opt=existing&s_frTJoin=&amp;company_id={{school.COMPANY_ID}}&amp;s_frCompanyId={{school.COMPANY_ID}}">
                         Sign Up
                       </a>
                     </t:else>
@@ -364,7 +364,7 @@
                       </a>
                     </td>
                     <td class="ym-list__column ym-list__column--donate">
-                      <a class="btn btn-primary btn-md" ng-href="{{participant.donationUrl}}">
+                      <a class="btn btn-primary btn-md" aria-label="Donate to {{participant.name.first}} {{participant.name.last}}" ng-href="{{participant.donationUrl}}">
                         <strong>Donate</strong>
                       </a>
                     </td>
@@ -382,7 +382,7 @@
                       </a>
                     </td>
                     <td class="ym-list__column ym-list__column--donate">
-                      <a class="btn btn-primary btn-md" ng-href="{{participant.donationUrl}}">
+                      <a class="btn btn-primary btn-md" aria-label="Donate to {{participant.name.first}} {{participant.name.last}}" ng-href="{{participant.donationUrl}}">
                         <strong>Donate</strong>
                       </a>
                     </td>
@@ -437,7 +437,7 @@
                       </a>
                     </td> 
                     <td class="ym-list__column ym-list__column--donate">
-                      <a class="btn btn-primary btn-md" ng-href="{{team.teamDonateUrl}}">
+                      <a class="btn btn-primary btn-md" aria-label="Donate to {{team.name}}" ng-href="{{team.teamDonateUrl}}">
                         <strong>Donate</strong>
                       </a>
                     </td>
@@ -449,7 +449,7 @@
                       </a>
                     </td>
                     <td class="ym-list__column ym-list__column--donate">
-                      <a class="btn btn-primary btn-md" ng-href="{{team.teamDonateUrl}}">
+                      <a class="btn btn-primary btn-md" aria-label="Donate to {{team.name}}" ng-href="{{team.teamDonateUrl}}">
                         <strong>Donate</strong>
                       </a>
                     </td>
