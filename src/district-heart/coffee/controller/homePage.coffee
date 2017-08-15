@@ -24,7 +24,10 @@ angular.module 'ahaLuminateControllers'
         paginationItemsPerPage: 5
         paginationMaxSize: 5
       
-      $scope.participantSearch = {}
+      $scope.participantSearch =
+        ng_first_name: ''
+        ng_last_name: ''
+      
       $scope.searchParticipants = ->
         $scope.participantListSetting.searchPending = true       
         DonorSearchService.getParticipants $scope.participantSearch.ng_first_name, $scope.participantSearch.ng_last_name
@@ -39,7 +42,7 @@ angular.module 'ahaLuminateControllers'
               $scope.participant = participants.participant
             else
               $scope.participantList = participants.participant
-              $scope.orderParticipants('fullName')
+              $scope.orderParticipants 'fullName'
         $scope.participantListSetting.searchPending = false
           
       $scope.orderParticipants = (sortProp, keepSortOrder) ->
@@ -63,6 +66,7 @@ angular.module 'ahaLuminateControllers'
       
       $scope.teamListSetting =
         searchPending: false
+        sortProp: 'teamName'
         sortDesc: true
         totalItems: 0
         currentPage: 1
@@ -84,7 +88,7 @@ angular.module 'ahaLuminateControllers'
               $scope.team = teams.team
             else
               $scope.teamList = teams.team
-              $scope.orderTeams('teamName')
+              $scope.orderTeams 'teamName'
         $scope.teamListSetting.searchPending = false 
       
       $scope.orderTeams = ->

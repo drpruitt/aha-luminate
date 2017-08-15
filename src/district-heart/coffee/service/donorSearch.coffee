@@ -4,7 +4,7 @@ angular.module 'ahaLuminateApp'
     '$http'
     '$sce'
     ($rootScope, $http, $sce) ->
-      getParticipants: (firstName, lastName) ->
+      getParticipants: (firstName = '', lastName = '') ->
         # requestUrl = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent(luminateExtend.global.path.secure + 'CRTeamraiserAPI')
         requestUrl = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent('https://secure3.convio.net/heartdev/site/CRTeamraiserAPI')
         $http
