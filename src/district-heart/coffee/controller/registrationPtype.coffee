@@ -75,11 +75,11 @@ angular.module 'ahaLuminateControllers'
       
       $scope.submitPtype = ->
         if not $scope.participationOptionsForm.$valid
-          goalElem = angular.element('#participationOptions-fr_goal')
-          if goalElem.hasClass('ng-invalid')
+          goalElem = angular.element '#participationOptions-fr_goal'
+          if goalElem.is '.ng-invalid'
             goalElem.focus()
           else
-            window.scrollTo 0, 0 
+            window.scrollTo 0, 0
         else
           angular.element('.js--default-ptype-form').submit()
           false
