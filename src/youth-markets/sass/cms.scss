@@ -531,8 +531,12 @@
     right: 0;
     background: url("../../youth-markets/image/ym-select-carrot.png") right 0.75rem center no-repeat $event-secondary;
     font-weight: 700;
-    font-weight: 700;
     width: 200px;
+    
+    @media (max-width: $screen-sm-max) {
+      position: relative;
+      margin-bottom: 10px;
+    }
     
     &:hover {
       background: url("../../youth-markets/image/ym-select-carrot.png") right 0.75rem center no-repeat $event-secondary-dark;
@@ -546,6 +550,10 @@
   
   .ym-page-section__header {
     position: relative;
+    
+    @media (max-width: $screen-sm-max) {
+      text-align: center;
+    }
     
     h2 {
       &.school-list__header {
@@ -588,9 +596,13 @@
   }
   
   .ym-list--school-list {
+    @media (max-width: $screen-xs-max) {
+      min-width: 600px;
+    }
+    
     th {
       min-width: 65px;
-
+      
       a {
         &:hover {
           text-decoration: underline;
@@ -600,31 +612,10 @@
   }
   
   .ym-list--school-list--help {
-    &,
+    &, 
     &:link {
       font-weight: 700;
       padding: 12px 20px !important;
-    }
-  }
-  
-  @media (max-width: $screen-sm-max) {
-    .ym-page-section__header {
-      text-align: center;
-    }
-    
-    #school-state-filter {
-      position: relative;
-      margin-bottom: 10px;
-    }
-  }
-  
-  @media (max-width: $screen-xs-max) {
-    .ym-list__school-list-wrpr {
-      overflow-x: scroll;
-    }
-    
-    .ym-list--school-list {
-      min-width: 600px;
     }
   }
 }

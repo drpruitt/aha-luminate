@@ -7,26 +7,45 @@
     </a>
   </div>
   <t:if test="banner_image.length>0">
-    <section role="region" aria-label="Home Page Banner" class="ym-hero__owl-carousel ym-carousel--hero owl-carousel owl-theme">
+    <t:list id="event">
+      <t:if test="name=='jump-hoops'">
+        <section role="region" aria-label="Jump Rope and Hoops for Heart Banner" class="ym-hero__owl-carousel ym-carousel--hero owl-carousel owl-theme">
+      </t:if>
+      <t:else>
+      <t:if test="name=='middle-school'">
+        <section role="region" aria-label="Middle School for Heart Banner" class="ym-hero__owl-carousel ym-carousel--hero owl-carousel owl-theme">
+      </t:if>
+      <t:else>
+      <t:if test="name=='district-heart-challenge'">
+        <section role="region" aria-label="District Heart Challenge Banner" class="ym-hero__owl-carousel ym-carousel--hero owl-carousel owl-theme">
+      </t:if>
+      <t:else>
+      <t:if test="name=='high-school'">
+        <section role="region" aria-label="High School for Heart Banner" class="ym-hero__owl-carousel ym-carousel--hero owl-carousel owl-theme">
+      </t:if>
+      </t:else>
+      </t:else>
+      </t:else>
+    </t:list>
       <t:list id="banner_image">
         <div class="item">
           <div class="ym-hero" style="background-image: url(${url});">
             <t:if test="overlay_location.length>0">
-                <t:list id="overlay_location">
+              <t:list id="overlay_location">
                 <t:if test="name=='bottom-left'">
-                <div class="ym-hero__text ym-hero__text--left hidden-xs">
+                  <div class="ym-hero__text ym-hero__text--left hidden-xs">
                 </t:if>
                 <t:else>
-                <div class="ym-hero__text ym-hero__text--right hidden-xs">
+                  <div class="ym-hero__text ym-hero__text--right hidden-xs">
                 </t:else>
-                </t:list>
-                  <h1>
-                    ${title}
-                  </h1>
-                  <p>
-                    ${description}
-                  </p>
-                </div>
+              </t:list>
+                <h1>
+                  ${title}
+                </h1>
+                <p>
+                  ${description}
+                </p>
+              </div>
             </t:if>
           </div>
           <t:if test="overlay_location.length>0">
@@ -65,6 +84,10 @@
   <div class="ym-school-search ym-page-section__main" id="school-search" ng-controller="SchoolSearchCtrl" ng-cloak>
     <form method="POST" ng-submit="submitSchoolSearch()">
       <div class="form-group">
+        <t:if test="path == '/jump-hoops/'">
+          <img class="img-responsive hidden-xs" src="http://american.heart.org/assets/images/hoops-jump-search-graphic.png" alt="Find your school">
+          <img class="img-responsive hidden-sm hidden-md hidden-lg" src="http://american.heart.org/assets/images/hoops-jump-search-graphic-mobile.jpg" alt="Find your school">
+        </t:if>
         <t:if test="path == '/middle-school/'">
           <img class="img-responsive" src="http://american.heart.org/assets/images/middle-school/find-school-graphic.png" alt="Find your school">
         </t:if>
@@ -73,10 +96,6 @@
         </t:if>
         <t:if test="path == '/high-school/'">
           <img class="img-responsive" src="http://american.heart.org/assets/images/high-school/find-school-graphic.png" alt="Find your school">
-        </t:if>
-        <t:if test="path == '/jump-hoops/'">
-          <img class="img-responsive hidden-xs" src="http://american.heart.org/assets/images/hoops-jump-search-graphic.png" alt="Find your school">
-          <img class="img-responsive hidden-sm hidden-md hidden-lg" src="http://american.heart.org/assets/images/hoops-jump-search-graphic-mobile.jpg" alt="Find your school">
         </t:if>
         <div class="form-inline text-center">
           <label for="school-name-filter" class="sr-only">School name:</label>
@@ -454,7 +473,7 @@
         <div class="ym-page-section ym-page-section__main" ng-show="showStats == true" ng-cloak>
           <div class="container">
             <div class="ym-stats ym-promo-block">
-              <section aria-label="Your Impact" role="region">
+              <section role="region" aria-label="Your Impact">
                 <h2 class="text-center" id="ym-your-impact">
                   YOUR IMPACT
                 </h2>
