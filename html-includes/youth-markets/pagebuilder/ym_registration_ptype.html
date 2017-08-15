@@ -40,7 +40,7 @@
           [[A4]]
         ]]
         [[?
-          [[?[[A6]]::ERR_BAD_GOAL::T::]]
+          [[?[[A6]]::ERR_BAD_GOAL::T::]][[?[[A6]]::ERR_BAD_GIFT::T::]][[?[[A6]]::ERR_TRANS_TOO_MUCH::T::]]
         ::T::
           <ul>
             [[?[[A6]]::ERR_BAD_GOAL::
@@ -48,15 +48,21 @@
                 [[E130:[[T8:[[M0:friendraiser:error_invalid_goal_amt]]]] "Error: " "" replaceall]]
               </li>
             ::]]
+            [[?[[A6]]::ERR_TRANS_TOO_MUCH::
+              <li>
+                [[M0:friendraiser:error_transaction_too_much]]
+              </li>
+            ::]]
+            [[?[[A6]]::ERR_BAD_GIFT::
+              <li>
+                [[M0:friendraiser:error_invalid_amt_user]]
+              </li>
+            ::]]
           </ul>
         ::]]
       </div>
     ]]
-    [[?[[A6]]::ERR_TRANS_TOO_MUCH::
-      <div class="alert alert-danger" role="alert">
-        [[M0:friendraiser:error_transaction_too_much]]
-      </div>
-    ::]]
+    
     <div class="manageable-content" data-container="edit_pt_instruction_container">
       <span id="pt_instruction_container">[[C1:fr_pt_instruction]]</span>
     </div>
@@ -67,11 +73,6 @@
     </div>
     [[?xTx::x[[A16]]x::
       <div class="ym-registration-ptype-donation-info">
-        [[?[[A6]]::ERR_BAD_GIFT::
-          <div class="alert alert-danger" role="alert">
-            [[M0:friendraiser:error_invalid_amt_user]]
-          </div>
-        ::]]
         <p class="ym-section-header">
           Will you kick things off by making a donation? <span class="ym-optional">Optional</span>
         </p>
