@@ -15,7 +15,7 @@
   document.hide_addons = [];
 </script>
 <div class="ym-registration-page-container ym-registration-page-container--ptype" ng-controller="RegistrationPtypeCtrl">
-  <div class="hidden" hidden aria-hidden="true" ng-init="participationOptions.fr_goal = '[[?xx::x[[A15]]x::[[T6:[[A18]]]]::[[T6:[[A15]]]]]]'; participationOptions.min_donation = '[[E130:"[[S0:DON_MINIMUM_MANUAL_DONATION]]" pop]]'"></div>
+  <div class="hidden" hidden aria-hidden="true" ng-init="participationOptions.fr_goal = '[[?xx::x[[A15]]x::[[T6:[[A18]]]]::[[T6:[[A15]]]]]]'; participationOptions.min_donation = '[[E130:"[[S0:DON_MINIMUM_MANUAL_DONATION]]" 100 / currency]]'"></div>
   <div class="ym-registration-page-header">
     <div class="manageable-content" data-container="edit_pt_title_container">
       [[?xx::x[[S1:cons_id]]x::::
@@ -118,7 +118,7 @@
                 <span ng-bind-html="donationLevel.askMessage"></span>
               </div>
               <div ng-class="{'hidden': donationLevels.activeLevel.amount != donationLevel.amount}" id="ym-registration-ptype-donation-message-other" ng-repeat="donationLevel in donationLevels.levels" ng-if="donationLevel.isOtherAmount">
-                <span ng-bind-html="donationLevel.askMessage"></span><span ng-bind-html="participationOptions.min_donation"></span>
+                <span ng-bind-html="donationLevel.askMessage"></span>{{participationOptions.min_donation | currency: "$" :0}}
               </div>
             </div>
           </div>

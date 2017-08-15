@@ -52,7 +52,7 @@ angular.module 'ahaLuminateControllers'
           levelAmountFormatted = $filter('currency')(Number(levelAmount.replace('$', '').replace(/,/g, '')), '$').replace '.00', ''
         askMessage = $donationLevel.find('.donation-level-description-text').text()
         if isOtherAmount
-          askMessage = 'Enter an amount that\'s meaningful for you. The minimum donation is $10.'
+          askMessage = 'Enter an amount that\'s meaningful for you.'
         $scope.donationLevels.levels.push
           amount: levelAmount
           amountFormatted: levelAmountFormatted
