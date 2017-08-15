@@ -118,7 +118,7 @@
                 <span ng-bind-html="donationLevel.askMessage"></span>
               </div>
               <div ng-class="{'hidden': donationLevels.activeLevel.amount != donationLevel.amount}" id="ym-registration-ptype-donation-message-other" ng-repeat="donationLevel in donationLevels.levels" ng-if="donationLevel.isOtherAmount">
-                <span ng-bind-html="donationLevel.askMessage"></span>{{participationOptions.min_donation | currency: "$" :0}}
+                <span ng-bind-html="donationLevel.askMessage"></span> The minimum donation is {{participationOptions.min_donation}}
               </div>
             </div>
           </div>
