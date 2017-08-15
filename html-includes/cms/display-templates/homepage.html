@@ -354,17 +354,16 @@
                   <tr class="ym-list__row" ng-if="totalParticipants == 1">
                     <td class="ym-list__column ym-list__column--name">
                       <a ng-href="{{participant.personalPageUrl}}">
-                        <span ng-bind-html="participant.name.first"></span>
-                        <span ng-bind-html="participant.name.last"></span>
+                        <span ng-bind-html="participant.fullName"></span>
                       </a>
                     </td> 
                     <td class="ym-list__column ym-list__column--team">
-                      <a ng-href="{{participant.teamPageUrl}}">
+                      <a ng-href="{{participant.teamPageURL}}">
                         <span ng-bind-html="participant.teamName"></span>
                       </a>
                     </td>
                     <td class="ym-list__column ym-list__column--donate">
-                      <a class="btn btn-primary btn-md" aria-label="Donate to {{participant.name.first}} {{participant.name.last}}" ng-href="{{participant.donationUrl}}">
+                      <a class="btn btn-primary btn-md" aria-label="Donate to {{participant.fullName}}" ng-href="{{participant.donationUrl}}">
                         <strong>Donate</strong>
                       </a>
                     </td>
@@ -372,17 +371,16 @@
                   <tr class="ym-list__row" ng-repeat="participant in participantList | filter:paginateParticipants" ng-if="totalParticipants > 1">
                     <td class="ym-list__column ym-list__column--name">
                       <a ng-href="{{participant.personalPageUrl}}">
-                        <span ng-bind-html="participant.name.first"></span>
-                        <span ng-bind-html="participant.name.last"></span>
+                        <span ng-bind-html="participant.fullName"></span>
                       </a>
                     </td> 
                     <td class="ym-list__column ym-list__column--team">
-                      <a ng-href="{{participant.teamPageUrl}}">
+                      <a ng-href="{{participant.teamPageURL}}">
                         <span ng-bind-html="participant.teamName"></span>
                       </a>
                     </td>
                     <td class="ym-list__column ym-list__column--donate">
-                      <a class="btn btn-primary btn-md" aria-label="Donate to {{participant.name.first}} {{participant.name.last}}" ng-href="{{participant.donationUrl}}">
+                      <a class="btn btn-primary btn-md" aria-label="Donate to {{participant.fullName}}" ng-href="{{participant.donationUrl}}">
                         <strong>Donate</strong>
                       </a>
                     </td>
@@ -422,8 +420,8 @@
                     <th class="ym-list__column ym-list__column--name" scope="col" role="columnheader" aria-sort="{{teamListSetting.sortDesc ? 'descending' : 'ascending'}}">
                       <button type="button" class="btn btn-link" ng-click="orderTeams('teamName')">
                         <strong>Team Name</strong>&nbsp;
-                        <span ng-show="totalTeams > 1 && !teamListSetting.sortDesc" class="fa fa-caret-down"><span class="sr-only">Sortable. Sorted descending.</span></span>
-                        <span ng-show="totalTeams > 1 && teamListSetting.sortDesc" class="fa fa-caret-up"><span class="sr-only">Sortable. Sorted ascending.</span></span>
+                        <span ng-show="totalTeams > 1 && teamListSetting.sortProp == 'teamName' && !teamListSetting.sortDesc" class="fa fa-caret-down"><span class="sr-only">Sortable. Sorted descending.</span></span>
+                        <span ng-show="totalTeams > 1 && teamListSetting.sortProp == 'teamName' && teamListSetting.sortDesc" class="fa fa-caret-up"><span class="sr-only">Sortable. Sorted ascending.</span></span>
                         <span ng-show="totalTeams > 1 && teamListSetting.sortProp != 'teamName'" class="fa fa-caret-down inactive"><span class="sr-only">Sortable. Not sorted.</span></span>
                       </button>
                     </th>
@@ -432,7 +430,7 @@
                 <tbody>
                   <tr class="ym-list__row" ng-if="totalTeams == 1">
                     <td class="ym-list__column ym-list__column--name">
-                      <a ng-href="{{team.teamPageUrl}}">
+                      <a ng-href="{{team.teamPageURL}}">
                         <span ng-bind-html="team.name"></span>
                       </a>
                     </td> 
@@ -444,7 +442,7 @@
                   </tr>
                   <tr class="ym-list__row" ng-repeat="team in teamList | filter:paginateTeams" ng-if="totalTeams > 1">
                     <td class="ym-list__column ym-list__column--name">
-                      <a ng-href="{{team.teamPageUrl}}">
+                      <a ng-href="{{team.teamPageURL}}">
                         <span ng-bind-html="team.name"></span>
                       </a>
                     </td>
