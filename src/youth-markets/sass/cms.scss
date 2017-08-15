@@ -599,10 +599,10 @@
     @media (max-width: $screen-xs-max) {
       min-width: 600px;
     }
-
+    
     th {
       min-width: 65px;
-
+      
       a {
         &:hover {
           text-decoration: underline;
@@ -612,7 +612,7 @@
   }
   
   .ym-list--school-list--help {
-    &,
+    &, 
     &:link {
       font-weight: 700;
       padding: 12px 20px !important;
