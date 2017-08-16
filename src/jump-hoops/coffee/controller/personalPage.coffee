@@ -81,7 +81,7 @@ angular.module 'ahaLuminateControllers'
             if $scope.prizes.length > 0
               $scope.prizes.sort (a, b) ->
                 a.priority - b.priority
-
+      
       ZuriService.getStudent $scope.frId + '/' + $scope.participantId,
         error: (response) ->
           $scope.challengeName = null
@@ -94,17 +94,18 @@ angular.module 'ahaLuminateControllers'
             $scope.challengeId = response.data.challenges.current
           $scope.challengeName = response.data.challenges.text
           $scope.challengeCompleted = response.data.challenges.completed
-
+      
       TeamraiserCompanyService.getCompanies 'company_id=' + $scope.companyId,
         success: (response) ->
-          coordinatorId = response.getCompaniesResponse?.company.coordinatorId
-          eventId = response.getCompaniesResponse?.company.eventId
-          $rootScope.numTeams = response.getCompaniesResponse.company.teamCount
-
-          TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
-            .then (response) ->
-              $scope.eventDate = response.data.coordinator?.event_date
-
+          coordinatorId = response.getCompaniesResponse?.company?.coordinatorId
+          eventId = response.getCompaniesResponse?.company?.eventId
+          $rootScope.numTeams = response.getCompaniesResponse?.company?.teamCount
+          
+          if coordinatorId and coordinatorId isnt '0' and eventId
+            TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
+              .then (response) ->
+                $scope.eventDate = response.data.coordinator?.event_date
+      
       setParticipantProgress = (amountRaised, goal) ->
         $scope.personalProgress =
           amountRaised: if amountRaised then Number(amountRaised) else 0
