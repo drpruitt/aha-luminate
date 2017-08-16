@@ -81,7 +81,7 @@ angular.module 'ahaLuminateControllers'
             if $scope.prizes.length > 0
               $scope.prizes.sort (a, b) ->
                 a.priority - b.priority
-
+      
       ZuriService.getStudent $scope.frId + '/' + $scope.participantId,
         error: (response) ->
           $scope.challengeName = null
@@ -94,17 +94,18 @@ angular.module 'ahaLuminateControllers'
             $scope.challengeId = response.data.challenges.current
           $scope.challengeName = response.data.challenges.text
           $scope.challengeCompleted = response.data.challenges.completed
-
+      
       TeamraiserCompanyService.getCompanies 'company_id=' + $scope.companyId,
         success: (response) ->
-          coordinatorId = response.getCompaniesResponse?.company.coordinatorId
-          eventId = response.getCompaniesResponse?.company.eventId
-          $rootScope.numTeams = response.getCompaniesResponse.company.teamCount
-
-          TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
-            .then (response) ->
-              $scope.eventDate = response.data.coordinator?.event_date
-
+          coordinatorId = response.getCompaniesResponse?.company?.coordinatorId
+          eventId = response.getCompaniesResponse?.company?.eventId
+          $rootScope.numTeams = response.getCompaniesResponse?.company?.teamCount
+          
+          if coordinatorId and coordinatorId isnt '0' and eventId
+            TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
+              .then (response) ->
+                $scope.eventDate = response.data.coordinator?.event_date
+      
       setParticipantProgress = (amountRaised, goal) ->
         $scope.personalProgress =
           amountRaised: if amountRaised then Number(amountRaised) else 0
@@ -186,39 +187,42 @@ angular.module 'ahaLuminateControllers'
         $scope.editPersonalPhoto1Modal = $uibModal.open
           scope: $scope
           templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/modal/editPersonalPhoto1.html'
-
+      
       $scope.closePersonalPhoto1Modal = ->
         delete $scope.updatePersonalPhoto1Error
         $scope.editPersonalPhoto1Modal.close()
-
+      
       $scope.cancelEditPersonalPhoto1 = ->
         $scope.closePersonalPhoto1Modal()
-
+      
       $scope.deletePersonalPhoto1 = (e) ->
         if e
           e.preventDefault()
         angular.element('.js--delete-personal-photo-1-form').submit()
         false
-
+      
       window.trPageEdit =
         uploadPhotoError: (response) ->
           errorResponse = response.errorResponse
           photoNumber = errorResponse.photoNumber
           errorCode = errorResponse.code
           errorMessage = errorResponse.message
-
-          if photoNumber is '1'
-            $scope.updatePersonalPhoto1Error =
-              message: errorMessage
-          if not $scope.$$phase
-            $scope.$apply()
+          
+          if errorCode is '5'
+            window.location = luminateExtend.global.path.secure + 'UserLogin?NEXTURL=' + encodeURIComponent('TR?fr_id=' + $scope.frId + '&pg=personal&px=' + $scope.participantId)
+          else
+            if photoNumber is '1'
+              $scope.updatePersonalPhoto1Error =
+                message: errorMessage
+            if not $scope.$$phase
+              $scope.$apply()
         uploadPhotoSuccess: (response) ->
           delete $scope.updatePersonalPhoto1Error
           if not $scope.$$phase
             $scope.$apply()
           successResponse = response.successResponse
           photoNumber = successResponse.photoNumber
-
+          
           TeamraiserParticipantPageService.getPersonalPhotos
             error: (response) ->
               # TODO

@@ -66,13 +66,14 @@ angular.module 'ahaLuminateControllers'
       
       TeamraiserCompanyService.getCompanies 'company_id=' + $scope.companyId,
         success: (response) ->
-          coordinatorId = response.getCompaniesResponse?.company.coordinatorId
-          eventId = response.getCompaniesResponse?.company.eventId
-          $rootScope.numTeams = response.getCompaniesResponse.company.teamCount
+          coordinatorId = response.getCompaniesResponse?.company?.coordinatorId
+          eventId = response.getCompaniesResponse?.company?.eventId
+          $rootScope.numTeams = response.getCompaniesResponse.company?.teamCount
           
-          TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
-            .then (response) ->
-              $scope.eventDate = response.data.coordinator?.event_date
+          if coordinatorId and coordinatorId isnt '0' and eventId          
+            TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
+              .then (response) ->
+                $scope.eventDate = response.data.coordinator?.event_date
         
       setParticipantProgress = (amountRaised, goal) ->
         $scope.personalProgress = 
@@ -176,11 +177,14 @@ angular.module 'ahaLuminateControllers'
           errorCode = errorResponse.code
           errorMessage = errorResponse.message
           
-          if photoNumber is '1'
-            $scope.updatePersonalPhoto1Error =
-              message: errorMessage
-          if not $scope.$$phase
-            $scope.$apply()
+          if errorCode is '5'
+            window.location = luminateExtend.global.path.secure + 'UserLogin?NEXTURL=' + encodeURIComponent('TR?fr_id=' + $scope.frId + '&pg=personal&px=' + $scope.participantId)
+          else
+            if photoNumber is '1'
+              $scope.updatePersonalPhoto1Error =
+                message: errorMessage
+            if not $scope.$$phase
+              $scope.$apply()
         uploadPhotoSuccess: (response) ->
           delete $scope.updatePersonalPhoto1Error
           if not $scope.$$phase

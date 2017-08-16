@@ -114,11 +114,12 @@ angular.module 'ahaLuminateControllers'
               $rootScope.companyName = name
               setCompanyProgress amountRaised, goal
               
-              TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
-                .then (response) ->
-                  $scope.eventDate = response.data.coordinator?.event_date
-                  if totalTeams is 1
-                    $scope.teamId = response.data.coordinator?.team_id
+              if coordinatorId and coordinatorId isnt '0' and eventId
+                TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
+                  .then (response) ->
+                    $scope.eventDate = response.data.coordinator?.event_date
+                    if totalTeams is 1
+                      $scope.teamId = response.data.coordinator?.team_id
       getCompanyTotals()
       
       $scope.companyTeams = {}
@@ -224,11 +225,14 @@ angular.module 'ahaLuminateControllers'
           errorCode = errorResponse.code
           errorMessage = errorResponse.message
           
-          if photoNumber is '1'
-            $scope.updateCompanyPhoto1Error =
-              message: errorMessage
-          if not $scope.$$phase
-            $scope.$apply()
+          if errorCode is '5'
+            window.location = luminateExtend.global.path.secure + 'UserLogin?NEXTURL=' + encodeURIComponent('TR?fr_id=' + $scope.frId + '&pg=company&company_id=' + $scope.companyId)
+          else
+            if photoNumber is '1'
+              $scope.updateCompanyPhoto1Error =
+                message: errorMessage
+            if not $scope.$$phase
+              $scope.$apply()
         uploadPhotoSuccess: (response) ->
           delete $scope.updateCompanyPhoto1Error
           if not $scope.$$phase
