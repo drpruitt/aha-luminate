@@ -73,13 +73,14 @@ angular.module 'ahaLuminateControllers'
             
             TeamraiserCompanyService.getCompanies 'company_id=' + companyId, 
               success: (response) ->
-                coordinatorId = response.getCompaniesResponse?.company.coordinatorId
-                eventId = response.getCompaniesResponse?.company.eventId
+                coordinatorId = response.getCompaniesResponse?.company?.coordinatorId
+                eventId = response.getCompaniesResponse?.company?.eventId
                 
-                TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
-                  .then (response) ->
-                    $scope.eventDate = response.data.coordinator?.event_date
-                    setCoordinatorInfo()
+                if coordinatorId and coordinatorId isnt '0' and eventId
+                  TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
+                    .then (response) ->
+                      $scope.eventDate = response.data.coordinator?.event_date
+                      setCoordinatorInfo()
       getTeamData()
       
       setTeamParticipants = (participants, totalNumber, totalFundraisers) ->
