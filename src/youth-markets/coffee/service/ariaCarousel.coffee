@@ -4,7 +4,7 @@ angular.module 'ahaLuminateApp'
     ($timeout)  ->
       init: (elem)->
         angular.element(elem).find('.owl-item').attr 'aria-selected', 'false'
-        angular.element(elem).find('owl-item, .owl-item a').attr 'tabindex', '-1'
+        angular.element(elem).find('owl-item, .owl-item a, .owl-item img').attr 'tabindex', '-1'
         angular.element(elem).find('.owl-item.active').attr 'aria-selected', 'true'
         angular.element(elem).find('.owl-prev').attr('role', 'button').attr 'title', 'Previous'
         angular.element(elem).find('.owl-next').attr('role', 'button').attr 'title', 'Next'
