@@ -63,6 +63,9 @@ angular.module 'ahaLuminateControllers'
           delete $scope.welcomeMenuOpen
         else
           $scope.welcomeMenuOpen = true
+          focusDropdown = ->
+            document.getElementById('js--header-welcome-ul').focus()
+          $timeout focusDropdown, 100
       
       angular.element('body').on 'click', (event) ->
         if $scope.welcomeMenuOpen and angular.element(event.target).closest('.ym-header-welcome').length is 0

@@ -4,7 +4,8 @@ angular.module 'ahaLuminateControllers'
     '$httpParamSerializer'
     'AuthService'
     'TeamraiserParticipantService'
-    ($scope, $httpParamSerializer, AuthService, TeamraiserParticipantService) ->
+    '$timeout'
+    ($scope, $httpParamSerializer, AuthService, TeamraiserParticipantService, $timeout) ->
       $dataRoot = angular.element '[data-aha-luminate-root]'
       consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
       $scope.regEventId = ''
@@ -63,7 +64,7 @@ angular.module 'ahaLuminateControllers'
           delete $scope.welcomeMenuOpen
         else
           $scope.welcomeMenuOpen = true
-          document.getElementById('js--header-welcome-dropdow').focus()
+          document.getElementById('js--header-welcome-ul').focus()
       
       angular.element('body').on 'click', (event) ->
         if $scope.welcomeMenuOpen and angular.element(event.target).closest('.ym-header-welcome').length is 0
