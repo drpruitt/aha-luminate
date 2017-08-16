@@ -273,12 +273,14 @@
           </div>
           <div class="js--school-search-no-results" ng-if="schoolList.schools.length == 0" ng-cloak>
             <div class="text-center">
-              <p>
-                We couldn't locate a <t:if test="path == '/district-heart-challenge/'">District</t:if><t:else>School</t:else> with the name of <strong><span ng-bind-html="schoolList.nameFilter"></span></strong><span ng-if="schoolList.stateFilter && schoolList.stateFilter != ''"> in <strong>{{schoolList.stateFilter}}</strong></span>. Need Help locating your <t:if test="path == '/district-heart-challenge/'">district</t:if><t:else>school</t:else>? Visit the <a href="https://jumphoops.zendesk.com/hc/en-us" target="_blank">help center</a> for assistance.
-              </p>
-              <p>
-                You can still register today without designating a <t:if test="path == '/district-heart-challenge/'">district</t:if><t:else>school</t:else>, and a coordinator from our team will make sure you're properly linked up with your <t:if test="path == '/district-heart-challenge/'">district</t:if><t:else>school</t:else>.
-              </p>
+              <div role="alert">
+                <p>
+                  We couldn't locate a <t:if test="path == '/district-heart-challenge/'">District</t:if><t:else>School</t:else> with the name of <strong><span ng-bind-html="schoolList.nameFilter"></span></strong><span ng-if="schoolList.stateFilter && schoolList.stateFilter != ''"> in <strong>{{schoolList.stateFilter}}</strong></span>. Need Help locating your <t:if test="path == '/district-heart-challenge/'">district</t:if><t:else>school</t:else>? Visit the <a href="https://jumphoops.zendesk.com/hc/en-us" target="_blank">help center</a> for assistance.
+                </p>
+                <p>
+                  You can still register today without designating a <t:if test="path == '/district-heart-challenge/'">district</t:if><t:else>school</t:else>, and a coordinator from our team will make sure you're properly linked up with your <t:if test="path == '/district-heart-challenge/'">district</t:if><t:else>school</t:else>.
+                </p>
+              </div>
               <a class="btn btn-md btn-secondary ym-list--school-list--help" ng-href="{{noSchoolLink}}">
                 Sign Up Today
               </a>
