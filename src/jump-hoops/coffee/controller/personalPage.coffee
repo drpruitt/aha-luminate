@@ -187,27 +187,30 @@ angular.module 'ahaLuminateControllers'
         $scope.editPersonalPhoto1Modal = $uibModal.open
           scope: $scope
           templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/modal/editPersonalPhoto1.html'
-
+      
       $scope.closePersonalPhoto1Modal = ->
         delete $scope.updatePersonalPhoto1Error
         $scope.editPersonalPhoto1Modal.close()
-
+      
       $scope.cancelEditPersonalPhoto1 = ->
         $scope.closePersonalPhoto1Modal()
-
+      
       $scope.deletePersonalPhoto1 = (e) ->
         if e
           e.preventDefault()
         angular.element('.js--delete-personal-photo-1-form').submit()
         false
-
+      
       window.trPageEdit =
         uploadPhotoError: (response) ->
           errorResponse = response.errorResponse
           photoNumber = errorResponse.photoNumber
           errorCode = errorResponse.code
           errorMessage = errorResponse.message
-
+          
+          if errorCode is '5'
+            window.location = luminateExtend.global.path.secure + 'UserLogin?logout=&NEXTURL=' + encodeURIComponent('TR?fr_id=' + $scope.frId + '&pg=personal&px=' + $scope.participantId)
+          
           if photoNumber is '1'
             $scope.updatePersonalPhoto1Error =
               message: errorMessage
@@ -219,7 +222,7 @@ angular.module 'ahaLuminateControllers'
             $scope.$apply()
           successResponse = response.successResponse
           photoNumber = successResponse.photoNumber
-
+          
           TeamraiserParticipantPageService.getPersonalPhotos
             error: (response) ->
               # TODO

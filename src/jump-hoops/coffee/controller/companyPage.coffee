@@ -225,6 +225,9 @@ angular.module 'ahaLuminateControllers'
           errorCode = errorResponse.code
           errorMessage = errorResponse.message
           
+          if errorCode is '5'
+            window.location = luminateExtend.global.path.secure + 'UserLogin?logout=&NEXTURL=' + encodeURIComponent('TR?fr_id=' + $scope.frId + '&pg=company&company_id=' + $scope.companyId)
+          
           if photoNumber is '1'
             $scope.updateCompanyPhoto1Error =
               message: errorMessage
