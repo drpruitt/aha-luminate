@@ -158,13 +158,13 @@ angular.module 'ahaLuminateControllers'
           errorMessage = errorResponse.message
           
           if errorCode is '5'
-            window.location = luminateExtend.global.path.secure + 'UserLogin?logout=&NEXTURL=' + encodeURIComponent('TR?fr_id=' + $scope.frId + '&pg=team&team_id=' + $scope.teamId)
-          
-          if photoNumber is '1'
-            $scope.updateTeamPhoto1Error =
-              message: errorMessage
-          if not $scope.$$phase
-            $scope.$apply()
+            window.location = luminateExtend.global.path.secure + 'UserLogin?NEXTURL=' + encodeURIComponent('TR?fr_id=' + $scope.frId + '&pg=team&team_id=' + $scope.teamId)
+          else
+            if photoNumber is '1'
+              $scope.updateTeamPhoto1Error =
+                message: errorMessage
+            if not $scope.$$phase
+              $scope.$apply()
         uploadPhotoSuccess: (response) ->
           delete $scope.updateTeamPhoto1Error
           if not $scope.$$phase
