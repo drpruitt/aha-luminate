@@ -41,6 +41,11 @@
     a.item {
       text-decoration: none;
       color: inherit;
+      cursor: default;
+
+      &.active:hover {
+        cursor: pointer;
+      }
     }
 
     h3,
