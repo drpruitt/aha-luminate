@@ -1,0 +1,11 @@
+<t:if test="length>0">  
+<div class="owl-carousel owl-theme">
+<t:list>
+      <div class="item">
+      <t:if test="standard_image.length>0"><a href="${url}"><img class="d-block img-fluid" src="${standard_image.url}" alt="${standard_image.title}"></a></t:if>
+        <span class="h5-heading"><a href="${url}">${title}</a></span>
+        <p>${description}</p>
+      </div>
+</t:list>
+ </div>
+</t:if>
