@@ -3,8 +3,9 @@ angular.module 'ahaLuminateControllers'
     '$rootScope'
     '$scope'
     '$filter'
+    '$timeout'
     'SchoolLookupService'
-    ($rootScope, $scope, $filter, SchoolLookupService) ->
+    ($rootScope, $scope, $filter, $timeout, SchoolLookupService) ->
       $scope.schoolList =
         searchSubmitted: false
         searchPending: false
@@ -146,6 +147,9 @@ angular.module 'ahaLuminateControllers'
               $scope.schoolList.schools = schools
               $scope.orderSchools $scope.schoolList.sortProp, true
               delete $scope.schoolList.searchPending
+              $timeout ->
+                angular.element('.js--school-search-results').focus()
+              , 100
             else
               additionalPages = []
               angular.forEach [1, 2, 3, 4], (additionalPage) ->
@@ -171,6 +175,9 @@ angular.module 'ahaLuminateControllers'
                       $scope.schoolList.schools = schools
                       $scope.orderSchools $scope.schoolList.sortProp, true
                       delete $scope.schoolList.searchPending
+                      $timeout ->
+                        angular.element('.js--school-search-results').focus()
+                      , 100
       
       $scope.orderSchools = (sortProp, keepSortOrder) ->
         schools = $scope.schoolList.schools

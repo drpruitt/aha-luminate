@@ -105,8 +105,13 @@
           </button>
         </div>
       </div>
-      <div class="ym-page-section ym-page-section__roster" ng-if="schoolList.searchSubmitted">
-        <div ng-if="schoolList.schools.length > 0 || (schoolList.schools.length == 0 && schoolList.stateFilter && schoolList.stateFilter != '')">
+      <div class="ym-page-section ym-page-section__roster" ng-if="schoolList.searchSubmitted" ng-cloak>
+        <div class="js--school-search-loading" role="alert" aria-label="Search results loading" ng-if="schoolList.searchPending == true" ng-cloak>
+          <div class="text-center">
+            Loading ...
+          </div>
+        </div>
+        <div class="js--school-search-results" ng-if="schoolList.schools.length > 0 || (schoolList.schools.length == 0 && schoolList.stateFilter && schoolList.stateFilter != '')" ng-cloak>
           <div class="ym-page-section__header"> 
             <h2 class="h5 school-list__header">
               <t:if test="path == '/district-heart-challenge/'">
@@ -175,8 +180,8 @@
             </select>
           </div>
         </div>
-        <div ng-if="schoolList.schools.length > 0">
-          <div class="alert alert-info" ng-if="schoolList.totalNumberResults > 2500">
+        <div ng-if="schoolList.schools.length > 0" ng-cloak>
+          <div class="alert alert-info" ng-if="schoolList.totalNumberResults > 2500" ng-cloak>
             <strong>Your search returned more than 2,500 results. Please try again with a more specific keyword.</strong>
           </div>
           <div class="text-center visible-xs-block">
@@ -255,18 +260,7 @@
             <ul uib-pagination ng-model="schoolList.currentPage" total-items="schoolList.totalItems" items-per-page="schoolList.paginationItemsPerPage" max-size="schoolList.paginationMaxSize" boundary-links="schoolList.schools.length > (schoolList.paginationItemsPerPage * schoolList.paginationMaxSize)"></ul>
           </div>
         </div>
-        <div ng-if="schoolList.schools.length == 0" class="text-center" ng-class="{'pb-md': schoolList.showHelp}">
-          <p>
-            Hi! We couldn't locate a <t:if test="path == '/district-heart-challenge/'">              District</t:if><t:else>School</t:else> with the name of <strong>{{schoolList.nameFilter}}</strong><span ng-if="schoolList.stateFilter && schoolList.stateFilter != ''"> in <strong>{{schoolList.stateFilter}}</strong></span>. Need Help locating your <t:if test="path == '/district-heart-challenge/'">district</t:if><t:else>school</t:else>? Visit the <a href="https://jumphoops.zendesk.com/hc/en-us" target="_blank">help center</a> for assistance.
-          </p>
-          <p>
-            You can still register today without designating a <t:if test="path == '/district-heart-challenge/'">district</t:if><t:else>school</t:else>, and a coordinator from our team will make sure you're properly linked up with your <t:if test="path == '/district-heart-challenge/'">district</t:if><t:else>school</t:else>.
-          </p>
-          <div class="pt-md">
-            <a class="btn btn-md btn-secondary ym-list--school-list--help" ng-href="{{noSchoolLink}}">Sign Up Today</a>
-          </div>
-        </div>
-        <div ng-if="schoolList.schools.length > 0">
+        <div ng-if="schoolList.schools.length > 0" ng-cloak>
           <div ng-if="schoolList.showHelp" class="text-center">
             Click <a ng-href="{{noSchoolLink}}">here</a> to sign up for <t:list id="event"><t:if test="name=='jump-hoops'">"Jump Rope and Hoops for Heart"</t:if><t:else><t:if test="name=='middle-school'">"Middle School for Heart"</t:if><t:else><t:if test="name=='district-heart-challenge'">"District Heart Challenge"</t:if><t:else><t:if test="name=='high-school'">"High School for Heart"</t:if></t:else></t:else></t:else></t:list> and a school coordinator will get in touch with you soon to confirm you've been properly signed up with your school.
           </div>
@@ -274,6 +268,19 @@
             <button type="button" class="btn btn-md btn-secondary ym-list--school-list--help" ng-click="schoolList.showHelp = true;">
               Can't Find Your <t:if test="path == '/district-heart-challenge/'">District</t:if><t:else>School</t:else>
             </button>
+          </div>
+        </div>
+        <div class="js--school-search-no-results" ng-if="schoolList.schools.length == 0" ng-cloak>
+          <div class="text-center">
+            <p>
+              We couldn't locate a <t:if test="path == '/district-heart-challenge/'">District</t:if><t:else>School</t:else> with the name of <strong><span ng-bind-html="schoolList.nameFilter"></span></strong><span ng-if="schoolList.stateFilter && schoolList.stateFilter != ''"> in <strong>{{schoolList.stateFilter}}</strong></span>. Need Help locating your <t:if test="path == '/district-heart-challenge/'">district</t:if><t:else>school</t:else>? Visit the <a href="https://jumphoops.zendesk.com/hc/en-us" target="_blank">help center</a> for assistance.
+            </p>
+            <p>
+              You can still register today without designating a <t:if test="path == '/district-heart-challenge/'">district</t:if><t:else>school</t:else>, and a coordinator from our team will make sure you're properly linked up with your <t:if test="path == '/district-heart-challenge/'">district</t:if><t:else>school</t:else>.
+            </p>
+            <a class="btn btn-md btn-secondary ym-list--school-list--help" ng-href="{{noSchoolLink}}">
+              Sign Up Today
+            </a>
           </div>
         </div>
       </div>
