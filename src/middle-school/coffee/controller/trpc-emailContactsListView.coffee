@@ -143,11 +143,10 @@ angular.module 'trPcControllers'
               $scope.emailPromises.push contactsPromise
           $scope.getContacts()
           $scope.getAllContacts = ->
-            if $scope.addressBookContacts.getAllPage
-              pageNumber = $scope.addressBookContacts.getAllPage
-            else
+            if !$scope.addressBookContacts.getAllPage
               $scope.addressBookContacts.allContacts = []
-              pageNumber = 0
+              $scope.addressBookContacts.getAllPage = 0
+            pageNumber = $scope.addressBookContacts.getAllPage
             if filter is 'email_custom_rpt_show_past_company_coordinator_participants'
               if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
                 # TODO
