@@ -95,7 +95,7 @@
         </div>
       </div>
       <div class="hidden-xs">
-        <a ng-disabed="location == '/email/compose/" class="btn btn-secondary form-control" ng-href="{{baseUrl}}#/email/compose">
+        <a ng-disabed="location.indexOf('/email/compose') != -1" class="btn btn-secondary form-control" ng-href="{{baseUrl}}#/email/compose">
           <strong>Compose</strong>
         </a>
         <div class="list-group ng-pc-nav-list-group">
