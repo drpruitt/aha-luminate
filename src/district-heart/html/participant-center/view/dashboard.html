@@ -986,13 +986,13 @@
                   Knowing your numbers can add 5 years to your life!
                 </p>
               </div>
-              <div class="alert alert-danger" ng-if="bloodPressureLog.errorMessage && bloodPressureLog.errorMessage != ''" ng-cloak>
+              <div class="alert alert-danger" role="alert" ng-if="bloodPressureLog.errorMessage && bloodPressureLog.errorMessage != ''" ng-cloak>
                 <span ng-bind-html="bloodPressureLog.errorMessage"></span>
               </div>
               <button type="button" class="btn btn-md-wide btn-primary" ng-if="!bloodPressureChecked" ng-click="updateBloodPressureChecked()" ng-cloak>
                 <strong>I Met This Challenge!</strong> <i class="fa fa-check" hidden aria-hidden="true"></i>
               </button>
-              <div class="alert alert-success" ng-if="bloodPressureChecked" ng-cloak>
+              <div class="alert alert-success" role="alert" ng-if="bloodPressureChecked" ng-cloak>
                 <strong>Challenge met</strong> <i class="fa fa-check" hidden aria-hidden="true"></i>
               </div>
             </div>
