@@ -89,11 +89,10 @@ angular.module 'trPcControllers'
             $scope.emailPromises.push contactsPromise
           $scope.getContacts()
           $scope.getAllContacts = ->
-            if $scope.addressBookContacts.getAllPage
-              pageNumber = $scope.addressBookContacts.getAllPage
-            else
+            if !$scope.addressBookContacts.getAllPage
               $scope.addressBookContacts.allContacts = []
-              pageNumber = 0
+              $scope.addressBookContacts.getAllPage = 0
+            pageNumber = $scope.addressBookContacts.getAllPage
             allContactsPromise = ContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=200&list_page_offset=' + pageNumber
               .then (response) ->
                 totalNumber = response.data.getTeamraiserAddressBookContactsResponse.totalNumberResults

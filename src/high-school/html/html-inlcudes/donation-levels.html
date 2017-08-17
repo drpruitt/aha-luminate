@@ -16,7 +16,7 @@
     </h2>
     <h2 class="h4">Your Gift</h2>
   </div>
-  <div class="alert alert-danger" ng-if="paymentInfoErrors.errors.length > 0" ng-cloak>
+  <div class="alert alert-danger" role="alert" ng-if="paymentInfoErrors.errors.length > 0" ng-cloak>
     [[M0:friendraiser:generic_error]]
       <ul>
         <li ng-repeat="paymentInfoError in paymentInfoErrors.errors">

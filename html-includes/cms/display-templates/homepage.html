@@ -182,7 +182,7 @@
             </div>
           </div>
           <div ng-if="schoolList.schools.length > 0" ng-cloak>
-            <div class="alert alert-info" ng-if="schoolList.totalNumberResults > 2500" ng-cloak>
+            <div class="alert alert-info" role="alert"ng-if="schoolList.totalNumberResults > 2500" ng-cloak>
               <strong>Your search returned more than 2,500 results. Please try again with a more specific keyword.</strong>
             </div>
             <div class="text-center visible-xs-block">
@@ -343,7 +343,7 @@
                 </button>
               </form>
             </div>
-            <div class="alert alert-danger" ng-if="totalParticipants == 0" ng-cloak>
+            <div class="alert alert-danger" role="alert" ng-if="totalParticipants == 0" ng-cloak>
               No participants found.
             </div>
             <div class="text-center visible-xs-block" ng-if="totalParticipants > 0" ng-cloak>
@@ -431,7 +431,7 @@
                 </button>
               </form>
             </div>
-            <div class="alert alert-danger" ng-if="totalTeams == 0" ng-cloak>
+            <div class="alert alert-danger" role="alert" ng-if="totalTeams == 0" ng-cloak>
               No teams found.
             </div>
             <div class="text-center visible-xs-block" ng-if="totalTeams > 0" ng-cloak>
