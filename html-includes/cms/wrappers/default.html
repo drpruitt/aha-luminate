@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title><t:value id="title">title</t:value></title>
-<t:include id="convio-content-810312856"/>
-
+  <t:include id="convio-content-810312856"/>
   <meta property="og:title" content="American Heart Association | ${title}">
   <t:if test="!isNull(description)"><meta property="og:description" content = "${description}"></t:if><t:else><meta property="og:descrtiption" content = "The American Heart Association offers programs for the classroom and for the gym to get help kids healthy and performing better in school."> </t:else>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.min.css">
@@ -15,8 +14,8 @@
 <body class="aha-luminate cms ${ishome}" data-aha-luminate-root data-api-key="wDB09SQODRpVIOvX" data-cons-id="${cons.cons_id}" ng-controller="MainCtrl">
 <a class="skip-to-content" href="[[S8]]#contentStart" target="_self">Skip to content</a>
 <t:include id="convio-content-810312965" />
-<main>
-  <div id="contentStart"></div>
+<main role="main">
+  <a name="contentStart" id="contentStart" tabindex="-1"></a>
   <div class="ym-page-header">
     <div class="container">
     <t:if test="templateid=='Single Display Template: General Landing Page and Youth Market Homepage' || templateid=='Single Display Template: Default with Right Sidebar'">
