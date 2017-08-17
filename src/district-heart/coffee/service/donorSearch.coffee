@@ -4,7 +4,7 @@ angular.module 'ahaLuminateApp'
     '$http'
     '$sce'
     ($rootScope, $http, $sce) ->
-      getParticipants: (firstName, lastName) ->
+      getParticipants: (firstName = '', lastName = '') ->
         # requestUrl = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent(luminateExtend.global.path.secure + 'CRTeamraiserAPI')
         requestUrl = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent('https://secure3.convio.net/heartdev/site/CRTeamraiserAPI')
         $http
@@ -16,13 +16,13 @@ angular.module 'ahaLuminateApp'
         .then (response) ->
           response
       
-      getTeams: (team) ->
+      getTeams: (teamName = '') ->
         # requestUrl = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent(luminateExtend.global.path.secure + 'CRTeamraiserAPI')
         requestUrl = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent('https://secure3.convio.net/heartdev/site/CRTeamraiserAPI')
         $http
           method: 'POST'
           url: $sce.trustAsResourceUrl(requestUrl)
-          data: 'v=1.0&api_key=' + $rootScope.apiKey + '&response_format=json&suppress_response_codes=true&method=getTeamsByInfo&event_type=' + encodeURIComponent('District Heart Challenge') + '&team_name=' + encodeURIComponent(team) + '&list_sort_column=total&list_ascending=true&list_page_size=500'
+          data: 'v=1.0&api_key=' + $rootScope.apiKey + '&response_format=json&suppress_response_codes=true&method=getTeamsByInfo&event_type=' + encodeURIComponent('District Heart Challenge') + '&team_name=' + encodeURIComponent(teamName) + '&list_sort_column=total&list_ascending=true&list_page_size=500'
           headers:
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
         .then (response) ->

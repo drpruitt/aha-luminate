@@ -24,7 +24,10 @@ angular.module 'ahaLuminateControllers'
         paginationItemsPerPage: 5
         paginationMaxSize: 5
       
-      $scope.participantSearch = {}
+      $scope.participantSearch =
+        ng_first_name: ''
+        ng_last_name: ''
+      
       $scope.searchParticipants = ->
         $scope.participantListSetting.searchPending = true       
         DonorSearchService.getParticipants $scope.participantSearch.ng_first_name, $scope.participantSearch.ng_last_name
@@ -39,21 +42,22 @@ angular.module 'ahaLuminateControllers'
               $scope.participant = participants.participant
             else
               $scope.participantList = participants.participant
-              $scope.orderParticipants('fullName')
+              $scope.orderParticipants 'fullName'
         $scope.participantListSetting.searchPending = false
           
       $scope.orderParticipants = (sortProp, keepSortOrder) ->
         participants = $scope.participantList
-        angular.forEach participants, (participant) ->
-          participant.fullName = participant.name.first + ' ' + participant.name.last
-        if participants.length > 0
-          if not keepSortOrder
-            $scope.participantListSetting.sortDesc = !$scope.participantListSetting.sortDesc
-          if $scope.participantListSetting.sortProp isnt sortProp
-            $scope.participantListSetting.sortProp = sortProp
-          participants = $filter('orderBy') participants, sortProp, $scope.participantListSetting.sortDesc
-          $scope.participantList = participants
-          $scope.participantListSetting.currentPage = 1
+        if participants
+          angular.forEach participants, (participant) ->
+            participant.fullName = participant.name.first + ' ' + participant.name.last
+          if participants.length > 0
+            if not keepSortOrder
+              $scope.participantListSetting.sortDesc = !$scope.participantListSetting.sortDesc
+            if $scope.participantListSetting.sortProp isnt sortProp
+              $scope.participantListSetting.sortProp = sortProp
+            participants = $filter('orderBy') participants, sortProp, $scope.participantListSetting.sortDesc
+            $scope.participantList = participants
+            $scope.participantListSetting.currentPage = 1
       
       $scope.paginateParticipants = (value) ->
         begin = ($scope.participantListSetting.currentPage - 1) * $scope.participantListSetting.paginationItemsPerPage
@@ -63,13 +67,15 @@ angular.module 'ahaLuminateControllers'
       
       $scope.teamListSetting =
         searchPending: false
+        sortProp: 'teamName'
         sortDesc: true
         totalItems: 0
         currentPage: 1
         paginationItemsPerPage: 5
         paginationMaxSize: 5
       
-      $scope.teamSearch = {}
+      $scope.teamSearch =
+        ng_team_name: ''
       $scope.searchTeams = ->
         $scope.teamListSetting.searchPending = true 
         DonorSearchService.getTeams $scope.teamSearch.ng_team_name
@@ -84,16 +90,17 @@ angular.module 'ahaLuminateControllers'
               $scope.team = teams.team
             else
               $scope.teamList = teams.team
-              $scope.orderTeams('teamName')
+              $scope.orderTeams 'teamName'
         $scope.teamListSetting.searchPending = false 
       
-      $scope.orderTeams = ->
+      $scope.orderTeams = (sortProp) ->
         teams = $scope.teamList
-        if teams.length > 0
-          $scope.teamListSetting.sortDesc = !$scope.teamListSetting.sortDesc
-          teams = $filter('orderBy') teams, 'name', $scope.teamListSetting.sortDesc
-          $scope.teamList = teams
-          $scope.teamListSetting.currentPage = 1
+        if teams
+          if teams.length > 0
+            $scope.teamListSetting.sortDesc = !$scope.teamListSetting.sortDesc
+            teams = $filter('orderBy') teams, 'name', $scope.teamListSetting.sortDesc
+            $scope.teamList = teams
+            $scope.teamListSetting.currentPage = 1
       
       $scope.paginateTeams = (value) ->
         begin = ($scope.teamListSetting.currentPage - 1) * $scope.teamListSetting.paginationItemsPerPage

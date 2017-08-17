@@ -15,11 +15,11 @@
   document.hide_addons = [];
 </script>
 <div class="ym-registration-page-container ym-registration-page-container--ptype" ng-controller="RegistrationPtypeCtrl">
-  <div class="hidden" hidden aria-hidden="true" ng-init="participationOptions.fr_goal = '[[?xx::x[[A15]]x::[[T6:[[A18]]]]::[[T6:[[A15]]]]]]'"></div>
+  <div class="hidden" hidden aria-hidden="true" ng-init="participationOptions.fr_goal = '[[?xx::x[[A15]]x::[[T6:[[A18]]]]::[[T6:[[A15]]]]]]'; participationOptions.min_donation = '[[E130:"[[S0:DON_MINIMUM_MANUAL_DONATION]]" 100 / currency]]'"></div>
   <div class="ym-registration-page-header">
     <div class="manageable-content" data-container="edit_pt_title_container">
       [[?xx::x[[S1:cons_id]]x::::
-        <div class="alert alert-info">
+        <div class="alert alert-info" role="alert">
           You are currently logged in as <strong>[[S1:first_name]] [[S1:last_name]]</strong>. If you are trying to register someone else, please <a href="UserLogin?logout=&NEXTURL=[[T1:TRR?fr_id=[[S80:trID]]&pg=tfind&fr_tm_opt=existing&company_id=[[S80:frCompanyId]]&s_frCompanyId=[[S80:frCompanyId]]]]">logout</a> before continuing.
         </div>
       ]]
@@ -28,19 +28,19 @@
       </h2>
     </div>
     [[?xxnullx::x[[A5]]x::::
-      <div class="alert alert-success">
+      <div class="alert alert-success" role="alert">
         [[A5]]
       </div>
     ]]
     [[?xyz.xnullynullz.xynullz.xnullyz::x[[A4]]y[[A6]]z::::
-      <div class="alert alert-danger" role="alert">
+      <div class="alert alert-danger" role="alert" aria-live="assertive">
         [[?xy.xnully::x[[A4]]y::
           [[M0:friendraiser:generic_error]]
         ::
           [[A4]]
         ]]
         [[?
-          [[?[[A6]]::ERR_BAD_GOAL::T::]]
+          [[?[[A6]]::ERR_BAD_GOAL::T::]][[?[[A6]]::ERR_BAD_GIFT::T::]][[?[[A6]]::ERR_TRANS_TOO_MUCH::T::]]
         ::T::
           <ul>
             [[?[[A6]]::ERR_BAD_GOAL::
@@ -48,15 +48,21 @@
                 [[E130:[[T8:[[M0:friendraiser:error_invalid_goal_amt]]]] "Error: " "" replaceall]]
               </li>
             ::]]
+            [[?[[A6]]::ERR_TRANS_TOO_MUCH::
+              <li>
+                [[M0:friendraiser:error_transaction_too_much]]
+              </li>
+            ::]]
+            [[?[[A6]]::ERR_BAD_GIFT::
+              <li>
+                [[M0:friendraiser:error_invalid_amt_user]]
+              </li>
+            ::]]
           </ul>
         ::]]
       </div>
     ]]
-    [[?[[A6]]::ERR_TRANS_TOO_MUCH::
-      <div class="alert alert-danger" role="alert">
-        [[M0:friendraiser:error_transaction_too_much]]
-      </div>
-    ::]]
+    
     <div class="manageable-content" data-container="edit_pt_instruction_container">
       <span id="pt_instruction_container">[[C1:fr_pt_instruction]]</span>
     </div>
@@ -67,11 +73,6 @@
     </div>
     [[?xTx::x[[A16]]x::
       <div class="ym-registration-ptype-donation-info">
-        [[?[[A6]]::ERR_BAD_GIFT::
-          <div class="alert alert-danger" role="alert">
-            [[M0:friendraiser:error_invalid_amt_user]]
-          </div>
-        ::]]
         <p class="ym-section-header">
           Will you kick things off by making a donation? <span class="ym-optional">Optional</span>
         </p>
@@ -117,7 +118,7 @@
                 <span ng-bind-html="donationLevel.askMessage"></span>
               </div>
               <div ng-class="{'hidden': donationLevels.activeLevel.amount != donationLevel.amount}" id="ym-registration-ptype-donation-message-other" ng-repeat="donationLevel in donationLevels.levels" ng-if="donationLevel.isOtherAmount">
-                <span ng-bind-html="donationLevel.askMessage"></span>
+                <span ng-bind-html="donationLevel.askMessage"></span> The minimum donation is {{participationOptions.min_donation}}
               </div>
             </div>
           </div>

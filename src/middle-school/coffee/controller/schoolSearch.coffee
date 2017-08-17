@@ -107,10 +107,10 @@ angular.module 'ahaLuminateControllers'
                       $filter('filter') schools, SCHOOL_NAME: newValue
       
       $scope.submitSchoolSearch = ->
+        $scope.schoolList.searchSubmitted = true
         $scope.schoolList.nameFilter = $scope.schoolList.ng_nameFilter
         $scope.schoolList.stateFilter = ''
         $scope.getSchoolSearchResults()
-        $scope.schoolList.searchSubmitted = true
       
       setSchoolsData = (schools) ->
         angular.forEach schools, (school, schoolIndex) ->

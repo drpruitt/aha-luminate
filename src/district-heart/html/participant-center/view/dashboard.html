@@ -17,17 +17,17 @@
             <div class="ym-pc-dashboard-progress-types" ng-class="{'ym-pc-dashboard-progress-types--multi-team': companyInfo.teamCount > 1}" role="tablist">
               <div class="clearfix">
                 <div class="ym-pc-dashboard-progress-type" ng-class="{'active': dashboardProgressType == 'personal'}">
-                  <button type="button" ng-click="toggleProgressType('personal')" role="tab" aria-controls="ym-pc-dashboard-personal-panel--participant">
+                  <button type="button" aria-label="Personal Progress" ng-click="toggleProgressType('personal')" role="tab" aria-controls="ym-pc-dashboard-personal-panel--participant">
                     <strong>Personal</strong>
                   </button>
                 </div>
                 <div class="ym-pc-dashboard-progress-type" ng-class="{'active': dashboardProgressType == 'company'}">
-                  <button type="button" ng-click="toggleProgressType('company')" role="tab" aria-controls="ym-pc-dashboard-company-panel--participant">
+                  <button type="button" aria-label="District Progress" ng-click="toggleProgressType('company')" role="tab" aria-controls="ym-pc-dashboard-company-panel--participant">
                     <strong>District</strong>
                   </button>
                 </div>
                 <div class="ym-pc-dashboard-progress-type" ng-class="{'active': dashboardProgressType == 'team'}" ng-if="companyInfo.teamCount > 1">
-                  <button type="button" ng-click="toggleProgressType('team')" role="tab" aria-controls="ym-pc-dashboard-team-panel--participant">
+                  <button type="button" aria-label="Team Progress" ng-click="toggleProgressType('team')" role="tab" aria-controls="ym-pc-dashboard-team-panel--participant">
                     <strong>Team</strong>
                   </button>
                 </div>
@@ -313,7 +313,7 @@
                 <p class="small">
                   <span ng-bind-html="personalPageUrl"></span>
                 </p>
-                <button type="button" class="btn btn-md-wide btn-primary" ng-click="editPersonalUrl()">
+                <button type="button" class="btn btn-md-wide btn-primary" aria-label="Edit Personal Page URL" ng-click="editPersonalUrl()">
                   <strong>Edit</strong>
                 </button>
               </div>
@@ -382,7 +382,7 @@
                   <p class="small">
                     <span ng-bind-html="teamPageUrl"></span>
                   </p>
-                  <button type="button" class="btn btn-md-wide btn-primary" ng-click="editTeamUrl()">
+                  <button type="button" class="btn btn-md-wide btn-primary" aria-label="Edit Team Page URL" ng-click="editTeamUrl()">
                     <strong>Edit</strong>
                   </button>
                 </div>
@@ -421,7 +421,7 @@
                   <p class="small">
                     <span ng-bind-html="personalPageUrl"></span>
                   </p>
-                  <button type="button" class="btn btn-md-wide btn-primary" ng-click="editPersonalUrl()">
+                  <button type="button" class="btn btn-md-wide btn-primary" aria-label="Edit Personal Page URL" ng-click="editPersonalUrl()">
                     <strong>Edit</strong>
                   </button>
                 </div>
@@ -593,17 +593,17 @@
             <div class="ym-pc-dashboard-progress-types" ng-class="{'ym-pc-dashboard-progress-types--multi-team': companyInfo.teamCount > 1}" role="tablist">
               <div class="clearfix">
                 <div class="ym-pc-dashboard-progress-type" ng-class="{'active': dashboardProgressType == 'company'}">
-                  <button type="button" ng-click="toggleProgressType('company')" role="tab" aria-controls="ym-pc-dashboard-company-panel--coordinator">
+                  <button type="button" aria-label="District Progress" ng-click="toggleProgressType('company')" role="tab" aria-controls="ym-pc-dashboard-company-panel--coordinator">
                     <strong>District</strong>
                   </button>
                 </div>
                 <div class="ym-pc-dashboard-progress-type" ng-class="{'active': dashboardProgressType == 'team'}" ng-if="companyInfo.teamCount > 1">
-                  <button type="button" ng-click="toggleProgressType('team')" role="tab" aria-controls="ym-pc-dashboard-team-panel--coordinator">
+                  <button type="button" aria-label="Team Progress" ng-click="toggleProgressType('team')" role="tab" aria-controls="ym-pc-dashboard-team-panel--coordinator">
                     <strong>Team</strong>
                   </button>
                 </div>
                 <div class="ym-pc-dashboard-progress-type" ng-class="{'active': dashboardProgressType == 'personal'}">
-                  <button type="button" ng-click="toggleProgressType('personal')" role="tab" aria-controls="ym-pc-dashboard-personal-panel--coordinator">
+                  <button type="button" aria-label="Personal Progress" ng-click="toggleProgressType('personal')" role="tab" aria-controls="ym-pc-dashboard-personal-panel--coordinator">
                     <strong>Personal</strong>
                   </button>
                 </div>
@@ -737,7 +737,7 @@
                     <p class="small">
                       <span ng-bind-html="companyPageUrl"></span>
                     </p>
-                    <button type="button" class="btn btn-md-wide btn-primary" ng-click="editCompanyUrl()">
+                    <button type="button" class="btn btn-md-wide btn-primary" aria-label="Edit District Page URL" ng-click="editCompanyUrl()">
                       <strong>Edit</strong>
                     </button>
                   </div>
@@ -776,7 +776,7 @@
                     <p class="small">
                       <span ng-bind-html="teamPageUrl"></span>
                     </p>
-                    <button type="button" class="btn btn-md-wide btn-primary" ng-click="editTeamUrl()">
+                    <button type="button" class="btn btn-md-wide btn-primary" aria-label="Edit Team Page URL" ng-click="editTeamUrl()">
                       <strong>Edit</strong>
                     </button>
                   </div>
@@ -815,7 +815,7 @@
                     <p class="small">
                       <span ng-bind-html="personalPageUrl"></span>
                     </p>
-                    <button type="button" class="btn btn-md-wide btn-primary" ng-click="editPersonalUrl()">
+                    <button type="button" class="btn btn-md-wide btn-primary" aria-label="Edit Personal Page URL" ng-click="editPersonalUrl()">
                       <strong>Edit</strong>
                     </button>
                   </div>
@@ -940,10 +940,10 @@
                     Enter your active minutes for today or update your log for another day.
                   </p>
                 </div>
-                <div class="alert alert-danger" ng-if="minsActivityLog.errorMessage && minsActivityLog.errorMessage != ''" ng-cloak>
+                <div class="alert alert-danger" role="alert" ng-if="minsActivityLog.errorMessage && minsActivityLog.errorMessage != ''" ng-cloak>
                   <span ng-bind-html="minsActivityLog.errorMessage"></span>
                 </div>
-                <div class="alert alert-success" ng-if="minsActivityLog.hasSuccess" ng-cloak>
+                <div class="alert alert-success" role="alert" ng-if="minsActivityLog.hasSuccess" ng-cloak>
                   <strong>Activity updated</strong>
                 </div>
                 <form class="form-inline" name="minsActivityLogForm" method="POST" ng-submit="updateMinsActivity()">
@@ -986,13 +986,13 @@
                   Knowing your numbers can add 5 years to your life!
                 </p>
               </div>
-              <div class="alert alert-danger" ng-if="bloodPressureLog.errorMessage && bloodPressureLog.errorMessage != ''" ng-cloak>
+              <div class="alert alert-danger" role="alert" ng-if="bloodPressureLog.errorMessage && bloodPressureLog.errorMessage != ''" ng-cloak>
                 <span ng-bind-html="bloodPressureLog.errorMessage"></span>
               </div>
               <button type="button" class="btn btn-md-wide btn-primary" ng-if="!bloodPressureChecked" ng-click="updateBloodPressureChecked()" ng-cloak>
                 <strong>I Met This Challenge!</strong> <i class="fa fa-check" hidden aria-hidden="true"></i>
               </button>
-              <div class="alert alert-success" ng-if="bloodPressureChecked" ng-cloak>
+              <div class="alert alert-success" role="alert" ng-if="bloodPressureChecked" ng-cloak>
                 <strong>Challenge met</strong> <i class="fa fa-check" hidden aria-hidden="true"></i>
               </div>
             </div>

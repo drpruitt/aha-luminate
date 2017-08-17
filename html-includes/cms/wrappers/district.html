@@ -4,7 +4,7 @@
   <title><t:value id="title">title</t:value></title>
   <t:include id="convio-content-817412099" />
   <meta property="og:title" content="American Heart Association | ${title}">
-  <t:if test="!isNull(description)"><meta property="og:description" content = "${description}"></t:if><t:else><meta property="og:descrtiption" content = "The American Heart Association offers programs for the classroom and for the gym to get help kids healthy and performing better in school."> </t:else>
+  <t:if test="!isNull(description)"><meta property="og:description" content="${description}"></t:if><t:else><meta property="og:description" content="The District Heart Challenge encourages small actions (like going for a walk and getting blood pressure checked) to stay healthy. When you lower your blood pressure, you lower your risk of heart attack, heart failure, stroke and other serious problems. You could live five years longer with healthy numbers! Join Today at american.heart.org/district-heart-challenge."> </t:else>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
   <script>
@@ -19,8 +19,8 @@
 <body class="aha-luminate cms" data-aha-luminate-root data-api-key="wDB09SQODRpVIOvX" data-cons-id="${cons.cons_id}" ng-controller="MainCtrl">
   <a class="skip-to-content" href="#contentStart" target="_self">Skip to content</a>
   <div id="convio-content-817413208" class="templateComponent" style="display: inline;"></div>
-  <main>
-    <div id="contentStart"></div>
+  <main role="main">
+    <a name="contentStart" id="contentStart" tabindex="-1"></a>
     <div class="ym-page-header">
       <div class="container">
       <t:if test="templateid=='Single Display Template: General Landing Page and Youth Market Homepage' || templateid=='Single Display Template: Default with Right Sidebar'">
