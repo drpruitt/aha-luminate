@@ -87,7 +87,10 @@ angular.module 'ahaLuminateControllers'
           angular.element('#level_installmentduration').click()
           $scope.donationInfo.monthly = false
           populateBtnAmt $scope.donationInfo.levelType, type
-          amount = Number $scope.donationInfo.amount.split('$')[1]
+          if $scope.donationInfo.amount is undefined
+            amount = 0
+          else
+            amount = Number $scope.donationInfo.amount.split('$')[1]
           calculateInstallment 1, amount
       
       $scope.selectLevel = (type, level, amount) ->
