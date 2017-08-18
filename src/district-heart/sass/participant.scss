@@ -214,35 +214,6 @@
   }
 }
 
-.ym-pc-dashboard-email-challenge-box {
-  .ym-pc-dashboard-section-header {
-    h5, 
-    .h5 {
-      text-transform: none;
-    }
-  }
-  
-  .ym-pc-dashboard-email-challenge-option {
-    text-align: center;
-    margin: 0 0 20px;
-    
-    p {
-      margin: 0 0 18px;
-    }
-  }
-  
-  form {
-    textarea.form-control[readonly] {
-      background-color: $brand-white;
-      border: 0;
-      border-radius: 0;
-      font-size: 13px;
-      height: 470px;
-      padding: 28px;
-    }
-  }
-}
-
 .ym-activity-box {
   background: $event-accent-medium;
   
