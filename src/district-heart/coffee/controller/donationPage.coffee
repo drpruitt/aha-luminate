@@ -94,7 +94,7 @@ angular.module 'ahaLuminateControllers'
           calculateInstallment 1, amount
       
       $scope.selectLevel = (type, level, amount) ->
-        if type != $scope.donationInfo.levelType
+        levelSelect = ->
           angular.element('.ym-donation-levels__amount .btn-toggle.active').removeClass 'active'
           angular.element('.ym-donation-levels__amount .btn-toggle.level' + level).addClass 'active'
           angular.element('.ym-donation-levels__amount').removeClass 'active'
@@ -124,6 +124,11 @@ angular.module 'ahaLuminateControllers'
           else
             $scope.donationInfo.installmentAmount = amount
             $scope.donationInfo.numberPayments = 1
+        if type is 'Other' 
+          if type isnt $scope.donationInfo.levelType
+            levelSelect()  
+        else
+          levelSelect()
       
       $scope.enterAmount = (amount) ->
         angular.element('#pstep_finish span').text ''
