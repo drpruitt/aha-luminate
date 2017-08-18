@@ -94,37 +94,41 @@ angular.module 'ahaLuminateControllers'
           calculateInstallment 1, amount
       
       $scope.selectLevel = (type, level, amount) ->
-        angular.element('.ym-donation-levels__amount .btn-toggle.active').removeClass 'active'
-        angular.element('.ym-donation-levels__amount .btn-toggle.level' + level).addClass 'active'
-        angular.element('.ym-donation-levels__amount').removeClass 'active'
-        angular.element('.ym-donation-levels__amount .btn-toggle.level' + level).parent().addClass 'active'
-        angular.element('.ym-donation-levels__message').removeClass 'active'
-        angular.element('.ym-donation-levels__message.level' + level).addClass 'active'
-        angular.element('.donation-level-container.level' + level + ' input').click()
-        $scope.donationInfo.amount = amount
-        $scope.donationInfo.levelType = type
-        localStorage['levelType'] = type
-        populateBtnAmt type, level, amount
-
-        if type is 'level'
-          angular.element('.btn-enter').val ''
-          $scope.donationInfo.otherAmt = ''
-          localStorage['amount'] = amount
-          localStorage['otherAmt'] = ''
-
-        if $scope.donationInfo.monthly is true
-          number = angular.element('#level_installmentduration').val()
-          number = Number number.split(':')[1]
-          if number is 0
-            number = 1
-          if $scope.donationInfo.levelType is 'level'
-            amount = Number($scope.donationInfo.amount.split('$')[1]) / number
+        levelSelect = ->
+          angular.element('.ym-donation-levels__amount .btn-toggle.active').removeClass 'active'
+          angular.element('.ym-donation-levels__amount .btn-toggle.level' + level).addClass 'active'
+          angular.element('.ym-donation-levels__amount').removeClass 'active'
+          angular.element('.ym-donation-levels__amount .btn-toggle.level' + level).parent().addClass 'active'
+          angular.element('.ym-donation-levels__message').removeClass 'active'
+          angular.element('.ym-donation-levels__message.level' + level).addClass 'active'
+          angular.element('.donation-level-container.level' + level + ' input').click()
+          $scope.donationInfo.amount = amount
+          $scope.donationInfo.levelType = type
+          localStorage['levelType'] = type
+          populateBtnAmt type, level, amount
+          if type is 'level'
+            angular.element('.btn-enter').val ''
+            $scope.donationInfo.otherAmt = ''
+            localStorage['amount'] = amount
+            localStorage['otherAmt'] = ''
+          if $scope.donationInfo.monthly is true
+            number = angular.element('#level_installmentduration').val()
+            number = Number number.split(':')[1]
+            if number is 0
+              number = 1
+            if $scope.donationInfo.levelType is 'level'
+              amount = Number($scope.donationInfo.amount.split('$')[1]) / number
+            else
+              amount = Number $scope.donationInfo.amount
+            calculateInstallment number, amount
           else
-            amount = Number $scope.donationInfo.amount
-          calculateInstallment number, amount
+            $scope.donationInfo.installmentAmount = amount
+            $scope.donationInfo.numberPayments = 1
+        if type is 'Other' 
+          if type isnt $scope.donationInfo.levelType
+            levelSelect()  
         else
-          $scope.donationInfo.installmentAmount = amount
-          $scope.donationInfo.numberPayments = 1
+          levelSelect()
       
       $scope.enterAmount = (amount) ->
         angular.element('#pstep_finish span').text ''
