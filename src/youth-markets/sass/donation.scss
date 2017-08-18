@@ -187,7 +187,7 @@ div.donation-form-container {
         padding: 0;
       }
 
-      &:first-child {
+      &.ym-donation-levels__type--onetime {
         margin: 0 auto 10px;
         @media (min-width: $screen-xs-min) {
           margin: 0 10px 0 0;
