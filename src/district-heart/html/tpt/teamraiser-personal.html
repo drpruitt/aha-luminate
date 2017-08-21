@@ -1,4 +1,24 @@
-<div ng-controller="PersonalPageCtrl" ng-cloak>
+<div itemscope itemtype="http://schema.org/Person" ng-controller="PersonalPageCtrl" ng-cloak>
+  <div class="hidden" hidden aria-hidden="true">
+    <div itemprop="name">
+      [[E48:[[S80:trID]]-[[S334:px]]:cons.first_name]] [[E48:[[S80:trID]]-[[S334:px]]:cons.last_name]]
+    </div>
+    [[?xx::x[[E48:[[S80:trID]]-[[S334:px]]:team-id]]x::::
+      <div itemprop="memberOf" itemscope itemtype="http://schema.org/Organization">
+        <span itemprop="name">[[E48:[[S80:trID]]-[[S334:px]]:team-name]]</span>
+      </div>
+      [[?xx::x[[E43:[[S80:trID]]:company-id:[[E48:[[S80:trID]]-[[S334:px]]:team-id]]]]x::::
+        <div itemprop="memberOf" itemscope itemtype="http://schema.org/Organization">
+          <span itemprop="name">[[E43:[[S80:trID]]:company-name:[[E48:[[S80:trID]]-[[S334:px]]:team-id]]]]</span>
+        </div>
+      ]]
+    ]]
+    [[?xx::x[[C4:graphic_upload]]x::
+      <img src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/district-heart/image/personal-default.jpg" alt="" itemprop="image">
+    ::
+      <img src="[[C4:graphic_upload]]" alt="" itemprop="image">
+    ]]
+  </div>
   <div class="ym-page-section ym-page-section__top">
     <div class="col-md-6 ym-user-image" ng-init="personalPagePhoto1.customUrl = '[[C4:graphic_upload]]'; personalPagePhoto1.caption = '[[T6:[[C1:graphic_caption]]]]'" ng-style="{'background-image': (personalPagePhoto1.customUrl && personalPagePhoto1.customUrl != '') ? ('url(' + personalPagePhoto1.customUrl + ')') : ('url(' + personalPagePhoto1.defaultUrl + ')')}">
       <div class="ym-user-image-inner">
@@ -21,7 +41,7 @@
       <h2 class="ym-progress__title h4">
         Help me raise more life-saving donations
       </h2>
-      <a class="btn btn-primary btn-lg" href="Donation2?df_id=[[E42:[[S80:trID]]:form-id]]&amp;FR_ID=[[S80:trID]]&amp;PROXY_ID=[[S334:px]]&amp;PROXY_TYPE=20">
+      <a aria-label="Donate to help me raise funds" class="btn btn-primary btn-lg" href="Donation2?df_id=[[E42:[[S80:trID]]:form-id]]&amp;FR_ID=[[S80:trID]]&amp;PROXY_ID=[[S334:px]]&amp;PROXY_TYPE=20">
         Donate
       </a>
       <div class="ym-progress__thermometer" name="Personal Progress Bar" aria-valuetext="{{personalProgress.percent}} percent of fundraising progress" role="progressbar" aria-valuenow="{{personalProgress.percent}}" aria-valuemin="0" aria-valuemax="100">
@@ -39,7 +59,7 @@
           </p>
         </div>
         <div class="clearfix"></div>
-        <div class="ym-progress__date" ng-if="eventDate != '' && eventDate != 'User Provided No Response'" ng-cloak>
+        <div class="ym-progress__date" ng-if="eventDate && eventDate != '' && eventDate != 'User Provided No Response'" ng-cloak>
           <p>
             My event date is <strong><span ng-bind-html="eventDate"></span></strong>
           </p>
@@ -50,9 +70,9 @@
   </div>
   <div class="ym-page-section ym-page-section__main">
     <div class="ym-story" ng-class="prizes.length == 0 ? 'col-md-12' : 'col-md-6'">
-      <h3 class="ym-headline">
+      <h2 class="ym-headline">
         My Story
-      </h3>
+      </h2>
       [[?
         [[?xx::x[[S1:cons_id]]x::::
           [[?x[[S1:cons_id]]x::x[[S334:px]]x::T::]]
@@ -95,9 +115,9 @@
     </div>
     <div class="col-md-6 ym-user-interactions" ng-if="prizes.length > 0">
       <div class="ym-badges" >
-        <h3 class="ym-headline">
+        <h2 class="ym-headline">
           Check Out My Badges
-        </h3>
+        </h2>
         <div class="ym-badges__item" ng-repeat="prize in prizes" ng-cloak>
           <img class="img-responsive" ng-src="https://s3.amazonaws.com/aha-jumphoops-production/fy18/assets/badges/dhc/{{prize.id}}_delivered.png" alt="{{prize.label}}">
           <div ng-bind-html="prize.label"></div>
@@ -110,9 +130,9 @@
   </div>
   <div class="ym-page-section ym-page-section__list ym-accent-color">
     <div class="ym-donate-cta" ng-class="personalDonors.donors.length < 1 ? 'col-sm-12' : 'col-sm-6'">
-      <h3 class="h5">
+      <h2 class="h5">
         Donate to [[E48:[[S80:trID]]-[[S334:px]]:cons.first_name]]
-      </h3>
+      </h2>
       <div ng-if="personalDonors.donors.length > 0" ng-cloak>
         <p>
           <strong>Add your name to the list</strong>
@@ -123,14 +143,14 @@
           <strong>Be the first to donate</strong>
         </p>
       </div>
-      <a class="btn btn-primary btn-lg" href="Donation2?df_id=[[E42:[[S80:trID]]:form-id]]&amp;FR_ID=[[S80:trID]]&amp;PROXY_ID=[[S334:px]]&amp;PROXY_TYPE=20">
+      <a aria-label="Donate to [[E48:[[S80:trID]]-[[S334:px]]:cons.first_name]]" class="btn btn-primary btn-lg" href="Donation2?df_id=[[E42:[[S80:trID]]:form-id]]&amp;FR_ID=[[S80:trID]]&amp;PROXY_ID=[[S334:px]]&amp;PROXY_TYPE=20">
         Donate
       </a>
     </div>
     <div class="ym-list" ng-class="!personalDonors.donors || personalDonors.donors.length == 0 ? 'hidden' : 'col-sm-6'" role="list" aria-label="Top Donors List" ng-cloak>
-      <h3 class="h5">
+      <h2 class="h5">
         Top Donors
-      </h3>
+      </h2>
       <ul class="ym-donor-list">
         <li class="ym-donor-list__row" ng-repeat="personalDonor in personalDonors.donors" role="listitem" ng-if="personalDonors.donors.length > 0" ng-cloak>
           <div class="clearfix">

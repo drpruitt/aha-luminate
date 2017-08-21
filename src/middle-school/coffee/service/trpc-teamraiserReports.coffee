@@ -3,10 +3,16 @@ angular.module 'trPcApp'
     '$rootScope'
     '$http'
     ($rootScope, $http) ->
-      getSchoolDetailReport: ->
+      getSchoolDetailReport: (prevFrId, prevCompanyId) ->
+        requestUrl = 'SPageServer?pagename=getMiddleSchoolDetailReport&pgwrap=n&fr_id=' + $rootScope.frId
+        if prevFrId
+          requestUrl += '&prev_fr_id=' + prevFrId
+        if prevCompanyId
+          requestUrl += '&prev_company_id=' + prevCompanyId
+        requestUrl += '&response_format=json'
         $http
           method: 'GET'
-          url: 'SPageServer?pagename=getMiddleSchoolDetailReport&pgwrap=n&fr_id=' + $rootScope.frId + '&response_format=json'
+          url: requestUrl
         .then (response) ->
           response
   ]

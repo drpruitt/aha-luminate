@@ -10,7 +10,7 @@ angular.module 'trPcControllers'
     ($rootScope, $scope, $filter, $location, NgPcTeamraiserEmailService, NgPcTeamraiserGiftService, NgPcTeamraiserReportsService) ->
       $scope.reportPromises = []
       
-      $scope.activeReportTab = if $scope.participantRegistration.aTeamCaptain is 'true' or $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true' then 0 else 1
+      $scope.activeReportTab = if $scope.participantRegistration.aTeamCaptain is 'true' or $scope.participantRegistration.companyInformation?.isCompanyCoordinator is 'true' then 0 else 1
       
       NgPcTeamraiserEmailService.getSuggestedMessages()
         .then (response) ->
@@ -21,11 +21,22 @@ angular.module 'trPcControllers'
             if message.active is 'true'
               if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
                 if message.name.indexOf('Coordinator:') is -1
-                  message.name = message.name.split('Participant: ')[1]
-                  $scope.suggestedMessages.push message
+                  if $scope.participantRegistration.aTeamCaptain isnt 'true'
+                    if message.name.indexOf('Captain:') is -1
+                      message.name = message.name.split('Participant: ')[1] or message.name
+                      $scope.suggestedMessages.push message
+                  else
+                    if message.name.indexOf('Participant:') isnt -1
+                      message.name = message.name.split('Participant: ')[1]
+                      $scope.suggestedMessages.push message
+                    else if message.name.indexOf('Captain:') isnt -1
+                      message.name = message.name.split('Captain: ')[1]
+                      $scope.suggestedMessages.push message
+                    else
+                      $scope.suggestedMessages.push message
               else
                 if message.name.indexOf('Participant:') is -1
-                  message.name = message.name.split('Coordinator: ')[1]
+                  message.name = message.name.split('Coordinator: ')[1] or message.name
                   $scope.suggestedMessages.push message
           angular.forEach $scope.suggestedMessages, (suggestedMessage) ->
             messageType = suggestedMessage.messageType
@@ -84,7 +95,7 @@ angular.module 'trPcControllers'
             giftContact = participantGift.contact.firstName
             if participantGift.contact.lastName
               giftContact += ' ' + participantGift.contact.lastName
-          if participantGift.contact.email
+          if participantGift.contact.email and participantGift.contact.email isnt ''
             if not giftContact
               giftContact = '<'
             else
@@ -108,7 +119,7 @@ angular.module 'trPcControllers'
               giftContact = participantGift.contact.firstName
               if participantGift.contact.lastName
                 giftContact += ' ' + participantGift.contact.lastName
-            if participantGift.contact.email
+            if participantGift.contact.email and participantGift.contact.email isnt ''
               if not giftContact
                 giftContact = '<'
               else
@@ -171,7 +182,7 @@ angular.module 'trPcControllers'
               giftContact = teamGift.contact.firstName
               if teamGift.contact.lastName
                 giftContact += ' ' + teamGift.contact.lastName
-            if teamGift.contact.email
+            if teamGift.contact.email and teamGift.contact.email isnt ''
               if not giftContact
                 giftContact = '<'
               else
@@ -195,7 +206,7 @@ angular.module 'trPcControllers'
                 giftContact = teamGift.contact.firstName
                 if teamGift.contact.lastName
                   giftContact += ' ' + teamGift.contact.lastName
-              if teamGift.contact.email
+              if teamGift.contact.email and teamGift.contact.email isnt ''
                 if not giftContact
                   giftContact = '<'
                 else
@@ -208,7 +219,7 @@ angular.module 'trPcControllers'
           else
             $location.path '/email/compose/'
       
-      if $scope.participantRegistration.aTeamCaptain is 'true' or $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
+      if $scope.participantRegistration.aTeamCaptain is 'true' or $scope.participantRegistration.companyInformation?.isCompanyCoordinator is 'true'
         $scope.districtDetailParticipants =
           downloadHeaders: [
             'Name'
@@ -219,7 +230,7 @@ angular.module 'trPcControllers'
             'Teacher'
             'Challenge'
           ]
-          sortColumn: '',
+          sortColumn: ''
           sortAscending: false
         districtDetailReportPromise = NgPcTeamraiserReportsService.getDistrictDetailReport()
           .then (response) ->
@@ -227,52 +238,69 @@ angular.module 'trPcControllers'
               $scope.districtDetailParticipants.participants = []
               $scope.districtDetailParticipants.downloadData = []
             else
-              reportHtml = response.data.getDistrictDetailReport.report
-              $reportTable = angular.element('<div>' + reportHtml + '</div>').find 'table'
-              if $reportTable.length is 0
+              reportHtml = response.data.getDistrictDetailReport?.report
+              if not reportHtml
                 $scope.districtDetailParticipants.participants = []
                 $scope.districtDetailParticipants.downloadData = []
               else
-                $reportTableRows = $reportTable.find 'tr'
-                if $reportTableRows.length is 0
+                $reportTable = angular.element('<div>' + reportHtml + '</div>').find 'table'
+                if $reportTable.length is 0
                   $scope.districtDetailParticipants.participants = []
                   $scope.districtDetailParticipants.downloadData = []
                 else
-                  districtDetailParticipants = []
-                  districtDetailDownloadData = []
-                  angular.forEach $reportTableRows, (reportTableRow) ->
-                    $reportTableRow = angular.element reportTableRow
-                    firstName = jQuery.trim $reportTableRow.find('td').eq(8).text()
-                    lastName = jQuery.trim $reportTableRow.find('td').eq(9).text()
-                    amount = Number jQuery.trim($reportTableRow.find('td').eq(10).text())
-                    amountFormatted = $filter('currency') jQuery.trim($reportTableRow.find('td').eq(10).text()), '$'
-                    ecardsSent = Number jQuery.trim($reportTableRow.find('td').eq(13).text())
-                    emailsSent = Number jQuery.trim($reportTableRow.find('td').eq(12).text())
-                    tshirtSize = jQuery.trim $reportTableRow.find('td').eq(14).text()
-                    teacherName = jQuery.trim $reportTableRow.find('td').eq(6).text()
-                    challenge = jQuery.trim($reportTableRow.find('td').eq(15).text()).replace('1. ', '').replace('2. ', '').replace('3. ', '').replace '4. ', ''
-                    districtDetailParticipants.push
-                      firstName: firstName
-                      lastName: lastName
-                      amount: amount
-                      amountFormatted: amountFormatted.replace '.00', ''
-                      ecardsSent: ecardsSent
-                      emailsSent: emailsSent
-                      tshirtSize: tshirtSize
-                      teacherName: teacherName
-                      challenge: challenge
-                    districtDetailDownloadData.push [
-                      firstName + ' ' + jQuery.trim $reportTableRow.find('td').eq(9).text()
-                      amountFormatted.replace('$', '').replace /,/g, ''
-                      ecardsSent
-                      emailsSent
-                      tshirtSize
-                      teacherName
-                      challenge
-                    ]
-                  $scope.districtDetailParticipants.participants = districtDetailParticipants
-                  $scope.districtDetailParticipants.downloadData = districtDetailDownloadData
+                  $reportTableRows = $reportTable.find 'tr'
+                  if $reportTableRows.length is 0
+                    $scope.districtDetailParticipants.participants = []
+                    $scope.districtDetailParticipants.downloadData = []
+                  else
+                    districtDetailParticipants = []
+                    districtDetailDownloadData = []
+                    angular.forEach $reportTableRows, (reportTableRow) ->
+                      $reportTableRow = angular.element reportTableRow
+                      firstName = jQuery.trim $reportTableRow.find('td').eq(8).text()
+                      lastName = jQuery.trim $reportTableRow.find('td').eq(9).text()
+                      email = jQuery.trim $reportTableRow.find('td').eq(10).text()
+                      amount = Number jQuery.trim($reportTableRow.find('td').eq(11).text())
+                      amountFormatted = $filter('currency') jQuery.trim($reportTableRow.find('td').eq(11).text()), '$'
+                      ecardsSent = Number jQuery.trim($reportTableRow.find('td').eq(14).text())
+                      emailsSent = Number jQuery.trim($reportTableRow.find('td').eq(13).text())
+                      tshirtSize = jQuery.trim $reportTableRow.find('td').eq(15).text()
+                      challenge2 = jQuery.trim $reportTableRow.find('td').eq(17).text()
+                      bloodPressureCheck = ''
+                      if challenge2?.toLowerCase() is 'true'
+                        bloodPressureCheck = 'Yes'
+                      else
+                        bloodPressureCheck = 'No'
+                      challenge1 = jQuery.trim $reportTableRow.find('td').eq(16).text()
+                      minsActivity = ''
+                      if not challenge1 or challenge1 is ''
+                        minsActivity = '0'
+                      else
+                        minsActivity = challenge1
+                      districtDetailParticipants.push
+                        firstName: firstName
+                        lastName: lastName
+                        email: email
+                        amount: amount
+                        amountFormatted: amountFormatted.replace '.00', ''
+                        ecardsSent: ecardsSent
+                        emailsSent: emailsSent
+                        tshirtSize: tshirtSize
+                        bloodPressureCheck: bloodPressureCheck
+                        minsActivity: minsActivity
+                      districtDetailDownloadData.push [
+                        firstName + ' ' + lastName
+                        amountFormatted.replace('$', '').replace /,/g, ''
+                        ecardsSent
+                        emailsSent
+                        tshirtSize
+                        bloodPressureCheck
+                        minsActivity
+                      ]
+                    $scope.districtDetailParticipants.participants = districtDetailParticipants
+                    $scope.districtDetailParticipants.downloadData = districtDetailDownloadData
             response
+            $scope.orderDistrictDetailParticipants('amount')
         $scope.reportPromises.push districtDetailReportPromise
         
         $scope.orderDistrictDetailParticipants = (sortColumn) ->
@@ -282,4 +310,25 @@ angular.module 'trPcControllers'
           $scope.districtDetailParticipants.sortColumn = sortColumn
           orderBy = $filter 'orderBy'
           $scope.districtDetailParticipants.participants = orderBy $scope.districtDetailParticipants.participants, sortColumn, !$scope.districtDetailParticipants.sortAscending
+        
+        $scope.emailAllCompanyParticipants = ->
+          if not $rootScope.selectedContacts
+            $rootScope.selectedContacts = {}
+          $rootScope.selectedContacts.contacts = []
+          if $scope.districtDetailParticipants.participants.length > 0
+            angular.forEach $scope.districtDetailParticipants.participants, (companyParticipant) ->
+              companyParticipantContact = null
+              if companyParticipant.firstName
+                companyParticipantContact = companyParticipant.firstName
+                if companyParticipant.lastName
+                  companyParticipantContact += ' ' + companyParticipant.lastName
+              if companyParticipant.email and companyParticipant.email isnt ''
+                if not companyParticipantContact
+                  companyParticipantContact = '<'
+                else
+                  companyParticipantContact += ' <'
+                companyParticipantContact += companyParticipant.email + '>'
+              if companyParticipantContact
+                $rootScope.selectedContacts.contacts.push companyParticipantContact
+          $location.path '/email/compose/'
   ]

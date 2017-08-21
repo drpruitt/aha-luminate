@@ -1,17 +1,17 @@
 div.table {
   display: table;
-
+  
   .table-header {
     display: table-header-group;
   }
-
+  
   .table-body {
     display: table-row-group;
   }
-
+  
   .table-row {
     display: table-row;
-
+    
     .table-cell {
       display: table-cell;
     }
@@ -20,7 +20,7 @@ div.table {
 
 .table-responsive {
   border: 0;
-
+  
   > div.table {
     > .table-header,
     > .table-body {
@@ -43,7 +43,7 @@ div.table {
       }
     }
   }
-
+  
   .table-body {
     .table-row {
       .table-cell {
@@ -58,9 +58,27 @@ div.table {
 }
 
 .ym-list__column {
-  a[ng-click]:link {
-    text-decoration: none;
-    cursor: pointer;
+  .btn-link {
+    color: $event-primary;
+    padding: 0;
+    
+    .fa {
+      &.inactive {
+        color: $inactive-grey !important;
+      }
+    }
+  }
+}
+
+.table tbody tr.ym-list__row--no-results, 
+.table-striped tbody tr.ym-list__row--no-results {
+  &, 
+  &:nth-of-type(odd) {
+    background-color: transparent;
+  }
+  
+  td {
+    text-align: center;
   }
 }
 
@@ -68,6 +86,7 @@ div.table {
   .table {
     max-width: 970px;
     margin: auto;
+    min-width: 350px;
     
     &.ym-list tbody a {
       font-weight: 500;
@@ -98,25 +117,33 @@ div.table {
 
 .table-striped {
   border: 0;
-
+  
+  thead {
+    tr {
+      th {
+        border-bottom: 0;
+      }
+    }
+  }
+  
   tbody {
     tr {
       &:nth-of-type(odd) {
         background-color: $event-accent-light;
       }
-
+      
       td {
         vertical-align: middle;
         padding: 10px;
         border-top: 0;
         border-bottom: 1px solid $event-accent;
         text-align: left;
-
+        
         &.text-right {
           text-align: right;
         }
       }
-
+      
       &:first-child {
         td {
           border-top: 7px solid $event-secondary;
@@ -124,20 +151,20 @@ div.table {
       }
     }
   }
-
+  
   .table-body {
     .table-row {
       &:nth-of-type(odd) {
         background-color: $event-accent-light;
       }
-
+      
       .table-cell {
         vertical-align: middle;
         padding: 10px;
         border-top: 0;
         border-bottom: 1px solid $event-accent;
       }
-
+      
       &:first-child {
         .table-cell {
           border-top: 7px solid $event-secondary;

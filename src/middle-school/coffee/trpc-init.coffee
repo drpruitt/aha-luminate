@@ -3,6 +3,7 @@ angular.module 'trPcApp', [
   'ngCsv'
   'textAngular'
   'trPcControllers'
+  'ngAria'
 ]
 
 angular.module 'trPcControllers', []
@@ -17,6 +18,8 @@ angular.module 'trPcApp'
         rootPath = '../' + devBranch + '/aha-luminate/'
       else
         rootPath = '../aha-luminate/'
+      rootPath
+    programKey: 'middle-school'
 
 angular.module 'trPcApp'
   .run [
@@ -25,8 +28,14 @@ angular.module 'trPcApp'
     ($rootScope, NG_PC_APP_INFO) ->
       # get data from embed container
       $embedRoot = angular.element '[data-embed-root]'
+      $rootScope.prevFrId = $embedRoot.data('prev-fr-id') or ''
       $rootScope.consName = $embedRoot.data('cons-name') or ''
-      $rootScope.studentRegGoal = $embedRoot.data('student-reg-goal') or '0'
+      studentRegGoal = $embedRoot.data('student-reg-goal') or '0'
+      if isNaN studentRegGoal
+        studentRegGoal = 0
+      else
+        studentRegGoal = Number studentRegGoal
+      $rootScope.studentRegGoal = studentRegGoal
   ]
 
 angular.element(document).ready ->

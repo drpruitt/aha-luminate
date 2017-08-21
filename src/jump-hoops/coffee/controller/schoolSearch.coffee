@@ -35,6 +35,7 @@ angular.module 'ahaLuminateControllers'
                 SCHOOL_STATE: schoolDataRow[schoolDataHeaders.SCHOOL_STATE]
                 COORDINATOR_FIRST_NAME: schoolDataRow[schoolDataHeaders.COORDINATOR_FIRST_NAME]
                 COORDINATOR_LAST_NAME: schoolDataRow[schoolDataHeaders.COORDINATOR_LAST_NAME]
+          
           $scope.schoolDataMap = schoolDataMap
           if $scope.schoolList.schools?.length > 0
             angular.forEach $scope.schoolList.schools, (school, schoolIndex) ->
@@ -49,10 +50,11 @@ angular.module 'ahaLuminateControllers'
       setSchools = (companies) ->
         schools = []
         angular.forEach companies, (company) ->
-          schools.push
-            FR_ID: company.eventId
-            COMPANY_ID: company.companyId
-            SCHOOL_NAME: company.companyName
+          if company.coordinatorId and company.coordinatorId isnt '0'
+            schools.push
+              FR_ID: company.eventId
+              COMPANY_ID: company.companyId
+              SCHOOL_NAME: company.companyName
         schools
       
       $scope.getSchoolSuggestions = (newValue) ->
@@ -105,10 +107,10 @@ angular.module 'ahaLuminateControllers'
                       $filter('filter') schools, SCHOOL_NAME: newValue
       
       $scope.submitSchoolSearch = ->
+        $scope.schoolList.searchSubmitted = true
         $scope.schoolList.nameFilter = $scope.schoolList.ng_nameFilter
         $scope.schoolList.stateFilter = ''
         $scope.getSchoolSearchResults()
-        $scope.schoolList.searchSubmitted = true
       
       setSchoolsData = (schools) ->
         angular.forEach schools, (school, schoolIndex) ->

@@ -1,0 +1,13 @@
+.skip-to-content {
+  position: absolute;
+  top: -50px;
+  left: 0;
+  padding: 20px;
+  
+  &:focus {
+    top: 0;
+    background: $brand-primary;
+    color: $brand-white;
+    transition: top .1s ease-in, background .5s linear;
+  }
+}

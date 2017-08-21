@@ -922,7 +922,7 @@ angular.module 'trPcControllers'
           $scope.getTeamShortcut()
       
       if $scope.participantRegistration.companyInformation and $scope.participantRegistration.companyInformation.companyId and $scope.participantRegistration.companyInformation.companyId isnt -1
-        if $scope.participantRegistration.companyInformation.isCompanyCoordinator isnt 'true'
+        if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
           $scope.companyPageUrl = luminateExtend.global.path.nonsecure + 'TR?fr_id=' + $scope.frId + '&pg=company&company_id=' + $scope.participantRegistration.companyInformation.companyId
         else
           $scope.getCompanyShortcut = ->

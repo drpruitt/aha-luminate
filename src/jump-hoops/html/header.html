@@ -7,10 +7,10 @@
         </div>
         [[?x9x27x::x[[S4]]x::::
           <div class="ym-header-logo ym-header-logo--jump hidden-xs">
-            <a href="http://heart.pub30.convio.net/jump-hoops/"><img src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/jump-logo.png" alt="Jump Rope For Heart Logo"></a>
+            <a href="http://american.heart.org/jump-hoops/"><img src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/jump-logo.png" alt="Jump Rope For Heart Logo"></a>
           </div>
           <div class="ym-header-logo ym-header-logo--hoops hidden-xs">
-            <a href="http://heart.pub30.convio.net/jump-hoops/"><img src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/hoops-logo.png" alt="Hoops For Heart Logo"></a>
+            <a href="http://american.heart.org/jump-hoops/"><img src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/hoops-logo.png" alt="Hoops For Heart Logo"></a>
           </div>
           <div class="ym-header-logo ym-header-logo--shape-america hidden-xs">
             <span><img src="../[[?xx::x[[S80:dev_branch]]x::::[[S80:dev_branch]]/]]aha-luminate/dist/jump-hoops/image/shape-america-logo.png" alt="SHAPE America Logo"></span>
@@ -29,23 +29,23 @@
     </div>
   ]]
   [[?x9x::x[[S4]]x::::
-    <nav role="navigation">
+    <nav role="navigation" aria-label="Main">
       <div class="container">
         <div class="clearfix">
           [[?x27x::x[[S4]]x::::
             <ul class="ym-site-nav hidden-xs">
               <li>
-                <a href="http://heart.pub30.convio.net/jump-hoops/about/">
+                <a href="http://american.heart.org/jump-hoops/about/">
                   About
                 </a>
               </li>
               <li>
-                <a href="http://heart.pub30.convio.net/jump-hoops/for-parents/">
+                <a href="http://american.heart.org/jump-hoops/for-parents/">
                   For Parents
                 </a>
               </li>
               <li>
-                <a href="http://heart.pub30.convio.net/jump-hoops/for-students/">
+                <a href="http://american.heart.org/jump-hoops/for-students/">
                   For Students
                 </a>
               </li>
@@ -64,12 +64,12 @@
                     <form method="POST" name="headerLoginForm" ng-submit="submitHeaderLogin()" novalidate>
                       <input type="hidden" name="ng_nexturl" ng-model="headerLoginInfo.ng_nexturl" value="[[E130:[[T8:[[S8]]]] [[T8:&amp;]] [[T8:&]] replaceall]]">
                       <div class="form-group">
-                        <label class="sr-only" for="user_name">Username:</label>
-                        <input type="text" class="form-control" name="user_name" title="user_name" ng-model="headerLoginInfo.user_name" placeholder="Username" maxlength="[[S0:USER_MAX_LOGIN_LEN]]" autocorrect="off" autocapitalize="off" spellcheck="false" required>
+                        <label class="sr-only" for="headerLoginInfo-user_name">Username:</label>
+                        <input type="text" class="form-control" name="USERNAME" id="headerLoginInfo-user_name" ng-model="headerLoginInfo.user_name" placeholder="Username" maxlength="[[S0:USER_MAX_LOGIN_LEN]]" autocorrect="off" autocapitalize="off" spellcheck="false" required>
                       </div>
                       <div class="form-group">
-                        <label class="sr-only" for="password">Password:</label>
-                        <input type="password" class="form-control" title="password" ng-model="headerLoginInfo.password" placeholder="Password" maxlength="[[S0:USER_MAX_PASSWD_LEN]]" autocorrect="off" autocapitalize="off" spellcheck="false" required>
+                        <label class="sr-only" for="headerLoginInfo-password">Password:</label>
+                        <input type="password" class="form-control" name="Password" id="headerLoginInfo-password" ng-model="headerLoginInfo.password" placeholder="Password" maxlength="[[S0:USER_MAX_PASSWD_LEN]]" autocorrect="off" autocapitalize="off" spellcheck="false" required>
                       </div>
                       <div class="ym-header-login-footer clearfix">
                         <button type="submit" class="btn btn-global-primary pull-left">
@@ -98,16 +98,16 @@
               <div class="clearfix">
                 <div class="ym-header-welcome">
                   <button type="button" class="btn btn-link ym-header-welcome-toggle" ng-click="toggleWelcomeMenu()">
-                    Welcome[[?xx::x[[S1:first_name]]x::::, [[S1:first_name]]]]! <span class="fa fa-chevron-down" ng-class="{'fa-chevron-down': !welcomeMenuOpen, 'fa-chevron-up': welcomeMenuOpen}"></span>
+                    Welcome[[?xx::x[[S1:first_name]]x::::, <span class="ym-header-welcome-toggle--first-name">[[S1:first_name]]]]!</span> <span class="fa fa-chevron-down" ng-class="{'fa-chevron-down': !welcomeMenuOpen, 'fa-chevron-up': welcomeMenuOpen}"></span>
                   </button>
-                  <div class="ym-header-welcome-dropdown" ng-class="{'open': welcomeMenuOpen, 'my-events': numberEvents > 1, 'my-hq' : numberEvents == 1}" ng-cloak>
-                    <ul>
-                      <li>
+                  <div class="ym-header-welcome-dropdown" ng-class="{'open': welcomeMenuOpen, 'my-events': numberEvents > 1, 'my-hq' : numberEvents == 1}" role="menubar" title="Welcome Menu" ng-cloak>
+                    <ul role="menu" id="js--header-welcome-ul" tabindex="0">
+                      <li role="menuitem">
                         <a href="ConsProfileUser?dispMode=edit&amp;NEXTURL=[[T1:[[E130:[[T8:[[S8]]]] [[T8:&amp;]] [[T8:&]] replaceall]]]]">
                           Edit Profile
                         </a>
                       </li>
-                      <li>
+                      <li role="menuitem">
                         <a href="UserLogin?logout=&amp;NEXTURL=[[T1:[[E130:[[T8:[[S8]]]] [[T8:&amp;]] [[T8:&]] replaceall]]]]">
                           Log Out
                         </a>
@@ -128,6 +128,7 @@
           [[?x27x::x[[S4]]x::::
             <div class="ym-site-menu visible-xs">
               <button type="button" class="btn btn-default ym-site-menu-toggle" ng-click="toggleSiteMenu()">
+                <span class="sr-only">Toggle navigation</span>
                 <span class="ym-site-menu-bar"></span>
                 <span class="ym-site-menu-bar"></span>
                 <span class="ym-site-menu-bar"></span>
@@ -136,17 +137,17 @@
               <div class="ym-site-menu-dropdown" ng-class="{'open': siteMenuOpen}" ng-cloak>
                 <ul>
                   <li>
-                    <a href="http://heart.pub30.convio.net/jump-hoops/about/">
+                    <a href="http://american.heart.org/jump-hoops/about/">
                       About
                     </a>
                   </li>
                   <li>
-                    <a href="http://heart.pub30.convio.net/jump-hoops/for-parents/">
+                    <a href="http://american.heart.org/jump-hoops/for-parents/">
                       For Parents
                     </a>
                   </li>
                   <li>
-                    <a href="http://heart.pub30.convio.net/jump-hoops/for-students/">
+                    <a href="http://american.heart.org/jump-hoops/for-students/">
                       For Students
                     </a>
                   </li>

@@ -10,9 +10,9 @@ angular.module 'ahaLuminateControllers'
     'TeamraiserTeamService'
     'TeamraiserParticipantService'
     'TeamraiserCompanyService'
-    'ParticipantBadgesService'
+    'BoundlessService'
     'TeamraiserTeamPageService'
-    ($rootScope, $scope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserTeamService, TeamraiserParticipantService, TeamraiserCompanyService, ParticipantBadgesService, TeamraiserTeamPageService) ->
+    ($rootScope, $scope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserTeamService, TeamraiserParticipantService, TeamraiserCompanyService, BoundlessService, TeamraiserTeamPageService) ->
       $scope.teamId = $location.absUrl().split('team_id=')[1].split('&')[0].split('#')[0]
       $scope.teamParticipants = []
       $rootScope.teamName = ''
@@ -51,19 +51,15 @@ angular.module 'ahaLuminateControllers'
             teamInfo = response.getTeamSearchByInfoResponse?.team
             companyId = teamInfo.companyId
             $scope.participantCount = teamInfo.numMembers
-            if $scope.participantCount.toString().length > 4
-              $scope.participantCount = Math.round($scope.participantCount / 1000) + 'K'
-            # hiding this til data is avalible in staging
-            # ParticipantBadgesService.getSchoolRollupTotals companyId + '/' + $scope.teamId
-            ParticipantBadgesService.getSchoolRollupTotals '1121/1110'
+            
+            BoundlessService.getSchoolRollupTotals companyId + '/' + $scope.teamId
             .then (response) ->
-              totals = response.data.totals
-              if response.data.status is 'success'
-                $scope.totalEmails = totals.total_online_emails_sent
-                if $scope.totalEmails.toString().length > 4
-                  $scope.totalEmails = Math.round($scope.totalEmails / 1000) + 'K'
-              else
+              if response.data.status isnt 'success'
                 $scope.totalEmails = 0
+              else
+                totals = response.data.totals
+                totalEmails = totals?.total_online_emails_sent or '0'
+                $scope.totalEmails = Number totalEmails
             
             if not teamInfo
               setTeamProgress()
@@ -72,13 +68,14 @@ angular.module 'ahaLuminateControllers'
             
             TeamraiserCompanyService.getCompanies 'company_id=' + companyId, 
               success: (response) ->
-                coordinatorId = response.getCompaniesResponse?.company.coordinatorId
-                eventId = response.getCompaniesResponse?.company.eventId
+                coordinatorId = response.getCompaniesResponse?.company?.coordinatorId
+                eventId = response.getCompaniesResponse?.company?.eventId
                 
-                TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
-                  .then (response) ->
-                    $scope.eventDate = response.data.coordinator.event_date
-                    setCoordinatorInfo()
+                if coordinatorId and coordinatorId isnt '0' and eventId
+                  TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
+                    .then (response) ->
+                      $scope.eventDate = response.data.coordinator?.event_date
+                      setCoordinatorInfo()
       getTeamData()
       
       setTeamParticipants = (participants, totalNumber, totalFundraisers) ->
@@ -101,7 +98,10 @@ angular.module 'ahaLuminateControllers'
                 angular.forEach participants, (participant) ->
                   participant.amountRaised = Number participant.amountRaised
                   if participant.name?.first and participant.amountRaised > 1
+                    participant.firstName = participant.name.first
+                    participant.lastName = participant.name.last
                     participant.name.last = participant.name.last.substring(0, 1) + '.'
+                    participant.fullName = participant.name.first + ' ' + participant.name.last
                     participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
                     if participant.donationUrl
                       participant.donationFormId = participant.donationUrl.split('df_id=')[1].split('&')[0]
@@ -140,11 +140,14 @@ angular.module 'ahaLuminateControllers'
           errorCode = errorResponse.code
           errorMessage = errorResponse.message
           
-          if photoNumber is '1'
-            $scope.updateTeamPhoto1Error =
-              message: errorMessage
-          if not $scope.$$phase
-            $scope.$apply()
+          if errorCode is '5'
+            window.location = luminateExtend.global.path.secure + 'UserLogin?NEXTURL=' + encodeURIComponent('TR?fr_id=' + $scope.frId + '&pg=team&team_id=' + $scope.teamId)
+          else
+            if photoNumber is '1'
+              $scope.updateTeamPhoto1Error =
+                message: errorMessage
+            if not $scope.$$phase
+              $scope.$apply()
         uploadPhotoSuccess: (response) ->
           delete $scope.updateTeamPhoto1Error
           if not $scope.$$phase

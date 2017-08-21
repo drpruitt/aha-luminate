@@ -10,12 +10,11 @@ angular.module 'ahaLuminateControllers'
     'TeamraiserParticipantService'
     'TeamraiserCompanyService'
     'ZuriService'
-    'ParticipantBadgesService'
+    'BoundlessService'
     'TeamraiserParticipantPageService'
-    ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserParticipantService, TeamraiserCompanyService, ZuriService, ParticipantBadgesService, TeamraiserParticipantPageService) ->
+    ($scope, $rootScope, $location, $filter, $timeout, $uibModal, APP_INFO, TeamraiserParticipantService, TeamraiserCompanyService, ZuriService, BoundlessService, TeamraiserParticipantPageService) ->
       $dataRoot = angular.element '[data-aha-luminate-root]'
       $scope.participantId = $location.absUrl().split('px=')[1].split('&')[0].split('#')[0]
-      frId = $dataRoot.data('fr-id') if $dataRoot.data('fr-id') isnt ''
       $scope.companyId = $dataRoot.data('company-id') if $dataRoot.data('company-id') isnt ''
       $scope.teamId = $dataRoot.data('team-id') if $dataRoot.data('team-id') isnt ''
       $scope.eventDate =''
@@ -23,67 +22,67 @@ angular.module 'ahaLuminateControllers'
       $scope.challengeId = null
       $scope.challengeName = null
       $scope.challengeCompleted = 0
-
+      
       $scope.prizes = []
       $scope.monsters = []
-      ParticipantBadgesService.getBadges $scope.participantId
-      .then (response) ->
-        if not response.data.status or response.data.status isnt 'success'
-          # TODO
-        else
-          prizes = response.data.prizes
-          angular.forEach prizes, (prize) ->
-            if prize.earned_datetime isnt null
-              if prize.id is '342' or prize.id is '343' or prize.id is '344'
-                $scope.monsters.push
-                  priority: 1
-                  id: prize.id
-                  label: prize.label
-                  sku: prize.sku
-                  status: prize.status
-                  earned: prize.earned_datetime
-                $scope.monsters.sort (a, b) ->
-                  b.earned - a.earned
-              else
-                if prize.id is '352'
-                  $scope.prizes.push
-                    priority: 2
+      BoundlessService.getBadges $scope.participantId
+        .then (response) ->
+          if not response.data.status or response.data.status isnt 'success'
+            # TODO
+          else
+            prizes = response.data.prizes
+            angular.forEach prizes, (prize) ->
+              if prize.earned_datetime isnt null
+                if prize.id is 342 or prize.id is 343 or prize.id is 344
+                  $scope.monsters.push
+                    priority: 1
                     id: prize.id
                     label: prize.label
                     sku: prize.sku
                     status: prize.status
                     earned: prize.earned_datetime
-                else if prize.id is '350'
-                  $scope.prizes.push
-                    priority: 3
-                    id: prize.id
-                    label: prize.label
-                    sku: prize.sku
-                    status: prize.status
-                    earned: prize.earned_datetime
-                else if prize.id is '353'
-                  $scope.prizes.push
-                    priority: 4
-                    id: prize.id
-                    label: prize.label
-                    sku: prize.sku
-                    status: prize.status
-                    earned: prize.earned_datetime
-                else if prize.id is '351'
-                  $scope.prizes.push
-                    priority: 5
-                    id: prize.id
-                    label: prize.label
-                    sku: prize.sku
-                    status: prize.status
-                    earned: prize.earned_datetime
-          if $scope.monsters.length > 0
-            $scope.prizes.push $scope.monsters[0]
-          if $scope.prizes.length > 0
-            $scope.prizes.sort (a, b) ->
-              a.priority - b.priority
-
-      ZuriService.getZooStudent frId + '/' + $scope.participantId,
+                  $scope.monsters.sort (a, b) ->
+                    b.earned - a.earned
+                else
+                  if prize.id is 352
+                    $scope.prizes.push
+                      priority: 2
+                      id: prize.id
+                      label: prize.label
+                      sku: prize.sku
+                      status: prize.status
+                      earned: prize.earned_datetime
+                  else if prize.id is 350
+                    $scope.prizes.push
+                      priority: 3
+                      id: prize.id
+                      label: prize.label
+                      sku: prize.sku
+                      status: prize.status
+                      earned: prize.earned_datetime
+                  else if prize.id is 353
+                    $scope.prizes.push
+                      priority: 4
+                      id: prize.id
+                      label: prize.label
+                      sku: prize.sku
+                      status: prize.status
+                      earned: prize.earned_datetime
+                  else if prize.id is 351
+                    $scope.prizes.push
+                      priority: 5
+                      id: prize.id
+                      label: prize.label
+                      sku: prize.sku
+                      status: prize.status
+                      earned: prize.earned_datetime
+            if $scope.monsters.length > 0
+              $scope.prizes.push $scope.monsters[0]
+            if $scope.prizes.length > 0
+              $scope.prizes.sort (a, b) ->
+                a.priority - b.priority
+      
+      ZuriService.getStudent $scope.frId + '/' + $scope.participantId,
         error: (response) ->
           $scope.challengeName = null
           $scope.challengeId = null
@@ -95,17 +94,18 @@ angular.module 'ahaLuminateControllers'
             $scope.challengeId = response.data.challenges.current
           $scope.challengeName = response.data.challenges.text
           $scope.challengeCompleted = response.data.challenges.completed
-
+      
       TeamraiserCompanyService.getCompanies 'company_id=' + $scope.companyId,
         success: (response) ->
-          coordinatorId = response.getCompaniesResponse?.company.coordinatorId
-          eventId = response.getCompaniesResponse?.company.eventId
-          $rootScope.numTeams = response.getCompaniesResponse.company.teamCount
-
-          TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
-            .then (response) ->
-              $scope.eventDate = response.data.coordinator.event_date
-
+          coordinatorId = response.getCompaniesResponse?.company?.coordinatorId
+          eventId = response.getCompaniesResponse?.company?.eventId
+          $rootScope.numTeams = response.getCompaniesResponse?.company?.teamCount
+          
+          if coordinatorId and coordinatorId isnt '0' and eventId
+            TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
+              .then (response) ->
+                $scope.eventDate = response.data.coordinator?.event_date
+      
       setParticipantProgress = (amountRaised, goal) ->
         $scope.personalProgress =
           amountRaised: if amountRaised then Number(amountRaised) else 0
@@ -180,46 +180,49 @@ angular.module 'ahaLuminateControllers'
           $scope.personalDonors.totalNumber = $defaultPersonalDonors.length
 
       $scope.personalPagePhoto1 =
-        defaultUrl: APP_INFO.rootPath + 'dist/middle-school/image/personal-default.jpg'
+        defaultUrl: APP_INFO.rootPath + 'dist/jump-hoops/image/personal-default.jpg'
 
       $scope.editPersonalPhoto1 = ->
         delete $scope.updatePersonalPhoto1Error
         $scope.editPersonalPhoto1Modal = $uibModal.open
           scope: $scope
-          templateUrl: APP_INFO.rootPath + 'dist/middle-school/html/modal/editPersonalPhoto1.html'
-
+          templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/modal/editPersonalPhoto1.html'
+      
       $scope.closePersonalPhoto1Modal = ->
         delete $scope.updatePersonalPhoto1Error
         $scope.editPersonalPhoto1Modal.close()
-
+      
       $scope.cancelEditPersonalPhoto1 = ->
         $scope.closePersonalPhoto1Modal()
-
+      
       $scope.deletePersonalPhoto1 = (e) ->
         if e
           e.preventDefault()
         angular.element('.js--delete-personal-photo-1-form').submit()
         false
-
+      
       window.trPageEdit =
         uploadPhotoError: (response) ->
           errorResponse = response.errorResponse
           photoNumber = errorResponse.photoNumber
           errorCode = errorResponse.code
           errorMessage = errorResponse.message
-
-          if photoNumber is '1'
-            $scope.updatePersonalPhoto1Error =
-              message: errorMessage
-          if not $scope.$$phase
-            $scope.$apply()
+          
+          if errorCode is '5'
+            window.location = luminateExtend.global.path.secure + 'UserLogin?NEXTURL=' + encodeURIComponent('TR?fr_id=' + $scope.frId + '&pg=personal&px=' + $scope.participantId)
+          else
+            if photoNumber is '1'
+              $scope.updatePersonalPhoto1Error =
+                message: errorMessage
+            if not $scope.$$phase
+              $scope.$apply()
         uploadPhotoSuccess: (response) ->
           delete $scope.updatePersonalPhoto1Error
           if not $scope.$$phase
             $scope.$apply()
           successResponse = response.successResponse
           photoNumber = successResponse.photoNumber
-
+          
           TeamraiserParticipantPageService.getPersonalPhotos
             error: (response) ->
               # TODO
@@ -274,18 +277,13 @@ angular.module 'ahaLuminateControllers'
         $scope.personalPageContent.ng_rich_text = richText
         $scope.personalPageContent.mode = 'edit'
         $timeout ->
-          $taToolbar = jQuery 'div.ta-toolbar'
-          $taToolbar.find('.btn-group > button').each ->
-            $bttn = jQuery this
-            $bttn.attr 'tabindex', 0
-            # $bttn.removeAttr 'tabindex'
           angular.element('[ta-bind][contenteditable]').focus()
         , 500
-
+      
       $scope.resetPersonalPageContent = ->
         $scope.personalPageContent.ng_rich_text = $scope.personalPageContent.rich_text
         $scope.personalPageContent.mode = 'view'
-
+      
       $scope.savePersonalPageContent = (isRetry) ->
         richText = $scope.personalPageContent.ng_rich_text
         $richText = jQuery '<div />',

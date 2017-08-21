@@ -1,8 +1,30 @@
 @import "../../youth-markets/sass/variables.scss";
 @import "variables.scss";
 @import "../../youth-markets/sass/mixins.scss";
-
 @import "../../youth-markets/sass/participant.scss";
+
+.ng-pc-nav {
+  a {
+    &, 
+    &:link, 
+    &:visited {
+      @media(min-width: 560px) {
+        background: $event-secondary-light;
+      }
+    }
+    
+    &:hover, 
+    &:focus {
+      @media(min-width: 560px) {
+        background: $event-secondary;
+      }
+    }
+    
+    &.active {
+      background: $brand-white;
+    }
+  }
+}
 
 .ng-pc-nav--coordinator {
   a {
@@ -15,7 +37,7 @@
       @media (min-width: 670px) {
         width: 20%;
       }
-
+      
       &.ng-pc-nav-item--resources {
         padding: 12px 6px 0;
         
@@ -51,6 +73,13 @@
   }
 }
 
+.ym-pc-dashboard-section-header {
+  h2, 
+  .h2 {
+    text-transform: uppercase;
+  }
+}
+
 .ym-pc-dashboard-progress-section {
   .row {
     .ym-pc-dashboard-progress-section__column {
@@ -77,8 +106,11 @@
   }
 }
 
-.ym-pc-dashboard-progress-type {
-  a {
+.ym-pc-dashboard-progress-type,
+.ym-pc-dashboard-captain-page-type, 
+.ym-pc-dashboard-coordinator-page-type {
+  a,
+  button {
     &, 
     &:link, 
     &:visited {
@@ -182,41 +214,173 @@
   }
 }
 
-.ym-pc-dashboard-email-challenge-box {
-  .ym-pc-dashboard-section-header {
-    h5, 
-    .h5 {
-      text-transform: none;
-    }
-  }
-  
-  .ym-pc-dashboard-email-challenge-option {
-    text-align: center;
-    margin: 0 0 20px;
-    
-    p {
-      margin: 0 0 18px;
-    }
-  }
-  
-  form {
-    textarea.form-control[readonly] {
-      background-color: $brand-white;
-      border: 0;
-      border-radius: 0;
-      font-size: 13px;
-      height: 470px;
-      padding: 28px;
-    }
-  }
-}
-
 .ym-activity-box {
   background: $event-accent-medium;
   
   h5, 
   .h5 {
     text-transform: none;
+  }
+}
+
+.ym-pc-dashboard-heart-challenge-section {
+  background-color: $event-secondary-light;
+  padding: 30px 30px 45px;
+  margin: 0 0 30px;
+  
+  .ym-pc-dashboard-section-header {
+    h3, 
+    .h3 {
+      margin: 0 0 30px;
+    }
+  }
+  
+  > .row {
+    .col-sm-6 {
+      @media (min-width: $screen-sm-min) {
+        border-right: 1px solid #9cbcc5;
+      }
+      
+      &:first-child {
+        @media (min-width: $screen-sm-min) {
+          padding-right: 32px;
+        }
+      }
+      
+      &:last-child {
+        @media (min-width: $screen-sm-min) {
+          border-right: 0;
+          padding-left: 32px;
+        }
+      }
+    }
+  }
+}
+
+.ym-pc-dashboard-heart-challenge-title {
+  color: $event-secondary;
+  margin: 0 0 18px;
+  
+  span {
+    font-size: inherit;
+  }
+}
+
+.ym-pc-dashboard-heart-challenge-icon {
+  float: left;
+  width: 102px;
+  padding: 0 30px 0 12px;
+}
+
+.ym-pc-dashboard-heart-challenge-body {
+  float: left;
+  @media(min-width: $screen-sm-min){
+    width: calc(100% - 102px);
+  }
+}
+
+.ym-pc-dashboard-heart-challenge-text {
+  p {
+    margin: 0 0 16px;
+  }
+}
+
+.ym-pc-dashboard-heart-challenge-mins-activity {
+  margin: 0 0 20px;
+  
+  @media (min-width: $screen-sm-min) {
+    margin: 0;
+  }
+  
+  .alert-danger, 
+  .alert-success {
+    border-radius: 10px;
+    text-align: center;
+    width: 305px;
+    padding: 7px 25px;
+  }
+  
+  .form-inline {
+    .form-group {
+      margin: 0 10px 10px 0;
+      
+      input[type="number"].form-control {
+        width: 140px;
+        max-width: 140px;
+      }
+
+      input, 
+      input[type=date].form-control, 
+      input[type=number].form-control {
+        line-height: normal;
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+    }
+
+    .input-group {
+      max-width: 140px;
+
+      .form-control {
+        border-radius: 7px 0 0 7px;
+      }
+
+      .input-group-btn .btn{
+        height: 34px;
+        border: 1px solid $event-secondary;
+        padding: 0 10px;
+      }
+    }
+    
+    .btn {
+      text-align: center;
+    }
+
+    .uib-datepicker-popup {
+      button { 
+        width: auto
+      }
+      .btn-success,
+      .btn-danger {
+        background: $event-primary;
+        border-color: $event-primary;
+
+        &:hover,
+        &:active,
+        &:focus,
+        .active {
+          background: $event-primary-dark;
+          border-color: $event-primary-dark;
+        }
+      }
+      .btn-info {
+        background: $event-secondary;
+        border-color: $event-secondary;
+
+        &:hover,
+        &:active,
+        &:focus,
+        .active {
+          background: $event-secondary-dark;
+          border-color: $event-secondary-dark;
+        }
+      }
+    }
+  }
+}
+
+.ym-pc-dashboard-heart-challenge-blood-pressure {
+  .btn {
+    text-align: center;
+    max-width: 250px;
+  }
+  
+  .alert-danger, 
+  .alert-success {
+    border-radius: 10px;
+    text-align: center;
+    padding: 7px 25px;
+    max-width: 250px;
   }
 }
 
@@ -265,7 +429,7 @@
 }
 
 .ym-activity-box.ym-activity-box--coordinator-pages {
-  background: $event-secondary-medium;
+  background: $event-secondary-light;
   border: 0;
   border-radius: 0;
   box-shadow: none;
@@ -293,43 +457,6 @@
       background-color: rgba(40, 79, 73, 0.2);
       color: rgb(255, 255, 255);
       color: rgba(40, 79, 73, 1);
-    }
-  }
-}
-
-.ym-pc-dashboard-coordinator-students-box {
-  .ym-pc-dashboard-section-header {
-    h5, 
-    .h5 {
-      text-transform: none;
-    }
-  }
-  
-  .ym-pc-dashboard-coordinator-email-challenge-option {
-    text-align: center;
-    margin: 20px 0;
-    
-    p {
-      margin: 0 0 18px;
-    }
-  }
-  
-  form {
-    textarea.form-control[readonly] {
-      background-color: $brand-white;
-      border: 0;
-      border-radius: 0;
-      font-size: 13px;
-      height: 470px;
-      padding: 28px;
-      
-      @media (min-width: $screen-sm-min) {
-        height: 326px;
-      }
-      
-      @media (min-width: $screen-lg-min) {
-        height: 302px;
-      }
     }
   }
 }
@@ -365,8 +492,29 @@
     &:active {
       @media (max-width: 413px) {
         display: block;
-        margin: 0 0 12px;
+        margin: 0 auto 12px;
+      }
+    }
+    
+    &:first-child {
+      &,
+      &:link,
+      &:visited,
+      &:hover,
+      &:focus,
+      &:active {
+        @media (max-width: 413px) {
+          margin: 0 auto 12px;
+        }
       }
     }
   }
+}
+
+.event-secondary-medium {
+  background: $event-secondary-light;
+}
+
+.ym-pc-dashboard-torch-graphic {
+  margin: 0 auto -10px;
 }

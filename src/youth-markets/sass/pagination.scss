@@ -1,7 +1,7 @@
 .pagination {
   margin: 15px 0;
 
-  @media (min-width: $screen-sm-min){
+  @media (min-width: $screen-sm-min) {
     margin: 30px 0;
   }
 
@@ -79,8 +79,8 @@ table {
       display: inline-block;
 
       &.pg-curr {
-        color: #fff;
         background-color: $event-primary;
+        color: $brand-white;
       }
 
       a {
@@ -94,19 +94,21 @@ table {
   }
 }
 
-.ym-school-search {
-  .table{
-    margin: 0 0 10px;
+.ym-school-search,
+.ym-donor-search,
+.ym-page-section__roster {
+  .table {
+    margin: 0 auto 10px;
 
-    @media (min-width: $screen-sm-min){
-      margin: 0 0 30px;
+    @media (min-width: $screen-sm-min) {
+      margin: 0 auto 30px;
     }
   }
   
   .pagination {
     margin: 0 0 10px;
 
-    @media (min-width: $screen-sm-min){
+    @media (min-width: $screen-sm-min) {
       margin: 0 0 30px;
     }
   
@@ -163,12 +165,27 @@ table {
 
             &:hover,
             &:focus {
-              background-color: transparent;
               text-decoration: none;
             }
           }
         }
       }
     }
+  }
+  
+  .pagination-next,
+  .pagination-prev,
+  .pagination-last,
+  .pagination-first {
+    a:focus,
+    a:hover {        
+      background: transparent;
+    }
+  }
+}
+
+.ym-pagination.text-center {
+  @media(max-width: $screen-xs-max) {
+    text-align: left;
   }
 }

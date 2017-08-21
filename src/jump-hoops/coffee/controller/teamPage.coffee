@@ -23,7 +23,7 @@ angular.module 'ahaLuminateControllers'
       $scope.activity2amt = ''
       $scope.activity3amt = ''
       
-      ZuriService.getZooTeam $scope.teamId,
+      ZuriService.getTeam $scope.teamId,
         error: (response) ->
           $scope.studentsPledgedTotal = 0
           $scope.activity1amt = 0
@@ -85,13 +85,14 @@ angular.module 'ahaLuminateControllers'
             
             TeamraiserCompanyService.getCompanies 'company_id=' + companyId, 
               success: (response) ->
-                coordinatorId = response.getCompaniesResponse?.company.coordinatorId
-                eventId = response.getCompaniesResponse?.company.eventId
+                coordinatorId = response.getCompaniesResponse?.company?.coordinatorId
+                eventId = response.getCompaniesResponse?.company?.eventId
                 
-                TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
-                  .then (response) ->
-                    $scope.eventDate = response.data.coordinator.event_date
-                    setCoordinatorInfo()
+                if coordinatorId and coordinatorId isnt '0' and eventId
+                  TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
+                    .then (response) ->
+                      $scope.eventDate = response.data.coordinator?.event_date
+                      setCoordinatorInfo()
       getTeamData()
       
       setTeamParticipants = (participants, totalNumber, totalFundraisers) ->
@@ -114,7 +115,10 @@ angular.module 'ahaLuminateControllers'
                 angular.forEach participants, (participant) ->
                   participant.amountRaised = Number participant.amountRaised
                   if participant.name?.first and participant.amountRaised > 1
+                    participant.firstName = participant.name.first
+                    participant.lastName = participant.name.last
                     participant.name.last = participant.name.last.substring(0, 1) + '.'
+                    participant.fullName = participant.name.first + ' ' + participant.name.last
                     participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
                     if participant.donationUrl
                       participant.donationFormId = participant.donationUrl.split('df_id=')[1].split('&')[0]
@@ -153,11 +157,14 @@ angular.module 'ahaLuminateControllers'
           errorCode = errorResponse.code
           errorMessage = errorResponse.message
           
-          if photoNumber is '1'
-            $scope.updateTeamPhoto1Error =
-              message: errorMessage
-          if not $scope.$$phase
-            $scope.$apply()
+          if errorCode is '5'
+            window.location = luminateExtend.global.path.secure + 'UserLogin?NEXTURL=' + encodeURIComponent('TR?fr_id=' + $scope.frId + '&pg=team&team_id=' + $scope.teamId)
+          else
+            if photoNumber is '1'
+              $scope.updateTeamPhoto1Error =
+                message: errorMessage
+            if not $scope.$$phase
+              $scope.$apply()
         uploadPhotoSuccess: (response) ->
           delete $scope.updateTeamPhoto1Error
           if not $scope.$$phase

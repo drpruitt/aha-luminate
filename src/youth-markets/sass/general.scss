@@ -1,15 +1,13 @@
 .skip-to-content {
-  padding: 20px;
   position: absolute;
   top: -50px;
   left: 0;
-
+  padding: 20px;
+  
   &:focus {
-    top: 0px;
+    top: 0;
     background: $event-primary;
     color: $brand-white;
-    outline: 0;
-    -webkit-transition: top .1s ease-in, background .5s linear;
     transition: top .1s ease-in, background .5s linear;
   }
 }
@@ -26,6 +24,10 @@
   background: $event-secondary;
 }
 
+hr.event-secondary {
+  border-color: $event-secondary;
+}
+
 .event-secondary-medium {
   background: $event-secondary-medium;
 }
@@ -40,7 +42,7 @@
 
 .event-accent {
   background: $event-accent;
-
+  
   a,
   a:link,
   a:visited,

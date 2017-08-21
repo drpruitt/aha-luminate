@@ -3,9 +3,12 @@ angular.module 'trPcControllers'
     '$rootScope'
     '$scope'
     '$filter'
+    '$httpParamSerializer'
+    '$timeout'
     '$uibModal'
     'APP_INFO'
-    'ParticipantBadgesService'
+    'BoundlessService'
+    'ZuriService'
     'NgPcTeamraiserRegistrationService'
     'NgPcTeamraiserProgressService'
     'NgPcTeamraiserTeamService'
@@ -14,8 +17,8 @@ angular.module 'trPcControllers'
     'NgPcTeamraiserShortcutURLService'
     'NgPcInteractionService'
     'NgPcTeamraiserCompanyService'
-    '$timeout'
-    ($rootScope, $scope, $filter, $uibModal, APP_INFO, ParticipantBadgesService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserGiftService, NgPcContactService, NgPcTeamraiserShortcutURLService, NgPcInteractionService, NgPcTeamraiserCompanyService, $timeout) ->
+    'NgPcTeamraiserSurveyResponseService'
+    ($rootScope, $scope, $filter, $httpParamSerializer, $timeout, $uibModal, APP_INFO, BoundlessService, ZuriService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserGiftService, NgPcContactService, NgPcTeamraiserShortcutURLService, NgPcInteractionService, NgPcTeamraiserCompanyService, NgPcTeamraiserSurveyResponseService) ->
       $scope.dashboardPromises = []
       
       $dataRoot = angular.element '[data-embed-root]'
@@ -137,7 +140,7 @@ angular.module 'trPcControllers'
         if not $scope.personalGoalInfo or not $scope.personalGoalInfo.goal or $scope.personalGoalInfo.goal is ''
           sampleText += '. '
         else
-          sampleText += 'of ' + $scope.personalGoalInfo.goal + '. '
+          sampleText += ' of ' + $scope.personalGoalInfo.goal + '. '
         sampleText += 'By making a donation to my fundraising page you support our district, our school and the American Heart Association. No matter the size of your gift - it will make a difference.\n\n' + 
         'Thank You!\n' + 
         $scope.consName + '\n\n' + 
@@ -162,8 +165,21 @@ angular.module 'trPcControllers'
         message: ''
         interactionId: ''
       
-      if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
-        NgPcInteractionService.getUserInteractions 'interaction_type_id=' + interactionTypeId + '&cons_id=' + $scope.participantRegistration.consId + '&list_page_size=1'
+      if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true' or $scope.location is '/dashboard-student'
+        NgPcInteractionService.listInteractions 'interaction_type_id=' + interactionTypeId + '&interaction_subject=' + $scope.participantRegistration.companyInformation.companyId
+          .then (response) ->
+            $scope.coordinatorMessage.message = ''
+            $scope.coordinatorMessage.interactionId = ''
+            if not response.data.errorResponse
+              interactions = response.data.listInteractionsResponse?.interaction
+              if interactions
+                interactions = [interactions] if not angular.isArray interactions
+                if interactions.length > 0
+                  interaction = interactions[0]
+                  $scope.coordinatorMessage.message = interaction.note?.text or ''
+                  $scope.coordinatorMessage.interactionId = interaction.interactionId or ''
+      else
+        NgPcInteractionService.getUserInteractions 'interaction_type_id=' + interactionTypeId + '&cons_id=' + $scope.consId + '&list_page_size=1'
           .then (response) ->
             $scope.coordinatorMessage.text = ''
             $scope.coordinatorMessage.interactionId = ''
@@ -186,34 +202,21 @@ angular.module 'trPcControllers'
         
         $scope.updateCoordinatorMessage = ->
           if $scope.coordinatorMessage.interactionId is ''
-            NgPcInteractionService.logInteraction 'interaction_type_id=' + interactionTypeId + '&cons_id=' + $scope.participantRegistration.consId + '&interaction_subject=' + $scope.participantRegistration.companyInformation.companyId + '&interaction_body=' + $scope.coordinatorMessage.text
+            NgPcInteractionService.logInteraction 'interaction_type_id=' + interactionTypeId + '&cons_id=' + $scope.consId + '&interaction_subject=' + $scope.participantRegistration.companyInformation.companyId + '&interaction_body=' + $scope.coordinatorMessage.text
                 .then (response) ->
-                  if response.data.updateConsResponse.message 
+                  if response.data.updateConsResponse?.message
                     $scope.coordinatorMessage.successMessage = true
                     $scope.editCoordinatorMessageModal.close()
                   else
-                    $scope.coordinatorMessage.errorMessage = 'There was an error processing your update. Please try again later.' 
+                    $scope.coordinatorMessage.errorMessage = 'There was an error processing your update. Please try again later.'
           else
-            NgPcInteractionService.updateInteraction 'interaction_id=' + $scope.coordinatorMessage.interactionId + '&cons_id=' + $scope.participantRegistration.consId + '&interaction_subject=' + $scope.participantRegistration.companyInformation.companyId + '&interaction_body=' + $scope.coordinatorMessage.text
+            NgPcInteractionService.updateInteraction 'interaction_id=' + $scope.coordinatorMessage.interactionId + '&cons_id=' + $scope.consId + '&interaction_subject=' + $scope.participantRegistration.companyInformation.companyId + '&interaction_body=' + $scope.coordinatorMessage.text
               .then (response) ->
                 if response.data.errorResponse 
                   $scope.coordinatorMessage.errorMessage = 'There was an error processing your update. Please try again later.' 
                 else
                   $scope.coordinatorMessage.successMessage = true
                   $scope.editCoordinatorMessageModal.close()
-      else
-        NgPcInteractionService.listInteractions 'interaction_type_id=' + interactionTypeId + '&interaction_subject=' + $scope.participantRegistration.companyInformation.companyId
-          .then (response) ->
-            $scope.coordinatorMessage.message = ''
-            $scope.coordinatorMessage.interactionId = ''
-            if not response.data.errorResponse
-              interactions = response.data.listInteractionsResponse?.interaction
-              if interactions
-                interactions = [interactions] if not angular.isArray interactions
-                if interactions.length > 0
-                  interaction = interactions[0]
-                  $scope.coordinatorMessage.message = interaction.note?.text or ''
-                  $scope.coordinatorMessage.interactionId = interaction.interactionId or ''
       
       $scope.personalGoalInfo = {}
       
@@ -428,7 +431,7 @@ angular.module 'trPcControllers'
               response
           $scope.dashboardPromises.push updateTeamUrlPromise
       
-      if $scope.participantRegistration.companyInformation and $scope.participantRegistration.companyInformation.companyId and $scope.participantRegistration.companyInformation.companyId isnt -1 and $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
+      if $scope.participantRegistration.companyInformation and $scope.participantRegistration.companyInformation.companyId and $scope.participantRegistration.companyInformation.companyId isnt -1 and $scope.participantRegistration.companyInformation?.isCompanyCoordinator is 'true'
         $scope.getCompanyShortcut = ->
           getCompanyShortcutPromise = NgPcTeamraiserShortcutURLService.getCompanyShortcut()
             .then (response) ->
@@ -475,7 +478,7 @@ angular.module 'trPcControllers'
           $scope.dashboardPromises.push updateCompanyUrlPromise
       
       $scope.prizes = []
-      ParticipantBadgesService.getBadges '2011'
+      BoundlessService.getBadges $scope.consId
         .then (response) ->
           prizes = response.data.prizes
           angular.forEach prizes, (prize) ->
@@ -487,4 +490,104 @@ angular.module 'trPcControllers'
               earned: prize.earned_datetime
         , (response) ->
           # TODO
+      
+      $scope.dateFormat = 'MM/dd/yyyy'
+      $scope.activityDatePicker =
+        opened: false
+      $scope.openActivityDatePicker = ->
+        $scope.activityDatePicker.opened = true
+        return
+      $scope.activityDateOptions =
+        showWeeks: false
+      
+      $scope.minsActivityLog =
+        ng_activity_date: new Date()
+      setMinsActivityForDate = ->
+        activityDate = $scope.minsActivityLog.ng_activity_date
+        minsActivity = ''
+        if activityDate and activityDate isnt ''
+          activityDateFormatted = $filter('date') activityDate, 'yyyy-MM-dd'
+          angular.forEach $scope.minsActivityLog.minsActivityMap, (minsActivityData) ->
+            if minsActivityData.date is activityDateFormatted
+              minsActivity = minsActivityData.minutes
+        if minsActivity is 0
+          minsActivity = ''
+        $scope.minsActivityLog.ng_activity_minutes = minsActivity
+      setMinsActivityForDate()
+      $scope.getMinsActivity = ->
+        ZuriService.getMinutes $scope.frId + '/' + $scope.consId,
+          error: ->
+            $scope.minsActivityLog.minsActivityMap = []
+          success: (response) ->
+            minsActivityMap = response.data.data?.list or []
+            $scope.minsActivityLog.minsActivityMap = minsActivityMap
+            setMinsActivityForDate()
+      $scope.getMinsActivity()
+      $scope.$watch 'minsActivityLog.ng_activity_date', ->
+        delete $scope.minsActivityLog.errorMessage
+        delete $scope.minsActivityLog.hasSuccess
+        setMinsActivityForDate()
+      # TODO: reset errorMessage and hasSuccess when ng_activity_minutes changes
+      $scope.updateMinsActivity = ->
+        activityDate = $scope.minsActivityLog.ng_activity_date
+        minsActivity = $scope.minsActivityLog.ng_activity_minutes
+        if not minsActivity or minsActivity is ''
+          minsActivity = 0
+        if not activityDate or activityDate is ''
+          delete $scope.minsActivityLog.hasSuccess
+          $scope.minsActivityLog.errorMessage = 'Please select a date'
+        else if isNaN(minsActivity) or Number(minsActivity) < 0
+          delete $scope.minsActivityLog.hasSuccess
+          $scope.minsActivityLog.errorMessage = 'Please enter a valid number of minutes'
+        else
+          activityDateFormatted = $filter('date') activityDate, 'yyyy-MM-dd'
+          companyId = $scope.participantRegistration.companyInformation?.companyId or ''
+          teamId = $scope.participantRegistration.teamId or ''
+          ZuriService.logMinutes $scope.frId + '/' + $scope.consId + '/' + activityDateFormatted + '?minutes=' + minsActivity + '&company_id=' + companyId + '&team_id=' + teamId,
+            error: ->
+              delete $scope.minsActivityLog.hasSuccess
+              $scope.minsActivityLog.errorMessage = 'An unexpected error occurred. Please try again later.'
+              $scope.getMinsActivity()
+            success: ->
+              delete $scope.minsActivityLog.errorMessage
+              $scope.minsActivityLog.hasSuccess = true
+              $scope.getMinsActivity()
+      
+      $scope.bloodPressureLog = {}
+      $scope.updateBloodPressureChecked = ->
+        NgPcTeamraiserSurveyResponseService.getSurveyResponses()
+          .then (response) ->
+            if response.data.errorResponse
+              $scope.bloodPressureLog.errorMessage = 'An unexpected error occurred. Please try again later.'
+            else
+              surveyResponses = response.data.getSurveyResponsesResponse?.responses
+              if not surveyResponses
+                $scope.bloodPressureLog.errorMessage = 'An unexpected error occurred. Please try again later.'
+              else
+                surveyResponses = [surveyResponses] if not angular.isArray surveyResponses
+                surveyQuestionResponseMap = undefined
+                angular.forEach surveyResponses, (surveyResponse) ->
+                  if not surveyResponse.responseValue or surveyResponse.responseValue is 'User Provided No Response' or not angular.isString surveyResponse.responseValue
+                    surveyResponse.responseValue = ''
+                  if surveyResponse.isHidden isnt 'true' and surveyResponse.key isnt 'ym_district_checked'
+                    if not surveyQuestionResponseMap
+                      surveyQuestionResponseMap = {}
+                    surveyQuestionResponseMap['question_' + surveyResponse.questionId] = surveyResponse.responseValue
+                  else if surveyResponse.key is 'ym_district_checked'
+                    if not surveyQuestionResponseMap
+                      surveyQuestionResponseMap = {}
+                    surveyQuestionResponseMap['question_' + surveyResponse.questionId] = 'true'
+                if not surveyQuestionResponseMap
+                  $scope.bloodPressureLog.errorMessage = 'An unexpected error occurred. Please try again later.'
+                else
+                  NgPcTeamraiserSurveyResponseService.updateSurveyResponses $httpParamSerializer(surveyQuestionResponseMap)
+                    .then (response) ->
+                      if response.data.errorResponse
+                        $scope.bloodPressureLog.errorMessage = 'An unexpected error occurred. Please try again later.'
+                      else
+                        if response.data.updateSurveyResponsesResponse?.success isnt 'true'
+                          $scope.bloodPressureLog.errorMessage = 'An unexpected error occurred. Please try again later.'
+                        else
+                          delete $scope.bloodPressureLog.errorMessage
+                          $rootScope.bloodPressureChecked = true
   ]

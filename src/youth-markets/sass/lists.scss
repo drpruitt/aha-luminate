@@ -1,9 +1,52 @@
 .ym-list {
   text-align: center;
+
+  .fa-ul {
+    margin-left: 1.6em;
+  }
+
+  .fa {
+    color: $event-primary;
+    &.inactive {
+      color: $inactive-grey;
+    }
+  }
+
+  li {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+
+  li:last-child{
+    margin-bottom: 0;
+  }
+
+  a {
+    font-weight: 700;
+  }
+}
+
+.ym-page-section__list {
+  .ym-donate-cta,
+  .ym-story {
+    .h5 {
+      margin-top: 0;
+    
+    }
+  }
+  .ym-list {
+    .h5 {
+      margin-top: 30px;
+      
+      @media (min-width: $screen-sm-min){
+        margin-top: 0;
+      }
+    }
+  }
 }
 
 .ym-donor-list {
-  background: #ffffff;
+  background: $brand-white;
   text-align: left;
   max-width: 490px;
   height: 200px;
@@ -36,5 +79,70 @@
 
 .ym-stripe-list__header {
   border-bottom: 7px solid $event-secondary;
+}
+
+.ym-accordion-list {
+  .panel-group {
+    @media (max-width: $screen-xs-max) {
+      margin-bottom: 40px;
+    }
+  }
+
+  .panel {
+    border-radius: 0;
+    margin-top: 0;
+    border: 0 none;
+    border-bottom: 1px solid $event-secondary;
+  }
+
+  .panel + .panel {
+    margin: 0;
+  }
+
+  .panel-heading {
+    background: transparent;
+    border-radius: 0;
+    border: 0 none;
+    padding: 14px 15px;
+
+    &.active {
+      background: $event-secondary;
+
+      a.panel-title {
+        color: $brand-white;
+        pointer-events: none;
+        cursor: default;
+
+        .fa-chevron-down {
+          display: none;
+        }
+
+        .fa-chevron-up {
+          display: inline-block;
+        }
+      }
+    }
+
+    a.panel-title {
+      display: block;
+      text-decoration: none;
+      font-weight: 700;
+
+      &:hover,
+      &:visited,
+      &:focus,
+      &:active {
+        text-decoration: none;
+      }
+
+      .fa-chevron-up {
+        display: none;
+      }
+
+      .fa-chevron-down {
+        display: inline-block;
+      }
+    }
+  }
 }
 

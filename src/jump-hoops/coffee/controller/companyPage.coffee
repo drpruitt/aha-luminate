@@ -30,32 +30,27 @@ angular.module 'ahaLuminateControllers'
       $scope.trustHtml = (html) ->
         return $sce.trustAsHtml(html)
       
-      TeamraiserCompanyService.getCompanyList 'include_all_companies=true', 
-        error: ->
-          $scope.localSponsorShow = false
-        success: (response) ->
-          companyItems = response.getCompanyListResponse.companyItem
-          angular.forEach companyItems, (companyItem) ->
-            if companyItem.companyId is $scope.companyId
-              parentId = companyItem.parentOrgEventId or '0'
-              if parentId is '0'
-                parentId = $scope.companyId
-              PageContentService.getPageContent 'jump_hoops_local_sponsors_' + parentId
-                .then (response) ->
-                  if response.includes('No data') is true
-                    $scope.localSponsorShow = false
-                  else
-                    img = response.split('/>')[0]
-                    if img is undefined
-                      $scope.localSponsorShow = false
-                    else
-                      alt = img.split('alt="')
-                      src = alt[0].split('src="')
-                      $scope.localSponsorShow = true
-                      $scope.localSponsorImageSrc = src[1].split('"')[0]
-                      $scope.localSponsorImageAlt = alt[1].split('"')[0]
-                    
-      ZuriService.getZooSchool $scope.companyId,
+      getLocalSponsors = ->
+        if $scope.parentCompanyId and $scope.parentCompanyId isnt ''
+          PageContentService.getPageContent 'jump_hoops_local_sponsors_' + $scope.parentCompanyId
+            .then (response) ->
+              if response.includes('No data') is true
+                $scope.localSponsorShow = false
+              else
+                img = response.split('/>')[0]
+                if img is undefined
+                  $scope.localSponsorShow = false
+                else
+                  alt = img.split('alt="')
+                  src = alt[0].split('src="')
+                  $scope.localSponsorShow = true
+                  $scope.localSponsorImageSrc = src[1].split('"')[0]
+                  $scope.localSponsorImageAlt = alt[1].split('"')[0]
+      getLocalSponsors()
+      $scope.$watch 'parentCompanyId', ->
+        getLocalSponsors()
+      
+      ZuriService.getSchool $scope.companyId,
         error: (response) ->
           $scope.studentsPledgedTotal = 0
           $scope.activity1amt = 0
@@ -109,7 +104,8 @@ angular.module 'ahaLuminateControllers'
               companies = [companies] if not angular.isArray companies
               participantCount = companies[0].participantCount or '0'
               $scope.participantCount = Number participantCount
-              totalTeams = companies[0].teamCount
+              totalTeams = companies[0].teamCount or '0'
+              totalTeams = Number totalTeams
               eventId = companies[0].eventId
               amountRaised = companies[0].amountRaised
               goal = companies[0].goal
@@ -118,11 +114,12 @@ angular.module 'ahaLuminateControllers'
               $rootScope.companyName = name
               setCompanyProgress amountRaised, goal
               
-              TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
-                .then (response) ->
-                  $scope.eventDate = response.data.coordinator.event_date
-                  if totalTeams is 1
-                    $scope.teamId = response.data.coordinator.team_id
+              if coordinatorId and coordinatorId isnt '0' and eventId
+                TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
+                  .then (response) ->
+                    $scope.eventDate = response.data.coordinator?.event_date
+                    if totalTeams is 1
+                      $scope.teamId = response.data.coordinator?.team_id
       getCompanyTotals()
       
       $scope.companyTeams = {}
@@ -173,19 +170,22 @@ angular.module 'ahaLuminateControllers'
             success: (response) ->
               participants = response.getParticipantsResponse?.participant
               companyParticipants = []
-              totalFundraisers = ''
+              totalNumberParticipants = response.getParticipantsResponse?.totalNumberResults or '0'
+              totalFundraisers = 0
               if participants
                 participants = [participants] if not angular.isArray participants
                 angular.forEach participants, (participant) ->
                   participant.amountRaised = Number participant.amountRaised
-                  if participant.name?.first and participant.amountRaised > 1
+                  if participant.name?.first and participant.amountRaised > 0
+                    participant.firstName = participant.name.first
+                    participant.lastName = participant.name.last
                     participant.name.last = participant.name.last.substring(0, 1) + '.'
+                    participant.fullName = participant.name.first + ' ' + participant.name.last
                     participant.amountRaisedFormatted = $filter('currency')(participant.amountRaised / 100, '$').replace '.00', ''
                     if participant.donationUrl
                       participant.donationFormId = participant.donationUrl.split('df_id=')[1].split('&')[0]
                     companyParticipants.push participant
                     totalFundraisers++
-              totalNumberParticipants = response.getParticipantsResponse.totalNumberResults
               setCompanyParticipants companyParticipants, totalNumberParticipants, totalFundraisers
       getCompanyParticipants()
       
@@ -225,11 +225,14 @@ angular.module 'ahaLuminateControllers'
           errorCode = errorResponse.code
           errorMessage = errorResponse.message
           
-          if photoNumber is '1'
-            $scope.updateCompanyPhoto1Error =
-              message: errorMessage
-          if not $scope.$$phase
-            $scope.$apply()
+          if errorCode is '5'
+            window.location = luminateExtend.global.path.secure + 'UserLogin?NEXTURL=' + encodeURIComponent('TR?fr_id=' + $scope.frId + '&pg=company&company_id=' + $scope.companyId)
+          else
+            if photoNumber is '1'
+              $scope.updateCompanyPhoto1Error =
+                message: errorMessage
+            if not $scope.$$phase
+              $scope.$apply()
         uploadPhotoSuccess: (response) ->
           delete $scope.updateCompanyPhoto1Error
           if not $scope.$$phase

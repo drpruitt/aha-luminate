@@ -38,6 +38,16 @@
       }
     }
 
+    a.item {
+      text-decoration: none;
+      color: inherit;
+      cursor: default;
+
+      &.active:hover {
+        cursor: pointer;
+      }
+    }
+
     h3,
     .h3-heading,
     h5,
@@ -84,7 +94,7 @@
     text-align: center;
 
     img {
-      border-right: 1px solid #ffffff;
+      border-right: 1px solid $brand-white;
     }
 
     p,

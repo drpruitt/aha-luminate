@@ -49,15 +49,19 @@ angular.module 'trPcControllers'
       if $scope.participantRegistration.aTeamCaptain is 'true'
         contactFilters.push 'email_rpt_show_teammates'
         contactFilters.push 'email_rpt_show_nonteammates'
-      if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
+      if $scope.participantRegistration.companyInformation?.isCompanyCoordinator is 'true'
         contactFilters.push 'email_rpt_show_company_coordinator_captains'
         contactFilters.push 'email_rpt_show_company_coordinator_participants'
+        contactFilters.push 'email_custom_rpt_show_past_company_coordinator_participants'
       angular.forEach contactFilters, (filter) ->
-        contactCountPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=1'
-          .then (response) ->
-            $scope.contactCounts[filter] = response.data.getTeamraiserAddressBookContactsResponse.totalNumberResults
-            response
-        $scope.emailPromises.push contactCountPromise
+        if filter is 'email_custom_rpt_show_past_company_coordinator_participants'
+          $scope.contactCounts[filter] = ''
+        else
+          contactCountPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=1'
+            .then (response) ->
+              $scope.contactCounts[filter] = response.data.getTeamraiserAddressBookContactsResponse?.totalNumberResults or '0'
+              response
+          $scope.emailPromises.push contactCountPromise
       
       messageTypeNames = 
         draft: 'Drafts'

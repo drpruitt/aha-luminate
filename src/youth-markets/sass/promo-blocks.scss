@@ -1,11 +1,12 @@
 .ym-promo-block--circle {
   border-radius: 100%;
 
-  & > section {
+  > .ym-promo-block--circle-inner {
     padding: 1px;
   }
 
   @media (min-width: $screen-sm-min) {
+    box-shadow: 0 10px 0 0 rgb(50, 50, 50);
     box-shadow: 0 10px 0 0 rgba(50, 50, 50, 1);
   }
 }
@@ -55,7 +56,7 @@
   }
 
   p {
-    color: #ffffff;
+    color: $brand-white;
     font-weight: 700;
     line-height: 1.25;
     max-width: 175px;
@@ -112,8 +113,8 @@
   .ym-promo-block {
     max-width: 830px;
 
-    section {
-      & > h2 {
+    .ym-promo-block--circle-inner {
+      > h2 {
         @media (max-width: $screen-xs-max) {
           margin-bottom: 40px;
         }
@@ -140,19 +141,19 @@
 
       h2,
       .h2 {
-        color: #ffffff;
+        color: $brand-white;
         line-height: 1;
         margin: 60px 0 10px;
       }
 
       p {
-        color: #ffffff;
+        color: $brand-white;
       }
 
       @media (max-width: $screen-sm-max) {
         width: 200px;
         height: 200px;
-        margin: 20px 20px 20px 0px;
+        margin: 20px 20px 20px 0;
       }
 
       @media (max-width: $screen-xs-max) {
@@ -244,14 +245,14 @@
       a,
       a:link,
       a:visited {
-        color: #fff;
+        color: $brand-white;
       }
     }
     .ym-sidebar-promo__text {
-      font-size: 14px;
+      font-size: $font-size-sm;
       padding: 20px 20px 30px;
 
-      & > a {
+      > a {
         font-weight: 700;
       }
     }

@@ -120,6 +120,26 @@ module.exports = {
     ]
   }, 
   
+  "high-school": {
+    files: [
+      'src/youth-markets/sass/**/*', 
+      'src/global/coffee/**/*', 
+      'src/youth-markets/coffee/**/*', 
+      'src/high-school/html/**/*', 
+      'src/high-school/image/**/*', 
+      'src/high-school/sass/**/*', 
+      'src/high-school/coffee/**/*'
+    ], 
+    tasks: [
+      'clean:high-school',  
+      'css-dist:high-school', 
+      'js-dist:high-school', 
+      'html-dist:high-school', 
+      'img-copy:high-school-images', 
+      'notify:high-school'
+    ]
+  }, 
+  
   "district-heart": {
     files: [
       'src/youth-markets/sass/**/*', 

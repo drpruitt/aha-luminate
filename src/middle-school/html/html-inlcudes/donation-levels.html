@@ -1,7 +1,7 @@
 <div class="donation-form-container">
   <div class="ym-donation-headlines">
     [[?xx::x[[S1:user_name]]x::::
-      <p>You are currently logged in as [[S1:first_name]] [[S1:last_name]]. If you are not [[S1:first_name]] [[S1:last_name]], <a href="UserLogin?logout=t&NEXTURL=[[T1:[[S8]]]]">click here</a>.
+      <p>You are currently logged in as [[S1:first_name]] [[S1:last_name]]. <a href="UserLogin?logout=t&NEXTURL=[[T1:[[S8]]]]">Log out if you are not [[S1:first_name]] [[S1:last_name]]</a>.
     ]]
     <h2 class="h5">Your Donation to:
     [[?x20x::x[[S334:PROXY_TYPE]]x::
@@ -16,7 +16,7 @@
     </h2>
     <h2 class="h4">Your Gift</h2>
   </div>
-  <div class="alert alert-danger" ng-if="paymentInfoErrors.errors.length > 0" ng-cloak>
+  <div class="alert alert-danger" role="alert" ng-if="paymentInfoErrors.errors.length > 0" ng-cloak>
     [[M0:friendraiser:generic_error]]
       <ul>
         <li ng-repeat="paymentInfoError in paymentInfoErrors.errors">
@@ -26,25 +26,26 @@
   </div>
   <div class="event-secondary-light ym-donation-levels">
     <div class="ym-donation-levels__type">
-      <a class="btn btn-toggle btn-lg ym-donation-levels__type--onetime active" ng-click="giftType('onetime')">One-time Gift</a>
-      <a class="btn btn-toggle btn-lg ym-donation-levels__type--monthly" ng-click="giftType('monthly');">Installment Gift</a>
+      <button type="button" class="btn btn-toggle btn-lg ym-donation-levels__type--onetime" ng-class="{'active': donationInfo.giftType == 'onetime'}" ng-click="giftType('onetime')">One-time Gift</button>
+      <button type="button" class="btn btn-toggle btn-lg ym-donation-levels__type--monthly" ng-class="{'active': donationInfo.giftType == 'monthly'}" ng-click="giftType('monthly');">Installment Gift</button>
     </div>
     <hr>
     <div class="ym-donation-levels__levels">
-      <div class="ym-donation-levels__amount" ng-repeat="donationLevel in donationLevels">
-        <a class="btn btn-toggle btn-lg {{donationLevel.classLevel}}" ng-class="{'active': donationLevel.levelChecked == true}" ng-if="donationLevel.userSpecified == 'false'" ng-click="selectLevel('level', donationLevel.levelId, donationLevel.amount);">
+      <div class="ym-donation-levels__amount" ng-repeat="donationLevel in donationLevels" ng-class="{'active': donationInfo.levelChecked == donationLevel.classLevel}">
+        <button type="button" class="btn btn-toggle btn-lg {{donationLevel.classLevel}}" ng-class="{'active': donationInfo.levelChecked == donationLevel.classLevel}" ng-if="donationLevel.userSpecified == 'false'" ng-click="selectLevel('level', donationLevel.levelId, donationLevel.amount);">
           {{donationLevel.amount}}
-        </a>
-        <label class="sr-only" for="other_amount">Other Amount</label>
-        <input type="text" class="btn btn-toggle btn-enter {{donationLevel.classLevel}}" title="other_amount" ng-if="donationLevel.userSpecified == 'true'" ng-keyup="enterAmount(otherAmt)" ng-model="otherAmt" ng-click="selectLevel('other', donationLevel.levelId);" placeholder="Other">
+        </button>
+        <label ng-if="donationLevel.userSpecified == 'true'" class="sr-only" for="other_amount">Other Amount</label>
+        <span ng-if="donationLevel.userSpecified == 'true'" class="ym-donation-levels__dollar-sign">$</span>
+        <input type="text" class="btn btn-toggle btn-enter {{donationLevel.classLevel}}" ng-class="{'active': donationInfo.levelChecked == donationLevel.classLevel}" title="other_amount" ng-if="donationLevel.userSpecified == 'true'" ng-keyup="enterAmount(otherAmt); selectLevel('other', donationLevel.levelId)" ng-model="otherAmt" ng-click="selectLevel('other', donationLevel.levelId);" placeholder="Other" ng-value="donationInfo.otherAmt">
       </div>
     </div>
-    <div class="ym-donation-levels__message level{{donationLevel.levelId}}" ng-repeat="donationLevel in donationLevels" ng-class="{'hidden': donationLevel.levelChecked != true || donationInfo.giftType != 'onetime'}">
+    <div class="ym-donation-levels__message level{{donationLevel.levelId}}" ng-repeat="donationLevel in donationLevels" ng-class="{'active': donationInfo.levelChecked == donationLevel.classLevel}">
       <p>
         {{donationLevel.levelLabel}}
       </p>
     </div>
-    <div class="ym-donation-levels__message level--installment"  ng-class="{'hidden': donationInfo.giftType != 'monthly'}">
+    <div class="ym-donation-levels__message--installment level--installment"  ng-class="{'hidden': donationInfo.giftType != 'monthly'}">
       <p>
         An installment gift allows you flexibility to give at a higher level and pay over time.
       </p>

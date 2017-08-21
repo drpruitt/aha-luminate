@@ -1,8 +1,15 @@
+html, 
 body {
+  overflow-x: hidden;
+}
+
+body {
+  position: relative;
   color: #2d2d2d;
   font-family: $event-font;
   font-size: $font-size-reg;
   font-weight: 500;
+  max-width: 100%;
 }
 
 h1,
@@ -118,7 +125,7 @@ p {
   line-height: 1.5;
 
   @media (max-width: $screen-sm-max) {
-    font-size: 14px;
+    font-size: $font-size-sm;
   }
 }
 
@@ -188,7 +195,7 @@ a {
   h5,
   .h5,
   .h5-heading {
-    color:$event-secondary;
+    color: $event-secondary;
   }
 }
 

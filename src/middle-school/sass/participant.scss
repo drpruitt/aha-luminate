@@ -4,6 +4,13 @@
 
 @import "../../youth-markets/sass/participant.scss";
 
+.ym-pc-dashboard-section-header {
+  h2, 
+  .h2 {
+    text-transform: uppercase;
+  }
+}
+
 .ym-pc-dashboard-progress-section {
   .row {
     .ym-pc-dashboard-progress-section__column {
@@ -30,8 +37,11 @@
   }
 }
 
-.ym-pc-dashboard-progress-type {
-  a {
+.ym-pc-dashboard-progress-type,
+.ym-pc-dashboard-captain-page-type, 
+.ym-pc-dashboard-coordinator-page-type {
+  a,
+  button {
     &, 
     &:link, 
     &:visited {
@@ -131,35 +141,6 @@
     img {
       display: block;
       width: 100%;
-    }
-  }
-}
-
-.ym-pc-dashboard-email-challenge-box {
-  .ym-pc-dashboard-section-header {
-    h5, 
-    .h5 {
-      text-transform: none;
-    }
-  }
-  
-  .ym-pc-dashboard-email-challenge-option {
-    text-align: center;
-    margin: 0 0 20px;
-    
-    p {
-      margin: 0 0 18px;
-    }
-  }
-  
-  form {
-    textarea.form-control[readonly] {
-      background-color: $brand-white;
-      border: 0;
-      border-radius: 0;
-      font-size: 13px;
-      height: 470px;
-      padding: 28px;
     }
   }
 }

@@ -47,7 +47,7 @@
 
   div {
     & > .ym-page-section__block:last-of-type {
-      margin-bottom: 0px;
+      margin-bottom: 0;
     }
   }
 
@@ -60,7 +60,7 @@
   }
 
   .ym-page-section__block {
-    padding: 0px 40px;
+    padding: 0 40px;
     margin-bottom: 50px;
 
     &.ym-page-section__block--narrow {
@@ -191,7 +191,7 @@
         a {
           position: relative;
           display: block;
-          font-size: 14px;
+          font-size: $font-size-sm;
           font-weight: 700;
           text-decoration: none;
           padding-right: 30px;
@@ -203,7 +203,7 @@
           .fa-chevron-right {
             position: absolute;
             top: 4px;
-            right: 0px;
+            right: 0;
             color: $event-primary;
           }
         }
@@ -218,7 +218,7 @@
 
       .fa-ul {
         & > li {
-          font-size: 14px;
+          font-size: $font-size-sm;
         }
       }
     }
@@ -232,7 +232,7 @@
     h5,
     .h5-heading {
       color: $event-secondary;
-      margin-top: 0px;
+      margin-top: 0;
       margin-bottom: 20px;
     }
   }
@@ -307,12 +307,12 @@
       padding-bottom: 20px;
 
       &:last-child {
-        padding-bottom: 0px;
+        padding-bottom: 0;
       }
 
       .input-group {
         display: block;
-        padding-right: 0px;
+        padding-right: 0;
       }
     }
 
@@ -362,9 +362,9 @@
     }
 
     p {
-      font-size: 14px;
+      font-size: $font-size-sm;
       padding-top: 15px;
-      margin-bottom: 0px;
+      margin-bottom: 0;
     }
   }
 
@@ -375,8 +375,8 @@
       width: 100%;
       max-width: 249px;
       float: none;
-      padding: 0px 0px 25px 0px;
-      margin: 0px auto;
+      padding: 0 0 25px 0;
+      margin: 0 auto;
     }
   }
 }
@@ -390,7 +390,7 @@
 
   > .container {
     max-width: 970px;
-    padding: 0px 20px 20px 20px;
+    padding: 0 20px 20px 20px;
 
     @media (min-width: $screen-sm-min) {
       padding-left: 50px;
@@ -444,139 +444,58 @@
   }
 }
 
-.ym-accordion-list {
-  .panel-group {
-    @media (max-width: $screen-xs-max) {
-      margin-bottom: 40px;
-    }
-  }
-
-  .panel {
-    border-radius: 0;
-    margin-top: 0;
-    border: 0 none;
-    border-bottom: 1px solid $event-secondary;
-  }
-
-  .panel + .panel {
-    margin: 0;
-  }
-
-  .panel-heading {
-    background: transparent;
-    border-radius: 0;
-    border: 0 none;
-    padding: 14px 15px;
-
-    &.active {
-      background: $event-secondary;
-
-      a.panel-title {
-        color: $brand-white;
-        pointer-events: none;
-        cursor: default;
-
-        .fa-chevron-down {
-          display: none;
-        }
-
-        .fa-chevron-up {
-          display: inline-block;
-        }
-      }
-    }
-
-    a.panel-title {
-      display: block;
-      text-decoration: none;
-      font-weight: 700;
-
-      &:hover {
-        text-decoration: underline;
-      }
-
-      .fa-chevron-up {
-        display: none;
-      }
-
-      .fa-chevron-down {
-        display: inline-block;
-      }
-    }
-  }
-}
-
-.ym-list {
-  .fa-ul {
-    margin-left: 1.6em;
-  }
-
-  .fa {
-    color: $event-primary;
-    &.inactive {
-      color: $inactive-grey;
-    }
-  }
-
-  li {
-    margin-bottom: 15px;
-    text-align: left;
-  }
-
-  li:last-child{
-    margin-bottom: 0;
-  }
-
-  a {
-    font-weight: 700;
-  }
-}
-
 .ym-school-search {
+  @media (min-width: $screen-sm-min) {
+    padding: 10px 0 40px;
+  }
+  
+  @media (min-width: $screen-md-min) {
+    padding: 10px 0 50px;
+  }
+  
   .visible-xs-block {
     em {
-      font-size: 14px;
+      font-size: $font-size-sm;
     }
   }
-
+  
   .img-responsive {
     margin: 0 auto 10px;
-
-    @media (min-width: $screen-sm-min){
+    
+    @media (min-width: $screen-sm-min) {
       margin: 20px auto 10px;
     }
   }
-
+  
   .pos-r {
     position: relative;
   }
-
+  
   .dropdown-menu {
     max-height: 245px;
     overflow-y: auto;
   }
-
+  
   > .form-group {
     margin-bottom: 50px;
   }
-
+  
   .ym-page-section__roster {
     padding-top: 0;
-
-    @media (min-width: $screen-sm-min){
+    
+    @media (min-width: $screen-sm-min) {
       padding-top: 25px;
     }
-
+    
     .h5 {
       margin: 0 0 15px;
-
+      
       @media (min-width: $screen-sm-min) {
         margin: 0 0 30px;
       }
     }
-
   }
-
+  
   #school-name-filter {
     display: block;
     font-size: $font-size-reg;
@@ -585,12 +504,12 @@
     max-width: 390px;
     height: 60px;
     margin: 0 auto;
-
+    
     @media (min-width: $screen-sm-min) {
       display: inline-block;
     }
   }
-
+  
   .school-name-filter-submit {
     display: block;
     font-size: $font-size-reg;
@@ -598,48 +517,56 @@
     max-width: 390px;
     height: 60px;
     margin: 12px auto 0;
-
+    
     @media (min-width: $screen-sm-min) {
       display: inline-block;
       width: auto;
       margin: 0 0 0 8px;
     }
   }
-
+  
   #school-state-filter {
     position: absolute;
     top: 0;
     right: 0;
     background: url("../../youth-markets/image/ym-select-carrot.png") right 0.75rem center no-repeat $event-secondary;
     font-weight: 700;
-    font-weight: 700;
     width: 200px;
-
+    
+    @media (max-width: $screen-sm-max) {
+      position: relative;
+      margin-bottom: 10px;
+    }
+    
     &:hover {
       background: url("../../youth-markets/image/ym-select-carrot.png") right 0.75rem center no-repeat $event-secondary-dark;
     }
-
+    
     option {
       background: $brand-white;
       color: $event-grey !important;
     }
   }
-
+  
   .ym-page-section__header {
     position: relative;
-
+    
+    @media (max-width: $screen-sm-max) {
+      text-align: center;
+    }
+    
     h2 {
       &.school-list__header {
         text-align: center;
         text-transform: none;
-
+        
         @media (min-width: $screen-md-min) {
           text-align: left;
         }
       }
     }
   }
-
+  
   .dropdown-menu {
     > li {
       > a {
@@ -652,7 +579,7 @@
           text-decoration: none;
         }
       }
-
+      
       &.active {
         > a {
           &,
@@ -667,10 +594,15 @@
       }
     }
   }
-
+  
   .ym-list--school-list {
+    @media (max-width: $screen-xs-max) {
+      min-width: 600px;
+    }
+    
     th {
       min-width: 65px;
+      
       a {
         &:hover {
           text-decoration: underline;
@@ -678,33 +610,12 @@
       }
     }
   }
-
+  
   .ym-list--school-list--help {
-    &,
+    &, 
     &:link {
       font-weight: 700;
       padding: 12px 20px !important;
-    }
-  }
-
-  @media (max-width: $screen-sm-max) {
-    .ym-page-section__header {
-      text-align: center;
-    }
-
-    #school-state-filter {
-      position: relative;
-      margin-bottom: 10px;
-    }
-  }
-
-  @media (max-width: $screen-xs-max) {
-    .ym-list__school-list-wrpr {
-      overflow-x: scroll;
-    }
-
-    .ym-list--school-list {
-      min-width: 600px;
     }
   }
 }

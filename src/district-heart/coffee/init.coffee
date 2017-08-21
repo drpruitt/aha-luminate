@@ -4,6 +4,7 @@ appDependencies = [
   'angular.filter'
   'ui.bootstrap'
   'ahaLuminateControllers'
+  'ngAria'
 ]
 
 angular.forEach ['textAngular'], (appDependency) ->
@@ -26,6 +27,8 @@ angular.module 'ahaLuminateApp'
         rootPath = '../' + devBranch + '/aha-luminate/'
       else
         rootPath = '../aha-luminate/'
+      rootPath
+    programKey: 'district-heart'
 
 angular.module 'ahaLuminateApp'
   .run [

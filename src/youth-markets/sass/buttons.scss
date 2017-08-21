@@ -2,11 +2,11 @@
 a.btn {
   @include button-size($padding-base-vertical, $padding-base-horizontal, 14px);
   
-  &,
-  &:link,
-  &:visited,
-  &:hover,
-  &:focus,
+  &, 
+  &:link, 
+  &:visited, 
+  &:hover, 
+  &:focus, 
   &:active {
     border-radius: 10px;
     border-width: 0;
@@ -14,12 +14,9 @@ a.btn {
     font-family: inherit;
     text-decoration: none;
   }
-  
-  &:focus,
-  &:active,
-  &:focus:active,
-  &:focus.active {
-    outline: none;
+
+  &[disabled] {
+    cursor: not-allowed;
   }
   
   > * {
@@ -274,17 +271,17 @@ input[type="text"].btn-enter {
 
   &::-webkit-input-placeholder {
     color: $event-primary !important;
-    opacity: 1 !important;
+    opacity: 0.75 !important;
   }
   
   &:-moz-placeholder {
     color: $event-primary !important;
-    opacity: 1 !important;
+    opacity: 0.75 !important;
   }
   
   &::-moz-placeholder {
     color: $event-primary !important;
-    opacity: 1 !important;
+    opacity: 0.75 !important;
   }
   
   &::-ms-input-placeholder {
@@ -294,12 +291,12 @@ input[type="text"].btn-enter {
   
   &:placeholder {
     color: $event-primary !important;
-    opacity: 1 !important;
+    opacity: 0.75 !important;
   }
   
   &::placeholder {
     color: $event-primary !important;
-    opacity: 1 !important;
+    opacity: 0.75 !important;
   }
   
   &:hover, 
@@ -310,26 +307,32 @@ input[type="text"].btn-enter {
     
     &::-webkit-input-placeholder {
       color: $brand-white !important;
+      opacity: 1 !important;
     }
     
     &:-moz-placeholder {
       color: $brand-white !important;
+      opacity: 1 !important;
     }
     
     &::-moz-placeholder {
       color: $brand-white !important;
+      opacity: 1 !important;
     }
     
     &::-ms-input-placeholder {
       color: $brand-white !important;
+      opacity: 1 !important;
     }
     
     &:placeholder {
       color: $brand-white !important;
+      opacity: 1 !important;
     }
     
     &::placeholder {
       color: $brand-white !important;
+      opacity: 1 !important;
     }
   }
 }

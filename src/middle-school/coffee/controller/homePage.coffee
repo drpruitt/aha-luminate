@@ -6,17 +6,19 @@ angular.module 'ahaLuminateControllers'
     '$rootScope'
     '$location'
     '$anchorScroll'
-    'ParticipantBadgesService'
+    'BoundlessService'
     'TeamraiserService'
-    ($scope, $timeout, TeamraiserParticipantService, $rootScope, $location, $anchorScroll, ParticipantBadgesService, TeamraiserService) ->
+    'AriaCarouselService'
+    ($scope, $timeout, TeamraiserParticipantService, $rootScope, $location, $anchorScroll, BoundlessService, TeamraiserService, AriaCarouselService) ->
       $dataRoot = angular.element '[data-aha-luminate-root]'
       consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
       
       setNoSchoolLink = (noSchoolLink) ->
+
         $scope.noSchoolLink = noSchoolLink
         if not $scope.$$phase
           $scope.$apply()
-      TeamraiserService.getTeamRaisersByInfo 'event_type=' + encodeURIComponent('Middle School') + '&public_event_type=' + encodeURIComponent ('School Not Found') + '&name=' + encodeURIComponent('%') + '&list_page_size=1&list_ascending=false&list_sort_column=event_date',
+      TeamraiserService.getTeamRaisersByInfo 'event_type=' + encodeURIComponent('Middle School') + '&public_event_type=' + encodeURIComponent('School Not Found') + '&name=' + encodeURIComponent('%') + '&list_page_size=1&list_ascending=false&list_sort_column=event_date',
           error: (response) ->
             # TODO
           success: (response) ->
@@ -76,7 +78,7 @@ angular.module 'ahaLuminateControllers'
       $scope.totalEmail = ''
       $scope.showStats = true
       
-      ParticipantBadgesService.getRollupTotals()
+      BoundlessService.getRollupTotals()
         .then (response) ->
           if not response.data.status or response.data.status isnt 'success'
             $scope.showStats = false
@@ -99,6 +101,7 @@ angular.module 'ahaLuminateControllers'
       
       initCarousel = ->
         owl = jQuery '.ym-home-feature .owl-carousel'
+        owlStr = '.ym-home-feature .owl-carousel'
         owl.owlCarousel
           items: 1
           nav: true
@@ -117,10 +120,17 @@ angular.module 'ahaLuminateControllers'
             '<i class="fa fa-chevron-left" hidden aria-hidden="true" />'
             '<i class="fa fa-chevron-right" hidden aria-hidden="true" />'
           ]
+          addClassActive: true
+          onInitialized: (event) ->
+            AriaCarouselService.init(owlStr)
+          onChanged: ->
+            AriaCarouselService.onChange(owlStr)
+
       $timeout initCarousel, 1000
       
       initHeroCarousel = ->
         owl = jQuery '.ym-carousel--hero'
+        owlStr = '.ym-carousel--hero.owl-carousel'
         if owl.length
           items = owl.find '> .item'
           if items.length > 1
@@ -133,5 +143,11 @@ angular.module 'ahaLuminateControllers'
                 '<i class="fa fa-chevron-left" hidden aria-hidden="true" />'
                 '<i class="fa fa-chevron-right" hidden aria-hidden="true" />'
               ]
+              addClassActive: true
+              onInitialized: (event) ->
+                AriaCarouselService.init(owlStr)
+              onChanged: ->
+                AriaCarouselService.onChange(owlStr)
+              
       $timeout initHeroCarousel, 1000
   ]

@@ -68,11 +68,16 @@
                 School Participants
               </a>
             </li>
+            <li ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true' && prevFrId && prevFrId != ''" ng-cloak>
+              <a ng-href="{{baseUrl}}#/email/contacts/email_custom_rpt_show_past_company_coordinator_participants/list">
+                Past School Participants
+              </a>
+            </li>
           </ul>
         </div>
       </div>
       <div class="hidden-xs">
-        <a class="btn btn-secondary form-control" ng-href="{{baseUrl}}#/email/compose">
+        <a disabled class="btn btn-secondary form-control">
           <strong>Compose</strong>
         </a>
         <div class="list-group ng-pc-nav-list-group">
@@ -117,14 +122,17 @@
             <span class="badge">{{contactCounts.email_rpt_show_company_coordinator_participants}}</span>
             School Participants
           </a>
+          <a class="list-group-item" ng-href="{{baseUrl}}#/email/contacts/email_custom_rpt_show_past_company_coordinator_participants/list" ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true' && prevFrId && prevFrId != ''" ng-cloak>
+            Past School Participants
+          </a>
         </div>
       </div>
     </div>
     <div class="col-sm-8 col-md-9">
-      <div uib-alert class="alert-danger" ng-if="sendEmailError" ng-cloak>
+      <div uib-alert class="alert-danger" role="alert" ng-if="sendEmailError" ng-cloak>
         <span ng-bind-html="sendEmailError"></span>
       </div>
-      <div uib-alert class="alert-success" ng-if="sendEmailSuccess" ng-cloak>
+      <div uib-alert class="alert-success" role="alert" ng-if="sendEmailSuccess" ng-cloak>
         Your email has been sent.
       </div>
       <form name="emailComposerForm" method="POST" novalidate ng-submit="previewEmail()">
@@ -146,7 +154,7 @@
           <input type="text" class="form-control input-lg" id="emailComposer-subject" name="subject" ng-model="emailComposer.subject" placeholder="Subject" autocorrect="on" autocapitalize="on" spellcheck="true">
         </div>
         <div class="form-group">
-          <div class="checkbox" ng-class="{'checked': emailComposer.prepend_salutation}" ng-if="personalizedSalutationEnabled">
+          <div class="checkbox" custom-checkbox ng-class="{'checked': emailComposer.prepend_salutation}" ng-if="personalizedSalutationEnabled">
             <label>
               <input type="checkbox" ng-model="emailComposer.prepend_salutation"> Include personalized greeting
             </label>

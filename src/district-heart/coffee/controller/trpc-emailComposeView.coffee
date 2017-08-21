@@ -46,15 +46,19 @@ angular.module 'trPcControllers'
         if $scope.participantRegistration.aTeamCaptain is 'true'
           contactFilters.push 'email_rpt_show_teammates'
           contactFilters.push 'email_rpt_show_nonteammates'
-        if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
+        if $scope.participantRegistration.companyInformation?.isCompanyCoordinator is 'true'
           contactFilters.push 'email_rpt_show_company_coordinator_captains'
           contactFilters.push 'email_rpt_show_company_coordinator_participants'
+          contactFilters.push 'email_custom_rpt_show_past_company_coordinator_participants'
         angular.forEach contactFilters, (filter) ->
-          contactCountPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=1'
-            .then (response) ->
-              $scope.contactCounts[filter] = response.data.getTeamraiserAddressBookContactsResponse.totalNumberResults
-              response
-          $scope.emailPromises.push contactCountPromise
+          if filter is 'email_custom_rpt_show_past_company_coordinator_participants'
+            $scope.contactCounts[filter] = ''
+          else
+            contactCountPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=1'
+              .then (response) ->
+                $scope.contactCounts[filter] = response.data.getTeamraiserAddressBookContactsResponse?.totalNumberResults or '0'
+                response
+            $scope.emailPromises.push contactCountPromise
       $scope.getContactCounts()
       
       $scope.resetSelectedContacts = ->
@@ -133,11 +137,22 @@ angular.module 'trPcControllers'
             if message.active is 'true'
               if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
                 if message.name.indexOf('Coordinator:') is -1
-                  message.name = message.name.split('Participant: ')[1]
-                  $scope.suggestedMessages.push message
+                  if $scope.participantRegistration.aTeamCaptain isnt 'true'
+                    if message.name.indexOf('Captain:') is -1
+                      message.name = message.name.split('Participant: ')[1] or message.name
+                      $scope.suggestedMessages.push message
+                  else
+                    if message.name.indexOf('Participant:') isnt -1
+                      message.name = message.name.split('Participant: ')[1]
+                      $scope.suggestedMessages.push message
+                    else if message.name.indexOf('Captain:') isnt -1
+                      message.name = message.name.split('Captain: ')[1]
+                      $scope.suggestedMessages.push message
+                    else
+                      $scope.suggestedMessages.push message
               else
                 if message.name.indexOf('Participant:') is -1
-                  message.name = message.name.split('Coordinator: ')[1]
+                  message.name = message.name.split('Coordinator: ')[1] or message.name
                   $scope.suggestedMessages.push message
           response
       $scope.emailPromises.push suggestedMessagesPromise

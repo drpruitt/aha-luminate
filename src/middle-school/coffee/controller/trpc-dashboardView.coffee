@@ -3,9 +3,10 @@ angular.module 'trPcControllers'
     '$rootScope'
     '$scope'
     '$filter'
+    '$timeout'
     '$uibModal'
     'APP_INFO'
-    'ParticipantBadgesService'
+    'BoundlessService'
     'NgPcTeamraiserRegistrationService'
     'NgPcTeamraiserProgressService'
     'NgPcTeamraiserTeamService'
@@ -14,8 +15,7 @@ angular.module 'trPcControllers'
     'NgPcTeamraiserShortcutURLService'
     'NgPcInteractionService'
     'NgPcTeamraiserCompanyService'
-    '$timeout'
-    ($rootScope, $scope, $filter, $uibModal, APP_INFO, ParticipantBadgesService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserGiftService, NgPcContactService, NgPcTeamraiserShortcutURLService, NgPcInteractionService, NgPcTeamraiserCompanyService, $timeout) ->
+    ($rootScope, $scope, $filter, $timeout, $uibModal, APP_INFO, BoundlessService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserGiftService, NgPcContactService, NgPcTeamraiserShortcutURLService, NgPcInteractionService, NgPcTeamraiserCompanyService) ->
       $scope.dashboardPromises = []
       
       $dataRoot = angular.element '[data-embed-root]'
@@ -116,13 +116,13 @@ angular.module 'trPcControllers'
       
       $scope.emailChallenge = {}
       setEmailSampleText = ->
-        sampleText = 'Hello friends! I am excited to be participating in the American Heart Association\'s District Heart Challenge. It is their mission to improve the lives of all Americans, by providing public health education and research. Some of those ways are right here in my own school by passing on a message of healthy eating and physical activity to the kids we see every day!\n\n' + 
-        'As I make some personal changes towards heart-health, like logging active minutes and getting my blood pressure checked, I am also raising money. I am trying to hit my fundraising goal'
+        sampleText = 'Hello! I am excited to be participating in the American Heart Association\'s Middle School Program! It is their mission to improve lives of all Americans, by providing public health education and research. Some of those ways are happening right here in my own school!\n\n' + 
+        'Please help me reach my fundraising goal'
         if not $scope.personalGoalInfo or not $scope.personalGoalInfo.goal or $scope.personalGoalInfo.goal is ''
-          sampleText += '. '
+          sampleText += ', '
         else
-          sampleText += 'of ' + $scope.personalGoalInfo.goal + '. '
-        sampleText += 'By making a donation to my fundraising page you support our district, our school and the American Heart Association. No matter the size of your gift - it will make a difference.\n\n' + 
+          sampleText += ' of ' + $scope.personalGoalInfo.goal + ', '
+        sampleText += 'by making a donation to my fundraising page. No matter the size of your gift - it will make a difference.\n\n' + 
         'Thank You!\n' + 
         $scope.consName + '\n\n' + 
         '***Did you know you might be able to double your gift to the American Heart Association? Ask your employer if you have an Employee Matching Gift program.'
@@ -146,8 +146,21 @@ angular.module 'trPcControllers'
         message: ''
         interactionId: ''
       
-      if $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
-        NgPcInteractionService.getUserInteractions 'interaction_type_id=' + interactionTypeId + '&cons_id=' + $scope.participantRegistration.consId + '&list_page_size=1'
+      if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true' or $scope.location is '/dashboard-student'
+        NgPcInteractionService.listInteractions 'interaction_type_id=' + interactionTypeId + '&interaction_subject=' + $scope.participantRegistration.companyInformation.companyId
+          .then (response) ->
+            $scope.coordinatorMessage.message = ''
+            $scope.coordinatorMessage.interactionId = ''
+            if not response.data.errorResponse
+              interactions = response.data.listInteractionsResponse?.interaction
+              if interactions
+                interactions = [interactions] if not angular.isArray interactions
+                if interactions.length > 0
+                  interaction = interactions[0]
+                  $scope.coordinatorMessage.message = interaction.note?.text or ''
+                  $scope.coordinatorMessage.interactionId = interaction.interactionId or ''
+      else
+        NgPcInteractionService.getUserInteractions 'interaction_type_id=' + interactionTypeId + '&cons_id=' + $scope.consId + '&list_page_size=1'
           .then (response) ->
             $scope.coordinatorMessage.text = ''
             $scope.coordinatorMessage.interactionId = ''
@@ -170,34 +183,21 @@ angular.module 'trPcControllers'
         
         $scope.updateCoordinatorMessage = ->
           if $scope.coordinatorMessage.interactionId is ''
-            NgPcInteractionService.logInteraction 'interaction_type_id=' + interactionTypeId + '&cons_id=' + $scope.participantRegistration.consId + '&interaction_subject=' + $scope.participantRegistration.companyInformation.companyId + '&interaction_body=' + $scope.coordinatorMessage.text
+            NgPcInteractionService.logInteraction 'interaction_type_id=' + interactionTypeId + '&cons_id=' + $scope.consId + '&interaction_subject=' + $scope.participantRegistration.companyInformation.companyId + '&interaction_body=' + $scope.coordinatorMessage.text
                 .then (response) ->
-                  if response.data.updateConsResponse.message 
+                  if response.data.updateConsResponse?.message
                     $scope.coordinatorMessage.successMessage = true
                     $scope.editCoordinatorMessageModal.close()
                   else
-                    $scope.coordinatorMessage.errorMessage = 'There was an error processing your update. Please try again later.' 
+                    $scope.coordinatorMessage.errorMessage = 'There was an error processing your update. Please try again later.'
           else
-            NgPcInteractionService.updateInteraction 'interaction_id=' + $scope.coordinatorMessage.interactionId + '&cons_id=' + $scope.participantRegistration.consId + '&interaction_subject=' + $scope.participantRegistration.companyInformation.companyId + '&interaction_body=' + $scope.coordinatorMessage.text
+            NgPcInteractionService.updateInteraction 'interaction_id=' + $scope.coordinatorMessage.interactionId + '&cons_id=' + $scope.consId + '&interaction_subject=' + $scope.participantRegistration.companyInformation.companyId + '&interaction_body=' + $scope.coordinatorMessage.text
               .then (response) ->
                 if response.data.errorResponse 
                   $scope.coordinatorMessage.errorMessage = 'There was an error processing your update. Please try again later.' 
                 else
                   $scope.coordinatorMessage.successMessage = true
                   $scope.editCoordinatorMessageModal.close()
-      else
-        NgPcInteractionService.listInteractions 'interaction_type_id=' + interactionTypeId + '&interaction_subject=' + $scope.participantRegistration.companyInformation.companyId
-          .then (response) ->
-            $scope.coordinatorMessage.message = ''
-            $scope.coordinatorMessage.interactionId = ''
-            if not response.data.errorResponse
-              interactions = response.data.listInteractionsResponse?.interaction
-              if interactions
-                interactions = [interactions] if not angular.isArray interactions
-                if interactions.length > 0
-                  interaction = interactions[0]
-                  $scope.coordinatorMessage.message = interaction.note?.text or ''
-                  $scope.coordinatorMessage.interactionId = interaction.interactionId or ''
       
       $scope.personalGoalInfo = {}
       
@@ -410,7 +410,7 @@ angular.module 'trPcControllers'
               response
           $scope.dashboardPromises.push updateTeamUrlPromise
       
-      if $scope.participantRegistration.companyInformation and $scope.participantRegistration.companyInformation.companyId and $scope.participantRegistration.companyInformation.companyId isnt -1 and $scope.participantRegistration.companyInformation.isCompanyCoordinator is 'true'
+      if $scope.participantRegistration.companyInformation and $scope.participantRegistration.companyInformation.companyId and $scope.participantRegistration.companyInformation.companyId isnt -1 and $scope.participantRegistration.companyInformation?.isCompanyCoordinator is 'true'
         $scope.getCompanyShortcut = ->
           getCompanyShortcutPromise = NgPcTeamraiserShortcutURLService.getCompanyShortcut()
             .then (response) ->
@@ -457,7 +457,7 @@ angular.module 'trPcControllers'
           $scope.dashboardPromises.push updateCompanyUrlPromise
       
       $scope.prizes = []
-      ParticipantBadgesService.getBadges '2011'
+      BoundlessService.getBadges $scope.consId
         .then (response) ->
           prizes = response.data.prizes
           angular.forEach prizes, (prize) ->
