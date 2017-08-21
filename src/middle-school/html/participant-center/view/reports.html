@@ -12,7 +12,7 @@
             </div>
             <div class="col-md-4">
               <div class="ym-pc-report-header-buttons" ng-if="schoolDetailStudents.students && schoolDetailStudents.students.length > 0" ng-cloak>
-                <button type="button" class="btn btn-md-wide btn-secondary" csv-header="schoolDetailStudents.downloadHeaders" ng-csv="schoolDetailStudents.downloadData" filename="School_Detail_Report.csv">
+                <button type="button" class="btn btn-md-wide btn-secondary" aria-label="Download Report" csv-header="schoolDetailStudents.downloadHeaders" ng-csv="schoolDetailStudents.downloadData" filename="School_Detail_Report.csv">
                   <i class="fa fa-download" hidden aria-hidden="true"></i>&nbsp;<strong>Download</strong>
                 </button> 
                 <button type="button" class="btn btn-md-wide btn-secondary" ng-click="emailAllCompanyParticipants()">
@@ -119,7 +119,7 @@
             </div>
             <div class="col-md-4">
               <div class="ym-pc-report-header-buttons" ng-if="participantGifts.gifts && participantGifts.gifts.length > 0" ng-cloak>
-                <a class="btn btn-md-wide btn-secondary" ng-href="TRParticipantDownload/Personal_Donations.csv?download_type=personal_donations&amp;fr_id={{frId}}" target="_blank">
+                <a class="btn btn-md-wide btn-secondary" aria-label="Download Personal Donors" ng-href="TRParticipantDownload/Personal_Donations.csv?download_type=personal_donations&amp;fr_id={{frId}}" target="_blank">
                   <i class="fa fa-download" hidden aria-hidden="true"></i>&nbsp;<strong>Download</strong>
                 </a>
                 <button type="button" class="btn btn-md-wide btn-secondary" ng-click="thankAllParticipantDonors()">
@@ -224,7 +224,7 @@
             </div>
             <div class="col-md-4">
               <div class="ym-pc-report-header-buttons" ng-if="teamGifts.gifts && teamGifts.gifts.length > 0" ng-cloak>
-                <a class="btn btn-md-wide btn-secondary" ng-href="TRParticipantDownload/Team_Donations.csv?download_type=team_donations&amp;fr_id={{frId}}" target="_blank">
+                <a class="btn btn-md-wide btn-secondary" aria-label="Download Team Donors" ng-href="TRParticipantDownload/Team_Donations.csv?download_type=team_donations&amp;fr_id={{frId}}" target="_blank">
                   <i class="fa fa-download" hidden aria-hidden="true"></i>&nbsp;<strong>Download</strong>
                 </a>
                 <button type="button" class="btn btn-md-wide btn-secondary" ng-click="thankAllTeamDonors()">
