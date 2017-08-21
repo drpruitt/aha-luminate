@@ -265,6 +265,8 @@ angular.module 'trPcControllers'
                       ecardsSent = Number jQuery.trim($reportTableRow.find('td').eq(14).text())
                       emailsSent = Number jQuery.trim($reportTableRow.find('td').eq(13).text())
                       tshirtSize = jQuery.trim $reportTableRow.find('td').eq(15).text()
+                      bloodPressureCheck = jQuery.trim $reportTableRow.find('td').eq(16).text()
+                      minsActivity = jQuery.trim $reportTableRow.find('td').eq(17).text()
                       districtDetailParticipants.push
                         firstName: firstName
                         lastName: lastName
@@ -274,12 +276,16 @@ angular.module 'trPcControllers'
                         ecardsSent: ecardsSent
                         emailsSent: emailsSent
                         tshirtSize: tshirtSize
+                        bloodPressureCheck: bloodPressureCheck
+                        minsActivity: minsActivity
                       districtDetailDownloadData.push [
                         firstName + ' ' + lastName
                         amountFormatted.replace('$', '').replace /,/g, ''
                         ecardsSent
                         emailsSent
                         tshirtSize
+                        bloodPressureCheck
+                        minsActivity
                       ]
                     $scope.districtDetailParticipants.participants = districtDetailParticipants
                     $scope.districtDetailParticipants.downloadData = districtDetailDownloadData

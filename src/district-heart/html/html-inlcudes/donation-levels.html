@@ -26,21 +26,31 @@
   </div>
   <div class="event-secondary-light ym-donation-levels">
     <div class="ym-donation-levels__type">
-      <button type="button" class="btn btn-toggle btn-lg ym-donation-levels__type--onetime" ng-class="{'active': donationInfo.giftType == 'onetime'}" ng-click="giftType('onetime')">One-time Gift</button>
-      <button type="button" class="btn btn-toggle btn-lg ym-donation-levels__type--monthly" ng-class="{'active': donationInfo.giftType == 'monthly'}" ng-click="giftType('monthly');">Installment Gift</button>
+      <fieldset role="group">
+        <legend class="sr-only">
+          Choose your gift type
+        </legend>
+        <button type="button" class="btn btn-toggle btn-lg ym-donation-levels__type--onetime" ng-class="{'active': donationInfo.giftType == 'onetime'}" ng-click="giftType('onetime')">One-time Gift</button>
+        <button type="button" class="btn btn-toggle btn-lg ym-donation-levels__type--monthly" ng-class="{'active': donationInfo.giftType == 'monthly'}" ng-click="giftType('monthly');">Installment Gift</button>
+      </fieldset>
     </div>
     <hr>
-    <div class="ym-donation-levels__levels">
-      <div class="ym-donation-levels__amount" ng-repeat="donationLevel in donationLevels" ng-class="{'active': donationInfo.levelChecked == donationLevel.classLevel}">
-        <button type="button" class="btn btn-toggle btn-lg {{donationLevel.classLevel}}" ng-class="{'active': donationInfo.levelChecked == donationLevel.classLevel}" ng-if="donationLevel.userSpecified == 'false'" ng-click="selectLevel('level', donationLevel.levelId, donationLevel.amount);">
-          {{donationLevel.amount}}
-        </button>
-        <label ng-if="donationLevel.userSpecified == 'true'" class="sr-only" for="other_amount">Other Amount</label>
-        <span ng-if="donationLevel.userSpecified == 'true'" class="ym-donation-levels__dollar-sign">$</span>
-        <input type="text" class="btn btn-toggle btn-enter {{donationLevel.classLevel}}" ng-class="{'active': donationInfo.levelChecked == donationLevel.classLevel}" title="other_amount" ng-if="donationLevel.userSpecified == 'true'" ng-keyup="enterAmount(otherAmt)" ng-model="otherAmt" ng-click="selectLevel('other', donationLevel.levelId);" placeholder="Other" ng-value="donationInfo.otherAmt">
+    <fieldset role="group">
+      <legend class="sr-only">
+        Choose your donation amount
+      </legend>
+      <div class="ym-donation-levels__levels">
+        <div class="ym-donation-levels__amount" ng-repeat="donationLevel in donationLevels" ng-class="{'active': donationInfo.levelChecked == donationLevel.classLevel}">
+          <button type="button" class="btn btn-toggle btn-lg {{donationLevel.classLevel}}" ng-class="{'active': donationInfo.levelChecked == donationLevel.classLevel}" ng-if="donationLevel.userSpecified == 'false'" ng-click="selectLevel('level', donationLevel.levelId, donationLevel.amount);" aria-describedby="message-level-{{donationLevel.levelId}}">
+            {{donationLevel.amount}}
+          </button>
+          <label ng-if="donationLevel.userSpecified == 'true'" class="sr-only" for="other_amount">Other Amount</label>
+          <span ng-if="donationLevel.userSpecified == 'true'" class="ym-donation-levels__dollar-sign">$</span>
+          <input type="text" class="btn btn-toggle btn-enter {{donationLevel.classLevel}}" ng-class="{'active': donationInfo.levelChecked == donationLevel.classLevel}" title="other_amount" ng-if="donationLevel.userSpecified == 'true'" ng-keyup="enterAmount(otherAmt); selectLevel('other', donationLevel.levelId)" ng-model="otherAmt" ng-click="selectLevel('other', donationLevel.levelId)" placeholder="Other" ng-value="donationInfo.otherAmt" aria-describedby="message-level-{{donationLevel.levelId}}">
+        </div>
       </div>
-    </div>
-    <div class="ym-donation-levels__message level{{donationLevel.levelId}}" ng-repeat="donationLevel in donationLevels" ng-class="{'active': donationInfo.levelChecked == donationLevel.classLevel}">
+    </fieldset>
+    <div class="ym-donation-levels__message level{{donationLevel.levelId}}" id="message-level-{{donationLevel.levelId}}" ng-repeat="donationLevel in donationLevels" ng-class="{'active': donationInfo.levelChecked == donationLevel.classLevel}">
       <p>
         {{donationLevel.levelLabel}}
       </p>
