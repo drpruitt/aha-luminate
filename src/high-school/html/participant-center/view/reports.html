@@ -123,7 +123,7 @@
                 <a class="btn btn-md-wide btn-secondary" aria-label="Download Personal Donors" ng-href="TRParticipantDownload/Personal_Donations.csv?download_type=personal_donations&amp;fr_id={{frId}}" target="_blank">
                   <i class="fa fa-download" hidden aria-hidden="true"></i>&nbsp;<strong>Download</strong>
                 </a>
-                <button type="button" class="btn btn-md-wide btn-secondary" ng-click="thankAllParticipantDonors()">
+                <button type="button" class="btn btn-md-wide btn-secondary" aria-label="Thank All Personal Donors" ng-click="thankAllParticipantDonors()">
                   <i class="fa fa-envelope" hidden aria-hidden="true"></i>&nbsp;<strong>Thank All</strong>
                 </button>
               </div>
@@ -181,7 +181,7 @@
                       </div>
                       <div class="ym-pc-reports-lists__acknowledge">
                         <div class="ym-pc-reports-lists__thanks" ng-if="participantGift.acknowledged != 'true'">
-                          <button type="button" class="btn btn-md-wide btn-primary" ng-click="thankParticipantDonor(participantGift)">
+                          <button type="button" class="btn btn-md-wide btn-primary" aria-label="Thank {{participantGift.name.first}} {{participantGift.name.last}}" ng-click="thankParticipantDonor(participantGift)">
                             <i class="fa fa-envelope" hidden aria-hidden="true"></i>&nbsp;<strong>Thank</strong>
                           </button>
                         </div>
@@ -228,7 +228,7 @@
                 <a class="btn btn-md-wide btn-secondary" aria-label="Download Team Donors" ng-href="TRParticipantDownload/Team_Donations.csv?download_type=team_donations&amp;fr_id={{frId}}" target="_blank">
                   <i class="fa fa-download" hidden aria-hidden="true"></i>&nbsp;<strong>Download</strong>
                 </a>
-                <button type="button" class="btn btn-md-wide btn-secondary" ng-click="thankAllTeamDonors()">
+                <button type="button" class="btn btn-md-wide btn-secondary" aria-label="Thank All Team Donors" ng-click="thankAllTeamDonors()">
                   <i class="fa fa-envelope" hidden aria-hidden="true"></i>&nbsp;<strong>Thank All</strong>
                 </button>
               </div>
@@ -285,7 +285,7 @@
                         <span ng-bind-html="teamGift.name.first"></span> <span ng-bind-html="teamGift.name.last"></span>
                       </div>
                       <div ng-if="teamGift.acknowledged != 'true'">
-                        <button type="button" class="btn btn-md-wide btn-primary" ng-click="thankTeamDonor(teamGift)">
+                        <button type="button" class="btn btn-md-wide btn-primary" aria-label="Thank {{teamGift.name.first}} {{teamGift.name.last}}" ng-click="thankTeamDonor(teamGift)">
                           <i class="fa fa-envelope" hidden aria-hidden="true"></i>&nbsp;<strong>Thank</strong>
                         </button>
                       </div>
