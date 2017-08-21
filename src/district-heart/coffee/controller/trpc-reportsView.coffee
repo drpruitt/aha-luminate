@@ -265,8 +265,18 @@ angular.module 'trPcControllers'
                       ecardsSent = Number jQuery.trim($reportTableRow.find('td').eq(14).text())
                       emailsSent = Number jQuery.trim($reportTableRow.find('td').eq(13).text())
                       tshirtSize = jQuery.trim $reportTableRow.find('td').eq(15).text()
-                      bloodPressureCheck = jQuery.trim $reportTableRow.find('td').eq(16).text()
-                      minsActivity = jQuery.trim $reportTableRow.find('td').eq(17).text()
+                      challenge2 = jQuery.trim $reportTableRow.find('td').eq(17).text()
+                      bloodPressureCheck = ''
+                      if challenge2?.toLowerCase() is 'true'
+                        bloodPressureCheck = 'Yes'
+                      else
+                        bloodPressureCheck = 'No'
+                      challenge1 = jQuery.trim $reportTableRow.find('td').eq(16).text()
+                      minsActivity = ''
+                      if not challenge1 or challenge1 is ''
+                        minsActivity = '0'
+                      else
+                        minsActivity = challenge1
                       districtDetailParticipants.push
                         firstName: firstName
                         lastName: lastName
