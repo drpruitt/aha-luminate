@@ -252,9 +252,9 @@ angular.module 'trPcControllers'
         closeEmailPreviewModal()
       
       $scope.sendEmail = ->
+        closeEmailPreviewModal()
         TeamraiserEmailService.sendMessage $httpParamSerializer($scope.emailComposer)
           .then (response) ->
-            closeEmailPreviewModal()
             window.scrollTo 0, 0
             if response.data.errorResponse
               $scope.sendEmailError = response.data.errorResponse.message
