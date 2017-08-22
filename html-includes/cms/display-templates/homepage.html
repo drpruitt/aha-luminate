@@ -324,7 +324,7 @@
             <button class="btn btn-lg btn-toggle" ng-class="{'active': showSearch == 'participant'}" ng-click="toggleSearch('participant')">Participant</button>
             <button class="btn btn-lg btn-toggle" ng-class="{'active': showSearch == 'team'}" ng-click="toggleSearch('team')">Team</button>
           </div>
-          <section aria-labelledby="ym-participant-search-title" role="search" ng-show="showSearch == 'participant'">
+          <section aria-label="Find a participant" role="search" ng-show="showSearch == 'participant'">
             <div class="ym-roster-search">
               <form class="form-inline" class="ym-search-participants" method="POST" ng-submit="searchParticipants()">
                 <div class="ym-roster-search-title" id="ym-participant-search-title">
@@ -343,13 +343,15 @@
                 </button>
               </form>
             </div>
-            <div class="alert alert-danger" role="alert" ng-if="totalParticipants == 0" ng-cloak>
-              No participants found.
+            <div role="alert" ng-if="participantSearch.totalParticipants == 0" ng-cloak>
+              <div class="text-center">
+                No participants found.
+              </div>
             </div>
-            <div class="text-center visible-xs-block" ng-if="totalParticipants > 0" ng-cloak>
+            <div class="text-center visible-xs-block" ng-if="participantSearch.totalParticipants > 0" ng-cloak>
               <em>Scroll right to view all information</em>
             </div>
-            <div class="table-responsive" ng-if="totalParticipants > 0" ng-cloak>
+            <div class="table-responsive" ng-if="participantSearch.totalParticipants > 0" ng-cloak>
               <table class="table table-striped table--padded ym-list ym-list--participant-list" summary="Results for participant search">  
                 <caption class="sr-only">
                   Results for participant search
@@ -359,23 +361,23 @@
                     <th class="ym-list__column ym-list__column--name" scope="col" role="columnheader" aria-sort="{{participantListSetting.sortProp != 'fullName' ? 'none' : (participantListSetting.sortDesc ? 'descending' : 'ascending')}}">
                       <button type="button" class="btn btn-link" ng-click="orderParticipants('fullName')">
                         <strong>Participant Name</strong>&nbsp;
-                        <span ng-show="totalParticipants > 1 && participantListSetting.sortProp == 'fullName' && !participantListSetting.sortDesc" class="fa fa-caret-down"><span class="sr-only">Sortable. Sorted descending.</span></span>
-                        <span ng-show="totalParticipants > 1 && participantListSetting.sortProp == 'fullName' && participantListSetting.sortDesc" class="fa fa-caret-up"><span class="sr-only">Sortable. Sorted ascending.</span></span>
-                        <span ng-show="totalParticipants > 1 && participantListSetting.sortProp != 'fullName'" class="fa fa-caret-down inactive"><span class="sr-only">Sortable. Not sorted.</span></span>
+                        <span ng-show="participantSearch.totalParticipants > 1 && participantListSetting.sortProp == 'fullName' && !participantListSetting.sortDesc" class="fa fa-caret-down"><span class="sr-only">Sortable. Sorted descending.</span></span>
+                        <span ng-show="participantSearch.totalParticipants > 1 && participantListSetting.sortProp == 'fullName' && participantListSetting.sortDesc" class="fa fa-caret-up"><span class="sr-only">Sortable. Sorted ascending.</span></span>
+                        <span ng-show="participantSearch.totalParticipants > 1 && participantListSetting.sortProp != 'fullName'" class="fa fa-caret-down inactive"><span class="sr-only">Sortable. Not sorted.</span></span>
                       </button>
                     </th>
                     <th class="ym-list__column ym-list__column--team" scope="col" role="columnheader" aria-sort="{{participantListSetting.sortProp != 'teamName' ? 'none' : (participantListSetting.sortDesc ? 'descending' : 'ascending')}}">
                       <button type="button" class="btn btn-link" ng-click="orderParticipants('teamName')">
                         <strong>Team Name</strong>&nbsp;
-                        <span ng-show="totalParticipants > 1 && participantListSetting.sortProp == 'teamName' && !participantListSetting.sortDesc" class="fa fa-caret-down"><span class="sr-only">Sortable. Sorted descending.</span></span>
-                        <span ng-show="totalParticipants > 1 && participantListSetting.sortProp == 'teamName' && participantListSetting.sortDesc" class="fa fa-caret-up"><span class="sr-only">Sortable. Sorted ascending.</span></span>
-                        <span ng-show="totalParticipants > 1 && participantListSetting.sortProp != 'teamName'" class="fa fa-caret-down inactive"><span class="sr-only">Sortable. Not sorted.</span></span>
+                        <span ng-show="participantSearch.totalParticipants > 1 && participantListSetting.sortProp == 'teamName' && !participantListSetting.sortDesc" class="fa fa-caret-down"><span class="sr-only">Sortable. Sorted descending.</span></span>
+                        <span ng-show="participantSearch.totalParticipants > 1 && participantListSetting.sortProp == 'teamName' && participantListSetting.sortDesc" class="fa fa-caret-up"><span class="sr-only">Sortable. Sorted ascending.</span></span>
+                        <span ng-show="participantSearch.totalParticipants > 1 && participantListSetting.sortProp != 'teamName'" class="fa fa-caret-down inactive"><span class="sr-only">Sortable. Not sorted.</span></span>
                       </button>
                     </th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="ym-list__row" ng-if="totalParticipants == 1">
+                  <tr class="ym-list__row" ng-if="participantSearch.totalParticipants == 1">
                     <td class="ym-list__column ym-list__column--name">
                       <a ng-href="{{participant.personalPageUrl}}">
                         <span ng-bind-html="participant.fullName"></span>
@@ -392,7 +394,7 @@
                       </a>
                     </td>
                   </tr>
-                  <tr class="ym-list__row" ng-repeat="participant in participantList | filter:paginateParticipants" ng-if="totalParticipants > 1">
+                  <tr class="ym-list__row" ng-repeat="participant in participantList | filter:paginateParticipants" ng-if="participantSearch.totalParticipants > 1">
                     <td class="ym-list__column ym-list__column--name">
                       <a ng-href="{{participant.personalPageUrl}}">
                         <span ng-bind-html="participant.fullName"></span>
@@ -416,7 +418,7 @@
               <ul uib-pagination ng-model="participantListSetting.currentPage" total-items="participantListSetting.totalItems" items-per-page="participantListSetting.paginationItemsPerPage" max-size="participantListSetting.paginationMaxSize" boundary-links="participantListSetting.participants.length > (participantListSetting.paginationItemsPerPage * participantListSetting.paginationMaxSize)"></ul>
             </div>
           </section>
-          <section aria-labelledby="ym-team-search-title" role="search" ng-show="showSearch == 'team'">
+          <section aria-label="Find a team" role="search" ng-show="showSearch == 'team'">
             <div class="ym-roster-search">
               <form class="form-inline" method="POST" ng-submit="searchTeams()" class="ym-search-teams">
                 <div class="ym-roster-search-title" id="ym-team-search-title">
@@ -431,31 +433,33 @@
                 </button>
               </form>
             </div>
-            <div class="alert alert-danger" role="alert" ng-if="totalTeams == 0" ng-cloak>
-              No teams found.
+            <div role="alert" ng-if="teamSearch.totalTeams == 0" ng-cloak>
+              <div class="text-center">
+                No teams found.
+              </div>
             </div>
-            <div class="text-center visible-xs-block" ng-if="totalTeams > 0" ng-cloak>
+            <div class="text-center visible-xs-block" ng-if="teamSearch.totalTeams > 0" ng-cloak>
               <em>Scroll right to view all information</em>
             </div>
-            <div class="table-responsive" ng-if="totalTeams > 0" ng-cloak>
+            <div class="table-responsive" ng-if="teamSearch.totalTeams > 0" ng-cloak>
               <table class="table table-striped table--padded ym-list ym-list--team-list" summary="Results for team search">
                 <caption class="sr-only">
-                Results for team search
+                  Results for team search
                 </caption>
                 <thead class="ym-list__header">
                   <tr>
                     <th class="ym-list__column ym-list__column--name" scope="col" role="columnheader" aria-sort="{{teamListSetting.sortDesc ? 'descending' : 'ascending'}}">
                       <button type="button" class="btn btn-link" ng-click="orderTeams('teamName')">
                         <strong>Team Name</strong>&nbsp;
-                        <span ng-show="totalTeams > 1 && teamListSetting.sortProp == 'teamName' && !teamListSetting.sortDesc" class="fa fa-caret-down"><span class="sr-only">Sortable. Sorted descending.</span></span>
-                        <span ng-show="totalTeams > 1 && teamListSetting.sortProp == 'teamName' && teamListSetting.sortDesc" class="fa fa-caret-up"><span class="sr-only">Sortable. Sorted ascending.</span></span>
-                        <span ng-show="totalTeams > 1 && teamListSetting.sortProp != 'teamName'" class="fa fa-caret-down inactive"><span class="sr-only">Sortable. Not sorted.</span></span>
+                        <span ng-show="teamSearch.totalTeams > 1 && teamListSetting.sortProp == 'teamName' && !teamListSetting.sortDesc" class="fa fa-caret-down"><span class="sr-only">Sortable. Sorted descending.</span></span>
+                        <span ng-show="teamSearch.totalTeams > 1 && teamListSetting.sortProp == 'teamName' && teamListSetting.sortDesc" class="fa fa-caret-up"><span class="sr-only">Sortable. Sorted ascending.</span></span>
+                        <span ng-show="teamSearch.totalTeams > 1 && teamListSetting.sortProp != 'teamName'" class="fa fa-caret-down inactive"><span class="sr-only">Sortable. Not sorted.</span></span>
                       </button>
                     </th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="ym-list__row" ng-if="totalTeams == 1">
+                  <tr class="ym-list__row" ng-if="teamSearch.totalTeams == 1">
                     <td class="ym-list__column ym-list__column--name">
                       <a ng-href="{{team.teamPageURL}}">
                         <span ng-bind-html="team.name"></span>
@@ -467,7 +471,7 @@
                       </a>
                     </td>
                   </tr>
-                  <tr class="ym-list__row" ng-repeat="team in teamList | filter:paginateTeams" ng-if="totalTeams > 1">
+                  <tr class="ym-list__row" ng-repeat="team in teamList | filter:paginateTeams" ng-if="teamSearch.totalTeams > 1">
                     <td class="ym-list__column ym-list__column--name">
                       <a ng-href="{{team.teamPageURL}}">
                         <span ng-bind-html="team.name"></span>
