@@ -94,7 +94,7 @@ angular.module 'ahaLuminateControllers'
               else
                 $scope.teamList = teams.team
                 $scope.orderTeams 'teamName'
-            $scope.teamListSetting.searchPending = false 
+            $scope.teamListSetting.searchPending = false
       
       $scope.orderTeams = (sortProp) ->
         teams = $scope.teamList

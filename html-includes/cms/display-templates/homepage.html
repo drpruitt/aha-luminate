@@ -428,7 +428,7 @@
                   <label for="teamSearch-ng_team_name" class="sr-only">Team Name:</label>
                   <input type="text" class="form-control" id="teamSearch-ng_team_name" name="teamSearch-ng_team_name" ng-model="teamSearch.ng_team_name" placeholder="Team Name">
                 </div>
-                <button type="submit" class="btn btn-md-wide">
+                <button type="submit" class="btn btn-md-wide" ng-disabled="teamListSetting.searchPending == true">
                   <strong>Search</strong>
                 </button>
               </form>
