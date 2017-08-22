@@ -324,7 +324,7 @@
             <button class="btn btn-lg btn-toggle" ng-class="{'active': showSearch == 'participant'}" ng-click="toggleSearch('participant')">Participant</button>
             <button class="btn btn-lg btn-toggle" ng-class="{'active': showSearch == 'team'}" ng-click="toggleSearch('team')">Team</button>
           </div>
-          <section aria-labelledby="ym-participant-search-title" role="search" ng-show="showSearch == 'participant'">
+          <section aria-label="Find a participant" role="search" ng-show="showSearch == 'participant'">
             <div class="ym-roster-search">
               <form class="form-inline" class="ym-search-participants" method="POST" ng-submit="searchParticipants()">
                 <div class="ym-roster-search-title" id="ym-participant-search-title">
@@ -416,7 +416,7 @@
               <ul uib-pagination ng-model="participantListSetting.currentPage" total-items="participantListSetting.totalItems" items-per-page="participantListSetting.paginationItemsPerPage" max-size="participantListSetting.paginationMaxSize" boundary-links="participantListSetting.participants.length > (participantListSetting.paginationItemsPerPage * participantListSetting.paginationMaxSize)"></ul>
             </div>
           </section>
-          <section aria-labelledby="ym-team-search-title" role="search" ng-show="showSearch == 'team'">
+          <section aria-label="Find a team" role="search" ng-show="showSearch == 'team'">
             <div class="ym-roster-search">
               <form class="form-inline" method="POST" ng-submit="searchTeams()" class="ym-search-teams">
                 <div class="ym-roster-search-title" id="ym-team-search-title">
