@@ -106,7 +106,7 @@
         </div>
       </div>
       <div class="ym-page-section ym-page-section__roster" ng-if="schoolList.searchSubmitted" ng-cloak>
-        <div class="js--school-search-loading" role="alert" aria-label="Search results loading" ng-if="schoolList.searchPending == true" ng-cloak>
+        <div role="alert" aria-label="Search results loading" ng-if="schoolList.searchPending == true" ng-cloak>
           <div class="text-center">
             Loading ...
           </div>
@@ -343,6 +343,11 @@
                 </button>
               </form>
             </div>
+            <div role="alert" aria-label="Search results loading" ng-if="participantListSetting.searchPending == true" ng-cloak>
+              <div class="text-center">
+                Loading ...
+              </div>
+            </div>
             <div role="alert" ng-if="participantSearch.totalParticipants == 0" ng-cloak>
               <div class="text-center">
                 No participants found.
@@ -432,6 +437,11 @@
                   <strong>Search</strong>
                 </button>
               </form>
+            </div>
+            <div role="alert" aria-label="Search results loading" ng-if="teamListSetting.searchPending == true" ng-cloak>
+              <div class="text-center">
+                Loading ...
+              </div>
             </div>
             <div role="alert" ng-if="teamSearch.totalTeams == 0" ng-cloak>
               <div class="text-center">
