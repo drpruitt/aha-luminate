@@ -26,12 +26,12 @@
   </div>
   <div class="event-secondary-light ym-donation-levels">
     <div class="ym-donation-levels__type">
-      <fieldset role="group">
+      <fieldset role="list">
         <legend class="sr-only">
           Choose your gift type
         </legend>
-        <button type="button" class="btn btn-toggle btn-lg ym-donation-levels__type--onetime" ng-class="{'active': donationInfo.giftType == 'onetime'}" ng-click="giftType('onetime')">One-time Gift</button>
-        <button type="button" class="btn btn-toggle btn-lg ym-donation-levels__type--monthly" ng-class="{'active': donationInfo.giftType == 'monthly'}" ng-click="giftType('monthly');">Installment Gift</button>
+        <button role="listitem" type="button" class="btn btn-toggle btn-lg ym-donation-levels__type--onetime" ng-class="{'active': donationInfo.giftType == 'onetime'}" ng-click="giftType('onetime')">One-time Gift</button>
+        <button role="listitem" type="button" class="btn btn-toggle btn-lg ym-donation-levels__type--monthly" ng-class="{'active': donationInfo.giftType == 'monthly'}" ng-click="giftType('monthly');">Installment Gift</button>
       </fieldset>
     </div>
     <hr>
