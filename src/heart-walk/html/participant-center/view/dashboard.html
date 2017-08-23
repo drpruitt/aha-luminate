@@ -17,7 +17,7 @@
       <div class="heart-dashboard-tab-info clearfix">
         <div class="heart-dashboard-tab-info__text">
           <div ng-if="participantRank.rank == -1">
-            You're not on the leaderboard yet!
+            You're not on the leaderboard yet THIS IS ANOTHER TEST!
           </div>
           <div ng-if="participantRank.rank && participantRank.rank != -1">
             I'm <span class="heart-dashboard-tab-info__rank">#{{participantRank.rank}}</span> of {{participantRank.totalNumber}} fundraisers at our Walk.
@@ -27,15 +27,15 @@
           <a class="btn btn-primary" ng-href="sms:&body=If you could save lives, would you%3F Join me today by participating or donating to the American Heart Association's Heart Walk: {{nonsecurePath}}TR%3Ffr_id={{frId}}%26pg=personal%26px={{consId}}" ng-if="device.isMobile && device.mobileType == 'ios'">
             Text for<br>
             Donations
-          </a> 
+          </a>
           <a class="btn btn-primary" ng-href="sms:?body=If you could save lives, would you%3F Join me today by participating or donating to the American Heart Association's Heart Walk: {{nonsecurePath}}TR%3Ffr_id={{frId}}%2526pg=personal%2526px={{consId}}" ng-if="device.isMobile && device.mobileType == 'android'">
             Text for<br>
             Donations
-          </a> 
+          </a>
           <a class="btn btn-primary" ng-href="{{baseUrl}}#/email/compose">
             Email for<br>
             Donations
-          </a> 
+          </a>
           <a class="btn btn-primary" ng-click="addOfflineGift('personal')" ng-if="teamraiserConfig.personalOfflineGiftsAllowed == 'true'">
             Enter Cash<br>
             or Checks
@@ -104,10 +104,10 @@
                 <div class="heart-page-progress__share-buttons addthis_toolbox" addthis:url="{{personalPageUrl}}">
                   <a class="heart-page-progress__share-button heart-page-progress__share-button--facebook addthis_button_facebook" ng-href="{{baseUrl}}#">
                     <i class="fa fa-facebook"></i><span class="sr-only">Facebook</span>
-                  </a> 
+                  </a>
                   <a class="heart-page-progress__share-button heart-page-progress__share-button--twitter addthis_button_twitter" ng-href="{{baseUrl}}#">
                     <i class="fa fa-twitter"></i><span class="sr-only">Twitter</span>
-                  </a> 
+                  </a>
                   <a class="heart-page-progress__share-button heart-page-progress__share-button--linkedin addthis_button_linkedin" ng-href="{{baseUrl}}#">
                     <i class="fa fa-linkedin"></i><span class="sr-only">LinkedIn</span>
                   </a>
@@ -200,7 +200,7 @@
           <a class="btn btn-primary" ng-click="emailAllTeamMembers()" ng-if="participantRegistration.aTeamCaptain == 'true'">
             Email My<br>
             Team
-          </a> 
+          </a>
           <a class="btn btn-primary" ng-click="addOfflineGift('team')" ng-if="teamraiserConfig.personalOfflineGiftsAllowed == 'true' && ((teamraiserConfig.offlineTeamGifts == 'CAPTAINS' && participantRegistration.aTeamCaptain == 'true') || teamraiserConfig.offlineTeamGifts == 'MEMBERS')">
             Enter Cash<br>
             or Checks
@@ -268,10 +268,10 @@
                 <div class="heart-page-progress__share-buttons addthis_toolbox" addthis:url="{{teamPageUrl}}">
                   <a class="heart-page-progress__share-button heart-page-progress__share-button--facebook addthis_button_facebook" ng-href="{{baseUrl}}#">
                     <i class="fa fa-facebook"></i><span class="sr-only">Facebook</span>
-                  </a> 
+                  </a>
                   <a class="heart-page-progress__share-button heart-page-progress__share-button--twitter addthis_button_twitter" ng-href="{{baseUrl}}#">
                     <i class="fa fa-twitter"></i><span class="sr-only">Twitter</span>
-                  </a> 
+                  </a>
                   <a class="heart-page-progress__share-button heart-page-progress__share-button--linkedin addthis_button_linkedin" ng-href="{{baseUrl}}#">
                     <i class="fa fa-linkedin"></i><span class="sr-only">LinkedIn</span>
                   </a>
@@ -397,7 +397,7 @@
           <a class="btn btn-primary" ng-click="emailAllCompanyParticipants()" ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'">
             Email My<br>
             Company
-          </a> 
+          </a>
           <a class="btn btn-primary hidden" ng-href="NTM?tr.ntmgmt=company_cservice_main&amp;company_id={{participantRegistration.companyInformation.companyId}}" ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'">
             My Company<br>
             Coordinator Center
@@ -459,10 +459,10 @@
                 <div class="heart-page-progress__share-buttons addthis_toolbox" addthis:url="{{companyPageUrl}}">
                   <a class="heart-page-progress__share-button heart-page-progress__share-button--facebook addthis_button_facebook" ng-href="{{baseUrl}}#">
                     <i class="fa fa-facebook"></i><span class="sr-only">Facebook</span>
-                  </a> 
+                  </a>
                   <a class="heart-page-progress__share-button heart-page-progress__share-button--twitter addthis_button_twitter" ng-href="{{baseUrl}}#">
                     <i class="fa fa-twitter"></i><span class="sr-only">Twitter</span>
-                  </a> 
+                  </a>
                   <a class="heart-page-progress__share-button heart-page-progress__share-button--linkedin addthis_button_linkedin" ng-href="{{baseUrl}}#">
                     <i class="fa fa-linkedin"></i><span class="sr-only">LinkedIn</span>
                   </a>
