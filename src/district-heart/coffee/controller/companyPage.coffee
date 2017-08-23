@@ -141,8 +141,10 @@ angular.module 'ahaLuminateControllers'
           error: ->
             setCompanyTeams()
           success: (response) ->
-            companyTeams = response.getTeamSearchByInfoResponse.team
-            if companyTeams
+            companyTeams = response.getTeamSearchByInfoResponse?.team
+            if not companyTeams
+              setCompanyTeams()
+            else
               companyTeams = [companyTeams] if not angular.isArray companyTeams
               angular.forEach companyTeams, (companyTeam) ->
                 companyTeam.amountRaised = Number companyTeam.amountRaised
@@ -230,7 +232,9 @@ angular.module 'ahaLuminateControllers'
             success: (response) ->
               participants = response.getParticipantsResponse?.participant
               companyParticipants = []
-              if participants
+              if not participants
+                setCompanyParticipants()
+              else
                 participants = [participants] if not angular.isArray participants
                 angular.forEach participants, (participant) ->
                   if participant.name?.first
