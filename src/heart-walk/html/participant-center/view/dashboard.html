@@ -2,7 +2,7 @@
   <div class="heart-dashboard__header">
     <div class="heart-dashboard__header-title" ng-if="constituent">
       <div ng-if="constituent.name && constituent.name.first">
-        {{constituent.name.first}} {{constituent.name.last}}'s TEST Fundraising Center
+        {{constituent.name.first}} {{constituent.name.last}}'s Fundraising Center
       </div>
       <div ng-if="!constituent.name.first">
         Fundraising Center
@@ -17,7 +17,7 @@
       <div class="heart-dashboard-tab-info clearfix">
         <div class="heart-dashboard-tab-info__text">
           <div ng-if="participantRank.rank == -1">
-            You're not on the leaderboard yet THIS IS ANOTHER TEST!
+            You're not on the leaderboard yet!
           </div>
           <div ng-if="participantRank.rank && participantRank.rank != -1">
             I'm <span class="heart-dashboard-tab-info__rank">#{{participantRank.rank}}</span> of {{participantRank.totalNumber}} fundraisers at our Walk.
