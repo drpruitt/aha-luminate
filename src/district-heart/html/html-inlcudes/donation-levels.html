@@ -35,19 +35,17 @@
       </fieldset>
     </div>
     <hr>
-    <fieldset>
+    <fieldset class="ym-donation-levels__levels" role="list">
       <legend class="sr-only">
         Choose your donation amount
       </legend>
-      <div class="ym-donation-levels__levels" role="list">
-        <div role="listitem" class="ym-donation-levels__amount" ng-repeat="donationLevel in donationLevels" ng-class="{'active': donationInfo.levelChecked == donationLevel.classLevel}">
-          <button type="button" class="btn btn-toggle btn-lg {{donationLevel.classLevel}}" ng-class="{'active': donationInfo.levelChecked == donationLevel.classLevel}" ng-if="donationLevel.userSpecified == 'false'" ng-click="selectLevel('level', donationLevel.levelId, donationLevel.amount);" aria-describedby="message-level-{{donationLevel.levelId}}">
-            {{donationLevel.amount}}
-          </button>
-          <label ng-if="donationLevel.userSpecified == 'true'" class="sr-only" for="other_amount">Other Amount</label>
-          <span ng-if="donationLevel.userSpecified == 'true'" class="ym-donation-levels__dollar-sign">$</span>
-          <input role="listitem" type="text" class="btn btn-toggle btn-enter {{donationLevel.classLevel}}" ng-class="{'active': donationInfo.levelChecked == donationLevel.classLevel}" title="other_amount" ng-if="donationLevel.userSpecified == 'true'" ng-keyup="enterAmount(otherAmt); selectLevel('other', donationLevel.levelId)" ng-model="otherAmt" ng-click="selectLevel('other', donationLevel.levelId)" placeholder="Other" ng-value="donationInfo.otherAmt" aria-describedby="message-level-{{donationLevel.levelId}}">
-        </div>
+      <div role="listitem" class="ym-donation-levels__amount" ng-repeat="donationLevel in donationLevels" ng-class="{'active': donationInfo.levelChecked == donationLevel.classLevel}" aria-describedby="message-level-{{donationLevel.levelId}}">
+        <button type="button" class="btn btn-toggle btn-lg {{donationLevel.classLevel}}" ng-class="{'active': donationInfo.levelChecked == donationLevel.classLevel}" ng-if="donationLevel.userSpecified == 'false'" ng-click="selectLevel('level', donationLevel.levelId, donationLevel.amount);">
+          {{donationLevel.amount}}
+        </button>
+        <label ng-if="donationLevel.userSpecified == 'true'" class="sr-only" for="other_amount">Other Amount</label>
+        <span ng-if="donationLevel.userSpecified == 'true'" class="ym-donation-levels__dollar-sign">$</span>
+        <input role="listitem" type="text" class="btn btn-toggle btn-enter {{donationLevel.classLevel}}" ng-class="{'active': donationInfo.levelChecked == donationLevel.classLevel}" title="other_amount" ng-if="donationLevel.userSpecified == 'true'" ng-keyup="enterAmount(otherAmt); selectLevel('other', donationLevel.levelId)" ng-model="otherAmt" ng-click="selectLevel('other', donationLevel.levelId)" placeholder="Other" ng-value="donationInfo.otherAmt" aria-describedby="message-level-{{donationLevel.levelId}}">
       </div>
     </fieldset>
     <div class="ym-donation-levels__message level{{donationLevel.levelId}}" id="message-level-{{donationLevel.levelId}}" ng-repeat="donationLevel in donationLevels" ng-class="{'active': donationInfo.levelChecked == donationLevel.classLevel}">
