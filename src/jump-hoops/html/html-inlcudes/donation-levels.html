@@ -35,13 +35,13 @@
       </fieldset>
     </div>
     <hr>
-    <fieldset role="list">
+    <fieldset>
       <legend class="sr-only">
         Choose your donation amount
       </legend>
-      <div class="ym-donation-levels__levels">
-        <div class="ym-donation-levels__amount" ng-repeat="donationLevel in donationLevels" ng-class="{'active': donationInfo.levelChecked == donationLevel.classLevel}">
-          <button role="listitem" type="button" class="btn btn-toggle btn-lg {{donationLevel.classLevel}}" ng-class="{'active': donationInfo.levelChecked == donationLevel.classLevel}" ng-if="donationLevel.userSpecified == 'false'" ng-click="selectLevel('level', donationLevel.levelId, donationLevel.amount);" aria-describedby="message-level-{{donationLevel.levelId}}">
+      <div class="ym-donation-levels__levels" role="list">
+        <div role="listitem" class="ym-donation-levels__amount" ng-repeat="donationLevel in donationLevels" ng-class="{'active': donationInfo.levelChecked == donationLevel.classLevel}">
+          <button type="button" class="btn btn-toggle btn-lg {{donationLevel.classLevel}}" ng-class="{'active': donationInfo.levelChecked == donationLevel.classLevel}" ng-if="donationLevel.userSpecified == 'false'" ng-click="selectLevel('level', donationLevel.levelId, donationLevel.amount);" aria-describedby="message-level-{{donationLevel.levelId}}">
             {{donationLevel.amount}}
           </button>
           <label ng-if="donationLevel.userSpecified == 'true'" class="sr-only" for="other_amount">Other Amount</label>
