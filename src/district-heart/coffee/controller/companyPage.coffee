@@ -130,7 +130,8 @@ angular.module 'ahaLuminateControllers'
         $scope.companyTeams.teams = teams or []
         totalNumber = totalNumber or 0
         $scope.companyTeamSearch.totalTeams = totalNumber
-        $scope.companyTeams.totalNumber = Number totalNumber
+        if not $scope.companyTeams.totalNumber
+          $scope.companyTeams.totalNumber = Number totalNumber
         $scope.teamListSetting.totalNumber = Number totalNumber
         if not $scope.$$phase
           $scope.$apply()
@@ -216,7 +217,8 @@ angular.module 'ahaLuminateControllers'
         $scope.companyParticipants.participants = participants or []
         totalNumber = totalNumber or 0
         $scope.companyParticipantSearch.totalParticipants = totalNumber
-        $scope.companyParticipants.totalNumber = Number totalNumber
+        if not $scope.companyParticipants.totalNumber
+          $scope.companyParticipants.totalNumber = Number totalNumber
         $scope.participantListSetting.totalNumber = Number totalNumber
         if not $scope.$$phase
           $scope.$apply()
