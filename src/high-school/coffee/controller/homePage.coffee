@@ -20,7 +20,7 @@ angular.module 'ahaLuminateControllers'
         $scope.noSchoolLink = noSchoolLink
         if not $scope.$$phase
           $scope.$apply()
-      TeamraiserService.getTeamRaisersByInfo 'event_type=' + encodeURIComponent('High School') + '&public_event_type=' + encodeURIComponent ('School Not Found') + '&name=' + encodeURIComponent('%') + '&list_page_size=1&list_ascending=false&list_sort_column=event_date',
+      TeamraiserService.getTeamRaisersByInfo 'event_type=' + encodeURIComponent('High School') + '&public_event_type=' + encodeURIComponent('School Not Found') + '&name=' + encodeURIComponent('%') + '&list_page_size=1&list_ascending=false&list_sort_column=event_date',
           error: (response) ->
             # TODO
           success: (response) ->
