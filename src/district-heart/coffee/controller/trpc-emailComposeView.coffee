@@ -303,8 +303,12 @@ angular.module 'trPcControllers'
                 $scope.emailPromises.push deleteDraftPromise
               else
                 $scope.getMessageCounts()
+              console.log 'msg success'
               $scope.getContactCounts()
               $scope.sendEmailSuccess = true
               $scope.resetSelectedContacts()
               setEmailComposerDefaults()
+              window.scrollTo 0, 0
+              elem = angular.element '#emailComposer-recipients'
+              elem.focus()
   ]
