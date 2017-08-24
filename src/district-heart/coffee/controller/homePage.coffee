@@ -29,21 +29,22 @@ angular.module 'ahaLuminateControllers'
         ng_last_name: ''
       
       $scope.searchParticipants = ->
-        $scope.participantListSetting.searchPending = true       
+        $scope.participantListSetting.searchPending = true
+        delete $scope.participantSearch.totalParticipants
         DonorSearchService.getParticipants $scope.participantSearch.ng_first_name, $scope.participantSearch.ng_last_name
-        .then (response) ->
-          participants = response.data?.getParticipantsResponse
-          $scope.totalParticipants = participants.totalNumberResults
-          $scope.participantListSetting.totalItems = $scope.totalParticipants
-          if not participants
-            $scope.totalParticipants = '0'
-          else if participants
-            if $scope.totalParticipants is '1'
-              $scope.participant = participants.participant
-            else
-              $scope.participantList = participants.participant
-              $scope.orderParticipants 'fullName'
-        $scope.participantListSetting.searchPending = false
+          .then (response) ->
+            participants = response.data?.getParticipantsResponse
+            $scope.participantSearch.totalParticipants = participants.totalNumberResults
+            $scope.participantListSetting.totalItems = $scope.totalParticipants
+            if not participants
+              $scope.participantSearch.totalParticipants = '0'
+            else if participants
+              if $scope.participantSearch.totalParticipants is '1'
+                $scope.participant = participants.participant
+              else
+                $scope.participantList = participants.participant
+                $scope.orderParticipants 'fullName'
+            $scope.participantListSetting.searchPending = false
           
       $scope.orderParticipants = (sortProp, keepSortOrder) ->
         participants = $scope.participantList
@@ -76,22 +77,24 @@ angular.module 'ahaLuminateControllers'
       
       $scope.teamSearch =
         ng_team_name: ''
+      
       $scope.searchTeams = ->
-        $scope.teamListSetting.searchPending = true 
+        $scope.teamListSetting.searchPending = true
+        delete $scope.teamSearch.totalTeams
         DonorSearchService.getTeams $scope.teamSearch.ng_team_name
-        .then (response) ->
-          teams = response.data?.getTeamSearchByInfoResponse
-          $scope.totalTeams = teams.totalNumberResults
-          $scope.teamListSetting.totalItems = $scope.totalTeams
-          if not teams
-            $scope.totalTeams = '0'
-          else if teams
-            if $scope.totalTeams is '1'
-              $scope.team = teams.team
-            else
-              $scope.teamList = teams.team
-              $scope.orderTeams 'teamName'
-        $scope.teamListSetting.searchPending = false 
+          .then (response) ->
+            teams = response.data?.getTeamSearchByInfoResponse
+            $scope.teamSearch.totalTeams = teams.totalNumberResults
+            $scope.teamListSetting.totalItems = $scope.teamSearch.totalTeams
+            if not teams
+              $scope.teamSearch.totalTeams = '0'
+            else if teams
+              if $scope.teamSearch.totalTeams is '1'
+                $scope.team = teams.team
+              else
+                $scope.teamList = teams.team
+                $scope.orderTeams 'teamName'
+            $scope.teamListSetting.searchPending = false
       
       $scope.orderTeams = (sortProp) ->
         teams = $scope.teamList
