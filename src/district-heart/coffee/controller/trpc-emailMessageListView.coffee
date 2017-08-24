@@ -11,6 +11,12 @@ angular.module 'trPcControllers'
       $scope.messageType = $routeParams.messageType
       
       $scope.emailPromises = []
+
+      $scope.focusPanel = ->
+        $elem = angular.element '.ng-pc-msg-lst a'
+        if $elem.length > 0  
+          $elem[0].focus()
+      $scope.focusPanel()
       
       $scope.messageCounts = {}
       $scope.emailMessages = 
