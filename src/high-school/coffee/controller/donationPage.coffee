@@ -356,6 +356,7 @@ angular.module 'ahaLuminateControllers'
         employerMatchFields()
         billingAddressFields()
         donorRecognitionFields()
+        ariaAdjustments()
         if angular.element('body').is '.cons-logged-in'
           hideDonorInfo = true
           $reqInput = angular.element '.form-row-required input[type="text"]'
