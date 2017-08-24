@@ -303,7 +303,6 @@ angular.module 'trPcControllers'
                 $scope.emailPromises.push deleteDraftPromise
               else
                 $scope.getMessageCounts()
-              console.log 'msg success'
               $scope.getContactCounts()
               $scope.sendEmailSuccess = true
               $scope.resetSelectedContacts()
