@@ -230,6 +230,11 @@ angular.module 'ahaLuminateControllers'
         angular.element('#donor_phone_row label').append optional
         angular.element('#donor_addr_street2_row label').append optional
         angular.element('#billing_addr_street2_row label').append optional
+
+      ariaAdjustments = ->
+        angular.element('.ym-employer-match label').append '<span class="sr-only">Checkbox 1 of 3</span>'
+        angular.element('.ym-donor-recognition label').append '<span class="sr-only">Checkbox 2 of 3</span>'
+        angular.element('.ym-personal-note label').append '<span class="sr-only">Checkbox 3 of 3</span>'
       
       $scope.togglePaymentType = (paymentType) ->
         if paymentType is 'paypal'
@@ -351,6 +356,7 @@ angular.module 'ahaLuminateControllers'
         employerMatchFields()
         billingAddressFields()
         donorRecognitionFields()
+        ariaAdjustments()
         if angular.element('body').is '.cons-logged-in'
           hideDonorInfo = true
           $reqInput = angular.element '.form-row-required input[type="text"]'
