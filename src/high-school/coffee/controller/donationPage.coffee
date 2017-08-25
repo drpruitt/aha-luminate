@@ -87,10 +87,15 @@ angular.module 'ahaLuminateControllers'
           angular.element('#level_installmentduration').click()
           $scope.donationInfo.monthly = false
           populateBtnAmt $scope.donationInfo.levelType, type
-          amount = Number $scope.donationInfo.amount.split('$')[1]
+          if $scope.donationInfo.amount is undefined
+            amount = 0
+          else
+            amount = Number $scope.donationInfo.amount.split('$')[1]
           calculateInstallment 1, amount
       
       $scope.selectLevel = (type, level, amount) ->
+        if amount is undefined
+          amount = $scope.donationInfo.otherAmt
         levelSelect = ->
           angular.element('.ym-donation-levels__amount .btn-toggle.active').removeClass 'active'
           angular.element('.ym-donation-levels__amount .btn-toggle.level' + level).addClass 'active'
@@ -99,6 +104,7 @@ angular.module 'ahaLuminateControllers'
           angular.element('.ym-donation-levels__message').removeClass 'active'
           angular.element('.ym-donation-levels__message.level' + level).addClass 'active'
           angular.element('.donation-level-container.level' + level + ' input').click()
+          
           $scope.donationInfo.amount = amount
           $scope.donationInfo.levelType = type
           localStorage['levelType'] = type
@@ -106,7 +112,8 @@ angular.module 'ahaLuminateControllers'
           if type is 'level'
             angular.element('.btn-enter').val ''
             $scope.donationInfo.otherAmt = ''
-            localStorage['amount'] = amount
+            if amount isnt undefined
+              localStorage['amount'] = amount
             localStorage['otherAmt'] = ''
           if $scope.donationInfo.monthly is true
             number = angular.element('#level_installmentduration').val()
@@ -295,6 +302,7 @@ angular.module 'ahaLuminateControllers'
               $scope.donationInfo.otherAmt = localStorage['otherAmt']
           else
             $scope.donationInfo.otherAmt = ''
+            localStorage['otherAmt'] = ''
           
       loadLevels = ->
         $q (resolve) ->
