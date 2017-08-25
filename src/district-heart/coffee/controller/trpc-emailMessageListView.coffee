@@ -126,32 +126,4 @@ angular.module 'trPcControllers'
               closeDeleteMessageModal()
               $scope.getEmailMessages()
 
-      
-      focusPanel = ->
-        $elem = angular.element '.ng-pc-msg-list a'
-        console.log $elem.length
-        console.log $elem
-        if $elem.length is 0  
-          #$timeout $scope.focusPanel, 500
-          console.log 'nope'
-        else
-          console.log 'set focus'
-          $elem[0].focus()
-      
-      $timeout focusPanel(), 2000
-      
-      ###
-      $scope.focusPanel = ->
-        console.log 'set focus'
-        $elem = angular.element '.ng-pc-msg-list a'
-        if $elem.length is 0
-          console.log 'not found'
-          $timeout $scope.focusPanel, 500
-        else
-          console.log $elem
-          $elem[0].focus()
-        false
-      $scope.focusPanel()
-      ###
-
   ]
