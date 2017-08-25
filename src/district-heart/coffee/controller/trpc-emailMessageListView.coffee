@@ -7,16 +7,11 @@ angular.module 'trPcControllers'
     'APP_INFO'
     'NgPcTeamraiserEmailService'
     'NgPcContactService'
-    ($scope, $routeParams, $location, $uibModal, APP_INFO, NgPcTeamraiserEmailService, NgPcContactService) ->
+    '$timeout'
+    ($scope, $routeParams, $location, $uibModal, APP_INFO, NgPcTeamraiserEmailService, NgPcContactService, $timeout) ->
       $scope.messageType = $routeParams.messageType
       
       $scope.emailPromises = []
-
-      $scope.focusPanel = ->
-        $elem = angular.element '.ng-pc-msg-lst a'
-        if $elem.length > 0  
-          $elem[0].focus()
-      $scope.focusPanel()
       
       $scope.messageCounts = {}
       $scope.emailMessages = 
@@ -130,4 +125,17 @@ angular.module 'trPcControllers'
             .then (response) ->
               closeDeleteMessageModal()
               $scope.getEmailMessages()
+
+      focusPanel = ->
+        $elem = angular.element '.ng-pc-msg-list a'
+        console.log $elem.length
+        console.log $elem
+        if $elem.length is 0  
+          #$timeout $scope.focusPanel, 500
+          console.log 'nope'
+        else
+          console.log 'set focus'
+          $elem[0].focus()
+      
+      $timeout focusPanel(), 20000
   ]
