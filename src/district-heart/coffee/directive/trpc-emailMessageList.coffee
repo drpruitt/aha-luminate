@@ -9,4 +9,16 @@ angular.module 'trPcApp'
         messages: '='
         selectMessage: '='
         deleteMessage: '='
+      controller: [
+        '$timeout'
+        '$scope'
+        ($timeout, $scope) ->
+          focusPanel = ->
+            $elem = angular.element '.ng-pc-msg-list a'
+            if $elem.length > 0  
+              $elem[0].focus()
+          
+          $scope.$$postDigest ->
+            focusPanel()
+      ]
   ]
