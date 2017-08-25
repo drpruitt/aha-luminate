@@ -129,8 +129,6 @@ angular.module 'ahaLuminateControllers'
             levelSelect()  
         else
           levelSelect()
-
-      console.log 'test'
       
       $scope.enterAmount = (amount) ->
         angular.element('#pstep_finish span').text ''
