@@ -29,21 +29,22 @@ angular.module 'ahaLuminateControllers'
         ng_last_name: ''
       
       $scope.searchParticipants = ->
-        $scope.participantListSetting.searchPending = true       
+        $scope.participantListSetting.searchPending = true
+        delete $scope.participantSearch.totalParticipants
         DonorSearchService.getParticipants $scope.participantSearch.ng_first_name, $scope.participantSearch.ng_last_name
-        .then (response) ->
-          participants = response.data?.getParticipantsResponse
-          $scope.totalParticipants = participants.totalNumberResults
-          $scope.participantListSetting.totalItems = $scope.totalParticipants
-          if not participants
-            $scope.totalParticipants = '0'
-          else if participants
-            if $scope.totalParticipants is '1'
-              $scope.participant = participants.participant
-            else
-              $scope.participantList = participants.participant
-              $scope.orderParticipants 'fullName'
-        $scope.participantListSetting.searchPending = false
+          .then (response) ->
+            participants = response.data?.getParticipantsResponse
+            $scope.participantSearch.totalParticipants = participants.totalNumberResults
+            $scope.participantListSetting.totalItems = $scope.totalParticipants
+            if not participants
+              $scope.participantSearch.totalParticipants = '0'
+            else if participants
+              if $scope.participantSearch.totalParticipants is '1'
+                $scope.participant = participants.participant
+              else
+                $scope.participantList = participants.participant
+                $scope.orderParticipants 'fullName'
+            $scope.participantListSetting.searchPending = false
           
       $scope.orderParticipants = (sortProp, keepSortOrder) ->
         participants = $scope.participantList
@@ -76,22 +77,24 @@ angular.module 'ahaLuminateControllers'
       
       $scope.teamSearch =
         ng_team_name: ''
+      
       $scope.searchTeams = ->
-        $scope.teamListSetting.searchPending = true 
+        $scope.teamListSetting.searchPending = true
+        delete $scope.teamSearch.totalTeams
         DonorSearchService.getTeams $scope.teamSearch.ng_team_name
-        .then (response) ->
-          teams = response.data?.getTeamSearchByInfoResponse
-          $scope.totalTeams = teams.totalNumberResults
-          $scope.teamListSetting.totalItems = $scope.totalTeams
-          if not teams
-            $scope.totalTeams = '0'
-          else if teams
-            if $scope.totalTeams is '1'
-              $scope.team = teams.team
-            else
-              $scope.teamList = teams.team
-              $scope.orderTeams 'teamName'
-        $scope.teamListSetting.searchPending = false 
+          .then (response) ->
+            teams = response.data?.getTeamSearchByInfoResponse
+            $scope.teamSearch.totalTeams = teams.totalNumberResults
+            $scope.teamListSetting.totalItems = $scope.teamSearch.totalTeams
+            if not teams
+              $scope.teamSearch.totalTeams = '0'
+            else if teams
+              if $scope.teamSearch.totalTeams is '1'
+                $scope.team = teams.team
+              else
+                $scope.teamList = teams.team
+                $scope.orderTeams 'teamName'
+            $scope.teamListSetting.searchPending = false
       
       $scope.orderTeams = (sortProp) ->
         teams = $scope.teamList
@@ -108,14 +111,13 @@ angular.module 'ahaLuminateControllers'
         index = $scope.teamList.indexOf value
         begin <= index and index < end
       
-      # hardcoding to dev tr for UAT
-      $scope.noSchoolLink = 'http://heartdev.convio.net/site/TRR?fr_id=2774&pg=tfind&fr_tm_opt=none&s_frTJoin=&s_frCompanyId='
       
       setNoSchoolLink = (noSchoolLink) ->
         $scope.noSchoolLink = noSchoolLink
         if not $scope.$$phase
           $scope.$apply()
-      TeamraiserService.getTeamRaisersByInfo 'event_type=' + encodeURIComponent('District Heart Challenge') + '&public_event_type=' + encodeURIComponent ('School Not Found') + '&name=' + encodeURIComponent('%') + '&list_page_size=1&list_ascending=false&list_sort_column=event_date',
+
+      TeamraiserService.getTeamRaisersByInfo 'event_type=' + encodeURIComponent('District Heart Challenge') + '&public_event_type=' + encodeURIComponent('School Not Found') + '&name=' + encodeURIComponent('%') + '&list_page_size=1&list_ascending=false&list_sort_column=event_date',
           error: (response) ->
             # TODO
           success: (response) ->
@@ -125,8 +127,7 @@ angular.module 'ahaLuminateControllers'
             else
               teamraisers = [teamraisers] if not angular.isArray teamraisers
               teamraiserInfo = teamraisers[0]
-              # hardcoding to dev tr for UAT
-              # setNoSchoolLink $scope.nonSecureDomain + '/site/TRR?fr_id=' + teamraiserInfo.id + '&pg=tfind&fr_tm_opt=none&s_frTJoin=&s_frCompanyId=' 
+              setNoSchoolLink $scope.nonSecureDomain + '/site/TRR?fr_id=' + teamraiserInfo.id + '&pg=tfind&fr_tm_opt=none&s_frTJoin=&s_frCompanyId=' 
       
       if consId
         TeamraiserParticipantService.getRegisteredTeamraisers 'cons_id=' + consId + '&event_type=' + encodeURIComponent('District Heart Challenge'),

@@ -87,10 +87,15 @@ angular.module 'ahaLuminateControllers'
           angular.element('#level_installmentduration').click()
           $scope.donationInfo.monthly = false
           populateBtnAmt $scope.donationInfo.levelType, type
-          amount = Number $scope.donationInfo.amount.split('$')[1]
+          if $scope.donationInfo.amount is undefined
+            amount = 0
+          else
+            amount = Number $scope.donationInfo.amount.split('$')[1]
           calculateInstallment 1, amount
       
       $scope.selectLevel = (type, level, amount) ->
+        if amount is undefined
+          amount = $scope.donationInfo.otherAmt
         levelSelect = ->
           angular.element('.ym-donation-levels__amount .btn-toggle.active').removeClass 'active'
           angular.element('.ym-donation-levels__amount .btn-toggle.level' + level).addClass 'active'
@@ -99,6 +104,7 @@ angular.module 'ahaLuminateControllers'
           angular.element('.ym-donation-levels__message').removeClass 'active'
           angular.element('.ym-donation-levels__message.level' + level).addClass 'active'
           angular.element('.donation-level-container.level' + level + ' input').click()
+          
           $scope.donationInfo.amount = amount
           $scope.donationInfo.levelType = type
           localStorage['levelType'] = type
@@ -106,7 +112,8 @@ angular.module 'ahaLuminateControllers'
           if type is 'level'
             angular.element('.btn-enter').val ''
             $scope.donationInfo.otherAmt = ''
-            localStorage['amount'] = amount
+            if amount isnt undefined
+              localStorage['amount'] = amount
             localStorage['otherAmt'] = ''
           if $scope.donationInfo.monthly is true
             number = angular.element('#level_installmentduration').val()
@@ -230,6 +237,11 @@ angular.module 'ahaLuminateControllers'
         angular.element('#donor_phone_row label').append optional
         angular.element('#donor_addr_street2_row label').append optional
         angular.element('#billing_addr_street2_row label').append optional
+
+      ariaAdjustments = ->
+        angular.element('.ym-employer-match label').append '<span class="sr-only">Checkbox 1 of 3</span>'
+        angular.element('.ym-donor-recognition label').append '<span class="sr-only">Checkbox 2 of 3</span>'
+        angular.element('.ym-personal-note label').append '<span class="sr-only">Checkbox 3 of 3</span>'
       
       $scope.togglePaymentType = (paymentType) ->
         if paymentType is 'paypal'
@@ -284,9 +296,13 @@ angular.module 'ahaLuminateControllers'
         if localStorage['levelType']
           $scope.donationInfo.levelType = localStorage['levelType']
           if localStorage['levelType'] is 'other'
-            $scope.donationInfo.otherAmt = localStorage['otherAmt']
+            if localStorage['otherAmt'] is 'undefined'
+              $scope.donationInfo.otherAmt = ''
+            else
+              $scope.donationInfo.otherAmt = localStorage['otherAmt']
           else
             $scope.donationInfo.otherAmt = ''
+            localStorage['otherAmt'] = ''
           
       loadLevels = ->
         $q (resolve) ->
@@ -338,7 +354,7 @@ angular.module 'ahaLuminateControllers'
         $requiredField = angular.element '.field-required'
         angular.forEach $requiredField, (required) ->
           $req = angular.element required
-          if not angular.element($req).parent().parent().parent().is '.payment-field-container' or angular.element($req).is '.btn' 
+          if not angular.element($req).parent().parent().parent().is '.payment-field-container' or angular.element($req).is '.btn'
             if not angular.element($req).parent().parent().is '.form-donation-level'
               angular.element($req).parent().parent().addClass 'form-row-required'
         angular.element('#tr_message_to_participant_row').addClass 'hidden'
@@ -351,6 +367,7 @@ angular.module 'ahaLuminateControllers'
         employerMatchFields()
         billingAddressFields()
         donorRecognitionFields()
+        ariaAdjustments()
         if angular.element('body').is '.cons-logged-in'
           hideDonorInfo = true
           $reqInput = angular.element '.form-row-required input[type="text"]'
@@ -362,7 +379,7 @@ angular.module 'ahaLuminateControllers'
             if angular.element(req).val() is ''
               hideDonorInfo = false
           if hideDonorInfo is true
-            loggedInForm() 
+            loggedInForm()  
         return
       , (reason) ->
         # TODO

@@ -129,17 +129,22 @@ angular.module 'ahaLuminateControllers'
       setCompanyTeams = (teams, totalNumber) ->
         $scope.companyTeams.teams = teams or []
         totalNumber = totalNumber or 0
-        $scope.companyTeams.totalNumber = Number totalNumber
+        $scope.companyTeamSearch.totalTeams = totalNumber
+        if not $scope.companyTeams.totalNumber
+          $scope.companyTeams.totalNumber = Number totalNumber
         $scope.teamListSetting.totalNumber = Number totalNumber
         if not $scope.$$phase
           $scope.$apply()
       getCompanyTeams = (teamName) ->
-        TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId + '&team_name=' + teamName + '&list_sort_column=total&list_ascending=false&list_page_size=500',
+        delete $scope.companyTeamSearch.totalTeams
+        TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId + '&team_name=' + encodeURIComponent(teamName) + '&list_sort_column=total&list_ascending=false&list_page_size=500',
           error: ->
             setCompanyTeams()
           success: (response) ->
-            companyTeams = response.getTeamSearchByInfoResponse.team
-            if companyTeams
+            companyTeams = response.getTeamSearchByInfoResponse?.team
+            if not companyTeams
+              setCompanyTeams()
+            else
               companyTeams = [companyTeams] if not angular.isArray companyTeams
               angular.forEach companyTeams, (companyTeam) ->
                 companyTeam.amountRaised = Number companyTeam.amountRaised
@@ -159,7 +164,7 @@ angular.module 'ahaLuminateControllers'
               $scope.activity1amt = Math.round($scope.activity1amt / 1000) + 'K'
             teamMinsActivityMap = response.data.data?.list or []
             $scope.companyTeams.teamMinsActivityMap = teamMinsActivityMap
-      getCompanyTeams('%')
+      getCompanyTeams '%'
       
       setTeamsMinsActivity = ->
         teams = $scope.companyTeams.teams
@@ -178,7 +183,7 @@ angular.module 'ahaLuminateControllers'
       
       $scope.searchCompanyTeams = ->
         $scope.companyTeamSearch.team_name = $scope.companyTeamSearch.ng_team_name
-        getCompanyTeams($scope.companyTeamSearch.ng_team_name)
+        getCompanyTeams $scope.companyTeamSearch.ng_team_name
         $scope.teamListSetting.sortColumn = 'amountRaised'
         $scope.teamListSetting.sortAscending = false
       
@@ -213,18 +218,23 @@ angular.module 'ahaLuminateControllers'
       setCompanyParticipants = (participants, totalNumber) ->
         $scope.companyParticipants.participants = participants or []
         totalNumber = totalNumber or 0
-        $scope.companyParticipants.totalNumber = Number totalNumber
+        $scope.companyParticipantSearch.totalParticipants = totalNumber
+        if not $scope.companyParticipants.totalNumber
+          $scope.companyParticipants.totalNumber = Number totalNumber
         $scope.participantListSetting.totalNumber = Number totalNumber
         if not $scope.$$phase
           $scope.$apply()
       getCompanyParticipants = (first, last)->
+        delete $scope.companyParticipantSearch.totalParticipants
         TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%') + '&first_name=' + encodeURIComponent(first) + '&last_name=' + encodeURIComponent(last) + '&list_filter_column=team.company_id&list_filter_text=' + $scope.companyId + '&list_sort_column=total&list_ascending=false&list_page_size=500',
             error: ->
               setCompanyParticipants()
             success: (response) ->
               participants = response.getParticipantsResponse?.participant
               companyParticipants = []
-              if participants
+              if not participants
+                setCompanyParticipants()
+              else
                 participants = [participants] if not angular.isArray participants
                 angular.forEach participants, (participant) ->
                   if participant.name?.first
@@ -247,7 +257,7 @@ angular.module 'ahaLuminateControllers'
             totalMinsActivity = Number totalMinsActivity
             participantMinsActivityMap = response.data.data?.list or []
             $scope.companyParticipants.participantMinsActivityMap = participantMinsActivityMap
-      getCompanyParticipants('%%','%')
+      getCompanyParticipants '%%', '%'
       
       setParticipantsMinsActivity = ->
         participants = $scope.companyParticipants.participants
@@ -282,7 +292,7 @@ angular.module 'ahaLuminateControllers'
       $scope.searchCompanyParticipants = ->
         $scope.companyParticipantSearch.first_name = $scope.companyParticipantSearch.ng_first_name
         $scope.companyParticipantSearch.last_name = $scope.companyParticipantSearch.ng_last_name
-        getCompanyParticipants($scope.companyParticipantSearch.ng_first_name, $scope.companyParticipantSearch.ng_last_name)
+        getCompanyParticipants $scope.companyParticipantSearch.ng_first_name, $scope.companyParticipantSearch.ng_last_name
         $scope.participantListSetting.sortColumn = 'amountRaised'
         $scope.participantListSetting.sortAscending = false
       

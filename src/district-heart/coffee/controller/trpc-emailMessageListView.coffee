@@ -7,7 +7,8 @@ angular.module 'trPcControllers'
     'APP_INFO'
     'NgPcTeamraiserEmailService'
     'NgPcContactService'
-    ($scope, $routeParams, $location, $uibModal, APP_INFO, NgPcTeamraiserEmailService, NgPcContactService) ->
+    '$timeout'
+    ($scope, $routeParams, $location, $uibModal, APP_INFO, NgPcTeamraiserEmailService, NgPcContactService, $timeout) ->
       $scope.messageType = $routeParams.messageType
       
       $scope.emailPromises = []
@@ -124,4 +125,5 @@ angular.module 'trPcControllers'
             .then (response) ->
               closeDeleteMessageModal()
               $scope.getEmailMessages()
+
   ]
