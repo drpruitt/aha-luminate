@@ -47,6 +47,8 @@ angular.module 'trPcControllers'
         $scope.dashboardPromises.push recentActivityPromise
       $scope.getRecentActivity()
       
+      console.log 'testPC'
+
       $scope.participantRank = {}
       $scope.topParticipants = {}
       topParticipantsPromise = TeamraiserParticipantService.getParticipants 'first_name=' + encodeURIComponent('%%%') + '&list_sort_column=total&list_ascending=false&list_page_size=500'
