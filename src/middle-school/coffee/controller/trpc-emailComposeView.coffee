@@ -292,4 +292,7 @@ angular.module 'trPcControllers'
               $scope.sendEmailSuccess = true
               $scope.resetSelectedContacts()
               setEmailComposerDefaults()
+              window.scrollTo 0, 0
+              elem = angular.element '#emailComposer-recipients'
+              elem.focus()
   ]
