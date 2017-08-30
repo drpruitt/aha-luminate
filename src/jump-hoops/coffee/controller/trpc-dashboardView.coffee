@@ -273,6 +273,7 @@ angular.module 'trPcControllers'
           setGoal = newGoal * 100
           updateSchoolGoalPromise = NgPcTeamraiserSchoolService.updateSchoolGoal(setGoal, $scope)
             .then (response) ->
+              console.log(response)
               if response.data.errorResponse
                 $scope.schoolGoalInfo.errorMessage = response.data.errorResponse.message
               else
