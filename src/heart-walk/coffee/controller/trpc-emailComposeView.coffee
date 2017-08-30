@@ -168,6 +168,25 @@ angular.module 'trPcControllers'
           'redo'
         ]
       ]
+
+      $scope.emailTabNames = [
+        {
+          header: 'Ask for Donations'
+          content: 'The headers and the content all reside in angular/coffee files and this menu and content are all created dynmically via bootstrap/Angular.'
+        }
+        {
+          header: 'Thank Donors'
+          content: '2'
+        }
+        {
+          header: 'Follow-Up Message'
+          content: '3'
+        }
+        {
+          header: 'Join Me at the Walk'
+          content: '4'
+        }          
+      ]
       
       $scope.$watchGroup ['emailComposer.subject', 'emailComposer.message_body'], ->
         subject = $scope.emailComposer.subject
@@ -274,23 +293,5 @@ angular.module 'trPcControllers'
               $scope.resetSelectedContacts()
               setEmailComposerDefaults()
 
-        $scope.emailTabNames = [
-          {
-            header: 'Ask for Donations'
-            content: '1'
-          }
-          {
-            header: 'Thank Donors'
-            content: '2'
-          }
-          {
-            header: 'Follow-Up Message'
-            content: '3'
-          }
-          {
-            header: 'Join Me at the Walk'
-            content: '4'
-          }          
-        ]
   ]
 console.log 'tab1xx'
