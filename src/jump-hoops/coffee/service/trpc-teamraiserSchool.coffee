@@ -26,7 +26,7 @@ angular.module 'ahaLuminateApp'
             jQuery.each company_formvars, (i, key) ->
                if key['name'] == 'goalinput'
                   company_formvars[i]['value'] = requestData
-               return
+
             company_formvars.push
                'name': 'pstep_next'
                'value': 'next'
