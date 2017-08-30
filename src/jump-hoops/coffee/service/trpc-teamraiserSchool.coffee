@@ -20,7 +20,7 @@ angular.module 'ahaLuminateApp'
         $http.get('NTM?tr.ntmgmt=company_edit&mfc_pref=T&action=edit_company&company_id=' + scope.participantRegistration.companyInformation.companyId + '&fr_id=' + $rootScope.frId)
           .then (response) ->
             console.log(response)
-            company_page = jQuery(response)
+            company_page = jQuery(response.data)
             company_formvars = jQuery(company_page).find('form').serializeArray()
             console.log(company_formvars)
             jQuery.each company_formvars, (i, key) ->
