@@ -5,6 +5,7 @@ angular.module 'ahaLuminateApp'
     '$sce'
     ($rootScope, $http, $sce) ->
       updateSchoolGoal: (requestData, scope, callback) ->
+        console.log(scope)
         $http.get('https://www2.heart.org/site/NTM?tr.ntmgmt=company_edit&mfc_pref=T&action=edit_company&company_id=' + scope.participantRegistration.companyInformation.companyId + '&fr_id=' + $rootScope.frId)
           .then (response) ->
             callback.success response
