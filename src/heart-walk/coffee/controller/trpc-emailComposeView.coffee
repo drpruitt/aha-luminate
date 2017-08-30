@@ -273,4 +273,7 @@ angular.module 'trPcControllers'
               $scope.sendEmailSuccess = true
               $scope.resetSelectedContacts()
               setEmailComposerDefaults()
+
+      $scope.tab1 = 'XXAsk for DonationsXX'
   ]
+console.log 'tab1xx'
