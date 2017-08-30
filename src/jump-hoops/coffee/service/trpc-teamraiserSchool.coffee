@@ -28,7 +28,5 @@ angular.module 'ahaLuminateApp'
             company_formvars.push
                'name': 'pstep_next'
                'value': 'next'
-            callback.success company_formvars
-          , (response) ->
-            callback.failure response
+            company_formvars
 ]
