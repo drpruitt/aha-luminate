@@ -6,29 +6,8 @@
         <p>Want to send an email using your personal e-mail (Gmail, Outlook, Yahoo, etc.)? We’ve got you covered! Select a tab below to see an email template you can use as a starting point.</p>
         <p>Then, when you are ready, click the copy or open button to send in your personal e-mail.</p>
         <uib-tabset active="active">
-          <uib-tab index="0">
-            <uib-tab-heading>
-              {{tab1}}
-            </uib-tab-heading>
-            <div> the content of tab 1</div>
-          </uib-tab>
-          <uib-tab index="1">
-            <uib-tab-heading>
-              Thank Donors
-            </uib-tab-heading>
-            <div> the content of tab 2</div>
-          </uib-tab>
-          <uib-tab index="2">
-            <uib-tab-heading>
-              Follow-Up Message
-            </uib-tab-heading>
-            <div> the content of tab 3</div>
-          </uib-tab>
-          <uib-tab index="3">
-            <uib-tab-heading>
-              Join Me at the Walk
-            </uib-tab-heading>
-            <div> the content of tab 4</div>
+          <uib-tab ng-repeat="tab in emailTabNames" heading="{{tab.header}}">
+            <div class="heart_sample_message">{{tab.content}}</div>
           </uib-tab>
         </uib-tabset>
         <div class="heart_sample_message">

@@ -274,6 +274,23 @@ angular.module 'trPcControllers'
               $scope.resetSelectedContacts()
               setEmailComposerDefaults()
 
-      $scope.tab1 = 'XXAsk for DonationsXX'
+        $scope.emailTabNames = [
+          {
+            header: 'Ask for Donations'
+            content: '1'
+          }
+          {
+            header: 'Thank Donors'
+            content: '2'
+          }
+          {
+            header: 'Follow-Up Message'
+            content: '3'
+          }
+          {
+            header: 'Join Me at the Walk'
+            content: '4'
+          }          
+        ]
   ]
 console.log 'tab1xx'
