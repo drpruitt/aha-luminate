@@ -9,5 +9,5 @@ angular.module 'ahaLuminateApp'
           .then (response) ->
             callback.success response
           , (response) ->
-			callback.failure response
+            callback.failure response
 ]
