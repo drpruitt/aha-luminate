@@ -271,18 +271,15 @@ angular.module 'trPcControllers'
           $scope.schoolGoalInfo.errorMessage = 'Please specify a goal greater than $0.'
         else
           setGoal = newGoal * 100
-          $scope.editSchoolGoalModal.close()
-          $scope.refreshFundraisingProgress()
-
-          #updateSchoolGoalPromise = NgPcTeamraiserSchoolService.updateSchoolGoal(setGoal, $scope)
-          #  .then (response) ->
-          #    if response.data.errorResponse
-          #      $scope.schoolGoalInfo.errorMessage = response.data.errorResponse.message
-          #    else
-          #      $scope.editSchoolGoalModal.close()
-          #      $scope.refreshFundraisingProgress()
-          #    response
-          #$scope.dashboardPromises.push updateSchoolGoalPromise
+          updateSchoolGoalPromise = NgPcTeamraiserSchoolService.updateSchoolGoal(setGoal, $scope)
+            .then (response) ->
+              if response.data.errorResponse
+                $scope.schoolGoalInfo.errorMessage = response.data.errorResponse.message
+              else
+                $scope.editSchoolGoalModal.close()
+                $scope.refreshFundraisingProgress()
+              response
+          $scope.dashboardPromises.push updateSchoolGoalPromise
       
       $scope.participantGifts =
         sortColumn: 'date_recorded'
