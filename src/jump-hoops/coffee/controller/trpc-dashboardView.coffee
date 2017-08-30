@@ -274,12 +274,8 @@ angular.module 'trPcControllers'
           updateSchoolGoalPromise = NgPcTeamraiserSchoolService.updateSchoolGoal(setGoal, $scope)
             .then (response) ->
               console.log(response)
-              if response.data.errorResponse
-                $scope.schoolGoalInfo.errorMessage = response.data.errorResponse.message
-              else
-                $scope.editSchoolGoalModal.close()
-                $scope.refreshFundraisingProgress()
-              response
+              $scope.editSchoolGoalModal.close()
+              $scope.refreshFundraisingProgress()
           $scope.dashboardPromises.push updateSchoolGoalPromise
       
       $scope.participantGifts =
