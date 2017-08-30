@@ -19,10 +19,8 @@ angular.module 'ahaLuminateApp'
         #    callback.success response
         $http.get('NTM?tr.ntmgmt=company_edit&mfc_pref=T&action=edit_company&company_id=' + scope.participantRegistration.companyInformation.companyId + '&fr_id=' + $rootScope.frId)
           .then (response) ->
-            console.log(response)
             company_page = jQuery(response.data)
             company_formvars = jQuery(company_page).find('form').serializeArray()
-            console.log(company_formvars)
             jQuery.each company_formvars, (i, key) ->
                if key['name'] == 'goalinput'
                   company_formvars[i]['value'] = requestData
@@ -31,4 +29,5 @@ angular.module 'ahaLuminateApp'
                'name': 'pstep_next'
                'value': 'next'
             company_formvars
+            jQuery.post 'NTM', company_formvars
 ]
