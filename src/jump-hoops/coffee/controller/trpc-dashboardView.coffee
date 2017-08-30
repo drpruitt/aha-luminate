@@ -262,7 +262,7 @@ angular.module 'trPcControllers'
       $scope.cancelEditSchoolGoal = ->
         $scope.editSchoolGoalModal.close()
       
-      $scope.updateschoolGoal = ->
+      $scope.updateSchoolGoal = ->
         delete $scope.schoolGoalInfo.errorMessage
         newGoal = $scope.schoolGoalInfo.goal
         if newGoal
