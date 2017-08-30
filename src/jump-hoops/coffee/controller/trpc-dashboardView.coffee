@@ -270,10 +270,8 @@ angular.module 'trPcControllers'
         if not newGoal or newGoal is '' or newGoal is '0' or isNaN(newGoal)
           $scope.schoolGoalInfo.errorMessage = 'Please specify a goal greater than $0.'
         else
-          setGoal = newGoal * 100
-          updateSchoolGoalPromise = NgPcTeamraiserSchoolService.updateSchoolGoal(setGoal, $scope)
+          updateSchoolGoalPromise = NgPcTeamraiserSchoolService.updateSchoolGoal(newGoal, $scope)
             .then (response) ->
-              console.log(response)
               $scope.editSchoolGoalModal.close()
               $scope.refreshFundraisingProgress()
           $scope.dashboardPromises.push updateSchoolGoalPromise
