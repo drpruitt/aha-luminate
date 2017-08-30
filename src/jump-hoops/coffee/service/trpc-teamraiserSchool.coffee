@@ -17,7 +17,7 @@ angular.module 'ahaLuminateApp'
         #       'value': 'next'
         #    jQuery.post 'https://www2.heart.org/site/NTM', company_formvars
         #    callback.success response
-        $http.get('https://www2.heart.org/site/NTM?tr.ntmgmt=company_edit&mfc_pref=T&action=edit_company&company_id=' + scope.participantRegistration.companyInformation.companyId + '&fr_id=' + $rootScope.frId)
+        $http.get('NTM?tr.ntmgmt=company_edit&mfc_pref=T&action=edit_company&company_id=' + scope.participantRegistration.companyInformation.companyId + '&fr_id=' + $rootScope.frId)
           .then (response) ->
             company_page = jQuery(data)
             company_formvars = jQuery(company_page).find('form').serializeArray()
