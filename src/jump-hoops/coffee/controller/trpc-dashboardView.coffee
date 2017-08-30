@@ -11,12 +11,13 @@ angular.module 'trPcControllers'
     'NgPcTeamraiserRegistrationService'
     'NgPcTeamraiserProgressService'
     'NgPcTeamraiserTeamService'
+    'NgPcTeamraiserSchoolService'    
     'NgPcTeamraiserGiftService'
     'NgPcContactService'
     'NgPcTeamraiserShortcutURLService'
     'NgPcInteractionService'
     'NgPcTeamraiserCompanyService'
-    ($rootScope, $scope, $filter, $timeout, $uibModal, APP_INFO, ZuriService, BoundlessService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserGiftService, NgPcContactService, NgPcTeamraiserShortcutURLService, NgPcInteractionService, NgPcTeamraiserCompanyService) ->
+    ($rootScope, $scope, $filter, $timeout, $uibModal, APP_INFO, ZuriService, BoundlessService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserSchoolService, NgPcTeamraiserGiftService, NgPcContactService, NgPcTeamraiserShortcutURLService, NgPcInteractionService, NgPcTeamraiserCompanyService) ->
       $scope.dashboardPromises = []
       
       $dataRoot = angular.element '[data-embed-root]'
@@ -269,7 +270,7 @@ angular.module 'trPcControllers'
         if not newGoal or newGoal is '' or newGoal is '0' or isNaN(newGoal)
           $scope.schoolGoalInfo.errorMessage = 'Please specify a goal greater than $0.'
         else
-          updateSchoolGoalPromise = NgPcTeamraiserRegistrationService.updateRegistration 'goal=' + (newGoal * 100)
+          updateSchoolGoalPromise = NgPcTeamraiserSchoolService.updateSchoolGoal (newGoal * 100)
             .then (response) ->
               if response.data.errorResponse
                 $scope.schoolGoalInfo.errorMessage = response.data.errorResponse.message
