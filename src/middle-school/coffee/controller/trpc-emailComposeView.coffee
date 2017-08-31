@@ -254,6 +254,7 @@ angular.module 'trPcControllers'
                 templateUrl: APP_INFO.rootPath + 'dist/middle-school/html/participant-center/modal/emailPreview.html'
                 size: 'lg'
                 windowClass: 'ng-pc-modal ym-modal-full-screen'
+              angular.element('html').addClass 'ym-modal-is-open'
       
       $scope.selectStationery = ->
         NgPcTeamraiserEmailService.previewMessage $httpParamSerializer($scope.emailComposer)
@@ -268,6 +269,9 @@ angular.module 'trPcControllers'
       
       closeEmailPreviewModal = ->
         $scope.emailPreviewModal.close()
+      
+      $scope.on 'modal.closing', ->
+        angular.element('html').removeClass 'ym-modal-is-open'
       
       $scope.cancelEmailPreview = ->
         closeEmailPreviewModal()
