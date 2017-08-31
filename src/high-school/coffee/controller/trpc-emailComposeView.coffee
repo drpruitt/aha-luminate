@@ -268,6 +268,7 @@ angular.module 'trPcControllers'
                 scope: $scope
                 templateUrl: APP_INFO.rootPath + 'dist/high-school/html/participant-center/modal/emailPreview.html'
                 size: 'lg'
+                windowClass: 'ym-modal-full-screen'
       
       $scope.selectStationery = ->
         NgPcTeamraiserEmailService.previewMessage $httpParamSerializer($scope.emailComposer)
