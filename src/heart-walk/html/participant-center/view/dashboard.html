@@ -18,77 +18,42 @@
       </div>
       <div class="clearfix">
         <div class="heart-page-rail heart-page-rail--participant-center">
-          <div class="heart-page-progress heart-page-progress--participant-center">
-            <div class="progress heart-page-progress__thermometer">
-              <div class="progress-bar heart-page-progress__thermometer-fill" ng-style="{'width': participantProgress.percent + '%'}"></div>
-              <span class="btn btn-lg btn-primary">
-                My Progress
-              </span>
-            </div>
-            <div class="heart-page-progress__caret" ng-style="{'left': participantProgress.percent + '%'}"></div>
-            <div class="heart-page-progress__box">
-              <div class="heart-page-progress__row clearfix">
-                <div class="heart-page-progress__amount">
-                  {{participantProgress.raisedFormatted}}
-                </div>
-                <div class="heart-page-progress__label heart-page-progress__label--right">
-                  My Goal
-                  <div class="heart-page-progress__amount">
-                    {{participantProgress.goalFormatted}}
-                  </div>
-                </div>
-              </div>
-              <!-- TODO: don't show row if event date is null or in the past -->
-              <div class="heart-page-progress__row clearfix">
-                <div class="heart-page-progress__amount">
-                  {{daysToEvent}}
-                </div>
-                <div class="heart-page-progress__label">
-                  <span ng-if="daysToEvent == 1">Day Remaining</span>
-                  <span ng-if="daysToEvent != 1">Days Remaining</span>
-                </div>
-              </div>
-              <div class="heart-page-progress__row clearfix">
-                <div class="heart-page-progress__amount">
-                  {{participantGifts.totalNumber}}
-                </div>
-                <div class="heart-page-progress__label">
-                  <span ng-if="participantGifts.totalNumber == 1">Donation Received</span>
-                  <span ng-if="participantGifts.totalNumber != 1">Donations Received</span>
-                </div>
-              </div>
-              <div class="heart-page-progress__row clearfix">
-                <div class="heart-page-progress__related-cta">
-                  <a class="btn btn-primary" ng-click="editGoal('Participant')" ng-if="teamraiserConfig.personalGoalAllowed == 'true'">
-                    Edit<br>
-                    My Goal
-                  </a>
-                  <!-- TODO: conditionalize on event status -->
-                  <a class="btn btn-primary" ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{consId}}">
-                    Make a Personal<br>
-                    Donation
-                  </a>
-                  <!-- TODO: my personal donation amount -->
-                </div>
-              </div>
-              <div class="heart-page-progress__row heart-page-progress__row--social clearfix">
-                <div class="heart-page-progress__share-label">
-                  Share my Personal Page
-                </div>
-                <div class="heart-page-progress__share-buttons addthis_toolbox" addthis:url="{{personalPageUrl}}">
-                  <a class="heart-page-progress__share-button heart-page-progress__share-button--facebook addthis_button_facebook" ng-href="{{baseUrl}}#">
-                    <i class="fa fa-facebook"></i><span class="sr-only">Facebook</span>
-                  </a>
-                  <a class="heart-page-progress__share-button heart-page-progress__share-button--twitter addthis_button_twitter" ng-href="{{baseUrl}}#">
-                    <i class="fa fa-twitter"></i><span class="sr-only">Twitter</span>
-                  </a>
-                  <a class="heart-page-progress__share-button heart-page-progress__share-button--linkedin addthis_button_linkedin" ng-href="{{baseUrl}}#">
-                    <i class="fa fa-linkedin"></i><span class="sr-only">LinkedIn</span>
-                  </a>
-                </div>
-              </div>
-            </div>
+          <h2>My Progress:</h2>
+          <div class="progress heart_pc_sidebar_thermometer">
+            <div class="progress-bar heart_pc_sidebar_thermometer_fill" ng-style="{'width': participantProgress.percent + '%'}"></div>
+            <span class="heart_pc_sidebar_percentage">{{participantProgress.percent}}%</span>
           </div>
+          <div class="heart_pc_sidebar_row clearfix">
+            <div class="pull-left">
+                  <p>Raised: X</p>
+                  <p>Goal: XX</p>
+              </div>
+              <div class="pull-right">
+                  <button class="btn btn-primary-inverted" ng-click="editGoal('Participant')" ng-if="teamraiserConfig.personalGoalAllowed == 'true'">Edit Goal</button>
+              </div>
+          </div>
+          <div class="heart_pc_sidebar_row clearfix">
+              <p>Share my page:</p>
+              <div class="heart-page-progress__share-buttons addthis_toolbox" addthis:url="{{personalPageUrl}}">
+                <a class="heart-page-progress__share-button heart-page-progress__share-button--facebook addthis_button_facebook" ng-href="{{baseUrl}}#">
+                  <i class="fa fa-facebook"></i><span class="sr-only">Facebook</span>
+                </a>
+                <a class="heart-page-progress__share-button heart-page-progress__share-button--twitter addthis_button_twitter" ng-href="{{baseUrl}}#">
+                  <i class="fa fa-twitter"></i><span class="sr-only">Twitter</span>
+                </a>
+                <a class="heart-page-progress__share-button heart-page-progress__share-button--linkedin addthis_button_linkedin" ng-href="{{baseUrl}}#">
+                  <i class="fa fa-linkedin"></i><span class="sr-only">LinkedIn</span>
+                </a>
+              </div>
+          </div>
+          <h2>Walk Details:</h2>
+          <div class="heart_pc_sidebar_row">
+            <p><a href="#">xName of eventx</a></p>
+            <p>Where: xLocationx</p>
+            <p>Date &amp; Time: xMonth+Dayx</p>
+            <button>View Map</button>
+          </div>
+          <div>Hold <a ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{consId}}">Make a Personal Donation</a></div>
         </div>
         <div class="heart-page-main heart-page-main--participant-center">
           <h2>Manage My Walk:</h2>
