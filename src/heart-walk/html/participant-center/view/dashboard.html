@@ -5,6 +5,18 @@
         Me
       </uib-tab-heading>
       <div class="clearfix">
+        <div ng-if="constituent">
+          <h1 ng-if="constituent.name && constituent.name.first">
+            {{constituent.name.first}}, Dynamic Content, <a href="#">with a link</a>!
+          </h1>
+          <h1 ng-if="!constituent.name.first">
+            Participant, Dynamic Content, <a href="#">with a link</a>!
+          </h1>
+        </div>
+        <h2>Or update another item:</h2>
+        <div style="width:100%; padding: 20px; margin:20px 0 70px; background-color: #aaaaaa;">6-panel</div>
+      </div>
+      <div class="clearfix">
         <div class="heart-page-rail heart-page-rail--participant-center">
           <div class="heart-page-progress heart-page-progress--participant-center">
             <div class="progress heart-page-progress__thermometer">
