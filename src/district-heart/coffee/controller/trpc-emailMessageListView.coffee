@@ -90,6 +90,7 @@ angular.module 'trPcControllers'
             scope: $scope
             templateUrl: APP_INFO.rootPath + 'dist/district-heart/html/participant-center/modal/viewSentMessage.html'
             size: 'lg'
+            windowClass: 'ng-pc-modal ym-modal-full-screen'
       
       closeSentMessageModal = ->
         $scope.viewSentMessageModal.close()

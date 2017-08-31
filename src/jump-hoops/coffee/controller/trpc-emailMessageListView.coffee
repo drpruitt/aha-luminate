@@ -85,6 +85,7 @@ angular.module 'trPcControllers'
             scope: $scope
             templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/viewSentMessage.html'
             size: 'lg'
+            windowClass: 'ng-pc-modal ym-modal-full-screen'
       
       closeSentMessageModal = ->
         $scope.viewSentMessageModal.close()
