@@ -89,6 +89,11 @@ angular.module 'trPcControllers'
             scope: $scope
             templateUrl: APP_INFO.rootPath + 'dist/high-school/html/participant-center/modal/viewSentMessage.html'
             size: 'lg'
+            windowClass: 'ng-pc-modal ym-modal-full-screen'
+          angular.element('html').addClass 'ym-modal-is-open'
+      
+      $scope.$on 'modal.closing', ->
+        angular.element('html').removeClass 'ym-modal-is-open'
       
       closeSentMessageModal = ->
         $scope.viewSentMessageModal.close()

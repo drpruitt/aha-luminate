@@ -236,7 +236,7 @@ angular.module 'trPcControllers'
       
       $scope.emailPreview = 
         body: ''
-
+      
       NgPcTeamraiserEmailService.getMessageLayouts()
         .then (response) ->
           if response.data.errorResponse
@@ -268,6 +268,8 @@ angular.module 'trPcControllers'
                 scope: $scope
                 templateUrl: APP_INFO.rootPath + 'dist/district-heart/html/participant-center/modal/emailPreview.html'
                 size: 'lg'
+                windowClass: 'ng-pc-modal ym-modal-full-screen'
+              angular.element('html').addClass 'ym-modal-is-open'
       
       $scope.selectStationery = ->
         NgPcTeamraiserEmailService.previewMessage $httpParamSerializer($scope.emailComposer)
@@ -279,6 +281,9 @@ angular.module 'trPcControllers'
             else
               messageBody = response.data.getMessagePreviewResponse?.message or ''
               $scope.emailPreview.body = $sce.trustAsHtml messageBody
+      
+      $scope.$on 'modal.closing', ->
+        angular.element('html').removeClass 'ym-modal-is-open'
       
       closeEmailPreviewModal = ->
         $scope.emailPreviewModal.close()
