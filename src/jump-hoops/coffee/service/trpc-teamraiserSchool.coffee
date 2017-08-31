@@ -17,11 +17,11 @@ angular.module 'ahaLuminateApp'
                'name': 'pstep_next'
                'value': 'next'
 
-            jQuery.post 'NTM', company_formvars
-            #$http
-            #  method: 'POST'
-            #  url: $sce.trustAsResourceUrl('NTM')
-            #  data: company_formvars
-            #  headers:
-            #    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+            #jQuery.post 'NTM', company_formvars
+            $http
+              method: 'POST'
+              url: 'NTM'
+              data: company_formvars
+              headers:
+                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
   ]
