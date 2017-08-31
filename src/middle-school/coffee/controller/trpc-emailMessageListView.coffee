@@ -88,7 +88,7 @@ angular.module 'trPcControllers'
             windowClass: 'ng-pc-modal ym-modal-full-screen'
           angular.element('html').addClass 'ym-modal-is-open'
       
-      $scope.on 'modal.closing', ->
+      $scope.$on 'modal.closing', ->
         angular.element('html').removeClass 'ym-modal-is-open'
       
       closeSentMessageModal = ->

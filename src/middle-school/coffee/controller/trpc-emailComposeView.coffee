@@ -270,7 +270,7 @@ angular.module 'trPcControllers'
       closeEmailPreviewModal = ->
         $scope.emailPreviewModal.close()
       
-      $scope.on 'modal.closing', ->
+      $scope.$on 'modal.closing', ->
         angular.element('html').removeClass 'ym-modal-is-open'
       
       $scope.cancelEmailPreview = ->

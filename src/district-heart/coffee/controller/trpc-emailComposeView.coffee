@@ -282,7 +282,7 @@ angular.module 'trPcControllers'
               messageBody = response.data.getMessagePreviewResponse?.message or ''
               $scope.emailPreview.body = $sce.trustAsHtml messageBody
       
-      $scope.on 'modal.closing', ->
+      $scope.$on 'modal.closing', ->
         angular.element('html').removeClass 'ym-modal-is-open'
       
       closeEmailPreviewModal = ->
