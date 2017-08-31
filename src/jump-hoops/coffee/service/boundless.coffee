@@ -28,6 +28,17 @@ angular.module 'ahaLuminateApp'
       
       logEmailSent: ->
         if $rootScope.tablePrefix is 'heartdev'
+          url = 'AjaxProxy?cnv_url=' + encodeURIComponent('https://jumphoopsstaging.boundlessnetwork.com/api/webhooks/student/emails-sent/' + $rootScope.frId + '/' + $rootScope.consId) + '&auth=' + luminateExtend.global.ajaxProxyAuth
+        else
+          url = 'AjaxProxy?cnv_url=' + encodeURIComponent('https://jumphoops.heart.org/api/webhooks/student/emails-sent/' + $rootScope.frId + '/' + $rootScope.consId) + '&auth=' + luminateExtend.global.ajaxProxyAuth
+        $http
+          method: 'POST'
+          url: url
+          headers:
+            'Content-Type': 'application/json'
+      
+      logPersonalPageUpdated: ->
+        if $rootScope.tablePrefix is 'heartdev'
           url = 'AjaxProxy?cnv_url=' + encodeURIComponent('https://jumphoopsstaging.boundlessnetwork.com/api/webhooks/student/personal-page-updated/' + $rootScope.frId + '/' + $rootScope.consId) + '&auth=' + luminateExtend.global.ajaxProxyAuth
         else
           url = 'AjaxProxy?cnv_url=' + encodeURIComponent('https://jumphoops.heart.org/api/webhooks/student/personal-page-updated/' + $rootScope.frId + '/' + $rootScope.consId) + '&auth=' + luminateExtend.global.ajaxProxyAuth
