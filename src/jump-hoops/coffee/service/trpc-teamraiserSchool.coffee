@@ -18,10 +18,13 @@ angular.module 'ahaLuminateApp'
                'value': 'next'
 
             #jQuery.post 'NTM', company_formvars
+            params = ''
+            jQuery.each company_formvars, (i) ->
+              params += (if i > 0 then '&' else '') + @name + '=' + @value
             $http
               method: 'POST'
               url: 'NTM'
-              data: company_formvars
+              data: params
               headers:
                 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
   ]
