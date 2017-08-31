@@ -266,6 +266,13 @@ angular.module 'trPcControllers'
               $scope.emailPreview.body = $sce.trustAsHtml messageBody
               $scope.emailPreviewModal = $uibModal.open 
                 scope: $scope
+                controller: [
+                  '$scope'
+                  ($scope) ->
+                    angular.element('html').addClass 'ym-modal-is-open'
+                    $scope.$on 'modal.closing', ->
+                      angular.element('html').removeClass 'ym-modal-is-open'
+                ]
                 templateUrl: APP_INFO.rootPath + 'dist/district-heart/html/participant-center/modal/emailPreview.html'
                 size: 'lg'
                 windowClass: 'ng-pc-modal ym-modal-full-screen'
@@ -281,9 +288,6 @@ angular.module 'trPcControllers'
             else
               messageBody = response.data.getMessagePreviewResponse?.message or ''
               $scope.emailPreview.body = $sce.trustAsHtml messageBody
-      
-      $scope.$on 'modal.closing', ->
-        angular.element('html').removeClass 'ym-modal-is-open'
       
       closeEmailPreviewModal = ->
         $scope.emailPreviewModal.close()
