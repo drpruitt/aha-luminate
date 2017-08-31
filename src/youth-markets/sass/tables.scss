@@ -43,7 +43,7 @@ div.table {
       }
     }
   }
-
+  
   .table-body {
     .table-row {
       .table-cell {
@@ -58,9 +58,15 @@ div.table {
 }
 
 .ym-list__column {
-  a[ng-click]:link {
-    text-decoration: none;
-    cursor: pointer;
+  .btn-link {
+    color: $event-primary;
+    padding: 0;
+    
+    .fa {
+      &.inactive {
+        color: $inactive-grey !important;
+      }
+    }
   }
 }
 

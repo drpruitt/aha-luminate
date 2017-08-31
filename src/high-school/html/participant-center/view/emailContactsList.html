@@ -86,6 +86,11 @@
                 School Participants
               </a>
             </li>
+            <li ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true' && prevFrId && prevFrId != ''" ng-cloak>
+              <a ng-href="{{baseUrl}}#/email/contacts/email_custom_rpt_show_past_company_coordinator_participants/list">
+                Past School Participants
+              </a>
+            </li>
           </ul>
         </div>
       </div>
@@ -147,23 +152,26 @@
             <span class="badge">{{contactCounts.email_rpt_show_company_coordinator_participants}}</span>
             School Participants
           </a>
+          <a class="list-group-item" ng-class="{'active': filter == 'email_custom_rpt_show_past_company_coordinator_participants'}" ng-href="{{baseUrl}}#/email/contacts/email_custom_rpt_show_past_company_coordinator_participants/list" ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true' && prevFrId && prevFrId != ''" ng-cloak>
+            Past School Participants
+          </a>
         </div>
       </div>
     </div>
     <div class="col-sm-8 col-md-9">
-      <div uib-alert class="alert-success" ng-if="addContactSuccess">
+      <div uib-alert class="alert-success" role="alert" ng-if="addContactSuccess">
         {{addContactSuccess}}
       </div>
-      <div uib-alert class="alert-success" ng-if="importContactsSuccess">
+      <div uib-alert class="alert-success" role="alert" ng-if="importContactsSuccess">
         Contacts imported successfully.
       </div>
-      <div uib-alert class="alert-success" ng-if="editContactSuccess">
+      <div uib-alert class="alert-success" role="alert" ng-if="editContactSuccess">
         {{editContactSuccess}}
       </div>
-      <div uib-alert class="alert-danger" ng-if="deleteContactError">
+      <div uib-alert class="alert-danger" role="alert" ng-if="deleteContactError">
         {{deleteContactError}}
       </div>
-      <div uib-alert class="alert-success" ng-if="deleteContactSuccess">
+      <div uib-alert class="alert-success" role="alert" ng-if="deleteContactSuccess">
         {{deleteContactSuccess}}
       </div>
       <div class="contacts-list__actions clearfix">
@@ -188,7 +196,7 @@
               {{filterName}}
             </span>
           </div>
-          <div class="checkbox" ng-class="{'checked': addressBookContacts.allContactsSelected}" ng-if="addressBookContacts.totalNumber && addressBookContacts.totalNumber != 0" ng-cloak>
+          <div class="checkbox" custom-checkbox ng-class="{'checked': addressBookContacts.allContactsSelected}" ng-if="addressBookContacts.totalNumber && addressBookContacts.totalNumber != 0" ng-cloak>
             <label for="contact_select_all">
               <input id="contact_select_all" type="checkbox" ng-checked="addressBookContacts.allContactsSelected" ng-click="toggleAllContacts()">
               <span class="panel-title">

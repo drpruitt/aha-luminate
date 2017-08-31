@@ -36,7 +36,7 @@ select.form-control {
 
 .input-lg, 
 select.input-lg {
-  line-height: 1;
+  line-height: normal;
   height: 40px;
   
   @media (min-width: $screen-sm-min) {
@@ -44,7 +44,6 @@ select.input-lg {
   }
 }
 
-input[type="text"].btn-enter, 
 input[type="text"].btn-enter {
   &, 
   &:before, 
@@ -60,8 +59,8 @@ input[type="text"].btn-enter {
 input[type="checkbox"] {
   &:not(:checked), 
   &:checked {
+    opacity: 0;
     position: absolute;
-    left: -9999px;
   }
 }
 
@@ -82,55 +81,46 @@ input[type="checkbox"] + label {
     width: 20px;
     height: 20px;
   }
-  
-  &:after {
-    content: '\f00c';
-    font-family: 'FontAwesome';
-    position: absolute;
-    top: 0.15em;
-    left: 0.1em;
-    font-size: 1.1em;
-    line-height: 0.8;
-    transition: all 0.2s;
-    color: $event-primary;
-  }
 }
 
-.checkbox {
-  &:not(.checked) {
-    label {
-      &:after {
-        opacity: 0;
-        transform: scale(0);
-      }
-    }
-  }
-  
+.focused label:before, 
+input[type="checkbox"]:focus + label:before {
+  outline: 5px auto -webkit-focus-ring-color;
+} 
+
+.checkbox {  
   &.checked {
     label {
       &:after {
-        opacity: 1;
-        transform: scale(1);
+        content: '\f00c';
+        font-family: 'FontAwesome';
+        position: absolute;
+        top: 0.15em;
+        left: 0.05em;
+        font-size: 1.2em;
+        line-height: 0.8;
+        transition: all 0.2s;
+        color: $event-primary;
+        display: inline-block;
       }
     }
   }
 }
 
 input[type="checkbox"] {
-  &:not(:checked) {
-    + label {
-      &:after {
-        opacity: 0;
-        transform: scale(0);
-      }
-    }
-  }
-  
   &:checked {
     + label {
       &:after {
-        opacity: 1;
-        transform: scale(1);
+        content: '\f00c';
+        font-family: 'FontAwesome';
+        position: absolute;
+        top: 0.15em;
+        left: 0.05em;
+        font-size: 1.2em;
+        line-height: 0.8;
+        transition: all 0.2s;
+        color: $event-primary;
+        display: inline-block;
       }
     }
   }
@@ -159,6 +149,7 @@ div.responsive input[disabled] {
   .ym-donation-levels__amount {
     position: relative;
     display: inline-block;
+    max-height: 50px;
 
     .ym-donation-levels__dollar-sign {
       position: absolute;
@@ -167,7 +158,6 @@ div.responsive input[disabled] {
       top: 0;
       left: 0;
       padding-left: 20px;
-      height: 50px;
       line-height: 50px;
       font-weight: bold;
 

@@ -59,7 +59,12 @@ angular.module 'ahaLuminateControllers'
               else
                 totals = response.data.totals
                 totalEmails = totals?.total_online_emails_sent or '0'
+                ###hard coding total emails while in QA
                 $scope.totalEmails = Number totalEmails
+                if $scope.totalEmails .toString().length > 4
+                  $scope.totalEmails  = Math.round($scope.totalEmails  / 1000) + 'K'
+                ###
+                $scope.totalEmails = 10
             
             if not teamInfo
               setTeamProgress()
@@ -68,13 +73,14 @@ angular.module 'ahaLuminateControllers'
             
             TeamraiserCompanyService.getCompanies 'company_id=' + companyId, 
               success: (response) ->
-                coordinatorId = response.getCompaniesResponse?.company.coordinatorId
-                eventId = response.getCompaniesResponse?.company.eventId
+                coordinatorId = response.getCompaniesResponse?.company?.coordinatorId
+                eventId = response.getCompaniesResponse?.company?.eventId
                 
-                TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
-                  .then (response) ->
-                    $scope.eventDate = response.data.coordinator.event_date
-                    setCoordinatorInfo()
+                if coordinatorId and coordinatorId isnt '0' and eventId
+                  TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
+                    .then (response) ->
+                      $scope.eventDate = response.data.coordinator?.event_date
+                      setCoordinatorInfo()
       getTeamData()
       
       setTeamParticipants = (participants, totalNumber, totalFundraisers) ->
@@ -139,11 +145,14 @@ angular.module 'ahaLuminateControllers'
           errorCode = errorResponse.code
           errorMessage = errorResponse.message
           
-          if photoNumber is '1'
-            $scope.updateTeamPhoto1Error =
-              message: errorMessage
-          if not $scope.$$phase
-            $scope.$apply()
+          if errorCode is '5'
+            window.location = luminateExtend.global.path.secure + 'UserLogin?NEXTURL=' + encodeURIComponent('TR?fr_id=' + $scope.frId + '&pg=team&team_id=' + $scope.teamId)
+          else
+            if photoNumber is '1'
+              $scope.updateTeamPhoto1Error =
+                message: errorMessage
+            if not $scope.$$phase
+              $scope.$apply()
         uploadPhotoSuccess: (response) ->
           delete $scope.updateTeamPhoto1Error
           if not $scope.$$phase

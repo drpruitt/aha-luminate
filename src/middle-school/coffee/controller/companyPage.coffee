@@ -53,6 +53,8 @@ angular.module 'ahaLuminateControllers'
             totals = response.data.totals
             totalEmails = totals?.total_online_emails_sent or '0'
             $scope.totalEmails = Number totalEmails
+            if $scope.totalEmails .toString().length > 4
+              $scope.totalEmails  = Math.round($scope.totalEmails  / 1000) + 'K'
       
       setCompanyProgress = (amountRaised, goal) ->
         $scope.companyProgress = 
@@ -86,7 +88,8 @@ angular.module 'ahaLuminateControllers'
               companies = [companies] if not angular.isArray companies
               participantCount = companies[0].participantCount or '0'
               $scope.participantCount = Number participantCount
-              totalTeams = companies[0].teamCount
+              totalTeams = companies[0].teamCount or '0'
+              totalTeams = Number totalTeams
               eventId = companies[0].eventId
               amountRaised = companies[0].amountRaised
               goal = companies[0].goal
@@ -95,11 +98,12 @@ angular.module 'ahaLuminateControllers'
               $rootScope.companyName = name
               setCompanyProgress amountRaised, goal
               
-              TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
-                .then (response) ->
-                  $scope.eventDate = response.data.coordinator.event_date
-                  if totalTeams is 1
-                    $scope.teamId = response.data.coordinator.team_id
+              if coordinatorId and coordinatorId isnt '0' and eventId
+                TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
+                  .then (response) ->
+                    $scope.eventDate = response.data.coordinator?.event_date
+                    if totalTeams is 1
+                      $scope.teamId = response.data.coordinator?.team_id
       getCompanyTotals()
       
       $scope.companyTeams = {}
@@ -195,11 +199,14 @@ angular.module 'ahaLuminateControllers'
           errorCode = errorResponse.code
           errorMessage = errorResponse.message
           
-          if photoNumber is '1'
-            $scope.updateCompanyPhoto1Error =
-              message: errorMessage
-          if not $scope.$$phase
-            $scope.$apply()
+          if errorCode is '5'
+            window.location = luminateExtend.global.path.secure + 'UserLogin?NEXTURL=' + encodeURIComponent('TR?fr_id=' + $scope.frId + '&pg=company&company_id=' + $scope.companyId)
+          else
+            if photoNumber is '1'
+              $scope.updateCompanyPhoto1Error =
+                message: errorMessage
+            if not $scope.$$phase
+              $scope.$apply()
         uploadPhotoSuccess: (response) ->
           delete $scope.updateCompanyPhoto1Error
           if not $scope.$$phase

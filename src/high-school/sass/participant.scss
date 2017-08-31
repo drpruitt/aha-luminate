@@ -31,9 +31,8 @@
     &, 
     &:link, 
     &:visited {
-      @media (min-width: 670px) {
-        color: $event-grey;
-      }
+      background: $event-secondary-medium;
+      color: $event-grey;
     }
     
     &:hover, 
@@ -41,11 +40,13 @@
     &:active {
       @media (min-width: 670px) {
         color: $brand-white;
+        background: $event-secondary-dark
       }
     }
     
     &.active {
       color: $event-grey;
+      background: $brand-white;
     }
   }
 }
@@ -121,7 +122,8 @@
   }
   
   &.active {
-    a {
+    a, 
+    button {
       &,
       &:link,
       &:visited {
@@ -134,7 +136,8 @@
 
 .ym-pc-dashboard-captain-page-type, 
 .ym-pc-dashboard-coordinator-page-type {
-  a {
+  a, 
+  button {
     &, 
     &:link, 
     &:visited {
@@ -145,17 +148,18 @@
     &:hover,
     &:focus,
     &:active {
-      background-color: #faa73a;
+      background-color: $event-accent;
       color: $brand-white;
     }
   }
   
   &.active {
-    a {
+    a, 
+    button {
       &,
       &:link,
       &:visited {
-        background-color: #faa73a;
+        background-color: $event-accent;
         color: $brand-white;
       }
     }
@@ -164,6 +168,13 @@
 
 .ym-pc-dashboard-badges-box {
   padding: 20px;
+
+  .ym-pc-dashboard-badges-icon {
+    float: none;
+    display: inline-block;
+    vertical-align: bottom;
+    min-height: 165px;
+  }
   
   .ym-pc-dashboard-section-header {
     position: relative;
@@ -254,35 +265,6 @@
   }
 }
 
-.ym-pc-dashboard-email-challenge-box {
-  .ym-pc-dashboard-section-header {
-    h5, 
-    .h5 {
-      text-transform: none;
-    }
-  }
-  
-  .ym-pc-dashboard-email-challenge-option {
-    text-align: center;
-    margin: 0 0 20px;
-    
-    p {
-      margin: 0 0 18px;
-    }
-  }
-  
-  form {
-    textarea.form-control[readonly] {
-      background-color: $brand-white;
-      border: 0;
-      border-radius: 0;
-      font-size: 13px;
-      height: 470px;
-      padding: 28px;
-    }
-  }
-}
-
 .ym-activity-box {
   background: $event-accent-medium;
   border: 5px solid #faa73a;
@@ -299,6 +281,20 @@
       background: #faa73a;
     }
   }
+}
+
+.ym-activity-box.ym-activity-box--coordinator-reports {
+  @media(min-width: $screen-md-min){
+    width: 44.85%;
+  }
+  @media(min-width: $screen-lg-min){
+    width: 482px;
+  }
+}
+
+.ym-activity-box.ym-activity-box--captain-next-step .ym-next-step, 
+.ym-activity-box.ym-activity-box--next-step .ym-next-step {
+  border-color: #faa73a;
 }
 
 .ym-pc-dashboard-heart-challenge-section {
@@ -517,5 +513,24 @@
         }
       }
     }
+  }
+}
+
+.ym-pc-dashboard-coordinators-message-section {
+  background: #468abc;
+  padding: 30px 12px;
+  
+  @media(min-width: $screen-sm-min) {
+    padding-top: 45px;
+    padding-bottom: 45px;
+  }
+  
+}
+
+.ym-pc-dashboard-torch-graphic {
+  margin: 0 auto -30px;
+
+  @media(min-width: $screen-sm-min){
+    margin: 0 auto -50px;
   }
 }

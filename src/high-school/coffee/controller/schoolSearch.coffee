@@ -35,6 +35,7 @@ angular.module 'ahaLuminateControllers'
                 SCHOOL_STATE: schoolDataRow[schoolDataHeaders.SCHOOL_STATE]
                 COORDINATOR_FIRST_NAME: schoolDataRow[schoolDataHeaders.COORDINATOR_FIRST_NAME]
                 COORDINATOR_LAST_NAME: schoolDataRow[schoolDataHeaders.COORDINATOR_LAST_NAME]
+          
           $scope.schoolDataMap = schoolDataMap
           if $scope.schoolList.schools?.length > 0
             angular.forEach $scope.schoolList.schools, (school, schoolIndex) ->
@@ -49,10 +50,12 @@ angular.module 'ahaLuminateControllers'
       setSchools = (companies) ->
         schools = []
         angular.forEach companies, (company) ->
-          schools.push
-            FR_ID: company.eventId
-            COMPANY_ID: company.companyId
-            SCHOOL_NAME: company.companyName
+          if company.coordinatorId and company.coordinatorId isnt '0'
+            schools.push
+              FR_ID: company.eventId
+              COMPANY_ID: company.companyId
+              SCHOOL_NAME: company.companyName
+              COORDINATOR_ID: company.coordinatorId
         schools
       
       $scope.getSchoolSuggestions = (newValue) ->
@@ -105,10 +108,10 @@ angular.module 'ahaLuminateControllers'
                       $filter('filter') schools, SCHOOL_NAME: newValue
       
       $scope.submitSchoolSearch = ->
+        $scope.schoolList.searchSubmitted = true
         $scope.schoolList.nameFilter = $scope.schoolList.ng_nameFilter
         $scope.schoolList.stateFilter = ''
         $scope.getSchoolSearchResults()
-        $scope.schoolList.searchSubmitted = true
       
       setSchoolsData = (schools) ->
         angular.forEach schools, (school, schoolIndex) ->
@@ -186,4 +189,29 @@ angular.module 'ahaLuminateControllers'
         end = begin + $scope.schoolList.paginationItemsPerPage
         index = $scope.schoolList.schools.indexOf value
         begin <= index and index < end
+      
+      $rootScope.createTeam =
+        schoolName: ''
+        createUrl: ''
+        joinUrl: ''
+      
+      $scope.checkCreateTeam = (schoolId, frId, coordinatorId)->
+        SchoolLookupService.getCreateTeamData '&consId=' + coordinatorId + '&frId=' + frId
+          .then (response) ->
+            createTeam = response.data.coordinator?.enable_team
+            $rootScope.createTeam.schoolName = response.data.coordinator?.company_name
+            if createTeam is 'False'
+              #window.location = luminateExtend.global.path.nonsecure + 'TRR?fr_id=' + frId + '&pg=tfind&fr_tm_opt=existing&s_frTJoin=&company_id=' + schoolId + '&s_frCompanyId=' + schoolId
+              window.location = 'http://heartdev.convio.net/site/TRR?fr_id=' + frId + '&pg=tfind&fr_tm_opt=existing&s_frTJoin=&company_id=' + schoolId + '&s_frCompanyId=' + schoolId
+            else
+              ###
+              pointing to DEV until launch
+              $rootScope.createTeam.joinUrl = luminateExtend.global.path.nonsecure + 'TRR?fr_id=' + frId + '&pg=tfind&fr_tm_opt=existing&s_frTJoin=&company_id=' + schoolId + '&s_frCompanyId=' + schoolId
+              $rootScope.createTeam.createUrl = luminateExtend.global.path.nonsecure + 'TRR?fr_id=' + frId + '&pg=tfind&fr_tm_opt=new&s_frTJoin=&company_id=' + schoolId + '&s_frCompanyId=' + schoolId
+              ###
+              $rootScope.createTeam.joinUrl = 'http://heartdev.convio.net/site/TRR?fr_id=' + frId + '&pg=tfind&fr_tm_opt=existing&s_frTJoin=&company_id=' + schoolId + '&s_frCompanyId=' + schoolId
+              $rootScope.createTeam.createUrl = 'http://heartdev.convio.net/site/TRR?fr_id=' + frId + '&pg=tfind&fr_tm_opt=new&s_frTJoin=&company_id=' + schoolId + '&s_frCompanyId=' + schoolId
+              if not $scope.$$phase
+                $scope.$apply()
+              angular.element('#createTeamModal').modal()
   ]

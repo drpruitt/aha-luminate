@@ -15,15 +15,15 @@
       </h2>
       <div class="ym-progress__cta">
         <div ng-if="(companyTeams.totalNumber == 1 && !teamId) || companyTeams.totalNumber > 1" ng-cloak>
-          <a class="btn btn-primary btn-lg" href="TRR?fr_id=[[S80:trID]]&amp;pg=tfind&amp;fr_tm_opt=existing&amp;s_frTJoin=&amp;company_id=[[S334:company_id]]&amp;s_frCompanyId=[[S334:company_id]]">
+          <a class="btn btn-primary btn-lg" aria-label="Sign Up with {{companyName}}" href="TRR?fr_id=[[S80:trID]]&amp;pg=tfind&amp;fr_tm_opt=existing&amp;s_frTJoin=&amp;company_id=[[S334:company_id]]&amp;s_frCompanyId=[[S334:company_id]]">
             Sign Up
           </a>
         </div>
         <div ng-if="companyTeams.totalNumber == 1 && teamId" ng-cloak>
-          <a class="btn btn-primary btn-lg" ng-href="TRR?fr_id=[[S80:trID]]&amp;pg=tfind&amp;fr_tm_opt=existing&amp;fr_tjoin={{teamId}}&amp;s_frTJoin={{teamId}}&amp;s_frCompanyId=[[S334:company_id]]">
+          <a class="btn btn-primary btn-lg" aria-label="Sign Up with {{companyName}}" ng-href="TRR?fr_id=[[S80:trID]]&amp;pg=tfind&amp;fr_tm_opt=existing&amp;fr_tjoin={{teamId}}&amp;s_frTJoin={{teamId}}&amp;s_frCompanyId=[[S334:company_id]]">
             Sign Up
           </a>
-          <a class="btn btn-primary btn-lg" href="[[S8]]#" data-toggle="modal" data-target="#schoolDonation">
+          <a class="btn btn-primary btn-lg" aria-label="Donate to {{companyName}}" href="[[S8]]#" data-toggle="modal" data-target="#schoolDonation">
             Donate
           </a>
         </div>
@@ -45,7 +45,7 @@
           </div>
         </div>
         <div class="clearfix"></div>
-        <div class="ym-progress__date" ng-if="eventDate != '' && eventDate != 'User Provided No Response'" ng-cloak>
+        <div class="ym-progress__date" ng-if="eventDate && eventDate != '' && eventDate != 'User Provided No Response'" ng-cloak>
           <p>
             Our event date is <strong><span ng-bind-html="eventDate"></span></strong>
           </p>
@@ -65,18 +65,32 @@
             <span ng-if="participantCount < 1000" ng-cloak>{{participantCount}}</span>
             <span ng-if="participantCount > 999" ng-cloak>{{participantCount}}</span>
           </div>
-          <p>
-            students registered
-          </p>
+          <div ng-if="participantCount == 1" ng-cloak>
+            <p>
+              student registered
+            </p>
+          </div>
+          <div ng-if="participantCount != 1" ng-cloak>
+            <p>
+              students registered
+            </p>
+          </div>
         </div>
         <div class="ym-promo-block__item ym-promo-block--circle">
           <div class="h2 ym-headline">
             <span ng-if="totalEmails < 1000">{{totalEmails}}</span>
             <span ng-if="totalEmails > 999">{{totalEmails}}</span>
           </div>
-          <p>
-            emails sent
-          </p>
+          <div ng-if="totalEmails == 1" ng-cloak>
+            <p>
+              email sent
+            </p>
+          </div>
+          <div ng-if="totalEmails != 1" ng-cloak>
+            <p>
+              emails sent
+            </p>
+          </div>
         </div>
       </div>
     </div>

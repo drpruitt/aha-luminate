@@ -46,7 +46,7 @@ angular.module 'trPcControllers'
         angular.forEach contactFilters, (filter) ->
           contactCountPromise = ContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=1'
             .then (response) ->
-              $scope.contactCounts[filter] = response.data.getTeamraiserAddressBookContactsResponse.totalNumberResults
+              $scope.contactCounts[filter] = response.data.getTeamraiserAddressBookContactsResponse?.totalNumberResults or '0'
               response
           $scope.emailPromises.push contactCountPromise
       $scope.getContactCounts()
@@ -252,9 +252,9 @@ angular.module 'trPcControllers'
         closeEmailPreviewModal()
       
       $scope.sendEmail = ->
+        closeEmailPreviewModal()
         TeamraiserEmailService.sendMessage $httpParamSerializer($scope.emailComposer)
           .then (response) ->
-            closeEmailPreviewModal()
             window.scrollTo 0, 0
             if response.data.errorResponse
               $scope.sendEmailError = response.data.errorResponse.message

@@ -265,8 +265,18 @@ angular.module 'trPcControllers'
                       ecardsSent = Number jQuery.trim($reportTableRow.find('td').eq(14).text())
                       emailsSent = Number jQuery.trim($reportTableRow.find('td').eq(13).text())
                       tshirtSize = jQuery.trim $reportTableRow.find('td').eq(15).text()
-                      teacherName = jQuery.trim $reportTableRow.find('td').eq(6).text()
-                      challenge = jQuery.trim($reportTableRow.find('td').eq(16).text()).replace('1. ', '').replace('2. ', '').replace('3. ', '').replace '4. ', ''
+                      challenge2 = jQuery.trim $reportTableRow.find('td').eq(17).text()
+                      bloodPressureCheck = ''
+                      if challenge2?.toLowerCase() is 'true'
+                        bloodPressureCheck = 'Yes'
+                      else
+                        bloodPressureCheck = 'No'
+                      challenge1 = jQuery.trim $reportTableRow.find('td').eq(16).text()
+                      minsActivity = ''
+                      if not challenge1 or challenge1 is ''
+                        minsActivity = '0'
+                      else
+                        minsActivity = challenge1
                       districtDetailParticipants.push
                         firstName: firstName
                         lastName: lastName
@@ -276,20 +286,21 @@ angular.module 'trPcControllers'
                         ecardsSent: ecardsSent
                         emailsSent: emailsSent
                         tshirtSize: tshirtSize
-                        teacherName: teacherName
-                        challenge: challenge
+                        bloodPressureCheck: bloodPressureCheck
+                        minsActivity: minsActivity
                       districtDetailDownloadData.push [
                         firstName + ' ' + lastName
                         amountFormatted.replace('$', '').replace /,/g, ''
                         ecardsSent
                         emailsSent
                         tshirtSize
-                        teacherName
-                        challenge
+                        bloodPressureCheck
+                        minsActivity
                       ]
                     $scope.districtDetailParticipants.participants = districtDetailParticipants
                     $scope.districtDetailParticipants.downloadData = districtDetailDownloadData
             response
+            $scope.orderDistrictDetailParticipants('amount')
         $scope.reportPromises.push districtDetailReportPromise
         
         $scope.orderDistrictDetailParticipants = (sortColumn) ->

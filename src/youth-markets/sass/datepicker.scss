@@ -1,0 +1,17 @@
+.uib-datepicker-popup {
+  button { 
+    width: auto
+  }
+  .btn-info {
+    background: $event-secondary;
+    border-color: $event-secondary;
+
+    &:hover,
+    &:active,
+    &:focus,
+    .active {
+      background: $event-secondary-dark;
+      border-color: $event-secondary-dark;
+    }
+  }
+}

@@ -52,7 +52,7 @@ angular.module 'ahaLuminateControllers'
           levelAmountFormatted = $filter('currency')(Number(levelAmount.replace('$', '').replace(/,/g, '')), '$').replace '.00', ''
         askMessage = $donationLevel.find('.donation-level-description-text').text()
         if isOtherAmount
-          askMessage = 'Enter an amount that\'s meaningful for you.'
+          askMessage = 'Enter an amount that\'s meaningful for you..'
         $scope.donationLevels.levels.push
           amount: levelAmount
           amountFormatted: levelAmountFormatted
@@ -75,7 +75,11 @@ angular.module 'ahaLuminateControllers'
       
       $scope.submitPtype = ->
         if not $scope.participationOptionsForm.$valid
-          window.scrollTo 0, 0
+          goalElem = angular.element '#participationOptions-fr_goal'
+          if goalElem.is '.ng-invalid'
+            goalElem.focus()
+          else
+            window.scrollTo 0, 0
         else
           angular.element('.js--default-ptype-form').submit()
           false

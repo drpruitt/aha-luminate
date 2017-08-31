@@ -444,94 +444,6 @@
   }
 }
 
-.ym-accordion-list {
-  .panel-group {
-    @media (max-width: $screen-xs-max) {
-      margin-bottom: 40px;
-    }
-  }
-
-  .panel {
-    border-radius: 0;
-    margin-top: 0;
-    border: 0 none;
-    border-bottom: 1px solid $event-secondary;
-  }
-
-  .panel + .panel {
-    margin: 0;
-  }
-
-  .panel-heading {
-    background: transparent;
-    border-radius: 0;
-    border: 0 none;
-    padding: 14px 15px;
-
-    &.active {
-      background: $event-secondary;
-
-      a.panel-title {
-        color: $brand-white;
-        pointer-events: none;
-        cursor: default;
-
-        .fa-chevron-down {
-          display: none;
-        }
-
-        .fa-chevron-up {
-          display: inline-block;
-        }
-      }
-    }
-
-    a.panel-title {
-      display: block;
-      text-decoration: none;
-      font-weight: 700;
-
-      &:hover {
-        text-decoration: underline;
-      }
-
-      .fa-chevron-up {
-        display: none;
-      }
-
-      .fa-chevron-down {
-        display: inline-block;
-      }
-    }
-  }
-}
-
-.ym-list {
-  .fa-ul {
-    margin-left: 1.6em;
-  }
-
-  .fa {
-    color: $event-primary;
-    &.inactive {
-      color: $inactive-grey;
-    }
-  }
-
-  li {
-    margin-bottom: 15px;
-    text-align: left;
-  }
-
-  li:last-child{
-    margin-bottom: 0;
-  }
-
-  a {
-    font-weight: 700;
-  }
-}
-
 .ym-school-search {
   @media (min-width: $screen-sm-min) {
     padding: 10px 0 40px;
@@ -619,8 +531,12 @@
     right: 0;
     background: url("../../youth-markets/image/ym-select-carrot.png") right 0.75rem center no-repeat $event-secondary;
     font-weight: 700;
-    font-weight: 700;
     width: 200px;
+    
+    @media (max-width: $screen-sm-max) {
+      position: relative;
+      margin-bottom: 10px;
+    }
     
     &:hover {
       background: url("../../youth-markets/image/ym-select-carrot.png") right 0.75rem center no-repeat $event-secondary-dark;
@@ -634,6 +550,10 @@
   
   .ym-page-section__header {
     position: relative;
+    
+    @media (max-width: $screen-sm-max) {
+      text-align: center;
+    }
     
     h2 {
       &.school-list__header {
@@ -676,9 +596,13 @@
   }
   
   .ym-list--school-list {
+    @media (max-width: $screen-xs-max) {
+      min-width: 600px;
+    }
+    
     th {
       min-width: 65px;
-
+      
       a {
         &:hover {
           text-decoration: underline;
@@ -688,31 +612,10 @@
   }
   
   .ym-list--school-list--help {
-    &,
+    &, 
     &:link {
       font-weight: 700;
       padding: 12px 20px !important;
-    }
-  }
-  
-  @media (max-width: $screen-sm-max) {
-    .ym-page-section__header {
-      text-align: center;
-    }
-    
-    #school-state-filter {
-      position: relative;
-      margin-bottom: 10px;
-    }
-  }
-  
-  @media (max-width: $screen-xs-max) {
-    .ym-list__school-list-wrpr {
-      overflow-x: scroll;
-    }
-    
-    .ym-list--school-list {
-      min-width: 600px;
     }
   }
 }
