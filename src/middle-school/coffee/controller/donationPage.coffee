@@ -348,7 +348,8 @@ angular.module 'ahaLuminateControllers'
           resolve()
       
       loadLevels().then ->
-        loadLocalStorage()
+        if $scope.paymentInfoErrors.errors.length > 0
+          loadLocalStorage()
         if $scope.donationInfo.giftType is 'onetime'
           angular.element('#level_installment_row').addClass 'hidden'
         $requiredField = angular.element '.field-required'
