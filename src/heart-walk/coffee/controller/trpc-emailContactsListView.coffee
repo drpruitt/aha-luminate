@@ -31,13 +31,13 @@ angular.module 'trPcControllers'
 
       getContactString = (contact) ->
         contactData = ''
-        if contact?.firstName?
+        if contact?.firstName
           contactData += contact.firstName
-        if contact?.lastName?
+        if contact?.lastName
           if contactData isnt ''
             contactData += ' '
           contactData += contact.lastName
-        if contact?.email?
+        if contact?.email
           if contactData isnt ''
             contactData += ' '
           contactData += '<' + contact.email + '>'
@@ -81,7 +81,7 @@ angular.module 'trPcControllers'
                 addressBookContacts = [addressBookContacts] if not angular.isArray addressBookContacts
                 contacts = []
                 angular.forEach addressBookContacts, (contact) ->
-                  if contact?
+                  if contact
                     contact.selected = isContactSelected contact
                     contacts.push contact
                 $scope.addressBookContacts.contacts = contacts
@@ -89,11 +89,10 @@ angular.module 'trPcControllers'
             $scope.emailPromises.push contactsPromise
           $scope.getContacts()
           $scope.getAllContacts = ->
-            if $scope.addressBookContacts.getAllPage?
-              pageNumber = $scope.addressBookContacts.getAllPage
-            else
+            if !$scope.addressBookContacts.getAllPage
               $scope.addressBookContacts.allContacts = []
-              pageNumber = 0
+              $scope.addressBookContacts.getAllPage = 0
+            pageNumber = $scope.addressBookContacts.getAllPage
             allContactsPromise = ContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=200&list_page_offset=' + pageNumber
               .then (response) ->
                 totalNumber = response.data.getTeamraiserAddressBookContactsResponse.totalNumberResults
@@ -101,7 +100,7 @@ angular.module 'trPcControllers'
                 addressBookContacts = [addressBookContacts] if not angular.isArray addressBookContacts
                 contacts = []
                 angular.forEach addressBookContacts, (contact) ->
-                  if contact?
+                  if contact
                     contact.selected = isContactSelected contact
                     $scope.addressBookContacts.allContacts.push contact
                 if $scope.addressBookContacts.allContacts.length < totalNumber
@@ -116,7 +115,7 @@ angular.module 'trPcControllers'
         else
           contactCountPromise = ContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true'
             .then (response) ->
-              $scope.contactCounts[filter] = response.data.getTeamraiserAddressBookContactsResponse.totalNumberResults
+              $scope.contactCounts[filter] = response.data.getTeamraiserAddressBookContactsResponse?.totalNumberResults or '0'
               response
           $scope.emailPromises.push contactCountPromise
       

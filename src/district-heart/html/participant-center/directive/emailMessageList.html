@@ -1,9 +1,9 @@
-<ul class="list-unstyled list-group">
+<ul class="list-unstyled list-group ng-pc-msg-list">
   <li class="list-group-item" ng-repeat="message in messages">
     <div class="clearfix">
       <div class="pull-left">
         <!-- TODO: date -->
-        <a ng-click="selectMessage(message.message_id)">
+        <a href="" ng-click="selectMessage(message.message_id)">
           {{message.subject}}
         </a>
         <span ng-if="!selectMessage">
@@ -11,9 +11,9 @@
         </span>
       </div>
       <div class="pull-right">
-        <a ng-click="deleteMessage(message.message_id)">
-          <span class="glyphicon glyphicon-trash"></span>
-        </a>
+        <button type="button" class="btn btn-link" ng-click="deleteMessage(message.message_id)">
+          <span class="fa fa-trash-o"><span class="sr-only">Delete</span></span>
+        </button>
       </div>
     </div>
   </li>

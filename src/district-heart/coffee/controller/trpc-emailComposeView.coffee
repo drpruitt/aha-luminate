@@ -8,10 +8,11 @@ angular.module 'trPcControllers'
     '$httpParamSerializer'
     '$uibModal'
     'APP_INFO'
+    'BoundlessService'
     'NgPcTeamraiserEventService'
     'NgPcTeamraiserEmailService'
     'NgPcContactService'
-    ($rootScope, $scope, $routeParams, $timeout, $sce, $httpParamSerializer, $uibModal, APP_INFO, NgPcTeamraiserEventService, NgPcTeamraiserEmailService, NgPcContactService) ->
+    ($rootScope, $scope, $routeParams, $timeout, $sce, $httpParamSerializer, $uibModal, APP_INFO, BoundlessService, NgPcTeamraiserEventService, NgPcTeamraiserEmailService, NgPcContactService) ->
       $scope.messageType = $routeParams.messageType
       $scope.messageId = $routeParams.messageId
       
@@ -49,12 +50,16 @@ angular.module 'trPcControllers'
         if $scope.participantRegistration.companyInformation?.isCompanyCoordinator is 'true'
           contactFilters.push 'email_rpt_show_company_coordinator_captains'
           contactFilters.push 'email_rpt_show_company_coordinator_participants'
+          contactFilters.push 'email_custom_rpt_show_past_company_coordinator_participants'
         angular.forEach contactFilters, (filter) ->
-          contactCountPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=1'
-            .then (response) ->
-              $scope.contactCounts[filter] = response.data.getTeamraiserAddressBookContactsResponse.totalNumberResults
-              response
-          $scope.emailPromises.push contactCountPromise
+          if filter is 'email_custom_rpt_show_past_company_coordinator_participants'
+            $scope.contactCounts[filter] = ''
+          else
+            contactCountPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=1'
+              .then (response) ->
+                $scope.contactCounts[filter] = response.data.getTeamraiserAddressBookContactsResponse?.totalNumberResults or '0'
+                response
+            $scope.emailPromises.push contactCountPromise
       $scope.getContactCounts()
       
       $scope.resetSelectedContacts = ->
@@ -303,4 +308,7 @@ angular.module 'trPcControllers'
               $scope.sendEmailSuccess = true
               $scope.resetSelectedContacts()
               setEmailComposerDefaults()
+              window.scrollTo 0, 0
+              angular.element('#emailComposer-recipients').focus()
+              BoundlessService.logEmailSent()
   ]

@@ -21,7 +21,7 @@
       <h2 class="ym-progress__title h4">
         Help me raise more life-saving donations
       </h2>
-      <a class="btn btn-primary btn-lg" href="Donation2?df_id=[[E42:[[S80:trID]]:form-id]]&amp;FR_ID=[[S80:trID]]&amp;PROXY_ID=[[S334:px]]&amp;PROXY_TYPE=20">
+      <a aria-label="Donate to help me raise funds" class="btn btn-primary btn-lg" href="Donation2?df_id=[[E42:[[S80:trID]]:form-id]]&amp;FR_ID=[[S80:trID]]&amp;PROXY_ID=[[S334:px]]&amp;PROXY_TYPE=20">
         Donate
       </a>
       <div class="ym-progress__thermometer" name="Personal Progress Bar" aria-valuetext="{{personalProgress.percent}} percent of fundraising progress" role="progressbar" aria-valuenow="{{personalProgress.percent}}" aria-valuemin="0" aria-valuemax="100">
@@ -39,7 +39,7 @@
           </p>
         </div>
         <div class="clearfix"></div>
-        <div class="ym-progress__date" ng-if="eventDate != '' && eventDate != 'User Provided No Response'" ng-cloak>
+        <div class="ym-progress__date" ng-if="eventDate && eventDate != '' && eventDate != 'User Provided No Response'" ng-cloak>
           <p>
             My event date is <strong><span ng-bind-html="eventDate"></span></strong>
           </p>
@@ -50,7 +50,7 @@
   </div>
   <div class="ym-page-section ym-page-section__main">
     <div class="ym-story" ng-class="prizes.length > 0 || challengeId != null ? 'col-md-6' : 'col-md-12'">
-      <h2 class="ym-headline">
+      <h2 class="ym-headline h3">
         My Story
       </h2>
       [[?
@@ -95,7 +95,7 @@
     </div>
     <div class="col-md-6 ym-user-interactions" ng-if="prizes.length > 0 || challengeId != null">
       <div class="ym-badges" ng-if="prizes.length > 0">
-        <h2 class="ym-headline">
+        <h2 class="ym-headline h3">
           Check Out My Badges
         </h2>
         <div class="ym-badges__item" ng-repeat="prize in prizes | limitTo: 3" ng-cloak>
@@ -163,7 +163,7 @@
           <strong>Be the first to donate!</strong>
         </p>
       </div>
-      <a class="btn btn-primary btn-lg" href="Donation2?df_id=[[E42:[[S80:trID]]:form-id]]&amp;FR_ID=[[S80:trID]]&amp;PROXY_ID=[[S334:px]]&amp;PROXY_TYPE=20">
+      <a aria-label="Donate to [[E48:[[S80:trID]]-[[S334:px]]:cons.first_name]]" class="btn btn-primary btn-lg" href="Donation2?df_id=[[E42:[[S80:trID]]:form-id]]&amp;FR_ID=[[S80:trID]]&amp;PROXY_ID=[[S334:px]]&amp;PROXY_TYPE=20">
         Donate
       </a>
     </div>

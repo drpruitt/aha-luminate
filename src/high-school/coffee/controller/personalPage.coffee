@@ -28,7 +28,7 @@ angular.module 'ahaLuminateControllers'
             prizes = response.data.prizes
             angular.forEach prizes, (prize) ->
               if prize.earned_datetime isnt null
-                if prize.id is '1000'
+                if prize.id is 3000
                   $scope.prizes.push
                     priority: 1
                     id: prize.id
@@ -36,7 +36,7 @@ angular.module 'ahaLuminateControllers'
                     sku: prize.sku
                     status: prize.status
                     earned: prize.earned_datetime
-                else if prize.id is '1001'
+                else if prize.id is 3002
                   $scope.prizes.push
                     priority: 2
                     id: prize.id
@@ -44,17 +44,17 @@ angular.module 'ahaLuminateControllers'
                     sku: prize.sku
                     status: prize.status
                     earned: prize.earned_datetime
-                else if prize.id is '1004'
+                else if prize.id is 3003
                   $scope.prizes.push
-                    priority: 3
+                    priority: 4
                     id: prize.id
                     label: prize.label
                     sku: prize.sku
                     status: prize.status
                     earned: prize.earned_datetime
-                else if prize.id is '1003'
+                else if prize.id is 3001
                   $scope.prizes.push
-                    priority: 4
+                    priority: 5
                     id: prize.id
                     label: prize.label
                     sku: prize.sku
@@ -66,14 +66,15 @@ angular.module 'ahaLuminateControllers'
       
       TeamraiserCompanyService.getCompanies 'company_id=' + $scope.companyId,
         success: (response) ->
-          coordinatorId = response.getCompaniesResponse?.company.coordinatorId
-          eventId = response.getCompaniesResponse?.company.eventId
-          $rootScope.numTeams = response.getCompaniesResponse.company.teamCount
+          coordinatorId = response.getCompaniesResponse?.company?.coordinatorId
+          eventId = response.getCompaniesResponse?.company?.eventId
+          $rootScope.numTeams = response.getCompaniesResponse?.company?.teamCount
           
-          TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
-            .then (response) ->
-              $scope.eventDate = response.data.coordinator.event_date
-        
+          if coordinatorId and coordinatorId isnt '0' and eventId
+            TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
+              .then (response) ->
+                $scope.eventDate = response.data.coordinator?.event_date
+      
       setParticipantProgress = (amountRaised, goal) ->
         $scope.personalProgress = 
           amountRaised: if amountRaised then Number(amountRaised) else 0
@@ -176,11 +177,14 @@ angular.module 'ahaLuminateControllers'
           errorCode = errorResponse.code
           errorMessage = errorResponse.message
           
-          if photoNumber is '1'
-            $scope.updatePersonalPhoto1Error =
-              message: errorMessage
-          if not $scope.$$phase
-            $scope.$apply()
+          if errorCode is '5'
+            window.location = luminateExtend.global.path.secure + 'UserLogin?NEXTURL=' + encodeURIComponent('TR?fr_id=' + $scope.frId + '&pg=personal&px=' + $scope.participantId)
+          else
+            if photoNumber is '1'
+              $scope.updatePersonalPhoto1Error =
+                message: errorMessage
+            if not $scope.$$phase
+              $scope.$apply()
         uploadPhotoSuccess: (response) ->
           delete $scope.updatePersonalPhoto1Error
           if not $scope.$$phase
@@ -281,6 +285,7 @@ angular.module 'ahaLuminateControllers'
                 $scope.personalPageContent.rich_text = richText
                 $scope.personalPageContent.ng_rich_text = richText
                 $scope.personalPageContent.mode = 'view'
+                BoundlessService.logPersonalPageUpdated()
                 if not $scope.$$phase
                   $scope.$apply()
   ]

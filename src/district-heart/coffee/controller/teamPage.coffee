@@ -61,32 +61,34 @@ angular.module 'ahaLuminateControllers'
             setTeamProgress()
           success: (response) ->
             teamInfo = response.getTeamSearchByInfoResponse?.team
-            companyId = teamInfo.companyId
-            $scope.participantCount = teamInfo.numMembers
-            captainId = response.getTeamSearchByInfoResponse?.team.captainConsId
-            eventId = response.getTeamSearchByInfoResponse?.team.EventId
             if not teamInfo
               setTeamProgress()
             else
+              companyId = teamInfo.companyId
+              $scope.participantCount = teamInfo.numMembers
+              captainId = teamInfo.captainConsId
+              eventId = teamInfo.EventId
               setTeamProgress teamInfo.amountRaised, teamInfo.goal
-            
-            TeamraiserCompanyService.getCompanies 'company_id=' + companyId, 
-              success: (response) ->
-                coordinatorId = response.getCompaniesResponse?.company.coordinatorId
-                TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
-                  .then (response) ->
-                    $scope.eventDate = response.data.coordinator.event_date
-                    $scope.coordinatorName = response.data.coordinator.fullName
-                    setCoordinatorInfo()
-            
-            TeamraiserCompanyService.getCoordinatorQuestion captainId, eventId
-              .then (response) ->
-                participantGoal = response.data.coordinator?.team_goal or '0'
-                participantGoal = participantGoal.replace /,/g, ''
-                if isNaN participantGoal
-                  $scope.participantGoal = 0
-                else
-                  $scope.participantGoal = Number participantGoal
+              
+              TeamraiserCompanyService.getCompanies 'company_id=' + companyId, 
+                success: (response) ->
+                  coordinatorId = response.getCompaniesResponse?.company?.coordinatorId
+                  
+                  if coordinatorId and coordinatorId isnt '0' and eventId
+                    TeamraiserCompanyService.getCoordinatorQuestion coordinatorId, eventId
+                      .then (response) ->
+                        $scope.eventDate = response.data?.coordinator?.event_date
+                        $scope.coordinatorName = response.data.coordinator?.fullName
+                        setCoordinatorInfo()
+              
+              TeamraiserCompanyService.getCoordinatorQuestion captainId, eventId
+                .then (response) ->
+                  participantGoal = response.data.coordinator?.team_goal or '0'
+                  participantGoal = participantGoal.replace /,/g, ''
+                  if isNaN participantGoal
+                    $scope.participantGoal = 0
+                  else
+                    $scope.participantGoal = Number participantGoal
       getTeamData()
       
       $scope.teamParticipantSearch =
@@ -209,11 +211,14 @@ angular.module 'ahaLuminateControllers'
           errorCode = errorResponse.code
           errorMessage = errorResponse.message
           
-          if photoNumber is '1'
-            $scope.updateTeamPhoto1Error =
-              message: errorMessage
-          if not $scope.$$phase
-            $scope.$apply()
+          if errorCode is '5'
+            window.location = luminateExtend.global.path.secure + 'UserLogin?NEXTURL=' + encodeURIComponent('TR?fr_id=' + $scope.frId + '&pg=team&team_id=' + $scope.teamId)
+          else
+            if photoNumber is '1'
+              $scope.updateTeamPhoto1Error =
+                message: errorMessage
+            if not $scope.$$phase
+              $scope.$apply()
         uploadPhotoSuccess: (response) ->
           delete $scope.updateTeamPhoto1Error
           if not $scope.$$phase

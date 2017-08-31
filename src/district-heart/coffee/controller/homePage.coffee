@@ -18,42 +18,47 @@ angular.module 'ahaLuminateControllers'
       $scope.participantListSetting =
         searchPending: false
         sortProp: 'fullName'
-        sortDesc: false
+        sortDesc: true
         totalItems: 0
         currentPage: 1
         paginationItemsPerPage: 5
         paginationMaxSize: 5
       
-      $scope.participantSearch = {}
+      $scope.participantSearch =
+        ng_first_name: ''
+        ng_last_name: ''
+      
       $scope.searchParticipants = ->
         $scope.participantListSetting.searchPending = true
+        delete $scope.participantSearch.totalParticipants
         DonorSearchService.getParticipants $scope.participantSearch.ng_first_name, $scope.participantSearch.ng_last_name
-        .then (response) ->
-          participants = response.data?.getParticipantsResponse
-          $scope.totalParticipants = participants.totalNumberResults
-          $scope.participantListSetting.totalItems = $scope.totalParticipants
-          if not participants
-            $scope.totalParticipants = '0'
-          else if participants
-            if $scope.totalParticipants is '1'
-              $scope.participant = participants.participant
-            else
-              $scope.participantList = participants.participant
-          $scope.participantListSetting.searchPending = false
-      
+          .then (response) ->
+            participants = response.data?.getParticipantsResponse
+            $scope.participantSearch.totalParticipants = participants.totalNumberResults
+            $scope.participantListSetting.totalItems = $scope.totalParticipants
+            if not participants
+              $scope.participantSearch.totalParticipants = '0'
+            else if participants
+              if $scope.participantSearch.totalParticipants is '1'
+                $scope.participant = participants.participant
+              else
+                $scope.participantList = participants.participant
+                $scope.orderParticipants 'fullName'
+            $scope.participantListSetting.searchPending = false
+          
       $scope.orderParticipants = (sortProp, keepSortOrder) ->
         participants = $scope.participantList
-        angular.forEach participants, (participant) ->
-          participant.fullName = participant.name.first + ' ' + participant.name.last
-        if participants.length > 0
-          if not keepSortOrder
-            $scope.participantListSetting.sortDesc = !$scope.participantListSetting.sortDesc
-          if $scope.participantListSetting.sortProp isnt sortProp
-            $scope.participantListSetting.sortProp = sortProp
-            $scope.participantListSetting.sortDesc = true
-          participants = $filter('orderBy') participants, sortProp, $scope.participantListSetting.sortDesc
-          $scope.participantList = participants
-          $scope.participantListSetting.currentPage = 1
+        if participants
+          angular.forEach participants, (participant) ->
+            participant.fullName = participant.name.first + ' ' + participant.name.last
+          if participants.length > 0
+            if not keepSortOrder
+              $scope.participantListSetting.sortDesc = !$scope.participantListSetting.sortDesc
+            if $scope.participantListSetting.sortProp isnt sortProp
+              $scope.participantListSetting.sortProp = sortProp
+            participants = $filter('orderBy') participants, sortProp, $scope.participantListSetting.sortDesc
+            $scope.participantList = participants
+            $scope.participantListSetting.currentPage = 1
       
       $scope.paginateParticipants = (value) ->
         begin = ($scope.participantListSetting.currentPage - 1) * $scope.participantListSetting.paginationItemsPerPage
@@ -64,39 +69,41 @@ angular.module 'ahaLuminateControllers'
       $scope.teamListSetting =
         searchPending: false
         sortProp: 'teamName'
-        sortDesc: false
+        sortDesc: true
         totalItems: 0
         currentPage: 1
         paginationItemsPerPage: 5
         paginationMaxSize: 5
       
-      $scope.teamSearch = {}
-      $scope.searchTeams = ->
-        DonorSearchService.getTeams $scope.teamSearch.ng_team_name
-        .then (response) ->
-          console.log response
-          teams = response.data?.getTeamSearchByInfoResponse
-          $scope.totalTeams = teams.totalNumberResults
-          $scope.teamListSetting.totalItems = $scope.totalTeams
-          if not teams
-            $scope.totalTeams = '0'
-          else if teams
-            if $scope.totalTeams is '1'
-              $scope.team = teams.team
-            else
-              $scope.teamList = teams.team         
+      $scope.teamSearch =
+        ng_team_name: ''
       
-      $scope.orderTeams = (sortProp, keepSortOrder) ->
+      $scope.searchTeams = ->
+        $scope.teamListSetting.searchPending = true
+        delete $scope.teamSearch.totalTeams
+        DonorSearchService.getTeams $scope.teamSearch.ng_team_name
+          .then (response) ->
+            teams = response.data?.getTeamSearchByInfoResponse
+            $scope.teamSearch.totalTeams = teams.totalNumberResults
+            $scope.teamListSetting.totalItems = $scope.teamSearch.totalTeams
+            if not teams
+              $scope.teamSearch.totalTeams = '0'
+            else if teams
+              if $scope.teamSearch.totalTeams is '1'
+                $scope.team = teams.team
+              else
+                $scope.teamList = teams.team
+                $scope.orderTeams 'teamName'
+            $scope.teamListSetting.searchPending = false
+      
+      $scope.orderTeams = (sortProp) ->
         teams = $scope.teamList
-        if teams.length > 0
-          if not keepSortOrder
+        if teams
+          if teams.length > 0
             $scope.teamListSetting.sortDesc = !$scope.teamListSetting.sortDesc
-          if $scope.teamListSetting.sortProp isnt sortProp
-            $scope.teamListSetting.sortProp = sortProp
-            $scope.teamListSetting.sortDesc = true
-          participants = $filter('orderBy') teams, sortProp, $scope.teamListSetting.sortDesc
-          $scope.teamList = teams
-          $scope.teamListSetting.currentPage = 1
+            teams = $filter('orderBy') teams, 'name', $scope.teamListSetting.sortDesc
+            $scope.teamList = teams
+            $scope.teamListSetting.currentPage = 1
       
       $scope.paginateTeams = (value) ->
         begin = ($scope.teamListSetting.currentPage - 1) * $scope.teamListSetting.paginationItemsPerPage
@@ -104,11 +111,13 @@ angular.module 'ahaLuminateControllers'
         index = $scope.teamList.indexOf value
         begin <= index and index < end
       
+      
       setNoSchoolLink = (noSchoolLink) ->
         $scope.noSchoolLink = noSchoolLink
         if not $scope.$$phase
           $scope.$apply()
-      TeamraiserService.getTeamRaisersByInfo 'event_type=' + encodeURIComponent('District Heart Challenge') + '&public_event_type=' + encodeURIComponent ('School Not Found') + '&name=' + encodeURIComponent('%') + '&list_page_size=1&list_ascending=false&list_sort_column=event_date',
+
+      TeamraiserService.getTeamRaisersByInfo 'event_type=' + encodeURIComponent('District Heart Challenge') + '&public_event_type=' + encodeURIComponent('School Not Found') + '&name=' + encodeURIComponent('%') + '&list_page_size=1&list_ascending=false&list_sort_column=event_date',
           error: (response) ->
             # TODO
           success: (response) ->
@@ -118,7 +127,7 @@ angular.module 'ahaLuminateControllers'
             else
               teamraisers = [teamraisers] if not angular.isArray teamraisers
               teamraiserInfo = teamraisers[0]
-              setNoSchoolLink $scope.nonSecureDomain + '/site/TRR?fr_id=' + teamraiserInfo.id + '&pg=tfind&fr_tm_opt=none&s_frTJoin=&s_frCompanyId='
+              setNoSchoolLink $scope.nonSecureDomain + '/site/TRR?fr_id=' + teamraiserInfo.id + '&pg=tfind&fr_tm_opt=none&s_frTJoin=&s_frCompanyId=' 
       
       if consId
         TeamraiserParticipantService.getRegisteredTeamraisers 'cons_id=' + consId + '&event_type=' + encodeURIComponent('District Heart Challenge'),
@@ -204,9 +213,9 @@ angular.module 'ahaLuminateControllers'
           ]
           addClassActive: true
           onInitialized: (event) ->
-            AriaCarouselService.init(owlStr)
+            AriaCarouselService.init owlStr
           onChanged: ->
-            AriaCarouselService.onChange(owlStr)
+            AriaCarouselService.onChange owlStr
       
       $timeout initCarousel, 1000
       
@@ -227,9 +236,13 @@ angular.module 'ahaLuminateControllers'
               ]
               addClassActive: true
               onInitialized: (event) ->
-                AriaCarouselService.init(owlStr)
+                AriaCarouselService.init owlStr
               onChanged: ->
-                AriaCarouselService.onChange(owlStr)
-              
+                AriaCarouselService.onChange owlStr
+      
       $timeout initHeroCarousel, 1000
+      
+      $scope.showSearch = 'participant'
+      $scope.toggleSearch = (type) ->
+        $scope.showSearch = type
   ]

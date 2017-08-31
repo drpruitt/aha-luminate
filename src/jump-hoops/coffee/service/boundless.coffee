@@ -14,19 +14,37 @@ angular.module 'ahaLuminateApp'
           url: url
           headers:
             'Content-Type': 'application/json'
-        .then (response) ->
-          response
       
       getRollupTotals: ->
         if $rootScope.tablePrefix is 'heartdev'
-          url = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent('https://jumphoopsstaging.boundlessnetwork.com/api/schools/totals')
+          url = 'https://jumphoopsstaging.boundlessnetwork.com/api/schools/totals/'
         else
-          url = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent('https://jumphoops.heart.org/api/schools/totals')
+          url = 'https://jumphoops.heart.org/api/schools/totals/'
+        $http.jsonp($sce.trustAsResourceUrl(url), jsonpCallbackParam: 'callback')
+          .then (response) ->
+            response
+          , (response) ->
+            response
+      
+      logEmailSent: ->
+        if $rootScope.tablePrefix is 'heartdev'
+          url = 'AjaxProxy?cnv_url=' + encodeURIComponent('https://jumphoopsstaging.boundlessnetwork.com/api/webhooks/student/emails-sent/' + $rootScope.frId + '/' + $rootScope.consId) + '&auth=' + luminateExtend.global.ajaxProxyAuth
+        else
+          url = 'AjaxProxy?cnv_url=' + encodeURIComponent('https://jumphoops.heart.org/api/webhooks/student/emails-sent/' + $rootScope.frId + '/' + $rootScope.consId) + '&auth=' + luminateExtend.global.ajaxProxyAuth
         $http
-          method: 'GET'
+          method: 'POST'
           url: url
           headers:
             'Content-Type': 'application/json'
-        .then (response) ->
-          response
+      
+      logPersonalPageUpdated: ->
+        if $rootScope.tablePrefix is 'heartdev'
+          url = 'AjaxProxy?cnv_url=' + encodeURIComponent('https://jumphoopsstaging.boundlessnetwork.com/api/webhooks/student/personal-page-updated/' + $rootScope.frId + '/' + $rootScope.consId) + '&auth=' + luminateExtend.global.ajaxProxyAuth
+        else
+          url = 'AjaxProxy?cnv_url=' + encodeURIComponent('https://jumphoops.heart.org/api/webhooks/student/personal-page-updated/' + $rootScope.frId + '/' + $rootScope.consId) + '&auth=' + luminateExtend.global.ajaxProxyAuth
+        $http
+          method: 'POST'
+          url: url
+          headers:
+            'Content-Type': 'application/json'
   ]
