@@ -1,0 +1,13 @@
+.ym-modal-full-screen {
+  .modal-dialog {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+  
+  .modal-content {
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
