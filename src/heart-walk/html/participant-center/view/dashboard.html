@@ -1,47 +1,9 @@
 <div cg-busy="dashboardPromises" ng-class="{'heart-dashboard--has-team': participantRegistration.teamId && participantRegistration.teamId != '-1', 'heart-dashboard--has-company': participantRegistration.companyInformation && participantRegistration.companyInformation.companyId && participantRegistration.companyInformation.companyId != -1}">
-  <div class="heart-dashboard__header">
-    <div class="heart-dashboard__header-title" ng-if="constituent">
-      <div ng-if="constituent.name && constituent.name.first">
-        {{constituent.name.first}} {{constituent.name.last}}'s Fundraising Center
-      </div>
-      <div ng-if="!constituent.name.first">
-        Fundraising Center
-      </div>
-    </div>
-  </div>
   <uib-tabset active="active">
     <uib-tab index="0">
       <uib-tab-heading>
         Me
       </uib-tab-heading>
-      <div class="heart-dashboard-tab-info clearfix">
-        <div class="heart-dashboard-tab-info__text">
-          <div ng-if="participantRank.rank == -1">
-            You're not on the leaderboard yet!
-          </div>
-          <div ng-if="participantRank.rank && participantRank.rank != -1">
-            I'm <span class="heart-dashboard-tab-info__rank">#{{participantRank.rank}}</span> of {{participantRank.totalNumber}} fundraisers at our Walk.
-          </div>
-        </div>
-        <div class="heart-dashboard-tab-info__cta">
-          <a class="btn btn-primary" ng-href="sms:&body=If you could save lives, would you%3F Join me today by participating or donating to the American Heart Association's Heart Walk: {{nonsecurePath}}TR%3Ffr_id={{frId}}%26pg=personal%26px={{consId}}" ng-if="device.isMobile && device.mobileType == 'ios'">
-            Text for<br>
-            Donations
-          </a>
-          <a class="btn btn-primary" ng-href="sms:?body=If you could save lives, would you%3F Join me today by participating or donating to the American Heart Association's Heart Walk: {{nonsecurePath}}TR%3Ffr_id={{frId}}%2526pg=personal%2526px={{consId}}" ng-if="device.isMobile && device.mobileType == 'android'">
-            Text for<br>
-            Donations
-          </a>
-          <a class="btn btn-primary" ng-href="{{baseUrl}}#/email/compose">
-            Email for<br>
-            Donations
-          </a>
-          <a class="btn btn-primary" ng-click="addOfflineGift('personal')" ng-if="teamraiserConfig.personalOfflineGiftsAllowed == 'true'">
-            Enter Cash<br>
-            or Checks
-          </a>
-        </div>
-      </div>
       <div class="clearfix">
         <div class="heart-page-rail heart-page-rail--participant-center">
           <div class="heart-page-progress heart-page-progress--participant-center">
@@ -117,6 +79,37 @@
           </div>
         </div>
         <div class="heart-page-main heart-page-main--participant-center">
+          <h2>Manage My Walk:</h2>
+          <div class="manage_walk_items clearfix">
+            <div class="pull-left">
+              <div class="manage_walk_headers">My Fundraising URL:</div>
+              <p class="heart-pc-user-page-sharing__page-url ng-binding">{{personalPageUrl}}</p>
+            </div>
+            <div class="pull-right">
+              <button class="btn btn-primary-inverted" ng-click="editPageUrl('Participant')">Edit URL</button>
+            </div>
+          </div>
+          <div class="manage_walk_items clearfix">
+            <div class="pull-left">
+              <div class="manage_walk_headers">Survivor:</div>
+              <p class="heart-pc-user-page-sharing__page-url ng-binding">Brenda, you are being recognized as a survivor.</p>
+            </div>
+            <div class="pull-right">
+              <button class="btn btn-primary-inverted" ng-click="#">Edit Status</button>
+            </div>
+          </div>
+          <div class="manage_walk_items clearfix">
+            <div class="pull-left">
+              <div class="manage_walk_headers">Donation Notifications:</div>
+              <p class="heart-pc-user-page-sharing__page-url ng-binding">Turn on email notifications when I receive a donation.</p>
+            </div>
+            <div class="pull-right">
+              <button class="btn btn-primary-inverted" ng-click="toggleGiftNotification(true)" ng-if="participantRegistration.receiveGiftNotification != 'true'">Turn On Emails</button>
+              <button class="btn btn-primary-inverted" ng-click="toggleGiftNotification(false)" ng-if="participantRegistration.receiveGiftNotification == 'true'">Turn Off Emails</button>
+            </div>
+          </div>
+          
+          <div style="display:none;">
           <div class="heart-user-gifts">
             <div class="heart-user-gifts__header clearfix">
               <h2 style="float: none;">
@@ -176,6 +169,7 @@
               </h2>
               <news-feed-list items="newsFeed.items"></news-feed-list>
             </div>
+          </div>
           </div>
         </div>
       </div>
