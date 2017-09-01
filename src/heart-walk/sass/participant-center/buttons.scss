@@ -12,6 +12,20 @@
     &:hover, 
     &:focus {
       border-width: 1px;
+      padding: 5px 5px;
+      font-size: 16px;
+      min-width: 135px;
+      font-weight: 400;
     }
   }
+}
+
+.btn-primary-inverted,
+.btn-primary-inverted:link,
+.btn-primary-inverted:visited,
+a.btn-primary-inverted,
+a.btn-primary-inverted:link,
+a.btn-primary-inverted:visited {
+    border-color: #3c3c3c;
+    color: #3c3c3c;
 }
