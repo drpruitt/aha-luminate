@@ -181,6 +181,8 @@ angular.module 'trPcControllers'
                 #  percent = 2
                 # if percent > 98
                 #  percent = 98
+                if percent > 100
+                  percent = 100
                 $scope.participantProgress.percent = percent
               , 500
             if $scope.participantRegistration.teamId and $scope.participantRegistration.teamId isnt '-1'
