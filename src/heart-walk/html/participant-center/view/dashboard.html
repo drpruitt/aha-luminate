@@ -48,7 +48,7 @@
           </div>
           <h2>Walk Details:</h2>
           <div class="heart_pc_sidebar_row clearfix">
-            <p><a href="#">{{eventInfo.name}}</a></p>
+            <p><a href="TR?fr_id={{frId}}&amp;pg=entry">{{eventInfo.name}}</a></p>
             <p>Where: xLocationx</p>
             <p ng-if="eventInfo.event_date && eventInfo.event_date != ''">Date &amp; Time: {{eventInfo.event_date | date : 'EEEE, MMMM d, y'}}</p>
             <button>View Map</button>
@@ -94,40 +94,12 @@
               <button class="btn btn-primary-inverted" ng-click="addOfflineGift('personal')" ng-if="teamraiserConfig.personalOfflineGiftsAllowed == 'true'">Edit Donations</button>
             </div>
           </div>
-        
-          <div style="display:none;">
-          <div class="heart-user-gifts">
-            <div class="heart-user-gifts__header clearfix">
-              <h2 style="float: none;">
-                My Personal Page URL
-              </h2>
-              <p class="heart-pc-user-page-sharing__page-url">
-                {{personalPageUrl}}
-              </p>
-              <button class="btn btn-primary-inverted" ng-click="editPageUrl('Participant')">
-                Edit
-              </button>
-            </div>
-          </div>
-          <div class="heart-user-gifts">
-            <div class="heart-user-gifts__header clearfix">
-              <h2>
-                My Donors
-              </h2>
-              <div class="dropdown">
-                <a data-toggle="dropdown">
-                  <i class="glyphicon glyphicon-cog"></i> <u>Tasks</u>
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a ng-href="TRParticipantDownload/Personal_Donations.csv?download_type=personal_donations&fr_id={{frId}}" target="_blank">Download Donation List</a>
-                  </li>
-                  <li>
-                    <a ng-click="toggleGiftNotification(true)" ng-if="participantRegistration.receiveGiftNotification != 'true'">Turn On Donation Notifications</a>
-                    <a ng-click="toggleGiftNotification(false)" ng-if="participantRegistration.receiveGiftNotification == 'true'">Turn Off Donation Notifications</a>
-                  </li>
-                </ul>
-              </div>
+        </div>
+        <div class="clearfix">
+          <div class="heart_pc_my_donors clearfix">
+            <div class="clearfix">
+              <h2 class="pull-left">My Donors</h2>
+              <button class="btn btn-primary-inverted pull-right" ng-href="TRParticipantDownload/Personal_Donations.csv?download_type=personal_donations&fr_id={{frId}}" target="_blank">Download Donation List</button>
             </div>
             <div ng-if="participantGifts.totalNumber == 0">
               No donations found.
@@ -155,7 +127,6 @@
               </h2>
               <news-feed-list items="newsFeed.items"></news-feed-list>
             </div>
-          </div>
           </div>
         </div>
       </div>
