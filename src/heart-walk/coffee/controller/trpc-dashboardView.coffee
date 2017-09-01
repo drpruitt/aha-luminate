@@ -177,10 +177,10 @@ angular.module 'trPcControllers'
                 percent = $scope.participantProgress.percent
                 if $scope.participantProgress.goal isnt 0
                   percent = Math.ceil(($scope.participantProgress.raised / $scope.participantProgress.goal) * 100)
-                if percent < 2
-                  percent = 2
-                if percent > 98
-                  percent = 98
+                # if percent < 2
+                #  percent = 2
+                # if percent > 98
+                #  percent = 98
                 $scope.participantProgress.percent = percent
               , 500
             if $scope.participantRegistration.teamId and $scope.participantRegistration.teamId isnt '-1'

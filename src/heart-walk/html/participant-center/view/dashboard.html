@@ -85,7 +85,16 @@
               <button class="btn btn-primary-inverted" ng-click="toggleGiftNotification(false)" ng-if="participantRegistration.receiveGiftNotification == 'true'">Turn Off Emails</button>
             </div>
           </div>
-          
+          <div class="manage_walk_items clearfix">
+            <div class="pull-left">
+              <div class="manage_walk_headers">Enter Cash of Checks:</div>
+              <p>Enter offline donations here:</p>
+            </div>
+            <div class="pull-right">
+              <button class="btn btn-primary-inverted" ng-click="addOfflineGift('personal')" ng-if="teamraiserConfig.personalOfflineGiftsAllowed == 'true'">Edit Donations</button>
+            </div>
+          </div>
+        
           <div style="display:none;">
           <div class="heart-user-gifts">
             <div class="heart-user-gifts__header clearfix">
