@@ -95,38 +95,38 @@
             </div>
           </div>
         </div>
-        <div class="clearfix">
-          <div class="heart_pc_my_donors clearfix">
-            <div class="clearfix">
-              <h2 class="pull-left">My Donors</h2>
-              <button class="btn btn-primary-inverted pull-right" ng-click="TRParticipantDownload/Personal_Donations.csv?download_type=personal_donations&fr_id={{frId}}" target="_blank">Download Donation List</button>
-            </div>
-            <div ng-if="participantGifts.totalNumber == 0">
-              No donations found.
-            </div>
-            <gift-list gifts="participantGifts.gifts" sort-column="participantGifts.sortColumn" sort-ascending="participantGifts.sortAscending" sort-gifts="sortGifts" delete-gift="deleteGift" acknowledge-gift="acknowledgeGift" thank-donor="thankDonor" ng-if="participantGifts.totalNumber && participantGifts.totalNumber != 0"></gift-list>
-            <div class="heart-list-pagination" ng-if="participantGifts.totalNumber > 10">
-              <ul uib-pagination direction-links="false" items-per-page="10" total-items="participantGifts.totalNumber" max-size="10" ng-model="participantGifts.page" ng-change="getGifts()"></ul>
-            </div>
+      </div>
+      <div class="clearfix">
+        <div class="heart_pc_my_donors clearfix">
+          <div class="clearfix">
+            <h2 class="pull-left">My Donors</h2>
+            <button class="btn btn-primary-inverted pull-right" ng-click="TRParticipantDownload/Personal_Donations.csv?download_type=personal_donations&fr_id={{frId}}" target="_blank">Download Donation List</button>
           </div>
-          <div class="heart-news-center" ng-cloak>
-            <div ng-if="newsFeed.totalNumber == 0">
-              <h2>
-                Welcome to Heart Walk!
-              </h2>
-              <p>
-                You are joining nearly 1 million people at 305 events across the country to build healthier lives, free of cardiovascular diseases and stroke. As a benefit for you and to help you on your journey toward a healthy and active lifestyle we invite you to join the American Heart Association's Healthy For Good movement.
-              </p>
-              <p>
-                Healthy For Good will engage you in new, simple and innovative ways to improve your health. Join the American Heart Association's Healthy For Good revolution and start the journey with us. Visit <a href="http://www.heart.org/healthyforgood" target="_blank">heart.org/healthyforgood</a>.
-              </p>
-            </div>
-            <div ng-if="newsFeed.totalNumber > 0">
-              <h2>
-                News Center
-              </h2>
-              <news-feed-list items="newsFeed.items"></news-feed-list>
-            </div>
+          <div ng-if="participantGifts.totalNumber == 0">
+            No donations found.
+          </div>
+          <gift-list gifts="participantGifts.gifts" sort-column="participantGifts.sortColumn" sort-ascending="participantGifts.sortAscending" sort-gifts="sortGifts" delete-gift="deleteGift" acknowledge-gift="acknowledgeGift" thank-donor="thankDonor" ng-if="participantGifts.totalNumber && participantGifts.totalNumber != 0"></gift-list>
+          <div class="heart-list-pagination" ng-if="participantGifts.totalNumber > 10">
+            <ul uib-pagination direction-links="false" items-per-page="10" total-items="participantGifts.totalNumber" max-size="10" ng-model="participantGifts.page" ng-change="getGifts()"></ul>
+          </div>
+        </div>
+        <div class="heart-news-center" ng-cloak>
+          <div ng-if="newsFeed.totalNumber == 0">
+            <h2>
+              Welcome to Heart Walk!
+            </h2>
+            <p>
+              You are joining nearly 1 million people at 305 events across the country to build healthier lives, free of cardiovascular diseases and stroke. As a benefit for you and to help you on your journey toward a healthy and active lifestyle we invite you to join the American Heart Association's Healthy For Good movement.
+            </p>
+            <p>
+              Healthy For Good will engage you in new, simple and innovative ways to improve your health. Join the American Heart Association's Healthy For Good revolution and start the journey with us. Visit <a href="http://www.heart.org/healthyforgood" target="_blank">heart.org/healthyforgood</a>.
+            </p>
+          </div>
+          <div ng-if="newsFeed.totalNumber > 0">
+            <h2>
+              News Center
+            </h2>
+            <news-feed-list items="newsFeed.items"></news-feed-list>
           </div>
         </div>
       </div>
