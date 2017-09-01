@@ -46,8 +46,6 @@ angular.module 'trPcControllers'
             response
         $scope.dashboardPromises.push recentActivityPromise
       $scope.getRecentActivity()
-      
-      console.log 'testPC'
 
       $scope.participantRank = {}
       $scope.topParticipants = {}
@@ -141,7 +139,7 @@ angular.module 'trPcControllers'
                 $scope.teamGifts.page = 1
                 $scope.getTeamGifts()
               closeAddOfflineGiftModal()
-      
+
       $scope.participantProgress = 
         raised: 0
         raisedFormatted: '$0'
