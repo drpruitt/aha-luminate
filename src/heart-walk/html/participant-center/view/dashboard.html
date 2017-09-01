@@ -99,7 +99,7 @@
           <div class="heart_pc_my_donors clearfix">
             <div class="clearfix">
               <h2 class="pull-left">My Donors</h2>
-              <button class="btn btn-primary-inverted pull-right" ng-href="TRParticipantDownload/Personal_Donations.csv?download_type=personal_donations&fr_id={{frId}}" target="_blank">Download Donation List</button>
+              <button class="btn btn-primary-inverted pull-right" ng-click="TRParticipantDownload/Personal_Donations.csv?download_type=personal_donations&fr_id={{frId}}" target="_blank">Download Donation List</button>
             </div>
             <div ng-if="participantGifts.totalNumber == 0">
               No donations found.
