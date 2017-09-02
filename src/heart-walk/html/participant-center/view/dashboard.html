@@ -59,7 +59,7 @@
           <h2>Manage My Walk:</h2>
           <div class="manage_walk_items clearfix">
             <div class="pull-left">
-              <div class="manage_walk_headers">My Fundraising URL:</div>
+              <div class="manage_walk_header">My Fundraising URL:</div>
               <p>{{personalPageUrl}}</p>
             </div>
             <div class="pull-right">
@@ -68,7 +68,7 @@
           </div>
           <div class="manage_walk_items clearfix">
             <div class="pull-left">
-              <div class="manage_walk_headers">Survivor:</div>
+              <div class="manage_walk_header">Survivor:</div>
               <p>Brenda, you are being recognized as a survivor.</p>
             </div>
             <div class="pull-right">
@@ -77,7 +77,7 @@
           </div>
           <div class="manage_walk_items clearfix">
             <div class="pull-left">
-              <div class="manage_walk_headers">Donation Notifications:</div>
+              <div class="manage_walk_header">Donation Notifications:</div>
               <p>Turn on email notifications when I receive a donation.</p>
             </div>
             <div class="pull-right">
@@ -87,11 +87,11 @@
           </div>
           <div class="manage_walk_items clearfix">
             <div class="pull-left">
-              <div class="manage_walk_headers">Enter Cash of Checks:</div>
-              <p>Enter offline donations here:</p>
+              <div class="manage_walk_header">Enter Cash of Checks:</div>
+              <p>Enter offline donations here.</p>
             </div>
             <div class="pull-right">
-              <button class="btn btn-primary-inverted" ng-click="addOfflineGift('personal')" ng-if="teamraiserConfig.personalOfflineGiftsAllowed == 'true'">Edit Donations</button>
+              <button class="btn btn-primary-inverted" ng-click="addOfflineGift('personal')" ng-if="teamraiserConfig.personalOfflineGiftsAllowed == 'true'">Enter Donations</button>
             </div>
           </div>
         </div>
@@ -136,6 +136,156 @@
       <uib-tab-heading>
         My Team
       </uib-tab-heading>
+      <div class="clearfix">
+        <div ng-if="constituent">
+          <h1 ng-if="teamInfo.name">
+            My Team: {{teamInfo.name}}
+          </h1>
+          <h1 ng-if="!teamInfo.name">
+            My Team
+          </h1>
+        </div>
+      </div>
+      <div class="clearfix">
+        <div class="heart-page-rail heart-page-rail--participant-center">
+          <h2>Team Progress:</h2>
+          <div class="progress heart_pc_sidebar_thermometer">
+            <div class="progress-bar heart_pc_sidebar_thermometer_fill" ng-style="{'width': teamProgress.percent + '%'}"></div>
+            <span class="heart_pc_sidebar_percentage">{{teamProgress.percent}}%</span>
+          </div>
+          <div class="heart_pc_sidebar_row clearfix">
+            <div class="pull-left">
+                  <p>Raised: {{teamProgress.raisedFormatted}}</p>
+                  <p>Goal: {{teamProgress.goalFormatted}}</p>
+              </div>
+              <div class="pull-right">
+                  <button class="btn btn-primary-inverted" ng-click="editGoal('Team')" ng-if="participantRegistration.aTeamCaptain == 'true'">Edit Goal</button>
+              </div>
+          </div>
+          <div class="heart_pc_sidebar_row clearfix">
+              <p>Share team page:</p>
+              <div addthis:url="{{teamPageUrl}}">
+                <a class="heart_pc_sidebar_sharebtn addthis_button_facebook" ng-href="{{baseUrl}}#">
+                  <i class="fa fa-facebook"></i><span class="sr-only">Facebook</span>
+                </a>
+                <a class="heart_pc_sidebar_sharebtn addthis_button_twitter" ng-href="{{baseUrl}}#">
+                  <i class="fa fa-twitter"></i><span class="sr-only">Twitter</span>
+                </a>
+                <a class="heart_pc_sidebar_sharebtn addthis_button_linkedin" ng-href="{{baseUrl}}#">
+                  <i class="fa fa-linkedin"></i><span class="sr-only">LinkedIn</span>
+                </a>
+              </div>
+          </div>
+        </div>
+        <div class="heart_pc_main_page">
+          <h2>Manage My Team:</h2>
+          <div class="manage_walk_items clearfix">
+            <div class="pull-left">
+              <div class="manage_walk_header">Team's URL:</div>
+              <p>{{teamPageUrl}}</p>
+            </div>
+            <div class="pull-right">
+              <button class="btn btn-primary-inverted" ng-click="editPageUrl('Participant')">Edit URL</button>
+            </div>
+          </div>
+          <div class="manage_walk_items clearfix">
+            <div class="pull-left">
+              <div class="manage_walk_header">Update Team Name:</div>
+              <p>Misspelled? Wrong? Update it here.</p>
+            </div>
+            <div class="pull-right">
+              <button class="btn btn-primary-inverted" ng-click="" ng-if="">Edit Name</button>
+            </div>
+          </div>
+          <div class="manage_walk_items clearfix">
+            <div class="pull-left">
+              <div class="manage_walk_header">Email My Team:</div>
+              <p>Send an email directly to everyone on your team.</p>
+            </div>
+            <div class="pull-right">
+              <button class="btn btn-primary-inverted" ng-click="emailAllTeamMembers()" ng-if="participantRegistration.aTeamCaptain == 'true'">Email Team</button>
+            </div>
+          </div>
+          <div class="manage_walk_items clearfix">
+            <div class="pull-left">
+              <div class="manage_walk_header">Enter a Team Gift:</div>
+              <p>Enter offline donations you receive for your team.</p>
+            </div>
+            <div class="pull-right">
+              <button class="btn btn-primary-inverted" ng-click="addOfflineGift('team')" ng-if="teamraiserConfig.personalOfflineGiftsAllowed == 'true' && ((teamraiserConfig.offlineTeamGifts == 'CAPTAINS' && participantRegistration.aTeamCaptain == 'true') || teamraiserConfig.offlineTeamGifts == 'MEMBERS')">Enter Donations</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix">
+        <div class="heart-team-members">
+          <div class="heart-team-members__header clearfix">
+            <h2>
+              <span ng-bind-html="teamInfo.name"></span> Roster
+            </h2>
+            <div class="dropdown" ng-if="participantRegistration.aTeamCaptain == 'true'">
+              <a data-toggle="dropdown">
+                <i class="glyphicon glyphicon-cog"></i> <u>Tasks</u>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a ng-href="TRParticipantDownload/Team_Roster.csv?download_type=team_roster&fr_id={{frId}}" target="_blank">Download Team Roster</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- TODO: empty state -->
+          <trpc-team-member-list members="teamMembers.members" sort-column="teamMembers.sortColumn" sort-ascending="teamMembers.sortAscending" sort-members="sortTeamMembers" email-team-member="emailTeamMember"></trpc-team-member-list>
+          <div class="heart-list-pagination" ng-if="teamMembers.totalNumber > 10">
+            <ul uib-pagination direction-links="false" items-per-page="10" total-items="teamMembers.totalNumber" max-size="10" ng-model="teamMembers.page" ng-change="getTeamMembers()"></ul>
+          </div>
+        </div>
+        <div class="heart_pc_my_donors clearfix">
+          <div class="clearfix">
+            <h2 class="pull-left" ng-if="teamInfo.name">{{teamInfo.name}} Donors</h2>
+            <h2 class="pull-left" ng-if="!teamInfo.name">Team Donors</h2>
+            <a class="btn btn-primary-inverted pull-right" ng-href="TRParticipantDownload/Personal_Donations.csv?download_type=personal_donations&fr_id={{frId}}" target="_blank">Download Donation List</a>
+          </div>
+          <div ng-if="teamGifts.totalNumber == 0">
+            No donations found.
+          </div>
+          <gift-list gifts="teamGifts.gifts" sort-column="teamGifts.sortColumn" sort-ascending="teamGifts.sortAscending" sort-gifts="sortTeamGifts" delete-gift="deleteTeamGift" acknowledge-gift="acknowledgeGift" thank-donor="thankDonor" ng-if="teamGifts.totalNumber && teamGifts.totalNumber != 0"></gift-list>
+            <div class="heart-list-pagination" ng-if="teamGifts.totalNumber > 10">
+              <ul uib-pagination direction-links="false" items-per-page="10" total-items="teamGifts.totalNumber" max-size="10" ng-model="teamGifts.page" ng-change="getTeamGifts()"></ul>
+          </div>
+        </div>
+        <div class="heart-captains-message heart-captains-message--highlighted" ng-if="(teamCaptainsMessage.message && teamCaptainsMessage.message != '') || teamCaptainsMessage.editable == 'true'">
+          <div class="clearfix">
+            <a class="pull-right" ng-click="editTeamCaptainsMessage()" ng-if="teamCaptainsMessage.editable == 'true' && !teamCaptainsMessage.inEditMode">Edit</a>
+            <a class="pull-right" ng-click="saveTeamCaptainsMessage()" ng-if="teamCaptainsMessage.inEditMode">Save</a>
+            <h2>
+              <span ng-if="teamCaptainsMessage.editable != 'true'">From My Team Captain</span>
+              <span ng-if="teamCaptainsMessage.editable == 'true'">A Message for Your Team</span>
+            </h2>
+          </div>
+          <div ng-if="!teamCaptainsMessage.inEditMode">
+            <div ng-if="teamCaptainsMessage.editable == 'true' && (!teamCaptainsMessage.message || teamCaptainsMessage.message == '')">
+              <span translate="captains_message_empty"></span>
+            </div>
+            <div ng-if="teamCaptainsMessage.message && teamCaptainsMessage.message != ''">
+              {{teamCaptainsMessage.message}}
+            </div>
+          </div>
+          <div ng-if="teamCaptainsMessage.inEditMode">
+            <textarea class="form-control" name="captains_message" placeholder="Enter your message" ng-model="teamCaptainsMessage.message"></textarea>
+          </div>
+        </div>
+        <div class="heart-news-center" ng-if="newsFeed.totalNumber > 0" ng-cloak>
+          <h2>
+            News Center
+          </h2>
+          <news-feed-list items="newsFeed.items"></news-feed-list>
+          <!-- TODO: pagination -->
+        </div>
+      </div>
+
+      
+      <div style="display: none;">
       <div class="heart-dashboard-tab-info clearfix">
         <div class="heart-dashboard-tab-info__text">
           <div ng-if="teamRank.rank == -1">
@@ -327,6 +477,7 @@
             <!-- TODO: pagination -->
           </div>
         </div>
+      </div>
       </div>
     </uib-tab>
     <uib-tab index="2" ng-if="participantRegistration.companyInformation && participantRegistration.companyInformation.companyId && participantRegistration.companyInformation.companyId != -1">
