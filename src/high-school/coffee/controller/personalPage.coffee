@@ -28,7 +28,7 @@ angular.module 'ahaLuminateControllers'
             prizes = response.data.prizes
             angular.forEach prizes, (prize) ->
               if prize.earned_datetime isnt null
-                if prize.id is '3000'
+                if prize.id is 3000
                   $scope.prizes.push
                     priority: 1
                     id: prize.id
@@ -36,7 +36,7 @@ angular.module 'ahaLuminateControllers'
                     sku: prize.sku
                     status: prize.status
                     earned: prize.earned_datetime
-                else if prize.id is '3002'
+                else if prize.id is 3002
                   $scope.prizes.push
                     priority: 2
                     id: prize.id
@@ -44,7 +44,7 @@ angular.module 'ahaLuminateControllers'
                     sku: prize.sku
                     status: prize.status
                     earned: prize.earned_datetime
-                else if prize.id is '3003'
+                else if prize.id is 3003
                   $scope.prizes.push
                     priority: 4
                     id: prize.id
@@ -52,7 +52,7 @@ angular.module 'ahaLuminateControllers'
                     sku: prize.sku
                     status: prize.status
                     earned: prize.earned_datetime
-                else if prize.id is '3001'
+                else if prize.id is 3001
                   $scope.prizes.push
                     priority: 5
                     id: prize.id
@@ -285,6 +285,7 @@ angular.module 'ahaLuminateControllers'
                 $scope.personalPageContent.rich_text = richText
                 $scope.personalPageContent.ng_rich_text = richText
                 $scope.personalPageContent.mode = 'view'
+                BoundlessService.logPersonalPageUpdated()
                 if not $scope.$$phase
                   $scope.$apply()
   ]

@@ -39,10 +39,12 @@ angular.module 'ahaLuminateControllers'
       
       $scope.donationLevels = []
       
-      calculateInstallment = (number, amount) ->
-        $scope.donationInfo.installmentAmount  = amount.toFixed 2
+      calculateInstallment = (number) ->
+        amount = angular.element('.donation-level-total-amount').text()
+        amount = amount.split('$')[1]
+        $scope.donationInfo.installmentAmount = amount
         $scope.donationInfo.numberPayments = number
-        localStorage['installmentAmount'] = amount.toFixed 2
+        localStorage['installmentAmount'] = amount
         localStorage['numberPayments'] = number
       
       installmentDropdown = ->
@@ -50,11 +52,9 @@ angular.module 'ahaLuminateControllers'
         number = Number number.split(':')[1]
         if number is 0
           number = 1
-        if $scope.donationInfo.levelType is 'level'
-          amount = Number($scope.donationInfo.amount.split('$')[1]) / number
-        else
-          amount = Number $scope.donationInfo.amount
-        calculateInstallment number, amount
+        $timeout -> 
+          calculateInstallment(number)
+        , 500
       
       document.getElementById('level_installmentduration').onchange = ->
         installmentDropdown()
@@ -62,7 +62,7 @@ angular.module 'ahaLuminateControllers'
       document.getElementById('level_installmentduration').onblur = ->
         $timeout ->
           installmentDropdown()
-        , 1000
+        , 500
       
       $scope.giftType = (type) ->
         $scope.donationInfo.giftType = type
@@ -73,12 +73,10 @@ angular.module 'ahaLuminateControllers'
           angular.element('#level_installment_row').removeClass 'hidden'
           angular.element('#pstep_finish span').remove()
           $scope.donationInfo.monthly = true
-          if $scope.donationInfo.levelType is 'level'
-            amount = Number $scope.donationInfo.amount.split('$')[1]
-          else
-            amount = Number $scope.donationInfo.amount
           number = 1
-          calculateInstallment number, amount
+          $timeout -> 
+            calculateInstallment(number)
+          , 500
         else
           angular.element('.ym-donation-levels__type--onetime').addClass 'active'
           angular.element('.ym-donation-levels__type--monthly').removeClass 'active'
@@ -91,7 +89,9 @@ angular.module 'ahaLuminateControllers'
             amount = 0
           else
             amount = Number $scope.donationInfo.amount.split('$')[1]
-          calculateInstallment 1, amount
+          $timeout -> 
+            calculateInstallment(number)
+          , 500
       
       $scope.selectLevel = (type, level, amount) ->
         if amount is undefined
@@ -124,7 +124,9 @@ angular.module 'ahaLuminateControllers'
               amount = Number($scope.donationInfo.amount.split('$')[1]) / number
             else
               amount = Number $scope.donationInfo.amount
-            calculateInstallment number, amount
+            $timeout -> 
+              calculateInstallment(number)
+            , 500
           else
             $scope.donationInfo.installmentAmount = amount
             $scope.donationInfo.numberPayments = 1
@@ -149,7 +151,9 @@ angular.module 'ahaLuminateControllers'
           if number is 0
             number = 1
           amount = amount / number
-          calculateInstallment number, amount
+          $timeout -> 
+            calculateInstallment(number)
+          , 500
           angular.element('#level_installmentduration').click()
       
       populateBtnAmt = (type, level) ->
@@ -348,7 +352,8 @@ angular.module 'ahaLuminateControllers'
           resolve()
       
       loadLevels().then ->
-        loadLocalStorage()
+        if $scope.paymentInfoErrors.errors.length > 0
+          loadLocalStorage()
         if $scope.donationInfo.giftType is 'onetime'
           angular.element('#level_installment_row').addClass 'hidden'
         $requiredField = angular.element '.field-required'
