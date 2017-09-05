@@ -17,15 +17,15 @@
         <div class="row profile_box_row">
           <div class="col-sm-4 profile_box">
             <div class="profile_box_icon pull-left"><i class="fa fa-pencil"></i></div>
-            <div class="profile_box_info pull-right">Personalize your page with a photo and your "Why" story.<button class="btn btn-primary">Update your Page</button></div>
+            <div class="profile_box_info pull-right">Personalize your page with a photo and your "Why" story.<a class="btn btn-primary" ng-href="{{personalPageUrl}}">Update your Page</a></div>
           </div>
           <div class="col-sm-4 profile_box">
             <div class="profile_box_icon pull-left"><i class="fa fa-dollar"></i></div>
-            <div class="profile_box_info pull-right">Kick-start your fundraising by donating towards your goal.<button class="btn btn-primary">Make a Donation</button></div>
+            <div class="profile_box_info pull-right">Kick-start your fundraising by donating towards your goal.<a class="btn btn-primary" ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{consId}}">Make a Donation</a></div>
           </div>
           <div class="col-sm-4 profile_box">
             <div class="profile_box_icon pull-left"><i class="fa fa-at"></i></div>
-            <div class="profile_box_info pull-right">Send emails to ask friends to join or donate today.<button class="btn btn-primary">Send an Email</button></div>  
+            <div class="profile_box_info pull-right">Send emails to ask friends to join or donate today.<a class="btn btn-primary" ng-href="{{baseUrl}}#/email/compose">Send an Email</a></div>  
           </div>
         </div>
         <div class="row">
@@ -61,7 +61,7 @@
           </div>
           <div class="heart_pc_sidebar_row clearfix">
               <p>Share my page:</p>
-              <div addthis:url="{{personalPageUrl}}">
+              <div class="addthis_toolbox" addthis:url="{{personalPageUrl}}">
                 <a class="heart_pc_sidebar_sharebtn addthis_button_facebook" ng-href="{{baseUrl}}#">
                   <i class="fa fa-facebook"></i><span class="sr-only">Facebook</span>
                 </a>
