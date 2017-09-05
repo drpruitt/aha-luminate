@@ -194,7 +194,7 @@
               <p>Misspelled? Wrong? Update it here.</p>
             </div>
             <div class="pull-right">
-              <button class="btn btn-primary-inverted" ng-click="" ng-if="">Edit Name</button>
+              <button class="btn btn-primary-inverted">Edit Name</button>
             </div>
           </div>
           <div class="manage_walk_items clearfix">
@@ -220,19 +220,8 @@
       <div class="clearfix">
         <div class="heart-team-members">
           <div class="heart-team-members__header clearfix">
-            <h2>
-              <span ng-bind-html="teamInfo.name"></span> Roster
-            </h2>
-            <div class="dropdown" ng-if="participantRegistration.aTeamCaptain == 'true'">
-              <a data-toggle="dropdown">
-                <i class="glyphicon glyphicon-cog"></i> <u>Tasks</u>
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a ng-href="TRParticipantDownload/Team_Roster.csv?download_type=team_roster&fr_id={{frId}}" target="_blank">Download Team Roster</a>
-                </li>
-              </ul>
-            </div>
+            <h2><span ng-bind-html="teamInfo.name"></span> Roster</h2>
+            <a ng-if="participantRegistration.aTeamCaptain == 'true'" class="btn btn-primary-inverted pull-right" ng-href="TRParticipantDownload/Team_Roster.csv?download_type=team_roster&fr_id={{frId}}" target="_blank">Download Team Roster</a>
           </div>
           <!-- TODO: empty state -->
           <trpc-team-member-list members="teamMembers.members" sort-column="teamMembers.sortColumn" sort-ascending="teamMembers.sortAscending" sort-members="sortTeamMembers" email-team-member="emailTeamMember"></trpc-team-member-list>
