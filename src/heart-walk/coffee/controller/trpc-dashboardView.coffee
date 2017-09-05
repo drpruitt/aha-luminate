@@ -143,7 +143,7 @@ angular.module 'trPcControllers'
       $scope.tellUsWhy = ->
         $scope.tellUsWhyModal = $uibModal.open 
           scope: $scope
-          templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/addOfflineGift.html'
+          templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/tellUsWhy.html'
 
       $scope.participantProgress = 
         raised: 0
