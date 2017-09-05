@@ -307,7 +307,7 @@ angular.module 'trPcControllers'
         if companyGoal is '' or companyGoal is '0'
           $scope.companyGoalInfo.goal = ''
         else
-          $scope.companyGoalInfo.goal = schoolGoal
+          $scope.companyGoalInfo.goal = companyGoal
         $scope.editCompanyGoalModal = $uibModal.open
           scope: $scope
           templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/editCompanyGoal.html'
