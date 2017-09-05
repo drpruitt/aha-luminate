@@ -1002,15 +1002,17 @@
     </div>
   </section>
   <div ng-if="participantRegistration.companyInformation.isCompanyCoordinator != 'true' || location == '/dashboard-student'" ng-cloak>
-    <img class="ym-pc-dashboard-torch-graphic img-responsive" src="../aha-luminate/dist/district-heart/image/district-torch-graphic.png" class="img-responsive" alt="Torch Graphic">
-    <section class="ym-pc-dashboard-coordinators-message-section" aria-label="Note From Your Superintendent" ng-if="coordinatorMessage.message && coordinatorMessage.message != ''" ng-cloak>
-      <div class="ym-pc-dashboard-section-header">
-        <h2 class="h5">
-          Note From Your Superintendent
-        </h2>
-        <div ng-bind-html="coordinatorMessage.message"></div>
-      </div>
-    </section>
+    <div ng-if="coordinatorMessage.message && coordinatorMessage.message != ''" ng-cloak>
+      <img class="ym-pc-dashboard-torch-graphic img-responsive" src="../aha-luminate/dist/district-heart/image/district-torch-graphic.png" alt="Torch Graphic">
+      <section class="ym-pc-dashboard-coordinators-message-section" aria-label="Note From Your Superintendent">
+        <div class="ym-pc-dashboard-section-header">
+          <h2 class="h5">
+            Note From Your Superintendent
+          </h2>
+          <div ng-bind-html="coordinatorMessage.message"></div>
+        </div>
+      </section>
+    </div>
     <section class="ym-pc-dashboard-captain-resources-section" aria-label="Fundriasing Resources" ng-if="participantRegistration.aTeamCaptain == 'true' && location != '/dashboard-student'" ng-cloak>
       <div class="ym-pc-dashboard-section-header">
         <h2 class="h3">
