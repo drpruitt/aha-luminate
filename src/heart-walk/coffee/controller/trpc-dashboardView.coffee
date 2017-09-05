@@ -140,6 +140,11 @@ angular.module 'trPcControllers'
                 $scope.getTeamGifts()
               closeAddOfflineGiftModal()
 
+      $scope.tellUsWhy = ->
+        $scope.tellUsWhyModal = $uibModal.open 
+          scope: $scope
+          templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/addOfflineGift.html'
+
       $scope.participantProgress = 
         raised: 0
         raisedFormatted: '$0'
