@@ -1780,8 +1780,16 @@ main > .container {
     top: 30px;
     background: $brand-white;
     border: 1px solid $inactive-grey;
-    width: 300px;
+    max-width: 200px;
     padding: 10px;
+    
+    @media (min-width: 360px) {
+      max-width: 240px;
+    }
+    
+    @media (min-width: 414px) {
+      max-width: 300px;
+    }
   }
 }
 
@@ -1794,7 +1802,7 @@ main > .container {
 .ym-pc-report-header {
   text-align: center;
   margin: 0 0 28px;
-
+  
   .h5 {
     margin: 0;
   }
