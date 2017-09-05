@@ -145,6 +145,12 @@ angular.module 'trPcControllers'
           scope: $scope
           templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/tellUsWhy.html'
 
+      closeTellUsWhyModal = ->
+        $scope.tellUsWhyModal.close()
+
+      $scope.cancelTellUsWhy = ->
+        closeTellUsWhyModal()
+
       $scope.participantProgress = 
         raised: 0
         raisedFormatted: '$0'
