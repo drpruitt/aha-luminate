@@ -77,7 +77,7 @@
           <div class="heart_pc_sidebar_row clearfix">
             <p><a href="TR?fr_id={{frId}}&amp;pg=entry">{{eventInfo.name}}</a></p>
             <p>Where: xLocationx</p>
-            <p ng-if="eventInfo.event_date && eventInfo.event_date != ''">Date &amp; Time: {{eventInfo.event_date | date : 'EEEE, MMMM d, y'}}</p>
+            <p ng-if="eventInfo.event_date && eventInfo.event_date != ''">Date &amp; Time: {{eventInfo.event_date | date : 'MMMM d'}}</p>
             <button>View Map</button>
           </div>
           <div>Hold <a ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{consId}}">Make a Personal Donation</a></div>
