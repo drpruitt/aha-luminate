@@ -106,7 +106,7 @@ angular.module 'trPcControllers'
                           previousParticipants = []
                           totalNumberResults = 0
                           reportHtml = response.data.getSchoolDetailReport?.report
-                          if reportHtml
+                          if reportHtml and reportHtml.indexOf('<p>No results</p>') is -1
                             $reportTable = angular.element('<div>' + reportHtml + '</div>').find 'table'
                             if $reportTable.length > 0
                               $reportTableRows = $reportTable.find 'tr'
@@ -165,7 +165,7 @@ angular.module 'trPcControllers'
                           previousParticipants = []
                           totalNumberResults = 0
                           reportHtml = response.data.getSchoolDetailReport?.report
-                          if reportHtml
+                          if reportHtml and reportHtml.indexOf('<p>No results</p>') is -1
                             $reportTable = angular.element('<div>' + reportHtml + '</div>').find 'table'
                             if $reportTable.length > 0
                               $reportTableRows = $reportTable.find 'tr'
