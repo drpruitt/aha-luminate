@@ -446,7 +446,11 @@
               </div>
               <div class="heart-page-progress__row clearfix" ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'">
                 <div class="heart-page-progress__related-cta">
-                  <a class="btn btn-primary" ng-href="NTM?fr_id={{frId}}&amp;tr.ntmgmt=company_edit&amp;company_id={{participantRegistration.companyInformation.companyId}}&amp;mfc_pref=T&amp;action=edit_company">
+                  <!--<a class="btn btn-primary" ng-href="NTM?fr_id={{frId}}&amp;tr.ntmgmt=company_edit&amp;company_id={{participantRegistration.companyInformation.companyId}}&amp;mfc_pref=T&amp;action=edit_company">
+                    Edit<br>
+                    Company Goal
+                  </a>-->
+                  <a class="btn btn-primary" href="" ng-click="editCompanyGoal()">
                     Edit<br>
                     Company Goal
                   </a>

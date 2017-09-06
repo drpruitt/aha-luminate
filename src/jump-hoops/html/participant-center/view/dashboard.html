@@ -386,15 +386,17 @@
         </div>
       </div>
     </section>
-    <img class="ym-coordinator-message-monster" src="../aha-luminate/dist/jump-hoops/image/peek_monster.png" alt="Ninja Monster peeking out" ng-if="coordinatorMessage.message && coordinatorMessage.message != ''" ng-cloak>
-    <section class="ym-pc-dashboard-coordinators-message-section" aria-label="Note From Your Teacher" ng-if="coordinatorMessage.message && coordinatorMessage.message != ''" ng-cloak>
-      <div class="ym-pc-dashboard-section-header">
-        <h2 class="h5">
-          Note From Your Teacher
-        </h2>
-        <div ng-bind-html="coordinatorMessage.message"></div>
-      </div>
-    </section>
+    <div ng-if="coordinatorMessage.message && coordinatorMessage.message != ''" ng-cloak>
+      <img class="ym-coordinator-message-monster" src="../aha-luminate/dist/jump-hoops/image/peek_monster.png" alt="Ninja Monster peeking out">
+      <section class="ym-pc-dashboard-coordinators-message-section" aria-label="Note From Your Teacher">
+        <div class="ym-pc-dashboard-section-header">
+          <h2 class="h5">
+            Note From Your Teacher
+          </h2>
+          <div ng-bind-html="coordinatorMessage.message"></div>
+        </div>
+      </section>
+    </div>
   </div>
   <div ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true' && location != '/dashboard-student'" ng-cloak>
     <section class="ym-pc-dashboard-coordinator-progress-section" aria-label="Fundraising Progress Meters">
