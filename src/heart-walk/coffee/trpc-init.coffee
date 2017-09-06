@@ -39,6 +39,9 @@ angular.module 'trPcApp'
       $rootScope.consId = $embedRoot.data('cons-id') if $embedRoot.data('cons-id') isnt ''
       $rootScope.authToken = $embedRoot.data('auth-token') if $embedRoot.data('auth-token') isnt ''
       $rootScope.daysToEvent = $embedRoot.data('days-to-event') if $embedRoot.data('days-to-event') isnt ''
+      $rootScope.isSelfDonor = $embedRoot.data('is-self-donor') if $embedRoot.data('is-self-donor') isnt ''
+      $rootScope.emailsSent = $embedRoot.data('emails-sent') if $embedRoot.data('emails-sent') isnt ''
+      $rootScope.updatedProfile = $embedRoot.data('updated-profile') if $embedRoot.data('updated-profile') isnt ''
       $rootScope.device = 
         isMobile: $embedRoot.data('device-is-mobile')
         mobileType: $embedRoot.data('device-mobile-type')
