@@ -201,16 +201,10 @@ angular.module 'ahaLuminateControllers'
             createTeam = response.data.coordinator?.enable_team
             $rootScope.createTeam.schoolName = response.data.coordinator?.company_name
             if createTeam is 'False'
-              #window.location = luminateExtend.global.path.nonsecure + 'TRR?fr_id=' + frId + '&pg=tfind&fr_tm_opt=existing&s_frTJoin=&company_id=' + schoolId + '&s_frCompanyId=' + schoolId
-              window.location = 'http://heartdev.convio.net/site/TRR?fr_id=' + frId + '&pg=tfind&fr_tm_opt=existing&s_frTJoin=&company_id=' + schoolId + '&s_frCompanyId=' + schoolId
+              window.location = luminateExtend.global.path.nonsecure + 'TRR?fr_id=' + frId + '&pg=tfind&fr_tm_opt=existing&s_frTJoin=&company_id=' + schoolId + '&s_frCompanyId=' + schoolId
             else
-              ###
-              pointing to DEV until launch
               $rootScope.createTeam.joinUrl = luminateExtend.global.path.nonsecure + 'TRR?fr_id=' + frId + '&pg=tfind&fr_tm_opt=existing&s_frTJoin=&company_id=' + schoolId + '&s_frCompanyId=' + schoolId
               $rootScope.createTeam.createUrl = luminateExtend.global.path.nonsecure + 'TRR?fr_id=' + frId + '&pg=tfind&fr_tm_opt=new&s_frTJoin=&company_id=' + schoolId + '&s_frCompanyId=' + schoolId
-              ###
-              $rootScope.createTeam.joinUrl = 'http://heartdev.convio.net/site/TRR?fr_id=' + frId + '&pg=tfind&fr_tm_opt=existing&s_frTJoin=&company_id=' + schoolId + '&s_frCompanyId=' + schoolId
-              $rootScope.createTeam.createUrl = 'http://heartdev.convio.net/site/TRR?fr_id=' + frId + '&pg=tfind&fr_tm_opt=new&s_frTJoin=&company_id=' + schoolId + '&s_frCompanyId=' + schoolId
               if not $scope.$$phase
                 $scope.$apply()
               angular.element('#createTeamModal').modal()
