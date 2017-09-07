@@ -112,53 +112,48 @@ angular.module 'trPcControllers'
           suggestedMessages = response.data.getSuggestedMessagesResponse.suggestedMessage
           suggestedMessages = [suggestedMessages] if not angular.isArray suggestedMessages
           $scope.suggestedMessages = []
-          pcSetMessages = 
-            messageID: ''
-            messageBody: ''
-            name: ''
-            header: ''
-          $scope.pcSetMessagesArray = []
+          pcSetMessages = {}
+          $scope.emailTabNames = []
           angular.forEach suggestedMessages, (message) ->
+            pcSetMessages = {}
             if message.active is 'true'
               $scope.suggestedMessages.push message
             switch message.name
               when 'Recruitment: Join My Team'
-                pcSetMessages.header = 'Alpha1'
-                pcSetMessages.name = message.name
+                pcSetMessages.header = 'Join Me at the Walk'
                 pcSetMessages.messageID = message.messageId
-                $scope.pcSetMessagesArray.push pcSetMessages
-                #console.log '1a'
-                #console.log pcSetMessages
-                #console.log pcSetMessagesArray
+                loadSuggestedMessagePC(pcSetMessages)
               when 'Donation Thank You'
-                pcSetMessages.header = 'Alpha2'
-                pcSetMessages.name = message.name
+                pcSetMessages.header = 'Thank Donors'
                 pcSetMessages.messageID = message.messageId
-                $scope.pcSetMessagesArray.push pcSetMessages
-                #console.log '2a'
-                #console.log pcSetMessages
-                #console.log pcSetMessagesArray
+                loadSuggestedMessagePC(pcSetMessages)
               when 'Ask 2: Donation Reminder'
-                pcSetMessages.header = 'Alpha3'
-                pcSetMessages.name = message.name
+                pcSetMessages.header = 'Ask for Donations'
                 pcSetMessages.messageID = message.messageId
-                $scope.pcSetMessagesArray.push pcSetMessages
-                #console.log '3a'
-                #console.log pcSetMessages
-                #console.log pcSetMessagesArray
+                loadSuggestedMessagePC(pcSetMessages)
               when 'Re-Recruit Last Year\'s Team'
-                pcSetMessages.header = 'Alpha4'
-                pcSetMessages.name = message.name
+                pcSetMessages.header = 'Follow-Up Message'
                 pcSetMessages.messageID = message.messageId
-                $scope.pcSetMessagesArray.push pcSetMessages
-                #console.log '4a'
-                #console.log pcSetMessages
-                #console.log pcSetMessagesArray
-          console.log 'update', $scope.pcSetMessagesArray
+                loadSuggestedMessagePC(pcSetMessages)
+          console.log 'update', $scope.emailTabNames
           response
       $scope.emailPromises.push suggestedMessagesPromise
       
-      
+      loadSuggestedMessagePC = (pcSetMessages) ->
+        pcSetMessages.content = ''
+        if pcSetMessages.messageID is ''
+          console.log 'message id was blank'
+        else
+          TeamraiserEmailService.getSuggestedMessage 'message_id=' + pcSetMessages.messageID
+            .then (response) ->
+              if response.data.errorResponse
+                # TODO
+              else
+                messageInfo = response.data.getSuggestedMessageResponse.messageInfo
+                if messageInfo
+                  pcSetMessages.content = messageInfo.messageBody
+        $scope.emailTabNames.push pcSetMessages
+
       personalizedGreetingEnabledPromise = TeamraiserEventService.getEventDataParameter 'edp_type=boolean&edp_name=F2F_CENTER_TAF_PERSONALIZED_SALUTATION_ENABLED'
         .then (response) ->
           $scope.personalizedSalutationEnabled = response.data.getEventDataParameterResponse.booleanValue is 'true'
@@ -212,8 +207,8 @@ angular.module 'trPcControllers'
         ]
       ]      
 
-
-      $scope.emailTabNames = [
+      ###
+      $scope.emailTabNames1 = [
         {
           header: 'Ask for Donations'
           content: 'The headers and the content all reside in angular/coffee files and this menu and content are all created dynmically via bootstrap/Angular.'
@@ -231,7 +226,7 @@ angular.module 'trPcControllers'
           content: '4'
         }          
       ]
-      console.log $scope.emailTabNames
+      ###
       
       $scope.$watchGroup ['emailComposer.subject', 'emailComposer.message_body'], ->
         subject = $scope.emailComposer.subject
