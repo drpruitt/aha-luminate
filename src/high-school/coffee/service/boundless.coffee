@@ -17,10 +17,9 @@ angular.module 'ahaLuminateApp'
       
       getRollupTotals: ->
         if $rootScope.tablePrefix is 'heartdev'
-          # TODO
-        else
-          # url = 'https://aha-highschool.boundlessnetwork.com/api/schools/totals'
           url = 'https://aha-hs-staging.boundlessnetwork.com/api/schools/totals'
+        else
+          url = 'https://aha-highschool.boundlessnetwork.com/api/schools/totals'
         $http.jsonp($sce.trustAsResourceUrl(url), jsonpCallbackParam: 'callback')
           .then (response) ->
             response
