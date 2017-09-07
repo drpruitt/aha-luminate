@@ -154,7 +154,7 @@ angular.module 'trPcControllers'
                 #console.log '4a'
                 #console.log pcSetMessages
                 #console.log pcSetMessagesArray
-          console.log $scope.pcSetMessagesArray
+          console.log 'update', $scope.pcSetMessagesArray
           response
       $scope.emailPromises.push suggestedMessagesPromise
       
