@@ -15,6 +15,8 @@ angular.module 'trPcControllers'
       $scope.messageId = $routeParams.messageId
       
       $scope.emailPromises = []
+
+      xyz = ''
       
       $scope.getMessageCounts = (refresh) ->
         $scope.messageCounts = {}
@@ -110,11 +112,44 @@ angular.module 'trPcControllers'
           suggestedMessages = response.data.getSuggestedMessagesResponse.suggestedMessage
           suggestedMessages = [suggestedMessages] if not angular.isArray suggestedMessages
           $scope.suggestedMessages = []
+          pcSetMessages = 
+            messageID: ''
+            messageBody: ''
+            name: ''
+          $scope.pcSetMessagesArray = []
           angular.forEach suggestedMessages, (message) ->
             if message.active is 'true'
               $scope.suggestedMessages.push message
+            switch message.name
+              when 'Recruitment: Join My Team'
+                pcSetMessages.name = message.name
+                pcSetMessages.messageID = message.messageId
+                $scope.pcSetMessagesArray.push pcSetMessages
+                console.log '1'
+                console.log pcSetMessages
+              when 'Donation Thank You'
+                pcSetMessages.name = message.name
+                pcSetMessages.messageID = message.messageId
+                $scope.pcSetMessagesArray.push pcSetMessages
+                console.log '2'
+                console.log pcSetMessages
+              when 'Ask 2: Donation Reminder'
+                pcSetMessages.name = message.name
+                pcSetMessages.messageID = message.messageId
+                $scope.pcSetMessagesArray.push pcSetMessages
+                console.log '3'
+                console.log pcSetMessages
+              when 'Re-Recruit Last Year\'s Team'
+                pcSetMessages.name = message.name
+                pcSetMessages.messageID = message.messageId
+                $scope.pcSetMessagesArray.push pcSetMessages
+                console.log '4'
+                console.log pcSetMessages
+          console.log $scope.pcSetMessagesArray
+          #console.log $scope.suggestedMessages
           response
       $scope.emailPromises.push suggestedMessagesPromise
+      
       
       personalizedGreetingEnabledPromise = TeamraiserEventService.getEventDataParameter 'edp_type=boolean&edp_name=F2F_CENTER_TAF_PERSONALIZED_SALUTATION_ENABLED'
         .then (response) ->
@@ -167,7 +202,8 @@ angular.module 'trPcControllers'
           'undo'
           'redo'
         ]
-      ]
+      ]      
+
 
       $scope.emailTabNames = [
         {
@@ -176,7 +212,7 @@ angular.module 'trPcControllers'
         }
         {
           header: 'Thank Donors'
-          content: '2'
+          content: xyz
         }
         {
           header: 'Follow-Up Message'
@@ -294,4 +330,3 @@ angular.module 'trPcControllers'
               setEmailComposerDefaults()
 
   ]
-console.log 'tab1xx'
