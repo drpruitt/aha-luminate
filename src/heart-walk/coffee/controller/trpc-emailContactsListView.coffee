@@ -89,7 +89,7 @@ angular.module 'trPcControllers'
             $scope.emailPromises.push contactsPromise
           $scope.getContacts()
           $scope.getAllContacts = ->
-            if !$scope.addressBookContacts.getAllPage
+            if not $scope.addressBookContacts.getAllPage
               $scope.addressBookContacts.allContacts = []
               $scope.addressBookContacts.getAllPage = 0
             pageNumber = $scope.addressBookContacts.getAllPage
