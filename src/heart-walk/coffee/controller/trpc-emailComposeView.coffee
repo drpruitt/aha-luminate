@@ -116,37 +116,45 @@ angular.module 'trPcControllers'
             messageID: ''
             messageBody: ''
             name: ''
+            header: ''
           $scope.pcSetMessagesArray = []
           angular.forEach suggestedMessages, (message) ->
             if message.active is 'true'
               $scope.suggestedMessages.push message
             switch message.name
               when 'Recruitment: Join My Team'
+                pcSetMessages.header = 'Alpha1'
                 pcSetMessages.name = message.name
                 pcSetMessages.messageID = message.messageId
                 $scope.pcSetMessagesArray.push pcSetMessages
-                console.log '1'
-                console.log pcSetMessages
+                #console.log '1a'
+                #console.log pcSetMessages
+                #console.log pcSetMessagesArray
               when 'Donation Thank You'
+                pcSetMessages.header = 'Alpha2'
                 pcSetMessages.name = message.name
                 pcSetMessages.messageID = message.messageId
                 $scope.pcSetMessagesArray.push pcSetMessages
-                console.log '2'
-                console.log pcSetMessages
+                #console.log '2a'
+                #console.log pcSetMessages
+                #console.log pcSetMessagesArray
               when 'Ask 2: Donation Reminder'
+                pcSetMessages.header = 'Alpha3'
                 pcSetMessages.name = message.name
                 pcSetMessages.messageID = message.messageId
                 $scope.pcSetMessagesArray.push pcSetMessages
-                console.log '3'
-                console.log pcSetMessages
+                #console.log '3a'
+                #console.log pcSetMessages
+                #console.log pcSetMessagesArray
               when 'Re-Recruit Last Year\'s Team'
+                pcSetMessages.header = 'Alpha4'
                 pcSetMessages.name = message.name
                 pcSetMessages.messageID = message.messageId
                 $scope.pcSetMessagesArray.push pcSetMessages
-                console.log '4'
-                console.log pcSetMessages
+                #console.log '4a'
+                #console.log pcSetMessages
+                #console.log pcSetMessagesArray
           console.log $scope.pcSetMessagesArray
-          #console.log $scope.suggestedMessages
           response
       $scope.emailPromises.push suggestedMessagesPromise
       
@@ -223,6 +231,7 @@ angular.module 'trPcControllers'
           content: '4'
         }          
       ]
+      console.log $scope.emailTabNames
       
       $scope.$watchGroup ['emailComposer.subject', 'emailComposer.message_body'], ->
         subject = $scope.emailComposer.subject
