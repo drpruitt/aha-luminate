@@ -1777,11 +1777,19 @@ main > .container {
   
   .ym-pc-reports-lists__note--show {
     position: absolute;
-    top: 30px;
+    top: -45px;
     background: $brand-white;
     border: 1px solid $inactive-grey;
-    width: 300px;
+    width: 200px;
     padding: 10px;
+    
+    @media (min-width: 360px) {
+      width: 240px;
+    }
+    
+    @media (min-width: 414px) {
+      width: 300px;
+    }
   }
 }
 
@@ -1794,7 +1802,7 @@ main > .container {
 .ym-pc-report-header {
   text-align: center;
   margin: 0 0 28px;
-
+  
   .h5 {
     margin: 0;
   }

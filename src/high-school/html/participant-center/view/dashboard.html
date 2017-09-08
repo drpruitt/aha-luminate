@@ -148,9 +148,10 @@
                     <strong>For your team:</strong> You have <strong>{{teamInfo.numMembers|number}} team members</strong> registered. <span ng-if="teamMemberRegGoal && teamMemberRegGoal != 0" ng-cloak>Keep recruiting to meet your goal of {{teamMemberRegGoal|number}} participants!</span>
                   </p>
                 </div>
+                <!--
                 <p>
                   <strong>For your friends and family:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit!
-                </p>
+                </p>-->
               </div>
               <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email">
                 <strong>Send Email</strong>
@@ -917,15 +918,18 @@
     </section>
   </div>
   <div ng-if="participantRegistration.companyInformation.isCompanyCoordinator != 'true' || location == '/dashboard-student'" ng-cloak>
-    <img class="ym-pc-dashboard-torch-graphic img-responsive" src="../aha-luminate/dist/high-school/image/coordinator-note-icon.png" class="img-responsive" alt="Pencil Graphic">
-    <section class="ym-pc-dashboard-coordinators-message-section" aria-label="Note From Your Event Leader" ng-if="coordinatorMessage.message && coordinatorMessage.message != ''" ng-cloak>
-      <div class="ym-pc-dashboard-section-header">
-        <h2 class="h5">
-          Note From Your Event Leader
-        </h2>
-        <div ng-bind-html="coordinatorMessage.message"></div>
-      </div>
-    </section>
+    <div ng-if="coordinatorMessage.message && coordinatorMessage.message != ''" ng-cloak>
+      <img class="ym-pc-dashboard-torch-graphic img-responsive" src="../aha-luminate/dist/high-school/image/coordinator-note-icon.png" alt="Pencil Graphic">
+      <section class="ym-pc-dashboard-coordinators-message-section" aria-label="Note From Your Event Leader">
+        <div class="ym-pc-dashboard-section-header">
+          <h2 class="h5">
+            Note From Your Event Leader
+          </h2>
+          <div ng-bind-html="coordinatorMessage.message"></div>
+        </div>
+      </section>
+    </div>
+    <!--Hiding Teacher RESOURCES
     <section class="ym-pc-dashboard-captain-resources-section" aria-label="Fundriasing Resources" ng-if="participantRegistration.aTeamCaptain == 'true' && location != '/dashboard-student'" ng-cloak>
       <div class="ym-pc-dashboard-section-header">
         <h2 class="h3">
@@ -980,8 +984,9 @@
           <strong>View All Resources</strong>
         </a>
       </div>
-    </section>
+    </section>-->
   </div>
+  <!--hiding coordinator resources
   <div ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true' && location != '/dashboard-student'" ng-cloak>
     <section class="ym-pc-dashboard-coordinator-resources-section" aria-label="Coordinator Resources">
       <div class="ym-pc-dashboard-section-header">
@@ -1039,6 +1044,7 @@
       </div>
     </section>
   </div>
+  -->
   <section class="ym-pc-dashboard-spread-section event-secondary-medium event-secondary-medium--grid" aria-label="Resources to Spread the Word">
     <div class="ym-pc-dashboard-section-header">
       <h2 class="h3">

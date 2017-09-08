@@ -174,12 +174,12 @@
                           </button>
                         </div>
                         <div class="ym-pc-reports-lists__note" ng-if="participantGift.giftMessage">
-                          <a href="" ng-click="showMessage = !showMessage">
+                          <a href="" ng-click="participantGift.showMessage = !participantGift.showMessage">
                             <strong>
                               See Note&nbsp;<i class="fa fa-chevron-up"></i>
                             </strong>
                           </a>
-                          <div class="ym-pc-reports-lists__note--show" ng-show="showMessage">
+                          <div class="ym-pc-reports-lists__note--show" ng-show="participantGift.showMessage">
                             {{participantGift.giftMessage}}
                           </div>
                         </div>
