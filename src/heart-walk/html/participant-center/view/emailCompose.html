@@ -7,7 +7,7 @@
         <p>Then, when you are ready, click the copy or open button to send in your personal e-mail.</p>
         <div class="message_suggestions">
           <uib-tabset active="active">
-            <uib-tab ng-repeat="tab in emailTabNames" heading="{{tab.header}}">
+            <uib-tab ng-repeat="tab in emailTabNames" heading="{{tab.header}}" active="{{tab.active}}">
               <div class="heart_sample_message" ng-bind-html="tab.content"></div>
             </uib-tab>
           </uib-tabset>

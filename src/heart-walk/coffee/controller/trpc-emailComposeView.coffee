@@ -13,11 +13,11 @@ angular.module 'trPcControllers'
     ($rootScope, $scope, $routeParams, $timeout, $httpParamSerializer, $uibModal, APP_INFO, TeamraiserEventService, TeamraiserEmailService, ContactService) ->
       $scope.messageType = $routeParams.messageType
       $scope.messageId = $routeParams.messageId
-      
+
       $scope.emailPromises = []
 
       xyz = ''
-      
+
       $scope.getMessageCounts = (refresh) ->
         $scope.messageCounts = {}
         messageTypes = [
@@ -33,7 +33,7 @@ angular.module 'trPcControllers'
           if not refresh
             $scope.emailPromises.push messageCountPromise
       $scope.getMessageCounts()
-      
+
       $scope.getContactCounts = ->
         $scope.contactCounts = {}
         contactFilters = [
@@ -52,17 +52,17 @@ angular.module 'trPcControllers'
               response
           $scope.emailPromises.push contactCountPromise
       $scope.getContactCounts()
-      
+
       $scope.resetSelectedContacts = ->
-        $rootScope.selectedContacts = 
+        $rootScope.selectedContacts =
           contacts: []
       if not $rootScope.selectedContacts?.contacts
         $scope.resetSelectedContacts()
-      
+
       setEmailComposerDefaults = ->
         defaultStationeryId = $scope.teamraiserConfig.defaultStationeryId
         selectedContacts = $rootScope.selectedContacts.contacts
-        $scope.emailComposer = 
+        $scope.emailComposer =
           message_id: ''
           recipients: selectedContacts.join ', '
           suggested_message_id: ''
@@ -71,16 +71,16 @@ angular.module 'trPcControllers'
           message_body: ''
           layout_id: if defaultStationeryId is not '-1' then defaultStationeryId else ''
       setEmailComposerDefaults()
-      
+
       setEmailMessageBody = (messageBody = '') ->
         if not messageBody or not angular.isString(messageBody)
           messageBody = ''
         $scope.emailComposer.message_body = messageBody
-      
+
       getEmailMessageBody = ->
         messageBody = $scope.emailComposer.message_body
         messageBody
-      
+
       if $scope.messageType is 'draft' and $scope.messageId
         TeamraiserEmailService.getDraft 'message_id=' + $scope.messageId
           .then (response) ->
@@ -106,14 +106,14 @@ angular.module 'trPcControllers'
                 $scope.emailComposer.subject = messageInfo.subject
                 messageBody = messageInfo.messageBody
                 setEmailMessageBody messageBody
-      
+
+      $scope.emailTabNames = []
       suggestedMessagesPromise = TeamraiserEmailService.getSuggestedMessages()
         .then (response) ->
           suggestedMessages = response.data.getSuggestedMessagesResponse.suggestedMessage
           suggestedMessages = [suggestedMessages] if not angular.isArray suggestedMessages
           $scope.suggestedMessages = []
           pcSetMessages = {}
-          $scope.emailTabNames = []
           angular.forEach suggestedMessages, (message) ->
             pcSetMessages = {}
             if message.active is 'true'
@@ -135,10 +135,9 @@ angular.module 'trPcControllers'
                 pcSetMessages.header = 'Follow-Up Message'
                 pcSetMessages.messageID = message.messageId
                 loadSuggestedMessagePC(pcSetMessages)
-          console.log 'update', $scope.emailTabNames
           response
       $scope.emailPromises.push suggestedMessagesPromise
-      
+
       loadSuggestedMessagePC = (pcSetMessages) ->
         pcSetMessages.content = ''
         if pcSetMessages.messageID is ''
@@ -154,12 +153,20 @@ angular.module 'trPcControllers'
                   pcSetMessages.content = messageInfo.messageBody
         $scope.emailTabNames.push pcSetMessages
 
+
+
+      $scope.activeTab = ->
+        $scope.emailTabNames.filter((pane) ->
+          pane.active
+          console.log '$scope.emailTabNames', $scope.emailTabNames
+        )[0]
+
       personalizedGreetingEnabledPromise = TeamraiserEventService.getEventDataParameter 'edp_type=boolean&edp_name=F2F_CENTER_TAF_PERSONALIZED_SALUTATION_ENABLED'
         .then (response) ->
           $scope.personalizedSalutationEnabled = response.data.getEventDataParameterResponse.booleanValue is 'true'
           response
       $scope.emailPromises.push personalizedGreetingEnabledPromise
-      
+
       $scope.loadSuggestedMessage = ->
         suggested_message_id = $scope.emailComposer.suggested_message_id
         if suggested_message_id is ''
@@ -178,7 +185,7 @@ angular.module 'trPcControllers'
                   setEmailMessageBody messageBody
                   if messageInfo.layoutId
                     $scope.emailComposer.layout_id = messageInfo.layoutId
-      
+
       $scope.textEditorToolbar = [
         [
           'h1'
@@ -205,7 +212,7 @@ angular.module 'trPcControllers'
           'undo'
           'redo'
         ]
-      ]      
+      ]
 
       ###
       $scope.emailTabNames1 = [
@@ -224,10 +231,10 @@ angular.module 'trPcControllers'
         {
           header: 'Join Me at the Walk'
           content: '4'
-        }          
+        }
       ]
       ###
-      
+
       $scope.$watchGroup ['emailComposer.subject', 'emailComposer.message_body'], ->
         subject = $scope.emailComposer.subject
         messageBody = getEmailMessageBody()
@@ -258,8 +265,8 @@ angular.module 'trPcControllers'
                 .then (response) ->
                   # TODO: show saved message to user
           $scope.draftPollTimeout = $timeout saveDraft, 3000
-      
-      $scope.emailPreview = 
+
+      $scope.emailPreview =
         body: ''
 
       TeamraiserEmailService.getMessageLayouts()
@@ -271,13 +278,13 @@ angular.module 'trPcControllers'
             if layouts
               layouts = [layouts] if not angular.isArray layouts
               $scope.stationeryChoices = layouts
-      
+
       $scope.clearEmailAlerts = ->
         if $scope.sendEmailError
           delete $scope.sendEmailError
         if $scope.sendEmailSuccess
           delete $scope.sendEmailSuccess
-      
+
       $scope.previewEmail = ->
         $scope.clearEmailAlerts()
         TeamraiserEmailService.previewMessage $httpParamSerializer($scope.emailComposer)
@@ -289,11 +296,11 @@ angular.module 'trPcControllers'
             else
               messageBody = response.data.getMessagePreviewResponse?.message or ''
               $scope.emailPreview.body = messageBody
-              $scope.emailPreviewModal = $uibModal.open 
+              $scope.emailPreviewModal = $uibModal.open
                 scope: $scope
                 templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/emailPreview.html'
                 size: 'lg'
-      
+
       $scope.selectStationery = ->
         TeamraiserEmailService.previewMessage $httpParamSerializer($scope.emailComposer)
           .then (response) ->
@@ -303,13 +310,13 @@ angular.module 'trPcControllers'
               # TODO
             else
               $scope.emailPreview.body = response.data.getMessagePreviewResponse?.message or ''
-      
+
       closeEmailPreviewModal = ->
         $scope.emailPreviewModal.close()
-      
+
       $scope.cancelEmailPreview = ->
         closeEmailPreviewModal()
-      
+
       $scope.sendEmail = ->
         closeEmailPreviewModal()
         TeamraiserEmailService.sendMessage $httpParamSerializer($scope.emailComposer)
