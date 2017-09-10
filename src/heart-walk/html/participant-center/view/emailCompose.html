@@ -8,7 +8,7 @@
         <div class="message_suggestions">
           <uib-tabset active="active">
             <uib-tab ng-repeat="tab in emailTabNames" heading="{{tab.header}}">
-              <div class="heart_sample_message">{{tab.content}}</div>
+              <div class="heart_sample_message" ng-bind-html="tab.content"></div>
             </uib-tab>
           </uib-tabset>
         </div>
@@ -43,7 +43,7 @@
             </li>
             <li>
               <a ng-href="{{baseUrl}}#/email/message/sentMessage/list">
-                <span class="badge">{{messageCounts.sentMessages}}</span> 
+                <span class="badge">{{messageCounts.sentMessages}}</span>
                 Sent Messages
               </a>
             </li>
@@ -93,11 +93,11 @@
         </a>
         <div class="list-group ng-pc-nav-list-group">
           <a class="list-group-item" ng-href="{{baseUrl}}#/email/message/draft/list">
-            <span class="badge">{{messageCounts.drafts}}</span> 
+            <span class="badge">{{messageCounts.drafts}}</span>
             Drafts
           </a>
           <a class="list-group-item" ng-href="{{baseUrl}}#/email/message/sentMessage/list">
-            <span class="badge">{{messageCounts.sentMessages}}</span> 
+            <span class="badge">{{messageCounts.sentMessages}}</span>
             Sent Mail
           </a>
         </div>
