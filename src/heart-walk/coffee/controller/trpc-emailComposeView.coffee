@@ -153,13 +153,11 @@ angular.module 'trPcControllers'
                   pcSetMessages.content = messageInfo.messageBody
         $scope.emailTabNames.push pcSetMessages
 
-
-
-      $scope.activeTab = ->
-        $scope.emailTabNames.filter((pane) ->
-          pane.active
-          console.log '$scope.emailTabNames', $scope.emailTabNames
-        )[0]
+      $scope.sendEmailOpenEmail = ->
+        copied_message = document.querySelector('.tab-pane.active .heart_sample_message').innerText
+        cleaned_message = copied_message.replace(/(\r\n)+|\r+|\n+|\t+/g, '%0D%0A%0D%0A')
+        window.open = 'mailto:?subject=NeedSubject&body=' + cleaned_message
+        return
 
       personalizedGreetingEnabledPromise = TeamraiserEventService.getEventDataParameter 'edp_type=boolean&edp_name=F2F_CENTER_TAF_PERSONALIZED_SALUTATION_ENABLED'
         .then (response) ->

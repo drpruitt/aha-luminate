@@ -6,14 +6,13 @@
         <p>Want to send an email using your personal e-mail (Gmail, Outlook, Yahoo, etc.)? We’ve got you covered! Select a tab below to see an email template you can use as a starting point.</p>
         <p>Then, when you are ready, click the copy or open button to send in your personal e-mail.</p>
         <div class="message_suggestions">
-          <uib-tabset active="active">
-            <uib-tab ng-repeat="tab in emailTabNames" heading="{{tab.header}}" active="{{tab.active}}">
+          <uib-tabset active="activeEmailTab">
+            <uib-tab ng-repeat="tab in emailTabNames" heading="{{tab.header}}">
               <div class="heart_sample_message" ng-bind-html="tab.content"></div>
             </uib-tab>
           </uib-tabset>
         </div>
         <button ng-click="sendEmailCopyMessage()" class="pc_btn">Copy Message</button><button ng-click="sendEmailOpenEmail()" class="pc_btn">Open in My Default Email</button>
-        <div><pre>{{activeTab()}}</pre></div>
         <p class="email_send_via_FC"><a href="#">Or send an email through your Fundraising Center</a></p>
       </div>
       <div id="send_via_FC">
