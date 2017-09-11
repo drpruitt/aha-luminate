@@ -4,13 +4,15 @@ angular.module 'trPcControllers'
     '$scope'
     '$routeParams'
     '$timeout'
+    '$location'
+    '$anchorScroll'
     '$httpParamSerializer'
     '$uibModal'
     'APP_INFO'
     'TeamraiserEventService'
     'TeamraiserEmailService'
     'ContactService'
-    ($rootScope, $scope, $routeParams, $timeout, $httpParamSerializer, $uibModal, APP_INFO, TeamraiserEventService, TeamraiserEmailService, ContactService) ->
+    ($rootScope, $scope, $routeParams, $timeout, $location, $anchorScroll, $httpParamSerializer, $uibModal, APP_INFO, TeamraiserEventService, TeamraiserEmailService, ContactService) ->
       $scope.messageType = $routeParams.messageType
       $scope.messageId = $routeParams.messageId
 
@@ -154,14 +156,21 @@ angular.module 'trPcControllers'
                   pcSetMessages.subject = messageInfo.subject
         $scope.emailTabNames.push pcSetMessages
 
-      $scope.sendEmailOpenEmail = ->
-        console.log $scope.emailTabNames
-        #console.log activeEmailTab
-        copied_message = document.querySelector('.tab-pane.active .heart_sample_message').innerText
-        cleaned_message = copied_message.replace(/(\r\n)+|\r+|\n+|\t+/g, '%0D%0A%0D%0A')
-        window.location.href = 'mailto:?subject=NeedSubject&body=' + cleaned_message
+      $scope.sendEmailOpenEmail = (messageID) ->
+        angular.forEach $scope.emailTabNames, (message) ->
+          if message.messageID is messageID
+            emailSubject = message.subject
+            emailBody = message.content
+            emailBodyClean1 = emailBody.replace(/<p>/g,"");
+            emailBodyClean2 = emailBodyClean1.replace(/<\/p>/g,"%0D%0A%0D%0A");
+            window.location.href = 'mailto:?subject=' + emailSubject + '&body=' + emailBodyClean2
         return
 
+      $scope.sendViaFC = ->
+        $location.hash 'send_via_FC'
+        $anchorScroll()
+        console.log 'scoool click'
+        return
 
       personalizedGreetingEnabledPromise = TeamraiserEventService.getEventDataParameter 'edp_type=boolean&edp_name=F2F_CENTER_TAF_PERSONALIZED_SALUTATION_ENABLED'
         .then (response) ->
