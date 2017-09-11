@@ -13,8 +13,7 @@
           </uib-tabset>
         </div>
         <button ng-click="sendEmailCopyMessage()" class="pc_btn">Copy Message</button><button ng-click="sendEmailOpenEmail(activeEmailTab)" class="pc_btn">Open in My Default Email</button>
-        <p class="email_send_via_FC"><a href="#">Or send an email through your Fundraising Center</a></p>
-        <div>messageID = {{activeEmailTab}}</div
+        <p class="email_send_via_FC"><a ng-click="sendViaFC()">Or send an email through your Fundraising Center</a></p>
       </div>
       <div id="send_via_FC">
         <h2>Send Emails Through My Fundraising Center</h2>
