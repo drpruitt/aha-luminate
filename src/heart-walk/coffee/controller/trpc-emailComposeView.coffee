@@ -151,13 +151,17 @@ angular.module 'trPcControllers'
                 messageInfo = response.data.getSuggestedMessageResponse.messageInfo
                 if messageInfo
                   pcSetMessages.content = messageInfo.messageBody
+                  pcSetMessages.subject = messageInfo.subject
         $scope.emailTabNames.push pcSetMessages
 
       $scope.sendEmailOpenEmail = ->
+        console.log $scope.emailTabNames
+        #console.log activeEmailTab
         copied_message = document.querySelector('.tab-pane.active .heart_sample_message').innerText
         cleaned_message = copied_message.replace(/(\r\n)+|\r+|\n+|\t+/g, '%0D%0A%0D%0A')
-        window.open = 'mailto:?subject=NeedSubject&body=' + cleaned_message
+        window.location.href = 'mailto:?subject=NeedSubject&body=' + cleaned_message
         return
+
 
       personalizedGreetingEnabledPromise = TeamraiserEventService.getEventDataParameter 'edp_type=boolean&edp_name=F2F_CENTER_TAF_PERSONALIZED_SALUTATION_ENABLED'
         .then (response) ->
