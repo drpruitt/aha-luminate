@@ -7,14 +7,13 @@
         <p>Then, when you are ready, click the copy or open button to send in your personal e-mail.</p>
         <div class="message_suggestions">
           <uib-tabset active="activeEmailTab">
-            <uib-tab ng-repeat="tab in emailTabNames" heading="{{tab.header}}" index="{{tab.messageId}}">
+            <uib-tab ng-repeat="tab in emailTabNames" heading="{{tab.header}}">
               <div class="heart_sample_message" ng-bind-html="tab.content"></div>
             </uib-tab>
           </uib-tabset>
         </div>
         <button ng-click="sendEmailCopyMessage()" class="pc_btn">Copy Message</button><button ng-click="sendEmailOpenEmail()" class="pc_btn">Open in My Default Email</button>
         <p class="email_send_via_FC"><a href="#">Or send an email through your Fundraising Center</a></p>
-        <div>messageID = {{activeEmailTab}}</div
       </div>
       <div id="send_via_FC">
         <h2>Send Emails Through My Fundraising Center</h2>
