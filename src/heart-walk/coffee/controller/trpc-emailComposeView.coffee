@@ -13,13 +13,11 @@ angular.module 'trPcControllers'
     'TeamraiserEmailService'
     'ContactService'
     'ngclipboard'
-    ($rootScope, $scope, $routeParams, $timeout, $location, $anchorScroll, $httpParamSerializer, $uibModal, APP_INFO, TeamraiserEventService, TeamraiserEmailService, ContactService) ->
+    ($rootScope, $scope, $routeParams, $timeout, $location, $anchorScroll, $httpParamSerializer, $uibModal, APP_INFO, TeamraiserEventService, TeamraiserEmailService, ContactService, ngclipboard) ->
       $scope.messageType = $routeParams.messageType
       $scope.messageId = $routeParams.messageId
 
       $scope.emailPromises = []
-
-      xyz = ''
 
       $scope.getMessageCounts = (refresh) ->
         $scope.messageCounts = {}
@@ -170,7 +168,6 @@ angular.module 'trPcControllers'
       $scope.sendViaFC = ->
         $location.hash 'send_via_FC'
         $anchorScroll()
-        console.log 'scoool click'
         return
 
       personalizedGreetingEnabledPromise = TeamraiserEventService.getEventDataParameter 'edp_type=boolean&edp_name=F2F_CENTER_TAF_PERSONALIZED_SALUTATION_ENABLED'
@@ -225,27 +222,6 @@ angular.module 'trPcControllers'
           'redo'
         ]
       ]
-
-      ###
-      $scope.emailTabNames1 = [
-        {
-          header: 'Ask for Donations'
-          content: 'The headers and the content all reside in angular/coffee files and this menu and content are all created dynmically via bootstrap/Angular.'
-        }
-        {
-          header: 'Thank Donors'
-          content: xyz
-        }
-        {
-          header: 'Follow-Up Message'
-          content: '3'
-        }
-        {
-          header: 'Join Me at the Walk'
-          content: '4'
-        }
-      ]
-      ###
 
       $scope.$watchGroup ['emailComposer.subject', 'emailComposer.message_body'], ->
         subject = $scope.emailComposer.subject
