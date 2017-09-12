@@ -12,8 +12,7 @@ angular.module 'trPcControllers'
     'TeamraiserEventService'
     'TeamraiserEmailService'
     'ContactService'
-    'ngclipboard'
-    ($rootScope, $scope, $routeParams, $timeout, $location, $anchorScroll, $httpParamSerializer, $uibModal, APP_INFO, TeamraiserEventService, TeamraiserEmailService, ContactService, ngclipboard) ->
+    ($rootScope, $scope, $routeParams, $timeout, $location, $anchorScroll, $httpParamSerializer, $uibModal, APP_INFO, TeamraiserEventService, TeamraiserEmailService, ContactService) ->
       $scope.messageType = $routeParams.messageType
       $scope.messageId = $routeParams.messageId
 
