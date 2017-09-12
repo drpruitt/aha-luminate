@@ -22,7 +22,7 @@ angular.module 'trPcControllers'
     'ContactService'
     ($rootScope, $scope, $timeout, $filter, $location, $httpParamSerializer, $translate, $uibModal, APP_INFO, ConstituentService, TeamraiserRecentActivityService, TeamraiserRegistrationService, TeamraiserProgressService, TeamraiserGiftService, TeamraiserParticipantService, TeamraiserTeamService, TeamraiserNewsFeedService, TeamraiserCompanyService, TeamraiserShortcutURLService, ContactService) ->
       $scope.dashboardPromises = []
-      
+
       constituentPromise = ConstituentService.getUser()
         .then (response) ->
           if response.data.errorResponse
@@ -31,7 +31,8 @@ angular.module 'trPcControllers'
             $scope.constituent = response.data.getConsResponse
           response
       $scope.dashboardPromises.push constituentPromise
-      
+
+
       $scope.recentActivity = {}
       $scope.getRecentActivity = ->
         recentActivityPromise = TeamraiserRecentActivityService.getRecentActivity()
@@ -74,14 +75,14 @@ angular.module 'trPcControllers'
             $scope.topParticipants.participants = topParticipants
           response
       $scope.dashboardPromises.push topParticipantsPromise
-      
-      $scope.newOfflineGift = 
+
+      $scope.newOfflineGift =
         first_name: ''
         last_name: ''
         gift_amount: ''
-      
+
       $scope.paymentTypeOptions = []
-      
+
       if $scope.teamraiserConfig.offlineGiftTypes.cash is 'true'
         $scope.paymentTypeOptions.push
           value: 'cash'
@@ -98,9 +99,9 @@ angular.module 'trPcControllers'
         $scope.paymentTypeOptions.push
           value: 'later'
           name: 'Pay Later'
-      
+
       $scope.newOfflineGift.payment_type = $scope.paymentTypeOptions[0].value
-      
+
       $scope.addOfflineGift = (giftType) ->
         if giftType is 'team'
           $scope.newOfflineGift.team_gift = 'true'
@@ -110,20 +111,20 @@ angular.module 'trPcControllers'
             delete $scope.newOfflineGift.team_gift
           if $scope.newOfflineGift.team_id
             delete $scope.newOfflineGift.team_id
-        $scope.addOfflineGiftModal = $uibModal.open 
+        $scope.addOfflineGiftModal = $uibModal.open
           scope: $scope
           templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/addOfflineGift.html'
-      
+
       closeAddOfflineGiftModal = ->
         if $scope.newOfflineGift.team_gift
           delete $scope.newOfflineGift.team_gift
         if $scope.newOfflineGift.team_id
           delete $scope.newOfflineGift.team_id
         $scope.addOfflineGiftModal.close()
-      
+
       $scope.cancelAddOfflineGift = ->
         closeAddOfflineGiftModal()
-      
+
       $scope.submitOfflineGift = ->
         TeamraiserGiftService.addGift $httpParamSerializer($scope.newOfflineGift)
           .then (response) ->
@@ -141,32 +142,33 @@ angular.module 'trPcControllers'
               closeAddOfflineGiftModal()
 
       $scope.tellUsWhy = ->
-        $scope.tellUsWhyModal = $uibModal.open 
+        console.log 'inWhy'
+        ConstituentService.getUserInteractions '&list_page_size=50&interaction_type_id=1011'
+          .then (response) ->
+            interactionsX = response.data.getUserInteractionsResponse?.interaction
+            console.log 'int2 = ',interactionsX
+        $scope.tellUsWhyModal = $uibModal.open
           scope: $scope
           templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/tellUsWhy.html'
 
-      closeTellUsWhyModal = ->
-        console.log 'test'
+      $scope.cancelTellUsWhy = ->
         $scope.tellUsWhyModal.close()
 
-      $scope.cancelTellUsWhy = ->
-        closeTellUsWhyModal()
-
-      $scope.participantProgress = 
+      $scope.participantProgress =
         raised: 0
         raisedFormatted: '$0'
         goal: 0
         goalFormatted: '$0'
         percent: 2
       if $scope.participantRegistration.teamId and $scope.participantRegistration.teamId isnt '-1'
-        $scope.teamProgress = 
+        $scope.teamProgress =
           raised: 0
           raisedFormatted: '$0'
           goal: 0
           goalFormatted: '$0'
           percent: 2
       if $scope.participantRegistration.companyInformation and $scope.participantRegistration.companyInformation.companyId and $scope.participantRegistration.companyInformation.companyId isnt -1
-        $scope.companyProgress = 
+        $scope.companyProgress =
           raised: 0
           raisedFormatted: '$0'
           goal: 0
@@ -187,12 +189,12 @@ angular.module 'trPcControllers'
                 percent = $scope.participantProgress.percent
                 if $scope.participantProgress.goal isnt 0
                   percent = Math.ceil(($scope.participantProgress.raised / $scope.participantProgress.goal) * 100)
-                # if percent < 2
-                #  percent = 2
-                # if percent > 98
-                #  percent = 98
-                if percent > 100
-                  percent = 100
+                if percent < 2
+                  percent = 2
+                if percent > 98
+                  percent = 98
+                # if percent > 100
+                  #percent = 100
                 $scope.participantProgress.percent = percent
               , 500
             if $scope.participantRegistration.teamId and $scope.participantRegistration.teamId isnt '-1'
@@ -236,31 +238,31 @@ angular.module 'trPcControllers'
             response
         $scope.dashboardPromises.push fundraisingProgressPromise
       $scope.refreshFundraisingProgress()
-      
+
       $scope.editGoalOptions =
         updateGoalFailure: false
         updateGoalFailureMessage: ''
         updateGoalInput: 0
-      
+
       $scope.closeGoalAlerts = (closeModal) ->
         $scope.editGoalOptions.updateGoalFailure = false
         $scope.editGoalOptions.updateGoalFailureMessage = ''
         if closeModal
           $scope.editGoalModal.close()
-      
+
       $scope.editGoal = (goalType) ->
         $scope.closeGoalAlerts false
         switch goalType
           when 'Participant' then $scope.editGoalOptions.updateGoalInput = Math.floor parseInt($scope.participantProgress.goal) / 100
           when 'Team' then $scope.editGoalOptions.updateGoalInput = Math.floor parseInt($scope.teamProgress.goal) / 100
           else $scope.editGoalOptions.updateGoalInput = 0
-        $scope.editGoalModal = $uibModal.open 
+        $scope.editGoalModal = $uibModal.open
           scope: $scope
           templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/edit' + goalType + 'Goal.html'
-      
+
       $scope.cancelEditGoal = ->
         $scope.editGoalModal.close()
-      
+
       $scope.updateGoal = (goalType) ->
         $scope.closeGoalAlerts false
         switch goalType
@@ -314,7 +316,7 @@ angular.module 'trPcControllers'
             $scope.dashboardPromises.push updateGoalPromise
 
       $scope.companyGoalInfo = {}
-      
+
       $scope.editCompanyGoal = ->
         delete $scope.companyGoalInfo.errorMessage
         companyGoal = $scope.companyProgress.goalFormatted.replace '$', ''
@@ -325,10 +327,10 @@ angular.module 'trPcControllers'
         $scope.editCompanyGoalModal = $uibModal.open
           scope: $scope
           templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/editCompanyGoal.html'
-      
+
       $scope.cancelEditCompanyGoal = ->
         $scope.editCompanyGoalModal.close()
-      
+
       $scope.updateCompanyGoal = ->
         delete $scope.companyGoalInfo.errorMessage
         newGoal = $scope.companyGoalInfo.goal
@@ -342,12 +344,12 @@ angular.module 'trPcControllers'
               $scope.editCompanyGoalModal.close()
               $scope.refreshFundraisingProgress()
               $scope.dashboardPromises.push updateCompanyGoalPromise
-              
+
       $scope.toggleGiftNotification = (receiveGiftNotification) ->
         TeamraiserRegistrationService.updateRegistration 'receive_gift_notification=' + receiveGiftNotification
         $rootScope.participantRegistration.receiveGiftNotification = '' + receiveGiftNotification
-      
-      $scope.participantGifts = 
+
+      $scope.participantGifts =
         sortColumn: 'date_recorded'
         sortAscending: false
         page: 1
@@ -367,7 +369,7 @@ angular.module 'trPcControllers'
                 gifts = [gifts] if not angular.isArray gifts
                 participantGifts = []
                 angular.forEach gifts, (gift) ->
-                  gift.contact = 
+                  gift.contact =
                     firstName: gift.name.first
                     lastName: gift.name.last
                     email: gift.email
@@ -378,7 +380,7 @@ angular.module 'trPcControllers'
             response
         $scope.dashboardPromises.push personalGiftsPromise
       $scope.getGifts()
-      
+
       $scope.sortGifts = (sortColumn) ->
         if $scope.participantGifts.sortColumn is sortColumn
           $scope.participantGifts.sortAscending = !$scope.participantGifts.sortAscending
@@ -387,20 +389,20 @@ angular.module 'trPcControllers'
         $scope.participantGifts.sortColumn = sortColumn
         $scope.participantGifts.page = 1
         $scope.getGifts()
-      
+
       $scope.acknowledgeGift = (contactId) ->
         $scope.acknowledgeGiftContactId = contactId
-        $scope.acknowledgeGiftModal = $uibModal.open 
+        $scope.acknowledgeGiftModal = $uibModal.open
           scope: $scope
           templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/acknowledgeGift.html'
-      
+
       closeAcknowledgeGiftModal = ->
         delete $scope.acknowledgeGiftContactId
         $scope.acknowledgeGiftModal.close()
-      
+
       $scope.cancelAcknowledgeGift = ->
         closeAcknowledgeGiftModal()
-      
+
       $scope.confirmAcknowledgeGift = ->
         if not $scope.acknowledgeGiftContactId
           # TODO
@@ -415,20 +417,20 @@ angular.module 'trPcControllers'
                 $scope.getTeamGifts()
               response
           $scope.dashboardPromises.push acknowledgeGiftPromise
-      
+
       $scope.deleteGift = (giftId) ->
         $scope.deleteGiftId = giftId
-        $scope.deleteGiftModal = $uibModal.open 
+        $scope.deleteGiftModal = $uibModal.open
           scope: $scope
           templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/deleteGift.html'
-      
+
       closeDeleteGiftModal = ->
         delete $scope.deleteGiftId
         $scope.deleteGiftModal.close()
-      
+
       $scope.cancelDeleteGift = ->
         closeDeleteGiftModal()
-      
+
       $scope.confirmDeleteGift = ->
         if not $scope.deleteGiftId
           # TODO
@@ -443,7 +445,7 @@ angular.module 'trPcControllers'
                 $scope.getTeamGifts()
               response
           $scope.dashboardPromises.push deleteGiftPromise
-      
+
       $scope.thankDonor = (contact) ->
         contactData = ''
         if contact.email
@@ -460,9 +462,9 @@ angular.module 'trPcControllers'
           $rootScope.selectedContacts = {}
         $rootScope.selectedContacts.contacts = [contactData]
         $location.path '/email/compose'
-      
+
       if $scope.teamraiserConfig.adminNewsFeedsEnabled is 'true'
-        $scope.newsFeed = 
+        $scope.newsFeed =
           page: 1
         $scope.getNewsFeeds = ->
           pageNumber = $scope.newsFeed.page - 1
@@ -480,7 +482,7 @@ angular.module 'trPcControllers'
         $scope.getNewsFeeds()
       # undocumented update_last_pc2_login parameter required to make news feeds work, see bz #67720
       TeamraiserRegistrationService.updateRegistration 'update_last_pc2_login=true'
-      
+
       if $scope.participantRegistration.teamId and $scope.participantRegistration.teamId isnt '-1'
         teamInfoPromise = TeamraiserTeamService.getTeam()
           .then (response) ->
@@ -488,7 +490,7 @@ angular.module 'trPcControllers'
             if team
               $scope.teamInfo = team
         $scope.dashboardPromises.push teamInfoPromise
-        
+
         $scope.emailAllTeamMembers = ->
           allTeamMemberContacts = []
           angular.forEach $scope.allTeamMemberContacts, (teamMemberContact) ->
@@ -508,7 +510,7 @@ angular.module 'trPcControllers'
             $rootScope.selectedContacts = {}
           $rootScope.selectedContacts.contacts = allTeamMemberContacts
           $location.path '/email/compose'
-        
+
         captainsMessagePromise = TeamraiserTeamService.getCaptainsMessage()
           .then (response) ->
             teamCaptainsMessage = response.data.getCaptainsMessageResponse
@@ -519,10 +521,10 @@ angular.module 'trPcControllers'
               $scope.teamCaptainsMessage.inEditMode = false
             response
         $scope.dashboardPromises.push captainsMessagePromise
-        
+
         $scope.editTeamCaptainsMessage = ->
           $scope.teamCaptainsMessage.inEditMode = true
-        
+
         $scope.saveTeamCaptainsMessage = ->
           updateCaptainsMessagePromise = TeamraiserTeamService.updateCaptainsMessage 'captains_message=' + encodeURIComponent($scope.teamCaptainsMessage.message)
             .then (response) ->
@@ -532,7 +534,7 @@ angular.module 'trPcControllers'
                 $scope.teamCaptainsMessage.inEditMode = false
               response
           $scope.dashboardPromises.push updateCaptainsMessagePromise
-        
+
         $scope.teamRank = {}
         $scope.topTeams = {}
         topTeamsPromise = TeamraiserTeamService.getTeams 'list_sort_column=total&list_ascending=false&list_page_size=500'
@@ -560,8 +562,8 @@ angular.module 'trPcControllers'
               $scope.topTeams.teams = topTeams
             response
         $scope.dashboardPromises.push topTeamsPromise
-        
-        $scope.teamMembers = 
+
+        $scope.teamMembers =
           sortColumn: 'totals.cons_first_name'
           sortAscending: true
           page: 1
@@ -596,7 +598,7 @@ angular.module 'trPcControllers'
                     teamMembers = []
                     angular.forEach teamParticipants, (teamParticipant) ->
                       if teamParticipant.name?.first
-                        teamParticipant.contact = 
+                        teamParticipant.contact =
                           firstName: teamParticipant.name.first
                           lastName: teamParticipant.name.last
                         if Number(teamParticipant.consId) is Number($scope.consId)
@@ -615,7 +617,7 @@ angular.module 'trPcControllers'
               response
           $scope.dashboardPromises.push teamMemberContactsPromise
         $scope.getTeamMembers()
-        
+
         $scope.sortTeamMembers = (sortColumn) ->
           if $scope.teamMembers.sortColumn is sortColumn
             $scope.teamMembers.sortAscending = !$scope.teamMembers.sortAscending
@@ -624,7 +626,7 @@ angular.module 'trPcControllers'
           $scope.teamMembers.sortColumn = sortColumn
           $scope.teamMembers.page = 1
           $scope.getTeamMembers()
-        
+
         $scope.emailTeamMember = (contact) ->
           contactData = ''
           if contact.email
@@ -641,8 +643,8 @@ angular.module 'trPcControllers'
             $rootScope.selectedContacts = {}
           $rootScope.selectedContacts.contacts = [contactData]
           $location.path '/email/compose'
-        
-        $scope.teamGifts = 
+
+        $scope.teamGifts =
           sortColumn: 'date_recorded'
           sortAscending: false
           page: 1
@@ -660,7 +662,7 @@ angular.module 'trPcControllers'
               else
                 teamGifts = [teamGifts] if not angular.isArray teamGifts
                 angular.forEach teamGifts, (teamGift) ->
-                  teamGift.contact = 
+                  teamGift.contact =
                     firstName: teamGift.name.first
                     lastName: teamGift.name.last
                     email: teamGift.email
@@ -670,7 +672,7 @@ angular.module 'trPcControllers'
               response
           $scope.dashboardPromises.push teamGiftsPromise
         $scope.getTeamGifts()
-        
+
         $scope.sortTeamGifts = (sortColumn) ->
           if $scope.teamGifts.sortColumn is sortColumn
             $scope.teamGifts.sortAscending = !$scope.teamGifts.sortAscending
@@ -679,9 +681,9 @@ angular.module 'trPcControllers'
           $scope.teamGifts.sortColumn = sortColumn
           $scope.teamGifts.page = 1
           $scope.getTeamGifts()
-        
+
         # TODO: deleteTeamGift
-      
+
       if $scope.participantRegistration.companyInformation and $scope.participantRegistration.companyInformation.companyId and $scope.participantRegistration.companyInformation.companyId isnt -1
         companyInfoPromise = TeamraiserCompanyService.getCompany()
           .then (response) ->
@@ -689,7 +691,7 @@ angular.module 'trPcControllers'
             if company
               $scope.companyInfo = company
         $scope.dashboardPromises.push companyInfoPromise
-        
+
         $scope.emailAllCompanyParticipants = ->
           allCompanyParticipantContacts = []
           angular.forEach $scope.allCompanyParticipantContacts, (companyParticipantContact) ->
@@ -709,7 +711,7 @@ angular.module 'trPcControllers'
             $rootScope.selectedContacts = {}
           $rootScope.selectedContacts.contacts = allCompanyParticipantContacts
           $location.path '/email/compose'
-        
+
         $scope.companyRank = {}
         $scope.topCompanies = {}
         topCompanyListPromise = TeamraiserCompanyService.getCompanyList 'include_all_companies=true'
@@ -758,8 +760,8 @@ angular.module 'trPcControllers'
                 $scope.dashboardPromises.push topCompaniesPromise
             response
         $scope.dashboardPromises.push topCompanyListPromise
-        
-        $scope.companyTeams = 
+
+        $scope.companyTeams =
           sortColumn: 't.name'
           sortAscending: true
           page: 1
@@ -782,9 +784,9 @@ angular.module 'trPcControllers'
               response
           $scope.dashboardPromises.push companyTeamsPromise
         $scope.getCompanyTeams()
-        
+
         # TODO: get child company teams
-        
+
         $scope.sortCompanyTeams = (sortColumn) ->
           if $scope.companyTeams.sortColumn is sortColumn
             $scope.companyTeams.sortAscending = !$scope.companyTeams.sortAscending
@@ -793,8 +795,8 @@ angular.module 'trPcControllers'
           $scope.companyTeams.sortColumn = sortColumn
           $scope.companyTeams.page = 1
           $scope.getCompanyTeams()
-        
-        $scope.companyParticipants = 
+
+        $scope.companyParticipants =
           sortColumn: 'totals.cons_first_name'
           sortAscending: true
           page: 1
@@ -829,7 +831,7 @@ angular.module 'trPcControllers'
                     companyParticipants = []
                     angular.forEach participants, (participant) ->
                       if participant.name?.first
-                        participant.contact = 
+                        participant.contact =
                           firstName: participant.name.first
                           lastName: participant.name.last
                         if Number(participant.consId) is Number($scope.consId)
@@ -848,9 +850,9 @@ angular.module 'trPcControllers'
               response
           $scope.dashboardPromises.push companyParticipantContactsPromise
         $scope.getCompanyParticipants()
-        
+
         # TODO: get child company participants
-        
+
         $scope.sortCompanyParticipants = (sortColumn) ->
           if $scope.companyParticipants.sortColumn is sortColumn
             $scope.companyParticipants.sortAscending = !$scope.companyParticipants.sortAscending
@@ -859,7 +861,7 @@ angular.module 'trPcControllers'
           $scope.companyParticipants.sortColumn = sortColumn
           $scope.companyParticipants.page = 1
           $scope.getCompanyParticipants()
-        
+
         $scope.emailCompanyParticipant = (contact) ->
           contactData = ''
           if contact.email
@@ -876,7 +878,7 @@ angular.module 'trPcControllers'
             $rootScope.selectedContacts = {}
           $rootScope.selectedContacts.contacts = [contactData]
           $location.path '/email/compose'
-      
+
       $scope.getParticipantShortcut = ->
         getParticipantShortcutPromise = TeamraiserShortcutURLService.getShortcut()
           .then (response) ->
@@ -894,30 +896,30 @@ angular.module 'trPcControllers'
               , 500
         $scope.dashboardPromises.push getParticipantShortcutPromise
       $scope.getParticipantShortcut()
-      
+
       $scope.editPageUrlOptions =
         updateUrlFailure: false
         updateUrlFailureMessage: ''
         updateUrlInput: ''
-      
+
       $scope.closeUrlAlerts = (closeModal) ->
         $scope.editPageUrlOptions.updateUrlFailure = false
         $scope.editPageUrlOptions.updateUrlFailureMessage = ''
         if closeModal
           $scope.editPageUrlModal.close()
-      
+
       $scope.editPageUrl = (urlType) ->
         $scope.closeUrlAlerts false
         switch urlType
           when 'Participant' then $scope.editPageUrlOptions.updateUrlInput = $scope.participantShortcut?.text or ''
           when 'Team' then $scope.editPageUrlOptions.updateUrlInput = $scope.teamShortcut?.text or ''
-        $scope.editPageUrlModal = $uibModal.open 
+        $scope.editPageUrlModal = $uibModal.open
           scope: $scope
           templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/edit' + urlType + 'PageUrl.html'
-      
+
       $scope.cancelEditPageUrl = ->
         $scope.editPageUrlModal.close()
-      
+
       $scope.updatePageUrl = (urlType) ->
         $scope.closeUrlAlerts false
         dataStr = 'text=' + $scope.editPageUrlOptions.updateUrlInput
@@ -942,7 +944,7 @@ angular.module 'trPcControllers'
                   $scope.editPageUrlModal.close()
                   $scope.getTeamShortcut()
             $scope.dashboardPromises.push updateUrlPromise
-      
+
       if $scope.participantRegistration.teamId and $scope.participantRegistration.teamId isnt '-1'
         if $scope.participantRegistration.aTeamCaptain isnt 'true'
           $scope.teamPageUrl = luminateExtend.global.path.nonsecure + 'TR?fr_id=' + $scope.frId + '&pg=team&team_id=' + $scope.participantRegistration.teamId
@@ -964,7 +966,7 @@ angular.module 'trPcControllers'
                   , 500
             $scope.dashboardPromises.push getTeamShortcutPromise
           $scope.getTeamShortcut()
-      
+
       if $scope.participantRegistration.companyInformation and $scope.participantRegistration.companyInformation.companyId and $scope.participantRegistration.companyInformation.companyId isnt -1
         if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
           $scope.companyPageUrl = luminateExtend.global.path.nonsecure + 'TR?fr_id=' + $scope.frId + '&pg=company&company_id=' + $scope.participantRegistration.companyInformation.companyId
