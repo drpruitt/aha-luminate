@@ -1,0 +1,27 @@
+<form ng-submit="LBwelcomeBack()">
+  <div class="modal-header">
+    <h2 class="modal-title">
+      Thank You for Registering
+    </h2>
+  </div>
+  <div class="modal-body">
+    <div>
+        <p><span ng-if="constituent.name && constituent.name.first">{{constituent.name.first}}</span><span ng-if="!constituent.name.first">Participant</span>, you are now in your Fundraising Center where you can update your story, send emails, and find resources to hit your fundraising goal.</p>
+        <p>Our first tip to you: be sure to Share Your Why by updating your personal page.</p>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="clearfix">
+      <div class="pull-left">
+        <button type="button" class="btn btn-primary-inverted text-uppercase" ng-click="cancelWelcomeBack()">Not Right Now</span>
+        </button>
+      </div>
+      <div class="pull-right">
+        <button type="submit" class="btn btn-primary text-uppercase">
+          Update My Page
+        </button>
+      </div>
+    </div>
+    <div class="lb_skip_link"><a ng-click="LBskipUpdatePage()">Skip this step</a></div>
+  </div>
+<form>

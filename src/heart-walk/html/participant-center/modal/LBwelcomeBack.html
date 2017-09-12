@@ -1,0 +1,27 @@
+<form ng-submit="LBwelcomeBack()">
+  <div class="modal-header">
+    <h2 class="modal-title">
+      Welcome Back!
+    </h2>
+  </div>
+  <div class="modal-body">
+    <div>
+        <p><span ng-if="constituent.name && constituent.name.first">{{constituent.name.first}}</span><span ng-if="!constituent.name.first">Participant</span>, we are glad to have you back in your Fundraising Center.</p>
+        <p>Our tip to you: be sure to Share Your Why by updating your personal page. Updating your page shows others your commitment to raise funds to save lives from heart disease and stroke.</p>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="clearfix">
+      <div class="pull-left">
+        <button type="button" class="btn btn-primary-inverted text-uppercase" ng-click="cancelWelcomeBack()">Not Right Now</span>
+        </button>
+      </div>
+      <div class="pull-right">
+        <button type="submit" class="btn btn-primary text-uppercase">
+          Update My Page
+        </button>
+      </div>
+    </div>
+    <div class="lb_skip_link"><a ng-click="LBskipUpdatePage()">Skip this step</a></div>
+  </div>
+<form>

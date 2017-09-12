@@ -1,0 +1,27 @@
+<form ng-submit="LBdonate()">
+  <div class="modal-header">
+    <h2 class="modal-title">
+      Wear Your Heart on Your Sleeve
+    </h2>
+  </div>
+  <div class="modal-body">
+    <div>
+        <p><span ng-if="constituent.name && constituent.name.first">{{constituent.name.first}}</span><span ng-if="!constituent.name.first">Participant</span>, did you know that if you raise $100, you’d get a Heart Walk t-shirt to wear at the Walk? It’s true!</p>
+        <p>Our tip to you: make sure you make a donation towards your fundraising goal! This shows your commitment to fundraise to those around you.</p>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="clearfix">
+      <div class="pull-left">
+        <button type="button" class="btn btn-primary-inverted text-uppercase" ng-click="cancelDonate()">Not Right Now</span>
+        </button>
+      </div>
+      <div class="pull-right">
+        <button type="submit" class="btn btn-primary text-uppercase">
+          Make a Donation
+        </button>
+      </div>
+    </div>
+    <div class="lb_skip_link"><a ng-click="LBskipDonate()">Skip this step</a></div>
+  </div>
+<form>
