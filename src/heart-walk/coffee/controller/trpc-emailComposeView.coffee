@@ -120,19 +120,19 @@ angular.module 'trPcControllers'
               $scope.suggestedMessages.push message
             switch message.name
               when 'Recruitment: Join My Team'
-                pcSetMessages.header = 'Join Me at the Walk'
+                pcSetMessages.header = 'Join Me'
+                pcSetMessages.messageID = message.messageId
+                loadSuggestedMessagePC(pcSetMessages)
+              when 'Recruitment: Thank You'
+                pcSetMessages.header = 'Team Message'
+                pcSetMessages.messageID = message.messageId
+                loadSuggestedMessagePC(pcSetMessages)
+              when 'Ask 1: Donation Solicitation'
+                pcSetMessages.header = 'Ask for Donations'
                 pcSetMessages.messageID = message.messageId
                 loadSuggestedMessagePC(pcSetMessages)
               when 'Donation Thank You'
                 pcSetMessages.header = 'Thank Donors'
-                pcSetMessages.messageID = message.messageId
-                loadSuggestedMessagePC(pcSetMessages)
-              when 'Ask 2: Donation Reminder'
-                pcSetMessages.header = 'Ask for Donations'
-                pcSetMessages.messageID = message.messageId
-                loadSuggestedMessagePC(pcSetMessages)
-              when 'Re-Recruit Last Year\'s Team'
-                pcSetMessages.header = 'Follow-Up Message'
                 pcSetMessages.messageID = message.messageId
                 loadSuggestedMessagePC(pcSetMessages)
           response
@@ -162,6 +162,28 @@ angular.module 'trPcControllers'
             emailBodyClean1 = emailBody.replace(/<p>/g,"");
             emailBodyClean2 = emailBodyClean1.replace(/<\/p>/g,"%0D%0A%0D%0A");
             window.location.href = 'mailto:?subject=' + emailSubject + '&body=' + emailBodyClean2
+        return
+
+      copyToClipboard = ->
+        var text = document.querySelector('.tab-pane.active .heart_sample_message').innerText
+        if window.clipboardData and window.clipboardData.setData
+          # IE specific code path to prevent textarea being shown while dialog is visible.
+          return clipboardData.setData('Text', text)
+        else if document.queryCommandSupported and document.queryCommandSupported('copy')
+          textarea = document.createElement('textarea')
+          textarea.textContent = text
+          textarea.style.position = 'fixed'
+          # Prevent scrolling to bottom of page in MS Edge.
+          document.body.appendChild textarea
+          textarea.select()
+          try
+            return document.execCommand('copy')
+            # Security exception may be thrown by some browsers.
+          catch ex
+            console.warn 'Copy to clipboard failed.', ex
+            return false
+          finally
+            document.body.removeChild textarea
         return
 
       $scope.sendViaFC = ->

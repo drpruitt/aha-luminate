@@ -1,28 +1,31 @@
-.ng-pc-container, 
+.ng-pc-container,
 .ng-pc-modal {
   .btn.form-control {
     height: auto;
   }
-  
-  .btn, 
+
+  .heart_pc_main_page .btn {
+    min-width: 135px;
+  }
+
+  .btn,
   a.btn {
-    &, 
-    &:link, 
-    &:visited, 
-    &:hover, 
+    &,
+    &:link,
+    &:visited,
+    &:hover,
     &:focus {
       border-width: 1px;
       padding: 5px 5px;
       font-size: 16px;
-      min-width: 135px;
       font-weight: 400;
     }
   }
   .btn.btn-goal {
-    &, 
-    &:link, 
-    &:visited, 
-    &:hover, 
+    &,
+    &:link,
+    &:visited,
+    &:hover,
     &:focus {
       min-width: 80px;
     }
