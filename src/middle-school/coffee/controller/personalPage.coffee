@@ -285,6 +285,7 @@ angular.module 'ahaLuminateControllers'
                 $scope.personalPageContent.rich_text = richText
                 $scope.personalPageContent.ng_rich_text = richText
                 $scope.personalPageContent.mode = 'view'
+                BoundlessService.logPersonalPageUpdated()
                 if not $scope.$$phase
                   $scope.$apply()
   ]

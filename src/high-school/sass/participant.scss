@@ -283,6 +283,15 @@
   }
 }
 
+.ym-activity-box.ym-activity-box--coordinator-reports {
+  @media(min-width: $screen-md-min){
+    width: 44.85%;
+  }
+  @media(min-width: $screen-lg-min){
+    width: 482px;
+  }
+}
+
 .ym-activity-box.ym-activity-box--captain-next-step .ym-next-step, 
 .ym-activity-box.ym-activity-box--next-step .ym-next-step {
   border-color: #faa73a;

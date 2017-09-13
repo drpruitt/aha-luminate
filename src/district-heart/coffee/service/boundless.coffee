@@ -14,8 +14,6 @@ angular.module 'ahaLuminateApp'
           url: url
           headers:
             'Content-Type': 'application/json'
-        .then (response) ->
-          response
       
       getRollupTotals: ->
         if $rootScope.tablePrefix is 'heartdev'
@@ -27,8 +25,6 @@ angular.module 'ahaLuminateApp'
           url: url
           headers:
             'Content-Type': 'application/json'
-        .then (response) ->
-          response
       
       getRollupTotals: ->
         if $rootScope.tablePrefix is 'heartdev'
@@ -51,6 +47,26 @@ angular.module 'ahaLuminateApp'
           url: url
           headers:
             'Content-Type': 'application/json'
-        .then (response) ->
-          response
+      
+      logEmailSent: ->
+        if $rootScope.tablePrefix is 'heartdev'
+          url = 'AjaxProxy?cnv_url=' + encodeURIComponent('https://districtheartchallengestaging.boundlessnetwork.com/api/webhooks/student/emails-sent/' + $rootScope.frId + '/' + $rootScope.consId) + '&auth=' + luminateExtend.global.ajaxProxyAuth
+        else
+          url = 'AjaxProxy?cnv_url=' + encodeURIComponent('https://districtheartchallenge.heart.org/api/webhooks/student/emails-sent/' + $rootScope.frId + '/' + $rootScope.consId) + '&auth=' + luminateExtend.global.ajaxProxyAuth
+        $http
+          method: 'POST'
+          url: url
+          headers:
+            'Content-Type': 'application/json'
+      
+      logPersonalPageUpdated: ->
+        if $rootScope.tablePrefix is 'heartdev'
+          url = 'AjaxProxy?cnv_url=' + encodeURIComponent('https://districtheartchallengestaging.boundlessnetwork.com/api/webhooks/student/personal-page-updated/' + $rootScope.frId + '/' + $rootScope.consId) + '&auth=' + luminateExtend.global.ajaxProxyAuth
+        else
+          url = 'AjaxProxy?cnv_url=' + encodeURIComponent('https://districtheartchallenge.heart.org/api/webhooks/student/personal-page-updated/' + $rootScope.frId + '/' + $rootScope.consId) + '&auth=' + luminateExtend.global.ajaxProxyAuth
+        $http
+          method: 'POST'
+          url: url
+          headers:
+            'Content-Type': 'application/json'
   ]

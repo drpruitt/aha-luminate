@@ -8,10 +8,11 @@ angular.module 'trPcControllers'
     '$httpParamSerializer'
     '$uibModal'
     'APP_INFO'
+    'BoundlessService'
     'NgPcTeamraiserEventService'
     'NgPcTeamraiserEmailService'
     'NgPcContactService'
-    ($rootScope, $scope, $routeParams, $timeout, $sce, $httpParamSerializer, $uibModal, APP_INFO, NgPcTeamraiserEventService, NgPcTeamraiserEmailService, NgPcContactService) ->
+    ($rootScope, $scope, $routeParams, $timeout, $sce, $httpParamSerializer, $uibModal, APP_INFO, BoundlessService, NgPcTeamraiserEventService, NgPcTeamraiserEmailService, NgPcContactService) ->
       $scope.messageType = $routeParams.messageType
       $scope.messageId = $routeParams.messageId
       
@@ -235,7 +236,7 @@ angular.module 'trPcControllers'
       
       $scope.emailPreview = 
         body: ''
-
+      
       NgPcTeamraiserEmailService.getMessageLayouts()
         .then (response) ->
           if response.data.errorResponse
@@ -265,8 +266,17 @@ angular.module 'trPcControllers'
               $scope.emailPreview.body = $sce.trustAsHtml messageBody
               $scope.emailPreviewModal = $uibModal.open 
                 scope: $scope
+                controller: [
+                  '$scope'
+                  ($scope) ->
+                    angular.element('html').addClass 'ym-modal-is-open'
+                    $scope.$on 'modal.closing', ->
+                      angular.element('html').removeClass 'ym-modal-is-open'
+                ]
                 templateUrl: APP_INFO.rootPath + 'dist/district-heart/html/participant-center/modal/emailPreview.html'
                 size: 'lg'
+                windowClass: 'ng-pc-modal ym-modal-full-screen'
+              angular.element('html').addClass 'ym-modal-is-open'
       
       $scope.selectStationery = ->
         NgPcTeamraiserEmailService.previewMessage $httpParamSerializer($scope.emailComposer)
@@ -308,6 +318,6 @@ angular.module 'trPcControllers'
               $scope.resetSelectedContacts()
               setEmailComposerDefaults()
               window.scrollTo 0, 0
-              elem = angular.element '#emailComposer-recipients'
-              elem.focus()
+              angular.element('#emailComposer-recipients').focus()
+              BoundlessService.logEmailSent()
   ]

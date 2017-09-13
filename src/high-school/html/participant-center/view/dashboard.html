@@ -148,9 +148,10 @@
                     <strong>For your team:</strong> You have <strong>{{teamInfo.numMembers|number}} team members</strong> registered. <span ng-if="teamMemberRegGoal && teamMemberRegGoal != 0" ng-cloak>Keep recruiting to meet your goal of {{teamMemberRegGoal|number}} participants!</span>
                   </p>
                 </div>
+                <!--
                 <p>
                   <strong>For your friends and family:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit!
-                </p>
+                </p>-->
               </div>
               <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email">
                 <strong>Send Email</strong>
@@ -889,12 +890,7 @@
               </div>
             </div>
             <div class="ym-pc-student-view-image">
-              <div class="visible-xs">
-                <img class="img-responsive" src="//placeholdit.imgix.net/~text?txt=mobile+placeholder&amp;txtsize=28&amp;&bg=ffff00&amp;txtclr=000000&amp;w=115&amp;h=200&amp;txttrack=0" alt="">
-              </div>
-              <div class="hidden-xs">
-                <img class="img-responsive" src="//placeholdit.imgix.net/~text?txt=placeholder&amp;txtsize=28&amp;&bg=ffff00&amp;txtclr=000000&amp;w=135&amp;h=230&amp;txttrack=0" alt="">
-              </div>
+              <img class="img-responsive" src="../aha-luminate/dist/high-school/image/student-view.jpg" alt="student view of hq preview">
             </div>
           </div>
           <div class="visible-xs">
@@ -918,35 +914,22 @@
             </a>
           </div>
         </div>
-        <div class="col-sm-6 ym-activity-box ym-activity-box--coordinator-prizes">
-          <h3 class="h5">
-            <span class="ym-activity-box-number">4</span> Order Thank-You Gifts
-          </h3>
-          <p>
-            Visit our Thank-You Gift portal to manage and order gifts for your students.
-          </p>
-          <div class="ym-activity-box-cta">
-            <a class="btn btn-md-wide btn-primary" ng-href="https://aha-hs-staging.boundlessnetwork.com/coordinator/login/{{authToken}}/{{sessionCookie}}" target="_blank" ng-if="tablePrefix == 'heartdev'" ng-cloak>
-              <strong>Thank You Gifts</strong>
-            </a>
-            <a class="btn btn-md-wide btn-primary" ng-href="https://aha-highschool.boundlessnetwork.com/coordinator/login/{{authToken}}/{{sessionCookie}}" target="_blank" ng-if="tablePrefix == 'heart'" ng-cloak> 
-              <strong>Thank You Gifts</strong>
-            </a>
-          </div>
-        </div>
       </div>
     </section>
   </div>
   <div ng-if="participantRegistration.companyInformation.isCompanyCoordinator != 'true' || location == '/dashboard-student'" ng-cloak>
-    <img class="ym-pc-dashboard-torch-graphic img-responsive" src="../aha-luminate/dist/high-school/image/coordinator-note-icon.png" class="img-responsive" alt="Pencil Graphic">
-    <section class="ym-pc-dashboard-coordinators-message-section" aria-label="Note From Your Event Leader" ng-if="coordinatorMessage.message && coordinatorMessage.message != ''" ng-cloak>
-      <div class="ym-pc-dashboard-section-header">
-        <h2 class="h5">
-          Note From Your Event Leader
-        </h2>
-        <div ng-bind-html="coordinatorMessage.message"></div>
-      </div>
-    </section>
+    <div ng-if="coordinatorMessage.message && coordinatorMessage.message != ''" ng-cloak>
+      <img class="ym-pc-dashboard-torch-graphic img-responsive" src="../aha-luminate/dist/high-school/image/coordinator-note-icon.png" alt="Pencil Graphic">
+      <section class="ym-pc-dashboard-coordinators-message-section" aria-label="Note From Your Event Leader">
+        <div class="ym-pc-dashboard-section-header">
+          <h2 class="h5">
+            Note From Your Event Leader
+          </h2>
+          <div ng-bind-html="coordinatorMessage.message"></div>
+        </div>
+      </section>
+    </div>
+    <!--Hiding Teacher RESOURCES
     <section class="ym-pc-dashboard-captain-resources-section" aria-label="Fundriasing Resources" ng-if="participantRegistration.aTeamCaptain == 'true' && location != '/dashboard-student'" ng-cloak>
       <div class="ym-pc-dashboard-section-header">
         <h2 class="h3">
@@ -1001,8 +984,9 @@
           <strong>View All Resources</strong>
         </a>
       </div>
-    </section>
+    </section>-->
   </div>
+  <!--hiding coordinator resources
   <div ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true' && location != '/dashboard-student'" ng-cloak>
     <section class="ym-pc-dashboard-coordinator-resources-section" aria-label="Coordinator Resources">
       <div class="ym-pc-dashboard-section-header">
@@ -1060,6 +1044,7 @@
       </div>
     </section>
   </div>
+  -->
   <section class="ym-pc-dashboard-spread-section event-secondary-medium event-secondary-medium--grid" aria-label="Resources to Spread the Word">
     <div class="ym-pc-dashboard-section-header">
       <h2 class="h3">
@@ -1068,7 +1053,7 @@
     </div>
     <div class="ym-pc-dashboard-spread-options">
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-12">
           <div class="ym-pc-dashboard-section-header">
             <h3 class="h5">
               Get Social
@@ -1084,21 +1069,6 @@
             <button type="button" ng-click="delegatedAddThis('.js--personal-social-share', 'twitter')">
               <img src="../aha-luminate/dist/youth-markets/image/twitter-logo.png" alt="Twitter">
             </button>
-          </div>
-        </div>
-        <div class="col-sm-6">
-          <div class="ym-pc-dashboard-section-header">
-            <h3 class="h5">
-              Email Badge
-            </h3>
-          </div>
-          <p>
-            Download an email badge!
-          </p>
-          <div class="text-center">
-            <a class="btn btn-md-wide btn-secondary" ng-href="{{baseUrl}}#" target="_blank">
-              <strong>Download Email Badge</strong> 
-            </a>
           </div>
         </div>
       </div>

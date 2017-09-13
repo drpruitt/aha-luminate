@@ -110,7 +110,7 @@ angular.module 'trPcControllers'
                           previousParticipants = []
                           totalNumberResults = 0
                           reportHtml = response.data.getSchoolDetailReport?.report
-                          if reportHtml
+                          if reportHtml and reportHtml.indexOf('<p>No results</p>') is -1
                             $reportTable = angular.element('<div>' + reportHtml + '</div>').find 'table'
                             if $reportTable.length > 0
                               $reportTableRows = $reportTable.find 'tr'
@@ -147,7 +147,7 @@ angular.module 'trPcControllers'
               $scope.emailPromises.push contactsPromise
           $scope.getContacts()
           $scope.getAllContacts = ->
-            if !$scope.addressBookContacts.getAllPage
+            if not $scope.addressBookContacts.getAllPage
               $scope.addressBookContacts.allContacts = []
               $scope.addressBookContacts.getAllPage = 0
             pageNumber = $scope.addressBookContacts.getAllPage
@@ -169,7 +169,7 @@ angular.module 'trPcControllers'
                           previousParticipants = []
                           totalNumberResults = 0
                           reportHtml = response.data.getSchoolDetailReport?.report
-                          if reportHtml
+                          if reportHtml and reportHtml.indexOf('<p>No results</p>') is -1
                             $reportTable = angular.element('<div>' + reportHtml + '</div>').find 'table'
                             if $reportTable.length > 0
                               $reportTableRows = $reportTable.find 'tr'
@@ -186,6 +186,8 @@ angular.module 'trPcControllers'
                                     lastName: lastName
                                     email: email
                                   previousParticipants.push contact
+                          $scope.addressBookContacts.allContacts = previousParticipants
+                          delete $scope.addressBookContacts.getAllPage
                           $scope.addressBookContacts.contacts = previousParticipants
                           $scope.addressBookContacts.totalNumber = totalNumberResults
             else

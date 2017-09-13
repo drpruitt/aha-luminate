@@ -11,12 +11,13 @@ angular.module 'trPcControllers'
     'NgPcTeamraiserRegistrationService'
     'NgPcTeamraiserProgressService'
     'NgPcTeamraiserTeamService'
+    'NgPcTeamraiserSchoolService'    
     'NgPcTeamraiserGiftService'
     'NgPcContactService'
     'NgPcTeamraiserShortcutURLService'
     'NgPcInteractionService'
     'NgPcTeamraiserCompanyService'
-    ($rootScope, $scope, $filter, $timeout, $uibModal, APP_INFO, ZuriService, BoundlessService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserGiftService, NgPcContactService, NgPcTeamraiserShortcutURLService, NgPcInteractionService, NgPcTeamraiserCompanyService) ->
+    ($rootScope, $scope, $filter, $timeout, $uibModal, APP_INFO, ZuriService, BoundlessService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserSchoolService, NgPcTeamraiserGiftService, NgPcContactService, NgPcTeamraiserShortcutURLService, NgPcInteractionService, NgPcTeamraiserCompanyService) ->
       $scope.dashboardPromises = []
       
       $dataRoot = angular.element '[data-embed-root]'
@@ -161,7 +162,7 @@ angular.module 'trPcControllers'
         
         $scope.updateCoordinatorMessage = ->
           if $scope.coordinatorMessage.interactionId is ''
-            NgPcInteractionService.logInteraction 'interaction_type_id=' + interactionTypeId + '&cons_id=' + $scope.consId + '&interaction_subject=' + $scope.participantRegistration.companyInformation.companyId + '&interaction_body=' + $scope.coordinatorMessage.text
+            NgPcInteractionService.logInteraction 'interaction_type_id=' + interactionTypeId + '&cons_id=' + $scope.consId + '&interaction_subject=' + $scope.participantRegistration.companyInformation.companyId + '&interaction_body=' + ($scope.coordinatorMessage?.text or '')
                 .then (response) ->
                   if response.data.updateConsResponse?.message
                     $scope.coordinatorMessage.successMessage = true
@@ -169,7 +170,7 @@ angular.module 'trPcControllers'
                   else
                     $scope.coordinatorMessage.errorMessage = 'There was an error processing your update. Please try again later.'
           else
-            NgPcInteractionService.updateInteraction 'interaction_id=' + $scope.coordinatorMessage.interactionId + '&cons_id=' + $scope.consId + '&interaction_subject=' + $scope.participantRegistration.companyInformation.companyId + '&interaction_body=' + $scope.coordinatorMessage.text
+            NgPcInteractionService.updateInteraction 'interaction_id=' + $scope.coordinatorMessage.interactionId + '&cons_id=' + $scope.consId + '&interaction_subject=' + $scope.participantRegistration.companyInformation.companyId + '&interaction_body=' + ($scope.coordinatorMessage?.text or '')
               .then (response) ->
                 if response.data.errorResponse 
                   $scope.coordinatorMessage.errorMessage = 'There was an error processing your update. Please try again later.' 
@@ -244,6 +245,36 @@ angular.module 'trPcControllers'
                 $scope.refreshFundraisingProgress()
               response
           $scope.dashboardPromises.push updateTeamGoalPromise
+
+      $scope.schoolGoalInfo = {}
+      
+      $scope.editSchoolGoal = ->
+        delete $scope.schoolGoalInfo.errorMessage
+        schoolGoal = $scope.companyProgress.goalFormatted.replace '$', ''
+        if schoolGoal is '' or schoolGoal is '0'
+          $scope.schoolGoalInfo.goal = ''
+        else
+          $scope.schoolGoalInfo.goal = schoolGoal
+        $scope.editSchoolGoalModal = $uibModal.open
+          scope: $scope
+          templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/editSchoolGoal.html'
+      
+      $scope.cancelEditSchoolGoal = ->
+        $scope.editSchoolGoalModal.close()
+      
+      $scope.updateSchoolGoal = ->
+        delete $scope.schoolGoalInfo.errorMessage
+        newGoal = $scope.schoolGoalInfo.goal
+        if newGoal
+          newGoal = newGoal.replace('$', '').replace /,/g, ''
+        if not newGoal or newGoal is '' or newGoal is '0' or isNaN(newGoal)
+          $scope.schoolGoalInfo.errorMessage = 'Please specify a goal greater than $0.'
+        else
+          updateSchoolGoalPromise = NgPcTeamraiserSchoolService.updateSchoolGoal(newGoal, $scope)
+            .then (response) ->
+              $scope.editSchoolGoalModal.close()
+              $scope.refreshFundraisingProgress()
+          $scope.dashboardPromises.push updateSchoolGoalPromise
       
       $scope.participantGifts =
         sortColumn: 'date_recorded'

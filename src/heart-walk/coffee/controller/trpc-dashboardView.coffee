@@ -300,7 +300,37 @@ angular.module 'trPcControllers'
                   $scope.refreshFundraisingProgress()
                 response
             $scope.dashboardPromises.push updateGoalPromise
+
+      $scope.companyGoalInfo = {}
       
+      $scope.editCompanyGoal = ->
+        delete $scope.companyGoalInfo.errorMessage
+        companyGoal = $scope.companyProgress.goalFormatted.replace '$', ''
+        if companyGoal is '' or companyGoal is '0'
+          $scope.companyGoalInfo.goal = ''
+        else
+          $scope.companyGoalInfo.goal = companyGoal
+        $scope.editCompanyGoalModal = $uibModal.open
+          scope: $scope
+          templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/editCompanyGoal.html'
+      
+      $scope.cancelEditCompanyGoal = ->
+        $scope.editCompanyGoalModal.close()
+      
+      $scope.updateCompanyGoal = ->
+        delete $scope.companyGoalInfo.errorMessage
+        newGoal = $scope.companyGoalInfo.goal
+        if newGoal
+          newGoal = newGoal.replace('$', '').replace /,/g, ''
+        if not newGoal or newGoal is '' or newGoal is '0' or isNaN(newGoal)
+          $scope.companyGoalInfo.errorMessage = 'Please specify a goal greater than $0.'
+        else
+          updateCompanyGoalPromise = TeamraiserCompanyService.updateCompanyGoal(newGoal, $scope)
+            .then (response) ->
+              $scope.editCompanyGoalModal.close()
+              $scope.refreshFundraisingProgress()
+              $scope.dashboardPromises.push updateCompanyGoalPromise
+              
       $scope.toggleGiftNotification = (receiveGiftNotification) ->
         TeamraiserRegistrationService.updateRegistration 'receive_gift_notification=' + receiveGiftNotification
         $rootScope.participantRegistration.receiveGiftNotification = '' + receiveGiftNotification

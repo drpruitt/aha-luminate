@@ -325,14 +325,16 @@
         </div>
       </div>
     </section>
-    <section class="ym-pc-dashboard-coordinators-message-section" aria-label="Note From Your Teacher" ng-if="coordinatorMessage.message && coordinatorMessage.message != ''" ng-cloak>
-      <div class="ym-pc-dashboard-section-header">
-        <h2 class="h5">
-          Note From Your Teacher
-        </h2>
-        <div ng-bind-html="coordinatorMessage.message"></div>
-      </div>
-    </section>
+    <div ng-if="coordinatorMessage.message && coordinatorMessage.message != ''" ng-cloak>
+      <section class="ym-pc-dashboard-coordinators-message-section" aria-label="Note From Your Teacher">
+        <div class="ym-pc-dashboard-section-header">
+          <h2 class="h5">
+            Note From Your Teacher
+          </h2>
+          <div ng-bind-html="coordinatorMessage.message"></div>
+        </div>
+      </section>
+    </div>
   </div>
   <div ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true' && location != '/dashboard-student'" ng-cloak>
     <section class="ym-pc-dashboard-coordinator-progress-section" aria-label="Fundraising Progress Meters">
@@ -750,7 +752,7 @@
             Download our Mobile Fundraising App today!
           </p>
           <div class="ym-pc-dashboard-mobile-downloads">
-            <a ng-href="https://itunes.apple.com/us/app/district-heart-challenge/id1274576384?mt=8" target="_blank">
+            <a ng-href="https://itunes.apple.com/us/app/aha-middle-school/id1274201161?mt=8" target="_blank">
               <img src="../aha-luminate/dist/youth-markets/image/apple-store-logo.png" alt="Download the iPhone App">
             </a> 
             <a ng-href="https://play.google.com/store/apps/details?id=com.charitydynamics.ahatgr" target="_blank">

@@ -69,7 +69,7 @@ angular.module 'trPcControllers'
                     email: gift.email
                   gift.giftAmountFormatted = $filter('currency') gift.giftAmount / 100, '$', 0
                   if gift.giftMessage
-                    gift.showMessage = 'false'
+                    gift.showMessage = false
                   participantGifts.push gift
                 $scope.participantGifts.gifts = participantGifts
               $scope.participantGifts.totalNumber = if response.data.getGiftsResponse.totalNumberResults then Number(response.data.getGiftsResponse.totalNumberResults) else 0
