@@ -1,14 +1,15 @@
 <form ng-submit="updateTellUsWhy()">
   <div class="modal-header">
     <h2 class="modal-title">
-      Update your Why
+      Update Your Why
     </h2>
   </div>
   <div class="modal-body">
-    <div>This is not the proper way to do this. All built via MsgCat. Need to build function that is tied to the Submit which actually updates the TR or other database
+    <div>
+      You will be provided with a personalized video to share with your colleagues, friends and family. Please finish this sentence if you would like to personalize your video: _____ is Why. Examples: My mom, Grandma Mary, Mary Smith. If left blank, it will say "Life is Why"
     </div>
     <div class="form-group">
-      <label for="shortcut_text" class="sr-only">This is the span/translate that matches the MsgCat</label>
+      <label for="question_key_what_is_why" class="sr-only">What is your why?</label>
       <div class="input-group">
         <input type="text" id="question_key_what_is_why" name="question_key_what_is_why" class="form-control" aria-label="some scope">
       </div>
@@ -23,7 +24,7 @@
       </div>
       <div class="pull-right">
         <button type="submit" class="btn btn-primary text-uppercase">
-          Use-MsgCat
+          Update
         </button>
       </div>
     </div>
