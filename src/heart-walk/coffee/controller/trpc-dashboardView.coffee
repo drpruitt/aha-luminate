@@ -141,12 +141,13 @@ angular.module 'trPcControllers'
                 $scope.getTeamGifts()
               closeAddOfflineGiftModal()
 
-      $scope.tellUsWhy = ->
-        console.log 'inWhy'
+      holdForLaterTesting = ->
         ConstituentService.getUserInteractions '&list_page_size=50&interaction_type_id=1011'
           .then (response) ->
             interactionsX = response.data.getUserInteractionsResponse?.interaction
             console.log 'int2 = ',interactionsX
+
+      $scope.tellUsWhy = ->
         $scope.tellUsWhyModal = $uibModal.open
           scope: $scope
           templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/tellUsWhy.html'
