@@ -158,17 +158,17 @@ angular.module 'trPcControllers'
 
 # BEGIN colin edits
 
-$scope.surveyResponsePromises = []
+$scope.checklistSurveyResponsePromises = []
 
-$scope.sqvm =
+$scope.cqvm =
   surveyFields: []
   surveyModel: {}
-  updateSurveyResponses: $scope.updateSurveyResponses
+  updateChecklistSurveyResponses: $scope.updateChecklistSurveyResponses
 
-$scope.getSurveyResponses = ->
-  getSurveyResponsesPromise = TeamraiserSurveyResponseService.getSurveyResponses()
+$scope.getChecklistSurveyResponses = ->
+  getChecklistSurveyResponsesPromise = TeamraiserSurveyResponseService.getChecklistSurveyResponses()
     .then (response) ->
-      surveyResponses = response.data.getSurveyResponsesResponse.responses
+      surveyResponses = response.data.getChecklistSurveyResponsesResponse.responses
       surveyResponses = [surveyResponses] if not angular.isArray surveyResponses
       angular.forEach surveyResponses, (surveyResponse) ->
         if surveyResponse
@@ -227,27 +227,27 @@ $scope.getSurveyResponses = ->
               thisField.templateOptions.options.push
                 name: choice.label
                 value: choice.value
-          $scope.sqvm.surveyFields.push thisField
+          $scope.cqvm.surveyFields.push thisField
           if surveyResponse.responseValue is 'User Provided No Response'
-            $scope.sqvm.surveyModel[thisField.key] = null
+            $scope.cqvm.surveyModel[thisField.key] = null
           else if thisField.type is 'datepicker'
             fieldValue = surveyResponse.responseValue.split "-"
-            $scope.sqvm.surveyModel[thisField.key] = new Date parseInt(fieldValue[0]), parseInt(fieldValue[1])-1, parseInt(fieldValue[2]), parseInt(fieldValue[3].split(":")[0]), parseInt(fieldValue[3].split(":")[1])
+            $scope.cqvm.surveyModel[thisField.key] = new Date parseInt(fieldValue[0]), parseInt(fieldValue[1])-1, parseInt(fieldValue[2]), parseInt(fieldValue[3].split(":")[0]), parseInt(fieldValue[3].split(":")[1])
           else if thisField.type is 'checkbox'
-            $scope.sqvm.surveyModel[thisField.key] = surveyResponse.responseValue is 'true'
+            $scope.cqvm.surveyModel[thisField.key] = surveyResponse.responseValue is 'true'
           else
-            $scope.sqvm.surveyModel[thisField.key] = surveyResponse.responseValue
-      $scope.sqvm.originalFields = angular.copy($scope.sqvm.surveyFields)
+            $scope.cqvm.surveyModel[thisField.key] = surveyResponse.responseValue
+      $scope.cqvm.originalFields = angular.copy($scope.cqvm.surveyFields)
       response
-  $scope.surveyResponsePromises.push getSurveyResponsesPromise
-$scope.getSurveyResponses()
+  $scope.checklistSurveyResponsePromises.push getChecklistSurveyResponsesPromise
+$scope.getChecklistSurveyResponses()
 
 # TODO - I do not want to submit the entire surveyModal, or recreate it as in the other controller. I just want to submit the input name/value pair
 
-$scope.updateSurveyResponses = ($event) ->
+$scope.updateChecklistSurveyResponses = ($event) ->
   $event.preventDefault()
-  updateSurveyResponsesPromise = TeamraiserSurveyResponseService.updateSurveyResponses
-  $httpParamSerializer($scope.sqvm.surveyModel)
+  updateChecklistSurveyResponsesPromise = TeamraiserSurveyResponseService.updateChecklistSurveyResponses
+  $httpParamSerializer($scope.cqvm.surveyModel)
   .then (response) ->
       if response.data?.errorResponse?
         $scope.updateSurveySuccess = false
@@ -263,9 +263,9 @@ $scope.updateSurveyResponses = ($event) ->
       else
         $scope.updateSurveySuccess = true
         $scope.updateSurveyFailure = false
-        $scope.sqvm.surveyOptions.updateInitialValue()
+        $scope.cqvm.surveyOptions.updateInitialValue()
       response
-  $scope.surveyResponsePromises.push updateSurveyResponsesPromise
+  $scope.checklistSurveyResponsePromises.push updateChecklistSurveyResponsesPromise
 
 # END colin edits
 
