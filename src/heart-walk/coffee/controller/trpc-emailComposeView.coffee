@@ -166,7 +166,6 @@ angular.module 'trPcControllers'
 
       $scope.copyToClipboard = ->
         text = document.querySelector('.tab-pane.active .heart_sample_message').innerText
-        console.log text
         if window.clipboardData and window.clipboardData.setData
           return clipboardData.setData('Text', text)
         else if document.queryCommandSupported and document.queryCommandSupported('copy')
