@@ -83,6 +83,20 @@
         </div>
         <div class="heart_pc_main_page">
           <h2>Manage My Walk:</h2>
+          <div class="manage_walk_items clearfix" ng-if="device.isMobile">
+            <div class="pull-left">
+              <div class="manage_walk_header">Text for donations</div>
+              <p>Send a mobile text with a donate link.</p>
+            </div>
+            <div class="pull-right">
+              <a class="btn btn-primary-inverted" ng-href="sms:&body=If you could save lives, would you%3F Join me today by participating or donating to the American Heart Association's Heart Walk: {{nonsecurePath}}TR%3Ffr_id={{frId}}%26pg=personal%26px={{consId}}" ng-if="device.isMobile && device.mobileType == 'ios'">
+                Send Text
+              </a>
+              <a class="btn btn-primary-inverted" ng-href="sms:?body=If you could save lives, would you%3F Join me today by participating or donating to the American Heart Association's Heart Walk: {{nonsecurePath}}TR%3Ffr_id={{frId}}%2526pg=personal%2526px={{consId}}" ng-if="device.isMobile && device.mobileType == 'android'">
+                Send Text
+              </a>
+            </div>
+          </div>
           <div class="manage_walk_items clearfix">
             <div class="pull-left">
               <div class="manage_walk_header">My Fundraising URL:</div>
