@@ -32,11 +32,76 @@
           <div class="col-sm-4 profile_box">
             <div class="profile_box_icon pull-left"><i class="fa fa-question"></i></div>
             <div class="profile_box_info pull-right">Why do you walk? Finish this sentence: "______ is Why."<button class="btn btn-primary" ng-click="tellUsWhy()">Tell Us Your Why</button></div>
+            <!-- BEGIN test reg question fields -->
+            <div class="temporary-div">
+              <form ng-submit="updateSurveyResponses($event)" novalidate>
+                <h3>Reg Question Fields to Update:</h3>
 
+                <div uib-alert class="alert-success" ng-if="updateSurveySuccess" close="resetSurveyAlerts()">
+                  <span translate="survey_save_success"></span>
+                </div>
+                <div uib-alert class="alert-danger" ng-if="updateSurveyFailure" close="resetSurveyAlerts()">
+                  {{updateSurveyFailureMessage}}
+                </div>
+
+                <div class="form-group">
+                  <label for="what_is_why">What is your why?</label>
+                  <div class="input-group">
+                    <input type="text" id="what_is_why" name="question_key_what_is_why" class="form-control" aria-label="" ng-model="sqvm.surveyModel.question_key_what_is_why">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="question_key_hw_shirt_size">What is your t-shirt size? Walkers are eligible for a Heart Walk t-shirt once they have raised $100.</label>
+                  <div class="input-group">
+                    <select name="question_key_hw_shirt_size" id="question_key_hw_shirt_size" class="form-control" aria-label="" ng-model="sqvm.surveyModel.question_key_hw_shirt_size">
+                      <option value="NOREPLY">Please select response</option>
+                      <option value="Small">Small</option>
+                      <option value="Medium">Medium</option>
+                      <option value="Large" selected="selected">Large</option>
+                      <option value="XL">XL</option>
+                      <option value="XXL">XXL</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="question_key_hw_recognize_survivor">Would you like to be recognized as a survivor?</label>
+                  <div class="input-group">
+                    <label class="radio-inline"><input type="radio" name="question_key_hw_recognize_survivor" value="Yes" ng-model="sqvm.surveyModel.question_key_hw_recognize_survivor" aria-label="">Yes</label>
+                    <label class="radio-inline"><input type="radio" name="question_key_hw_recognize_survivor" value="No" ng-model="sqvm.surveyModel.question_key_hw_recognize_survivor" aria-label="">No</label>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="question_key_hw_years_participated">How Many Years have you participated in HeartWalk?</label>
+                  <div class="input-group">
+                    <input type="number" id="question_key_hw_years_participated" name="question_key_hw_years_participated" class="form-control" aria-label="" ng-model="sqvm.surveyModel.question_key_hw_years_participated">
+                  </div>
+                </div>
+
+
+                <div class="clearfix">
+                  <div class="pull-left">
+                    <!-- TODO - add reset to close event ng-click="sqvm.surveyOptions.resetModel()" -->
+                    <button type="button" class="btn btn-primary-inverted text-uppercase" ng-click="cancelTellUsWhy()">
+                      <span translate="class_cancel_link"></span>
+                    </button>
+                  </div>
+                  <div class="pull-right">
+                    <button type="submit" class="btn btn-primary text-uppercase">
+                      Update
+                    </button>
+                  </div>
+                </div>
+
+              </form>
+            </div>
             Survey Responses: <pre>{{sqvm.surveyModel | json}}</pre>
             Cons Details: <pre>{{constituent | json}}</pre><br>
 
           </div>
+          <!-- END test reg question fields -->
           <div class="col-sm-4 profile_box">
             <div class="profile_box_icon pull-left"><i class="fa fa-heart"></i></div>
             <div class="profile_box_info addthis_toolbox pull-right" addthis:url="{{personalPageUrl}}">You'll receive a Heart Walk t-shirt when you raise $100.<a class="btn btn-primary addthis_button_facebook" ng-href="{{baseUrl}}#">Share Your Page</button></div>
@@ -430,8 +495,6 @@
                   </div>
                 </div>
               </form>
-
-
             </div>
             <!-- END test cons fields -->
           </div>
