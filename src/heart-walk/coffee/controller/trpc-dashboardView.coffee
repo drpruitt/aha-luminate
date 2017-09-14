@@ -149,6 +149,18 @@ angular.module 'trPcControllers'
                 console.log 'udpated'
               else
                 console.log 'failed'
+# BEGIN colin edits
+# TODO - turn this into a function so it can be called after an update
+      surveyResponsePromise = TeamraiserSurveyResponseService.getSurveyResponses()
+        .then (response) ->
+          if response.data.errorResponse
+            # TODO
+          else
+            $scope.surveyResponses = response.data.responses
+                  # surveyResponses = [surveyResponses] if not angular.isArray surveyResponses
+      $scope.dashboardPromises.push surveyResponsePromise
+
+# END colin edits
 
       userInteractions = {
         page: 0
