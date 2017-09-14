@@ -25,93 +25,93 @@ angular.module 'trPcControllers'
       $scope.dashboardPromises = []
       $scope.consProfilePromises = []
 
-possibleFields = [
-  'user_name'
-  'name.title'
-  'name.first'
-  'name.middle'
-  'name.last'
-  'name.suffix'
-  'name.prof_suffix'
-  'email.primary_address'
-  'email.accepts_email'
-  'primary_address.street1'
-  'primary_address.street2'
-  'primary_address.street3'
-  'primary_address.city'
-  'primary_address.state'
-  'primary_address.zip'
-  'primary_address.country'
-  'accepts_postal_mail'
-  'home_phone'
-  'birth_date'
-  'gender'
-  'employment.employer'
-  'employment.occupation'
-]
+      possibleFields = [
+        'user_name'
+        'name.title'
+        'name.first'
+        'name.middle'
+        'name.last'
+        'name.suffix'
+        'name.prof_suffix'
+        'email.primary_address'
+        'email.accepts_email'
+        'primary_address.street1'
+        'primary_address.street2'
+        'primary_address.street3'
+        'primary_address.city'
+        'primary_address.state'
+        'primary_address.zip'
+        'primary_address.country'
+        'accepts_postal_mail'
+        'home_phone'
+        'birth_date'
+        'gender'
+        'employment.employer'
+        'employment.occupation'
+      ]
 
-$scope.cpvm =
-  profileFields: []
-  passwordFields: [
-    {
-      type: 'input'
-      key: 'old_password'
-      templateOptions:
-        type: 'password'
-        label: 'Old Password'
-        required: true
-    }
-    {
-      type: 'input'
-      key: 'user_password'
-      templateOptions:
-        type: 'password'
-        label: 'New Password'
-        required: true
-    }
-    {
-      type: 'input'
-      key: 'retype_password'
-      templateOptions:
-        type: 'password'
-        label: 'Retype Password'
-        required: true
-    }
-    {
-      type: 'input'
-      key: 'reminder_hint'
-      templateOptions:
-        type: 'text'
-        label: 'Reminder Hint'
-        required: true
-    }
-  ]
-  profileModel: {}
-  passwordModel:
-    old_password: ''
-    user_password: ''
-    retype_password: ''
-    reminder_hint: ''
-  openChangePassword: $scope.openChangePassword
-  cancelChangePassword: $scope.cancelChangePassword
-  submitChangePassword: $scope.submitChangePassword
-  updateUserProfile: $scope.updateUserProfile
+      $scope.cpvm =
+        profileFields: []
+        passwordFields: [
+          {
+            type: 'input'
+            key: 'old_password'
+            templateOptions:
+              type: 'password'
+              label: 'Old Password'
+              required: true
+          }
+          {
+            type: 'input'
+            key: 'user_password'
+            templateOptions:
+              type: 'password'
+              label: 'New Password'
+              required: true
+          }
+          {
+            type: 'input'
+            key: 'retype_password'
+            templateOptions:
+              type: 'password'
+              label: 'Retype Password'
+              required: true
+          }
+          {
+            type: 'input'
+            key: 'reminder_hint'
+            templateOptions:
+              type: 'text'
+              label: 'Reminder Hint'
+              required: true
+          }
+        ]
+        profileModel: {}
+        passwordModel:
+          old_password: ''
+          user_password: ''
+          retype_password: ''
+          reminder_hint: ''
+        openChangePassword: $scope.openChangePassword
+        cancelChangePassword: $scope.cancelChangePassword
+        submitChangePassword: $scope.submitChangePassword
+        updateUserProfile: $scope.updateUserProfile
 
-$translate [ 'old_password', 'new_password', 'new_password_repeat', 'password_hint' ]
-  .then (translations) ->
-    angular.forEach $scope.cpvm.passwordFields, (passwordField) ->
-      switch passwordField.key
-        when 'old_password' then passwordField.templateOptions.label = translations.old_password
-        when 'user_password' then passwordField.templateOptions.label = translations.new_password
-        when 'retype_password' then passwordField.templateOptions.label = translations.new_password_repeat
-        when 'reminder_hint' then passwordField.templateOptions.label = translations.password_hint
-  , (translationIds) ->
-    angular.forEach $scope.cpvm.passwordFields, (passwordField) ->
-      switch passwordField.key
-        when 'old_password' then passwordField.templateOptions.label = translationIds.old_password
-        when 'user_password' then passwordField.templateOptions.label = translationIds.new_password
-        when 'retype_password' then passwordField.templateOptions.label = translationIds.new_password_repeat
-        when 'reminder_hint' then passwordField.templateOptions.label = translationIds.password_hint
+      $translate [ 'old_password', 'new_password', 'new_password_repeat', 'password_hint' ]
+        .then (translations) ->
+          angular.forEach $scope.cpvm.passwordFields, (passwordField) ->
+            switch passwordField.key
+              when 'old_password' then passwordField.templateOptions.label = translations.old_password
+              when 'user_password' then passwordField.templateOptions.label = translations.new_password
+              when 'retype_password' then passwordField.templateOptions.label = translations.new_password_repeat
+              when 'reminder_hint' then passwordField.templateOptions.label = translations.password_hint
+        , (translationIds) ->
+          angular.forEach $scope.cpvm.passwordFields, (passwordField) ->
+            switch passwordField.key
+              when 'old_password' then passwordField.templateOptions.label = translationIds.old_password
+              when 'user_password' then passwordField.templateOptions.label = translationIds.new_password
+              when 'retype_password' then passwordField.templateOptions.label = translationIds.new_password_repeat
+              when 'reminder_hint' then passwordField.templateOptions.label = translationIds.password_hint
 
       constituentPromise = ConstituentService.getUser()
         .then (response) ->
@@ -354,7 +354,7 @@ $translate [ 'old_password', 'new_password', 'new_password_repeat', 'password_hi
                 console.log 'failed'
 # BEGIN colin edits
 # TODO - turn this into a function so it can be called after an update
-      console.log '133'
+      console.log '135'
 
 
       # begin reg questions update code
