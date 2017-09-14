@@ -151,7 +151,7 @@ angular.module 'trPcControllers'
                 console.log 'failed'
 # BEGIN colin edits
 # TODO - turn this into a function so it can be called after an update
-      console.log '1135'
+      console.log '1137'
       $scope.surveyResponsePromises = []
 
       $scope.sqvm =
