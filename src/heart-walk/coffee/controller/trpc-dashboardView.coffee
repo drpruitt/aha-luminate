@@ -20,7 +20,8 @@ angular.module 'trPcControllers'
     'TeamraiserCompanyService'
     'TeamraiserShortcutURLService'
     'ContactService'
-    ($rootScope, $scope, $timeout, $filter, $location, $httpParamSerializer, $translate, $uibModal, APP_INFO, ConstituentService, TeamraiserRecentActivityService, TeamraiserRegistrationService, TeamraiserProgressService, TeamraiserGiftService, TeamraiserParticipantService, TeamraiserTeamService, TeamraiserNewsFeedService, TeamraiserCompanyService, TeamraiserShortcutURLService, ContactService) ->
+    'TeamraiserSurveyResponseService'
+    ($rootScope, $scope, $timeout, $filter, $location, $httpParamSerializer, $translate, $uibModal, APP_INFO, ConstituentService, TeamraiserRecentActivityService, TeamraiserRegistrationService, TeamraiserProgressService, TeamraiserGiftService, TeamraiserParticipantService, TeamraiserTeamService, TeamraiserNewsFeedService, TeamraiserCompanyService, TeamraiserShortcutURLService, ContactService, TeamraiserSurveyResponseService) ->
       $scope.dashboardPromises = []
 
       constituentPromise = ConstituentService.getUser()
@@ -217,7 +218,7 @@ angular.module 'trPcControllers'
               else if userInteractions.profile is 0
                 console.log 'launch profile lightbox'
               #Need to check for previous login via lastPC2Login and then load the TY for Reging
-              #else 
+              #else
                 #use same modal open as above
             response
       GetUserInt()
