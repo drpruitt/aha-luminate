@@ -151,7 +151,7 @@ angular.module 'trPcControllers'
                 console.log 'failed'
 # BEGIN colin edits
 # TODO - turn this into a function so it can be called after an update
-      console.log '215'
+      console.log '258'
 
       # begin cons profil update code
       $scope.consProfilePromises = []
@@ -224,7 +224,8 @@ angular.module 'trPcControllers'
             if possibleFields.indexOf(userField.name) > -1
               thisField =
                 type: null
-                key: userField.name.replace('.','-')
+                key: userField.name
+                # key: userField.name.replace('.','-')
                 name: userField.name
                 data:
                   dataType: userField.valueType
