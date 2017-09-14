@@ -69,7 +69,7 @@ angular.module 'trPcControllers'
               $scope.cpvm.profileModel[profileField.key] = fieldValue
             if $scope.constituent.reminder_hint?
               $scope.cpvm.passwordModel["reminder_hint"] = $scope.constituent.reminder_hint
-            $scope.cpvm.d.updateInitialValue()
+            $scope.cpvm.profileOptions.updateInitialValue()
             response
         $scope.consProfilePromises.push getUserPromise
 
@@ -265,7 +265,7 @@ angular.module 'trPcControllers'
                 console.log 'failed'
 # BEGIN colin edits
 # TODO - turn this into a function so it can be called after an update
-      console.log '109'
+      console.log '111'
 
 
       # begin reg questions update code
