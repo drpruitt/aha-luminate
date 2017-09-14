@@ -151,21 +151,12 @@ angular.module 'trPcControllers'
                 console.log 'failed'
 # BEGIN colin edits
 # TODO - turn this into a function so it can be called after an update
-      console.log '210'
+      console.log '215'
 
       # begin cons profil update code
       $scope.consProfilePromises = []
 
       possibleFields = [
-        'user_name'
-        'name.title'
-        'name.first'
-        'name.middle'
-        'name.last'
-        'name.suffix'
-        'name.prof_suffix'
-        'email.primary_address'
-        'email.accepts_email'
         'primary_address.street1'
         'primary_address.street2'
         'primary_address.street3'
@@ -173,12 +164,7 @@ angular.module 'trPcControllers'
         'primary_address.state'
         'primary_address.zip'
         'primary_address.country'
-        'accepts_postal_mail'
-        'home_phone'
-        'birth_date'
-        'gender'
-        'employment.employer'
-        'employment.occupation'
+        'mobile_phone'
       ]
 
       $scope.cpvm =
@@ -298,7 +284,8 @@ angular.module 'trPcControllers'
           response
       $scope.consProfilePromises.push listUserFieldsPromise
 
-      $scope.updateUserProfile = ->
+      $scope.updateUserProfile = ($event) ->
+        $event.preventDefault()
         updateUserPromise = ConstituentService.update $httpParamSerializer($scope.cpvm.profileModel)
           .then (response) ->
             if response.data.errorResponse?
@@ -404,8 +391,8 @@ angular.module 'trPcControllers'
         $scope.surveyResponsePromises.push getSurveyResponsesPromise
       $scope.getSurveyResponses()
 
-      $scope.updateSurveyResponses = (e) ->
-        e.preventDefault()
+      $scope.updateSurveyResponses = ($event) ->
+        $event.preventDefault()
         updateSurveyResponsesPromise = TeamraiserSurveyResponseService.updateSurveyResponses $httpParamSerializer($scope.sqvm.surveyModel)
         .then (response) ->
             if response.data?.errorResponse?

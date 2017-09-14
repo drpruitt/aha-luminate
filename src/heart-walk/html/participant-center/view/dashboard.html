@@ -76,7 +76,7 @@
                 <div class="form-group">
                   <label for="question_key_hw_years_participated">How Many Years have you participated in HeartWalk?</label>
                   <div class="input-group">
-                    <input type="number" id="question_key_hw_years_participated" name="question_key_hw_years_participated" class="form-control" aria-label="" ng-model="sqvm.surveyModel.question_key_hw_years_participated">
+                    <input type="text" id="question_key_hw_years_participated" name="question_key_hw_years_participated" class="form-control" aria-label="" ng-model="sqvm.surveyModel.question_key_hw_years_participated">
                   </div>
                 </div>
 
@@ -98,8 +98,8 @@
               </form>
             </div>
             <!-- Survey Responses: <pre>{{sqvm.surveyModel | json}}</pre> -->
-            constituent: <pre>{{constituent | json}}</pre><br>
             cpvm.profileModel: <pre>{{cpvm.profileModel | json}}</pre><br>
+            constituent: <pre>{{constituent | json}}</pre><br>
 
           </div>
           <!-- END test reg question fields -->
@@ -112,7 +112,7 @@
             <div class="profile_box_info pull-right">We're missing your details! Complete your profile now.<button class="btn btn-primary">Update My Profile</button></div>
             <!-- BEGIN test cons fields -->
             <div class="temporary-div">
-              <form>
+              <form ng-submit="updateUserProfile($event)"  novalidate>
                 <h3>Cons Record Fields to Update:</h3>
                 <div uib-alert class="alert-success" ng-if="updateProfileSuccess">
                   <span translate="survey_save_success"></span>
