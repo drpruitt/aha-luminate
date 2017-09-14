@@ -288,8 +288,8 @@ angular.module 'trPcControllers'
 
       $scope.updateUserProfile = ($event) ->
         $event.preventDefault()
-        # updateUserPromise = ConstituentService.update $httpParamSerializer($scope.cpvm.profileModel)
-        updateUserPromise = ConstituentService.update $httpParamSerializer($scope.constituent)
+        updateUserPromise = ConstituentService.update $httpParamSerializer($scope.cpvm.profileModel)
+        # updateUserPromise = ConstituentService.update $httpParamSerializer($scope.constituent)
           .then (response) ->
             if response.data.errorResponse?
               $scope.updateProfileSuccess = false
