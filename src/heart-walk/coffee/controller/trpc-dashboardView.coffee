@@ -151,7 +151,7 @@ angular.module 'trPcControllers'
                 console.log 'failed'
 # BEGIN colin edits
 # TODO - turn this into a function so it can be called after an update
-      console.log '1055'
+      console.log '1100'
       $scope.surveyResponsePromises = []
 
       $scope.sqvm =
@@ -236,8 +236,8 @@ angular.module 'trPcControllers'
         $scope.surveyResponsePromises.push getSurveyResponsesPromise
       $scope.getSurveyResponses()
 
-      $scope.updateSurveyResponses = ($event) ->
-        $event.preventDefault()
+      $scope.updateSurveyResponses = (e) ->
+        e.preventDefault()
         updateSurveyResponsesPromise = TeamraiserSurveyResponseService.updateSurveyResponses $httpParamSerializer($scope.sqvm.surveyModel)
         .then (response) ->
             if response.data?.errorResponse?
