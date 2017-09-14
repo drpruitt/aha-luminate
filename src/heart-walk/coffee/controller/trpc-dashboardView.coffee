@@ -151,7 +151,8 @@ angular.module 'trPcControllers'
                 console.log 'failed'
 # BEGIN colin edits
 # TODO - turn this into a function so it can be called after an update
-      console.log('949');
+      console.log '953'
+
       $scope.getParticipantResponses = ->
         getSurveyResponsesPromise = TeamraiserSurveyResponseService.getSurveyResponses()
           .then (response) ->
@@ -161,7 +162,7 @@ angular.module 'trPcControllers'
               $scope.surveyResponses = response.data.responses
                     # surveyResponses = [surveyResponses] if not angular.isArray surveyResponses
             response
-        $scope.surveyResponsePromises.push getSurveyResponsesPromise
+        # $scope.dashboardPromises.push surveyResponsePromise
       $scope.getParticipantResponses()
 
 # END colin edits
