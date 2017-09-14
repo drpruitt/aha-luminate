@@ -30,9 +30,123 @@ angular.module 'trPcControllers'
             # TODO
           else
             $scope.constituent = response.data.getConsResponse
+            # begin dashboard cons profile update code
+            angular.forEach $scope.cpvm.profileFields, (profileField) ->
+              fieldName = profileField.name
+              fieldValue = null
+              # first check for "custom" fields
+              if fieldName.indexOf("custom_") > -1
+                customFieldType = fieldName.slice(7).replace(/\d+/g,"")
+                if $scope.constituent.custom and $scope.constituent.custom[customFieldType]?
+                  angular.forEach $scope.constituent.custom[customFieldType], (customField) ->
+                    if fieldName is customField.id
+                      fieldValue = customField.content
+              else if fieldName.indexOf(".") > -1
+              # next check for "nested" fields
+                fieldName = fieldName.split "."
+                tempPath = $scope.constituent
+                for i in [0..fieldName.length-1]
+                  if tempPath[fieldName[i]]?
+                    tempPath = tempPath[fieldName[i]]
+                if tempPath and not angular.isObject(tempPath)
+                  fieldValue = tempPath
+              else if $scope.constituent[fieldName] and not angular.isObject($scope.constituent[fieldName])
+              # next check to see if the field exists in getUser response
+                fieldValue = $scope.constituent[fieldName]
+              if fieldValue?
+              # now convert field value from text to appropriate data type
+                switch profileField.data.dataType
+                  when'DATE'
+                    # expected date format is a badly-formed date string: "yyyy-MM-dd-hh:mm"
+                    fieldValue = fieldValue.split "-"
+                    fieldValue = new Date parseInt(fieldValue[0]), parseInt(fieldValue[1])-1, parseInt(fieldValue[2]), parseInt(fieldValue[3].split(":")[0]), parseInt(fieldValue[3].split(":")[1])
+                  when 'BOOLEAN'
+                    fieldValue = fieldValue is 'true'
+                  else
+                    fieldValue = fieldValue
+              else fieldValue = null
+              # finally assign value to model
+              $scope.cpvm.profileModel[profileField.key] = fieldValue
+            if $scope.constituent.reminder_hint?
+              $scope.cpvm.passwordModel["reminder_hint"] = $scope.constituent.reminder_hint
+            $scope.cpvm.d.updateInitialValue()
+            response
+        $scope.consProfilePromises.push getUserPromise
+
+      listUserFieldsPromise = ConstituentService.listUserFields 'access=update'
+        .then (response) ->
+          $scope.userFields = response.data.listConsFieldsResponse.field
+          $scope.userFields = [$scope.userFields] if not angular.isArray $scope.userFields
+          angular.forEach $scope.userFields, (userField) ->
+            if possibleFields.indexOf(userField.name) > -1
+              thisField =
+                type: null
+                key: userField.name.replace('.','-')
+                name: userField.name
+                data:
+                  dataType: userField.valueType
+                  orderInd: possibleFields.indexOf userField.name
+                templateOptions:
+                  label: userField.label
+                  required: userField.required is 'true'
+                  maxChars: userField.maxChars
+              switch userField.valueType
+                when 'BOOLEAN'
+                  thisField.type = 'checkbox'
+                when 'DATE'
+                  thisField.type = 'datepicker'
+                  thisField.templateOptions.placeholder = 'MM/dd/yyyy'
+                  thisField.templateOptions.closeText = 'Close'
+                  thisField.templateOptions.dateOptions =
+                    dateFormat: 'MM/dd/yyyy'
+                  if userField.choices?.choice
+                    minYear = maxYear = userField.choices?.choice[0]
+                    minYear = (if minYear < choice then minYear else choice) for choice in userField.choices.choice
+                    maxYear = (if maxYear > choice then maxYear else choice) for choice in userField.choices.choice
+                    thisField.templateOptions.dateOptions.minDate = new Date minYear, 0, 1
+                    thisField.templateOptions.dateOptions.maxDate = new Date maxYear, 11, 31
+                  thisField.templateOptions.dateAltFormats = [
+                    'dd-MMMM-yyyy'
+                    'yyyy/MM/dd'
+                    'dd.MM.yyyy'
+                    'shortDate'
+                  ]
+                when 'ENUMERATION'
+                  thisField.type = 'select'
+                  thisField.templateOptions.options = []
+                  angular.forEach userField.choices.choice, (choice) ->
+                    thisField.templateOptions.options.push
+                      name: if choice is 'UNDEFINED' then '' else choice
+                      value: choice
+                when 'TEXT'
+                  if userField.choices?.choice
+                    thisField.type = 'select'
+                    thisField.templateOptions.options = []
+                    angular.forEach userField.choices.choice, (choice) ->
+                      thisField.templateOptions.options.push
+                        name: choice
+                        value: choice
+                  else thisField.type = 'input'
+                else thisField.type = 'input'
+              switch userField.name
+                when 'accepts_postal_mail'
+                  thisField.templateOptions.label = 'Yes, I would like to receive postal mail from this site.'
+                when 'email.accepts_email'
+                  thisField.templateOptions.label = 'Yes, I would like to receive email from this site.'
+                when 'user_name'
+                  thisField.type = 'username'
+                  thisField.templateOptions.changePasswordLabel = 'Change Password'
+                  thisField.templateOptions.changePasswordAction = $scope.openChangePassword
+              $scope.cpvm.profileFields.push thisField
+          $scope.cpvm.profileFields.sort (a,b) ->
+            a.data.orderInd - b.data.orderInd
+          $scope.cpvm.originalFields = angular.copy($scope.cpvm.profileFields)
+          $scope.getUser()
           response
+      $scope.consProfilePromises.push listUserFieldsPromise
       $scope.dashboardPromises.push constituentPromise
 
+#TODO - add $scope.updateUserProfile = -> here
 
       $scope.recentActivity = {}
       $scope.getRecentActivity = ->
@@ -151,7 +265,10 @@ angular.module 'trPcControllers'
                 console.log 'failed'
 # BEGIN colin edits
 # TODO - turn this into a function so it can be called after an update
-      console.log '1206'
+      console.log '109'
+
+
+      # begin reg questions update code
       $scope.surveyResponsePromises = []
 
       $scope.sqvm =

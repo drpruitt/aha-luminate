@@ -97,8 +97,9 @@
 
               </form>
             </div>
-            Survey Responses: <pre>{{sqvm.surveyModel | json}}</pre>
-            Cons Details: <pre>{{constituent | json}}</pre><br>
+            <!-- Survey Responses: <pre>{{sqvm.surveyModel | json}}</pre> -->
+            constituent: <pre>{{constituent | json}}</pre><br>
+            cpvm.profileModel: <pre>{{cpvm.profileModel | json}}</pre><br>
 
           </div>
           <!-- END test reg question fields -->
@@ -113,8 +114,11 @@
             <div class="temporary-div">
               <form>
                 <h3>Cons Record Fields to Update:</h3>
-                <div uib-alert class="alert-danger" ng-if="editContactError">
-                  {{editContactError}}
+                <div uib-alert class="alert-success" ng-if="updateProfileSuccess">
+                  <span translate="survey_save_success"></span>
+                </div>
+                <div uib-alert class="alert-danger" ng-if="updateProfileFailure">
+                  {{updateProfileFailureMessage}}
                 </div>
                 <div class="form-group">
                   <label for="street1">Street 1:</label>
