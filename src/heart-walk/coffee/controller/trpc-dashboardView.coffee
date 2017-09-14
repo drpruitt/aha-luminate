@@ -151,7 +151,7 @@ angular.module 'trPcControllers'
                 console.log 'failed'
 # BEGIN colin edits
 # TODO - turn this into a function so it can be called after an update
-      console.log '147'
+      console.log '210'
 
       # begin cons profil update code
       $scope.consProfilePromises = []
@@ -183,78 +183,10 @@ angular.module 'trPcControllers'
 
       $scope.cpvm =
         profileFields: []
-        passwordFields: [
-          {
-            type: 'input'
-            key: 'old_password'
-            templateOptions:
-              type: 'password'
-              label: 'Old Password'
-              required: true
-          }
-          {
-            type: 'input'
-            key: 'user_password'
-            templateOptions:
-              type: 'password'
-              label: 'New Password'
-              required: true
-          }
-          {
-            type: 'input'
-            key: 'retype_password'
-            templateOptions:
-              type: 'password'
-              label: 'Retype Password'
-              required: true
-          }
-          {
-            type: 'input'
-            key: 'reminder_hint'
-            templateOptions:
-              type: 'text'
-              label: 'Reminder Hint'
-              required: true
-          }
-        ]
         profileModel: {}
-        passwordModel:
-          old_password: ''
-          user_password: ''
-          retype_password: ''
-          reminder_hint: ''
-        openChangePassword: $scope.openChangePassword
-        cancelChangePassword: $scope.cancelChangePassword
-        submitChangePassword: $scope.submitChangePassword
         updateUserProfile: $scope.updateUserProfile
 
-      $translate [ 'old_password', 'new_password', 'new_password_repeat', 'password_hint' ]
-        .then (translations) ->
-          angular.forEach $scope.cpvm.passwordFields, (passwordField) ->
-            switch passwordField.key
-              when 'old_password' then passwordField.templateOptions.label = translations.old_password
-              when 'user_password' then passwordField.templateOptions.label = translations.new_password
-              when 'retype_password' then passwordField.templateOptions.label = translations.new_password_repeat
-              when 'reminder_hint' then passwordField.templateOptions.label = translations.password_hint
-        , (translationIds) ->
-          angular.forEach $scope.cpvm.passwordFields, (passwordField) ->
-            switch passwordField.key
-              when 'old_password' then passwordField.templateOptions.label = translationIds.old_password
-              when 'user_password' then passwordField.templateOptions.label = translationIds.new_password
-              when 'retype_password' then passwordField.templateOptions.label = translationIds.new_password_repeat
-              when 'reminder_hint' then passwordField.templateOptions.label = translationIds.password_hint
-
-      $scope.openChangePassword = ->
-        $scope.changePasswordModal = $uibModal.open
-          scope: $scope
-          appendTo: angular.element('div.ng-pc-container')
-          templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/changePassword.html'
-
-      $scope.cancelChangePassword = ($event) ->
-        $event.preventDefault()
-        $scope.changePasswordModal.close()
-
-      $scope.getUser = ->
+      $scope.getUserProfile = ->
         getUserPromise = ConstituentService.getUser()
           .then (response) ->
             $scope.constituent = response.data.getConsResponse
@@ -294,8 +226,6 @@ angular.module 'trPcControllers'
               else fieldValue = null
               # finally assign value to model
               $scope.cpvm.profileModel[profileField.key] = fieldValue
-            if $scope.constituent.reminder_hint?
-              $scope.cpvm.passwordModel["reminder_hint"] = $scope.constituent.reminder_hint
             $scope.cpvm.profileOptions.updateInitialValue()
             response
         $scope.consProfilePromises.push getUserPromise
@@ -360,15 +290,11 @@ angular.module 'trPcControllers'
                   thisField.templateOptions.label = 'Yes, I would like to receive postal mail from this site.'
                 when 'email.accepts_email'
                   thisField.templateOptions.label = 'Yes, I would like to receive email from this site.'
-                when 'user_name'
-                  thisField.type = 'username'
-                  thisField.templateOptions.changePasswordLabel = 'Change Password'
-                  thisField.templateOptions.changePasswordAction = $scope.openChangePassword
               $scope.cpvm.profileFields.push thisField
           $scope.cpvm.profileFields.sort (a,b) ->
             a.data.orderInd - b.data.orderInd
           $scope.cpvm.originalFields = angular.copy($scope.cpvm.profileFields)
-          $scope.getUser()
+          $scope.getUserProfile()
           response
       $scope.consProfilePromises.push listUserFieldsPromise
 
@@ -386,34 +312,13 @@ angular.module 'trPcControllers'
             response
         $scope.consProfilePromises.push updateUserPromise
 
-      $scope.submitChangePassword = ->
-        changePasswordPromise = ConstituentService.changePassword $httpParamSerializer($scope.cpvm.passwordModel)
-          .then (response) ->
-            if response.data.errorResponse?
-              $scope.updatePasswordSuccess = false
-              $scope.updatePasswordFailure = true
-              $scope.updatePasswordFailureMessage = response.data.errorResponse.message or "An unexpected error occurred while updating your profile."
-              $scope.cpvm.passwordOptions.resetModel()
-            else
-              $scope.updatePasswordSuccess = true
-              $scope.updatePasswordFailure = false
-              $scope.changePasswordModal.close()
-              reminderValue = $scope.cpvm.passwordModel["reminder_hint"]
-              $scope.cpvm.passwordOptions.resetModel()
-              $scope.cpvm.passwordModel["reminder_hint"] = reminderValue
-              $scope.cpvm.passwordOptions.updateInitialValue()
-            response
-        $scope.consProfilePromises.push changePasswordPromise
-
       $scope.resetProfileAlerts = ->
         $scope.updateProfileSuccess = false
         $scope.updateProfileFailure = false
         $scope.updateProfileFailureMessage = ''
-        $scope.updatePasswordSuccess = false
-        $scope.updatePasswordFailure = false
-        $scope.updatePasswordFailureMessage = ''
         true
       $scope.resetProfileAlerts()
+
       # begin reg questions update code
       $scope.surveyResponsePromises = []
 
