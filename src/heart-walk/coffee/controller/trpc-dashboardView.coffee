@@ -151,7 +151,7 @@ angular.module 'trPcControllers'
                 console.log 'failed'
 # BEGIN colin edits
 # TODO - turn this into a function so it can be called after an update
-      console.log '1027'
+      console.log '1055'
       $scope.surveyResponsePromises = []
 
       $scope.sqvm =
@@ -168,8 +168,7 @@ angular.module 'trPcControllers'
               if surveyResponse
                 thisField =
                   type: null
-                  key: 'question_' + surveyResponse.questionId
-                  questionKey: surveyResponse.key
+                  questionKey: 'question_key_' + surveyResponse.key
                   data:
                     dataType: surveyResponse.questionType
                   templateOptions:
@@ -258,6 +257,10 @@ angular.module 'trPcControllers'
               $scope.sqvm.surveyOptions.updateInitialValue()
             response
         $scope.surveyResponsePromises.push updateSurveyResponsesPromise
+
+
+# $scope.updateTellUsWhy
+
       # $scope.getParticipantResponses = ->
       #   getSurveyResponsesPromise = TeamraiserSurveyResponseService.getSurveyResponses()
       #     .then (response) ->
