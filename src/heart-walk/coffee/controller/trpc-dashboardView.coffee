@@ -151,7 +151,7 @@ angular.module 'trPcControllers'
                 console.log 'failed'
 # BEGIN colin edits
 # TODO - turn this into a function so it can be called after an update
-      console.log '320'
+      console.log '330'
 
       # begin cons profil update code
       $scope.consProfilePromises = []
@@ -288,7 +288,8 @@ angular.module 'trPcControllers'
 
       $scope.updateUserProfile = ($event) ->
         $event.preventDefault()
-        updateUserPromise = ConstituentService.update $httpParamSerializer($scope.cpvm.profileModel)
+        # updateUserPromise = ConstituentService.update $httpParamSerializer($scope.cpvm.profileModel)
+        updateUserPromise = ConstituentService.update $httpParamSerializer($scope.constituent)
           .then (response) ->
             if response.data.errorResponse?
               $scope.updateProfileSuccess = false
