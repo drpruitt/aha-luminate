@@ -141,11 +141,88 @@ angular.module 'trPcControllers'
                 $scope.getTeamGifts()
               closeAddOfflineGiftModal()
 
-      holdForLaterTesting = ->
+      logUserInt = (subject) ->
+        ConstituentService.logInteraction 'interaction_type_id=1011&interaction_subject=' + subject
+            .then (response) ->
+              if response.data.updateConsResponse?.message
+                console.log 'udpated'
+              else
+                console.log 'failed'
+
+      userInteractions = {
+        page: 0
+        donate: 0
+        email: 0
+        why: 0
+        share: 0
+        profile: 0
+        test: 0
+      }
+      GetUserInt = ->
+        console.log $rootScope.updatedProfile
+        console.log $rootScope.isSelfDonor
+        console.log $rootScope.emailsSent
         ConstituentService.getUserInteractions '&list_page_size=50&interaction_type_id=1011'
           .then (response) ->
-            interactionsX = response.data.getUserInteractionsResponse?.interaction
-            console.log 'int2 = ',interactionsX
+            if not response.data.errorResponse
+              interactions = response.data.getUserInteractionsResponse?.interaction
+              if interactions
+                interactions = [interactions] if not angular.isArray interactions
+                if interactions.length > 0
+                  console.log 'Raw interactions = ', interactions
+                  angular.forEach interactions, (interaction) ->
+                    switch interaction.subject
+                      when 'page'
+                          console.log 'found page!'
+                          userInteractions.page = 1
+                      when 'donate'
+                          console.log 'found donate!'
+                          userInteractions.donate = 1
+                      when 'email'
+                          console.log 'found email!'
+                          userInteractions.email = 1
+                      when 'why'
+                          console.log 'found why!'
+                          userInteractions.why = 1
+                      when 'share'
+                          console.log 'found share!'
+                          userInteractions.share = 1
+                      when 'profile'
+                          console.log 'found profile!'
+                          userInteractions.profile = 1
+              if $rootScope.updatedProfile is 'TRUE' && userInteractions.page is 0
+                console.log 'update page interaction needs to be set'
+              if $rootScope.isSelfDonor is 'TRUE' && userInteractions.donate is 0
+                console.log 'self donor interaction needs to be set'
+              if $rootScope.emailsSent > 0 && userInteractions.email is 0
+                console.log 'email sent interaction needs to be set'
+                logUserInt('email')
+              #ToDo Add in checks for the other three interactions done outside the PC
+              console.log userInteractions
+              if userInteractions.page is 0
+                console.log 'launch page lightbox'
+                $scope.LBwelcomeBackModal = $uibModal.open
+                  scope: $scope
+                  templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBwelcomeBack.html'
+                $scope.cancelWelcomeBack = ->
+                  $scope.LBwelcomeBackModal.close()
+              else if userInteractions.donate is 0
+                console.log 'launch donate lightbox'
+              else if userInteractions.email is 0
+                console.log 'launch email lightbox'
+              else if userInteractions.why is 0
+                console.log 'launch why lightbox'
+              else if userInteractions.share is 0
+                console.log 'launch share lightbox'
+              else if userInteractions.profile is 0
+                console.log 'launch profile lightbox'
+              #Need to check for previous login via lastPC2Login and then load the TY for Reging
+              #else 
+                #use same modal open as above
+            response
+      GetUserInt()
+
+      #console.log 'lastPC2Login = ',$rootScope.participantRegistration.lastPC2Login
 
       $scope.tellUsWhy = ->
         $scope.tellUsWhyModal = $uibModal.open
