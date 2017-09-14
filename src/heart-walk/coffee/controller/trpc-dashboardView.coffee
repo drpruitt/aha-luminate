@@ -258,8 +258,15 @@ angular.module 'trPcControllers'
             response
         $scope.surveyResponsePromises.push updateSurveyResponsesPromise
 
+      $scope.resetSurveyAlerts = ->
+        $scope.updateSurveySuccess = false
+        $scope.updateSurveyFailure = false
+        $scope.updateSurveyFailureMessage = ''
+      $scope.resetSurveyAlerts()
 
-# $scope.updateTellUsWhy
+      $scope.updateTellUsWhy = ->
+        $scope.updateSurveyResponses()
+
 
       # $scope.getParticipantResponses = ->
       #   getSurveyResponsesPromise = TeamraiserSurveyResponseService.getSurveyResponses()
