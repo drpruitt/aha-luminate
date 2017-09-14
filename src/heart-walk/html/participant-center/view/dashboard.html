@@ -30,8 +30,8 @@
         </div>
         <div class="row">
           <div class="col-sm-4 profile_box">
+Survey Responses: x<pre>{{sqvm.surveyModel | json}}</pre>x
 Cons Details: x<pre>{{constituent | json}}</pre>x<br>
-Survey Responses: x<pre>{{surveyResponses | json}}</pre>x
 
             <div class="profile_box_icon pull-left"><i class="fa fa-question"></i></div>
             <div class="profile_box_info pull-right">Why do you walk? Finish this sentence: "______ is Why."<button class="btn btn-primary" ng-click="tellUsWhy()">Tell Us Your Why</button></div>
@@ -50,7 +50,7 @@ Survey Responses: x<pre>{{surveyResponses | json}}</pre>x
                 <div class="form-group">
                   <label for="street1" class="sr-only">Street 1:</label>
                   <div class="input-group">
-                    <input type="text" id="street1" name="street1" class="form-control" aria-label="some scope">
+                    <input type="text" id="street1" name="street1" class="form-control" aria-label="some scope" ng-model="constituent.primary_address.street1">
                   </div>
                 </div>
                 <div class="form-group">
@@ -87,7 +87,7 @@ Survey Responses: x<pre>{{surveyResponses | json}}</pre>x
                 <div class="form-group">
                   <label for="mobile_phone" class="sr-only">Mobile Phone:</label>
                   <div class="input-group">
-                    <input type="text" id="mobile_phone" name="mobile_phone" class="form-control" aria-label="some scope">
+                    <input type="text" id="mobile_phone" name="mobile_phone" class="form-control" aria-label="some scope" ng-model="constituent.mobile_phone">
                   </div>
                 </div>
               </form>
