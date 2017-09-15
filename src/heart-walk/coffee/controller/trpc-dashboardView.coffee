@@ -225,8 +225,8 @@ angular.module 'trPcControllers'
               thisField =
                 type: null
                 # key: "' + userField.name + '"
-                # key: userField.name.replace('.','-')
-                key: userField.name
+                key: userField.name.replace('.','-')
+                # key: userField.name
                 name: userField.name
                 data:
                   dataType: userField.valueType
@@ -288,8 +288,14 @@ angular.module 'trPcControllers'
 
       $scope.updateUserProfile = ($event) ->
         $event.preventDefault()
-        updateUserPromise = ConstituentService.update $httpParamSerializer($scope.cpvm.profileModel)
-        # updateUserPromise = ConstituentService.update $httpParamSerializer($scope.constituent)
+        consProfileUpdateData = $scope.cpvm.profileModel
+        Object.keys(consProfileUpdateData).forEach (key) ->
+          newkey = key.replace('address-', 'address.')
+          consProfileUpdateData[newkey] = consProfileUpdateData[key]
+          delete consProfileUpdateData[key]
+          return
+        updateUserPromise = ConstituentService.update $httpParamSerializer(consProfileUpdateData)
+        # updateUserPromise = ConstituentService.update $httpParamSerializer($scope.cpvm.profileModel)
           .then (response) ->
             if response.data.errorResponse?
               $scope.updateProfileSuccess = false
