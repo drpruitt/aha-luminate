@@ -179,7 +179,7 @@ angular.module 'trPcControllers'
 
 
 
-      $scope.updateUserAddress = ->
+      $scope.updateUserAddress = ($event) ->
         $scope.updateUserProfile($event)
 
       # CM begin reg questions update code
@@ -295,7 +295,7 @@ angular.module 'trPcControllers'
         $scope.updateSurveyFailureMessage = ''
       $scope.resetSurveyAlerts()
 
-      $scope.updateTellUsWhy = ->
+      $scope.updateTellUsWhy = ($event) ->
         $scope.updateSurveyResponses($event)
 
 # END colin edits
