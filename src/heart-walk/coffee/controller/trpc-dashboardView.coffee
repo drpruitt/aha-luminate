@@ -151,7 +151,7 @@ angular.module 'trPcControllers'
                 console.log 'failed'
 # BEGIN colin edits
 # TODO - turn this into a function so it can be called after an update
-      console.log '1053'
+      console.log '1110'
 
       # begin cons profil update code
       $scope.consProfilePromises = []
@@ -288,14 +288,19 @@ angular.module 'trPcControllers'
 
       $scope.updateUserProfile = ($event) ->
         $event.preventDefault()
-        consProfileUpdateData = $scope.cpvm.profileModel
-        Object.keys(consProfileUpdateData).forEach (key) ->
-          newkey = key.replace('address-', 'address.')
-          consProfileUpdateData[newkey] = consProfileUpdateData[key]
-          delete consProfileUpdateData[key]
-          return
-        updateUserPromise = ConstituentService.update $httpParamSerializer(consProfileUpdateData)
+        # consProfileUpdateData = $scope.cpvm.profileModel
+        # Object.keys(consProfileUpdateData).forEach (key) ->
+        #   newkey = key.replace('address-', 'address.')
+        #   consProfileUpdateData[newkey] = consProfileUpdateData[key]
+        #   delete consProfileUpdateData[key]
+        #   return
+        # updateUserPromise = ConstituentService.update $httpParamSerializer(consProfileUpdateData)
+
         # updateUserPromise = ConstituentService.update $httpParamSerializer($scope.cpvm.profileModel)
+
+        profileParams = '&primary_address.street1=' + $scope.constituent.primary_address.street1 + '&primary_address.street2=' + $scope.constituent.primary_address.street2 + '&primary_address.city=' + $scope.constituent.primary_address.city + '&primary_address.state=' + $scope.constituent.primary_address.state + '&primary_address.zip=' + $scope.constituent.primary_address.zip + '&primary_address.country=' + $scope.constituent.primary_address.country + '&mobile_phone=' + $scope.constituent.mobile_phone
+
+        updateUserPromise = ConstituentService.update $httpParamSerializer(profileParams)
           .then (response) ->
             if response.data.errorResponse?
               $scope.updateProfileSuccess = false
