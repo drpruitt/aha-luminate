@@ -151,9 +151,9 @@ angular.module 'trPcControllers'
                 console.log 'failed'
 # BEGIN colin edits
 # TODO - turn this into a function so it can be called after an update
-      console.log '1114'
+      console.log '1139'
 
-      # begin cons profil update code
+      # CM begin cons profile update code
       $scope.consProfilePromises = []
 
       possibleFields = [
@@ -298,7 +298,7 @@ angular.module 'trPcControllers'
 
         # updateUserPromise = ConstituentService.update $httpParamSerializer($scope.cpvm.profileModel)
 
-        updateUserPromise = ConstituentService.update 'primary_address.street1=' + $scope.constituent.primary_address.street1 + '&primary_address.street2=' + $scope.constituent.primary_address.street2 + '&primary_address.city=' + $scope.constituent.primary_address.city + '&primary_address.state=' + $scope.constituent.primary_address.state + '&primary_address.zip=' + $scope.constituent.primary_address.zip + '&primary_address.country=' + $scope.constituent.primary_address.country + '&mobile_phone=' + $scope.constituent.mobile_phone
+        updateUserPromise = ConstituentService.update 'primary_address.street1=' + if $scope.constituent.primary_address.street1 == null then '' else $scope.constituent.primary_address.street1 + '&primary_address.street2=' + if $scope.constituent.primary_address.street2 == null then '' else $scope.constituent.primary_address.street2 + '&primary_address.city=' + if $scope.constituent.primary_address.city == null then '' else $scope.constituent.primary_address.city + '&primary_address.state=' + if $scope.constituent.primary_address.state == null then '' else $scope.constituent.primary_address.state + '&primary_address.zip=' + if $scope.constituent.primary_address.zip == null then '' else $scope.constituent.primary_address.zip + '&primary_address.country=' + if $scope.constituent.primary_address.country == null then '' else $scope.constituent.primary_address.country + '&mobile_phone=' + if $scope.constituent.mobile_phone == null then '' else $scope.constituent.mobile_phone
           .then (response) ->
             if response.data.errorResponse?
               $scope.updateProfileSuccess = false
@@ -318,7 +318,7 @@ angular.module 'trPcControllers'
         true
       $scope.resetProfileAlerts()
 
-      # begin reg questions update code
+      # CM begin reg questions update code
       $scope.surveyResponsePromises = []
 
       $scope.sqvm =
