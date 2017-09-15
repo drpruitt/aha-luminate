@@ -150,8 +150,8 @@ angular.module 'trPcControllers'
               else
                 console.log 'failed'
 # BEGIN colin edits
-
-      console.log '1147'
+      # update timestamp
+      console.log '1151'
 
       # CM begin cons profile update code
       $scope.consProfilePromises = []
@@ -167,7 +167,6 @@ angular.module 'trPcControllers'
             else
               $scope.updateProfileSuccess = true
               $scope.updateProfileFailure = false
-              $scope.cpvm.profileOptions.updateInitialValue()
             response
         $scope.consProfilePromises.push updateUserPromise
 
@@ -177,6 +176,11 @@ angular.module 'trPcControllers'
         $scope.updateProfileFailureMessage = ''
         true
       $scope.resetProfileAlerts()
+
+
+
+      $scope.updateUserAddress = ->
+        $scope.updateUserProfile($event)
 
       # CM begin reg questions update code
       $scope.surveyResponsePromises = []
@@ -292,7 +296,7 @@ angular.module 'trPcControllers'
       $scope.resetSurveyAlerts()
 
       $scope.updateTellUsWhy = ->
-        $scope.updateSurveyResponses()
+        $scope.updateSurveyResponses($event)
 
 # END colin edits
 
