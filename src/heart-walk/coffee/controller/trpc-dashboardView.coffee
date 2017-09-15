@@ -149,9 +149,9 @@ angular.module 'trPcControllers'
                 console.log 'udpated'
               else
                 console.log 'failed'
-# BEGIN colin edits
+# CM BEGIN profile and reg question updates
       # update timestamp
-      console.log '1151'
+      # console.log '1151'
 
       # CM begin cons profile update code
       $scope.consProfilePromises = []
@@ -176,8 +176,6 @@ angular.module 'trPcControllers'
         $scope.updateProfileFailureMessage = ''
         true
       $scope.resetProfileAlerts()
-
-
 
       $scope.updateUserAddress = ($event) ->
         $scope.updateUserProfile($event)
@@ -298,7 +296,7 @@ angular.module 'trPcControllers'
       $scope.updateTellUsWhy = ($event) ->
         $scope.updateSurveyResponses($event)
 
-# END colin edits
+# CM END profile and reg question updates
 
       userInteractions = {
         page: 0
