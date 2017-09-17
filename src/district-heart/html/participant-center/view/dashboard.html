@@ -118,13 +118,15 @@
             </div>
             <div class="ym-pc-dashboard-badges-icons clearfix">
               <div class="ym-pc-dashboard-badges-icon" ng-repeat="prize in prizes" ng-cloak>
-                <div ng-if="prize.earned != null">
+                <div ng-if="prize.earned">
                   <img class="img-responsive" ng-src="//s3.amazonaws.com/aha-jumphoops-production/fy18/assets/badges/dhc/{{prize.id}}_delivered.png" alt="">
                 </div>
-                <div ng-if="prize.earned == null">
+                <div ng-if="!prize.earned">
                   <img class="img-responsive" ng-src="//s3.amazonaws.com/aha-jumphoops-production/fy18/assets/badges/dhc/{{prize.id}}_earned.png" alt="">
                 </div>
-                <div ng-bind-html="prize.label"></div>
+                <div>
+                  <span ng-bind-html="prize.label"></span> <span class="sr-only" ng-if="prize.earned">(earned)</span><span class="sr-only" ng-if="!prize.earned">(not yet earned)</span>
+                </div>
               </div>
             </div>
           </div>
