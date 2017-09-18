@@ -359,13 +359,16 @@ angular.module 'trPcControllers'
 
       runLBroutes = ->
         console.log userInteractions
-        if userInteractions.page is 1
+        if userInteractions.page is 0
           console.log 'launch page lightbox1'
           $scope.LBwelcomeBackModal = $uibModal.open
             scope: $scope
             templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBwelcomeBack.html'
         else if userInteractions.donate is 0
           console.log 'launch donate lightbox'
+          $scope.LBdonateModal = $uibModal.open
+            scope: $scope
+            templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBdonate.html'
         else if userInteractions.email is 0
           console.log 'launch email lightbox'
         else if userInteractions.why is 0
