@@ -6,13 +6,13 @@
 <div class="modal-body">
   <div>
       <p><span ng-if="constituent.name && constituent.name.first">{{constituent.name.first}}</span><span ng-if="!constituent.name.first">Participant</span>, we are glad to have you back in your Fundraising Center.</p>
-      <p><span class="redText strongText">Our tip to you</span><span class="strongText">: be sure to Share Your Why by updating your personal page. Updating your page shows others your commitment to raise funds to save lives from heart disease and stroke.</span></p>
+      <p><span class="redText strongText">Our tip to you</span><span class="strongText">: be sure to Share Your Why by updating your personal page.</span> Updating your page shows others your commitment to raise funds to save lives from heart disease and stroke.</p>
   </div>
 </div>
 <div class="modal-footer">
   <div class="clearfix">
     <div class="pull-left">
-      <button type="button" class="btn btn-primary-inverted text-uppercase" ng-click="cancelWelcomeBack()">Not Right Now</span>
+      <button type="button" class="btn btn-primary-inverted text-uppercase" ng-click="notRightNow()">Not Right Now</span>
       </button>
     </div>
     <div class="pull-right">

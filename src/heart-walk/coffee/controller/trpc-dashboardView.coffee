@@ -364,8 +364,6 @@ angular.module 'trPcControllers'
           $scope.LBwelcomeBackModal = $uibModal.open
             scope: $scope
             templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBwelcomeBack.html'
-          $scope.cancelWelcomeBack = ->
-            $scope.LBwelcomeBackModal.close()
         else if userInteractions.donate is 0
           console.log 'launch donate lightbox'
         else if userInteractions.email is 0
@@ -382,13 +380,15 @@ angular.module 'trPcControllers'
 
       #console.log 'lastPC2Login = ',$rootScope.participantRegistration.lastPC2Login
 
+      $scope.notRightNow = ->
+        $uibModalStack.dismissAll()
+
       $scope.LBskip = (interaction) ->
-        interaction = 'page'
         console.log interaction + 'will be skipped from now on'
         logUserInt(interaction)
-        userInteractions[interaction] = 123
-        console.log userInteractions.page
+        userInteractions[interaction] = 1
         $uibModalStack.dismissAll()
+        runLBroutes()
 
       $scope.tellUsWhy = ->
         $scope.tellUsWhyModal = $uibModal.open
