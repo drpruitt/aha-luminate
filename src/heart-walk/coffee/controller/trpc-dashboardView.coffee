@@ -8,6 +8,7 @@ angular.module 'trPcControllers'
     '$httpParamSerializer'
     '$translate'
     '$uibModal'
+    '$uibModalStack'
     'APP_INFO'
     'ConstituentService'
     'TeamraiserRecentActivityService'
@@ -21,7 +22,7 @@ angular.module 'trPcControllers'
     'TeamraiserShortcutURLService'
     'ContactService'
     'TeamraiserSurveyResponseService'
-    ($rootScope, $scope, $timeout, $filter, $location, $httpParamSerializer, $translate, $uibModal, APP_INFO, ConstituentService, TeamraiserRecentActivityService, TeamraiserRegistrationService, TeamraiserProgressService, TeamraiserGiftService, TeamraiserParticipantService, TeamraiserTeamService, TeamraiserNewsFeedService, TeamraiserCompanyService, TeamraiserShortcutURLService, ContactService, TeamraiserSurveyResponseService) ->
+    ($rootScope, $scope, $timeout, $filter, $location, $httpParamSerializer, $translate, $uibModal, $uibModalStack, APP_INFO, ConstituentService, TeamraiserRecentActivityService, TeamraiserRegistrationService, TeamraiserProgressService, TeamraiserGiftService, TeamraiserParticipantService, TeamraiserTeamService, TeamraiserNewsFeedService, TeamraiserCompanyService, TeamraiserShortcutURLService, ContactService, TeamraiserSurveyResponseService) ->
       $scope.dashboardPromises = []
 
       constituentPromise = ConstituentService.getUser()
@@ -142,13 +143,6 @@ angular.module 'trPcControllers'
                 $scope.getTeamGifts()
               closeAddOfflineGiftModal()
 
-      logUserInt = (subject) ->
-        ConstituentService.logInteraction 'interaction_type_id=1011&interaction_subject=' + subject
-            .then (response) ->
-              if response.data.updateConsResponse?.message
-                console.log 'udpated'
-              else
-                console.log 'failed'
 # CM BEGIN profile and reg question updates
       # update timestamp
       # console.log '1151'
@@ -298,6 +292,14 @@ angular.module 'trPcControllers'
 
 # CM END profile and reg question updates
 
+      logUserInt = (subject) ->
+        ConstituentService.logInteraction 'interaction_type_id=1011&interaction_subject=' + subject
+          .then (response) ->
+            if response.data.updateConsResponse?.message
+              console.log 'udpated'
+            else
+              console.log 'failed'
+
       userInteractions = {
         page: 0
         donate: 0
@@ -311,7 +313,7 @@ angular.module 'trPcControllers'
         console.log $rootScope.updatedProfile
         console.log $rootScope.isSelfDonor
         console.log $rootScope.emailsSent
-        ConstituentService.getUserInteractions '&list_page_size=50&interaction_type_id=1011'
+        userInteractionsPromise = ConstituentService.getUserInteractions '&list_page_size=50&interaction_type_id=1011'
           .then (response) ->
             if not response.data.errorResponse
               interactions = response.data.getUserInteractionsResponse?.interaction
@@ -340,38 +342,53 @@ angular.module 'trPcControllers'
                           console.log 'found profile!'
                           userInteractions.profile = 1
               if $rootScope.updatedProfile is 'TRUE' && userInteractions.page is 0
-                console.log 'update page interaction needs to be set'
+                console.log 'update page interaction needs to be set and update our local object'
+                userInteractions.page = 1
               if $rootScope.isSelfDonor is 'TRUE' && userInteractions.donate is 0
-                console.log 'self donor interaction needs to be set'
+                console.log 'self donor interaction needs to be set and update our local object'
+                userInteractions.donate = 1
               if $rootScope.emailsSent > 0 && userInteractions.email is 0
-                console.log 'email sent interaction needs to be set'
+                console.log 'email sent interaction needs to be set and update our local object'
+                userInteractions.email = 1
                 logUserInt('email')
               #ToDo Add in checks for the other three interactions done outside the PC
-              console.log userInteractions
-              if userInteractions.page is 0
-                console.log 'launch page lightbox'
-                $scope.LBwelcomeBackModal = $uibModal.open
-                  scope: $scope
-                  templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBwelcomeBack.html'
-                $scope.cancelWelcomeBack = ->
-                  $scope.LBwelcomeBackModal.close()
-              else if userInteractions.donate is 0
-                console.log 'launch donate lightbox'
-              else if userInteractions.email is 0
-                console.log 'launch email lightbox'
-              else if userInteractions.why is 0
-                console.log 'launch why lightbox'
-              else if userInteractions.share is 0
-                console.log 'launch share lightbox'
-              else if userInteractions.profile is 0
-                console.log 'launch profile lightbox'
-              #Need to check for previous login via lastPC2Login and then load the TY for Reging
-              #else
-                #use same modal open as above
+              runLBroutes()
             response
+        $scope.dashboardPromises.push userInteractionsPromise
       GetUserInt()
 
+      runLBroutes = ->
+        console.log userInteractions
+        if userInteractions.page is 1
+          console.log 'launch page lightbox1'
+          $scope.LBwelcomeBackModal = $uibModal.open
+            scope: $scope
+            templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBwelcomeBack.html'
+          $scope.cancelWelcomeBack = ->
+            $scope.LBwelcomeBackModal.close()
+        else if userInteractions.donate is 0
+          console.log 'launch donate lightbox'
+        else if userInteractions.email is 0
+          console.log 'launch email lightbox'
+        else if userInteractions.why is 0
+          console.log 'launch why lightbox'
+        else if userInteractions.share is 0
+          console.log 'launch share lightbox'
+        else if userInteractions.profile is 0
+          console.log 'launch profile lightbox'
+        #Need to check for previous login via lastPC2Login and then load the TY for Reging
+        #else
+          #use same modal open as above
+
       #console.log 'lastPC2Login = ',$rootScope.participantRegistration.lastPC2Login
+
+      $scope.LBskip = (interaction) ->
+        interaction = 'page'
+        console.log interaction + 'will be skipped from now on'
+        logUserInt(interaction)
+        userInteractions[interaction] = 123
+        console.log userInteractions.page
+        $uibModalStack.dismissAll()
 
       $scope.tellUsWhy = ->
         $scope.tellUsWhyModal = $uibModal.open
