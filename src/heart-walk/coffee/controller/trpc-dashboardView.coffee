@@ -371,6 +371,9 @@ angular.module 'trPcControllers'
             templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBdonate.html'
         else if userInteractions.email is 0
           console.log 'launch email lightbox'
+          $scope.LBemailModal = $uibModal.open
+            scope: $scope
+            templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBemail.html'
         else if userInteractions.why is 0
           console.log 'launch why lightbox'
         else if userInteractions.share is 0
@@ -392,6 +395,15 @@ angular.module 'trPcControllers'
         userInteractions[interaction] = 1
         $uibModalStack.dismissAll()
         runLBroutes()
+
+      $scope.resetInt = (interID) ->
+        console.log 'submitted id = ',interID
+        ConstituentService.updateInteraction 'interaction_id=' + interID + '&interaction_subject=void'
+          .then (response) ->
+            if response.data.updateConsResponse?.message
+              console.log 'changed interaction to VOID'
+            else
+              console.log 'failed'
 
       $scope.tellUsWhy = ->
         $scope.tellUsWhyModal = $uibModal.open

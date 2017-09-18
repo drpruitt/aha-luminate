@@ -5,7 +5,7 @@
         Me
       </uib-tab-heading>
       <div class="clearfix">
-        <div>
+        <div>Reset interaction ID for testing <br>
           <form ng-submit="resetInt(intID)">
             <input type="text" name="reset_int" class="form-control" ng-model="intID">
             <button type="submit" class="btn btn-primary-inverted text-uppercase">Submit</button>
@@ -663,26 +663,26 @@
           </div>
           <div class="heart_pc_sidebar_row clearfix">
             <div class="pull-left">
-                  <p>Raised: {{teamProgress.raisedFormatted}}</p>
-                  <p>Goal: {{teamProgress.goalFormatted}}</p>
-              </div>
-              <div class="pull-right">
-                  <button class="btn btn-primary-inverted btn-goal" ng-click="editGoal('Team')" ng-if="participantRegistration.aTeamCaptain == 'true'">Edit Goal</button>
-              </div>
+              <p>Raised: {{teamProgress.raisedFormatted}}</p>
+              <p>Goal: {{teamProgress.goalFormatted}}</p>
+            </div>
+            <div class="pull-right">
+              <button class="btn btn-primary-inverted btn-goal" ng-click="editGoal('Team')" ng-if="participantRegistration.aTeamCaptain == 'true'">Edit Goal</button>
+            </div>
           </div>
           <div class="heart_pc_sidebar_row clearfix">
-              <p>Share team page:</p>
-              <div addthis:url="{{teamPageUrl}}">
-                <a class="heart_pc_sidebar_sharebtn addthis_button_facebook" ng-href="{{baseUrl}}#">
-                  <i class="fa fa-facebook"></i><span class="sr-only">Facebook</span>
-                </a>
-                <a class="heart_pc_sidebar_sharebtn addthis_button_twitter" ng-href="{{baseUrl}}#">
-                  <i class="fa fa-twitter"></i><span class="sr-only">Twitter</span>
-                </a>
-                <a class="heart_pc_sidebar_sharebtn addthis_button_linkedin" ng-href="{{baseUrl}}#">
-                  <i class="fa fa-linkedin"></i><span class="sr-only">LinkedIn</span>
-                </a>
-              </div>
+            <p>Share team page:</p>
+            <div addthis:url="{{teamPageUrl}}">
+              <a class="heart_pc_sidebar_sharebtn addthis_button_facebook" ng-href="{{baseUrl}}#">
+                <i class="fa fa-facebook"></i><span class="sr-only">Facebook</span>
+              </a>
+              <a class="heart_pc_sidebar_sharebtn addthis_button_twitter" ng-href="{{baseUrl}}#">
+                <i class="fa fa-twitter"></i><span class="sr-only">Twitter</span>
+              </a>
+              <a class="heart_pc_sidebar_sharebtn addthis_button_linkedin" ng-href="{{baseUrl}}#">
+                <i class="fa fa-linkedin"></i><span class="sr-only">LinkedIn</span>
+              </a>
+            </div>
           </div>
         </div>
         <div class="heart_pc_main_page">
@@ -785,100 +785,35 @@
       <uib-tab-heading>
         My Company
       </uib-tab-heading>
-      <div class="heart-dashboard-tab-info clearfix">
-        <div class="heart-dashboard-tab-info__text">
-          <div ng-if="companyRank.rank == -1">
-            Your company's not on the leaderboard yet!
-            <!-- TODO: Go get some donations link -->
-          </div>
-          <div ng-if="companyRank.rank && companyRank.rank != -1">
-            We're <span class="heart-dashboard-tab-info__rank">#{{companyRank.rank}}</span> of {{companyRank.totalNumber}} companies at our Walk.
-            <!-- TODO: View Leaderboard link -->
-          </div>
-        </div>
-        <div class="heart-dashboard-tab-info__cta">
-          <a class="btn btn-primary" ng-click="emailAllCompanyParticipants()" ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'">
-            Email My<br>
-            Company
-          </a>
-          <a class="btn btn-primary hidden" ng-href="NTM?tr.ntmgmt=company_cservice_main&amp;company_id={{participantRegistration.companyInformation.companyId}}" ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'">
-            My Company<br>
-            Coordinator Center
-          </a>
-        </div>
-      </div>
       <div class="clearfix">
         <div class="heart-page-rail heart-page-rail--participant-center">
-          <div class="heart-page-progress heart-page-progress--no-donate heart-page-progress--participant-center">
-            <div class="progress heart-page-progress__thermometer">
-              <div class="progress-bar heart-page-progress__thermometer-fill" ng-style="{'width': companyProgress.percent + '%'}"></div>
-              <span class="btn btn-lg btn-primary"></span>
+          <h2>Company Progress:</h2>
+          <div class="progress heart_pc_sidebar_thermometer">
+            <div class="progress-bar heart_pc_sidebar_thermometer_fill" ng-style="{'width': teamProgress.percent + '%'}"></div>
+            <span class="heart_pc_sidebar_percentage">{{teamProgress.percent}}%</span>
+          </div>
+          <div class="heart_pc_sidebar_row clearfix">
+            <div class="pull-left">
+              <p>We've Raised: {{teamProgress.raisedFormatted}}</p>
             </div>
-            <div class="heart-page-progress__caret" ng-style="{'left': companyProgress.percent + '%'}"></div>
-            <div class="heart-page-progress__box">
-              <div class="heart-page-progress__row clearfix">
-                <div class="heart-page-progress__amount">
-                  {{companyProgress.raisedFormatted}}
-                </div>
-                <div class="heart-page-progress__label heart-page-progress__label--right">
-                  Our Goal
-                  <div class="heart-page-progress__amount">
-                    {{companyProgress.goalFormatted}}
-                  </div>
-                </div>
-              </div>
-              <!-- TODO: don't show row if event date is null or in the past -->
-              <div class="heart-page-progress__row clearfix">
-                <div class="heart-page-progress__amount">
-                  {{daysToEvent}}
-                </div>
-                <div class="heart-page-progress__label">
-                  <span ng-if="daysToEvent == 1">Day Remaining</span>
-                  <span ng-if="daysToEvent != 1">Days Remaining</span>
-                </div>
-              </div>
-              <div class="heart-page-progress__row clearfix">
-                <div class="heart-page-progress__amount">
-                  <!-- TODO: get number of donations -->
-                  0
-                </div>
-                <div class="heart-page-progress__label">
-                  <!-- TODO: make Donation singular for 1 donation -->
-                  Donations Received
-                </div>
-              </div>
-              <div class="heart-page-progress__row clearfix" ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'">
-                <div class="heart-page-progress__related-cta">
-                  <!--<a class="btn btn-primary" ng-href="NTM?fr_id={{frId}}&amp;tr.ntmgmt=company_edit&amp;company_id={{participantRegistration.companyInformation.companyId}}&amp;mfc_pref=T&amp;action=edit_company">
-                    Edit<br>
-                    Company Goal
-                  </a>-->
-                  <a class="btn btn-primary" href="" ng-click="editCompanyGoal()">
-                    Edit<br>
-                    Company Goal
-                  </a>
-                </div>
-              </div>
-              <div class="heart-page-progress__row heart-page-progress__row--social clearfix">
-                <div class="heart-page-progress__share-label">
-                  Share my Company Page
-                </div>
-                <div class="heart-page-progress__share-buttons addthis_toolbox" addthis:url="{{companyPageUrl}}">
-                  <a class="heart-page-progress__share-button heart-page-progress__share-button--facebook addthis_button_facebook" ng-href="{{baseUrl}}#">
-                    <i class="fa fa-facebook"></i><span class="sr-only">Facebook</span>
-                  </a>
-                  <a class="heart-page-progress__share-button heart-page-progress__share-button--twitter addthis_button_twitter" ng-href="{{baseUrl}}#">
-                    <i class="fa fa-twitter"></i><span class="sr-only">Twitter</span>
-                  </a>
-                  <a class="heart-page-progress__share-button heart-page-progress__share-button--linkedin addthis_button_linkedin" ng-href="{{baseUrl}}#">
-                    <i class="fa fa-linkedin"></i><span class="sr-only">LinkedIn</span>
-                  </a>
-                </div>
-              </div>
+          </div>
+          <div class="heart_pc_sidebar_row clearfix">
+            <p>Share Company page:</p>
+            <div addthis:url="{{companyPageUrl}}">
+              <a class="heart_pc_sidebar_sharebtn addthis_button_facebook" ng-href="{{baseUrl}}#">
+                <i class="fa fa-facebook"></i><span class="sr-only">Facebook</span>
+              </a>
+              <a class="heart_pc_sidebar_sharebtn addthis_button_twitter" ng-href="{{baseUrl}}#">
+                <i class="fa fa-twitter"></i><span class="sr-only">Twitter</span>
+              </a>
+              <a class="heart_pc_sidebar_sharebtn addthis_button_linkedin" ng-href="{{baseUrl}}#">
+                <i class="fa fa-linkedin"></i><span class="sr-only">LinkedIn</span>
+              </a>
             </div>
           </div>
         </div>
-        <div class="heart-page-main heart-page-main--participant-center">
+        <div class="heart_pc_main_page">
+          <h2>Manage My Team:</h2>
           <div class="heart-company-related-list">
             <div class="heart-company-related-list__header clearfix">
               <h2>
@@ -910,20 +845,6 @@
             <div class="heart-list-pagination" ng-if="companyParticipants.totalNumber > 10">
               <ul uib-pagination direction-links="false" items-per-page="10" total-items="companyParticipants.totalNumber" max-size="10" ng-model="companyParticipants.page" ng-change="getCompanyParticipants()"></ul>
             </div>
-          </div>
-          <div class="heart-leaderboard heart-leaderboard--company">
-            <h2>
-              Company Leaderboard
-            </h2>
-            <!-- TODO: empty state -->
-            <company-leaderboard companies="topCompanies.companies"></company-leaderboard>
-          </div>
-          <div class="heart-news-center" ng-if="newsFeed.totalNumber > 0" ng-cloak>
-            <h2>
-              News Center
-            </h2>
-            <news-feed-list items="newsFeed.items"></news-feed-list>
-            <!-- TODO: pagination -->
           </div>
         </div>
       </div>
