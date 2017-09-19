@@ -544,7 +544,7 @@
           <h2>Walk Details:</h2>
           <div class="heart_pc_sidebar_row clearfix">
             <p><a href="TR?fr_id={{frId}}&amp;pg=entry">{{eventInfo.name}}</a></p>
-            <p>Where: xLocationx</p>
+            <p>{{eventInfo.location_name}}</p>
             <p ng-if="eventInfo.event_date && eventInfo.event_date != ''">Date &amp; Time: {{eventInfo.event_date | date : 'MMMM d'}}</p>
             <button>View Map</button>
           </div>
