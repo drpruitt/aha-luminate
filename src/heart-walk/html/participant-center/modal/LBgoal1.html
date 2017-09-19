@@ -1,0 +1,25 @@
+<form ng-submit="LBemail()">
+  <div class="modal-header">
+    <h2 class="modal-title">
+      You’re Halfway There! Come On, You Got This!
+    </h2>
+  </div>
+  <div class="modal-body">
+    <div>
+        <p>You’ve raised $500 and are on your way to hitting your fundraising goal!</p>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="clearfix">
+      <div class="pull-left">
+        <a class="btn btn-primary-inverted text-uppercase" ng-click="notRightNow()">Not Right Now</a>
+      </div>
+      <div class="pull-right">
+        <button type="submit" class="btn btn-primary text-uppercase">
+          Send an Email
+        </button>
+      </div>
+    </div>
+    <div class="lb_skip_link"><a ng-click="LBskip('goal1')">Skip this step</a></div>
+  </div>
+<form>

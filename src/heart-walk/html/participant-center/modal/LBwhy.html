@@ -1,0 +1,32 @@
+<form ng-submit="updateTellUsWhy($event)" novalidate>
+  <div class="modal-header">
+    <h2 class="modal-title">
+      "__________ is Why."
+    </h2>
+  </div>
+  <div class="modal-body">
+    <div>
+        <p>What's your why, <span ng-if="constituent.name && constituent.name.first">{{constituent.name.first}}</span><span ng-if="!constituent.name.first">Participant</span>? Tell us why you walk and we’ll create a personalized video for you to share with friends and family!</p>
+    </div>
+    <div class="form-group">
+      <label for="update_why" class="sr-only">Update your why</label>
+      <div class="input-group">
+        <input type="text" id="update_why" class="form-control" ng-model="sqvm.surveyModel.question_key_what_is_why" aria-label="Why">
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="clearfix">
+      <div class="pull-left">
+        <button type="button" class="btn btn-primary-inverted text-uppercase" ng-click="notRightNow()">Not Right Now</span>
+        </button>
+      </div>
+      <div class="pull-right">
+        <button type="submit" class="btn btn-primary text-uppercase">
+          Update My Why
+        </button>
+      </div>
+    </div>
+    <div class="lb_skip_link"><a ng-click="LBskip('why')">Skip this step</a></div>
+  </div>
+<form>

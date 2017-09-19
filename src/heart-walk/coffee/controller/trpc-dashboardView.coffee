@@ -162,7 +162,7 @@ angular.module 'trPcControllers'
               $scope.updateProfileSuccess = true
               $scope.updateProfileFailure = false
             response
-        $scope.consProfilePromises.push updateUserPromise
+        $scope.dashboardPromises.push updateUserPromise
 
       $scope.resetProfileAlerts = ->
         $scope.updateProfileSuccess = false
@@ -256,7 +256,7 @@ angular.module 'trPcControllers'
                   $scope.sqvm.surveyModel[thisField.questionKey] = surveyResponse.responseValue
             $scope.sqvm.originalFields = angular.copy($scope.sqvm.surveyFields)
             response
-        $scope.surveyResponsePromises.push getSurveyResponsesPromise
+        $scope.dashboardPromises.push getSurveyResponsesPromise
       $scope.getSurveyResponses()
 
       $scope.updateSurveyResponses = ($event) ->
@@ -279,7 +279,7 @@ angular.module 'trPcControllers'
               $scope.updateSurveyFailure = false
               $scope.sqvm.surveyOptions.updateInitialValue()
             response
-        $scope.surveyResponsePromises.push updateSurveyResponsesPromise
+        $scope.dashboardPromises.push updateSurveyResponsesPromise
 
       $scope.resetSurveyAlerts = ->
         $scope.updateSurveySuccess = false
@@ -307,7 +307,8 @@ angular.module 'trPcControllers'
         why: 0
         share: 0
         profile: 0
-        test: 0
+        goal1: 0
+        goal2: 0
       }
       GetUserInt = ->
         console.log $rootScope.updatedProfile
@@ -341,6 +342,12 @@ angular.module 'trPcControllers'
                       when 'profile'
                           console.log 'found profile!'
                           userInteractions.profile = 1
+                      when 'goal1'
+                          console.log 'found goal 1!'
+                          userInteractions.goal1 = 1
+                      when 'goal2'
+                          console.log 'found goal 2!'
+                          userInteractions.goal2 = 1
               if $rootScope.updatedProfile is 'TRUE' && userInteractions.page is 0
                 console.log 'update page interaction needs to be set and update our local object'
                 userInteractions.page = 1
@@ -376,10 +383,21 @@ angular.module 'trPcControllers'
             templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBemail.html'
         else if userInteractions.why is 0
           console.log 'launch why lightbox'
+          $scope.LBwhyModal = $uibModal.open
+            scope: $scope
+            templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBwhy.html'
         else if userInteractions.share is 0
           console.log 'launch share lightbox'
+          $scope.LBshareModal = $uibModal.open
+            scope: $scope
+            templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBshare.html'
         else if userInteractions.profile is 0
           console.log 'launch profile lightbox'
+          $scope.LBprofileModal = $uibModal.open
+            scope: $scope
+            templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBprofile.html'
+
+
         #Need to check for previous login via lastPC2Login and then load the TY for Reging
         #else
           #use same modal open as above
@@ -406,12 +424,12 @@ angular.module 'trPcControllers'
               console.log 'failed'
 
       $scope.tellUsWhy = ->
-        $scope.tellUsWhyModal = $uibModal.open
+        $scope.LBwhyDesktopModal = $uibModal.open
           scope: $scope
-          templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/tellUsWhy.html'
+          templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBwhy.html'
 
-      $scope.cancelTellUsWhy = ->
-        $scope.tellUsWhyModal.close()
+      #$scope.cancelTellUsWhy = ->
+        #$scope.tellUsWhyModal.close()
 
       $scope.participantProgress =
         raised: 0
