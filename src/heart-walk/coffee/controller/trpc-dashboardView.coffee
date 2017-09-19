@@ -292,15 +292,16 @@ angular.module 'trPcControllers'
 
 # CM END profile and reg question updates
 
-      logUserInt = (subject) ->
-        ConstituentService.logInteraction 'interaction_type_id=1011&interaction_subject=' + subject
+      logUserInt = (subject,body) ->
+        #body = $scope.frId
+        ConstituentService.logInteraction 'interaction_type_id=1011&interaction_subject=' + subject + '&interaction_body=' + body
           .then (response) ->
             if response.data.updateConsResponse?.message
-              console.log 'udpated'
+              console.log 'updated subject = '+subject+' & updated body = '+body
             else
               console.log 'failed'
 
-      userInteractions = {
+      $scope.userInteractions = {
         page: 0
         donate: 0
         email: 0
@@ -311,9 +312,11 @@ angular.module 'trPcControllers'
         goal2: 0
       }
       GetUserInt = ->
-        console.log $rootScope.updatedProfile
-        console.log $rootScope.isSelfDonor
-        console.log $rootScope.emailsSent
+        console.log 'updateProfile = ' + $rootScope.updatedProfile
+        console.log 'isSelfDonor = ' + $rootScope.isSelfDonor
+        console.log 'emailsSent = ' + $rootScope.emailsSent
+        console.log 'tr_id = ' + $scope.frId
+
         userInteractionsPromise = ConstituentService.getUserInteractions '&list_page_size=50&interaction_type_id=1011'
           .then (response) ->
             if not response.data.errorResponse
@@ -323,41 +326,50 @@ angular.module 'trPcControllers'
                 if interactions.length > 0
                   console.log 'Raw interactions = ', interactions
                   angular.forEach interactions, (interaction) ->
-                    switch interaction.subject
-                      when 'page'
-                          console.log 'found page!'
-                          userInteractions.page = 1
-                      when 'donate'
-                          console.log 'found donate!'
-                          userInteractions.donate = 1
-                      when 'email'
-                          console.log 'found email!'
-                          userInteractions.email = 1
-                      when 'why'
-                          console.log 'found why!'
-                          userInteractions.why = 1
-                      when 'share'
-                          console.log 'found share!'
-                          userInteractions.share = 1
-                      when 'profile'
-                          console.log 'found profile!'
-                          userInteractions.profile = 1
-                      when 'goal1'
-                          console.log 'found goal 1!'
-                          userInteractions.goal1 = 1
-                      when 'goal2'
-                          console.log 'found goal 2!'
-                          userInteractions.goal2 = 1
-              if $rootScope.updatedProfile is 'TRUE' && userInteractions.page is 0
+                    if interaction.note
+                      if interaction.note.text
+                        console.log 'comments = ' + interaction.note.text
+                        interactionNote = Number(interaction.note.text)
+                        if $scope.frId == interactionNote
+                          switch interaction.subject
+                            when 'page'
+                                console.log 'found page!'
+                                $scope.userInteractions.page = 1
+                            when 'donate'
+                                console.log 'found donate!'
+                                $scope.userInteractions.donate = 1
+                            when 'email'
+                                console.log 'found email!'
+                                $scope.userInteractions.email = 1
+                            when 'why'
+                                console.log 'found why!'
+                                $scope.userInteractions.why = 1
+                            when 'share'
+                                console.log 'found share!'
+                                $scope.userInteractions.share = 1
+                            when 'profile'
+                                console.log 'found profile!'
+                                $scope.userInteractions.profile = 1
+                            when 'goal1'
+                                console.log 'found goal 1!'
+                                $scope.userInteractions.goal1 = 1
+                            when 'goal2'
+                                console.log 'found goal 2!'
+                                $scope.userInteractions.goal2 = 1
+                        else
+                          console.log 'the note and the fr-id didnt match'
+              if $rootScope.updatedProfile is 'TRUE' && $scope.userInteractions.page is 0
                 console.log 'update page interaction needs to be set and update our local object'
-                userInteractions.page = 1
-              if $rootScope.isSelfDonor is 'TRUE' && userInteractions.donate is 0
+                $scope.userInteractions.page = 1
+                logUserInt('page',$scope.frId)
+              if $rootScope.isSelfDonor is 'TRUE' && $scope.userInteractions.donate is 0
                 console.log 'self donor interaction needs to be set and update our local object'
-                userInteractions.donate = 1
-              if $rootScope.emailsSent > 0 && userInteractions.email is 0
+                $scope.userInteractions.donate = 1
+                logUserInt('donate',$scope.frId)
+              if $rootScope.emailsSent > 0 && $scope.userInteractions.email is 0
                 console.log 'email sent interaction needs to be set and update our local object'
-                userInteractions.email = 1
-                logUserInt('email')
+                $scope.userInteractions.email = 1
+                logUserInt('email',$scope.frId)
               #ToDo Add in checks for the other three interactions done outside the PC
               runLBroutes()
             response
@@ -365,33 +377,34 @@ angular.module 'trPcControllers'
       GetUserInt()
 
       runLBroutes = ->
-        console.log userInteractions
-        if userInteractions.page is 0
+        console.log $scope.userInteractions
+        console.log 'tr id = ' + $scope.frId
+        if $scope.userInteractions.page is 0
           console.log 'launch page lightbox1'
           $scope.LBwelcomeBackModal = $uibModal.open
             scope: $scope
             templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBwelcomeBack.html'
-        else if userInteractions.donate is 0
+        else if $scope.userInteractions.donate is 0
           console.log 'launch donate lightbox'
           $scope.LBdonateModal = $uibModal.open
             scope: $scope
             templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBdonate.html'
-        else if userInteractions.email is 0
+        else if $scope.userInteractions.email is 0
           console.log 'launch email lightbox'
           $scope.LBemailModal = $uibModal.open
             scope: $scope
             templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBemail.html'
-        else if userInteractions.why is 0
+        else if $scope.userInteractions.why is 0
           console.log 'launch why lightbox'
           $scope.LBwhyModal = $uibModal.open
             scope: $scope
             templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBwhy.html'
-        else if userInteractions.share is 0
+        else if $scope.userInteractions.share is 0
           console.log 'launch share lightbox'
           $scope.LBshareModal = $uibModal.open
             scope: $scope
             templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBshare.html'
-        else if userInteractions.profile is 0
+        else if $scope.userInteractions.profile is 0
           console.log 'launch profile lightbox'
           $scope.LBprofileModal = $uibModal.open
             scope: $scope
@@ -408,9 +421,9 @@ angular.module 'trPcControllers'
         $uibModalStack.dismissAll()
 
       $scope.LBskip = (interaction) ->
-        console.log interaction + 'will be skipped from now on'
-        logUserInt(interaction)
-        userInteractions[interaction] = 1
+        console.log interaction + ' will be skipped from now on'
+        logUserInt(interaction,$scope.frId)
+        $scope.userInteractions[interaction] = 1
         $uibModalStack.dismissAll()
         runLBroutes()
 
