@@ -330,10 +330,13 @@ angular.module 'trPcControllers'
                       if interaction.note.text
                         console.log 'comments = ' + interaction.note.text
                         interactionNote = Number(interaction.note.text)
+                        $scope.dashboardGreeting = 'GREETING TEST'
+                        console.log $scope.dashboardGreeting + ' greeting'
                         if $scope.frId == interactionNote
                           switch interaction.subject
                             when 'page'
                                 console.log 'found page!'
+                                $scope.userInteractions.page = 1
                             when 'donate'
                                 console.log 'found donate!'
                                 $scope.userInteractions.donate = 1
