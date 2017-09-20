@@ -37,7 +37,7 @@
           </div>
           <div class="col-sm-4 profile_box" ng-if="userInteractions.donate == '1'">
             <div class="profile_box_icon pull-left"><i class="fa fa-check"></i></div>
-            <div class="profile_box_info pull-right">Donation success! Thank You!<a class="btn btn-primary" ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{consId}}">Make Another Donation</a></div>
+            <div class="profile_box_info pull-right">Donation success!<br>Thank You!<a class="btn btn-primary" ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{consId}}">Make Another Donation</a></div>
           </div>
 
 
@@ -69,11 +69,11 @@
             <div class="profile_box_info pull-right">Revisit our Heart Walk social tools to rev up your social pages!<a class="btn btn-primary" ng-href="PageServer?pagename=heartwalk_fundraising_tools&amp;fr_id={{frId}}">Go Social</button></div>
           </div>
 
-          <div class="col-sm-4 profile_box" ng-if="userInteractions.profile == '0'">
+          <div class="col-sm-4 profile_box" ng-if="userInteractions.profile != '1'">
             <div class="profile_box_icon pull-left">O</div>
             <div class="profile_box_info pull-right">We're missing your details! Complete your profile now.<button class="btn btn-primary">Update My Profile</button></div>
           </div>
-          <div class="col-sm-4 profile_box" ng-if="userInteractions.profile == '0'">
+          <div class="col-sm-4 profile_box" ng-if="userInteractions.profile == '1'">
             <div class="profile_box_icon pull-left"><i ng-if="userInteractions.profile == '1'" class="fa fa-check"></i></div>
             <div class="profile_box_info pull-right">Your profile is complete. Thanks for keeping it updated.<button class="btn btn-primary">Update My Profile Again</button></div>
           </div>
