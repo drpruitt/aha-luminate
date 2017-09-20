@@ -40,7 +40,6 @@
             <div class="profile_box_info pull-right">Donation success!<br>Thank You!<a class="btn btn-primary" ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{consId}}">Make Another Donation</a></div>
           </div>
 
-
           <div class="col-sm-4 profile_box" ng-if="userInteractions.email != '1'">
             <div class="profile_box_icon pull-left"><i class="fa fa-at"></i></div>
             <div class="profile_box_info pull-right">Send emails to ask friends to join or donate today.<a class="btn btn-primary" ng-href="{{baseUrl}}#/email/compose">Send an Email</a></div>
@@ -60,11 +59,11 @@
             <div class="profile_box_info pull-right">Thank you for telling us your Why.<button class="btn btn-primary" ng-click="tellUsWhy()">Update Your Why</button></div>
           </div>
 
-          <div class="col-sm-4 profile_box" ng-if="userInteractions.share != '1'">
+          <div class="col-sm-4 profile_box" ng-if="userInteractions.social != '1'">
             <div class="profile_box_icon pull-left"><i class="fa fa-heart"></i></div>
             <div class="profile_box_info pull-right">Deck out your social pages with these great Heart Walk images.<a class="btn btn-primary" ng-href="PageServer?pagename=heartwalk_fundraising_tools&amp;fr_id={{frId}}">Go Social</button></div>
           </div>
-          <div class="col-sm-4 profile_box" ng-if="userInteractions.share == '1'">
+          <div class="col-sm-4 profile_box" ng-if="userInteractions.social == '1'">
             <div class="profile_box_icon pull-left"><i class="fa fa-heart"></i></div>
             <div class="profile_box_info pull-right">Revisit our Heart Walk social tools to rev up your social pages!<a class="btn btn-primary" ng-href="PageServer?pagename=heartwalk_fundraising_tools&amp;fr_id={{frId}}">Go Social</button></div>
           </div>

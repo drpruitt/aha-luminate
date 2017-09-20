@@ -306,7 +306,7 @@ angular.module 'trPcControllers'
         donate: 0
         email: 0
         why: 0
-        share: 0
+        social: 0
         profile: 0
         goal1: 0
         goal2: 0
@@ -346,9 +346,9 @@ angular.module 'trPcControllers'
                             when 'why'
                                 console.log 'found why!'
                                 $scope.userInteractions.why = 1
-                            when 'share'
-                                console.log 'found share!'
-                                $scope.userInteractions.share = 1
+                            when 'social'
+                                console.log 'found social!'
+                                $scope.userInteractions.social = 1
                             when 'profile'
                                 console.log 'found profile!'
                                 $scope.userInteractions.profile = 1
@@ -403,11 +403,11 @@ angular.module 'trPcControllers'
           $scope.LBwhyModal = $uibModal.open
             scope: $scope
             templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBwhy.html'
-        else if $scope.userInteractions.share is 0
-          console.log 'launch share lightbox'
-          $scope.LBshareModal = $uibModal.open
+        else if $scope.userInteractions.social is 0
+          console.log 'launch social lightbox'
+          $scope.LBsocialModal = $uibModal.open
             scope: $scope
-            templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBshare.html'
+            templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBsocial.html'
         else if $scope.userInteractions.profile is 0
           console.log 'launch profile lightbox'
           $scope.LBprofileModal = $uibModal.open
