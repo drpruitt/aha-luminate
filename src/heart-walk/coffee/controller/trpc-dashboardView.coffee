@@ -384,7 +384,9 @@ angular.module 'trPcControllers'
         $scope.dashboardGreeting = ''
         console.log $scope.userInteractions
         console.log 'tr id = ' + $scope.frId
-        if $scope.userInteractions.page is 0
+        if $rootScope.participantRegistration.lastPC2Login is '0'
+          console.log 'first time in runLBroutes'
+        else if $scope.userInteractions.page is 0
           console.log 'launch welcome back lightbox'
           $scope.dashboardGreeting = 'page'
           $scope.LBwelcomeBackModal = $uibModal.open
