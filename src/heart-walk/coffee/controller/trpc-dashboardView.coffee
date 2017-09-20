@@ -376,6 +376,7 @@ angular.module 'trPcControllers'
               if $scope.sqvm.surveyModel.question_key_what_is_why != null && $scope.userInteractions.why is 0
                 console.log 'why interaction needs to be set and update our local object'
                 console.log 'my WHY = '+$scope.sqvm.surveyModel.question_key_what_is_why
+              console.log 'progress - ',$scope.participantProgress.percent
               if $scope.participantProgress.percent >= 100 && $scope.userInteractions.goal1 is 0
                 console.log 'goal1 interaction needs to be set and update our local object'
                 $scope.userInteractions.goal1 = 1
@@ -384,7 +385,9 @@ angular.module 'trPcControllers'
               runLBroutes()
             response
         $scope.dashboardPromises.push userInteractionsPromise
-      GetUserInt()
+      $timeout ->
+        GetUserInt()
+      , 500
 
       runLBroutes = ->
         $scope.dashboardGreeting = ''
@@ -434,16 +437,17 @@ angular.module 'trPcControllers'
           $scope.LBgoal1Modal = $uibModal.open
             scope: $scope
             templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBgoal1.html'
-          $scope.LBgoal1Submit = ->
-            console.log 'submitted the goal1 send email button'
-            logUserInt('goal1',$scope.frId)
-            $location.path '/email/compose'
         else if $scope.userInteractions.goal2 is 0 && $scope.participantProgress.percent >= 100
           console.log 'launch goal2 lightbox'
           $scope.dashboardGreeting = 'goal2'
           $scope.LBgoal2Modal = $uibModal.open
             scope: $scope
             templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBgoal2.html'
+
+      $scope.LBgoal1Submit = ->
+        console.log 'submitted the goal1 send email button'
+        logUserInt('goal1',$scope.frId)
+        $location.path '/email/compose'
 
       $scope.notRightNow = ->
         $uibModalStack.dismissAll()
@@ -468,9 +472,6 @@ angular.module 'trPcControllers'
         $scope.LBwhyDesktopModal = $uibModal.open
           scope: $scope
           templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBwhy.html'
-
-      #$scope.cancelTellUsWhy = ->
-        #$scope.tellUsWhyModal.close()
 
       $scope.participantProgress =
         raised: 0
@@ -532,8 +533,8 @@ angular.module 'trPcControllers'
                     #percent = 2
                   #if percent > 98
                     #percent = 98
-                  #if percent > 100
-                    #percent = 100
+                  if percent > 100
+                    percent = 100
                   $scope.teamProgress.percent = percent
                 , 500
             if $scope.participantRegistration.companyInformation and $scope.participantRegistration.companyInformation.companyId and $scope.participantRegistration.companyInformation.companyId isnt -1
