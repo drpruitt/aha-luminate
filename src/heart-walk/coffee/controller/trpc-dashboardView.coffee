@@ -334,8 +334,6 @@ angular.module 'trPcControllers'
                       if interaction.note.text
                         console.log 'comments = ' + interaction.note.text
                         interactionNote = Number(interaction.note.text)
-                        $scope.dashboardGreeting = 'GREETING TEST'
-                        console.log $scope.dashboardGreeting + ' greeting'
                         if $scope.frId == interactionNote
                           switch interaction.subject
                             when 'page'
@@ -394,31 +392,36 @@ angular.module 'trPcControllers'
             templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBwelcomeBack.html'
         else if $scope.userInteractions.donate is 0
           console.log 'launch donate lightbox'
+          $scope.dashboardGreeting = 'donate'
           $scope.LBdonateModal = $uibModal.open
             scope: $scope
             templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBdonate.html'
         else if $scope.userInteractions.email is 0
           console.log 'launch email lightbox'
+          $scope.dashboardGreeting = 'email'
           $scope.LBemailModal = $uibModal.open
             scope: $scope
             templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBemail.html'
         else if $scope.userInteractions.why is 0
           console.log 'launch why lightbox'
+          $scope.dashboardGreeting = 'why'
           $scope.LBwhyModal = $uibModal.open
             scope: $scope
             templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBwhy.html'
         else if $scope.userInteractions.social is 0
           console.log 'launch social lightbox'
+          $scope.dashboardGreeting = 'social'
           $scope.LBsocialModal = $uibModal.open
             scope: $scope
             templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBsocial.html'
         else if $scope.userInteractions.profile is 0
           console.log 'launch profile lightbox'
+          $scope.dashboardGreeting = 'profile'
           $scope.LBprofileModal = $uibModal.open
             scope: $scope
             templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBprofile.html'
 
-
+        #need to add extra lightboxes
         #Need to check for previous login via lastPC2Login and then load the TY for Reging
         #else
           #use same modal open as above

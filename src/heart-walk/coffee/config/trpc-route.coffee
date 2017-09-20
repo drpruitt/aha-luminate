@@ -60,8 +60,8 @@ angular.module 'trPcApp'
     'AuthService'
     'TeamraiserEventService'
     'TeamraiserRegistrationService'
-    'CoachingMarkService'
-    ($rootScope, $location, $route, $uibModal, APP_INFO, AuthService, TeamraiserEventService, TeamraiserRegistrationService, CoachingMarkService) ->
+    'ThankYouRegService'
+    ($rootScope, $location, $route, $uibModal, APP_INFO, AuthService, TeamraiserEventService, TeamraiserRegistrationService, ThankYouRegService) ->
       $rootScope.$on '$routeChangeStart', ($event, next, current) ->
         # set active tab
         if next.originalPath
@@ -169,18 +169,15 @@ angular.module 'trPcApp'
           $event.preventDefault()
           # TODO
 
-        # coaching mark unknown
-        else if not $rootScope.coachingMark
+        # check for first timer
+        else if not $rootScope.LBthankYou
           $event.preventDefault()
-          CoachingMarkService.getCoachingMark()
+          ThankYouRegService.getThankYou()
             .then ->
-              if $rootScope.coachingMark isnt -1
-                $rootScope.coachingMarkModal = $uibModal.open
+              if $rootScope.LBthankYou isnt -1
+                $rootScope.LBthankYouRegisteringModal = $uibModal.open
                   scope: $rootScope
-                  templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/coachingMark-' + $rootScope.coachingMark + '.html'
-                $rootScope.dismissCoachingMarkModal = ->
-                  $rootScope.coachingMarkModal.close()
-                  angular.element('.modal').click()
+                  templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBthankYouRegistering.html'
               reloadRoute()
 
         # not allowed to edit survey questions

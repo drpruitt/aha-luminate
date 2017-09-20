@@ -13,8 +13,7 @@
         </div>
         <div ng-if="constituent">
           <h1 ng-if="constituent.name && constituent.name.first">
-            {{constituent.name.first}},&nbsp;
-            x{{dashboardGreeting}}x
+            {{constituent.name.first}},&nbsp;{{dashboardGreeting}}
           </h1>
           <h1 ng-if="!constituent.name.first">
             Participant, Dynamic Content, <a href="#">with a link</a>!
