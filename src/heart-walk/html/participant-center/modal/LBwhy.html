@@ -4,6 +4,12 @@
       "__________ is Why."
     </h2>
   </div>
+  <div uib-alert class="alert-success" ng-if="updateSurveySuccess" close="resetSurveyAlerts()">
+    <span translate="survey_save_success"></span>
+  </div>
+  <div uib-alert class="alert-danger" ng-if="updateSurveyFailure" close="resetSurveyAlerts()">
+    {{updateSurveyFailureMessage}}
+  </div>
   <div class="modal-body">
     <div>
         <p>What's your why, <span ng-if="constituent.name && constituent.name.first">{{constituent.name.first}}</span><span ng-if="!constituent.name.first">Participant</span>? Tell us why you walk and we’ll create a personalized video for you to share with friends and family!</p>

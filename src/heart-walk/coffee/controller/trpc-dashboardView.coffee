@@ -255,13 +255,17 @@ angular.module 'trPcControllers'
                 else
                   $scope.sqvm.surveyModel[thisField.questionKey] = surveyResponse.responseValue
             $scope.sqvm.originalFields = angular.copy($scope.sqvm.surveyFields)
+            console.log 'surveyFields = ',$scope.sqvm.surveyModel
+            console.log 'originalFields = ',$scope.sqvm.originalFields
             response
         $scope.dashboardPromises.push getSurveyResponsesPromise
       $scope.getSurveyResponses()
 
       $scope.updateSurveyResponses = ($event) ->
         $event.preventDefault()
+        console.log 'surveyModel = ',$httpParamSerializer($scope.sqvm.surveyModel)
         updateSurveyResponsesPromise = TeamraiserSurveyResponseService.updateSurveyResponses $httpParamSerializer($scope.sqvm.surveyModel)
+        #updateSurveyResponsesPromise = TeamraiserSurveyResponseService.updateSurveyResponses '&question_key_what_is_why=Take10X123'
         .then (response) ->
             if response.data?.errorResponse?
               $scope.updateSurveySuccess = false
