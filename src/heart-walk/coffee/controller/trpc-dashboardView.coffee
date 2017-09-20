@@ -265,7 +265,6 @@ angular.module 'trPcControllers'
         $event.preventDefault()
         console.log 'surveyModel = ',$httpParamSerializer($scope.sqvm.surveyModel)
         updateSurveyResponsesPromise = TeamraiserSurveyResponseService.updateSurveyResponses $httpParamSerializer($scope.sqvm.surveyModel)
-        #updateSurveyResponsesPromise = TeamraiserSurveyResponseService.updateSurveyResponses '&question_key_what_is_why=Take10X123'
         .then (response) ->
             if response.data?.errorResponse?
               $scope.updateSurveySuccess = false
@@ -374,6 +373,13 @@ angular.module 'trPcControllers'
                 console.log 'email sent interaction needs to be set and update our local object'
                 $scope.userInteractions.email = 1
                 logUserInt('email',$scope.frId)
+              if $scope.sqvm.surveyModel.question_key_what_is_why != null && $scope.userInteractions.why is 0
+                console.log 'why interaction needs to be set and update our local object'
+                console.log 'my WHY = '+$scope.sqvm.surveyModel.question_key_what_is_why
+              if $scope.participantProgress.percent >= 100 && $scope.userInteractions.goal1 is 0
+                console.log 'goal1 interaction needs to be set and update our local object'
+                $scope.userInteractions.goal1 = 1
+                logUserInt('goal1',$scope.frId)
               #ToDo Add in checks for the other three interactions done outside the PC
               runLBroutes()
             response
@@ -422,13 +428,22 @@ angular.module 'trPcControllers'
           $scope.LBprofileModal = $uibModal.open
             scope: $scope
             templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBprofile.html'
-
-        #need to add extra lightboxes
-        #Need to check for previous login via lastPC2Login and then load the TY for Reging
-        #else
-          #use same modal open as above
-
-      #console.log 'lastPC2Login = ',$rootScope.participantRegistration.lastPC2Login
+        else if $scope.userInteractions.goal1 is 0 && $scope.participantProgress.percent >= 50
+          console.log 'launch goal1 lightbox'
+          $scope.dashboardGreeting = 'goal1'
+          $scope.LBgoal1Modal = $uibModal.open
+            scope: $scope
+            templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBgoal1.html'
+          $scope.LBgoal1Submit = ->
+            console.log 'submitted the goal1 send email button'
+            logUserInt('goal1',$scope.frId)
+            $location.path '/email/compose'
+        else if $scope.userInteractions.goal2 is 0 && $scope.participantProgress.percent >= 100
+          console.log 'launch goal2 lightbox'
+          $scope.dashboardGreeting = 'goal2'
+          $scope.LBgoal2Modal = $uibModal.open
+            scope: $scope
+            templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBgoal2.html'
 
       $scope.notRightNow = ->
         $uibModalStack.dismissAll()
@@ -462,21 +477,21 @@ angular.module 'trPcControllers'
         raisedFormatted: '$0'
         goal: 0
         goalFormatted: '$0'
-        percent: 2
+        percent: 0
       if $scope.participantRegistration.teamId and $scope.participantRegistration.teamId isnt '-1'
         $scope.teamProgress =
           raised: 0
           raisedFormatted: '$0'
           goal: 0
           goalFormatted: '$0'
-          percent: 2
+          percent: 0
       if $scope.participantRegistration.companyInformation and $scope.participantRegistration.companyInformation.companyId and $scope.participantRegistration.companyInformation.companyId isnt -1
         $scope.companyProgress =
           raised: 0
           raisedFormatted: '$0'
           goal: 0
           goalFormatted: '$0'
-          percent: 2
+          percent: 0
       $scope.refreshFundraisingProgress = ->
         fundraisingProgressPromise = TeamraiserProgressService.getProgress()
           .then (response) ->
@@ -486,18 +501,18 @@ angular.module 'trPcControllers'
               participantProgress.raisedFormatted = if participantProgress.raised then $filter('currency')(participantProgress.raised / 100, '$', 0) else '$0'
               participantProgress.goal = Number participantProgress.goal
               participantProgress.goalFormatted = if participantProgress.goal then $filter('currency')(participantProgress.goal / 100, '$', 0) else '$0'
-              participantProgress.percent = 2
+              participantProgress.percent = 0
               $scope.participantProgress = participantProgress
               $timeout ->
                 percent = $scope.participantProgress.percent
                 if $scope.participantProgress.goal isnt 0
                   percent = Math.ceil(($scope.participantProgress.raised / $scope.participantProgress.goal) * 100)
-                if percent < 2
-                  percent = 2
-                if percent > 98
-                  percent = 98
-                # if percent > 100
-                  #percent = 100
+                #if percent < 2
+                  #percent = 2
+                #if percent > 98
+                  #percent = 98
+                if percent > 100
+                  percent = 100
                 $scope.participantProgress.percent = percent
               , 500
             if $scope.participantRegistration.teamId and $scope.participantRegistration.teamId isnt '-1'
@@ -507,16 +522,18 @@ angular.module 'trPcControllers'
                 teamProgress.raisedFormatted = if teamProgress.raised then $filter('currency')(teamProgress.raised / 100, '$', 0) else '$0'
                 teamProgress.goal = Number teamProgress.goal
                 teamProgress.goalFormatted = if teamProgress.goal then $filter('currency')(teamProgress.goal / 100, '$', 0) else '$0'
-                teamProgress.percent = 2
+                teamProgress.percent = 0
                 $scope.teamProgress = teamProgress
                 $timeout ->
                   percent = $scope.teamProgress.percent
                   if $scope.teamProgress.goal isnt 0
                     percent = Math.ceil(($scope.teamProgress.raised / $scope.teamProgress.goal) * 100)
-                  if percent < 2
-                    percent = 2
-                  if percent > 98
-                    percent = 98
+                  #if percent < 2
+                    #percent = 2
+                  #if percent > 98
+                    #percent = 98
+                  #if percent > 100
+                    #percent = 100
                   $scope.teamProgress.percent = percent
                 , 500
             if $scope.participantRegistration.companyInformation and $scope.participantRegistration.companyInformation.companyId and $scope.participantRegistration.companyInformation.companyId isnt -1
@@ -526,16 +543,18 @@ angular.module 'trPcControllers'
                 companyProgress.raisedFormatted = if companyProgress.raised then $filter('currency')(companyProgress.raised / 100, '$', 0) else '$0'
                 companyProgress.goal = Number companyProgress.goal
                 companyProgress.goalFormatted = if companyProgress.goal then $filter('currency')(companyProgress.goal / 100, '$', 0) else '$0'
-                companyProgress.percent = 2
+                companyProgress.percent = 0
                 $scope.companyProgress = companyProgress
                 $timeout ->
                   percent = $scope.companyProgress.percent
                   if $scope.companyProgress.goal isnt 0
                     percent = Math.ceil(($scope.companyProgress.raised / $scope.companyProgress.goal) * 100)
-                  if percent < 2
-                    percent = 2
-                  if percent > 98
-                    percent = 98
+                  #if percent < 2
+                    #percent = 2
+                  #if percent > 98
+                    #percent = 98
+                  if percent > 100
+                    percent = 100
                   $scope.companyProgress.percent = percent
                 , 500
             response
