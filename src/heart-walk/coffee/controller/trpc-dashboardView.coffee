@@ -334,7 +334,6 @@ angular.module 'trPcControllers'
                           switch interaction.subject
                             when 'page'
                                 console.log 'found page!'
-                                $scope.userInteractions.page = 1
                             when 'donate'
                                 console.log 'found donate!'
                                 $scope.userInteractions.donate = 1
@@ -377,10 +376,12 @@ angular.module 'trPcControllers'
       GetUserInt()
 
       runLBroutes = ->
+        $scope.dashboardGreeting = ''
         console.log $scope.userInteractions
         console.log 'tr id = ' + $scope.frId
         if $scope.userInteractions.page is 0
-          console.log 'launch page lightbox1'
+          console.log 'launch welcome back lightbox'
+          $scope.dashboardGreeting = 'page'
           $scope.LBwelcomeBackModal = $uibModal.open
             scope: $scope
             templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBwelcomeBack.html'
