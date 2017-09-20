@@ -55,8 +55,8 @@
             <div class="profile_box_info pull-right">Why do you walk? Finish this sentence: "______ is Why."<button class="btn btn-primary" ng-click="tellUsWhy()">Tell Us Your Why</button></div>
           </div>
           <div class="col-sm-4 profile_box" ng-if="userInteractions.why == '1'">
-            <div class="profile_box_icon pull-left"><i class="fa fa-question"></i></div>
-            <div class="profile_box_info pull-right">Thank you for telling us your Why.<button class="btn btn-primary" ng-click="tellUsWhy()">Update Your Why</button></div>
+            <div class="profile_box_icon pull-left"><i class="fa fa-check"></i></div>
+            <div class="profile_box_info pull-right">Thank you for telling us<br>your Why.<button class="btn btn-primary" ng-click="tellUsWhy()">Update Your Why</button></div>
           </div>
 
           <div class="col-sm-4 profile_box" ng-if="userInteractions.social != '1'">
@@ -64,7 +64,7 @@
             <div class="profile_box_info pull-right">Deck out your social pages with these great Heart Walk images.<a class="btn btn-primary" ng-href="PageServer?pagename=heartwalk_fundraising_tools&amp;fr_id={{frId}}">Go Social</button></div>
           </div>
           <div class="col-sm-4 profile_box" ng-if="userInteractions.social == '1'">
-            <div class="profile_box_icon pull-left"><i class="fa fa-heart"></i></div>
+            <div class="profile_box_icon pull-left"><i class="fa fa-check"></i></div>
             <div class="profile_box_info pull-right">Revisit our Heart Walk social tools to rev up your social pages!<a class="btn btn-primary" ng-href="PageServer?pagename=heartwalk_fundraising_tools&amp;fr_id={{frId}}">Go Social</button></div>
           </div>
 
