@@ -449,9 +449,11 @@ angular.module 'trPcControllers'
         logUserInt('goal1',$scope.frId)
         $location.path '/email/compose'
 
-      $scope.LBgoal2Submit = ->
+      $scope.LBgoalTwoSubmit = ->
         console.log 'submitted the goal2 send email button'
         logUserInt('goal2',$scope.frId)
+        $scope.LBgoal2Modal.close()
+        $scope.editGoal('Participant')
         #$location.path '/email/compose'
 
       $scope.notRightNow = ->
