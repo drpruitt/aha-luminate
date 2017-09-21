@@ -81,9 +81,6 @@
             <!-- CM BEGIN test reg question fields -->
             <div class="temporary-div">
               <form ng-submit="updateSurveyResponses($event)" novalidate>
-
-                sqvm.surveyModel: <pre>{{sqvm.surveyModel | json}}</pre><br>
-
                 <h3>Reg Question Fields to Update:</h3>
                 <div uib-alert class="alert-success" ng-if="updateSurveySuccess" close="resetSurveyAlerts()">
                   <span translate="survey_save_success"></span>

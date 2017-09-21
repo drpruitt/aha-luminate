@@ -192,7 +192,6 @@ angular.module 'trPcControllers'
               if surveyResponse
                 thisField =
                   type: null
-                  # questionKey: 'question_key_' + surveyResponse.key
                   questionKey: if surveyResponse.key == null then 'no_key_assigned' else 'question_key_' + surveyResponse.key
                   data:
                     dataType: surveyResponse.questionType
@@ -246,8 +245,6 @@ angular.module 'trPcControllers'
                     thisField.templateOptions.options.push
                       name: choice.label
                       value: choice.value
-                console.log 'thisField.questionKey: ' + thisField.questionKey
-
                 if thisField.questionKey != 'no_key_assigned'
                   $scope.sqvm.surveyFields.push thisField
                   $scope.sqvm.surveyModel[thisField.questionKey] = surveyResponse.responseValue
@@ -262,7 +259,6 @@ angular.module 'trPcControllers'
                   # $scope.sqvm.surveyModel[thisField.questionKey] = surveyResponse.responseValue is 'true'
                 # else
                 #   $scope.sqvm.surveyModel[thisField.questionKey] = surveyResponse.responseValue
-
 
             $scope.sqvm.originalFields = angular.copy($scope.sqvm.surveyFields)
             # console.log 'surveyFields = ',$scope.sqvm.surveyModel
