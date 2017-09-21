@@ -192,6 +192,7 @@ angular.module 'trPcControllers'
                 thisField =
                   type: null
                   questionKey: 'question_key_' + surveyResponse.key
+                  # questionKey: if surveyResponse.key == null then 'no_key_assigned' else 'question_key_' + surveyResponse.key
                   data:
                     dataType: surveyResponse.questionType
                   templateOptions:
@@ -250,8 +251,8 @@ angular.module 'trPcControllers'
                 else if thisField.type is 'datepicker'
                   fieldValue = surveyResponse.responseValue.split "-"
                   $scope.sqvm.surveyModel[thisField.questionKey] = new Date parseInt(fieldValue[0]), parseInt(fieldValue[1])-1, parseInt(fieldValue[2]), parseInt(fieldValue[3].split(":")[0]), parseInt(fieldValue[3].split(":")[1])
-                else if thisField.type is 'checkbox'
-                  $scope.sqvm.surveyModel[thisField.questionKey] = surveyResponse.responseValue is 'true'
+                # else if thisField.type is 'checkbox'
+                  # $scope.sqvm.surveyModel[thisField.questionKey] = surveyResponse.responseValue is 'true'
                 else
                   $scope.sqvm.surveyModel[thisField.questionKey] = surveyResponse.responseValue
             $scope.sqvm.originalFields = angular.copy($scope.sqvm.surveyFields)
