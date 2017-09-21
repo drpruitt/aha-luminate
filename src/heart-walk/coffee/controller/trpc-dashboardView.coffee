@@ -145,7 +145,7 @@ angular.module 'trPcControllers'
 
 # CM BEGIN profile and reg question updates
       # update timestamp
-      console.log '322'
+      console.log '334'
 
       # CM begin cons profile update code
       $scope.consProfilePromises = []
@@ -249,17 +249,15 @@ angular.module 'trPcControllers'
 
                 if thisField.questionKey != 'no_key_assigned'
                   $scope.sqvm.surveyFields.push thisField
-                if surveyResponse.responseValue is 'User Provided No Response'
-                  $scope.sqvm.surveyModel[thisField.questionKey] = null
-                else
-                  $scope.sqvm.surveyModel[thisField.questionKey] = surveyResponse.responseValue
-
+                  if surveyResponse.responseValue is 'User Provided No Response'
+                    $scope.sqvm.surveyModel[thisField.questionKey] = null
+                  else
+                    $scope.sqvm.surveyModel[thisField.questionKey] = surveyResponse.responseValue
 
 
                 # if thisField.questionKey != 'no_key_assigned'
                 #   $scope.sqvm.surveyFields.push thisField
                 #   $scope.sqvm.surveyModel[thisField.questionKey] = surveyResponse.responseValue
-
 
 
 
