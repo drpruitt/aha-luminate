@@ -185,7 +185,6 @@ angular.module 'trPcControllers'
       $scope.getSurveyResponses = ->
         getSurveyResponsesPromise = TeamraiserSurveyResponseService.getSurveyResponses()
           .then (response) ->
-            console.log '1054'
             surveyResponses = response.data.getSurveyResponsesResponse.responses
             surveyResponses = [surveyResponses] if not angular.isArray surveyResponses
             angular.forEach surveyResponses, (surveyResponse) ->
