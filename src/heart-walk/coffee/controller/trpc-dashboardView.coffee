@@ -191,8 +191,8 @@ angular.module 'trPcControllers'
               if surveyResponse
                 thisField =
                   type: null
-                  questionKey: 'question_key_' + surveyResponse.key
-                  # questionKey: if surveyResponse.key == null then 'no_key_assigned' else 'question_key_' + surveyResponse.key
+                  # questionKey: 'question_key_' + surveyResponse.key
+                  questionKey: if surveyResponse.key == null then 'no_key_assigned' else 'question_key_' + surveyResponse.key
                   data:
                     dataType: surveyResponse.questionType
                   templateOptions:
@@ -245,16 +245,21 @@ angular.module 'trPcControllers'
                     thisField.templateOptions.options.push
                       name: choice.label
                       value: choice.value
-                $scope.sqvm.surveyFields.push thisField
-                if surveyResponse.responseValue is 'User Provided No Response'
-                  $scope.sqvm.surveyModel[thisField.questionKey] = null
-                else if thisField.type is 'datepicker'
-                  fieldValue = surveyResponse.responseValue.split "-"
-                  $scope.sqvm.surveyModel[thisField.questionKey] = new Date parseInt(fieldValue[0]), parseInt(fieldValue[1])-1, parseInt(fieldValue[2]), parseInt(fieldValue[3].split(":")[0]), parseInt(fieldValue[3].split(":")[1])
+                if $scope.sqvm.surveyModel[thisField.questionKey] != 'no_key_assigned'
+                  $scope.sqvm.surveyFields.push thisField
+
+                # $scope.sqvm.surveyFields.push thisField
+                # if surveyResponse.responseValue is 'User Provided No Response'
+                #   $scope.sqvm.surveyModel[thisField.questionKey] = null
+                # else if thisField.type is 'datepicker'
+                #   fieldValue = surveyResponse.responseValue.split "-"
+                #   $scope.sqvm.surveyModel[thisField.questionKey] = new Date parseInt(fieldValue[0]), parseInt(fieldValue[1])-1, parseInt(fieldValue[2]), parseInt(fieldValue[3].split(":")[0]), parseInt(fieldValue[3].split(":")[1])
                 # else if thisField.type is 'checkbox'
                   # $scope.sqvm.surveyModel[thisField.questionKey] = surveyResponse.responseValue is 'true'
-                else
-                  $scope.sqvm.surveyModel[thisField.questionKey] = surveyResponse.responseValue
+                # else
+                #   $scope.sqvm.surveyModel[thisField.questionKey] = surveyResponse.responseValue
+
+                $scope.sqvm.surveyModel[thisField.questionKey] = surveyResponse.responseValue
             $scope.sqvm.originalFields = angular.copy($scope.sqvm.surveyFields)
             console.log 'surveyFields = ',$scope.sqvm.surveyModel
             console.log 'originalFields = ',$scope.sqvm.originalFields
