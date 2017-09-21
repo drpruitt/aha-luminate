@@ -120,11 +120,11 @@ angular.module 'trPcControllers'
               $scope.suggestedMessages.push message
             switch message.name
               when 'Ask 2: Donation Reminder'
-                pcSetMessages.header = 'XXXXX'
+                pcSetMessages.header = 'Donation Reminder'
                 pcSetMessages.messageID = message.messageId
                 loadSuggestedMessagePC(pcSetMessages)
               when 'Ask 3: Help me Reach my Goal'
-                pcSetMessages.header = 'XXXXX'
+                pcSetMessages.header = 'Final Ask'
                 pcSetMessages.messageID = message.messageId
                 loadSuggestedMessagePC(pcSetMessages)
               when 'Ask 1: Donation Solicitation'

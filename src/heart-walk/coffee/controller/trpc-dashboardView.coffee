@@ -398,7 +398,8 @@ angular.module 'trPcControllers'
                 logUserInt('email',$scope.frId)
               if $scope.sqvm.surveyModel.question_key_what_is_why != null && $scope.userInteractions.why is 0
                 console.log 'why interaction needs to be set and update our local object'
-                console.log 'my WHY = '+$scope.sqvm.surveyModel.question_key_what_is_why
+                $scope.userInteractions.why = 1
+                logUserInt('why',$scope.frId)
               console.log 'progress - ',$scope.participantProgress.percent
               if $scope.participantProgress.percent >= 100 && $scope.userInteractions.goal1 is 0
                 console.log 'goal1 interaction needs to be set and update our local object'
@@ -499,9 +500,60 @@ angular.module 'trPcControllers'
               console.log 'failed'
 
       $scope.tellUsWhy = ->
-        $scope.LBwhyDesktopModal = $uibModal.open
+        $scope.LBwhyVideoModal = $uibModal.open
           scope: $scope
-          templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBwhy.html'
+          templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBwhyVideo.html'
+
+      $scope.editSurvivor = ->
+        $scope.LBsurvivorModal = $uibModal.open
+          scope: $scope
+          templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/editSurvivor.html'
+
+      $scope.personalVideo = {}
+      $scope.updatePersonalVideo = ->
+        console.log 'video button fires!'
+        if $scope.personalVideo.type is 'youtube'
+          angular.element('.js--remove-personalized-video-form').submit()
+          TeamraiserParticipantPageService.updatePersonalVideoUrl 'video_url=' + $scope.personalMedia.videoUrl,
+            error: (response) ->
+              $scope.setPersonalVideoError response.errorResponse.message
+            success: (response) ->
+              videoUrl = response.updatePersonalVideoUrlResponse?.videoUrl
+              $scope.setPersonalVideoUrl videoUrl
+              $scope.closePersonalVideoModal()
+        else if $scope.personalVideo.type is 'personalized'
+          TeamraiserParticipantPageService.updatePersonalVideoUrl 'video_url=http://www.youtube.com/'
+          formData = { auth_token: "Jep8QrDjpqwOnI5rpsAbJw", email: $rootScope.email, fields: {firstname: $rootScope.firstName, why: $scope.personalMedia.myWhy, cons_id: $rootScope.consId} }
+          $scope.submitVidyardCallback = (data) ->
+            jQuery.ajax 'http://hearttools.heart.org/vidyard/vy_pv_callback_to_bb.php',
+              type: 'POST'
+              data: JSON.stringify( { uuid: data.unit.uuid, cons_id: $rootScope.consId } ),
+              contentType: 'application/json',
+              dataType: 'json',
+              success: (data) ->
+                # TODO
+          $scope.submitVidyard = ->
+            jQuery.ajax 'http://blender.vidyard.com/forms/pd5MsBtKJwfrReeWz7d8v4/submit.json',
+              type: 'POST'
+              data: JSON.stringify( { auth_token: "Jep8QrDjpqwOnI5rpsAbJw", email: $rootScope.email, fields: {firstname: $rootScope.firstName, why: $scope.personalMedia.myWhy, cons_id: '"' + $rootScope.consId + '"'} } ),
+              contentType: 'application/json',
+              dataType: 'json',
+              success: (response) ->
+                $scope.submitVidyardCallback response
+          $scope.submitVidyard()
+          angular.element('.js--submit-personalized-video-LO-form').submit()
+          setTimeout ( ->
+            $scope.closePersonalVideoModal()
+          ), 500
+
+        else if $scope.personalVideo.type is 'default'
+          angular.element('.js--remove-personalized-video-form').submit()
+          TeamraiserParticipantPageService.updatePersonalVideoUrl 'video_url=http://www.youtube.com/'
+          setTimeout ( ->
+            $scope.closePersonalVideoModal()
+            location.reload();
+          ), 500
+
 
       $scope.participantProgress =
         raised: 0
