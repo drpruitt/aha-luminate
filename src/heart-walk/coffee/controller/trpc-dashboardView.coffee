@@ -246,11 +246,11 @@ angular.module 'trPcControllers'
                       value: choice.value
                 if thisField.questionKey != 'no_key_assigned'
                   $scope.sqvm.surveyFields.push thisField
-                  # $scope.sqvm.surveyModel[thisField.questionKey] = surveyResponse.responseValue
-                  if surveyResponse.responseValue is 'User Provided No Response'
-                    $scope.sqvm.surveyModel[thisField.questionKey] = ''
-                  else
-                    $scope.sqvm.surveyModel[thisField.questionKey] = surveyResponse.responseValue
+                  $scope.sqvm.surveyModel[thisField.questionKey] = surveyResponse.responseValue
+                  # if surveyResponse.responseValue is 'User Provided No Response'
+                  #   $scope.sqvm.surveyModel[thisField.questionKey] = ''
+                  # else
+                  #   $scope.sqvm.surveyModel[thisField.questionKey] = surveyResponse.responseValue
 
 
 
