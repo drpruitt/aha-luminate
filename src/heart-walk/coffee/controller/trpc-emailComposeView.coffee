@@ -119,12 +119,12 @@ angular.module 'trPcControllers'
             if message.active is 'true'
               $scope.suggestedMessages.push message
             switch message.name
-              when 'Recruitment: Join My Team'
-                pcSetMessages.header = 'Join Me'
+              when 'Ask 2: Donation Reminder'
+                pcSetMessages.header = 'XXXXX'
                 pcSetMessages.messageID = message.messageId
                 loadSuggestedMessagePC(pcSetMessages)
-              when 'Recruitment: Thank You'
-                pcSetMessages.header = 'Team Message'
+              when 'Ask 3: Help me Reach my Goal'
+                pcSetMessages.header = 'XXXXX'
                 pcSetMessages.messageID = message.messageId
                 loadSuggestedMessagePC(pcSetMessages)
               when 'Ask 1: Donation Solicitation'
