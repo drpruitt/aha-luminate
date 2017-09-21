@@ -508,6 +508,12 @@ angular.module 'trPcControllers'
         $scope.LBsurvivorModal = $uibModal.open
           scope: $scope
           templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/editSurvivor.html'
+        $scope.cancelEditSurvivor = ->
+          $scope.LBsurvivorModal.close()
+
+      $scope.updateEditSurvivor = ($event) ->
+        $scope.LBsurvivorModal.close()
+        $scope.updateEditSurvivor($event)
 
       $scope.personalVideo = {}
       $scope.updatePersonalVideo = ->
