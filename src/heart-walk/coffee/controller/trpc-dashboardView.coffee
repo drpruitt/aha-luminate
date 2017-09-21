@@ -185,6 +185,7 @@ angular.module 'trPcControllers'
       $scope.getSurveyResponses = ->
         getSurveyResponsesPromise = TeamraiserSurveyResponseService.getSurveyResponses()
           .then (response) ->
+            console.log '1047'
             surveyResponses = response.data.getSurveyResponsesResponse.responses
             surveyResponses = [surveyResponses] if not angular.isArray surveyResponses
             angular.forEach surveyResponses, (surveyResponse) ->
@@ -245,7 +246,7 @@ angular.module 'trPcControllers'
                     thisField.templateOptions.options.push
                       name: choice.label
                       value: choice.value
-                if $scope.sqvm.surveyModel[thisField.questionKey] != 'no_key_assigned'
+                if thisField.questionKey != 'no_key_assigned'
                   $scope.sqvm.surveyFields.push thisField
 
                 # $scope.sqvm.surveyFields.push thisField
@@ -261,8 +262,8 @@ angular.module 'trPcControllers'
 
                 $scope.sqvm.surveyModel[thisField.questionKey] = surveyResponse.responseValue
             $scope.sqvm.originalFields = angular.copy($scope.sqvm.surveyFields)
-            console.log 'surveyFields = ',$scope.sqvm.surveyModel
-            console.log 'originalFields = ',$scope.sqvm.originalFields
+            # console.log 'surveyFields = ',$scope.sqvm.surveyModel
+            # console.log 'originalFields = ',$scope.sqvm.originalFields
             response
         $scope.dashboardPromises.push getSurveyResponsesPromise
       $scope.getSurveyResponses()
