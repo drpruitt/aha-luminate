@@ -387,7 +387,7 @@ angular.module 'trPcControllers'
         $scope.dashboardPromises.push userInteractionsPromise
       $timeout ->
         GetUserInt()
-      , 500
+      , 750
 
       runLBroutes = ->
         $scope.dashboardGreeting = ''
@@ -444,10 +444,15 @@ angular.module 'trPcControllers'
             scope: $scope
             templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBgoal2.html'
 
-      $scope.LBgoal1Submit = ->
+      $scope.LBgoalOneSubmit = ->
         console.log 'submitted the goal1 send email button'
         logUserInt('goal1',$scope.frId)
         $location.path '/email/compose'
+
+      $scope.LBgoal2Submit = ->
+        console.log 'submitted the goal2 send email button'
+        logUserInt('goal2',$scope.frId)
+        #$location.path '/email/compose'
 
       $scope.notRightNow = ->
         $uibModalStack.dismissAll()
