@@ -51,11 +51,11 @@
         <div class="row">
           <div class="col-sm-4 profile_box" ng-if="userInteractions.why != '1'">
             <div class="profile_box_icon pull-left"><i class="fa fa-question"></i></div>
-            <div class="profile_box_info pull-right">Why do you walk? Finish this sentence: "______ is Why."<button class="btn btn-primary" ng-click="tellUsWhy()">Tell Us Your Why</button></div>
+            <div class="profile_box_info pull-right">Why do you walk? Finish this sentence: "______ is Why."<a class="btn btn-primary" ng-href="{{personalPageUrl}}&amp;videoWhy=true">Tell Us Your Why</button></div>
           </div>
           <div class="col-sm-4 profile_box" ng-if="userInteractions.why == '1'">
             <div class="profile_box_icon pull-left"><i class="fa fa-check"></i></div>
-            <div class="profile_box_info pull-right">Thank you for telling us<br>your Why.<button class="btn btn-primary" ng-click="tellUsWhy()">Update Your Why</button></div>
+            <div class="profile_box_info pull-right">Thank you for telling us<br>your Why.<a class="btn btn-primary" ng-href="{{personalPageUrl}}&amp;videoWhy=true">1Update Your Why</button></div>
           </div>
 
           <div class="col-sm-4 profile_box" ng-if="userInteractions.social != '1'">

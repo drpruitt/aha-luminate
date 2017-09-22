@@ -523,10 +523,11 @@ angular.module 'trPcControllers'
             else
               console.log 'failed'
 
-      $scope.tellUsWhy = ->
-        $scope.LBwhyVideoModal = $uibModal.open
-          scope: $scope
-          templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBwhyVideo.html'
+      #$scope.tellUsWhy = ->
+        #window.location.href = $scope.personalPageUrl + '&videoWhy=true'
+        #$scope.LBwhyVideoModal = $uibModal.open
+          #scope: $scope
+          #templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBwhyVideo.html'
 
       #$scope.tellUsWhyProfile = ->
         #$scope.LBwhyVideoProfileModal = $uibModal.open
