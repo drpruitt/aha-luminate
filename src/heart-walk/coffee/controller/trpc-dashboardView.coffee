@@ -337,6 +337,12 @@ angular.module 'trPcControllers'
         goal1: 0
         goal2: 0
       }
+      $scope.profileChecklistItems = {
+        mobile: 0
+        why: 0
+        street: 1
+        years: 0
+      }
       GetUserInt = ->
         console.log 'updateProfile = ' + $rootScope.updatedProfile
         console.log 'isSelfDonor = ' + $rootScope.isSelfDonor
@@ -384,6 +390,22 @@ angular.module 'trPcControllers'
                                 $scope.userInteractions.goal2 = 1
                         else
                           console.log 'the note and the fr-id didnt match'
+              if $scope.sqvm.surveyModel.question_key_what_is_why != null
+                console.log 'profile check WHYYYYY'
+                $scope.profileChecklistItems.why = 1
+              if $scope.sqvm.surveyModel.question_key_hw_years_participated
+                console.log 'profile check YEARSSSSS'
+                $scope.profileChecklistItems.years = 1
+              if $scope.sqvm.surveyModel.question_key_mobile_phone
+                console.log 'profile check MOBBILLLLEE'
+                $scope.profileChecklistItems.mobile = 1
+              $scope.profileProgress = $scope.profileChecklistItems.mobile + $scope.profileChecklistItems.years + $scope.profileChecklistItems.street + $scope.profileChecklistItems.why
+              if $scope.profileProgress is 0
+                $scope.profilePercent = 0
+              else
+                $scope.profilePercent = $scope.profileProgress / 4 * 100
+                console.log 'profile percent = ' + $scope.profilePercent
+              console.log 'profile check list items = ' + $scope.profileChecklistItems.mobile
               if $rootScope.updatedProfile is 'TRUE' && $scope.userInteractions.page is 0
                 console.log 'update page interaction needs to be set and update our local object'
                 $scope.userInteractions.page = 1
@@ -400,7 +422,7 @@ angular.module 'trPcControllers'
                 console.log 'why interaction needs to be set and update our local object'
                 $scope.userInteractions.why = 1
                 logUserInt('why',$scope.frId)
-              if $scope.sqvm.surveyModel.question_key_what_is_why && $scope.sqvm.surveyModel.question_key_hw_years_participated && $scope.sqvm.surveyModel.question_key_mobile_phone && $scope.userInteractions.profile is 0
+              if $scope.profileChecklistItems.why is 1 && $scope.profileChecklistItems.years is 1 && $scope.profileChecklistItems.mobile is 1 && $scope.userInteractions.profile is 0
                 console.log 'all profile questions are filled in, set interaction and local object'
                 $scope.userInteractions.profile = 1
                 logUserInt('profile',$scope.frId)
@@ -520,8 +542,12 @@ angular.module 'trPcControllers'
           templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBprofile.html'
 
       $scope.updateEditMobile = ($event) ->
+        $scope.LBmobileProfileModal.close()
+        $scope.updateSurveyResponses($event)
 
       $scope.updateEditYears = ($event) ->
+        $scope.LByearsProfileModal.close()
+        $scope.updateSurveyResponses($event)
 
       $scope.LBprofileLinks = (section) ->
         console.log 'section = ' + section
@@ -557,7 +583,7 @@ angular.module 'trPcControllers'
               scope: $scope
               templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/profileYears.html'
             $scope.cancelEditYears = ->
-              $scope.LBmobileProfileModal.close()
+              $scope.LByearsProfileModal.close()
 
       $scope.editSurvivor = ->
         $scope.LBsurvivorModal = $uibModal.open

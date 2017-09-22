@@ -15,23 +15,24 @@
   </div>
   <div class="row">
     <div class="col-sm-4">
+      <div class="profile_percent">{{profilePercent}}%</div>
       My Profile Progress
     </div>
     <div class="col-sm-8 profile_icon_checklist">
       <div class="row">
         <div class="col-xs-6">
-          <i class="fa fa-question"></i><a href ng-click="LBprofileLinks('why')">What's Your Why?</a>
+          <i class="fa fa-question" ng-if="profileChecklistItems.why == 0"></i><i class="fa fa-check" ng-if="profileChecklistItems.why == 1"></i><a href ng-click="LBprofileLinks('why')">What's Your Why?</a>
         </div>
         <div class="col-xs-6">
-          <i class="fa fa-mobile"></i><a href ng-click="LBprofileLinks('mobile')">Mobile Phone</a>
+          <i class="fa fa-mobile" ng-if="profileChecklistItems.mobile == 0"></i><i class="fa fa-check" ng-if="profileChecklistItems.mobile == 1"></i><a href ng-click="LBprofileLinks('mobile')">Mobile Phone</a>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-6">
-          <i class="fa fa-home"></i><a href ng-click="LBprofileLinks('street')">Street Address</a>
+          <i class="fa fa-home" ng-if="profileChecklistItems.street == 0"></i><i class="fa fa-check" ng-if="profileChecklistItems.street == 1"></i><a href ng-click="LBprofileLinks('street')">Street Address</a>
         </div>
         <div class="col-xs-6">
-          <i class="fa fa-calendar"></i><a href ng-click="LBprofileLinks('years')">How Many Years?</a>
+          <i class="fa fa-calendar" ng-if="profileChecklistItems.years == 0"></i><i class="fa fa-check" ng-if="profileChecklistItems.years == 1"></i><a href ng-click="LBprofileLinks('years')">How Many Years?</a>
         </div>
       </div>
     </div>
