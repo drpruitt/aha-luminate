@@ -69,11 +69,11 @@
 
           <div class="col-sm-4 profile_box" ng-if="userInteractions.profile != '1'">
             <div class="profile_box_icon pull-left">O</div>
-            <div class="profile_box_info pull-right">We're missing your details! Complete your profile now.<button class="btn btn-primary">Update My Profile</button></div>
+            <div class="profile_box_info pull-right">We're missing your details! Complete your profile now.<button class="btn btn-primary" ng-click="profileChecklist()">Update My Profile</button></div>
           </div>
           <div class="col-sm-4 profile_box" ng-if="userInteractions.profile == '1'">
             <div class="profile_box_icon pull-left"><i ng-if="userInteractions.profile == '1'" class="fa fa-check"></i></div>
-            <div class="profile_box_info pull-right">Your profile is complete. Thanks for keeping it updated.<button class="btn btn-primary">Update My Profile Again</button></div>
+            <div class="profile_box_info pull-right">Your profile is complete. Thanks for keeping it updated.<button class="btn btn-primary" ng-click="profileChecklist()">Update My Profile Again</button></div>
           </div>
         </div>
         <div class="row">
