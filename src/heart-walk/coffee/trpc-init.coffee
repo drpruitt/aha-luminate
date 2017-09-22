@@ -13,7 +13,7 @@ angular.module 'trPcApp', [
 angular.module 'trPcControllers', []
 
 angular.module 'trPcApp'
-  .constant 'NgPc_APP_INFO', 
+  .constant 'NgPc_APP_INFO',
     version: '0.1.0'
 
 angular.module 'trPcApp'
@@ -22,7 +22,7 @@ angular.module 'trPcApp'
     'NgPc_APP_INFO'
     ($rootScope, NgPc_APP_INFO) ->
       $rootScope.Math = window.Math
-      
+
       # get data from embed container
       $embedRoot = angular.element '[data-embed-root]'
       appVersion = $embedRoot.data('app-version') if $embedRoot.data('app-version') isnt ''
@@ -42,7 +42,8 @@ angular.module 'trPcApp'
       $rootScope.isSelfDonor = $embedRoot.data('is-self-donor') if $embedRoot.data('is-self-donor') isnt ''
       $rootScope.emailsSent = $embedRoot.data('emails-sent') if $embedRoot.data('emails-sent') isnt ''
       $rootScope.updatedProfile = $embedRoot.data('updated-profile') if $embedRoot.data('updated-profile') isnt ''
-      $rootScope.device = 
+      $rootScope.survivorQ = $embedRoot.data('updated-survivor') if $embedRoot.data('updated-survivor') isnt ''
+      $rootScope.device =
         isMobile: $embedRoot.data('device-is-mobile')
         mobileType: $embedRoot.data('device-mobile-type')
   ]
