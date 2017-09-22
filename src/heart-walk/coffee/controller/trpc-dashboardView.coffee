@@ -400,12 +400,15 @@ angular.module 'trPcControllers'
                 console.log 'why interaction needs to be set and update our local object'
                 $scope.userInteractions.why = 1
                 logUserInt('why',$scope.frId)
+              if $scope.sqvm.surveyModel.question_key_what_is_why && $scope.sqvm.surveyModel.question_key_hw_years_participated && $scope.sqvm.surveyModel.question_key_mobile_phone && $scope.userInteractions.profile is 0
+                console.log 'all profile questions are filled in, set interaction and local object'
+                $scope.userInteractions.profile = 1
+                logUserInt('profile',$scope.frId)
               console.log 'progress - ',$scope.participantProgress.percent
               if $scope.participantProgress.percent >= 100 && $scope.userInteractions.goal1 is 0
                 console.log 'goal1 interaction needs to be set and update our local object'
                 $scope.userInteractions.goal1 = 1
                 logUserInt('goal1',$scope.frId)
-              #ToDo Add in checks for the other three interactions done outside the PC
               runLBroutes()
             response
         $scope.dashboardPromises.push userInteractionsPromise
@@ -478,7 +481,6 @@ angular.module 'trPcControllers'
         logUserInt('goal2',$scope.frId)
         $scope.LBgoal2Modal.close()
         $scope.editGoal('Participant')
-        #$location.path '/email/compose'
 
       $scope.notRightNow = ->
         $uibModalStack.dismissAll()
@@ -504,6 +506,59 @@ angular.module 'trPcControllers'
           scope: $scope
           templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBwhyVideo.html'
 
+      #$scope.tellUsWhyProfile = ->
+        #$scope.LBwhyVideoProfileModal = $uibModal.open
+          #scope: $scope
+          #templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/profileWhyVideo.html'
+        #$scope.cancelEditPersonalVideo = ->
+          #$scope.LBwhyVideoProfileModal.close()
+
+      $scope.profileProgress = 0
+      $scope.profileChecklist = ->
+        $scope.LBprofileModal = $uibModal.open
+          scope: $scope
+          templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBprofile.html'
+
+      $scope.updateEditMobile = ($event) ->
+
+      $scope.updateEditYears = ($event) ->
+
+      $scope.LBprofileLinks = (section) ->
+        console.log 'section = ' + section
+        switch section
+          when 'why'
+            console.log 'it is why'
+            $scope.LBprofileModal.close()
+            $scope.LBwhyVideoProfileModal = $uibModal.open
+              scope: $scope
+              templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/profileWhyVideo.html'
+            $scope.cancelEditPersonalVideo = ->
+              $scope.LBwhyVideoProfileModal.close()
+          when 'mobile'
+            console.log 'it is mobile'
+            $scope.LBprofileModal.close()
+            $scope.LBmobileProfileModal = $uibModal.open
+              scope: $scope
+              templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/profileMobile.html'
+            $scope.cancelEditMobile = ->
+              $scope.LBmobileProfileModal.close()
+          when 'street'
+            console.log 'it is street'
+            $scope.LBprofileModal.close()
+            $scope.LBstreetProfileModal = $uibModal.open
+              scope: $scope
+              templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/profileStreet.html'
+            $scope.cancelEditStreet = ->
+              $scope.LBstreetProfileModal.close()
+          when 'years'
+            console.log 'it is years'
+            $scope.LBprofileModal.close()
+            $scope.LByearsProfileModal = $uibModal.open
+              scope: $scope
+              templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/profileYears.html'
+            $scope.cancelEditYears = ->
+              $scope.LBmobileProfileModal.close()
+
       $scope.editSurvivor = ->
         $scope.LBsurvivorModal = $uibModal.open
           scope: $scope
@@ -513,7 +568,7 @@ angular.module 'trPcControllers'
 
       $scope.updateEditSurvivor = ($event) ->
         $scope.LBsurvivorModal.close()
-        $scope.updateEditSurvivor($event)
+        $scope.updateSurveyResponses($event)
 
       $scope.personalVideo = {}
       $scope.updatePersonalVideo = ->
