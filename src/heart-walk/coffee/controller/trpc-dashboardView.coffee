@@ -439,7 +439,7 @@ angular.module 'trPcControllers'
       , 750
 
       runLBroutes = ->
-        $scope.dashboardGreeting = ''
+        $scope.dashboardGreeting = 'default'
         console.log $scope.userInteractions
         console.log 'tr id = ' + $scope.frId
         if $rootScope.participantRegistration.lastPC2Login is '0'
@@ -538,6 +538,7 @@ angular.module 'trPcControllers'
 
       $scope.profileProgress = 0
       $scope.profileChecklist = ->
+        $scope.resetSurveyAlerts()
         $scope.LBprofileModal = $uibModal.open
           scope: $scope
           templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBprofile.html'
@@ -545,6 +546,7 @@ angular.module 'trPcControllers'
       $scope.updateEditMobile = ($event) ->
         $scope.LBmobileProfileModal.close()
         $scope.updateSurveyResponses($event)
+        $scope.profileChecklist()
 
       $scope.updateEditYears = ($event) ->
         $scope.LByearsProfileModal.close()

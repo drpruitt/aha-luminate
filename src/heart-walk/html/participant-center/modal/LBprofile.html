@@ -4,6 +4,12 @@
   </h2>
 </div>
 <div class="modal-body">
+  <div uib-alert class="alert-success" ng-if="updateSurveySuccess" close="resetSurveyAlerts()">
+    <span translate="survey_save_success"></span>
+  </div>
+  <div uib-alert class="alert-danger" ng-if="updateSurveyFailure" close="resetSurveyAlerts()">
+    {{updateSurveyFailureMessage}}
+  </div>
   <div class="row">
     <div class="col-sm-12">
         <p ng-if="profileProgress == '0'">We want to get to know you, Brenda! Mind sharing a few more details with us?</p>
