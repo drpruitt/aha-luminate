@@ -556,7 +556,7 @@ angular.module 'trPcControllers'
         $scope.profileChecklist()
 
       $scope.updateEditStreet = ($event) ->
-        $scope.LBmobileProfileModal.close()
+        $scope.LBstreetProfileModal.close()
         $scope.updateUserProfile($event)
         $scope.profileChecklist()
 
