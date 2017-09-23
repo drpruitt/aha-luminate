@@ -43,6 +43,7 @@ angular.module 'trPcApp'
       $rootScope.emailsSent = $embedRoot.data('emails-sent') if $embedRoot.data('emails-sent') isnt ''
       $rootScope.updatedProfile = $embedRoot.data('updated-profile') if $embedRoot.data('updated-profile') isnt ''
       $rootScope.survivorQ = $embedRoot.data('updated-survivor') if $embedRoot.data('updated-survivor') isnt ''
+      $rootScope.viewMap = $embedRoot.data('view-map') if $embedRoot.data('view-map') isnt ''
       $rootScope.device =
         isMobile: $embedRoot.data('device-is-mobile')
         mobileType: $embedRoot.data('device-mobile-type')
