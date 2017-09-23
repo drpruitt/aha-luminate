@@ -173,8 +173,8 @@ angular.module 'trPcControllers'
       $scope.resetProfileAlerts()
 
       #this can probably be removed now
-      $scope.updateUserAddress = ($event) ->
-        $scope.updateUserProfile($event)
+      #$scope.updateUserAddress = ($event) ->
+        #$scope.updateUserProfile($event)
 
       # CM begin reg questions update code
       $scope.surveyResponsePromises = []
