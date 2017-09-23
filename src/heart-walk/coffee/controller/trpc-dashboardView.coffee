@@ -539,7 +539,7 @@ angular.module 'trPcControllers'
 
       $scope.goSocial = ->
         logUserInt('social',$scope.frId)
-        window.location.href = 'PageServer?pagename=heartwalk_fundraising_tools&amp;fr_id={{frId}}'
+        window.location.href = 'PageServer?pagename=heartwalk_fundraising_tools&amp;fr_id='+$scope.frId
 
 
       $scope.profileProgress = 0
