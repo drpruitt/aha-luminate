@@ -60,7 +60,7 @@
 
           <div class="col-sm-4 profile_box" ng-if="userInteractions.social != '1'">
             <div class="profile_box_icon pull-left"><i class="fa fa-heart"></i></div>
-            <div class="profile_box_info pull-right">Deck out your social pages with these great Heart Walk images.<a class="btn btn-primary" ng-href="PageServer?pagename=heartwalk_fundraising_tools&amp;fr_id={{frId}}">Go Social</button></div>
+            <div class="profile_box_info pull-right">Deck out your social pages with these great Heart Walk images.<a class="btn btn-primary" href ng-click="goSocial">Go Social</button></div>
           </div>
           <div class="col-sm-4 profile_box" ng-if="userInteractions.social == '1'">
             <div class="profile_box_icon pull-left"><i class="fa fa-check"></i></div>

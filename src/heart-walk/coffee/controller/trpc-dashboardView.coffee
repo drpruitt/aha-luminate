@@ -537,6 +537,11 @@ angular.module 'trPcControllers'
         #$scope.cancelEditPersonalVideo = ->
           #$scope.LBwhyVideoProfileModal.close()
 
+      $scope.goSocial = ->
+        logUserInt('social',$scope.frId)
+        window.location.href = 'PageServer?pagename=heartwalk_fundraising_tools&amp;fr_id={{frId}}'
+
+
       $scope.profileProgress = 0
       $scope.profileChecklist = ->
         $scope.resetSurveyAlerts()
