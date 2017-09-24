@@ -541,7 +541,6 @@ angular.module 'trPcControllers'
         logUserInt('social',$scope.frId)
         window.location.href = 'PageServer?pagename=heartwalk_fundraising_tools&amp;fr_id='+$scope.frId
 
-
       $scope.profileProgress = 0
       $scope.profileChecklist = ->
         $scope.resetSurveyAlerts()
