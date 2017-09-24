@@ -12,7 +12,8 @@
             </uib-tab>
           </uib-tabset>
         </div>
-        <button ng-click="copyToClipboard()" class="pc_btn">Copy Message</button><button ng-click="sendEmailOpenEmail(activeEmailTab)" class="pc_btn">Open in My Default Email</button>
+        <button ng-click="copyToClipboard()" class="pc_btn" ng-if="!device.isMobile">Copy Message</button>
+        <button ng-click="sendEmailOpenEmail(activeEmailTab)" class="pc_btn">Open in My Default Email</button>
         <p class="email_send_via_FC"><a ng-click="sendViaFC()">Or send an email through your Fundraising Center</a></p>
       </div>
       <div id="send_via_FC">
