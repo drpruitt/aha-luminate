@@ -4,14 +4,14 @@
       <uib-tab-heading>
         Me
       </uib-tab-heading>
-      <div class="clearfix">
+      <div class="clearfix header_checklist">
         <div>Reset interaction ID for testing <br>
           <form ng-submit="resetInt(intID)">
             <input type="text" name="reset_int" class="form-control" ng-model="intID">
             <button type="submit" class="btn btn-primary-inverted text-uppercase">Submit</button>
           </form>
         </div>
-        <div ng-if="constituent">
+        <div ng-if="constituent" class="header_greetings">
           <h1 ng-if="constituent.name && constituent.name.first">
             {{constituent.name.first}},&nbsp;<span ng-if="dashboardGreeting == 'page'"><a ng-href="{{personalPageUrl}}">get started by updating your page!</a></span><span ng-if="dashboardGreeting == 'donate'"><a ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{consId}}">don’t forget to make a donation!</a></span><span ng-if="dashboardGreeting == 'why'"><a ng-href="{{personalPageUrl}}&amp;videoWhy=true">tell us why you walk!</a></span><span ng-if="dashboardGreeting == 'social'"><a ng-href="PageServer?pagename=heartwalk_fundraising_tools&amp;fr_id={{frId}}">go social with Heart Walk!</a></span><span ng-if="dashboardGreeting == 'profile'"><a href ng-click="profileChecklist()">tell us about you!</a></span><span ng-if="dashboardGreeting == 'goal1'"><a href="PageServer?pagename=heartwalk_fundraising_tools&amp;fr_id={{frId}}">you’re halfway to your goal. Go Social</a></span><span ng-if="dashboardGreeting == 'goal2'"><a href ng-click="editGoal('Participant')">congrats! You reached your goal!</a></span><span ng-if="dashboardGreeting == 'default'"><a ng-href="{{baseUrl}}#/email/compose">send an email to get closer to your goal!</a></span>
           </h1>
@@ -112,7 +112,7 @@
             <p><a href="TR?fr_id={{frId}}&amp;pg=entry">{{eventInfo.name}}</a></p>
             <p>Location: {{eventInfo.location_name}}</p>
             <p ng-if="eventInfo.event_date && eventInfo.event_date != ''">Date: {{eventInfo.event_date | date : 'MMMM d'}}</p>
-            <a class="btn btn-primary-inverted" ng-href="{{viewMap}}">View Map</a>
+            <a class="btn btn-primary-inverted view_map" ng-href="{{viewMap}}">View Map</a>
           </div>
         </div>
         <div class="heart_pc_main_page">
