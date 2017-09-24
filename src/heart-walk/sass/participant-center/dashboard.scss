@@ -19,7 +19,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 #headerWrapper {
   position: relative;
-  z-index: 99999;
+  z-index: 1040;
 }
 
 .manage_walk_items {
@@ -68,7 +68,9 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .heart_pc_sidebar_row {
     margin-bottom: 50px;
 }
-
+.header_greetings a {
+    font-weight: bold;
+}
 .header_checklist {
     margin-bottom: 50px;
 }
