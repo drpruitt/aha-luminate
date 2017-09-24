@@ -169,6 +169,16 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   .row.profile_box_row {
       border: 0;
   }
+  .manage_walk_items .pull-right, .heart_pc_my_donors .pull-right {
+    text-align: center;
+    float: none !important;
+  }
+  .manage_walk_items .pull-left, .heart_pc_my_donors .pull-left {
+    float: none !important;
+  }
+  .heart_pc_my_donors a.pull-right {
+    margin-bottom: 30px;
+  }
 }
 
 .manage_walk_items {
