@@ -621,7 +621,7 @@ angular.module 'trPcControllers'
 
       $scope.updateTeamNameInput =
         name: ''
-        
+
       $scope.updateTeamName = ->
         console.log 'name input = ' + $scope.updateTeamNameInput.name
         dataStr = 'team_name=' + $scope.updateTeamNameInput.name
@@ -640,6 +640,11 @@ angular.module 'trPcControllers'
                     $scope.updateTeamNameFailureMessage = translationId
             else
               $scope.editTeamNameModal.close()
+              teamInfoPromise = TeamraiserTeamService.getTeam()
+                .then (response) ->
+                  team = response.data.getTeamSearchByInfoResponse?.team
+                  if team
+                    $scope.teamInfo = team
             response
         $scope.dashboardPromises.push updateGoalPromise
 
