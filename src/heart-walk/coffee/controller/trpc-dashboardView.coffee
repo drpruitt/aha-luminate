@@ -612,50 +612,25 @@ angular.module 'trPcControllers'
         $scope.LBsurvivorModal.close()
         $scope.updateSurveyResponses($event)
 
-      $scope.personalVideo = {}
-      $scope.updatePersonalVideo = ->
-        console.log 'video button fires!'
-        if $scope.personalVideo.type is 'youtube'
-          angular.element('.js--remove-personalized-video-form').submit()
-          TeamraiserParticipantPageService.updatePersonalVideoUrl 'video_url=' + $scope.personalMedia.videoUrl,
-            error: (response) ->
-              $scope.setPersonalVideoError response.errorResponse.message
-            success: (response) ->
-              videoUrl = response.updatePersonalVideoUrlResponse?.videoUrl
-              $scope.setPersonalVideoUrl videoUrl
-              $scope.closePersonalVideoModal()
-        else if $scope.personalVideo.type is 'personalized'
-          TeamraiserParticipantPageService.updatePersonalVideoUrl 'video_url=http://www.youtube.com/'
-          formData = { auth_token: "Jep8QrDjpqwOnI5rpsAbJw", email: $rootScope.email, fields: {firstname: $rootScope.firstName, why: $scope.personalMedia.myWhy, cons_id: $rootScope.consId} }
-          $scope.submitVidyardCallback = (data) ->
-            jQuery.ajax 'http://hearttools.heart.org/vidyard/vy_pv_callback_to_bb.php',
-              type: 'POST'
-              data: JSON.stringify( { uuid: data.unit.uuid, cons_id: $rootScope.consId } ),
-              contentType: 'application/json',
-              dataType: 'json',
-              success: (data) ->
-                # TODO
-          $scope.submitVidyard = ->
-            jQuery.ajax 'http://blender.vidyard.com/forms/pd5MsBtKJwfrReeWz7d8v4/submit.json',
-              type: 'POST'
-              data: JSON.stringify( { auth_token: "Jep8QrDjpqwOnI5rpsAbJw", email: $rootScope.email, fields: {firstname: $rootScope.firstName, why: $scope.personalMedia.myWhy, cons_id: '"' + $rootScope.consId + '"'} } ),
-              contentType: 'application/json',
-              dataType: 'json',
-              success: (response) ->
-                $scope.submitVidyardCallback response
-          $scope.submitVidyard()
-          angular.element('.js--submit-personalized-video-LO-form').submit()
-          setTimeout ( ->
-            $scope.closePersonalVideoModal()
-          ), 500
+      $scope.editTeamName = ->
+        $scope.editTeamNameModal = $uibModal.open
+          scope: $scope
+          templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/editTeamName.html'
+        $scope.canceleditTeamName = ->
+          $scope.editTeamNameModal.close()
 
-        else if $scope.personalVideo.type is 'default'
-          angular.element('.js--remove-personalized-video-form').submit()
-          TeamraiserParticipantPageService.updatePersonalVideoUrl 'video_url=http://www.youtube.com/'
-          setTimeout ( ->
-            $scope.closePersonalVideoModal()
-            location.reload();
-          ), 500
+      $scope.updateTeamName = ->
+        dataStr = 'team_name=' + $scope.updateTeamNameInput
+        updateGoalPromise = TeamraiserTeamService.updateTeamInformation dataStr
+          .then (response) ->
+            if response.data?.errorResponse?
+              $scope.updateTeamNameFailure = true
+              if response.data.errorResponse.message
+                $scope.updateTeamNameFailureMessage = response.data.errorResponse.message
+            else
+              $scope.editTeamNameModal.close()
+            response
+        $scope.dashboardPromises.push updateGoalPromise
 
 
       $scope.participantProgress =
