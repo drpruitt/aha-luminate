@@ -621,7 +621,7 @@ angular.module 'trPcControllers'
 
       $scope.updateTeamNameInput =
         name: ''
-
+        
       $scope.updateTeamName = ->
         console.log 'name input = ' + $scope.updateTeamNameInput.name
         dataStr = 'team_name=' + $scope.updateTeamNameInput.name
@@ -639,8 +639,7 @@ angular.module 'trPcControllers'
                   , (translationId) ->
                     $scope.updateTeamNameFailureMessage = translationId
             else
-              console.log 'success team NAME'
-              #$scope.editTeamNameModal.close()
+              $scope.editTeamNameModal.close()
             response
         $scope.dashboardPromises.push updateGoalPromise
 
