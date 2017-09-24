@@ -619,16 +619,26 @@ angular.module 'trPcControllers'
         $scope.canceleditTeamName = ->
           $scope.editTeamNameModal.close()
 
+      $scope.updateTeamNameInput = ''
       $scope.updateTeamName = ->
+        console.log 'name input = ' + $scope.updateTeamNameInput
         dataStr = 'team_name=' + $scope.updateTeamNameInput
         updateGoalPromise = TeamraiserTeamService.updateTeamInformation dataStr
           .then (response) ->
             if response.data?.errorResponse?
+              console.log 'failed Team Name'
               $scope.updateTeamNameFailure = true
               if response.data.errorResponse.message
                 $scope.updateTeamNameFailureMessage = response.data.errorResponse.message
+              else
+                $translate 'team_edit_team_name_label'
+                  .then (translation) ->
+                    $scope.updateTeamNameFailureMessage = translation
+                  , (translationId) ->
+                    $scope.updateTeamNameFailureMessage = translationId
             else
-              $scope.editTeamNameModal.close()
+              console.log 'success team NAME'
+              #$scope.editTeamNameModal.close()
             response
         $scope.dashboardPromises.push updateGoalPromise
 
