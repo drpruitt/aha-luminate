@@ -619,10 +619,12 @@ angular.module 'trPcControllers'
         $scope.cancelEditTeamName = ->
           $scope.editTeamNameModal.close()
 
-      $scope.updateTeamNameInput = 'asdfasdf'
+      $scope.updateTeamNameInput =
+        name: ''
+
       $scope.updateTeamName = ->
-        console.log 'name input = ' + $scope.updateTeamNameInput
-        dataStr = 'team_name=' + $scope.updateTeamNameInput
+        console.log 'name input = ' + $scope.updateTeamNameInput.name
+        dataStr = 'team_name=' + $scope.updateTeamNameInput.name
         updateGoalPromise = TeamraiserTeamService.updateTeamInformation dataStr
           .then (response) ->
             if response.data?.errorResponse?
