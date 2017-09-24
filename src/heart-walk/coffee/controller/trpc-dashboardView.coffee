@@ -616,10 +616,10 @@ angular.module 'trPcControllers'
         $scope.editTeamNameModal = $uibModal.open
           scope: $scope
           templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/editTeamName.html'
-        $scope.canceleditTeamName = ->
+        $scope.cancelEditTeamName = ->
           $scope.editTeamNameModal.close()
 
-      $scope.updateTeamNameInput = ''
+      $scope.updateTeamNameInput = 'asdfasdf'
       $scope.updateTeamName = ->
         console.log 'name input = ' + $scope.updateTeamNameInput
         dataStr = 'team_name=' + $scope.updateTeamNameInput
