@@ -17,7 +17,7 @@
     {{updateProfileFailureMessage}}
   </div>
   <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-12" class="profile_headlines">
         <p ng-if="profileProgress == '0'">We want to get to know you, <span ng-if="constituent.name && constituent.name.first">{{constituent.name.first}}</span><span ng-if="!constituent.name.first">Participant</span>! Mind sharing a few more details with us?</p>
         <p ng-if="profileProgress == '1'">We’re definitely getting there, <span ng-if="constituent.name && constituent.name.first">{{constituent.name.first}}</span><span ng-if="!constituent.name.first">Participant</span>. Can you share a little more about you?</p>
         <p ng-if="profileProgress == '2'"><span ng-if="constituent.name && constituent.name.first">{{constituent.name.first}}</span><span ng-if="!constituent.name.first">Participant</span>, we love getting to know you. Just a few more details, please.</p>
