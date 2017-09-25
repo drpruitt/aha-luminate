@@ -79,6 +79,7 @@ angular.module 'trPcControllers'
         first_name: ''
         last_name: ''
         gift_amount: ''
+        has_name: false
       
       $scope.paymentTypeOptions = []
       
@@ -125,20 +126,26 @@ angular.module 'trPcControllers'
         closeAddOfflineGiftModal()
       
       $scope.submitOfflineGift = ->
-        TeamraiserGiftService.addGift $httpParamSerializer($scope.newOfflineGift)
-          .then (response) ->
-            if response.data.errorResponse
-              # TODO
-            else
-              $scope.refreshFundraisingProgress()
-              $scope.participantGifts.page = 1
-              $scope.getGifts()
-              if $scope.participantRegistration.teamId and $scope.participantRegistration.teamId isnt '-1'
-                $scope.teamMembers.page = 1
-                $scope.getTeamMembers()
-                $scope.teamGifts.page = 1
-                $scope.getTeamGifts()
-              closeAddOfflineGiftModal()
+        console.log "---->"
+        console.log $scope.submitOfflineGift
+        if !$scope.newOfflineGift.last_name and !$scope.newOfflineGift.first_name
+          $scope.newOfflineGift.has_name=false
+        else  
+          newOfflineGift.has_name=true
+          TeamraiserGiftService.addGift $httpParamSerializer($scope.newOfflineGift)
+            .then (response) ->
+              if response.data.errorResponse
+                # TODO
+              else
+                $scope.refreshFundraisingProgress()
+                $scope.participantGifts.page = 1
+                $scope.getGifts()
+                if $scope.participantRegistration.teamId and $scope.participantRegistration.teamId isnt '-1'
+                  $scope.teamMembers.page = 1
+                  $scope.getTeamMembers()
+                  $scope.teamGifts.page = 1
+                  $scope.getTeamGifts()
+                closeAddOfflineGiftModal()
       
       $scope.participantProgress = 
         raised: 0
