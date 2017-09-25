@@ -179,6 +179,9 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   .heart_pc_my_donors a.pull-right {
     margin-bottom: 30px;
   }
+  .donor_gift_list, .donor_gift_list a {
+    font-size: 12px;
+  }
 }
 
 .manage_walk_items {
@@ -241,8 +244,4 @@ a.heart_pc_sidebar_sharebtn {
     padding: 8px;
     margin-right: 10px;
     color: #de2427;
-}
-
-.donor_gift_list, .donor_gift_list a {
-  font-size: 12px;
 }
