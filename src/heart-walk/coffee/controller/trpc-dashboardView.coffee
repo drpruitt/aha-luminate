@@ -259,9 +259,6 @@ angular.module 'trPcControllers'
                 # if thisField.questionKey != 'no_key_assigned'
                 #   $scope.sqvm.surveyFields.push thisField
                 #   $scope.sqvm.surveyModel[thisField.questionKey] = surveyResponse.responseValue
-
-
-
                   # if surveyResponse.responseValue is 'User Provided No Response'
                   #   $scope.sqvm.surveyModel[thisField.questionKey] = null
                   # else
@@ -287,6 +284,7 @@ angular.module 'trPcControllers'
 
       $scope.updateSurveyResponses = ($event) ->
         $event.preventDefault()
+        console.log '928'
         console.log 'surveyModel = ',$httpParamSerializer($scope.sqvm.surveyModel)
         updateSurveyResponsesPromise = TeamraiserSurveyResponseService.updateSurveyResponses $httpParamSerializer($scope.sqvm.surveyModel)
         .then (response) ->
@@ -304,7 +302,7 @@ angular.module 'trPcControllers'
             else
               $scope.updateSurveySuccess = true
               $scope.updateSurveyFailure = false
-              $scope.sqvm.surveyOptions.updateInitialValue()
+              # $scope.sqvm.surveyOptions.updateInitialValue()
             response
         $scope.dashboardPromises.push updateSurveyResponsesPromise
 
