@@ -15,8 +15,8 @@
       <label for="">* Last Name/Company Name:</label>
       <input type="text" class="form-control" id="" ng-model="newOfflineGift.last_name" name="giftLastName">
     </div>
-    <div ng-show="!$scope.newOfflineGift.has_name">
-      Please enter a first and last name or a company name.
+    <div ng-if="$scope.newOfflineGift.name_error">
+      <p>Please enter a first and last name or a company name.</p>
     </div>
     <div class="form-group">
       <label for="">Email:</label>

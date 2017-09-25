@@ -79,7 +79,7 @@ angular.module 'trPcControllers'
         first_name: ''
         last_name: ''
         gift_amount: ''
-        has_name: false
+        name_error: false
       
       $scope.paymentTypeOptions = []
       
@@ -127,11 +127,11 @@ angular.module 'trPcControllers'
       
       $scope.submitOfflineGift = ->
         console.log "---->"
-        console.log $scope.submitOfflineGift
+        console.log $scope.newOfflineGift
         if !$scope.newOfflineGift.last_name and !$scope.newOfflineGift.first_name
-          $scope.newOfflineGift.has_name=false
+          $scope.newOfflineGift.name_error=true
         else  
-          newOfflineGift.has_name=true
+           $scope.newOfflineGift.name_error=false
           TeamraiserGiftService.addGift $httpParamSerializer($scope.newOfflineGift)
             .then (response) ->
               if response.data.errorResponse
