@@ -69,11 +69,11 @@
 
           <div class="col-sm-4 profile_box" ng-if="userInteractions.profile != '1'">
             <div class="profile_box_icon pull-left"><i class="fa fa-check"></i></div>
-            <div class="profile_box_info pull-right">We're missing your details! Complete your profile now.<button class="btn btn-primary" ng-click="profileChecklist()">Update My Profile</button></div>
+            <div class="profile_box_info pull-right">We're missing your details! Complete your profile now.<a href class="btn btn-primary" ng-click="profileChecklist()">Update My Profile</a></div>
           </div>
           <div class="col-sm-4 profile_box" ng-if="userInteractions.profile == '1'">
             <div class="profile_box_icon pull-left"><i class="fa fa-check"></i></div>
-            <div class="profile_box_info pull-right">Your profile is complete. Thanks for keeping it updated.<button class="btn btn-primary" ng-click="profileChecklist()">Update My Profile Again</button></div>
+            <div class="profile_box_info pull-right">Your profile is complete. Thanks for keeping it updated.<a href class="btn btn-primary" ng-click="profileChecklist()">Update My Profile Again</a></div>
           </div>
         </div>
       </div>
@@ -90,7 +90,7 @@
                   <p>Goal: {{participantProgress.goalFormatted}}</p>
               </div>
               <div class="pull-right">
-                  <button class="btn btn-primary-inverted btn-goal" ng-click="editGoal('Participant')" ng-if="teamraiserConfig.personalGoalAllowed == 'true'">Edit Goal</button>
+                  <a href class="btn btn-primary-inverted btn-goal" ng-click="editGoal('Participant')" ng-if="teamraiserConfig.personalGoalAllowed == 'true'">Edit Goal</a>
               </div>
           </div>
           <div class="heart_pc_sidebar_row clearfix">
@@ -137,7 +137,7 @@
               <p>{{personalPageUrl}}</p>
             </div>
             <div class="pull-right">
-              <button class="btn btn-primary-inverted" ng-click="editPageUrl('Participant')">Edit URL</button>
+              <a href class="btn btn-primary-inverted" ng-click="editPageUrl('Participant')">Edit URL</a>
             </div>
           </div>
           <div class="manage_walk_items clearfix">
@@ -146,7 +146,7 @@
               <p>Brenda, you are being recognized as a survivor.</p>
             </div>
             <div class="pull-right">
-              <button class="btn btn-primary-inverted" ng-click="editSurvivor()">Edit Status</button>
+              <a href class="btn btn-primary-inverted" ng-click="editSurvivor()">Edit Status</a>
             </div>
           </div>
           <div class="manage_walk_items clearfix">
@@ -155,8 +155,8 @@
               <p>Turn on email notifications when I receive a donation.</p>
             </div>
             <div class="pull-right">
-              <button class="btn btn-primary-inverted" ng-click="toggleGiftNotification(true)" ng-if="participantRegistration.receiveGiftNotification != 'true'">Turn On Emails</button>
-              <button class="btn btn-primary-inverted" ng-click="toggleGiftNotification(false)" ng-if="participantRegistration.receiveGiftNotification == 'true'">Turn Off Emails</button>
+              <a href class="btn btn-primary-inverted" ng-click="toggleGiftNotification(true)" ng-if="participantRegistration.receiveGiftNotification != 'true'">Turn On Emails</a>
+              <a href class="btn btn-primary-inverted" ng-click="toggleGiftNotification(false)" ng-if="participantRegistration.receiveGiftNotification == 'true'">Turn Off Emails</a>
             </div>
           </div>
           <div class="manage_walk_items clearfix">
@@ -165,7 +165,7 @@
               <p>Enter offline donations here.</p>
             </div>
             <div class="pull-right">
-              <button class="btn btn-primary-inverted" ng-click="addOfflineGift('personal')" ng-if="teamraiserConfig.personalOfflineGiftsAllowed == 'true'">Enter Donations</button>
+              <a href class="btn btn-primary-inverted" ng-click="addOfflineGift('personal')" ng-if="teamraiserConfig.personalOfflineGiftsAllowed == 'true'">Enter Donations</a>
             </div>
           </div>
         </div>
@@ -233,7 +233,7 @@
               <p>Goal: {{teamProgress.goalFormatted}}</p>
             </div>
             <div class="pull-right">
-              <button class="btn btn-primary-inverted btn-goal" ng-click="editGoal('Team')" ng-if="participantRegistration.aTeamCaptain == 'true'">Edit Goal</button>
+              <a href class="btn btn-primary-inverted btn-goal" ng-click="editGoal('Team')" ng-if="participantRegistration.aTeamCaptain == 'true'">Edit Goal</a>
             </div>
           </div>
           <div class="heart_pc_sidebar_row clearfix">
@@ -259,7 +259,7 @@
               <p>{{teamPageUrl}}</p>
             </div>
             <div class="pull-right">
-              <button class="btn btn-primary-inverted" ng-click="editPageUrl('Participant')">Edit URL</button>
+              <a href class="btn btn-primary-inverted" ng-click="editPageUrl('Participant')">Edit URL</a>
             </div>
           </div>
           <div class="manage_walk_items clearfix">
@@ -268,7 +268,7 @@
               <p>Misspelled? Wrong? Update it here.</p>
             </div>
             <div class="pull-right">
-              <button class="btn btn-primary-inverted" ng-click="editTeamName()">Edit Name</button>
+              <a class="btn btn-primary-inverted" ng-click="editTeamName()">Edit Name</href>
             </div>
           </div>
           <div class="manage_walk_items clearfix">
@@ -277,7 +277,7 @@
               <p>Send an email directly to everyone on your team.</p>
             </div>
             <div class="pull-right">
-              <button class="btn btn-primary-inverted" ng-click="emailAllTeamMembers()" ng-if="participantRegistration.aTeamCaptain == 'true'">Email Team</button>
+              <a href class="btn btn-primary-inverted" ng-click="emailAllTeamMembers()" ng-if="participantRegistration.aTeamCaptain == 'true'">Email Team</a>
             </div>
           </div>
           <div class="manage_walk_items clearfix">
@@ -286,7 +286,7 @@
               <p>Enter offline donations you receive for your team.</p>
             </div>
             <div class="pull-right">
-              <button class="btn btn-primary-inverted" ng-click="addOfflineGift('team')" ng-if="teamraiserConfig.personalOfflineGiftsAllowed == 'true' && ((teamraiserConfig.offlineTeamGifts == 'CAPTAINS' && participantRegistration.aTeamCaptain == 'true') || teamraiserConfig.offlineTeamGifts == 'MEMBERS')">Enter Donations</button>
+              <a class="btn btn-primary-inverted" ng-click="addOfflineGift('team')" ng-if="teamraiserConfig.personalOfflineGiftsAllowed == 'true' && ((teamraiserConfig.offlineTeamGifts == 'CAPTAINS' && participantRegistration.aTeamCaptain == 'true') || teamraiserConfig.offlineTeamGifts == 'MEMBERS')">Enter Donations</a>
             </div>
           </div>
         </div>
