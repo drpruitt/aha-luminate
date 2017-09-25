@@ -169,17 +169,6 @@ angular.module 'trPcApp'
           $event.preventDefault()
           # TODO
 
-        # check for first timer
-        else if not $rootScope.LBthankYou
-          $event.preventDefault()
-          ThankYouRegService.getThankYou()
-            .then ->
-              if $rootScope.LBthankYou isnt -1
-                $rootScope.LBthankYouRegisteringModal = $uibModal.open
-                  scope: $rootScope
-                  templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBthankYouRegistering.html'
-              reloadRoute()
-
         # not allowed to edit survey questions
         else if next.originalPath is '/profile/questions' and $rootScope.teamraiserConfig.personalSurveyEditAllowed isnt 'true'
           redirectRoute '/profile'

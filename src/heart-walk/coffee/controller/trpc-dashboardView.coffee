@@ -442,6 +442,9 @@ angular.module 'trPcControllers'
         console.log 'tr id = ' + $scope.frId
         if $rootScope.participantRegistration.lastPC2Login is '0'
           console.log 'first time in runLBroutes'
+          $Scope.LBthankYouRegisteringModal = $uibModal.open
+            scope: $rootScope
+            templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBthankYouRegistering.html'
         else if $scope.userInteractions.page is 0
           console.log 'launch welcome back lightbox'
           $scope.dashboardGreeting = 'page'
