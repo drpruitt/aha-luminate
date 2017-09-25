@@ -1,4 +1,4 @@
-<form ng-submit="submitOfflineGift()">
+<form ng-submit="submitOfflineGift()" name="gift">
   <div class="modal-header">
     <h2 class="modal-title">
       Add Donation
@@ -8,12 +8,15 @@
     <!-- TODO: errors -->
     <p>Enter donations from friends, family or businesses here. For donations from businesses, leave the First Name field blank and enter the entire company name in the Last Name/Company Name field.</p>
     <div class="form-group">
-      <label for="">First Name:</label>
-      <input type="text" class="form-control" id="" ng-model="newOfflineGift.first_name">
+      <label for="">* First Name:</label>
+      <input type="text" class="form-control" id="" ng-model="newOfflineGift.first_name" name="giftFirstName">
     </div>
     <div class="form-group">
-      <label for="">Last Name/Company Name:</label>
-      <input type="text" class="form-control" id="" ng-model="newOfflineGift.last_name">
+      <label for="">* Last Name/Company Name:</label>
+      <input type="text" class="form-control" id="" ng-model="newOfflineGift.last_name" name="giftLastName">
+    </div>
+    <div ng-show="!form.giftFirstName.value && !form.giftLastName.value">
+      Please enter a first and last name or a company name.
     </div>
     <div class="form-group">
       <label for="">Email:</label>
