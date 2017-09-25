@@ -284,7 +284,6 @@ angular.module 'trPcControllers'
 
       $scope.updateSurveyResponses = ($event) ->
         $event.preventDefault()
-        console.log '928'
         console.log 'surveyModel = ',$httpParamSerializer($scope.sqvm.surveyModel)
         updateSurveyResponsesPromise = TeamraiserSurveyResponseService.updateSurveyResponses $httpParamSerializer($scope.sqvm.surveyModel)
         .then (response) ->
