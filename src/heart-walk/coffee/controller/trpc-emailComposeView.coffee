@@ -34,6 +34,8 @@ angular.module 'trPcControllers'
             $scope.emailPromises.push messageCountPromise
       $scope.getMessageCounts()
 
+
+
       $scope.getContactCounts = ->
         $scope.contactCounts = {}
         contactFilters = [
@@ -124,7 +126,7 @@ angular.module 'trPcControllers'
                 pcSetMessages.messageID = message.messageId
                 loadSuggestedMessagePC(pcSetMessages)
               when 'Ask 3: Help me Reach my Goal'
-                pcSetMessages.header = 'Final Ask'
+                pcSetMessages.header = 'Final Request'
                 pcSetMessages.messageID = message.messageId
                 loadSuggestedMessagePC(pcSetMessages)
               when 'Ask 1: Donation Solicitation'
@@ -150,7 +152,8 @@ angular.module 'trPcControllers'
               else
                 messageInfo = response.data.getSuggestedMessageResponse.messageInfo
                 if messageInfo
-                  pcSetMessages.content = messageInfo.messageBody
+                  pcSetMessages.content = messageInfo.messageBody + '<p>http://heartdev.convio.net/site/TR?fr_id=' + $scope.frId + '&pg=personal&px=' + $scope.consId + '</p>'
+                  console.log 'scope = '+$scope.consId
                   pcSetMessages.subject = messageInfo.subject
         $scope.emailTabNames.push pcSetMessages
 
@@ -161,7 +164,8 @@ angular.module 'trPcControllers'
             emailBody = message.content
             emailBodyClean1 = emailBody.replace(/<p>/g,"");
             emailBodyClean2 = emailBodyClean1.replace(/<\/p>/g,"%0D%0A%0D%0A");
-            window.location.href = 'mailto:?subject=' + emailSubject + '&body=' + emailBodyClean2
+            emailBodyClean3 = emailBodyClean2.replace(/&/g,"%26");
+            window.location.href = 'mailto:?subject=' + emailSubject + '&body=' + emailBodyClean3
         return
 
       $scope.copyToClipboard = ->
