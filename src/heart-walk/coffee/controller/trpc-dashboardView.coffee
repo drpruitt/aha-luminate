@@ -128,10 +128,8 @@ angular.module 'trPcControllers'
       $scope.submitOfflineGift = ->
         if not($scope.newOfflineGift.last_name?.length or $scope.newOfflineGift.first_name?.length)
           $scope.newOfflineGift.name_error=true
-          console.log $scope.newOfflineGift
         else  
           $scope.newOfflineGift.name_error=false
-          console.log $scope.newOfflineGift
           TeamraiserGiftService.addGift $httpParamSerializer($scope.newOfflineGift)
             .then (response) ->
               if response.data.errorResponse
