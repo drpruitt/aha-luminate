@@ -143,7 +143,7 @@
           <div class="manage_walk_items clearfix">
             <div class="pull-left">
               <div class="manage_walk_header">Survivor:</div>
-              <p>Brenda, you are being recognized as a survivor.</p>
+              <p><span ng-if="constituent.name && constituent.name.first">{{constituent.name.first}}</span><span ng-if="!constituent.name.first">Participant</span>, you <span ng-if="sqvm.surveyModel.question_key_hw_recognize_survivor == 'Yes'">are</span><span ng-if="sqvm.surveyModel.question_key_hw_recognize_survivor == 'No'">are not</span> being recognized as a survivor.</p>
             </div>
             <div class="pull-right">
               <a href class="btn btn-primary-inverted" ng-click="editSurvivor()">Edit Status</a>
@@ -152,7 +152,7 @@
           <div class="manage_walk_items clearfix">
             <div class="pull-left">
               <div class="manage_walk_header">Donation Notifications:</div>
-              <p>Turn on email notifications when I receive a donation.</p>
+              <p>Choose to receive email notificationss when I receive a donation.</p>
             </div>
             <div class="pull-right">
               <a href class="btn btn-primary-inverted" ng-click="toggleGiftNotification(true)" ng-if="participantRegistration.receiveGiftNotification != 'true'">Turn On Emails</a>
@@ -161,11 +161,20 @@
           </div>
           <div class="manage_walk_items clearfix">
             <div class="pull-left">
-              <div class="manage_walk_header">Enter Cash of Checks:</div>
+              <div class="manage_walk_header">Enter Cash or Checks:</div>
               <p>Enter offline donations here.</p>
             </div>
             <div class="pull-right">
               <a href class="btn btn-primary-inverted" ng-click="addOfflineGift('personal')" ng-if="teamraiserConfig.personalOfflineGiftsAllowed == 'true'">Enter Donations</a>
+            </div>
+          </div>
+          <div class="manage_walk_items clearfix">
+            <div class="pull-left">
+              <div class="manage_walk_header">My Donation PDF</div>
+              <p>Your paper donatino form.</p>
+            </div>
+            <div class="pull-right">
+              <a href="/site/PageNavigator/hw_offline_donation_form.html?pgwrap=n&amp;fr_id={{frId}}&amp;px={{consId}}" class="btn btn-primary-inverted" >Download PDF</a>
             </div>
           </div>
         </div>
@@ -174,7 +183,7 @@
         <div class="heart_pc_my_donors clearfix">
           <div class="clearfix">
             <h2 class="pull-left">My Donors</h2>
-            <a class="btn btn-primary-inverted pull-right" ng-href="TRParticipantDownload/Personal_Donations.csv?download_type=personal_donations&fr_id={{frId}}" target="_blank">Download Donation List</a>
+            <a class="btn btn-primary-inverted pull-right" ng-if="participantGifts.totalNumber > 0" ng-href="TRParticipantDownload/Personal_Donations.csv?download_type=personal_donations&fr_id={{frId}}" target="_blank">Download Donation List</a>
           </div>
           <div ng-if="participantGifts.totalNumber == 0">
             No donations found.
@@ -238,7 +247,7 @@
           </div>
           <div class="heart_pc_sidebar_row clearfix">
             <p>Share team page:</p>
-            <div addthis:url="{{teamPageUrl}}">
+            <div class="addthis_toolbox" addthis:url="{{teamPageUrl}}">
               <a class="heart_pc_sidebar_sharebtn addthis_button_facebook" ng-href="{{baseUrl}}#">
                 <i class="fa fa-facebook"></i><span class="sr-only">Facebook</span>
               </a>
@@ -253,7 +262,7 @@
         </div>
         <div class="heart_pc_main_page">
           <h2>Manage My Team:</h2>
-          <div class="manage_walk_items clearfix">
+          <div class="manage_walk_items clearfix" ng-if="participantRegistration.aTeamCaptain == 'true'">
             <div class="pull-left">
               <div class="manage_walk_header">Team's URL:</div>
               <p>{{teamPageUrl}}</p>

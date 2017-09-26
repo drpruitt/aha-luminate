@@ -513,7 +513,8 @@ angular.module 'trPcControllers'
         logUserInt(interaction,$scope.frId)
         $scope.userInteractions[interaction] = 1
         $uibModalStack.dismissAll()
-        runLBroutes()
+        #don't re-check and launch lightboxes
+        #runLBroutes()
 
       $scope.resetInt = (interID) ->
         console.log 'submitted id = ',interID
