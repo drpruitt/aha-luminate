@@ -171,10 +171,10 @@
           <div class="manage_walk_items clearfix">
             <div class="pull-left">
               <div class="manage_walk_header">My Donation PDF</div>
-              <p>Your paper donatino form.</p>
+              <p>Your paper donation form.</p>
             </div>
             <div class="pull-right">
-              <a href="/site/PageNavigator/hw_offline_donation_form.html?pgwrap=n&amp;fr_id={{frId}}&amp;px={{consId}}" class="btn btn-primary-inverted" >Download PDF</a>
+              <a href="http://heartdev.convio.net/site/PageNavigator/hw_offline_donation_form.html?pgwrap=n&amp;fr_id={{frId}}&amp;px={{consId}}" class="btn btn-primary-inverted" >Download PDF</a>
             </div>
           </div>
         </div>
@@ -268,10 +268,10 @@
               <p>{{teamPageUrl}}</p>
             </div>
             <div class="pull-right">
-              <a href class="btn btn-primary-inverted" ng-click="editPageUrl('Participant')">Edit URL</a>
+              <a href class="btn btn-primary-inverted" ng-click="editPageUrl('Team')">Edit URL</a>
             </div>
           </div>
-          <div class="manage_walk_items clearfix">
+          <div class="manage_walk_items clearfix" ng-if="participantRegistration.aTeamCaptain == 'true'">
             <div class="pull-left">
               <div class="manage_walk_header">Update Team Name:</div>
               <p>Misspelled? Wrong? Update it here.</p>
@@ -280,16 +280,16 @@
               <a class="btn btn-primary-inverted" ng-click="editTeamName()">Edit Name</href>
             </div>
           </div>
-          <div class="manage_walk_items clearfix">
+          <div class="manage_walk_items clearfix" ng-if="participantRegistration.aTeamCaptain == 'true'">
             <div class="pull-left">
               <div class="manage_walk_header">Email My Team:</div>
               <p>Send an email directly to everyone on your team.</p>
             </div>
             <div class="pull-right">
-              <a href class="btn btn-primary-inverted" ng-click="emailAllTeamMembers()" ng-if="participantRegistration.aTeamCaptain == 'true'">Email Team</a>
+              <a href class="btn btn-primary-inverted" ng-click="emailAllTeamMembers()">Email Team</a>
             </div>
           </div>
-          <div class="manage_walk_items clearfix">
+          <div class="manage_walk_items clearfix" ng-if="participantRegistration.aTeamCaptain == 'true'">
             <div class="pull-left">
               <div class="manage_walk_header">Enter a Team Gift:</div>
               <p>Enter offline donations you receive for your team.</p>
