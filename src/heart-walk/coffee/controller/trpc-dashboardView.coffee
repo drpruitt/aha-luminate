@@ -403,7 +403,6 @@ angular.module 'trPcControllers'
               else
                 $scope.profilePercent = $scope.profileProgress / 4 * 100
                 console.log 'profile percent = ' + $scope.profilePercent
-              console.log 'profile check list items = ' + $scope.profileChecklistItems.mobile
               if $rootScope.updatedProfile is 'TRUE' && $scope.userInteractions.page is 0
                 console.log 'update page interaction needs to be set and update our local object'
                 $scope.userInteractions.page = 1
@@ -525,19 +524,6 @@ angular.module 'trPcControllers'
             else
               console.log 'failed'
 
-      #$scope.tellUsWhy = ->
-        #window.location.href = $scope.personalPageUrl + '&videoWhy=true'
-        #$scope.LBwhyVideoModal = $uibModal.open
-          #scope: $scope
-          #templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBwhyVideo.html'
-
-      #$scope.tellUsWhyProfile = ->
-        #$scope.LBwhyVideoProfileModal = $uibModal.open
-          #scope: $scope
-          #templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/profileWhyVideo.html'
-        #$scope.cancelEditPersonalVideo = ->
-          #$scope.LBwhyVideoProfileModal.close()
-
       $scope.goSocial = ->
         logUserInt('social',$scope.frId)
         window.location.href = 'PageServer?pagename=heartwalk_fundraising_tools&amp;fr_id='+$scope.frId
@@ -550,20 +536,52 @@ angular.module 'trPcControllers'
           scope: $scope
           templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBprofile.html'
 
+      $scope.reLaunchprofileChecklist = ->
+        $scope.LBprofileModal = $uibModal.open
+          scope: $scope
+          templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBprofile.html'
+
+      reCheckProfileItems = ->
+        if $scope.sqvm.surveyModel.question_key_what_is_why != null
+          console.log 'profile check WHYYYYY'
+          $scope.profileChecklistItems.why = 1
+        if $scope.sqvm.surveyModel.question_key_hw_years_participated
+          console.log 'profile check YEARSSSSS'
+          $scope.profileChecklistItems.years = 1
+        if $scope.sqvm.surveyModel.question_key_mobile_phone
+          console.log 'profile check MOBBILLLLEE'
+          $scope.profileChecklistItems.mobile = 1
+        $scope.profileProgress = $scope.profileChecklistItems.mobile + $scope.profileChecklistItems.years + $scope.profileChecklistItems.street + $scope.profileChecklistItems.why
+        if $scope.profileProgress is 0
+          $scope.profilePercent = 0
+        else if $scope.profileProgress is 4
+          $scope.profilePercent = 100
+          $scope.userInteractions.profile = 1
+        else
+          $scope.profilePercent = $scope.profileProgress / 4 * 100
+          console.log 'profile percent = ' + $scope.profilePercent
+        $scope.reLaunchprofileChecklist()
+
       $scope.updateEditMobile = ($event) ->
         $scope.LBmobileProfileModal.close()
         $scope.updateSurveyResponses($event)
-        $scope.profileChecklist()
+        $timeout ->
+          reCheckProfileItems()
+        , 250
 
       $scope.updateEditYears = ($event) ->
         $scope.LByearsProfileModal.close()
         $scope.updateSurveyResponses($event)
-        $scope.profileChecklist()
+        $timeout ->
+          reCheckProfileItems()
+        , 250
 
       $scope.updateEditStreet = ($event) ->
         $scope.LBstreetProfileModal.close()
         $scope.updateUserProfile($event)
-        $scope.profileChecklist()
+        $timeout ->
+          reCheckProfileItems()
+        , 250
 
       $scope.LBprofileLinks = (section) ->
         console.log 'section = ' + section
