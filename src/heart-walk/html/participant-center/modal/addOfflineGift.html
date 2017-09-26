@@ -15,7 +15,7 @@
       <label for="">* Last Name/Company Name:</label>
       <input type="text" class="form-control" id="" ng-model="newOfflineGift.last_name" name="giftLastName">
     </div>
-    <div ng-show="newOfflineGift.name_error and not(newOfflineGift.last_name?.length or newOfflineGift.first_name?.length)">
+    <div ng-if="newOfflineGift.name_error and not(newOfflineGift.last_name?.length or newOfflineGift.first_name?.length)">
       <p>Please enter a first and last name or a company name.</p>
     </div>
     <div class="form-group">
