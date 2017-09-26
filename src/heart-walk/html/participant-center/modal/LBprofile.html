@@ -10,10 +10,10 @@
   <div uib-alert class="alert-danger" ng-if="updateSurveyFailure" close="resetSurveyAlerts()">
     {{updateSurveyFailureMessage}}
   </div>
-  <div uib-alert class="alert-success" ng-if="updateProfileSuccess">
+  <div uib-alert class="alert-success" ng-if="updateProfileSuccess" close="resetProfileAlerts()">
     <span translate="survey_save_success"></span>
   </div>
-  <div uib-alert class="alert-danger" ng-if="updateProfileFailure">
+  <div uib-alert class="alert-danger" ng-if="updateProfileFailure" close="resetProfileAlerts()">
     {{updateProfileFailureMessage}}
   </div>
   <div class="row">
