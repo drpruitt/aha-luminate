@@ -126,12 +126,12 @@ angular.module 'trPcControllers'
         closeAddOfflineGiftModal()
       
       $scope.submitOfflineGift = ->
-        console.log "---->"
-        console.log $scope.newOfflineGift
-        if !$scope.newOfflineGift.last_name and !$scope.newOfflineGift.first_name
+        if $scope.newOfflineGift.last_name is "" and $scope.newOfflineGift.first_name is ""
           $scope.newOfflineGift.name_error=true
-        else  
+         console.log $scope.newOfflineGift
+       else  
            $scope.newOfflineGift.name_error=false
+        console.log $scope.newOfflineGift
           TeamraiserGiftService.addGift $httpParamSerializer($scope.newOfflineGift)
             .then (response) ->
               if response.data.errorResponse
