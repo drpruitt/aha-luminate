@@ -111,7 +111,7 @@ angular.module 'ahaLuminateControllers'
       $scope.childCompanyTeams =
         companies: []
 
-      addChildCompanyTeams = (companyIndex, companyId, companyName, teams, totalNumber) ->
+      addChildCompanyTeams = (companyIndex, companyId, companyName, teams, totalNumber, depth) ->
         pageNumber = $scope.childCompanyTeams.companies[companyIndex]?.page or 0
         $scope.childCompanyTeams.companies[companyIndex] =
           isOpen: true
@@ -120,6 +120,7 @@ angular.module 'ahaLuminateControllers'
           companyId: companyId or ''
           companyName: companyName or ''
           teams: teams or []
+          depth: depth or ''
         totalNumber = totalNumber or 0
         $scope.childCompanyTeams.companies[companyIndex].totalNumber = Number totalNumber
         if not $scope.$$phase
@@ -168,6 +169,7 @@ angular.module 'ahaLuminateControllers'
           childCompany = $scope.childCompanies[childCompanyIndex]
           childCompanyId = childCompany.id
           childCompanyName = childCompany.name
+          depth = childCompany.depth
           pageNumber = $scope.childCompanyTeams.companies[childCompanyIndex]?.page
           if not pageNumber
             pageNumber = 0
@@ -175,14 +177,14 @@ angular.module 'ahaLuminateControllers'
             pageNumber--
           TeamraiserTeamService.getTeams 'team_company_id=' + childCompanyId + '&team_name=' + $scope.companyTeamSearch.team_name + '&list_sort_column=team_name&list_ascending=true&list_page_size=5&list_page_offset=' + pageNumber,
             error: ->
-              addChildCompanyTeams childCompanyIndex, childCompanyId, childCompanyName
+              addChildCompanyTeams childCompanyIndex, childCompanyId, childCompanyName, depth
               numCompaniesTeamRequestComplete++
               if numCompaniesTeamRequestComplete is numCompanies
                 setCompanyNumTeams numTeams
             success: (response) ->
               companyTeams = response.getTeamSearchByInfoResponse?.team
               if not companyTeams?
-                addChildCompanyTeams childCompanyIndex, childCompanyId, childCompanyName
+                addChildCompanyTeams childCompanyIndex, childCompanyId, childCompanyName, depth
               else
                 companyTeams = [companyTeams] if not angular.isArray companyTeams
                 angular.forEach companyTeams, (companyTeam) ->
@@ -193,7 +195,7 @@ angular.module 'ahaLuminateControllers'
                   if joinTeamURL?
                     companyTeam.joinTeamURL = joinTeamURL.split('/site/')[1]
                 totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults
-                addChildCompanyTeams childCompanyIndex, childCompanyId, childCompanyName, companyTeams, totalNumberTeams
+                addChildCompanyTeams childCompanyIndex, childCompanyId, childCompanyName, companyTeams, totalNumberTeams, depth
                 numTeams += Number totalNumberTeams
               numCompaniesTeamRequestComplete++
               if numCompaniesTeamRequestComplete is numCompanies
