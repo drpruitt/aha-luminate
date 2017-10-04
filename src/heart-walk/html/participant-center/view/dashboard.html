@@ -68,7 +68,17 @@
           </div>
 
           <div class="col-sm-4 profile_box" ng-if="userInteractions.profile != '1'">
-            <div class="profile_box_icon pull-left"><i class="fa fa-percent"></i></div>
+            <div class="profile_box_icon pull-left">
+              <div class="progress red ratio{{profileProgress}}">
+                  <span class="progress-left">
+                      <span class="progress-bar"></span>
+                  </span>
+                  <span class="progress-right">
+                      <span class="progress-bar"></span>
+                  </span>
+                  <div class="progress-value">{{profilePercent}}%</div>
+              </div>
+            </div>
             <div class="profile_box_info pull-right">We're missing your details! Complete your profile now.<a id="update_my_profile" href class="btn btn-primary" ng-click="profileChecklist()">Update My Profile</a></div>
           </div>
           <div class="col-sm-4 profile_box" ng-if="userInteractions.profile == '1'">
