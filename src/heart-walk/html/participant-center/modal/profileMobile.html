@@ -1,0 +1,28 @@
+<form ng-submit="updateEditMobile($event)" novalidate>
+  <div class="modal-header">
+    <h2 class="modal-title">
+      Update Your Mobile Number
+    </h2>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="question_key_mobile_phone">Mobile Phone:</label>
+      <div class="input-group">
+        <input type="text" id="question_key_mobile_phone" name="question_key_mobile_phone" class="form-control" aria-label="" ng-model="sqvm.surveyModel.question_key_mobile_phone">
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="clearfix">
+      <div class="pull-left">
+        <button type="button" class="btn btn-primary-inverted text-uppercase" ng-click="cancelEditMobile()">
+          Cancel
+        </button>
+      </div>
+      <div class="pull-right">
+        <button type="submit" class="btn btn-primary text-uppercase">Save</span>
+        </button>
+      </div>
+    </div>
+  </div>
+<form>

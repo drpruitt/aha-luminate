@@ -1,6 +1,42 @@
+body {
+  font-size: 18px;
+}
+
+a {
+  &,
+  &:link,
+  &:visited,
+  &:hover,
+  &:focus {
+    font-weight: 400;
+  }
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 767px)  {
+  h1, .h1, h2, .h2 {
+    font-size: 24px;
+  }
+}
+
+#headerWrapper {
+  position: relative;
+  z-index: 1040;
+}
+
+.manage_walk_items {
+  p {
+    font-size: 16px;
+  }
+}
+
 .heart-dashboard__header {
   margin: 0 0 20px;
-  
+
   @media (min-width: $screen-sm-min) {
     margin: 0 0 50px;
   }
@@ -20,12 +56,12 @@
 .heart-dashboard-tab-info__text {
   font-size: 18px;
   padding: 0 0 30px;
-  
+
   @media (min-width: $screen-sm-min) {
     float: left;
     padding: 0;
   }
-  
+
   @media (min-width: 840px) {
     font-size: 20px;
   }
@@ -35,42 +71,192 @@
   font-size: 25px;
   font-weight: 600;
 }
+.heart_pc_sidebar_row {
+    margin-bottom: 50px;
+}
+.header_greetings a {
+    font-weight: bold;
+}
+.header_checklist {
+    margin-bottom: 50px;
+}
+.view_map {
+    margin-top: 20px;
+}
 
 .heart-dashboard-tab-info__cta {
   text-align: center;
-  
+
   @media (min-width: $screen-sm-min) {
     float: right;
     text-align: left;
   }
-  
+
   .btn {
-    &, 
-    &:link, 
+    &,
+    &:link,
     &:visited {
       padding: 4px 10px;
       margin: 0 0 0 8px;
-      
+
       @media (min-width: 360px) {
         padding: 4px 16px;
         margin: 0 0 0 10px;
       }
-      
+
       @media (min-width: 375px) {
         padding: 4px 18px;
       }
-      
+
       @media (min-width: 414px) {
         padding: 4px 24px;
       }
-      
+
       &:first-child {
         margin: 0;
-        
+
         @media (min-width: $screen-sm-min) {
           margin: 0 0 0 10px;
         }
       }
     }
   }
+}
+.redText {
+    color: #de2427;
+}
+.strongText {
+    font-weight: bold;
+}
+
+.row.profile_box_row {
+    border-bottom: 1px dotted #7e7e7e;
+}
+.profile_box {
+    border-right: 1px dotted #333;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    overflow: hidden;
+}
+.profile_box:last-child {
+    border: 0;
+}
+.profile_box_icon {
+    width: 25%;
+    color: #a1a2a3;
+    font-size: 68px;
+    text-align: center;
+}
+
+.profile_box_info {
+    width: 75%;
+    font-size: 16px;
+}
+.profile_box button.btn.btn-primary, .profile_box a.btn.btn-primary {
+    display: block;
+    width: 100%;
+    line-height: 32px;
+    margin-top: 10px;
+}
+.lb_skip_link {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 20px;
+}
+.not_right_now_center {
+    text-align: center;
+}
+
+@media only screen and (max-width: 767px)  {
+  .modal-footer .pull-left, .modal-footer .pull-right {
+      float: none !important;
+      text-align: center;
+      margin-bottom: 10px;
+  }
+  .profile_box {
+      border: 0;
+      padding-top: 10px;
+      padding-bottom: 10px;
+  }
+  .profile_box_icon {
+    font-size: 48px;
+  }
+  .row.profile_box_row {
+      border: 0;
+  }
+  .manage_walk_items .pull-right, .heart_pc_my_donors .pull-right {
+    text-align: center;
+    float: none !important;
+  }
+  .manage_walk_items .pull-left, .heart_pc_my_donors .pull-left {
+    float: none !important;
+  }
+  .heart_pc_my_donors a.pull-right {
+    margin-bottom: 30px;
+  }
+  .donor_gift_list, .donor_gift_list a {
+    font-size: 12px;
+  }
+}
+
+.manage_walk_items {
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px dotted #7e7e7e;
+}
+.manage_walk_header {
+    font-weight: 600;
+}
+.heart_pc_sidebar_thermometer {
+    position: relative;
+    background: #ffffff;
+    border-radius: 0;
+    height: auto;
+    margin: 0 0 15px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: 1px solid #ececec;
+}
+
+.heart_pc_sidebar_thermometer .heart_pc_sidebar_thermometer_fill {
+    background: #9a1211;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.heart_pc_sidebar_percentage {
+    text-align: center;
+    display: block;
+    color: #000000;
+    font-size: 16px;
+    padding: 5px;
+    position: relative;
+}
+a.heart_pc_sidebar_sharebtn {
+    margin-right: 20px;
+    text-decoration: none;
+    font-size: 28px;
+}
+.profile_icon_checklist .row {
+    margin-bottom: 20px;
+}
+.profile_icon_checklist i.fa {
+    font-size: 24px;
+    width: 40px;
+    text-align: center;
+    height: 40px;
+    vertical-align: middle;
+    display: inline-block;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    border-radius: 100px;
+    -moz-box-shadow: 0px 0px 2px #888;
+    -webkit-box-shadow: 0px 0px 2px #888;
+    box-shadow: 0px 0px 2px #888;
+    padding: 8px;
+    margin-right: 10px;
+    color: #de2427;
 }

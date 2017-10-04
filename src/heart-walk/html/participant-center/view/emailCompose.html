@@ -1,5 +1,28 @@
 <div cg-busy="emailPromises">
   <div class="row">
+    <div class="col-sm-12">
+      <div class="heart-dashboard-tab-info">
+        <h1>Send Emails</h1>
+        <p>Want to send an email using your personal e-mail (Gmail, Outlook, Yahoo, etc.)? We’ve got you covered! Select a tab below to see an email template you can use as a starting point.</p>
+        <p>Then, when you are ready, click the copy or open button to send in your personal e-mail.</p>
+        <div class="message_suggestions">
+          <uib-tabset active="activeEmailTab">
+            <uib-tab ng-repeat="tab in emailTabNames" heading="{{tab.header}}" index="tab.messageID">
+              <div class="heart_sample_message" ng-bind-html="tab.content"></div>
+            </uib-tab>
+          </uib-tabset>
+        </div>
+        <a href ng-click="copyToClipboard()" class="pc_btn" ng-if="!device.isMobile">Copy Message</a>
+        <a href ng-click="sendEmailOpenEmail(activeEmailTab)" class="pc_btn">Open in My Default Email</a>
+        <p class="email_send_via_FC"><a href ng-click="sendViaFC()">Or send an email through your Participant Center</a></p>
+      </div>
+      <div id="send_via_FC">
+        <h2>Send Emails Through My Participant Center</h2>
+        <p>Sending emails through your Participant Center is quick and easy! Just use the wizard below to send your email to friends, family, teammates, and donors. You can also track who opened your emails and who visited your page. <a ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_all/list">Be sure to upload your contacts before starting</a>.</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-sm-4 col-md-3">
       <div class="visible-xs">
         <div class="btn-group ng-pc-nav-btn-group" uib-dropdown>
@@ -21,7 +44,7 @@
             </li>
             <li>
               <a ng-href="{{baseUrl}}#/email/message/sentMessage/list">
-                <span class="badge">{{messageCounts.sentMessages}}</span> 
+                <span class="badge">{{messageCounts.sentMessages}}</span>
                 Sent Messages
               </a>
             </li>
@@ -71,11 +94,11 @@
         </a>
         <div class="list-group ng-pc-nav-list-group">
           <a class="list-group-item" ng-href="{{baseUrl}}#/email/message/draft/list">
-            <span class="badge">{{messageCounts.drafts}}</span> 
+            <span class="badge">{{messageCounts.drafts}}</span>
             Drafts
           </a>
           <a class="list-group-item" ng-href="{{baseUrl}}#/email/message/sentMessage/list">
-            <span class="badge">{{messageCounts.sentMessages}}</span> 
+            <span class="badge">{{messageCounts.sentMessages}}</span>
             Sent Mail
           </a>
         </div>

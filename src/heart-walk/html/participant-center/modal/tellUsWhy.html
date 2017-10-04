@@ -1,0 +1,39 @@
+<form ng-submit="updateTellUsWhy($event)" novalidate>
+  <div class="modal-header">
+    <h2 class="modal-title">
+      Update Your Why
+    </h2>
+  </div>
+  <div uib-alert class="alert-success" ng-if="updateSurveySuccess" close="resetSurveyAlerts()">
+    <span translate="survey_save_success"></span>
+  </div>
+  <div uib-alert class="alert-danger" ng-if="updateSurveyFailure" close="resetSurveyAlerts()">
+    {{updateSurveyFailureMessage}}
+  </div>
+  <div class="modal-body">
+    <div>
+      You will be provided with a personalized video to share with your colleagues, friends and family. Please finish this sentence if you would like to personalize your video: _____ is Why. Examples: My mom, Grandma Mary, Mary Smith. If left blank, it will say "Life is Why"
+    </div>
+    <div class="form-group">
+      <label for="what_is_why" class="sr-only">What is your why?</label>
+      <div class="input-group">
+        <input type="text" id="what_is_why" name="question_key_what_is_why" class="form-control" aria-label="some scope" ng-model="sqvm.surveyModel.question_key_what_is_why">
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="clearfix">
+      <div class="pull-left">
+        <!-- TODO - add reset to close event ng-click="sqvm.surveyOptions.resetModel()" -->
+        <button type="button" class="btn btn-primary-inverted text-uppercase" ng-click="cancelTellUsWhy()">
+          <span translate="class_cancel_link"></span>
+        </button>
+      </div>
+      <div class="pull-right">
+        <button type="submit" class="btn btn-primary text-uppercase">
+          Update
+        </button>
+      </div>
+    </div>
+  </div>
+<form>

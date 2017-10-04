@@ -1,0 +1,19 @@
+$event-primary: $brand-primary;
+$event-primary-dark: $brand-primary-darker;
+
+$event-secondary: $brand-success;
+$event-secondary-dark: darken($brand-success, 10%);
+$event-secondary-medium: darken($brand-success, 5%);
+$event-secondary-light: lighten($brand-success, 5%);
+
+$event-accent: lighten($brand-primary, 5%);
+$event-accent-medium: lighten($brand-primary, 10%);
+$event-accent-light: lighten($brand-primary, 20%);
+
+$event-grey: #2d2d2d;
+$border-gray: #e8e8e8;
+$inactive-grey: #c2c2c2;
+$error-color: #fcddde;
+
+$font-size-sm: $font-size-small;
+$font-size-reg: 16px;
