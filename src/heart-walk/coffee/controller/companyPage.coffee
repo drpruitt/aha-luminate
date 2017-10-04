@@ -86,11 +86,11 @@ angular.module 'ahaLuminateControllers'
             name: childCompanyName
             sort: $scope.companyPath.join("+") + "+" + childCompanyName
             depth: depth
-          if depth > $scope.companyDepth
-            $scope.companyPath.push childCompanyName
-          if depth < $scope.companyDepth
-            $scope.companyPath.pop
-        $scope.companyDepth =depth
+        if depth > $scope.companyDepth
+          $scope.companyPath.push childCompanyName
+        if depth < $scope.companyDepth
+          $scope.companyPath.pop
+        $scope.companyDepth = depth
         
       $scope.childCompanies = $scope.sortList $scope.childCompanies, 'sort'
       numCompanies = $scope.childCompanies.length + 1
@@ -239,7 +239,7 @@ angular.module 'ahaLuminateControllers'
       $scope.childCompanyParticipants =
         companies: []
 
-      addChildCompanyParticipants = (companyIndex, companyId, companyName, participants) ->
+      addChildCompanyParticipants = (companyIndex, companyId, companyName, participants, depth) ->
         pageNumber = $scope.childCompanyParticipants.companies[companyIndex]?.page or 0
         participants = $scope.sortList(participants, ['name.first', 'name.last'])
         participants = $scope.setParticipantsFullName participants
@@ -335,6 +335,7 @@ angular.module 'ahaLuminateControllers'
           childCompany = $scope.childCompanies[childCompanyIndex]
           childCompanyId = childCompany.id
           childCompanyName = childCompany.name
+          depth = childCompany.depth
 
           companyParticipants = $scope.childCompanyParticipants.companies[childCompanyIndex]
           if companyParticipants and companyParticipants.isLoaded
@@ -346,7 +347,7 @@ angular.module 'ahaLuminateControllers'
             TeamraiserParticipantService.getParticipants 'team_name=' + encodeURIComponent('%%%') + '&list_filter_column=team.company_id&list_filter_text=' + childCompanyId + '&list_page_size=500',
             error: ->
               companyParticipants = individualParticipants
-              addChildCompanyParticipants childCompanyIndex, childCompanyId, childCompanyName, companyParticipants
+              addChildCompanyParticipants childCompanyIndex, childCompanyId, childCompanyName, companyParticipants, depth
               numCompaniesParticipantRequestComplete++
             success: (response) ->
               participants = response.getParticipantsResponse?.participant
@@ -363,7 +364,7 @@ angular.module 'ahaLuminateControllers'
                   if donationUrl?
                     participant.donationUrl = donationUrl.split('/site/')[1]
                   companyParticipants.push participant
-              addChildCompanyParticipants childCompanyIndex, childCompanyId, childCompanyName, companyParticipants
+              addChildCompanyParticipants childCompanyIndex, childCompanyId, childCompanyName, companyParticipants, depth
               numCompaniesParticipantRequestComplete++
 
           getParticipantsList = ->
