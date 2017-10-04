@@ -441,6 +441,7 @@ angular.module 'trPcControllers'
         console.log 'tr id = ' + $scope.frId
         if $rootScope.participantRegistration.lastPC2Login is '0'
           console.log 'first time in runLBroutes'
+          $scope.dashboardGreeting = 'page'
           $scope.LBthankYouRegisteringModal = $uibModal.open
             scope: $scope
             templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBthankYouRegistering.html'
@@ -493,6 +494,35 @@ angular.module 'trPcControllers'
             scope: $scope
             templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBgoal2.html'
 
+      runHeaderCheck = ->
+        if $scope.userInteractions.page is 0
+          console.log 'update page header message only'
+          $scope.dashboardGreeting = 'page'
+        else if $scope.userInteractions.donate is 0
+          console.log 'donate header message only'
+          $scope.dashboardGreeting = 'donate'
+        else if $scope.userInteractions.email is 0
+          console.log 'email header message only'
+          $scope.dashboardGreeting = 'email'
+        else if $scope.userInteractions.why is 0
+          console.log 'why header message only'
+          $scope.dashboardGreeting = 'why'
+        else if $scope.userInteractions.social is 0
+          console.log 'social header message only'
+          $scope.dashboardGreeting = 'social'
+        else if $scope.userInteractions.profile is 0
+          console.log 'profile header message only'
+          $scope.dashboardGreeting = 'profile'
+        else if $scope.userInteractions.goal1 is 0 && $scope.participantProgress.percent >= 50
+          console.log 'goal 1 header message only'
+          $scope.dashboardGreeting = 'goal1'
+        else if $scope.userInteractions.goal2 is 0 && $scope.participantProgress.percent >= 100
+          console.log 'goal 2 header message only'
+          $scope.dashboardGreeting = 'goal2'
+        else
+          console.log 'defualt fall back, nothing matched header check'
+          $scope.dashboardGreeting = 'defualt'
+
       $scope.LBgoalOneSubmit = ->
         console.log 'submitted the goal1 send email button'
         logUserInt('goal1',$scope.frId)
@@ -514,6 +544,8 @@ angular.module 'trPcControllers'
         $uibModalStack.dismissAll()
         #don't re-check and launch lightboxes
         #runLBroutes()
+        #but let us run header update
+        runHeaderCheck()
 
       $scope.resetInt = (interID) ->
         console.log 'submitted id = ',interID
