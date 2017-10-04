@@ -253,6 +253,7 @@ angular.module 'ahaLuminateControllers'
           companyName: companyName or ''
           participants: []
           participantsList: participants or []
+          depth: depth or ""
         $scope.childCompanyParticipants.companies[companyIndex].totalNumber = Number totalNumber
         $scope.paginateCompanyParticipants companyIndex
         if not $scope.$$phase
