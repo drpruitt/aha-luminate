@@ -55,7 +55,7 @@
           </div>
           <div class="col-sm-4 profile_box" ng-if="userInteractions.why == '1'">
             <div class="profile_box_icon pull-left"><i class="fa fa-check"></i></div>
-            <div class="profile_box_info pull-right">Thank you for telling us<br>your Why.<a class="btn btn-primary" ng-href="{{personalPageUrl}}&amp;videoWhy=true">Update Your Why</button></div>
+            <div class="profile_box_info pull-right">Thank you for telling us<br>your Why: {{sqvm.surveyModel.question_key_what_is_why}}<a class="btn btn-primary" ng-href="{{personalPageUrl}}&amp;videoWhy=true">Update Your Why</button></div>
           </div>
 
           <div class="col-sm-4 profile_box" ng-if="userInteractions.social != '1'">
