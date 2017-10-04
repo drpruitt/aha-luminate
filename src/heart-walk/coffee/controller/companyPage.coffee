@@ -72,15 +72,27 @@ angular.module 'ahaLuminateControllers'
 
       $childCompanyLinks = $defaultCompanyHierarchy.find('.trr-td a')
       $scope.childCompanies = []
+      $scope.companyPath = [];
+      $scope.companyDepth = 0;
       angular.forEach $childCompanyLinks, (childCompanyLink) ->
         childCompanyUrl = angular.element(childCompanyLink).attr('href')
         childCompanyName = angular.element(childCompanyLink).text()
+        depth=parseInt(childCompanyLink.parentElement.style.paddingLeft) / 10;
+        if isNaN depth
+          depth=0;
         if childCompanyUrl.indexOf('company_id=') isnt -1
           $scope.childCompanies.push
             id: childCompanyUrl.split('company_id=')[1].split('&')[0]
             name: childCompanyName
-
-      $scope.childCompanies = $scope.sortList $scope.childCompanies, 'name'
+            sort: $scope.companyPath.join("+") + "+" + childCompanyName
+            depth: depth
+          if depth > $scope.companyDepth
+            $scope.companyPath.push childCompanyName
+          if depth < $scope.companyDepth
+            $scope.companyPath.pop
+        $scope.companyDepth =depth
+        
+      $scope.childCompanies = $scope.sortList $scope.childCompanies, 'sort'
       numCompanies = $scope.childCompanies.length + 1
 
       $scope.companyTeamSearch =
