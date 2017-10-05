@@ -177,14 +177,14 @@ angular.module 'ahaLuminateControllers'
             pageNumber--
           TeamraiserTeamService.getTeams 'team_company_id=' + childCompanyId + '&team_name=' + $scope.companyTeamSearch.team_name + '&list_sort_column=team_name&list_ascending=true&list_page_size=5&list_page_offset=' + pageNumber,
             error: ->
-              addChildCompanyTeams childCompanyIndex, childCompanyId, childCompanyName, depth
+              addChildCompanyTeams childCompanyIndex, childCompanyId, childCompanyName, [], 0, depth
               numCompaniesTeamRequestComplete++
               if numCompaniesTeamRequestComplete is numCompanies
                 setCompanyNumTeams numTeams
             success: (response) ->
               companyTeams = response.getTeamSearchByInfoResponse?.team
               if not companyTeams?
-                addChildCompanyTeams childCompanyIndex, childCompanyId, childCompanyName, depth
+                addChildCompanyTeams childCompanyIndex, childCompanyId, childCompanyName, [], 0, depth
               else
                 companyTeams = [companyTeams] if not angular.isArray companyTeams
                 angular.forEach companyTeams, (companyTeam) ->
