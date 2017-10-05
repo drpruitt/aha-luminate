@@ -161,7 +161,7 @@ angular.module 'trPageEditControllers'
         $personalHeader = angular.element '.kd-user-story__headline'
         $personalHeadline = $personalHeader.find '> h2'
 
-        # make headline dynamic
+        # make headline dynamica
         $scope.personalHeadline = $personalHeadline.text()
         $personalHeadline.replaceWith $compile($personalHeadline.clone().attr('ng-class', '{"hidden": personalHeadlineOpen}').html('{{personalHeadline}}'))($scope)
 
