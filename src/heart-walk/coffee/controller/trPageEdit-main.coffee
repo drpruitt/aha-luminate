@@ -156,7 +156,7 @@ angular.module 'trPageEditControllers'
             message: errorMessage
           if not $scope.$$phase
             $scope.$apply()
-        $personalPhoto1.find('.heart-user-image-wrap-inner').prepend $compile('<button type="button" class="btn btn-primary-inverted btn-raised" ng-click="editPersonalPhoto1()"><span class="glyphicon glyphicon-camera" id="edit_personal_photo"></span> Edit Photo</button>')($scope)
+        $personalPhoto1.find('.heart-user-image-wrap-inner').prepend $compile('<button type="button" class="btn btn-primary-inverted btn-raised" ng-click="editPersonalPhoto1()" id="edit_personal_photo"><span class="glyphicon glyphicon-camera"></span> Edit Photo</button>')($scope)
 
         $personalHeader = angular.element '.kd-user-story__headline'
         $personalHeadline = $personalHeader.find '> h2'
@@ -282,7 +282,7 @@ angular.module 'trPageEditControllers'
               $scope.closePersonalVideoModal()
               location.reload();
             ), 500
-        $personalVideo.find('.heart-user-video-inner').prepend $compile('<button type="button" class="btn btn-primary-inverted btn-raised" ng-click="editPersonalVideo()"><span class="glyphicon glyphicon-facetime-video" id="edit_personal_video"></span> Edit Video</button>')($scope)
+        $personalVideo.find('.heart-user-video-inner').prepend $compile('<button type="button" class="btn btn-primary-inverted btn-raised" ng-click="editPersonalVideo()" id="edit_personal_video"><span class="glyphicon glyphicon-facetime-video"></span> Edit Video</button>')($scope)
 
         $personalTextContainer = angular.element '.heart-page-story--personal #fr_rich_text_container'
 
@@ -295,7 +295,7 @@ angular.module 'trPageEditControllers'
         $scope.editPersonalContent = ->
           $scope.prevPersonalContent = $scope.personalContent
           $scope.personalContentOpen = true
-        $personalTextContainer.prepend $compile('<div class="form-group"><button type="button" class="btn btn-primary btn-raised" ng-class="{\'hidden\': personalContentOpen}" ng-click="editPersonalContent()"><span class="glyphicon glyphicon-pencil" id="edit_personal_story"></span> Edit Story</button></div>')($scope)
+        $personalTextContainer.prepend $compile('<div class="form-group"><button type="button" class="btn btn-primary btn-raised" ng-class="{\'hidden\': personalContentOpen}" ng-click="editPersonalContent()" id="edit_personal_story"><span class="glyphicon glyphicon-pencil"></span> Edit Story</button></div>')($scope)
 
         # insert content form
         closePersonalContent = ->
@@ -373,7 +373,7 @@ angular.module 'trPageEditControllers'
             message: errorMessage
           if not $scope.$$phase
             $scope.$apply()
-        $teamPhoto1.find('.heart-user-image-wrap-inner').prepend $compile('<button type="button" class="btn btn-primary-inverted btn-raised" ng-click="editTeamPhoto1()"><span class="glyphicon glyphicon-camera" id="edit_team_photo"></span> Edit Photo</button>')($scope)
+        $teamPhoto1.find('.heart-user-image-wrap-inner').prepend $compile('<button type="button" class="btn btn-primary-inverted btn-raised" ng-click="editTeamPhoto1()" id="edit_team_photo"><span class="glyphicon glyphicon-camera"></span> Edit Photo</button>')($scope)
 
         $teamPageTextContainer = angular.element '.heart-page-story--team #fr_rich_text_container'
 
@@ -386,7 +386,7 @@ angular.module 'trPageEditControllers'
         $scope.editTeamContent = ->
           $scope.prevTeamContent = $scope.teamContent
           $scope.teamContentOpen = true
-        $teamPageTextContainer.prepend $compile('<div class="form-group"><button type="button" class="btn btn-primary btn-raised" ng-class="{\'hidden\': teamContentOpen}" ng-click="editTeamContent()"><span class="glyphicon glyphicon-pencil" id="edit_team_story"></span> Edit Story</button></div>')($scope)
+        $teamPageTextContainer.prepend $compile('<div class="form-group"><button type="button" class="btn btn-primary btn-raised" ng-class="{\'hidden\': teamContentOpen}" ng-click="editTeamContent()" id="edit_team_story"><span class="glyphicon glyphicon-pencil"></span> Edit Story</button></div>')($scope)
 
         # insert content form
         closeTeamContent = ->
@@ -474,7 +474,7 @@ angular.module 'trPageEditControllers'
                     message: errorMessage
                   if not $scope.$$phase
                     $scope.$apply()
-                $companyPhoto1.find('.heart-user-image-wrap-inner').prepend $compile('<button type="button" class="btn btn-primary-inverted btn-raised" ng-click="editCompanyPhoto1()"><span class="glyphicon glyphicon-camera" id="edit_company_photo"></span> Edit Photo</button>')($scope)
+                $companyPhoto1.find('.heart-user-image-wrap-inner').prepend $compile('<button type="button" class="btn btn-primary-inverted btn-raised" ng-click="editCompanyPhoto1()" id="edit_company_photo"><span class="glyphicon glyphicon-camera"></span> Edit Photo</button>')($scope)
 
                 $companyPageTextContainer = angular.element '.heart-page-story--company #fr_rich_text_container'
 
@@ -487,7 +487,7 @@ angular.module 'trPageEditControllers'
                 $scope.editCompanyContent = ->
                   $scope.prevCompanyContent = $scope.companyContent
                   $scope.companyContentOpen = true
-                $companyPageTextContainer.prepend $compile('<div class="form-group"><button type="button" class="btn btn-primary btn-raised" ng-class="{\'hidden\': companyContentOpen}" ng-click="editCompanyContent()"><span class="glyphicon glyphicon-pencil" id="edit_company_story"></span> Edit Story</button></div>')($scope)
+                $companyPageTextContainer.prepend $compile('<div class="form-group"><button type="button" class="btn btn-primary btn-raised" ng-class="{\'hidden\': companyContentOpen}" ng-click="editCompanyContent()" id="edit_company_story"><span class="glyphicon glyphicon-pencil"></span> Edit Story</button></div>')($scope)
 
                 # insert content form
                 closeCompanyContent = ->
