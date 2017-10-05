@@ -513,6 +513,7 @@ angular.module 'trPcControllers'
             templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBgoal2.html'
 
       runHeaderCheck = ->
+        console.log 'running header check function'
         if $scope.userInteractions.page is 0
           console.log 'update page header message only'
           $scope.dashboardGreeting = 'page'
@@ -539,7 +540,7 @@ angular.module 'trPcControllers'
           $scope.dashboardGreeting = 'goal2'
         else
           console.log 'defualt fall back, nothing matched header check'
-          $scope.dashboardGreeting = 'defualt'
+          $scope.dashboardGreeting = 'default'
 
       $scope.LBgoalOneSubmit = ->
         console.log 'submitted the goal1 send email button'
@@ -607,6 +608,7 @@ angular.module 'trPcControllers'
         else if $scope.profileProgress is 4
           $scope.profilePercent = 100
           $scope.userInteractions.profile = 1
+          runHeaderCheck()
         else
           $scope.profilePercent = $scope.profileProgress / 4 * 100
           console.log 'profile percent = ' + $scope.profilePercent
