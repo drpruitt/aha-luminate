@@ -22,7 +22,8 @@ angular.module 'trPcControllers'
     'TeamraiserShortcutURLService'
     'ContactService'
     'TeamraiserSurveyResponseService'
-    ($rootScope, $scope, $timeout, $filter, $location, $httpParamSerializer, $translate, $uibModal, $uibModalStack, APP_INFO, ConstituentService, TeamraiserRecentActivityService, TeamraiserRegistrationService, TeamraiserProgressService, TeamraiserGiftService, TeamraiserParticipantService, TeamraiserTeamService, TeamraiserNewsFeedService, TeamraiserCompanyService, TeamraiserShortcutURLService, ContactService, TeamraiserSurveyResponseService) ->
+    'TeamraiserEmailService'
+    ($rootScope, $scope, $timeout, $filter, $location, $httpParamSerializer, $translate, $uibModal, $uibModalStack, APP_INFO, ConstituentService, TeamraiserRecentActivityService, TeamraiserRegistrationService, TeamraiserProgressService, TeamraiserGiftService, TeamraiserParticipantService, TeamraiserTeamService, TeamraiserNewsFeedService, TeamraiserCompanyService, TeamraiserShortcutURLService, ContactService, TeamraiserSurveyResponseService, TeamraiserEmailService) ->
       $scope.dashboardPromises = []
 
       constituentPromise = ConstituentService.getUser()
@@ -34,6 +35,21 @@ angular.module 'trPcControllers'
           response
       $scope.dashboardPromises.push constituentPromise
 
+      $scope.getMessageCounts = (refresh) ->
+        $scope.messageCounts = {}
+        messageTypes = [
+          'draft'
+          'sentMessage'
+        ]
+        angular.forEach messageTypes, (messageType) ->
+          apiMethod = 'get' + messageType.charAt(0).toUpperCase() + messageType.slice(1) + 's'
+          messageCountPromise = TeamraiserEmailService[apiMethod] 'list_page_size=1'
+            .then (response) ->
+              $scope.messageCounts[messageType + 's'] = response.data[apiMethod + 'Response'].totalNumberResults
+              response
+          if not refresh
+            $scope.dashboardPromises.push messageCountPromise
+      $scope.getMessageCounts()
 
       $scope.recentActivity = {}
       $scope.getRecentActivity = ->
@@ -344,7 +360,9 @@ angular.module 'trPcControllers'
       GetUserInt = ->
         console.log 'updateProfile = ' + $rootScope.updatedProfile
         console.log 'isSelfDonor = ' + $rootScope.isSelfDonor
-        console.log 'emailsSent = ' + $rootScope.emailsSent
+        #can remove the stag version of below now
+        #console.log 'emailsSent = ' + $rootScope.emailsSent
+        console.log 'emailsSent beta = ' + $scope.messageCounts.sentMessages
         console.log 'tr_id = ' + $scope.frId
 
         userInteractionsPromise = ConstituentService.getUserInteractions '&list_page_size=50&interaction_type_id=1011'
@@ -411,7 +429,7 @@ angular.module 'trPcControllers'
                 console.log 'self donor interaction needs to be set and update our local object'
                 $scope.userInteractions.donate = 1
                 logUserInt('donate',$scope.frId)
-              if $rootScope.emailsSent > 0 && $scope.userInteractions.email is 0
+              if $scope.messageCounts.sentMessages > 0 && $scope.userInteractions.email is 0
                 console.log 'email sent interaction needs to be set and update our local object'
                 $scope.userInteractions.email = 1
                 logUserInt('email',$scope.frId)
