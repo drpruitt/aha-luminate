@@ -124,18 +124,22 @@ angular.module 'trPcControllers'
               when 'Ask 2: Donation Reminder'
                 pcSetMessages.header = 'Donation Reminder'
                 pcSetMessages.messageID = message.messageId
+                pcSetMessages.messageID = "donation_reminder"
                 loadSuggestedMessagePC(pcSetMessages)
               when 'Ask 3: Help me Reach my Goal'
                 pcSetMessages.header = 'Final Request'
                 pcSetMessages.messageID = message.messageId
+                pcSetMessages.messageID = "final_request"
                 loadSuggestedMessagePC(pcSetMessages)
               when 'Ask 1: Donation Solicitation'
                 pcSetMessages.header = 'Ask for Donations'
                 pcSetMessages.messageID = message.messageId
+                pcSetMessages.messageID = "ask_for_donations"
                 loadSuggestedMessagePC(pcSetMessages)
               when 'Donation Thank You'
                 pcSetMessages.header = 'Thank Donors'
                 pcSetMessages.messageID = message.messageId
+                pcSetMessages.messageID = "thank_donors"
                 loadSuggestedMessagePC(pcSetMessages)
           response
       $scope.emailPromises.push suggestedMessagesPromise
@@ -179,6 +183,7 @@ angular.module 'trPcControllers'
           document.body.appendChild textarea
           textarea.select()
           try
+            alert 'Message copied successfully.'
             return document.execCommand('copy')
           catch ex
             console.warn 'Copy to clipboard failed.', ex
