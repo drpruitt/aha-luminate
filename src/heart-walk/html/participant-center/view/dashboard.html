@@ -68,7 +68,17 @@
           </div>
 
           <div class="col-sm-4 profile_box" ng-if="userInteractions.profile != '1'">
-            <div class="profile_box_icon pull-left"><i class="fa fa-percent"></i></div>
+            <div class="profile_box_icon pull-left profile_progress">
+              <div class="progress red ratio{{profileProgress}}">
+                  <span class="progress-left">
+                      <span class="progress-bar"></span>
+                  </span>
+                  <span class="progress-right">
+                      <span class="progress-bar"></span>
+                  </span>
+                  <div class="progress-value">{{profilePercent}}%</div>
+              </div>
+            </div>
             <div class="profile_box_info pull-right">We're missing your details! Complete your profile now.<a id="update_my_profile" href class="btn btn-primary" ng-click="profileChecklist()">Update My Profile</a></div>
           </div>
           <div class="col-sm-4 profile_box" ng-if="userInteractions.profile == '1'">
@@ -143,7 +153,7 @@
           <div class="manage_walk_items clearfix">
             <div class="pull-left">
               <div class="manage_walk_header">Survivor:</div>
-              <p><span ng-if="constituent.name && constituent.name.first">{{constituent.name.first}}</span><span ng-if="!constituent.name.first">Participant</span>, you <span ng-if="sqvm.surveyModel.question_key_hw_recognize_survivor == 'Yes'">are</span><span ng-if="sqvm.surveyModel.question_key_hw_recognize_survivor == 'No'">are not</span> being recognized as a survivor.</p>
+              <p><span ng-if="constituent.name && constituent.name.first">{{constituent.name.first}}</span><span ng-if="!constituent.name.first">Participant</span>, <span ng-if="sqvm.surveyModel.question_key_hw_recognize_survivor == 'Yes'">you are being recognized as a survivor.</span><span ng-if="sqvm.surveyModel.question_key_hw_recognize_survivor == 'No'">would you like to be recognized as a survivor?</span></p>
             </div>
             <div class="pull-right">
               <a href id="edit_status" class="btn btn-primary-inverted" ng-click="editSurvivor()">Edit Status</a>
@@ -152,7 +162,8 @@
           <div class="manage_walk_items clearfix">
             <div class="pull-left">
               <div class="manage_walk_header">Donation Notifications:</div>
-              <p>Choose to receive email notificationss when I receive a donation.</p>
+              <p ng-if="participantRegistration.receiveGiftNotification != 'true'">Turn on email notifications when I receive a donation.</p>
+              <p ng-if="participantRegistration.receiveGiftNotification == 'true'">Turn off email notifications when I receive a donation.</p>
             </div>
             <div class="pull-right">
               <a href id="turn_on_emails" class="btn btn-primary-inverted" ng-click="toggleGiftNotification(true)" ng-if="participantRegistration.receiveGiftNotification != 'true'">Turn On Emails</a>
