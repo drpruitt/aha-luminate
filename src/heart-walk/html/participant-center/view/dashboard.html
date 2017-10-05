@@ -13,10 +13,10 @@
         </div>
         <div ng-if="constituent" class="header_greetings">
           <h1 ng-if="constituent.name && constituent.name.first">
-            {{constituent.name.first}},&nbsp;<span ng-if="dashboardGreeting == 'page'"><a ng-href="{{personalPageUrl}}">get started by updating your page!</a></span><span ng-if="dashboardGreeting == 'donate'"><a ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{consId}}">don’t forget to make a donation!</a></span><span ng-if="dashboardGreeting == 'email'"><a ng-href="{{baseUrl}}#/email/compose">send an email to get closer to your goal!</a></span><span ng-if="dashboardGreeting == 'why'"><a ng-href="{{personalPageUrl}}&amp;videoWhy=true">tell us why you walk!</a></span><span ng-if="dashboardGreeting == 'social'"><a ng-href="PageServer?pagename=heartwalk_fundraising_tools&amp;fr_id={{frId}}">go social with Heart Walk!</a></span><span ng-if="dashboardGreeting == 'profile'"><a href ng-click="profileChecklist()">tell us about you!</a></span><span ng-if="dashboardGreeting == 'goal1'"><a href="PageServer?pagename=heartwalk_fundraising_tools&amp;fr_id={{frId}}">you’re halfway to your goal. Go Social</a></span><span ng-if="dashboardGreeting == 'goal2'"><a href ng-click="editGoal('Participant')">congrats! You reached your goal!</a></span><span ng-if="dashboardGreeting == 'default'"><a ng-href="{{baseUrl}}#/email/compose"> send an email to get closer to your goal!</a></span>
+            {{constituent.name.first}},&nbsp;<span ng-if="dashboardGreeting == 'page'"><a id="get_started_link" ng-href="{{personalPageUrl}}">get started by updating your page!</a></span><span ng-if="dashboardGreeting == 'donate'"><a id="dont_forget_donation" ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{consId}}">don’t forget to make a donation!</a></span><span ng-if="dashboardGreeting == 'why'"><a id="tell_us_why" ng-href="{{personalPageUrl}}&amp;videoWhy=true">tell us why you walk!</a></span><span ng-if="dashboardGreeting == 'social'"><a id="go_social_with_hw" ng-href="PageServer?pagename=heartwalk_fundraising_tools&amp;fr_id={{frId}}">go social with Heart Walk!</a></span><span ng-if="dashboardGreeting == 'profile'"><a id="tell_us_about_you" href ng-click="profileChecklist()">tell us about you!</a></span><span ng-if="dashboardGreeting == 'goal1'"><a id="halfway_to_goal" href="PageServer?pagename=heartwalk_fundraising_tools&amp;fr_id={{frId}}">you’re halfway to your goal. Go Social</a></span><span ng-if="dashboardGreeting == 'goal2'"><a id="reached_goal" href ng-click="editGoal('Participant')">congrats! You reached your goal!</a></span><span ng-if="dashboardGreeting == 'default'"><a id="send_email_to_get_closer" ng-href="{{baseUrl}}#/email/compose">send an email to get closer to your goal!</a></span>
           </h1>
           <h1 ng-if="!constituent.name.first">
-            Participant,&nbsp;<span ng-if="dashboardGreeting == 'page'"><a ng-href="{{personalPageUrl}}">get started by updating your page!</a></span><span ng-if="dashboardGreeting == 'donate'"><a ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{consId}}">don’t forget to make a donation!</a></span><span ng-if="dashboardGreeting == 'email'"><a ng-href="{{baseUrl}}#/email/compose">send an email to get closer to your goal!</a></span><span ng-if="dashboardGreeting == 'why'"><a ng-href="{{personalPageUrl}}&amp;videoWhy=true">tell us why you walk!</a></span><span ng-if="dashboardGreeting == 'social'"><a ng-href="PageServer?pagename=heartwalk_fundraising_tools&amp;fr_id={{frId}}">go social with Heart Walk!</a></span><span ng-if="dashboardGreeting == 'profile'"><a href ng-click="profileChecklist()">tell us about you!</a></span><span ng-if="dashboardGreeting == 'goal1'"><a href="PageServer?pagename=heartwalk_fundraising_tools&amp;fr_id={{frId}}">you’re halfway to your goal. Go Social</a></span><span ng-if="dashboardGreeting == 'goal2'"><a href ng-click="editGoal('Participant')">congrats! You reached your goal!</a></span><span ng-if="dashboardGreeting == 'default'"><a ng-href="{{baseUrl}}#/email/compose"> send an email to get closer to your goal!</a></span>
+            Participant,&nbsp;<span ng-if="dashboardGreeting == 'page'"><a id="get_started_link_anon" ng-href="{{personalPageUrl}}">get started by updating your page!</a></span><span ng-if="dashboardGreeting == 'donate'"><a id="dont_forget_donation_anon" ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{consId}}">don’t forget to make a donation!</a></span><span ng-if="dashboardGreeting == 'why'"><a id="tell_us_why_anon" ng-href="{{personalPageUrl}}&amp;videoWhy=true">tell us why you walk!</a></span><span ng-if="dashboardGreeting == 'social'"><a id="go_social_with_hw_anon" ng-href="PageServer?pagename=heartwalk_fundraising_tools&amp;fr_id={{frId}}">go social with Heart Walk!</a></span><span ng-if="dashboardGreeting == 'profile'"><a id="tell_us_about_you_anon" href ng-click="profileChecklist()">tell us about you!</a></span><span ng-if="dashboardGreeting == 'goal1'"><a id="halfway_to_goal_anon" href="PageServer?pagename=heartwalk_fundraising_tools&amp;fr_id={{frId}}">you’re halfway to your goal. Go Social</a></span><span ng-if="dashboardGreeting == 'goal2'"><a id="reached_goal_anon" href ng-click="editGoal('Participant')">congrats! You reached your goal!</a></span><span ng-if="dashboardGreeting == 'default'"><a id="send_email_to_get_closer_anon" ng-href="{{baseUrl}}#/email/compose">send an email to get closer to your goal!</a></span>
           </h1>
         </div>
         <h2>Or get started on another item:</h2>
@@ -68,17 +68,7 @@
           </div>
 
           <div class="col-sm-4 profile_box" ng-if="userInteractions.profile != '1'">
-            <div class="profile_box_icon pull-left profile_progress">
-              <div class="progress red ratio{{profileProgress}}">
-                  <span class="progress-left">
-                      <span class="progress-bar"></span>
-                  </span>
-                  <span class="progress-right">
-                      <span class="progress-bar"></span>
-                  </span>
-                  <div class="progress-value">{{profilePercent}}%</div>
-              </div>
-            </div>
+            <div class="profile_box_icon pull-left"><i class="fa fa-percent"></i></div>
             <div class="profile_box_info pull-right">We're missing your details! Complete your profile now.<a id="update_my_profile" href class="btn btn-primary" ng-click="profileChecklist()">Update My Profile</a></div>
           </div>
           <div class="col-sm-4 profile_box" ng-if="userInteractions.profile == '1'">
@@ -153,7 +143,7 @@
           <div class="manage_walk_items clearfix">
             <div class="pull-left">
               <div class="manage_walk_header">Survivor:</div>
-              <p><span ng-if="constituent.name && constituent.name.first">{{constituent.name.first}}</span><span ng-if="!constituent.name.first">Participant</span>, <span ng-if="sqvm.surveyModel.question_key_hw_recognize_survivor == 'Yes'">you are being recognized as a survivor.</span><span ng-if="sqvm.surveyModel.question_key_hw_recognize_survivor == 'No'">would you like to be recognized as a survivor?</span></p>
+              <p><span ng-if="constituent.name && constituent.name.first">{{constituent.name.first}}</span><span ng-if="!constituent.name.first">Participant</span>, you <span ng-if="sqvm.surveyModel.question_key_hw_recognize_survivor == 'Yes'">are</span><span ng-if="sqvm.surveyModel.question_key_hw_recognize_survivor == 'No'">are not</span> being recognized as a survivor.</p>
             </div>
             <div class="pull-right">
               <a href id="edit_status" class="btn btn-primary-inverted" ng-click="editSurvivor()">Edit Status</a>
@@ -162,8 +152,7 @@
           <div class="manage_walk_items clearfix">
             <div class="pull-left">
               <div class="manage_walk_header">Donation Notifications:</div>
-              <p ng-if="participantRegistration.receiveGiftNotification != 'true'">Turn on email notifications when I receive a donation.</p>
-              <p ng-if="participantRegistration.receiveGiftNotification == 'true'">Turn off email notifications when I receive a donation.</p>
+              <p>Choose to receive email notificationss when I receive a donation.</p>
             </div>
             <div class="pull-right">
               <a href id="turn_on_emails" class="btn btn-primary-inverted" ng-click="toggleGiftNotification(true)" ng-if="participantRegistration.receiveGiftNotification != 'true'">Turn On Emails</a>
