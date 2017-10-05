@@ -90,29 +90,29 @@
                   <p>Goal: {{participantProgress.goalFormatted}}</p>
               </div>
               <div class="pull-right">
-                  <a href class="btn btn-primary-inverted btn-goal" ng-click="editGoal('Participant')" ng-if="teamraiserConfig.personalGoalAllowed == 'true'">Edit Goal</a>
+                  <a href id="edit_goal" class="btn btn-primary-inverted btn-goal" ng-click="editGoal('Participant')" ng-if="teamraiserConfig.personalGoalAllowed == 'true'">Edit Goal</a>
               </div>
           </div>
           <div class="heart_pc_sidebar_row clearfix">
               <p>Share my page:</p>
               <div class="addthis_toolbox" addthis:url="{{personalPageUrl}}">
-                <a class="heart_pc_sidebar_sharebtn addthis_button_facebook" ng-href="{{baseUrl}}#">
+                <a id="share_personal_page_facebook" class="heart_pc_sidebar_sharebtn addthis_button_facebook" ng-href="{{baseUrl}}#">
                   <i class="fa fa-facebook"></i><span class="sr-only">Facebook</span>
                 </a>
-                <a class="heart_pc_sidebar_sharebtn addthis_button_twitter" ng-href="{{baseUrl}}#">
+                <a id="share_personal_page_twitter" class="heart_pc_sidebar_sharebtn addthis_button_twitter" ng-href="{{baseUrl}}#">
                   <i class="fa fa-twitter"></i><span class="sr-only">Twitter</span>
                 </a>
-                <a class="heart_pc_sidebar_sharebtn addthis_button_linkedin" ng-href="{{baseUrl}}#">
+                <a id="share_personal_page_linkedin" class="heart_pc_sidebar_sharebtn addthis_button_linkedin" ng-href="{{baseUrl}}#">
                   <i class="fa fa-linkedin"></i><span class="sr-only">LinkedIn</span>
                 </a>
               </div>
           </div>
           <h2>Walk Details:</h2>
           <div class="heart_pc_sidebar_row clearfix">
-            <p><a href="TR?fr_id={{frId}}&amp;pg=entry">{{eventInfo.name}}</a></p>
+            <p><a id="walk_details_event_link" href="TR?fr_id={{frId}}&amp;pg=entry">{{eventInfo.name}}</a></p>
             <p>Location: {{eventInfo.location_name}}</p>
             <p ng-if="eventInfo.event_date && eventInfo.event_date != ''">Date: {{eventInfo.event_date | date : 'MMMM d'}}</p>
-            <a class="btn btn-primary-inverted view_map" ng-href="{{viewMap}}" target="=_blank">View Map</a>
+            <a id="view_map" class="btn btn-primary-inverted view_map" ng-href="{{viewMap}}" target="=_blank">View Map</a>
           </div>
         </div>
         <div class="heart_pc_main_page">
@@ -123,10 +123,10 @@
               <p>Send a mobile text with a donate link.</p>
             </div>
             <div class="pull-right">
-              <a class="btn btn-primary-inverted" ng-href="sms:&body=If you could save lives, would you%3F Join me today by participating or donating to the American Heart Association's Heart Walk: {{nonsecurePath}}TR%3Ffr_id={{frId}}%26pg=personal%26px={{consId}}" ng-if="device.isMobile && device.mobileType == 'ios'">
+              <a id="send_text_ios" class="btn btn-primary-inverted" ng-href="sms:&body=If you could save lives, would you%3F Join me today by participating or donating to the American Heart Association's Heart Walk: {{nonsecurePath}}TR%3Ffr_id={{frId}}%26pg=personal%26px={{consId}}" ng-if="device.isMobile && device.mobileType == 'ios'">
                 Send Text
               </a>
-              <a class="btn btn-primary-inverted" ng-href="sms:?body=If you could save lives, would you%3F Join me today by participating or donating to the American Heart Association's Heart Walk: {{nonsecurePath}}TR%3Ffr_id={{frId}}%2526pg=personal%2526px={{consId}}" ng-if="device.isMobile && device.mobileType == 'android'">
+              <a id="send_text_android" class="btn btn-primary-inverted" ng-href="sms:?body=If you could save lives, would you%3F Join me today by participating or donating to the American Heart Association's Heart Walk: {{nonsecurePath}}TR%3Ffr_id={{frId}}%2526pg=personal%2526px={{consId}}" ng-if="device.isMobile && device.mobileType == 'android'">
                 Send Text
               </a>
             </div>
@@ -137,7 +137,7 @@
               <p>{{personalPageUrl}}</p>
             </div>
             <div class="pull-right">
-              <a href class="btn btn-primary-inverted" ng-click="editPageUrl('Participant')">Edit URL</a>
+              <a href id="edit_url" class="btn btn-primary-inverted" ng-click="editPageUrl('Participant')">Edit URL</a>
             </div>
           </div>
           <div class="manage_walk_items clearfix">
@@ -146,7 +146,7 @@
               <p><span ng-if="constituent.name && constituent.name.first">{{constituent.name.first}}</span><span ng-if="!constituent.name.first">Participant</span>, you <span ng-if="sqvm.surveyModel.question_key_hw_recognize_survivor == 'Yes'">are</span><span ng-if="sqvm.surveyModel.question_key_hw_recognize_survivor == 'No'">are not</span> being recognized as a survivor.</p>
             </div>
             <div class="pull-right">
-              <a href class="btn btn-primary-inverted" ng-click="editSurvivor()">Edit Status</a>
+              <a href id="edit_status" class="btn btn-primary-inverted" ng-click="editSurvivor()">Edit Status</a>
             </div>
           </div>
           <div class="manage_walk_items clearfix">
@@ -155,8 +155,8 @@
               <p>Choose to receive email notificationss when I receive a donation.</p>
             </div>
             <div class="pull-right">
-              <a href class="btn btn-primary-inverted" ng-click="toggleGiftNotification(true)" ng-if="participantRegistration.receiveGiftNotification != 'true'">Turn On Emails</a>
-              <a href class="btn btn-primary-inverted" ng-click="toggleGiftNotification(false)" ng-if="participantRegistration.receiveGiftNotification == 'true'">Turn Off Emails</a>
+              <a href id="turn_on_emails" class="btn btn-primary-inverted" ng-click="toggleGiftNotification(true)" ng-if="participantRegistration.receiveGiftNotification != 'true'">Turn On Emails</a>
+              <a href id="turn_off_emails" class="btn btn-primary-inverted" ng-click="toggleGiftNotification(false)" ng-if="participantRegistration.receiveGiftNotification == 'true'">Turn Off Emails</a>
             </div>
           </div>
           <div class="manage_walk_items clearfix">
@@ -165,7 +165,7 @@
               <p>Enter offline donations here.</p>
             </div>
             <div class="pull-right">
-              <a href class="btn btn-primary-inverted" ng-click="addOfflineGift('personal')" ng-if="teamraiserConfig.personalOfflineGiftsAllowed == 'true'">Enter Donations</a>
+              <a href id="enter_donations" class="btn btn-primary-inverted" ng-click="addOfflineGift('personal')" ng-if="teamraiserConfig.personalOfflineGiftsAllowed == 'true'">Enter Donations</a>
             </div>
           </div>
           <div class="manage_walk_items clearfix">
@@ -174,7 +174,7 @@
               <p>Your paper donation form.</p>
             </div>
             <div class="pull-right">
-              <a href="http://heartdev.convio.net/site/PageNavigator/hw_offline_donation_form.html?pgwrap=n&amp;fr_id={{frId}}&amp;px={{consId}}" target="_blank" class="btn btn-primary-inverted" >Download PDF</a>
+              <a id="download_pdf" href="http://heartdev.convio.net/site/PageNavigator/hw_offline_donation_form.html?pgwrap=n&amp;fr_id={{frId}}&amp;px={{consId}}" target="_blank" class="btn btn-primary-inverted" >Download PDF</a>
             </div>
           </div>
         </div>
@@ -183,7 +183,7 @@
         <div class="heart_pc_my_donors clearfix">
           <div class="clearfix">
             <h2 class="pull-left">My Donors</h2>
-            <a class="btn btn-primary-inverted pull-right" ng-if="participantGifts.totalNumber > 0" ng-href="TRParticipantDownload/Personal_Donations.csv?download_type=personal_donations&fr_id={{frId}}" target="_blank">Download Donation List</a>
+            <a id="download_donation_list" class="btn btn-primary-inverted pull-right" ng-if="participantGifts.totalNumber > 0" ng-href="TRParticipantDownload/Personal_Donations.csv?download_type=personal_donations&fr_id={{frId}}" target="_blank">Download Donation List</a>
           </div>
           <div ng-if="participantGifts.totalNumber == 0">
             No donations found.
@@ -202,7 +202,7 @@
               You are joining nearly 1 million people at 305 events across the country to build healthier lives, free of cardiovascular diseases and stroke. As a benefit for you and to help you on your journey toward a healthy and active lifestyle we invite you to join the American Heart Association's Healthy For Good movement.
             </p>
             <p>
-              Healthy For Good will engage you in new, simple and innovative ways to improve your health. Join the American Heart Association's Healthy For Good revolution and start the journey with us. Visit <a href="http://www.heart.org/healthyforgood" target="_blank">heart.org/healthyforgood</a>.
+              Healthy For Good will engage you in new, simple and innovative ways to improve your health. Join the American Heart Association's Healthy For Good revolution and start the journey with us. Visit <a href="http://www.heart.org/healthyforgood" id="healthy_for_good_link" target="_blank">heart.org/healthyforgood</a>.
             </p>
           </div>
           <div ng-if="newsFeed.totalNumber > 0">
@@ -242,19 +242,19 @@
               <p>Goal: {{teamProgress.goalFormatted}}</p>
             </div>
             <div class="pull-right">
-              <a href class="btn btn-primary-inverted btn-goal" ng-click="editGoal('Team')" ng-if="participantRegistration.aTeamCaptain == 'true'">Edit Goal</a>
+              <a href id="edit_team_goal" class="btn btn-primary-inverted btn-goal" ng-click="editGoal('Team')" ng-if="participantRegistration.aTeamCaptain == 'true'">Edit Goal</a>
             </div>
           </div>
           <div class="heart_pc_sidebar_row clearfix">
             <p>Share team page:</p>
             <div class="addthis_toolbox" addthis:url="{{teamPageUrl}}">
-              <a class="heart_pc_sidebar_sharebtn addthis_button_facebook" ng-href="{{baseUrl}}#">
+              <a id="share_team_page_facebook" class="heart_pc_sidebar_sharebtn addthis_button_facebook" ng-href="{{baseUrl}}#">
                 <i class="fa fa-facebook"></i><span class="sr-only">Facebook</span>
               </a>
-              <a class="heart_pc_sidebar_sharebtn addthis_button_twitter" ng-href="{{baseUrl}}#">
+              <a id="share_team_page_twitter" class="heart_pc_sidebar_sharebtn addthis_button_twitter" ng-href="{{baseUrl}}#">
                 <i class="fa fa-twitter"></i><span class="sr-only">Twitter</span>
               </a>
-              <a class="heart_pc_sidebar_sharebtn addthis_button_linkedin" ng-href="{{baseUrl}}#">
+              <a id="share_team_page_linkedin" class="heart_pc_sidebar_sharebtn addthis_button_linkedin" ng-href="{{baseUrl}}#">
                 <i class="fa fa-linkedin"></i><span class="sr-only">LinkedIn</span>
               </a>
             </div>
@@ -268,7 +268,7 @@
               <p>{{teamPageUrl}}</p>
             </div>
             <div class="pull-right">
-              <a href class="btn btn-primary-inverted" ng-click="editPageUrl('Team')">Edit URL</a>
+              <a href id="edit_team_url" class="btn btn-primary-inverted" ng-click="editPageUrl('Team')">Edit URL</a>
             </div>
           </div>
           <div class="manage_walk_items clearfix" ng-if="participantRegistration.aTeamCaptain == 'true'">
@@ -277,7 +277,7 @@
               <p>Misspelled? Wrong? Update it here.</p>
             </div>
             <div class="pull-right">
-              <a class="btn btn-primary-inverted" ng-click="editTeamName()">Edit Name</href>
+              <a id="edit_team_name" class="btn btn-primary-inverted" ng-click="editTeamName()">Edit Name</href>
             </div>
           </div>
           <div class="manage_walk_items clearfix" ng-if="participantRegistration.aTeamCaptain == 'true'">
@@ -286,7 +286,7 @@
               <p>Send an email directly to everyone on your team.</p>
             </div>
             <div class="pull-right">
-              <a href class="btn btn-primary-inverted" ng-click="emailAllTeamMembers()">Email Team</a>
+              <a href id="email_team" class="btn btn-primary-inverted" ng-click="emailAllTeamMembers()">Email Team</a>
             </div>
           </div>
           <div class="manage_walk_items clearfix" ng-if="participantRegistration.aTeamCaptain == 'true'">
@@ -295,7 +295,7 @@
               <p>Enter offline donations you receive for your team.</p>
             </div>
             <div class="pull-right">
-              <a class="btn btn-primary-inverted" ng-click="addOfflineGift('team')" ng-if="teamraiserConfig.personalOfflineGiftsAllowed == 'true' && ((teamraiserConfig.offlineTeamGifts == 'CAPTAINS' && participantRegistration.aTeamCaptain == 'true') || teamraiserConfig.offlineTeamGifts == 'MEMBERS')">Enter Donations</a>
+              <a id="enter_team_donations" class="btn btn-primary-inverted" ng-click="addOfflineGift('team')" ng-if="teamraiserConfig.personalOfflineGiftsAllowed == 'true' && ((teamraiserConfig.offlineTeamGifts == 'CAPTAINS' && participantRegistration.aTeamCaptain == 'true') || teamraiserConfig.offlineTeamGifts == 'MEMBERS')">Enter Donations</a>
             </div>
           </div>
         </div>
@@ -304,7 +304,7 @@
         <div class="heart-team-members">
           <div class="heart-team-members__header clearfix">
             <h2><span ng-bind-html="teamInfo.name"></span> Roster</h2>
-            <a ng-if="participantRegistration.aTeamCaptain == 'true'" class="btn btn-primary-inverted pull-right" ng-href="TRParticipantDownload/Team_Roster.csv?download_type=team_roster&fr_id={{frId}}" target="_blank">Download Team Roster</a>
+            <a id="download_team_roster" ng-if="participantRegistration.aTeamCaptain == 'true'" class="btn btn-primary-inverted pull-right" ng-href="TRParticipantDownload/Team_Roster.csv?download_type=team_roster&fr_id={{frId}}" target="_blank">Download Team Roster</a>
           </div>
           <!-- TODO: empty state -->
           <trpc-team-member-list members="teamMembers.members" sort-column="teamMembers.sortColumn" sort-ascending="teamMembers.sortAscending" sort-members="sortTeamMembers" email-team-member="emailTeamMember"></trpc-team-member-list>
@@ -316,7 +316,7 @@
           <div class="clearfix">
             <h2 class="pull-left" ng-if="teamInfo.name">{{teamInfo.name}} Donors</h2>
             <h2 class="pull-left" ng-if="!teamInfo.name">Team Donors</h2>
-            <a class="btn btn-primary-inverted pull-right" ng-href="TRParticipantDownload/Personal_Donations.csv?download_type=personal_donations&fr_id={{frId}}" target="_blank">Download Donation List</a>
+            <a id="download_team_donation_list" class="btn btn-primary-inverted pull-right" ng-href="TRParticipantDownload/Personal_Donations.csv?download_type=personal_donations&fr_id={{frId}}" target="_blank">Download Donation List</a>
           </div>
           <div ng-if="teamGifts.totalNumber == 0">
             No donations found.
@@ -328,8 +328,8 @@
         </div>
         <div class="heart-captains-message heart-captains-message--highlighted" ng-if="(teamCaptainsMessage.message && teamCaptainsMessage.message != '') || teamCaptainsMessage.editable == 'true'">
           <div class="clearfix">
-            <a class="pull-right" ng-click="editTeamCaptainsMessage()" ng-if="teamCaptainsMessage.editable == 'true' && !teamCaptainsMessage.inEditMode">Edit</a>
-            <a class="pull-right" ng-click="saveTeamCaptainsMessage()" ng-if="teamCaptainsMessage.inEditMode">Save</a>
+            <a id="edit_team_message" class="pull-right" ng-click="editTeamCaptainsMessage()" ng-if="teamCaptainsMessage.editable == 'true' && !teamCaptainsMessage.inEditMode">Edit</a>
+            <a id="save_team_message" class="pull-right" ng-click="saveTeamCaptainsMessage()" ng-if="teamCaptainsMessage.inEditMode">Save</a>
             <h2>
               <span ng-if="teamCaptainsMessage.editable != 'true'">From My Team Captain</span>
               <span ng-if="teamCaptainsMessage.editable == 'true'">A Message for Your Team</span>
@@ -375,13 +375,13 @@
           <div class="heart_pc_sidebar_row clearfix">
             <p>Share Company page:</p>
             <div addthis:url="{{companyPageUrl}}">
-              <a class="heart_pc_sidebar_sharebtn addthis_button_facebook" ng-href="{{baseUrl}}#">
+              <a id="share_company_page_facebook" class="heart_pc_sidebar_sharebtn addthis_button_facebook" ng-href="{{baseUrl}}#">
                 <i class="fa fa-facebook"></i><span class="sr-only">Facebook</span>
               </a>
-              <a class="heart_pc_sidebar_sharebtn addthis_button_twitter" ng-href="{{baseUrl}}#">
+              <a id="share_company_page_twitter" class="heart_pc_sidebar_sharebtn addthis_button_twitter" ng-href="{{baseUrl}}#">
                 <i class="fa fa-twitter"></i><span class="sr-only">Twitter</span>
               </a>
-              <a class="heart_pc_sidebar_sharebtn addthis_button_linkedin" ng-href="{{baseUrl}}#">
+              <a id="share_company_page_linkedin" class="heart_pc_sidebar_sharebtn addthis_button_linkedin" ng-href="{{baseUrl}}#">
                 <i class="fa fa-linkedin"></i><span class="sr-only">LinkedIn</span>
               </a>
             </div>
@@ -400,7 +400,7 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a ng-href="TRParticipantDownload/Company_Teams.csv?download_type=company_teams&fr_id={{frId}}" target="_blank">Download Company Team List</a>
+                    <a id="download_company_team_list" ng-href="TRParticipantDownload/Company_Teams.csv?download_type=company_teams&fr_id={{frId}}" target="_blank">Download Company Team List</a>
                   </li>
                 </ul>
               </div>
