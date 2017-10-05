@@ -12,9 +12,9 @@
             </uib-tab>
           </uib-tabset>
         </div>
-        <a href ng-click="copyToClipboard()" class="pc_btn" ng-if="!device.isMobile">Copy Message</a>
-        <a href ng-click="sendEmailOpenEmail(activeEmailTab)" class="pc_btn">Open in My Default Email</a>
-        <p class="email_send_via_FC"><a href ng-click="sendViaFC()">Or send an email through your Participant Center</a></p>
+        <a id="copy_message" href ng-click="copyToClipboard()" class="pc_btn" ng-if="!device.isMobile">Copy Message</a>
+        <a id="open_in_my_default_email" href ng-click="sendEmailOpenEmail(activeEmailTab)" class="pc_btn">Open in My Default Email</a>
+        <p class="email_send_via_FC"><a id="send_email_through_pc" href ng-click="sendViaFC()">Or send an email through your Participant Center</a></p>
       </div>
       <div id="send_via_FC">
         <h2>Send Emails Through My Participant Center</h2>
