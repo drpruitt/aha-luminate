@@ -81,7 +81,7 @@ angular.module 'ahaLuminateControllers'
         if isNaN depth
           depth=0;
         while $scope.companyPath.length >= depth 
-          $scope.companyPath.pop;
+          $scope.companyPath.pop()
         $scope.companyPath.push childCompanyName
         if childCompanyUrl.indexOf('company_id=') isnt -1
           $scope.childCompanies.push
