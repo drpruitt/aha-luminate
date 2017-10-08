@@ -614,6 +614,7 @@ angular.module 'trPcControllers'
           console.log 'profile percent = ' + $scope.profilePercent
         $scope.reLaunchprofileChecklist()
 
+      $scope.submittedMobile = false
       $scope.updateEditMobile = ($event) ->
         $scope.LBmobileProfileModal.close()
         $scope.updateSurveyResponses($event)

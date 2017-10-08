@@ -1,4 +1,4 @@
-<form name="profileMobilePhone" ng-submit="updateEditMobile($event) && profileMobilePhone.$valid" novalidate>
+<form name="profileMobilePhone" ng-submit="profileMobilePhone.$valid && updateEditMobile($event)" novalidate>
   <div class="modal-header">
     <h2 class="modal-title">
       Update Your Mobile Number
@@ -10,7 +10,7 @@
       <div class="input-group">
         <input type="text" id="question_key_mobile_phone" name="question_key_mobile_phone" class="form-control" aria-label="Enter mobile phone" ng-model="sqvm.surveyModel.question_key_mobile_phone" ng-pattern="/^\(?(\d{3})\)?[ .-]?(\d{3})[ .-]?(\d{4})$/">
       </div>
-      <div class="mobile_form_error" ng-show="submitted==true && profileMobilePhone.$invalid"><span ng-show="submitted==true && profileMobilePhone.question_key_mobile_phone.$error" role="alert">Phone number must be 10 digit format</span></div>
+      <div class="mobile_form_error" ng-show="submittedMobile==true && profileMobilePhone.$invalid"><span ng-show="submittedMobile==true && profileMobilePhone.question_key_mobile_phone.$error" role="alert">Phone number must be 10 digit format</span></div>
     </div>
   </div>
   <div class="modal-footer">
@@ -21,8 +21,8 @@
         </button>
       </div>
       <div class="pull-right">
-        <button type="submit" class="btn btn-primary text-uppercase">Save</button>
+        <button type="submit" class="btn btn-primary text-uppercase" ng-click="submittedMobile = true">Save</button>
       </div>
     </div>
   </div>
-<form>
+</form>
