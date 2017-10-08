@@ -454,63 +454,77 @@ angular.module 'trPcControllers'
       , 750
 
       runLBroutes = ->
+        skipLBs = 1
         $scope.dashboardGreeting = 'default'
+        PCLogin = sessionStorage.getItem('PCLogin');
+        if not PCLogin
+          skipLBs = 0
+          console.log 'there is no session variable'
         console.log $scope.userInteractions
-        console.log 'tr id = ' + $scope.frId
+        sessionStorage.setItem 'PCLogin', 'yes'
         if $rootScope.participantRegistration.lastPC2Login is '0'
           console.log 'first time in runLBroutes'
           $scope.dashboardGreeting = 'page'
-          $scope.LBthankYouRegisteringModal = $uibModal.open
-            scope: $scope
-            templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBthankYouRegistering.html'
+          if skipLBs is 0
+            $scope.LBthankYouRegisteringModal = $uibModal.open
+              scope: $scope
+              templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBthankYouRegistering.html'
         else if $scope.userInteractions.page is 0
           console.log 'launch welcome back lightbox'
           $scope.dashboardGreeting = 'page'
-          $scope.LBwelcomeBackModal = $uibModal.open
-            scope: $scope
-            templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBwelcomeBack.html'
+          if skipLBs is 0
+            $scope.LBwelcomeBackModal = $uibModal.open
+              scope: $scope
+              templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBwelcomeBack.html'
         else if $scope.userInteractions.donate is 0
           console.log 'launch donate lightbox'
           $scope.dashboardGreeting = 'donate'
-          $scope.LBdonateModal = $uibModal.open
-            scope: $scope
-            templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBdonate.html'
+          if skipLBs is 0
+            $scope.LBdonateModal = $uibModal.open
+              scope: $scope
+              templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBdonate.html'
         else if $scope.userInteractions.email is 0
           console.log 'launch email lightbox'
           $scope.dashboardGreeting = 'email'
-          $scope.LBemailModal = $uibModal.open
-            scope: $scope
-            templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBemail.html'
+          if skipLBs is 0
+            $scope.LBemailModal = $uibModal.open
+              scope: $scope
+              templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBemail.html'
         else if $scope.userInteractions.why is 0
           console.log 'launch why lightbox'
           $scope.dashboardGreeting = 'why'
-          $scope.LBwhyModal = $uibModal.open
-            scope: $scope
-            templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBwhy.html'
+          if skipLBs is 0
+            $scope.LBwhyModal = $uibModal.open
+              scope: $scope
+              templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBwhy.html'
         else if $scope.userInteractions.social is 0
           console.log 'launch social lightbox'
           $scope.dashboardGreeting = 'social'
-          $scope.LBsocialModal = $uibModal.open
-            scope: $scope
-            templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBsocial.html'
+          if skipLBs is 0
+            $scope.LBsocialModal = $uibModal.open
+              scope: $scope
+              templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBsocial.html'
         else if $scope.userInteractions.profile is 0
           console.log 'launch profile lightbox'
           $scope.dashboardGreeting = 'profile'
-          $scope.LBprofileModal = $uibModal.open
-            scope: $scope
-            templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBprofile.html'
+          if skipLBs is 0
+            $scope.LBprofileModal = $uibModal.open
+              scope: $scope
+              templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBprofile.html'
         else if $scope.userInteractions.goal1 is 0 && $scope.participantProgress.percent >= 50
           console.log 'launch goal1 lightbox'
           $scope.dashboardGreeting = 'goal1'
-          $scope.LBgoal1Modal = $uibModal.open
-            scope: $scope
-            templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBgoal1.html'
+          if skipLBs is 0
+            $scope.LBgoal1Modal = $uibModal.open
+              scope: $scope
+              templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBgoal1.html'
         else if $scope.userInteractions.goal2 is 0 && $scope.participantProgress.percent >= 100
           console.log 'launch goal2 lightbox'
           $scope.dashboardGreeting = 'goal2'
-          $scope.LBgoal2Modal = $uibModal.open
-            scope: $scope
-            templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBgoal2.html'
+          if skipLBs is 0
+            $scope.LBgoal2Modal = $uibModal.open
+              scope: $scope
+              templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBgoal2.html'
 
       runHeaderCheck = ->
         console.log 'running header check function'
