@@ -12,7 +12,8 @@ angular.module 'trPcControllers'
     'TeamraiserEventService'
     'TeamraiserEmailService'
     'ContactService'
-    ($rootScope, $scope, $routeParams, $timeout, $location, $anchorScroll, $httpParamSerializer, $uibModal, APP_INFO, TeamraiserEventService, TeamraiserEmailService, ContactService) ->
+    'ConstituentService'
+    ($rootScope, $scope, $routeParams, $timeout, $location, $anchorScroll, $httpParamSerializer, $uibModal, APP_INFO, TeamraiserEventService, TeamraiserEmailService, ContactService, ConstituentService) ->
       $scope.messageType = $routeParams.messageType
       $scope.messageId = $routeParams.messageId
 
@@ -161,6 +162,15 @@ angular.module 'trPcControllers'
                   pcSetMessages.subject = messageInfo.subject
         $scope.emailTabNames.push pcSetMessages
 
+      logUserInt = (subject,body) ->
+        #body = $scope.frId
+        ConstituentService.logInteraction 'interaction_type_id=1011&interaction_subject=' + subject + '&interaction_body=' + body
+          .then (response) ->
+            if response.data.updateConsResponse?.message
+              console.log 'updated subject = '+subject+' & updated body = '+body
+            else
+              console.log 'failed'
+
       $scope.sendEmailOpenEmail = (messageID) ->
         angular.forEach $scope.emailTabNames, (message) ->
           if message.messageID is messageID
@@ -169,6 +179,7 @@ angular.module 'trPcControllers'
             emailBodyClean1 = emailBody.replace(/<p>/g,"");
             emailBodyClean2 = emailBodyClean1.replace(/<\/p>/g,"%0D%0A%0D%0A");
             emailBodyClean3 = emailBodyClean2.replace(/&/g,"%26");
+            logUserInt('email',$scope.frId)
             window.location.href = 'mailto:?subject=' + emailSubject + '&body=' + emailBodyClean3
         return
 
