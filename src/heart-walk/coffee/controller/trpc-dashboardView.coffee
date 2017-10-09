@@ -32,6 +32,7 @@ angular.module 'trPcControllers'
             # TODO
           else
             $scope.constituent = response.data.getConsResponse
+            console.log $scope.constituent
           response
       $scope.dashboardPromises.push constituentPromise
 
@@ -168,7 +169,7 @@ angular.module 'trPcControllers'
 
       $scope.updateUserProfile = ($event) ->
         $event.preventDefault()
-        updateUserPromise = ConstituentService.update 'primary_address.street1=' + (if $scope.constituent.primary_address.street1 == null then '' else $scope.constituent.primary_address.street1) + '&primary_address.street2=' + (if $scope.constituent.primary_address.street2 == null then '' else $scope.constituent.primary_address.street2) + '&primary_address.city=' + (if $scope.constituent.primary_address.city == null then '' else $scope.constituent.primary_address.city) + '&primary_address.state=' + (if $scope.constituent.primary_address.state == null then '' else $scope.constituent.primary_address.state) + '&primary_address.zip=' + (if $scope.constituent.primary_address.zip == null then '' else $scope.constituent.primary_address.zip) + '&primary_address.country=' + (if $scope.constituent.primary_address.country == null then '' else $scope.constituent.primary_address.country)
+        updateUserPromise = ConstituentService.update 'primary_address.street1=' + (if $scope.constituent.primary_address.street1 == null then '' else $scope.constituent.primary_address.street1) + '&primary_address.street2=' + (if $scope.constituent.primary_address.street2 == null then '' else $scope.constituent.primary_address.street2) + '&primary_address.city=' + (if $scope.constituent.primary_address.city == null then '' else $scope.constituent.primary_address.city) + '&primary_address.state=' + (if $scope.constituent.primary_address.state == null then '' else $scope.constituent.primary_address.state) + '&primary_address.zip=' + (if $scope.constituent.primary_address.zip == null then '' else $scope.constituent.primary_address.zip) + '&primary_address.country=' + (if $scope.constituent.primary_address.country == null then '' else $scope.constituent.primary_address.country) + '&mobile_phone=' + (if $scope.constituent.mobile_phone == null then '' else $scope.constituent.mobile_phone)
         # updateUserPromise = ConstituentService.update 'primary_address.street1=' + if $scope.constituent.primary_address.street1 == null then '' else $scope.constituent.primary_address.street1 + '&primary_address.street2=' + if $scope.constituent.primary_address.street2 == null then '' else $scope.constituent.primary_address.street2 + '&primary_address.city=' + if $scope.constituent.primary_address.city == null then '' else $scope.constituent.primary_address.city + '&primary_address.state=' + if $scope.constituent.primary_address.state == null then '' else $scope.constituent.primary_address.state + '&primary_address.zip=' + if $scope.constituent.primary_address.zip == null then '' else $scope.constituent.primary_address.zip + '&primary_address.country=' + if $scope.constituent.primary_address.country == null then '' else $scope.constituent.primary_address.country
           .then (response) ->
             if response.data.errorResponse?
@@ -633,7 +634,8 @@ angular.module 'trPcControllers'
       $scope.submittedMobile = false
       $scope.updateEditMobile = ($event) ->
         $scope.LBmobileProfileModal.close()
-        $scope.updateSurveyResponses($event)
+        $scope.updateUserProfile($event)
+        #$scope.updateSurveyResponses($event)
         $timeout ->
           reCheckProfileItems()
         , 250
