@@ -156,7 +156,7 @@ angular.module 'trPcControllers'
               else
                 messageInfo = response.data.getSuggestedMessageResponse.messageInfo
                 if messageInfo
-                  pcSetMessages.content = messageInfo.messageBody + '<p>http://heartdev.convio.net/site/TR?fr_id=' + $scope.frId + '&pg=personal&px=' + $scope.consId + '</p>'
+                  pcSetMessages.content = messageInfo.messageBody + '<p>My Personal Page: http://heartdev.convio.net/site/TR?fr_id=' + $scope.frId + '&pg=personal&px=' + $scope.consId + '</p>'
                   console.log 'scope = '+$scope.consId
                   pcSetMessages.subject = messageInfo.subject
         $scope.emailTabNames.push pcSetMessages
