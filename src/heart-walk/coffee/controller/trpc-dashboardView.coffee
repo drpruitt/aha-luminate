@@ -210,7 +210,8 @@ angular.module 'trPcControllers'
               if surveyResponse
                 thisField =
                   type: null
-                  questionKey: if surveyResponse.key == null then 'no_key_assigned' else 'question_key_' + surveyResponse.key
+                  #questionKey: if surveyResponse.key == null then 'no_key_assigned' else 'question_key_' + surveyResponse.key
+                  questionKey: if surveyResponse.key == null then 'question_' + surveyResponse.questionId else 'question_key_' + surveyResponse.key
                   data:
                     dataType: surveyResponse.questionType
                   templateOptions:
@@ -264,6 +265,7 @@ angular.module 'trPcControllers'
                       name: choice.label
                       value: choice.value
 
+                #can probably clean this logic up now, as we aret removing keys
                 if thisField.questionKey != 'no_key_assigned'
                   $scope.sqvm.surveyFields.push thisField
                   if surveyResponse.responseValue is 'User Provided No Response'
