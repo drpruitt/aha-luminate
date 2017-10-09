@@ -175,18 +175,20 @@ angular.module 'ahaLuminateControllers'
       $scope.totalStudents = ''
       $scope.totalSchools = ''
       $scope.totalChallenges = ''
-      $scope.showStats = true
       
       BoundlessService.getRollupTotals()
         .then (response) ->
           if not response.data.status or response.data.status isnt 'success'
             $scope.showStats = false
           else
-            $scope.showStats = true
-            totals = response.data.totals          
-            $scope.totalStudents = totals.total_students
-            $scope.totalSchools = totals.total_schools
-            $scope.totalEmails = totals.total_online_emails_sent
+            totals = response.data.totals
+            if not totals
+              $scope.showStats = false
+            else
+              $scope.showStats = true
+              $scope.totalStudents = totals.total_students
+              $scope.totalSchools = totals.total_schools
+              $scope.totalEmails = totals.total_online_emails_sent
         , (response) ->
           $scope.showStats = false
       
