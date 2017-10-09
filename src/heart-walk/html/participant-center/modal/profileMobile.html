@@ -6,11 +6,11 @@
   </div>
   <div class="modal-body">
     <div class="form-group">
-      <label for="question_key_mobile_phone">Mobile Phone:</label>
+      <label for="mobile_phone">Mobile Phone:</label>
       <div class="input-group">
-        <input type="text" id="question_key_mobile_phone" name="question_key_mobile_phone" class="form-control" aria-label="Enter mobile phone" ng-model="sqvm.surveyModel.question_key_mobile_phone" ng-pattern="/^\(?(\d{3})\)?[ .-]?(\d{3})[ .-]?(\d{4})$/">
+        <input type="text" id="mobile_phone" name="mobile_phone" class="form-control" aria-label="Enter mobile phone" ng-model="constituent.mobile_phone" ng-pattern="/^\(?(\d{3})\)?[ .-]?(\d{3})[ .-]?(\d{4})$/">
       </div>
-      <div class="mobile_form_error" ng-show="submittedMobile==true && profileMobilePhone.$invalid"><span ng-show="submittedMobile==true && profileMobilePhone.question_key_mobile_phone.$error" role="alert">Phone number must be 10 digit format</span></div>
+      <div class="mobile_form_error" ng-show="submittedMobile==true && profileMobilePhone.$invalid"><span ng-show="submittedMobile==true && profileMobilePhone.mobile_phone.$error" role="alert">Phone number must be 10 digit format</span></div>
     </div>
   </div>
   <div class="modal-footer">
