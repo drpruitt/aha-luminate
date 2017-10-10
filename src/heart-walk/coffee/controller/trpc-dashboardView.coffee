@@ -33,6 +33,10 @@ angular.module 'trPcControllers'
           else
             $scope.constituent = response.data.getConsResponse
             console.log $scope.constituent
+            if angular.equals({}, $scope.constituent.primary_address.street2) is true
+              $scope.constituent.primary_address.street2 = ''
+            if angular.equals({}, $scope.constituent.mobile_phone) is true
+              $scope.constituent.mobile_phone = ''
           response
       $scope.dashboardPromises.push constituentPromise
 
