@@ -419,7 +419,7 @@ angular.module 'trPcControllers'
               if $scope.sqvm.surveyModel.question_key_hw_years_participated
                 console.log 'profile check YEARSSSSS'
                 $scope.profileChecklistItems.years = 1
-              if $scope.sqvm.surveyModel.question_key_mobile_phone
+              if $scope.constituent.mobile_phone
                 console.log 'profile check MOBBILLLLEE'
                 $scope.profileChecklistItems.mobile = 1
               $scope.profileProgress = $scope.profileChecklistItems.mobile + $scope.profileChecklistItems.years + $scope.profileChecklistItems.street + $scope.profileChecklistItems.why
