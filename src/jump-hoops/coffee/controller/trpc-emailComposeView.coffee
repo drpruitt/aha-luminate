@@ -280,28 +280,33 @@ angular.module 'trPcControllers'
         closeEmailPreviewModal()
       
       $scope.sendEmail = ->
-        NgPcTeamraiserEmailService.sendMessage $httpParamSerializer($scope.emailComposer)
-          .then (response) ->
-            closeEmailPreviewModal()
-            window.scrollTo 0, 0
-            if response.data.errorResponse
-              $scope.sendEmailError = response.data.errorResponse.message
-            else if response.data.teamraiserErrorResponse
-              # TODO
-            else
-              # TODO: remove messageType and messageId from URL
-              if $scope.messageId
-                deleteDraftPromise = NgPcTeamraiserEmailService.deleteDraft 'message_id=' + $scope.messageId
-                  .then (response) ->
-                    $scope.getMessageCounts()
-                $scope.emailPromises.push deleteDraftPromise
-              else
-                $scope.getMessageCounts()
-              $scope.getContactCounts()
-              $scope.sendEmailSuccess = true
-              $scope.resetSelectedContacts()
-              setEmailComposerDefaults()
+        if not $rootScope.sendEmailPending
+          $rootScope.sendEmailPending = true
+          $scope.sendEmailPending = true
+          NgPcTeamraiserEmailService.sendMessage $httpParamSerializer($scope.emailComposer)
+            .then (response) ->
+              delete $rootScope.sendEmailPending
+              delete $scope.sendEmailPending
+              closeEmailPreviewModal()
               window.scrollTo 0, 0
-              angular.element('#emailComposer-recipients').focus()
-              BoundlessService.logEmailSent()
+              if response.data.errorResponse
+                $scope.sendEmailError = response.data.errorResponse.message
+              else if response.data.teamraiserErrorResponse
+                # TODO
+              else
+                # TODO: remove messageType and messageId from URL
+                if $scope.messageId
+                  deleteDraftPromise = NgPcTeamraiserEmailService.deleteDraft 'message_id=' + $scope.messageId
+                    .then (response) ->
+                      $scope.getMessageCounts()
+                  $scope.emailPromises.push deleteDraftPromise
+                else
+                  $scope.getMessageCounts()
+                $scope.getContactCounts()
+                $scope.sendEmailSuccess = true
+                $scope.resetSelectedContacts()
+                setEmailComposerDefaults()
+                window.scrollTo 0, 0
+                angular.element('#emailComposer-recipients').focus()
+                BoundlessService.logEmailSent()
   ]
