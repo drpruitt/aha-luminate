@@ -59,6 +59,7 @@ angular.module 'ahaLuminateControllers'
           isOtherAmount: isOtherAmount
           isNoDonation: isNoDonation
           askMessage: askMessage
+        $scope.participationOptionsForm.ng_donation_level_other_amount.$setValidity("amount", true);
         if $donationLevelRadio.is '[checked]'
           $scope.toggleDonationLevel levelAmount
         if isOtherAmount
@@ -77,6 +78,7 @@ angular.module 'ahaLuminateControllers'
         if $scope.participationOptionsForm.ng_donation_level_other_amount.$viewValue != '' && $scope.participationOptionsForm.ng_donation_level_other_amount.$viewValue < 10
           $scope.participationOptionsForm.ng_donation_level_other_amount.$setValidity("amount", false);
         else
+          $scope.participationOptionsForm.ng_donation_level_other_amount.$setValidity("amount", true);
           if not $scope.participationOptionsForm.$valid
             goalElem = angular.element '#participationOptions-fr_goal'
             if goalElem.is '.ng-invalid'
