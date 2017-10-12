@@ -74,13 +74,20 @@ angular.module 'ahaLuminateControllers'
         false
       
       $scope.submitPtype = ->
-        if not $scope.participationOptionsForm.$valid
-          goalElem = angular.element '#participationOptions-fr_goal'
-          if goalElem.is '.ng-invalid'
-            goalElem.focus()
+        if $scope.participationOptions.ng_donation_level_other_amount != '' && $scope.participationOptions.ng_donation_level_other_amount < 10
+          otherAmountElem = angular.element '#participationOptions-ng_donation_level_other_amount'
+          if otherAmountElem.is '.ng-invalid'
+            otherAmountElem.focus()
           else
             window.scrollTo 0, 0
-        else
-          angular.element('.js--default-ptype-form').submit()
-          false
+        else          
+          if not $scope.participationOptionsForm.$valid
+            goalElem = angular.element '#participationOptions-fr_goal'
+            if goalElem.is '.ng-invalid'
+              goalElem.focus()
+            else
+              window.scrollTo 0, 0
+          else
+            angular.element('.js--default-ptype-form').submit()
+            false
   ]
