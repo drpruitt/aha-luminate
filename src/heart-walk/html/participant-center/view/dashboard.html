@@ -230,7 +230,6 @@
       <uib-tab-heading>
         My Team
       </uib-tab-heading>
-<<<<<<< HEAD
       <div class="clearfix">
         <div ng-if="constituent">
           <h1 ng-if="teamInfo.name">
@@ -239,26 +238,6 @@
           <h1 ng-if="!teamInfo.name">
             My Team
           </h1>
-=======
-      <div class="heart-dashboard-tab-info clearfix">
-        <div class="heart-dashboard-tab-info__text">
-          <div ng-if="teamRank.rank == -1">
-            Your team's not on the leaderboard yet!
-          </div>
-          <div ng-if="teamRank.rank && teamRank.rank != -1">
-            We're <span class="heart-dashboard-tab-info__rank">#{{teamRank.rank}}</span> of {{teamRank.totalNumber}} teams at our Walk.
-          </div>
-        </div>
-        <div class="heart-dashboard-tab-info__cta">
-          <a class="btn btn-primary" ng-click="emailAllTeamMembers()" ng-if="participantRegistration.aTeamCaptain == 'true'">
-            Email My<br>
-            Team
-          </a> 
-          <a class="btn btn-primary" ng-click="addOfflineGift('team')" ng-if="teamraiserConfig.personalOfflineGiftsAllowed == 'true' && ((teamraiserConfig.offlineTeamGifts == 'CAPTAINS' && participantRegistration.aTeamCaptain == 'true') || teamraiserConfig.offlineTeamGifts == 'MEMBERS')">
-            Enter Cash<br>
-            or Checks
-          </a>
->>>>>>> dev
         </div>
       </div>
       <div class="clearfix">
@@ -392,29 +371,6 @@
       <uib-tab-heading>
         My Company
       </uib-tab-heading>
-<<<<<<< HEAD
-=======
-      <div class="heart-dashboard-tab-info clearfix">
-        <div class="heart-dashboard-tab-info__text">
-          <div ng-if="companyRank.rank == -1">
-            Your company's not on the leaderboard yet!
-          </div>
-          <div ng-if="companyRank.rank && companyRank.rank != -1">
-            We're <span class="heart-dashboard-tab-info__rank">#{{companyRank.rank}}</span> of {{companyRank.totalNumber}} companies at our Walk.
-          </div>
-        </div>
-        <div class="heart-dashboard-tab-info__cta">
-          <a class="btn btn-primary" ng-click="emailAllCompanyParticipants()" ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'">
-            Email My<br>
-            Company
-          </a> 
-          <a class="btn btn-primary hidden" ng-href="NTM?tr.ntmgmt=company_cservice_main&amp;company_id={{participantRegistration.companyInformation.companyId}}" ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'">
-            My Company<br>
-            Coordinator Center
-          </a>
-        </div>
-      </div>
->>>>>>> dev
       <div class="clearfix">
         <div class="heart-page-rail heart-page-rail--participant-center">
           <h2>Company Progress:</h2>
