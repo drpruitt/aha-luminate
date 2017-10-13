@@ -26,6 +26,9 @@ angular.module 'trPcControllers'
     ($rootScope, $scope, $timeout, $filter, $location, $httpParamSerializer, $translate, $uibModal, $uibModalStack, APP_INFO, ConstituentService, TeamraiserRecentActivityService, TeamraiserRegistrationService, TeamraiserProgressService, TeamraiserGiftService, TeamraiserParticipantService, TeamraiserTeamService, TeamraiserNewsFeedService, TeamraiserCompanyService, TeamraiserShortcutURLService, ContactService, TeamraiserSurveyResponseService, TeamraiserEmailService) ->
       $scope.dashboardPromises = []
 
+      $scope.baseDomain = $location.absUrl().split('/site/')[0]
+      console.log 'the domain is = ' + $scope.baseDomain
+
       constituentPromise = ConstituentService.getUser()
         .then (response) ->
           if response.data.errorResponse

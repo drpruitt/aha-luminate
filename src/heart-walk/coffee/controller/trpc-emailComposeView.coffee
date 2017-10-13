@@ -16,6 +16,7 @@ angular.module 'trPcControllers'
     ($rootScope, $scope, $routeParams, $timeout, $location, $anchorScroll, $httpParamSerializer, $uibModal, APP_INFO, TeamraiserEventService, TeamraiserEmailService, ContactService, ConstituentService) ->
       $scope.messageType = $routeParams.messageType
       $scope.messageId = $routeParams.messageId
+      $scope.baseDomain = $location.absUrl().split('/site/')[0]
 
       $scope.emailPromises = []
 
@@ -157,7 +158,7 @@ angular.module 'trPcControllers'
               else
                 messageInfo = response.data.getSuggestedMessageResponse.messageInfo
                 if messageInfo
-                  pcSetMessages.content = messageInfo.messageBody + '<p>My Personal Page: http://heartdev.convio.net/site/TR?fr_id=' + $scope.frId + '&pg=personal&px=' + $scope.consId + '</p>'
+                  pcSetMessages.content = messageInfo.messageBody + '<p>My Personal Page: ' + $scope.baseDomain + '/site/TR?fr_id=' + $scope.frId + '&pg=personal&px=' + $scope.consId + '</p>'
                   console.log 'scope = '+$scope.consId
                   pcSetMessages.subject = messageInfo.subject
         $scope.emailTabNames.push pcSetMessages
