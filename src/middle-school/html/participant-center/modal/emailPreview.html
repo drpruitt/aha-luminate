@@ -1,9 +1,9 @@
 <div class="modal-header">
   <div class="modal-header__btns modal-header__btns--block-xxs">
-    <button type="button" class="btn btn-toggle" ng-click="cancelEmailPreview()">
+    <button type="button" class="btn btn-toggle" ng-class="{'disabled': sendEmailPending}" ng-disabled="sendEmailPending" ng-click="cancelEmailPreview()">
       Close
     </button>
-    <button type="button" class="btn btn-primary" ng-click="sendEmail()">
+    <button type="button" class="btn btn-primary" ng-class="{'disabled': sendEmailPending}" ng-disabled="sendEmailPending" ng-click="sendEmail()">
       <strong>Send</strong>
     </button>
   </div>
