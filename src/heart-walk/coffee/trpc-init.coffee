@@ -44,6 +44,7 @@ angular.module 'trPcApp'
       $rootScope.updatedProfile = $embedRoot.data('updated-profile') if $embedRoot.data('updated-profile') isnt ''
       $rootScope.survivorQ = $embedRoot.data('updated-survivor') if $embedRoot.data('updated-survivor') isnt ''
       $rootScope.viewMap = $embedRoot.data('view-map') if $embedRoot.data('view-map') isnt ''
+      $rootScope.interactionTypeId = $embedRoot.data 'checklist-interaction-id'
       $rootScope.device =
         isMobile: $embedRoot.data('device-is-mobile')
         mobileType: $embedRoot.data('device-mobile-type')

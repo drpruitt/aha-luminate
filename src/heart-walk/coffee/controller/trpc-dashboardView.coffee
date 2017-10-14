@@ -344,7 +344,7 @@ angular.module 'trPcControllers'
 
       logUserInt = (subject,body) ->
         #body = $scope.frId
-        ConstituentService.logInteraction 'interaction_type_id=1011&interaction_subject=' + subject + '&interaction_body=' + body
+        ConstituentService.logInteraction 'interaction_type_id='+ $rootScope.interactionTypeId + '&interaction_subject=' + subject + '&interaction_body=' + body
           .then (response) ->
             if response.data.updateConsResponse?.message
               console.log 'updated subject = '+subject+' & updated body = '+body
@@ -375,7 +375,7 @@ angular.module 'trPcControllers'
         console.log 'emailsSent beta = ' + $scope.messageCounts.sentMessages
         console.log 'tr_id = ' + $scope.frId
 
-        userInteractionsPromise = ConstituentService.getUserInteractions '&list_page_size=50&interaction_type_id=1011'
+        userInteractionsPromise = ConstituentService.getUserInteractions '&list_page_size=50&interaction_type_id=' + $rootScope.interactionTypeId
           .then (response) ->
             if not response.data.errorResponse
               interactions = response.data.getUserInteractionsResponse?.interaction
