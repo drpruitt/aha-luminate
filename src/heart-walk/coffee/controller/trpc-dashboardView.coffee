@@ -493,6 +493,10 @@ angular.module 'trPcControllers'
             $scope.LBdonateModal = $uibModal.open
               scope: $scope
               templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBdonate.html'
+            $timeout ->
+              document.getElementById('LBmakeDonation').onclick = ->
+                _gaq.push(['t2._trackEvent', 'HW PC', 'click', 'Make A Donation - donate lightbox'])
+            , 500
         else if $scope.userInteractions.email is 0
           console.log 'launch email lightbox'
           $scope.dashboardGreeting = 'email'
