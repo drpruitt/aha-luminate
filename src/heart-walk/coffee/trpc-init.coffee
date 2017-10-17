@@ -46,7 +46,7 @@ angular.module 'trPcApp'
       $rootScope.viewMap = $embedRoot.data('view-map') if $embedRoot.data('view-map') isnt ''
       $rootScope.interactionTypeId = $embedRoot.data 'checklist-interaction-id' if $embedRoot.data('checklist-interaction-id') isnt ''
       $rootScope.frIdMultidate = $embedRoot.data 'tr-id-multidate' if $embedRoot.data('tr-id-multidate') isnt ''
-      $rootScope.event_location = $embedRoot.data 'event_location' if $embedRoot.data('event_location') isnt ''
+      $rootScope.event_location = $embedRoot.data 'event-location' if $embedRoot.data('event-location') isnt ''
       $rootScope.device =
         isMobile: $embedRoot.data('device-is-mobile')
         mobileType: $embedRoot.data('device-mobile-type')
