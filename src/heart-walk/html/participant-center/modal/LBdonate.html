@@ -12,11 +12,11 @@
 <div class="modal-footer">
   <div class="clearfix">
     <div class="pull-left">
-      <button type="button" class="btn btn-primary-inverted text-uppercase" ng-click="notRightNow()">Not Right Now</button>
+      <button type="button" class="btn btn-primary-inverted text-uppercase" ng-click="sendGAEvent('Not Right Now - donate lightbox');notRightNow()">Not Right Now</button>
     </div>
     <div class="pull-right">
-      <a ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{consId}}" class="btn btn-primary text-uppercase">Make a Donation</a>
+      <a id="LBmakeDonation" ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{consId}}" class="btn btn-primary text-uppercase">Make a Donation</a>
     </div>
   </div>
-  <div class="lb_skip_link"><a href ng-click="LBskip('donate')">Mark as Complete</a></div>
+  <div class="lb_skip_link"><a href ng-click="sendGAEvent('Mark My Profile as Complete - donate lightbox');LBskip('donate')">Mark as Complete</a></div>
 </div>
