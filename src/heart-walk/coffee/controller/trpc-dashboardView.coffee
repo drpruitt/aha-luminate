@@ -25,7 +25,7 @@ angular.module 'trPcControllers'
     'TeamraiserEmailService'
     ($rootScope, $scope, $timeout, $filter, $location, $httpParamSerializer, $translate, $uibModal, $uibModalStack, APP_INFO, ConstituentService, TeamraiserRecentActivityService, TeamraiserRegistrationService, TeamraiserProgressService, TeamraiserGiftService, TeamraiserParticipantService, TeamraiserTeamService, TeamraiserNewsFeedService, TeamraiserCompanyService, TeamraiserShortcutURLService, ContactService, TeamraiserSurveyResponseService, TeamraiserEmailService) ->
       $scope.dashboardPromises = []
-      
+
       $scope.baseDomain = $location.absUrl().split('/site/')[0]
       console.log 'the domain is = ' + $scope.baseDomain
 
@@ -579,6 +579,10 @@ angular.module 'trPcControllers'
 
       $scope.notRightNow = ->
         $uibModalStack.dismissAll()
+
+      $scope.sendGAEvent = (event) ->
+        console.log event
+        _gaq.push(['t2._trackEvent', 'HW PC', 'click', event])
 
       $scope.LBskip = (interaction) ->
         console.log interaction + ' will be skipped from now on'
