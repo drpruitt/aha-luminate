@@ -11,11 +11,11 @@
 <div class="modal-footer">
   <div class="clearfix">
     <div class="pull-left">
-      <button type="button" class="btn btn-primary-inverted text-uppercase" ng-click="notRightNow()">Not Right Now</button>
+      <button type="button" class="btn btn-primary-inverted text-uppercase" ng-click="sendGAEvent('Not Right Now - social lightbox');notRightNow()">Not Right Now</button>
     </div>
     <div class="pull-right">
-      <button ng-click="goSocial()" class="btn btn-primary text-uppercase">Go Social</a>
+      <button ng-click="sendGAEvent('Go Social - social lightbox');goSocial()" class="btn btn-primary text-uppercase">Go Social</a>
     </div>
   </div>
-  <div class="lb_skip_link"><a href ng-click="LBskip('social')">Mark as Complete</a></div>
+  <div class="lb_skip_link"><a href ng-click="sendGAEvent('Mark Going Social as Complete - social lightbox');LBskip('social')">Mark as Complete</a></div>
 </div>
