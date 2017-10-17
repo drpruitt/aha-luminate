@@ -12,13 +12,13 @@
 <div class="modal-footer">
   <div class="clearfix">
     <div class="pull-left">
-      <button type="button" class="btn btn-primary-inverted text-uppercase" ng-click="notRightNow()">Not Right Now</button>
+      <button type="button" class="btn btn-primary-inverted text-uppercase" ng-click="sendGAEvent('Not Right Now - email lightbox');notRightNow()">Not Right Now</button>
     </div>
     <div class="pull-right">
-      <a ng-href="{{baseUrl}}#/email/compose" class="btn btn-primary text-uppercase">
+      <a id="LBsendEmail" ng-href="{{baseUrl}}#/email/compose" class="btn btn-primary text-uppercase">
         Send an Email
       </a>
     </div>
   </div>
-  <div class="lb_skip_link"><a href ng-click="LBskip('email')">Mark as Complete</a></div>
+  <div class="lb_skip_link"><a href ng-click="sendGAEvent('Mark Send an Email as Complete - email lightbox');LBskip('email')">Mark as Complete</a></div>
 </div>
