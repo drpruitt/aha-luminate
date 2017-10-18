@@ -251,7 +251,7 @@ angular.module 'trPageEditControllers'
                 $scope.setPersonalVideoUrl videoUrl
                 $scope.closePersonalVideoModal()
           else if $scope.personalVideo.type is 'personalized'
-            TeamraiserParticipantPageService.updatePersonalVideoUrl ''
+            TeamraiserParticipantPageService.updatePersonalVideoUrl 'video_url='
             formData = { auth_token: "Jep8QrDjpqwOnI5rpsAbJw", email: $rootScope.email, fields: {firstname: $rootScope.firstName, why: $scope.personalMedia.myWhy, cons_id: $rootScope.consId} }
             $scope.submitVidyardCallback = (data) ->
               jQuery.ajax 'http://hearttools.heart.org/vidyard/vy_pv_callback_to_bb.php',
@@ -277,7 +277,7 @@ angular.module 'trPageEditControllers'
             
           else if $scope.personalVideo.type is 'default'
             angular.element('.js--remove-personalized-video-form').submit()
-            TeamraiserParticipantPageService.updatePersonalVideoUrl ''
+            TeamraiserParticipantPageService.updatePersonalVideoUrl 'video_url='
             setTimeout ( ->
               $scope.closePersonalVideoModal()
               location.reload();
