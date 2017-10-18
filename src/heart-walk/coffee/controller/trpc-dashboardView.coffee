@@ -479,6 +479,10 @@ angular.module 'trPcControllers'
             $scope.LBthankYouRegisteringModal = $uibModal.open
               scope: $scope
               templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBthankYouRegistering.html'
+            $timeout ->
+              document.getElementById('LBupdateMyPage').onclick = ->
+                _gaq.push(['t2._trackEvent', 'HW PC', 'click', 'Update my page - thank you for registering lightbox'])
+            , 500
         else if $scope.userInteractions.page is 0
           console.log 'launch welcome back lightbox'
           $scope.dashboardGreeting = 'page'
@@ -486,6 +490,10 @@ angular.module 'trPcControllers'
             $scope.LBwelcomeBackModal = $uibModal.open
               scope: $scope
               templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBwelcomeBack.html'
+          $timeout ->
+            document.getElementById('update_my_story_welcome_back_lb').onclick = ->
+              _gaq.push(['t2._trackEvent', 'HW PC', 'click', 'Update my story - welcome back lightbox'])
+          , 500
         else if $scope.userInteractions.donate is 0
           console.log 'launch donate lightbox'
           $scope.dashboardGreeting = 'donate'
@@ -504,6 +512,10 @@ angular.module 'trPcControllers'
             $scope.LBemailModal = $uibModal.open
               scope: $scope
               templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBemail.html'
+            $timeout ->
+              document.getElementById('LBsendEmail').onclick = ->
+                _gaq.push(['t2._trackEvent', 'HW PC', 'click', 'Send Email - email lightbox'])
+            , 500
         else if $scope.userInteractions.why is 0
           console.log 'launch why lightbox'
           $scope.dashboardGreeting = 'why'
@@ -525,6 +537,10 @@ angular.module 'trPcControllers'
             $scope.LBprofileModal = $uibModal.open
               scope: $scope
               templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBprofile.html'
+            $timeout ->
+              document.getElementById('LBprofileWhy').onclick = ->
+                _gaq.push(['t2._trackEvent', 'HW PC', 'click', 'Whats your why - profile lightbox'])
+            , 500
         else if $scope.userInteractions.goal1 is 0 && $scope.participantProgress.percent >= 50
           console.log 'launch goal1 lightbox'
           $scope.dashboardGreeting = 'goal1'
@@ -618,11 +634,19 @@ angular.module 'trPcControllers'
         $scope.LBprofileModal = $uibModal.open
           scope: $scope
           templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBprofile.html'
+        $timeout ->
+          document.getElementById('LBprofileWhy').onclick = ->
+            _gaq.push(['t2._trackEvent', 'HW PC', 'click', 'Whats your why - profile lightbox'])
+        , 500
 
       $scope.reLaunchprofileChecklist = ->
         $scope.LBprofileModal = $uibModal.open
           scope: $scope
           templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBprofile.html'
+          $timeout ->
+            document.getElementById('LBprofileWhy').onclick = ->
+              _gaq.push(['t2._trackEvent', 'HW PC', 'click', 'Whats your why - profile lightbox'])
+          , 500
 
       reCheckProfileItems = ->
         if $scope.sqvm.surveyModel.question_key_what_is_why != null

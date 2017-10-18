@@ -163,6 +163,10 @@ angular.module 'trPcControllers'
                   pcSetMessages.subject = messageInfo.subject
         $scope.emailTabNames.push pcSetMessages
 
+      $scope.sendGAEvent = (event) ->
+        console.log event
+        _gaq.push(['t2._trackEvent', 'HW PC', 'click', event])
+
       logUserInt = (subject,body) ->
         #body = $scope.frId
         ConstituentService.logInteraction 'interaction_type_id=1011&interaction_subject=' + subject + '&interaction_body=' + body
