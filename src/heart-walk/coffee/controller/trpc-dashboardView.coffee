@@ -1524,6 +1524,9 @@ angular.module 'trPcControllers'
         $scope.dashboardPromises.push getParticipantShortcutPromise
       $scope.getParticipantShortcut()
 
+      $scope.personalPageUrlSecure = $scope.baseDomain + '/site/TR?fr_id=' + $scope.frId + '&pg=personal&px=' + $scope.consId
+      console.log 'secure personal page = ' + $scope.personalPageUrlSecure
+
       $scope.editPageUrlOptions =
         updateUrlFailure: false
         updateUrlFailureMessage: ''
