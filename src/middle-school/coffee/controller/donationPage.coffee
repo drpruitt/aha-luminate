@@ -8,7 +8,7 @@ angular.module 'ahaLuminateControllers'
     ($scope, $rootScope, DonationService, $timeout, $q) ->
       $scope.paymentInfoErrors =
         errors: []
-      angular.element('.page-error').remove()
+      angular.element('.page-error:contains("There was a problem processing your request")').remove()
       $fieldErrors = angular.element '.ErrorMessage'
       angular.forEach $fieldErrors, (fieldError) ->
         $fieldError = angular.element fieldError
