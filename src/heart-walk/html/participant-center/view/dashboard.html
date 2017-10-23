@@ -23,48 +23,48 @@
         <div class="row profile_box_row">
           <div class="col-sm-4 profile_box" ng-if="userInteractions.page != '1'">
             <div class="profile_box_icon pull-left"><i class="fa fa-pencil"></i></div>
-            <div class="profile_box_info pull-right">Personalize your page with your "Why" story.<a id="update_your_page" class="btn btn-primary" ng-href="{{personalPageUrl}}">Update Your Story</a></div>
+            <div class="profile_box_info pull-right"><div class="profile_box_text">Personalize your page with your "Why" story.</div><a id="update_your_page" class="btn btn-primary" ng-href="{{personalPageUrl}}">Update Your Story</a></div>
           </div>
           <div class="col-sm-4 profile_box" ng-if="userInteractions.page == '1'">
             <div class="profile_box_icon pull-left"><i class="fa fa-check"></i></div>
-            <div class="profile_box_info pull-right">Story told! Your personal story was successfully updated.<a id="update_page_again" class="btn btn-primary" ng-href="{{personalPageUrl}}">Update Story Again</a></div>
+            <div class="profile_box_info pull-right"><div class="profile_box_text">Story told! Your personal story was successfully updated.</div><a id="update_page_again" class="btn btn-primary" ng-href="{{personalPageUrl}}">Update Story Again</a></div>
           </div>
 
           <div class="col-sm-4 profile_box" ng-if="userInteractions.donate != '1'">
             <div class="profile_box_icon pull-left"><i class="fa fa-dollar"></i></div>
-            <div class="profile_box_info pull-right">Kick-start your fundraising by donating towards your goal.<a id="make_a_donation" class="btn btn-primary" ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{consId}}">Make a Donation</a></div>
+            <div class="profile_box_info pull-right"><div class="profile_box_text">Kick-start your fundraising by donating towards your goal.</div><a id="make_a_donation" class="btn btn-primary" ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{consId}}">Make a Donation</a></div>
           </div>
           <div class="col-sm-4 profile_box" ng-if="userInteractions.donate == '1'">
             <div class="profile_box_icon pull-left"><i class="fa fa-check"></i></div>
-            <div class="profile_box_info pull-right">Donation success!<br>Thank You!<a id="make_another_donation" class="btn btn-primary" ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{consId}}">Make Another Donation</a></div>
+            <div class="profile_box_info pull-right"><div class="profile_box_text">Donation success!<br>Thank You!</div><a id="make_another_donation" class="btn btn-primary" ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{consId}}">Make Another Donation</a></div>
           </div>
 
           <div class="col-sm-4 profile_box" ng-if="userInteractions.email != '1'">
             <div class="profile_box_icon pull-left"><i class="fa fa-at"></i></div>
-            <div class="profile_box_info pull-right">Send emails to ask friends to join or donate today.<a id="send_an_email" class="btn btn-primary" ng-href="{{baseUrl}}#/email/compose">Send an Email</a></div>
+            <div class="profile_box_info pull-right"><div class="profile_box_text">Send emails to ask friends to join or donate today.</div><a id="send_an_email" class="btn btn-primary" ng-href="{{baseUrl}}#/email/compose">Send an Email</a></div>
           </div>
           <div class="col-sm-4 profile_box" ng-if="userInteractions.email == '1'">
             <div class="profile_box_icon pull-left"><i class="fa fa-check"></i></div>
-            <div class="profile_box_info pull-right">Nice job! Sending emails helps get you to your goal.<a id="send_another_email" class="btn btn-primary" ng-href="{{baseUrl}}#/email/compose">Send Another Email</a></div>
+            <div class="profile_box_info pull-right"><div class="profile_box_text">Nice job! Sending emails helps get you to your goal.</div><a id="send_another_email" class="btn btn-primary" ng-href="{{baseUrl}}#/email/compose">Send Another Email</a></div>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-4 profile_box" ng-if="userInteractions.why != '1'">
             <div class="profile_box_icon pull-left"><i class="fa fa-question"></i></div>
-            <div class="profile_box_info pull-right">Why do you walk? Finish this sentence: "______ is Why."<a id="tell_us_your_why" class="btn btn-primary" ng-href="{{personalPageUrlSecure}}&amp;videoWhy=true">Tell Us Your Why</button></div>
+            <div class="profile_box_info pull-right"><div class="profile_box_text">Why do you walk? Finish this sentence: "______ is Why."</div><a id="tell_us_your_why" class="btn btn-primary" ng-href="{{personalPageUrlSecure}}&amp;videoWhy=true">Tell Us Your Why</button></div>
           </div>
           <div class="col-sm-4 profile_box" ng-if="userInteractions.why == '1'">
             <div class="profile_box_icon pull-left"><i class="fa fa-check"></i></div>
-            <div class="profile_box_info pull-right">Thank you for telling us<br>your Why: {{sqvm.surveyModel.question_key_what_is_why}}<a id="update_your_why" class="btn btn-primary" ng-href="{{personalPageUrlSecure}}&amp;videoWhy=true">Update Your Why</button></div>
+            <div class="profile_box_info pull-right"><div class="profile_box_text">Thank you for telling us<br>your Why: {{sqvm.surveyModel.question_key_what_is_why}}</div><a id="update_your_why" class="btn btn-primary" ng-href="{{personalPageUrlSecure}}&amp;videoWhy=true">Update Your Why</button></div>
           </div>
 
           <div class="col-sm-4 profile_box" ng-if="userInteractions.social != '1'">
             <div class="profile_box_icon pull-left"><i class="fa fa-heart"></i></div>
-            <div class="profile_box_info pull-right">Deck out your social pages with these great Heart Walk images.<a id="go_social" class="btn btn-primary" href ng-click="goSocial()">Go Social</button></div>
+            <div class="profile_box_info pull-right"><div class="profile_box_text">Deck out your social pages with these great Heart Walk images.</div><a id="go_social" class="btn btn-primary" href ng-click="goSocial()">Go Social</button></div>
           </div>
           <div class="col-sm-4 profile_box" ng-if="userInteractions.social == '1'">
             <div class="profile_box_icon pull-left"><i class="fa fa-check"></i></div>
-            <div class="profile_box_info pull-right">Revisit our Heart Walk social tools to rev up your social pages!<a id="go_social_again" class="btn btn-primary" ng-href="PageServer?pagename=heartwalk_fundraising_tools&amp;fr_id={{frId}}">Go Social</button></div>
+            <div class="profile_box_info pull-right"><div class="profile_box_text">Revisit our Heart Walk social tools to rev up your social pages!</div><a id="go_social_again" class="btn btn-primary" ng-href="PageServer?pagename=heartwalk_fundraising_tools&amp;fr_id={{frId}}">Go Social</button></div>
           </div>
 
           <div class="col-sm-4 profile_box" ng-if="userInteractions.profile != '1'">
