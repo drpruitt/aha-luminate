@@ -692,6 +692,7 @@ angular.module 'trPcControllers'
           reCheckProfileItems()
         , 250
 
+      $scope.submittedZip = false
       $scope.updateEditStreet = ($event) ->
         $scope.LBstreetProfileModal.close()
         $scope.updateUserProfile($event)
