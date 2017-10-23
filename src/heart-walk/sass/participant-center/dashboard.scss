@@ -152,6 +152,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     width: 75%;
     font-size: 16px;
 }
+@media only screen and (min-width: 768px)  {
+  .profile_box_text {
+      min-height: 70px;
+  }
+}
 .profile_box button.btn.btn-primary, .profile_box a.btn.btn-primary {
     display: block;
     width: 100%;
