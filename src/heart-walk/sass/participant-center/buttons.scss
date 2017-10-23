@@ -63,3 +63,27 @@ a.btn-primary-inverted:active:hover {
     color: #ffffff;
     border-color: #3c3c3c;
 }
+a.pc_btn, button.pc_btn {
+    height: 60px;
+    padding: 0 20px;
+    line-height: 60px;
+    font-size: 20px;
+    font-weight: normal;
+    background: none;
+    background-color: #d01d20;
+    color: #ffffff;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 20px;
+    border: 0;
+}
+@media only screen and (max-width: 767px)  {
+    a.pc_btn, button.pc_btn {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+#download_donation_list {
+    margin: 20px 0;
+}
