@@ -1,4 +1,4 @@
-<form name="profileZip" ng-submit="profileZip.$valid && updateEditStreet($event)" novalidate>
+<form name="profileAddress" ng-submit="profileAddress.$valid && updateEditStreet($event)" novalidate>
   <div class="modal-header">
     <h2 class="modal-title">
       Update Address
@@ -112,7 +112,7 @@
       <div class="input-group">
         <input type="text" id="zip" ng-pattern="/^(\d{5}([- ]\d{4})?|[A-Z]\d[A-Z] *\d[A-Z]\d)$/" name="zip" class="form-control" aria-label="Zip Code"  ng-model="constituent.primary_address.zip">
       </div>
-      <div class="zip_form_error" ng-show="submittedZip==true && profileZip.$invalid"><span ng-show="submittedZip==true && profileZip.zip.$error" role="alert">Zip Code is required (12345, 12345-1234, or A1A1A1)</span></div>
+      <div class="zip_form_error" ng-show="submittedZip==true && profileAddress.$invalid"><span ng-show="submittedZip==true && profileAddress.zip.$error" role="alert">Zip Code is required (12345, 12345-1234, or A1A1A1)</span></div>
     </div>
 
     <div class="form-group">
