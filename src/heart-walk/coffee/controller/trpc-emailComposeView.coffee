@@ -126,6 +126,7 @@ angular.module 'trPcControllers'
               when 'Ask 2: Donation Reminder'
                 pcSetMessages.header = 'Donation Reminder'
                 pcSetMessages.messageID = message.messageId
+                pcSetMessages.headerID = 'send_email_donation_reminder'
                 #pcSetMessages.messageID = "donation_reminder"
                 loadSuggestedMessagePC(pcSetMessages)
               when 'Ask 3: Help me Reach my Goal'
