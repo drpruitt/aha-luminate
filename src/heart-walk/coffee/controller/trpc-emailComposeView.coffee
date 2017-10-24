@@ -127,22 +127,37 @@ angular.module 'trPcControllers'
                 pcSetMessages.header = 'Donation Reminder'
                 pcSetMessages.messageID = message.messageId
                 pcSetMessages.headerID = 'send_email_donation_reminder'
-                #pcSetMessages.messageID = "donation_reminder"
+                $timeout ->
+                  document.getElementById('send_email_donation_reminder').getElementsByTagName('a')[0].onclick = ->
+                    _gaq.push(['t2._trackEvent', 'HW PC', 'click', 'Send Email - Donation Reminder'])
+                , 500
                 loadSuggestedMessagePC(pcSetMessages)
               when 'Ask 3: Help me Reach my Goal'
                 pcSetMessages.header = 'Additional Request'
                 pcSetMessages.messageID = message.messageId
-                #pcSetMessages.messageID = "final_request"
+                pcSetMessages.headerID = 'send_email_additional_request'
+                $timeout ->
+                  document.getElementById('send_email_additional_request').getElementsByTagName('a')[0].onclick = ->
+                    _gaq.push(['t2._trackEvent', 'HW PC', 'click', 'Send Email - Additional Request'])
+                , 500
                 loadSuggestedMessagePC(pcSetMessages)
               when 'Ask 1: Donation Solicitation'
                 pcSetMessages.header = 'Ask for Donations'
                 pcSetMessages.messageID = message.messageId
-                #pcSetMessages.messageID = "ask_for_donations"
+                pcSetMessages.headerID = 'send_email_ask_donations'
+                $timeout ->
+                  document.getElementById('send_email_ask_donations').getElementsByTagName('a')[0].onclick = ->
+                    _gaq.push(['t2._trackEvent', 'HW PC', 'click', 'Send Email - Ask for Donations'])
+                , 500
                 loadSuggestedMessagePC(pcSetMessages)
               when 'Donation Thank You'
                 pcSetMessages.header = 'Thank Donors'
                 pcSetMessages.messageID = message.messageId
-                #pcSetMessages.messageID = "thank_donors"
+                pcSetMessages.headerID = 'send_email_thank_donors'
+                $timeout ->
+                  document.getElementById('send_email_thank_donors').getElementsByTagName('a')[0].onclick = ->
+                    _gaq.push(['t2._trackEvent', 'HW PC', 'click', 'Send Email - Thank Donors'])
+                , 500
                 loadSuggestedMessagePC(pcSetMessages)
           response
       $scope.emailPromises.push suggestedMessagesPromise
