@@ -279,7 +279,7 @@ angular.module 'trPageEditControllers'
             angular.element('.js--remove-personalized-video-form').submit()
             TeamraiserParticipantPageService.updatePersonalVideoUrl 'video_url=http://www.youtube.com/'
             setTimeout ( ->
-              $scope.closePersonalVideoModal()              
+              $scope.closePersonalVideoModal()
               window.location.href = 'http://' + $location.$$host + '/site/TR?fr_id=' + $scope.frId + '&pg=personal&px=' + $rootScope.consId
             ), 500
         $personalVideo.find('.heart-user-video-inner').prepend $compile('<button type="button" class="btn btn-primary-inverted btn-raised" ng-click="editPersonalVideo()" id="edit_personal_video"><span class="glyphicon glyphicon-facetime-video"></span> Edit Video</button>')($scope)
@@ -610,6 +610,5 @@ angular.module 'trPageEditControllers'
         decodeURIComponent results[2].replace(/\+/g, ' ')
       videoWhy = getParameterByName('videoWhy');
       if videoWhy is 'true'
-        console.log 'its true'
         $scope.editPersonalVideo()
   ]

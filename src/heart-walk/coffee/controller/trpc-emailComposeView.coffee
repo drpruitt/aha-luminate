@@ -175,22 +175,19 @@ angular.module 'trPcControllers'
                 messageInfo = response.data.getSuggestedMessageResponse.messageInfo
                 if messageInfo
                   pcSetMessages.content = messageInfo.messageBody + '<p>My Personal Page: ' + $scope.baseDomain + '/site/TR?fr_id=' + $scope.frId + '&pg=personal&px=' + $scope.consId + '</p>'
-                  console.log 'scope = '+$scope.consId
                   pcSetMessages.subject = messageInfo.subject
         $scope.emailTabNames.push pcSetMessages
 
       $scope.sendGAEvent = (event) ->
-        console.log event
         _gaq.push(['t2._trackEvent', 'HW PC', 'click', event])
 
       logUserInt = (subject,body) ->
-        #body = $scope.frId
-        ConstituentService.logInteraction 'interaction_type_id=1011&interaction_subject=' + subject + '&interaction_body=' + body
+        ConstituentService.logInteraction 'interaction_type_id=' + $rootScope.interactionTypeId + '&interaction_subject=' + subject + '&interaction_body=' + body
           .then (response) ->
             if response.data.updateConsResponse?.message
-              console.log 'updated subject = '+subject+' & updated body = '+body
+              # todo confirmation 
             else
-              console.log 'failed'
+              console.log 'logged interaction failed'
 
       $scope.sendEmailOpenEmail = (messageID) ->
         angular.forEach $scope.emailTabNames, (message) ->

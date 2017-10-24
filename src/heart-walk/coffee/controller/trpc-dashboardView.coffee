@@ -27,7 +27,6 @@ angular.module 'trPcControllers'
       $scope.dashboardPromises = []
 
       $scope.baseDomain = $location.absUrl().split('/site/')[0]
-      console.log 'the domain is = ' + $scope.baseDomain
 
       constituentPromise = ConstituentService.getUser()
         .then (response) ->
@@ -35,7 +34,6 @@ angular.module 'trPcControllers'
             # TODO
           else
             $scope.constituent = response.data.getConsResponse
-            console.log $scope.constituent
             if angular.equals({}, $scope.constituent.primary_address.street1) is true
               $scope.constituent.primary_address.street1 = ''
             if angular.equals({}, $scope.constituent.primary_address.street2) is true
@@ -175,17 +173,12 @@ angular.module 'trPcControllers'
                 $scope.getTeamGifts()
               closeAddOfflineGiftModal()
 
-# CM BEGIN profile and reg question updates
-      # update timestamp
-      console.log '334'
-
-      # CM begin cons profile update code
+      #Profile checklist
       $scope.consProfilePromises = []
 
       $scope.updateUserProfile = ($event) ->
         $event.preventDefault()
         updateUserPromise = ConstituentService.update 'primary_address.street1=' + (if $scope.constituent.primary_address.street1 == null then '' else $scope.constituent.primary_address.street1) + '&primary_address.street2=' + (if $scope.constituent.primary_address.street2 == null then '' else $scope.constituent.primary_address.street2) + '&primary_address.city=' + (if $scope.constituent.primary_address.city == null then '' else $scope.constituent.primary_address.city) + '&primary_address.state=' + (if $scope.constituent.primary_address.state == null then '' else $scope.constituent.primary_address.state) + '&primary_address.zip=' + (if $scope.constituent.primary_address.zip == null then '' else $scope.constituent.primary_address.zip) + '&primary_address.country=' + (if $scope.constituent.primary_address.country == null then '' else $scope.constituent.primary_address.country) + '&mobile_phone=' + (if $scope.constituent.mobile_phone == null then '' else $scope.constituent.mobile_phone)
-        # updateUserPromise = ConstituentService.update 'primary_address.street1=' + if $scope.constituent.primary_address.street1 == null then '' else $scope.constituent.primary_address.street1 + '&primary_address.street2=' + if $scope.constituent.primary_address.street2 == null then '' else $scope.constituent.primary_address.street2 + '&primary_address.city=' + if $scope.constituent.primary_address.city == null then '' else $scope.constituent.primary_address.city + '&primary_address.state=' + if $scope.constituent.primary_address.state == null then '' else $scope.constituent.primary_address.state + '&primary_address.zip=' + if $scope.constituent.primary_address.zip == null then '' else $scope.constituent.primary_address.zip + '&primary_address.country=' + if $scope.constituent.primary_address.country == null then '' else $scope.constituent.primary_address.country
           .then (response) ->
             if response.data.errorResponse?
               $scope.updateProfileSuccess = false
@@ -204,11 +197,7 @@ angular.module 'trPcControllers'
         true
       $scope.resetProfileAlerts()
 
-      #this can probably be removed now
-      #$scope.updateUserAddress = ($event) ->
-        #$scope.updateUserProfile($event)
-
-      # CM begin reg questions update code
+      #Event questions
       $scope.surveyResponsePromises = []
 
       $scope.sqvm =
@@ -226,7 +215,6 @@ angular.module 'trPcControllers'
               if surveyResponse
                 thisField =
                   type: null
-                  #questionKey: if surveyResponse.key == null then 'no_key_assigned' else 'question_key_' + surveyResponse.key
                   questionKey: if surveyResponse.key == null then 'question_' + surveyResponse.questionId else 'question_key_' + surveyResponse.key
                   data:
                     dataType: surveyResponse.questionType
@@ -281,7 +269,6 @@ angular.module 'trPcControllers'
                       name: choice.label
                       value: choice.value
 
-                #can probably clean this logic up now, as we aret removing keys
                 if thisField.questionKey != 'no_key_assigned'
                   $scope.sqvm.surveyFields.push thisField
                   if surveyResponse.responseValue is 'User Provided No Response'
@@ -289,36 +276,13 @@ angular.module 'trPcControllers'
                   else
                     $scope.sqvm.surveyModel[thisField.questionKey] = surveyResponse.responseValue
 
-
-                # if thisField.questionKey != 'no_key_assigned'
-                #   $scope.sqvm.surveyFields.push thisField
-                #   $scope.sqvm.surveyModel[thisField.questionKey] = surveyResponse.responseValue
-                  # if surveyResponse.responseValue is 'User Provided No Response'
-                  #   $scope.sqvm.surveyModel[thisField.questionKey] = null
-                  # else
-                  #   $scope.sqvm.surveyModel[thisField.questionKey] = surveyResponse.responseValue
-
-                # $scope.sqvm.surveyFields.push thisField
-                # if surveyResponse.responseValue is 'User Provided No Response'
-                #   $scope.sqvm.surveyModel[thisField.questionKey] = null
-                # else if thisField.type is 'datepicker'
-                #   fieldValue = surveyResponse.responseValue.split "-"
-                #   $scope.sqvm.surveyModel[thisField.questionKey] = new Date parseInt(fieldValue[0]), parseInt(fieldValue[1])-1, parseInt(fieldValue[2]), parseInt(fieldValue[3].split(":")[0]), parseInt(fieldValue[3].split(":")[1])
-                # else if thisField.type is 'checkbox'
-                  # $scope.sqvm.surveyModel[thisField.questionKey] = surveyResponse.responseValue is 'true'
-                # else
-                #   $scope.sqvm.surveyModel[thisField.questionKey] = surveyResponse.responseValue
-
             $scope.sqvm.originalFields = angular.copy($scope.sqvm.surveyFields)
-            # console.log 'surveyFields = ',$scope.sqvm.surveyModel
-            # console.log 'originalFields = ',$scope.sqvm.originalFields
             response
         $scope.dashboardPromises.push getSurveyResponsesPromise
       $scope.getSurveyResponses()
 
       $scope.updateSurveyResponses = ($event) ->
         $event.preventDefault()
-        console.log 'surveyModel = ',$httpParamSerializer($scope.sqvm.surveyModel)
         updateSurveyResponsesPromise = TeamraiserSurveyResponseService.updateSurveyResponses $httpParamSerializer($scope.sqvm.surveyModel)
         .then (response) ->
             if response.data?.errorResponse?
@@ -335,7 +299,6 @@ angular.module 'trPcControllers'
             else
               $scope.updateSurveySuccess = true
               $scope.updateSurveyFailure = false
-              # $scope.sqvm.surveyOptions.updateInitialValue()
             response
         $scope.dashboardPromises.push updateSurveyResponsesPromise
 
@@ -348,16 +311,13 @@ angular.module 'trPcControllers'
       $scope.updateTellUsWhy = ($event) ->
         $scope.updateSurveyResponses($event)
 
-# CM END profile and reg question updates
-
       logUserInt = (subject,body) ->
-        #body = $scope.frId
         ConstituentService.logInteraction 'interaction_type_id='+ $rootScope.interactionTypeId + '&interaction_subject=' + subject + '&interaction_body=' + body
           .then (response) ->
             if response.data.updateConsResponse?.message
-              console.log 'updated subject = '+subject+' & updated body = '+body
+              #todo - confirmation
             else
-              console.log 'failed'
+              console.log 'log interaction failed'
 
       $scope.userInteractions = {
         page: 0
@@ -376,13 +336,6 @@ angular.module 'trPcControllers'
         years: 0
       }
       GetUserInt = ->
-        console.log 'updateProfile = ' + $rootScope.updatedProfile
-        console.log 'isSelfDonor = ' + $rootScope.isSelfDonor
-        #can remove the stag version of below now
-        #console.log 'emailsSent = ' + $rootScope.emailsSent
-        console.log 'emailsSent beta = ' + $scope.messageCounts.sentMessages
-        console.log 'tr_id = ' + $scope.frId
-
         userInteractionsPromise = ConstituentService.getUserInteractions '&list_page_size=50&interaction_type_id=' + $rootScope.interactionTypeId
           .then (response) ->
             if not response.data.errorResponse
@@ -390,82 +343,57 @@ angular.module 'trPcControllers'
               if interactions
                 interactions = [interactions] if not angular.isArray interactions
                 if interactions.length > 0
-                  console.log 'Raw interactions = ', interactions
                   angular.forEach interactions, (interaction) ->
                     if interaction.note
                       if interaction.note.text
-                        console.log 'comments = ' + interaction.note.text
                         interactionNote = Number(interaction.note.text)
                         if $scope.frId == interactionNote
                           switch interaction.subject
                             when 'page'
-                                console.log 'found page!'
                                 $scope.userInteractions.page = 1
                             when 'donate'
-                                console.log 'found donate!'
                                 $scope.userInteractions.donate = 1
                             when 'email'
-                                console.log 'found email!'
                                 $scope.userInteractions.email = 1
                             when 'why'
-                                console.log 'found why!'
                                 $scope.userInteractions.why = 1
                             when 'social'
-                                console.log 'found social!'
                                 $scope.userInteractions.social = 1
                             when 'profile'
-                                console.log 'found profile!'
                                 $scope.userInteractions.profile = 1
                             when 'goal1'
-                                console.log 'found goal 1!'
                                 $scope.userInteractions.goal1 = 1
                             when 'goal2'
-                                console.log 'found goal 2!'
                                 $scope.userInteractions.goal2 = 1
-                        else
-                          console.log 'the note and the fr-id didnt match'
               if $scope.sqvm.surveyModel.question_key_what_is_why != null
-                console.log 'profile check WHYYYYY'
                 $scope.profileChecklistItems.why = 1
               if $scope.sqvm.surveyModel.question_key_hw_years_participated
-                console.log 'profile check YEARSSSSS'
                 $scope.profileChecklistItems.years = 1
               if $scope.constituent.mobile_phone
-                console.log 'profile check MOBBILLLLEE'
                 $scope.profileChecklistItems.mobile = 1
-              console.log $scope.constituent.primary_address.street1 + " / " + $scope.constituent.primary_address.city + " / " + $scope.constituent.primary_address.state + " / " + $scope.constituent.primary_address.zip + " / " + $scope.constituent.primary_address.country
               if $scope.constituent.primary_address.street1 and $scope.constituent.primary_address.city and $scope.constituent.primary_address.state and $scope.constituent.primary_address.zip and $scope.constituent.primary_address.country != '' | null
-                console.log 'ALL ADDRESS FIELDS ARE FILLED IN'
                 $scope.profileChecklistItems.street = 1
               $scope.profileProgress = $scope.profileChecklistItems.mobile + $scope.profileChecklistItems.years + $scope.profileChecklistItems.street + $scope.profileChecklistItems.why
               if $scope.profileProgress is 0
                 $scope.profilePercent = 0
               else
                 $scope.profilePercent = $scope.profileProgress / 4 * 100
-                console.log 'profile percent = ' + $scope.profilePercent
               if $rootScope.updatedProfile is 'TRUE' && $scope.userInteractions.page is 0
-                console.log 'update page interaction needs to be set and update our local object'
                 $scope.userInteractions.page = 1
                 logUserInt('page',$scope.frId)
               if $rootScope.isSelfDonor is 'TRUE' && $scope.userInteractions.donate is 0
-                console.log 'self donor interaction needs to be set and update our local object'
                 $scope.userInteractions.donate = 1
                 logUserInt('donate',$scope.frId)
               if $scope.messageCounts.sentMessages > 0 && $scope.userInteractions.email is 0
-                console.log 'email sent interaction needs to be set and update our local object'
                 $scope.userInteractions.email = 1
                 logUserInt('email',$scope.frId)
               if $scope.sqvm.surveyModel.question_key_what_is_why != null && $scope.userInteractions.why is 0
-                console.log 'why interaction needs to be set and update our local object'
                 $scope.userInteractions.why = 1
                 logUserInt('why',$scope.frId)
               if $scope.profileChecklistItems.why is 1 && $scope.profileChecklistItems.years is 1 && $scope.profileChecklistItems.mobile is 1 && $scope.userInteractions.profile is 0
-                console.log 'all profile questions are filled in, set interaction and local object'
                 $scope.userInteractions.profile = 1
                 logUserInt('profile',$scope.frId)
-              console.log 'progress - ',$scope.participantProgress.percent
               if $scope.participantProgress.percent >= 100 && $scope.userInteractions.goal1 is 0
-                console.log 'goal1 interaction needs to be set and update our local object'
                 $scope.userInteractions.goal1 = 1
                 logUserInt('goal1',$scope.frId)
               runLBroutes()
@@ -481,11 +409,8 @@ angular.module 'trPcControllers'
         PCLogin = sessionStorage.getItem('PCLogin');
         if not PCLogin
           skipLBs = 0
-          console.log 'there is no session variable'
-        console.log $scope.userInteractions
         sessionStorage.setItem 'PCLogin', 'yes'
         if $rootScope.participantRegistration.lastPC2Login is '0'
-          console.log 'first time in runLBroutes'
           $scope.dashboardGreeting = 'page'
           if skipLBs is 0
             $scope.LBthankYouRegisteringModal = $uibModal.open
@@ -496,7 +421,6 @@ angular.module 'trPcControllers'
                 _gaq.push(['t2._trackEvent', 'HW PC', 'click', 'Update my page - thank you for registering lightbox'])
             , 500
         else if $scope.userInteractions.page is 0
-          console.log 'launch welcome back lightbox'
           $scope.dashboardGreeting = 'page'
           if skipLBs is 0
             $scope.LBwelcomeBackModal = $uibModal.open
@@ -507,7 +431,6 @@ angular.module 'trPcControllers'
                 _gaq.push(['t2._trackEvent', 'HW PC', 'click', 'Update my story - welcome back lightbox'])
             , 500
         else if $scope.userInteractions.donate is 0
-          console.log 'launch donate lightbox'
           $scope.dashboardGreeting = 'donate'
           if skipLBs is 0
             $scope.LBdonateModal = $uibModal.open
@@ -518,7 +441,6 @@ angular.module 'trPcControllers'
                 _gaq.push(['t2._trackEvent', 'HW PC', 'click', 'Make A Donation - donate lightbox'])
             , 500
         else if $scope.userInteractions.email is 0
-          console.log 'launch email lightbox'
           $scope.dashboardGreeting = 'email'
           if skipLBs is 0
             $scope.LBemailModal = $uibModal.open
@@ -529,21 +451,18 @@ angular.module 'trPcControllers'
                 _gaq.push(['t2._trackEvent', 'HW PC', 'click', 'Send Email - email lightbox'])
             , 500
         else if $scope.userInteractions.why is 0
-          console.log 'launch why lightbox'
           $scope.dashboardGreeting = 'why'
           if skipLBs is 0
             $scope.LBwhyModal = $uibModal.open
               scope: $scope
               templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBwhy.html'
         else if $scope.userInteractions.social is 0
-          console.log 'launch social lightbox'
           $scope.dashboardGreeting = 'social'
           if skipLBs is 0
             $scope.LBsocialModal = $uibModal.open
               scope: $scope
               templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBsocial.html'
         else if $scope.userInteractions.profile is 0
-          console.log 'launch profile lightbox'
           $scope.dashboardGreeting = 'profile'
           if skipLBs is 0
             $scope.LBprofileModal = $uibModal.open
@@ -554,14 +473,12 @@ angular.module 'trPcControllers'
                 _gaq.push(['t2._trackEvent', 'HW PC', 'click', 'Whats your why - profile lightbox'])
             , 500
         else if $scope.userInteractions.goal1 is 0 && $scope.participantProgress.percent >= 50
-          console.log 'launch goal1 lightbox'
           $scope.dashboardGreeting = 'goal1'
           if skipLBs is 0
             $scope.LBgoal1Modal = $uibModal.open
               scope: $scope
               templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBgoal1.html'
         else if $scope.userInteractions.goal2 is 0 && $scope.participantProgress.percent >= 100
-          console.log 'launch goal2 lightbox'
           $scope.dashboardGreeting = 'goal2'
           if skipLBs is 0
             $scope.LBgoal2Modal = $uibModal.open
@@ -569,42 +486,30 @@ angular.module 'trPcControllers'
               templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBgoal2.html'
 
       runHeaderCheck = ->
-        console.log 'running header check function'
         if $scope.userInteractions.page is 0
-          console.log 'update page header message only'
           $scope.dashboardGreeting = 'page'
         else if $scope.userInteractions.donate is 0
-          console.log 'donate header message only'
           $scope.dashboardGreeting = 'donate'
         else if $scope.userInteractions.email is 0
-          console.log 'email header message only'
           $scope.dashboardGreeting = 'email'
         else if $scope.userInteractions.why is 0
-          console.log 'why header message only'
           $scope.dashboardGreeting = 'why'
         else if $scope.userInteractions.social is 0
-          console.log 'social header message only'
           $scope.dashboardGreeting = 'social'
         else if $scope.userInteractions.profile is 0
-          console.log 'profile header message only'
           $scope.dashboardGreeting = 'profile'
         else if $scope.userInteractions.goal1 is 0 && $scope.participantProgress.percent >= 50
-          console.log 'goal 1 header message only'
           $scope.dashboardGreeting = 'goal1'
         else if $scope.userInteractions.goal2 is 0 && $scope.participantProgress.percent >= 100
-          console.log 'goal 2 header message only'
           $scope.dashboardGreeting = 'goal2'
         else
-          console.log 'defualt fall back, nothing matched header check'
           $scope.dashboardGreeting = 'default'
 
       $scope.LBgoalOneSubmit = ->
-        console.log 'submitted the goal1 send email button'
         logUserInt('goal1',$scope.frId)
         $location.path '/email/compose'
 
       $scope.LBgoalTwoSubmit = ->
-        console.log 'submitted the goal2 send email button'
         logUserInt('goal2',$scope.frId)
         $scope.LBgoal2Modal.close()
         $scope.editGoal('Participant')
@@ -613,27 +518,13 @@ angular.module 'trPcControllers'
         $uibModalStack.dismissAll()
 
       $scope.sendGAEvent = (event) ->
-        console.log event
         _gaq.push(['t2._trackEvent', 'HW PC', 'click', event])
 
       $scope.LBskip = (interaction) ->
-        console.log interaction + ' will be skipped from now on'
         logUserInt(interaction,$scope.frId)
         $scope.userInteractions[interaction] = 1
         $uibModalStack.dismissAll()
-        #don't re-check and launch lightboxes
-        #runLBroutes()
-        #but let us run header update
         runHeaderCheck()
-
-      $scope.resetInt = (interID) ->
-        console.log 'submitted id = ',interID
-        ConstituentService.updateInteraction 'interaction_id=' + interID + '&interaction_subject=void'
-          .then (response) ->
-            if response.data.updateConsResponse?.message
-              console.log 'changed interaction to VOID'
-            else
-              console.log 'failed'
 
       $scope.goSocial = ->
         logUserInt('social',$scope.frId)
@@ -668,16 +559,12 @@ angular.module 'trPcControllers'
           years: 0
         }
         if $scope.sqvm.surveyModel.question_key_what_is_why != null
-          console.log 'profile check WHYYYYY'
           $scope.profileChecklistItems.why = 1
         if $scope.sqvm.surveyModel.question_key_hw_years_participated
-          console.log 'profile check YEARSSSSS'
           $scope.profileChecklistItems.years = 1
         if $scope.constituent.mobile_phone
-          console.log 'profile check MOBBILLLLEE'
           $scope.profileChecklistItems.mobile = 1
         if $scope.constituent.primary_address.street1 and $scope.constituent.primary_address.city and $scope.constituent.primary_address.state and $scope.constituent.primary_address.zip and $scope.constituent.primary_address.country != '' | null
-          console.log 'ALL ADDRESS FIELDS ARE FILLED IN'
           $scope.profileChecklistItems.street = 1
         $scope.profileProgress = $scope.profileChecklistItems.mobile + $scope.profileChecklistItems.years + $scope.profileChecklistItems.street + $scope.profileChecklistItems.why
         if $scope.profileProgress is 0
@@ -688,14 +575,12 @@ angular.module 'trPcControllers'
           runHeaderCheck()
         else
           $scope.profilePercent = $scope.profileProgress / 4 * 100
-          console.log 'profile percent = ' + $scope.profilePercent
         $scope.reLaunchprofileChecklist()
 
       $scope.submittedMobile = false
       $scope.updateEditMobile = ($event) ->
         $scope.LBmobileProfileModal.close()
         $scope.updateUserProfile($event)
-        #$scope.updateSurveyResponses($event)
         $timeout ->
           reCheckProfileItems()
         , 250
@@ -728,7 +613,6 @@ angular.module 'trPcControllers'
             #$scope.cancelEditPersonalVideo = ->
               #$scope.LBwhyVideoProfileModal.close()
           when 'mobile'
-            console.log 'it is mobile'
             $scope.LBprofileModal.close()
             $scope.LBmobileProfileModal = $uibModal.open
               scope: $scope
@@ -737,7 +621,6 @@ angular.module 'trPcControllers'
               $scope.LBmobileProfileModal.close()
               reCheckProfileItems()
           when 'street'
-            console.log 'it is street'
             $scope.LBprofileModal.close()
             $scope.LBstreetProfileModal = $uibModal.open
               scope: $scope
@@ -746,7 +629,6 @@ angular.module 'trPcControllers'
               $scope.LBstreetProfileModal.close()
               reCheckProfileItems()
           when 'years'
-            console.log 'it is years'
             $scope.LBprofileModal.close()
             $scope.LByearsProfileModal = $uibModal.open
               scope: $scope
@@ -777,12 +659,10 @@ angular.module 'trPcControllers'
         name: ''
 
       $scope.updateTeamName = ->
-        console.log 'name input = ' + $scope.updateTeamNameInput.name
         dataStr = 'team_name=' + $scope.updateTeamNameInput.name
         updateGoalPromise = TeamraiserTeamService.updateTeamInformation dataStr
           .then (response) ->
             if response.data?.errorResponse?
-              console.log 'failed Team Name'
               $scope.updateTeamNameFailure = true
               if response.data.errorResponse.message
                 $scope.updateTeamNameFailureMessage = response.data.errorResponse.message
@@ -838,10 +718,6 @@ angular.module 'trPcControllers'
                 percent = $scope.participantProgress.percent
                 if $scope.participantProgress.goal isnt 0
                   percent = Math.ceil(($scope.participantProgress.raised / $scope.participantProgress.goal) * 100)
-                #if percent < 2
-                  #percent = 2
-                #if percent > 98
-                  #percent = 98
                 if percent > 100
                   percent = 100
                 $scope.participantProgress.percent = percent
@@ -859,10 +735,6 @@ angular.module 'trPcControllers'
                   percent = $scope.teamProgress.percent
                   if $scope.teamProgress.goal isnt 0
                     percent = Math.ceil(($scope.teamProgress.raised / $scope.teamProgress.goal) * 100)
-                  #if percent < 2
-                    #percent = 2
-                  #if percent > 98
-                    #percent = 98
                   if percent > 100
                     percent = 100
                   $scope.teamProgress.percent = percent
@@ -880,10 +752,6 @@ angular.module 'trPcControllers'
                   percent = $scope.companyProgress.percent
                   if $scope.companyProgress.goal isnt 0
                     percent = Math.ceil(($scope.companyProgress.raised / $scope.companyProgress.goal) * 100)
-                  #if percent < 2
-                    #percent = 2
-                  #if percent > 98
-                    #percent = 98
                   if percent > 100
                     percent = 100
                   $scope.companyProgress.percent = percent
@@ -1551,7 +1419,6 @@ angular.module 'trPcControllers'
       $scope.getParticipantShortcut()
 
       $scope.personalPageUrlSecure = $scope.baseDomain + '/site/TR?fr_id=' + $scope.frId + '&pg=personal&px=' + $scope.consId
-      console.log 'secure personal page = ' + $scope.personalPageUrlSecure
 
       $scope.editPageUrlOptions =
         updateUrlFailure: false
