@@ -661,6 +661,12 @@ angular.module 'trPcControllers'
           , 500
 
       reCheckProfileItems = ->
+        $scope.profileChecklistItems = {
+          mobile: 0
+          why: 0
+          street: 0
+          years: 0
+        }
         if $scope.sqvm.surveyModel.question_key_what_is_why != null
           console.log 'profile check WHYYYYY'
           $scope.profileChecklistItems.why = 1
