@@ -42,6 +42,8 @@ angular.module 'trPcControllers'
               $scope.constituent.primary_address.street2 = ''
             if angular.equals({}, $scope.constituent.primary_address.city) is true
               $scope.constituent.primary_address.city = ''
+            if angular.equals({}, $scope.constituent.primary_address.state) is true
+              $scope.constituent.primary_address.state = ''
             if angular.equals({}, $scope.constituent.primary_address.zip) is true
               $scope.constituent.primary_address.zip = ''
             if angular.equals({}, $scope.constituent.mobile_phone) is true
@@ -370,7 +372,7 @@ angular.module 'trPcControllers'
       $scope.profileChecklistItems = {
         mobile: 0
         why: 0
-        street: 1
+        street: 0
         years: 0
       }
       GetUserInt = ->
@@ -431,6 +433,10 @@ angular.module 'trPcControllers'
               if $scope.constituent.mobile_phone
                 console.log 'profile check MOBBILLLLEE'
                 $scope.profileChecklistItems.mobile = 1
+              console.log $scope.constituent.primary_address.street1 + " / " + $scope.constituent.primary_address.city + " / " + $scope.constituent.primary_address.state + " / " + $scope.constituent.primary_address.zip + " / " + $scope.constituent.primary_address.country
+              if $scope.constituent.primary_address.street1 and $scope.constituent.primary_address.city and $scope.constituent.primary_address.state and $scope.constituent.primary_address.zip and $scope.constituent.primary_address.country != '' | null
+                console.log 'ALL ADDRESS FIELDS ARE FILLED IN'
+                $scope.profileChecklistItems.street = 1
               $scope.profileProgress = $scope.profileChecklistItems.mobile + $scope.profileChecklistItems.years + $scope.profileChecklistItems.street + $scope.profileChecklistItems.why
               if $scope.profileProgress is 0
                 $scope.profilePercent = 0
@@ -496,10 +502,10 @@ angular.module 'trPcControllers'
             $scope.LBwelcomeBackModal = $uibModal.open
               scope: $scope
               templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBwelcomeBack.html'
-          $timeout ->
-            document.getElementById('update_my_story_welcome_back_lb').onclick = ->
-              _gaq.push(['t2._trackEvent', 'HW PC', 'click', 'Update my story - welcome back lightbox'])
-          , 500
+            $timeout ->
+              document.getElementById('update_my_story_welcome_back_lb').onclick = ->
+                _gaq.push(['t2._trackEvent', 'HW PC', 'click', 'Update my story - welcome back lightbox'])
+            , 500
         else if $scope.userInteractions.donate is 0
           console.log 'launch donate lightbox'
           $scope.dashboardGreeting = 'donate'
@@ -664,6 +670,9 @@ angular.module 'trPcControllers'
         if $scope.constituent.mobile_phone
           console.log 'profile check MOBBILLLLEE'
           $scope.profileChecklistItems.mobile = 1
+        if $scope.constituent.primary_address.street1 and $scope.constituent.primary_address.city and $scope.constituent.primary_address.state and $scope.constituent.primary_address.zip and $scope.constituent.primary_address.country != '' | null
+          console.log 'ALL ADDRESS FIELDS ARE FILLED IN'
+          $scope.profileChecklistItems.street = 1
         $scope.profileProgress = $scope.profileChecklistItems.mobile + $scope.profileChecklistItems.years + $scope.profileChecklistItems.street + $scope.profileChecklistItems.why
         if $scope.profileProgress is 0
           $scope.profilePercent = 0
@@ -703,14 +712,15 @@ angular.module 'trPcControllers'
       $scope.LBprofileLinks = (section) ->
         console.log 'section = ' + section
         switch section
-          when 'why'
-            console.log 'it is why'
-            $scope.LBprofileModal.close()
-            $scope.LBwhyVideoProfileModal = $uibModal.open
-              scope: $scope
-              templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/profileWhyVideo.html'
-            $scope.cancelEditPersonalVideo = ->
-              $scope.LBwhyVideoProfileModal.close()
+          #save for future Why Profile Box
+          #when 'why'
+            #console.log 'it is why'
+            #$scope.LBprofileModal.close()
+            #$scope.LBwhyVideoProfileModal = $uibModal.open
+              #scope: $scope
+              #templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/profileWhyVideo.html'
+            #$scope.cancelEditPersonalVideo = ->
+              #$scope.LBwhyVideoProfileModal.close()
           when 'mobile'
             console.log 'it is mobile'
             $scope.LBprofileModal.close()
@@ -719,6 +729,7 @@ angular.module 'trPcControllers'
               templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/profileMobile.html'
             $scope.cancelEditMobile = ->
               $scope.LBmobileProfileModal.close()
+              reCheckProfileItems()
           when 'street'
             console.log 'it is street'
             $scope.LBprofileModal.close()
@@ -727,6 +738,7 @@ angular.module 'trPcControllers'
               templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/profileStreet.html'
             $scope.cancelEditStreet = ->
               $scope.LBstreetProfileModal.close()
+              reCheckProfileItems()
           when 'years'
             console.log 'it is years'
             $scope.LBprofileModal.close()
@@ -735,6 +747,7 @@ angular.module 'trPcControllers'
               templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/profileYears.html'
             $scope.cancelEditYears = ->
               $scope.LByearsProfileModal.close()
+              reCheckProfileItems()
 
       $scope.editSurvivor = ->
         $scope.LBsurvivorModal = $uibModal.open
