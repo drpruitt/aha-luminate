@@ -267,13 +267,13 @@ main > .container {
       margin-left: 8px;
     }
   }
-
+  
   &.open {
     > .dropdown-menu {
       width: 100%;
     }
   }
-
+  
   .dropdown-menu {
     > li {
       > a {
@@ -285,9 +285,11 @@ main > .container {
         &:active {
           text-decoration: none;
         }
-
+        
         .badge {
           float: right;
+          min-width: 26px;
+          margin-left: 6px;
         }
       }
     }
@@ -298,16 +300,16 @@ main > .container {
   .list-group-item-heading {
     font-size: 18px;
   }
-
+  
   .list-group-item {
     font-size: 16px;
-
+    
     .checkbox {
       margin: 0;
-
+      
       label {
         padding-left: 25px;
-
+        
         a {
           &,
           &:link,
@@ -321,7 +323,7 @@ main > .container {
       }
     }
   }
-
+  
   a.list-group-item {
     &,
     &:link,
@@ -331,13 +333,15 @@ main > .container {
     &:active {
       font-weight: 500;
       text-decoration: none;
-    }
-
-    &:not(.active) {
-      &,
-      &:link {
+      
+      .badge {
+        min-width: 26px;
+        margin-left: 6px;
+      }
+      
+      &:not(.active) {
         color: #555555;
-
+        
         .badge {
           color: $brand-white;
         }
