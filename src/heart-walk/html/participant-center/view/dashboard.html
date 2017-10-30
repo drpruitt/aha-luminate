@@ -154,7 +154,7 @@
           <div class="manage_walk_items clearfix">
             <div class="pull-left">
               <div class="manage_walk_header">Survivor:</div>
-              <p><span ng-if="constituent.name && constituent.name.first">{{constituent.name.first}}</span><span ng-if="!constituent.name.first">Participant</span>, <span ng-if="sqvm.surveyModel.question_key_hw_recognize_survivor == 'Yes'">you are being recognized as a survivor.</span><span ng-if="sqvm.surveyModel.question_key_hw_recognize_survivor == 'No'">would you like to be recognized as a survivor?</span></p>
+              <p><span ng-if="constituent.name && constituent.name.first">{{constituent.name.first}}</span><span ng-if="!constituent.name.first">Participant</span>, <span ng-if="sqvm.surveyModel.question_key_hw_recognize_survivor == 'Yes'">you are being recognized as a survivor.</span><span ng-if="sqvm.surveyModel.question_key_hw_recognize_survivor == 'No' || !sqvm.surveyModel.question_key_hw_recognize_survivor">would you like to be recognized as a survivor?</span></p>
             </div>
             <div class="pull-right">
               <a href id="edit_status" class="btn btn-primary-inverted" ng-click="editSurvivor()">Edit Status</a>
