@@ -16,7 +16,7 @@
     "load-grunt-tasks": "^3.5.2"
   },
   "devDependencies": {
-    "autoprefixer": "^7.1.5",
+    "autoprefixer": "^7.1.6",
     "glob": "^7.1.2",
     "grunt-cli": "^1.2.0",
     "grunt-connect-proxy": "git+https://github.com/drewzboto/grunt-connect-proxy.git",
