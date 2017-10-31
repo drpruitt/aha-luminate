@@ -3,6 +3,6 @@ angular.module 'ahaLuminateApp'
     restrict: 'A'
     scope:
       iframeLoaded: '='
-    link: (scope, element, attrs) ->
+    link: (scope, element) ->
       element.on 'load', ->
-        scope.iframeLoaded(element)
+        scope.iframeLoaded element
