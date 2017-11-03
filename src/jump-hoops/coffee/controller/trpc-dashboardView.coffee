@@ -605,8 +605,8 @@ angular.module 'trPcControllers'
           error: (response) ->
             # TODO
           success: (response) ->
-            if response.student.student_id != null and typeof response.student.avatar_url != 'undefined'
-              avatarURL = response.student.avatar_url
+            if response.data.student.student_id != null and typeof response.data.student.avatar_url != 'undefined'
+              avatarURL = response.data.student.avatar_url
             else
               avatarURL = 'https://hearttools.heart.org/aha_ym18_dev/virtualworld/img/avatar-charger.png'
             $scope.personalInfo.avatar = avatarURL
