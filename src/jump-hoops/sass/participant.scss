@@ -25,6 +25,7 @@
 .entry-container{
 	max-width:482px;
 	min-height:406px;
+	position:relative;
 }
 .entry-division{
 	background: #a0ade1;
@@ -66,8 +67,8 @@
 	display:block;
 	background: url(../image/bg_entry-right.png) no-repeat top;
 	position:absolute;
- 	left: 225px;
- 	top: 65px;
+ 	right: 20px;
+ 	top: 40px;
 	height: 406px;
 	width:208px;
 }
