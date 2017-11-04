@@ -123,7 +123,7 @@
             <p ng-if="frIdMultidate == false && eventInfo.location_name">Location: {{eventInfo.location_name}}</p>
             <p ng-if="frIdMultidate == true && eventLocation">Location: {{eventLocation}}</p>
             <p ng-if="eventInfo.event_date && eventInfo.event_date != ''">Date: {{eventInfo.event_date | date : 'MMMM d'}}</p>
-            <a id="view_map" class="btn btn-primary-inverted view_map" ng-href="{{viewMap}}" target="=_blank">View Map</a>
+            <a ng-if="viewMap !== undefined" id="view_map" class="btn btn-primary-inverted view_map" ng-href="{{viewMap}}" target="=_blank">View Map</a>
           </div>
         </div>
         <div class="heart_pc_main_page">
