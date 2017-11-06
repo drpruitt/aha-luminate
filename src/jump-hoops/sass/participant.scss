@@ -63,6 +63,10 @@
 	border-radius:5px;
 	text-decoration: none;
 }
+.ym-activity-box.ym-activity-box--virtual a.entry-button:hover{
+	background:#acde47;
+	color:#333;
+}
 .right-column-images{
 	display:block;
 	background: url(../image/bg_entry-right.png) no-repeat top;
