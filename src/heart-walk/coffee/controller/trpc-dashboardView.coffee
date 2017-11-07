@@ -177,10 +177,11 @@ angular.module 'trPcControllers'
                   $scope.teamGifts.page = 1
                   $scope.getTeamGifts()
                 closeAddOfflineGiftModal()
-                $scope.first_name= ''
-                $scope.last_name= ''
-                $scope.gift_amount= ''
-                $scope.name_error= false
+                $scope.newOfflineGift.first_name= ''
+                $scope.newOfflineGift.last_name= ''
+                $scope.newOfflineGift.gift_amount= ''
+                $scope.newOfflineGift.email= ''
+                $scope.newOfflineGift.name_error= false
                 
 
       #Profile checklist
