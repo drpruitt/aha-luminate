@@ -177,6 +177,11 @@ angular.module 'trPcControllers'
                   $scope.teamGifts.page = 1
                   $scope.getTeamGifts()
                 closeAddOfflineGiftModal()
+                $scope.first_name= ''
+                $scope.last_name= ''
+                $scope.gift_amount= ''
+                $scope.name_error= false
+                
 
       #Profile checklist
       $scope.consProfilePromises = []
