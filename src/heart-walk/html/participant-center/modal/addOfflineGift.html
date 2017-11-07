@@ -9,11 +9,11 @@
     <p>Enter donations from friends, family or businesses here. For donations from businesses, leave the First Name field blank and enter the entire company name in the Last Name/Company Name field.</p>
     <div class="form-group">
       <label for="">* First Name:</label>
-      <input type="text" class="form-control" id="" ng-model="newOfflineGift.first_name" name="giftFirstName">
+      <input type="text" class="form-control" id="" ng-model="newOfflineGift.first_name" required>
     </div>
     <div class="form-group">
       <label for="">* Last Name/Company Name:</label>
-      <input type="text" class="form-control" id="" ng-model="newOfflineGift.last_name" name="giftLastName">
+      <input type="text" class="form-control" id="" ng-model="newOfflineGift.last_name" required>
     </div>
 		<div ng-if="newOfflineGift.name_error && !newOfflineGift.last_name && !newOfflineGift.first_name">
 			<label class="error" for="names">
@@ -49,12 +49,12 @@
   <div class="modal-footer">
     <div class="clearfix">
       <div class="pull-left">
-        <button type="button" class="btn btn-primary-inverted text-uppercase" ng-click="cancelAddOfflineGift()">
+        <button type="button" class="btn btn-primary-inverted text-uppercase" ng-click="sendGAEvent('Cancel Adding Offline Gift');cancelAddOfflineGift()">
           Cancel
         </button>
       </div>
       <div class="pull-right">
-        <button type="submit" class="btn btn-primary text-uppercase">
+        <button type="submit" class="btn btn-primary text-uppercase" ng-click="sendGAEvent('Submit Adding Offline Gift')">
           Submit
         </button>
       </div>

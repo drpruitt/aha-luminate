@@ -213,11 +213,9 @@ angular.module 'trPcControllers'
           downloadHeaders: [
             'Name'
             'Amount'
-            'Ecards'
             'Emails'
             'T-shirt'
             'Teacher'
-            'Challenge'
           ]
           sortColumn: ''
           sortAscending: false
@@ -270,11 +268,9 @@ angular.module 'trPcControllers'
                       schoolDetailDownloadData.push [
                         firstName + ' ' + lastName
                         amountFormatted.replace('$', '').replace /,/g, ''
-                        ecardsSent
                         emailsSent
                         tshirtSize
                         teacherName
-                        challenge
                       ]
                     $scope.schoolDetailStudents.students = schoolDetailStudents
                     $scope.schoolDetailStudents.downloadData = schoolDetailDownloadData

@@ -224,11 +224,10 @@ angular.module 'trPcControllers'
           downloadHeaders: [
             'Name'
             'Amount'
-            'Ecards'
             'Emails'
             'T-shirt'
-            'Teacher'
-            'Challenge'
+            'Blood Pressure Checked'
+            'Min. of Activity'
           ]
           sortColumn: ''
           sortAscending: false
@@ -291,7 +290,6 @@ angular.module 'trPcControllers'
                       districtDetailDownloadData.push [
                         firstName + ' ' + lastName
                         amountFormatted.replace('$', '').replace /,/g, ''
-                        ecardsSent
                         emailsSent
                         tshirtSize
                         bloodPressureCheck

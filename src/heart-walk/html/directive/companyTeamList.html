@@ -21,6 +21,16 @@
       </a>
     </div>
   </div>
+  <div class="heart-company-team-list__company-name" ng-if="teams.length == 0">
+    <div class="clearfix">
+      <div class="pull-left">
+        No Teams Yet
+      </div>
+      <a class="pull-right" ng-click="toggleCompanyTeamList()">
+        <i class="glyphicon ng-scope" ng-class="{'glyphicon-triangle-bottom': isOpen, 'glyphicon-triangle-left': !isOpen}"></i>
+      </a>
+    </div>
+  </div>
   <div class="heart-company-team-list__body" ng-if="teams.length > 0 && isOpen">
     <div class="heart-company-team-list__row" ng-repeat="team in teams track by $index">
       <div class="heart-company-team-list__column heart-company-team-list__column--name">
