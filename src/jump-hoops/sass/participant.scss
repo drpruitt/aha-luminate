@@ -56,12 +56,15 @@
 .ym-activity-box.ym-activity-box--virtual a.entry-button{
 	font-size:18px;
 	line-height:28px;
-	padding:5px 25px;
+	padding:5px 20px;
 	color:#fff;
 	font-family: 'Luckiest Guy', cursive;
 	background:#ff0096;
 	border-radius:5px;
 	text-decoration: none;
+	font-style:none;
+	font-weight:normal;
+	letter-spacing:0.05em
 }
 .ym-activity-box.ym-activity-box--virtual a.entry-button:hover{
 	background:#acde47;
