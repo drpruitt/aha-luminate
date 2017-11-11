@@ -37,7 +37,7 @@
         </button>
         <label ng-if="donationLevel.userSpecified == 'true'" class="sr-only" for="other_amount">Other Amount</label>
         <span ng-if="donationLevel.userSpecified == 'true'" class="ym-donation-levels__dollar-sign">$</span>
-        <input type="text" class="btn btn-toggle btn-enter {{donationLevel.classLevel}}" ng-class="{'active': donationInfo.levelChecked == donationLevel.classLevel}" title="other_amount" ng-if="donationLevel.userSpecified == 'true'" ng-change="enterAmount(otherAmt)" ng-keyup="selectLevel('other', donationLevel.levelId)" ng-model="otherAmt" ng-click="selectLevel('other', donationLevel.levelId)" placeholder="Other" ng-value="donationInfo.otherAmt" aria-describedby="message-level-{{donationLevel.levelId}}">
+        <input type="text" name="otherAmt" class="btn btn-toggle btn-enter {{donationLevel.classLevel}}" ng-class="{'active': donationInfo.levelChecked == donationLevel.classLevel}" title="other_amount" ng-if="donationLevel.userSpecified == 'true'" ng-change="enterAmount(otherAmt)" ng-keyup="selectLevel('other', donationLevel.levelId)" ng-model="otherAmt" ng-click="selectLevel('other', donationLevel.levelId)" placeholder="Other" ng-value="donationInfo.otherAmt" aria-describedby="message-level-{{donationLevel.levelId}}">
       </div>
     </div>
     <div class="help-block ng-hide" role="alert" ng-show="otherAmt.$error.amount" aria-hidden="true">Donations of all amounts are greatly appreciated.<br>Online donations have a $10 minimum</div>
