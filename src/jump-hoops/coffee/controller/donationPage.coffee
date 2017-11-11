@@ -272,7 +272,6 @@ angular.module 'ahaLuminateControllers'
         e.preventDefault()
         console.log $scope.donationLevels.activeLevel
         console.log $scope.donationInfo
-        if $scope.
         if $scope.donationInfo.levelType == "other" && ($scope.donationInfo.levelType.otherAmt < 10 || $scope.donationInfo.levelType.otherAmt.isNaN())
           $scope.otherAmt.$setValidity("amount", false);
           window.scrollTo 0, 0
