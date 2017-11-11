@@ -45,6 +45,7 @@
         {{donationLevel.levelLabel}}
       </p>
     </div>
+    <div class="help-block ng-hide" role="alert" ng-show="otherAmt.$error.amount" aria-hidden="true">Donations of all amounts are greatly appreciated.<br>Online donations have a $10 minimum</div>
     <div class="ym-donation-levels__message--installment level--installment"  ng-class="{'hidden': donationInfo.giftType != 'monthly'}">
       <p>
         An installment gift allows you flexibility to give at a higher level and pay over time.
