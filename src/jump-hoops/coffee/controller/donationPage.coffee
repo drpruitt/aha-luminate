@@ -277,6 +277,7 @@ angular.module 'ahaLuminateControllers'
           window.scrollTo 0, 0
         else
           $scope.otherAmt.$setValidity("amount", true);
+          angular.element('#ProcessForm').submit()
           
       loggedInForm = ->
         angular.element('#donor_first_name_row').addClass 'hidden'
