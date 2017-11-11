@@ -270,7 +270,8 @@ angular.module 'ahaLuminateControllers'
 
       $scope.submitDonationForm = (e) ->
         e.preventDefault()
-        console.log 'submitDonationForm()'
+        console.log $scope.donationLevels.activeLevel
+        console.log $scope.donationInfo
         false
           
       loggedInForm = ->
