@@ -268,15 +268,15 @@ angular.module 'ahaLuminateControllers'
         else
           angular.element('#billing_info_same_as_donorname').prop 'checked', false
 
-      $scope.submitDonationForm = (e) ->
+      $scope.submitDonationForm = (e, form) ->
         e.preventDefault()
         console.log $scope.donationLevels.activeLevel
         console.log $scope.donationInfo
         if $scope.donationInfo.levelType == "other" && ($scope.donationInfo.otherAmt < 10 || $scope.donationInfo.otherAmt.isNaN())
-          $scope.otherAmt.$setValidity("amount", false);
+          form.otherAmt.$setValidity("amount", false);
           window.scrollTo 0, 0
         else
-          $scope.otherAmt.$setValidity("amount", true);
+          form.otherAmt.$setValidity("amount", true);
           angular.element('#ProcessForm').submit()
           
       loggedInForm = ->
