@@ -272,11 +272,11 @@ angular.module 'ahaLuminateControllers'
         e.preventDefault()
         console.log $scope.donationLevels.activeLevel
         console.log $scope.donationInfo
-        if $scope.donationInfo.levelType == "other" && ($scope.donationInfo.otherAmt < 10 || $scope.donationInfo.otherAmt.isNaN())
-          form.otherAmt.$setValidity("amount", false);
+        if $scope.donationInfo.levelType == "other" && ($scope.donationInfo.otherAmt < 10 || !$scope.donationInfo.otherAmt.isNaN())
+          $scope.ProcessForm.otherAmt.$setValidity("amount", false);
           window.scrollTo 0, 0
         else
-          form.otherAmt.$setValidity("amount", true);
+          $scope.ProcessForm.otherAmt.$setValidity("amount", true);
           angular.element('#ProcessForm').submit()
           
       loggedInForm = ->
