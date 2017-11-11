@@ -40,12 +40,12 @@
         <input type="text" class="btn btn-toggle btn-enter {{donationLevel.classLevel}}" ng-class="{'active': donationInfo.levelChecked == donationLevel.classLevel}" title="other_amount" ng-if="donationLevel.userSpecified == 'true'" ng-change="enterAmount(otherAmt)" ng-keyup="selectLevel('other', donationLevel.levelId)" ng-model="otherAmt" ng-click="selectLevel('other', donationLevel.levelId)" placeholder="Other" ng-value="donationInfo.otherAmt" aria-describedby="message-level-{{donationLevel.levelId}}">
       </div>
     </div>
+    <div class="help-block ng-hide" role="alert" ng-show="otherAmt.$error.amount" aria-hidden="true">Donations of all amounts are greatly appreciated.<br>Online donations have a $10 minimum</div>
     <div class="ym-donation-levels__message level{{donationLevel.levelId}}" id="message-level-{{donationLevel.levelId}}" ng-repeat="donationLevel in donationLevels" ng-class="{'active': donationInfo.levelChecked == donationLevel.classLevel}">
       <p>
         {{donationLevel.levelLabel}}
       </p>
     </div>
-    <div class="help-block ng-hide" role="alert" ng-show="otherAmt.$error.amount" aria-hidden="true">Donations of all amounts are greatly appreciated.<br>Online donations have a $10 minimum</div>
     <div class="ym-donation-levels__message--installment level--installment"  ng-class="{'hidden': donationInfo.giftType != 'monthly'}">
       <p>
         An installment gift allows you flexibility to give at a higher level and pay over time.
