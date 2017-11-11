@@ -268,6 +268,10 @@ angular.module 'ahaLuminateControllers'
         else
           angular.element('#billing_info_same_as_donorname').prop 'checked', false
 
+      $scope.submitDonationForm = ->
+          alert "donation form submitted"
+          false
+          
       loggedInForm = ->
         angular.element('#donor_first_name_row').addClass 'hidden'
         angular.element('#donor_last_name_row').addClass 'hidden'
