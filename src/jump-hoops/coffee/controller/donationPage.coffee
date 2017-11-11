@@ -271,7 +271,7 @@ angular.module 'ahaLuminateControllers'
       $scope.submitDonationForm = (e,form) ->
         console.log $scope.donationInfo
         console.log $scope
-        console.log form
+        console.log form.user_donation_amt
         if $scope.donationInfo.levelType == "other" && ($scope.donationInfo.otherAmt < 10 || !$scope.donationInfo.otherAmt.isNaN())
           e.preventDefault()
           window.scrollTo 0, 0
