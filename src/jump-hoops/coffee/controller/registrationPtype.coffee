@@ -78,7 +78,7 @@ angular.module 'ahaLuminateControllers'
         if $scope.participationOptionsForm.ng_donation_level_other_amount.$viewValue == undefined 
           amt = 0
         else 
-          amt = $scope.participationOptionsForm.ng_donation_level_other_amount.$viewValue
+          amt = parseInt($scope.participationOptionsForm.ng_donation_level_other_amount.$viewValue)
         console.log angular.isNumber(amt)
         console.log amt
         if $scope.donationLevels.activeLevel.isOtherAmount && (amt < 10 || !angular.isNumber(amt))
