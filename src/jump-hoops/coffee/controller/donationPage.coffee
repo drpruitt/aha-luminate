@@ -269,8 +269,7 @@ angular.module 'ahaLuminateControllers'
         else
           angular.element('#billing_info_same_as_donorname').prop 'checked', false
 
-      $scope.submitDonationForm = (e,form) ->
-        console.log $scope
+      $scope.submitDonationForm = (e) ->
         if $scope.donationInfo.levelType == "other" && ($scope.donationInfo.otherAmt < 10 || !$scope.donationInfo.otherAmt.isNaN())
           e.preventDefault()
           $location.hash "donationLevels"
