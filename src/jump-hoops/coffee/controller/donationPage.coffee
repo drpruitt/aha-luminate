@@ -2,11 +2,10 @@ angular.module 'ahaLuminateControllers'
   .controller 'DonationCtrl', [
     '$scope'
     '$rootScope'
-    '$location'
     'DonationService'
     '$timeout'
     '$q'
-    ($scope, $rootScope, $location, DonationService, $timeout, $q) ->
+    ($scope, $rootScope, DonationService, $timeout, $q) ->
       $scope.paymentInfoErrors =
         errors: []
       angular.element('.page-error:contains("There was a problem processing your request")').remove()
