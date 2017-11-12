@@ -105,6 +105,7 @@ angular.module 'ahaLuminateControllers'
           angular.element('.ym-donation-levels__message.level' + level).addClass 'active'
           angular.element('.donation-level-container.level' + level + ' input').click()
           
+          $scope.process.$setValidity("amount",true);
           $scope.donationInfo.amount = amount
           $scope.donationInfo.levelType = type
           localStorage['levelType'] = type
