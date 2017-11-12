@@ -273,7 +273,7 @@ angular.module 'ahaLuminateControllers'
         console.log $scope
         if $scope.donationInfo.levelType == "other" && ($scope.donationInfo.otherAmt < 10 || !$scope.donationInfo.otherAmt.isNaN())
           e.preventDefault()
-          window.scrollTo 0, 0
+          $location.hash "donationLevels"
           $scope.process.$setValidity("amount",false);
           
       loggedInForm = ->
