@@ -273,7 +273,7 @@ angular.module 'ahaLuminateControllers'
         if $scope.donationInfo.levelType == "other" && ($scope.donationInfo.otherAmt < 10 || !$scope.donationInfo.otherAmt.isNaN())
           e.preventDefault()
           window.scrollTo 0, 0
-          form.$setValidity("amount",false)
+          form.$valid false
           
       loggedInForm = ->
         angular.element('#donor_first_name_row').addClass 'hidden'
