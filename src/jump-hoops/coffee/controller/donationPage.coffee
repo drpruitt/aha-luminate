@@ -273,7 +273,7 @@ angular.module 'ahaLuminateControllers'
       $scope.submitDonationForm = (e) ->
         if $scope.donationInfo.levelType == "other" && ($scope.donationInfo.otherAmt < 10 || !$scope.donationInfo.otherAmt.isNaN())
           e.preventDefault()
-          $location.hash "donationLevels"
+          jQuery('html, body').animate({scrollTop: jQuery("a[name=donationLevels]").offset().top}, 0);
           $scope.process.$setValidity("amount",false);
           
       loggedInForm = ->
