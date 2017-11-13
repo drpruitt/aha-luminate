@@ -80,7 +80,7 @@ angular.module 'ahaLuminateControllers'
             amt = 0
           else 
             amt = parseInt($scope.participationOptionsForm.ng_donation_level_other_amount.$viewValue)
-          if amt < 10 || !angular.isNumber(amt) || amt == "NaN"
+          if amt < 10 || !angular.isNumber(amt) || !isNaN(amt) || amt == ""
             $scope.participationOptionsForm.ng_donation_level_other_amount.$setValidity("amount", false);
         else
           $scope.participationOptionsForm.ng_donation_level_other_amount.$setValidity("amount", true);
