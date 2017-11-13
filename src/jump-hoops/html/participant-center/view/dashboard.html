@@ -117,14 +117,14 @@
             </div>
             <div class="text-center">
               <p>
-                Send 10 emails or Ecards to friends and family.
+                Send 10 emails or ecards to friends and family.
               </p>
               <div class="ym-pc-dashboard-email-challenge-images">
                 <a ng-href="{{baseUrl}}#/email">
-                  <img src="../aha-luminate/dist/jump-hoops/image/send-emails.png" alt="Send Email">
+                  <img src="../aha-luminate/dist/jump-hoops/image/send-emails.gif" alt="Send Email">
                 </a> 
                 <a ng-href="http://hearttools.heart.org/aha_ym18{{tablePrefix == 'heartdev' ? '_dev' : ''}}/?eid={{frId}}&amp;sid={{consId}}&amp;name={{consName}}" target="_blank">
-                  <img src="../aha-luminate/dist/jump-hoops/image/send-ecards.png" alt="Send Ecard">
+                  <img src="../aha-luminate/dist/jump-hoops/image/send-ecards.gif" alt="Send Ecard">
                 </a>
               </div>
               <div class="ym-pc-dashboard-email-challenge-buttons">
@@ -377,14 +377,27 @@
           </div>
         </div>
         <div class="col-sm-6 ym-activity-box ym-activity-box--virtual">
-          <h3 class="h5">
-            My Virtual World
-          </h3>
-          <div>
+        	<div class="entry-container">
+        		<div class="entry-division green">
+        			<div class="title-banner">Enter the Monster's<br /> Virtual World!</div>
+        			<div class="text-area">
+        				Learn about heart health, play games and track your Scare Squad Points to win your own 3D printed monster.<br /><br />
+        				<a class="entry-button" href="javascript:void(0);" onclick="launchVW(this)">Enter World!</a>
+        			</div>
+        		</div>
+     		    <div class="entry-division pink">
+        			<div class="title-banner">Create your <br />monster avatar</div>
+        			<div class="text-area">
+        				Pick colors, accessories and learn how to win your very own 3D printed monster! <br /><br />
+        				<a class="entry-button" href="javascript:void(0);" onclick="launchMonsterBuilder(this);">Customize Yours!</a>
+        			</div>
+         		</div>
+		
+        		<div class="right-column-images">&nbsp;<img src="{{personalInfo.avatar}}"/></div>
+         	</div>
             <!--<a ng-href="http://hearttools.heart.org/aha_ym18{{tablePrefix == 'heartdev' ? '_dev' : ''}}/expedition/?eid={{frId}}&amp;sid={{consId}}&amp;name={{consName}}" target="_blank">-->
-              <img class="img-responsive" src="../aha-luminate/dist/jump-hoops/image/virtual-world-coming-soon.png" alt="View virtual world">
+            <!--  <img class="img-responsive" src="../aha-luminate/dist/jump-hoops/image/virtual-world-coming-soon.png" alt="View virtual world"> -->
             <!--</a>-->
-          </div>
         </div>
       </div>
     </section>
