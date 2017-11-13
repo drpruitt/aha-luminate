@@ -11,7 +11,7 @@
       <button type="submit" class="btn btn-primary">Search</button>
     </form>
   </div>
-  <div class="heart-company-team-list__company-name" ng-if="teams.length > 0">
+  <div class="heart-company-team-list__company-name"  ng-if="teams.length > 0  || isChildCompany">
     <div class="clearfix">
       <div class="pull-left">
         <a href="TR?fr_id={{frId}}&pg=company&company_id={{companyId}}"><span ng-bind-html="companyName"></span></a>
@@ -21,7 +21,7 @@
       </a>
     </div>
   </div>
-  <div class="heart-company-team-list__company-name" ng-if="teams.length == 0">
+  <div class="heart-company-team-list__company-name" ng-if="teams.length == 0  && !isChildCompany">
     <div class="clearfix">
       <div class="pull-left">
         No Teams Yet

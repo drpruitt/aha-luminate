@@ -123,7 +123,7 @@
             <p ng-if="frIdMultidate == false && eventInfo.location_name">Location: {{eventInfo.location_name}}</p>
             <p ng-if="frIdMultidate == true && eventLocation">Location: {{eventLocation}}</p>
             <p ng-if="eventInfo.event_date && eventInfo.event_date != ''">Date: {{eventInfo.event_date | date : 'MMMM d'}}</p>
-            <a id="view_map" class="btn btn-primary-inverted view_map" ng-href="{{viewMap}}" target="=_blank">View Map</a>
+            <a ng-if="viewMap !== undefined" id="view_map" class="btn btn-primary-inverted view_map" ng-href="{{viewMap}}" target="_blank">View Map</a>
           </div>
         </div>
         <div class="heart_pc_main_page">
@@ -195,7 +195,7 @@
         <div class="heart_pc_my_donors clearfix">
           <div class="clearfix">
             <h2 class="pull-left">My Donors</h2>
-            <a id="download_donation_list" class="btn btn-primary-inverted pull-right" ng-if="participantGifts.totalNumber > 0" ng-href="TRParticipantDownload/Personal_Donations.csv?download_type=personal_donations&fr_id={{frId}}" target="_blank">Download Donation List</a>
+            <a id="download_donation_list" class="btn btn-primary-inverted pull-right" ng-if="participantGifts.totalNumber > 0" ng-href="TRParticipantDownload/Personal_Donations.csv?download_type=personal_donations&amp;fr_id={{frId}}" target="_blank">Download Donation List</a>
           </div>
           <div ng-if="participantGifts.totalNumber == 0">
             No donations found.
@@ -301,13 +301,13 @@
               <a href id="email_team" class="btn btn-primary-inverted" ng-click="emailAllTeamMembers()">Email Team</a>
             </div>
           </div>
-          <div class="manage_walk_items clearfix">
+          <div class="manage_walk_items clearfix" ng-if="teamraiserConfig.personalOfflineGiftsAllowed == 'true' && ((teamraiserConfig.offlineTeamGifts == 'CAPTAINS' && participantRegistration.aTeamCaptain == 'true') || teamraiserConfig.offlineTeamGifts == 'MEMBERS')">
             <div class="pull-left">
               <div class="manage_walk_header">Enter a Team Gift:</div>
               <p>Enter offline donations you receive for your team.</p>
             </div>
             <div class="pull-right">
-              <a id="enter_team_donations" class="btn btn-primary-inverted" ng-click="addOfflineGift('team')" ng-if="teamraiserConfig.personalOfflineGiftsAllowed == 'true' && ((teamraiserConfig.offlineTeamGifts == 'CAPTAINS' && participantRegistration.aTeamCaptain == 'true') || teamraiserConfig.offlineTeamGifts == 'MEMBERS')">Enter Donations</a>
+              <a id="enter_team_donations" class="btn btn-primary-inverted" ng-click="addOfflineGift('team')">Enter Donations</a>
             </div>
           </div>
         </div>
@@ -316,7 +316,7 @@
         <div class="heart-team-members">
           <div class="heart-team-members__header clearfix">
             <h2><span ng-bind-html="teamInfo.name"></span> Roster</h2>
-            <a id="download_team_roster" ng-if="participantRegistration.aTeamCaptain == 'true'" class="btn btn-primary-inverted pull-right" ng-href="TRParticipantDownload/Team_Roster.csv?download_type=team_roster&fr_id={{frId}}" target="_blank">Download Team Roster</a>
+            <a id="download_team_roster" ng-if="participantRegistration.aTeamCaptain == 'true'" class="btn btn-primary-inverted pull-right" ng-href="TRParticipantDownload/Team_Roster.csv?download_type=team_roster&amp;fr_id={{frId}}" target="_blank">Download Team Roster</a>
           </div>
           <!-- TODO: empty state -->
           <trpc-team-member-list members="teamMembers.members" sort-column="teamMembers.sortColumn" sort-ascending="teamMembers.sortAscending" sort-members="sortTeamMembers" email-team-member="emailTeamMember"></trpc-team-member-list>
@@ -328,7 +328,7 @@
           <div class="clearfix">
             <h2 class="pull-left" ng-if="teamInfo.name">{{teamInfo.name}} Donors</h2>
             <h2 class="pull-left" ng-if="!teamInfo.name">Team Donors</h2>
-            <a id="download_team_donation_list" class="btn btn-primary-inverted pull-right" ng-href="TRParticipantDownload/Personal_Donations.csv?download_type=personal_donations&fr_id={{frId}}" target="_blank">Download Donation List</a>
+            <a id="download_team_donation_list" class="btn btn-primary-inverted pull-right" ng-href="TRParticipantDownload/Personal_Donations.csv?download_type=personal_donations&amp;fr_id={{frId}}" target="_blank">Download Donation List</a>
           </div>
           <div ng-if="teamGifts.totalNumber == 0">
             No donations found.
@@ -412,7 +412,7 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a id="download_company_team_list" ng-href="TRParticipantDownload/Company_Teams.csv?download_type=company_teams&fr_id={{frId}}" target="_blank">Download Company Team List</a>
+                    <a id="download_company_team_list" ng-href="TRParticipantDownload/Company_Teams.csv?download_type=company_teams&amp;fr_id={{frId}}" target="_blank">Download Company Team List</a>
                   </li>
                 </ul>
               </div>

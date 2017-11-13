@@ -112,7 +112,8 @@ angular.module 'trPcControllers'
         first_name: ''
         last_name: ''
         gift_amount: ''
-
+        name_error: false
+      
       $scope.paymentTypeOptions = []
 
       if $scope.teamraiserConfig.offlineGiftTypes.cash is 'true'
@@ -158,20 +159,30 @@ angular.module 'trPcControllers'
         closeAddOfflineGiftModal()
 
       $scope.submitOfflineGift = ->
-        TeamraiserGiftService.addGift $httpParamSerializer($scope.newOfflineGift)
-          .then (response) ->
-            if response.data.errorResponse
-              # TODO
-            else
-              $scope.refreshFundraisingProgress()
-              $scope.participantGifts.page = 1
-              $scope.getGifts()
-              if $scope.participantRegistration.teamId and $scope.participantRegistration.teamId isnt '-1'
-                $scope.teamMembers.page = 1
-                $scope.getTeamMembers()
-                $scope.teamGifts.page = 1
-                $scope.getTeamGifts()
-              closeAddOfflineGiftModal()
+        if not($scope.newOfflineGift.last_name?.length or $scope.newOfflineGift.first_name?.length)
+          $scope.newOfflineGift.name_error=true
+        else  
+          $scope.newOfflineGift.name_error=false
+          TeamraiserGiftService.addGift $httpParamSerializer($scope.newOfflineGift)
+            .then (response) ->
+              if response.data.errorResponse
+                # TODO
+              else
+                $scope.refreshFundraisingProgress()
+                $scope.participantGifts.page = 1
+                $scope.getGifts()
+                if $scope.participantRegistration.teamId and $scope.participantRegistration.teamId isnt '-1'
+                  $scope.teamMembers.page = 1
+                  $scope.getTeamMembers()
+                  $scope.teamGifts.page = 1
+                  $scope.getTeamGifts()
+                closeAddOfflineGiftModal()
+                $scope.newOfflineGift.first_name= ''
+                $scope.newOfflineGift.last_name= ''
+                $scope.newOfflineGift.gift_amount= ''
+                $scope.newOfflineGift.email= ''
+                $scope.newOfflineGift.name_error= false
+                
 
       #Profile checklist
       $scope.consProfilePromises = []
