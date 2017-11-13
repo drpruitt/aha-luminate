@@ -275,7 +275,7 @@ angular.module 'ahaLuminateControllers'
             amt = 0
           else
             amt = parseInt($scope.donationInfo.otherAmt)
-            if amt < 10 || !angular.isNumber(amt) || !isNaN(amt) || amt == ""
+            if amt < 10 || !angular.isNumber(amt) || isNaN(amt) || amt == ""
               e.preventDefault()
               jQuery('html, body').animate({scrollTop: jQuery("a[name=donationLevels]").offset().top}, 0);
               $scope.process.$setValidity("amount",false);
