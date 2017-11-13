@@ -105,6 +105,7 @@ angular.module 'ahaLuminateControllers'
           angular.element('.ym-donation-levels__message.level' + level).addClass 'active'
           angular.element('.donation-level-container.level' + level + ' input').click()
           
+          $scope.process.$setValidity("amount",true);
           $scope.donationInfo.amount = amount
           $scope.donationInfo.levelType = type
           localStorage['levelType'] = type
@@ -268,6 +269,17 @@ angular.module 'ahaLuminateControllers'
         else
           angular.element('#billing_info_same_as_donorname').prop 'checked', false
 
+      $scope.submitDonationForm = (e) ->
+        if $scope.donationInfo.levelType == "other"
+          if $scope.donationInfo.otherAmt == undefined
+            amt = 0
+          else
+            amt = parseInt($scope.donationInfo.otherAmt)
+            if amt < 10 || !angular.isNumber(amt) || isNaN(amt) || amt == ""
+              e.preventDefault()
+              jQuery('html, body').animate({scrollTop: jQuery("a[name=donationLevels]").offset().top}, 0);
+              $scope.process.$setValidity("amount",false);
+          
       loggedInForm = ->
         angular.element('#donor_first_name_row').addClass 'hidden'
         angular.element('#donor_last_name_row').addClass 'hidden'
