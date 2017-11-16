@@ -610,6 +610,6 @@ angular.module 'trPcControllers'
               avatarURL = response.data.student.avatar_url
             else
               avatarURL = 'https://hearttools.heart.org/aha_ym18_dev/virtualworld/img/avatar-charger.png'
-            $scope.personalInfo.avatar = "<img src='"+avatarURL+"'>"
+            $scope.personalInfo.avatar = avatarURL
       $scope.getPersonalAvatar()
   ]
