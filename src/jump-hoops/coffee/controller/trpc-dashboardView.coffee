@@ -598,6 +598,7 @@ angular.module 'trPcControllers'
       $timeout initCarousel, 1000
       
       $scope.personalInfo = {}
+      $scope.personalInfo.avatar = ''
       $scope.getPersonalAvatar = ->
         ZuriService.getAvatar $scope.consId,
           failure: (response) ->
