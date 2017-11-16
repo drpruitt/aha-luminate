@@ -393,7 +393,7 @@
         			</div>
          		</div>
 		
-        		<div class="right-column-images">&nbsp;<img src="{{personalInfo.avatar}}"/></div>
+        		<div class="right-column-images" ng-if="personalInfo.avatar != ''" ng-cloak>&nbsp;<img ng-src='{{personalInfo.avatar}}'></div>
          	</div>
             <!--<a ng-href="http://hearttools.heart.org/aha_ym18{{tablePrefix == 'heartdev' ? '_dev' : ''}}/expedition/?eid={{frId}}&amp;sid={{consId}}&amp;name={{consName}}" target="_blank">-->
             <!--  <img class="img-responsive" src="../aha-luminate/dist/jump-hoops/image/virtual-world-coming-soon.png" alt="View virtual world"> -->
