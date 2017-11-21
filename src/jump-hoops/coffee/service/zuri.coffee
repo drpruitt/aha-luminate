@@ -105,4 +105,18 @@ angular.module 'ahaLuminateApp'
         $http
           method: 'POST'
           url: $sce.trustAsResourceUrl(url)
+
+      getAvatar: (requestData, callback) ->
+        if $rootScope.tablePrefix is 'heartdev'
+          url = '//jumphoopsstaging.boundlessnetwork.com/api/student/' + requestData + '/monster-designer'
+        else
+          url = '//jumphoops.heart.org/api/student/' + requestData + '/monster-designer'
+        $http.jsonp($sce.trustAsResourceUrl(url), jsonpCallbackParam: 'callback')
+          .then (response) ->
+            if response.data.success is false
+              callback.error response
+            else
+              callback.success response
+          , (response) ->
+            callback.failure response
   ]
