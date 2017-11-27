@@ -84,6 +84,9 @@ a.pc_btn, button.pc_btn {
     }
 }
 
-#download_donation_list, #download_team_roster, #download_team_donation_list {
+#download_donation_list, #download_donation_list_prev, #download_team_roster, #download_team_donation_list {
     margin: 20px 0;
+}
+#download_donation_list_prev {
+  margin-left: 20px;
 }

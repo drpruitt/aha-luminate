@@ -35,6 +35,7 @@ angular.module 'trPcApp'
       $rootScope.frId = $embedRoot.data('fr-id') if $embedRoot.data('fr-id') isnt ''
       if not $rootScope.frId
         new Error 'Angular TeamRaiser Participant Center: No TeamRaiser ID is defined.'
+      $rootScope.prevFrId = $embedRoot.data('prev-fr-id') if $embedRoot.data('prev-fr-id') isnt ''
       $rootScope.locale = if $embedRoot.data('locale') is '' then 'en_US' else $embedRoot.data('locale')
       $rootScope.consId = $embedRoot.data('cons-id') if $embedRoot.data('cons-id') isnt ''
       $rootScope.authToken = $embedRoot.data('auth-token') if $embedRoot.data('auth-token') isnt ''
