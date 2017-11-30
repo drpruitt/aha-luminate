@@ -90,3 +90,8 @@ a.pc_btn, button.pc_btn {
 #download_donation_list_prev {
   margin-left: 20px;
 }
+@media only screen and (max-width: 767px)  {
+  #download_donation_list_prev {
+    margin-left: 0;
+  }
+}
