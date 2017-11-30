@@ -596,4 +596,20 @@ angular.module 'trPcControllers'
             angular.element('.owl-carousel').find('.owl-item.active').attr 'aria-selected', 'true'
             angular.element('.owl-item.active').attr 'tabindex', '0'
       $timeout initCarousel, 1000
+      
+      $scope.personalInfo = {}
+      $scope.personalInfo.avatar = ''
+      $scope.getPersonalAvatar = ->
+        ZuriService.getAvatar $scope.consId,
+          failure: (response) ->
+            # TODO
+          error: (response) ->
+            # TODO
+          success: (response) ->
+            if response.data.student.student_id != null and typeof response.data.student.avatar_url != 'undefined'
+              avatarURL = response.data.student.avatar_url
+            else
+              avatarURL = 'https://hearttools.heart.org/aha_ym18_dev/virtualworld/img/avatar-charger.png'
+            $scope.personalInfo.avatar = avatarURL
+      $scope.getPersonalAvatar()
   ]
