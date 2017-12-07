@@ -448,8 +448,8 @@ angular.module 'trPcControllers'
               scope: $scope
               templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBdonate.html'
             $timeout ->
-              document.getElementById('LBmakeDonation').onclick = ->
-                _gaq.push(['t2._trackEvent', 'HW PC', 'click', 'Make A Donation - donate lightbox'])
+              #document.getElementById('LBmakeDonation').onclick = ->
+                #_gaq.push(['t2._trackEvent', 'HW PC', 'click', 'Make A Donation - donate lightbox'])
               document.getElementById('LBmakeDonationHoliday').onclick = ->
                 _gaq.push(['t2._trackEvent', 'HW PC', 'click', 'Download Healthy Eating Guide'])
             , 500
