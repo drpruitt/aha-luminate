@@ -223,9 +223,11 @@ angular.module 'trPcControllers'
       if $scope.participantRegistration.aTeamCaptain is 'true' or $scope.participantRegistration.companyInformation?.isCompanyCoordinator is 'true'
         $scope.districtDetailParticipants =
           downloadHeaders: [
+            'Team Name'
             'Name'
+            'Email Address'
             'Amount'
-            'Emails'
+            'Emails Sent'
             'T-shirt'
             'Blood Pressure Checked'
             'Min. of Activity'
@@ -258,7 +260,6 @@ angular.module 'trPcControllers'
                     angular.forEach $reportTableRows, (reportTableRow) ->
                       $reportTableRow = angular.element reportTableRow
                       teamName = jQuery.trim $reportTableRow.find('td').eq(3).text()
-                      console.log teamName
                       firstName = jQuery.trim $reportTableRow.find('td').eq(8).text()
                       lastName = jQuery.trim $reportTableRow.find('td').eq(9).text()
                       email = jQuery.trim $reportTableRow.find('td').eq(10).text()
@@ -292,7 +293,9 @@ angular.module 'trPcControllers'
                         bloodPressureCheck: bloodPressureCheck
                         minsActivity: minsActivity
                       districtDetailDownloadData.push [
+                        teamName
                         firstName + ' ' + lastName
+                        email
                         amountFormatted.replace('$', '').replace /,/g, ''
                         emailsSent
                         tshirtSize
@@ -302,7 +305,7 @@ angular.module 'trPcControllers'
                     $scope.districtDetailParticipants.participants = districtDetailParticipants
                     $scope.districtDetailParticipants.downloadData = districtDetailDownloadData
             response
-            $scope.orderDistrictDetailParticipants('amount')
+            $scope.orderDistrictDetailParticipants('teamName')
         $scope.reportPromises.push districtDetailReportPromise
         
         $scope.orderDistrictDetailParticipants = (sortColumn) ->
