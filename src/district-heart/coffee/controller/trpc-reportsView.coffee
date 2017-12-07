@@ -218,6 +218,7 @@ angular.module 'trPcControllers'
             $location.path '/email/compose/suggestedMessage/' + $scope.thankYouMessageId
           else
             $location.path '/email/compose/'
+
       
       if $scope.participantRegistration.aTeamCaptain is 'true' or $scope.participantRegistration.companyInformation?.isCompanyCoordinator is 'true'
         $scope.districtDetailParticipants =
@@ -256,6 +257,8 @@ angular.module 'trPcControllers'
                     districtDetailDownloadData = []
                     angular.forEach $reportTableRows, (reportTableRow) ->
                       $reportTableRow = angular.element reportTableRow
+                      teamName = jQuery.trim $reportTableRow.find('td').eq(3).text()
+                      console.log teamName
                       firstName = jQuery.trim $reportTableRow.find('td').eq(8).text()
                       lastName = jQuery.trim $reportTableRow.find('td').eq(9).text()
                       email = jQuery.trim $reportTableRow.find('td').eq(10).text()
@@ -277,6 +280,7 @@ angular.module 'trPcControllers'
                       else
                         minsActivity = challenge1
                       districtDetailParticipants.push
+                        teamName: teamName
                         firstName: firstName
                         lastName: lastName
                         email: email
