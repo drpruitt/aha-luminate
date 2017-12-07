@@ -39,7 +39,7 @@
               </caption>
               <thead>
                 <tr>
-                  <th ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'" scope="col" aria-sort="{{districtDetailParticipants.sortColumn != 'teamName' ? 'none' : (districtDetailParticipants.sortAscending ? 'ascending' : 'descending')}}">
+                  <th scope="col" aria-sort="{{districtDetailParticipants.sortColumn != 'teamName' ? 'none' : (districtDetailParticipants.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-left">
                       <button type="button" class="btn btn-link" ng-click="orderDistrictDetailParticipants('teamName')">
                         <strong>Team</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (districtDetailParticipants.sortColumn == 'teamName' && !districtDetailParticipants.sortAscending) || districtDetailParticipants.sortColumn != 'teamName', 'fa-caret-up': districtDetailParticipants.sortColumn == 'teamName' && districtDetailParticipants.sortAscending, 'inactive': districtDetailParticipants.sortColumn != 'teamName'}" ng-if="districtDetailParticipants.participants.length"><span class="sr-only">Sortable. {{districtDetailParticipants.sortColumn != 'teamName' ? 'Not sorted.' : (districtDetailParticipants.sortAscending ? 'Sorted ascending.' : 'Sorted descending.')}}</span></span>
