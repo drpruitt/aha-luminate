@@ -305,7 +305,6 @@ angular.module 'trPcControllers'
                     $scope.districtDetailParticipants.participants = districtDetailParticipants
                     $scope.districtDetailParticipants.downloadData = districtDetailDownloadData
             response
-            #$scope.orderDistrictDetailParticipants('teamName')
         $scope.reportPromises.push districtDetailReportPromise
         
         $scope.orderDistrictDetailParticipants = (sortColumn) ->
