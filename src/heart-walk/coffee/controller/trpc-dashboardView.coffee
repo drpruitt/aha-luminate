@@ -113,7 +113,7 @@ angular.module 'trPcControllers'
         last_name: ''
         gift_amount: ''
         name_error: false
-      
+
       $scope.paymentTypeOptions = []
 
       if $scope.teamraiserConfig.offlineGiftTypes.cash is 'true'
@@ -161,7 +161,7 @@ angular.module 'trPcControllers'
       $scope.submitOfflineGift = ->
         if not($scope.newOfflineGift.last_name?.length or $scope.newOfflineGift.first_name?.length)
           $scope.newOfflineGift.name_error=true
-        else  
+        else
           $scope.newOfflineGift.name_error=false
           TeamraiserGiftService.addGift $httpParamSerializer($scope.newOfflineGift)
             .then (response) ->
@@ -182,7 +182,7 @@ angular.module 'trPcControllers'
                 $scope.newOfflineGift.gift_amount= ''
                 $scope.newOfflineGift.email= ''
                 $scope.newOfflineGift.name_error= false
-                
+
 
       #Profile checklist
       $scope.consProfilePromises = []
@@ -450,6 +450,8 @@ angular.module 'trPcControllers'
             $timeout ->
               document.getElementById('LBmakeDonation').onclick = ->
                 _gaq.push(['t2._trackEvent', 'HW PC', 'click', 'Make A Donation - donate lightbox'])
+              document.getElementById('LBmakeDonationHoliday').onclick = ->
+                _gaq.push(['t2._trackEvent', 'HW PC', 'click', 'Download Healthy Eating Guide'])
             , 500
         else if $scope.userInteractions.email is 0
           $scope.dashboardGreeting = 'email'
