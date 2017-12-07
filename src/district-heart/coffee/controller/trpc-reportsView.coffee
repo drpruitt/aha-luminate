@@ -232,8 +232,8 @@ angular.module 'trPcControllers'
             'Blood Pressure Checked'
             'Min. of Activity'
           ]
-          sortColumn: ''
-          sortAscending: false
+          sortColumn: 'teamName'
+          sortAscending: true
         districtDetailReportPromise = NgPcTeamraiserReportsService.getDistrictDetailReport()
           .then (response) ->
             if response.data.errorResponse
@@ -305,7 +305,7 @@ angular.module 'trPcControllers'
                     $scope.districtDetailParticipants.participants = districtDetailParticipants
                     $scope.districtDetailParticipants.downloadData = districtDetailDownloadData
             response
-            $scope.orderDistrictDetailParticipants('teamName')
+            #$scope.orderDistrictDetailParticipants('teamName')
         $scope.reportPromises.push districtDetailReportPromise
         
         $scope.orderDistrictDetailParticipants = (sortColumn) ->
