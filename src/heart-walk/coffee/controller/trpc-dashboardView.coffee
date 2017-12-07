@@ -452,6 +452,8 @@ angular.module 'trPcControllers'
                 #_gaq.push(['t2._trackEvent', 'HW PC', 'click', 'Make A Donation - donate lightbox'])
               document.getElementById('LBmakeDonationHoliday').onclick = ->
                 _gaq.push(['t2._trackEvent', 'HW PC', 'click', 'Download Healthy Eating Guide'])
+              document.getElementById('LBmakeDonationHoliday2').onclick = ->
+                _gaq.push(['t2._trackEvent', 'HW PC', 'click', 'Download Healthy Eating Guide'])
             , 500
         else if $scope.userInteractions.email is 0
           $scope.dashboardGreeting = 'email'
