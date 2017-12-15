@@ -121,7 +121,19 @@ angular.module 'ahaLuminateControllers'
             schools[schoolIndex].COORDINATOR_FIRST_NAME = schoolData.COORDINATOR_FIRST_NAME
             schools[schoolIndex].COORDINATOR_LAST_NAME = schoolData.COORDINATOR_LAST_NAME
         schools
+
       
+      searchOverridesMap = [
+        {
+          original: 'Saint', 
+          overrides: ['St.']
+        },
+        {
+          original: 'St.', 
+          overrides: ['Saint']
+        }
+      ]
+
       $scope.getSchoolSearchResults = ->
         delete $scope.schoolList.schools
         $scope.schoolList.searchPending = true
@@ -131,26 +143,35 @@ angular.module 'ahaLuminateControllers'
             companies = response.data.getCompaniesResponse?.company
             totalNumberResults = response.data.getCompaniesResponse?.totalNumberResults or '0'
             totalNumberResults = Number totalNumberResults
-            console.log totalNumberResults
-            console.log companies
             $scope.schoolList.totalNumberResults = totalNumberResults
             schools = []
-            console.log nameFilter.indexOf('St.')
-            if nameFilter.indexOf('St.') isnt -1
-              nameFilterReplace = nameFilter.replace 'St.', 'Saint'
-              SchoolLookupService.getSchoolCompanies 'company_name=' + encodeURIComponent(nameFilterReplace) + '&list_sort_column=company_name&list_page_size=500'
-                .then (response) ->
-                  console.log response
-                  angular.forEach response.data.getCompaniesResponse?.company, (comp) ->
-                    companies.push comp
-                  totalNumberResults += Number response.data.getCompaniesResponse?.totalNumberResults
-                  console.log totalNumberResults
-                  console.log companies
-                  schools = setSchools companies
-                  schools = setSchoolsData schools
-                  if $scope.schoolList.stateFilter isnt ''
-                    schools = $filter('filter') schools, SCHOOL_STATE: $scope.schoolList.stateFilter
 
+            console.log totalNumberResults
+            console.log companies
+            
+            findOverrides = (param) ->
+              searchOverridesMap.filter((i) ->
+                i.original == param
+              ) 
+
+            isOverride = findOverrides nameFilter
+            console.log isOverride
+            if isOverride.length is 1
+              console.log 'is overide'
+              angular.forEach isOverride[0].overrides, (override) ->
+                nameFilterReplace = nameFilter.replace isOverride[0].original, override
+                SchoolLookupService.getSchoolCompanies 'company_name=' + encodeURIComponent(nameFilterReplace) + '&list_sort_column=company_name&list_page_size=500'
+                  .then (response) ->
+                    console.log response
+                    angular.forEach response.data.getCompaniesResponse?.company, (comp) ->
+                      companies.push comp
+                    totalNumberResults += Number response.data.getCompaniesResponse?.totalNumberResults
+                    console.log totalNumberResults
+                    console.log companies
+                    schools = setSchools companies
+                    schools = setSchoolsData schools
+                    if $scope.schoolList.stateFilter isnt ''
+                      schools = $filter('filter') schools, SCHOOL_STATE: $scope.schoolList.stateFilter
             else
               if companies
                 companies = [companies] if not angular.isArray companies
