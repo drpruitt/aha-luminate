@@ -35,14 +35,28 @@
           <div class="table-responsive">
             <table class="table table-striped">
               <caption class="sr-only">
-                School Detail Report
+                District Detail Report
               </caption>
               <thead>
                 <tr>
+                  <th scope="col" aria-sort="{{districtDetailParticipants.sortColumn != 'teamName' ? 'none' : (districtDetailParticipants.sortAscending ? 'ascending' : 'descending')}}">
+                    <div class="text-left">
+                      <button type="button" class="btn btn-link" ng-click="orderDistrictDetailParticipants('teamName')">
+                        <strong>Team</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (districtDetailParticipants.sortColumn == 'teamName' && !districtDetailParticipants.sortAscending) || districtDetailParticipants.sortColumn != 'teamName', 'fa-caret-up': districtDetailParticipants.sortColumn == 'teamName' && districtDetailParticipants.sortAscending, 'inactive': districtDetailParticipants.sortColumn != 'teamName'}" ng-if="districtDetailParticipants.participants.length"><span class="sr-only">Sortable. {{districtDetailParticipants.sortColumn != 'teamName' ? 'Not sorted.' : (districtDetailParticipants.sortAscending ? 'Sorted ascending.' : 'Sorted descending.')}}</span></span>
+                      </button>
+                    </div>
+                  </th>
                   <th scope="col" aria-sort="{{districtDetailParticipants.sortColumn != 'firstName' ? 'none' : (districtDetailParticipants.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-left">
                       <button type="button" class="btn btn-link" ng-click="orderDistrictDetailParticipants('firstName')">
                         <strong>Name</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (districtDetailParticipants.sortColumn == 'firstName' && !districtDetailParticipants.sortAscending) || districtDetailParticipants.sortColumn != 'firstName', 'fa-caret-up': districtDetailParticipants.sortColumn == 'firstName' && districtDetailParticipants.sortAscending, 'inactive': districtDetailParticipants.sortColumn != 'firstName'}" ng-if="districtDetailParticipants.participants.length"><span class="sr-only">Sortable. {{districtDetailParticipants.sortColumn != 'firstName' ? 'Not sorted.' : (districtDetailParticipants.sortAscending ? 'Sorted ascending.' : 'Sorted descending.')}}</span></span>
+                      </button>
+                    </div>
+                  </th>
+                  <th scope="col" aria-sort="{{districtDetailParticipants.sortColumn != 'email' ? 'none' : (districtDetailParticipants.sortAscending ? 'ascending' : 'descending')}}">
+                    <div class="text-left">
+                      <button type="button" class="btn btn-link" ng-click="orderDistrictDetailParticipants('email')">
+                        <strong>Email Address</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (districtDetailParticipants.sortColumn == 'email' && !districtDetailParticipants.sortAscending) || districtDetailParticipants.sortColumn != 'email', 'fa-caret-up': districtDetailParticipants.sortColumn == 'email' && districtDetailParticipants.sortAscending, 'inactive': districtDetailParticipants.sortColumn != 'email'}" ng-if="districtDetailParticipants.participants.length"><span class="sr-only">Sortable. {{districtDetailParticipants.sortColumn != 'email' ? 'Not sorted.' : (districtDetailParticipants.sortAscending ? 'Sorted ascending.' : 'Sorted descending.')}}</span></span>
                       </button>
                     </div>
                   </th>
@@ -70,14 +84,14 @@
                   <th scope="col" aria-sort="{{districtDetailParticipants.sortColumn != 'bloodPressureCheck' ? 'none' : (districtDetailParticipants.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-center">
                       <button type="button" class="btn btn-link" ng-click="orderDistrictDetailParticipants('bloodPressureCheck')">
-                        <strong>Blood Pressure Checked</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (districtDetailParticipants.sortColumn == 'bloodPressureCheck' && !districtDetailParticipants.sortAscending) || districtDetailParticipants.sortColumn != 'bloodPressureCheck', 'fa-caret-up': districtDetailParticipants.sortColumn == 'bloodPressureCheck' && districtDetailParticipants.sortAscending, 'inactive': districtDetailParticipants.sortColumn != 'bloodPressureCheck'}" ng-if="districtDetailParticipants.participants.length"><span class="sr-only">Sortable. {{districtDetailParticipants.sortColumn != 'bloodPressureCheck' ? 'Not sorted.' : (districtDetailParticipants.sortAscending ? 'Sorted ascending.' : 'Sorted descending.')}}</span></span>
+                        <strong>Blood Pressure <br />Check</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (districtDetailParticipants.sortColumn == 'bloodPressureCheck' && !districtDetailParticipants.sortAscending) || districtDetailParticipants.sortColumn != 'bloodPressureCheck', 'fa-caret-up': districtDetailParticipants.sortColumn == 'bloodPressureCheck' && districtDetailParticipants.sortAscending, 'inactive': districtDetailParticipants.sortColumn != 'bloodPressureCheck'}" ng-if="districtDetailParticipants.participants.length"><span class="sr-only">Sortable. {{districtDetailParticipants.sortColumn != 'bloodPressureCheck' ? 'Not sorted.' : (districtDetailParticipants.sortAscending ? 'Sorted ascending.' : 'Sorted descending.')}}</span></span>
                       </button>
                     </div>
                   </th>
                   <th scope="col" aria-sort="{{districtDetailParticipants.sortColumn != 'minsActivity' ? 'none' : (districtDetailParticipants.sortAscending ? 'ascending' : 'descending')}}">
                     <div class="text-center">
                       <button type="button" class="btn btn-link" ng-click="orderDistrictDetailParticipants('minsActivity')">
-                        <strong>Min. of Activity</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (districtDetailParticipants.sortColumn == 'minsActivity' && !districtDetailParticipants.sortAscending) || districtDetailParticipants.sortColumn != 'minsActivity', 'fa-caret-up': districtDetailParticipants.sortColumn == 'minsActivity' && districtDetailParticipants.sortAscending, 'inactive': districtDetailParticipants.sortColumn != 'minsActivity'}" ng-if="districtDetailParticipants.participants.length"><span class="sr-only">Sortable. {{districtDetailParticipants.sortColumn != 'minsActivity' ? 'Not sorted.' : (districtDetailParticipants.sortAscending ? 'Sorted ascending.' : 'Sorted descending.')}}</span></span>
+                        <strong>Min. Activity</strong>&nbsp;<span class="fa" ng-class="{'fa-caret-down': (districtDetailParticipants.sortColumn == 'minsActivity' && !districtDetailParticipants.sortAscending) || districtDetailParticipants.sortColumn != 'minsActivity', 'fa-caret-up': districtDetailParticipants.sortColumn == 'minsActivity' && districtDetailParticipants.sortAscending, 'inactive': districtDetailParticipants.sortColumn != 'minsActivity'}" ng-if="districtDetailParticipants.participants.length"><span class="sr-only">Sortable. {{districtDetailParticipants.sortColumn != 'minsActivity' ? 'Not sorted.' : (districtDetailParticipants.sortAscending ? 'Sorted ascending.' : 'Sorted descending.')}}</span></span>
                       </button>
                     </div>
                   </th>
@@ -87,7 +101,17 @@
                 <tr ng-repeat="districtDetailParticipant in districtDetailParticipants.participants">
                   <td>
                     <div class="text-left">
+                      {{districtDetailParticipant.teamName}}
+                    </div>
+                  </td>
+                  <td>
+                    <div class="text-left">
                       <span ng-bind-html="districtDetailParticipant.firstName"></span> <span ng-bind-html="districtDetailParticipant.lastName"></span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="text-left">
+                      {{districtDetailParticipant.email}}
                     </div>
                   </td>
                   <td>
