@@ -131,15 +131,34 @@ angular.module 'ahaLuminateControllers'
             companies = response.data.getCompaniesResponse?.company
             totalNumberResults = response.data.getCompaniesResponse?.totalNumberResults or '0'
             totalNumberResults = Number totalNumberResults
+            console.log totalNumberResults
+            console.log companies
             $scope.schoolList.totalNumberResults = totalNumberResults
             schools = []
-            if companies
-              companies = [companies] if not angular.isArray companies
-              if companies.length > 0
-                schools = setSchools companies
-                schools = setSchoolsData schools
-                if $scope.schoolList.stateFilter isnt ''
-                  schools = $filter('filter') schools, SCHOOL_STATE: $scope.schoolList.stateFilter
+            console.log nameFilter.indexOf('St.')
+            if nameFilter.indexOf('St.') isnt -1
+              nameFilterReplace = nameFilter.replace 'St.', 'Saint'
+              SchoolLookupService.getSchoolCompanies 'company_name=' + encodeURIComponent(nameFilterReplace) + '&list_sort_column=company_name&list_page_size=500'
+                .then (response) ->
+                  console.log response
+                  angular.forEach response.data.getCompaniesResponse?.company, (comp) ->
+                    companies.push comp
+                  totalNumberResults += Number response.data.getCompaniesResponse?.totalNumberResults
+                  console.log totalNumberResults
+                  console.log companies
+                  schools = setSchools companies
+                  schools = setSchoolsData schools
+                  if $scope.schoolList.stateFilter isnt ''
+                    schools = $filter('filter') schools, SCHOOL_STATE: $scope.schoolList.stateFilter
+
+            else
+              if companies
+                companies = [companies] if not angular.isArray companies
+                if companies.length > 0
+                  schools = setSchools companies
+                  schools = setSchoolsData schools
+                  if $scope.schoolList.stateFilter isnt ''
+                    schools = $filter('filter') schools, SCHOOL_STATE: $scope.schoolList.stateFilter
             if totalNumberResults <= 500
               $scope.schoolList.totalItems = schools.length
               $scope.schoolList.schools = schools
