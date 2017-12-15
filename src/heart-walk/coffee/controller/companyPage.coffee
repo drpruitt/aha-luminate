@@ -87,7 +87,7 @@ angular.module 'ahaLuminateControllers'
           $scope.childCompanies.push
             id: childCompanyUrl.split('company_id=')[1].split('&')[0]
             name: childCompanyName
-            sort: $scope.companyPath.join("+") + "+" + childCompanyName
+            sort: $scope.companyPath.join("+")
             depth: depth
         $scope.companyDepth = depth
         
