@@ -154,12 +154,15 @@ angular.module 'ahaLuminateControllers'
             $scope.schoolList.totalNumberResults = totalNumberResults
             schools = []
 
-            console.log totalNumberResults
-            console.log companies
+            #console.log totalNumberResults
+            #console.log companies
             
             findOverrides = (param) ->
               searchOverridesMap.filter((i) ->
-                i.original == param
+                if param.indexOf(i.original) is -1
+                  return false
+                else
+                  return true
               ) 
 
             isOverride = findOverrides nameFilter
