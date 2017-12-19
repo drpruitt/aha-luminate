@@ -142,6 +142,14 @@ angular.module 'ahaLuminateControllers'
         }
       ]
 
+      findOverrides = (param) ->
+        searchOverridesMap.filter((i) ->
+          if param.indexOf(i.original) is -1
+            return false
+          else
+            return true
+        ) 
+
       $scope.getSchoolSearchResults = ->
         delete $scope.schoolList.schools
         $scope.schoolList.searchPending = true
@@ -157,26 +165,15 @@ angular.module 'ahaLuminateControllers'
             #console.log totalNumberResults
             #console.log companies
             
-            findOverrides = (param) ->
-              searchOverridesMap.filter((i) ->
-                if param.indexOf(i.original) is -1
-                  return false
-                else
-                  return true
-              ) 
-
             isOverride = findOverrides nameFilter
             console.log isOverride
             if isOverride.length is 1
               console.log 'is overide'
               angular.forEach isOverride[0].overrides, (override) ->
                 nameFilterReplace = nameFilter.replace isOverride[0].original, override
-                console.log nameFilterReplace
-                console.log typeof isOverride[0].original + isOverride[0].original
-                console.log typeof override + override
                 SchoolLookupService.getSchoolCompanies 'company_name=' + encodeURIComponent(nameFilterReplace) + '&list_sort_column=company_name&list_page_size=500'
                   .then (response) ->
-                    console.log response
+                    console.log response.data.getCompaniesResponse?.totalNumberResults
                     angular.forEach response.data.getCompaniesResponse?.company, (comp) ->
                       companies.push comp
                     totalNumberResults += Number response.data.getCompaniesResponse?.totalNumberResults
