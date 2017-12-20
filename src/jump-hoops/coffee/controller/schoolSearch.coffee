@@ -72,7 +72,6 @@ angular.module 'ahaLuminateControllers'
             schools[schoolIndex].COORDINATOR_LAST_NAME = schoolData.COORDINATOR_LAST_NAME
         schools
 
-      
       searchOverridesMap = [
         {
           original: 'Saint', 
@@ -135,9 +134,6 @@ angular.module 'ahaLuminateControllers'
             totalNumberResults = Number totalNumberResults
             $scope.schoolList.totalNumberResults = totalNumberResults
             schools = []
-            
-            isOverride = findOverrides nameFilter
-            console.log isOverride
 
             setResults = ->
               console.log 'set result'
@@ -175,9 +171,15 @@ angular.module 'ahaLuminateControllers'
                       $scope.schoolList.schools = schools
                       $scope.orderSchools $scope.schoolList.sortProp, true
                       delete $scope.schoolList.searchPending
-
+            isOverride = findOverrides nameFilter
             if isOverride.length is 1
               console.log 'is overide'
+              console.log 'total orig' + totalNumberResults
+              ###
+              if totalNumberResults > 500
+                console.log 'orig has more than 500'
+                getAdditionalPages nameFilter
+              ###
               angular.forEach isOverride[0].overrides, (override) ->
                 nameFilterReplace = nameFilter.replace isOverride[0].original, override
                 SchoolLookupService.getSchoolCompanies 'company_name=' + encodeURIComponent(nameFilterReplace) + '&list_sort_column=company_name&list_page_size=500'
@@ -199,30 +201,9 @@ angular.module 'ahaLuminateControllers'
                       $scope.orderSchools $scope.schoolList.sortProp, true
                       delete $scope.schoolList.searchPending
                     else
-                      additionalPages = []
-                      angular.forEach [1, 2, 3, 4], (additionalPage) ->
-                        if totalNumberResults > additionalPage * 500
-                          additionalPages.push additionalPage
-                      additionalPagesComplete = 0
-                      angular.forEach additionalPages, (additionalPage) ->
-                        SchoolLookupService.getSchoolCompanies 'company_name=' + encodeURIComponent(nameFilter) + '&list_sort_column=company_name&list_page_size=500&list_page_offset=' + additionalPage
-                          .then (response) ->
-                            moreCompanies = response.data.getCompaniesResponse?.company
-                            moreSchools = []
-                            if moreCompanies
-                              moreCompanies = [moreCompanies] if not angular.isArray moreCompanies
-                              if moreCompanies.length > 0
-                                moreSchools = setSchools moreCompanies
-                                moreSchools = setSchoolsData moreSchools
-                                if $scope.schoolList.stateFilter isnt ''
-                                  moreSchools = $filter('filter') moreSchools, SCHOOL_STATE: $scope.schoolList.stateFilter
-                            schools = schools.concat moreSchools
-                            additionalPagesComplete++
-                            if additionalPagesComplete is additionalPages.length
-                              $scope.schoolList.totalItems = schools.length
-                              $scope.schoolList.schools = schools
-                              $scope.orderSchools $scope.schoolList.sortProp, true
-                              delete $scope.schoolList.searchPending
+                      console.log 'get more pages of overrides'
+                      getAdditionalPages nameFilterReplace
+                      
             else
               setResults()
               if totalNumberResults <= 500
@@ -233,34 +214,8 @@ angular.module 'ahaLuminateControllers'
                 delete $scope.schoolList.searchPending
               else
                 console.log 'more than 500'
-
                 getAdditionalPages nameFilter
-                ###
-                additionalPages = []
-                angular.forEach [1, 2, 3, 4], (additionalPage) ->
-                  if totalNumberResults > additionalPage * 500
-                    additionalPages.push additionalPage
-                additionalPagesComplete = 0
-                angular.forEach additionalPages, (additionalPage) ->
-                  SchoolLookupService.getSchoolCompanies 'company_name=' + encodeURIComponent(nameFilter) + '&list_sort_column=company_name&list_page_size=500&list_page_offset=' + additionalPage
-                    .then (response) ->
-                      moreCompanies = response.data.getCompaniesResponse?.company
-                      moreSchools = []
-                      if moreCompanies
-                        moreCompanies = [moreCompanies] if not angular.isArray moreCompanies
-                        if moreCompanies.length > 0
-                          moreSchools = setSchools moreCompanies
-                          moreSchools = setSchoolsData moreSchools
-                          if $scope.schoolList.stateFilter isnt ''
-                            moreSchools = $filter('filter') moreSchools, SCHOOL_STATE: $scope.schoolList.stateFilter
-                      schools = schools.concat moreSchools
-                      additionalPagesComplete++
-                      if additionalPagesComplete is additionalPages.length
-                        $scope.schoolList.totalItems = schools.length
-                        $scope.schoolList.schools = schools
-                        $scope.orderSchools $scope.schoolList.sortProp, true
-                        delete $scope.schoolList.searchPending
-                  ###
+               
 
       $scope.orderSchools = (sortProp, keepSortOrder) ->
         schools = $scope.schoolList.schools
