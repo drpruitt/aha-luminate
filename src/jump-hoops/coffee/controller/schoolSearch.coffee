@@ -147,7 +147,34 @@ angular.module 'ahaLuminateControllers'
                   schools = setSchools companies
                   schools = setSchoolsData schools
                   if $scope.schoolList.stateFilter isnt ''
-                    schools = $filter('filter') schools, SCHOOL_STATE: $scope.schoolList.stateFilter 
+                    schools = $filter('filter') schools, SCHOOL_STATE: $scope.schoolList.stateFilter
+
+            getAdditionalPages = (filter) -> 
+              console.log 'enter get pages'
+              additionalPages = []
+              angular.forEach [1, 2, 3, 4], (additionalPage) ->
+                if totalNumberResults > additionalPage * 500
+                  additionalPages.push additionalPage
+              additionalPagesComplete = 0
+              angular.forEach additionalPages, (additionalPage) ->
+                SchoolLookupService.getSchoolCompanies 'company_name=' + encodeURIComponent(filter) + '&list_sort_column=company_name&list_page_size=500&list_page_offset=' + additionalPage
+                  .then (response) ->
+                    moreCompanies = response.data.getCompaniesResponse?.company
+                    moreSchools = []
+                    if moreCompanies
+                      moreCompanies = [moreCompanies] if not angular.isArray moreCompanies
+                      if moreCompanies.length > 0
+                        moreSchools = setSchools moreCompanies
+                        moreSchools = setSchoolsData moreSchools
+                        if $scope.schoolList.stateFilter isnt ''
+                          moreSchools = $filter('filter') moreSchools, SCHOOL_STATE: $scope.schoolList.stateFilter
+                    schools = schools.concat moreSchools
+                    additionalPagesComplete++
+                    if additionalPagesComplete is additionalPages.length
+                      $scope.schoolList.totalItems = schools.length
+                      $scope.schoolList.schools = schools
+                      $scope.orderSchools $scope.schoolList.sortProp, true
+                      delete $scope.schoolList.searchPending
 
             if isOverride.length is 1
               console.log 'is overide'
@@ -159,8 +186,10 @@ angular.module 'ahaLuminateControllers'
                     angular.forEach response.data.getCompaniesResponse?.company, (comp) ->
                       companies.push comp
                     totalNumberResults += Number response.data.getCompaniesResponse?.totalNumberResults
+                    
                     console.log 'total post='+totalNumberResults
                     console.log companies
+                    
                     setResults()
 
                     if totalNumberResults <= 500
@@ -195,15 +224,18 @@ angular.module 'ahaLuminateControllers'
                               $scope.orderSchools $scope.schoolList.sortProp, true
                               delete $scope.schoolList.searchPending
             else
-              console.log ' set comp'
               setResults()
-              
               if totalNumberResults <= 500
+                console.log 'less than 500'
                 $scope.schoolList.totalItems = schools.length
                 $scope.schoolList.schools = schools
                 $scope.orderSchools $scope.schoolList.sortProp, true
                 delete $scope.schoolList.searchPending
               else
+                console.log 'more than 500'
+
+                getAdditionalPages nameFilter
+                ###
                 additionalPages = []
                 angular.forEach [1, 2, 3, 4], (additionalPage) ->
                   if totalNumberResults > additionalPage * 500
@@ -228,6 +260,7 @@ angular.module 'ahaLuminateControllers'
                         $scope.schoolList.schools = schools
                         $scope.orderSchools $scope.schoolList.sortProp, true
                         delete $scope.schoolList.searchPending
+                  ###
 
       $scope.orderSchools = (sortProp, keepSortOrder) ->
         schools = $scope.schoolList.schools
