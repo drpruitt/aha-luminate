@@ -138,6 +138,17 @@ angular.module 'ahaLuminateControllers'
             
             isOverride = findOverrides nameFilter
             console.log isOverride
+
+            setResults = ->
+              console.log 'set result'
+              if companies
+                companies = [companies] if not angular.isArray companies
+                if companies.length > 0
+                  schools = setSchools companies
+                  schools = setSchoolsData schools
+                  if $scope.schoolList.stateFilter isnt ''
+                    schools = $filter('filter') schools, SCHOOL_STATE: $scope.schoolList.stateFilter 
+
             if isOverride.length is 1
               console.log 'is overide'
               angular.forEach isOverride[0].overrides, (override) ->
@@ -150,13 +161,8 @@ angular.module 'ahaLuminateControllers'
                     totalNumberResults += Number response.data.getCompaniesResponse?.totalNumberResults
                     console.log 'total post='+totalNumberResults
                     console.log companies
-                    if companies
-                      companies = [companies] if not angular.isArray companies
-                      if companies.length > 0
-                        schools = setSchools companies
-                        schools = setSchoolsData schools
-                        if $scope.schoolList.stateFilter isnt ''
-                          schools = $filter('filter') schools, SCHOOL_STATE: $scope.schoolList.stateFilter  
+                    setResults()
+
                     if totalNumberResults <= 500
                       console.log 'is less than 500'
                       $scope.schoolList.totalItems = schools.length
@@ -189,14 +195,9 @@ angular.module 'ahaLuminateControllers'
                               $scope.orderSchools $scope.schoolList.sortProp, true
                               delete $scope.schoolList.searchPending
             else
-              console.log 'no overrides'
-              if companies
-                companies = [companies] if not angular.isArray companies
-                if companies.length > 0
-                  schools = setSchools companies
-                  schools = setSchoolsData schools
-                  if $scope.schoolList.stateFilter isnt ''
-                    schools = $filter('filter') schools, SCHOOL_STATE: $scope.schoolList.stateFilter  
+              console.log ' set comp'
+              setResults()
+              
               if totalNumberResults <= 500
                 $scope.schoolList.totalItems = schools.length
                 $scope.schoolList.schools = schools
@@ -228,8 +229,6 @@ angular.module 'ahaLuminateControllers'
                         $scope.orderSchools $scope.schoolList.sortProp, true
                         delete $scope.schoolList.searchPending
 
-
-      
       $scope.orderSchools = (sortProp, keepSortOrder) ->
         schools = $scope.schoolList.schools
         if schools.length > 0
