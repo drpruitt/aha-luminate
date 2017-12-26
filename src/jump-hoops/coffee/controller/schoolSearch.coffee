@@ -75,11 +75,15 @@ angular.module 'ahaLuminateControllers'
       searchOverridesMap = [
         {
           original: 'Saint', 
-          overrides: ['St.']
+          overrides: ['St', 'St.']
+        },
+        {
+          original: 'St', 
+          overrides: ['Saint', 'St.']
         },
         {
           original: 'St.', 
-          overrides: ['Saint']
+          overrides: ['Saint', 'St']
         },
         {
           original: 'and',
@@ -126,30 +130,44 @@ angular.module 'ahaLuminateControllers'
       $scope.getSchoolSearchResults = ->
         delete $scope.schoolList.schools
         $scope.schoolList.searchPending = true
+        $scope.schoolList.currentPage = 1
         nameFilter = $scope.schoolList.nameFilter
         SchoolLookupService.getSchoolCompanies 'company_name=' + encodeURIComponent(nameFilter) + '&list_sort_column=company_name&list_page_size=500'
           .then (response) ->
-            companies = response.data.getCompaniesResponse?.company
+            console.log response
+            if response.data.getCompaniesResponse.company
+              companies = response.data.getCompaniesResponse.company
+            else
+              companies = []
             totalNumberResults = response.data.getCompaniesResponse?.totalNumberResults or '0'
             totalNumberResults = Number totalNumberResults
             $scope.schoolList.totalNumberResults = totalNumberResults
             schools = []
 
             setResults = ->
-              console.log 'set result'
+              console.log 'enter result'
+              console.log companies
               if companies
                 companies = [companies] if not angular.isArray companies
                 if companies.length > 0
                   schools = setSchools companies
                   schools = setSchoolsData schools
+                  $scope.schoolList.totalItems = schools.length
+                  $scope.schoolList.totalNumberResults = schools.length
+                  $scope.schoolList.schools = schools
+                  $scope.orderSchools $scope.schoolList.sortProp, true                  
                   if $scope.schoolList.stateFilter isnt ''
                     schools = $filter('filter') schools, SCHOOL_STATE: $scope.schoolList.stateFilter
+                else
+                  $scope.schoolList.schools = []
+                  $scope.schoolList.totalItems = 0
+                  $scope.schoolList.totalNumberResults = 0
+              console.log $scope.schoolList
 
-            getAdditionalPages = (filter) -> 
-              console.log 'enter get pages'
+            getAdditionalPages = (filter, totalNumber) -> 
               additionalPages = []
               angular.forEach [1, 2, 3, 4], (additionalPage) ->
-                if totalNumberResults > additionalPage * 500
+                if totalNumber > additionalPage * 500
                   additionalPages.push additionalPage
               additionalPagesComplete = 0
               angular.forEach additionalPages, (additionalPage) ->
@@ -167,54 +185,63 @@ angular.module 'ahaLuminateControllers'
                     schools = schools.concat moreSchools
                     additionalPagesComplete++
                     if additionalPagesComplete is additionalPages.length
-                      $scope.schoolList.totalItems = schools.length
-                      $scope.schoolList.schools = schools
-                      $scope.orderSchools $scope.schoolList.sortProp, true
+                      setResults()
                       delete $scope.schoolList.searchPending
-            isOverride = findOverrides nameFilter
-            if isOverride.length is 1
-              console.log 'is overide'
-              console.log 'total orig' + totalNumberResults
-              ###
-              if totalNumberResults > 500
-                console.log 'orig has more than 500'
-                getAdditionalPages nameFilter
-              ###
-              angular.forEach isOverride[0].overrides, (override) ->
-                nameFilterReplace = nameFilter.replace isOverride[0].original, override
-                SchoolLookupService.getSchoolCompanies 'company_name=' + encodeURIComponent(nameFilterReplace) + '&list_sort_column=company_name&list_page_size=500'
-                  .then (response) ->
-                    console.log 'total pre=' +response.data.getCompaniesResponse?.totalNumberResults
-                    angular.forEach response.data.getCompaniesResponse?.company, (comp) ->
-                      companies.push comp
-                    totalNumberResults += Number response.data.getCompaniesResponse?.totalNumberResults
-                    
-                    console.log 'total post='+totalNumberResults
-                    console.log companies
-                    
-                    setResults()
 
-                    if totalNumberResults <= 500
-                      console.log 'is less than 500'
-                      $scope.schoolList.totalItems = schools.length
-                      $scope.schoolList.schools = schools
-                      $scope.orderSchools $scope.schoolList.sortProp, true
-                      delete $scope.schoolList.searchPending
-                    else
-                      console.log 'get more pages of overrides'
-                      getAdditionalPages nameFilterReplace
-                      
+            isOverride = findOverrides nameFilter
+            console.log isOverride
+            if isOverride.length > 0
+              console.log 'is overide'
+              console.log 'total orig=' + totalNumberResults
+
+              setOverride = (response, nameFilterReplace) ->
+                console.log nameFilterReplace
+                
+                console.log 'total pre=' +response.data.getCompaniesResponse?.totalNumberResults
+                totalNumberOverrides = response.data.getCompaniesResponse?.totalNumberResults
+          
+                if response.data.getCompaniesResponse.totalNumberResults is '1'
+                  console.log [response.data.getCompaniesResponse.company]
+                  companies.push response.data.getCompaniesResponse.company
+                else
+                  angular.forEach response.data.getCompaniesResponse?.company, (comp) ->
+                    companies.push comp
+                totalNumberResults += Number response.data.getCompaniesResponse?.totalNumberResults
+                
+                console.log 'total post='+totalNumberResults
+
+                if totalNumberOverrides > 500
+                  console.log 'get more pages of overrides'
+                  getAdditionalPages nameFilterReplace, totalNumberOverrides
+                else
+                  setResults()
+                  delete $scope.schoolList.searchPending
+
+              angular.forEach isOverride, (override) ->
+                angular.forEach override.overrides, (replace) ->
+                  nameFilterReplace = nameFilter.replace override.original, replace
+                  if nameFilterReplace.indexOf('..') is -1
+                    SchoolLookupService.getSchoolCompanies 'company_name=' + encodeURIComponent(nameFilterReplace) + '&list_sort_column=company_name&list_page_size=500'
+                      .then (response) ->
+                        if response.data.errorResponse
+                          console.log 'is error'
+                          #adding additional call due to occasional error returns
+                          SchoolLookupService.getSchoolCompanies 'company_name=' + encodeURIComponent(nameFilterReplace) + '&list_sort_column=company_name&list_page_size=500'
+                            .then (response) ->
+                              if response.data.errorResponse
+                                console.log '2nd error'
+                              else
+                                setOverride response, nameFilterReplace
+                        else
+                          setOverride response, nameFilterReplace
+        
             else
-              setResults()
-              if totalNumberResults <= 500
-                console.log 'less than 500'
-                $scope.schoolList.totalItems = schools.length
-                $scope.schoolList.schools = schools
-                $scope.orderSchools $scope.schoolList.sortProp, true
-                delete $scope.schoolList.searchPending
+              if totalNumberResults > 500
+                getAdditionalPages nameFilter, totalNumberResults
               else
-                console.log 'more than 500'
-                getAdditionalPages nameFilter
+                setResults()
+                delete $scope.schoolList.searchPending                
+               
                
 
       $scope.orderSchools = (sortProp, keepSortOrder) ->
