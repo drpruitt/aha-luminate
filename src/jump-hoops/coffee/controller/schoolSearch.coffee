@@ -51,6 +51,24 @@ angular.module 'ahaLuminateControllers'
         $scope.schoolList.nameFilter = $scope.schoolList.ng_nameFilter
         $scope.schoolList.stateFilter = ''
         $scope.getSchoolSearchResults()
+
+      $scope.orderSchools = (sortProp, keepSortOrder) ->
+        schools = $scope.schoolList.schools
+        if schools.length > 0
+          if not keepSortOrder
+            $scope.schoolList.sortDesc = !$scope.schoolList.sortDesc
+          if $scope.schoolList.sortProp isnt sortProp
+            $scope.schoolList.sortProp = sortProp
+            $scope.schoolList.sortDesc = true
+          schools = $filter('orderBy') schools, sortProp, $scope.schoolList.sortDesc
+          $scope.schoolList.schools = schools
+          $scope.schoolList.currentPage = 1
+      
+      $scope.paginate = (value) ->
+        begin = ($scope.schoolList.currentPage - 1) * $scope.schoolList.paginationItemsPerPage
+        end = begin + $scope.schoolList.paginationItemsPerPage
+        index = $scope.schoolList.schools.indexOf value
+        begin <= index and index < end
       
       setSchools = (companies) ->
         schools = []
@@ -132,38 +150,35 @@ angular.module 'ahaLuminateControllers'
         $scope.schoolList.searchPending = true
         $scope.schoolList.currentPage = 1
         nameFilter = $scope.schoolList.nameFilter
+        companies = []
         SchoolLookupService.getSchoolCompanies 'company_name=' + encodeURIComponent(nameFilter) + '&list_sort_column=company_name&list_page_size=500'
           .then (response) ->
-            console.log response
             if response.data.getCompaniesResponse.company
-              companies = response.data.getCompaniesResponse.company
-            else
-              companies = []
+              if response.data.getCompaniesResponse.totalNumberResults is '1'
+                companies.push response.data.getCompaniesResponse.company
+              else
+                companies = response.data.getCompaniesResponse.company
+            
             totalNumberResults = response.data.getCompaniesResponse?.totalNumberResults or '0'
             totalNumberResults = Number totalNumberResults
             $scope.schoolList.totalNumberResults = totalNumberResults
             schools = []
 
             setResults = ->
-              console.log 'enter result'
-              console.log companies
-              if companies
-                companies = [companies] if not angular.isArray companies
-                if companies.length > 0
-                  schools = setSchools companies
-                  schools = setSchoolsData schools
-                  $scope.schoolList.totalItems = schools.length
-                  $scope.schoolList.totalNumberResults = schools.length
-                  $scope.schoolList.schools = schools
-                  $scope.orderSchools $scope.schoolList.sortProp, true                  
-                  if $scope.schoolList.stateFilter isnt ''
-                    schools = $filter('filter') schools, SCHOOL_STATE: $scope.schoolList.stateFilter
-                else
-                  $scope.schoolList.schools = []
-                  $scope.schoolList.totalItems = 0
-                  $scope.schoolList.totalNumberResults = 0
-              console.log $scope.schoolList
-
+              if companies.length > 0
+                schools = setSchools companies
+                schools = setSchoolsData schools
+                $scope.schoolList.totalItems = schools.length
+                $scope.schoolList.totalNumberResults = schools.length
+                $scope.schoolList.schools = schools
+                $scope.orderSchools $scope.schoolList.sortProp, true                  
+                if $scope.schoolList.stateFilter isnt ''
+                  schools = $filter('filter') schools, SCHOOL_STATE: $scope.schoolList.stateFilter
+              else
+                $scope.schoolList.schools = []
+                $scope.schoolList.totalItems = 0
+                $scope.schoolList.totalNumberResults = 0
+              
             getAdditionalPages = (filter, totalNumber) -> 
               additionalPages = []
               angular.forEach [1, 2, 3, 4], (additionalPage) ->
@@ -189,29 +204,18 @@ angular.module 'ahaLuminateControllers'
                       delete $scope.schoolList.searchPending
 
             isOverride = findOverrides nameFilter
-            console.log isOverride
             if isOverride.length > 0
-              console.log 'is overide'
-              console.log 'total orig=' + totalNumberResults
-
               setOverride = (response, nameFilterReplace) ->
-                console.log nameFilterReplace
-                
-                console.log 'total pre=' +response.data.getCompaniesResponse?.totalNumberResults
                 totalNumberOverrides = response.data.getCompaniesResponse?.totalNumberResults
           
                 if response.data.getCompaniesResponse.totalNumberResults is '1'
-                  console.log [response.data.getCompaniesResponse.company]
                   companies.push response.data.getCompaniesResponse.company
                 else
                   angular.forEach response.data.getCompaniesResponse?.company, (comp) ->
                     companies.push comp
-                totalNumberResults += Number response.data.getCompaniesResponse?.totalNumberResults
-                
-                console.log 'total post='+totalNumberResults
+                totalNumberResults += Number response.data.getCompaniesResponse?.totalNumberResults  
 
                 if totalNumberOverrides > 500
-                  console.log 'get more pages of overrides'
                   getAdditionalPages nameFilterReplace, totalNumberOverrides
                 else
                   setResults()
@@ -241,24 +245,6 @@ angular.module 'ahaLuminateControllers'
               else
                 setResults()
                 delete $scope.schoolList.searchPending                
-               
-               
+                 
 
-      $scope.orderSchools = (sortProp, keepSortOrder) ->
-        schools = $scope.schoolList.schools
-        if schools.length > 0
-          if not keepSortOrder
-            $scope.schoolList.sortDesc = !$scope.schoolList.sortDesc
-          if $scope.schoolList.sortProp isnt sortProp
-            $scope.schoolList.sortProp = sortProp
-            $scope.schoolList.sortDesc = true
-          schools = $filter('orderBy') schools, sortProp, $scope.schoolList.sortDesc
-          $scope.schoolList.schools = schools
-          $scope.schoolList.currentPage = 1
-      
-      $scope.paginate = (value) ->
-        begin = ($scope.schoolList.currentPage - 1) * $scope.schoolList.paginationItemsPerPage
-        end = begin + $scope.schoolList.paginationItemsPerPage
-        index = $scope.schoolList.schools.indexOf value
-        begin <= index and index < end
   ]
