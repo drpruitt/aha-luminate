@@ -601,12 +601,18 @@
         display: none;
       }
 
-      tbody tr td {
+      tbody tr {
+        padding: 10px 10px 5px;
         display: block;
-        border: none;
 
-        &.text-right {
-          text-align: left;
+        td {
+          display: block;
+          border: none;
+          padding: 0 0 5px;
+
+          &.text-right {
+            text-align: left;
+          }
         }
       } 
     }
