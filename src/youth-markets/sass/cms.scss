@@ -597,7 +597,18 @@
   
   .ym-list--school-list {
     @media (max-width: $screen-xs-max) {
-      min-width: 600px;
+      thead {
+        display: none;
+      }
+
+      tbody tr td {
+        display: block;
+        border: none;
+
+        &.text-right {
+          text-align: left;
+        }
+      } 
     }
     
     th {
