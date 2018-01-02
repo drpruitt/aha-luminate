@@ -12,6 +12,7 @@ angular.module 'ahaLuminateApp'
         companyId: '='
         frId: '='
         teams: '='
+        hasChildren: '='
         searchCompanyTeams: '='
       controller: [
         '$scope'
