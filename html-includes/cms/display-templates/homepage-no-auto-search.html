@@ -1,14 +1,4 @@
 <!--NOT PART OF DEPLOYMENT PROCESS. MUST BE MANUALLY COPIED TO CMS.-->
-<!--hiding elements so only search showing for testing
-remove when updating live template
--->
-<style>
-.ym-hero__owl-carousel.owl-carousel,
-.ym-stats,
-.ym-home-feature {
-  display: none;
-}
-</style>
 <div ng-controller="HomeCtrl">
   <div class="ym-hero-top__find-your-school text-center visible-xs">
     <a href="#/scroll#JumpSearch" class="btn btn-primary btn-lg" role="button">
@@ -263,8 +253,14 @@ remove when updating live template
                 <tbody>
                   <tr class="ym-list__row" ng-repeat="school in schoolList.schools | filter:paginate">
                     <td class="ym-list__column ym-list__column--school">
-                      <strong class="visible-xs-inline-block">Name: </strong> <span class="visible-xs-inline-block" ng-bind-html="school.SCHOOL_NAME"></span>
-                      <a class="hidden-xs" ng-href="{{nonSecureDomain}}site/TR?pg=company&fr_id={{school.FR_ID}}&company_id={{school.COMPANY_ID}}"><span ng-bind-html="school.SCHOOL_NAME"></span></a>
+                      <strong class="visible-xs-inline-block">Name: </strong> 
+                      <t:if test="path == '/district-heart-challenge/'">
+                        <span ng-bind-html="school.SCHOOL_NAME"></span>
+                      </t:if>
+                      <t:else>
+                        <span class="visible-xs-inline-block" ng-bind-html="school.SCHOOL_NAME"></span>
+                        <a class="hidden-xs" ng-href="{{nonSecureDomain}}site/TR?pg=company&fr_id={{school.FR_ID}}&company_id={{school.COMPANY_ID}}"><span ng-bind-html="school.SCHOOL_NAME"></span></a>
+                      </t:else>
                       <br>
                       <t:if test="path == '/high-school/'">
                         <button type="button" class="btn btn-primary btn-md mt-sm" aria-label="Sign Up with {{school.SCHOOL_NAME}}" ng-click="checkCreateTeam(school.COMPANY_ID, school.FR_ID, school.COORDINATOR_ID)">
