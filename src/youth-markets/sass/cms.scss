@@ -525,13 +525,15 @@
     }
   }
   
-  #school-state-filter {
+  #school-state-filter,
+  #search-sort {
     position: absolute;
     top: 0;
     right: 0;
-    background: url("../../youth-markets/image/ym-select-carrot.png") right 0.75rem center no-repeat $event-secondary;
+    background: url("../../youth-markets/image/ym-select-carrot.png") right 0.75rem center no-repeat $event-primary;
     font-weight: 700;
     width: 200px;
+    color: $brand-white;
     
     @media (max-width: $screen-sm-max) {
       position: relative;
@@ -539,7 +541,7 @@
     }
     
     &:hover {
-      background: url("../../youth-markets/image/ym-select-carrot.png") right 0.75rem center no-repeat $event-secondary-dark;
+      background: url("../../youth-markets/image/ym-select-carrot.png") right 0.75rem center no-repeat $event-primary-dark;
     }
     
     option {
@@ -597,7 +599,24 @@
   
   .ym-list--school-list {
     @media (max-width: $screen-xs-max) {
-      min-width: 600px;
+      thead {
+        display: none;
+      }
+
+      tbody tr {
+        padding: 10px 10px 5px;
+        display: block;
+
+        td {
+          display: block;
+          border: none;
+          padding: 0 0 5px;
+
+          &.text-right {
+            text-align: left;
+          }
+        }
+      } 
     }
     
     th {

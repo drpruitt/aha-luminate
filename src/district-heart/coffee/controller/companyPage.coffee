@@ -137,7 +137,7 @@ angular.module 'ahaLuminateControllers'
           $scope.$apply()
       getCompanyTeams = (teamName) ->
         delete $scope.companyTeamSearch.totalTeams
-        TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId + '&team_name=' + encodeURIComponent(teamName) + '&list_sort_column=total&list_ascending=false&list_page_size=500',
+        TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId + '&team_name=' + encodeURIComponent(teamName) + '&list_sort_column=order&list_ascending=true&list_page_size=500',
           error: ->
             setCompanyTeams()
           success: (response) ->
