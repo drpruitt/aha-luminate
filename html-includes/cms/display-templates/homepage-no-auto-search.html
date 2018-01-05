@@ -263,8 +263,8 @@ remove when updating live template
                 <tbody>
                   <tr class="ym-list__row" ng-repeat="school in schoolList.schools | filter:paginate">
                     <td class="ym-list__column ym-list__column--school">
-                      <strong class="visible-xs-inline-block">Name: </strong>
-                      <a ng-href="{{nonSecureDomain}}site/TR?pg=company&fr_id={{school.FR_ID}}&company_id={{school.COMPANY_ID}}"><span ng-bind-html="school.SCHOOL_NAME"></span></a>
+                      <strong class="visible-xs-inline-block">Name: </strong> <span class="visible-xs-inline-block" ng-bind-html="school.SCHOOL_NAME"></span>
+                      <a class="hidden-xs" ng-href="{{nonSecureDomain}}site/TR?pg=company&fr_id={{school.FR_ID}}&company_id={{school.COMPANY_ID}}"><span ng-bind-html="school.SCHOOL_NAME"></span></a>
                       <br>
                       <t:if test="path == '/high-school/'">
                         <button type="button" class="btn btn-primary btn-md mt-sm" aria-label="Sign Up with {{school.SCHOOL_NAME}}" ng-click="checkCreateTeam(school.COMPANY_ID, school.FR_ID, school.COORDINATOR_ID)">
