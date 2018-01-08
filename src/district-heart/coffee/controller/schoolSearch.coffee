@@ -1,8 +1,8 @@
 angular.module 'ahaLuminateControllers'
   .controller 'SchoolSearchCtrl', [
     '$scope'
-    '$filter'
     'SchoolSearchService'
-    ($scope, $filter, SchoolSearchService) ->
-      SchoolSearchService.init()
+    ($scope, SchoolSearchService) ->
+      SchoolSearchService.init $scope
+
   ]

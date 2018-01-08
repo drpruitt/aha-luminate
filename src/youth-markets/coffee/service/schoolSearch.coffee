@@ -1,10 +1,9 @@
 angular.module 'ahaLuminateApp'
   .factory 'SchoolSearchService', [ 
-    '$scope'
     '$filter'
     'SchoolLookupService'
-    ($scope, $filter, SchoolLookupService) ->
-      init: ->
+    ($filter, SchoolLookupService) ->
+      init: ($scope) ->
         $scope.schoolList =
           searchSubmitted: false
           searchPending: false

@@ -2,11 +2,10 @@ angular.module 'ahaLuminateControllers'
   .controller 'SchoolSearchCtrl', [
     '$rootScope'
     '$scope'
-    '$filter'
     'SchoolLookupService'
     'SchoolSearchService'
-    ($rootScope, $scope, $filter, SchoolLookupService, SchoolSearchService) ->
-      SchoolSearchService.init()
+    ($rootScope, $scope, SchoolLookupService, SchoolSearchService) ->
+      SchoolSearchService.init $scope
       
       $scope.checkCreateTeam = (schoolId, frId, coordinatorId)->
         SchoolLookupService.getCreateTeamData '&consId=' + coordinatorId + '&frId=' + frId
