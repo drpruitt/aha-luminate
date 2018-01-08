@@ -26,7 +26,8 @@ angular.module 'ahaLuminateApp'
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
       
       getCreateTeamData: (requestData) ->
-        requestUrl = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent(luminateExtend.global.path.secure + 'SPageServer?pagename=ym_coordinator_data&pgwrap=n')
+        console.log requestData
+        requestUrl = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent(luminateExtend.global.path.secure + 'SPageServer?pagename=ym_coordinator_data&pgwrap=n' + requestData)
         if window.location.href.indexOf(luminateExtend.global.path.secure) is 0
           requestUrl = 'SPageServer?pagename=ym_coordinator_data&pgwrap=n'
         $http
