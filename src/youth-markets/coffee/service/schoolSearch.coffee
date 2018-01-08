@@ -80,7 +80,6 @@ angular.module 'ahaLuminateApp'
                 COORDINATOR_ID: company.coordinatorId
           schools
 
-        
         setSchoolsData = (schools) ->
           angular.forEach schools, (school, schoolIndex) ->
             schoolData = $scope.schoolDataMap['id' + school.COMPANY_ID]
@@ -175,6 +174,9 @@ angular.module 'ahaLuminateApp'
                   $scope.orderSchools $scope.schoolList.sortProp, true                  
                   if $scope.schoolList.stateFilter isnt ''
                     schools = $filter('filter') schools, SCHOOL_STATE: $scope.schoolList.stateFilter
+                    $scope.schoolList.schools = schools
+                    $scope.schoolList.totalItems = schools.length
+                    $scope.schoolList.totalNumberResults = schools.length
                 else
                   $scope.schoolList.schools = []
                   $scope.schoolList.totalItems = 0
