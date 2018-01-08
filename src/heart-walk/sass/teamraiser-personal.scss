@@ -1,11 +1,11 @@
 .heart-hero--personal {
   background-image: url(../image/default-personal-cover.png);
   margin: 0;
-  
+
   @media (min-width: $screen-sm-min) {
     margin: 0 0 40px;
   }
-  
+
   @media (min-width: $screen-md-min) {
     margin: 0;
   }
@@ -13,11 +13,11 @@
 
 .heart-page-rail--personal {
   margin-top: -40px;
-  
+
   @media (min-width: $screen-sm-min) {
     margin-top: 0;
   }
-  
+
   @media (min-width: $screen-md-min) {
     margin-top: -118px;
   }
@@ -27,10 +27,10 @@
   .heart-user-image-wrap-inner {
     position: relative;
   }
-  
+
   .btn {
-    &, 
-    &:link, 
+    &,
+    &:link,
     &:visited {
       text-transform: uppercase;
       padding: 12px;
@@ -38,24 +38,29 @@
       top: 12px;
       left: 12px;
       z-index: 100;
-      
+
+      @media (max-width: $screen-sm-min) {
+        font-size: 50%;
+        top: 100px;
+      }
+
       .glyphicon {
         display: inline-block;
         margin: 0 3px 0 0;
       }
     }
   }
-  
+
   .btn-primary-inverted {
-    &, 
-    &:link, 
+    &,
+    &:link,
     &:visited {
       background: $brand-white;
       border: 1px solid $brand-primary;
     }
-    
-    &:hover, 
-    &:focus, 
+
+    &:hover,
+    &:focus,
     &:active {
       background: $brand-primary;
     }
@@ -66,13 +71,13 @@
   border: 3px solid #ffffff;
   width: 140px;
   margin: 0 auto;
-  
+
   @media (min-width: $screen-sm-min) {
     border: 0;
     width: 275px;
     margin: 0 0 40px;
   }
-  
+
   @media (min-width: $screen-md-min) {
     width: 100%;
     margin: 0 0 3px;
@@ -81,18 +86,18 @@
 
 .heart-page-info--personal {
   margin: 0 0 20px;
-  
+
   @media (min-width: $screen-sm-min) {
     margin: 0 0 40px;
   }
-  
+
   h1 {
     text-align: center;
-    
+
     @media (min-width: $screen-sm-min) {
       text-align: left;
     }
-    
+
     @media (min-width: $screen-md-min) {
       margin: 48px 0 0;
     }
@@ -109,10 +114,10 @@
   .heart-user-video-inner {
     position: relative;
   }
-  
+
   .btn {
-    &, 
-    &:link, 
+    &,
+    &:link,
     &:visited {
       text-transform: uppercase;
       padding: 12px;
@@ -120,24 +125,24 @@
       top: 12px;
       right: 12px;
       z-index: 100;
-      
+
       .glyphicon {
         display: inline-block;
         margin: 0 3px 0 0;
       }
     }
   }
-  
+
   .btn-primary-inverted {
-    &, 
-    &:link, 
+    &,
+    &:link,
     &:visited {
       background: $brand-white;
       border: 1px solid $brand-primary;
     }
-    
-    &:hover, 
-    &:focus, 
+
+    &:hover,
+    &:focus,
     &:active {
       background: $brand-primary;
     }
