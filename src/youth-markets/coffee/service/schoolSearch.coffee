@@ -3,7 +3,7 @@ angular.module 'ahaLuminateApp'
     '$filter'
     'SchoolLookupService'
     ($filter, SchoolLookupService) ->
-      init: ($scope) ->
+      init: ($scope, type) ->
         $scope.schoolList =
           searchSubmitted: false
           searchPending: false
@@ -77,7 +77,9 @@ angular.module 'ahaLuminateApp'
                 FR_ID: company.eventId
                 COMPANY_ID: company.companyId
                 SCHOOL_NAME: company.companyName
+                COORDINATOR_ID: company.coordinatorId
           schools
+
         
         setSchoolsData = (schools) ->
           angular.forEach schools, (school, schoolIndex) ->
@@ -242,5 +244,5 @@ angular.module 'ahaLuminateApp'
                   getAdditionalPages nameFilter, totalNumberResults
                 else
                   setResults()
-                  delete $scope.schoolList.searchPending       
+                  delete $scope.schoolList.searchPending     
   ]
