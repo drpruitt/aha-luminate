@@ -1,6 +1,3 @@
-if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
-
-
 angular.module 'trPcControllers'
   .controller 'NgPcDashboardViewCtrl', [
     '$rootScope'
