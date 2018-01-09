@@ -24,7 +24,7 @@ angular.module 'trPcControllers'
       $scope.participantRegistration.lastPC2Login = '0'
       if $scope.participantRegistration.lastPC2Login is '0'
         firstLoginURL = APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/firstLogin.html'
-        if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
+        if $scope.participantRegistration.companyInformation?.isCompanyCoordinator is 'true'
           firstLoginURL = APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/firstLoginCoord.html'
         $scope.firstLoginModal = $uibModal.open
           scope: $scope
