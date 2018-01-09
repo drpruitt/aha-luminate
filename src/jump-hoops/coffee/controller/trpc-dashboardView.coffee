@@ -21,7 +21,8 @@ angular.module 'trPcControllers'
       $scope.dashboardPromises = []
       
       $dataRoot = angular.element '[data-embed-root]'
-      
+      NgPcTeamraiserRegistrationService.updateRegistration 'update_last_pc2_login=false'
+      $scope.participantRegistration.lastPC2Login = false
       if $scope.participantRegistration.lastPC2Login is '0'
         firstLoginURL = APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/firstLogin.html'
         #if $scope.participantRegistration.companyInformation?.isCompanyCoordinator is 'true'
