@@ -21,7 +21,7 @@ angular.module 'trPcControllers'
       $scope.dashboardPromises = []
       
       $dataRoot = angular.element '[data-embed-root]'
-      
+      $scope.participantRegistration.lastPC2Login = '0'
       if $scope.participantRegistration.lastPC2Login is '0'
         firstLoginURL = APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/firstLogin.html'
         if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
