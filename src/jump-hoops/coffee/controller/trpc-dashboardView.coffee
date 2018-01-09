@@ -28,7 +28,7 @@ angular.module 'trPcControllers'
           firstLoginURL = APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/firstLoginCoord.html'
         $scope.firstLoginModal = $uibModal.open
           scope: $scope
-          templateUrl: APP_INFO.rootPath + firstLoginURL
+          templateUrl: firstLoginURL
         
         $scope.setPersonalUrlInfo = 
           updatedShortcut: ''
