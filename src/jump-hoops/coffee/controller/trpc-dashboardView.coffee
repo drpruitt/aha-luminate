@@ -1,3 +1,6 @@
+if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
+
+
 angular.module 'trPcControllers'
   .controller 'NgPcDashboardViewCtrl', [
     '$rootScope'
@@ -23,9 +26,12 @@ angular.module 'trPcControllers'
       $dataRoot = angular.element '[data-embed-root]'
       
       if $scope.participantRegistration.lastPC2Login is '0'
+        firstLoginURL = APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/firstLogin.html'
+        if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
+          firstLoginURL = APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/firstLoginCoord.html'
         $scope.firstLoginModal = $uibModal.open
           scope: $scope
-          templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/firstLogin.html'
+          templateUrl: APP_INFO.rootPath + firstLoginURL
         
         $scope.setPersonalUrlInfo = 
           updatedShortcut: ''
@@ -41,9 +47,22 @@ angular.module 'trPcControllers'
                 $scope.setPersonalUrlInfo.success = true
                 $scope.getParticipantShortcut()
         
+        $scope.setCompanyUrlInfo = {}
+        
+        $scope.setCompanyUrl = ->
+          delete $scope.setCompanyUrlInfo.errorMessage
+          delete $scope.setCompanyUrlInfo.success
+          updateCompanyUrlPromise = NgPcTeamraiserShortcutURLService.updateCompanyShortcut 'text=' + encodeURIComponent($scope.setCompanyUrlInfo.updatedShortcut)
+            .then (response) ->
+              if response.data.errorResponse
+                $scope.setCompanyUrlInfo.errorMessage = response.data.errorResponse.message
+              else
+                $scope.setCompanyUrlInfo.success = true
+                $scope.getCompanyShortcut()
+
         $scope.closeFirstLogin = ->
           $scope.firstLoginModal.close()
-      
+
       # undocumented update_last_pc2_login parameter required to make news feeds work, see bz #67720
       NgPcTeamraiserRegistrationService.updateRegistration 'update_last_pc2_login=true'
         .then ->
