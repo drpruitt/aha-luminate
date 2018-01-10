@@ -261,21 +261,21 @@ angular.module 'ahaLuminateControllers'
           $scope.$apply()
 
       
+      $scope.companyProgress.numParticipants = 0
       setCompanyNumParticipants = (numParticipants) ->
-        $scope.companyProgress.numParticipants = numParticipants or 0
+        numParticipants = Number numParticipants
+        $scope.companyProgress.numParticipants += numParticipants
         if not $scope.$$phase
           $scope.$apply()
 
       initCompanyParticipantLists = ->
         TeamraiserCompanyService.getCompanyTree $scope.companyId, $scope.childCompanies,
           success: (company) ->
-            console.log company
             if company.companyId and company.companyId is $scope.companyId
               $scope.currentCompany = company
               $scope.companyProgress.amountRaisedFormatted = company.amountRaisedFormatted
-              setCompanyNumParticipants company.participantCount or 0
             $scope.getCompanyParticipantLists()
-
+            
       $scope.getCompanyParticipantLists = ->
         numCompaniesParticipantRequestComplete = 0
 
@@ -296,6 +296,7 @@ angular.module 'ahaLuminateControllers'
                 numCompaniesParticipantRequestComplete++
               success: (response) ->
                 participants = response.getParticipantsResponse?.participant
+                setCompanyNumParticipants response.getParticipantsResponse?.totalNumberResults
                 if not participants?
                   participants = []
                 participants = [participants] if not angular.isArray participants
@@ -355,6 +356,7 @@ angular.module 'ahaLuminateControllers'
               numCompaniesParticipantRequestComplete++
             success: (response) ->
               participants = response.getParticipantsResponse?.participant
+              setCompanyNumParticipants Number response.getParticipantsResponse?.totalNumberResults
               if not participants?
                 participants = []
               participants = [participants] if not angular.isArray participants
@@ -393,6 +395,7 @@ angular.module 'ahaLuminateControllers'
 
         angular.forEach $scope.childCompanies, (childCompany, childCompanyIndex) ->
           $scope.getChildCompanyParticipants childCompanyIndex
+      
       initCompanyParticipantLists()
 
       $scope.filterParticipants = (participants) ->
