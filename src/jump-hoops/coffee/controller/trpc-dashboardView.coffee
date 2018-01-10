@@ -23,7 +23,7 @@ angular.module 'trPcControllers'
       $dataRoot = angular.element '[data-embed-root]'
 
       if $scope.participantRegistration.lastPC2Login isnt '0'
-        if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
+        if $scope.participantRegistration.companyInformation?.isCompanyCoordinator is 'true'
           $scope.firstLoginModal = $uibModal.open
             scope: $scope
             templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/firstLogin.html'
