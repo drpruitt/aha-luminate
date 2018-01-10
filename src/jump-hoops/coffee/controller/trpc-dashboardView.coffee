@@ -441,6 +441,8 @@ angular.module 'trPcControllers'
                     $scope.companyPageUrl = shortcutItem.defaultUrl.split('/site/')[0] + '/site/TR?fr_id=' + $scope.frId + '&pg=company&company_id=' + $scope.participantRegistration.companyInformation.companyId
               response
           $scope.dashboardPromises.push getCompanyShortcutPromise
+          if $scope.participantRegistration.lastPC2Login isnt '0'
+            $scope.editCompanyUrlFirst()
         $scope.getCompanyShortcut()
         
         $scope.companyUrlInfo = {}
@@ -473,9 +475,6 @@ angular.module 'trPcControllers'
                 $scope.getCompanyShortcut()
               response
           $scope.dashboardPromises.push updateCompanyUrlPromise
-        
-        if $scope.participantRegistration.lastPC2Login isnt '0'
-          $scope.editCompanyUrlFirst()
       
       $scope.personalChallenge = {}
       $scope.updatedPersonalChallenge = {}
