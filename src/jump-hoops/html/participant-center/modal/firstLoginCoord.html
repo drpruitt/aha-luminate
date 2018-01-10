@@ -1,6 +1,6 @@
 <div>
   <div class="modal-body">
-    <a class="close" aria-label="Close" ng-click="closeFirstLogin()">
+    <a class="close" aria-label="Close" ng-click="cancelEditCompanyUrl()">
       <span aria-hidden="true">×</span>
     </a>
     <div class="ym-pc-first-login-modal">
@@ -11,22 +11,22 @@
         Your school page is built and ready! <strong>Customize your URL</strong> so you can quickly share your page with students:
       </div>
       <div class="ym-pc-first-login-url">
-        <div class="alert alert-danger" role="alert" ng-if="setCompanyUrlInfo.errorMessage" ng-cloak>
-          <span ng-bind-html="setCompanyUrlInfo.errorMessage"></span>
+        <div class="alert alert-danger" role="alert" ng-if="companyUrlInfo.errorMessage" ng-cloak>
+          <span ng-bind-html="companyUrlInfo.errorMessage"></span>
         </div>
-        <div class="alert alert-success" role="alert" ng-if="setCompanyUrlInfo.success" ng-cloak>
+        <div class="alert alert-success" role="alert" ng-if="companyUrlInfo.success" ng-cloak>
           URL updated.
         </div>
-        <form method="POST" novalidate ng-submit="setCompanyUrl()">
-          <div class="ym-pc-first-login-url-prefix" ng-cloak>
-            {{nonSecureDomain}}goto/
-          </div>
+        <form method="POST" novalidate ng-submit="updateCompanyUrl()">
           <div class="ym-pc-first-login-url-text">
             <div class="form-group">
               <label for="shortcut_text" class="sr-only">
                 URL:
               </label>
-              <input type="text" class="form-control input-sm" id="shortcut_text" ng-model="setCompanyUrlInfo.updatedShortcut" aria-label="URL" ng-bind="companyShortcut.text">
+              <div class="input-group">
+                <span class="input-group-addon"><span ng-bind-html="companyShortcut.prefix"></span></span>
+                <input type="text" id="shortcut_text" class="form-control" ng-model="companyUrlInfo.updatedShortcut" aria-label="URL">
+              </div>
             </div>
           </div>
           <div class="ym-pc-first-login-url-btn">
