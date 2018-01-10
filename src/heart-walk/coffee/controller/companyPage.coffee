@@ -234,13 +234,16 @@ angular.module 'ahaLuminateControllers'
         totalNumber = participants.length
         $scope.companyParticipants.totalNumber = Number totalNumber
         $scope.paginateCompanyParticipants null
+        tallyParticipants $scope.companyParticipants.totalNumber, 'parent'
         if not $scope.$$phase
           $scope.$apply()
 
       $scope.childCompanyParticipants =
         companies: []
 
+      numChildComp = 0
       addChildCompanyParticipants = (companyIndex, companyId, companyName, participants, depth) ->
+        numChildComp++
         pageNumber = $scope.childCompanyParticipants.companies[companyIndex]?.page or 0
         participants = $scope.sortList(participants, ['name.first', 'name.last'])
         participants = $scope.setParticipantsFullName participants
@@ -256,15 +259,28 @@ angular.module 'ahaLuminateControllers'
           participantsList: participants or []
           depth: depth or ""
         $scope.childCompanyParticipants.companies[companyIndex].totalNumber = Number totalNumber
+        if numChildComp is $scope.childCompanies.length
+          tallyParticipants $scope.childCompanyParticipants.companies[companyIndex].totalNumber, 'child', true
+        else
+          tallyParticipants $scope.childCompanyParticipants.companies[companyIndex].totalNumber, 'child', false
         $scope.paginateCompanyParticipants companyIndex
         if not $scope.$$phase
           $scope.$apply()
 
-      
-      $scope.companyProgress.numParticipants = 0
+      if $scope.childCompanies.length is 0
+        $scope.companyProgress.numParticipants = 0
+
+      totalParticipants = 0
+      tallyParticipants = (num, type, set) ->
+        num = Number num
+        totalParticipants += num
+        if $scope.childCompanies.length is 0 and type is 'parent'
+          setCompanyNumParticipants totalParticipants
+        if set is true
+          setCompanyNumParticipants totalParticipants
       setCompanyNumParticipants = (numParticipants) ->
         numParticipants = Number numParticipants
-        $scope.companyProgress.numParticipants += numParticipants
+        $scope.companyProgress.numParticipants = numParticipants
         if not $scope.$$phase
           $scope.$apply()
 
@@ -296,7 +312,6 @@ angular.module 'ahaLuminateControllers'
                 numCompaniesParticipantRequestComplete++
               success: (response) ->
                 participants = response.getParticipantsResponse?.participant
-                setCompanyNumParticipants response.getParticipantsResponse?.totalNumberResults
                 if not participants?
                   participants = []
                 participants = [participants] if not angular.isArray participants
@@ -356,7 +371,6 @@ angular.module 'ahaLuminateControllers'
               numCompaniesParticipantRequestComplete++
             success: (response) ->
               participants = response.getParticipantsResponse?.participant
-              setCompanyNumParticipants Number response.getParticipantsResponse?.totalNumberResults
               if not participants?
                 participants = []
               participants = [participants] if not angular.isArray participants
@@ -395,7 +409,7 @@ angular.module 'ahaLuminateControllers'
 
         angular.forEach $scope.childCompanies, (childCompany, childCompanyIndex) ->
           $scope.getChildCompanyParticipants childCompanyIndex
-      
+
       initCompanyParticipantLists()
 
       $scope.filterParticipants = (participants) ->
