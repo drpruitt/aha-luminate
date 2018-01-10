@@ -18,14 +18,14 @@
           URL updated.
         </div>
         <form method="POST" novalidate ng-submit="updateCompanyUrl()">
+          <div class="ym-pc-first-login-url-prefix" ng-cloak>
+            <span ng-bind-html="companyShortcut.prefix"></span>
+          </div>
           <div class="ym-pc-first-login-url-text">
-            <div class="form-group">
-              <label for="shortcut_text" class="sr-only">
-                URL:
-              </label>
-              <span ng-bind-html="companyShortcut.prefix"></span>
-              <input type="text" id="shortcut_text" class="form-control" ng-model="companyUrlInfo.updatedShortcut" aria-label="URL">
-            </div>
+            <label for="shortcut_text" class="sr-only">
+              URL:
+            </label>
+            <input type="text" id="shortcut_text" class="form-control" ng-model="companyUrlInfo.updatedShortcut" aria-label="URL">
           </div>
           <div class="ym-pc-first-login-url-btn">
             <button type="submit" class="btn btn-sm btn-primary">
