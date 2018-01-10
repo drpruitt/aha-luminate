@@ -126,6 +126,8 @@ angular.module 'ahaLuminateControllers'
         currentPage: 1
         paginationItemsPerPage: 4
         paginationMaxSize: 4
+      
+      ###
       setCompanyTeams = (teams, totalNumber) ->
         $scope.companyTeams.teams = teams or []
         totalNumber = totalNumber or 0
@@ -165,6 +167,30 @@ angular.module 'ahaLuminateControllers'
             teamMinsActivityMap = response.data.data?.list or []
             $scope.companyTeams.teamMinsActivityMap = teamMinsActivityMap
       getCompanyTeams '%'
+      ###
+      
+      setCompanyTeams = (teams, totalNumber) ->
+        $scope.companyTeams.teams = teams or []
+        totalNumber = totalNumber or 0
+        $scope.companyTeams.totalNumber = Number totalNumber
+        $scope.totalTeams = totalNumber
+        if not $scope.$$phase
+          $scope.$apply()
+      
+      getCompanyTeams = ->
+        TeamraiserTeamService.getTeams 'team_company_id=' + $scope.companyId + '&list_page_size=500',
+          error: ->
+            setCompanyTeams()
+          success: (response) ->
+            companyTeams = response.getTeamSearchByInfoResponse.team
+            if companyTeams
+              companyTeams = [companyTeams] if not angular.isArray companyTeams
+              angular.forEach companyTeams, (companyTeam) ->
+                companyTeam.amountRaised = Number companyTeam.amountRaised
+                companyTeam.amountRaisedFormatted = $filter('currency')(companyTeam.amountRaised / 100, '$').replace '.00', ''
+              totalNumberTeams = response.getTeamSearchByInfoResponse.totalNumberResults
+              setCompanyTeams companyTeams, totalNumberTeams
+      getCompanyTeams()
       
       setTeamsMinsActivity = ->
         teams = $scope.companyTeams.teams
