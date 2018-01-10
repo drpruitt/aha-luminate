@@ -23,10 +23,8 @@
               <label for="shortcut_text" class="sr-only">
                 URL:
               </label>
-              <div class="input-group">
-                <span class="input-group-addon"><span ng-bind-html="companyShortcut.prefix"></span></span>
-                <input type="text" id="shortcut_text" class="form-control" ng-model="companyUrlInfo.updatedShortcut" aria-label="URL">
-              </div>
+              <span ng-bind-html="companyShortcut.prefix"></span>
+              <input type="text" id="shortcut_text" class="form-control" ng-model="companyUrlInfo.updatedShortcut" aria-label="URL">
             </div>
           </div>
           <div class="ym-pc-first-login-url-btn">
