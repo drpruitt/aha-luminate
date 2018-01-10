@@ -22,7 +22,7 @@ angular.module 'trPcControllers'
       
       $dataRoot = angular.element '[data-embed-root]'
 
-      if $scope.participantRegistration.lastPC2Login is '0'
+      if $scope.participantRegistration.lastPC2Login isnt '0'
         if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
           $scope.firstLoginModal = $uibModal.open
             scope: $scope
@@ -470,7 +470,7 @@ angular.module 'trPcControllers'
                     $scope.companyPageUrl = shortcutItem.url
                   else
                     $scope.companyPageUrl = shortcutItem.defaultUrl.split('/site/')[0] + '/site/TR?fr_id=' + $scope.frId + '&pg=company&company_id=' + $scope.participantRegistration.companyInformation.companyId
-                    if $scope.participantRegistration.lastPC2Login isnt '0'
+                    if $scope.participantRegistration.lastPC2Login is '0'
                       $scope.editCompanyUrlFirst()
               response
           $scope.dashboardPromises.push getCompanyShortcutPromise
