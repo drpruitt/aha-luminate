@@ -95,17 +95,17 @@ angular.module 'trPcControllers'
             if filter is 'email_custom_rpt_show_past_company_coordinator_participants'
               if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
                 # TODO
-              else if not $scope.prevFrId or $scope.prevFrId is ''
+              else if not $scope.prev1FrId or $scope.prev1FrId is ''
                 # TODO
               else
-                NgPcTeamraiserCompanyService.getCompanies 'fr_id=' + $scope.prevFrId + '&company_name=' + encodeURIComponent('org_for_company_id=' + $scope.participantRegistration.companyInformation.companyId)
+                NgPcTeamraiserCompanyService.getCompanies 'fr_id=' + $scope.prev1FrId + '&company_name=' + encodeURIComponent('org_for_company_id=' + $scope.participantRegistration.companyInformation.companyId)
                   .then (response) ->
                     companies = response.data.getCompaniesResponse?.company
                     if companies
                       companies = [companies] if not angular.isArray companies
                       previousCompany = companies[0]
                       previousCompanyId = previousCompany.companyId
-                      NgPcTeamraiserReportsService.getSchoolDetailReport $scope.prevFrId, previousCompanyId
+                      NgPcTeamraiserReportsService.getSchoolDetailReport $scope.prev1FrId, previousCompanyId
                         .then (response) ->
                           previousParticipants = []
                           totalNumberResults = 0
@@ -154,17 +154,17 @@ angular.module 'trPcControllers'
             if filter is 'email_custom_rpt_show_past_company_coordinator_participants'
               if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
                 # TODO
-              else if not $scope.prevFrId or $scope.prevFrId is ''
+              else if not $scope.prev1FrId or $scope.prev1FrId is ''
                 # TODO
               else
-                NgPcTeamraiserCompanyService.getCompanies 'fr_id=' + $scope.prevFrId + '&company_name=' + encodeURIComponent('org_for_company_id=' + $scope.participantRegistration.companyInformation.companyId)
+                NgPcTeamraiserCompanyService.getCompanies 'fr_id=' + $scope.prev1FrId + '&company_name=' + encodeURIComponent('org_for_company_id=' + $scope.participantRegistration.companyInformation.companyId)
                   .then (response) ->
                     companies = response.data.getCompaniesResponse?.company
                     if companies
                       companies = [companies] if not angular.isArray companies
                       previousCompany = companies[0]
                       previousCompanyId = previousCompany.companyId
-                      NgPcTeamraiserReportsService.getSchoolDetailReport $scope.prevFrId, previousCompanyId
+                      NgPcTeamraiserReportsService.getSchoolDetailReport $scope.prev1FrId, previousCompanyId
                         .then (response) ->
                           previousParticipants = []
                           totalNumberResults = 0
