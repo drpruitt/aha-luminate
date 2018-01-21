@@ -94,9 +94,11 @@ angular.module 'trPcControllers'
             pageNumber = $scope.addressBookContacts.page - 1
             if filter is 'email_custom_rpt_show_past_company_coordinator_participants'
               if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
-                # TODO
+                $scope.addressBookContacts.contacts = []
+                $scope.addressBookContacts.totalNumber = 0
               else if not $scope.prev1FrId or $scope.prev1FrId is ''
-                # TODO
+                $scope.addressBookContacts.contacts = []
+                $scope.addressBookContacts.totalNumber = 0
               else
                 NgPcTeamraiserCompanyService.getCompanies 'fr_id=' + $scope.prev1FrId + '&company_name=' + encodeURIComponent('org_for_company_id=' + $scope.participantRegistration.companyInformation.companyId)
                   .then (response) ->
@@ -153,9 +155,11 @@ angular.module 'trPcControllers'
             pageNumber = $scope.addressBookContacts.getAllPage
             if filter is 'email_custom_rpt_show_past_company_coordinator_participants'
               if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
-                # TODO
+                $scope.addressBookContacts.contacts = []
+                $scope.addressBookContacts.totalNumber = 0
               else if not $scope.prev1FrId or $scope.prev1FrId is ''
-                # TODO
+                $scope.addressBookContacts.contacts = []
+                $scope.addressBookContacts.totalNumber = 0
               else
                 NgPcTeamraiserCompanyService.getCompanies 'fr_id=' + $scope.prev1FrId + '&company_name=' + encodeURIComponent('org_for_company_id=' + $scope.participantRegistration.companyInformation.companyId)
                   .then (response) ->
