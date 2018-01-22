@@ -137,9 +137,19 @@ angular.module 'trPcControllers'
                             $scope.addressBookContacts.contacts = previousParticipants
                             $scope.addressBookContacts.totalNumber = totalNumberResults
                           else
-                            # TODO
-                            $scope.addressBookContacts.contacts = previousParticipants
-                            $scope.addressBookContacts.totalNumber = totalNumberResults
+                            NgPcTeamraiserCompanyService.getCompanies 'fr_id=' + $scope.prev2FrId + '&company_name=' + encodeURIComponent('org_for_company_id=' + prev1CompanyId)
+                              .then (response) ->
+                                prev2Companies = response.data.getCompaniesResponse?.company
+                                if prev2Companies
+                                  prev2Companies = [prev2Companies] if not angular.isArray prev2Companies
+                                  prev2Company = prev2Companies[0]
+                                  prev2CompanyId = prev2Company.companyId
+                                  NgPcTeamraiserReportsService.getSchoolDetailReport $scope.prev2FrId, prev2CompanyId
+                                    .then (response) ->
+                                      report2Html = response.data.getSchoolDetailReport?.report
+                                      handleReportHtml report2Html
+                                      $scope.addressBookContacts.contacts = previousParticipants
+                                      $scope.addressBookContacts.totalNumber = totalNumberResults
             else
               contactsPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=10&list_page_offset=' + pageNumber
                 .then (response) ->
@@ -205,11 +215,21 @@ angular.module 'trPcControllers'
                             $scope.addressBookContacts.contacts = previousParticipants
                             $scope.addressBookContacts.totalNumber = totalNumberResults
                           else
-                            # TODO
-                            $scope.addressBookContacts.allContacts = previousParticipants
-                            delete $scope.addressBookContacts.getAllPage
-                            $scope.addressBookContacts.contacts = previousParticipants
-                            $scope.addressBookContacts.totalNumber = totalNumberResults
+                            NgPcTeamraiserCompanyService.getCompanies 'fr_id=' + $scope.prev2FrId + '&company_name=' + encodeURIComponent('org_for_company_id=' + prev1CompanyId)
+                              .then (response) ->
+                                prev2Companies = response.data.getCompaniesResponse?.company
+                                if prev2Companies
+                                  prev2Companies = [prev2Companies] if not angular.isArray prev2Companies
+                                  prev2Company = prev2Companies[0]
+                                  prev2CompanyId = prev2Company.companyId
+                                  NgPcTeamraiserReportsService.getSchoolDetailReport $scope.prev2FrId, prev2CompanyId
+                                    .then (response) ->
+                                      report2Html = response.data.getSchoolDetailReport?.report
+                                      handleReportHtml report2Html
+                                      $scope.addressBookContacts.allContacts = previousParticipants
+                                      delete $scope.addressBookContacts.getAllPage
+                                      $scope.addressBookContacts.contacts = previousParticipants
+                                      $scope.addressBookContacts.totalNumber = totalNumberResults
             else
               allContactsPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=200&list_page_offset=' + pageNumber
                 .then (response) ->
