@@ -67,7 +67,7 @@ angular.module 'trPcControllers'
         count
       
       isAllContactsSelected = ->
-        $scope.addressBookContacts.allContacts.length is countContactSelected $scope.addressBookContacts.allContacts
+        $scope.addressBookContacts.allContacts.length > 0 and $scope.addressBookContacts.allContacts.length is countContactSelected($scope.addressBookContacts.allContacts)
       
       $scope.contactCounts = {}
       contactFilters = [
