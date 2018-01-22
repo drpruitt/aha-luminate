@@ -138,9 +138,7 @@ angular.module 'trPcControllers'
                                     contact.selected = isContactSelected contact
                                     if previousParticipants.indexOf(contact) is -1
                                       totalNumberResults++
-                                      if reportTableRowIndex >= pageNumber * 10
-                                        if previousParticipants.length < 10
-                                          previousParticipants.push contact
+                                      previousParticipants.push contact
                           handleReportHtml report1Html
                           if not $scope.prev2FrId or $scope.prev2FrId is ''
                             $scope.addressBookContacts.contacts = previousParticipants
