@@ -208,6 +208,9 @@
           </div>
           <!-- TODO: search -->
         </div>
+        <div class="panel-body" ng-if="!addressBookContacts.contacts" ng-cloak>
+          Loading ...
+        </div>
         <div class="panel-body" ng-if="contactCounts.email_rpt_show_all == '0'" ng-cloak>
           You haven't added any contacts yet.
         </div>
