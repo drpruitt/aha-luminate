@@ -135,7 +135,13 @@ angular.module 'trPcControllers'
                                       lastName: lastName
                                       email: email
                                     contact.selected = isContactSelected contact
-                                    if previousParticipants.indexOf(contact) is -1
+                                    contactIsUnique = true
+                                    angular.forEach previousParticipants, (previousParticipant) ->
+                                      contactString = firstName.toLowerCase() + ' ' + lastName.toLowerCase() + ' <' + email.toLowerCase() + '>'
+                                      previousParticipantString = previousParticipant.firstName.toLowerCase() + ' ' + previousParticipant.lastName.toLowerCase() + ' <' + previousParticipant.email.toLowerCase() + '>'
+                                      if contactString is previousParticipantString
+                                        contactIsUnique = false
+                                    if contactIsUnique
                                       totalNumberResults++
                                       previousParticipants.push contact
                                   previousParticipants.sort (a, b) ->
@@ -229,7 +235,13 @@ angular.module 'trPcControllers'
                                       lastName: lastName
                                       email: email
                                     contact.selected = isContactSelected contact
-                                    if previousParticipants.indexOf(contact) is -1
+                                    contactIsUnique = true
+                                    angular.forEach previousParticipants, (previousParticipant) ->
+                                      contactString = firstName.toLowerCase() + ' ' + lastName.toLowerCase() + ' <' + email.toLowerCase() + '>'
+                                      previousParticipantString = previousParticipant.firstName.toLowerCase() + ' ' + previousParticipant.lastName.toLowerCase() + ' <' + previousParticipant.email.toLowerCase() + '>'
+                                      if contactString is previousParticipantString
+                                        contactIsUnique = false
+                                    if contactIsUnique
                                       totalNumberResults++
                                       previousParticipants.push contact
                                   previousParticipants.sort (a, b) ->
