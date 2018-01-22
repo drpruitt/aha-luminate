@@ -123,7 +123,6 @@ angular.module 'trPcControllers'
                                 if $reportTableRows.length > 0
                                   angular.forEach $reportTableRows, (reportTableRow, reportTableRowIndex) ->
                                     $reportTableRow = angular.element reportTableRow
-                                    consId = jQuery.trim $reportTableRow.find('td').eq(7).text()
                                     firstName = jQuery.trim $reportTableRow.find('td').eq(8).text()
                                     lastName = jQuery.trim $reportTableRow.find('td').eq(9).text()
                                     email = jQuery.trim $reportTableRow.find('td').eq(10).text()
@@ -132,9 +131,19 @@ angular.module 'trPcControllers'
                                       lastName: lastName
                                       email: email
                                     contact.selected = isContactSelected contact
+                                    console.log contact, previousParticipants.indexOf(contact)
                                     if previousParticipants.indexOf(contact) is -1
                                       totalNumberResults++
                                       previousParticipants.push contact
+                                  previousParticipants.sort (a, b) ->
+                                    aFullName = a.firstName.toLowerCase() + ' ' + a.lastName.toLowerCase()
+                                    bFullName = b.firstName.toLowerCase() + ' ' + b.lastName.toLowerCase()
+                                    if aFullName < bFullName
+                                      return -1
+                                    else if aFullName > bFullName
+                                      return 1
+                                    else
+                                      return 0
                           handleReportHtml report1Html
                           if not $scope.prev2FrId or $scope.prev2FrId is ''
                             $scope.addressBookContacts.contacts = previousParticipants
@@ -209,7 +218,6 @@ angular.module 'trPcControllers'
                                 if $reportTableRows.length > 0
                                   angular.forEach $reportTableRows, (reportTableRow) ->
                                     $reportTableRow = angular.element reportTableRow
-                                    consId = jQuery.trim $reportTableRow.find('td').eq(7).text()
                                     firstName = jQuery.trim $reportTableRow.find('td').eq(8).text()
                                     lastName = jQuery.trim $reportTableRow.find('td').eq(9).text()
                                     email = jQuery.trim $reportTableRow.find('td').eq(10).text()
@@ -221,6 +229,15 @@ angular.module 'trPcControllers'
                                     if previousParticipants.indexOf(contact) is -1
                                       totalNumberResults++
                                       previousParticipants.push contact
+                                  previousParticipants.sort (a, b) ->
+                                    aFullName = a.firstName.toLowerCase() + ' ' + a.lastName.toLowerCase()
+                                    bFullName = b.firstName.toLowerCase() + ' ' + b.lastName.toLowerCase()
+                                    if aFullName < bFullName
+                                      return -1
+                                    else if aFullName > bFullName
+                                      return 1
+                                    else
+                                      return 0
                           handleReportHtml report1Html
                           if not $scope.prev2FrId or $scope.prev2FrId is ''
                             delete $scope.addressBookContacts.getAllPage
