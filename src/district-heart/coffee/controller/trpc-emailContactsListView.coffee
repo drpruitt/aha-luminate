@@ -100,6 +100,8 @@ angular.module 'trPcControllers'
                 $scope.addressBookContacts.contacts = []
                 $scope.addressBookContacts.totalNumber = 0
               else
+                if $scope.addressBookContacts.contacts
+                  delete $scope.addressBookContacts.contacts
                 NgPcTeamraiserCompanyService.getCompanies 'fr_id=' + $scope.prev1FrId + '&company_name=' + encodeURIComponent('org_for_company_id=' + $scope.participantRegistration.companyInformation.companyId)
                   .then (response) ->
                     prev1Companies = response.data.getCompaniesResponse?.company
@@ -179,6 +181,8 @@ angular.module 'trPcControllers'
                 $scope.addressBookContacts.contacts = []
                 $scope.addressBookContacts.totalNumber = 0
               else
+                if $scope.addressBookContacts.contacts
+                  delete $scope.addressBookContacts.contacts
                 NgPcTeamraiserCompanyService.getCompanies 'fr_id=' + $scope.prev1FrId + '&company_name=' + encodeURIComponent('org_for_company_id=' + $scope.participantRegistration.companyInformation.companyId)
                   .then (response) ->
                     prev1Companies = response.data.getCompaniesResponse?.company
