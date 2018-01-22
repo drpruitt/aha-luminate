@@ -66,7 +66,7 @@ angular.module 'trPcControllers'
             count = count + 1
         count
       
-      isAllContactsSelected = () ->
+      isAllContactsSelected = ->
         $scope.addressBookContacts.allContacts.length is countContactSelected $scope.addressBookContacts.allContacts
       
       $scope.contactCounts = {}
@@ -230,6 +230,7 @@ angular.module 'trPcControllers'
                           handleReportHtml report1Html
                           if not $scope.prev2FrId or $scope.prev2FrId is ''
                             delete $scope.addressBookContacts.getAllPage
+                            $scope.addressBookContacts.allContacts = previousParticipants
                             $scope.addressBookContacts.allContactsSelected = isAllContactsSelected()
                           else
                             NgPcTeamraiserCompanyService.getCompanies 'fr_id=' + $scope.prev2FrId + '&company_name=' + encodeURIComponent('org_for_company_id=' + prev1CompanyId)
@@ -247,6 +248,7 @@ angular.module 'trPcControllers'
                                       report2Html = response.data.getDistrictDetailReport?.report
                                       handleReportHtml report2Html
                                       delete $scope.addressBookContacts.getAllPage
+                                      $scope.addressBookContacts.allContacts = previousParticipants
                                       $scope.addressBookContacts.allContactsSelected = isAllContactsSelected()
             else
               allContactsPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=200&list_page_offset=' + pageNumber
@@ -327,9 +329,7 @@ angular.module 'trPcControllers'
       
       $scope.addNewContact = ->
         $scope.clearAddContactAlerts()
-        if not $scope.newContact.email or $scope.newContact.email is ''
-          # TODO
-        else
+        if $scope.addNewContactForm.$valid
           addContactPromise = NgPcContactService.addAddressBookContact $httpParamSerializer($scope.newContact)
             .then (response) ->
               if response.data.errorResponse
