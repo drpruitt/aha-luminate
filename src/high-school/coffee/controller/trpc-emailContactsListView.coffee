@@ -102,37 +102,44 @@ angular.module 'trPcControllers'
               else
                 NgPcTeamraiserCompanyService.getCompanies 'fr_id=' + $scope.prev1FrId + '&company_name=' + encodeURIComponent('org_for_company_id=' + $scope.participantRegistration.companyInformation.companyId)
                   .then (response) ->
-                    companies = response.data.getCompaniesResponse?.company
-                    if companies
-                      companies = [companies] if not angular.isArray companies
-                      previousCompany = companies[0]
-                      previousCompanyId = previousCompany.companyId
-                      NgPcTeamraiserReportsService.getSchoolDetailReport $scope.prev1FrId, previousCompanyId
+                    prev1Companies = response.data.getCompaniesResponse?.company
+                    if prev1Companies
+                      prev1Companies = [prev1Companies] if not angular.isArray prev1Companies
+                      prev1Company = prev1Companies[0]
+                      prev1CompanyId = prev1Company.companyId
+                      NgPcTeamraiserReportsService.getSchoolDetailReport $scope.prev1FrId, prev1CompanyId
                         .then (response) ->
                           previousParticipants = []
                           totalNumberResults = 0
-                          reportHtml = response.data.getSchoolDetailReport?.report
-                          if reportHtml and reportHtml.indexOf('<p>No results</p>') is -1
-                            $reportTable = angular.element('<div>' + reportHtml + '</div>').find 'table'
-                            if $reportTable.length > 0
-                              $reportTableRows = $reportTable.find 'tr'
-                              if $reportTableRows.length > 0
-                                angular.forEach $reportTableRows, (reportTableRow, reportTableRowIndex) ->
-                                  totalNumberResults++
-                                  if reportTableRowIndex >= pageNumber * 10
-                                    $reportTableRow = angular.element reportTableRow
-                                    consId = jQuery.trim $reportTableRow.find('td').eq(7).text()
-                                    firstName = jQuery.trim $reportTableRow.find('td').eq(8).text()
-                                    lastName = jQuery.trim $reportTableRow.find('td').eq(9).text()
-                                    email = jQuery.trim $reportTableRow.find('td').eq(10).text()
-                                    if previousParticipants.length < 10
-                                      contact =
-                                        firstName: firstName
-                                        lastName: lastName
-                                        email: email
-                                      previousParticipants.push contact
-                          $scope.addressBookContacts.contacts = previousParticipants
-                          $scope.addressBookContacts.totalNumber = totalNumberResults
+                          report1Html = response.data.getSchoolDetailReport?.report
+                          handleReportHtml = (reportHtml) ->
+                            if reportHtml and reportHtml.indexOf('<p>No results</p>') is -1
+                              $reportTable = angular.element('<div>' + reportHtml + '</div>').find 'table'
+                              if $reportTable.length > 0
+                                $reportTableRows = $reportTable.find 'tr'
+                                if $reportTableRows.length > 0
+                                  angular.forEach $reportTableRows, (reportTableRow, reportTableRowIndex) ->
+                                    totalNumberResults++
+                                    if reportTableRowIndex >= pageNumber * 10
+                                      $reportTableRow = angular.element reportTableRow
+                                      consId = jQuery.trim $reportTableRow.find('td').eq(7).text()
+                                      firstName = jQuery.trim $reportTableRow.find('td').eq(8).text()
+                                      lastName = jQuery.trim $reportTableRow.find('td').eq(9).text()
+                                      email = jQuery.trim $reportTableRow.find('td').eq(10).text()
+                                      if previousParticipants.length < 10
+                                        contact =
+                                          firstName: firstName
+                                          lastName: lastName
+                                          email: email
+                                        previousParticipants.push contact
+                          handleReportHtml report1Html
+                          if not $scope.prev2FrId or $scope.prev2FrId is ''
+                            $scope.addressBookContacts.contacts = previousParticipants
+                            $scope.addressBookContacts.totalNumber = totalNumberResults
+                          else
+                            # TODO
+                            $scope.addressBookContacts.contacts = previousParticipants
+                            $scope.addressBookContacts.totalNumber = totalNumberResults
             else
               contactsPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=10&list_page_offset=' + pageNumber
                 .then (response) ->
@@ -163,37 +170,46 @@ angular.module 'trPcControllers'
               else
                 NgPcTeamraiserCompanyService.getCompanies 'fr_id=' + $scope.prev1FrId + '&company_name=' + encodeURIComponent('org_for_company_id=' + $scope.participantRegistration.companyInformation.companyId)
                   .then (response) ->
-                    companies = response.data.getCompaniesResponse?.company
-                    if companies
-                      companies = [companies] if not angular.isArray companies
-                      previousCompany = companies[0]
-                      previousCompanyId = previousCompany.companyId
-                      NgPcTeamraiserReportsService.getSchoolDetailReport $scope.prev1FrId, previousCompanyId
+                    prev1Companies = response.data.getCompaniesResponse?.company
+                    if prev1Companies
+                      prev1Companies = [prev1Companies] if not angular.isArray prev1Companies
+                      prev1Company = prev1Companies[0]
+                      prev1CompanyId = prev1Company.companyId
+                      NgPcTeamraiserReportsService.getSchoolDetailReport $scope.prev1FrId, prev1CompanyId
                         .then (response) ->
                           previousParticipants = []
                           totalNumberResults = 0
-                          reportHtml = response.data.getSchoolDetailReport?.report
-                          if reportHtml and reportHtml.indexOf('<p>No results</p>') is -1
-                            $reportTable = angular.element('<div>' + reportHtml + '</div>').find 'table'
-                            if $reportTable.length > 0
-                              $reportTableRows = $reportTable.find 'tr'
-                              if $reportTableRows.length > 0
-                                angular.forEach $reportTableRows, (reportTableRow) ->
-                                  totalNumberResults++
-                                  $reportTableRow = angular.element reportTableRow
-                                  consId = jQuery.trim $reportTableRow.find('td').eq(7).text()
-                                  firstName = jQuery.trim $reportTableRow.find('td').eq(8).text()
-                                  lastName = jQuery.trim $reportTableRow.find('td').eq(9).text()
-                                  email = jQuery.trim $reportTableRow.find('td').eq(10).text()
-                                  contact =
-                                    firstName: firstName
-                                    lastName: lastName
-                                    email: email
-                                  previousParticipants.push contact
-                          $scope.addressBookContacts.allContacts = previousParticipants
-                          delete $scope.addressBookContacts.getAllPage
-                          $scope.addressBookContacts.contacts = previousParticipants
-                          $scope.addressBookContacts.totalNumber = totalNumberResults
+                          report1Html = response.data.getSchoolDetailReport?.report
+                          handleReportHtml = (reportHtml) ->
+                            if reportHtml and reportHtml.indexOf('<p>No results</p>') is -1
+                              $reportTable = angular.element('<div>' + reportHtml + '</div>').find 'table'
+                              if $reportTable.length > 0
+                                $reportTableRows = $reportTable.find 'tr'
+                                if $reportTableRows.length > 0
+                                  angular.forEach $reportTableRows, (reportTableRow) ->
+                                    totalNumberResults++
+                                    $reportTableRow = angular.element reportTableRow
+                                    consId = jQuery.trim $reportTableRow.find('td').eq(7).text()
+                                    firstName = jQuery.trim $reportTableRow.find('td').eq(8).text()
+                                    lastName = jQuery.trim $reportTableRow.find('td').eq(9).text()
+                                    email = jQuery.trim $reportTableRow.find('td').eq(10).text()
+                                    contact =
+                                      firstName: firstName
+                                      lastName: lastName
+                                      email: email
+                                    previousParticipants.push contact
+                          handleReportHtml report1Html
+                          if not $scope.prev2FrId or $scope.prev2FrId is ''
+                            $scope.addressBookContacts.allContacts = previousParticipants
+                            delete $scope.addressBookContacts.getAllPage
+                            $scope.addressBookContacts.contacts = previousParticipants
+                            $scope.addressBookContacts.totalNumber = totalNumberResults
+                          else
+                            # TODO
+                            $scope.addressBookContacts.allContacts = previousParticipants
+                            delete $scope.addressBookContacts.getAllPage
+                            $scope.addressBookContacts.contacts = previousParticipants
+                            $scope.addressBookContacts.totalNumber = totalNumberResults
             else
               allContactsPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=200&list_page_offset=' + pageNumber
                 .then (response) ->
