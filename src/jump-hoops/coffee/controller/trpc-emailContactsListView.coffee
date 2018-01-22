@@ -126,6 +126,7 @@ angular.module 'trPcControllers'
                                       firstName: firstName
                                       lastName: lastName
                                       email: email
+                                    contact.selected = isContactSelected contact
                                     if previousParticipants.indexOf(contact) is -1
                                       totalNumberResults++
                                       if reportTableRowIndex >= pageNumber * 10
@@ -207,15 +208,14 @@ angular.module 'trPcControllers'
                                       firstName: firstName
                                       lastName: lastName
                                       email: email
+                                    contact.selected = isContactSelected contact
                                     if previousParticipants.indexOf(contact) is -1
                                       totalNumberResults++
                                       previousParticipants.push contact
                           handleReportHtml report1Html
                           if not $scope.prev2FrId or $scope.prev2FrId is ''
-                            $scope.addressBookContacts.allContacts = previousParticipants
                             delete $scope.addressBookContacts.getAllPage
-                            $scope.addressBookContacts.contacts = previousParticipants
-                            $scope.addressBookContacts.totalNumber = totalNumberResults
+                            $scope.addressBookContacts.allContactsSelected = isAllContactsSelected()
                           else
                             NgPcTeamraiserCompanyService.getCompanies 'fr_id=' + $scope.prev2FrId + '&company_name=' + encodeURIComponent('org_for_company_id=' + prev1CompanyId)
                               .then (response) ->
@@ -228,10 +228,8 @@ angular.module 'trPcControllers'
                                     .then (response) ->
                                       report2Html = response.data.getSchoolDetailReport?.report
                                       handleReportHtml report2Html
-                                      $scope.addressBookContacts.allContacts = previousParticipants
                                       delete $scope.addressBookContacts.getAllPage
-                                      $scope.addressBookContacts.contacts = previousParticipants
-                                      $scope.addressBookContacts.totalNumber = totalNumberResults
+                                      $scope.addressBookContacts.allContactsSelected = isAllContactsSelected()
             else
               allContactsPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=200&list_page_offset=' + pageNumber
                 .then (response) ->
