@@ -92,6 +92,8 @@ angular.module 'trPcControllers'
         if filter is $scope.filter
           $scope.getContacts = ->
             pageNumber = $scope.addressBookContacts.page - 1
+            if pageNumber > 0
+              window.scrollTo 0, 0
             if filter is 'email_custom_rpt_show_past_company_coordinator_participants'
               if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
                 $scope.addressBookContacts.contacts = []
