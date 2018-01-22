@@ -107,7 +107,10 @@ angular.module 'trPcControllers'
                 NgPcTeamraiserCompanyService.getCompanies 'fr_id=' + $scope.prev1FrId + '&company_name=' + encodeURIComponent('org_for_company_id=' + $scope.participantRegistration.companyInformation.companyId)
                   .then (response) ->
                     prev1Companies = response.data.getCompaniesResponse?.company
-                    if prev1Companies
+                    if not prev1Companies
+                      $scope.addressBookContacts.contacts = []
+                      $scope.addressBookContacts.totalNumber = 0
+                    else
                       prev1Companies = [prev1Companies] if not angular.isArray prev1Companies
                       prev1Company = prev1Companies[0]
                       prev1CompanyId = prev1Company.companyId
@@ -146,7 +149,10 @@ angular.module 'trPcControllers'
                             NgPcTeamraiserCompanyService.getCompanies 'fr_id=' + $scope.prev2FrId + '&company_name=' + encodeURIComponent('org_for_company_id=' + prev1CompanyId)
                               .then (response) ->
                                 prev2Companies = response.data.getCompaniesResponse?.company
-                                if prev2Companies
+                                if not prev2Companies
+                                  $scope.addressBookContacts.contacts = []
+                                  $scope.addressBookContacts.totalNumber = 0
+                                else
                                   prev2Companies = [prev2Companies] if not angular.isArray prev2Companies
                                   prev2Company = prev2Companies[0]
                                   prev2CompanyId = prev2Company.companyId
@@ -159,8 +165,8 @@ angular.module 'trPcControllers'
             else
               contactsPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=10&list_page_offset=' + pageNumber
                 .then (response) ->
-                  $scope.contactCounts[filter] = $scope.addressBookContacts.totalNumber = response.data.getTeamraiserAddressBookContactsResponse.totalNumberResults
-                  addressBookContacts = response.data.getTeamraiserAddressBookContactsResponse.addressBookContact
+                  $scope.contactCounts[filter] = $scope.addressBookContacts.totalNumber = response.data.getTeamraiserAddressBookContactsResponse?.totalNumberResults or '0'
+                  addressBookContacts = response.data.getTeamraiserAddressBookContactsResponse?.addressBookContact or []
                   addressBookContacts = [addressBookContacts] if not angular.isArray addressBookContacts
                   contacts = []
                   angular.forEach addressBookContacts, (contact) ->
@@ -189,7 +195,10 @@ angular.module 'trPcControllers'
                 NgPcTeamraiserCompanyService.getCompanies 'fr_id=' + $scope.prev1FrId + '&company_name=' + encodeURIComponent('org_for_company_id=' + $scope.participantRegistration.companyInformation.companyId)
                   .then (response) ->
                     prev1Companies = response.data.getCompaniesResponse?.company
-                    if prev1Companies
+                    if not prev1Companies
+                      $scope.addressBookContacts.contacts = []
+                      $scope.addressBookContacts.totalNumber = 0
+                    else
                       prev1Companies = [prev1Companies] if not angular.isArray prev1Companies
                       prev1Company = prev1Companies[0]
                       prev1CompanyId = prev1Company.companyId
@@ -226,7 +235,10 @@ angular.module 'trPcControllers'
                             NgPcTeamraiserCompanyService.getCompanies 'fr_id=' + $scope.prev2FrId + '&company_name=' + encodeURIComponent('org_for_company_id=' + prev1CompanyId)
                               .then (response) ->
                                 prev2Companies = response.data.getCompaniesResponse?.company
-                                if prev2Companies
+                                if not prev2Companies
+                                  $scope.addressBookContacts.contacts = []
+                                  $scope.addressBookContacts.totalNumber = 0
+                                else
                                   prev2Companies = [prev2Companies] if not angular.isArray prev2Companies
                                   prev2Company = prev2Companies[0]
                                   prev2CompanyId = prev2Company.companyId
@@ -239,8 +251,8 @@ angular.module 'trPcControllers'
             else
               allContactsPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=200&list_page_offset=' + pageNumber
                 .then (response) ->
-                  totalNumber = response.data.getTeamraiserAddressBookContactsResponse.totalNumberResults
-                  addressBookContacts = response.data.getTeamraiserAddressBookContactsResponse.addressBookContact
+                  totalNumber = response.data.getTeamraiserAddressBookContactsResponse?.totalNumberResults or '0'
+                  addressBookContacts = response.data.getTeamraiserAddressBookContactsResponse?.addressBookContact or []
                   addressBookContacts = [addressBookContacts] if not angular.isArray addressBookContacts
                   contacts = []
                   angular.forEach addressBookContacts, (contact) ->
