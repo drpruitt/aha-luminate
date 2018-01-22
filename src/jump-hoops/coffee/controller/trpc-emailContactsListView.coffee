@@ -247,8 +247,8 @@ angular.module 'trPcControllers'
             else
               allContactsPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=200&list_page_offset=' + pageNumber
                 .then (response) ->
-                  totalNumber = response.data.getTeamraiserAddressBookContactsResponse.totalNumberResults
-                  addressBookContacts = response.data.getTeamraiserAddressBookContactsResponse.addressBookContact
+                  totalNumber = response.data.getTeamraiserAddressBookContactsResponse?.totalNumberResults or '0'
+                  addressBookContacts = response.data.getTeamraiserAddressBookContactsResponse?.addressBookContact or []
                   addressBookContacts = [addressBookContacts] if not angular.isArray addressBookContacts
                   contacts = []
                   angular.forEach addressBookContacts, (contact) ->
