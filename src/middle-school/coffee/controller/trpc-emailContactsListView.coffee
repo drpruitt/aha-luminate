@@ -158,8 +158,8 @@ angular.module 'trPcControllers'
                               .then (response) ->
                                 prev2Companies = response.data.getCompaniesResponse?.company
                                 if not prev2Companies
-                                  $scope.addressBookContacts.contacts = []
-                                  $scope.addressBookContacts.totalNumber = 0
+                                  $scope.addressBookContacts.contacts = previousParticipants
+                                  $scope.addressBookContacts.totalNumber = totalNumberResults
                                 else
                                   prev2Companies = [prev2Companies] if not angular.isArray prev2Companies
                                   prev2Company = prev2Companies[0]
@@ -259,8 +259,8 @@ angular.module 'trPcControllers'
                               .then (response) ->
                                 prev2Companies = response.data.getCompaniesResponse?.company
                                 if not prev2Companies
-                                  $scope.addressBookContacts.contacts = []
-                                  $scope.addressBookContacts.totalNumber = 0
+                                  $scope.addressBookContacts.contacts = previousParticipants
+                                  $scope.addressBookContacts.totalNumber = totalNumberResults
                                 else
                                   prev2Companies = [prev2Companies] if not angular.isArray prev2Companies
                                   prev2Company = prev2Companies[0]
