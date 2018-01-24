@@ -196,11 +196,13 @@ angular.module 'trPcControllers'
             pageNumber = $scope.addressBookContacts.getAllPage
             if filter is 'email_custom_rpt_show_past_company_coordinator_participants'
               if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
-                $scope.addressBookContacts.contacts = []
-                $scope.addressBookContacts.totalNumber = 0
+                delete $scope.addressBookContacts.getAllPage
+                $scope.addressBookContacts.allContacts = []
+                $scope.addressBookContacts.allContactsSelected = isAllContactsSelected()
               else if not $scope.prev1FrId or $scope.prev1FrId is ''
-                $scope.addressBookContacts.contacts = []
-                $scope.addressBookContacts.totalNumber = 0
+                delete $scope.addressBookContacts.getAllPage
+                $scope.addressBookContacts.allContacts = []
+                $scope.addressBookContacts.allContactsSelected = isAllContactsSelected()
               else
                 if $scope.addressBookContacts.contacts
                   delete $scope.addressBookContacts.contacts
@@ -208,8 +210,9 @@ angular.module 'trPcControllers'
                   .then (response) ->
                     prev1Companies = response.data.getCompaniesResponse?.company
                     if not prev1Companies
-                      $scope.addressBookContacts.contacts = []
-                      $scope.addressBookContacts.totalNumber = 0
+                      delete $scope.addressBookContacts.getAllPage
+                      $scope.addressBookContacts.allContacts = []
+                      $scope.addressBookContacts.allContactsSelected = isAllContactsSelected()
                     else
                       prev1Companies = [prev1Companies] if not angular.isArray prev1Companies
                       prev1Company = prev1Companies[0]
@@ -263,8 +266,9 @@ angular.module 'trPcControllers'
                               .then (response) ->
                                 prev2Companies = response.data.getCompaniesResponse?.company
                                 if not prev2Companies
-                                  $scope.addressBookContacts.contacts = previousParticipants
-                                  $scope.addressBookContacts.totalNumber = totalNumberResults
+                                  delete $scope.addressBookContacts.getAllPage
+                                  $scope.addressBookContacts.allContacts = previousParticipants
+                                  $scope.addressBookContacts.allContactsSelected = isAllContactsSelected()
                                 else
                                   prev2Companies = [prev2Companies] if not angular.isArray prev2Companies
                                   prev2Company = prev2Companies[0]
