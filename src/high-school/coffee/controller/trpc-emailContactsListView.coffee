@@ -170,12 +170,7 @@ angular.module 'trPcControllers'
                                 return 0
                     prev1Companies = response.data.getCompaniesResponse?.company
                     prev1CompanyId = null
-                    if not prev1Companies
-                      $scope.addressBookContacts.contacts = []
-                      $scope.addressBookContacts.totalNumber = 0
-                      $scope.addressBookContacts.allContacts = []
-                      $scope.addressBookContacts.allContactsSelected = isAllContactsSelected()
-                    else
+                    if prev1Companies
                       prev1Companies = [prev1Companies] if not angular.isArray prev1Companies
                       prev1Company = prev1Companies[0]
                       prev1CompanyId = prev1Company.companyId
