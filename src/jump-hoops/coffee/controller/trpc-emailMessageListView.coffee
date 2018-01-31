@@ -53,11 +53,12 @@ angular.module 'trPcControllers'
         if filter is 'email_custom_rpt_show_past_company_coordinator_participants'
           $scope.contactCounts[filter] = ''
         else
-          contactCountPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=1'
-            .then (response) ->
-              $scope.contactCounts[filter] = response.data.getTeamraiserAddressBookContactsResponse?.totalNumberResults or '0'
-              response
-          $scope.emailPromises.push contactCountPromise
+          # contactCountPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=1'
+            # .then (response) ->
+              # $scope.contactCounts[filter] = response.data.getTeamraiserAddressBookContactsResponse?.totalNumberResults or '0'
+              # response
+          # $scope.emailPromises.push contactCountPromise
+          $scope.contactCounts[filter] = ''
       
       messageTypeNames = 
         draft: 'Drafts'
