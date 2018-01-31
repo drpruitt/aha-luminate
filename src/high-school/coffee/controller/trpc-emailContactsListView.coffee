@@ -369,7 +369,8 @@ angular.module 'trPcControllers'
                         jobEvents.push 
                           message: event
                       $scope.updateImportJobEvents jobEvents
-                    trPcContactImport.buildAddressBookImport importJobId
+                    if jobStatus is 'PENDING'
+                      trPcContactImport.buildAddressBookImport importJobId
                   else if jobStatus is 'SUCCESS'
                     NgPcContactService.getAddressBookImportContacts 'import_job_id=' + importJobId
                       .then (response) ->
