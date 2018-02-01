@@ -519,17 +519,25 @@ angular.module 'trPcControllers'
       getStudentChallenge()
       
       $scope.challenges = []
-      ZuriService.getChallenges $scope.frId + '/' + $scope.consId,
-        failure: (response) ->
+      # ZuriService.getChallenges $scope.frId + '/' + $scope.consId,
+        # failure: (response) ->
           # TODO
-        error: (response) ->
+        # error: (response) ->
           # TODO
-        success: (response) ->
-          challenges = response.data.challenges
-          angular.forEach challenges, (challenge, challengeIndex) ->
-            $scope.challenges.push
-              id: challengeIndex
-              name: challenge
+        # success: (response) ->
+          # challenges = response.data.challenges
+          # angular.forEach challenges, (challenge, challengeIndex) ->
+            # $scope.challenges.push
+              # id: challengeIndex
+              # name: challenge
+      challengeOptions =
+        "1": "Be physically active for 60 minutes everyday"
+        "2": "Choose water over sugar drinks"
+        "3": "Eat at least one serving of fruit and vegetables at every meal"
+      angular.forEach challengeOptions, (challenge, challengeIndex) ->
+        $scope.challenges.push
+          id: challengeIndex
+          name: challenge
       
       $scope.updateChallenge = ->
         ZuriService.updateChallenge $scope.frId + '/' + $scope.consId + '?challenge=' + $scope.updatedPersonalChallenge.id,
