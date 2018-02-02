@@ -4,5 +4,4 @@ angular.module 'ahaLuminateControllers'
     'SchoolSearchService'
     ($scope, SchoolSearchService) ->
       SchoolSearchService.init $scope
-
   ]
