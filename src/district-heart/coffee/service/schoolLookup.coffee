@@ -16,7 +16,10 @@ angular.module 'ahaLuminateApp'
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
       
       getSchoolData: ->
-        requestUrl = luminateExtend.global.path.secure + 'SPageServer?pagename=getDistrictHeartSchoolSearchData&pgwrap=n'
+        requestUrl = luminateExtend.global.path.nonsecure
+        if window.location.protocol is 'https:'
+          requestUrl = luminateExtend.global.path.secure + 'S'
+        requestUrl += 'PageServer?pagename=getDistrictHeartSchoolSearchData&pgwrap=n'
         $http.jsonp($sce.trustAsResourceUrl(requestUrl), jsonpCallbackParam: 'callback')
           .then (response) ->
             response
