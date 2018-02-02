@@ -174,7 +174,8 @@ angular.module 'ahaLuminateApp'
               totalNumberResults = Number totalNumberResults
               $scope.schoolList.totalNumberResults = totalNumberResults
               schools = []
-              
+              updateCompanyData()
+
               setResults = ->
                 if companies.length > 0
                   schools = setSchools companies
@@ -192,7 +193,6 @@ angular.module 'ahaLuminateApp'
                   $scope.schoolList.schools = []
                   $scope.schoolList.totalItems = 0
                   $scope.schoolList.totalNumberResults = 0
-                updateCompanyData()
               
               getAdditionalPages = (filter, totalNumber) ->
                 additionalPages = []
@@ -217,6 +217,7 @@ angular.module 'ahaLuminateApp'
                       if additionalPagesComplete is additionalPages.length
                         setResults()
                         delete $scope.schoolList.searchPending
+                        updateCompanyData()
               
               isOverride = findOverrides nameFilter
               if isOverride.length > 0
@@ -235,6 +236,7 @@ angular.module 'ahaLuminateApp'
                   else
                     setResults()
                     delete $scope.schoolList.searchPending
+                    updateCompanyData()
                 
                 angular.forEach isOverride, (override) ->
                   angular.forEach override.overrides, (replace) ->
@@ -259,4 +261,5 @@ angular.module 'ahaLuminateApp'
                 else
                   setResults()
                   delete $scope.schoolList.searchPending
+                  updateCompanyData()
   ]
