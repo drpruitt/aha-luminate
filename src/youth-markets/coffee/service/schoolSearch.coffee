@@ -160,106 +160,103 @@ angular.module 'ahaLuminateApp'
           delete $scope.schoolList.schools
           $scope.schoolList.searchPending = true
           $scope.schoolList.currentPage = 1
-          nameFilter = $scope.schoolList.nameFilter
+          nameFilter = $scope.schoolList.nameFilter or '%'
           companies = []
-          TeamraiserCompanyService.getCompanies 'event_type=' + encodeURIComponent(eventType) + '&company_name=' + encodeURIComponent(nameFilter) + '&list_sort_column=company_name&list_page_size=500', 
-            success: (response) ->
-              if response.getCompaniesResponse?.company
-                if response.getCompaniesResponse.totalNumberResults is '1'
-                  companies.push response.getCompaniesResponse.company
-                else
-                  companies = response.getCompaniesResponse.company
-              
-              totalNumberResults = response.getCompaniesResponse?.totalNumberResults or '0'
-              totalNumberResults = Number totalNumberResults
-              $scope.schoolList.totalNumberResults = totalNumberResults
-              schools = []
-              updateCompanyData()
+          TeamraiserCompanyService.getCompanies 'event_type=' + encodeURIComponent(eventType) + '&company_name=' + encodeURIComponent(nameFilter) + '&list_sort_column=company_name&list_page_size=500', (response) ->
+            if response.getCompaniesResponse?.company
+              if response.getCompaniesResponse.totalNumberResults is '1'
+                companies.push response.getCompaniesResponse.company
+              else
+                companies = response.getCompaniesResponse.company
+            
+            totalNumberResults = response.getCompaniesResponse?.totalNumberResults or '0'
+            totalNumberResults = Number totalNumberResults
+            $scope.schoolList.totalNumberResults = totalNumberResults
+            schools = []
+            updateCompanyData()
 
-              setResults = ->
-                if companies.length > 0
-                  schools = setSchools companies
-                  schools = setSchoolsData schools
+            setResults = ->
+              if companies.length > 0
+                schools = setSchools companies
+                schools = setSchoolsData schools
+                $scope.schoolList.totalItems = schools.length
+                $scope.schoolList.totalNumberResults = schools.length
+                $scope.schoolList.schools = schools
+                $scope.orderSchools $scope.schoolList.sortProp, true
+                if $scope.schoolList.stateFilter isnt ''
+                  schools = $filter('filter') schools, SCHOOL_STATE: $scope.schoolList.stateFilter
+                  $scope.schoolList.schools = schools
                   $scope.schoolList.totalItems = schools.length
                   $scope.schoolList.totalNumberResults = schools.length
-                  $scope.schoolList.schools = schools
-                  $scope.orderSchools $scope.schoolList.sortProp, true
-                  if $scope.schoolList.stateFilter isnt ''
-                    schools = $filter('filter') schools, SCHOOL_STATE: $scope.schoolList.stateFilter
-                    $scope.schoolList.schools = schools
-                    $scope.schoolList.totalItems = schools.length
-                    $scope.schoolList.totalNumberResults = schools.length
-                else
-                  $scope.schoolList.schools = []
-                  $scope.schoolList.totalItems = 0
-                  $scope.schoolList.totalNumberResults = 0
-              
-              getAdditionalPages = (filter, totalNumber) ->
-                additionalPages = []
-                angular.forEach [1, 2, 3], (additionalPage) ->
-                  if totalNumber > additionalPage * 500
-                    additionalPages.push additionalPage
-                additionalPagesComplete = 0
-                angular.forEach additionalPages, (additionalPage) ->
-                  TeamraiserCompanyService.getCompanies 'event_type=' + encodeURIComponent(eventType) + '&company_name=' + encodeURIComponent(filter) + '&list_sort_column=company_name&list_page_size=500&list_page_offset=' + additionalPage, 
-                    success: (response) ->
-                      moreCompanies = response.getCompaniesResponse?.company
-                      moreSchools = []
-                      if moreCompanies
-                        moreCompanies = [moreCompanies] if not angular.isArray moreCompanies
-                        if moreCompanies.length > 0
-                          moreSchools = setSchools moreCompanies
-                          moreSchools = setSchoolsData moreSchools
-                          if $scope.schoolList.stateFilter isnt ''
-                            moreSchools = $filter('filter') moreSchools, SCHOOL_STATE: $scope.schoolList.stateFilter
-                      schools = schools.concat moreSchools
-                      additionalPagesComplete++
-                      if additionalPagesComplete is additionalPages.length
-                        setResults()
-                        delete $scope.schoolList.searchPending
-                        updateCompanyData()
-              
-              isOverride = findOverrides nameFilter
-              if isOverride.length > 0
-                setOverride = (response, nameFilterReplace) ->
-                  totalNumberOverrides = response.getCompaniesResponse?.totalNumberResults
-                  
-                  if response.getCompaniesResponse.totalNumberResults is '1'
-                    companies.push response.getCompaniesResponse.company
-                  else
-                    angular.forEach response.getCompaniesResponse?.company, (comp) ->
-                      companies.push comp
-                  totalNumberResults += Number response.getCompaniesResponse?.totalNumberResults
-                  
-                  if totalNumberOverrides > 500
-                    getAdditionalPages nameFilterReplace, totalNumberOverrides
-                  else
+              else
+                $scope.schoolList.schools = []
+                $scope.schoolList.totalItems = 0
+                $scope.schoolList.totalNumberResults = 0
+            
+            getAdditionalPages = (filter, totalNumber) ->
+              additionalPages = []
+              angular.forEach [1, 2, 3], (additionalPage) ->
+                if totalNumber > additionalPage * 500
+                  additionalPages.push additionalPage
+              additionalPagesComplete = 0
+              angular.forEach additionalPages, (additionalPage) ->
+                TeamraiserCompanyService.getCompanies 'event_type=' + encodeURIComponent(eventType) + '&company_name=' + encodeURIComponent(filter) + '&list_sort_column=company_name&list_page_size=500&list_page_offset=' + additionalPage, (response) ->
+                  moreCompanies = response.getCompaniesResponse?.company
+                  moreSchools = []
+                  if moreCompanies
+                    moreCompanies = [moreCompanies] if not angular.isArray moreCompanies
+                    if moreCompanies.length > 0
+                      moreSchools = setSchools moreCompanies
+                      moreSchools = setSchoolsData moreSchools
+                      if $scope.schoolList.stateFilter isnt ''
+                        moreSchools = $filter('filter') moreSchools, SCHOOL_STATE: $scope.schoolList.stateFilter
+                  schools = schools.concat moreSchools
+                  additionalPagesComplete++
+                  if additionalPagesComplete is additionalPages.length
                     setResults()
                     delete $scope.schoolList.searchPending
                     updateCompanyData()
+            
+            isOverride = findOverrides nameFilter
+            if isOverride.length > 0
+              setOverride = (response, nameFilterReplace) ->
+                totalNumberOverrides = response.getCompaniesResponse?.totalNumberResults
                 
-                angular.forEach isOverride, (override) ->
-                  angular.forEach override.overrides, (replace) ->
-                    nameFilterReplace = nameFilter.replace override.original, replace
-                    if nameFilterReplace.indexOf('..') is -1
-                      TeamraiserCompanyService.getCompanies 'event_type=' + encodeURIComponent(eventType) + '&company_name=' + encodeURIComponent(nameFilterReplace) + '&list_sort_column=company_name&list_page_size=500', 
-                        success: (response) ->
-                          if response.errorResponse
-                            # adding additional call due to occasional error returns
-                            # SchoolLookupService.getSchoolCompanies 'company_name=' + encodeURIComponent(nameFilterReplace) + '&list_sort_column=company_name&list_page_size=500'
-                              # .then (response) ->
-                                # if response.data.errorResponse
-                                  # console.log 'error'
-                                # else
-                                  # setOverride response, nameFilterReplace
-                            angular.noop()
-                          else
-                            setOverride response, nameFilterReplace
-              else
-                if totalNumberResults > 500
-                  getAdditionalPages nameFilter, totalNumberResults
+                if response.getCompaniesResponse.totalNumberResults is '1'
+                  companies.push response.getCompaniesResponse.company
+                else
+                  angular.forEach response.getCompaniesResponse?.company, (comp) ->
+                    companies.push comp
+                totalNumberResults += Number response.getCompaniesResponse?.totalNumberResults
+                
+                if totalNumberOverrides > 500
+                  getAdditionalPages nameFilterReplace, totalNumberOverrides
                 else
                   setResults()
                   delete $scope.schoolList.searchPending
                   updateCompanyData()
+              
+              angular.forEach isOverride, (override) ->
+                angular.forEach override.overrides, (replace) ->
+                  nameFilterReplace = nameFilter.replace override.original, replace
+                  if nameFilterReplace.indexOf('..') is -1
+                    TeamraiserCompanyService.getCompanies 'event_type=' + encodeURIComponent(eventType) + '&company_name=' + encodeURIComponent(nameFilterReplace) + '&list_sort_column=company_name&list_page_size=500', (response) ->
+                      if response.errorResponse
+                        # adding additional call due to occasional error returns
+                        # SchoolLookupService.getSchoolCompanies 'company_name=' + encodeURIComponent(nameFilterReplace) + '&list_sort_column=company_name&list_page_size=500'
+                          # .then (response) ->
+                            # if response.data.errorResponse
+                              # console.log 'error'
+                            # else
+                              # setOverride response, nameFilterReplace
+                        angular.noop()
+                      else
+                        setOverride response, nameFilterReplace
+            else
+              if totalNumberResults > 500
+                getAdditionalPages nameFilter, totalNumberResults
+              else
+                setResults()
+                delete $scope.schoolList.searchPending
+                updateCompanyData()
   ]
