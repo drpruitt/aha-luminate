@@ -152,15 +152,16 @@ angular.module 'ahaLuminateApp'
               return true
           )
         
+        updateCompanyData = ->
+          if not $scope.$$phase
+            $scope.$apply()
+        
         $scope.getSchoolSearchResults = ->
           delete $scope.schoolList.schools
           $scope.schoolList.searchPending = true
           $scope.schoolList.currentPage = 1
           nameFilter = $scope.schoolList.nameFilter
           companies = []
-          updateCompanyData = ->
-            if not $scope.$$phase
-              $scope.$apply()
           TeamraiserCompanyService.getCompanies 'company_name=' + encodeURIComponent(nameFilter) + '&list_sort_column=company_name&list_page_size=500',
             callback: (response) ->
               if response.getCompaniesResponse?.company
@@ -241,7 +242,7 @@ angular.module 'ahaLuminateApp'
                     if nameFilterReplace.indexOf('..') is -1
                       TeamraiserCompanyService.getCompanies 'company_name=' + encodeURIComponent(nameFilterReplace) + '&list_sort_column=company_name&list_page_size=500',
                         callback: (response) ->
-                          if response.data.errorResponse
+                          if response.errorResponse
                             # adding additional call due to occasional error returns
                             # SchoolLookupService.getSchoolCompanies 'company_name=' + encodeURIComponent(nameFilterReplace) + '&list_sort_column=company_name&list_page_size=500'
                               # .then (response) ->
