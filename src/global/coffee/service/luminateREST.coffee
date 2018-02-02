@@ -17,7 +17,7 @@ angular.module 'ahaLuminateApp'
             else
               if includeAuth
                 requestData += '&auth=' + $rootScope.authToken
-              if includeFrId
+              if includeFrId and $rootScope.frId and $rootScope.frId isnt ''
                 requestData += '&fr_id=' + $rootScope.frId + '&s_trID=' + $rootScope.frId
               $http
                 method: 'POST'

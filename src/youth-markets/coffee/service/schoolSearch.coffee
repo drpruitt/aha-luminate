@@ -4,7 +4,7 @@ angular.module 'ahaLuminateApp'
     'TeamraiserCompanyService'
     'SchoolLookupService'
     ($filter, TeamraiserCompanyService, SchoolLookupService) ->
-      init: ($scope, type) ->
+      init: ($scope, eventType) ->
         $scope.schoolList =
           searchSubmitted: false
           searchPending: false
@@ -162,7 +162,7 @@ angular.module 'ahaLuminateApp'
           $scope.schoolList.currentPage = 1
           nameFilter = $scope.schoolList.nameFilter
           companies = []
-          TeamraiserCompanyService.getCompanies 'company_name=' + encodeURIComponent(nameFilter) + '&list_sort_column=company_name&list_page_size=500', 
+          TeamraiserCompanyService.getCompanies 'event_type=' + encodeURIComponent(eventType) + '&company_name=' + encodeURIComponent(nameFilter) + '&list_sort_column=company_name&list_page_size=500', 
             success: (response) ->
               if response.getCompaniesResponse?.company
                 if response.getCompaniesResponse.totalNumberResults is '1'
@@ -201,7 +201,7 @@ angular.module 'ahaLuminateApp'
                     additionalPages.push additionalPage
                 additionalPagesComplete = 0
                 angular.forEach additionalPages, (additionalPage) ->
-                  TeamraiserCompanyService.getCompanies 'company_name=' + encodeURIComponent(filter) + '&list_sort_column=company_name&list_page_size=500&list_page_offset=' + additionalPage, 
+                  TeamraiserCompanyService.getCompanies 'event_type=' + encodeURIComponent(eventType) + '&company_name=' + encodeURIComponent(filter) + '&list_sort_column=company_name&list_page_size=500&list_page_offset=' + additionalPage, 
                     success: (response) ->
                       moreCompanies = response.getCompaniesResponse?.company
                       moreSchools = []
@@ -242,7 +242,7 @@ angular.module 'ahaLuminateApp'
                   angular.forEach override.overrides, (replace) ->
                     nameFilterReplace = nameFilter.replace override.original, replace
                     if nameFilterReplace.indexOf('..') is -1
-                      TeamraiserCompanyService.getCompanies 'company_name=' + encodeURIComponent(nameFilterReplace) + '&list_sort_column=company_name&list_page_size=500', 
+                      TeamraiserCompanyService.getCompanies 'event_type=' + encodeURIComponent(eventType) + '&company_name=' + encodeURIComponent(nameFilterReplace) + '&list_sort_column=company_name&list_page_size=500', 
                         success: (response) ->
                           if response.errorResponse
                             # adding additional call due to occasional error returns
