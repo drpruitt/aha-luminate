@@ -161,15 +161,15 @@ angular.module 'ahaLuminateApp'
           updateCompanyData = ->
             if not $scope.$$phase
               $scope.$apply()
-          TeamraiserCompanyService.getCompanies 'company_name=' + encodeURIComponent(nameFilter) + '&list_sort_column=company_name&list_page_size=500'
-            .then (response) ->
-              if response.data.getCompaniesResponse?.company
-                if response.data.getCompaniesResponse.totalNumberResults is '1'
-                  companies.push response.data.getCompaniesResponse.company
+          TeamraiserCompanyService.getCompanies 'company_name=' + encodeURIComponent(nameFilter) + '&list_sort_column=company_name&list_page_size=500',
+            callback: (response) ->
+              if response.getCompaniesResponse?.company
+                if response.getCompaniesResponse.totalNumberResults is '1'
+                  companies.push response.getCompaniesResponse.company
                 else
-                  companies = response.data.getCompaniesResponse.company
+                  companies = response.getCompaniesResponse.company
               
-              totalNumberResults = response.data.getCompaniesResponse?.totalNumberResults or '0'
+              totalNumberResults = response.getCompaniesResponse?.totalNumberResults or '0'
               totalNumberResults = Number totalNumberResults
               $scope.schoolList.totalNumberResults = totalNumberResults
               schools = []
@@ -200,9 +200,9 @@ angular.module 'ahaLuminateApp'
                     additionalPages.push additionalPage
                 additionalPagesComplete = 0
                 angular.forEach additionalPages, (additionalPage) ->
-                  TeamraiserCompanyService.getCompanies 'company_name=' + encodeURIComponent(filter) + '&list_sort_column=company_name&list_page_size=500&list_page_offset=' + additionalPage
-                    .then (response) ->
-                      moreCompanies = response.data.getCompaniesResponse?.company
+                  TeamraiserCompanyService.getCompanies 'company_name=' + encodeURIComponent(filter) + '&list_sort_column=company_name&list_page_size=500&list_page_offset=' + additionalPage,
+                    callback: (response) ->
+                      moreCompanies = response.getCompaniesResponse?.company
                       moreSchools = []
                       if moreCompanies
                         moreCompanies = [moreCompanies] if not angular.isArray moreCompanies
@@ -220,14 +220,14 @@ angular.module 'ahaLuminateApp'
               isOverride = findOverrides nameFilter
               if isOverride.length > 0
                 setOverride = (response, nameFilterReplace) ->
-                  totalNumberOverrides = response.data.getCompaniesResponse?.totalNumberResults
+                  totalNumberOverrides = response.getCompaniesResponse?.totalNumberResults
                   
-                  if response.data.getCompaniesResponse.totalNumberResults is '1'
-                    companies.push response.data.getCompaniesResponse.company
+                  if response.getCompaniesResponse.totalNumberResults is '1'
+                    companies.push response.getCompaniesResponse.company
                   else
-                    angular.forEach response.data.getCompaniesResponse?.company, (comp) ->
+                    angular.forEach response.getCompaniesResponse?.company, (comp) ->
                       companies.push comp
-                  totalNumberResults += Number response.data.getCompaniesResponse?.totalNumberResults
+                  totalNumberResults += Number response.getCompaniesResponse?.totalNumberResults
                   
                   if totalNumberOverrides > 500
                     getAdditionalPages nameFilterReplace, totalNumberOverrides
@@ -239,8 +239,8 @@ angular.module 'ahaLuminateApp'
                   angular.forEach override.overrides, (replace) ->
                     nameFilterReplace = nameFilter.replace override.original, replace
                     if nameFilterReplace.indexOf('..') is -1
-                      TeamraiserCompanyService.getCompanies 'company_name=' + encodeURIComponent(nameFilterReplace) + '&list_sort_column=company_name&list_page_size=500'
-                        .then (response) ->
+                      TeamraiserCompanyService.getCompanies 'company_name=' + encodeURIComponent(nameFilterReplace) + '&list_sort_column=company_name&list_page_size=500',
+                        callback: (response) ->
                           if response.data.errorResponse
                             # adding additional call due to occasional error returns
                             # SchoolLookupService.getSchoolCompanies 'company_name=' + encodeURIComponent(nameFilterReplace) + '&list_sort_column=company_name&list_page_size=500'
