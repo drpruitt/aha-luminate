@@ -270,16 +270,21 @@ angular.module 'ahaLuminateControllers'
           angular.element('#billing_info_same_as_donorname').prop 'checked', false
 
       $scope.submitDonationForm = (e) ->
-        if $scope.donationInfo.levelType == "other"
-          if $scope.donationInfo.otherAmt == undefined
-            amt = 0
-          else
-            amt = parseInt($scope.donationInfo.otherAmt)
-            if amt < 10 || !angular.isNumber(amt) || isNaN(amt) || amt == ""
+        if $scope.submitted 
+          e.preventDefault
+          e.stopPropagation
+          false
+        else 
+          if $scope.donationInfo.levelType == "other"
+            if $scope.donationInfo.otherAmt == undefined || !(parseInt($scope.donationInfo.otherAmt) >= 10)
               e.preventDefault()
               jQuery('html, body').animate({scrollTop: jQuery("a[name=donationLevels]").offset().top}, 0);
               $scope.process.$setValidity("amount",false);
-          
+            else 
+              $scope.submitted =true
+
+      angular.element("#ProcessForm").submit($scope.submitDonationForm)
+      
       loggedInForm = ->
         angular.element('#donor_first_name_row').addClass 'hidden'
         angular.element('#donor_last_name_row').addClass 'hidden'

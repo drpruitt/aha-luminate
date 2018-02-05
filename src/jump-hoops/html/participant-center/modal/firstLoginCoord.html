@@ -1,6 +1,6 @@
 <div>
   <div class="modal-body">
-    <a class="close" aria-label="Close" ng-click="closeFirstLogin()">
+    <a class="close" aria-label="Close" ng-click="cancelEditCompanyUrl()">
       <span aria-hidden="true">×</span>
     </a>
     <div class="ym-pc-first-login-modal">
@@ -8,27 +8,25 @@
         Thank You!
       </h2>
       <div>
-        Your personal page is built and ready! <!-- <strong>Customize your URL</strong> so you can quickly share your page with family and friends: -->
+        Your school page is built and ready! <!-- <strong>Customize your URL</strong> so you can quickly share your page with students: -->
         <br>&nbsp;
       </div>
       <div class="ym-pc-first-login-url hidden">
-        <div class="alert alert-danger" role="alert" ng-if="setPersonalUrlInfo.errorMessage" ng-cloak>
-          <span ng-bind-html="setPersonalUrlInfo.errorMessage"></span>
+        <div class="alert alert-danger" role="alert" ng-if="companyUrlInfo.errorMessage" ng-cloak>
+          <span ng-bind-html="companyUrlInfo.errorMessage"></span>
         </div>
-        <div class="alert alert-success" role="alert" ng-if="setPersonalUrlInfo.success" ng-cloak>
+        <div class="alert alert-success" role="alert" ng-if="companyUrlInfo.success" ng-cloak>
           URL updated.
         </div>
-        <form method="POST" novalidate ng-submit="setPersonalUrl()">
+        <form method="POST" novalidate ng-submit="updateCompanyUrl()">
           <div class="ym-pc-first-login-url-prefix" ng-cloak>
-            {{nonSecureDomain}}goto/
+            <span ng-bind-html="companyShortcut.prefix"></span>
           </div>
           <div class="ym-pc-first-login-url-text">
-            <div class="form-group">
-              <label for="shortcut_text" class="sr-only">
-                URL:
-              </label>
-              <input type="text" class="form-control input-sm" id="shortcut_text" ng-model="setPersonalUrlInfo.updatedShortcut" aria-label="URL">
-            </div>
+            <label for="shortcut_text" class="sr-only">
+              URL:
+            </label>
+            <input type="text" id="shortcut_text" class="form-control" ng-model="companyUrlInfo.updatedShortcut" aria-label="URL">
           </div>
           <div class="ym-pc-first-login-url-btn">
             <button type="submit" class="btn btn-sm btn-primary">
@@ -46,7 +44,7 @@
         <img class="img-responsive" src="../aha-luminate/dist/jump-hoops/image/intro_scaresquad.png" alt="Welcome to the scare squad">
       </div>
       <div class="ym-pc-first-login-close">
-        <a class="btn btn-primary" ng-click="closeFirstLogin()">
+        <a class="btn btn-primary" ng-click="cancelEditCompanyUrl()">
           <strong>Start Fundraising!</strong>
         </a>
       </div>

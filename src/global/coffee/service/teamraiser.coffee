@@ -8,5 +8,4 @@ angular.module 'ahaLuminateApp'
         dataString = 'method=getTeamraisersByInfo'
         dataString += '&' + requestData if requestData and requestData isnt ''
         LuminateRESTService.luminateExtendTeamraiserRequest dataString, false, true, callback
-      
   ]
