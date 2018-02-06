@@ -17,10 +17,10 @@
       <a role="listitem" ng-href="{{baseUrl}}#/teacher-resources" class="ng-pc-nav-item ng-pc-nav-item--resources" ng-class="{'active': location == '/teacher-resources'}" ng-if="participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
         <span><strong>Teacher Resources</strong></span>
       </a>
-      <a role="listitem" class="ng-pc-nav-item ng-pc-nav-item--student-view" ng-href="https://jumphoopsstaging.boundlessnetwork.com/coordinator/login/{{authToken}}/{{sessionCookie}}" target="_blank" ng-if="tablePrefix == 'heartdev'" ng-cloak>
+      <a role="listitem" class="ng-pc-nav-item ng-pc-nav-item--student-view" ng-href="https://jumphoopsstaging.boundlessnetwork.com/coordinator/login/{{authToken}}/{{sessionCookie}}" target="_blank" ng-if="tablePrefix == 'heartdev' && participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak>
          <span><strong>Order Gifts</strong></span>
       </a>
-      <a role="listitem" class="ng-pc-nav-item ng-pc-nav-item--student-view" ng-href="https://jumphoops.heart.org/coordinator/login/{{authToken}}/{{sessionCookie}}" target="_blank" ng-if="tablePrefix == 'heart'" ng-cloak> 
+      <a role="listitem" class="ng-pc-nav-item ng-pc-nav-item--student-view" ng-href="https://jumphoops.heart.org/coordinator/login/{{authToken}}/{{sessionCookie}}" target="_blank" ng-if="tablePrefix == 'heart' && participantRegistration.companyInformation.isCompanyCoordinator == 'true'" ng-cloak> 
         <span><strong>Order Gifts</strong></span>
       </a>
       <a role="listitem" ng-href="{{baseUrl}}#/social" class="ng-pc-nav-item" ng-class="{'active': location == '/social'}">
