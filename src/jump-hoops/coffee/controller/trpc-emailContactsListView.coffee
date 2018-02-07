@@ -284,7 +284,7 @@ angular.module 'trPcControllers'
       
       $scope.addNewContact = ->
         $scope.clearAddContactAlerts()
-        if $scope.addNewContactForm.$valid
+        if this.addNewContactForm.$valid
           addContactPromise = NgPcContactService.addAddressBookContact $httpParamSerializer($scope.newContact)
             .then (response) ->
               if response.data.errorResponse
