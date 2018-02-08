@@ -176,7 +176,7 @@
       </div>
       <div class="row">
         <div class="col-sm-6 ym-activity-box ym-activity-box--next-step">
-          <!-- <h3 class="h5">
+          <h3 class="h5">
             My Donors
           </h3>
           <div ng-if="participantGifts.gifts && participantGifts.gifts.length == 0" ng-cloak>
@@ -256,7 +256,7 @@
             </div>
           </div>
           <div ng-if="((participantGifts.gifts && participantGifts.gifts.length == 1 && participantRegistration.selfDonor == 'false') || (participantGifts.gifts && participantGifts.gifts.length > 1)) && (donorContactCounts.email_rpt_show_unthanked_donors > 0 || donorContactCounts.email_rpt_show_nondonors_followup > 0)" ng-cloak>
-            <div class="ym-next-step ym-next-step- -sm" ng-if="donorContactCounts.email_rpt_show_unthanked_donors > 0" ng-cloak>
+            <div class="ym-next-step ym-next-step--sm" ng-if="donorContactCounts.email_rpt_show_unthanked_donors > 0" ng-cloak>
               <div class="ym-next-step__step">
                 You have new donors who haven't received a thank-you email!
               </div>
@@ -266,7 +266,7 @@
                 </a>
               </div>
             </div>
-            <div class="ym-next-step ym-next-step- -sm" ng-if="donorContactCounts.email_rpt_show_nondonors_followup > 0" ng-cloak>
+            <div class="ym-next-step ym-next-step--sm" ng-if="donorContactCounts.email_rpt_show_nondonors_followup > 0" ng-cloak>
               <div class="ym-next-step__step">
                 Great job sending emails. Some of your friends haven't donated!
               </div>
@@ -276,7 +276,7 @@
                 </a>
               </div>
             </div>
-            <div class="ym-next-step ym-next-step- -sm" ng-if="donorContactCounts.email_rpt_show_donors > 0" ng-cloak>
+            <div class="ym-next-step ym-next-step--sm" ng-if="donorContactCounts.email_rpt_show_donors > 0" ng-cloak>
               <div class="ym-next-step__step">
                 Review all of your donations on the Reports page.
               </div>
@@ -284,39 +284,6 @@
                 <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/reports">
                   <strong>View All</strong>
                 </a>
-              </div>
-            </div>
-          </div> -->
-          <h3 class="h5">
-            My Actions
-          </h3>
-          <div>
-            <div class="ym-next-step">
-              <div class="ym-next-step__step" style="width: 100%;">
-                Be the first one to kickoff your fundraising by making a donation to your <a ng-href="TR?fr_id={{frId}}&amp;pg=personal&amp;px={{consId}}">Personal page</a>.
-              </div>
-              <div class="ym-next-step__action">
-              </div>
-            </div>
-            <div class="ym-next-step">
-              <div class="ym-next-step__step" style="width: 100%;">
-                To be the most successful, send emails to at least 10 family members and friends in the <a ng-href="{{baseUrl}}#/email">Email tab</a>.
-              </div>
-              <div class="ym-next-step__action">
-              </div>
-            </div>
-            <div class="ym-next-step">
-              <div class="ym-next-step__step" style="width: 100%;">
-                Most donors need to be reminded at least 3 times. Don't forget to remind and thank your donors in the <a ng-href="{{baseUrl}}#/email">Email tab</a>.
-              </div>
-              <div class="ym-next-step__action">
-              </div>
-            </div>
-            <div class="ym-next-step">
-              <div class="ym-next-step__step" style="width: 100%;">
-                Check out your progress and see who made a donation on the <a ng-href="{{baseUrl}}#/reports">Reports tab</a>.
-              </div>
-              <div class="ym-next-step__action">
               </div>
             </div>
           </div>
