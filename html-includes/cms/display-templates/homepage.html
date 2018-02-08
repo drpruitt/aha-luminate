@@ -92,7 +92,7 @@
           <img class="img-responsive" src="http://american.heart.org/assets/images/middle-school/find-school-graphic.png" alt="Find your school">
         </t:if>
         <t:if test="path == '/district-heart-challenge/'">
-          <img class="img-responsive" src="http://american.heart.org/assets/images/district-heart-challenge/find-school-graphic.png" alt="Find your school">
+          <img class="img-responsive" src="http://american.heart.org/assets/images/district-heart-challenge/find-school-graphic.png" alt="Type your district name">
         </t:if>
         <t:if test="path == '/high-school/'">
           <img class="img-responsive" src="http://american.heart.org/assets/images/high-school/find-school-graphic.png" alt="Find your school">
@@ -179,10 +179,11 @@
                 <option value="GU">Guam</option>
                 <option value="PR">Puerto Rico</option>
               </select>
+         
             </div>
           </div>
           <div ng-if="schoolList.schools.length > 0" ng-cloak>
-            <div class="alert alert-info" role="alert"ng-if="schoolList.totalNumberResults > 2500" ng-cloak>
+            <div class="alert alert-info" role="alert" ng-if="schoolList.totalNumberResults > 2500" ng-cloak>
               <strong>Your search returned more than 2,500 results. Please try again with a more specific keyword.</strong>
             </div>
             <div class="text-center visible-xs-block">

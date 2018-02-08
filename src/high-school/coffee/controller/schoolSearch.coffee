@@ -6,7 +6,7 @@ angular.module 'ahaLuminateControllers'
     'SchoolLookupService'
     'SchoolSearchService'
     ($rootScope, $scope, $filter, SchoolLookupService, SchoolSearchService) ->
-      SchoolSearchService.init $scope
+      SchoolSearchService.init $scope, 'High School'
       
       $rootScope.createTeam =
         schoolName: ''

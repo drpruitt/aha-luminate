@@ -16,12 +16,13 @@ angular.module 'ahaLuminateApp'
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
       
       getSchoolData: ->
-        requestUrl = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent(luminateExtend.global.path.secure + 'SPageServer?pagename=getDistrictHeartSchoolSearchData&pgwrap=n')
-        if window.location.href.indexOf(luminateExtend.global.path.secure) is 0
-          requestUrl = 'SPageServer?pagename=getDistrictHeartSchoolSearchData&pgwrap=n'
-        $http
-          method: 'GET'
-          url: $sce.trustAsResourceUrl(requestUrl)
-          headers:
-            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        requestUrl = luminateExtend.global.path.nonsecure
+        if window.location.protocol is 'https:'
+          requestUrl = luminateExtend.global.path.secure + 'S'
+        requestUrl += 'PageServer?pagename=getDistrictHeartSchoolSearchData&pgwrap=n'
+        $http.jsonp($sce.trustAsResourceUrl(requestUrl), jsonpCallbackParam: 'callback')
+          .then (response) ->
+            response
+          , (response) ->
+            response
   ]

@@ -284,7 +284,7 @@ angular.module 'trPcControllers'
       
       $scope.addNewContact = ->
         $scope.clearAddContactAlerts()
-        if $scope.addNewContactForm.$valid
+        if this.addNewContactForm.$valid
           addContactPromise = NgPcContactService.addAddressBookContact $httpParamSerializer($scope.newContact)
             .then (response) ->
               if response.data.errorResponse
@@ -362,7 +362,8 @@ angular.module 'trPcControllers'
                         jobEvents.push 
                           message: event
                       $scope.updateImportJobEvents jobEvents
-                    trPcContactImport.buildAddressBookImport importJobId
+                    if jobStatus is 'PENDING'
+                      trPcContactImport.buildAddressBookImport importJobId
                   else if jobStatus is 'SUCCESS'
                     NgPcContactService.getAddressBookImportContacts 'import_job_id=' + importJobId
                       .then (response) ->
