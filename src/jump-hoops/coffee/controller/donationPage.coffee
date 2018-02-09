@@ -157,6 +157,8 @@ angular.module 'ahaLuminateControllers'
           , 500
           angular.element('#level_installmentduration').click()
       
+      $scope.focus = "focus"
+
       populateBtnAmt = (type, level) ->
         angular.element('#pstep_finish span').remove()
         if $scope.donationInfo.giftType is 'onetime'
