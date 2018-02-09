@@ -138,5 +138,26 @@ module.exports = {
         dest: 'dist/district-heart/css/'
       }
     ]
+  },
+
+  "cyclenation": {
+    files: [
+      {
+        expand: true,
+        cwd: 'dist/cyclenation/css/',
+        src: [
+          'main.css'
+        ],
+        dest: 'dist/cyclenation/css/'
+      },
+      {
+        expand: true,
+        cwd: 'dist/cyclenation/css/',
+        src: [
+          'participant.css'
+        ],
+        dest: 'dist/cyclenation/css/'
+      }
+    ]
   }
 }

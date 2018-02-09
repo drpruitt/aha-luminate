@@ -101,5 +101,14 @@ module.exports = {
         dest: 'dist/district-heart/js/participant.' + '<%= timestamp %>' + '.min.js'
       }
     ]
+  },
+
+  "cyclenation": {
+    files: [
+      {
+        src: ["dist/cyclenation/js/main.js"],
+        dest: "dist/cyclenation/js/main." + "<%= timestamp %>" + ".min.js"
+      }
+    ]
   }
 }

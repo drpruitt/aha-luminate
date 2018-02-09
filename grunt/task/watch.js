@@ -158,5 +158,22 @@ module.exports = {
       'img-copy:district-heart-images', 
       'notify:district-heart'
     ]
+  },
+
+  "cyclenation": {
+    files: [
+      'src/cyclenation/html/**/*',
+      'src/cyclenation/image/**/*',
+      'src/cyclenation/sass/**/*',
+      'src/cyclenation/js/**/*'
+    ],
+    tasks: [
+      'clean:cyclenation',
+      'css-dist:cyclenation',
+      'js-dist:cyclenation',
+      'html-dist:cyclenation',
+      'img-copy:cyclenation-images',
+      'notify:cyclenation'
+    ]
   }
 }

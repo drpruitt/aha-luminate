@@ -62,5 +62,12 @@ module.exports = {
       title: 'AHA Luminate Framework', 
       message: 'District Heart Challenge files updated.'
     }
+  },
+
+  "cyclenation": {
+    options: {
+      title: 'AHA Luminate Framework',
+      message: 'CycleNation files updated.'
+    }
   }
 }

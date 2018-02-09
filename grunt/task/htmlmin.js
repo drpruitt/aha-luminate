@@ -101,5 +101,18 @@ module.exports = {
         dest: "dist/district-heart/html/"
       }
     ]
+  },
+
+  "cyclenation": {
+    files: [
+      {
+        expand: true,
+        cwd: 'dist/cyclenation/html/',
+        src: [
+          '**/*.*'
+        ],
+        dest: "dist/cyclenation/html/"
+      }
+    ]
   }
 }

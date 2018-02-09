@@ -65,5 +65,13 @@ module.exports = {
         'src/district-heart/sass/participant.scss'
       ]
     }
+  },
+
+  "cyclenation": {
+    files: {
+      'dist/cyclenation/css/main.css': [
+        'src/cyclenation/sass/main.scss'
+      ]
+    }
   }
 }

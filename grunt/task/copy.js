@@ -104,5 +104,18 @@ module.exports = {
         dest: 'dist/district-heart/image/'
       }
     ]
+  },
+
+  "cyclenation-images": {
+    files: [
+      {
+        expand: true,
+        cwd: 'src/cyclenation/image/',
+        src: [
+          '*.{gif,GIF,jpg,JPG,png,PNG,svg,SVG}'
+        ],
+        dest: 'dist/cyclenation/image/'
+      }
+    ]
   }
 }
