@@ -12,11 +12,11 @@
     "node": "^6.12.3"
   },
   "dependencies": {
-    "grunt": "^1.0.1",
+    "grunt": "^1.0.2",
     "load-grunt-tasks": "^3.5.2"
   },
   "devDependencies": {
-    "autoprefixer": "^7.2.5",
+    "autoprefixer": "^8.0.0",
     "glob": "^7.1.2",
     "grunt-cli": "^1.2.0",
     "grunt-connect-proxy": "git+https://github.com/drewzboto/grunt-connect-proxy.git",
