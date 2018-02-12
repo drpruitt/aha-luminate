@@ -307,7 +307,7 @@ angular.module 'trPcControllers'
             response
         $scope.dashboardPromises.push personalGiftsPromise
       $scope.getGifts()
-
+      
       $scope.donorContactCounts = {}
       donorContactFilters = [
         'email_rpt_show_nondonors_followup'
@@ -315,12 +315,13 @@ angular.module 'trPcControllers'
         'email_rpt_show_donors'
       ]
       angular.forEach donorContactFilters, (filter) ->
-        donorContactCountPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=1'
-          .then (response) ->
-            totalNumberResults = response.data.getTeamraiserAddressBookContactsResponse?.totalNumberResults
-            $scope.donorContactCounts[filter] = if totalNumberResults then Number(totalNumberResults) else 0
-            response
-        $scope.dashboardPromises.push donorContactCountPromise
+        # donorContactCountPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=1'
+          # .then (response) ->
+            # totalNumberResults = response.data.getTeamraiserAddressBookContactsResponse?.totalNumberResults
+            # $scope.donorContactCounts[filter] = if totalNumberResults then Number(totalNumberResults) else 0
+            # response
+        # $scope.dashboardPromises.push donorContactCountPromise
+        $scope.donorContactCounts[filter] = ''
       
       if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
         $scope.dashboardPageType = 'personal'
@@ -500,16 +501,22 @@ angular.module 'trPcControllers'
         if not $scope.$$phase
           $scope.$apply()
       getStudentChallenge = ->
+        if not $scope.personalChallenge
+          $scope.personalChallenge = {}
+        $scope.personalChallenge.updatePending = true
         ZuriService.getStudent $scope.frId + '/' + $scope.consId,
           failure: (response) ->
+            delete $scope.personalChallenge.updatePending
             setPersonalChallenge()
           error: (response) ->
+            delete $scope.personalChallenge.updatePending
             setPersonalChallenge()
           success: (response) ->
             personalChallenges = response.data.challenges
             if not personalChallenges
               setPersonalChallenge()
             else
+              delete $scope.personalChallenge.updatePending
               id = personalChallenges.current
               if id is '0'
                 setPersonalChallenge()
@@ -540,17 +547,27 @@ angular.module 'trPcControllers'
           name: challenge
       
       $scope.updateChallenge = ->
+        if not $scope.personalChallenge
+          $scope.personalChallenge = {}
+        $scope.personalChallenge.updatePending = true
         ZuriService.updateChallenge $scope.frId + '/' + $scope.consId + '?challenge=' + $scope.updatedPersonalChallenge.id,
           failure: (response) ->
             # TODO
+            delete $scope.personalChallenge.updatePending
           success: (response) ->
+            delete $scope.personalChallenge.updatePending
             getStudentChallenge()
       
       $scope.logChallenge = ->
+        if not $scope.personalChallenge
+          $scope.personalChallenge = {}
+        $scope.personalChallenge.updatePending = true
         ZuriService.logChallenge $scope.frId + '/' + $scope.consId + '/' + $scope.personalChallenge.id,
           failure: (response) ->
             # TODO
+            delete $scope.personalChallenge.updatePending
           success: (response) ->
+            delete $scope.personalChallenge.updatePending
             getStudentChallenge()
       
       $scope.prizes = []
