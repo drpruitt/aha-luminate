@@ -278,6 +278,8 @@ angular.module 'ahaLuminateControllers'
             e.preventDefault()
             jQuery('html, body').animate({scrollTop: jQuery("a[name=donationLevels]").offset().top}, 0);
             $scope.otherAmtError = true
+            if not $scope.$$phase
+              $scope.$apply()
             angular.element('#pstep_finish').removeClass 'hidden'
             angular.element('.ym-loading').addClass 'hidden'
 
