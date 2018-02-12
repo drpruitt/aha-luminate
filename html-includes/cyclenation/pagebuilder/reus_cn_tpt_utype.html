@@ -1,213 +1,99 @@
-[[?COMMENT::::::
-   NOT PART OF DEPLOYMENT PROCESS. MUST BE MANUALLY COPIED TO PAGEBUILDER.
-]]
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+  crossorigin="anonymous">
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 
-[[?xTx::x[[A24]]x::
-  <!-- manage mode -->
-  <script>
-    var myHtmlEditor = 'Gfr_htmltextarea';
-  </script>
-  <script src="../js/ajax_mce.js"></script>
-::]]
-<div class="ym-registration-page-container ym-registration-page-container--utype" ng-controller="RegistrationUtypeCtrl" ng-init="[[?xTx::x[[A21]]x::userType='existing';::]][[?xx::x[[A26]]x::::showForgotLogin=true;]]">
-  <div ng-class="{'hidden': showForgotLogin}" ng-cloak>
-    <div class="ym-registration-page-header">
-      <div class="manageable-content" data-container="edit_ut_title_container">
-        <h2 class="h4" id="ut_title_container">
-          [[C1:fr_ut_title]]
-        </h2>
-      </div>
-      [[?xxnullx::x[[A5]]x::::
-        <div class="alert alert-success" role="alert">
-          [[A5]]
-        </div>
-      ]]
-      [[?xx::x[[A25]]x::::
-        <div class="alert alert-success" role="alert">
-          [[A25]]
-        </div>
-      ]]
-      [[?xyz.xnullynullz.xynullz.xnullyz::x[[A4]]y[[A6]]z::::
-        <div class="alert alert-danger" role="alert">
-          [[?xy.xnully::x[[A4]]y::
-            [[M0:friendraiser:generic_error]]
-          ::
-            [[A4]]
-          ]]
-        </div>
-      ]]
-      [[?xx::x[[A20]]x::::
-        <div class="alert alert-danger" role="alert">
-          [[A20]]
-        </div>
-      ]]
-      <p class="ym-section-header">
-        Did you participate last year?
-      </p>
-    </div>
-    <div class="ym-registration-utype-user-types">
-      <div class="clearfix">
-        <div class="ym-registration-utype-user-type">
-          <div class="manageable-content" data-container="edit_fr_returning_user_container">
-            <button type="button" class="btn btn-toggle" ng-class="{'active': userType == 'existing'}" ng-click="toggleUserType('existing')">
-              <span id="fr_returning_user_container">[[C1:fr_returning_user]]</span>
-            </button>
-          </div>
-        </div>
-        <div class="ym-registration-utype-user-type">
-          <div class="manageable-content" data-container="edit_fr_new_user_container">
-            <button type="button" class="btn btn-toggle" ng-click="toggleUserType('new')">
-              <span id="fr_new_user_container">[[C1:fr_new_user]]</span> <i class="fa fa-chevron-right"></i>
-            </button>
-          </div>
+<main role="main" class="">
+
+  <section id="uType" class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" style="width: 10%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">10%</div>
         </div>
       </div>
     </div>
-    <div ng-class="{'hidden': userType != 'existing'}" ng-cloak>
-      <form class="ym-registration-utype-login-form" method="POST" novalidate ng-submit="submitUtypeLogin()">
-        <div class="ym-registration-utype-login-header">
-          <p class="ym-section-header">
-            Welcome Back! Please Log In:
-          </p>
-          <p>
-            As a returning student, we will need to ask you to update your current information.
-          </p>
-        </div>
-        <div class="ym-registration-utype-login-info">
-          <div class="row">
-            <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-              <div class="row">
-                <div class="col-xs-6">
-                  <div class="form-group [[?xx::x[[A20]]x::::[[?x[[M0:login_admin:err_username_password_required]]x[[M0:login_admin:err_invalid_userid]]x::x[[A20]]x::has-error::]]]]">
-                    <label class="control-label" for="existingUser-username">
-                      [[M0:global:user_name_field]]
-                    </label>
-                    <input type="text" class="form-control input-lg" name="USERNAME" id="existingUser-username" ng-model="existingUser.username" maxlength="[[S0:USER_MAX_LOGIN_LEN]]">
-                  </div>
-                </div>
-                <div class="col-xs-6">
-                  <div class="form-group [[?xx::x[[A20]]x::::[[?x[[M0:login_admin:err_username_password_required]]x[[M0:login_admin:err_invalid_password]]x::x[[A20]]x::has-error::]]]]">
-                    <label class="control-label" for="existingUser-password">
-                      [[M0:global:user_password_field]]
-                    </label>
-                    <input type="password" class="form-control input-lg" name="Password" id="existingUser-password" ng-model="existingUser.password" maxlength="[[S0:USER_MAX_PASSWD_LEN]]">
-                  </div>
-                </div>
-              </div>
+    <div class="row text-center">
+      <div class="col-md-6 offset-md-3">
+        <h3>Let's Get Started</h3>
+        <p>
+          CycleNation has a new website!
+        </p>
+        <p>
+          Please create an account below even if you have cycled with us before.
+        </p>
+        <p>
+          Have an account?
+          <a href="#">Log in here</a>.
+        </p>
+        <p>
+          <span class="field-required"></span>
+          <sup>
+            <i class="fas fa-asterisk"></i>
+          </sup> Indicates required</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+      <div class="js__signup-error-container alert alert-danger d-none" role="alert">
+        <span class="" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+        <span class="js__signup-error-message"></span>
+      </div>
+      
+      <form id="signupForm" class="js__signup-form">
+        <div id="user_type_create_account_container" class="">
+          <div class="form-content">
+
+            <div class="form-group">
+              <span class="field-required"></span>
+                <label for="firstName">First Name: </label>
+              <input type="text" name="name.first" id="firstName" class="form-control" data-parsley-trigger="change" data-parsley-minlength="5" data-parsley-maxlength="60" data-parsley-minlength-message="Your first name must be at least 5 characters long." data-parsley-maxlength-message="Your first name must be at fewer than 60 characters long." data-parsley-required-message="First name is required" data-parsley-required="true" required>
             </div>
-          </div>
-        </div>
-        <div class="ym-registration-utype-forgot-toggle">
-          <a ng-click="toggleForgotLogin('show')">Forgot Username or Password?</a>
-        </div>
-        <div class="ym-registration-form-footer">
-          <div class="ym-registration-form-footer-btns">
-            <div class="clearfix">
-              <div class="visible-xs">
-                <button type="submit" class="btn btn-primary">
-                  <strong>Next</strong> <i class="fa fa-chevron-right"></i>
-                </button>
-              </div>
-              <div class="pull-right hidden-xs">
-                <button type="submit" class="btn btn-primary">
-                  <strong>Next</strong> <i class="fa fa-chevron-right"></i>
-                </button>
-              </div>
+            <div class="form-group">
+              <span class="field-required"></span>
+                <label for="lastName">First Name: </label>
+              <input type="text" name="name.last" id="lastName" class="form-control" data-parsley-trigger="change" data-parsley-minlength="5" data-parsley-maxlength="60" data-parsley-minlength-message="Your last name must be at least 5 characters long." data-parsley-maxlength-message="Your last name must be at fewer than 60 characters long." data-parsley-required-message="Last name is required" data-parsley-required="true" required>
+            </div>
+            <div class="form-group">
+              <span class="field-required"></span>
+              <label for="signupEmail">Email:</label>
+              <input type="email" name="email.primary_address" id="signupEmail" class="form-control" data-parsley-trigger="keyup" data-parsley-type="email" data-parsley-required-message="Email address is required" data-parsley-required="true" required>
+            </div>
+            <div class="form-group">
+              <span class="field-required"></span>
+              <span class="d-flex">
+              <label for="signupUsername">Username: </label> 
+              <small id="usernameHelpBlock" class="ml-auto form-text text-muted ">Tip: User your email</small>
+              </span>
+              <input type="text" name="user_name" id="signupUsername" class="form-control" aria-describedby="usernameHelpBlock" data-parsley-trigger="change" data-parsley-minlength="5" data-parsley-maxlength="60" data-parsley-minlength-message="Your username must be at least 5 characters long." data-parsley-maxlength-message="Your username must be at fewer than 60 characters long."                data-parsley-required-message="Username is required" data-parsley-required="true" required>
+            </div>
+            <div class="form-group">
+              <span class="field-required"></span>
+              <label for="signupPassword">Password:</label>
+              <input type="password" name="user_password" id="signupPassword" class="form-control" data-parsley-trigger="change" data-parsley-minlength="5" data-parsley-maxlength="20" data-parsley-minlength-message="Your password must be at least 5 characters long." data-parsley-maxlength-message="Your password must be at fewer than 20 characters long." data-parsley-required-message="Password is required" data-parsley-required="true" required>
+            </div>
+            <div class="form-group">
+              <span class="field-required"></span>
+              <label for="signupPasswordConfirm">Repeat Password:</label>
+              <input type="password" name="password_confirm" id="signupPasswordConfirm" class="form-control" data-parsley-trigger="keyup" data-parsley-equalto="#signupPassword" data-parsley-equalto-message="Your password does not match." data-parsley-validation-threshold="5" data-parsley-required-message="Password confirmation is required" data-parsley-required="true" required>
+            </div>
+            <div class="text-center">
+              <button class="btn btn-block btn-primary js__signup-submit step-button" name="signupSubmit" value="Send User Name" type="submit">Get Started</button>
             </div>
           </div>
         </div>
       </form>
     </div>
-  </div>
-  <div ng-class="{'hidden': !showForgotLogin}" ng-cloak>
-    <div class="ym-registration-page-header">
-      <h2 class="h5" id="ut_title_forgot_pwd">
-        Forgot Username or Password
-      </h2>
-      [[?xx::x[[A26]]x::::
-        <div class="alert alert-danger" role="alert">
-          [[A26]]
-        </div>
-      ]]
-      <p>
-      </p>
     </div>
-    <form class="ym-registration-utype-forgot-form" method="POST" novalidate ng-submit="submitForgotLogin()">
-      <div class="row">
-        <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-          <div class="form-group [[?xx::x[[A26]]x::::has-error]]">
-            <label class="control-label" for="existingUser-email">
-              Email Address:
-            </label>
-            <input type="text" class="form-control input-lg" name="email" id="existingUser-email" ng-model="existingUser.email" maxlength="100">
-          </div>
-        </div>
-      </div>
-      <div class="ym-registration-form-footer">
-        <div class="ym-registration-form-footer-btns">
-          <div class="clearfix">
-            <div class="pull-right">
-              <button type="submit" class="btn btn-primary">
-                <strong>Submit</strong>
-              </button>
-            </div>
-            <div class="pull-left">
-              <a class="btn btn-toggle" ng-click="toggleForgotLogin('hide')">
-                <i class="fa fa-chevron-left"></i> <strong>Cancel</strong>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>
-  <div class="hidden" hidden aria-hidden="true">
-    <form class="js--default-utype-existing-form" action="[[A1]]" method="POST">
-      <input type="hidden" name="fr_id" value="[[A2]]">
-      <input type="hidden" name="pg" value="[[A7]]">
-      <input type="text" name="[[A13]]" ng-model="existingUser.username">
-      <input type="password" name="[[A14]]" ng-model="existingUser.password">
-      <input type="hidden" name="s_frCompanyId" value="[[S80:frCompanyId]]">
-      <input type="hidden" name="s_frTJoin" value="[[S80:frTJoin]]">
-      <input type="hidden" name="[[A16]]" value="[[M0:global:login_button]]">
-    </form>
-    <form class="js--default-utype-send-username-form" action="[[A1]]" method="POST">
-      <input type="hidden" name="fr_id" value="[[A2]]">
-      <input type="hidden" name="pg" value="[[A7]]">
-      <input type="text" name="[[A17]]" ng-model="existingUser.email">
-      <input type="hidden" name="s_frCompanyId" value="[[S80:frCompanyId]]">
-      <input type="hidden" name="s_frTJoin" value="[[S80:frTJoin]]">
-      <input type="hidden" name="[[A18]]" value="[[M0:global:send_user_name_button]]">
-    </form>
-    <form class="js--default-utype-new-form" action="[[A1]]" method="POST">
-      <input type="hidden" name="fr_id" value="[[A2]]">
-      <input type="hidden" name="pg" value="[[A7]]">
-      <input type="hidden" name="s_frCompanyId" value="[[S80:frCompanyId]]">
-      <input type="hidden" name="s_frTJoin" value="[[S80:frTJoin]]">
-      <input type="hidden" name="next_step.x" value="[[M1:friendraiser:join_team_step_next_button]]">
-    </form>
-  </div>
-</div>
-[[?xTx::x[[A24]]x::
-  <!-- manage mode -->
-  <div id="edit_ut_title_container" class="EditContainer" style="display: none;">
-    [[C:ajax-custompage-edit-component:edit_ut_title_container]]
-  </div>
-  <div id="edit_fr_returning_user_container" class="EditContainer" style="display: none;">
-    [[C:ajax-custompage-edit-component:edit_fr_returning_user_container]]
-  </div>
-  <div id="edit_fr_new_user_container" class="EditContainer" style="display: none;">
-    [[C:ajax-custompage-edit-component:edit_fr_new_user_container]]
-  </div>
-  <input id="edit_btn_title" type="hidden" value="[[M0:friendraiser_emgmt:preview_edit_link]]">
-  <script>
-    hide_element('edit_fr_html_container');
-    Y.use('emc-reg-editor', function(Y) {
-      jQuery(function() {
-        jQuery('.ym-registration-page-container').manageEMCEditable({
-          windowTitle: '[[T6:[[M0:friendraiser_emgmt:editor_window_title]]]]'
-        });
-      });
-    });
-  </script>
-::]]
+  </section>
+
+</main>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+  crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.8.0/parsley.min.js"></script>
