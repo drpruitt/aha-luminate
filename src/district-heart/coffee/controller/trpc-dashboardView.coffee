@@ -18,7 +18,8 @@ angular.module 'trPcControllers'
     'NgPcInteractionService'
     'NgPcTeamraiserCompanyService'
     'NgPcTeamraiserSurveyResponseService'
-    ($rootScope, $scope, $filter, $httpParamSerializer, $timeout, $uibModal, APP_INFO, BoundlessService, ZuriService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserGiftService, NgPcContactService, NgPcTeamraiserShortcutURLService, NgPcInteractionService, NgPcTeamraiserCompanyService, NgPcTeamraiserSurveyResponseService) ->
+    'NgPcTeamraiserCompanyService'
+  ($rootScope, $scope, $filter, $httpParamSerializer, $timeout, $uibModal, APP_INFO, BoundlessService, ZuriService, NgPcTeamraiserRegistrationService, NgPcTeamraiserProgressService, NgPcTeamraiserTeamService, NgPcTeamraiserCompanyService, NgPcTeamraiserGiftService, NgPcContactService, NgPcTeamraiserShortcutURLService, NgPcInteractionService, NgPcTeamraiserCompanyService, NgPcTeamraiserSurveyResponseService) ->
       $scope.dashboardPromises = []
       
       $dataRoot = angular.element '[data-embed-root]'
