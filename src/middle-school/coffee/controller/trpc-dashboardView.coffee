@@ -266,7 +266,37 @@ angular.module 'trPcControllers'
                 $scope.refreshFundraisingProgress()
               response
           $scope.dashboardPromises.push updateTeamGoalPromise
+ 
+      $scope.schoolGoalInfo = {}
       
+      $scope.editSchoolGoal = ->
+        delete $scope.schoolGoalInfo.errorMessage
+        schoolGoal = $scope.companyProgress.goalFormatted.replace '$', ''
+        if schoolGoal is '' or schoolGoal is '0'
+          $scope.schoolGoalInfo.goal = ''
+        else
+          $scope.schoolGoalInfo.goal = schoolGoal
+        $scope.editSchoolGoalModal = $uibModal.open
+          scope: $scope
+          templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/editSchoolGoal.html'
+      
+      $scope.cancelEditSchoolGoal = ->
+        $scope.editSchoolGoalModal.close()
+      
+      $scope.updateSchoolGoal = ->
+        delete $scope.schoolGoalInfo.errorMessage
+        newGoal = $scope.schoolGoalInfo.goal
+        if newGoal
+          newGoal = newGoal.replace('$', '').replace /,/g, ''
+        if not newGoal or newGoal is '' or newGoal is '0' or isNaN(newGoal)
+          $scope.schoolGoalInfo.errorMessage = 'Please specify a goal greater than $0.'
+        else
+          updateSchoolGoalPromise = NgPcTeamraiserSchoolService.updateSchoolGoal(newGoal, $scope)
+            .then (response) ->
+              $scope.editSchoolGoalModal.close()
+              $scope.refreshFundraisingProgress()
+          $scope.dashboardPromises.push updateSchoolGoalPromise
+
       $scope.participantGifts =
         sortColumn: 'date_recorded'
         sortAscending: false
