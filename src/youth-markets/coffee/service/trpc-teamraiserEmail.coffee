@@ -77,7 +77,7 @@ angular.module 'trPcApp'
             response
       
       previewMessage: (requestData) ->
-        dataString = 'method=previewMessage'
+        dataString = 'method=previewMessage&s_trID=' + $rootScope.frId + '&s_participantConsID=' + $rootScope.consId
         dataString += '&' + requestData if requestData and requestData isnt ''
         NgPcLuminateRESTService.teamraiserRequest dataString, true, true
           .then (response) ->
