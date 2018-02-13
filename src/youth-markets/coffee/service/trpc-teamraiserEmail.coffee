@@ -1,7 +1,8 @@
 angular.module 'trPcApp'
   .factory 'NgPcTeamraiserEmailService', [
+    '$rootScope'
     'NgPcLuminateRESTService'
-    (NgPcLuminateRESTService) ->
+    ($rootScope, NgPcLuminateRESTService) ->
       addDraft: (requestData) ->
         dataString = 'method=addDraft'
         dataString += '&' + requestData if requestData and requestData isnt ''
@@ -83,7 +84,7 @@ angular.module 'trPcApp'
             response
       
       sendMessage: (requestData) ->
-        dataString = 'method=sendTafMessage'
+        dataString = 'method=sendTafMessage&s_trID=' + $rootScope.frId + '&s_participantConsID=' + $rootScope.consId
         dataString += '&' + requestData if requestData and requestData isnt ''
         NgPcLuminateRESTService.teamraiserRequest dataString, true, true
           .then (response) ->
