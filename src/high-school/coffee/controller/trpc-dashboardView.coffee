@@ -294,7 +294,7 @@ angular.module 'trPcControllers'
           $scope.schoolGoalInfo.goal = schoolGoal
         $scope.editSchoolGoalModal = $uibModal.open
           scope: $scope
-          templateUrl: APP_INFO.rootPath + 'dist/jump-hoops/html/participant-center/modal/editSchoolGoal.html'
+          templateUrl: APP_INFO.rootPath + 'dist/high-school/html/participant-center/modal/editSchoolGoal.html'
       
       $scope.cancelEditSchoolGoal = ->
         $scope.editSchoolGoalModal.close()
