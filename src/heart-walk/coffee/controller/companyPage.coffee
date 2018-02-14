@@ -314,6 +314,7 @@ angular.module 'ahaLuminateControllers'
                 numCompaniesParticipantRequestComplete++
               success: (response) ->
                 batch = response.getParticipantsResponse?.participant
+                total=response.totalNumberResults
                 if not batch?
                   batch = []
                 batch = [batch] if not angular.isArray batch
