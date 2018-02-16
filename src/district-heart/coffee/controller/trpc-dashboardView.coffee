@@ -508,18 +508,6 @@ angular.module 'trPcControllers'
               response
           $scope.dashboardPromises.push updateCompanyUrlPromise
       
-      $scope.prizes = []
-      BoundlessService.getBadges $scope.consId
-        .then (response) ->
-          prizes = response.data.prizes
-          angular.forEach prizes, (prize) ->
-            $scope.prizes.push
-              id: prize.id
-              label: prize.label
-              sku: prize.sku
-              status: prize.status
-              earned: prize.earned_datetime
-
       $scope.dateFormat = 'MM/dd/yyyy'
       $scope.activityDatePicker =
         opened: false
@@ -619,4 +607,17 @@ angular.module 'trPcControllers'
                         else
                           delete $scope.bloodPressureLog.errorMessage
                           $rootScope.bloodPressureChecked = true
-  ]
+      $scope.prizes = []
+      BoundlessService.getBadges $scope.consId
+        .then (response) ->
+          prizes = response.data.prizes
+          angular.forEach prizes, (prize) ->
+            $scope.prizes.push
+              id: prize.id
+              label: prize.label
+              sku: prize.sku
+              status: prize.status
+              earned: prize.earned_datetime
+        , (response) ->
+          # TODO
+]
