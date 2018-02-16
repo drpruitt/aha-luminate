@@ -521,7 +521,7 @@ angular.module 'trPcControllers'
               earned: prize.earned_datetime
         , (response) ->
           # TODO
-      
+          
       $scope.dateFormat = 'MM/dd/yyyy'
       $scope.activityDatePicker =
         opened: false
