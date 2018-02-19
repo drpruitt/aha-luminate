@@ -150,6 +150,9 @@ module.exports = (grunt) ->
       'htmlmin'
       'imagemin'
     ], 'cyclenation'
+    runTargetedTask [
+      'copy'
+    ], 'cyclenation-scripts'
     return
   grunt.registerTask 'dev', ->
     devTasks = [

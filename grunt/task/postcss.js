@@ -149,14 +149,6 @@ module.exports = {
           'main.css'
         ],
         dest: 'dist/cyclenation/css/'
-      },
-      {
-        expand: true,
-        cwd: 'dist/cyclenation/css/',
-        src: [
-          'participant.css'
-        ],
-        dest: 'dist/cyclenation/css/'
       }
     ]
   }

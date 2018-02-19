@@ -106,7 +106,7 @@ module.exports = {
   "cyclenation": {
     files: [
       {
-        src: ["dist/cyclenation/js/main.js"],
+        src: ["src/cyclenation/js/main.js"],
         dest: "dist/cyclenation/js/main." + "<%= timestamp %>" + ".min.js"
       }
     ]

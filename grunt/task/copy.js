@@ -117,5 +117,18 @@ module.exports = {
         dest: 'dist/cyclenation/image/'
       }
     ]
+  },
+  "cyclenation-scripts": {
+    files: [
+      {
+        expand: true,
+        cwd: 'src/cyclenation/js/',
+        src: [
+          '*.js'
+        ],
+        dest: 'dist/cyclenation/js/'
+      }
+    ]
   }
+
 }

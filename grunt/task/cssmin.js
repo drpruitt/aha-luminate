@@ -88,10 +88,6 @@ module.exports = {
       {
         src: 'dist/cyclenation/css/main.css', 
         dest: 'dist/cyclenation/css/main.'+ '<%= timestamp %>' +'.min.css'
-      }, 
-      {
-        src: 'dist/cyclenation/css/participant.css', 
-        dest: 'dist/cyclenation/css/participant.'+'<%= timestamp %>'+'.min.css'
       }
     ]
   }
