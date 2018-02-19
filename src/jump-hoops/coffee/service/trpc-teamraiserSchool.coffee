@@ -10,7 +10,7 @@ angular.module 'ahaLuminateApp'
             company_page = jQuery(response.data)
             company_formvars = jQuery(company_page).find('form').serializeArray()
             jQuery.each company_formvars, (i, key) ->
-               if key['name'] == 'goalinput'
+               if key['name'] is 'goalinput'
                   company_formvars[i]['value'] = requestData
 
             company_formvars.push
