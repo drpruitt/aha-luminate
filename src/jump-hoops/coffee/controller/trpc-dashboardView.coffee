@@ -321,7 +321,7 @@ angular.module 'trPcControllers'
             # $scope.donorContactCounts[filter] = if totalNumberResults then Number(totalNumberResults) else 0
             # response
         # $scope.dashboardPromises.push donorContactCountPromise
-        $scope.donorContactCounts[filter] = 0
+        $scope.donorContactCounts[filter] = ''
       
       if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
         $scope.dashboardPageType = 'personal'
