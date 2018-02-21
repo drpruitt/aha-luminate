@@ -24,11 +24,8 @@ select {
 }
 
 input.btn-enter[name=otherAmt]{
-  &.active::placeholder {
-    visibility: hidden;
-  }
   &+div.popover {
-    margin-left: 25px;
+    margin-top: -25px;
     text-align: center;
   }
 }

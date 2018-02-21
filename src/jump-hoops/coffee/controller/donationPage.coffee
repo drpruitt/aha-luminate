@@ -411,6 +411,6 @@ angular.module 'ahaLuminateControllers'
       , (reason) ->
         # TODO
       setTimeout ->
-        angular.element("input[name=otherAmt].active").focus()
+        angular.element("input[name=otherAmt]").click().focus()
       , 1000
   ]
