@@ -403,13 +403,7 @@ div.donation-form-container {
   }
 
   #tr_recognition_namerec_namename {
-    &::-webkit-input-placeholder,
-    &:-moz-placeholder,
-    &::-moz-placeholder,
-    &::placeholder,
-    &::-ms-input-placeholder {
-      font-size: 12px !important;
-    }
+    font-size: 12px;
   }
 
   #tr_message_to_participant_row,
