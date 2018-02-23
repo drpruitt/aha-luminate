@@ -4,14 +4,18 @@ angular.module 'trPcApp'
     'LuminateRESTService'
     ($rootScope, LuminateRESTService) ->
       updateShortcut: (requestData,frid) ->
-        dataString = 'method=updateShortcut' + (frid ? "&fr_id="+frid : "")
+        dataString = 'method=updateShortcut'
+        if frid
+          dataString = dataString + "&fr_id=" + frid
         dataString += '&' + requestData if requestData and requestData isnt ''
         LuminateRESTService.teamraiserRequest dataString, true, !frid
           .then (response) ->
             response
       
       getShortcut: (frid)->
-        dataString = 'method=getShortcut' + (frid ? '&fr_id=' + frid : '')
+        dataString = 'method=getShortcut'
+        if frid
+          dataString = dataString + "&fr_id=" + frid
         LuminateRESTService.teamraiserRequest dataString, true, !frid
           .then (response) ->
             response

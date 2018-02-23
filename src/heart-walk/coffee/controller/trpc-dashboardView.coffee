@@ -1434,7 +1434,7 @@ angular.module 'trPcControllers'
       $scope.getParticipantShortcut()
 
       $scope.getPrevShortcut = ()->
-        getPrevShortcutPromise = NgPcTeamraiserShortcutURLService.getShortcut(frid)
+        getPrevShortcutPromise = TeamraiserShortcutURLService.getShortcut($rootScope.prevFrIdForShortcut)
           .then (response) ->
             if response.data.errorResponse
               # TODO
@@ -1493,7 +1493,7 @@ angular.module 'trPcControllers'
                     return $scope.editPageUrlOptions.updateUrlFailureMessage = response.data.errorResponse.message || 'An unexpected error occurred while updating your personal page URL.';
                   else 
                     updateUrlPromise = TeamraiserShortcutURLService.updateShortcut("text=",$rootScope.prevFrIdForShortcut)
-                      .then(response) ->
+                      .then (response) ->
                         if (response.data.errorResponse)
                           $scope.editPageUrlOptions.updateUrlFailure = true
                           return $scope.editPageUrlOptions.updateUrlFailureMessage = response.data.errorResponse.message || 'An unexpected error occurred while updating your personal page URL.';
