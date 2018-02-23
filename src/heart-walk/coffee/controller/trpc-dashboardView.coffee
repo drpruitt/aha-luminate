@@ -1433,6 +1433,28 @@ angular.module 'trPcControllers'
         $scope.dashboardPromises.push getParticipantShortcutPromise
       $scope.getParticipantShortcut()
 
+      $scope.getPrevShortcut = ()->
+        getPrevShortcutPromise = NgPcTeamraiserShortcutURLService.getShortcut(frid)
+          .then (response) ->
+            if response.data.errorResponse
+              # TODO
+            else
+              shortcutItem = response.data.getShortcutResponse.shortcutItem
+              if not shortcutItem
+                # TODO
+              else
+                if shortcutItem.prefix
+                  shortcutItem.prefix = shortcutItem.prefix
+                $scope.participantShortcut = shortcutItem
+                if shortcutItem.url
+                  $scope.personalPageUrl = shortcutItem.url
+                else
+                  $scope.personalPageUrl = shortcutItem.defaultUrl.split('/site/')[0] + '/site/TR?fr_id=' + $scope.frId + '&pg=personal&px=' + $scope.consId
+            response
+        $scope.dashboardPromises.push getPrevShortcutPromise
+      $scope.getPrevShortcut()
+
+
       $scope.personalPageUrlSecure = $scope.baseDomain + '/site/TR?fr_id=' + $scope.frId + '&pg=personal&px=' + $scope.consId
 
       $scope.editPageUrlOptions =
