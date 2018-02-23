@@ -1,4 +1,5 @@
-myApp.directive("validateOnBlur", [function() {
+angular.module 'ahaLuminateApp'
+  .directive("validateOnBlur", [function() {
     var ddo = {
         restrict: "A",
         require: "ngModel",
