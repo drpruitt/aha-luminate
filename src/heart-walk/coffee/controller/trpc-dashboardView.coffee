@@ -1440,17 +1440,8 @@ angular.module 'trPcControllers'
               # TODO
             else
               shortcutItem = response.data.getShortcutResponse.shortcutItem
-              if not shortcutItem
-                # TODO
-              else
-                if shortcutItem.prefix
-                  shortcutItem.prefix = shortcutItem.prefix
-                $scope.participantShortcut = shortcutItem
-                if shortcutItem.url
-                  $scope.personalPageUrl = shortcutItem.url
-                else
-                  $scope.personalPageUrl = shortcutItem.defaultUrl.split('/site/')[0] + '/site/TR?fr_id=' + $scope.frId + '&pg=personal&px=' + $scope.consId
-            response
+              if shortcutItem
+                $scope.prevShortcut = shortcutItem
         $scope.dashboardPromises.push getPrevShortcutPromise
       $scope.getPrevShortcut()
 
