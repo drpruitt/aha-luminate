@@ -6,5 +6,6 @@ angular.module 'ahaLuminateApp'
     scope: {}
     link: (scope, element, attrs, modelCtrl) ->
       element.on 'blur', ->
+        console.log element
         modelCtrl.$showValidationMessage = modelCtrl.$dirty
         scope.$apply()
