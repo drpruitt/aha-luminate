@@ -231,14 +231,17 @@ angular.module 'ahaLuminateControllers'
         false
       
       $scope.submitReg = ->
-        if $scope.acceptWaiver isnt 'yes' and not $scope.ng_go_back
-          window.scrollTo 0, 0
-          $scope.registrationInfoErrors.errors = [
-            {
-              text: 'You must agree to the waiver.'
-            }
-          ]
+        if  $scope.regForm.$valid
+          if $scope.acceptWaiver isnt 'yes' and not $scope.ng_go_back
+            window.scrollTo 0, 0
+            $scope.registrationInfoErrors.errors = [
+              {
+                text: 'You must agree to the waiver.'
+              }
+            ]
+          else
+            angular.element('.js--default-reg-form').submit()
         else
-          angular.element('.js--default-reg-form').submit()
+          window.scrollTo 0, 0
         false
   ]
