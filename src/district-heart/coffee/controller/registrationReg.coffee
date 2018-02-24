@@ -242,6 +242,11 @@ angular.module 'ahaLuminateControllers'
           else
             angular.element('.js--default-reg-form').submit()
         else
+          $scope.registrationInfoErrors.errors = [
+            {
+              text: 'Please correct the errors below and try again.'
+            }
+          ]
           window.scrollTo 0, 0
         false
   ]
