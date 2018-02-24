@@ -1,5 +1,5 @@
 
-angular.module 'ahaLuminateControllers'
+angular.module 'trPcApp'
   .directive 'validateOnBlur', [ 
     'APP_INFO'
     (APP_INFO) ->
