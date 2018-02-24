@@ -1,8 +1,6 @@
 
-angular.module 'trPcApp'
-  .directive 'validateOnBlur', [ 
-    'APP_INFO'
-    (APP_INFO) ->
+angular.module 'ahaLuminateApp'
+  .directive 'validateOnBlur', ->
       ddo = 
         restrict: 'A'
         require: 'ngModel'
@@ -14,4 +12,3 @@ angular.module 'trPcApp'
             return
           return
       ddo
-]
