@@ -1,14 +1,10 @@
 
 angular.module 'ahaLuminateApp'
   .directive 'validateOnBlur', ->
-      ddo = 
-        restrict: 'A'
-        require: 'ngModel'
-        scope: {}
-        link: (scope, element, attrs, modelCtrl) ->
-          element.on 'blur', ->
-            modelCtrl.$showValidationMessage = true #modelCtrl.$dirty
-            scope.$apply()
-            return
-          return
-      ddo
+    restrict: 'A'
+    require: 'ngModel'
+    scope: {}
+    link: (scope, element, attrs, modelCtrl) ->
+      element.on 'blur', ->
+        modelCtrl.$showValidationMessage = true #modelCtrl.$dirty
+        scope.$apply()
