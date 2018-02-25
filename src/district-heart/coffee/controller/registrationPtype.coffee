@@ -94,5 +94,5 @@ angular.module 'ahaLuminateControllers'
             window.scrollTo 0, 0
         else
           angular.element('.js--default-ptype-form').submit()
-        false
+          false
   ]
