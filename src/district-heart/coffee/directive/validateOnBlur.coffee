@@ -27,7 +27,7 @@ angular.module('ahaLuminateApp').directive 'noProfanity', ->
           swearwordRegStr = swearwords[0]
           i = 1
           while i < swearwords.length
-            if currentValue == swearwords[i]
+            if currentValue.toLowerCase() == swearwords[i]
               return true
             i++
           false
