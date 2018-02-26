@@ -13,4 +13,4 @@ angular.module('ahaLuminateApp')
             response
         
         profanityFactory
-}]);
+   ]
