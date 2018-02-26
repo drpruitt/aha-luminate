@@ -90,5 +90,5 @@ angular.module 'ahaLuminateControllers'
         angular.element(targetToolboxContainer).find('.addthis_button_' + shareType).click()
         false
       
-     $scope.swearwords = profanityService.loadProfanityList()
+     $scope.swearwords = profanityService.loadProfanityList
   ]
