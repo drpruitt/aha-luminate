@@ -315,13 +315,12 @@ angular.module 'trPcControllers'
         'email_rpt_show_donors'
       ]
       angular.forEach donorContactFilters, (filter) ->
-        # donorContactCountPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=1'
-          # .then (response) ->
-            # totalNumberResults = response.data.getTeamraiserAddressBookContactsResponse?.totalNumberResults
-            # $scope.donorContactCounts[filter] = if totalNumberResults then Number(totalNumberResults) else 0
-            # response
-        # $scope.dashboardPromises.push donorContactCountPromise
-        $scope.donorContactCounts[filter] = ''
+        donorContactCountPromise = NgPcContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=1'
+          .then (response) ->
+            totalNumberResults = response.data.getTeamraiserAddressBookContactsResponse?.totalNumberResults
+            $scope.donorContactCounts[filter] = if totalNumberResults then Number(totalNumberResults) else 0
+            response
+        $scope.dashboardPromises.push donorContactCountPromise
       
       if $scope.participantRegistration.companyInformation?.isCompanyCoordinator isnt 'true'
         $scope.dashboardPageType = 'personal'
