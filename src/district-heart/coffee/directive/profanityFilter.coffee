@@ -1,4 +1,5 @@
-angular.module('ahaLuminateApp').directive 'noProfanity', ->
+angular.module('ahaLuminateApp')
+  .directive 'noProfanity', ->
   {
     restrict: 'A'
     require: 'ngModel'
@@ -6,25 +7,6 @@ angular.module('ahaLuminateApp').directive 'noProfanity', ->
       element.bind 'blur', (e) ->
 
         chkProfanity = (value) ->
-          swearwords = [
-            'asshole'
-            'ass'
-            'fucker'
-            'fucked'
-            'fucking'
-            'fuck'
-            'bitches'
-            'bitching'
-            'bitched'
-            'bitch'
-            'bastard'
-            'damn'
-            'shitting'
-            'shitty'
-            'shit'
-            'cock'
-          ]
-          ###
           swearwords = [
             'ahole'
             'anus'
@@ -74,7 +56,6 @@ angular.module('ahaLuminateApp').directive 'noProfanity', ->
             'cunt'
             'cunts'
             'cuntz'
-            'dick'
             'dild0'
             'dild0s'
             'dildo'
@@ -376,7 +357,6 @@ angular.module('ahaLuminateApp').directive 'noProfanity', ->
             'd4mn'
             'daygo'
             'dego'
-            'dick'
             'dike'
             'dupa'
             'dziwka'
@@ -487,7 +467,7 @@ angular.module('ahaLuminateApp').directive 'noProfanity', ->
             'yed'
             'zabourah'
           ]
-          ###
+
           swearwordRegStr = swearwords[0]
           i = 1
           while i < swearwords.length
@@ -504,3 +484,21 @@ angular.module('ahaLuminateApp').directive 'noProfanity', ->
       return
 
   }
+
+angular.module('ahaLuminateApp')
+    .factory('dataService', ['$http', function ($http) {
+        var serviceBase = '/api/dataservice/',
+            dataFactory = {};
+
+        dataFactory.checkUniqueValue = function (id, property, value) {
+            if (!id) id = 0;
+            return $http.get(serviceBase + 'checkUnique/' + id + '?property=' + 
+              property + '&value=' + escape(value)).then(
+                function (results) {
+                    return results.data.status;
+                });
+        };
+
+        return dataFactory;
+
+}]);
