@@ -1,17 +1,12 @@
 angular.module('ahaLuminateApp')
     .factory('dataService', ['$http', function ($http) {
-        var serviceBase = '/api/dataservice/',
-            dataFactory = {};
-
-        dataFactory.checkUniqueValue = function (id, property, value) {
-            if (!id) id = 0;
-            return $http.get(serviceBase + 'checkUnique/' + id + '?property=' + 
-              property + '&value=' + escape(value)).then(
-                function (results) {
-                    return results.data.status;
-                });
-        };
-
-        return dataFactory;
-
+      if $rootScope.tablePrefix is 'heartdev'
+        url = 'https://secure3.convio.net/heartdev/profanity-list/profanity-filter.json'
+      else
+        url = 'https://www2.heart.org/profanity-list/profanity-filter.json'
+      $http.jsonp($sce.trustAsResourceUrl(url), jsonpCallbackParam: 'callback')
+        .then (response) ->
+          return response
+        , (response) ->
+          return response
 }]);
