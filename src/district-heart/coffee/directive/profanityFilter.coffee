@@ -5,8 +5,8 @@ angular.module('ahaLuminateApp')
     link: (scope, element, attrs, ngModel) ->
       element.bind 'blur', (e) ->
         chkProfanity = (value) ->
-          console.log scope.swearwords
-          swearwordRegStr = scope.swearwords[0]
+          console.log ngModel.swearwords
+          swearwordRegStr = ngModel.swearwords[0]
           i = 1
           while i < swearwords.length
             if currentValue.toLowerCase() == swearwords[i]
