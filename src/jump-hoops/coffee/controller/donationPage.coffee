@@ -155,6 +155,8 @@ angular.module 'ahaLuminateControllers'
             calculateInstallment(number)
           , 500
           angular.element('#level_installmentduration').click()
+      
+      $scope.focus = "focus"
 
       populateBtnAmt = (type, level) ->
         angular.element('#pstep_finish span').remove()
@@ -408,4 +410,7 @@ angular.module 'ahaLuminateControllers'
         return
       , (reason) ->
         # TODO
+      setTimeout ->
+        angular.element("input[name=otherAmt]").click().focus()
+      , 1000
   ]
