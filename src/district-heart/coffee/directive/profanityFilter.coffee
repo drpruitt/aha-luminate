@@ -1,6 +1,5 @@
 angular.module('ahaLuminateApp')
   .directive 'noProfanity', ->
-  {
     restrict: 'A'
     require: 'ngModel'
     link: (scope, element, attrs, ngModel) ->
@@ -21,5 +20,3 @@ angular.module('ahaLuminateApp')
         ngModel.$setValidity 'profanity', !chkProfanity(currentValue)
         scope.$digest()
       return
-
-  }
