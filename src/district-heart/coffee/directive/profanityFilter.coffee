@@ -2,14 +2,14 @@ angular.module('ahaLuminateApp')
   .directive 'noProfanity', ->
     restrict: 'A'
     require: 'ngModel'
+    scope: false
     link: (scope, element, attrs, ngModel) ->
       element.bind 'blur', (e) ->
         chkProfanity = (value) ->
-          console.log ngModel.swearwords
-          swearwordRegStr = ngModel.swearwords[0]
+          swearwordRegStr = scope.swearwords[0]
           i = 1
-          while i < swearwords.length
-            if currentValue.toLowerCase() == swearwords[i]
+          while i < scope.swearwords.length
+            if currentValue.toLowerCase() == scope.swearwords[i]
               return true
             i++
           false
