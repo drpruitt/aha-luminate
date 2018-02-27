@@ -3,7 +3,6 @@ angular.module('ahaLuminateApp').factory 'profanityService', [
   '$rootScope'
   '$sce'
   ($http, $rootScope, $sce) ->
-    profanityFactory = undefined
     profanityFactory = {}
 
     profanityFactory.loadProfanityList = ->
