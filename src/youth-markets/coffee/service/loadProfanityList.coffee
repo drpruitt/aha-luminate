@@ -1,16 +1,23 @@
-angular.module('ahaLuminateApp')
-    .factory 'profanityService', [
-      '$http', 
-      ($http) ->
-        profanityFactory = {}
-        
-        profanityFactory.loadProfanityList = () ->
-          if $rootScope.tablePrefix is 'heartdev'
-            url = 'https://secure3.convio.net/heartdev/profanity-list/profanity-filter.json'
-          else
-            url = 'https://www2.heart.org/profanity-list/profanity-filter.json'
-          $http.jsonp($sce.trustAsResourceUrl(url), jsonpCallbackParam: 'callback').then (results) ->
-            response
-        
-        profanityFactory
-   ]
+angular.module('ahaLuminateApp').factory 'profanityService', [
+  '$http'
+  '$rootScope'
+  '$sce'
+  ($http, $rootScope, $sce) ->
+    profanityFactory = undefined
+    profanityFactory = {}
+
+    profanityFactory.loadProfanityList = ->
+      #return eval("['xx','yy']");}
+      url = undefined
+      if $rootScope.tablePrefix == 'heartdev'
+        url = 'https://secure3.convio.net/heartdev/profanity-list/profanity-filter.json'
+      else
+        url = 'https://www2.heart.org/profanity-list/profanity-filter.json'
+      $http.get(url, async: false).then (response) ->
+        if response.status = 200
+          eval response.data
+        else
+          []
+
+    profanityFactory
+]
