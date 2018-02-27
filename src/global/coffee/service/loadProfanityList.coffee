@@ -9,9 +9,9 @@ angular.module('ahaLuminateApp').factory 'profanityService', [
       #return eval("['xx','yy']");}
       url = undefined
       if $rootScope.tablePrefix == 'heartdev'
-        url = 'http://heartdev.convio.net/site/PageNavigator/reus_profanity_filter_list.html?pgwrap=n'
+        url = 'https://secure3.convio.net/heartdev/site/SPageNavigator/reus_profanity_filter_list.html?pgwrap=n'
       else
-        url = 'http://www2.heart.org/site/PageNavigator/reus_profanity_filter_list.html?pgwrap=n'
+        url = 'https://www2.heart.org/site/SPageNavigator/reus_profanity_filter_list.html?pgwrap=n'
       $http.get(url, async: false).then (response) ->
         if response.status = 200
           eval response.data
