@@ -4,8 +4,9 @@ angular.module 'ahaLuminateControllers'
     '$httpParamSerializer'
     'AuthService'
     'TeamraiserParticipantService'
+    'profanityService'
     '$timeout'
-    ($scope, $httpParamSerializer, AuthService, TeamraiserParticipantService, $timeout) ->
+    ($scope, $httpParamSerializer, AuthService, TeamraiserParticipantService, profanityService, $timeout) ->
       $dataRoot = angular.element '[data-aha-luminate-root]'
       consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
       $scope.regEventId = ''
