@@ -63,6 +63,8 @@ angular.module 'ahaLuminateControllers'
         if $donationLevelRadio.is '[checked]'
           setTimeout ->
             $scope.toggleDonationLevel levelAmount
+        else
+          $scope.toggleDonationLevel '$0.00'
         if isOtherAmount
           otherAmount = $donationLevel.find('input[name^="donation_level_form_input_"]').val()
           if otherAmount
