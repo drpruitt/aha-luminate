@@ -249,5 +249,5 @@ angular.module 'ahaLuminateControllers'
             }
           ]
           window.scrollTo 0, 0
-          false
+        false
   ]
