@@ -24,7 +24,7 @@ angular.module 'ahaLuminateControllers'
         return
       
       $scope.submitRegForm = ->
-        if  $scope.regForm.$valid
+        if  $scope.F2fRegContact.$valid
             angular.element('.js--default-reg-form').submit()
         else
           $scope.registrationInfoErrors.errors = [
