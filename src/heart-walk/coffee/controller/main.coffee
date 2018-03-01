@@ -1,7 +1,8 @@
 angular.module 'ahaLuminateControllers'
   .controller 'MainCtrl', [
     '$scope'
-    ($scope) ->
+    'profanityService'
+    ($scope, profanityService) ->
       angular.element('body').on 'click', '.addthis_button_facebook', (e) ->
         e.preventDefault()
       
@@ -12,4 +13,8 @@ angular.module 'ahaLuminateControllers'
       angular.element('#ProcessForm .external-payment').on 'click', (e) ->
         if not angular.element(e.target).is '#responsive_payment_typepay_typeradiopaypal'
           angular.element('#responsive_payment_typepay_typeradiopaypal').click().keypress()
+      
+      profanityService.loadProfanityList().then (data) ->
+        $scope.swearwords = data
+        return
   ]
