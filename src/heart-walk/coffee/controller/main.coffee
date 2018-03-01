@@ -22,4 +22,16 @@ angular.module 'ahaLuminateControllers'
       profanityService.loadProfanityList().then (data) ->
         $scope.swearwords = data
         return
+      
+      $scope.submitRegForm = ->
+        if  $scope.regForm.$valid
+            angular.element('.js--default-reg-form').submit()
+        else
+          $scope.registrationInfoErrors.errors = [
+            {
+              text: 'Please correct the errors below and try again.'
+            }
+          ]
+          window.scrollTo 0, 0
+        false
   ]
