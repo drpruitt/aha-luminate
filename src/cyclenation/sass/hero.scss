@@ -1,17 +1,104 @@
-.hero-header {
-  background: url("https://secure3.convio.net/heartdev/images/content/pagebuilder/diy_bannerImage.jpg");
 
-  border-radius:0;
-  background-size: cover;
-  background-repeat: no-repeat;
-  a {
-    color:#fff;
+
+.pg_cn_home,
+.pg_entry {
+  .hero-header {
+    background: transparent;
+    border-radius:0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    width: 100%;
+    min-height: 580px;
+    height: 100%;
+  
+    &-title {
+      @include media-breakpoint-down(md) {
+        font-size: 3.5rem !important;
+      }
+  
+      @include media-breakpoint-down(sm) {
+        font-size: 3rem !important;
+      }
+    }
+  
+    &-subtitle {
+      @include media-breakpoint-down(xs) {
+        font-size: 1.5rem !important;
+      }
+    }
+    
+    // a {
+    //   color: $white;
+    // }
+  
+    &-content {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+  
+
+    }
+  
+    &-overlay {
+      background: url(https://secure3.convio.net/heartdev/images/content/pagebuilder/aha-cn-hero-header_2x.png);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      min-height: 580px;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+    }
+  }
+  
+  .jumbotron {
+    background-color:transparent;
+    p {
+      color: $white;
+    }
+  
+    h1 {
+      color: $white;
+      font-weight: $display3-weight;
+    }
+  } 
+  .animated-gear-position {
+    position:relative;
+    z-index:3000;
+  }
+
+  .btn-black {
+    background-color: $black;
+    border: 1px solid $white;
   }
 }
 
-.jumbotron {
-  background-color:transparent;
-  h1, p {
-    color:#fff;
+
+.pushy-content {
+ ul {
+   list-style: none;
+   padding-top: $spacer;
+ }
+
+ .pushy-link {
+   padding-bottom: $spacer;
+
+   a {
+     text-decoration: underline;
+   }
+ }
+}
+
+.header-event-details {
+  text-align:right;
+  @include media-breakpoint-down(xs) {
+    text-align:center;
   }
-} 
+}

@@ -9,7 +9,17 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
+footer .menu li.menu-item a::before {
+  display: none;
+}
 
+footer {
+  .menu-item {
+    svg {
+    margin-top:4px;
+  }
+}
+}
 @media (min-width: 992px) {
   #preFooter .container {
     width: 970px;
@@ -51,9 +61,10 @@ footer {
       &:hover,
       &:focus,
       &:active {
-        color: $primary;
+        color: #3d3d3d;
       }
       &:hover {
+        color: $primary;
         text-decoration: none;
       }
     }
@@ -78,6 +89,9 @@ footer {
 #footer-main {
   .menu-item-donate {
     display: none;
+  }
+  @include media-breakpoint-down(sm) {
+    display:none;
   }
 }
 

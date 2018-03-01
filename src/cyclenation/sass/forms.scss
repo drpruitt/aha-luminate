@@ -1,150 +1,127 @@
-select {
-  &,
-  &.form-control {
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    -o-appearance: none;
-    appearance: none;
-    padding-right: 0.75rem\9;
-    background-image: none\9;
-    background: url('../image/ym-select-carot.png') right 0.75rem center no-repeat $brand-white;
-    color: $event-secondary;
+// select {
+//   &,
+//   &.form-control {
+//     -moz-appearance: none;
+//     -webkit-appearance: none;
+//     -o-appearance: none;
+//     appearance: none;
+//     padding-right: 0.75rem\9;
+//     background-image: none\9;
+//     background: url('../image/cn-select-carot.png') right 0.75rem center no-repeat $white;
+//     // color: $event-secondary;
 
-    &::-ms-expand {
-      display: none;
-    }
+//     &::-ms-expand {
+//       display: none;
+//     }
+//   }
+// }
+
+.pg_cn_home,
+.pg_entry {
+  .form-control {
+    border-color:$border-color;
   }
 }
 
-.ym-page-section__donor-search {
-  .ym-roster-search .form-inline {
-    @media(min-width: $screen-sm-min) {
-      .form-group .form-control {
-        max-width: 110px;
-      }
-    }
+// .has-success input,
+// .has-success select,
+// input.parsley-success,
+// select.parsley-success,
+// textarea.parsley-success {
+//   color: $form-feedback-valid-color !important;
+//   border: 1px solid $form-feedback-valid-color !important;
+// }
 
-    @media(max-width: 631px) {
-      .btn {
-        display: block;
-        margin: 5px auto 0;
-      }
-    }
-  }
-
-  .table {
-    min-width: 650px;
-  }
-
-  .ym-roster-search {
-    @media(max-width: $screen-xs) {
-      .ym-roster-search-title {
-        margin-bottom: 10px;
-      }
-
-      .form-inline {
-        .form-group {
-          display: block;
-
-          .form-control {
-            width: 100%;
-            max-width: none;
-            margin-right: 0;
-          }
-        }
-      }
-    }
-  }
+.has-error input,
+.has-error select,
+input.parsley-error,
+select.parsley-error,
+textarea.parsley-error {
+  color: $form-feedback-invalid-color !important;
+  border: 1px solid $form-feedback-invalid-color !important;
 }
 
-.ym-roster-search {
-  text-align: center;
-  margin: 0 0 18px;
-  
-  .form-inline {
-    background-color: #e1f5fa;
-    padding: 15px 20px;
-    margin: 0 auto;
-    
-    @media (min-width: $screen-sm-min) {
-      width: 630px;
-      padding: 14px 22px;
-    }
+.parsley-errors-list {
+  list-style-type: none;
+  width: 100%;
+  margin-top: .25rem;
+  padding:0;
+  font-size: 80%;
+  color: #dc3545;
+  opacity: 0;
 
-    .ym-roster-search-title {
-      margin: 0 0 5px 0;
+  transition: all .3s ease-in;
+  -o-transition: all .3s ease-in;
+  -moz-transition: all .3s ease-in;
+  -webkit-transition: all .3s ease-in;
+}
 
-      @media (min-width: 630px) {
-        display: inline-block;
-        vertical-align: middle;
-        margin: 0 5px 0 0;
+.parsley-errors-list.filled {
+  opacity: 1;
+}
 
-      }
-    }
-    
-    .form-group {
-      display: inline-block;
+.default-submit-hack {
+  color:#fff;
+}
+
+.payment-type-element-container {
+
+.payment-type-selection-container h3 {
+  font-size: 1.2rem;
+  font-family:$font-size-base;
+}
+div.payment-field-container {
+  span.internal-payment,
+  span.external-payment {
+    background:transparent;
+    // width:40%;
+    height:46px;
+    border:none;
+    span.payment-type-option {
+      margin-right: 0;
+      -moz-border-radius: 4px;
+      -webkit-border-radius: 4px;
+      width:100%;
+      max-width:200px;
+      border-radius: 4px;
       margin-bottom: 0;
-      margin-right: 5px;
-      vertical-align: middle;
-      
-      .form-control {
-        display: inline-block;
-        text-align: left;
-        width: auto;
-        max-width: 125px;
-        margin-bottom: 10px;
-        vertical-align: middle;
-        
-        @media (min-width: 480px) {
-          margin-bottom: 0;
-        }
-        
-        @media (min-width: $screen-sm-min) {
-          max-width: 162px;
-        }
+      font-weight: 400;
+      text-align: center;
+      cursor: pointer;
+      border: 1px solid transparent;
+      white-space: nowrap;
+      padding: 6px 12px;
+      font-size: 1.4rem;
+      line-height: 1.428571429;
+      border-radius: 4px;
+      background-image: none;
+      color: $body-color !important;
+      background-color: #e2e2e2;
+      label {
+        margin-bottom:0;
       }
-      
-      .form-control--wide {
-        max-width: 155px;
-        margin-bottom: 0;
-        
-        @media (min-width: $screen-sm-min) {
-          max-width: 162px;
-        }
+      a:link {
+        color: $body-color;
+        font-family: $font-family-base;
       }
-    }
-    
-    .btn {
-      background-color: #004d68;
-      color: $brand-white;
-      margin-bottom: 10px;
-
-      @media (min-width: 480px) {
-        margin-bottom: 0;
+      &:hover {
+        background-image: none;
+        color:$white !important;
+        background-color:$primary !important
+      }
+      &.selected {
+        background-image: none;
+        background:none;
+        background-color:$primary;
+        a:link {
+          color:$white !important;
+        }
+        &:hover {
+          color:$white !important;
+        }
       }
     }
   }
-
-  .form-inline--mobile-full-width {
-    margin: 0 -25px;
-    padding: 15px 5px;
-
-    @media (min-width: $screen-sm-min) {
-      margin: 0 auto;
-      padding: 15px 20px;
-    }
-
-  }
-
-  &.ym-roster-search--participant {
-    .form-inline--mobile-full-width .btn {
-      margin: 0 auto;
-      display: block;
-
-      @media(min-width: $screen-xs) {
-        display: inline-block;
-      }
-    }
-  }
+  
+}
 }
