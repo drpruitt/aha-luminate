@@ -5,7 +5,8 @@ angular.module 'ahaLuminateControllers'
     '$filter'
     'TeamraiserCompanyService'
     'TeamraiserRegistrationService'
-    ($rootScope, $scope, $filter, TeamraiserCompanyService, TeamraiserRegistrationService) ->
+    'profanityService'
+    ($rootScope, $scope, $filter, TeamraiserCompanyService, TeamraiserRegistrationService, profanityService) ->
       $rootScope.companyName = ''
       regCompanyId = luminateExtend.global.regCompanyId
       setCompanyName = (companyName) ->
@@ -249,4 +250,8 @@ angular.module 'ahaLuminateControllers'
           ]
           window.scrollTo 0, 0
         false
+      
+      profanityService.loadProfanityList().then (data) ->
+        $scope.swearwords = data
+        return
   ]
