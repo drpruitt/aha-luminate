@@ -23,7 +23,8 @@ angular.module 'ahaLuminateControllers'
         $scope.swearwords = data
         return
       
-      $scope.registrationInfoErrors = errors: []
+      $scope.registrationInfoErrors = 
+        errors: []
       
       $scope.submitRegForm = ->
         if  $scope.F2fRegContact.$valid
