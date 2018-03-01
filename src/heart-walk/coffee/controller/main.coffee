@@ -14,6 +14,11 @@ angular.module 'ahaLuminateControllers'
         if not angular.element(e.target).is '#responsive_payment_typepay_typeradiopaypal'
           angular.element('#responsive_payment_typepay_typeradiopaypal').click().keypress()
       
+      #add default reg fields mainly for modeling and the profanity filter
+      $scope.registrationInfo = []
+      $scope.registrationInfo.cons_first_name = ""
+      $scope.registrationInfo.cons_last_name = ""
+
       profanityService.loadProfanityList().then (data) ->
         $scope.swearwords = data
         return
