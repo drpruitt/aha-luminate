@@ -9,9 +9,9 @@ angular.module('ahaLuminateApp').factory 'profanityService', [
       #return eval("['xx','yy']");}
       url = undefined
       if $rootScope.tablePrefix == 'heartdev'
-        url = ((location.protocol == 'https') ? $rootScope.secureDomain : $rootScope.nonSecureDomain)+'/site/SPageNavigator/reus_profanity_filter_list.html?pgwrap=n'
+        url = (if location.protocol == 'https' then $rootScope.secureDomain else $rootScope.nonSecureDomain) + '/site/SPageNavigator/reus_profanity_filter_list.html?pgwrap=n'
       else
-        url = ((location.protocol == 'https') ? $rootScope.secureDomain : $rootScope.nonSecureDomain)+'/site/SPageNavigator/reus_profanity_filter_list.html?pgwrap=n'
+        url = (if location.protocol == 'https' then $rootScope.secureDomain else $rootScope.nonSecureDomain) + '/site/SPageNavigator/reus_profanity_filter_list.html?pgwrap=n'
       $http.get(url, async: false).then (response) ->
         if response.status = 200
           eval response.data
