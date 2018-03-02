@@ -31,9 +31,6 @@
 
               <div class="col-sm-12 col-md-6 section-event-stats-thermometer-container">
                   <div class="position-relative h-100 text-center">
-                    <!-- TODO - uncomment S tag version below once on FTP -->
-                      <!-- <progress lass="position-absolute section-event-stats-thermometer" max="100" value="[[E130:[[E130:"[[E42:[[S334:fr_id]]:dollars]]" ".00" "" replaceall]] [[E130:"[[E42:[[S334:fr_id]]:goal]]" ".00" "" replaceall]] / 100 * int 100 min]]" ></progress>
-                       -->
                        <progress class="position-absolute section-event-stats-thermometer js__greeting-thermo" max="100" value="[[S80:greetingPercentage]]" ></progress>
                       <h2 class="h3 position-absolute section-event-stats-percentage">
                           <strong>[[E130:[[E130:"[[E42:[[S334:fr_id]]:dollars]]" ".00" "" replaceall]] [[E130:"[[E42:[[S334:fr_id]]:goal]]" ".00" "" replaceall]] / 100 * int 100 min]]%</strong>
@@ -260,12 +257,9 @@
                   <div id="participant_rows" class="results-rows"></div>
                 </div>
                 <!-- end participant table -->
-                <!-- <p class="viewMore text-center">
-                    <button class="button viewMoreBtn" type="button">View More Results</button>
-                  </p> -->
+
               </div>
               <div role="tabpanel" class="tab-pane tab-team" id="team">
-                <!-- <p>Enter the team name you want to donate to.</p> -->
                 <form lpformnum="3" id="teamSearch" class="js__team-search form-inline">
                   <div id="error-team" class="help-block alert alert-danger text-center" hidden></div>
                   <div class="align-items-center">
@@ -285,9 +279,7 @@
                   <div id="team_rows" class="results-rows"></div>
                 </div>
                 <!-- end team table -->
-                <!-- <p class="viewMore text-center">
-                    <button class="button viewMoreBtn" type="button">View More Results</button>
-                  </p> -->
+        
               </div>
               <div role="tabpanel" class="tab-pane tab-company" id="company">
                 <form lpformnum="4" id="companySearch" class="js__company-search form-inline">
@@ -309,9 +301,7 @@
                   <div id="company_rows" class="results-rows"></div>
                 </div>
                 <!-- end company table -->
-                <!-- <p class="viewMore text-center">
-                    <button class="button viewMoreBtn" type="button">View More Results</button>
-                  </p> -->
+
               </div>
             </div>
             <!-- end tab panes -->
@@ -336,12 +326,11 @@
           <div class="col-md-12 col-lg-9 offset-lg-1">
             <div class="row">
               <div class="greeting-inspire-img-container js__greeting-inspire-image col-sm-12 col-md-6">
-                
-<!-- TODO - dynamically populate inspire image -->
+<!-- dynamically populate inspire image -->
                   
               </div>
               <div class="greeting-inspire-text-container js__greeting-inspire-text col-sm-12 col-md-6 lead">
-<!-- TODO - dynamically populate inspire story -->
+<!-- dynamically populate inspire story -->
               </div>
             </div>
           </div>
