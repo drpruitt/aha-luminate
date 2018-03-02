@@ -4,9 +4,8 @@ angular.module 'ahaLuminateControllers'
     '$httpParamSerializer'
     'AuthService'
     'TeamraiserParticipantService'
-    'profanityService'
     '$timeout'
-    ($scope, $httpParamSerializer, AuthService, TeamraiserParticipantService, profanityService, $timeout) ->
+    ($scope, $httpParamSerializer, AuthService, TeamraiserParticipantService, $timeout) ->
       $dataRoot = angular.element '[data-aha-luminate-root]'
       consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
       $scope.regEventId = ''
@@ -90,8 +89,4 @@ angular.module 'ahaLuminateControllers'
       $scope.delegatedAddThis = (targetToolboxContainer, shareType) ->
         angular.element(targetToolboxContainer).find('.addthis_button_' + shareType).click()
         false
-
-      profanityService.loadProfanityList().then (data) ->
-        $scope.swearwords = data
-        return
   ]
