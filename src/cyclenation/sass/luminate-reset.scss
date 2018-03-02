@@ -29,7 +29,7 @@ div.responsive div.ErrorMessage.page-error>span.field-error-indicator {
 /* links */
 /* ***** */
 
-a, 
+// a, 
 #login-div-content a, 
 div.responsive a {
   &, 
@@ -39,27 +39,8 @@ div.responsive a {
   &:focus, 
   &:active {
     color: $link-color;
-    // color:initial;
-  }
-  &.btn-primary {
-    color: $white;
-  }
-  &.btn-secondary {
-    color: $white;
-  }
-  &.btn-outline-dark {
-    color: $dark;
-  }
-  &.btn-outline-grey {
-    // color: #000;
-    // border: 1px solid #000;
   }
 }
-
-.button {
-  @extend .btn;
-}
-
 
 /* ******************* */
 /* warnings and errors */
@@ -130,7 +111,4 @@ div.registration-page-container div.section-header {
 div.donation-form-container.responsive {
   background: transparent;
   border: 0;
-}
-label {
-  white-space: inherit;
 }

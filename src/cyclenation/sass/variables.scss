@@ -2,15 +2,8 @@
 $red:     #de2427 !default;
 $primary: $red !default;
 $success: #5cb85c !default;
-$white: #FFFFFF !default;
-$dark: #666666 !default;
-$gray-600: #515151 !default;
-$gray-500: #8d8d8d !default;
-$progress-bar: #333;
-$progress-bkd: #dfdede !default;
-$black: #000000 !default;
 
-$body-color: #333 !default;
+$body-color : #333 !default;
 $enable-rounded:            false !default;
 
 $spacer: 1rem !default;
@@ -28,9 +21,6 @@ $link-color:                $primary !default;
 $link-decoration:           none !default;
 $link-hover-color:          #c82333 !default;
 $link-hover-decoration:     underline !default;
-
-// $input-color:                $gray-700 !default;
-$input-border-color:         #3c3c3c !default;
 
 $border-color:                #ccc !default;
 
@@ -54,7 +44,6 @@ $font-family-base:            $font-family-sans-serif !default;
 
 $font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
 $font-size-lg:                ($font-size-base * 1.25) !default;
-$font-size-md:                ($font-size-base * 1.125) !default;
 $font-size-sm:                ($font-size-base * .875) !default;
 
 $font-weight-light:           300 !default;

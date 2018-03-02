@@ -1,17 +1,56 @@
-div.company-list-table-container {
-  background-color:$white;
-}
+// .heart-hero--company {
+//   background-image: url(../image/company-cover.png);
+// }
 
-div.responsive div.list-row {
-  border:none;
-}
+// .heart-user-image-wrap--company {
+//   .heart-user-image-wrap-inner {
+//     position: relative;
+//   }
+  
+//   .btn {
+//     &, 
+//     &:link, 
+//     &:visited {
+//       text-transform: uppercase;
+//       padding: 12px;
+//       position: absolute;
+//       top: 12px;
+//       left: 12px;
+//       z-index: 100;
+      
+//       .glyphicon {
+//         display: inline-block;
+//         margin: 0 3px 0 0;
+//       }
+//     }
+//   }
+  
+//   .btn-primary-inverted {
+//     &, 
+//     &:link, 
+//     &:visited {
+//       background: $brand-white;
+//       border: 1px solid $brand-primary;
+//     }
+    
+//     &:hover, 
+//     &:focus, 
+//     &:active {
+//       background: $brand-primary;
+//     }
+//   }
+// }
 
-#company_page_header {
-  display:none;
-}
-
-#local_company_page {
-  p.cstmTitle {
-    @extend h2;
-  }
-}
+// .heart-page-lists--company {
+//   margin: 0 0 30px;
+  
+//   .nav-tabs {
+//     > li {
+//       width: 50%;
+//     }
+//   }
+  
+//   .heart-list-pagination {
+//     margin: 20px 0 0;
+//   }
+// }
