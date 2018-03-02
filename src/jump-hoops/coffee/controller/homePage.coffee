@@ -61,7 +61,7 @@ angular.module 'ahaLuminateControllers'
       setModal = ->
         date = new Date
         expires = 'expires='
-        date.setDate date.getDate() + 1
+        date.setHours date.getHours() + 1
         expires += date.toGMTString()
 
         angular.element('#noRegModal').modal()
