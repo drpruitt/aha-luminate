@@ -1,0 +1,48 @@
+progress,
+progress[role]{
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  background-size: auto;
+  width: 206px;
+  height: 206px;
+  transform: rotate(-90deg);
+}
+
+progress,
+progress[role][aria-valuenow] {
+  background: url(https://secure3.convio.net/heartdev/images/content/pagebuilder/gear_white.png) #DADADA;
+}
+
+progress {
+  &::-webkit-progress-bar {
+    background: url(https://secure3.convio.net/heartdev/images/content/pagebuilder/gear_white.png) #DADADA;
+  }
+  
+  color: $primary;
+  &::-ms-fill {
+    border: none;
+    background: url(https://secure3.convio.net/heartdev/images/content/pagebuilder/gear_red.png) #DADADA !important;
+  }
+  &::-moz-progress-bar {
+    background: url(https://secure3.convio.net/heartdev/images/content/pagebuilder/gear_red.png) #DADADA !important;
+  }
+  &::-webkit-progress-value {
+    background: url(https://secure3.convio.net/heartdev/images/content/pagebuilder/gear_red.png) #DADADA !important;
+  }
+  &[aria-valuenow]:before {
+    background: url(https://secure3.convio.net/heartdev/images/content/pagebuilder/gear_red.png) #DADADA !important;
+  }
+}
+
+div.thermometer-container {
+  div.thermometer-outer {
+    border-radius:0;
+    background:$progress-bkd;
+  }
+  div.thermometer-inner {
+    border-radius:0;
+    background:$progress-bar;
+  }
+}
