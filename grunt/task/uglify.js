@@ -101,5 +101,14 @@ module.exports = {
         dest: 'dist/district-heart/js/participant.' + '<%= timestamp %>' + '.min.js'
       }
     ]
+  },
+
+  "nchw": {
+    files: [
+      {
+        src: ["src/nchw/js/main.js"],
+        dest: "dist/nchw/js/main." + "<%= timestamp %>" + ".min.js"
+      }
+    ]
   }
 }

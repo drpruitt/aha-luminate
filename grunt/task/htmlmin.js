@@ -101,5 +101,18 @@ module.exports = {
         dest: "dist/district-heart/html/"
       }
     ]
+  },
+
+  "nchw": {
+    files: [
+      {
+        expand: true,
+        cwd: 'dist/nchw/html/',
+        src: [
+          '**/*.*'
+        ],
+        dest: "dist/nchw/html/"
+      }
+    ]
   }
 }

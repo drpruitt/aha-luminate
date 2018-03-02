@@ -158,5 +158,22 @@ module.exports = {
       'img-copy:district-heart-images', 
       'notify:district-heart'
     ]
+  },
+
+  "nchw": {
+    files: [
+      'src/nchw/html/**/*',
+      'src/nchw/image/**/*',
+      'src/nchw/sass/**/*',
+      'src/nchw/js/**/*'
+    ],
+    tasks: [
+      'clean:nchw',
+      'css-dist:nchw',
+      'js-dist:nchw',
+      'html-dist:nchw',
+      'img-copy:nchw-images',
+      'notify:nchw'
+    ]
   }
 }
