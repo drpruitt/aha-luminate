@@ -234,7 +234,7 @@
       <div class="clearfix">
         <div ng-if="constituent">
           <h1 ng-if="teamInfo.name">
-            My Team: {{teamInfo.name}}
+            My Team: <span ng-bind-html="teamInfo.name"></span>
           </h1>
           <h1 ng-if="!teamInfo.name">
             My Team
@@ -326,7 +326,7 @@
         </div>
         <div class="heart_pc_my_donors clearfix">
           <div class="clearfix">
-            <h2 class="pull-left" ng-if="teamInfo.name">{{teamInfo.name}} Donors</h2>
+            <h2 class="pull-left" ng-if="teamInfo.name"><span ng-bind-html="teamInfo.name"></span> Donors</h2>
             <h2 class="pull-left" ng-if="!teamInfo.name">Team Donors</h2>
             <a id="download_team_donation_list" class="btn btn-primary-inverted pull-right" ng-href="TRParticipantDownload/Personal_Donations.csv?download_type=personal_donations&amp;fr_id={{frId}}" target="_blank">Download Donation List</a>
           </div>
