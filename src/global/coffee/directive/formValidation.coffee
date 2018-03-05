@@ -12,7 +12,7 @@ angular.module('ahaLuminateApp')
           else
             true
 
-        currentValue = element.val();
+        currentValue = element.val()
         ngModel.$setValidity 'checkzip', validateZipcode(currentValue)
         scope.$digest()
       return
