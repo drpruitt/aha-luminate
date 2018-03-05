@@ -13,8 +13,9 @@ angular.module('ahaLuminateApp')
             regexp.test val
           else
             true
-
-        currentValue = padZip(5,element.val(),"0")
+        
+        element.val(padZip(5,element.val(),"0"))
+        currentValue = element.val()
         ngModel.$setValidity 'checkzip', validateZipcode(currentValue)
         scope.$digest()
       return
