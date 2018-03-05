@@ -5,13 +5,14 @@ angular.module('ahaLuminateApp')
     scope: false
     link: (scope, element, attrs, ngModel) ->
       element.bind 'blur', (e) ->
-        ngModel.$validators.zipcode = (val) ->
+        validateZipcode = (val) ->
           regexp = /^\d{5}(?:[-\s]\d{4})?$/
           if val
-            currentval = regexp.test val
-            ngModel.$setValidity 'checkzip', currentValue
-            scope.$digest()
+            regexp.test val
           else
             true
 
-     return
+        currentValue = element.val();
+        ngModel.$setValidity 'checkzip', validateZipcode(currentValue)
+        scope.$digest()
+      return
