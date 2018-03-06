@@ -44,11 +44,13 @@
               <div class="d-flex align-items-end flex-column text-white">
                 <div class="p-3 small">
                 [[?xx::x[[S1:first_name]]x::
-                <a href="UserLogin">Fundraisers, log in
+
+                
+                <a href="UserLogin?NEXTURL=PageServer?pagename=MyEvents">Fundraisers, log in
                     <i class="fas fa-angle-right"></i>
                   </a>
                 ::
-                Hi, [[S1:first_name]]!&nbsp;<a href="SPageServer?pagename=MyEvents">My Participant Center </a> | <a href="ConsProfileUser?dispMode=edit">My Profile</a> | <a href="UserLogin?logout=&amp;NEXTURL=[[T1:[[E130:[[T8:[[S8]]]] [[T8:&amp;]] [[T8:&]] replaceall]]]]">Log Out</a>
+                Hi, [[S1:first_name]]!&nbsp;<a href="PageServer?pagename=MyEvents">My Participant Center </a> | <a href="ConsProfileUser?dispMode=edit">My Profile</a> | <a href="UserLogin?logout=&amp;NEXTURL=[[T1:[[E130:[[T8:[[S8]]]] [[T8:&amp;]] [[T8:&]] replaceall]]]]">Log Out</a>
                   ]]
                 </div>
                 <div class="">
@@ -168,14 +170,14 @@
               <!-- Submenu -->
               [[?xx::x[[S1:first_name]]x::
               <li class="pushy-link">
-              <a href="UserLogin">Login</a>
+              <a href="UserLogin?NEXTURL=PageServer?pagename=MyEvents">Login</a>
               </li>
               ::
               <li class="pushy-link">
               <span class="text-white">Hi, [[S1:first_name]]!</span>
               </li>
               <li class="pushy-link">
-              <a href="SPageServer?pagename=MyEvents">My Participant Center </a>
+              <a href="PageServer?pagename=MyEvents">My Participant Center </a>
               </li>
               <li class="pushy-link">
               <a href="ConsProfileUser?dispMode=edit">My Profile</a>
