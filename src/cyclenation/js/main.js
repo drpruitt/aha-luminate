@@ -1164,8 +1164,8 @@ $('a.scroll-link')
         if(regType === 'virtual'){
           $('.part-type-name:contains("Virtual")').closest('.part-type-container').show();
         }
-        $('.part-type-container').removeClass('selected');
-        $('input[name=fr_part_radio]').prop('checked', false);
+        // $('.part-type-container').removeClass('selected');
+        // $('input[name=fr_part_radio]').prop('checked', false);
         $('.part-type-container').on('click', function(e){
           $('#dspPledge').modal('show')
         });
