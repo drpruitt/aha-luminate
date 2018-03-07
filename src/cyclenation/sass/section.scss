@@ -1,29 +1,24 @@
 .section {
   &-whats-at-stake {
     background: #161616;
-    border-radius:0;
+    border-radius: 0;
     background-size: cover;
     background-repeat: no-repeat;
     color: $white;
-
     h1 {
       font-weight: $display3-weight;
     }
-
     .decorative {
       width: 100%;
     }
-
     &-icon {
       height: 120px;
       width: auto;
-
       @include media-breakpoint-down(sm) {
         height: 80px;
       }
     }
   }
-
   &-fundraiser {
     &-list-title {
       border-top: 4px solid darken($border-color, 30%);
@@ -31,25 +26,21 @@
       border-right: 1px solid $border-color;
       margin-bottom: 0;
     }
-
     .table-responsive {
       border-left: 1px solid $border-color;
       border-right: 1px solid $border-color;
       border-bottom: 1px solid $border-color;
-
       td {
         border-top: none;
       }
     }
   }
-
   &-fundraiser-search {
     // override Bootstrap default tab styles to match design
     .nav-tabs {
       background: lighten($border-color, 15%);
       border-top: 1px solid $border-color;
     }
-
     .nav-link {
       color: $dark;
       padding: 0.25rem 1rem;
@@ -57,7 +48,6 @@
       font-size: $font-size-md;
       border-right: 1px solid $border-color;
     }
-
     .nav-link.active {
       border-left: 0;
       border-top: 0;
@@ -65,10 +55,8 @@
       border-right: 1px solid $border-color;
     }
   }
-
   &-what-inspires-you {
     background: #DADADA;
-
     .decorative {
       width: 100%;
     }
@@ -85,89 +73,124 @@
       @extend .px-md-5;
     }
   }
-
   &-mission {
     background: url(https://secure3.convio.net/heartdev/images/content/pagebuilder/aha-cn-we-are-cyclenation.jpg);
-    background-repeat:no-repeat;
-    background-size:cover;
-    // padding: $spacer * 2 0;
+    background-repeat: no-repeat;
+    background-size: cover; // padding: $spacer * 2 0;
   }
-
   &-stay-in-the-know {
     background: #DADADA;
-
     .decorative {
       width: 100%;
     }
   }
-
   &-email-signup {
     background: #dadada;
-
     .decorative {
       width: 100%;
     }
   }
-
   &-event-welcome {
     img {
       max-width: 300px;
     }
   }
-
   &-sponsors {
     .sponsor-logo {
       max-width: 200px;
     }
   }
-
   &-event-stats {
     background: #DADADA;
-
     &-thermometer {
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
       margin: 0 auto;
-
       &-container {
         @include media-breakpoint-down(sm) {
           height: 200px;
-        }  
+        }
       }
-    }
-
-    &-percentage {
-      @include media-breakpoint-down(xl) {
-        top: 45%;
-        left: 51%;
-        margin-right: -45%;
-        transform: translate(-50%, -45%);
-      }
-
-      @include media-breakpoint-down(lg) {
-        top: 45%;
-        left: 51%;
-        margin-right: -45%;
-        transform: translate(-50%, -45%);
-      }
-
-      @include media-breakpoint-down(md) {
-        top: 45%;
-        left: 50%;
-        margin-right: -45%;
-        transform: translate(-50%, -45%);
-      }
-
-      @include media-breakpoint-down(sm) {
-        top: 54%;
-        left: 51%;
-        margin-right: -50%;
-        transform: translate(-50%, -50%);
-      }
-
     }
   }
+}
+.pg_cn_home {
+  .section {
+    &-event-stats {
+      background: #DADADA;
+      &-percentage {
+        @include media-breakpoint-down(xl) {
+          top: 48%;
+          left: 50%;
+          margin-right: -45%;
+          transform: translate(-50%, -45%);
+        }
+        @include media-breakpoint-down(lg) {
+          top: 48%;
+          left: 50%;
+          margin-right: -45%;
+          transform: translate(-50%, -45%);
+        }
+        @include media-breakpoint-down(md) {
+          top: 48%;
+          left: 50%;
+          margin-right: -45%;
+          transform: translate(-50%, -45%);
+        }
+        @include media-breakpoint-down(sm) {
+          top: 49%;
+          left: 51%;
+          margin-right: -50%;
+          transform: translate(-50%, -50%);
+        }
+        h2 {
+          font-size: 2.5rem;
+          font-weight:bold;
+        }
+      }
+      &-thermometer {
+        &-container {
+          @include media-breakpoint-down(sm) {
+            height: auto;
+          }
+        }
+      }
+    }
+  }
+}
 
+.pg_entry {
+  .section {
+    &-event-stats {
+      background: #DADADA;
+      &-percentage {
+        @include media-breakpoint-down(xl) {
+          top: 45%;
+          left: 51%;
+          margin-right: -45%;
+          transform: translate(-50%, -45%);
+        }
+        @include media-breakpoint-down(lg) {
+          top: 45%;
+          left: 51%;
+          margin-right: -45%;
+          transform: translate(-50%, -45%);
+        }
+        @include media-breakpoint-down(md) {
+          top: 45%;
+          left: 50%;
+          margin-right: -45%;
+          transform: translate(-50%, -45%);
+        }
+        @include media-breakpoint-down(sm) {
+          top: 54%;
+          left: 51%;
+          margin-right: -50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+  }
 }
