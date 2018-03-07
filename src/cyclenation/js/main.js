@@ -1161,20 +1161,36 @@ addScrollLinks();
 
     // BEGIN PTYPE CUSTOMIZATIONS
     if ($('#F2fRegPartType').length > 0) {
-
       if(eventType2 === 'Stationary'){
         $('#sel_type_container').text('What time will you ride?');
       } else {
         if(regType === 'virtual'){
           $('.part-type-name:contains("Virtual")').closest('.part-type-container').show();
         }
-        // $('.part-type-container').removeClass('selected');
-        // $('input[name=fr_part_radio]').prop('checked', false);
         $('.part-type-container.selected input').prop('checked', false).removeClass('selected');
 
         $('.part-type-container.selected').removeClass('selected');
 
+          $('#next_step').addClass('disabled');
+
+          $('#next_step').on('click', function(){
+          if (!$('.part-type-container input').is(':checked')){
+              $('.js__ptype-errors').remove();
+              $('#sel_type_container').after('<div class="js__ptype-errors"><div class="alert alert-danger" role="alert">Please select a participation type and agree to the Self-Pledge.</div></div>')
+              $('html, body').animate({
+                scrollTop: $("#part_type_selection_container").offset().top
+            }, 1000);
+
+            return false;
+            } 
+          });	
+
         $('.part-type-container').on('click', function(e){
+          $('.part-type-container').removeClass('selected');
+          var val =  $(this).find('input[name=fr_part_radio]').prop('checked') ? false : true;
+          $(this).find('input[name=fr_part_radio]').prop('checked', val);
+          $(this).addClass('selected');
+          $('#next_step').removeClass('disabled');
           $('#dspPledge').modal('show')
         });
       }

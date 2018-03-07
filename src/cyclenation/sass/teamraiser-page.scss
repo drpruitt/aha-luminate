@@ -20,7 +20,9 @@ div#team_find_search_results_container div.list-component-cell-column-join-link 
   @extend .btn;
 }
 div.responsive button.btn-primary:disabled,
-div.responsive button.next-step[disabled="disabled"] {
+div.responsive button.next-step.disabled,
+div.responsive button#next_step.disabled,
+  div.responsive button.next-step[disabled="disabled"] {
   background-image: none;
   background-color:$gray-500;
   border-color:$gray-500;
