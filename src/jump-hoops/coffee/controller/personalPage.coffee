@@ -81,7 +81,6 @@ angular.module 'ahaLuminateControllers'
             if $scope.prizes.length > 0
               $scope.prizes.sort (a, b) ->
                 a.priority - b.priority
-            console.log($scope.monsters)
 
       ZuriService.getStudent $scope.frId + '/' + $scope.participantId,
         error: (response) ->
