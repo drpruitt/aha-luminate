@@ -1,48 +1,84 @@
-progress,
-progress[role]{
-  appearance: none;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  border: none;
-  background-size: auto;
-  width: 206px;
-  height: 206px;
-  transform: rotate(-90deg);
-}
-
-progress,
-progress[role][aria-valuenow] {
-  background: url(https://secure3.convio.net/heartdev/images/content/pagebuilder/gear_white.png) #DADADA;
-}
-
-progress {
-  &::-webkit-progress-bar {
-    background: url(https://secure3.convio.net/heartdev/images/content/pagebuilder/gear_white.png) #DADADA;
-  }
-  
-  color: $primary;
-  &::-ms-fill {
+.pg_cn_home {
+  progress,
+  progress[role] {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
     border: none;
-    background: url(https://secure3.convio.net/heartdev/images/content/pagebuilder/gear_red.png) #DADADA !important;
+    background-size: auto;
+    width: 268px;
+    height: 268px;
+    transform: rotate(-90deg);
   }
-  &::-moz-progress-bar {
-    background: url(https://secure3.convio.net/heartdev/images/content/pagebuilder/gear_red.png) #DADADA !important;
+  progress,
+  progress[role][aria-valuenow] {
+    background: url(../image/gear_lg_grey.png) #fff;
   }
-  &::-webkit-progress-value {
-    background: url(https://secure3.convio.net/heartdev/images/content/pagebuilder/gear_red.png) #DADADA !important;
+  progress {
+    &::-webkit-progress-bar {
+      background: url(../image/gear_lg_grey.png) #fff;
+    }
+    color: $primary;
+    &::-ms-fill {
+      border: none;
+      background: url(../image/gear_lg_red.png) #fff !important;
+    }
+    &::-moz-progress-bar {
+      background: url(../image/gear_lg_red.png) #fff !important;
+    }
+    &::-webkit-progress-value {
+      background: url(../image/gear_lg_red.png) #fff !important;
+    }
+    &[aria-valuenow]:before {
+      background: url(../image/gear_lg_red.png) #fff !important;
+    }
   }
-  &[aria-valuenow]:before {
-    background: url(https://secure3.convio.net/heartdev/images/content/pagebuilder/gear_red.png) #DADADA !important;
+}
+
+.pg_entry {
+  progress,
+  progress[role] {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    border: none;
+    background-size: auto;
+    width: 206px;
+    height: 206px;
+    transform: rotate(-90deg);
+  }
+  progress,
+  progress[role][aria-valuenow] {
+    background: url(../image/gear_white.png) #DADADA;
+  }
+  progress {
+    &::-webkit-progress-bar {
+      background: url(../image/gear_white.png) #DADADA;
+    }
+    color: $primary;
+    &::-ms-fill {
+      border: none;
+      background: url(../image/gear_red.png) #DADADA !important;
+    }
+    &::-moz-progress-bar {
+      background: url(../image/gear_red.png) #DADADA !important;
+    }
+    &::-webkit-progress-value {
+      background: url(../image/gear_red.png) #DADADA !important;
+    }
+    &[aria-valuenow]:before {
+      background: url(../image/gear_red.png) #DADADA !important;
+    }
   }
 }
 
 div.thermometer-container {
   div.thermometer-outer {
-    border-radius:0;
-    background:$progress-bkd;
+    border-radius: 0;
+    background: $progress-bkd;
   }
   div.thermometer-inner {
-    border-radius:0;
-    background:$progress-bar;
+    border-radius: 0;
+    background: $progress-bar;
   }
 }
