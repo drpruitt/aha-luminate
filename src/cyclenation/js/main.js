@@ -49,7 +49,8 @@
   }
 
 // Select all links with hashes
-$('a.scroll-link')
+var addScrollLinks = function(){
+  $('a.scroll-link')
   .on('click', function(event) {
     // On-page links
       // Figure out element to scroll to
@@ -66,6 +67,8 @@ $('a.scroll-link')
         });
       }
   });
+}
+addScrollLinks();
 
 
     // END WRAPPER JS
@@ -330,7 +333,7 @@ $('a.scroll-link')
                   greetingUrl +
                   '" class="button btn-outline-dark btn-block js__event-details">Details</a></div><div class="col-md-3 col-6">' +
                   (acceptsRegistration === 'true' ? '<a href="' +
-                    registerUrl + '" class="button btn-primary btn-block js__event-register">Register</a>' : '<span class="d-block pt-1 text-center">Registration Closed</span>') +
+                    registerUrl + '" class="button btn-primary btn-block js__event-register">Register</a>' : '<span class="d-block pt-1 text-center">Registration is closed<br>but <a class="scroll-link" href="#fundraiserSearch">you can still donate</a></span>') +
                   '</div></li>';
 
                 $('.js__event-search-results').append(eventRow);
@@ -353,6 +356,7 @@ $('a.scroll-link')
                 _gaq.push(['t2._trackEvent', 'program-homepage', 'click', 'search-event-details-link']);
               });
 
+              addScrollLinks();
 
               // applyListFilter only on cn_home
               applyListFilter();
