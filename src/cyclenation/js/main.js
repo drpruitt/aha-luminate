@@ -1,6 +1,5 @@
 'use strict';
 (function ($) {
-
   $(document).ready(function ($) {
     /*************/
     /* Namespace */
@@ -118,7 +117,7 @@ addScrollLinks();
                   '</strong><br>' +
                   participant.eventName + '<br>' +
                   ((participant.teamName !== null) ? participant.teamName + '<br>' : '') +
-                  '<a href="' + participant.personalPageUrl + '">Visit Personal Page</a></p></div><div class="col-xs-12 col-sm-3"><a class="button btn-primary btn-block pull-right" href="' + participant.donationUrl + '">Donate</a></div></div>'
+                  '<a href="' + participant.personalPageUrl + '">Visit Personal Page</a></p></div><div class="col-xs-12 col-sm-3"><a class="button btn-primary btn-block btn-lg pull-right" href="' + participant.donationUrl + '">Donate</a></div></div>'
                 );
               });
               $('#participant_results').removeAttr('hidden');
@@ -160,7 +159,7 @@ addScrollLinks();
                   team.eventName + '<br>' +
                   'Team Captain: ' + team.captainFirstName + ' ' + team.captainLastName + '<br>' +
                   ((team.companyName !== null) ? team.companyName + '<br>' : '') +
-                  '<a href="' + team.teamPageURL + '">Visit Team Page</a></p></div><div class="col-xs-12 col-sm-3"><a class="button btn-primary btn-block pull-right" href="' + team.teamDonateURL + '">Donate</a></div></div>'
+                  '<a href="' + team.teamPageURL + '">Visit Team Page</a></p></div><div class="col-xs-12 col-sm-3"><a class="button btn-primary btn-block btn-lg pull-right" href="' + team.teamDonateURL + '">Donate</a></div></div>'
                 );
                 $('#team_results').removeAttr('hidden');
 
@@ -200,7 +199,7 @@ addScrollLinks();
                   '<div class="row pb-4"><div class="col-xs-12 col-sm-8"><p><strong>' +
                   company.companyName +
                   '</strong></p></div>' +
-                  '<div class="col-xs-12 col-sm-4"><a class="button btn-primary btn-block pull-right" href="' + company.companyURL + '">Visit Company Page</a></div></div>'
+                  '<div class="col-xs-12 col-sm-4"><a class="button btn-primary btn-block btn-lg pull-right" href="' + company.companyURL + '">Visit Company Page</a></div></div>'
                 );
                 $('#company_results').removeAttr('hidden');
               });
@@ -331,9 +330,9 @@ addScrollLinks();
                   eventLocation + '</span><span class="event-date d-block">' +
                   eventDate + '</span></p></div><div class="col-md-3 col-6"><a href="' +
                   greetingUrl +
-                  '" class="button btn-outline-dark btn-block js__event-details">Details</a></div><div class="col-md-3 col-6">' +
+                  '" class="button btn-outline-dark btn-block btn-lg js__event-details">Details</a></div><div class="col-md-3 col-6">' +
                   (acceptsRegistration === 'true' ? '<a href="' +
-                    registerUrl + '" class="button btn-primary btn-block js__event-register">Register</a>' : '<span class="d-block pt-1 text-center">Registration is closed<br>but <a class="scroll-link" href="#fundraiserSearch">you can still donate</a></span>') +
+                    registerUrl + '" class="button btn-primary btn-block btn-lg js__event-register">Register</a>' : '<span class="d-block text-center">Registration is closed<br>but <a class="scroll-link" href="#fundraiserSearch">you can still donate</a></span>') +
                   '</div></li>';
 
                 $('.js__event-search-results').append(eventRow);
