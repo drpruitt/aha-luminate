@@ -74,7 +74,7 @@
     }
   }
   &-mission {
-    background: url(../image/aha-cn-we-are-cyclenation.jpg);
+    background: url(https://secure3.convio.net/heartdev/images/content/pagebuilder/aha-cn-we-are-cyclenation.jpg);
     background-repeat: no-repeat;
     background-size: cover; // padding: $spacer * 2 0;
   }
@@ -121,6 +121,8 @@
     &-event-stats {
       background: #DADADA;
       &-percentage {
+        font-size: 2.5rem;
+        font-weight:bold;
         @include media-breakpoint-down(xl) {
           top: 48%;
           left: 50%;
@@ -144,10 +146,6 @@
           left: 51%;
           margin-right: -50%;
           transform: translate(-50%, -50%);
-        }
-        h2 {
-          font-size: 2.5rem;
-          font-weight:bold;
         }
       }
       &-thermometer {

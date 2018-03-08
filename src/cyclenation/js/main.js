@@ -98,7 +98,8 @@ addScrollLinks();
           '&first_name=' + ((firstName !== undefined) ? firstName : '') +
           '&last_name=' + ((lastName !== undefined) ? lastName : '') +
           (isCrossEvent === true ? '&event_type=' + eventType : '&fr_id=' + evID) +
-          '&list_page_size=25' +
+          '&list_page_size=499' +
+          '&list_page_offset=0' +
           '&response_format=json' +
           '&list_sort_column=first_name' +
           '&list_ascending=true',
@@ -137,7 +138,8 @@ addScrollLinks();
         data: 'method=getTeamsByInfo' +
           '&team_name=' + teamName +
           '&event_type=' + eventType +
-          '&list_page_size=25' +
+          '&list_page_size=499' +
+          '&list_page_offset=0' +
           '&response_format=json' +
           '&list_sort_column=name' +
           '&list_ascending=true',
@@ -181,7 +183,8 @@ addScrollLinks();
         data: 'method=getCompaniesByInfo' +
           '&company_name=' + companyName +
           '&event_type=' + eventType +
-          '&list_page_size=25' +
+          '&list_page_size=499' +
+          '&list_page_offset=0' +
           '&include_cross_event=true' +
           '&response_format=json' +
           '&list_sort_column=company_name' +
@@ -300,7 +303,7 @@ addScrollLinks();
         data: 'method=getTeamraisersByInfo' +
           '&name=' + eventName +
           '&event_type=' + eventType +
-          '&response_format=json&list_sort_column=event_date&list_ascending=true',
+          '&response_format=json&list_page_size=499&list_page_offset=0&list_sort_column=event_date&list_ascending=true',
         callback: {
           success: function (response) {
             if (response.getTeamraisersResponse.totalNumberResults > '0') {
