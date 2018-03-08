@@ -16,19 +16,19 @@
   &-slide {
     &-1 {
       @extend %background-slide;
-      background-image: url(https://secure3.convio.net/heartdev/images/content/pagebuilder/aha-cn-hero-bg-1.jpg);
+      background-image: url(../image/aha-cn-hero-bg-1.jpg);
     }
     &-2 {
       @extend %background-slide;
-      background-image: url(https://secure3.convio.net/heartdev/images/content/pagebuilder/aha-cn-hero-bg-2.jpg);
+      background-image: url(../image/aha-cn-hero-bg-2.jpg);
     }
     &-3 {
       @extend %background-slide;
-      background-image: url(https://secure3.convio.net/heartdev/images/content/pagebuilder/aha-cn-hero-bg-3.jpg);
+      background-image: url(../image/aha-cn-hero-bg-3.jpg);
     }
     &-4 {
       @extend %background-slide;
-      background-image: url(https://secure3.convio.net/heartdev/images/content/pagebuilder/aha-cn-hero-bg-4.jpg);
+      background-image: url(../image/aha-cn-hero-bg-4.jpg);
     }
   }
 }
