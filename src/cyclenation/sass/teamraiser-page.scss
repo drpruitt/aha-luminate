@@ -91,3 +91,17 @@ div.responsive a.secondary-step,
       text-decoration:underline;
     }
   }
+  .mobile {
+    #team_page_main_content {
+      .non-mobile-donate {
+        margin-bottom:30px;
+      }
+    }
+    div#team_image,
+    div#personal_page_image_div {
+      display:block;
+    }
+    div.mobile-view-description {
+      height:100%;
+    }
+  }
