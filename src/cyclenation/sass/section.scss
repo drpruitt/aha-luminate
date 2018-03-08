@@ -21,15 +21,15 @@
   }
   &-fundraiser {
     &-list-title {
-      border-top: 4px solid darken($border-color, 30%);
-      border-left: 1px solid $border-color;
-      border-right: 1px solid $border-color;
-      margin-bottom: 0;
+      font-family: "Helvetica Neue", Helvetica, Arial;
     }
+
     .table-responsive {
+      border-top: 7px solid darken($border-color, 30%);
       border-left: 1px solid $border-color;
       border-right: 1px solid $border-color;
       border-bottom: 1px solid $border-color;
+
       td {
         border-top: none;
       }
