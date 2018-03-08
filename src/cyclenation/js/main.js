@@ -1252,7 +1252,22 @@ $('.input-label:contains("Mobile")').closest('.survey-question-container').addCl
 $('.cons_dob').text('Birthday:');
 $('.mobile-question-container').after($('#cons_info_dob'));
 
-$('#cons_birth_date_YEAR').val('1901');
+cd.setBirthMonth = function(){
+  var birthDay = $('#cons_birth_date_DAY').val();
+  var birthMonth = $('#cons_birth_date_MONTH').val();
+  var birthYear = $('#cons_birth_date_YEAR').val();
+  if(birthDay !== '0' && birthMonth !== '0' && birthYear === '0'){
+    $('#cons_birth_date_YEAR').val('1901');
+  } else {
+    $('#cons_birth_date_YEAR').val('0');
+  }
+}
+cd.setBirthMonth();
+
+$('#cons_birth_date_DAY, #cons_birth_date_YEAR').on('change', function(e){
+  cd.setBirthMonth();
+});
+
 
 $('#cons_info_dob .form-content').append('<p class="small">If you would like to provide your birthday, we would love to acknowledge your special day each year.</p>');
 
