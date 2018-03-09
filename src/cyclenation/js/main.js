@@ -1259,7 +1259,8 @@ cd.setBirthMonth = function(){
   var birthDay = $('#cons_birth_date_DAY').val();
   var birthMonth = $('#cons_birth_date_MONTH').val();
   var birthYear = $('#cons_birth_date_YEAR').val();
-  if(birthDay !== '0' && birthMonth !== '0' && birthYear === '0'){
+  console.log('birthYear: ' + birthYear);
+  if(birthDay !== '0' && birthMonth !== '0'){
     $('#cons_birth_date_YEAR').val('1901');
   } else {
     $('#cons_birth_date_YEAR').val('0');
@@ -1267,7 +1268,7 @@ cd.setBirthMonth = function(){
 }
 cd.setBirthMonth();
 
-$('#cons_birth_date_DAY, #cons_birth_date_YEAR').on('change', function(e){
+$('#cons_birth_date_DAY, #cons_birth_date_MONTH').on('change', function(e){
   cd.setBirthMonth();
 });
 
