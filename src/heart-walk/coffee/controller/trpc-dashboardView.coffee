@@ -674,7 +674,7 @@ angular.module 'trPcControllers'
         name: ''
 
       $scope.updateTeamName = ->
-        dataStr = 'team_name=' + $scope.updateTeamNameInput.name
+        dataStr = 'team_name=' + escape($scope.updateTeamNameInput.name)
         updateGoalPromise = TeamraiserTeamService.updateTeamInformation dataStr
           .then (response) ->
             if response.data?.errorResponse?
