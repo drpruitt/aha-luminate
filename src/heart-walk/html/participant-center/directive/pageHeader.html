@@ -16,7 +16,7 @@
           {{eventCity}}<span ng-if="eventCity && eventCity != '' && eventState && eventStatetate != ''">, </span>{{eventState}}
         </p>
         <p ng-if="eventDate && eventDate != ''">
-          {{eventDate | date : 'EEEE, MMMM d, y'}}
+          {{eventDate}}
         </p>
         <p ng-if="!eventDate || eventDate == ''">
           {{eventInfo.event_date | date: 'EEEE, MMMM d, y'}}
