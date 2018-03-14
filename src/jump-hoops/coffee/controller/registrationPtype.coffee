@@ -77,11 +77,11 @@ angular.module 'ahaLuminateControllers'
       
       $scope.submitPtype = ->
         if $scope.donationLevels.activeLevel?.isOtherAmount
-          if $scope.participationOptionsForm.ng_donation_level_other_amount.$viewValue == undefined 
+          if $scope.participationOptionsForm.ng_donation_level_other_amount.$viewValue is undefined 
             amt = 0
           else 
             amt = parseInt($scope.participationOptionsForm.ng_donation_level_other_amount.$viewValue)
-          if amt < 10 || !angular.isNumber(amt) || isNaN(amt) || amt == ""
+          if amt < 10 or !angular.isNumber(amt) or isNaN(amt) or amt is ""
             $scope.participationOptionsForm.ng_donation_level_other_amount.$setValidity("amount", false);
           else
             $scope.participationOptionsForm.ng_donation_level_other_amount.$setValidity("amount", true);
