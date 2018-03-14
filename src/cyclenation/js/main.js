@@ -648,11 +648,14 @@ addScrollLinks();
         var totalRaised = data[0].TotalRevenue;
         var totalRaisedFormatted = '$' + totalRaised.toFixed(0).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");;
         var totalGoal = data[0].TotalGoal;
-        var dateCalculated = luminateExtend.utils.simpleDateFormat(data[0].CalculatedOn, 'h:mm a MMMM d, yyyy');
-        var percentAchieved = Math.round((totalRaised/totalGoal) * 100) + '%';
+        // var dateCalculated = luminateExtend.utils.simpleDateFormat(data[0].CalculatedOn, 'h:mm a MMMM d, yyyy');
+        var percentAchieved = Math.round((totalRaised/totalGoal) * 100);
+        var percentAchievedFormatted = percentAchieved + '%';
 
+        $('.js__greeting-thermo').val(percentAchieved);
         $('.js__all-event-raised').text(totalRaisedFormatted);
-        $('.js__event-stats-percent').text(percentAchieved);
+        $('.js__event-stats-percent').text(percentAchievedFormatted);
+
       });
   
     } else if ($('body').is('.pg_entry')) {
