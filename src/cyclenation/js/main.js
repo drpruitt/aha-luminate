@@ -641,6 +641,20 @@ addScrollLinks();
     // Call roster scripts based on page type
     if ($('body').is('.pg_cn_home')) {
       cd.getEvents('%25%25');
+
+      var allEventDataUrl = 'https://secure3.convio.net/' + luminateExtend.global.tablePrefix + '/CN_EventTotals.txt';
+
+      $.getJSON(allEventDataUrl, function (data) {
+        var totalRaised = data[0].TotalRevenue;
+        var totalRaisedFormatted = '$' + totalRaised.toFixed(0).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");;
+        var totalGoal = data[0].TotalGoal;
+        var dateCalculated = luminateExtend.utils.simpleDateFormat(data[0].CalculatedOn, 'h:mm a MMMM d, yyyy');
+        var percentAchieved = Math.round((totalRaised/totalGoal) * 100) + '%';
+
+        $('.js__all-event-raised').text(totalRaisedFormatted);
+        $('.js__event-stats-percent').text(percentAchieved);
+      });
+  
     } else if ($('body').is('.pg_entry')) {
       eventData.push({
         eventId: evID
