@@ -6,16 +6,6 @@
   #innerWrapper {
       width: 100%;
   }
-  @media (min-width: 1200px) {
-      .container {
-          width: 896px;
-      }
-  }
-  @media (min-width: 992px) {
-      .container {
-          width: 896px;
-      }
-  }
   section#progressBar {
       background-color: #333333;
   }
@@ -36,6 +26,21 @@
 
 body {
   font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+@media only screen and (min-width: 767px) {
+  .col4 {
+    width: 25%;
+  }
+}
+@media (min-width: 992px) {
+    .container {
+        width: 896px;
+    }
+}
+@media (min-width: 1200px) {
+    .container {
+        width: 896px;
+    }
 }
 
 .local_sponsors {
@@ -146,12 +151,6 @@ body {
 
 .sub-nav {
     display: none;
-}
-
-@media only screen and (min-width: 767px) {
-  .col4 {
-    width: 25%;
-  }
 }
 
 @media only screen and (max-width: 1024px) {
