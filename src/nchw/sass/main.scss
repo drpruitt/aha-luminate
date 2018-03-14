@@ -2,5 +2,173 @@
 // Only SCSS that lives in this sheet (hard coded or imported) will be compiled to final "main.css" stylesheet
 
 .pg_entry {
-  // add greeting page style overrides here1
+  // add greeting page style overrides here
+  #innerWrapper {
+      width: 100%;
+  }
+  @media (min-width: 1200px) {
+      .container {
+          width: 896px;
+      }
+  }
+  @media (min-width: 992px) {
+      .container {
+          width: 896px;
+      }
+  }
+  section#progressBar {
+      background-color: #333333;
+  }
+  .amountRaisedValue, .totalGoalValue {
+    line-height: 1;
+  }
+  .thermometerWrapper {
+      width: 63%;
+  }
+  @media only screen and (max-width: 767px) {
+      .thermometerWrapper {
+          width: 100%;
+      }
+  }
+}
+
+// General Overrides - note to self: clean up for nested
+
+body {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.local_sponsors {
+    text-align: center;
+}
+
+.tr_sponsorship_logos {
+    max-width: 896px;
+    display: inline-block;
+}
+.tr_sponsorship_logo_horizontal {
+    display: inline-block;
+    float: none;
+}
+.logoBlock {
+    width: 42%;
+}
+.menuBlockDesktopNav {
+    width: 57%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.logoMenuRow {
+    padding: 0 0 10px;
+}
+
+/* main menu */
+
+.menuBlockDesktopNav>ul>li>a {
+    font-size: 1.6em;
+    line-height: 1.6em;
+    font-weight: bold;
+    margin-left: 5px;
+    color: #ab0300;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+.menuBlockDesktopNav .dropdown-menu {
+    right: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    background-color: #ab0300;
+    min-width: 220px;
+    left: auto;
+}
+.menuBlockDesktopNav .dropdown-menu>li>a {
+    color: #ffffff;
+    font-size: 1.4em;
+    border-bottom: 1px solid #ffdddd;
+    padding:8px 40px 8px 20px;
+}
+.menuBlockDesktopNav .dropdown-menu>li:first-child>a {
+    padding-top: 0;
+}
+.menuBlockDesktopNav .dropdown-menu>li:last-child>a {
+    padding-bottom: 5px;
+    border: none;
+}
+.menuBlockDesktopNav .nav>li>a:focus, .menuBlockDesktopNav .nav>li>a:hover {
+    color: #ffffff;
+    background-color: #ab0300;
+}
+.menuBlockDesktopNav .dropdown-menu>li>a:focus, .menuBlockDesktopNav .dropdown-menu>li>a:hover {
+    background-color: #ab0300;
+    text-decoration: underline;
+}
+.menuBlockDesktopNav .nav .open>a, .menuBlockDesktopNav .nav .open>a:focus, .menuBlockDesktopNav .nav .open>a:hover {
+    background-color: #ab0300;
+    color: #ffffff;
+}
+
+.menuBlockDesktopNav a.dropdown-toggle:after {
+    content: "\f0d7";
+    font-family: fontAwesome;
+}
+
+.menuBlockDesktopNav li.open a.dropdown-toggle:after {
+    content: "\f0d8";
+    font-family: fontAwesome;
+}
+
+#mobileNav ul {
+    list-style: outside none none;
+    padding: 0;
+}
+
+#mobileNav ul.sub-nav {
+    background-color: #eeeeee;
+}
+
+#mobileNav a.sub-nav-open {
+    color: black;
+}
+
+#mobileNav a.sub-nav-toggle-link:after {
+    content:"\f0d7";
+    font-family: fontAwesome;
+}
+
+#mobileNav a.sub-nav-toggle-link.sub-nav-open:after {
+    content: "\f0d8";
+    font-family: fontAwesome;
+}
+
+.sub-nav {
+    display: none;
+}
+
+@media only screen and (min-width: 767px) {
+  .col4 {
+    width: 25%;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .progressBarWrapper {
+    width: auto;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .menuBlockDesktopNav {
+    display: none;
+  }
+  .logoBlock {
+    width: auto;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .logoBlock {
+    width: 80%;
+  }
 }
