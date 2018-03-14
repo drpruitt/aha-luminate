@@ -7,6 +7,7 @@
 
     if ($('body').is('.pg_entry')) {
       // Greeting page-specific JS goes here
+      console.log('testing the new main.js file')
     }
   });
 }(jQuery));
