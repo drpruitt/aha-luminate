@@ -388,6 +388,7 @@ div.responsive div.ErrorMessage.page-error>span.field-error-text {
   margin:0 auto;
 }
 div.part-type-container {
+  cursor: pointer;
   @include button-variant(#dcdcdc, #000, $hover-background: $red, $hover-border: $red, $active-background: $red, $active-border: $red);
   text-align:center;
   border: 1px solid $black;
