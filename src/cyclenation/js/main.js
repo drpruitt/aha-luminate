@@ -642,6 +642,10 @@ addScrollLinks();
     if ($('body').is('.pg_cn_home')) {
       cd.getEvents('%25%25');
 
+      $('.js__event-search-form').on('submit', function(e){
+        e.preventDefault;
+      })
+      
       var allEventDataUrl = 'https://secure3.convio.net/' + luminateExtend.global.tablePrefix + '/CN_EventTotals.txt';
 
       $.getJSON(allEventDataUrl, function (data) {
