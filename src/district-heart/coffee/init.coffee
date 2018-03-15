@@ -18,7 +18,7 @@ angular.module 'ahaLuminateApp', appDependencies
 angular.module 'ahaLuminateControllers', []
 
 angular.module 'ahaLuminateApp'
-  .constant 'APP_INFO', 
+  .constant 'APP_INFO',
     version: '1.0.0'
     rootPath: do ->
       rootPath = ''
@@ -36,11 +36,12 @@ angular.module 'ahaLuminateApp'
     '$sce'
     'APP_INFO'
     ($rootScope, $sce, APP_INFO) ->
+      $rootScope.eventType = 'district-heart'
       $rootScope.tablePrefix = luminateExtend.global.tablePrefix
       $rootScope.nonSecureDomain = luminateExtend.global.path.nonsecure.split('/site/')[0] + '/'
       $rootScope.secureDomain = luminateExtend.global.path.secure.split('/site/')[0] + '/'
       $rootScope.teamraiserAPIPath = $sce.trustAsResourceUrl luminateExtend.global.path.secure + 'CRTeamraiserAPI'
-      
+
       # get data from root element
       $dataRoot = angular.element '[data-aha-luminate-root]'
       $rootScope.frId = $dataRoot.data('fr-id') if $dataRoot.data('fr-id') isnt ''
@@ -54,10 +55,10 @@ angular.element(document).ready ->
   appModules = [
     'ahaLuminateApp'
   ]
-  
+
   try
     angular.module 'trPcApp'
     appModules.push 'trPcApp'
   catch error
-  
+
   angular.bootstrap document, appModules
