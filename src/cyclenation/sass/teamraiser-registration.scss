@@ -382,7 +382,16 @@ div.responsive div.ErrorMessage.page-error>span.field-error-text {
 #emergency_contact_title_container {
   @extend .bold-label;
 }
-
+div.part-type-container .part-type-decoration-messages {
+  width:100%;
+  max-width:100%;
+  // margin:0;
+  label {
+    // margin:0;
+    height:100%;
+    width:100%;
+  }
+}
 #F2fRegPartType,
 #participation_options_page {
   margin:0 auto;
@@ -787,6 +796,16 @@ div.responsive button.step-button {
   }
 
 }
+
+#fr_thanks_page {
+  .section-footer {
+    @include media-breakpoint-up(md) {
+    max-width:50%;
+    margin:0 auto;
+    }
+  }
+}
+
 
 #reg_payment_page #billing_info_name div.form-row, #reg_payment_page #billing_addr_city_row, #reg_payment_page #billing_addr_state_row, #reg_payment_page #billing_addr_county_row, #reg_payment_page #billing_addr_zip_row {
   display:block;

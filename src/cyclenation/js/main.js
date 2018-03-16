@@ -641,11 +641,9 @@ addScrollLinks();
     // Call roster scripts based on page type
     if ($('body').is('.pg_cn_home')) {
       cd.getEvents('%25%25');
-
       $('.js__event-search-form').on('submit', function(e){
         e.preventDefault();
       });
-
       var allEventDataUrl = 'https://secure3.convio.net/' + luminateExtend.global.tablePrefix + '/CN_EventTotals.txt';
 
       $.getJSON(allEventDataUrl, function (data) {
@@ -1130,6 +1128,7 @@ addScrollLinks();
       $('.js__reg-type-container').removeClass('d-none');
     });
 
+
     var teamFindParsleyConfig = {
       errorsContainer: function (pEle) {
         var $err = pEle.$element.parent().parent().find('.team-goal-error');
@@ -1152,6 +1151,13 @@ addScrollLinks();
         $('#team_find_page > form').parsley(teamFindParsleyConfig);
       } 
     });
+
+    // if team name submission fails, show system default error messages instead of going back to the bike number selector
+    if($('.ErrorMessage').length > 0){
+      $('.js__team-bikes-container').attr('hidden', true);
+      $('form[name=FriendraiserFind]').removeAttr('hidden');
+    }
+    
 
     // TODO - move this back into the onclick above IF stationary. Otherwise, call below for Road
 
@@ -1210,12 +1216,11 @@ addScrollLinks();
 
         $('.part-type-container').on('click', function(e){
           $('.part-type-container').removeClass('selected');
-          var val =  $(this).find('input[name=fr_part_radio]').prop('checked') ? false : true;
-          $(this).find('input[name=fr_part_radio]').prop('checked', val);
           $(this).addClass('selected');
           $('#next_step').removeClass('disabled');
-          $('#dspPledge').modal('show')
+          $('#dspPledge').modal('show');
         });
+
       }
 
       $('#fund_goal_container').prepend('<span class="field-required"></span>&nbsp;');
@@ -1246,6 +1251,10 @@ addScrollLinks();
         $(this).closest('input[type=radio]').prop('checked', true);
       });
 
+      $('.don-no-gift').on('click', function(e){
+        $('.donation-level-row-label').removeClass('active');
+      });
+      
       $('.donation-level-row-label-no-gift').on('click', function(e){
         $('.donation-level-row-label').removeClass('active');
         $('.other-amount-row-container input[type="text"]').val('');
@@ -1591,6 +1600,14 @@ $('.cardExpGroup').prepend('<legend class="sr-only">Credit card expiration date<
       $('.js__greeting-inspire-image').html($('.js__chapter-inspire-image'));
 
     }
+
+if($('body').is('.app_donation')) {
+
+  // Add text above matching company label
+  $('#donor_matching_employer_Row').prepend('<p><strong>Play matchmaker. Here&#8217;s how.</strong></p><ul><li>Find out if your employer participates in a matching gifts program, an easy way to increase your donation.</li><li>Just fill in your company&#8217;s details below.</li></ul>');
+  $('#billing_addr_state option[value="None"]').remove();
+  
+}
 
 
     luminateExtend.api.bind();
