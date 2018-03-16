@@ -674,7 +674,7 @@ angular.module 'trPcControllers'
         name: ''
 
       $scope.updateTeamName = ->
-        dataStr = 'team_name=' + $scope.updateTeamNameInput.name
+        dataStr = 'team_name=' + escape($scope.updateTeamNameInput.name)
         updateGoalPromise = TeamraiserTeamService.updateTeamInformation dataStr
           .then (response) ->
             if response.data?.errorResponse?
@@ -1433,6 +1433,19 @@ angular.module 'trPcControllers'
         $scope.dashboardPromises.push getParticipantShortcutPromise
       $scope.getParticipantShortcut()
 
+      $scope.getPrevShortcut = ()->
+        getPrevShortcutPromise = TeamraiserShortcutURLService.getShortcut($rootScope.prevFrIdForShortcut)
+          .then (response) ->
+            if response.data.errorResponse
+              # TODO
+            else
+              shortcutItem = response.data.getShortcutResponse.shortcutItem
+              if shortcutItem
+                $scope.prevShortcut = shortcutItem
+        $scope.dashboardPromises.push getPrevShortcutPromise
+      $scope.getPrevShortcut()
+
+
       $scope.personalPageUrlSecure = $scope.baseDomain + '/site/TR?fr_id=' + $scope.frId + '&pg=personal&px=' + $scope.consId
 
       $scope.editPageUrlOptions =
@@ -1466,8 +1479,17 @@ angular.module 'trPcControllers'
             updateUrlPromise = TeamraiserShortcutURLService.updateShortcut dataStr
               .then (response) ->
                 if response.data.errorResponse
-                  $scope.editPageUrlOptions.updateUrlFailure = true
-                  $scope.editPageUrlOptions.updateUrlFailureMessage = response.data.errorResponse.message or 'An unexpected error occurred while updating your personal page URL.'
+                  if $scope.editPageUrlOptions.updateUrlInput != $scope.prevShortcut.text
+                    $scope.editPageUrlOptions.updateUrlFailure = true;
+                    return $scope.editPageUrlOptions.updateUrlFailureMessage = response.data.errorResponse.message || 'An unexpected error occurred while updating your personal page URL.';
+                  else 
+                    updateUrlPromise = TeamraiserShortcutURLService.updateShortcut("text=",$rootScope.prevFrIdForShortcut)
+                      .then (response) ->
+                        if (response.data.errorResponse)
+                          $scope.editPageUrlOptions.updateUrlFailure = true
+                          return $scope.editPageUrlOptions.updateUrlFailureMessage = response.data.errorResponse.message || 'An unexpected error occurred while updating your personal page URL.';
+                        else 
+                          $scope.updatePageUrl("Participant")
                 else
                   $scope.editPageUrlModal.close()
                   $scope.getParticipantShortcut()
