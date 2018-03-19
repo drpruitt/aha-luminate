@@ -127,6 +127,12 @@ div.payment-field-container {
 }
 
 div.responsive {
+  .payment-type-element-container .payment-type-selection-container h3 {
+    @extend .h3;
+  }
+  #payment_cc_container h3 {
+    @extend .h5;
+  }
   div.ErrorMessage {
     width:100%;
   }

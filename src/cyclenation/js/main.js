@@ -1092,6 +1092,12 @@ addScrollLinks();
     // tfind
     $('#team_find_new_company_selection_container').append('<div id="team_sponsor_code" class="input-container"><div class="form-group"><label for="sponsorCode">Do you have a sponsor code?</label><input name="s_promoCode"type="text"id="sponsorCode"class="form-control" value=""></div></div>');
 
+    var numTeamResults =  $('#team_find_search_results_container .list-component-row').length;
+
+    if(numTeamResults < 20){
+      $('.list-component-paginator').hide();
+    }
+
     $('#friend_potion_next')
       .wrap('<div class="order-1 order-sm-2 col-sm-4 offset-md-6 col-md-3 col-8 offset-2 mb-3"/>');
 
