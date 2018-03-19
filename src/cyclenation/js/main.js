@@ -1223,6 +1223,7 @@ addScrollLinks();
         $('.part-type-container').on('click', function(e){
           $('.part-type-container').removeClass('selected');
           $(this).addClass('selected');
+          $(this).find('input[type="radio"]').prop('checked', true);
           $('#next_step').removeClass('disabled');
           $('#dspPledge').modal('show');
         });
