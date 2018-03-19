@@ -1279,6 +1279,9 @@ addScrollLinks();
         $('#previous_step').replaceWith('<div class="order-2 order-sm-1 col-sm-4 col-8 offset-2 offset-sm-0"><a href="TRR/?pg=tfind&amp;fr_id=' + evID + '&amp;s_regType=" class="button btn-secondary btn-block">Back</a></div>');
       }
 
+      // tabindex
+      // $(":input").each(function (i) { $(this).attr('tabindex', i + 1); });
+      
     }
 
         // BEGIN REG INFO CUSTOMIZATIONS

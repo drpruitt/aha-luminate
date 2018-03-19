@@ -109,6 +109,7 @@
       @include button-variant(#dcdcdc, #000, $hover-background: $red, $hover-border: $red, $active-background: $red, $active-border: $red);
       
       @extend .btn-block;
+
     }
   }
 
@@ -737,7 +738,7 @@ div.responsive button.step-button {
       background:transparent;
       width:40%;
       border:none;
-      @include media-breakpoint-down(sm) {
+      @include media-breakpoint-down(md) {
         width:100%;
         max-width: 100%;
       }
@@ -763,7 +764,7 @@ div.responsive button.step-button {
       font-size: 1.4rem;
       line-height: 1.428571429;
       border-radius: 4px;
-      @include media-breakpoint-down(sm) {
+      @include media-breakpoint-down(md) {
         width:100%;
         max-width: 100%;
       }

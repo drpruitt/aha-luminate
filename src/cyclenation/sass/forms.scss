@@ -22,7 +22,13 @@
     border-color:$border-color;
   }
 }
-
+.pg_cn_home {
+  form[name="event_search_form"]{
+    input[type="text"] {
+      font-size: 1.1rem;
+    }
+  }
+}
 // .has-success input,
 // .has-success select,
 // input.parsley-success,
