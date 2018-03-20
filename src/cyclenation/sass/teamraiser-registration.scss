@@ -799,6 +799,9 @@ div.responsive button.step-button {
 }
 
 #fr_thanks_page {
+  .part-center-container {
+    text-align:center;
+  }
   .section-footer {
     @include media-breakpoint-up(md) {
     max-width:50%;

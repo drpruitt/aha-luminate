@@ -24,7 +24,7 @@
   }
   .container .navbar-brand .navbar-logo-white {
     display:inline-block;
-    width: 370px;
+    width: 380px;
     padding: $spacer * 1.5;
     @include media-breakpoint-down(sm) {
       width: 16rem;
@@ -41,7 +41,10 @@
       display: block;
     }
   }
-
+  small,
+  .small {
+    font-size:90%;
+  }
 }
 
 

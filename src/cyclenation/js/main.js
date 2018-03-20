@@ -113,12 +113,12 @@ addScrollLinks();
 
               $(participants).each(function (i, participant) {
                 // var formattedDate = luminateExtend.utils.simpleDateFormat(participant.event_date, 'MMMM d, yyyy');
-                $('#participant_rows').append('<div class="row pb-4"><div class="col-xs-12 col-sm-9 search-result-details search-result-details"><p><strong>' +
+                $('#participant_rows').append('<div class="row pb-4"><div class="col-xs-12 col-md-9 col-sm-8 search-result-details search-result-details"><p><strong>' +
                   participant.name.first + ' ' + participant.name.last +
                   '</strong><br>' +
                   participant.eventName + '<br>' +
                   ((participant.teamName !== null) ? participant.teamName + '<br>' : '') +
-                  '<a href="' + participant.personalPageUrl + '">Visit Personal Page</a></p></div><div class="col-xs-12 col-sm-3"><a class="button btn-primary btn-block btn-lg pull-right" href="' + participant.donationUrl + '">Donate</a></div></div>'
+                  '<a href="' + participant.personalPageUrl + '">Visit Personal Page</a></p></div><div class="col-xs-12 col-md-3 col-sm-4"><a class="button btn-primary btn-block btn-lg pull-right" href="' + participant.donationUrl + '">Donate</a></div></div>'
                 );
               });
               $('#participant_results').removeAttr('hidden');
@@ -155,13 +155,13 @@ addScrollLinks();
                 var donFormId = team.teamDonateURL;
 
                 $('#team_rows').append(
-                  '<div class="row pb-4"><div class="col-xs-12 col-sm-9 search-result-details"><p><strong>' +
+                  '<div class="row pb-4"><div class="col-xs-12 col-sm-8 col-md-9 search-result-details"><p><strong>' +
                   team.name +
                   '</strong><br>' +
                   team.eventName + '<br>' +
                   'Team Captain: ' + team.captainFirstName + ' ' + team.captainLastName + '<br>' +
                   ((team.companyName !== null) ? team.companyName + '<br>' : '') +
-                  '<a href="' + team.teamPageURL + '">Visit Team Page</a></p></div><div class="col-xs-12 col-sm-3"><a class="button btn-primary btn-block btn-lg pull-right" href="' + team.teamDonateURL + '">Donate</a></div></div>'
+                  '<a href="' + team.teamPageURL + '">Visit Team Page</a></p></div><div class="col-xs-12 col-sm-4 col-md-3"><a class="button btn-primary btn-block btn-lg pull-right" href="' + team.teamDonateURL + '">Donate</a></div></div>'
                 );
                 $('#team_results').removeAttr('hidden');
 
@@ -199,10 +199,10 @@ addScrollLinks();
 
               $(companies).each(function (i, company) {
                 $('#company_rows').append(
-                  '<div class="row pb-4"><div class="col-xs-12 col-sm-8"><p><strong>' +
+                  '<div class="row pb-4"><div class="col-sm-12 col-sm-8"><p><strong>' +
                   company.companyName +
                   '</strong></p></div>' +
-                  '<div class="col-xs-12 col-sm-4"><a class="button btn-primary btn-block btn-lg pull-right" href="' + company.companyURL + '">Visit Company Page</a></div></div>'
+                  '<div class="col-sm-12 col-sm-4"><a class="button btn-primary btn-block btn-lg pull-right" href="' + company.companyURL + '">Visit Company Page</a></div></div>'
                 );
                 $('#company_results').removeAttr('hidden');
               });
@@ -1532,6 +1532,8 @@ if($('body').is('.app_id_27')) {
 
   cd.calculateRegProgress();
   }
+
+$('#part_type_selection_container .manageable-content, #fund_goal_container').prepend('<span class="aural-only">Field Is Required</span>');
 
     // Add 2017 Marathon Accessibility Updates
 
