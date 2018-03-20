@@ -45,6 +45,9 @@
       // On page load
       stickyToggle(sticky, stickyWrapper, $(window));
     });
+
+// bind api survey
+    luminateExtend.api.bind();
   }
 
 // Select all links with hashes
@@ -1622,6 +1625,5 @@ if($('body').is('.app_donation')) {
 }
 
 
-    luminateExtend.api.bind();
   });
 }(jQuery));
