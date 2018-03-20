@@ -1579,7 +1579,7 @@ $('.part-type-container label').each(function(i){
 
 
 // Reg
-$('label[for=cons_first_name').eq(0).remove();
+$('label[for="cons_first_name"]').eq(0).remove();
 $('#cons_birth_date_MONTH, #cons_birth_date_DAY, #cons_birth_date_YEAR').attr('aria-labelledby', 'enterAmtLabel');
 $('#cons_birth_date_YEAR').attr('aria-hidden', true);
 
