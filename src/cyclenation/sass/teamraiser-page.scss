@@ -112,6 +112,14 @@ div.responsive a.secondary-step,
   // faq accordion 
   .card-header {
     padding:0;
+    .btn,
+    .button {
+      text-align: left;
+      white-space: normal;
+    }
+    .btn-link {
+      color:#DE2124;
+    }
   }
   .card-body {
     padding: .5rem 1rem;
