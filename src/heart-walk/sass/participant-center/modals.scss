@@ -4,6 +4,10 @@
     background-color: #D62339;
     text-align: center;
     color: #ffffff;
+
+    & .form-group {
+      text-align: left;
+    }
   }
 
   .modal-header {
