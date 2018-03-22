@@ -756,7 +756,9 @@ addScrollLinks();
 
     var knowSurveyParsleyConfig = {
       errorsContainer: function (pEle) {
-        var $err = pEle.$element.parent().parent().parent().parent().find('.know-survey-error');
+        console.log('erroring');
+        var $err = pEle.$element.parent().parent().parent().parent().parent().find('.know-survey-error');
+        // var $err = pEle.$element.parent().parent().parent().parent().find('.know-survey-error');
         return $err;
       }
     }
