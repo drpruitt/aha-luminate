@@ -64,9 +64,10 @@ body {
     display: inline-block;
     vertical-align: middle;
 }
-
-.logoMenuRow {
-    padding: 0 0 10px;
+@media (min-width: 992px) {
+  .logoMenuRow {
+      padding: 0 0 10px;
+  }
 }
 
 /* main menu */
