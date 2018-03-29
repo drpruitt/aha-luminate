@@ -1,32 +1,6 @@
 .ng-pc-modal {
   .modal-body {
     font-size: 15px;
-    background-color: #D62339;
-    text-align: center;
-    color: #ffffff;
-
-    & .form-group {
-      text-align: left;
-    }
-  }
-
-  .modal-header {
-    background-color: #D62339;
-    border-bottom: none;
-    text-align: center;
-    color: #ffffff;
-  }
-
-  .modal-footer {
-    padding: 15px;
-    border-top: none;
-    background-color: #D62339;
-    text-align: center;
-    color: #ffffff;
-  }
-
-  .lb_skip_link a {
-    color: #ffffff;
   }
   
   .modal-header__btns {
