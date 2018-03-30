@@ -3,22 +3,222 @@
 
 .pg_entry {
   // add greeting page style overrides here
+  .main {
+    border-bottom: 0;
+  }
+  .main a {
+    color: #de2427;
+  }
+  .main p {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
   #innerWrapper {
-      width: auto;
+    width: auto;
+  	border: 0;
+  }
+  section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  #mainContent {
+    display: none;
   }
   section#progressBar {
-      background-color: #333333;
+    background-color: #333333;
+  }
+  #progressBar {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .button {
+    background-color: #de2427;
+    border: 1px solid #de2427;
+    color: white;
+    padding: 0px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    right: 0;
+    line-height: 43px;
+    font-size: 18px;
+    height: 45px;
+    margin: 20px auto 5px;
+  }
+  .main a.button, .main a.button:hover {
+    color: #ffffff;
+    text-decoration: none;
+  }
+  .table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+  }
+  table {
+    border-collapse: collapse;
+  }
+  .d-none {
+    display: none!important;
+  }
+  .table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+  }
+  .table td, .table th {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
   }
   .amountRaisedValue, .totalGoalValue {
     line-height: 1;
   }
   .thermometerWrapper {
-      width: 63%;
+    width: 63%;
+  }
+  #greeting_hero {
+    border-bottom: 10px solid #de2427;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .greeting_hero_background {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75));
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  @media (min-width: 1400px) {
+    .greeting_hero_background {
+      height: 350px;
+    }
+  }
+  .greeting_hero_inner {
+    text-align: center;
+    color: white;
+    font-size: 18px;
+  }
+  .greeting_hero_inner h1 {
+    color:#ffffff;
+    margin: 10px auto;
+    font-weight: bold;
+  }
+  .greeting_hero_inner h2 {
+    margin: 10px 0 30px;
+    font-size: 22px;
+    font-style: italic;
+    font-weight: bold;
+  }
+  h2.welcome_header {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  .welcome_social_wrap p {
+    font-style: italic;
+  }
+  .social_icons_wrap {
+    font-size: 46px;
+  }
+  .social_icons {
+    display: none;
+    margin: 0 10px;
+  }
+  .social_icons.show_icon {
+    display: inline-block;
+  }
+  .social_icons a:visited, .social_icons a:link {
+    color: #de2427;
+  }
+  .section-fundraiser .table-responsive {
+    min-height: 257px;
+  }
+  .social_icons a {
+    color: #780000;
+  }
+  #top_lists .table-responsive {
+    min-height: 257px;
+  }
+  #top_lists {
+    background-color: #eeeeee;
+    border-bottom: 2px solid #909090;
+    border-top: 2px solid #909090;
+  }
+  #top_lists .table-responsive {
+    border-top: 7px solid #807f7f;
+    background-color: #ffffff;
+  }
+  #top_lists .table-responsive td {
+    border-top: none;
+    padding: 20px 20px 0;
+  }
+  #top_lists .table-responsive a {
+    text-decoration: underline;
+  }
+  #top_lists h3 {
+    padding-left: 20px;
+    color: #333333;
+  }
+  .section-fundraiser .table-responsive {
+    border-top: 7px solid #807f7f;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+  }
+  .top_view_all_btn {
+    text-align: center;
+  }
+  #contact {
+    background-color: #333333;
+    color: #ffffff;
+  }
+  #contact a {
+    color: #ffffff;
+    text-decoration: underline;
+  }
+  #contact h2 {
+    color: #ffffff;
+    margin: 10px auto 40px;
+    font-weight: bold;
+  }
+  #why_matters {
+    background-color: #eeeeee;
+  }
+  #why_matters h2 {
+    margin: 10px auto 40px;
+    font-weight: bold;
+  }
+  #why_matters h3 {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  #sponsor_logo_section {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-bottom: 2px solid #dddddd;
+  }
+  @media (max-width: 992px) {
+    .top-list {
+      margin-bottom: 20px;
+    }
+  }
+  @media (min-width: 992px) {
+    .why_matters_interior {
+      padding: 0 30px;
+    }
   }
   @media only screen and (max-width: 767px) {
-      .thermometerWrapper {
-          width: 100%;
-      }
+    section {
+      padding-top: 30px;
+    }
+    .thermometerWrapper {
+      width: 100%;
+    }
   }
 }
 
@@ -42,19 +242,32 @@ body {
         width: 896px;
     }
 }
-
+a.unslider-arrow, .unslider-nav {
+    display: none;
+}
+.unslider {
+    display: inline-block;
+    margin: 0;
+    overflow: auto;
+    padding: 0;
+    width: 340px;
+}
+.container.sponsor_slider {
+    padding: 0;
+}
 .local_sponsors {
-    /* text-align: center; */
+    vertical-align: top;
+    margin-top: 10px;
 }
-
+.unslider-wrap {
+    position: relative;
+}
+.tr_sponsorship_logo {
+    margin: 10px 0;
+}
 .tr_sponsorship_logos {
-    /* max-width: 896px;
-    display: inline-block; */
-}
-
-.tr_sponsorship_logo_horizontal {
-    /* display: inline-block;
-    float: none; */
+    max-width: initial;
+    margin: initial;
 }
 .logoBlock {
     width: 42%;
@@ -149,17 +362,26 @@ body {
     content: "\f0d8";
     font-family: fontAwesome;
 }
-
 .sub-nav {
     display: none;
 }
-
 @media only screen and (max-width: 1024px) {
   .progressBarWrapper {
     width: auto;
   }
 }
+@media (min-width: 768px) {
+  .navbar-nav {
+      float: right;
+  }
+}
 @media only screen and (max-width: 767px) {
+  #innerWrapper {
+    margin: 0;
+  }
+  .unslider {
+    width: 100%;
+  }
   .menuBlockDesktopNav {
     display: none;
   }
@@ -167,7 +389,6 @@ body {
     width: auto;
   }
 }
-
 @media only screen and (max-width: 480px) {
   .logoBlock {
     width: 80%;
