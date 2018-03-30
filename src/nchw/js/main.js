@@ -48,7 +48,7 @@
       var participantPromise = new Promise(function(resolve, reject) {
         luminateExtend.api({
           api: 'teamraiser',
-          data: 'method=getTopParticipantsData&fr_id=' + eventId + '&response_format=json',
+          data: 'method=getTopParticipantsData&fr_id=' + evID + '&response_format=json',
           callback: {
             success: function (response) {
               if (!$.isEmptyObject(response.getTopParticipantsDataResponse)) {
@@ -60,7 +60,7 @@
                   for (var i = 0, len = sortedParticipantsData.length; i < len; i++) {
                     sortedParticipantsData[i].total = Number(sortedParticipantsData[i].total.replace('$', '').replace(',', ''));
                     if (sortedParticipantsData[i].total > 0) {
-                      var participantDataOutput = '<tr><td><a href="' + luminateExtend.global.path.nonsecure + 'TR/?fr_id=' + eventId + '&pg=personal&px=' + sortedParticipantsData[i].id + '">' + sortedParticipantsData[i].name + '</a></td><td><span class="pull-right">$' + sortedParticipantsData[i].total.formatMoney(0) + '</span></td></tr>';
+                      var participantDataOutput = '<tr><td><a href="' + luminateExtend.global.path.nonsecure + 'TR/?fr_id=' + evID + '&pg=personal&px=' + sortedParticipantsData[i].id + '">' + sortedParticipantsData[i].name + '</a></td><td><span class="pull-right">$' + sortedParticipantsData[i].total.formatMoney(0) + '</span></td></tr>';
                       $('.insert_top-participants-list').append(participantDataOutput);
 
                     }
@@ -82,7 +82,7 @@
       var teamPromise = new Promise(function(resolve, reject) {
         luminateExtend.api({
           api: 'teamraiser',
-          data: 'method=getTopTeamsData&fr_id=' + eventId + '&response_format=json',
+          data: 'method=getTopTeamsData&fr_id=' + evID + '&response_format=json',
           callback: {
             success: function (response) {
               if (!$.isEmptyObject(response.getTopTeamsDataResponse)) {
@@ -94,7 +94,7 @@
                   for (var i = 0, len = sortedTeamsData.length; i < len; i++) {
                     sortedTeamsData[i].total = Number(sortedTeamsData[i].total.replace('$', '').replace(',', ''));
                     if (sortedTeamsData[i].total > 0) {
-                      var teamsData = '<tr><td><a href="' + luminateExtend.global.path.nonsecure + 'TR/?pg=team&team_id=' + sortedTeamsData[i].id + '&fr_id=' + eventId + '">' + sortedTeamsData[i].name + '</a></td><td><span class="pull-right">$' + sortedTeamsData[i].total.formatMoney(0) + '</span></td></tr>';
+                      var teamsData = '<tr><td><a href="' + luminateExtend.global.path.nonsecure + 'TR/?pg=team&team_id=' + sortedTeamsData[i].id + '&fr_id=' + evID + '">' + sortedTeamsData[i].name + '</a></td><td><span class="pull-right">$' + sortedTeamsData[i].total.formatMoney(0) + '</span></td></tr>';
                       $('.insert_top-teams-list').append(teamsData);
                     }
                   }
@@ -114,7 +114,7 @@
       var companyPromise = new Promise(function(resolve, reject) {
         luminateExtend.api({
           api: 'teamraiser',
-          data: 'method=getCompaniesByInfo&fr_id=' + eventId + '&response_format=json',
+          data: 'method=getCompaniesByInfo&fr_id=' + evID + '&response_format=json',
           callback: {
             success: function (response) {
               if (!$.isEmptyObject(response.getCompaniesResponse)) {
