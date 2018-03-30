@@ -31,6 +31,166 @@
     if ($('body').is('.pg_entry')) {
       // Greeting page-specific JS goes here
       console.log('testing the new main.js file')
+      $('#insert_ele_welcome').appendTo('#welcome .row');
+      $('#insert_ele_contact').appendTo('#contact .row');
+
+      if(!$('#insert_ele_subtitle:empty').length) {
+        $('#insert_ele_subtitle').insertAfter('.greeting_hero_inner h1');
+      }
+
+      $('.social_icons a').each(function () {
+        if ($(this).attr('href').length > 0) {
+          $(this).parent().addClass('show_icon');
+        }
+      });
+
+      // getTopParticipantsData
+      var participantPromise = new Promise(function(resolve, reject) {
+        luminateExtend.api({
+          api: 'teamraiser',
+          data: 'method=getTopParticipantsData&fr_id=' + eventId + '&response_format=json',
+          callback: {
+            success: function (response) {
+              if (!$.isEmptyObject(response.getTopParticipantsDataResponse)) {
+                var participantData = luminateExtend.utils.ensureArray(response.getTopParticipantsDataResponse.teamraiserData);
+                console.log(participantData);
+                console.log('participantData.length = ',participantData.length);
+                if (participantData.length > 0) {
+                  var sortedParticipantsData = participantData.slice(0, 5);
+                  for (var i = 0, len = sortedParticipantsData.length; i < len; i++) {
+                    sortedParticipantsData[i].total = Number(sortedParticipantsData[i].total.replace('$', '').replace(',', ''));
+                    if (sortedParticipantsData[i].total > 0) {
+                      var participantDataOutput = '<tr><td><a href="' + luminateExtend.global.path.nonsecure + 'TR/?fr_id=' + eventId + '&pg=personal&px=' + sortedParticipantsData[i].id + '">' + sortedParticipantsData[i].name + '</a></td><td><span class="pull-right">$' + sortedParticipantsData[i].total.formatMoney(0) + '</span></td></tr>';
+                      $('.insert_top-participants-list').append(participantDataOutput);
+
+                    }
+                  }
+                }
+              }
+              resolve();
+            },
+            error: function (response) {
+              console.log('getTopParticipants error: ' + response.errorResponse.message);
+              reject(Error());
+            }
+          }
+        });
+      });
+
+
+      // getTopTeamsData
+      var teamPromise = new Promise(function(resolve, reject) {
+        luminateExtend.api({
+          api: 'teamraiser',
+          data: 'method=getTopTeamsData&fr_id=' + eventId + '&response_format=json',
+          callback: {
+            success: function (response) {
+              if (!$.isEmptyObject(response.getTopTeamsDataResponse)) {
+                var teamData = luminateExtend.utils.ensureArray(response.getTopTeamsDataResponse.teamraiserData);
+                console.log(teamData);
+                console.log('teamData.length = ',teamData.length);
+                if (teamData.length > 0) {
+                  var sortedTeamsData = teamData.slice(0, 5);
+                  for (var i = 0, len = sortedTeamsData.length; i < len; i++) {
+                    sortedTeamsData[i].total = Number(sortedTeamsData[i].total.replace('$', '').replace(',', ''));
+                    if (sortedTeamsData[i].total > 0) {
+                      var teamsData = '<tr><td><a href="' + luminateExtend.global.path.nonsecure + 'TR/?pg=team&team_id=' + sortedTeamsData[i].id + '&fr_id=' + eventId + '">' + sortedTeamsData[i].name + '</a></td><td><span class="pull-right">$' + sortedTeamsData[i].total.formatMoney(0) + '</span></td></tr>';
+                      $('.insert_top-teams-list').append(teamsData);
+                    }
+                  }
+                }
+              }
+              resolve();
+            },
+            error: function (response) {
+              console.log('getTopTeams error: ' + response.errorResponse.message);
+              reject(Error());
+            }
+          }
+        });
+      });
+
+      // getTopCompaniesByInfo
+      var companyPromise = new Promise(function(resolve, reject) {
+        luminateExtend.api({
+          api: 'teamraiser',
+          data: 'method=getCompaniesByInfo&fr_id=' + eventId + '&response_format=json',
+          callback: {
+            success: function (response) {
+              if (!$.isEmptyObject(response.getCompaniesResponse)) {
+                var companyData = luminateExtend.utils.ensureArray(response.getCompaniesResponse.company);
+                console.log(companyData);
+                console.log('companyData.length = ',companyData.length);
+                if (companyData.length > 0) {
+                  var sortedCompaniesData = companyData.slice(0, 5);
+                  // build company roster here
+                  for (var i = 0, len = sortedCompaniesData.length; i < len; i++) {
+                    if (sortedCompaniesData[i].amountRaised > 0) {
+                      var companyData = '<tr><td><a href="' + sortedCompaniesData[i].companyURL + '">' + sortedCompaniesData[i].companyName + '</a></td><td><span class="pull-right">$' + (sortedCompaniesData[i].amountRaised / 100).formatMoney(0) + '</span></td></tr>';
+                      $('.insert_top-companies-list').append(companyData);
+                    }
+                  }
+                }
+              }
+              resolve();
+            },
+            error: function (response) {
+              console.log('getTopCompanies error: ' + response.errorResponse.message);
+              reject(Error());
+            }
+          }
+        });
+      });
+
+      participantPromise.then(function() {
+        if( !$.trim( $('.insert_top-participants-list').html() ).length ) {
+          console.log('parts empty');
+          $('#top_lists').hide();
+        }
+        else {
+          console.log("parts no empty");
+        }
+      }, function(err) {
+        console.log(err);
+      });
+
+      teamPromise.then(function() {
+        if( !$.trim( $('.insert_top-teams-list').html() ).length ) {
+          console.log('teams empty');
+          $('.top-teams-list, .top-companies-list').hide();
+          $('.top-participants-list').addClass('col-md-offset-4');
+        }
+        else {
+          console.log("teams no empty");
+        }
+      }, function(err) {
+        console.log(err);
+      });
+
+      companyPromise.then(function() {
+        if( !$.trim( $('.insert_top-companies-list').html() ).length ) {
+          console.log('comps empty');
+          $('.top-companies-list').hide();
+          $('.top-participants-list').addClass('col-md-offset-2');
+        }
+        else {
+          console.log("comps no empty");
+        }
+      }, function(err) {
+        console.log(err);
+      });
+
+      Number.prototype.formatMoney = function (c, d, t) {
+        var n = this,
+          c = isNaN(c = Math.abs(c)) ? 2 : c,
+          d = d == undefined ? "." : d,
+          t = t == undefined ? "," : t,
+          s = n < 0 ? "-" : "",
+          i = String(parseInt(n = Math.abs(Number(n) || 0).toFixed(c))),
+          j = (j = i.length) > 3 ? j % 3 : 0;
+        return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d +
+          Math.abs(n - i).toFixed(c).slice(2) : "");
+      };
     }
   });
 }(jQuery));
