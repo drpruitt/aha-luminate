@@ -119,7 +119,15 @@ div.responsive a.secondary-step,
   
   div.indicator-container {
     border:none;
+    &.vscroll-container {
+      border-radius:0;
+      border-top: 7px solid #807f7f !important;
+      border-left: 1px solid #ccc !important;
+      border-right: 1px solid #ccc !important;
+      border-bottom: 1px solid #ccc !important;
+    }
   }
+
 
   .leaderboard-container,
   .search-result-details {

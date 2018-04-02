@@ -1619,10 +1619,14 @@ $('.cardExpGroup').prepend('<legend class="sr-only">Credit card expiration date<
     }
 
 if($('body').is('.app_donation')) {
+// remove duplicate ID
+$('#level_flexible_row').eq(0).removeAttr('id');
 
+// access reusable - reus_heartwalk2017_don_js_cddev
   // Add text above matching company label
   $('#donor_matching_employer_Row').prepend('<p><strong>Play matchmaker. Here&#8217;s how.</strong></p><ul><li>Find out if your employer participates in a matching gifts program, an easy way to increase your donation.</li><li>Just fill in your company&#8217;s details below.</li></ul>');
   $('#billing_addr_state option[value="None"]').remove();
+
   
 }
 
