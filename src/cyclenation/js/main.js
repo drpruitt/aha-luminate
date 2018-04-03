@@ -1630,6 +1630,5 @@ $('#level_flexible_row').eq(0).removeAttr('id');
   
 }
 
-
   });
 }(jQuery));
