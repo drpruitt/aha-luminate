@@ -119,7 +119,7 @@ addScrollLinks();
 
               $(participants).each(function (i, participant) {
                  
-                var teamRegUrl = ((participant.teamPageUrl !== null) ? luminateExtend.global.path.secure + 'TRR/?fr_tjoin=' + getURLParameter(participant.teamPageUrl, 'team_id') + '&amp;pg=tfind&amp;fr_id=' + evID : null);
+                var teamRegUrl = ((participant.teamPageUrl !== null) ? luminateExtend.global.path.secure + 'TRR/?fr_tjoin=' + getURLParameter(participant.teamPageUrl, 'team_id') + '&amp;pg=tfind&amp;fr_id=' + participant.eventId : null);
 
                 $('#participant_rows').append('<div class="row pb-4"><div class="col-xs-12 col-md-9 col-sm-8 search-result-details search-result-details"><p><strong>' +
                   participant.name.first + ' ' + participant.name.last +
