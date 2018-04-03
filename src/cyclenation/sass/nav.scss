@@ -107,6 +107,33 @@
     }
   }
   }
+
+  .section-fundraiser-search {
+    .nav-tabs {
+      background: $white;
+      border-top: none;
+      border-bottom: 1px solid #ccc;
+      .nav-item:not(:first-child) {
+        border-left: 1px solid #ccc;
+      }
+      .nav-item {
+        border-top: 1px solid #ccc;
+        margin-right: 10px;
+      }
+      .nav-link {
+        background-color:#eee;
+        &.active {
+          background-color:#fff;
+        }
+      }
+    }
+    .tab-content {
+      border-right: 1px solid #ccc;
+    }
+    // background: #f2f2f2;
+    // border-top: 1px solid #ccc;
+  }
+  
 }
 
 .navbar {
@@ -174,3 +201,5 @@
 .header-event-details {
   background:$primary;
 }
+
+
