@@ -93,6 +93,9 @@ addScrollLinks();
     var evID = $('body').data('fr-id') ? $('body').data('fr-id') : null;
     var consID = $('body').data('cons-id') ? $('body').data('cons-id') : null;
 
+    function getURLParameter(url, name) {
+      return (RegExp(name + '=' + '(.+?)(&|$)').exec(url)||[,null])[1];
+  }
 
     cd.getParticipants = function (firstName, lastName) {
       luminateExtend.api({
@@ -115,13 +118,15 @@ addScrollLinks();
               var participants = luminateExtend.utils.ensureArray(response.getParticipantsResponse.participant);
 
               $(participants).each(function (i, participant) {
-                // var formattedDate = luminateExtend.utils.simpleDateFormat(participant.event_date, 'MMMM d, yyyy');
+                 
+                var teamRegUrl = ((participant.teamPageUrl !== null) ? luminateExtend.global.path.secure + 'TRR/?fr_tjoin=' + getURLParameter(participant.teamPageUrl, 'team_id') + '&amp;pg=tfind&amp;fr_id=' + evID : null);
+
                 $('#participant_rows').append('<div class="row pb-4"><div class="col-xs-12 col-md-9 col-sm-8 search-result-details search-result-details"><p><strong>' +
                   participant.name.first + ' ' + participant.name.last +
                   '</strong><br>' +
                   participant.eventName + '<br>' +
                   ((participant.teamName !== null) ? participant.teamName + '<br>' : '') +
-                  '<a href="' + participant.personalPageUrl + '">Visit Personal Page</a></p></div><div class="col-xs-12 col-md-3 col-sm-4"><a class="button btn-primary btn-block btn-lg pull-right" href="' + participant.donationUrl + '">Donate</a></div></div>'
+                  '<a href="' + participant.personalPageUrl + '">Visit Personal Page</a></p></div><div class="col-xs-12 col-md-3 col-sm-4"><a class="button btn-primary btn-block btn-lg pull-right" href="' + participant.donationUrl + '">Donate</a>' + ((teamRegUrl !== null) ? '<a class="button btn-outline-dark btn-block btn-lg pull-right" href="' + teamRegUrl + '">Join Team</a>' : '') + '</div></div>'
                 );
               });
               $('#participant_results').removeAttr('hidden');
