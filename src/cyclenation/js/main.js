@@ -1615,9 +1615,21 @@ $('.cardExpGroup').prepend('<legend class="sr-only">Credit card expiration date<
       $('.js__how-it-works-container').html($('.js__chapter-how-it-works'));
       $('.js__greeting-inspire-text').html($('.js__chapter-inspire-text'));
       $('.js__greeting-inspire-image').html($('.js__chapter-inspire-image'));
-
     }
-
+    if($('body').is('.pg_personal')) {
+      var personalHeadline = $('#personal_page_header h2');
+      $(personalHeadline).replaceWith('<h1>' + $(personalHeadline).text() + '</h1>');
+    }
+    if($('body').is('.pg_team')) {
+      var teamHeadline = $('#team_page_title');
+      var existingTeamName = $('#team_name');
+      $(teamHeadline).replaceWith('<h1>' + $(teamHeadline).text() + '</h1>');
+      $(existingTeamName).replaceWith('<h2>' + $(existingTeamName).text() + '</h2>');
+    }
+    if($('body').is('.pg_company')) {
+      var companyHeadline = $('.cstmTitle');
+      $(companyHeadline).replaceWith('<h1>' + $(companyHeadline).text() + '</h1>');
+    }
 if($('body').is('.app_donation')) {
 // remove duplicate ID
 $('#level_flexible_row').eq(0).removeAttr('id');
@@ -1629,6 +1641,7 @@ $('#level_flexible_row').eq(0).removeAttr('id');
 
   
 }
+
 
   });
 }(jQuery));

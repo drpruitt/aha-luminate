@@ -115,6 +115,12 @@ div.registration-page-container div.section-header {
   max-width: 450px !important;
 }
 
+@media (max-width: 1199px) {
+  div.tr-page-main-content,
+  div.tr-page-container div.side-bar {
+    width: 100%;
+  }
+}
 .mobile div#find_participant li {
   width: 135px !important;
   
