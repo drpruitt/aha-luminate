@@ -1380,7 +1380,10 @@ $('.total-label').text('Your registration total:');
 }
 // payment step of reg
 if ($('#fr_payment_form').length > 0) {
-  $('#btn_next')
+
+  
+
+  $('#btn_next').text('Submit')
   .wrap('<div class="order-1 order-sm-2 col-sm-6 offset-md-2 col-8 offset-2 mb-3"/>');
   $('#btn_prev').text('Back')
   .wrap('<div class="order-2 order-sm-1 col-sm-4 col-8 offset-2 offset-sm-0" />');
@@ -1639,12 +1642,148 @@ if($('body').is('.app_donation')) {
 // remove duplicate ID
 $('#level_flexible_row').eq(0).removeAttr('id');
 
-// access reusable - reus_heartwalk2017_don_js_cddev
   // Add text above matching company label
   $('#donor_matching_employer_Row').prepend('<p><strong>Play matchmaker. Here&#8217;s how.</strong></p><ul><li>Find out if your employer participates in a matching gifts program, an easy way to increase your donation.</li><li>Just fill in your company&#8217;s details below.</li></ul>');
-  $('#billing_addr_state option[value="None"]').remove();
+
+  $('fieldset.cardExpGroup').prepend('<legend class="aural-only">Credit Card Expires</legend>');
+
+  $('#level_flexible_row2').wrapInner('<fieldset></fieldset>');
+  $('#level_flexible_row2 fieldset').prepend('<legend class="aural-only">Select Gift Amount</legend>');
+
+  $('#responsive_payment_typepay_typeradio_payment_types').wrapInner('<fieldset></fieldset>');
+  $('#responsive_payment_typepay_typeradio_payment_types fieldset').prepend('<legend class="aural-only">Payment options</legend>');
+
+  $('h5.transaction-summary-header').replaceWith(function () {
+      return '<h1 class="transaction-summary-header summary-section-header dividerHeading" class="section-header-text">' + $(this).html() + '</h1>';
+  });
+  
+  $('#responsive_payment_typecc_numbername, #responsive_payment_typecc_cvvname, #billing_first_namename, #billing_last_namename, #billing_addr_street1name, #billing_addr_cityname, #billing_addr_zipname, #donor_email_addressname, #responsive_payment_typecc_exp_date_MONTH, #responsive_payment_typecc_exp_date_YEAR, #billing_addr_state, #billing_addr_country').attr('aria-required','true');
+
+  if ($('.errorMessageContainer .ErrorMessage.page-error .field-error-text').length > 0) {
+      $('.errorMessageContainer .ErrorMessage.page-error .field-error-text').attr('role','alert');
+  }
+  $('#responsive_payment_typecc_numbername').attr('placeholder','XXXXXXXXXXXXXXXX');
+  $('#level_flexible_row').before('<div class="required-indicator-legend d-block w-100"><span class="field-required"></span><span class="required-indicator-legend-text">&nbsp;Indicates Required</span></div>');
+
+  $('label[for="responsive_payment_typepay_typeradiocredit"] a').attr('aria-label','PAYMENT BY CREDIT CARD');
+  $('label[for="responsive_payment_typepay_typeradiopaypal"] a').attr('aria-label','PAYMENT BY PAY PAL');
+
+    // Selecting empty value from the Gift Duration drop-down when the One-time Gift box is checked
+    $('#level_flexiblegift_type1').click(function(){
+      console.log('One-time gift box checked');
+      $('#level_flexibleduration').val("");
+  });
+
+  // Limiting number of characters in credit card field
+  $('#responsive_payment_typecc_numbername').attr('maxlength','16');
+  $('#responsive_payment_typecc_cvvname').attr('minlength','3').attr('maxlength','4');
 
   
+  // Change order of help link for tabbing
+  $('.HelpLink').insertAfter('#responsive_payment_typecc_cvvname');
+
+  $('#billing_addr_state option[value="None"]').remove();
+
+      /*Thank You Page access edits */
+      if ($('.transaction-summary-info').length > 0) {
+        $('.transaction-summary-entry .entry-label').attr('tabindex','0');
+        $('.transaction-summary-entry .entry-value').each(function() {
+            if ($(this).text().length > 0) {
+                $(this).attr('tabindex','0');
+            }
+            else {
+                $(this).attr('tabindex','1');
+            }
+        });
+        $('.entry-label:contains("Total Gift Amount:")').attr('aria-label','Total Gift Amount');
+    }
+
+    
+$('#cell_or_phone_number_input').attr('placeholder','ex. 555-555-5555');
+
+$('.donation-levels').before('<span id="donation-errors"></span>');
+
+$('input[name="level_flexibleexpanded"]')
+    .attr('data-parsley-required', '')
+    .attr('data-parsley-required-message', 'Donation Amount is required')
+    .attr('data-parsley-errors-container', '#donation-errors');
+  
+$('#billing_first_namename')
+    .attr('data-parsley-required', '')
+    .attr('data-parsley-required-message', 'First Name is required');
+    
+$('#billing_last_namename')
+    .attr('data-parsley-required', '')
+    .attr('data-parsley-required-message', 'Last Name is required');
+
+$('#donor_email_addressname')
+    .attr('data-parsley-required', '')
+    .attr('data-parsley-required-message', 'Email Address is required')
+    .attr('data-parsley-type', 'email')
+    .attr('data-parsley-type-message', 'Please enter a valid email address');
+
+$('#billing_addr_cityname')
+    .attr('data-parsley-required', '')
+    .attr('data-parsley-required-message', 'City is required');
+
+$('#billing_addr_street1name')
+    .attr('data-parsley-required', '')
+    .attr('data-parsley-required-message', 'Billing Street is required');
+
+$('#billing_addr_zipname')
+  .attr('data-parsley-required', '')
+  .attr('data-parsley-required-message', 'Zip Code is required')
+  .attr('data-parsley-type', 'number')
+  .attr('data-parsley-type-message', 'Zip Code must be a number')
+  .attr('data-parsley-maxlength', '7')
+  .attr('data-parsley-maxlength-message', 'Zip Code  cannot be more than 7 characters');
+
+$('#responsive_payment_typecc_numbername')
+  .attr('data-parsley-required', '')
+  .attr('data-parsley-required-message', 'Credit Card Number is required')
+  .attr('data-parsley-type', 'number')
+  .attr('data-parsley-type-message', 'Credit Card must be a number')
+  .attr('data-parsley-maxlength', '16')
+  .attr('data-parsley-maxlength-message', 'Credit Card cannot be more than 16 characters');
+
+$('#responsive_payment_typecc_cvvname')
+  .attr('data-parsley-required', '')
+  .attr('data-parsley-required-message', 'CVV is required')
+  .attr('data-parsley-type', 'number')
+  .attr('data-parsley-type-message', 'CVV must be a number')
+  .attr('data-parsley-minlength', '3')
+  .attr('data-parsley-maxlength-message', 'CVV must be at least 3 characters')
+  .attr('data-parsley-maxlength', '4')
+  .attr('data-parsley-maxlength-message', 'CVV cannot be more than 4 characters');
+
+  var ParsleyDefaults = {
+    uiEnabled: true,
+    priorityEnabled: true,
+    errorsWrapper: '<div class="help-block with-errors"></div>',
+    errorTemplate: '<span class="text-danger"></span>'
+  }
+
+$('#ProcessForm').parsley(ParsleyDefaults);
+    $('#ProcessForm').on('submit', function(e) {
+      // Should this reset really be here? Or is it bypassing requirements?
+      $(this).parsley().reset();
+      if ($(this).parsley().validate()) {
+        e.preventDefault();
+        console.log('form is valid');
+        return false;
+      } else {
+        console.log('form is invalid');
+        
+        window.scrollTo(0, 0);
+      }
+    });
+
+
+
+
+
+
+
 }
 
 
