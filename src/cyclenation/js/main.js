@@ -1756,21 +1756,21 @@ $('#responsive_payment_typecc_cvvname')
   .attr('data-parsley-maxlength', '4')
   .attr('data-parsley-maxlength-message', 'CVV cannot be more than 4 characters');
 
-  var ParsleyDefaults = {
+  var parsleyDonDefaults = {
     uiEnabled: true,
     priorityEnabled: true,
     errorsWrapper: '<div class="help-block with-errors"></div>',
     errorTemplate: '<span class="text-danger"></span>'
   }
 
-$('#ProcessForm').parsley(ParsleyDefaults);
+$('#ProcessForm').parsley(parsleyDonDefaults);
     $('#ProcessForm').on('submit', function(e) {
       // Should this reset really be here? Or is it bypassing requirements?
       $(this).parsley().reset();
       if ($(this).parsley().validate()) {
         e.preventDefault();
         console.log('form is valid');
-        return false;
+        $(this).submit();
       } else {
         console.log('form is invalid');
         
