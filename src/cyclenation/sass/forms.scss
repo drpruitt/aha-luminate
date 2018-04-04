@@ -201,11 +201,21 @@ div.payment-field-container {
   #donor_matching_employersearchname,
   #donor_matching_employersearchBtn,
   #tr_message_to_participantname,
-  #tr_recognition_namerec_namename {
+  #tr_recognition_namerec_namename,
+  #billing_addr_state,
+  #billing_addr_country,
+  #level_flexibleduration {
       width: 100% !important;
       max-width:100%;
   }
+  #responsive_payment_typecc_exp_date_MONTH,#responsive_payment_typecc_exp_date_YEAR {
+    width: 49% !important;
+    max-width:49%;
+  }
   &.mobile div.responsive div.form-checkbox label, label.custom-element-checkbox-label {
     max-width: 280px;
+  }
+  .external-payment {
+    margin-top:10px;
   }
 }
