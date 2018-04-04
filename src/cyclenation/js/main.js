@@ -1722,6 +1722,10 @@ $('#donor_email_addressname')
     .attr('data-parsley-type', 'email')
     .attr('data-parsley-type-message', 'Please enter a valid email address');
 
+$('#billing_addr_state')
+    .attr('data-parsley-required', '')
+    .attr('data-parsley-required-message', 'State is required');
+
 $('#billing_addr_cityname')
     .attr('data-parsley-required', '')
     .attr('data-parsley-required-message', 'City is required');
@@ -1763,7 +1767,7 @@ $('#responsive_payment_typecc_cvvname')
     errorTemplate: '<span class="text-danger"></span>'
   }
 
-  $('#ProcessForm').parsley(parsleyDonDefaults);
+  // $('#ProcessForm').parsley(parsleyDonDefaults);
 
 }
 
