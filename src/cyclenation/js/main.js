@@ -1639,8 +1639,8 @@ $('.cardExpGroup').prepend('<legend class="sr-only">Credit card expiration date<
       $(companyHeadline).replaceWith('<h1>' + $(companyHeadline).text() + '</h1>');
     }
 if($('body').is('.app_donation')) {
-// remove duplicate ID
-$('#level_flexible_row').eq(0).removeAttr('id');
+// replace duplicate ID
+$('#level_flexible_row.form-row.form-donation-level').attr('id','level_flexible_row2');
 
   // Add text above matching company label
   $('#donor_matching_employer_Row').prepend('<p><strong>Play matchmaker. Here&#8217;s how.</strong></p><ul><li>Find out if your employer participates in a matching gifts program, an easy way to increase your donation.</li><li>Just fill in your company&#8217;s details below.</li></ul>');
@@ -1763,26 +1763,7 @@ $('#responsive_payment_typecc_cvvname')
     errorTemplate: '<span class="text-danger"></span>'
   }
 
-$('#ProcessForm').parsley(parsleyDonDefaults);
-    $('#ProcessForm').on('submit', function(e) {
-      // Should this reset really be here? Or is it bypassing requirements?
-      $(this).parsley().reset();
-      if ($(this).parsley().validate()) {
-        e.preventDefault();
-        console.log('form is valid');
-        $(this).submit();
-      } else {
-        console.log('form is invalid');
-        
-        window.scrollTo(0, 0);
-      }
-    });
-
-
-
-
-
-
+  $('#ProcessForm').parsley(parsleyDonDefaults);
 
 }
 
