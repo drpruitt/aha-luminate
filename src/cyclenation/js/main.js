@@ -677,6 +677,17 @@ addScrollLinks();
       cd.getTopCompanies(eventData);
     } 
 
+    // reset show more/fewer functionality after filters have been cleared
+    function resetEventList() {
+      $('.event-detail').each(function(i){
+        if(i > 2){
+          $(this).attr('hidden', true);
+        }
+        $('.js__show-fewer-events').attr('hidden', true);
+        $('.js__show-more-container').removeClass('d-none');
+      });
+    }
+
     function applyListFilter() {
       // add sorting for landing page
       var options = {
@@ -699,8 +710,11 @@ addScrollLinks();
           $('.js__no-event-results').removeClass('d-none');
         } else if (list.matchingItems.length == list.items.length) {
           $('.js__no-event-results').addClass('d-none');
+          // reset show more/fewer functionality after filters have been cleared
+          resetEventList();
         } else {
           $('.js__no-event-results').addClass('d-none');
+          console.log('third');
         }
       });
 
@@ -709,9 +723,6 @@ addScrollLinks();
         var allFilters = $('input.filter');
         $(allFilters).not(this).prop('checked', false);
         $(allFilters).parent().removeClass('active');
-
-        $('.js__show-more-container').addClass('d-none');
-        $('.event-detail').removeAttr('hidden');
 
         var isChecked = this.checked;
         var value = $(this).data('filter');
@@ -727,10 +738,16 @@ addScrollLinks();
 
         eventList.filter(function (item) {
           if (activeFilters.length > 0) {
+            $('.js__show-more-container').addClass('d-none');
+            $('.event-detail').removeAttr('hidden');
             $('.js__clear-event-filters').removeClass('d-none');
             return (activeFilters.indexOf(item.values().eventtype)) > -1;
           } else {
             $('.js__clear-event-filters').addClass('d-none');
+            // reset show more/fewer functionality after filters have been cleared
+            setTimeout(function(){ 
+              resetEventList();
+            }, 200);
           }
           return true;
         });
@@ -745,12 +762,16 @@ addScrollLinks();
         $('input.filter').prop('checked', false);
         $('.search').val('');
         eventList.search();
+        
         eventList.filter(function (item) {
           if (activeFilters.length > 0) {
             return (activeFilters.indexOf(item.values().eventtype)) > -1;
           }
           return true;
         });
+            // reset show more/fewer functionality after filters have been cleared
+            resetEventList();
+
       });
     }
 
@@ -763,7 +784,6 @@ addScrollLinks();
       errorsContainer: function (pEle) {
         console.log('erroring');
         var $err = pEle.$element.parent().parent().parent().parent().parent().find('.know-survey-error');
-        // var $err = pEle.$element.parent().parent().parent().parent().find('.know-survey-error');
         return $err;
       }
     }
