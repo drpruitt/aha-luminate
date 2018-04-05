@@ -1787,7 +1787,19 @@ $('#responsive_payment_typecc_cvvname')
     errorTemplate: '<span class="text-danger"></span>'
   }
 
-  // $('#ProcessForm').parsley(parsleyDonDefaults);
+  $('#ProcessForm').parsley(parsleyDonDefaults);
+
+  $('.internal-payment').on('click', function(e){
+    console.log('cc payment');
+    $('#responsive_payment_typecc_numbername').attr('data-parsley-required', '');
+    $('#responsive_payment_typecc_cvvname').attr('data-parsley-required', '');
+  });
+  $('.external-payment').on('click', function(e){
+    console.log('paypal payment');
+    $('#responsive_payment_typecc_numbername').removeAttr('data-parsley-required');
+    $('#responsive_payment_typecc_cvvname').removeAttr('data-parsley-required');
+  });
+
 
 }
 
