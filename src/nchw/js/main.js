@@ -159,6 +159,7 @@
           console.log('teams empty');
           $('.top-teams-list, .top-companies-list').hide();
           $('.top-participants-list').addClass('col-md-offset-4');
+          $('.top-participants-list').removeClass('col-md-offset-0');
         }
         else {
           console.log("teams no empty");
@@ -172,6 +173,7 @@
           console.log('comps empty');
           $('.top-companies-list').hide();
           $('.top-participants-list').addClass('col-md-offset-2');
+          $('.top-participants-list').removeClass('col-md-offset-0');
         }
         else {
           console.log("comps no empty");
