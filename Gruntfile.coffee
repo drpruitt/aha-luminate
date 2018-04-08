@@ -140,6 +140,19 @@ module.exports = (grunt) ->
       'htmlmin'
       'imagemin'
     ], 'district-heart'
+    runTargetedTask [
+      'clean'
+      'sass'
+      'postcss'
+      'cssmin'
+      'uglify'
+      'replace'
+      'htmlmin'
+      'imagemin'
+    ], 'nchw'
+    runTargetedTask [
+      'copy'
+    ], 'nchw-scripts'
     return
   grunt.registerTask 'dev', ->
     devTasks = [
@@ -165,6 +178,9 @@ module.exports = (grunt) ->
       if task.indexOf('notify:') is -1
         devTasks.push task
     config.watch['district-heart'].tasks.forEach (task) ->
+      if task.indexOf('notify:') is -1
+        devTasks.push task
+    config.watch['nchw'].tasks.forEach (task) ->
       if task.indexOf('notify:') is -1
         devTasks.push task
     devTasks.push 'watch'

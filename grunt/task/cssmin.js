@@ -81,5 +81,13 @@ module.exports = {
         dest: 'dist/district-heart/css/participant.'+'<%= timestamp %>'+'.min.css'
       }
     ]
+  },
+  "nchw": {
+    files: [
+      {
+        src: 'dist/nchw/css/main.css', 
+        dest: 'dist/nchw/css/main.'+ '<%= timestamp %>' +'.min.css'
+      }
+    ]
   }
 }
