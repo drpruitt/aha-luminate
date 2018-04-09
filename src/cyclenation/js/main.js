@@ -168,8 +168,7 @@
                   team.eventName + '<br>' +
                   'Team Captain: ' + team.captainFirstName + ' ' + team.captainLastName + '<br>' +
                   ((team.companyName !== null) ? team.companyName + '<br>' : '') +
-                  '<a href="' + team.teamPageURL + '">Visit Team Page</a></p></div><div class="col-xs-12 col-sm-4 col-md-3"><a class="button btn-primary btn-block btn-lg pull-right" href="' + team.teamDonateURL + '">Donate</a></div></div>'
-                );
+                  '<a href="' + team.teamPageURL + '">Visit Team Page</a></p></div><div class="col-xs-12 col-sm-4 col-md-3"><a class="button btn-primary btn-block btn-lg pull-right" href="' + team.teamDonateURL + '">Donate</a><a class="button btn-outline-dark btn-block btn-lg pull-right" href="' + team.joinTeamURL + '">Join Team</a></div></div>');
                 $('#team_results').removeAttr('hidden');
 
               });
@@ -944,15 +943,15 @@
         });
       };
 
-      function getRegInteraction() {
+      var getRegInteraction = function () {
         cd.getInteraction(trRegInteractionID, evID, getRegInteractionCallback);
       }
 
-      function getSocialInteraction() {
+      var getSocialInteraction = function() {
         cd.getInteraction(trSocialInteractionID, evID, getSocialInteractionCallback);
       }
 
-      function getLoginInteraction() {
+      var getLoginInteraction = function() {
         cd.getInteraction(trLoginInteractionID, evID, getLoginInteractionCallback);
       }
 
