@@ -239,7 +239,7 @@
       e.preventDefault();
       $('.results-table, .alert').attr('hidden', true);
       $('.results-rows').html('');
-      var teamName = $('#team_name').val();
+      var teamName = $('#teamName').val();
       cd.getTeams(teamName);
     });
     // Search by Company
