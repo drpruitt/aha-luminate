@@ -222,7 +222,7 @@
   }
 }
 
-// General Overrides - note to self: clean up for nested
+// General Overrides
 
 body {
   font-family: Verdana, Arial, Helvetica, sans-serif;
@@ -241,6 +241,12 @@ body {
     .container {
         width: 896px;
     }
+}
+a#skip-main:hover, a#skip-main:active, a#skip-main:focus {
+    z-index: 100000;
+    left: 0;
+    width: auto;
+    height: auto;
 }
 a.unslider-arrow, .unslider-nav {
     display: none;
