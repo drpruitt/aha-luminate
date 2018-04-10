@@ -682,6 +682,7 @@
           $(this).attr('hidden', true);
         }
         $('.js__show-fewer-events').attr('hidden', true);
+        $('.js__show-more-events').removeAttr('hidden');
         $('.js__show-more-container').removeClass('d-none');
       });
     }
@@ -713,6 +714,7 @@
         } else {
           $('.js__no-event-results').addClass('d-none');
           console.log('third');
+     
         }
       });
 
@@ -732,6 +734,7 @@
         } else {
           // remove from active filters
           activeFilters.splice(activeFilters.indexOf(value), 1);
+          resetEventList();
         }
 
         eventList.filter(function (item) {
