@@ -62,6 +62,18 @@
                 Non-Donors
               </a>
             </li>
+            <li>
+              <a ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_lybunt_teammates/list">
+                <span class="badge">{{contactCounts.email_rpt_show_lybunt_teammates}}</span>
+                Last Year's Team Members
+              </a>
+            </li>
+            <li>
+              <a ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_ly_donors/list">
+                <span class="badge">{{contactCounts.email_rpt_show_ly_donors}}</span>
+                Past-Donors
+              </a>
+            </li>
           </ul>
         </div>
       </div>
@@ -103,9 +115,13 @@
             <span class="badge">{{contactCounts.email_rpt_show_donors}}</span>
             Donors
           </a>
-          <a class="list-group-item" ng-class="{'active': filter == 'email_rpt_show_nondonors'}" ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_nondonors/list">
-            <span class="badge">{{contactCounts.email_rpt_show_nondonors}}</span>
-            Non-Donors
+          <a class="list-group-item" ng-class="{'active': filter == 'email_rpt_show_lybunt_teammates'}" ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_nondonors/list">
+            <span class="badge">{{contactCounts.email_rpt_show_lybunt_teammates}}</span>
+            Last Year's Team Members
+          </a>
+          <a class="list-group-item" ng-class="{'active': filter == 'email_rpt_show_ly_donors'}" ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_nondonors/list">
+            <span class="badge">{{contactCounts.email_rpt_show_ly_donors}}</span>
+            Past-Donors
           </a>
         </div>
       </div>
