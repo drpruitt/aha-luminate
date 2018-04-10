@@ -138,5 +138,18 @@ module.exports = {
         dest: 'dist/district-heart/css/'
       }
     ]
+  },
+
+  "nchw": {
+    files: [
+      {
+        expand: true,
+        cwd: 'dist/nchw/css/',
+        src: [
+          'main.css'
+        ],
+        dest: 'dist/nchw/css/'
+      }
+    ]
   }
 }

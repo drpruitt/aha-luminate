@@ -216,5 +216,37 @@ module.exports = {
         ]
       }
     ]
-  }
+  },
+  "nchw": {
+    files: [
+      {
+        expand: true,
+        cwd: 'dist/nchw/css/',
+        src: [
+          '**/*'
+        ]
+      },
+      {
+        expand: true,
+        cwd: 'dist/nchw/js/',
+        src: [
+          '**/*'
+        ]
+      },
+      {
+        expand: true,
+        cwd: 'dist/nchw/html/',
+        src: [
+          '**/*'
+        ]
+      },
+      {
+        expand: true,
+        cwd: 'dist/nchw/image/',
+        src: [
+          '**/*'
+        ]
+      }
+    ]
+  } 
 }

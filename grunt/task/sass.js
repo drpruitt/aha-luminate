@@ -65,5 +65,13 @@ module.exports = {
         'src/district-heart/sass/participant.scss'
       ]
     }
+  },
+
+  "nchw": {
+    files: {
+      'dist/nchw/css/main.css': [
+        'src/nchw/sass/main.scss'
+      ]
+    }
   }
 }

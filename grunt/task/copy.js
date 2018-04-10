@@ -104,5 +104,29 @@ module.exports = {
         dest: 'dist/district-heart/image/'
       }
     ]
+  },
+  "nchw-images": {
+    files: [
+      {
+        expand: true,
+        cwd: 'src/nchw/image/',
+        src: [
+          '*.{gif,GIF,jpg,JPG,png,PNG,svg,SVG}'
+        ],
+        dest: 'dist/nchw/image/'
+      }
+    ]
+  },
+  "nchw-scripts": {
+    files: [
+      {
+        expand: true,
+        cwd: 'src/nchw/js/',
+        src: [
+          '*.js'
+        ],
+        dest: 'dist/nchw/js/'
+      }
+    ]
   }
 }
