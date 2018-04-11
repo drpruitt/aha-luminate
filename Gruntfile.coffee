@@ -153,7 +153,7 @@ module.exports = (grunt) ->
     runTargetedTask [
       'copy'
     ], 'nchw-scripts'
-        runTargetedTask [
+    runTargetedTask [
       'clean'
       'sass'
       'postcss'
