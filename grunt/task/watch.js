@@ -175,5 +175,22 @@ module.exports = {
       'img-copy:nchw-images',
       'notify:nchw'
     ]
+  },
+
+  "cyclenation": {
+    files: [
+      'src/cyclenation/html/**/*',
+      'src/cyclenation/image/**/*',
+      'src/cyclenation/sass/**/*',
+      'src/cyclenation/js/**/*'
+    ],
+    tasks: [
+      'clean:cyclenation',
+      'css-dist:cyclenation',
+      'js-dist:cyclenation',
+      'html-dist:cyclenation',
+      'img-copy:cyclenation-images',
+      'notify:cyclenation'
+    ]
   }
 }

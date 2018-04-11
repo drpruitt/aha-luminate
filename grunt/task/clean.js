@@ -248,5 +248,37 @@ module.exports = {
         ]
       }
     ]
+  },
+  "cyclenation": {
+    files: [
+      {
+        expand: true,
+        cwd: 'dist/cyclenation/css/',
+        src: [
+          '**/*'
+        ]
+      },
+      {
+        expand: true,
+        cwd: 'dist/cyclenation/js/',
+        src: [
+          '**/*'
+        ]
+      },
+      {
+        expand: true,
+        cwd: 'dist/cyclenation/html/',
+        src: [
+          '**/*'
+        ]
+      },
+      {
+        expand: true,
+        cwd: 'dist/cyclenation/image/',
+        src: [
+          '**/*'
+        ]
+      }
+    ]
   } 
 }

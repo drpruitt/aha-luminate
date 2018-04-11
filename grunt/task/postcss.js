@@ -151,5 +151,18 @@ module.exports = {
         dest: 'dist/nchw/css/'
       }
     ]
+  },
+
+  "cyclenation": {
+    files: [
+      {
+        expand: true,
+        cwd: 'dist/cyclenation/css/',
+        src: [
+          'main.css'
+        ],
+        dest: 'dist/cyclenation/css/'
+      }
+    ]
   }
 }

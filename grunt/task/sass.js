@@ -73,5 +73,13 @@ module.exports = {
         'src/nchw/sass/main.scss'
       ]
     }
+  },
+
+  "cyclenation": {
+    files: {
+      'dist/cyclenation/css/main.css': [
+        'src/cyclenation/sass/main.scss'
+      ]
+    }
   }
 }

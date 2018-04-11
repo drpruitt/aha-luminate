@@ -128,5 +128,18 @@ module.exports = {
         dest: 'dist/nchw/js/'
       }
     ]
+  },
+  "cyclenation-scripts": {
+    files: [
+      {
+        expand: true,
+        cwd: 'src/cyclenation/js/',
+        src: [
+          '*.js'
+        ],
+        dest: 'dist/cyclenation/js/'
+      }
+    ]
   }
+
 }
