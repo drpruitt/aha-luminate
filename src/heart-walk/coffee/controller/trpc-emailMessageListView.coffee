@@ -46,6 +46,8 @@ angular.module 'trPcControllers'
         'email_rpt_show_unthanked_donors'
         'email_rpt_show_donors'
         'email_rpt_show_nondonors'
+        'email_rpt_show_lybunt_teammates'
+        'email_rpt_show_ly_donors'
       ]
       angular.forEach contactFilters, (filter) ->
         contactCountPromise = ContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + filter + '&skip_groups=true&list_page_size=1'
