@@ -23,7 +23,8 @@ angular.module 'trPcControllers'
     'ContactService'
     'TeamraiserSurveyResponseService'
     'TeamraiserEmailService'
-    ($rootScope, $scope, $timeout, $filter, $location, $httpParamSerializer, $translate, $uibModal, $uibModalStack, APP_INFO, ConstituentService, TeamraiserRecentActivityService, TeamraiserRegistrationService, TeamraiserProgressService, TeamraiserGiftService, TeamraiserParticipantService, TeamraiserTeamService, TeamraiserNewsFeedService, TeamraiserCompanyService, TeamraiserShortcutURLService, ContactService, TeamraiserSurveyResponseService, TeamraiserEmailService) ->
+    'FacebookFundraiserService'
+    ($rootScope, $scope, $timeout, $filter, $location, $httpParamSerializer, $translate, $uibModal, $uibModalStack, APP_INFO, ConstituentService, TeamraiserRecentActivityService, TeamraiserRegistrationService, TeamraiserProgressService, TeamraiserGiftService, TeamraiserParticipantService, TeamraiserTeamService, TeamraiserNewsFeedService, TeamraiserCompanyService, TeamraiserShortcutURLService, ContactService, TeamraiserSurveyResponseService, TeamraiserEmailService, FacebookFundraiserService) ->
       $scope.dashboardPromises = []
 
       $scope.baseDomain = $location.absUrl().split('/site/')[0]
@@ -696,8 +697,17 @@ angular.module 'trPcControllers'
                     $scope.teamInfo = team
             response
         $scope.dashboardPromises.push updateGoalPromise
-
-
+      
+      if $scope.facebookFundraisersEnabled and $rootScope.facebookFundraiserId and $rootScope.facebookFundraiserId isnt ''
+        $rootScope.facebookFundraiserConfirmedStatus = 'pending'
+        FacebookFundraiserService.confirmFundraiserStatus()
+          .then (response) ->
+            if not response.data.status?.active
+              delete $rootScope.facebookFundraiserId
+              $rootScope.facebookFundraiserConfirmedStatus = 'deleted'
+            else
+              $rootScope.facebookFundraiserConfirmedStatus = 'confirmed'
+      
       $scope.participantProgress =
         raised: 0
         raisedFormatted: '$0'
@@ -824,6 +834,10 @@ angular.module 'trPcControllers'
                 else
                   $scope.editGoalModal.close()
                   $scope.refreshFundraisingProgress()
+                  if $rootScope.facebookFundraiserId
+                    FacebookFundraiserService.updateFundraiser()
+                      .then ->
+                        FacebookFundraiserService.syncDonations()
                 response
             $scope.dashboardPromises.push updateGoalPromise
           when 'Team'
@@ -1444,7 +1458,6 @@ angular.module 'trPcControllers'
                 $scope.prevShortcut = shortcutItem
         $scope.dashboardPromises.push getPrevShortcutPromise
       $scope.getPrevShortcut()
-
 
       $scope.personalPageUrlSecure = $scope.baseDomain + '/site/TR?fr_id=' + $scope.frId + '&pg=personal&px=' + $scope.consId
 
