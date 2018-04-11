@@ -160,6 +160,23 @@ module.exports = {
     ]
   },
 
+  "nchw": {
+    files: [
+      'src/nchw/html/**/*',
+      'src/nchw/image/**/*',
+      'src/nchw/sass/**/*',
+      'src/nchw/js/**/*'
+    ],
+    tasks: [
+      'clean:nchw',
+      'css-dist:nchw',
+      'js-dist:nchw',
+      'html-dist:nchw',
+      'img-copy:nchw-images',
+      'notify:nchw'
+    ]
+  },
+
   "cyclenation": {
     files: [
       'src/cyclenation/html/**/*',

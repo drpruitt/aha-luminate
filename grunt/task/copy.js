@@ -105,16 +105,27 @@ module.exports = {
       }
     ]
   },
-
-  "cyclenation-images": {
+  "nchw-images": {
     files: [
       {
         expand: true,
-        cwd: 'src/cyclenation/image/',
+        cwd: 'src/nchw/image/',
         src: [
           '*.{gif,GIF,jpg,JPG,png,PNG,svg,SVG}'
         ],
-        dest: 'dist/cyclenation/image/'
+        dest: 'dist/nchw/image/'
+      }
+    ]
+  },
+  "nchw-scripts": {
+    files: [
+      {
+        expand: true,
+        cwd: 'src/nchw/js/',
+        src: [
+          '*.js'
+        ],
+        dest: 'dist/nchw/js/'
       }
     ]
   },

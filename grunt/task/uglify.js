@@ -103,12 +103,25 @@ module.exports = {
     ]
   },
 
+  "nchw": {
+    files: [
+      {
+        src: ["src/nchw/js/main.js"],
+        dest: "dist/nchw/js/main." + "<%= timestamp %>" + ".min.js"
+      }
+    ]
+  },
+
   "cyclenation": {
     files: [
       {
         src: ["src/cyclenation/js/main.js"],
         dest: "dist/cyclenation/js/main." + "<%= timestamp %>" + ".min.js"
+      },
+      {
+        src: ["src/cyclenation/js/pushy.js"],
+        dest: "dist/cyclenation/js/pushy.min.js"
       }
     ]
-  }
+  }  
 }

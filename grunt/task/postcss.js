@@ -140,6 +140,19 @@ module.exports = {
     ]
   },
 
+  "nchw": {
+    files: [
+      {
+        expand: true,
+        cwd: 'dist/nchw/css/',
+        src: [
+          'main.css'
+        ],
+        dest: 'dist/nchw/css/'
+      }
+    ]
+  },
+
   "cyclenation": {
     files: [
       {

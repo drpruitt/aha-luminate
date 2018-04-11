@@ -101,6 +101,17 @@ module.exports = {
     ]
   },
 
+  "nchw": {
+    files: [
+      {
+        expand: true,
+        cwd: "src/nchw/html/",
+        src: ["**/*.*"],
+        dest: "dist/nchw/html/"
+      }
+    ]
+  },
+
   "cyclenation": {
     files: [
       {

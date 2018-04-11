@@ -96,6 +96,19 @@ module.exports = {
     ]
   },
 
+  "nchw": {
+    files: [
+      {
+        expand: true,
+        cwd: 'src/nchw/image/',
+        src: [
+          '*.{gif,GIF,jpg,JPG,png,PNG,svg,SVG}'
+        ],
+        dest: 'dist/nchw/image/'
+      }
+    ]
+  },
+
   "cyclenation": {
     files: [
       {

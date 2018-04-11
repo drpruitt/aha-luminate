@@ -149,6 +149,19 @@ module.exports = (grunt) ->
       'replace'
       'htmlmin'
       'imagemin'
+    ], 'nchw'
+    runTargetedTask [
+      'copy'
+    ], 'nchw-scripts'
+        runTargetedTask [
+      'clean'
+      'sass'
+      'postcss'
+      'cssmin'
+      'uglify'
+      'replace'
+      'htmlmin'
+      'imagemin'
     ], 'cyclenation'
     runTargetedTask [
       'copy'
@@ -178,6 +191,9 @@ module.exports = (grunt) ->
       if task.indexOf('notify:') is -1
         devTasks.push task
     config.watch['district-heart'].tasks.forEach (task) ->
+      if task.indexOf('notify:') is -1
+        devTasks.push task
+    config.watch['nchw'].tasks.forEach (task) ->
       if task.indexOf('notify:') is -1
         devTasks.push task
     config.watch['cyclenation'].tasks.forEach (task) ->

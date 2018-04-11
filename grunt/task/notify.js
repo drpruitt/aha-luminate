@@ -64,6 +64,13 @@ module.exports = {
     }
   },
 
+  "nchw": {
+    options: {
+      title: 'AHA Luminate Framework',
+      message: 'NCHW files updated.'
+    }
+  },
+
   "cyclenation": {
     options: {
       title: 'AHA Luminate Framework',

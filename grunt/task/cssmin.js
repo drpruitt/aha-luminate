@@ -82,7 +82,14 @@ module.exports = {
       }
     ]
   },
-
+  "nchw": {
+    files: [
+      {
+        src: 'dist/nchw/css/main.css', 
+        dest: 'dist/nchw/css/main.'+ '<%= timestamp %>' +'.min.css'
+      }
+    ]
+  },
   "cyclenation": {
     files: [
       {
