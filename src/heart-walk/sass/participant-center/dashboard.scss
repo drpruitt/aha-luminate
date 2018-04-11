@@ -523,6 +523,11 @@ div#send_via_FC {
       background: #ffffff;
       color: #4260b4;
       text-transform: uppercase;
+      padding: 12px 20px;
+      
+      @media (min-width: 360px) {
+        padding: 12px 24px;
+      }
     }
     
     .fa {
@@ -564,7 +569,12 @@ div#send_via_FC {
       background: #ffffff;
       color: #4260b4;
       text-transform: uppercase;
+      padding: 12px 20px;
       margin: 18px 0 0;
+      
+      @media (min-width: 360px) {
+        padding: 12px 24px;
+      }
     }
   }
 }
