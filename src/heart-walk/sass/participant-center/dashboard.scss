@@ -453,7 +453,7 @@ div#send_via_FC {
   color: #de2427;
 }
 
-.pc-facebook-fundraiser {
+.ng-pc-container .pc-facebook-fundraiser {
   background: #4260b4;
   color: #ffffff;
   text-align: center;
@@ -513,7 +513,8 @@ div#send_via_FC {
     }
   }
   
-  .pc-facebook-fundraiser-btn {
+  .btn.pc-facebook-fundraiser-btn, 
+  a.btn.pc-facebook-fundraiser-btn {
     &, 
     &:link, 
     &:visited, 
@@ -539,7 +540,7 @@ div#send_via_FC {
   }
 }
 
-.pc-facebook-fundraiser-connected {
+.ng-pc-container .pc-facebook-fundraiser-connected {
   background: #4260b4;
   color: #ffffff;
   text-align: center;
@@ -559,7 +560,8 @@ div#send_via_FC {
     margin: 0 0 16px;
   }
   
-  .pc-facebook-fundraiser-btn {
+  .btn.pc-facebook-fundraiser-btn, 
+  a.btn.pc-facebook-fundraiser-btn {
     &, 
     &:link, 
     &:visited, 
