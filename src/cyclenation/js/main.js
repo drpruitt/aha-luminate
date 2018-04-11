@@ -650,7 +650,8 @@
       $('.js__event-search-form').on('submit', function (e) {
         e.preventDefault();
       });
-      var allEventDataUrl = 'https://secure3.convio.net/' + luminateExtend.global.tablePrefix + '/cyclenation_data/CN_EventTotals.txt';
+
+      var allEventDataUrl = '../cyclenation_data/CN_EventTotals.txt';
 
       $.getJSON(allEventDataUrl, function (data) {
         var totalRaised = data[0].TotalRevenue;
