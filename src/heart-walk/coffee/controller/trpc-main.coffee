@@ -53,7 +53,7 @@ angular.module 'trPcControllers'
                     $rootScope.facebookFundraiserUserId = facebookUserId
                     $rootScope.facebookFundraiserAccessToken = accessToken
                     $rootScope.facebookFundraiserCreateStatus = 'pending'
-                    fundraiserName = 'Temp Heart Walk Name'
+                    fundraiserName = 'Get pumped up for Heart Walk'
                     FacebookFundraiserService.createFundraiser fundraiserName
                       .then (response) ->
                         facebookFundraiserId = response.data.fundraiser?.id

@@ -18,8 +18,8 @@ angular.module 'trPcApp'
           fundraiser_description: fundraiserDescription
           default_goal_amount: '250.00'
           end_time: endTime
-          cover_photo: ''
-          default_cover_photo: ''
+          cover_photo: $rootScope.secureDomain + 'images/content/pagebuilder/heartwalk-facebook-fundraiser-cover.jpg'
+          default_cover_photo: $rootScope.secureDomain + 'images/content/pagebuilder/heartwalk-facebook-fundraiser-cover.jpg'
           facebook_user_id: $rootScope.facebookFundraiserUserId
           access_token: $rootScope.facebookFundraiserAccessToken
         $http.post 'https://facebookfundraiser.sky.blackbaud.com/create_fundraiser', requestData

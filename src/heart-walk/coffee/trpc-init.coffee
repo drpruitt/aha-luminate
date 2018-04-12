@@ -29,6 +29,10 @@ angular.module 'trPcApp'
       if appVersion isnt NgPc_APP_INFO.version
         console.warn 'Angular TeamRaiser Participant Center: App version in HTML and JavaScript differ. Please confirm all files are up-to-date.'
       $rootScope.nonsecurePath = $embedRoot.data('nonsecure-path') if $embedRoot.data('nonsecure-path') isnt ''
+      $rootScope.securePath = $embedRoot.data('secure-path') if $embedRoot.data('secure-path') isnt ''
+      $rootScope.secureDomain = ''
+      if $rootScope.securePath
+        $rootScope.secureDomain = $rootScope.securePath.replace '/site/', '/'
       $rootScope.apiKey = $embedRoot.data('api-key') if $embedRoot.data('api-key') isnt ''
       if not $rootScope.apiKey
         new Error 'Angular TeamRaiser Participant Center: No Luminate Online API Key is defined.'
