@@ -121,15 +121,19 @@
             <span class="badge">{{contactCounts.email_rpt_show_donors}}</span>
             Donors
           </a>
-          <a class="list-group-item" ng-class="{'active': filter == 'email_rpt_show_teammates'}" ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_nondonors/list">
+          <a class="list-group-item" ng-class="{'active': filter == 'email_rpt_show_nondonors'}" ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_nondonors/list">
+            <span class="badge">{{contactCounts.email_rpt_show_nondonors}}</span>
+            Donors
+          </a>
+          <a class="list-group-item" ng-class="{'active': filter == 'email_rpt_show_teammates'}" ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_teammates/list">
             <span class="badge">{{contactCounts.email_rpt_show_teammates}}</span>
             Current Teammates
           </a>
-          <a class="list-group-item" ng-class="{'active': filter == 'email_rpt_show_lybunt_teammates'}" ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_nondonors/list">
+          <a class="list-group-item" ng-class="{'active': filter == 'email_rpt_show_lybunt_teammates'}" ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_lybunt_teammates/list">
             <span class="badge">{{contactCounts.email_rpt_show_lybunt_teammates}}</span>
             Past Teammates
           </a>
-          <a class="list-group-item" ng-class="{'active': filter == 'email_rpt_show_ly_donors'}" ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_nondonors/list">
+          <a class="list-group-item" ng-class="{'active': filter == 'email_rpt_show_ly_donors'}" ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_ly_donors/list">
             <span class="badge">{{contactCounts.email_rpt_show_ly_donors}}</span>
             Past-Donors
           </a>

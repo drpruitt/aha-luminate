@@ -134,7 +134,7 @@ angular.module 'trPcControllers'
         email_rpt_show_ly_donors: 'Past Donors'
 
       
-      $translate [ 'contacts_groups_all', 'filter_email_rpt_show_never_emailed', 'filter_email_rpt_show_nondonors_followup', 'filter_email_rpt_show_unthanked_donors', 'filter_email_rpt_show_donors', 'filter_email_rpt_show_nondonors', 'filter_email_rpt_show_lybunt_teammates', 'filter_email_rpt_show_teammates', 'filter_email_rpt_show_ly_donors' ]
+      $translate [ 'contacts_groups_all', 'filter_email_rpt_show_never_emailed', 'filter_email_rpt_show_nondonors_followup', 'filter_email_rpt_show_unthanked_donors', 'filter_email_rpt_show_donors', 'filter_email_rpt_show_nondonors', 'filter_email_rpt_show_teammates', 'filter_email_rpt_show_lybunt_teammates', 'filter_email_rpt_show_ly_donors' ]
         .then (translations) ->
           filterNames.email_rpt_show_all = translations.contacts_groups_all
           filterNames.email_rpt_show_never_emailed = translations.filter_email_rpt_show_never_emailed
@@ -142,8 +142,8 @@ angular.module 'trPcControllers'
           filterNames.email_rpt_show_unthanked_donors = translations.filter_email_rpt_show_unthanked_donors
           filterNames.email_rpt_show_donors = translations.filter_email_rpt_show_donors
           filterNames.email_rpt_show_nondonors = translations.filter_email_rpt_show_nondonors
-          filterNames.email_email_rpt_show_teammates = translations.filter_email_rpt_show_teammates
-          filterNames.email_email_rpt_show_lybunt_teammates = translations.filter_email_rpt_show_lybunt_teammates
+          filterNames.email_rpt_show_teammates = translations.filter_email_rpt_show_teammates
+          filterNames.email_rpt_show_lybunt_teammates = translations.filter_email_rpt_show_lybunt_teammates
           filterNames.email_rpt_show_ly_donors = translations.filter_email_rpt_show_ly_donors
         , (translationIds) ->
           filterNames.email_rpt_show_all = translationIds.contacts_groups_all
@@ -152,8 +152,8 @@ angular.module 'trPcControllers'
           filterNames.email_rpt_show_unthanked_donors = translationIds.filter_email_rpt_show_unthanked_donors
           filterNames.email_rpt_show_donors = translationIds.filter_email_rpt_show_donors
           filterNames.email_rpt_show_nondonors = translationIds.filter_email_rpt_show_nondonors
-          filterNames.email_email_rpt_show_teammates = translationIds.filter_email_rpt_show_teammates
-          filterNames.email_email_rpt_show_lybunt_teammates = translationIds.filter_email_rpt_show_lybunt_teammates
+          filterNames.email_rpt_show_teammates = translationIds.filter_email_rpt_show_teammates
+          filterNames.email_rpt_show_lybunt_teammates = translationIds.filter_email_rpt_show_lybunt_teammates
           filterNames.email_rpt_show_ly_donors = translationIds.filter_email_rpt_show_ly_donors
       
       $scope.filterName = filterNames[$scope.filter]
