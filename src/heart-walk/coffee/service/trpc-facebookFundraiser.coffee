@@ -12,6 +12,7 @@ angular.module 'trPcApp'
         if endDateParts.length is 3 and Number(endDateParts[0]) < 13 and Number(endDateParts[1]) < 32 and Number(endDateParts[2]) > 999
           endTime = Math.floor new Date(Number(endDate.split('/')[2]), Number(endDate.split('/')[0]) - 1, Number(endDate.split('/')[1])) / 1000
         requestData =
+          is_dev: $rootScope.tablePrefix is 'heartdev'
           external_id: 'lotrp:' + $rootScope.frId + '-' + $rootScope.consId
           charity_id: $rootScope.facebookCharityId
           fundraiser_name: fundraiserName
@@ -26,12 +27,14 @@ angular.module 'trPcApp'
       
       syncDonations: ->
         requestData =
+          is_dev: $rootScope.tablePrefix is 'heartdev'
           external_id: 'lotrp:' + $rootScope.frId + '-' + $rootScope.consId
           charity_id: $rootScope.facebookCharityId
         $http.post 'https://facebookfundraiser.sky.blackbaud.com/sync_donations', requestData
       
       confirmFundraiserStatus: ->
         requestData =
+          is_dev: $rootScope.tablePrefix is 'heartdev'
           external_id: 'lotrp:' + $rootScope.frId + '-' + $rootScope.consId
           charity_id: $rootScope.facebookCharityId
         $http.post 'https://facebookfundraiser.sky.blackbaud.com/confirm_fundraiser_status', requestData
@@ -44,6 +47,7 @@ angular.module 'trPcApp'
         if endDateParts.length is 3 and Number(endDateParts[0]) < 13 and Number(endDateParts[1]) < 32 and Number(endDateParts[2]) > 999
           endTime = Math.floor new Date(Number(endDate.split('/')[2]), Number(endDate.split('/')[0]) - 1, Number(endDate.split('/')[1])) / 1000
         requestData =
+          is_dev: $rootScope.tablePrefix is 'heartdev'
           external_id: 'lotrp:' + $rootScope.frId + '-' + $rootScope.consId
           charity_id: $rootScope.facebookCharityId
           end_time: endTime
