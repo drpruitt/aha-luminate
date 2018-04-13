@@ -90,6 +90,14 @@ module.exports = {
       }
     ]
   },
+  "heartchase": {
+    files: [
+      {
+        src: 'dist/heartchase/css/main.css', 
+        dest: 'dist/heartchase/css/main.'+ '<%= timestamp %>' +'.min.css'
+      }
+    ]
+  },
   "cyclenation": {
     files: [
       {
