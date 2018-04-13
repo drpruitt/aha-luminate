@@ -1,0 +1,41 @@
+<div class="modal-header">
+  <h2 class="modal-title">
+    Reach Your Goal Faster with Facebook
+  </h2>
+</div>
+<div class="modal-body">
+  <div>
+    <ol>
+      <li>
+        Connect this fundraiser to Facebook.
+      </li>
+      <li>
+        Invite friends, share updates and collect donations on Facebook.
+      </li>
+      <li>
+        Keep track of your progress. The money you raise on Facebook will count toward your goal.
+      </li>
+    </ol>
+    <div class="alert alert-danger" ng-if="facebookFundraiserLoginStatus == 'login_error' || facebookFundraiserLoginStatus == 'permission_error' || facebookFundraiserLoginStatus == 'create_fundraiser_error' || facebookFundraiserCreateStatus == 'login_error' || facebookFundraiserCreateStatus == 'permission_error' || facebookFundraiserCreateStatus == 'create_fundraiser_error'" ng-cloak>
+      An error occurred attempting to connect to Facebook. Please try again later.
+    </div>
+    <div class="alert alert-danger" ng-if="facebookFundraiserLoginStatus == 'declined_manage_fundraisers'" ng-cloak>
+      We need your permission to create a Facebook Fundraiser on your behalf.
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <div class="clearfix">
+    <div class="pull-left">
+      <a href class="btn btn-primary-inverted text-uppercase" ng-click="notRightNow()">Not Right Now</button>
+    </div>
+    <div class="pull-right">
+      <button type="button" class="btn btn-primary text-uppercase" ng-click="loginToFacebook()" ng-if="facebookFundraiserLoginStatus != 'pending' && facebookFundraiserCreateStatus != 'pending'">
+        <span class="fa fa-facebook-square"></span> Connect Fundraiser to Facebook
+      </button>
+      <button type="button" class="btn btn-primary text-uppercase" disabled ng-if="facebookFundraiserLoginStatus == 'pending' || facebookFundraiserCreateStatus == 'pending'" ng-cloak>
+        <span class="fa fa-facebook-square"></span> Loading ...
+      </button>
+    </div>
+  </div>
+</div>
