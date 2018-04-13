@@ -200,7 +200,7 @@
             We need your permission to create a Facebook Fundraiser on your behalf.
           </div>
           <button type="button" class="btn pc-facebook-fundraiser-btn" ng-click="loginToFacebook()" ng-if="facebookFundraiserLoginStatus != 'pending' && facebookFundraiserCreateStatus != 'pending'" ng-cloak>
-            <span class="fa fa-facebook-square"></span> Connect Fundraiser to Facebook
+            <span class="fa fa-facebook-square"></span> Connect <span class="hidden-text-xxs">Fundraiser</span> to Facebook
           </button>
           <button type="button" class="btn pc-facebook-fundraiser-btn" disabled ng-if="facebookFundraiserLoginStatus == 'pending' || facebookFundraiserCreateStatus == 'pending'" ng-cloak>
             <span class="fa fa-facebook-square"></span> Loading ...

@@ -531,9 +531,17 @@ div#send_via_FC {
       text-transform: uppercase;
       padding: 12px 20px;
       margin: 16px 0 0;
-
+      
       @media (min-width: 360px) {
         padding: 12px 24px;
+      }
+    }
+    
+    .hidden-text-xxs {
+      display: none;
+      
+      @media (min-width: 375px) {
+        display: inline;
       }
     }
     
