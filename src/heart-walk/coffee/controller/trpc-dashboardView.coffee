@@ -553,10 +553,19 @@ angular.module 'trPcControllers'
         $scope.userInteractions[interaction] = 1
         $uibModalStack.dismissAll()
         runHeaderCheck()
-
+      
+      $scope.scrollToFacebookFundraiser = (skip) ->
+        if skip
+          LBskip 'facebookFundraiser'
+        $timeout ->
+          if jQuery('.js--facebook-fundraiser-completed-section').length > 0
+            jQuery('html, body').animate
+              scrollTop: jQuery('.js--facebook-fundraiser-completed-section').offset().top - 150
+            , 250
+      
       $scope.goSocial = ->
         logUserInt 'social', $scope.frId
-        window.location.href = 'PageServer?pagename=heartwalk_fundraising_tools&amp;fr_id='+$scope.frId
+        window.location.href = 'PageServer?pagename=heartwalk_fundraising_tools&amp;fr_id=' + $scope.frId
 
       $scope.profileProgress = 0
       $scope.profileChecklist = ->

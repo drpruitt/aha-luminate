@@ -45,15 +45,9 @@
     </div>
     <div class="pull-right">
       <div ng-if="facebookFundraisersEnabled" ng-cloak>
-        <button type="button" class="btn btn-primary text-uppercase" ng-click="loginToFacebook()" ng-if="facebookFundraiserLoginStatus != 'pending' && facebookFundraiserCreateStatus != 'pending'">
+        <button type="button" class="btn btn-primary text-uppercase" ng-click="loginToFacebook(); scrollToFacebookFundraiser(true)">
           <span class="fa fa-facebook-square"></span> Connect Fundraiser to Facebook
         </button>
-        <button type="button" class="btn btn-primary text-uppercase" disabled ng-if="facebookFundraiserLoginStatus == 'pending' || facebookFundraiserCreateStatus == 'pending'" ng-cloak>
-          <span class="fa fa-facebook-square"></span> Loading ...
-        </button>
-        <div class="hidden" hidden aria-hidden="true">
-          <button type="button" class="js--facebook-fundraiser-dismiss" ng-click="LBskip('facebookFundraiser')"></button>
-        </div>
       </div>
       <div ng-if="!facebookFundraisersEnabled" ng-cloak>
         <a id="LBupdateMyPage" ng-href="{{personalPageUrl}}" class="btn btn-primary text-uppercase">Update My Page</a>
