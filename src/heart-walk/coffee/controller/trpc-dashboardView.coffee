@@ -393,7 +393,7 @@ angular.module 'trPcControllers'
                 $scope.profilePercent = 0
               else
                 $scope.profilePercent = $scope.profileProgress / 4 * 100
-              if $scope.facebookFundraisersEnabled and !$rootScope.facebookFundraiserId or $rootScope.facebookFundraiserId is ''
+              if $scope.facebookFundraisersEnabled and $rootScope.facebookFundraiserId and $rootScope.facebookFundraiserId isnt ''
                 $scope.userInteractions.facebookFundraiser = 1
                 logUserInt 'facebookFundraiser', $scope.frId
               if $rootScope.updatedProfile is 'TRUE' and $scope.userInteractions.page is 0
@@ -429,7 +429,10 @@ angular.module 'trPcControllers'
           skipLBs = 0
         sessionStorage.setItem 'PCLogin', 'yes'
         if $rootScope.participantRegistration.lastPC2Login is '0'
-          $scope.dashboardGreeting = 'page'
+          if not $scope.facebookFundraisersEnabled
+            $scope.dashboardGreeting = 'page'
+          else
+            $scope.dashboardGreeting = 'facebookFundraiser'
           if skipLBs is 0
             $scope.LBthankYouRegisteringModal = $uibModal.open
               scope: $scope
@@ -438,7 +441,7 @@ angular.module 'trPcControllers'
               document.getElementById('LBupdateMyPage').onclick = ->
                 _gaq.push(['t2._trackEvent', 'HW PC', 'click', 'Update my page - thank you for registering lightbox'])
             , 500
-        else if $scope.userInteractions.facebookFundraiser is 1
+        else if $scope.facebookFundraisersEnabled and $scope.userInteractions.facebookFundraiser is 0
           $scope.dashboardGreeting = 'facebookFundraiser'
           if skipLBs is 0
             $scope.LBwelcomeBackModal = $uibModal.open
@@ -514,7 +517,9 @@ angular.module 'trPcControllers'
               templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBgoal2.html'
 
       runHeaderCheck = ->
-        if $scope.userInteractions.page is 0
+        if $scope.userInteractions.facebookFundraiser is 0
+          $scope.dashboardGreeting = 'facebookFundraiser'
+        else if $scope.userInteractions.page is 0
           $scope.dashboardGreeting = 'page'
         else if $scope.userInteractions.donate is 0
           $scope.dashboardGreeting = 'donate'
@@ -561,7 +566,7 @@ angular.module 'trPcControllers'
           if jQuery('.js--facebook-fundraiser-uncompleted-section').length > 0
             jQuery('html, body').animate
               scrollTop: jQuery('.js--facebook-fundraiser-uncompleted-section').offset().top - 150
-          if jQuery('.js--facebook-fundraiser-completed-section').length > 0
+          else if jQuery('.js--facebook-fundraiser-completed-section').length > 0
             jQuery('html, body').animate
               scrollTop: jQuery('.js--facebook-fundraiser-completed-section').offset().top - 150
             , 250
