@@ -171,5 +171,20 @@ module.exports = {
         'src/district-heart/coffee/**/trpc-*.*'
       ]
     }
+  },
+  "heartchase": {
+    files: {
+      'dist/heartchase/js/main.js': [
+        'src/jump-hoops/coffee/init.coffee',
+        'src/jump-hoops/coffee/config/*.*',
+        'src/global/coffee/service/*.*',
+        'src/youth-markets/coffee/service/*.*',
+        'src/youth-markets/coffee/controller/*.*',
+        'src/jump-hoops/coffee/service/*.*',
+        'src/global/coffee/directive/*.*',
+        'src/jump-hoops/coffee/directive/*.*',
+        'src/jump-hoops/coffee/**/*.*',
+      ]
+    }
   }
 }
