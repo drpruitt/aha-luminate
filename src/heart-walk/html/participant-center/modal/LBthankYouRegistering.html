@@ -3,13 +3,19 @@
     Thank You for Registering
   </h2>
 </div>
+<div class="modal-header" ng-if="facebookFundraisersEnabled" ng-cloak>
+  <p>
+    <span ng-if="constituent.name && constituent.name.first">{{constituent.name.first}}</span><span ng-if="!constituent.name.first">Participant</span>, Time to put your heart into it! Use the Participant Center to update your story, send emails, and find resources to hit your fundraising goal.
+  </p>
+</div>
 <div class="modal-body">
   <div>
-    <p>
-      <span ng-if="constituent.name && constituent.name.first">{{constituent.name.first}}</span><span ng-if="!constituent.name.first">Participant</span>, Time to put your heart into it! Use the Participant Center to update your story, send emails, and find resources to hit your fundraising goal.
-    </p>
+    <div ng-if="!facebookFundraisersEnabled" ng-cloak>
+      <p>
+        <span ng-if="constituent.name && constituent.name.first">{{constituent.name.first}}</span><span ng-if="!constituent.name.first">Participant</span>, Time to put your heart into it! Use the Participant Center to update your story, send emails, and find resources to hit your fundraising goal.
+      </p>
+    </div>
     <div ng-if="facebookFundraisersEnabled" ng-cloak>
-      <hr>
       <p class="h2">
         Reach Your Goal Faster with Facebook
       </p>

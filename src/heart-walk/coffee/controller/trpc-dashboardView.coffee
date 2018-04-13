@@ -184,7 +184,6 @@ angular.module 'trPcControllers'
                 $scope.newOfflineGift.email= ''
                 $scope.newOfflineGift.name_error= false
 
-
       #Profile checklist
       $scope.consProfilePromises = []
 
