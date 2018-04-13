@@ -27,12 +27,17 @@ angular.module 'trPcControllers'
         checkAddThis()
       
       if $rootScope.facebookFundraisersEnabled
+        toggleFacebookFundraiserStatus = ->
+          if not $rootScope.$$phase
+            $rootScope.$apply()
         $rootScope.loginToFacebook = ->
           $rootScope.facebookFundraiserLoginStatus = 'pending'
+          toggleFacebookFundraiserStatus()
           FB.login (response) ->
             authResponse = response.authResponse
             if not authResponse
               $rootScope.facebookFundraiserLoginStatus = 'login_error'
+              toggleFacebookFundraiserStatus()
             else
               facebookUserId = response.authResponse.userID
               accessToken = response.authResponse.accessToken
@@ -71,5 +76,6 @@ angular.module 'trPcControllers'
                               jQuery('html, body').animate
                                 scrollTop: jQuery('.js--facebook-fundraiser-completed-section').offset().top - 150
                               , 250
+                  toggleFacebookFundraiserStatus()
           , scope: 'manage_fundraisers'
   ]
