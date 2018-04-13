@@ -24,12 +24,6 @@
           Keep track of your progress. The money you raise on Facebook will count toward your goal.
         </li>
       </ol>
-      <div class="alert alert-danger" ng-if="facebookFundraiserLoginStatus == 'login_error' || facebookFundraiserLoginStatus == 'permission_error' || facebookFundraiserLoginStatus == 'create_fundraiser_error' || facebookFundraiserCreateStatus == 'login_error' || facebookFundraiserCreateStatus == 'permission_error' || facebookFundraiserCreateStatus == 'create_fundraiser_error'" ng-cloak>
-        An error occurred attempting to connect to Facebook. Please try again later.
-      </div>
-      <div class="alert alert-danger" ng-if="facebookFundraiserLoginStatus == 'declined_manage_fundraisers'" ng-cloak>
-        We need your permission to create a Facebook Fundraiser on your behalf.
-      </div>
     </div>
     <div ng-if="!facebookFundraisersEnabled" ng-cloak>
       <p>
@@ -50,7 +44,7 @@
     </div>
     <div class="pull-right">
       <div ng-if="facebookFundraisersEnabled" ng-cloak>
-        <button type="button" class="btn btn-primary pc-facebook-fundraiser-btn text-uppercase" ng-click="loginToFacebook(); scrollToFacebookFundraiser(true)">
+        <button type="button" class="btn btn-primary pc-facebook-fundraiser-btn text-uppercase" ng-click="LBskip('facebookFundraiser'); loginToFacebook(); scrollToFacebookFundraiser()">
           <span class="fa fa-facebook-square"></span> Connect <span class="hidden-text-xxs">Fundraiser</span> to Facebook
         </button>
       </div>

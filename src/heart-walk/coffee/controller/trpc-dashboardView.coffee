@@ -559,13 +559,12 @@ angular.module 'trPcControllers'
         $uibModalStack.dismissAll()
         runHeaderCheck()
       
-      $scope.scrollToFacebookFundraiser = (skip) ->
-        if skip
-          $scope.LBskip 'facebookFundraiser'
+      $scope.scrollToFacebookFundraiser = ->
         $timeout ->
           if jQuery('.js--facebook-fundraiser-uncompleted-section').length > 0
             jQuery('html, body').animate
               scrollTop: jQuery('.js--facebook-fundraiser-uncompleted-section').offset().top - 150
+            , 250
           else if jQuery('.js--facebook-fundraiser-completed-section').length > 0
             jQuery('html, body').animate
               scrollTop: jQuery('.js--facebook-fundraiser-completed-section').offset().top - 150
