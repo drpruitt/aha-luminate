@@ -71,6 +71,13 @@ module.exports = {
     }
   },
 
+  "heartchase": {
+    options: {
+      title: 'AHA Luminate Framework',
+      message: 'HeartChase files updated.'
+    }
+  },
+
   "cyclenation": {
     options: {
       title: 'AHA Luminate Framework',
