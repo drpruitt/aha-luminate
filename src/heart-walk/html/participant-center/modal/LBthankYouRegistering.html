@@ -8,9 +8,34 @@
     <p>
       <span ng-if="constituent.name && constituent.name.first">{{constituent.name.first}}</span><span ng-if="!constituent.name.first">Participant</span>, Time to put your heart into it! Use the Participant Center to update your story, send emails, and find resources to hit your fundraising goal.
     </p>
-    <p>
-      <span class="redText strongText">Our first tip to you</span><span class="strongText">: be sure to Share Your Why by updating your personal story.</span>
-    </p>
+    <div ng-if="facebookFundraisersEnabled" ng-cloak>
+      <hr>
+      <p class="h2">
+        Reach Your Goal Faster with Facebook
+      </p>
+      <ol>
+        <li>
+          Connect this fundraiser to Facebook.
+        </li>
+        <li>
+          Invite friends, share updates and collect donations on Facebook.
+        </li>
+        <li>
+          Keep track of your progress. The money you raise on Facebook will count toward your goal.
+        </li>
+      </ol>
+      <div class="alert alert-danger" ng-if="facebookFundraiserLoginStatus == 'login_error' || facebookFundraiserLoginStatus == 'permission_error' || facebookFundraiserLoginStatus == 'create_fundraiser_error' || facebookFundraiserCreateStatus == 'login_error' || facebookFundraiserCreateStatus == 'permission_error' || facebookFundraiserCreateStatus == 'create_fundraiser_error'" ng-cloak>
+        An error occurred attempting to connect to Facebook. Please try again later.
+      </div>
+      <div class="alert alert-danger" ng-if="facebookFundraiserLoginStatus == 'declined_manage_fundraisers'" ng-cloak>
+        We need your permission to create a Facebook Fundraiser on your behalf.
+      </div>
+    </div>
+    <div ng-if="!facebookFundraisersEnabled" ng-cloak>
+      <p>
+        <span class="redText strongText">Our first tip to you</span><span class="strongText">: be sure to Share Your Why by updating your personal story.</span>
+      </p>
+    </div>
   </div>
 </div>
 <div class="modal-footer">
@@ -19,7 +44,17 @@
       <a href class="btn btn-primary-inverted text-uppercase" ng-click="sendGAEvent('Not Right Now - thank you for registering lightbox'); notRightNow()">Not Right Now</button>
     </div>
     <div class="pull-right">
-      <a id="LBupdateMyPage" ng-href="{{personalPageUrl}}" class="btn btn-primary text-uppercase">Update My Page</a>
+      <div ng-if="facebookFundraisersEnabled" ng-cloak>
+        <button type="button" class="btn btn-primary text-uppercase" ng-click="loginToFacebook()" ng-if="facebookFundraiserLoginStatus != 'pending' && facebookFundraiserCreateStatus != 'pending'">
+          <span class="fa fa-facebook-square"></span> Connect Fundraiser to Facebook
+        </button>
+        <button type="button" class="btn btn-primary text-uppercase" disabled ng-if="facebookFundraiserLoginStatus == 'pending' || facebookFundraiserCreateStatus == 'pending'" ng-cloak>
+          <span class="fa fa-facebook-square"></span> Loading ...
+        </button>
+      </div>
+      <div ng-if="!facebookFundraisersEnabled" ng-cloak>
+        <a id="LBupdateMyPage" ng-href="{{personalPageUrl}}" class="btn btn-primary text-uppercase">Update My Page</a>
+      </div>
     </div>
   </div>
 </div>
