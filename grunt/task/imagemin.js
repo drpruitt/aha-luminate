@@ -107,5 +107,18 @@ module.exports = {
         dest: 'dist/nchw/image/'
       }
     ]
+  },
+
+  "cyclenation": {
+    files: [
+      {
+        expand: true,
+        cwd: 'src/cyclenation/image/',
+        src: [
+          '*.{gif,GIF,jpg,JPG,png,PNG,svg,SVG}'
+        ],
+        dest: 'dist/cyclenation/image/'
+      }
+    ]
   }
 }

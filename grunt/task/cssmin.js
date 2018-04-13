@@ -89,5 +89,13 @@ module.exports = {
         dest: 'dist/nchw/css/main.'+ '<%= timestamp %>' +'.min.css'
       }
     ]
+  },
+  "cyclenation": {
+    files: [
+      {
+        src: 'dist/cyclenation/css/main.css', 
+        dest: 'dist/cyclenation/css/main.'+ '<%= timestamp %>' +'.min.css'
+      }
+    ]
   }
 }
