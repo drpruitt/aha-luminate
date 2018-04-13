@@ -65,11 +65,9 @@ angular.module 'trPcControllers'
                           $rootScope.facebookFundraiserUrl =
                             url: 'https://www.facebook.com/donate/' + $rootScope.facebookFundraiserId + '/'
                           FacebookFundraiserService.syncDonations()
-                          if $rootScope.coachingMark is 'welcome' or $rootScope.coachingMark is 'facebookFundraiser'
-                            $rootScope.coachingMarkModal.close()
-                            delete $rootScope.coachingMarkModal
-                            angular.element('.modal').click()
-                            CoachingMarkService.dismissCoachingMark $rootScope.coachingMark
+                          $facebookFundraiserDismiss = angular.element '.js--facebook-fundraiser-dismiss'
+                          if $facebookFundraiserDismiss.length > 0
+                            $facebookFundraiserDismiss.click()
                           $rootScope.facebookFundraiserConfirmedStatus = 'confirmed'
                           $timeout ->
                             if jQuery('.js--facebook-fundraiser-completed-section').length > 0
