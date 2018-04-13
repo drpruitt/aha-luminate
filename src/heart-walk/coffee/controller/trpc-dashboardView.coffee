@@ -558,6 +558,9 @@ angular.module 'trPcControllers'
         if skip
           $scope.LBskip 'facebookFundraiser'
         $timeout ->
+          if jQuery('.js--facebook-fundraiser-uncompleted-section').length > 0
+            jQuery('html, body').animate
+              scrollTop: jQuery('.js--facebook-fundraiser-uncompleted-section').offset().top - 150
           if jQuery('.js--facebook-fundraiser-completed-section').length > 0
             jQuery('html, body').animate
               scrollTop: jQuery('.js--facebook-fundraiser-completed-section').offset().top - 150
