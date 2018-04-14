@@ -112,6 +112,17 @@ module.exports = {
     ]
   },
 
+  "heartchase": {
+    files: [
+      {
+        expand: true,
+        cwd: "src/heartchase/html/",
+        src: ["**/*.*"],
+        dest: "dist/heartchase/html/"
+      }
+    ]
+  },
+
   "cyclenation": {
     files: [
       {
