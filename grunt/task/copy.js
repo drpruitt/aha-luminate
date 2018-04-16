@@ -129,6 +129,30 @@ module.exports = {
       }
     ]
   },
+  "heartchase-images": {
+    files: [
+      {
+        expand: true,
+        cwd: 'src/heartchase/image/',
+        src: [
+          '*.{gif,GIF,jpg,JPG,png,PNG,svg,SVG}'
+        ],
+        dest: 'dist/heartchase/image/'
+      }
+    ]
+  },
+  "heartchase-scripts": {
+    files: [
+      {
+        expand: true,
+        cwd: 'src/heartchase/js/',
+        src: [
+          '*.js'
+        ],
+        dest: 'dist/heartchase/js/'
+      }
+    ]
+  },
   "cyclenation-scripts": {
     files: [
       {

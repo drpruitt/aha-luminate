@@ -24,6 +24,8 @@ angular.module 'ahaLuminateApp'
     '$rootScope'
     'APP_INFO'
     ($rootScope, APP_INFO) ->
+      $rootScope.tablePrefix = luminateExtend.global.tablePrefix
+      
       # get data from root element
       $dataRoot = angular.element '[data-aha-luminate-root]'
       $rootScope.apiKey = $dataRoot.data('api-key') if $dataRoot.data('api-key') isnt ''

@@ -23,7 +23,8 @@ angular.module 'trPcControllers'
     'ContactService'
     'TeamraiserSurveyResponseService'
     'TeamraiserEmailService'
-    ($rootScope, $scope, $timeout, $filter, $location, $httpParamSerializer, $translate, $uibModal, $uibModalStack, APP_INFO, ConstituentService, TeamraiserRecentActivityService, TeamraiserRegistrationService, TeamraiserProgressService, TeamraiserGiftService, TeamraiserParticipantService, TeamraiserTeamService, TeamraiserNewsFeedService, TeamraiserCompanyService, TeamraiserShortcutURLService, ContactService, TeamraiserSurveyResponseService, TeamraiserEmailService) ->
+    'FacebookFundraiserService'
+    ($rootScope, $scope, $timeout, $filter, $location, $httpParamSerializer, $translate, $uibModal, $uibModalStack, APP_INFO, ConstituentService, TeamraiserRecentActivityService, TeamraiserRegistrationService, TeamraiserProgressService, TeamraiserGiftService, TeamraiserParticipantService, TeamraiserTeamService, TeamraiserNewsFeedService, TeamraiserCompanyService, TeamraiserShortcutURLService, ContactService, TeamraiserSurveyResponseService, TeamraiserEmailService, FacebookFundraiserService) ->
       $scope.dashboardPromises = []
 
       $scope.baseDomain = $location.absUrl().split('/site/')[0]
@@ -183,13 +184,12 @@ angular.module 'trPcControllers'
                 $scope.newOfflineGift.email= ''
                 $scope.newOfflineGift.name_error= false
 
-
       #Profile checklist
       $scope.consProfilePromises = []
 
       $scope.updateUserProfile = ($event) ->
         $event.preventDefault()
-        updateUserPromise = ConstituentService.update 'primary_address.street1=' + (if $scope.constituent.primary_address.street1 == null then '' else $scope.constituent.primary_address.street1) + '&primary_address.street2=' + (if $scope.constituent.primary_address.street2 == null then '' else $scope.constituent.primary_address.street2) + '&primary_address.city=' + (if $scope.constituent.primary_address.city == null then '' else $scope.constituent.primary_address.city) + '&primary_address.state=' + (if $scope.constituent.primary_address.state == null then '' else $scope.constituent.primary_address.state) + '&primary_address.zip=' + (if $scope.constituent.primary_address.zip == null then '' else $scope.constituent.primary_address.zip) + '&primary_address.country=' + (if $scope.constituent.primary_address.country == null then '' else $scope.constituent.primary_address.country) + '&mobile_phone=' + (if $scope.constituent.mobile_phone == null then '' else $scope.constituent.mobile_phone)
+        updateUserPromise = ConstituentService.update 'primary_address.street1=' + (if $scope.constituent.primary_address.street1 is null then '' else $scope.constituent.primary_address.street1) + '&primary_address.street2=' + (if $scope.constituent.primary_address.street2 is null then '' else $scope.constituent.primary_address.street2) + '&primary_address.city=' + (if $scope.constituent.primary_address.city is null then '' else $scope.constituent.primary_address.city) + '&primary_address.state=' + (if $scope.constituent.primary_address.state is null then '' else $scope.constituent.primary_address.state) + '&primary_address.zip=' + (if $scope.constituent.primary_address.zip is null then '' else $scope.constituent.primary_address.zip) + '&primary_address.country=' + (if $scope.constituent.primary_address.country is null then '' else $scope.constituent.primary_address.country) + '&mobile_phone=' + (if $scope.constituent.mobile_phone is null then '' else $scope.constituent.mobile_phone)
           .then (response) ->
             if response.data.errorResponse?
               $scope.updateProfileSuccess = false
@@ -226,7 +226,7 @@ angular.module 'trPcControllers'
               if surveyResponse
                 thisField =
                   type: null
-                  questionKey: if surveyResponse.key == null then 'question_' + surveyResponse.questionId else 'question_key_' + surveyResponse.key
+                  questionKey: if surveyResponse.key is null then 'question_' + surveyResponse.questionId else 'question_key_' + surveyResponse.key
                   data:
                     dataType: surveyResponse.questionType
                   templateOptions:
@@ -280,7 +280,7 @@ angular.module 'trPcControllers'
                       name: choice.label
                       value: choice.value
 
-                if thisField.questionKey != 'no_key_assigned'
+                if thisField.questionKey isnt 'no_key_assigned'
                   $scope.sqvm.surveyFields.push thisField
                   if surveyResponse.responseValue is 'User Provided No Response'
                     $scope.sqvm.surveyModel[thisField.questionKey] = null
@@ -331,6 +331,7 @@ angular.module 'trPcControllers'
               console.log 'log interaction failed'
 
       $scope.userInteractions = {
+        facebookFundraiser: 0
         page: 0
         donate: 0
         email: 0
@@ -358,55 +359,60 @@ angular.module 'trPcControllers'
                     if interaction.note
                       if interaction.note.text
                         interactionNote = Number(interaction.note.text)
-                        if $scope.frId == interactionNote
+                        if $scope.frId is interactionNote
                           switch interaction.subject
+                            when 'facebookFundraiser'
+                              $scope.userInteractions.facebookFundraiser = 1
                             when 'page'
-                                $scope.userInteractions.page = 1
+                              $scope.userInteractions.page = 1
                             when 'donate'
-                                $scope.userInteractions.donate = 1
+                              $scope.userInteractions.donate = 1
                             when 'email'
-                                $scope.userInteractions.email = 1
+                              $scope.userInteractions.email = 1
                             when 'why'
-                                $scope.userInteractions.why = 1
+                              $scope.userInteractions.why = 1
                             when 'social'
-                                $scope.userInteractions.social = 1
+                              $scope.userInteractions.social = 1
                             when 'profile'
-                                $scope.userInteractions.profile = 1
+                              $scope.userInteractions.profile = 1
                             when 'goal1'
-                                $scope.userInteractions.goal1 = 1
+                              $scope.userInteractions.goal1 = 1
                             when 'goal2'
-                                $scope.userInteractions.goal2 = 1
-              if $scope.sqvm.surveyModel.question_key_what_is_why != null
+                              $scope.userInteractions.goal2 = 1
+              if $scope.sqvm.surveyModel.question_key_what_is_why isnt null
                 $scope.profileChecklistItems.why = 1
               if $scope.sqvm.surveyModel.question_key_hw_years_participated
                 $scope.profileChecklistItems.years = 1
               if $scope.constituent.mobile_phone
                 $scope.profileChecklistItems.mobile = 1
-              if $scope.constituent.primary_address.street1 and $scope.constituent.primary_address.city and $scope.constituent.primary_address.state and $scope.constituent.primary_address.zip and $scope.constituent.primary_address.country != '' | null
+              if $scope.constituent.primary_address.street1 and $scope.constituent.primary_address.city and $scope.constituent.primary_address.state and $scope.constituent.primary_address.zip and $scope.constituent.primary_address.country isnt '' | null
                 $scope.profileChecklistItems.street = 1
               $scope.profileProgress = $scope.profileChecklistItems.mobile + $scope.profileChecklistItems.years + $scope.profileChecklistItems.street + $scope.profileChecklistItems.why
               if $scope.profileProgress is 0
                 $scope.profilePercent = 0
               else
                 $scope.profilePercent = $scope.profileProgress / 4 * 100
-              if $rootScope.updatedProfile is 'TRUE' && $scope.userInteractions.page is 0
+              if $scope.facebookFundraisersEnabled and $rootScope.facebookFundraiserId and $rootScope.facebookFundraiserId isnt ''
+                $scope.userInteractions.facebookFundraiser = 1
+                logUserInt 'facebookFundraiser', $scope.frId
+              if $rootScope.updatedProfile is 'TRUE' and $scope.userInteractions.page is 0
                 $scope.userInteractions.page = 1
-                logUserInt('page',$scope.frId)
-              if $rootScope.isSelfDonor is 'TRUE' && $scope.userInteractions.donate is 0
+                logUserInt 'page', $scope.frId
+              if $rootScope.isSelfDonor is 'TRUE' and $scope.userInteractions.donate is 0
                 $scope.userInteractions.donate = 1
-                logUserInt('donate',$scope.frId)
-              if $scope.messageCounts.sentMessages > 0 && $scope.userInteractions.email is 0
+                logUserInt 'donate', $scope.frId
+              if $scope.messageCounts.sentMessages > 0 and $scope.userInteractions.email is 0
                 $scope.userInteractions.email = 1
-                logUserInt('email',$scope.frId)
-              if $scope.sqvm.surveyModel.question_key_what_is_why != null && $scope.userInteractions.why is 0
+                logUserInt 'email', $scope.frId
+              if $scope.sqvm.surveyModel.question_key_what_is_why isnt null and $scope.userInteractions.why is 0
                 $scope.userInteractions.why = 1
-                logUserInt('why',$scope.frId)
-              if $scope.profileChecklistItems.why is 1 && $scope.profileChecklistItems.years is 1 && $scope.profileChecklistItems.mobile is 1 && $scope.userInteractions.profile is 0
+                logUserInt 'why', $scope.frId
+              if $scope.profileChecklistItems.why is 1 and $scope.profileChecklistItems.years is 1 and $scope.profileChecklistItems.mobile is 1 and $scope.userInteractions.profile is 0
                 $scope.userInteractions.profile = 1
-                logUserInt('profile',$scope.frId)
-              if $scope.participantProgress.percent >= 100 && $scope.userInteractions.goal1 is 0
+                logUserInt 'profile', $scope.frId
+              if $scope.participantProgress.percent >= 100 and $scope.userInteractions.goal1 is 0
                 $scope.userInteractions.goal1 = 1
-                logUserInt('goal1',$scope.frId)
+                logUserInt 'goal1', $scope.frId
               runLBroutes()
             response
         $scope.dashboardPromises.push userInteractionsPromise
@@ -417,12 +423,15 @@ angular.module 'trPcControllers'
       runLBroutes = ->
         skipLBs = 1
         $scope.dashboardGreeting = 'default'
-        PCLogin = sessionStorage.getItem('PCLogin');
+        PCLogin = sessionStorage.getItem 'PCLogin'
         if not PCLogin
           skipLBs = 0
         sessionStorage.setItem 'PCLogin', 'yes'
         if $rootScope.participantRegistration.lastPC2Login is '0'
-          $scope.dashboardGreeting = 'page'
+          if not $scope.facebookFundraisersEnabled
+            $scope.dashboardGreeting = 'page'
+          else
+            $scope.dashboardGreeting = 'facebookFundraiser'
           if skipLBs is 0
             $scope.LBthankYouRegisteringModal = $uibModal.open
               scope: $scope
@@ -431,6 +440,12 @@ angular.module 'trPcControllers'
               document.getElementById('LBupdateMyPage').onclick = ->
                 _gaq.push(['t2._trackEvent', 'HW PC', 'click', 'Update my page - thank you for registering lightbox'])
             , 500
+        else if $scope.facebookFundraisersEnabled and $scope.userInteractions.facebookFundraiser is 0
+          $scope.dashboardGreeting = 'facebookFundraiser'
+          if skipLBs is 0
+            $scope.LBwelcomeBackModal = $uibModal.open
+              scope: $scope
+              templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBfacebookFundraiser.html'
         else if $scope.userInteractions.page is 0
           $scope.dashboardGreeting = 'page'
           if skipLBs is 0
@@ -487,13 +502,13 @@ angular.module 'trPcControllers'
               document.getElementById('LBprofileWhy').onclick = ->
                 _gaq.push(['t2._trackEvent', 'HW PC', 'click', 'Whats your why - profile lightbox'])
             , 500
-        else if $scope.userInteractions.goal1 is 0 && $scope.participantProgress.percent >= 50
+        else if $scope.userInteractions.goal1 is 0 and $scope.participantProgress.percent >= 50
           $scope.dashboardGreeting = 'goal1'
           if skipLBs is 0
             $scope.LBgoal1Modal = $uibModal.open
               scope: $scope
               templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBgoal1.html'
-        else if $scope.userInteractions.goal2 is 0 && $scope.participantProgress.percent >= 100
+        else if $scope.userInteractions.goal2 is 0 and $scope.participantProgress.percent >= 100
           $scope.dashboardGreeting = 'goal2'
           if skipLBs is 0
             $scope.LBgoal2Modal = $uibModal.open
@@ -501,7 +516,9 @@ angular.module 'trPcControllers'
               templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBgoal2.html'
 
       runHeaderCheck = ->
-        if $scope.userInteractions.page is 0
+        if $scope.userInteractions.facebookFundraiser is 0
+          $scope.dashboardGreeting = 'facebookFundraiser'
+        else if $scope.userInteractions.page is 0
           $scope.dashboardGreeting = 'page'
         else if $scope.userInteractions.donate is 0
           $scope.dashboardGreeting = 'donate'
@@ -513,21 +530,21 @@ angular.module 'trPcControllers'
           $scope.dashboardGreeting = 'social'
         else if $scope.userInteractions.profile is 0
           $scope.dashboardGreeting = 'profile'
-        else if $scope.userInteractions.goal1 is 0 && $scope.participantProgress.percent >= 50
+        else if $scope.userInteractions.goal1 is 0 and $scope.participantProgress.percent >= 50
           $scope.dashboardGreeting = 'goal1'
-        else if $scope.userInteractions.goal2 is 0 && $scope.participantProgress.percent >= 100
+        else if $scope.userInteractions.goal2 is 0 and $scope.participantProgress.percent >= 100
           $scope.dashboardGreeting = 'goal2'
         else
           $scope.dashboardGreeting = 'default'
 
       $scope.LBgoalOneSubmit = ->
-        logUserInt('goal1',$scope.frId)
+        logUserInt 'goal1', $scope.frId
         $location.path '/email/compose'
 
       $scope.LBgoalTwoSubmit = ->
-        logUserInt('goal2',$scope.frId)
+        logUserInt 'goal2', $scope.frId
         $scope.LBgoal2Modal.close()
-        $scope.editGoal('Participant')
+        $scope.editGoal 'Participant'
 
       $scope.notRightNow = ->
         $uibModalStack.dismissAll()
@@ -536,14 +553,25 @@ angular.module 'trPcControllers'
         _gaq.push(['t2._trackEvent', 'HW PC', 'click', event])
 
       $scope.LBskip = (interaction) ->
-        logUserInt(interaction,$scope.frId)
+        logUserInt interaction, $scope.frId
         $scope.userInteractions[interaction] = 1
         $uibModalStack.dismissAll()
         runHeaderCheck()
-
+      
+      $scope.scrollToFacebookFundraiser = ->
+        $timeout ->
+          if jQuery('.js--facebook-fundraiser-uncompleted-section').length > 0
+            jQuery('html, body').animate
+              scrollTop: jQuery('.js--facebook-fundraiser-uncompleted-section').offset().top - 150
+            , 250
+          else if jQuery('.js--facebook-fundraiser-completed-section').length > 0
+            jQuery('html, body').animate
+              scrollTop: jQuery('.js--facebook-fundraiser-completed-section').offset().top - 150
+            , 250
+      
       $scope.goSocial = ->
-        logUserInt('social',$scope.frId)
-        window.location.href = 'PageServer?pagename=heartwalk_fundraising_tools&amp;fr_id='+$scope.frId
+        logUserInt 'social', $scope.frId
+        window.location.href = 'PageServer?pagename=heartwalk_fundraising_tools&amp;fr_id=' + $scope.frId
 
       $scope.profileProgress = 0
       $scope.profileChecklist = ->
@@ -573,13 +601,13 @@ angular.module 'trPcControllers'
           street: 0
           years: 0
         }
-        if $scope.sqvm.surveyModel.question_key_what_is_why != null
+        if $scope.sqvm.surveyModel.question_key_what_is_why isnt null
           $scope.profileChecklistItems.why = 1
         if $scope.sqvm.surveyModel.question_key_hw_years_participated
           $scope.profileChecklistItems.years = 1
         if $scope.constituent.mobile_phone
           $scope.profileChecklistItems.mobile = 1
-        if $scope.constituent.primary_address.street1 and $scope.constituent.primary_address.city and $scope.constituent.primary_address.state and $scope.constituent.primary_address.zip and $scope.constituent.primary_address.country != '' | null
+        if $scope.constituent.primary_address.street1 and $scope.constituent.primary_address.city and $scope.constituent.primary_address.state and $scope.constituent.primary_address.zip and $scope.constituent.primary_address.country isnt '' | null
           $scope.profileChecklistItems.street = 1
         $scope.profileProgress = $scope.profileChecklistItems.mobile + $scope.profileChecklistItems.years + $scope.profileChecklistItems.street + $scope.profileChecklistItems.why
         if $scope.profileProgress is 0
@@ -696,8 +724,17 @@ angular.module 'trPcControllers'
                     $scope.teamInfo = team
             response
         $scope.dashboardPromises.push updateGoalPromise
-
-
+      
+      if $scope.facebookFundraisersEnabled and $rootScope.facebookFundraiserId and $rootScope.facebookFundraiserId isnt ''
+        $rootScope.facebookFundraiserConfirmedStatus = 'pending'
+        FacebookFundraiserService.confirmFundraiserStatus()
+          .then (response) ->
+            if not response.data.status?.active
+              delete $rootScope.facebookFundraiserId
+              $rootScope.facebookFundraiserConfirmedStatus = 'deleted'
+            else
+              $rootScope.facebookFundraiserConfirmedStatus = 'confirmed'
+      
       $scope.participantProgress =
         raised: 0
         raisedFormatted: '$0'
@@ -824,6 +861,10 @@ angular.module 'trPcControllers'
                 else
                   $scope.editGoalModal.close()
                   $scope.refreshFundraisingProgress()
+                  if $rootScope.facebookFundraiserId
+                    FacebookFundraiserService.updateFundraiser()
+                      .then ->
+                        FacebookFundraiserService.syncDonations()
                 response
             $scope.dashboardPromises.push updateGoalPromise
           when 'Team'
@@ -1445,7 +1486,6 @@ angular.module 'trPcControllers'
         $scope.dashboardPromises.push getPrevShortcutPromise
       $scope.getPrevShortcut()
 
-
       $scope.personalPageUrlSecure = $scope.baseDomain + '/site/TR?fr_id=' + $scope.frId + '&pg=personal&px=' + $scope.consId
 
       $scope.editPageUrlOptions =
@@ -1479,15 +1519,15 @@ angular.module 'trPcControllers'
             updateUrlPromise = TeamraiserShortcutURLService.updateShortcut dataStr
               .then (response) ->
                 if response.data.errorResponse
-                  if $scope.editPageUrlOptions.updateUrlInput != $scope.prevShortcut.text
+                  if $scope.editPageUrlOptions.updateUrlInput isnt $scope.prevShortcut.text
                     $scope.editPageUrlOptions.updateUrlFailure = true;
-                    return $scope.editPageUrlOptions.updateUrlFailureMessage = response.data.errorResponse.message || 'An unexpected error occurred while updating your personal page URL.';
+                    return $scope.editPageUrlOptions.updateUrlFailureMessage = response.data.errorResponse.message or 'An unexpected error occurred while updating your personal page URL.';
                   else 
                     updateUrlPromise = TeamraiserShortcutURLService.updateShortcut("text=",$rootScope.prevFrIdForShortcut)
                       .then (response) ->
                         if (response.data.errorResponse)
                           $scope.editPageUrlOptions.updateUrlFailure = true
-                          return $scope.editPageUrlOptions.updateUrlFailureMessage = response.data.errorResponse.message || 'An unexpected error occurred while updating your personal page URL.';
+                          return $scope.editPageUrlOptions.updateUrlFailureMessage = response.data.errorResponse.message or 'An unexpected error occurred while updating your personal page URL.';
                         else 
                           $scope.updatePageUrl("Participant")
                 else
