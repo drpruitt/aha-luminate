@@ -1421,6 +1421,10 @@
         cd.setBirthMonth();
       });
 
+      $('#cons_birth_date_DAY').before('<label class="sr-only" for="cons_birth_date_DAY">Birth Day</label>');
+      $('#cons_birth_date_MONTH').before('<label class="sr-only" for="cons_birth_date_MONTH">Birth Month</label>');
+      $('#cons_birth_date_YEAR').before('<label class="sr-only" for="cons_birth_date_YEAR">Birth Year</label>');
+
 
       $('#cons_info_dob .form-content').append('<p class="small">If you would like to provide your birthday, we would love to acknowledge your special day each year.</p>');
 
@@ -1692,7 +1696,7 @@
 
     // Reg
     $('label[for="cons_first_name"]').eq(0).remove();
-    $('#cons_birth_date_MONTH, #cons_birth_date_DAY, #cons_birth_date_YEAR').attr('aria-labelledby', 'enterAmtLabel');
+    // $('#cons_birth_date_MONTH, #cons_birth_date_DAY, #cons_birth_date_YEAR').attr('aria-labelledby', 'enterAmtLabel');
     $('#cons_birth_date_YEAR').attr('aria-hidden', true);
 
     // paymentForm
@@ -1706,9 +1710,9 @@
       return '<h1 class="h3 ' + $(this).attr('class') + '" id="' + $(this).attr('id') + '">' + $(this).html() + '</h1>';
     });
 
-    // $('#title_container').replaceWith(function () {
-    //   return '<h1 class="h3 ' + $(this).attr('class') + '" id="' + $(this).attr('id') + '">' + $(this).html() + '</h1>';
-    // });
+    $('#title_container').replaceWith(function () {
+      return '<h1 class="h3 ' + $(this).attr('class') + '" id="' + $(this).attr('id') + '">' + $(this).html() + '</h1>';
+    });
 
     // Update help link to not be redundant
     $('#responsive_payment_typecc_cvv_row .HelpLink').attr('title', 'Opens in new window');
