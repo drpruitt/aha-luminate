@@ -99,9 +99,17 @@
   }
   .don-level-btn {
     .donation-level-row-decoration-container {
-      // @extend .btn-group;
-      @extend .btn-group-toggle;
       width: 100%;
+      input[type="radio"]{
+        position: absolute;
+        left: 20%;
+        top: 22%;
+      }
+      @include media-breakpoint-down(sm) {
+        input[type="radio"]{
+          top: 25%;
+        }
+      }
     }
     .donation-level-row-label {
       @extend .btn;
@@ -383,14 +391,27 @@ div.responsive div.ErrorMessage.page-error>span.field-error-text {
 #emergency_contact_title_container {
   @extend .bold-label;
 }
-div.part-type-container .part-type-decoration-messages {
-  width:100%;
-  max-width:100%;
-  // margin:0;
-  label {
-    // margin:0;
-    height:100%;
+div.part-type-container {
+  position:relative;
+  .part-type-decoration-messages {
     width:100%;
+    max-width:100%;
+    label {
+      height:100%;
+      width:100%;
+    }
+  }
+  input {
+    margin:0;
+    position: absolute;
+    top: 35%;
+    left: 15%;
+  }
+  @include media-breakpoint-down(sm) {
+    input {
+      top: 35%;
+      left: 10%;
+    }
   }
 }
 #F2fRegPartType,
@@ -403,9 +424,6 @@ div.part-type-container {
   text-align:center;
   border: 1px solid $black;
   @extend .my-2;
-  input[type="radio"] {
-    display:none;
-  }
   &:hover {
     cursor:pointer;
   }
