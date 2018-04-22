@@ -159,7 +159,7 @@ module.exports = {
       'notify:district-heart'
     ]
   },
-
+  
   "nchw": {
     files: [
       'src/nchw/html/**/*',
@@ -176,7 +176,7 @@ module.exports = {
       'notify:nchw'
     ]
   },
-
+  
   "heartchase": {
     files: [
       'src/heartchase/html/**/*',
@@ -193,7 +193,7 @@ module.exports = {
       'notify:heartchase'
     ]
   },
-
+  
   "cyclenation": {
     files: [
       'src/cyclenation/html/**/*',
