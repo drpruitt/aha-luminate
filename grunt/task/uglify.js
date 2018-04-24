@@ -102,7 +102,7 @@ module.exports = {
       }
     ]
   },
-
+  
   "nchw": {
     files: [
       {
@@ -111,7 +111,16 @@ module.exports = {
       }
     ]
   },
-
+  
+  "heartchase": {
+    files: [
+      {
+        src: ["src/heartchase/js/main.js"],
+        dest: "dist/heartchase/js/main." + "<%= timestamp %>" + ".min.js"
+      }
+    ]
+  },
+  
   "cyclenation": {
     files: [
       {

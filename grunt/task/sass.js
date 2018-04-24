@@ -66,7 +66,7 @@ module.exports = {
       ]
     }
   },
-
+  
   "nchw": {
     files: {
       'dist/nchw/css/main.css': [
@@ -74,7 +74,15 @@ module.exports = {
       ]
     }
   },
-
+  
+  "heartchase": {
+    files: {
+      'dist/heartchase/css/main.css': [
+        'src/heartchase/sass/main.scss'
+      ]
+    }
+  },
+  
   "cyclenation": {
     files: {
       'dist/cyclenation/css/main.css': [
