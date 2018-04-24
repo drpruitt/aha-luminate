@@ -105,6 +105,7 @@ module.exports = {
       }
     ]
   },
+  
   "nchw-images": {
     files: [
       {
@@ -117,6 +118,7 @@ module.exports = {
       }
     ]
   },
+  
   "nchw-scripts": {
     files: [
       {
@@ -129,6 +131,7 @@ module.exports = {
       }
     ]
   },
+  
   "heartchase-images": {
     files: [
       {
@@ -141,6 +144,7 @@ module.exports = {
       }
     ]
   },
+  
   "heartchase-scripts": {
     files: [
       {
@@ -153,6 +157,7 @@ module.exports = {
       }
     ]
   },
+  
   "cyclenation-scripts": {
     files: [
       {
@@ -165,5 +170,4 @@ module.exports = {
       }
     ]
   }
-
 }

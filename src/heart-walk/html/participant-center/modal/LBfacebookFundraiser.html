@@ -21,10 +21,10 @@
 <div class="modal-footer">
   <div class="clearfix">
     <div class="pull-left">
-      <a href class="btn btn-primary-inverted text-uppercase" ng-click="notRightNow(); LBskip('facebookFundraiser')">Not Right Now</button>
+      <a href class="btn btn-primary-inverted text-uppercase" ng-click="sendGAEvent('Not Right Now – Connect to Fundraiser FB lightbox2'); notRightNow(); LBskip('facebookFundraiser')">Not Right Now</button>
     </div>
     <div class="pull-right">
-      <button type="button" class="btn btn-primary pc-facebook-fundraiser-btn text-uppercase" ng-click="LBskip('facebookFundraiser'); loginToFacebook(); scrollToFacebookFundraiser()">
+      <button type="button" class="btn btn-primary pc-facebook-fundraiser-btn text-uppercase" ng-click="sendGAEvent('Connect to Fundraiser FB lightbox2'); LBskip('facebookFundraiser'); loginToFacebook(); scrollToFacebookFundraiser()">
         <span class="fa fa-facebook-square"></span> Connect <span class="hidden-text-xxs">Fundraiser</span> to Facebook
       </button>
     </div>

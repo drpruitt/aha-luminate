@@ -536,22 +536,22 @@ angular.module 'trPcControllers'
           $scope.dashboardGreeting = 'goal2'
         else
           $scope.dashboardGreeting = 'default'
-
+      
       $scope.LBgoalOneSubmit = ->
         logUserInt 'goal1', $scope.frId
         $location.path '/email/compose'
-
+      
       $scope.LBgoalTwoSubmit = ->
         logUserInt 'goal2', $scope.frId
         $scope.LBgoal2Modal.close()
         $scope.editGoal 'Participant'
-
+      
       $scope.notRightNow = ->
         $uibModalStack.dismissAll()
-
+      
       $scope.sendGAEvent = (event) ->
         _gaq.push(['t2._trackEvent', 'HW PC', 'click', event])
-
+      
       $scope.LBskip = (interaction) ->
         logUserInt interaction, $scope.frId
         $scope.userInteractions[interaction] = 1
@@ -634,7 +634,7 @@ angular.module 'trPcControllers'
         $timeout ->
           reCheckProfileItems()
         , 250
-
+      
       $scope.submittedZip = false
       $scope.updateEditStreet = ($event) ->
         $scope.LBstreetProfileModal.close()
@@ -642,9 +642,8 @@ angular.module 'trPcControllers'
         $timeout ->
           reCheckProfileItems()
         , 250
-
+      
       $scope.LBprofileLinks = (section) ->
-        console.log 'section = ' + section
         switch section
           #save for future Why Profile Box
           #when 'why'
