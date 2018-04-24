@@ -1361,8 +1361,25 @@
         $('.other-amount-row-container input[type="text"]').val('');
         $(this).addClass('active');
       });
+      // add label to other amount text input
+      $('.other-amount-row-container input[type=text]').addClass('other-amount').attr('aria-labelledby', 'enterAmtLabel');
 
-      $('.other-amount-row-container input[type="text"]').on('click', function (e) {
+      $('.other-amount')
+        .prop('onclick',null).off('click')
+        .prop('onkeyup',null).off('keyup')
+        .prop('onchange',null).off('change')
+        .prop('onfocus',null).off('focus');
+
+        $('.other-amount').on('keyup', function(e){
+          if($(this).val() > 0){
+            $('.donation-level-row-label').removeClass('active');
+            $(this).parent().find('input[type="radio"]').prop('checked', true);
+          } else {
+            $(this).parent().find('input[type="radio"]').prop('checked', false);
+          }
+        });
+
+      $('.other-amount-row-container input[type="radio"]').on('click, focus', function (e) {
         $('.donation-level-row-label').removeClass('active');
         $(this).closest('input[type=radio]').prop('checked', true);
       });
@@ -1684,8 +1701,7 @@
     // wrap donation options in a fieldset with legend
     $('#part_type_donation_level_input_container').wrap('<fieldset />').prepend('<legend class="sr-only">Make a donation</legend>');
 
-    // add label to other amount text input
-    $('.other-amount-row-container input[type=text]').attr('aria-labelledby', 'enterAmtLabel');
+
 
     // associate ptype label with input
     $('.part-type-container label').each(function (i) {
