@@ -216,7 +216,8 @@ module.exports = {
         ]
       }
     ]
-  },
+  }, 
+  
   "nchw": {
     files: [
       {
@@ -249,6 +250,40 @@ module.exports = {
       }
     ]
   },
+  
+  "heartchase": {
+    files: [
+      {
+        expand: true,
+        cwd: 'dist/heartchase/css/',
+        src: [
+          '**/*'
+        ]
+      },
+      {
+        expand: true,
+        cwd: 'dist/heartchase/js/',
+        src: [
+          '**/*'
+        ]
+      },
+      {
+        expand: true,
+        cwd: 'dist/heartchase/html/',
+        src: [
+          '**/*'
+        ]
+      },
+      {
+        expand: true,
+        cwd: 'dist/heartchase/image/',
+        src: [
+          '**/*'
+        ]
+      }
+    ]
+  },
+
   "cyclenation": {
     files: [
       {

@@ -139,7 +139,7 @@ module.exports = {
       }
     ]
   },
-
+  
   "nchw": {
     files: [
       {
@@ -152,7 +152,20 @@ module.exports = {
       }
     ]
   },
-
+  
+  "heartchase": {
+    files: [
+      {
+        expand: true,
+        cwd: 'dist/heartchase/css/',
+        src: [
+          'main.css'
+        ],
+        dest: 'dist/heartchase/css/'
+      }
+    ]
+  },
+  
   "cyclenation": {
     files: [
       {

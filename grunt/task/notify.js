@@ -63,14 +63,21 @@ module.exports = {
       message: 'District Heart Challenge files updated.'
     }
   },
-
+  
   "nchw": {
     options: {
       title: 'AHA Luminate Framework',
       message: 'NCHW files updated.'
     }
   },
-
+  
+  "heartchase": {
+    options: {
+      title: 'AHA Luminate Framework',
+      message: 'HeartChase files updated.'
+    }
+  },
+  
   "cyclenation": {
     options: {
       title: 'AHA Luminate Framework',
