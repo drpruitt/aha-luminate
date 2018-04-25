@@ -215,7 +215,7 @@
           <p>
             Log in to use Facebook's fundraising tools to invite friends, share updates and collect donations. We'll keep track of your progress on Facebook and on your Heart Walk page, so you'll always know how close you are to reaching your goal.
           </p>
-          <a class="btn pc-facebook-fundraiser-btn" ng-href="//facebook.com/donate/{{facebookFundraiserId}}/" target="_blank" ng-disabled="!facebookFundraiserConfirmedStatus || facebookFundraiserConfirmedStatus == 'pending'" ng-if="facebookFundraiserId" ng-cloak>
+          <a class="btn pc-facebook-fundraiser-btn" ng-href="//facebook.com/donate/{{facebookFundraiserId}}/" target="_blank" ng-click="sendGAEvent('Go to FB Fundraiser');" ng-disabled="!facebookFundraiserConfirmedStatus || facebookFundraiserConfirmedStatus == 'pending'" ng-if="facebookFundraiserId" ng-cloak>
             Go To Facebook Fundraiser
           </a>
         </div>
