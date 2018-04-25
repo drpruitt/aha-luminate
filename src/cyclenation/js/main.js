@@ -1334,7 +1334,7 @@
           $(this).addClass('selected');
           $(this).find('input[type="radio"]').prop('checked', true);
           $('#next_step').removeClass('disabled');
-          $('#dspPledge').modal('show');
+          $('#dspPledge').modal({backdrop: 'static', keyboard: false}).modal('show');
         });
 
       }
@@ -1361,8 +1361,25 @@
         $('.other-amount-row-container input[type="text"]').val('');
         $(this).addClass('active');
       });
+      // add label to other amount text input
+      $('.other-amount-row-container input[type=text]').addClass('other-amount').attr('aria-labelledby', 'enterAmtLabel');
 
-      $('.other-amount-row-container input[type="text"]').on('click', function (e) {
+      $('.other-amount')
+        .prop('onclick',null).off('click')
+        .prop('onkeyup',null).off('keyup')
+        .prop('onchange',null).off('change')
+        .prop('onfocus',null).off('focus');
+
+        $('.other-amount').on('keyup', function(e){
+          if($(this).val() > 0){
+            $('.donation-level-row-label').removeClass('active');
+            $(this).parent().find('input[type="radio"]').prop('checked', true);
+          } else {
+            $(this).parent().find('input[type="radio"]').prop('checked', false);
+          }
+        });
+
+      $('.other-amount-row-container input[type="radio"]').on('click, focus', function (e) {
         $('.donation-level-row-label').removeClass('active');
         $(this).closest('input[type=radio]').prop('checked', true);
       });
@@ -1420,6 +1437,10 @@
       $('#cons_birth_date_DAY, #cons_birth_date_MONTH').on('change', function (e) {
         cd.setBirthMonth();
       });
+
+      $('#cons_birth_date_DAY').before('<label class="sr-only" for="cons_birth_date_DAY">Birth Day</label>');
+      $('#cons_birth_date_MONTH').before('<label class="sr-only" for="cons_birth_date_MONTH">Birth Month</label>');
+      $('#cons_birth_date_YEAR').before('<label class="sr-only" for="cons_birth_date_YEAR">Birth Year</label>');
 
 
       $('#cons_info_dob .form-content').append('<p class="small">If you would like to provide your birthday, we would love to acknowledge your special day each year.</p>');
@@ -1680,8 +1701,7 @@
     // wrap donation options in a fieldset with legend
     $('#part_type_donation_level_input_container').wrap('<fieldset />').prepend('<legend class="sr-only">Make a donation</legend>');
 
-    // add label to other amount text input
-    $('.other-amount-row-container input[type=text]').attr('aria-labelledby', 'enterAmtLabel');
+
 
     // associate ptype label with input
     $('.part-type-container label').each(function (i) {
@@ -1692,7 +1712,7 @@
 
     // Reg
     $('label[for="cons_first_name"]').eq(0).remove();
-    $('#cons_birth_date_MONTH, #cons_birth_date_DAY, #cons_birth_date_YEAR').attr('aria-labelledby', 'enterAmtLabel');
+    // $('#cons_birth_date_MONTH, #cons_birth_date_DAY, #cons_birth_date_YEAR').attr('aria-labelledby', 'enterAmtLabel');
     $('#cons_birth_date_YEAR').attr('aria-hidden', true);
 
     // paymentForm
@@ -1706,9 +1726,9 @@
       return '<h1 class="h3 ' + $(this).attr('class') + '" id="' + $(this).attr('id') + '">' + $(this).html() + '</h1>';
     });
 
-    // $('#title_container').replaceWith(function () {
-    //   return '<h1 class="h3 ' + $(this).attr('class') + '" id="' + $(this).attr('id') + '">' + $(this).html() + '</h1>';
-    // });
+    $('#title_container').replaceWith(function () {
+      return '<h1 class="h3 ' + $(this).attr('class') + '" id="' + $(this).attr('id') + '">' + $(this).html() + '</h1>';
+    });
 
     // Update help link to not be redundant
     $('#responsive_payment_typecc_cvv_row .HelpLink').attr('title', 'Opens in new window');
