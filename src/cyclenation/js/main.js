@@ -1334,7 +1334,7 @@
           $(this).addClass('selected');
           $(this).find('input[type="radio"]').prop('checked', true);
           $('#next_step').removeClass('disabled');
-          $('#dspPledge').modal('show');
+          $('#dspPledge').modal({backdrop: 'static', keyboard: false}).modal('show');
         });
 
       }
