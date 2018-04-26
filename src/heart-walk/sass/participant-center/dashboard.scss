@@ -530,7 +530,7 @@ div#send_via_FC {
       color: #4260b4;
       text-transform: uppercase;
       padding: 12px 20px;
-      margin: 16px 0 0;
+      margin: 16px 0;
       
       @media (min-width: 360px) {
         padding: 12px 24px;
@@ -551,6 +551,11 @@ div#send_via_FC {
       font-size: 20px;
       margin: 0 6px 0 0;
     }
+  }
+  
+  p.small {
+    font-size: 12px;
+    margin: 0;
   }
 }
 
@@ -590,11 +595,16 @@ div#send_via_FC {
       color: #4260b4;
       text-transform: uppercase;
       padding: 12px 20px;
-      margin: 18px 0 0;
+      margin: 18px 0;
       
       @media (min-width: 360px) {
         padding: 12px 24px;
       }
     }
+  }
+  
+  p.small {
+    font-size: 12px;
+    margin: 0;
   }
 }
