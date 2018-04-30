@@ -234,7 +234,7 @@ angular.module 'ahaLuminateControllers'
         totalNumber = participants.length
         $scope.companyParticipants.totalNumber = Number totalNumber
         $scope.paginateCompanyParticipants null
-        tallyParticipants $scope.companyParticipants.totalNumber, 'parent'
+        tallyParticipants $scope.companyParticipants.totalNumber, 'parent', true
         if not $scope.$$phase
           $scope.$apply()
 
