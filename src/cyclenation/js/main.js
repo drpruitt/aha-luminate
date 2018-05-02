@@ -1691,9 +1691,15 @@
     $('#team_find_new_team_recruiting_goal label.input-label').attr('for', 'fr_team_member_goal');
 
     // ptype
+    $('#part_type_selection_container').wrapInner('<fieldset role="radiogroup" class="ptype-selection" />');
+    
+    $('input[name=fr_part_radio]').attr('aria-labelledby', 'sel_type_container');
+    
     // wrap donation options in a fieldset with legend
-    $('#part_type_donation_level_input_container').wrapInner('<fieldset class="donation-form-fields" />')
-    $('.donation-form-fields').prepend('<legend class="sr-only">Make a donation</legend>');
+    $('#part_type_donation_level_input_container').wrapInner('<fieldset role="radiogroup" class="donation-form-fields" />');
+    $('.donation-form-fields').prepend('<legend id="reg_donation_label" class="sr-only">Make a donation</legend>');
+
+    $('.donation-level-container input[type=radio]').attr('aria-labelledby', 'reg_donation_label');
 
     // associate ptype label with input
     $('.part-type-container label').each(function (i) {
