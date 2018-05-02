@@ -199,12 +199,15 @@
           <div role="alert" class="alert alert-danger" ng-if="facebookFundraiserLoginStatus == 'declined_manage_fundraisers'" ng-cloak>
             We need your permission to create a Facebook Fundraiser on your behalf.
           </div>
-          <button type="button" class="btn pc-facebook-fundraiser-btn" ng-click="loginToFacebook()" ng-if="facebookFundraiserLoginStatus != 'pending' && facebookFundraiserCreateStatus != 'pending'" ng-cloak>
+          <button type="button" class="btn pc-facebook-fundraiser-btn" ng-click="sendGAEvent('Connect to Fundraiser FB Banner'); loginToFacebook()" ng-if="facebookFundraiserLoginStatus != 'pending' && facebookFundraiserCreateStatus != 'pending'" ng-cloak>
             <span class="fa fa-facebook-square"></span> Connect <span class="hidden-text-xxs">Fundraiser</span> to Facebook
           </button>
           <button type="button" class="btn pc-facebook-fundraiser-btn" disabled ng-if="facebookFundraiserLoginStatus == 'pending' || facebookFundraiserCreateStatus == 'pending'" ng-cloak>
             <span class="fa fa-facebook-square"></span> Loading ...
           </button>
+          <p class="small">
+            By clicking this link, you will leave AHA's website and be redirected to another site not under the control of AHA.
+          </p>
         </div>
       </div>
       <div class="pc-facebook-fundraiser-connected js--facebook-fundraiser-completed-section" ng-if="facebookFundraisersEnabled" ng-show="facebookFundraiserId" ng-cloak>
@@ -218,6 +221,9 @@
           <a class="btn pc-facebook-fundraiser-btn" ng-href="//facebook.com/donate/{{facebookFundraiserId}}/" target="_blank" ng-click="sendGAEvent('Go to FB Fundraiser');" ng-disabled="!facebookFundraiserConfirmedStatus || facebookFundraiserConfirmedStatus == 'pending'" ng-if="facebookFundraiserId" ng-cloak>
             Go To Facebook Fundraiser
           </a>
+          <p class="small">
+            By clicking this link, you will leave AHA's website and be redirected to another site not under the control of AHA.
+          </p>
         </div>
       </div>
       <div class="clearfix">
