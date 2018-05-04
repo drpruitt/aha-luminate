@@ -148,3 +148,30 @@
     }
   }
 }
+
+.modal-edit-video {	
+  background: #C10E21;	
+  text-align: center;	
+  color: #ffffff;	
+
+  & .modal-header {	
+    border-bottom: none;	
+  }	
+
+  & .modal-footer {	
+    border-top: none;	
+  }	
+
+  & .btn.btn-outline-white {	
+    background: #C10E21;	
+    color: #fff;	
+    border: 1px solid #fff;	
+  }	
+
+  & .btn.btn-outline-white:hover {	
+    background-color: #3c3c3c;	
+    color: #fff;	
+    border-color: #3c3c3c;	
+  }
+
+}

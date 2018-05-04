@@ -261,12 +261,12 @@ a.heart_pc_sidebar_sharebtn {
     -moz-border-radius: 100px;
     -webkit-border-radius: 100px;
     border-radius: 100px;
-    -moz-box-shadow: 0px 0px 2px #888;
-    -webkit-box-shadow: 0px 0px 2px #888;
-    box-shadow: 0px 0px 2px #888;
+    -moz-box-shadow: 0px 0px 2px #ffffff;
+    -webkit-box-shadow: 0px 0px 2px #ffffff;
+    box-shadow: 0px 0px 2px #ffffff;
     padding: 8px;
     margin-right: 10px;
-    color: #de2427;
+    color: #ffffff;
 }
 .profile_progress .progress{
     width: 140px;
@@ -372,7 +372,10 @@ a.heart_pc_sidebar_sharebtn {
 .profile_progress h3 {
     font-size: 16px;
     text-align: center;
-    color: #939595;
+    color: #ffffff;
+}
+.profile_icon_checklist a {
+    color: #ffffff;
 }
 .profile_progress .progress.ratio1 .progress-right .progress-bar {
     animation: right-loading-1 1s linear forwards;

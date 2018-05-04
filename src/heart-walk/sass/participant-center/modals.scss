@@ -1,6 +1,35 @@
 .ng-pc-modal {
   .modal-body {
     font-size: 15px;
+    background-color: #C10E21;	
+    text-align: center;	
+    color: #ffffff;	
+    font-family: 'Montserrat', Arial, sans-serif;
+
+    & .form-group {	
+      text-align: left;	
+    }	
+  }	
+
+  .modal-header {	
+    background-color: #C10E21;	
+    border-bottom: none;	
+    text-align: center;	
+    color: #ffffff;	
+    font-family: 'Montserrat', Arial, sans-serif;
+  }	
+
+  .modal-footer {	
+    padding: 15px;	
+    border-top: none;	
+    background-color: #C10E21;	
+    text-align: center;	
+    color: #ffffff;	
+    font-family: 'Montserrat', Arial, sans-serif;
+  }	
+
+  .lb_skip_link a {	
+    color: #ffffff;
   }
   
   .modal-header__btns {
