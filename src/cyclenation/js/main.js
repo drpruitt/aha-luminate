@@ -1192,9 +1192,10 @@
       var dynTeamGoal = $('.js__generated-team-goal');
       var currentTeamGoal, currentTeamGoalFormatted, minTeamGoalMsg;
       var loTeamGoal = $('#fr_team_goal');
-
+      var promoCode =  ($('body').data('promocode')!==undefined ? $('body').data('promocode') : "");
+     
       // tfind
-      $('#team_find_new_company_selection_container').append('<div id="team_sponsor_code" class="input-container"><div class="form-group"><label for="sponsorCode">Do you have a sponsor code?</label><input name="s_promoCode"type="text"id="sponsorCode"class="form-control" value=""></div></div>');
+      $('#team_find_new_company_selection_container').append('<div id="team_sponsor_code" class="input-container"><div class="form-group"><label for="sponsorCode">Do you have a sponsor code?</label><input name="s_promoCode"type="text"id="sponsorCode"class="form-control" value="' + promoCode + '"></div></div>');
 
       var numTeamResults = $('#team_find_search_results_container .list-component-row').length;
 
