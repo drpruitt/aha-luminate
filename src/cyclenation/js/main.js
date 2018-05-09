@@ -1305,7 +1305,7 @@
         var ptypeBlocks = $('.part-type-decoration-messages');
         $(ptypeBlocks).each(function(){
           if($(this).hasClass('part-type-full')){
-            $(this).parent().remove();
+            $(this).parent().removeClass('selected').addClass('ptype-full').find('input[type=radio]').remove();
           }
         });
 
