@@ -32,7 +32,7 @@ angular.module 'ahaLuminateApp'
       $rootScope.consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
       $rootScope.authToken = $dataRoot.data('auth-token') if $dataRoot.data('auth-token') isnt ''
       $rootScope.frId = $dataRoot.data('fr-id') if $dataRoot.data('fr-id') isnt ''
-      $rootScope.updatedLightbox = $dataRoot.data('has-lightbox-update') if $dataRoot.data('has-lightbox-update') isnt ''
+      $rootScope.updatedLightbox = $dataRoot.data('updated-lightbox') if $dataRoot.data('updated-lightbox') isnt ''
   ]
 
 angular.element(document).ready ->
