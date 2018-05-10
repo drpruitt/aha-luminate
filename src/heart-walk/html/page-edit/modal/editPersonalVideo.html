@@ -1,8 +1,8 @@
-<div class="modal-edit-video" ng-init="personalVideo.type = ''">
+<div ng-init="personalVideo.type = ''" ng-class="{'modal-edit-video': updatedLightbox}" >
   <form ng-submit="updatePersonalVideo()">
     <div class="modal-header">
       <h2 class="modal-title">
-        Edit Video
+        Edit Video Updated Lightbox: x{{updatedLightbox}}x
       </h2>
     </div>
     <div class="modal-body">
@@ -42,12 +42,12 @@
     <div class="modal-footer">
       <div class="clearfix">
         <div class="pull-left">
-          <button type="button" class="btn btn-outline-white text-uppercase" ng-click="cancelEditPersonalVideo()">
+          <button type="button" class="btn text-uppercase" ng-class="{'btn-outline-white': updatedLightbox, 'btn-primary-inverted': !updatedLightbox}" ng-click="cancelEditPersonalVideo()">
             Cancel
           </button>
         </div>
         <div class="pull-right">
-          <button type="submit" class="btn btn-outline-white text-uppercase">
+          <button type="submit" class="btn text-uppercase" ng-class="{'btn-outline-white': updatedLightbox, 'btn-primary': !updatedLightbox}" >
             Save
           </button>
         </div>
