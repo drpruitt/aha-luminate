@@ -10,12 +10,12 @@
   <div class="modal-footer">
     <div class="clearfix">
       <div class="pull-left">
-        <button type="button" class="btn btn-outline-white text-uppercase" ng-click="cancelDeleteGift()">
+        <button type="button" class="btn text-uppercase" ng-class="{'btn-outline-white': updatedLightbox, 'btn-primary-inverted': !updatedLightbox}" ng-click="cancelDeleteGift()">
           Cancel
         </button>
       </div>
       <div class="pull-right">
-        <button type="submit" class="btn btn-outline-white text-uppercase">
+        <button type="submit" class="btn text-uppercase" ng-class="{'btn-outline-white': updatedLightbox, 'btn-primary': !updatedLightbox}">
           Delete
         </button>
       </div>

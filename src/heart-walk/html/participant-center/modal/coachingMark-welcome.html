@@ -6,7 +6,7 @@
       </h2>
       <!-- TODO -->
       <div class="coaching-mark__btns">
-        <button type="button" class="btn btn-outline-white text-uppercase" ng-click="dismissCoachingMarkModal()">
+        <button type="button" class="btn text-uppercase" ng-class="{'btn-outline-white': updatedLightbox, 'btn-primary': !updatedLightbox}" ng-click="dismissCoachingMarkModal()">
           Start Fundraising Today
         </button>
       </div>

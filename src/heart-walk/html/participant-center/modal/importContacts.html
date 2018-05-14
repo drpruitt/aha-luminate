@@ -78,15 +78,15 @@
   <div class="modal-footer">
     <div class="clearfix">
       <div class="pull-left">
-        <button type="button" class="btn btn-outline-white text-uppercase" ng-click="cancelImportContacts()">
+        <button type="button" class="btn text-uppercase" ng-class="{'btn-outline-white': updatedLightbox, 'btn-primary': !updatedLightbox}" ng-click="cancelImportContacts()">
           Cancel
         </button>
       </div>
       <div class="pull-right">
-        <button type="button" class="btn btn-outline-white text-uppercase" ng-click="chooseImportContactType()" ng-if="contactImport.step == 'choose-type'">
+        <button type="button" class="btn text-uppercase" ng-class="{'btn-outline-white': updatedLightbox, 'btn-primary': !updatedLightbox}" ng-click="chooseImportContactType()" ng-if="contactImport.step == 'choose-type'">
           Next
         </button>
-        <button type="button" class="btn btn-outline-white text-uppercase" ng-click="chooseContactsToImport()" ng-if="contactImport.step == 'contacts-available-for-import' && contactsAvailableForImport.length > 0">
+        <button type="button" class="btn text-uppercase" ng-class="{'btn-outline-white': updatedLightbox, 'btn-primary': !updatedLightbox}" ng-click="chooseContactsToImport()" ng-if="contactImport.step == 'contacts-available-for-import' && contactsAvailableForImport.length > 0">
           Next
         </button>
         <button type="button" class="btn btn-outline-white text-uppercase" ng-click="uploadContactsCSV()" ng-if="contactImport.step == 'csv-upload'">

@@ -19,12 +19,12 @@
   <div class="modal-footer">
     <div class="clearfix">
       <div class="pull-left">
-        <button type="button" class="btn btn-outline-white" ng-click="cancelEditCompanyGoal()">
+        <button type="button" class="btn" ng-class="{'btn-outline-white': updatedLightbox, 'btn-primary-inverted': !updatedLightbox}" ng-click="cancelEditCompanyGoal()">
           Cancel
         </button>
       </div>
       <div class="pull-right">
-        <button type="submit" class="btn btn-outline-white">
+        <button type="submit" class="btn" ng-class="{'btn-outline-white': updatedLightbox, 'btn-primary': !updatedLightbox}">
           <strong>Save</strong>
         </button>
       </div>

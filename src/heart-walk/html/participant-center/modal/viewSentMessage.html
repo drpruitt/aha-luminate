@@ -1,9 +1,9 @@
 <div class="modal-header">
   <div class="modal-header__btns modal-header__btns--block-xxs">
-    <button type="button" class="btn btn-outline-white text-uppercase" ng-click="cancelViewSentMessage()">
+    <button type="button" class="btn text-uppercase" ng-class="{'btn-outline-white': updatedLightbox, 'btn-primary-inverted': !updatedLightbox}" ng-click="cancelViewSentMessage()">
       Close
     </button> 
-    <button type="button" class="btn btn-outline-white text-uppercase" ng-click="copySentMessage(sentMessage.messageId)">
+    <button type="button" class="btn text-uppercase" ng-class="{'btn-outline-white': updatedLightbox, 'btn-primary': !updatedLightbox}" ng-click="copySentMessage(sentMessage.messageId)">
       Copy<span class="hidden-xs"> Message</span>
     </button>
   </div>

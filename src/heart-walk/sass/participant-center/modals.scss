@@ -1,6 +1,47 @@
 .ng-pc-modal {
   .modal-body {
     font-size: 15px;
+  }
+  
+  .modal-header__btns {
+    float: right;
+    
+    .btn {
+      margin: 0 0 0 6px;
+    }
+  }
+  
+  .modal-header__btns--block-xxs {
+    @media (max-width: 359px) {
+      float: none;
+      display: block;
+      text-align: center;
+      margin: 0 0 18px 0;
+      
+      .btn {
+        margin: 0 3px;
+      }
+    }
+  }
+}
+
+.ng-pc-modal-email-message-body {
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.tr3472 .ng-pc-modal,
+.tr3074 .ng-pc-modal,
+.tr3370 .ng-pc-modal,
+.tr3092 .ng-pc-modal,
+.tr3142 .ng-pc-modal,
+.tr3138 .ng-pc-modal,
+.tr3144 .ng-pc-modal,
+.tr3150 .ng-pc-modal,
+.tr3572 .ng-pc-modal,
+.tr3510 .ng-pc-modal,
+.tr3518 .ng-pc-modal {
+  .modal-body {
     background-color: #C10E21;	
     text-align: center;	
     color: #ffffff;	
@@ -34,31 +75,5 @@
 
   .lb_skip_link a {	
     color: #ffffff;
-  }
-  
-  .modal-header__btns {
-    float: right;
-    
-    .btn {
-      margin: 0 0 0 6px;
-    }
-  }
-  
-  .modal-header__btns--block-xxs {
-    @media (max-width: 359px) {
-      float: none;
-      display: block;
-      text-align: center;
-      margin: 0 0 18px 0;
-      
-      .btn {
-        margin: 0 3px;
-      }
-    }
-  }
-}
-
-.ng-pc-modal-email-message-body {
-  width: 100%;
-  overflow-y: scroll;
+  } 
 }

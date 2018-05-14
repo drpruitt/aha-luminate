@@ -261,6 +261,34 @@ a.heart_pc_sidebar_sharebtn {
     -moz-border-radius: 100px;
     -webkit-border-radius: 100px;
     border-radius: 100px;
+    -moz-box-shadow: 0px 0px 2px #888;
+    -webkit-box-shadow: 0px 0px 2px #888;
+    box-shadow: 0px 0px 2px #888;
+    padding: 8px;
+    margin-right: 10px;
+    color: #de2427;
+}
+
+.tr3472 .profile_icon_checklist i.fa,
+.tr3074 .profile_icon_checklist i.fa,
+.tr3370 .profile_icon_checklist i.fa,
+.tr3092 .profile_icon_checklist i.fa,
+.tr3142 .profile_icon_checklist i.fa,
+.tr3138 .profile_icon_checklist i.fa,
+.tr3144 .profile_icon_checklist i.fa,
+.tr3150 .profile_icon_checklist i.fa,
+.tr3572 .profile_icon_checklist i.fa,
+.tr3510 .profile_icon_checklist i.fa,
+.tr3518 .profile_icon_checklist i.fa {
+    font-size: 24px;
+    width: 40px;
+    text-align: center;
+    height: 40px;
+    vertical-align: middle;
+    display: inline-block;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    border-radius: 100px;
     -moz-box-shadow: 0px 0px 2px #ffffff;
     -webkit-box-shadow: 0px 0px 2px #ffffff;
     box-shadow: 0px 0px 2px #ffffff;
@@ -372,9 +400,35 @@ a.heart_pc_sidebar_sharebtn {
 .profile_progress h3 {
     font-size: 16px;
     text-align: center;
+    color: #939595;
+}
+
+.tr3472 .profile_progress h3,
+.tr3074 .profile_progress h3,
+.tr3370 .profile_progress h3,
+.tr3092 .profile_progress h3,
+.tr3142 .profile_progress h3,
+.tr3138 .profile_progress h3,
+.tr3144 .profile_progress h3,
+.tr3150 .profile_progress h3,
+.tr3572 .profile_progress h3,
+.tr3510 .profile_progress h3,
+.tr3518 .profile_progress h3 {
+    font-size: 16px;
+    text-align: center;
     color: #ffffff;
 }
-.profile_icon_checklist a {
+.tr3472 .profile_icon_checklist a,
+.tr3074 .profile_icon_checklist a,
+.tr3370 .profile_icon_checklist a,
+.tr3092 .profile_icon_checklist a,
+.tr3142 .profile_icon_checklist a,
+.tr3138 .profile_icon_checklist a,
+.tr3144 .profile_icon_checklist a,
+.tr3150 .profile_icon_checklist a,
+.tr3572 .profile_icon_checklist a,
+.tr3510 .profile_icon_checklist a,
+.tr3518 .profile_icon_checklist a {
     color: #ffffff;
 }
 .profile_progress .progress.ratio1 .progress-right .progress-bar {

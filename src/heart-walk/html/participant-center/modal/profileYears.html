@@ -42,10 +42,10 @@
   <div class="modal-footer">
     <div class="clearfix">
       <div class="pull-left">
-        <a href class="btn btn-outline-white text-uppercase" ng-click="sendGAEvent('Cancel editing How Many Years - profile lightbox');cancelEditYears()">Cancel</a>
+        <a href class="btn text-uppercase" ng-class="{'btn-outline-white': updatedLightbox, 'btn-primary-inverted': !updatedLightbox}" ng-click="sendGAEvent('Cancel editing How Many Years - profile lightbox');cancelEditYears()">Cancel</a>
       </div>
       <div class="pull-right">
-        <button type="submit" class="btn btn-outline-white text-uppercase" ng-click="sendGAEvent('Save editing How Many Years - profile lightbox')">Save</button>
+        <button type="submit" class="btn text-uppercase" ng-class="{'btn-outline-white': updatedLightbox, 'btn-primary': !updatedLightbox}" ng-click="sendGAEvent('Save editing How Many Years - profile lightbox')">Save</button>
       </div>
     </div>
   </div>
