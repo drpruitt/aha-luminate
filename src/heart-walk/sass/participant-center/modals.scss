@@ -1,6 +1,39 @@
 .ng-pc-modal {
   .modal-body {
     font-size: 15px;
+    background-color: #C10E21;	
+    text-align: center;	
+    color: #ffffff;	
+    font-family: 'Montserrat', Arial, sans-serif;
+    
+    & .form-group {	
+      text-align: left;	
+    }
+    
+    & a {
+      color: #ffffff;
+    }
+  }
+
+  .modal-header {	
+    background-color: #C10E21;	
+    border-bottom: none;	
+    text-align: center;	
+    color: #ffffff;	
+    font-family: 'Montserrat', Arial, sans-serif;
+  }	
+
+  .modal-footer {	
+    padding: 15px;	
+    border-top: none;	
+    background-color: #C10E21;	
+    text-align: center;	
+    color: #ffffff;	
+    font-family: 'Montserrat', Arial, sans-serif;
+  }	
+
+  .lb_skip_link a {	
+    color: #ffffff;
   }
   
   .modal-header__btns {
@@ -42,38 +75,38 @@
 .tr3510 .ng-pc-modal,
 .tr3518 .ng-pc-modal {
   .modal-body {
-    background-color: #C10E21;	
-    text-align: center;	
-    color: #ffffff;	
-    font-family: 'Montserrat', Arial, sans-serif;
+    // background-color: #C10E21;	
+    // text-align: center;	
+    // color: #ffffff;	
+    // font-family: 'Montserrat', Arial, sans-serif;
 
     & .form-group {	
-      text-align: left;	
+      // text-align: left;	
     }
 
     & a {
-      color: #ffffff;
+      // color: #ffffff;
     }
   }	
 
   .modal-header {	
-    background-color: #C10E21;	
-    border-bottom: none;	
-    text-align: center;	
-    color: #ffffff;	
-    font-family: 'Montserrat', Arial, sans-serif;
+    // background-color: #C10E21;	
+    // border-bottom: none;	
+    // text-align: center;	
+    // color: #ffffff;	
+    // font-family: 'Montserrat', Arial, sans-serif;
   }	
 
   .modal-footer {	
-    padding: 15px;	
-    border-top: none;	
-    background-color: #C10E21;	
-    text-align: center;	
-    color: #ffffff;	
-    font-family: 'Montserrat', Arial, sans-serif;
+    // padding: 15px;	
+    // border-top: none;	
+    // background-color: #C10E21;	
+    // text-align: center;	
+    // color: #ffffff;	
+    // font-family: 'Montserrat', Arial, sans-serif;
   }	
 
   .lb_skip_link a {	
-    color: #ffffff;
+    // color: #ffffff;
   } 
 }
