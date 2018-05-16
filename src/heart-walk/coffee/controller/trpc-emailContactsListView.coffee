@@ -186,7 +186,6 @@ angular.module 'trPcControllers'
                 closeAddContactModal()
                 refreshContactsNavBar()
                 $scope.getContacts()
-                $scope.getAllContacts()
               response
           $scope.emailPromises.push addContactPromise
 
@@ -207,7 +206,7 @@ angular.module 'trPcControllers'
         $scope.addContactGroupForm.contactIds = selectedContacts.join ','
         $scope.addContactsToGroupModal = $uibModal.open 
           scope: $scope
-          templateUrl: APP_INFO.rootPath + 'html/modal/addContactsToGroup.html'
+          templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/addContactsToGroup.html'
       
       $scope.cancelAddContactsToGroup = ->
         $scope.addContactsToGroupModal.close()
@@ -472,7 +471,6 @@ angular.module 'trPcControllers'
                 closeImportContactsModal()
                 refreshContactsNavBar()
                 $scope.getContacts()
-                $scope.getAllContacts()
       
       $scope.uploadContactsCSV = ->
         angular.element('.js--import-contacts-csv-form').submit()
@@ -608,7 +606,6 @@ angular.module 'trPcControllers'
                 window.scrollTo 0, 0
                 refreshContactsNavBar()
                 $scope.getContacts()
-                $scope.getAllContacts()
               response
           $scope.emailPromises.push updateContactPromise
       
@@ -658,7 +655,6 @@ angular.module 'trPcControllers'
               window.scrollTo 0, 0
               refreshContactsNavBar()
               $scope.getContacts()
-              $scope.getAllContacts()
               response
           $scope.emailPromises.push deleteContactPromise
       
