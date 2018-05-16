@@ -6,20 +6,20 @@
     <ul class="dropdown-menu" uib-dropdown-menu>
       <li>
         <a href="{{baseUrl}}#/email/compose">
-          <span translate="compose_message_label"></span>
+          <span>Compose</span>
         </a>
       </li>
       <li class="divider"></li>
       <li>
         <a href="{{baseUrl}}#/email/message/draft/list">
           <span class="badge">{{messageCounts.drafts}}</span>
-          <span translate="drafts_drafts_label"></span>
+          <span>Drafts</span>
         </a>
       </li>
       <li>
         <a href="{{baseUrl}}#/email/message/sentMessage/list">
           <span class="badge">{{messageCounts.sentMessages}}</span> 
-          <span translate="sent_sent_messages_label"></span>
+          <span>Sent Messages</span>
         </a>
       </li>
       <li class="divider"></li>
@@ -34,16 +34,16 @@
 </div>
 <div class="hidden-xs">
   <a class="btn btn-success form-control" href="{{baseUrl}}#/email/compose">
-    <span translate="compose_message_label"></span>
+    <spanCompose></span>
   </a>
   <div class="list-group ng-pc-nav-list-group">
     <a ng-class="['list-group-item', {'active': $location.path == '/email/message/draft/list'}]" href="{{baseUrl}}#/email/message/draft/list">
       <span class="badge">{{messageCounts.drafts}}</span> 
-      <span translate="drafts_drafts_label"></span>
+      <span>Drafts</span>
     </a>
     <a ng-class="['list-group-item', {'active': $location.path == '/email/message/sentMessage/list'}]" href="{{baseUrl}}#/email/message/sentMessage/list">
       <span class="badge">{{messageCounts.sentMessages}}</span> 
-      <span translate="sent_sent_messages_label"></span>
+      <span>Sent Messages</span>
     </a>
   </div>
   <div class="list-group ng-pc-nav-list-group">

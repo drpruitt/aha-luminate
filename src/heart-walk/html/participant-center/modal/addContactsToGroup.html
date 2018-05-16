@@ -1,6 +1,6 @@
 <div class="modal-header">
   <h2 class="modal-title">
-    <span translate="contacts_add_to_group"></span>
+    <span">Add Contacts to Group</span>
   </h2>
 </div>
 <form ng-submit="confirmAddContactsToGroup()">
@@ -10,14 +10,14 @@
     </div>
     <div class="form-group">
       <select class="form-control" ng-model="addContactGroupForm.groupId">
-        <option value="" translate="contacts_select_label"></option>
+        <option value="">Select an Existing Group</option>
         <option ng-repeat="group in addressBookGroups" value="{{group.id}}">
           {{group.name}}
         </option>
       </select>
     </div>
     <div class="form-group">
-      <label class="control-label" for="add_new_group_name"><span translate="contacts_create_a_new_group"></span></label>
+      <label class="control-label" for="add_new_group_name"><span>or Create a New Group</span></label>
       <input type="text" class="form-control" ng-model="addContactGroupForm.groupName">
     </div>
   </div>
@@ -30,7 +30,7 @@
       </div>
       <div class="pull-right">
         <button type="submit" class="btn btn-primary text-uppercase">
-          <span translate="contacts_add_to_group_button"></span>
+          <span>Add Contacts to Group</span>
         </button>
       </div>
     </div>
