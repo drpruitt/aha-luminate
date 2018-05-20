@@ -1192,9 +1192,10 @@
       var dynTeamGoal = $('.js__generated-team-goal');
       var currentTeamGoal, currentTeamGoalFormatted, minTeamGoalMsg;
       var loTeamGoal = $('#fr_team_goal');
-
+      var promoCode =  ($('body').data('promocode')!==undefined ? $('body').data('promocode') : "");
+     
       // tfind
-      $('#team_find_new_company_selection_container').append('<div id="team_sponsor_code" class="input-container"><div class="form-group"><label for="sponsorCode">Do you have a sponsor code?</label><input name="s_promoCode"type="text"id="sponsorCode"class="form-control" value=""></div></div>');
+      $('#team_find_new_company_selection_container').append('<div id="team_sponsor_code" class="input-container"><div class="form-group"><label for="sponsorCode">Do you have a sponsor code?</label><input name="s_promoCode"type="text"id="sponsorCode"class="form-control" value="' + promoCode + '"></div></div>');
 
       var numTeamResults = $('#team_find_search_results_container .list-component-row').length;
 
@@ -1300,6 +1301,14 @@
 
     // BEGIN PTYPE CUSTOMIZATIONS
     if ($('#F2fRegPartType').length > 0) {
+        // add reg full class to ptype container
+        var ptypeBlocks = $('.part-type-decoration-messages');
+        $(ptypeBlocks).each(function(){
+          if($(this).hasClass('part-type-full')){
+            $(this).parent().removeClass('selected').addClass('ptype-full').find('input[type=radio]').remove();
+          }
+        });
+
       if (eventType2 === 'Stationary') {
         $('#sel_type_container').text('What time will you ride?');
       } else {
@@ -1325,14 +1334,16 @@
         });
 
         $('.part-type-container').on('click', function (e) {
-          $('.part-type-container').removeClass('selected');
-          $(this).addClass('selected');
-          $(this).find('input[type="radio"]').prop('checked', true);
-          $('#next_step').removeClass('disabled');
-          $('#dspPledge').modal({backdrop: 'static', keyboard: false}).modal('show');
+            $('.part-type-container').removeClass('selected');
+            $(this).addClass('selected');
+            $(this).find('input[type="radio"]').prop('checked', true);
+            $('#next_step').removeClass('disabled');
+            $('#dspPledge').modal({backdrop: 'static', keyboard: false}).modal('show');
         });
 
       }
+
+
 
       $('#fund_goal_container').prepend('<span class="field-required"></span>&nbsp;');
       $('#part_type_additional_gift_section_header').prepend('<div class="bold-label">Make a Donation</div>');
@@ -1399,9 +1410,6 @@
       } else {
         $('#previous_step').replaceWith('<div class="order-2 order-sm-1 col-sm-4 col-8 offset-2 offset-sm-0"><a href="TRR/?pg=tfind&amp;fr_id=' + evID + '&amp;s_regType=" class="button btn-secondary btn-block">Back</a></div>');
       }
-
-      // tabindex
-      // $(":input").each(function (i) { $(this).attr('tabindex', i + 1); });
 
     }
 

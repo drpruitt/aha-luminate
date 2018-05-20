@@ -400,6 +400,7 @@ div.part-type-container {
       height:100%;
       width:100%;
     }
+
   }
   input {
     margin:0;
@@ -418,6 +419,7 @@ div.part-type-container {
 #participation_options_page {
   margin:0 auto;
 }
+
 div.part-type-container {
   cursor: pointer;
   @include button-variant(#dcdcdc, #000, $hover-background: $red, $hover-border: $red, $active-background: $red, $active-border: $red);
@@ -431,6 +433,29 @@ div.part-type-container {
     @extend .btn-primary;
     border-radius: 0;
     border: 1px solid $red;
+  }
+
+  &.ptype-full {
+    cursor: default;
+    &:hover,
+    &:active {
+      cursor:default;
+      border: 1px solid $black;
+      background-color:#fff;
+    }
+    &:not(:disabled):not(.disabled):active {
+      color: #212529;
+      border-color: $black;
+      background-color:#fff;
+    }
+    color: #212529;
+    background-color: #fff;
+    div.part-type-registrations-left {
+      margin-top: 0;
+      .part-type-registrations-full-text {
+        color: $primary;
+      }
+    }
   }
 }
 
