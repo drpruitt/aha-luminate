@@ -61,7 +61,7 @@ angular.module 'trPcControllers'
                     fundraiserName = 'Help Keep Hearts Beating'
                     FacebookFundraiserService.createFundraiser fundraiserName
                       .then (response) ->
-                        facebookFundraiserId = response.data.fundraiser?.id
+                        facebookFundraiserId = if response.data.error?.code is '105' then response.data.error.debug?.fundraiserId else response.data.fundraiser?.id
                         if not facebookFundraiserId
                           $rootScope.facebookFundraiserCreateStatus = 'create_fundraiser_error'
                         else
