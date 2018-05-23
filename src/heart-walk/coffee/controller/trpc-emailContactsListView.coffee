@@ -43,6 +43,11 @@ angular.module 'trPcControllers'
           contactData += '<' + contact.email + '>'
         contactData
 
+      isContactSelected = (contact) ->
+        contactData = getContactString contact
+        contactIndex = $rootScope.selectedContacts.contacts.indexOf contactData
+        contactIndex isnt -1
+
       getContactById = (contactId) ->
         contact = null
         if $scope.addressBookContacts.contacts.length > 0
