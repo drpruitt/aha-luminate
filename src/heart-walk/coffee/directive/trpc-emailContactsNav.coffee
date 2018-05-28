@@ -1,6 +1,6 @@
 angular.module 'trPcApp'
   .directive 'emailContactsNav', [ 'APP_INFO', (APP_INFO) ->
-    templateUrl: APP_INFO.rootPath + 'html/directive/emailContactsNav.html'
+    templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/directive/emailContactsNav.html'
     restrict: 'E'
     scope:
       refreshMessages: '='
