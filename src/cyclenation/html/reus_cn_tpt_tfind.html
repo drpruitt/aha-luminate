@@ -27,28 +27,52 @@
         <form id="regTypeForm" class="js__reg-type-form text-center">
           <div class="form-content">
             [[?xStationary Cyclingx::x[[E42:[[S80:trID]]:public-event-type]]x::
-              [[?[[T12:[[E47:[[S80:trID]]:fr_info:1:event_location_country]]]]::showstartteam:false::::
-                <div class="form-group">
-                  <a href="TRR/?pg=tfind&amp;fr_id=[[S80:trID]]&amp;fr_tm_opt=new&amp;s_regType=startTeam&amp;s_hideTeamDetails=true" class="button btn-lg btn-block btn-outline-grey step-button p-3 mb-1">Start a Team</a>
-                  <p class="p-2">
-                    My team will have 4-8 riders per bike and commit to a fundraising goal based on the number of bikes I reserve.
-                  </p>
-                </div>
-              ]]
-                <div class="form-group">
-                  <a href="TRR/?pg=tfind&amp;fr_id=[[S80:trID]]&amp;fr_tm_opt=existing&amp;s_regType=joinTeam" class="button btn-lg btn-block btn-outline-grey step-button js__show-team-join p-3 mb-1">Join a Team</a>
-                  <p class="p-2">
-                    I know someone who has created a team.
-                  </p>
-                </div>
-              [[?[[T12:[[E47:[[S80:trID]]:fr_info:1:event_location_country]]]]::showbreakaway:false::::
-                <div class="form-group">
-                  <a href="TRR/?pg=tfind&amp;fr_id=[[S80:trID]]&amp;fr_tm_opt=none&amp;s_regType=individual" class="button btn-lg btn-block btn-outline-grey step-button js__reg-individual p-3 mb-1">Breakaway
-                    <br>from the Pack</a>
-                  <p class="p-2">
-                    I'm riding solo and will fundraise $1,000.
-                  </p>
-                </div>
+              [[?xStationaryx::x[[E42:[[S80:evID]]:classification2]]x::
+              <!-- Legacy Stationary Event -->
+                [[?[[T12:[[E47:[[S80:trID]]:fr_info:1:event_location_country]]]]::showstartteam:false::::
+                  <div class="form-group">
+                    <a href="TRR/?pg=tfind&amp;fr_id=[[S80:trID]]&amp;fr_tm_opt=new&amp;s_regType=startTeam&amp;s_hideTeamDetails=true" class="button btn-lg btn-block btn-outline-grey step-button p-3 mb-1">Start a Team</a>
+                    <p class="p-2">
+                      My team will have 4-8 riders per bike and commit to a fundraising goal based on the number of bikes I reserve.
+                    </p>
+                  </div>
+                ]]
+                  <div class="form-group">
+                    <a href="TRR/?pg=tfind&amp;fr_id=[[S80:trID]]&amp;fr_tm_opt=existing&amp;s_regType=joinTeam" class="button btn-lg btn-block btn-outline-grey step-button js__show-team-join p-3 mb-1">Join a Team</a>
+                    <p class="p-2">
+                      I know someone who has created a team.
+                    </p>
+                  </div>
+                [[?[[T12:[[E47:[[S80:trID]]:fr_info:1:event_location_country]]]]::showbreakaway:false::::
+                  <div class="form-group">
+                    <a href="TRR/?pg=tfind&amp;fr_id=[[S80:trID]]&amp;fr_tm_opt=none&amp;s_regType=individual" class="button btn-lg btn-block btn-outline-grey step-button js__reg-individual p-3 mb-1">Breakaway
+                      <br>from the Pack</a>
+                    <p class="p-2">
+                      I'm riding solo and will fundraise $1,000.
+                    </p>
+                  </div>
+                ]]
+              ::
+              <!-- Studio Stationary Event -->
+              <div class="form-group">
+                <a href="TRR/?pg=tfind&amp;fr_id=[[S80:trID]]&amp;fr_tm_opt=new&amp;s_regType=startTeam&amp;s_hideTeamDetails=false" class="button btn-lg btn-block btn-outline-grey step-button p-3 mb-1">Start a Team</a>
+                <p class="p-2">
+                  My team will have 4-8 riders per bike and commit to a fundraising goal based on the number of bikes I reserve.
+                </p>
+              </div>
+              <div class="form-group">
+                <a href="TRR/?pg=tfind&amp;fr_id=[[S80:trID]]&amp;fr_tm_opt=existing&amp;s_regType=joinTeam" class="button btn-lg btn-block btn-outline-grey step-button js__show-team-join p-3 mb-1">Join a Team</a>
+                <p class="p-2">
+                  I know someone who has created a team.
+                </p>
+              </div>
+              <div class="form-group">
+                <a href="TRR/?pg=tfind&amp;fr_id=[[S80:trID]]&amp;fr_tm_opt=none&amp;s_regType=individual" class="button btn-lg btn-block btn-outline-grey step-button js__reg-individual p-3 mb-1">Breakaway
+                  <br>from the Pack</a>
+                <p class="p-2">
+                  I'm riding solo and will fundraise $1,000.
+                </p>
+              </div>
               ]]
             ::
             <div class="form-group">
@@ -85,7 +109,7 @@
     ::]]
 
 
-    [[?[[?xStationaryx::x[[E42:[[S80:trID]]:classification2]]x::T::]][[?xstartTeamx::x[[S80:regType]]x::T::]]::TT::
+    [[?[[?Stationaryx::x[[E42:[[S80:trID]]:classification2]]x::T::]][[?xstartTeamx::x[[S80:regType]]x::T::]]::TT::
     <!-- ONLY show bike number option to people who are 1) registering for a Stationary event and 2) are forming a team -->
     <!-- BEGIN team bikes step of tfind -->
     <div class="row js__team-bikes-container">
