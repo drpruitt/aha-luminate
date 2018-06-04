@@ -18,18 +18,18 @@
             </uib-tab>
           </uib-tabset>
         </div>
-        <a id="copy_message" href ng-click="sendGAEvent('Copy Email Message to Clipboard button');copyToClipboard()" class="pc_btn" ng-if="!device.isMobile">Copy Message</a>
-        <a id="open_in_my_default_email" href ng-click="sendGAEvent('Open Email in My Default Email Client button');sendEmailOpenEmail(activeEmailTab)" class="pc_btn">Open in My Default Email</a>
+        <a id="copy_message" href ng-click="sendGAEvent('Copy Email Message to Clipboard button'); copyToClipboard()" class="pc_btn" ng-if="!device.isMobile">Copy Message</a>
+        <a id="open_in_my_default_email" href ng-click="sendGAEvent('Open Email in My Default Email Client button'); sendEmailOpenEmail(activeEmailTab)" class="pc_btn">Open in My Default Email</a>
         <p class="email_send_via_FC">
-          <a id="send_email_through_pc" href ng-click="sendGAEvent('Or send an email through your Participant Center link');sendViaFC()">Or send an email through your Participant Center</a>
+          <a id="send_email_through_pc" href ng-click="sendGAEvent('Or send an email through your Participant Center link'); sendViaFC()">Or send an email through your Heart Walk Headquarters</a>
         </p>
       </div>
       <div id="send_via_FC">
         <h2>
-          Send Emails Through My Participant Center
+          Send Emails Through My Heart Walk Headquarters
         </h2>
         <p>
-          Sending emails through your Participant Center is quick and easy! Just use the wizard below to send your email to friends, family, teammates, and donors. You can also track who opened your emails and who visited your page. <a id="be_sure_to_upload_your_contacts" ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_all/list">Be sure to upload your contacts before starting</a>.
+          Sending emails through your Heart Walk Headquarters is quick and easy! Just use the wizard below to send your email to friends, family, teammates, and donors. You can also track who opened your emails and who visited your page. <a id="be_sure_to_upload_your_contacts" ng-href="{{baseUrl}}#/email/contacts/email_rpt_show_all/list">Be sure to upload your contacts before starting</a>.
         </p>
       </div>
     </div>

@@ -322,7 +322,7 @@ angular.module 'trPcControllers'
       $scope.updateTellUsWhy = ($event) ->
         $scope.updateSurveyResponses($event)
 
-      logUserInt = (subject,body) ->
+      logUserInt = (subject, body) ->
         ConstituentService.logInteraction 'interaction_type_id='+ $rootScope.interactionTypeId + '&interaction_subject=' + subject + '&interaction_body=' + body
           .then (response) ->
             if response.data.updateConsResponse?.message
@@ -868,7 +868,7 @@ angular.module 'trPcControllers'
             $scope.dashboardPromises.push updateGoalPromise
           when 'Team'
             $scope.editGoalOptions.updateGoalInput = '' + $scope.editGoalOptions.updateGoalInput
-            newGoal = $scope.editGoalOptions.updateGoalInput.replace('$', '').replace(/,/g, '')
+            newGoal = $scope.editGoalOptions.updateGoalInput.replace('$', '').replace /,/g, ''
             if isNaN(newGoal)
               $scope.editGoalOptions.updateGoalInput = 0
               newGoal = 0
