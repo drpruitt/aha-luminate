@@ -1,0 +1,32 @@
+
+.pg_entry {
+  .tr-page-container {
+    display:none;
+  }
+  .greeting-intro-image-container {
+    img {
+      @extend .m-3;
+      @extend .w-100;
+    }
+  }
+ .greeting-inspire-img-container {
+   img {
+     @extend .w-100;
+     @extend .mx-auto;
+     @extend .d-block;
+     @extend .pb-4;
+   }
+ }
+//  .greeting-inspire-text-container {
+
+//  }
+  .section-fundraiser {
+    .table-responsive {
+      min-height: 257px;
+    }
+  }
+}
+
+.tr_sponsorship_logo {
+  @extend .mx-5;
+}

@@ -95,7 +95,7 @@ module.exports = {
       }
     ]
   },
-
+  
   "nchw": {
     files: [
       {
@@ -105,6 +105,32 @@ module.exports = {
           '*.{gif,GIF,jpg,JPG,png,PNG,svg,SVG}'
         ],
         dest: 'dist/nchw/image/'
+      }
+    ]
+  },
+  
+  "heartchase": {
+    files: [
+      {
+        expand: true,
+        cwd: 'src/heartchase/image/',
+        src: [
+          '*.{gif,GIF,jpg,JPG,png,PNG,svg,SVG}'
+        ],
+        dest: 'dist/heartchase/image/'
+      }
+    ]
+  },
+  
+  "cyclenation": {
+    files: [
+      {
+        expand: true,
+        cwd: 'src/cyclenation/image/',
+        src: [
+          '*.{gif,GIF,jpg,JPG,png,PNG,svg,SVG}'
+        ],
+        dest: 'dist/cyclenation/image/'
       }
     ]
   }

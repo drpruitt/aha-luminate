@@ -153,6 +153,32 @@ module.exports = (grunt) ->
     runTargetedTask [
       'copy'
     ], 'nchw-scripts'
+    runTargetedTask [
+      'clean'
+      'sass'
+      'postcss'
+      'cssmin'
+      'uglify'
+      'replace'
+      'htmlmin'
+      'imagemin'
+    ], 'heartchase'
+    runTargetedTask [
+      'copy'
+    ], 'heartchase-scripts'
+    runTargetedTask [
+      'clean'
+      'sass'
+      'postcss'
+      'cssmin'
+      'uglify'
+      'replace'
+      'htmlmin'
+      'imagemin'
+    ], 'cyclenation'
+    runTargetedTask [
+      'copy'
+    ], 'cyclenation-scripts'
     return
   grunt.registerTask 'dev', ->
     devTasks = [
@@ -181,6 +207,12 @@ module.exports = (grunt) ->
       if task.indexOf('notify:') is -1
         devTasks.push task
     config.watch['nchw'].tasks.forEach (task) ->
+      if task.indexOf('notify:') is -1
+        devTasks.push task
+    config.watch['heartchase'].tasks.forEach (task) ->
+      if task.indexOf('notify:') is -1
+        devTasks.push task
+    config.watch['cyclenation'].tasks.forEach (task) ->
       if task.indexOf('notify:') is -1
         devTasks.push task
     devTasks.push 'watch'

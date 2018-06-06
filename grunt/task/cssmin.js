@@ -82,11 +82,30 @@ module.exports = {
       }
     ]
   },
+  
   "nchw": {
     files: [
       {
         src: 'dist/nchw/css/main.css', 
         dest: 'dist/nchw/css/main.'+ '<%= timestamp %>' +'.min.css'
+      }
+    ]
+  },
+  
+  "heartchase": {
+    files: [
+      {
+        src: 'dist/heartchase/css/main.css', 
+        dest: 'dist/heartchase/css/main.'+ '<%= timestamp %>' +'.min.css'
+      }
+    ]
+  },
+  
+  "cyclenation": {
+    files: [
+      {
+        src: 'dist/cyclenation/css/main.css', 
+        dest: 'dist/cyclenation/css/main.'+ '<%= timestamp %>' +'.min.css'
       }
     ]
   }

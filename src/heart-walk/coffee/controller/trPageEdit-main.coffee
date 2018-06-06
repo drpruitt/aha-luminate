@@ -263,7 +263,7 @@ angular.module 'trPageEditControllers'
                 success: (data) ->
                   # TODO
             $scope.submitVidyard = ->
-              jQuery.ajax 'http://blender.vidyard.com/forms/pd5MsBtKJwfrReeWz7d8v4/submit.json',
+              jQuery.ajax 'https://blender.vidyard.com/forms/pd5MsBtKJwfrReeWz7d8v4/submit.json',
                 type: 'POST'
                 data: JSON.stringify( { auth_token: "Jep8QrDjpqwOnI5rpsAbJw", email: $rootScope.email, fields: {firstname: $rootScope.firstName, why: $scope.personalMedia.myWhy, cons_id: '"' + $rootScope.consId + '"'} } ),
                 contentType: 'application/json',

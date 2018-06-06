@@ -100,7 +100,7 @@ module.exports = {
       }
     ]
   },
-
+  
   "nchw": {
     files: [
       {
@@ -108,6 +108,28 @@ module.exports = {
         cwd: "src/nchw/html/",
         src: ["**/*.*"],
         dest: "dist/nchw/html/"
+      }
+    ]
+  },
+  
+  "heartchase": {
+    files: [
+      {
+        expand: true,
+        cwd: "src/heartchase/html/",
+        src: ["**/*.*"],
+        dest: "dist/heartchase/html/"
+      }
+    ]
+  },
+  
+  "cyclenation": {
+    files: [
+      {
+        expand: true,
+        cwd: "src/cyclenation/html/",
+        src: ["**/*.*"],
+        dest: "dist/cyclenation/html/"
       }
     ]
   }

@@ -159,7 +159,7 @@ module.exports = {
       'notify:district-heart'
     ]
   },
-
+  
   "nchw": {
     files: [
       'src/nchw/html/**/*',
@@ -174,6 +174,40 @@ module.exports = {
       'html-dist:nchw',
       'img-copy:nchw-images',
       'notify:nchw'
+    ]
+  },
+  
+  "heartchase": {
+    files: [
+      'src/heartchase/html/**/*',
+      'src/heartchase/image/**/*',
+      'src/heartchase/sass/**/*',
+      'src/heartchase/js/**/*'
+    ],
+    tasks: [
+      'clean:heartchase',
+      'css-dist:heartchase',
+      'js-dist:heartchase',
+      'html-dist:heartchase',
+      'img-copy:heartchase-images',
+      'notify:heartchase'
+    ]
+  },
+  
+  "cyclenation": {
+    files: [
+      'src/cyclenation/html/**/*',
+      'src/cyclenation/image/**/*',
+      'src/cyclenation/sass/**/*',
+      'src/cyclenation/js/**/*'
+    ],
+    tasks: [
+      'clean:cyclenation',
+      'css-dist:cyclenation',
+      'js-dist:cyclenation',
+      'html-dist:cyclenation',
+      'img-copy:cyclenation-images',
+      'notify:cyclenation'
     ]
   }
 }

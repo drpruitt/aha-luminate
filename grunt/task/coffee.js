@@ -4,7 +4,7 @@ module.exports = {
   options: {
     join: true
   },
-
+  
   "general": {
     files: {
       'dist/general/js/main.js': [
@@ -20,7 +20,7 @@ module.exports = {
       ]
     }
   },
-
+  
   "heart-walk": {
     files: {
       'dist/heart-walk/js/main.js': [
@@ -56,7 +56,7 @@ module.exports = {
       ]
     }
   },
-
+  
   "jump-hoops": {
     files: {
       'dist/jump-hoops/js/main.js': [
@@ -85,7 +85,7 @@ module.exports = {
       ]
     }
   },
-
+  
   "middle-school": {
     files: {
       'dist/middle-school/js/main.js': [
@@ -114,7 +114,7 @@ module.exports = {
       ]
     }
   },
-
+  
   "high-school": {
     files: {
       'dist/high-school/js/main.js': [
@@ -143,7 +143,7 @@ module.exports = {
       ]
     }
   },
-
+  
   "district-heart": {
     files: {
       'dist/district-heart/js/main.js': [
@@ -169,6 +169,22 @@ module.exports = {
         'src/global/coffee/service/trpc-*.*',
         'src/youth-markets/coffee/service/trpc-*.*',
         'src/district-heart/coffee/**/trpc-*.*'
+      ]
+    }
+  },
+  
+  "heartchase": {
+    files: {
+      'dist/heartchase/js/main.js': [
+        'src/jump-hoops/coffee/init.coffee',
+        'src/jump-hoops/coffee/config/*.*',
+        'src/global/coffee/service/*.*',
+        'src/youth-markets/coffee/service/*.*',
+        'src/youth-markets/coffee/controller/*.*',
+        'src/jump-hoops/coffee/service/*.*',
+        'src/global/coffee/directive/*.*',
+        'src/jump-hoops/coffee/directive/*.*',
+        'src/jump-hoops/coffee/**/*.*',
       ]
     }
   }

@@ -105,6 +105,7 @@ module.exports = {
       }
     ]
   },
+  
   "nchw-images": {
     files: [
       {
@@ -117,6 +118,7 @@ module.exports = {
       }
     ]
   },
+  
   "nchw-scripts": {
     files: [
       {
@@ -126,6 +128,45 @@ module.exports = {
           '*.js'
         ],
         dest: 'dist/nchw/js/'
+      }
+    ]
+  },
+  
+  "heartchase-images": {
+    files: [
+      {
+        expand: true,
+        cwd: 'src/heartchase/image/',
+        src: [
+          '*.{gif,GIF,jpg,JPG,png,PNG,svg,SVG}'
+        ],
+        dest: 'dist/heartchase/image/'
+      }
+    ]
+  },
+  
+  "heartchase-scripts": {
+    files: [
+      {
+        expand: true,
+        cwd: 'src/heartchase/js/',
+        src: [
+          '*.js'
+        ],
+        dest: 'dist/heartchase/js/'
+      }
+    ]
+  },
+  
+  "cyclenation-scripts": {
+    files: [
+      {
+        expand: true,
+        cwd: 'src/cyclenation/js/',
+        src: [
+          '*.js'
+        ],
+        dest: 'dist/cyclenation/js/'
       }
     ]
   }

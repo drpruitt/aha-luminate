@@ -139,7 +139,7 @@ module.exports = {
       }
     ]
   },
-
+  
   "nchw": {
     files: [
       {
@@ -149,6 +149,32 @@ module.exports = {
           'main.css'
         ],
         dest: 'dist/nchw/css/'
+      }
+    ]
+  },
+  
+  "heartchase": {
+    files: [
+      {
+        expand: true,
+        cwd: 'dist/heartchase/css/',
+        src: [
+          'main.css'
+        ],
+        dest: 'dist/heartchase/css/'
+      }
+    ]
+  },
+  
+  "cyclenation": {
+    files: [
+      {
+        expand: true,
+        cwd: 'dist/cyclenation/css/',
+        src: [
+          'main.css'
+        ],
+        dest: 'dist/cyclenation/css/'
       }
     ]
   }

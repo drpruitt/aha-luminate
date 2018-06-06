@@ -47,6 +47,9 @@ angular.module 'trPcControllers'
           'email_rpt_show_unthanked_donors'
           'email_rpt_show_donors'
           'email_rpt_show_nondonors'
+          'email_rpt_show_teammates'
+          'email_rpt_show_lybunt_teammates'
+          'email_rpt_show_ly_donors'
         ]
         # TODO: email_rpt_show_teammates and email_rpt_show_nonteammates
         angular.forEach contactFilters, (filter) ->
@@ -383,5 +386,4 @@ angular.module 'trPcControllers'
               $scope.sendEmailSuccess = true
               $scope.resetSelectedContacts()
               setEmailComposerDefaults()
-
   ]
