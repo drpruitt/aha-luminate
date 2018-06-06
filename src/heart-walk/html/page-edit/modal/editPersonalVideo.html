@@ -1,4 +1,4 @@
-<div ng-init="personalVideo.type = ''" ng-class="{'modal-edit-video': updatedLightbox}" >
+<div ng-init="personalVideo.type = ''">
   <form ng-submit="updatePersonalVideo()">
     <div class="modal-header">
       <h2 class="modal-title">
@@ -42,12 +42,12 @@
     <div class="modal-footer">
       <div class="clearfix">
         <div class="pull-left">
-          <button type="button" class="btn text-uppercase" ng-class="{'btn-outline-white': updatedLightbox, 'btn-primary-inverted': !updatedLightbox}" ng-click="cancelEditPersonalVideo()">
+          <button type="button" class="btn btn-primary-inverted" ng-click="cancelEditPersonalVideo()">
             Cancel
           </button>
         </div>
         <div class="pull-right">
-          <button type="submit" class="btn text-uppercase" ng-class="{'btn-outline-white': updatedLightbox, 'btn-primary': !updatedLightbox}" >
+          <button type="submit" class="btn btn-primary">
             Save
           </button>
         </div>
@@ -55,7 +55,6 @@
     </div>
   </form>
 </div>
-
 
 <div class="hidden" hidden aria-hidden="true">
   <form class="js--submit-personalized-video-LO-form" action="{{teamraiserAPIPath}}" method="POST" enctype="multipart/form-data" target="submit-personalized-video-LO-shim">

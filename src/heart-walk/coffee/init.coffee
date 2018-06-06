@@ -24,6 +24,8 @@ angular.module 'ahaLuminateApp'
     '$rootScope'
     'APP_INFO'
     ($rootScope, APP_INFO) ->
+      $rootScope.tablePrefix = luminateExtend.global.tablePrefix
+      
       # get data from root element
       $dataRoot = angular.element '[data-aha-luminate-root]'
       $rootScope.apiKey = $dataRoot.data('api-key') if $dataRoot.data('api-key') isnt ''
@@ -32,7 +34,6 @@ angular.module 'ahaLuminateApp'
       $rootScope.consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
       $rootScope.authToken = $dataRoot.data('auth-token') if $dataRoot.data('auth-token') isnt ''
       $rootScope.frId = $dataRoot.data('fr-id') if $dataRoot.data('fr-id') isnt ''
-      $rootScope.updatedLightbox = $dataRoot.data('updated-lightbox') if $dataRoot.data('updated-lightbox') isnt ''
   ]
 
 angular.element(document).ready ->

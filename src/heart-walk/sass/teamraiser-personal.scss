@@ -148,37 +148,3 @@
     }
   }
 }
-
-.modal-edit-video {	
-  background: #C10E21;	
-  text-align: center;	
-  color: #ffffff;	
-  font-family: 'Montserrat', Arial, sans-serif;
-
-  & .modal-header {	
-    border-bottom: none;	
-  }	
-
-  & .modal-title {
-    font-weight: bold;
-  }
-
-  & .modal-footer {	
-    border-top: none;	
-  }	
-
-  & .btn.btn-outline-white {	
-    background: #C10E21;	
-    color: #fff;	
-    border: 1px solid #fff;
-    font-size: 16px;
-    font-weight: 400;
-  }	
-
-  & .btn.btn-outline-white:hover {	
-    background-color: #3c3c3c;	
-    color: #fff;	
-    border-color: #3c3c3c;	
-  }
-
-}

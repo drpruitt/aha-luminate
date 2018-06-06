@@ -1,39 +1,6 @@
 .ng-pc-modal {
   .modal-body {
     font-size: 15px;
-    background-color: #C10E21;	
-    text-align: center;	
-    color: #ffffff;	
-    font-family: 'Montserrat', Arial, sans-serif;
-    
-    & .form-group {	
-      text-align: left;	
-    }
-    
-    & a {
-      color: #ffffff;
-    }
-  }
-
-  .modal-header {	
-    background-color: #C10E21;	
-    border-bottom: none;	
-    text-align: center;	
-    color: #ffffff;	
-    font-family: 'Montserrat', Arial, sans-serif;
-  }	
-
-  .modal-footer {	
-    padding: 15px;	
-    border-top: none;	
-    background-color: #C10E21;	
-    text-align: center;	
-    color: #ffffff;	
-    font-family: 'Montserrat', Arial, sans-serif;
-  }	
-
-  .lb_skip_link a {	
-    color: #ffffff;
   }
   
   .modal-header__btns {
@@ -56,57 +23,35 @@
       }
     }
   }
+  
+  .btn.pc-facebook-fundraiser-btn, 
+  a.btn.pc-facebook-fundraiser-btn {
+    &, 
+    &:link, 
+    &:visited, 
+    &:hover, 
+    &:focus, 
+    &:active {
+      background: #4260b4;
+      border-color: #4260b4;
+      color: #ffffff;
+    }
+    
+    .hidden-text-xxs {
+      display: none;
+      
+      @media (min-width: 375px) {
+        display: inline;
+      }
+    }
+    
+    .fa {
+      margin: 0 4px 0 0;
+    }
+  }
 }
 
 .ng-pc-modal-email-message-body {
   width: 100%;
   overflow-y: scroll;
-}
-
-.tr3472 .ng-pc-modal,
-.tr3074 .ng-pc-modal,
-.tr3370 .ng-pc-modal,
-.tr3092 .ng-pc-modal,
-.tr3142 .ng-pc-modal,
-.tr3138 .ng-pc-modal,
-.tr3144 .ng-pc-modal,
-.tr3150 .ng-pc-modal,
-.tr3572 .ng-pc-modal,
-.tr3510 .ng-pc-modal,
-.tr3518 .ng-pc-modal {
-  .modal-body {
-    font-size: 15px;
-    background-color: #ffffff;
-    text-align: left;
-    color: initial;
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-
-    & .form-group {	
-      // text-align: left;	
-    }
-
-    & a {
-      // color: #ffffff;
-    }
-  }	
-
-  .modal-header {
-    background-color: #ffffff;
-    border-bottom: 1px solid #dfe0e0;
-    text-align: left;
-    color: inherit;
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  }
-
-  .modal-footer {
-    padding: 15px;
-    border-top: 1px solid #dfe0e0;
-    background-color: #ffffff;
-    text-align: center;
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  }
-
-  .lb_skip_link a {
-    color: #de2427;
-  }
 }
