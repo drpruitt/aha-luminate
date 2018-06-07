@@ -1,4 +1,4 @@
-<div class="modal-header" ng-class="{'': facebookFundraisersEnabled, 'modal-header-red': !facebookFundraisersEnabled}">
+<div class="modal-header" ng-class="{'': facebookFundraisersEnabled, 'modal-header-red modal-text-center': !facebookFundraisersEnabled}">
   <h2 class="modal-title">
     "__________ is Why." - <span ng-if="constituent.name && constituent.name.first">{{constituent.name.first}}</span><span ng-if="!constituent.name.first">Participant</span>
   </h2>
@@ -9,7 +9,7 @@
 <div uib-alert class="alert-danger" ng-if="updateSurveyFailure" close="resetSurveyAlerts()">
   {{updateSurveyFailureMessage}}
 </div>
-<div class="modal-body" ng-class="{'': facebookFundraisersEnabled, 'modal-body-red': !facebookFundraisersEnabled}">
+<div class="modal-body" ng-class="{'': facebookFundraisersEnabled, 'modal-body-red modal-text-center': !facebookFundraisersEnabled}">
   <div>
     <p>
       What's your why, <span ng-if="constituent.name && constituent.name.first">{{constituent.name.first}}</span><span ng-if="!constituent.name.first">Participant</span>? Tell us why you walk and we'll create a personalized video for you to share with friends and family!

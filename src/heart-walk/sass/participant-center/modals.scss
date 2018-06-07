@@ -27,14 +27,20 @@
   .modal-header-red {
     background: $brand-primary;
     color: #ffffff;
-    text-align: center;
     border-bottom: none;
   }
 
   .modal-body-red {
     background: $brand-primary;
     color: #ffffff;
-    text-align: center;
+
+    a, a:link, a:visited, a:hover, a:focus {
+      color: #ffffff;
+    }
+
+    .input-group {
+      margin: 0 auto;
+    }
   }
 
   .modal-footer-red {
@@ -44,6 +50,10 @@
     .lb_skip_link a {
       color: #ffffff;
     }
+  }
+
+  .modal-text-center {
+    text-align: center;
   }
   
   .btn.pc-facebook-fundraiser-btn, 
