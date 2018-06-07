@@ -13,7 +13,7 @@
     <span ng-if="constituent.name && constituent.name.first">{{constituent.name.first}}</span><span ng-if="!constituent.name.first">Participant</span>, Time to put your heart into it! Use the Participant Center to update your story, send emails, and find resources to hit your fundraising goal.
   </p>
 </div>
-<div class="modal-body" ng-class="{'': facebookFundraisersEnabled, 'modal-body-red': !facebookFundraisersEnabled}">
+<div class="modal-body" ng-class="{'': facebookFundraisersEnabled, 'modal-body-red modal-text-center': !facebookFundraisersEnabled}">
   <div>
     <div ng-if="!facebookFundraisersEnabled" ng-cloak>
       <p>Take a moment and pat yourself on the back. We&rsquo;ll wait.</p>
