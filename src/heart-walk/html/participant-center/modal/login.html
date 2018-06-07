@@ -1,11 +1,11 @@
 <div ng-controller="LoginCtrl">
   <form name="consLoginForm" method="POST" novalidate ng-submit="submitLogin()">
-    <div class="modal-header">
+      <div class="modal-header" ng-class="{'': facebookFundraisersEnabled, 'modal-header-red': !facebookFundraisersEnabled}">
       <h2 class="modal-title">
         Login
       </h2>
     </div>
-    <div class="modal-body">
+    <div class="modal-body" ng-class="{'': facebookFundraisersEnabled, 'modal-body-red': !facebookFundraisersEnabled}">
       <div uib-alert class="alert-danger" ng-if="loginError">
         {{loginError}}
       </div>
@@ -26,10 +26,10 @@
       </div>
       <!-- TODO: remember me -->
     </div>
-    <div class="modal-footer">
+    <div class="modal-footer" ng-class="{'': facebookFundraisersEnabled, 'modal-footer-red': !facebookFundraisersEnabled}">
       <div class="clearfix">
         <div class="pull-right">
-          <button type="submit" class="btn btn-primary text-uppercase">
+          <button type="submit" class="btn text-uppercase" ng-class="{'btn-primary': facebookFundraisersEnabled, 'btn-outline-white': !facebookFundraisersEnabled}">
             <span translate="login_button_label"></span>
           </button>
         </div>

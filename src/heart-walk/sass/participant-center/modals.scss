@@ -23,6 +23,28 @@
       }
     }
   }
+
+  .modal-header-red {
+    background: $brand-primary;
+    color: #ffffff;
+    text-align: center;
+    border-bottom: none;
+  }
+
+  .modal-body-red {
+    background: $brand-primary;
+    color: #ffffff;
+    text-align: center;
+  }
+
+  .modal-footer-red {
+    background: $brand-primary;
+    border-top: none;
+
+    .lb_skip_link a {
+      color: #ffffff;
+    }
+  }
   
   .btn.pc-facebook-fundraiser-btn, 
   a.btn.pc-facebook-fundraiser-btn {
