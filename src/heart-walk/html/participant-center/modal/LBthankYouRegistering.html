@@ -42,7 +42,7 @@
   <div class="clearfix">
     <div class="pull-left">
       <div ng-if="facebookFundraisersEnabled" ng-cloak>
-        <a href class="btn btn-primary-inverted text-uppercase" ng-click="sendGAEvent('Not Right Now - thank you for registering lightbox'); notRightNow(); LBskip('facebookFundraiser')">Not Right Now</a>
+        <a href class="btn btn-primary-inverted text-uppercase" ng-click="sendGAEvent('Not Right Now – Connect to Fundraiser FB lightbox'); notRightNow(); LBskip('facebookFundraiser')">Not Right Now</a>
       </div>
       <div ng-if="!facebookFundraisersEnabled" ng-cloak>
         <a href class="btn btn-primary-inverted text-uppercase" ng-click="sendGAEvent('Not Right Now - thank you for registering lightbox'); notRightNow()">Not Right Now</a>
@@ -50,7 +50,7 @@
     </div>
     <div class="pull-right">
       <div ng-if="facebookFundraisersEnabled" ng-cloak>
-        <button type="button" class="btn btn-primary pc-facebook-fundraiser-btn text-uppercase" ng-click="LBskip('facebookFundraiser'); loginToFacebook(); scrollToFacebookFundraiser()">
+        <button type="button" class="btn btn-primary pc-facebook-fundraiser-btn text-uppercase" ng-click="sendGAEvent('Connect to Fundraiser FB lightbox'); LBskip('facebookFundraiser'); loginToFacebook(); scrollToFacebookFundraiser()">
           <span class="fa fa-facebook-square"></span> Connect <span class="hidden-text-xxs">Fundraiser</span> to Facebook
         </button>
       </div>
@@ -58,5 +58,10 @@
         <a id="LBupdateMyPage" ng-href="{{personalPageUrl}}" class="btn btn-primary text-uppercase">Update My Page</a>
       </div>
     </div>
+  </div>
+  <div class="lb_skip_link" ng-if="facebookFundraisersEnabled" ng-cloak>
+    <p class="small">
+      By clicking this link, you will leave AHA's website and be redirected to another site not under the control of AHA.
+    </p>
   </div>
 </div>

@@ -4,7 +4,7 @@ module.exports = {
   options: {
     join: true
   },
-
+  
   "general": {
     files: {
       'dist/general/js/main.js': [
@@ -20,7 +20,7 @@ module.exports = {
       ]
     }
   },
-
+  
   "heart-walk": {
     files: {
       'dist/heart-walk/js/main.js': [
@@ -56,7 +56,7 @@ module.exports = {
       ]
     }
   },
-
+  
   "jump-hoops": {
     files: {
       'dist/jump-hoops/js/main.js': [
@@ -85,7 +85,7 @@ module.exports = {
       ]
     }
   },
-
+  
   "middle-school": {
     files: {
       'dist/middle-school/js/main.js': [
@@ -114,7 +114,7 @@ module.exports = {
       ]
     }
   },
-
+  
   "high-school": {
     files: {
       'dist/high-school/js/main.js': [
@@ -143,7 +143,7 @@ module.exports = {
       ]
     }
   },
-
+  
   "district-heart": {
     files: {
       'dist/district-heart/js/main.js': [
@@ -172,6 +172,7 @@ module.exports = {
       ]
     }
   },
+  
   "heartchase": {
     files: {
       'dist/heartchase/js/main.js': [

@@ -226,7 +226,6 @@
     // Search by Participant
     $('.js__participant-search').on('submit', function (e) {
       e.preventDefault();
-      console.log('search participant');
       $('.results-table, .alert').attr('hidden', true);
       $('.results-rows').html('');
       var firstName = $('#participant_first_name').val();
@@ -714,8 +713,6 @@
           resetEventList();
         } else {
           $('.js__no-event-results').addClass('d-none');
-          console.log('third');
-     
         }
       });
 
@@ -784,7 +781,6 @@
 
     var knowSurveyParsleyConfig = {
       errorsContainer: function (pEle) {
-        console.log('erroring');
         var $err = pEle.$element.parent().parent().parent().parent().parent().find('.know-survey-error');
         return $err;
       }
@@ -912,7 +908,6 @@
           console.log('getSocialInteraction success: ' + JSON.stringify(data));
           var hasInteraction = data.getUserInteractionsResponse.interaction;
           if (!hasInteraction) {
-            console.log('does not have trSocialInteraction');
             // Does not have trRegInteraction OR trSocialInteraction. Assign a trLoggedInInteraction
             getLoginInteraction();
           }
@@ -1197,9 +1192,10 @@
       var dynTeamGoal = $('.js__generated-team-goal');
       var currentTeamGoal, currentTeamGoalFormatted, minTeamGoalMsg;
       var loTeamGoal = $('#fr_team_goal');
-
+      var promoCode =  ($('body').data('promocode')!==undefined ? $('body').data('promocode') : "");
+     
       // tfind
-      $('#team_find_new_company_selection_container').append('<div id="team_sponsor_code" class="input-container"><div class="form-group"><label for="sponsorCode">Do you have a sponsor code?</label><input name="s_promoCode"type="text"id="sponsorCode"class="form-control" value=""></div></div>');
+      $('#team_find_new_company_selection_container').append('<div id="team_sponsor_code" class="input-container"><div class="form-group"><label for="sponsorCode">Do you have a sponsor code?</label><input name="s_promoCode"type="text"id="sponsorCode"class="form-control" value="' + promoCode + '"></div></div>');
 
       var numTeamResults = $('#team_find_search_results_container .list-component-row').length;
 
@@ -1305,6 +1301,14 @@
 
     // BEGIN PTYPE CUSTOMIZATIONS
     if ($('#F2fRegPartType').length > 0) {
+        // add reg full class to ptype container
+        var ptypeBlocks = $('.part-type-decoration-messages');
+        $(ptypeBlocks).each(function(){
+          if($(this).hasClass('part-type-full')){
+            $(this).parent().removeClass('selected').addClass('ptype-full').find('input[type=radio]').remove();
+          }
+        });
+
       if (eventType2 === 'Stationary') {
         $('#sel_type_container').text('What time will you ride?');
       } else {
@@ -1330,14 +1334,16 @@
         });
 
         $('.part-type-container').on('click', function (e) {
-          $('.part-type-container').removeClass('selected');
-          $(this).addClass('selected');
-          $(this).find('input[type="radio"]').prop('checked', true);
-          $('#next_step').removeClass('disabled');
-          $('#dspPledge').modal('show');
+            $('.part-type-container').removeClass('selected');
+            $(this).addClass('selected');
+            $(this).find('input[type="radio"]').prop('checked', true);
+            $('#next_step').removeClass('disabled');
+            $('#dspPledge').modal({backdrop: 'static', keyboard: false}).modal('show');
         });
 
       }
+
+
 
       $('#fund_goal_container').prepend('<span class="field-required"></span>&nbsp;');
       $('#part_type_additional_gift_section_header').prepend('<div class="bold-label">Make a Donation</div>');
@@ -1361,8 +1367,25 @@
         $('.other-amount-row-container input[type="text"]').val('');
         $(this).addClass('active');
       });
+      // add label to other amount text input
+      $('.other-amount-row-container input[type=text]').addClass('other-amount').attr('aria-labelledby', 'enterAmtLabel');
 
-      $('.other-amount-row-container input[type="text"]').on('click', function (e) {
+      $('.other-amount')
+        .prop('onclick',null).off('click')
+        .prop('onkeyup',null).off('keyup')
+        .prop('onchange',null).off('change')
+        .prop('onfocus',null).off('focus');
+
+        $('.other-amount').on('keyup', function(e){
+          if($(this).val() > 0){
+            $('.donation-level-row-label').removeClass('active');
+            $(this).parent().find('input[type="radio"]').prop('checked', true);
+          } else {
+            $(this).parent().find('input[type="radio"]').prop('checked', false);
+          }
+        });
+
+      $('.other-amount-row-container input[type="radio"]').on('click, focus', function (e) {
         $('.donation-level-row-label').removeClass('active');
         $(this).closest('input[type=radio]').prop('checked', true);
       });
@@ -1388,9 +1411,6 @@
         $('#previous_step').replaceWith('<div class="order-2 order-sm-1 col-sm-4 col-8 offset-2 offset-sm-0"><a href="TRR/?pg=tfind&amp;fr_id=' + evID + '&amp;s_regType=" class="button btn-secondary btn-block">Back</a></div>');
       }
 
-      // tabindex
-      // $(":input").each(function (i) { $(this).attr('tabindex', i + 1); });
-
     }
 
     // BEGIN REG INFO CUSTOMIZATIONS
@@ -1408,7 +1428,6 @@
         var birthDay = $('#cons_birth_date_DAY').val();
         var birthMonth = $('#cons_birth_date_MONTH').val();
         var birthYear = $('#cons_birth_date_YEAR').val();
-        console.log('birthYear: ' + birthYear);
         if (birthDay !== '0' && birthMonth !== '0') {
           $('#cons_birth_date_YEAR').val('1901');
         } else {
@@ -1421,6 +1440,10 @@
         cd.setBirthMonth();
       });
 
+      $('#cons_birth_date_DAY').before('<label class="sr-only" for="cons_birth_date_DAY">Birth Day</label>');
+      $('#cons_birth_date_MONTH').before('<label class="sr-only" for="cons_birth_date_MONTH">Birth Month</label>');
+      $('#cons_birth_date_YEAR').before('<label class="sr-only" for="cons_birth_date_YEAR">Birth Year</label>');
+
 
       $('#cons_info_dob .form-content').append('<p class="small">If you would like to provide your birthday, we would love to acknowledge your special day each year.</p>');
 
@@ -1429,14 +1452,14 @@
       if (eventType2 === 'Stationary') {
         // autoselect number of bikes based on tfind responses and/or ptype
         var bikeQuestion = $('.input-label:contains("How many bikes")');
+        $(bikeQuestion).closest('.survey-question-container').attr('hidden', true);
         if (regType === 'individual') {
-          $(bikeQuestion).closest('.survey-question-container').attr('hidden', true);
           $(bikeQuestion).closest('.input-container').find('select').val('1');
         } else if (regType === 'startTeam') {
           var numBikesSelected = $('body').data('numbikes');
-
-          $(bikeQuestion).closest('.survey-question-container').attr('hidden', true);
           $(bikeQuestion).closest('.input-container').find('select').val(numBikesSelected);
+        } else if (regType === 'joinTeam') {
+          $(bikeQuestion).closest('.input-container').find('select').val('0');
         }
       }
 
@@ -1493,7 +1516,6 @@
     if ($('body').is('.app_id_27')) {
       // BEGIN THERMO LOGIC
       cd.updateRegProgress = function (stepsComplete, stepsPossible) {
-        console.log('update progress bar: ' + stepsComplete + ', ' + stepsPossible);
         var percentComplete = Math.round((stepsComplete / stepsPossible) * 100);
         $('.js__reg-progress')
           .attr('aria-valuenow', percentComplete)
@@ -1677,11 +1699,15 @@
     $('#team_find_new_team_recruiting_goal label.input-label').attr('for', 'fr_team_member_goal');
 
     // ptype
+    $('#part_type_selection_container').wrapInner('<fieldset role="radiogroup" class="ptype-selection" />');
+    
+    $('input[name=fr_part_radio]').attr('aria-labelledby', 'sel_type_container');
+    
     // wrap donation options in a fieldset with legend
-    $('#part_type_donation_level_input_container').wrap('<fieldset />').prepend('<legend class="sr-only">Make a donation</legend>');
+    $('#part_type_donation_level_input_container').wrapInner('<fieldset role="radiogroup" class="donation-form-fields" />');
+    $('.donation-form-fields').prepend('<legend id="reg_donation_label" class="sr-only">Make a donation</legend>');
 
-    // add label to other amount text input
-    $('.other-amount-row-container input[type=text]').attr('aria-labelledby', 'enterAmtLabel');
+    $('.donation-level-container input[type=radio]').attr('aria-labelledby', 'reg_donation_label');
 
     // associate ptype label with input
     $('.part-type-container label').each(function (i) {
@@ -1692,7 +1718,7 @@
 
     // Reg
     $('label[for="cons_first_name"]').eq(0).remove();
-    $('#cons_birth_date_MONTH, #cons_birth_date_DAY, #cons_birth_date_YEAR').attr('aria-labelledby', 'enterAmtLabel');
+    // $('#cons_birth_date_MONTH, #cons_birth_date_DAY, #cons_birth_date_YEAR').attr('aria-labelledby', 'enterAmtLabel');
     $('#cons_birth_date_YEAR').attr('aria-hidden', true);
 
     // paymentForm
@@ -1706,9 +1732,9 @@
       return '<h1 class="h3 ' + $(this).attr('class') + '" id="' + $(this).attr('id') + '">' + $(this).html() + '</h1>';
     });
 
-    // $('#title_container').replaceWith(function () {
-    //   return '<h1 class="h3 ' + $(this).attr('class') + '" id="' + $(this).attr('id') + '">' + $(this).html() + '</h1>';
-    // });
+    $('#title_container').replaceWith(function () {
+      return '<h1 class="h3 ' + $(this).attr('class') + '" id="' + $(this).attr('id') + '">' + $(this).html() + '</h1>';
+    });
 
     // Update help link to not be redundant
     $('#responsive_payment_typecc_cvv_row .HelpLink').attr('title', 'Opens in new window');
@@ -1771,7 +1797,6 @@
 
       // Selecting empty value from the Gift Duration drop-down when the One-time Gift box is checked
       $('#level_flexiblegift_type1').click(function () {
-        console.log('One-time gift box checked');
         $('#level_flexibleduration').val("");
       });
 
@@ -1870,12 +1895,10 @@
       $('#ProcessForm').parsley(parsleyDonDefaults);
 
       $('.internal-payment').on('click', function (e) {
-        console.log('cc payment');
         $('#responsive_payment_typecc_numbername').attr('data-parsley-required', '');
         $('#responsive_payment_typecc_cvvname').attr('data-parsley-required', '');
       });
       $('.external-payment').on('click', function (e) {
-        console.log('paypal payment');
         $('#responsive_payment_typecc_numbername').removeAttr('data-parsley-required');
         $('#responsive_payment_typecc_cvvname').removeAttr('data-parsley-required');
       });

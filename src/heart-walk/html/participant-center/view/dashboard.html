@@ -199,12 +199,15 @@
           <div role="alert" class="alert alert-danger" ng-if="facebookFundraiserLoginStatus == 'declined_manage_fundraisers'" ng-cloak>
             We need your permission to create a Facebook Fundraiser on your behalf.
           </div>
-          <button type="button" class="btn pc-facebook-fundraiser-btn" ng-click="loginToFacebook()" ng-if="facebookFundraiserLoginStatus != 'pending' && facebookFundraiserCreateStatus != 'pending'" ng-cloak>
+          <button type="button" class="btn pc-facebook-fundraiser-btn" ng-click="sendGAEvent('Connect to Fundraiser FB Banner'); loginToFacebook()" ng-if="facebookFundraiserLoginStatus != 'pending' && facebookFundraiserCreateStatus != 'pending'" ng-cloak>
             <span class="fa fa-facebook-square"></span> Connect <span class="hidden-text-xxs">Fundraiser</span> to Facebook
           </button>
           <button type="button" class="btn pc-facebook-fundraiser-btn" disabled ng-if="facebookFundraiserLoginStatus == 'pending' || facebookFundraiserCreateStatus == 'pending'" ng-cloak>
             <span class="fa fa-facebook-square"></span> Loading ...
           </button>
+          <p class="small">
+            By clicking this link, you will leave AHA's website and be redirected to another site not under the control of AHA.
+          </p>
         </div>
       </div>
       <div class="pc-facebook-fundraiser-connected js--facebook-fundraiser-completed-section" ng-if="facebookFundraisersEnabled" ng-show="facebookFundraiserId" ng-cloak>
@@ -215,9 +218,12 @@
           <p>
             Log in to use Facebook's fundraising tools to invite friends, share updates and collect donations. We'll keep track of your progress on Facebook and on your Heart Walk page, so you'll always know how close you are to reaching your goal.
           </p>
-          <a class="btn pc-facebook-fundraiser-btn" ng-href="//facebook.com/donate/{{facebookFundraiserId}}/" target="_blank" ng-disabled="!facebookFundraiserConfirmedStatus || facebookFundraiserConfirmedStatus == 'pending'" ng-if="facebookFundraiserId" ng-cloak>
+          <a class="btn pc-facebook-fundraiser-btn" ng-href="//facebook.com/donate/{{facebookFundraiserId}}/" target="_blank" ng-click="sendGAEvent('Go to FB Fundraiser');" ng-disabled="!facebookFundraiserConfirmedStatus || facebookFundraiserConfirmedStatus == 'pending'" ng-if="facebookFundraiserId" ng-cloak>
             Go To Facebook Fundraiser
           </a>
+          <p class="small">
+            By clicking this link, you will leave AHA's website and be redirected to another site not under the control of AHA.
+          </p>
         </div>
       </div>
       <div class="clearfix">
@@ -381,7 +387,7 @@
           <div ng-if="participantGifts.totalNumber == 0">
             No donations found.
           </div>
-          <gift-list gifts="participantGifts.gifts" sort-column="participantGifts.sortColumn" sort-ascending="participantGifts.sortAscending" sort-gifts="sortGifts" delete-gift="deleteGift" acknowledge-gift="acknowledgeGift" thank-donor="thankDonor" ng-if="participantGifts.totalNumber && participantGifts.totalNumber != 0"></gift-list>
+          <gift-list list-type="'participant'" gifts="participantGifts.gifts" sort-column="participantGifts.sortColumn" sort-ascending="participantGifts.sortAscending" sort-gifts="sortGifts" delete-gift="deleteGift" acknowledge-gift="acknowledgeGift" thank-donor="thankDonor" ng-if="participantGifts.totalNumber && participantGifts.totalNumber != 0"></gift-list>
           <div class="heart-list-pagination" ng-if="participantGifts.totalNumber > 10">
             <ul uib-pagination direction-links="false" items-per-page="10" total-items="participantGifts.totalNumber" max-size="10" ng-model="participantGifts.page" ng-change="getGifts()"></ul>
           </div>
@@ -546,7 +552,7 @@
           <div ng-if="teamGifts.totalNumber == 0">
             No donations found.
           </div>
-          <gift-list gifts="teamGifts.gifts" sort-column="teamGifts.sortColumn" sort-ascending="teamGifts.sortAscending" sort-gifts="sortTeamGifts" delete-gift="deleteTeamGift" acknowledge-gift="acknowledgeGift" thank-donor="thankDonor" ng-if="teamGifts.totalNumber && teamGifts.totalNumber != 0"></gift-list>
+          <gift-list list-type="'team'" gifts="teamGifts.gifts" sort-column="teamGifts.sortColumn" sort-ascending="teamGifts.sortAscending" sort-gifts="sortTeamGifts" delete-gift="deleteTeamGift" acknowledge-gift="acknowledgeGift" thank-donor="thankDonor" ng-if="teamGifts.totalNumber && teamGifts.totalNumber != 0"></gift-list>
           <div class="heart-list-pagination" ng-if="teamGifts.totalNumber > 10">
             <ul uib-pagination direction-links="false" items-per-page="10" total-items="teamGifts.totalNumber" max-size="10" ng-model="teamGifts.page" ng-change="getTeamGifts()"></ul>
           </div>

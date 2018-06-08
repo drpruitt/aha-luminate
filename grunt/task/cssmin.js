@@ -82,6 +82,7 @@ module.exports = {
       }
     ]
   },
+  
   "nchw": {
     files: [
       {
@@ -90,6 +91,7 @@ module.exports = {
       }
     ]
   },
+  
   "heartchase": {
     files: [
       {
@@ -98,6 +100,7 @@ module.exports = {
       }
     ]
   },
+  
   "cyclenation": {
     files: [
       {

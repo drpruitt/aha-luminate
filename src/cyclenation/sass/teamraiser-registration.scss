@@ -99,9 +99,17 @@
   }
   .don-level-btn {
     .donation-level-row-decoration-container {
-      // @extend .btn-group;
-      @extend .btn-group-toggle;
       width: 100%;
+      input[type="radio"]{
+        position: absolute;
+        left: 20%;
+        top: 22%;
+      }
+      @include media-breakpoint-down(sm) {
+        input[type="radio"]{
+          top: 25%;
+        }
+      }
     }
     .donation-level-row-label {
       @extend .btn;
@@ -383,29 +391,41 @@ div.responsive div.ErrorMessage.page-error>span.field-error-text {
 #emergency_contact_title_container {
   @extend .bold-label;
 }
-div.part-type-container .part-type-decoration-messages {
-  width:100%;
-  max-width:100%;
-  // margin:0;
-  label {
-    // margin:0;
-    height:100%;
+div.part-type-container {
+  position:relative;
+  .part-type-decoration-messages {
     width:100%;
+    max-width:100%;
+    label {
+      height:100%;
+      width:100%;
+    }
+
+  }
+  input {
+    margin:0;
+    position: absolute;
+    top: 35%;
+    left: 15%;
+  }
+  @include media-breakpoint-down(sm) {
+    input {
+      top: 35%;
+      left: 10%;
+    }
   }
 }
 #F2fRegPartType,
 #participation_options_page {
   margin:0 auto;
 }
+
 div.part-type-container {
   cursor: pointer;
   @include button-variant(#dcdcdc, #000, $hover-background: $red, $hover-border: $red, $active-background: $red, $active-border: $red);
   text-align:center;
   border: 1px solid $black;
   @extend .my-2;
-  input[type="radio"] {
-    display:none;
-  }
   &:hover {
     cursor:pointer;
   }
@@ -413,6 +433,29 @@ div.part-type-container {
     @extend .btn-primary;
     border-radius: 0;
     border: 1px solid $red;
+  }
+
+  &.ptype-full {
+    cursor: default;
+    &:hover,
+    &:active {
+      cursor:default;
+      border: 1px solid $black;
+      background-color:#fff;
+    }
+    &:not(:disabled):not(.disabled):active {
+      color: #212529;
+      border-color: $black;
+      background-color:#fff;
+    }
+    color: #212529;
+    background-color: #fff;
+    div.part-type-registrations-left {
+      margin-top: 0;
+      .part-type-registrations-full-text {
+        color: $primary;
+      }
+    }
   }
 }
 
@@ -459,9 +502,6 @@ div#part_type_fundraising_goal_container {
         border:none;
         text-align:left;
         padding-left: 0;
-      }
-      input[type="radio"]{
-        display:none;
       }
     }
   

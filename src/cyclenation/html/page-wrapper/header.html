@@ -57,7 +57,7 @@
                   <ul class="navbar-nav">
                     [[?x26x::x[[S4]]x::
                     <li class="nav-item">
-                      <a class="nav-link" href="SPageServer/?pagename=cn_home">
+                      <a class="nav-link" href="TR/?fr_id=[[S334:fr_id]]&amp;pg=entry">
                         <strong>Home</strong>
                         <span class="sr-only">(current)</span>
                       </a>
@@ -77,7 +77,7 @@
                           </a>
                         ::
                           <!-- on a tr page, direct to general reg step for that particular event -->
-                          <a class="nav-link" href="TRR/pg=utype&amp;fr_id=[[S334:fr_id]]&amp;s_regType=">
+                          <a class="nav-link" href="TRR/?pg=utype&amp;fr_id=[[S334:fr_id]]&amp;s_regType=">
                             <strong>Register</strong>
                           </a>
                         ]]
@@ -201,7 +201,7 @@
                       </a>
                     ::
                       <!-- on a tr page, direct to general reg step for that particular event -->
-                      <a href="TRR/pg=utype&amp;fr_id=[[S334:fr_id]]&amp;s_regType=">
+                      <a href="TRR/?pg=utype&amp;fr_id=[[S334:fr_id]]&amp;s_regType=">
                         Register
                       </a>
                     ]]
@@ -238,9 +238,15 @@
                   ]]
                 ]]
               </li>
-              <li class="pushy-link">
-                <a href="SPageServer/?pagename=cn_blog">Blog</a>
-              </li> 
+          [[?x26x::x[[S4]]x::
+            <li class="pushy-link">
+              <a href="TR?fr_id=[[S80:evID]]&amp;pg=informational&amp;sid=2008">Blog</a>
+            </li>
+          ::
+            <li class="pushy-link">
+              <a href="SPageServer/?pagename=cn_blog">Blog</a>
+            </li>
+          ]]
           [[?x26x27x::x[[S4]]x::
           [[?xRoad Cyclingx::x[[E42:[[S80:evID]]:public-event-type]]x::
              <li class="pushy-link">
@@ -354,7 +360,7 @@
     </p>
     <p>
       [[?x1x2x::x[[S42:0:status]]x::
-      <a class="button btn-black btn-lg text-white px-5" href="TRR/pg=utype&amp;fr_id=[[S334:fr_id]]&amp;s_regType=" role="button">Register</a>
+      <a class="button btn-black btn-lg text-white px-5" href="TRR/?pg=utype&amp;fr_id=[[S334:fr_id]]&amp;s_regType=" role="button">Register</a>
       ::]]
     </p>
   </div>
