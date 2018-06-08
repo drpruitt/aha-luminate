@@ -213,16 +213,8 @@ angular.module 'trPcControllers'
           scope: $scope
           templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/addContactsToGroup.html'
       
-      $scope.addContactsToGroupHelp = ->
-        $scope.addContactsToGroupModalHelp = $uibModal.open 
-          scope: $scope
-          templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/addContactsToGroupHelp.html'
-      
       $scope.cancelAddContactsToGroup = ->
         $scope.addContactsToGroupModal.close()
-      
-      $scope.cancelAddContactsToGroupHelp = ->
-        $scope.addContactsToGroupModalHelp.close()
       
       $scope.confirmAddContactsToGroup = ->
         delete $scope.addContactGroupForm.errorMsg

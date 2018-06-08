@@ -48,14 +48,14 @@ angular.module 'trPcApp'
               , (translationId) ->
                 $scope.getFilterTranslationTimeout = $timeout getFilterTranslation, 500
         getFilterTranslation()
+        
+        $scope.cancelAddContactsToGroupHelp = ->
+          $scope.addContactsToGroupModalHelp.close()
 
-				$scope.addContactsToGroupHelp = ->
-					$scope.addContactsToGroupModalHelp = $uibModal.open 
-						scope: $scope
-						templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/addContactsToGroupHelp.html'
-
-				$scope.cancelAddContactsToGroupHelp = ->
-					$scope.addContactsToGroupModalHelp.close()
+        $scope.addContactsToGroupHelp = ->
+          $scope.addContactsToGroupModalHelp = $uibModal.open 
+            scope: $scope
+            templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/addContactsToGroupHelp.html'
 
         $scope.contactGroups = []
         contactFilters = [
