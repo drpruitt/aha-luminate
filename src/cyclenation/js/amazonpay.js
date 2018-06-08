@@ -25,6 +25,11 @@ jQuery(document).ready(function(){
 	if (location.href.indexOf("pagename=heartwalk_participant_center") > 0) {
 		addPCPaymentOptions();
 	}
+	if (location.href.indexOf("Donation2") > 0) {
+		if (jQuery.getCustomQuerystring(location.href,"paypal") == "true") {
+			angular.element(document.getElementById('ProcessForm')).scope().togglePaymentType('paypal');
+		}
+	}
 });
 
 function addPaymentOptions() {
@@ -38,7 +43,7 @@ function addPaymentOptions() {
 			var dlink = jQuery('a#sidebar_donate_button').attr("href");
 			var html = "<div class='paymentSelType text-center hidden'><h4>How would you like to donate?</h4>" +
   				"<a href='"+dlink+"'><img src='https://www2.heart.org/images/content/pagebuilder/credit-card-logos2.png'/></a>" +
-  				"<a href='"+default_path+"/site/SPageNavigator/heartwalk_donate_amazon.html?FR_ID="+fr_id+"&mfc_pref=T&PROXY_ID="+px+"&PROXY_TYPE=20' class='amazon'><img src='https://donatenow.heart.org/images/amazon-payments_inactive.png'/></a>" +
+  				"<a href='"+default_path+"/site/SPageNavigator/cyclenation_donate_amazon.html?FR_ID="+fr_id+"&mfc_pref=T&PROXY_ID="+px+"&PROXY_TYPE=20' class='amazon'><img src='https://donatenow.heart.org/images/amazon-payments_inactive.png'/></a>" +
   				"<a href='"+dlink+"&paypal=true'><img src='https://www2.heart.org/images/content/pagebuilder/PP_logo_h_100x26.png'/></a>";
 			jQuery('a#sidebar_donate_button').closest('div').after(html);
 			jQuery('a#sidebar_donate_button').click(function(){
@@ -52,7 +57,7 @@ function addPaymentOptions() {
 		    var dlink = jQuery('a#sidebar_donate_button').attr("href");
   			var html = "<div class='paymentSelType text-center hidden'><h7>How would you like to donate?</h7>"+
 		  			 "<a href='"+dlink+"'><img src='https://www2.heart.org/images/content/pagebuilder/credit-card-logos2.png'/></a>" +
-		  			 "<a href='"+default_path+"/site/SPageNavigator/heartwalk_donate_amazon.html?FR_ID="+fr_id+"&mfc_pref=T&PROXY_ID="+teamid+"&PROXY_TYPE=22' class='amazon'><img src='https://www2.heart.org/images/content/pagebuilder/amazon-payments.png'/></a>" +
+		  			 "<a href='"+default_path+"/site/SPageNavigator/cyclenation_donate_amazon.html?FR_ID="+fr_id+"&mfc_pref=T&PROXY_ID="+teamid+"&PROXY_TYPE=22' class='amazon'><img src='https://www2.heart.org/images/content/pagebuilder/amazon-payments.png'/></a>" +
 		  			 "<a href='"+dlink+"&paypal=true'><img src='https://www2.heart.org/images/content/pagebuilder/PP_logo_h_100x26.png'/></a>" +
 		    		 "</div>";
 			jQuery('a#sidebar_donate_button').closest('div').after(html);
@@ -60,9 +65,6 @@ function addPaymentOptions() {
 				jQuery('.paymentSelType').slideDown();
 				return false;
 			});
-			if (jQuery.getCustomQuerystring(location.href,"paypal") == "true") {
-				angular.element(document.getElementById('ProcessForm')).scope().togglePaymentType('paypal');
-			}
 		}
 	} else {
 		setTimeout(addPaymentOptions,500);
