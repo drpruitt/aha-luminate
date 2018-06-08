@@ -19,6 +19,14 @@ angular.module 'trPcApp'
         $scope.baseUrl = $rootScope.baseUrl
         $scope.emailPromises = []
 
+				$scope.addContactsToGroupHelp = ->
+					$scope.addContactsToGroupModalHelp = $uibModal.open 
+						scope: $scope
+						templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/addContactsToGroupHelp.html'
+
+				$scope.cancelAddContactsToGroupHelp = ->
+					$scope.addContactsToGroupModalHelp.close()
+
         $scope.messageCounts = {}
         messageTypes = [
           'draft'
@@ -159,13 +167,5 @@ angular.module 'trPcApp'
         $scope.$watch 'refreshMessages', (newValue, oldValue) ->
           if newValue and newValue isnt oldValue
             getMessageCounts()
-
-				$scope.addContactsToGroupHelp = ->
-					$scope.addContactsToGroupModalHelp = $uibModal.open 
-						scope: $scope
-						templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/addContactsToGroupHelp.html'
-
-				$scope.cancelAddContactsToGroupHelp = ->
-					$scope.addContactsToGroupModalHelp.close()
     ]
   ]
