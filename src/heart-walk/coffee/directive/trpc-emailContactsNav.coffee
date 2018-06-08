@@ -21,18 +21,19 @@ angular.module 'trPcApp'
 
         $scope.messageCounts = {}
 
-				$scope.addContactsToGroupHelp = ->
-					$scope.addContactsToGroupModalHelp = $uibModal.open 
-						scope: $scope
-						templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/addContactsToGroupHelp.html'
-			
-				$scope.cancelAddContactsToGroupHelp = ->
-					$scope.addContactsToGroupModalHelp.close()
-
         messageTypes = [
           'draft'
           'sentMessage'
         ]
+
+				$scope.addContactsToGroupHelp = ->
+					$scope.addContactsToGroupModalHelp = $uibModal.open 
+						scope: $scope
+						templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/addContactsToGroupHelp.html'
+
+				$scope.cancelAddContactsToGroupHelp = ->
+					$scope.addContactsToGroupModalHelp.close()
+
         getMessageCounts = ->
           angular.forEach messageTypes, (messageType) ->
             apiMethod = 'get' + messageType.charAt(0).toUpperCase() + messageType.slice(1) + 's'
