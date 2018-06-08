@@ -13,7 +13,8 @@ angular.module 'trPcApp'
       '$timeout'
       'TeamraiserEmailService'
       'ContactService'
-      ($scope, $rootScope, $routeParams, $translate, $timeout, TeamraiserEmailService, ContactService) ->
+      '$uibModal'
+      ($scope, $rootScope, $routeParams, $translate, $timeout, TeamraiserEmailService, ContactService, $uibModal) ->
         $scope.filter = $routeParams.filter or 'no_filter_defined'
         $scope.messageType = $routeParams.messageType or 'no_message_type'
         $scope.baseUrl = $rootScope.baseUrl
