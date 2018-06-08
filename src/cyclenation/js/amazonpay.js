@@ -57,7 +57,7 @@ function addPaymentOptions() {
 		    		 "</div>";
 			jQuery('a#sidebar_donate_button').closest('div').after(html);
 			jQuery('a#sidebar_donate_button').click(function(){
-				jQuery('.heart-page-progress .paymentSelType').slideDown();
+				jQuery('.paymentSelType').slideDown();
 				return false;
 			});
 			if (jQuery.getCustomQuerystring(location.href,"paypal") == "true") {
