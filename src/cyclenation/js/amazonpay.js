@@ -27,7 +27,7 @@ jQuery(document).ready(function(){
 	}
 	if (location.href.indexOf("Donation2") > 0) {
 		if (jQuery.getCustomQuerystring(location.href,"paypal") == "true") {
-			angular.element(document.getElementById('ProcessForm')).scope().togglePaymentType('paypal');
+			jQuery('label[for=responsive_payment_typepay_typeradiopaypal]').trigger('click');
 		}
 	}
 });
