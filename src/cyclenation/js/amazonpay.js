@@ -34,9 +34,9 @@ function addPaymentOptions() {
 		var px = jQuery.getCustomQuerystring(location.href,"px");
     
     /* personal page */
-		if (jQuery('body.pg-personal').length > 0) {
+		if (jQuery('body.pg_personal').length > 0) {
 			var dlink = jQuery('a#sidebar_donate_button').attr("href");
-			var html = "<div class='paymentSelType'><h4>How would you like to donate?</h4>" +
+			var html = "<div class='paymentSelType hidden'><h4>How would you like to donate?</h4>" +
   				"<a href='"+dlink+"'><img src='https://www2.heart.org/images/content/pagebuilder/credit-card-logos2.png'/></a>" +
   				"<a href='"+default_path+"/site/SPageNavigator/heartwalk_donate_amazon.html?FR_ID="+fr_id+"&mfc_pref=T&PROXY_ID="+px+"&PROXY_TYPE=20' class='amazon'><img src='https://donatenow.heart.org/images/amazon-payments_inactive.png'/></a>" +
   				"<a href='"+dlink+"&paypal=true'><img src='https://www2.heart.org/images/content/pagebuilder/PP_logo_h_100x26.png'/></a>";
@@ -48,9 +48,9 @@ function addPaymentOptions() {
 		}
 
     /* team page */
-		if (jQuery('body.pg-team').length > 0) {
+		if (jQuery('body.pg_team').length > 0) {
 		    var dlink = jQuery('a#sidebar_donate_button').attr("href");
-  			var html = "<div class='paymentSelType'><h7>How would you like to donate?</h7>"+
+  			var html = "<div class='paymentSelType hidden'><h7>How would you like to donate?</h7>"+
 		  			 "<a href='"+dlink+"'><img src='https://www2.heart.org/images/content/pagebuilder/credit-card-logos2.png'/></a>" +
 		  			 "<a href='"+default_path+"/site/SPageNavigator/heartwalk_donate_amazon.html?FR_ID="+fr_id+"&mfc_pref=T&PROXY_ID="+teamid+"&PROXY_TYPE=22' class='amazon'><img src='https://www2.heart.org/images/content/pagebuilder/amazon-payments.png'/></a>" +
 		  			 "<a href='"+dlink+"&paypal=true'><img src='https://www2.heart.org/images/content/pagebuilder/PP_logo_h_100x26.png'/></a>" +
@@ -80,7 +80,7 @@ function addPCPaymentOptions() {
 			var dlink = jQuery('a#make_a_donation').attr("href");
 			var fr_id = jQuery.getCustomQuerystring(location.href,"fr_id");
 			var px = jQuery('body').data("cons-id");
-			var html = "<div class='paymentSelType' style='clear:both;padding-top:20px;'>" +
+			var html = "<div class='paymentSelType hidden' style='clear:both;padding-top:20px;'>" +
 						 "<h7>How would you like to donate?</h7>" +
 						 "<a href='"+dlink+"'><img src='https://www2.heart.org/images/content/pagebuilder/credit-card-logos2.png'/></a>" +
 						 "<a href='"+default_path+"/site/SPageNavigator/jump_hoops_donate_amazon.html?FR_ID="+fr_id+"&mfc_pref=T&PROXY_ID="+px+"&PROXY_TYPE=20' class='amazon'><img src='https://www2.heart.org/images/content/pagebuilder/amazon-payments.png'/></a>" +
