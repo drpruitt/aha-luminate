@@ -22,23 +22,7 @@
           <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
           <span class="js__reg-type-error-message"></span>
         </div>
-        [[?xStationaryV2x::x[[E42:[[S80:trID]]:classification2]]x::
-        <!-- Stationary v2 Event -->
-        <div class="js__promo-code-success alert alert-success hidden" role="alert"></div>
-        <div class="js__promo-code-error alert alert-danger hidden" role="alert"></div>
-        <div class="js__reg-options-promo-container hidden">
-          <div class="alert alert-warning" role="alert">Sorry, there are no more bikes available for public registation. If you have a sponsor code, enter it below to see if any reserved bikes are available. </div>
-          <form class="js__reg-options-promo-form">
-            <div id="team_sponsor_code" class="input-container">
-            <div class="form-group">
-            <label for="sponsorCode">Do you have a sponsor code?</label>
-            <input name="s_promoCode" type="text" id="sponsorCode"class="form-control" value="[[S80:promoCode]]">
-          </div>
-          </div>
-            <button class="button btn-primary btn-block pull-right" type="Submit">Submit Sponsor Code</button>
-          </form>
-        </div>
-        ::]]
+       
 
         <form id="regTypeForm" class="js__reg-type-form text-center">
           <div class="form-content">
@@ -118,7 +102,29 @@
             ]]
           </div>
         </form>
-       
+        [[?xStationaryV2x::x[[E42:[[S80:trID]]:classification2]]x::
+        <!-- Stationary v2 Event -->
+        <div class="js__promo-code-success alert alert-success hidden" role="alert">Success! We located reserved bikes with your sponsor code. Please proceed with registration.</div>
+        <div class="js__promo-code-error alert alert-danger hidden" role="alert">
+            <p>Sorry, we were unable to find reserved bikes with your sponsor code. Please contact your event administrator:<br>[[E47:[[S80:trID]]:fr_info:1:coordinator_name]]<br>
+              <a href="mailto:[[E47:[[S80:trID]]:fr_info:1:coordinator_email]]">[[E47:[[S80:trID]]:fr_info:1:coordinator_email]]</a>
+              <br>[[E47:[[S80:trID]]:fr_info:1:coordinator_phone]]<br>
+                [[E47:[[S80:trID]]:fr_info:1:sponsor_5]]
+            </p>
+        </div>
+        <div class="js__promo-code-sold-out alert alert-warning hidden" role="alert">Sorry, there are no more bikes available for public registation. If you have a sponsor code, enter it below to see if any reserved bikes are available. </div>
+        <div class="js__reg-options-promo-container hidden">
+          <form class="js__reg-options-promo-form">
+            <div id="team_sponsor_code" class="input-container">
+            <div class="form-group">
+            <label for="sponsorCode">Do you have a sponsor code?</label>
+            <input name="s_promoCode" type="text" id="sponsorCode"class="form-control" value="[[S80:promoCode]]">
+          </div>
+          </div>
+            <button class="button btn-primary btn-block pull-right" type="Submit">Submit Sponsor Code</button>
+          </form>
+        </div>
+        ::]]
       </div>
     </div>
     <!-- END part 1 of tfind -->
