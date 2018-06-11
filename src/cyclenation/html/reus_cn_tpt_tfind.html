@@ -9,7 +9,6 @@
 
 <section id="tFind" class="">
     [[?xx::x[[S80:regType]]x::
-
     <!-- BEGIN step 1 of tfind -->
     <div class="row js__reg-type-container">
       <div class="col-md-6 offset-md-3 text-center">
@@ -53,7 +52,7 @@
                   </div>
                 ]]
               ::
-              <!-- Studio Stationary Event -->
+              <!-- Stationary v2 Event -->
               <div class="form-group start-team-container">
                 <a href="TRR/?pg=tfind&amp;fr_id=[[S80:trID]]&amp;fr_tm_opt=new&amp;s_regType=startTeam&amp;s_hideTeamDetails=false" class="button btn-lg btn-block btn-outline-grey step-button p-3 mb-1">Start a Team</a>
                 <p class="p-2">
@@ -102,6 +101,21 @@
             ]]
           </div>
         </form>
+        [[?xStationaryV2x::x[[E42:[[S80:trID]]:classification2]]x::
+        <!-- Stationary v2 Event -->
+        <div class="js__reg-options-promo-container hidden">
+          <div class="alert alert-warning" role="alert">Helper text forthcoming from AHA CN.</div>
+          <form action="TRR/?pg=tfind&amp;fr_id=[[S80:trID]]&amp;fr_tm_opt=new&amp;s_regType=startTeam&amp;s_hideTeamDetails=false">
+            <div id="team_sponsor_code" class="input-container">
+            <div class="form-group">
+            <label for="sponsorCode">Do you have a sponsor code?</label>
+            <input name="s_promoCode" type="text"id="sponsorCode"class="form-control" value="[[S80:promoCode]]">
+          </div>
+          </div>
+            <button class="button btn-primary btn-block pull-right" type="Submit">Submit Sponsor Code</button>
+          </form>
+        </div>
+        ::]]
       </div>
     </div>
     <!-- END part 1 of tfind -->
