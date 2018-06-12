@@ -100,6 +100,26 @@ module.exports = {
     ]
   }, 
   
+  "ym-primary": {
+    files: [
+      'src/youth-markets/sass/**/*', 
+      'src/global/coffee/**/*', 
+      'src/youth-markets/coffee/**/*', 
+      'src/ym-primary/html/**/*', 
+      'src/ym-primary/image/**/*', 
+      'src/ym-primary/sass/**/*', 
+      'src/ym-primary/coffee/**/*'
+    ], 
+    tasks: [
+      'clean:ym-primary',  
+      'css-dist:ym-primary', 
+      'js-dist:ym-primary', 
+      'html-dist:ym-primary', 
+      'img-copy:ym-primary-images', 
+      'notify:ym-primary'
+    ]
+  }, 
+  
   "middle-school": {
     files: [
       'src/youth-markets/sass/**/*', 
