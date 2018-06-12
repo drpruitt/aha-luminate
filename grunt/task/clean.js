@@ -119,6 +119,39 @@ module.exports = {
     ]
   }, 
   
+  "ym-primary": {
+    files: [
+      {
+        expand: true, 
+        cwd: 'dist/ym-primary/css/', 
+        src: [
+          '**/*'
+        ]
+      }, 
+      {
+        expand: true, 
+        cwd: 'dist/ym-primary/js/', 
+        src: [
+          '**/*'
+        ]
+      }, 
+      {
+        expand: true, 
+        cwd: 'dist/ym-primary/html/', 
+        src: [
+          '**/*'
+        ]
+      }, 
+      {
+        expand: true, 
+        cwd: 'dist/ym-primary/image/', 
+        src: [
+          '**/*'
+        ]
+      }
+    ]
+  }, 
+  
   "middle-school": {
     files: [
       {

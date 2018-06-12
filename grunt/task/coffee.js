@@ -86,6 +86,35 @@ module.exports = {
     }
   },
   
+  "ym-primary": {
+    files: {
+      'dist/ym-primary/js/main.js': [
+        'src/ym-primary/coffee/init.coffee',
+        'src/ym-primary/coffee/config/*.*',
+        '!src/ym-primary/coffee/config/trpc-*.*',
+        'src/global/coffee/service/*.*',
+        '!src/global/coffee/service/trpc-*.*',
+        'src/youth-markets/coffee/service/*.*',
+        'src/youth-markets/coffee/controller/*.*',
+        '!src/youth-markets/coffee/service/trpc-*.*',
+        'src/ym-primary/coffee/service/*.*',
+        '!src/ym-primary/coffee/service/trpc-*.*',
+        'src/global/coffee/directive/*.*',
+        'src/ym-primary/coffee/directive/*.*',
+        '!src/ym-primary/coffee/directive/trpc-*.*',
+        'src/ym-primary/coffee/**/*.*',
+        '!src/ym-primary/coffee/**/trpc-*.*'
+      ],
+      'dist/ym-primary/js/participant.js': [
+        'src/ym-primary/coffee/trpc-init.coffee',
+        'src/ym-primary/coffee/config/trpc-*.*',
+        'src/global/coffee/service/trpc-*.*',
+        'src/youth-markets/coffee/service/trpc-*.*',
+        'src/ym-primary/coffee/**/trpc-*.*'
+      ]
+    }
+  },
+  
   "middle-school": {
     files: {
       'dist/middle-school/js/main.js': [
