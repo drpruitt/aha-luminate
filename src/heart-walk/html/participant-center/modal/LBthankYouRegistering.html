@@ -45,7 +45,7 @@
         <a href class="btn btn-primary-inverted text-uppercase" ng-click="sendGAEvent('Not Right Now – Connect to Fundraiser FB lightbox'); notRightNow(); LBskip('facebookFundraiser')">Not Right Now</a>
       </div>
       <div ng-if="!facebookFundraisersEnabled" ng-cloak>
-        <a href class="btn btn-outline-white text-uppercase" ng-click="sendGAEvent('Not Right Now - donate lightbox'); notRightNow()">I&rsquo;m not ready to help save lives</a>
+        <a id="LBmakeDonation" ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{consId}}" class="btn btn-outline-white text-uppercase">Heck Yeah!</a>
       </div>
     </div>
     <div class="pull-right">
@@ -55,7 +55,7 @@
         </button>
       </div>
       <div ng-if="!facebookFundraisersEnabled" ng-cloak>
-        <a id="LBmakeDonation" ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{consId}}" class="btn btn-outline-white text-uppercase">Heck Yeah!</a>
+        <a href class="btn btn-outline-white text-uppercase" ng-click="sendGAEvent('Not Right Now - donate lightbox'); notRightNow()">I&rsquo;m not ready to help save lives</a>
       </div>
     </div>
   </div>
