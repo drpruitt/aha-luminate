@@ -387,7 +387,7 @@
           <div ng-if="participantGifts.totalNumber == 0">
             No donations found.
           </div>
-          <gift-list gifts="participantGifts.gifts" sort-column="participantGifts.sortColumn" sort-ascending="participantGifts.sortAscending" sort-gifts="sortGifts" delete-gift="deleteGift" acknowledge-gift="acknowledgeGift" thank-donor="thankDonor" ng-if="participantGifts.totalNumber && participantGifts.totalNumber != 0"></gift-list>
+          <gift-list list-type="'participant'" gifts="participantGifts.gifts" sort-column="participantGifts.sortColumn" sort-ascending="participantGifts.sortAscending" sort-gifts="sortGifts" delete-gift="deleteGift" acknowledge-gift="acknowledgeGift" thank-donor="thankDonor" ng-if="participantGifts.totalNumber && participantGifts.totalNumber != 0"></gift-list>
           <div class="heart-list-pagination" ng-if="participantGifts.totalNumber > 10">
             <ul uib-pagination direction-links="false" items-per-page="10" total-items="participantGifts.totalNumber" max-size="10" ng-model="participantGifts.page" ng-change="getGifts()"></ul>
           </div>
@@ -552,7 +552,7 @@
           <div ng-if="teamGifts.totalNumber == 0">
             No donations found.
           </div>
-          <gift-list gifts="teamGifts.gifts" sort-column="teamGifts.sortColumn" sort-ascending="teamGifts.sortAscending" sort-gifts="sortTeamGifts" delete-gift="deleteTeamGift" acknowledge-gift="acknowledgeGift" thank-donor="thankDonor" ng-if="teamGifts.totalNumber && teamGifts.totalNumber != 0"></gift-list>
+          <gift-list list-type="'team'" gifts="teamGifts.gifts" sort-column="teamGifts.sortColumn" sort-ascending="teamGifts.sortAscending" sort-gifts="sortTeamGifts" delete-gift="deleteTeamGift" acknowledge-gift="acknowledgeGift" thank-donor="thankDonor" ng-if="teamGifts.totalNumber && teamGifts.totalNumber != 0"></gift-list>
           <div class="heart-list-pagination" ng-if="teamGifts.totalNumber > 10">
             <ul uib-pagination direction-links="false" items-per-page="10" total-items="teamGifts.totalNumber" max-size="10" ng-model="teamGifts.page" ng-change="getTeamGifts()"></ul>
           </div>

@@ -109,7 +109,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
       &:first-child {
         margin: 0;
-        
+
         @media (min-width: $screen-sm-min) {
           margin: 0 0 0 10px;
         }
@@ -118,7 +118,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   }
 }
 .redText {
-  color: #de2427;
+  color: $event-primary;
 }
 .strongText {
   font-weight: bold;
@@ -162,7 +162,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   text-align: center;
   font-size: 14px;
   margin-top: 20px;
-  
+
   p.small {
     font-size: 12px;
     margin: 0;
@@ -464,43 +464,43 @@ div#send_via_FC {
   text-align: center;
   padding: 40px 0;
   margin: 0 -20px;
-  
+
   @media (min-width: $screen-sm-min) {
     margin: 0 -48px;
   }
-  
+
   .container {
     background: transparent;
     margin: 0 auto;
-    
+
     @media (min-width: 505px) {
       max-width: 475px;
     }
   }
-  
+
   h2 {
     font-size: 36px;
     margin: 0 0 4px;
   }
-  
+
   .h3 {
     font-size: 20px;
     font-weight: 300;
     margin: 0 0 32px;
   }
-  
+
   ol {
     counter-reset: item;
     color: inherit;
     text-align: left;
     padding: 0;
     margin: 0 22px;
-    
+
     li {
       font-weight: 300;
       text-indent: 0;
       margin: 0 0 16px;
-      
+
       &:before {
         float: left;
         counter-increment: item;
@@ -515,41 +515,41 @@ div#send_via_FC {
         height: 18px;
         padding: 1px 0 0;
         margin: 4px 12px 24px 0;
-        
+
         @media (min-width: 375px) {
           margin: 0 12px 16px 0;
         }
       }
     }
   }
-  
-  .btn.pc-facebook-fundraiser-btn, 
+
+  .btn.pc-facebook-fundraiser-btn,
   a.btn.pc-facebook-fundraiser-btn {
-    &, 
-    &:link, 
-    &:visited, 
-    &:hover, 
-    &:focus, 
+    &,
+    &:link,
+    &:visited,
+    &:hover,
+    &:focus,
     &:active {
       background: #ffffff;
       color: #4260b4;
       text-transform: uppercase;
       padding: 12px 20px;
       margin: 16px 0;
-      
+
       @media (min-width: 360px) {
         padding: 12px 24px;
       }
     }
-    
+
     .hidden-text-xxs {
       display: none;
-      
+
       @media (min-width: 375px) {
         display: inline;
       }
     }
-    
+
     .fa {
       position: relative;
       top: 2px;
@@ -557,7 +557,7 @@ div#send_via_FC {
       margin: 0 6px 0 0;
     }
   }
-  
+
   p.small {
     font-size: 12px;
     margin: 0;
@@ -570,44 +570,44 @@ div#send_via_FC {
   text-align: center;
   padding: 40px 0;
   margin: 0 -20px;
-  
+
   @media (min-width: $screen-sm-min) {
     margin: 0 -48px;
   }
-  
+
   .container {
     background: transparent;
     margin: 0 auto;
-    
+
     @media (min-width: 530px) {
       max-width: 500px;
     }
   }
-  
+
   h2 {
     margin: 0 0 16px;
   }
-  
-  .btn.pc-facebook-fundraiser-btn, 
+
+  .btn.pc-facebook-fundraiser-btn,
   a.btn.pc-facebook-fundraiser-btn {
-    &, 
-    &:link, 
-    &:visited, 
-    &:hover, 
-    &:focus, 
+    &,
+    &:link,
+    &:visited,
+    &:hover,
+    &:focus,
     &:active {
       background: #ffffff;
       color: #4260b4;
       text-transform: uppercase;
       padding: 12px 20px;
       margin: 18px 0;
-      
+
       @media (min-width: 360px) {
         padding: 12px 24px;
       }
     }
   }
-  
+
   p.small {
     font-size: 12px;
     margin: 0;

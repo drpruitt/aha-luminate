@@ -386,5 +386,4 @@ angular.module 'trPcControllers'
               $scope.sendEmailSuccess = true
               $scope.resetSelectedContacts()
               setEmailComposerDefaults()
-
   ]
