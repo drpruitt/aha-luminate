@@ -44,6 +44,19 @@ module.exports = {
     ]
   }, 
   
+  "ym-primary": {
+    files: [
+      {
+        src: 'dist/ym-primary/css/main.css', 
+        dest: 'dist/ym-primary/css/main.'+ '<%= timestamp %>' +'.min.css'
+      }, 
+      {
+        src: 'dist/ym-primary/css/participant.css', 
+        dest: 'dist/ym-primary/css/participant.'+'<%= timestamp %>'+'.min.css'
+      }
+    ]
+  }, 
+  
   "middle-school": {
     files: [
       {
