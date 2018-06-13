@@ -128,6 +128,8 @@
                   '<a href="' + participant.personalPageUrl + '">Visit Personal Page</a></p></div><div class="col-xs-12 col-md-3 col-sm-4"><a class="button btn-primary btn-block btn-lg pull-right" href="' + participant.donationUrl + '">Donate</a>' + ((teamRegUrl !== null) ? '<a class="button btn-outline-dark btn-block btn-lg pull-right" href="' + teamRegUrl + '">Join Team</a>' : '') + '</div></div>'
                 );
               });
+              //add call to hook donate button with payment type selections
+              addPaymentTypesOnSearch();
               $('#participant_results').removeAttr('hidden');
             }
           },
@@ -172,7 +174,8 @@
                 $('#team_results').removeAttr('hidden');
 
               });
-
+              //add call to hook donate button with payment type selections
+              addPaymentTypesOnSearch();
             }
           },
           error: function (response) {
