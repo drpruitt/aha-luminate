@@ -117,6 +117,17 @@ module.exports = (grunt) ->
       'replace'
       'htmlmin'
       'imagemin'
+    ], 'ym-primary'
+    runTargetedTask [
+      'clean'
+      'sass'
+      'postcss'
+      'cssmin'
+      'coffee'
+      'uglify'
+      'replace'
+      'htmlmin'
+      'imagemin'
     ], 'middle-school'
     runTargetedTask [
       'clean'
@@ -195,6 +206,9 @@ module.exports = (grunt) ->
       if task.indexOf('notify:') is -1
         devTasks.push task
     config.watch['jump-hoops'].tasks.forEach (task) ->
+      if task.indexOf('notify:') is -1
+        devTasks.push task
+    config.watch['ym-primary'].tasks.forEach (task) ->
       if task.indexOf('notify:') is -1
         devTasks.push task
     config.watch['middle-school'].tasks.forEach (task) ->
