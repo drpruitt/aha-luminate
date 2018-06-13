@@ -124,7 +124,7 @@
                   participant.name.first + ' ' + participant.name.last +
                   '</strong><br>' +
                   participant.eventName + '<br>' +
-                  ((participant.teamName !== null) ? participant.teamName + '<br>' : '') +
+                  ((participant.teamName !== null && participant.teamName !== undefined) ? participant.teamName + '<br>' : '') +
                   '<a href="' + participant.personalPageUrl + '">Visit Personal Page</a></p></div><div class="col-xs-12 col-md-3 col-sm-4"><a class="button btn-primary btn-block btn-lg pull-right" href="' + participant.donationUrl + '">Donate</a>' + ((teamRegUrl !== null) ? '<a class="button btn-outline-dark btn-block btn-lg pull-right" href="' + teamRegUrl + '">Join Team</a>' : '') + '</div></div>'
                 );
               });
@@ -169,7 +169,7 @@
                   '</strong><br>' +
                   team.eventName + '<br>' +
                   'Team Captain: ' + team.captainFirstName + ' ' + team.captainLastName + '<br>' +
-                  ((team.companyName !== null) ? team.companyName + '<br>' : '') +
+                  ((team.companyName !== null && team.companyName !== undefined) ? team.companyName + '<br>' : '') +
                   '<a href="' + team.teamPageURL + '">Visit Team Page</a></p></div><div class="col-xs-12 col-sm-4 col-md-3"><a class="button btn-primary btn-block btn-lg pull-right" href="' + team.teamDonateURL + '">Donate</a><a class="button btn-outline-dark btn-block btn-lg pull-right" href="' + team.joinTeamURL + '">Join Team</a></div></div>');
                 $('#team_results').removeAttr('hidden');
 
