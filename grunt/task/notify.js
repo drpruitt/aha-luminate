@@ -43,6 +43,13 @@ module.exports = {
     }
   }, 
   
+  "ym-primary": {
+    options: {
+      title: 'AHA Luminate Framework', 
+      message: 'YM Kids Heart Challenge files updated.'
+    }
+  }, 
+  
   "middle-school": {
     options: {
       title: 'AHA Luminate Framework', 
