@@ -103,24 +103,28 @@
         </form>
         [[?xStationaryV2x::x[[E42:[[S80:trID]]:classification2]]x::
         <!-- Stationary v2 Event -->
-        <div class="js__promo-code-success alert alert-success hidden" role="alert">Success! We located reserved bikes with your sponsor code. Please proceed with registration.</div>
+        <div class="js__promo-code-success alert alert-success hidden" role="alert">Success! We located available bikes reserved with your VIP code. Please proceed with registration.</div>
         <div class="js__promo-code-error alert alert-danger hidden" role="alert">
-            <p>Sorry, we were unable to find reserved bikes with your sponsor code. Please contact your event administrator:<br>[[E47:[[S80:trID]]:fr_info:1:coordinator_name]]<br>
+            <p>Sorry, the bikes reserved for this VIP code have already been assigned. Please contact the CycleNation Team: <br>[[E47:[[S80:trID]]:fr_info:1:coordinator_name]]<br>
               <a href="mailto:[[E47:[[S80:trID]]:fr_info:1:coordinator_email]]">[[E47:[[S80:trID]]:fr_info:1:coordinator_email]]</a>
-              <br>[[E47:[[S80:trID]]:fr_info:1:coordinator_phone]]<br>
-                [[E47:[[S80:trID]]:fr_info:1:sponsor_5]]
+              <br>[[E47:[[S80:trID]]:fr_info:1:coordinator_phone]]
             </p>
         </div>
-        <div class="js__promo-code-sold-out hidden" >There are no more bikes available for public registation. If you have a sponsor code, please enter it below to see if any reserved bikes are available. </div>
+        <div class="js__promo-code-sold-out hidden" >
+            <p>Oh no! All our bikes are currently reserved, but one may open up and we have room on our waitlist! Please contact our CycleNation Team to reserve your spot on our waitlist:<br>[[E47:[[S80:trID]]:fr_info:1:coordinator_name]]<br>
+              <a href="mailto:[[E47:[[S80:trID]]:fr_info:1:coordinator_email]]">[[E47:[[S80:trID]]:fr_info:1:coordinator_email]]</a>
+              <br>[[E47:[[S80:trID]]:fr_info:1:coordinator_phone]]
+            </p>
+          </div>
         <div class="js__reg-options-promo-container hidden">
           <form class="js__reg-options-promo-form">
             <div id="team_sponsor_code" class="input-container">
             <div class="form-group">
-            <label for="sponsorCode">Sponsor Code</label>
+            <label for="sponsorCode">VIP Code:</label>
             <input name="s_promoCode" type="text" id="sponsorCode"class="form-control" value="[[S80:promoCode]]">
           </div>
           </div>
-            <button class="button btn-primary btn-block pull-right" type="Submit">Submit Sponsor Code</button>
+            <button class="button btn-primary btn-block pull-right" type="Submit">Submit VIP Code</button>
           </form>
         </div>
         ::]]
