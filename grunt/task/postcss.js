@@ -77,6 +77,27 @@ module.exports = {
     ]
   }, 
   
+  "ym-primary": {
+    files: [
+      {
+        expand: true, 
+        cwd: 'dist/ym-primary/css/', 
+        src: [
+          'main.css'
+        ], 
+        dest: 'dist/ym-primary/css/'
+      }, 
+      {
+        expand: true, 
+        cwd: 'dist/ym-primary/css/', 
+        src: [
+          'participant.css'
+        ], 
+        dest: 'dist/ym-primary/css/'
+      }
+    ]
+  }, 
+  
   "middle-school": {
     files: [
       {

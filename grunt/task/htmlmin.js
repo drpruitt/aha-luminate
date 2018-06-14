@@ -64,6 +64,19 @@ module.exports = {
     ]
   }, 
   
+  "ym-primary": {
+    files: [
+      {
+        expand: true, 
+        cwd: 'dist/ym-primary/html/', 
+        src: [
+          '**/*.*'
+        ], 
+        dest: "dist/ym-primary/html/"
+      }
+    ]
+  }, 
+  
   "middle-school": {
     files: [
       {

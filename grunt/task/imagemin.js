@@ -57,6 +57,19 @@ module.exports = {
     ]
   }, 
   
+  "ym-primary": {
+    files: [
+      {
+        expand: true, 
+        cwd: 'src/ym-primary/image/', 
+        src: [
+          '*.{gif,GIF,jpg,JPG,png,PNG,svg,SVG}'
+        ], 
+        dest: 'dist/ym-primary/image/'
+      }
+    ]
+  }, 
+  
   "middle-school": {
     files: [
       {
