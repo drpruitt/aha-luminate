@@ -105,27 +105,40 @@
         <!-- Stationary v2 Event -->
         <div class="js__promo-code-success alert alert-success hidden" role="alert">Success! We located available bikes reserved with your VIP code. Please proceed with registration.</div>
         <div class="js__promo-code-error alert alert-danger hidden" role="alert">
-            <p>Sorry, the bikes reserved for this VIP code have already been assigned. Please contact the CycleNation Team: <br>[[E47:[[S80:trID]]:fr_info:1:coordinator_name]]<br>
-              <a href="mailto:[[E47:[[S80:trID]]:fr_info:1:coordinator_email]]">[[E47:[[S80:trID]]:fr_info:1:coordinator_email]]</a>
-              <br>[[E47:[[S80:trID]]:fr_info:1:coordinator_phone]]
+            <p>Sorry, the bikes reserved for this VIP code have already been assigned. Please contact the CycleNation Team: 
+              <span class="pl-3 d-block">
+                [[E47:[[S80:trID]]:fr_info:1:coordinator_name]]<br>
+                <a href="mailto:[[E47:[[S80:trID]]:fr_info:1:coordinator_email]]">[[E47:[[S80:trID]]:fr_info:1:coordinator_email]]</a>
+                <br>[[E47:[[S80:trID]]:fr_info:1:coordinator_phone]]
+              </span>
             </p>
         </div>
-        <div class="js__promo-code-sold-out hidden" >
-            <p>Oh no! All our bikes are currently reserved, but one may open up and we have room on our waitlist! Please contact our CycleNation Team to reserve your spot on our waitlist:<br>[[E47:[[S80:trID]]:fr_info:1:coordinator_name]]<br>
+        <div class="js__promo-code-sold-out alert alert-warning hidden" role="alert" >
+            <p>Oh no! All our bikes are currently reserved, but one may open up and we have room on our waitlist! Please contact our CycleNation Team to reserve your spot on our waitlist:
+              <span class="pl-3 d-block">
+              [[E47:[[S80:trID]]:fr_info:1:coordinator_name]]<br>
               <a href="mailto:[[E47:[[S80:trID]]:fr_info:1:coordinator_email]]">[[E47:[[S80:trID]]:fr_info:1:coordinator_email]]</a>
               <br>[[E47:[[S80:trID]]:fr_info:1:coordinator_phone]]
+            </span>
             </p>
           </div>
         <div class="js__reg-options-promo-container hidden">
-          <form class="js__reg-options-promo-form">
-            <div id="team_sponsor_code" class="input-container">
-            <div class="form-group">
-            <label for="sponsorCode">VIP Code:</label>
-            <input name="s_promoCode" type="text" id="sponsorCode"class="form-control" value="[[S80:promoCode]]">
-          </div>
-          </div>
-            <button class="button btn-primary btn-block pull-right" type="Submit">Submit VIP Code</button>
-          </form>
+            <form class="js__reg-options-promo-form">
+                <div class="form-row">
+                  <div class="col-md-12 my-1">
+                    <p>If you have a VIP code, please enter it below to see if any reserved bikes are available.</p>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="col-md-9 mb-3">
+                    <label for="inputPassword2" class="sr-only">VIP Code:</label>
+                    <input name="s_promoCode" type="text" id="sponsorCode" class="form-control" placeholder="VIP Code" value="[[S80:promoCode]]">
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <button type="submit" class="button btn-primary btn-block mb-2">Submit</button>
+                  </div>
+                </div>
+              </form>
         </div>
         ::]]
       </div>
