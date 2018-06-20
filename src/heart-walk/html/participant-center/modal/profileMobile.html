@@ -1,10 +1,10 @@
 <form name="profileMobilePhone" ng-submit="profileMobilePhone.$valid && updateEditMobile($event)" novalidate>
-  <div class="modal-header">
+    <div class="modal-header" ng-class="{'': facebookFundraisersEnabled, 'modal-header-red': !facebookFundraisersEnabled}">
     <h2 class="modal-title">
       Update Your Mobile Number
     </h2>
   </div>
-  <div class="modal-body">
+  <div class="modal-body" ng-class="{'': facebookFundraisersEnabled, 'modal-body-red': !facebookFundraisersEnabled}">
     <div class="form-group">
       <label for="mobile_phone">Mobile Phone:</label>
       <div class="input-group">
@@ -13,13 +13,13 @@
       <div class="mobile_form_error" ng-show="submittedMobile==true && profileMobilePhone.$invalid"><span ng-show="submittedMobile==true && profileMobilePhone.mobile_phone.$error" role="alert">Phone number must be 10 digit format</span></div>
     </div>
   </div>
-  <div class="modal-footer">
+  <div class="modal-footer" ng-class="{'': facebookFundraisersEnabled, 'modal-footer-red': !facebookFundraisersEnabled}">
     <div class="clearfix">
       <div class="pull-left">
-        <a href class="btn btn-primary-inverted text-uppercase" ng-click="sendGAEvent('Cancel editing mobile number - profile lightbox');cancelEditMobile()">Cancel</a>
+        <a href class="btn text-uppercase" ng-class="{'btn-primary-inverted': facebookFundraisersEnabled, 'btn-outline-white': !facebookFundraisersEnabled}" ng-click="sendGAEvent('Cancel editing mobile number - profile lightbox');cancelEditMobile()">Cancel</a>
       </div>
       <div class="pull-right">
-        <button type="submit" class="btn btn-primary text-uppercase" ng-click="sendGAEvent('Save editing mobile number - profile lightbox');submittedMobile = true">Save</button>
+        <button type="submit" class="btn text-uppercase" ng-class="{'btn-primary': facebookFundraisersEnabled, 'btn-outline-white': !facebookFundraisersEnabled}" ng-click="sendGAEvent('Save editing mobile number - profile lightbox');submittedMobile = true">Save</button>
       </div>
     </div>
   </div>
