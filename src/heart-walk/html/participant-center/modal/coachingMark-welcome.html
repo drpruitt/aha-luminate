@@ -1,12 +1,12 @@
 <div>
-  <div class="modal-body">
+  <div class="modal-body" ng-class="{'': facebookFundraisersEnabled, 'modal-body-red': !facebookFundraisersEnabled}">
     <div class="coaching-mark">
       <h2>
         Thank You For Registering!
       </h2>
       <!-- TODO -->
       <div class="coaching-mark__btns">
-        <button type="button" class="btn btn-primary text-uppercase" ng-click="dismissCoachingMarkModal()">
+        <button type="button" class="btn text-uppercase" ng-class="{'btn-primary': facebookFundraisersEnabled, 'btn-outline-white': !facebookFundraisersEnabled}" ng-click="dismissCoachingMarkModal()">
           Start Fundraising Today
         </button>
       </div>
