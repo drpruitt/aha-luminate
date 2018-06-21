@@ -58,6 +58,9 @@ angular.module 'trPcControllers'
               contact = angular.copy currContact
         contact
 
+      isAllContactsSelected = () ->
+        $scope.addressBookContacts.allContacts.length is countContactSelected $scope.addressBookContacts.allContacts
+
       $scope.addressBookContacts = 
         page: 1
         numPerPage: '10'
