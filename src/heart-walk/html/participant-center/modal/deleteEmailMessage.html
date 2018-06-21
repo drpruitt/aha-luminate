@@ -1,21 +1,21 @@
 <form ng-submit="confirmDeleteMessage()">
-  <div class="modal-header">
+  <div class="modal-header" ng-class="{'': facebookFundraisersEnabled, 'modal-header-red': !facebookFundraisersEnabled}">
     <h2 class="modal-title">
       <span translate="drafts_confirm_delete_header"></span>
     </h2>
   </div>
-  <div class="modal-body">
+  <div class="modal-body" ng-class="{'': facebookFundraisersEnabled, 'modal-body-red': !facebookFundraisersEnabled}">
     <span translate="drafts_confirm_delete_body"></span>
   </div>
-  <div class="modal-footer">
+  <div class="modal-footer" ng-class="{'': facebookFundraisersEnabled, 'modal-footer-red': !facebookFundraisersEnabled}">
     <div class="clearfix">
       <div class="pull-left">
-        <button type="button" class="btn btn-primary-inverted text-uppercase" ng-click="cancelDeleteMessage()">
+        <button type="button" class="btn text-uppercase" ng-class="{'btn-primary-inverted': facebookFundraisersEnabled, 'btn-outline-white': !facebookFundraisersEnabled}" ng-click="cancelDeleteMessage()">
           <span translate="class_cancel_link"></span>
         </button>
       </div>
       <div class="pull-right">
-        <button type="submit" class="btn btn-primary text-uppercase">
+        <button type="submit" class="btn text-uppercase" ng-class="{'btn-primary': facebookFundraisersEnabled, 'btn-outline-white': !facebookFundraisersEnabled}" >
           <span translate="compose_delete_button_label"></span>
         </button>
       </div>
