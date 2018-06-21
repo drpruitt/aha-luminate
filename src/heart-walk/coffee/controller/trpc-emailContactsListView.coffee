@@ -3,15 +3,17 @@ angular.module 'trPcControllers'
     '$rootScope'
     '$scope'
     '$window'
+    '$timeout'
     '$routeParams'
     '$location'
     '$httpParamSerializer'
     '$translate'
+    '$filter'
     '$uibModal'
-    'APP_INFO'
     'TeamraiserEmailService'
     'ContactService'
-    ($rootScope, $scope, $window, $routeParams, $location, $httpParamSerializer, $translate, $uibModal, APP_INFO, TeamraiserEmailService, ContactService) ->
+    'APP_INFO'
+    ($rootScope, $scope, $window, $timeout, $routeParams, $location, $httpParamSerializer, $translate, $filter, $uibModal, TeamraiserEmailService, ContactService, APP_INFO) ->
       $scope.filter = $routeParams.filter
       $scope.refreshContactsNav = 0
       $scope.emailPromises = []
@@ -65,6 +67,12 @@ angular.module 'trPcControllers'
         contacts: []
         contactSearchInput: ''
       $scope.addressBookGroups = []
+      $scope.contactSearchInput = ''
+      $scope.allContactsSelected = false
+      $scope.contactsSelected =
+        all: (newVal) ->
+          if arguments.length then $scope.allContactsSelected = newVal else $scope.allContactsSelected
+      $scope.contactsUpdated = false
 
       getContactsTotal = ->
         getContactsTotalPromise = ContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=email_rpt_show_all&skip_groups=true&list_page_size=10&list_page_offset=0'
@@ -78,10 +86,23 @@ angular.module 'trPcControllers'
         getContactsTotal()
         $scope.refreshContactsNav = $scope.refreshContactsNav + 1
 
+      $scope.refreshSelectedContacts = ->
+        if $scope.addressBookContacts.contacts and $scope.addressBookContacts.contacts.length > 0
+          $scope.numContactsSelected = $filter('filter')($scope.addressBookContacts.contacts, {selected: true}).length
+          $scope.contactsSelected.all $scope.numContactsSelected is $scope.addressBookContacts.contacts.length
+        else
+          $scope.numContactsSelected = 0
+          $scope.contactsSelected.all false
+        $scope.contactsSelected.all()
+      $scope.refreshSelectedContacts()
+      $scope.$watchGroup ['addressBookContacts.contacts', 'contactsUpdated'], () ->
+        $scope.refreshSelectedContacts()
+
       $scope.getContacts = ->
         pageNumber = $scope.addressBookContacts.page - 1
         numPerPage = $scope.addressBookContacts.numPerPage
-        contactsPromise = ContactService.getTeamraiserAddressBookContacts 'tr_ab_filter=' + $scope.filter + '&skip_groups=true&list_page_size=' + numPerPage + '&list_page_offset=' + pageNumber
+        requestData = 'tr_ab_filter=' + $scope.filter + '&skip_groups=true&list_page_size=' + numPerPage + '&list_page_offset=' + pageNumber
+        contactsPromise = ContactService.getTeamraiserAddressBookContacts requestData
           .then (response) ->
             addressBookContacts = response.data.getTeamraiserAddressBookContactsResponse.addressBookContact
             addressBookContacts = [addressBookContacts] if not angular.isArray addressBookContacts
@@ -536,9 +557,11 @@ angular.module 'trPcControllers'
         if contactIndex is -1 and contact.selected
           # add contact to selectedContacts
           $rootScope.selectedContacts.contacts.push contactData
+          $scope.contactsUpdated = !$scope.contactsUpdated
         else if contactIndex isnt -1 and not contact.selected
           # remove contact from selectedContacts
           $rootScope.selectedContacts.contacts.splice contactIndex, 1
+          $scope.contactsUpdated = !$scope.contactsUpdated
         else
           $rootScope.selectedContacts.contacts.splice contactIndex, 1
         angular.forEach $scope.addressBookContacts.allContacts, (aContact) ->
@@ -548,16 +571,13 @@ angular.module 'trPcControllers'
         $scope.addressBookContacts.allContactsSelected = isAllContactsSelected()
         $scope.addressBookContacts.allContactsSelected
 
-      $scope.toggleAllContacts = ->
-        selected = not $scope.addressBookContacts.allContactsSelected
+      $scope.toggleAllContacts = () ->
+        selectToggle = $scope.contactsSelected.all()
         angular.forEach $scope.addressBookContacts.contacts, (contact) ->
-          contact.selected = selected
-        angular.forEach $scope.addressBookContacts.allContacts, (contact) ->
-          contact.selected = selected
-          if selected isnt isContactSelected contact
-            $scope.toggleContact contact
-        $scope.addressBookContacts.allContactsSelected = selected
-        $scope.addressBookContacts.allContactsSelected
+          if contact.selected isnt selectToggle
+            contact.selected = selectToggle
+            $scope.toggleContact contact.id
+        $scope.contactsSelected.all selectToggle
       
       $scope.clearEditContactAlerts = ->
         if $scope.editContactError
@@ -568,6 +588,8 @@ angular.module 'trPcControllers'
       $scope.selectContact = (contactId) ->
         $scope.clearAllContactAlerts()
         contact = getContactById contactId
+        $scope.editContactMode = false
+        $scope.viewContact = angular.copy contact
         $scope.updatedContact = 
           contact_id: $scope.selectedContact.id
           first_name: $scope.selectedContact.firstName
@@ -581,9 +603,14 @@ angular.module 'trPcControllers'
         $scope.editContactModal.close()
       
       $scope.cancelEditContact = ->
+        delete $scope.editContactMode
+        delete $scope.viewContact
         delete $scope.updatedContact
         $scope.clearEditContactAlerts()
         closeEditContactModal()
+
+      $scope.toggleEditContact = () ->
+        $scope.editContactMode = not $scope.editContactMode
       
       $scope.saveUpdatedContact = ->
         $scope.clearEditContactAlerts()
