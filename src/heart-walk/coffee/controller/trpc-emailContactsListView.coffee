@@ -135,21 +135,24 @@ angular.module 'trPcControllers'
             response
         $scope.emailPromises.push getGroupsPromise
 
-      
-      if $scope.filter is 'email_rpt_show_all'
-        $translate 'contacts_groups_all'
-          .then (translation) ->
-            $scope.filterName = translation
-          , (translationId) ->
-            $scope.filterName = translationId
-      else if $scope.filter.match 'email_rpt_group_'
-        $scope.getGroups()
-      else
-        $translate 'filter_' + $scope.filter
-          .then (translation) ->
-            $scope.filterName = translation
-          , (translationId) ->
-            $scope.filterName = translationId
+      updateContactFilterNames = ->
+        if $scope.updateContactFilterNamesTimeout
+          $timeout.cancel $scope.updateContactFilterNamesTimeout
+        if $scope.filter is 'email_rpt_show_all'
+          $translate 'contacts_groups_all'
+            .then (translation) ->
+              $scope.filterName = translation
+            , (translationId) ->
+              $scope.updateContactFilterNamesTimeout = $timeout updateContactFilterNames, 500
+        else if $scope.filter.match 'email_rpt_group_'
+          $scope.getGroups()
+        else
+          $translate 'filter_' + $scope.filter
+            .then (translation) ->
+              $scope.filterName = translation
+            , (translationId) ->
+              $scope.updateContactFilterNamesTimeout = $timeout updateContactFilterNames, 500
+      updateContactFilterNames()
       
       $scope.clearAllContactAlerts = ->
         $scope.clearAddContactAlerts()
@@ -563,13 +566,7 @@ angular.module 'trPcControllers'
           $rootScope.selectedContacts.contacts.splice contactIndex, 1
           $scope.contactsUpdated = !$scope.contactsUpdated
         else
-          $rootScope.selectedContacts.contacts.splice contactIndex, 1
-        angular.forEach $scope.addressBookContacts.allContacts, (aContact) ->
-          if contactData is getContactString aContact
-            aContact.selected = contactIndex is -1
-          aContact
-        $scope.addressBookContacts.allContactsSelected = isAllContactsSelected()
-        $scope.addressBookContacts.allContactsSelected
+          # no change needed
 
       $scope.toggleAllContacts = () ->
         selectToggle = $scope.contactsSelected.all()
