@@ -104,6 +104,15 @@
         [[?xStationaryV2x::x[[E42:[[S80:trID]]:classification2]]x::
         <!-- Stationary v2 Event -->
         <div class="js__promo-code-success alert alert-success hidden" role="alert">Success! We located available bikes reserved with your VIP code. Please proceed with registration.</div>
+        <div class="js__promo-code-invalid alert alert-danger hidden" role="alert">
+          <p>Sorry, the VIP code you entered is not valid. Please contact the CycleNation Team: 
+            <span class="pl-3 d-block">
+              [[E47:[[S80:trID]]:fr_info:1:coordinator_name]]<br>
+              <a class="alert-link" href="mailto:[[E47:[[S80:trID]]:fr_info:1:coordinator_email]]">[[E47:[[S80:trID]]:fr_info:1:coordinator_email]]</a>
+              <br>[[E47:[[S80:trID]]:fr_info:1:coordinator_phone]]
+            </span>
+          </p>
+        </div>
         <div class="js__promo-code-error alert alert-danger hidden" role="alert">
             <p>Sorry, the bikes reserved for this VIP code have already been assigned. Please contact the CycleNation Team: 
               <span class="pl-3 d-block">
@@ -113,7 +122,7 @@
               </span>
             </p>
         </div>
-        <div class="js__promo-code-sold-out alert alert-dark hidden" role="alert" >
+        <div class="js__promo-code-sold-out alert border border-primary hidden" role="alert" >
             <p>Oh no! All our bikes are currently reserved, but one may open up and we have room on our waitlist! Please contact our CycleNation Team to reserve your spot on our waitlist:
               <span class="pl-3 d-block">
               [[E47:[[S80:trID]]:fr_info:1:coordinator_name]]<br>
