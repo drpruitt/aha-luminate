@@ -125,7 +125,7 @@
                   '</strong><br>' +
                   participant.eventName + '<br>' +
                   ((participant.teamName !== null && participant.teamName !== undefined) ? participant.teamName + '<br>' : '') +
-                  '<a href="' + participant.personalPageUrl + '">Visit Personal Page</a></p></div><div class="col-xs-12 col-md-3 col-sm-4"><a class="button btn-primary btn-block btn-lg pull-right" href="' + participant.donationUrl + '">Donate</a>' + ((teamRegUrl !== null) ? '<a class="button btn-outline-dark btn-block btn-lg pull-right" href="' + teamRegUrl + '">Join Team</a>' : '') + '</div></div>'
+                  '<a href="' + participant.personalPageUrl + '">Visit Personal Page</a></p></div><div class="col-xs-12 col-md-3 col-sm-4"><a class="button btn-primary btn-block btn-lg pull-right" href="' + participant.donationUrl + '">Donate</a>' + ((teamRegUrl !== null) ? '<a class="button btn-outline-dark btn-block btn-lg pull-right" href="' + teamRegUrl + ((participant.aTeamCaptain === 'true') ? '&s_captainConsId=' + participant.consId : '') + '&s_regType=joinTeam">Join Team</a>' : '') + '</div></div>'
                 );
               });
               //add call to hook donate button with payment type selections
@@ -170,7 +170,7 @@
                   team.eventName + '<br>' +
                   'Team Captain: ' + team.captainFirstName + ' ' + team.captainLastName + '<br>' +
                   ((team.companyName !== null && team.companyName !== undefined) ? team.companyName + '<br>' : '') +
-                  '<a href="' + team.teamPageURL + '">Visit Team Page</a></p></div><div class="col-xs-12 col-sm-4 col-md-3"><a class="button btn-primary btn-block btn-lg pull-right" href="' + team.teamDonateURL + '">Donate</a><a class="button btn-outline-dark btn-block btn-lg pull-right" href="' + team.joinTeamURL + '">Join Team</a></div></div>');
+                  '<a href="' + team.teamPageURL + '">Visit Team Page</a></p></div><div class="col-xs-12 col-sm-4 col-md-3"><a class="button btn-primary btn-block btn-lg pull-right" href="' + team.teamDonateURL + '">Donate</a><a class="button btn-outline-dark btn-block btn-lg pull-right" href="' + team.joinTeamURL + '&s_captainConsId=' + team.captainConsId +'&s_regType=joinTeam">Join Team</a></div></div>');
                 $('#team_results').removeAttr('hidden');
 
               });
@@ -793,6 +793,36 @@
 
     // END LANDING PAGE ONLY
 
+    /******************************************************************/
+    /* Get Captain ID - auto select ptype time for those joining team */
+    /******************************************************************/
+
+    cd.getTeamCaptainId = function (evID, teamId, trPage) {
+      luminateExtend.api({
+        api: 'teamraiser',
+        data: 'method=getTeamCaptains&response_format=json&fr_id=' + evID + '&team_id=' + teamId,
+        callback: {
+          success: function (response) {
+            var captainArray = luminateExtend.utils.ensureArray(response.getTeamCaptainsResponse.captain);
+            var captainConsId = captainArray[0].consId;
+
+            if(trPage === 'personal'){
+              var origJoinTeamUrl = $('#personal_page_join_team_button').attr('href');
+              var modJoinTeamUrl = origJoinTeamUrl + '&s_regType=joinTeam&s_captainConsId=' + captainConsId + '&s_dev_branch=cd-cyclenation';
+              $('#personal_page_join_team_button').attr('href', modJoinTeamUrl);
+            }else if(trPage === 'team'){
+              var origJoinTeamUrl = $('#join_team_button').attr('href');
+              var modJoinTeamUrl = origJoinTeamUrl + '&s_regType=joinTeam&s_captainConsId=' + captainConsId + '&s_dev_branch=cd-cyclenation';
+              $('#join_team_button').attr('href', modJoinTeamUrl);
+            }
+          },
+          error: function (response) {
+
+          }
+        }
+      });
+    };
+
     /*****************************/
     /* Survey - Stay in the Know */
     /*****************************/
@@ -894,7 +924,7 @@
 
       var getRegInteractionCallback = {
         success: function (data) {
-          console.log('getRegInteraction success: ' + JSON.stringify(data));
+          // console.log('getRegInteraction success: ' + JSON.stringify(data));
           var hasInteraction = data.getUserInteractionsResponse.interaction;
           if (!hasInteraction) {
             // Does not have trRegInteraction. Check to see if has trLoginInteraction
@@ -908,7 +938,7 @@
 
       var getSocialInteractionCallback = {
         success: function (data) {
-          console.log('getSocialInteraction success: ' + JSON.stringify(data));
+          // console.log('getSocialInteraction success: ' + JSON.stringify(data));
           var hasInteraction = data.getUserInteractionsResponse.interaction;
           if (!hasInteraction) {
             // Does not have trRegInteraction OR trSocialInteraction. Assign a trLoggedInInteraction
@@ -922,7 +952,7 @@
 
       var getLoginInteractionCallback = {
         success: function (data) {
-          console.log('getLoginInteraction success: ' + JSON.stringify(data));
+          // console.log('getLoginInteraction success: ' + JSON.stringify(data));
           var hasInteraction = data.getUserInteractionsResponse.interaction;
           if (!hasInteraction) {
             // Does not have trRegInteraction OR trSocialInteraction OR trLoginInteraction. Assign a trLoggedInInteraction
@@ -1177,7 +1207,7 @@
       $('form[name=FriendraiserFind]').attr('hidden', true);
 
       if (regType === 'startTeam') {
-        if (eventType2 === 'Road') {
+        if (eventType2 === 'Road' || eventType2 === 'StationaryV2' ) {
           $('form[name=FriendraiserFind]').removeAttr('hidden');
         }
       } else if (regType === 'joinTeam') {
@@ -1185,8 +1215,36 @@
           // On JOIN TEAM step - rename label
           $('#team_label_container').text('Team name:');
           $('form[name=FriendraiserFind]').removeAttr('hidden');
+
+          // append cons ID to the join team button
+          if($('#team_find_search_results_container').length > 0) {
+            
+            var teamRows = $('.list-component-row');
+            $.each( teamRows, function(i, teamRow) {
+              var captainConsId, origJoinTeamUrl, modJoinTeamUrl;
+              var self = $(this);
+              var origTeamNameUrl = $(this).find('.list-component-cell-column-team-name a').attr('href');
+              var teamId = getURLParameter(origTeamNameUrl, 'team_id');
+              
+              luminateExtend.api({
+                api: 'teamraiser',
+                data: 'method=getTeamCaptains&response_format=json&fr_id=' + evID + '&team_id=' + teamId,
+                callback: {
+                  success: function success(response) {
+                    var captainArray = luminateExtend.utils.ensureArray(response.getTeamCaptainsResponse.captain);
+                    captainConsId = captainArray[0].consId;
+                    origJoinTeamUrl = $(self).find('.list-component-cell-column-join-link a').attr('href');
+                    modJoinTeamUrl = origJoinTeamUrl + '&s_captainConsId=' + captainConsId;
+                    $(self).find('.list-component-cell-column-join-link a').attr('href', modJoinTeamUrl);
+                  },
+                  error: function error(response) {}
+                }
+              });
+            });
+          }
         }
       }
+
 
       // rebuild LO's create team form
       var goalPerBike = 1000;
@@ -1198,7 +1256,141 @@
       var promoCode =  ($('body').data('promocode')!==undefined ? $('body').data('promocode') : "");
      
       // tfind
-      $('#team_find_new_company_selection_container').append('<div id="team_sponsor_code" class="input-container"><div class="form-group"><label for="sponsorCode">Do you have a sponsor code?</label><input name="s_promoCode"type="text"id="sponsorCode"class="form-control" value="' + promoCode + '"></div></div>');
+
+      // begin StationaryV2 event conditional
+      if (eventType2 === 'StationaryV2' ) {
+      // check to see if Start a Team and Breakaway ptypes are available
+
+      // if Start a Team and Breakaway ptypes are not available, remove those registration options and display a sponsor code field on the reg options step
+
+        var isStartTeamAvailable = false;
+        var isBreakawayAvailable = false;
+        var invalidPromo = false;
+        var promoCodePtypesAvailable = false;
+
+        cd.getParticipationTypes = function (promo) {
+          $('.js__reg-type-container .alert').addClass('hidden');
+          
+          luminateExtend.api({
+            api: 'teamraiser',
+            data: 'method=getParticipationTypes' +
+            '&fr_id=' + evID +
+            ((promo !== undefined) ? '&promotion_code=' + promo : '') +
+            '&response_format=json',
+            callback: {
+              success: function (response) {
+
+                if (response.getParticipationTypesResponse.participationType.length) {
+                  // no search results
+                  var participationTypes = luminateExtend.utils.ensureArray(response.getParticipationTypesResponse.participationType);
+                  // var promoPtypeLoaded = false;
+                  $(participationTypes).each(function (i, ptype) {
+                      // There is no promo code in session 
+                      if(ptype.participationTypeRegistrationLimit && ptype.participationTypeRegistrationLimit.limitReached === 'false'){
+                        // Publicly available ptypes are available
+                        // ptype has a limit and it has NOT been reached
+                        if(ptype.name.indexOf('Start a Team') > -1){
+                          if(ptype.participationTypeRegistrationLimit.limitReached === 'false'){
+                            isStartTeamAvailable = true;
+                          }
+                        } else if(ptype.name.indexOf('Breakaway') > -1){
+                          if(ptype.participationTypeRegistrationLimit.limitReached === 'false'){
+                            isBreakawayAvailable = true;
+                          }
+                        }
+                      } 
+
+                      if(promo){
+                      // promo is loaded 
+                      if(ptype.promoCodeRequired === "true"){
+                        console.log('promo code only ptype available');
+                        // promo code is valid
+                          // Promo code ptypes are available
+                          promoCodePtypesAvailable = true;
+
+                          if(ptype.name.indexOf('Start a Team') > -1){
+                            if(ptype.participationTypeRegistrationLimit.limitReached === 'false'){
+                              isStartTeamAvailable = true;
+                            }
+                          } else if(ptype.name.indexOf('Breakaway') > -1){
+                            if(ptype.participationTypeRegistrationLimit.limitReached === 'false'){
+                              isBreakawayAvailable = true;
+                            }
+                          }
+                        // } 
+                      } else {
+                        // promo code is inavlid
+                        invalidPromo = true;
+                      }
+                    }
+
+                  });
+
+
+                  if(isStartTeamAvailable === true){
+                    $('.start-team-container').show();
+                  } else {
+                    $('.js__reg-options-promo-container, .js__promo-code-sold-out').removeClass('hidden');
+                  }
+                  if(isBreakawayAvailable === true){
+                    $('.breakaway-container').show();
+                  } 
+
+                  if(promoCodePtypesAvailable){
+                    console.log('promoCode ptypes are available and loaded');
+                    // add promo code to reg options links in case they are entering it for the first time on this step
+                    var regOptionLinks = $('.js__reg-type-form .step-button');
+
+                    $(regOptionLinks).each(function(){
+                      var origUrl = $(this).attr('href');
+                      var modUrl = origUrl + '&s_promoCode=' + promo;
+                      $(this).attr('href', modUrl);
+                    });
+                    if(!promoCode){
+                      // show a custom message if a promo code is not already in session and someone manually enters a promo code and we DO retrieve an available ptype
+                      $('.js__promo-code-success').removeClass('hidden');
+                    }
+                    $('.js__reg-options-promo-container').addClass('hidden');
+                  } else if(promo && promoCodePtypesAvailable === false && invalidPromo === false){
+                    console.log('promoCode in session but NO promoCode ptypes are available for registration');
+                    // show a custom message if someone manually enters a promo code and we DO NOT retrieve an available ptype
+                    $('.js__promo-code-sold-out').addClass('hidden');
+                    $('.js__promo-code-error, .js__reg-options-promo-container').removeClass('hidden');
+                  } else if(invalidPromo === true){
+                    console.log('invalid promo');
+                    $('.js__promo-code-sold-out').addClass('hidden');
+                    $('.js__promo-code-invalid, .js__reg-options-promo-container').removeClass('hidden');
+                  }
+
+                  $('.join-team-container').show();
+                } 
+              },
+              error: function (response) {
+                console.log(response.errorResponse.message);
+              }
+            }
+          });
+        };
+
+        if(promoCode){
+          cd.getParticipationTypes(promoCode);
+        } else {
+          cd.getParticipationTypes();
+        }
+
+        // manage manual submission of promo codes on reg options step
+        $('.js__reg-options-promo-form').on('submit', function(e){
+          e.preventDefault();
+          var manualPromoCode = $('#sponsorCode').val();
+          cd.getParticipationTypes(manualPromoCode);
+        });
+
+      } // end StationaryV2 event conditional
+
+      // only show the VIP code field if a promo code is not already in session
+      if(!promoCode){
+        $('#team_find_new_company_selection_container').append('<div id="team_sponsor_code" class="input-container"><div class="form-group"><label for="sponsorCode">Do you have a VIP Code?</label><input name="s_promoCode"type="text"id="sponsorCode"class="form-control" value=""></div></div>');
+      }
 
       var numTeamResults = $('#team_find_search_results_container .list-component-row').length;
 
@@ -1272,9 +1464,6 @@
         $('form[name=FriendraiserFind]').removeAttr('hidden');
       }
 
-
-      // TODO - move this back into the onclick above IF stationary. Otherwise, call below for Road
-
       if (eventType2 === 'Road') {
         $('#team_find_page > form').parsley(teamFindParsleyConfig);
       }
@@ -1296,8 +1485,11 @@
         $('.js__show-team-details').prop('disabled', false);
       });
 
-      $('#team_find_new_fundraising_goal_input_hint').text('You can increase your team\'s goal, but the amount shown above is your required fundraising minimum based off of the number of reserved bikes you selected');
-
+      if (eventType2 === 'StationaryV2') {
+        $('#team_find_new_fundraising_goal_input_hint').text('You can increase your team\'s goal, but the amount shown above is your team\'s required fundraising minimum.');
+      } else {
+        $('#team_find_new_fundraising_goal_input_hint').text('You can increase your team\'s goal, but the amount shown above is your required fundraising minimum based off of the number of reserved bikes you selected.');
+      }
       $('#previous_step span').text('Back');
 
     }
@@ -1306,11 +1498,76 @@
     if ($('#F2fRegPartType').length > 0) {
         // add reg full class to ptype container
         var ptypeBlocks = $('.part-type-decoration-messages');
+
         $(ptypeBlocks).each(function(){
           if($(this).hasClass('part-type-full')){
             $(this).parent().removeClass('selected').addClass('ptype-full').find('input[type=radio]').remove();
           }
+          if (eventType2 === 'StationaryV2' ) {
+            var ptypeName = $(this).find('.part-type-name').text();
+
+            if(ptypeName.indexOf('VIP') > -1) {
+              $(this).closest('.part-type-container').addClass('vip-ptype-container');
+            } else if(ptypeName.indexOf('Breakaway') > -1) {
+              $(this).closest('.part-type-container').addClass('breakaway-ptype-container');
+            } else if (ptypeName.indexOf('Start a Team') > -1){
+              $(this).closest('.part-type-container').addClass('start-team-ptype-container');
+            } else if (ptypeName.indexOf('Join a Team') > -1){
+              $(this).closest('.part-type-container').addClass('join-team-ptype-container');
+              var coachPtype = $('.captain-ptype').text();
+
+              // NOTE - participation type names and times must always be split by " - "
+              if(coachPtype){
+                var coachTime = coachPtype.split('-')[1];
+                console.log(coachTime);
+                if(ptypeName.indexOf(coachTime) > -1) {
+                // add special class to the join team ptype that matches the coach's ptype time
+                $(this).closest('.part-type-container').addClass('join-team-ptype-time');
+                }
+              }
+            }
+          }
         });
+
+      // begin StationaryV2 event conditional
+      if (eventType2 === 'StationaryV2' ) {
+        if (regType === 'joinTeam') {
+          $('#sel_type_container').text('What time will you ride?');
+          if($('.join-team-ptype-container').hasClass('join-team-ptype-time')){
+            // only display the ptype that matches the coach's ptype
+            $('.join-team-ptype-time').show();
+          } else {
+            // show all join team ptypes as coach's ptype time was not found
+            $('.join-team-ptype-container').show();
+          }
+        } else if(regType === 'startTeam'){
+          if($('.vip-ptype-container').length){
+            // if promo code based ptype is available on page, only show that ptype option
+            $('.vip-ptype-container').show();
+          } else {
+            // otherwise, show publicly available ptypes that match selected reg option
+            $('.start-team-ptype-container').show();
+          }
+        } else if(regType === 'individual'){
+          if($('.vip-ptype-container').length){
+            // if promo code based ptype is available on page, only show that ptype option
+            $('.vip-ptype-container').show();
+          } else {
+            // otherwise, show publicly available ptypes that match selected reg option
+            $('.breakaway-ptype-container').show();
+          }
+        } else {
+          // show all participation types in the case that a session variable has not been set for regType
+          $('.part-type-container').show();
+        }
+        if(promoCode){
+          console.log('promoCode in session: ', promoCode);
+          
+        } else {
+
+        }
+      }
+
 
       if (eventType2 === 'Stationary') {
         $('#sel_type_container').text('What time will you ride?');
@@ -1343,6 +1600,8 @@
             $('#next_step').removeClass('disabled');
             $('#dspPledge').modal({backdrop: 'static', keyboard: false}).modal('show');
         });
+        // remove on click event if has class .ptype-full
+        $('.ptype-full').off();
 
       }
 
@@ -1755,12 +2014,24 @@
     if ($('body').is('.pg_personal')) {
       var personalHeadline = $('#personal_page_header h2');
       $(personalHeadline).replaceWith('<h1>' + $(personalHeadline).text() + '</h1>');
+      // populate captain cons ID in body attributes and append to modified join team URL
+      var currentUrl = $('#personal_page_join_team_button').attr('href');
+      var teamId = getURLParameter(currentUrl, 'fr_tjoin');
+      var captainId = cd.getTeamCaptainId(evID, teamId, 'personal');
     }
     if ($('body').is('.pg_team')) {
+
       var teamHeadline = $('#team_page_title');
       var existingTeamName = $('#team_name');
       $(teamHeadline).replaceWith('<h1>' + $(teamHeadline).text() + '</h1>');
       $(existingTeamName).replaceWith('<h2>' + $(existingTeamName).text() + '</h2>');
+
+      // populate captain cons ID in body attributes and append to modified join team URL
+      var currentUrl = window.location.href;
+      var teamId = getURLParameter(currentUrl, 'team_id');
+      var captainId = cd.getTeamCaptainId(evID, teamId, 'team');
+
+
     }
     if ($('body').is('.pg_company')) {
       var companyHeadline = $('.cstmTitle');
