@@ -63,7 +63,7 @@ angular.module 'ahaLuminateApp'
         getCoordinatorQuestion: (coordinatorId, eventId) ->
           $http
             method: 'GET'
-            url: 'SPageServer?pagename=ym_coordinator_data&pgwrap=n&consId=' + coordinatorId + '&frId=' + eventId
+            url: 'PageServer?pagename=ym_coordinator_data&pgwrap=n&consId=' + coordinatorId + '&frId=' + eventId
           .then (response) ->
             response
       }
