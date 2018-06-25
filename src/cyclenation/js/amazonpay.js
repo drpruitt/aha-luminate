@@ -114,7 +114,7 @@ function addPaymentTypesOnSearch() {
 			var html = "<div class='paymentSelType text-center' style='padding-top:10px;'>" +
 				"<h6>How would you like to donate?</h6>" +
 				"<a href='"+dlink+"'><img src='https://www2.heart.org/images/content/pagebuilder/credit-card-logos2.png'/></a>" +
-				"<a href='https://secure3.convio.net/heartdev/site/SPageNavigator/cyclenation_donate_amazon.html?FR_ID="+fr_id+"&mfc_pref=T&PROXY_ID="+px+"&PROXY_TYPE="+pt+"' class='amazon'><img src='https://donatenow.heart.org/images/amazon-payments_inactive.png'/></a>" +
+				"<a href='"+default_path+"/site/SPageNavigator/cyclenation_donate_amazon.html?FR_ID="+fr_id+"&mfc_pref=T&PROXY_ID="+px+"&PROXY_TYPE="+pt+"' class='amazon'><img src='https://donatenow.heart.org/images/amazon-payments_inactive.png'/></a>" +
 				"<a href='"+dlink+"&paypal=true'><img src='https://www2.heart.org/images/content/pagebuilder/PP_logo_h_100x26.png'/></a>";
 			jQuery(this).after(html);
 		}
