@@ -23,6 +23,49 @@
       }
     }
   }
+
+  .modal-header-red {
+    background: $brand-primary;
+    color: #ffffff;
+    border-bottom: none;
+  }
+
+  .modal-body-red {
+    background: $brand-primary;
+    color: #ffffff;
+
+    a, a:link, a:visited, a:hover, a:focus {
+      color: #ffffff;
+    }
+
+    .input-group {
+      margin: 0 auto;
+    }
+
+    .profile_icon_checklist i.fa {
+      color: #ffffff;
+      -moz-box-shadow: 0px 0px 2px #ffffff;
+      -webkit-box-shadow: 0px 0px 2px #ffffff;
+      box-shadow: 0px 0px 2px #ffffff;
+    }
+
+    .profile_progress h3 {
+      color: #ffffff;
+    }
+  }
+
+  .modal-footer-red {
+    background: $brand-primary;
+    border-top: none;
+
+    .lb_skip_link a {
+      color: #ffffff;
+    }
+  }
+
+  .modal-text-center {
+    text-align: center;
+  }
   
   .btn.pc-facebook-fundraiser-btn, 
   a.btn.pc-facebook-fundraiser-btn {
