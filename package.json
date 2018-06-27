@@ -9,16 +9,16 @@
     }
   ],
   "engines": {
-    "node": "^6.14.2"
+    "node": "^6.14.3"
   },
   "dependencies": {
-    "grunt": "^1.0.2",
+    "grunt": "^1.0.3",
+    "grunt-cli": "^1.2.0",
     "load-grunt-tasks": "^4.0.0"
   },
   "devDependencies": {
-    "autoprefixer": "^8.6.0",
+    "autoprefixer": "^8.6.4",
     "glob": "^7.1.2",
-    "grunt-cli": "^1.2.0",
     "grunt-connect-proxy": "git+https://github.com/drewzboto/grunt-connect-proxy.git",
     "grunt-contrib-clean": "^1.1.0",
     "grunt-contrib-coffee": "^1.0.0",
