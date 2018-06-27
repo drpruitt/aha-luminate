@@ -44,7 +44,7 @@
         <div class="panel-heading">
           <div class="checkbox">
             <label for="contact_select_all">
-              <input id="contact_select_all" type="checkbox" ng-checked="addressBookContacts.allContactsSelected" ng-click="toggleAllContacts()">
+              <input id="contact_select_all" type="checkbox" ng-model="contactsSelected.all" ng-model-options="{ getterSetter: true }" ng-if="addressBookContacts.totalNumber" ng-click="toggleAllContacts()">
               <span class="panel-title">
                 {{filterName}}
               </span>
