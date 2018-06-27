@@ -17,7 +17,7 @@
   <div>
     <div ng-if="!facebookFundraisersEnabled" ng-cloak>
       <p>Take a moment and pat yourself on the back. We&rsquo;ll wait.</p>
-      <p>That felt good, didn&rsquo;t it? You know what would feel even better? Knowing that your donation is going directly toward lifesaving science. Like science that will <a href="https://news.heart.org/pulse-oximetry-screening-successes-set-stage-for-more-work-to-save-babies/" target="blank">help save babies&rsquo; lives</a>. Even a dollar can make a difference.</p>
+      <p>That felt good, didn&rsquo;t it? You know what would feel even better? Knowing that your donation is going toward lifesaving science. Every dollar can make a difference.</p>
       <p>Will you donate now?</p>
     </div>
     <div ng-if="facebookFundraisersEnabled" ng-cloak>
@@ -55,7 +55,7 @@
         </button>
       </div>
       <div ng-if="!facebookFundraisersEnabled" ng-cloak>
-        <a href class="btn btn-outline-white text-uppercase" ng-click="sendGAEvent('Not Right Now - donate lightbox'); notRightNow()">I&rsquo;m not ready to help save lives</a>
+        <a href class="btn btn-outline-white text-uppercase" ng-click="sendGAEvent('Not Right Now - donate lightbox'); notRightNow()">Not Right Now</a>
       </div>
     </div>
   </div>
