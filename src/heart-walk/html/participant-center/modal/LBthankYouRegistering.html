@@ -1,44 +1,50 @@
-<div class="modal-header" ng-if="facebookFundraisersEnabled" ng-cloak>
+<div class="modal-header modal-header-red" ng-if="facebookFundraisersEnabled" ng-cloak>
   <h2 class="modal-title">
     Thank You for Registering
   </h2>
 </div>
-<div class="modal-header modal-header-red modal-text-center" ng-if="!facebookFundraisersEnabled" ng-cloak>
-  <h2 class="modal-title">
-    <span ng-if="constituent.name && constituent.name.first">{{constituent.name.first}}</span><span ng-if="!constituent.name.first">Participant</span>, thanks for registering.
-  </h2>
-</div>
-<div class="modal-header" ng-if="facebookFundraisersEnabled" ng-cloak>
-  <p>
-    <span ng-if="constituent.name && constituent.name.first">{{constituent.name.first}}</span><span ng-if="!constituent.name.first">Participant</span>, Time to put your heart into it! Use the Participant Center to update your story, send emails, and find resources to hit your fundraising goal.
-  </p>
-</div>
-<div class="modal-body" ng-class="{'': facebookFundraisersEnabled, 'modal-body-red modal-text-center': !facebookFundraisersEnabled}">
-  <div>
-    <div ng-if="!facebookFundraisersEnabled" ng-cloak>
-      <p>Take a moment and pat yourself on the back. We&rsquo;ll wait.</p>
-      <p>That felt good, didn&rsquo;t it? You know what would feel even better? Knowing that your donation is going directly toward lifesaving science. Like science that will <a href="https://news.heart.org/pulse-oximetry-screening-successes-set-stage-for-more-work-to-save-babies/" target="blank">help save babies&rsquo; lives</a>. Even a dollar can make a difference.</p>
-      <p>Will you donate now?</p>
-    </div>
-    <div ng-if="facebookFundraisersEnabled" ng-cloak>
-      <p class="h2">
-        Reach Your Goal Faster with Facebook
-      </p>
-      <ol>
-        <li>
-          Connect this fundraiser to Facebook.
-        </li>
-        <li>
-          Invite friends, share updates and collect donations on Facebook.
-        </li>
-        <li>
-          Keep track of your progress. The money you raise on Facebook will count toward your goal.
-        </li>
-      </ol>
-    </div>
+<div class="modal-header modal-header-red" ng-class="{'modal-text-center': !facebookFundraisersEnabled}">
+  <div ng-if="!facebookFundraisersEnabled" ng-cloak>
+    <h2 class="modal-title">
+      <span ng-if="constituent.name && constituent.name.first">{{constituent.name.first}}</span><span ng-if="!constituent.name.first">Participant</span>, thanks for registering.
+    </h2>
+  </div>
+  <div ng-if="facebookFundraisersEnabled" ng-cloak>
+    <p>
+      <span ng-if="constituent.name && constituent.name.first">{{constituent.name.first}}</span><span ng-if="!constituent.name.first">Participant</span>, Time to put your heart into it! Use the Participant Center to update your story, send emails, and find resources to hit your fundraising goal.
+    </p>
   </div>
 </div>
-<div class="modal-footer" ng-class="{'': facebookFundraisersEnabled, 'modal-footer-red': !facebookFundraisersEnabled}">
+<div class="modal-body modal-body-red" ng-class="{'modal-text-center': !facebookFundraisersEnabled}">
+  <div ng-if="!facebookFundraisersEnabled" ng-cloak>
+    <p>
+      Take a moment and pat yourself on the back. We&rsquo;ll wait.
+    </p>
+    <p>
+      That felt good, didn&rsquo;t it? You know what would feel even better? Knowing that your donation is going directly toward lifesaving science. Like science that will <a href="https://news.heart.org/pulse-oximetry-screening-successes-set-stage-for-more-work-to-save-babies/" target="blank">help save babies&rsquo; lives</a>. Even a dollar can make a difference.
+    </p>
+    <p>
+      Will you donate now?
+    </p>
+  </div>
+  <div ng-if="facebookFundraisersEnabled" ng-cloak>
+    <p class="h2">
+      Reach Your Goal Faster with Facebook
+    </p>
+    <ol>
+      <li>
+        Connect this fundraiser to Facebook.
+      </li>
+      <li>
+        Invite friends, share updates and collect donations on Facebook.
+      </li>
+      <li>
+        Keep track of your progress. The money you raise on Facebook will count toward your goal.
+      </li>
+    </ol>
+  </div>
+</div>
+<div class="modal-footer modal-footer-red">
   <div class="clearfix">
     <div class="pull-left">
       <div ng-if="facebookFundraisersEnabled" ng-cloak>
