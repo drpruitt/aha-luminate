@@ -1,21 +1,21 @@
 <form ng-submit="confirmAcknowledgeGift()">
-  <div class="modal-header" ng-class="{'': facebookFundraisersEnabled, 'modal-header-red': !facebookFundraisersEnabled}">
+  <div class="modal-header modal-header-red">
     <h2 class="modal-title">
       Acknowledge Gift
     </h2>
   </div>
-  <div class="modal-body" ng-class="{'': facebookFundraisersEnabled, 'modal-body-red': !facebookFundraisersEnabled}">
+  <div class="modal-body modal-body-red">
     To clear the Acknowledgement flag for this gift, click Acknowledge to indicate that you have already thanked this donor.
   </div>
-  <div class="modal-footer" ng-class="{'': facebookFundraisersEnabled, 'modal-footer-red': !facebookFundraisersEnabled}">
+  <div class="modal-footer modal-footer-red">
     <div class="clearfix">
       <div class="pull-left">
-        <button type="button" class="btn text-uppercase" ng-class="{'btn-primary-inverted': facebookFundraisersEnabled, 'btn-outline-white': !facebookFundraisersEnabled}" ng-click="cancelAcknowledgeGift()">
+        <button type="button" class="btn btn-outline-white text-uppercase" ng-click="cancelAcknowledgeGift()">
           Cancel
         </button>
       </div>
       <div class="pull-right">
-        <button type="submit" class="btn text-uppercase" ng-class="{'btn-primary': facebookFundraisersEnabled, 'btn-outline-white': !facebookFundraisersEnabled}" >
+        <button type="submit" class="btn btn-outline-white text-uppercase">
           Acknowledge
         </button>
       </div>

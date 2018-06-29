@@ -34,6 +34,17 @@ module.exports = {
     }
   }, 
   
+  "ym-primary": {
+    files: {
+      'dist/ym-primary/css/main.css': [
+        'src/ym-primary/sass/main.scss'
+      ], 
+      'dist/ym-primary/css/participant.css': [
+        'src/ym-primary/sass/participant.scss'
+      ]
+    }
+  }, 
+  
   "middle-school": {
     files: {
       'dist/middle-school/css/main.css': [
