@@ -14,12 +14,12 @@ angular.module 'ahaLuminateApp'
           data: 'v=1.0&api_key=' + $rootScope.apiKey + '&response_format=json&suppress_response_codes=true&method=getCompaniesByInfo&event_type=' + encodeURIComponent('YM Kids Heart Challenge') + '&' + requestData
           headers:
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-      
+
       getSchoolData: ->
         requestUrl = luminateExtend.global.path.nonsecure
         if window.location.protocol is 'https:'
           requestUrl = luminateExtend.global.path.secure + 'S'
-        requestUrl += 'PageServer?pagename=getJumpHoopsSchoolSearchData&pgwrap=n'
+        requestUrl += 'PageServer?pagename=getYmKhcSchoolSearchData&pgwrap=n'
         $http.jsonp($sce.trustAsResourceUrl(requestUrl), jsonpCallbackParam: 'callback')
           .then (response) ->
             response

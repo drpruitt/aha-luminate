@@ -108,7 +108,7 @@ angular.module 'ahaLuminateApp'
 
       getAvatar: (requestData, callback) ->
         if $rootScope.tablePrefix is 'heartdev'
-          url = '//jumphoopsstaging.boundlessnetwork.com/api/student/' + requestData + '/monster-designer'
+          url = '//khc.staging.ootqa.org/api/student/' + requestData + '/monster-designer'
         else
           url = '//jumphoops.heart.org/api/student/' + requestData + '/monster-designer'
         $http.jsonp($sce.trustAsResourceUrl(url), jsonpCallbackParam: 'callback')
