@@ -428,10 +428,7 @@ angular.module 'trPcControllers'
           skipLBs = 0
         sessionStorage.setItem 'PCLogin', 'yes'
         if $rootScope.participantRegistration.lastPC2Login is '0'
-          if not $scope.facebookFundraisersEnabled
-            $scope.dashboardGreeting = 'page'
-          else
-            $scope.dashboardGreeting = 'facebookFundraiser'
+          $scope.dashboardGreeting = 'page'
           if skipLBs is 0
             $scope.LBthankYouRegisteringModal = $uibModal.open
               scope: $scope
