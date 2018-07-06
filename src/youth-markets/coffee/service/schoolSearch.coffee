@@ -63,7 +63,7 @@ angular.module 'ahaLuminateApp'
         $scope.filterByLocation = ->
           $scope.schoolList.searchPending = true
           $scope.schoolList.searchSubmitted = true
-	  $scope.schoolList.searchByLocation = true
+          $scope.schoolList.searchByLocation = true
           getLocation()
         
         #get school data with getSchoolDataNew service call
