@@ -8,6 +8,7 @@ angular.module 'ahaLuminateApp'
         $scope.schoolList =
           searchSubmitted: false
           searchPending: false
+          searchByLocation: false
           sortProp: 'SCHOOL_NAME'
           sortDesc: false
           totalItems: 0
@@ -24,6 +25,7 @@ angular.module 'ahaLuminateApp'
           delete $scope.schoolList.schools
           $scope.schoolList.searchPending = true
           $scope.schoolList.searchSubmitted = true
+          $scope.schoolList.searchByLocation = true
           SchoolLookupService.getGeoSchoolData e,
             failure: (response) ->
             success: (response) ->
@@ -93,13 +95,13 @@ angular.module 'ahaLuminateApp'
           $scope.schoolList.nameFilter = nameFilter
           $scope.schoolList.stateFilter = ''
           $scope.schoolList.searchSubmitted = true
+          $scope.schoolList.searchByLocation = false
           # if not nameFilter or nameFilter.length < 3
           if false
             $scope.schoolList.searchErrorMessage = 'Please enter at least 3 characters to search for.'
           else
             delete $scope.schoolList.searchErrorMessage
             $scope.getSchoolSearchResultsNew()
-        
 
         if getLoc != true 
           SchoolLookupService.getSchoolData()
