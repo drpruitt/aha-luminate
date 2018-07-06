@@ -43,7 +43,7 @@ angular.module 'ahaLuminateApp'
               alert 'An unknown error occurred.'
           return
 
-        getLocation = ->
+        $scope.getLocation = ->
           e = 
             enableHighAccuracy: !0
             timeout: 1e4
@@ -52,7 +52,7 @@ angular.module 'ahaLuminateApp'
           return
 
         if getLoc == true
-          getLocation()
+          $scope.getLocation()
           
         $scope.getSchoolSearchResultsNew = ->
           delete $scope.schoolList.schools
