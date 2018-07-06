@@ -98,7 +98,7 @@ angular.module 'ahaLuminateApp'
               $scope.schoolList.searchSubmitted = true
               delete $scope.schoolList.searchPending
               updateCompanyData()
-###
+        ###
         SchoolLookupService.getSchoolData()
           .then (response) ->
             schoolDataRows = response.data.getSchoolSearchDataResponse.schoolData
@@ -124,7 +124,7 @@ angular.module 'ahaLuminateApp'
                   school.COORDINATOR_FIRST_NAME = schoolData.COORDINATOR_FIRST_NAME
                   school.COORDINATOR_LAST_NAME = schoolData.COORDINATOR_LAST_NAME
                   $scope.schoolList.schools[schoolIndex] = school
-###        
+        ###        
         $scope.submitSchoolSearch = ->
           nameFilter = jQuery.trim $scope.schoolList.ng_nameFilter
           $scope.schoolList.nameFilter = nameFilter
