@@ -25,7 +25,8 @@ angular.module 'ahaLuminateApp'
           $scope.schoolList.searchPending = true
           SchoolLookupService.getGeoSchoolData e,
             failure: (response) ->
-            success: showSchoolSearchResults(response)
+            success: (response) ->
+              showSchoolSearchResults(response)
 
         showGEOError = (e) ->
           switch e.code
@@ -60,7 +61,8 @@ angular.module 'ahaLuminateApp'
             stateFilter = $scope.schoolList.stateFilter
           SchoolLookupService.getSchoolDataNew '&name=' + nameFilter + '&state=' + stateFilter,
             failure: (response) ->
-            success: showSchoolSearchResults(response)
+            success: (response) ->
+              showSchoolSearchResults(response)
 
         showSchoolSearchResults = (response) ->
               totalNumberResults = 0
