@@ -47,7 +47,7 @@ angular.module 'ahaLuminateApp'
           return
 
         # ask or retrieve current lat/long
-        $scope.getLocation = ->
+        getLocation = ->
           e = 
             enableHighAccuracy: !0
             timeout: 1e4
@@ -58,7 +58,13 @@ angular.module 'ahaLuminateApp'
         # if getLoc is passed as true
         # ask for geolocation and load all schools within 10 miles of geolocation
         if getLoc == true
-          $scope.getLocation()
+          getLocation()
+        
+        $scope.filterByLocation = ->
+  			  $scope.schoolList.searchPending = true
+	  		  $scope.schoolList.searchSubmitted = true
+		  	  $scope.schoolList.searchByLocation = true
+			    getLocation()
         
         #get school data with getSchoolDataNew service call
         $scope.getSchoolSearchResultsNew = ->
