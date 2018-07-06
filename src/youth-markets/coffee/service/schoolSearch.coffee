@@ -4,7 +4,7 @@ angular.module 'ahaLuminateApp'
     'TeamraiserCompanyService'
     'SchoolLookupService'
     ($filter, TeamraiserCompanyService, SchoolLookupService) ->
-      init: ($scope, eventType) ->
+      init: ($scope, eventType, getLoc) ->
         $scope.schoolList =
           searchSubmitted: false
           searchPending: false
@@ -68,6 +68,9 @@ angular.module 'ahaLuminateApp'
           if navigator.geolocation then navigator.geolocation.getCurrentPosition(filterGeoSchoolData, showGEOError, e) else console.log('Geolocation is not supported by this browser.')
           return
 
+        if getLoc == true
+          getLocation()
+          
         $scope.getSchoolSearchResultsNew = ->
           delete $scope.schoolList.schools
           $scope.schoolList.searchPending = true
