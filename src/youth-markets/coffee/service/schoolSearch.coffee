@@ -20,6 +20,37 @@ angular.module 'ahaLuminateApp'
           showHelp: false
         $scope.schoolDataMap = {}
         
+        filterGeoSchoolData = (e) ->
+          delete $scope.schoolList.schools
+          $scope.schoolList.searchPending = true
+          SchoolLookupService.getGeoSchoolData e,
+            failure: (response) ->
+            success: (response) ->
+              ref = ''
+              schoolDataRows = ''
+              totalNumberResults = 0
+              schoolDataRows = response.data.company.schoolData
+              schoolDataHeaders = {}
+              schools = []
+              angular.forEach schoolDataRows, (schoolDataRow, schoolDataRowIndex) ->
+                totalNumberResults++
+                schools.push
+                  FR_ID: schoolDataRow['fr_id']
+                  SCHOOL_NAME: schoolDataRow['name']
+                  SCHOOL_ID: schoolDataRow['school_id']
+                  COMPANY_ID: schoolDataRow['school_id']
+                  SCHOOL_CITY: schoolDataRow['city']
+                  SCHOOL_STATE: schoolDataRow['state']
+                  COORDINATOR_FIRST_NAME: schoolDataRow['coord_first']
+                  COORDINATOR_LAST_NAME: schoolDataRow['coord_last']
+              $scope.schoolList.totalNumberResults = totalNumberResults
+              $scope.schoolList.totalItems = totalNumberResults
+              $scope.schoolList.schools = schools
+              #setResults();
+              $scope.schoolList.searchSubmitted = true
+              delete $scope.schoolList.searchPending
+              updateCompanyData()
+            
         SchoolLookupService.getSchoolData()
           .then (response) ->
             schoolDataRows = response.data.getSchoolSearchDataResponse.schoolData
