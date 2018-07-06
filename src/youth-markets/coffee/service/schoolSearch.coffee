@@ -50,7 +50,27 @@ angular.module 'ahaLuminateApp'
               $scope.schoolList.searchSubmitted = true
               delete $scope.schoolList.searchPending
               updateCompanyData()
-            
+
+        showGEOError = (e) ->
+          switch e.code
+            when e.PERMISSION_DENIED
+              console.log 'User denied the request for Geolocation.'
+            when e.POSITION_UNAVAILABLE
+              alert 'Location information is currently unavailable.'
+            when e.TIMEOUT
+              alert 'The request to get location timed out. Please refresh the page to use this feature.'
+            when e.UNKNOWN_ERROR
+              alert 'An unknown error occurred.'
+          return
+
+        getLocation = ->
+          e = 
+            enableHighAccuracy: !0
+            timeout: 1e4
+            maximumAge: 'infinity'
+          if navigator.geolocation then navigator.geolocation.getCurrentPosition(filterGeoSchoolData, showGEOError, e) else console.log('Geolocation is not supported by this browser.')
+          return
+
         SchoolLookupService.getSchoolData()
           .then (response) ->
             schoolDataRows = response.data.getSchoolSearchDataResponse.schoolData
