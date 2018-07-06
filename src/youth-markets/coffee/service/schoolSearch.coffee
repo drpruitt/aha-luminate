@@ -58,7 +58,7 @@ angular.module 'ahaLuminateApp'
           stateFilter = ''
           if $scope.schoolList.stateFilter isnt ''
             stateFilter = $scope.schoolList.stateFilter
-          SchoolLookupService.getSchoolDataNew 'name=' + nameFilter + '&state=' + stateFilter,
+          SchoolLookupService.getSchoolDataNew '&name=' + nameFilter + '&state=' + stateFilter,
             failure: (response) ->
             success: showSchoolSearchResults(response)
 
