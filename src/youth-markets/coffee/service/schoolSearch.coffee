@@ -26,11 +26,8 @@ angular.module 'ahaLuminateApp'
           SchoolLookupService.getGeoSchoolData e,
             failure: (response) ->
             success: (response) ->
-              ref = ''
-              schoolDataRows = ''
               totalNumberResults = 0
               schoolDataRows = response.data.company.schoolData
-              schoolDataHeaders = {}
               schools = []
               angular.forEach schoolDataRows, (schoolDataRow, schoolDataRowIndex) ->
                 totalNumberResults++
@@ -71,6 +68,37 @@ angular.module 'ahaLuminateApp'
           if navigator.geolocation then navigator.geolocation.getCurrentPosition(filterGeoSchoolData, showGEOError, e) else console.log('Geolocation is not supported by this browser.')
           return
 
+        $scope.getSchoolSearchResultsNew = ->
+          delete $scope.schoolList.schools
+          $scope.schoolList.searchPending = true
+          $scope.schoolList.currentPage = 1
+          nameFilter = $scope.schoolList.nameFilter or '%'
+          SchoolLookupService.getSchoolDataNew nameFilter,
+            failure: (response) ->
+            success: (response) ->
+              totalNumberResults = 0
+              schoolDataRows = response.data.company.schoolData
+              schoolDataHeaders = {}
+              schools = []
+              angular.forEach schoolDataRows, (schoolDataRow, schoolDataRowIndex) ->
+                totalNumberResults++
+                schools.push
+                  FR_ID: schoolDataRow['fr_id']
+                  SCHOOL_NAME: schoolDataRow['name']
+                  SCHOOL_ID: schoolDataRow['school_id']
+                  COMPANY_ID: schoolDataRow['school_id']
+                  SCHOOL_CITY: schoolDataRow['city']
+                  SCHOOL_STATE: schoolDataRow['state']
+                  COORDINATOR_FIRST_NAME: schoolDataRow['coord_first']
+                  COORDINATOR_LAST_NAME: schoolDataRow['coord_last']
+              $scope.schoolList.totalNumberResults = totalNumberResults
+              $scope.schoolList.totalItems = totalNumberResults
+              $scope.schoolList.schools = schools
+              #setResults();
+              $scope.schoolList.searchSubmitted = true
+              delete $scope.schoolList.searchPending
+              updateCompanyData()
+###
         SchoolLookupService.getSchoolData()
           .then (response) ->
             schoolDataRows = response.data.getSchoolSearchDataResponse.schoolData
@@ -96,7 +124,7 @@ angular.module 'ahaLuminateApp'
                   school.COORDINATOR_FIRST_NAME = schoolData.COORDINATOR_FIRST_NAME
                   school.COORDINATOR_LAST_NAME = schoolData.COORDINATOR_LAST_NAME
                   $scope.schoolList.schools[schoolIndex] = school
-        
+###        
         $scope.submitSchoolSearch = ->
           nameFilter = jQuery.trim $scope.schoolList.ng_nameFilter
           $scope.schoolList.nameFilter = nameFilter
@@ -107,7 +135,7 @@ angular.module 'ahaLuminateApp'
             $scope.schoolList.searchErrorMessage = 'Please enter at least 3 characters to search for.'
           else
             delete $scope.schoolList.searchErrorMessage
-            $scope.getSchoolSearchResults()
+            $scope.getSchoolSearchResultsNew()
         
         $scope.orderSchools = (sortProp, keepSortOrder) ->
           schools = $scope.schoolList.schools
