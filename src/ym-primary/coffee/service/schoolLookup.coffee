@@ -26,6 +26,16 @@ angular.module 'ahaLuminateApp'
           , (response) ->
             response
             
+      getGeoSchoolDataNew: (requestData, callback) ->
+        url = '//hearttools.heart.org/ym-khc-schools/schoolProcessing.php?method=getSchoolsByFilter&filter=' + requestData
+        if $rootScope.tablePrefix == 'heartdev'
+          url += '&table=dev'
+        $http.jsonp($sce.trustAsResourceUrl(url), jsonpCallbackParam: 'callback')
+          .then (response) ->
+            callback.success response
+          , (response) ->
+            callback.failure response
+
       getGeoSchoolData: (e, callback) ->
         url = '//hearttools.heart.org/ym-khc-schools/schoolProcessing.php?method=getSchoolsByDistance&lat=' + e.coords.latitude + '&long=' + e.coords.longitude
         if $rootScope.tablePrefix == 'heartdev'
