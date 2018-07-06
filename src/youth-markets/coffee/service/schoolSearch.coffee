@@ -23,6 +23,7 @@ angular.module 'ahaLuminateApp'
         filterGeoSchoolData = (e) ->
           delete $scope.schoolList.schools
           $scope.schoolList.searchPending = true
+          $scope.schoolList.searchSubmitted = true
           SchoolLookupService.getGeoSchoolData e,
             failure: (response) ->
             success: (response) ->
