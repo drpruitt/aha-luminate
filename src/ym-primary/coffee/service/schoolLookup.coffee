@@ -26,7 +26,7 @@ angular.module 'ahaLuminateApp'
           , (response) ->
             response
             
-      getGeoSchoolData = (e, callback) ->
+      getGeoSchoolData: (e, callback) ->
         url = '//hearttools.heart.org/ym-khc-schools/schoolProcessing.php?method=getSchoolsByDistance&lat=' + e.coords.latitude + '&long=' + e.coords.longitude
         if $rootScope.tablePrefix == 'heartdev'
           url += '&table=dev'
