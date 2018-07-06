@@ -25,7 +25,7 @@ angular.module 'ahaLuminateApp'
             response
           , (response) ->
             response
-            
+      # call returns data from DB matching filter criteria passed - school name and optionally the state      
       getSchoolDataNew: (requestData, callback) ->
         url = '//hearttools.heart.org/ym-khc-schools/schoolProcessing.php?method=getSchoolsByFilter' + requestData
         if $rootScope.tablePrefix == 'heartdev'
@@ -35,7 +35,8 @@ angular.module 'ahaLuminateApp'
             callback.success response
           , (response) ->
             callback.failure response
-
+      
+      # call returns all schools within 10 miles of lat/long passed
       getGeoSchoolData: (e, callback) ->
         url = '//hearttools.heart.org/ym-khc-schools/schoolProcessing.php?method=getSchoolsByDistance&lat=' + e.coords.latitude + '&long=' + e.coords.longitude
         if $rootScope.tablePrefix == 'heartdev'
