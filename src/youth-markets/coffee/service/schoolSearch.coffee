@@ -21,6 +21,8 @@ angular.module 'ahaLuminateApp'
           showHelp: false
         $scope.schoolDataMap = {}
         
+        #
+        # New Geo Locate code for KHC
         filterGeoSchoolData = (e) ->
           delete $scope.schoolList.schools
           $scope.schoolList.searchPending = true
@@ -31,6 +33,7 @@ angular.module 'ahaLuminateApp'
             success: (response) ->
               showSchoolSearchResults(response)
 
+        # gelocate call error
         showGEOError = (e) ->
           switch e.code
             when e.PERMISSION_DENIED
@@ -43,6 +46,7 @@ angular.module 'ahaLuminateApp'
               alert 'An unknown error occurred.'
           return
 
+        # ask or retrieve current lat/long
         $scope.getLocation = ->
           e = 
             enableHighAccuracy: !0
@@ -51,9 +55,12 @@ angular.module 'ahaLuminateApp'
           if navigator.geolocation then navigator.geolocation.getCurrentPosition(filterGeoSchoolData, showGEOError, e) else console.log('Geolocation is not supported by this browser.')
           return
 
+        # if getLoc is passed as true
+        # ask for geolocation and load all schools within 10 miles of geolocation
         if getLoc == true
           $scope.getLocation()
-          
+        
+        #get school data with getSchoolDataNew service call
         $scope.getSchoolSearchResultsNew = ->
           delete $scope.schoolList.schools
           $scope.schoolList.searchPending = true
@@ -67,6 +74,7 @@ angular.module 'ahaLuminateApp'
             success: (response) ->
               showSchoolSearchResults(response)
 
+        #display school date retrieved
         showSchoolSearchResults = (response) ->
               totalNumberResults = 0
               schoolDataRows = response.data.company.schoolData
@@ -90,6 +98,7 @@ angular.module 'ahaLuminateApp'
               delete $scope.schoolList.searchPending
               updateCompanyData()
 
+        # run search when submit button clicked
         $scope.submitSchoolSearchNew = ->
           nameFilter = jQuery.trim $scope.schoolList.ng_nameFilter
           $scope.schoolList.nameFilter = nameFilter
@@ -102,7 +111,9 @@ angular.module 'ahaLuminateApp'
           else
             delete $scope.schoolList.searchErrorMessage
             $scope.getSchoolSearchResultsNew()
+        # END new Geo locate code for KHC
 
+        #if getLoc not set or set to false then do normal load process of old search
         if getLoc != true 
           SchoolLookupService.getSchoolData()
             .then (response) ->
