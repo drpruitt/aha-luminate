@@ -3,8 +3,7 @@ angular.module 'ahaLuminateApp'
     '$rootScope'
     '$http'
     '$sce'
-    'SchoolSearchService'
-    ($rootScope, $http, $sce, SchoolSearchService) ->
+    ($rootScope, $http, $sce) ->
       getSchoolCompanies: (requestData) ->
         requestUrl = '/system/proxy.jsp?__proxyURL=' + encodeURIComponent(luminateExtend.global.path.secure + 'CRTeamraiserAPI')
         if window.location.href.indexOf(luminateExtend.global.path.secure) is 0
@@ -36,7 +35,4 @@ angular.module 'ahaLuminateApp'
             callback.success response
           , (response) ->
             callback.failure response
-      
-      #ask for current location and search for closest schools
-      SchoolSearchService.getLocation()
   ]
