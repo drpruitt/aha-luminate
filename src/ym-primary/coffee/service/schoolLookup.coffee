@@ -25,6 +25,7 @@ angular.module 'ahaLuminateApp'
             response
           , (response) ->
             response
+      
       # call returns data from DB matching filter criteria passed - school name and optionally the state      
       getSchoolDataNew: (requestData, callback) ->
         url = '//hearttools.heart.org/ym-khc-schools/schoolProcessing.php?method=getSchoolsByFilter' + requestData
