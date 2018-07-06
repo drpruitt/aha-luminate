@@ -27,7 +27,7 @@ angular.module 'ahaLuminateApp'
             response
             
       getSchoolDataNew: (requestData, callback) ->
-        url = '//hearttools.heart.org/ym-khc-schools/schoolProcessing.php?method=getSchoolsByFilter&filter=' + requestData
+        url = '//hearttools.heart.org/ym-khc-schools/schoolProcessing.php?method=getSchoolsByFilter' + requestData
         if $rootScope.tablePrefix == 'heartdev'
           url += '&table=dev'
         $http.jsonp($sce.trustAsResourceUrl(url), jsonpCallbackParam: 'callback')
