@@ -123,13 +123,15 @@ angular.module 'ahaLuminateApp'
         #
         # New Alt Geo Locate code for KHC to get state
         getSchoolState = (e) ->
-          SchoolLookupService.getGeoState()
+          SchoolLookupService.getGeoState(e)
             .then (response) ->
-              $scope.schoolList.stateFilter = response.results[0].address_components[4].shortname
+              $scope.schoolList.stateFilter = response.data.results[0].address_components[4].short_name;
+              $scope.schoolList.searchSubmitted = true;
+              $scope.schoolList.searchPending = true;
               $scope.getSchoolSearchResults()
 
         # ask or retrieve current lat/long
-        getLocationAlt = ->
+        $scope.getLocationAlt = ->
           e = 
             enableHighAccuracy: !0
             timeout: 1e4
@@ -139,7 +141,7 @@ angular.module 'ahaLuminateApp'
 
         #if getLoc not set or set to false then do normal load process of old search
         if getLoc == true
-          getLocationAlt()
+          $scope.getLocationAlt()
           
         SchoolLookupService.getSchoolData()
           .then (response) ->
