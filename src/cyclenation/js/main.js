@@ -1067,7 +1067,10 @@
                 /* email already exists */
                 cd.consRetrieveLogin(email, false);
                 $('.js__signup-error-message').html('Oops! An account already exists with matching information. A password reset has been sent to ' + email + '.');
-              } else {
+              } else if(response.errorResponse.code === '22'){ 
+                $('.js__signup-error-message').html("One or more attributes failed validation: \"Biographical Information/User Name\" Invalid characters in User Name (valid characters are letters, digits, '-', '_', '@', '.', '%', and ':')");
+              
+            } else {
                 $('.js__signup-error-message').html(response.errorResponse.message);
               }
               $('.js__signup-error-container').removeClass('d-none');
@@ -1263,14 +1266,15 @@
 
       // if Start a Team and Breakaway ptypes are not available, remove those registration options and display a sponsor code field on the reg options step
 
-        var isStartTeamAvailable = false;
-        var isBreakawayAvailable = false;
-        var invalidPromo = false;
-        var promoCodePtypesAvailable = false;
+
 
         cd.getParticipationTypes = function (promo) {
           $('.js__reg-type-container .alert').addClass('hidden');
-          
+          var isStartTeamAvailable = false;
+          var isBreakawayAvailable = false;
+          var validPromo = false;
+          var promoCodePtypesAvailable = false;
+
           luminateExtend.api({
             api: 'teamraiser',
             data: 'method=getParticipationTypes' +
@@ -1300,29 +1304,38 @@
                         }
                       } 
 
-                      if(promo){
+                      // if(promo){
                       // promo is loaded 
-                      if(ptype.promoCodeRequired === "true"){
+                      if(promo && ptype.promoCodeRequired === "true"){
                         console.log('promo code only ptype available');
                         // promo code is valid
-                          // Promo code ptypes are available
-                          promoCodePtypesAvailable = true;
-
+                        
                           if(ptype.name.indexOf('Start a Team') > -1){
                             if(ptype.participationTypeRegistrationLimit.limitReached === 'false'){
                               isStartTeamAvailable = true;
+                              // Promo code ptypes are available
+                              promoCodePtypesAvailable = true;
                             }
                           } else if(ptype.name.indexOf('Breakaway') > -1){
                             if(ptype.participationTypeRegistrationLimit.limitReached === 'false'){
                               isBreakawayAvailable = true;
+                              // Promo code ptypes are available
+                              promoCodePtypesAvailable = true;
                             }
                           }
+                        validPromo = true;
+
                         // } 
                       } else {
                         // promo code is inavlid
-                        invalidPromo = true;
+                        console.log('set promo to validPromo');
+                        if(validPromo === true){
+                          return false;
+                        } else {
+                          validPromo = false;
+                        }
                       }
-                    }
+                    // }
 
                   });
 
@@ -1351,13 +1364,15 @@
                       $('.js__promo-code-success').removeClass('hidden');
                     }
                     $('.js__reg-options-promo-container').addClass('hidden');
-                  } else if(promo && promoCodePtypesAvailable === false && invalidPromo === false){
+                  // } else if(promo && promoCodePtypesAvailable === false && validPromo === false){
+                  } else if(promo && promoCodePtypesAvailable === false && validPromo === true){
+
                     console.log('promoCode in session but NO promoCode ptypes are available for registration');
                     // show a custom message if someone manually enters a promo code and we DO NOT retrieve an available ptype
                     $('.js__promo-code-sold-out').addClass('hidden');
                     $('.js__promo-code-error, .js__reg-options-promo-container').removeClass('hidden');
-                  } else if(invalidPromo === true){
-                    console.log('invalid promo');
+                  } else if(promo && validPromo === false){
+                    console.log('invalid promoss');
                     $('.js__promo-code-sold-out').addClass('hidden');
                     $('.js__promo-code-invalid, .js__reg-options-promo-container').removeClass('hidden');
                   }
@@ -1535,17 +1550,22 @@
           $('#sel_type_container').text('What time will you ride?');
           if($('.join-team-ptype-container').hasClass('join-team-ptype-time')){
             // only display the ptype that matches the coach's ptype
+            // $('.start-team-ptype-container, .breakaway-ptype-container').remove();
+            // TODO - better target the ptypes that don't match the coaches time for removal
             $('.join-team-ptype-time').show();
           } else {
             // show all join team ptypes as coach's ptype time was not found
+            // $('.start-team-ptype-container, .breakaway-ptype-container').remove();
             $('.join-team-ptype-container').show();
           }
         } else if(regType === 'startTeam'){
           if($('.vip-ptype-container').length){
             // if promo code based ptype is available on page, only show that ptype option
+            // $('.start-team-ptype-container, .breakaway-ptype-container, .join-team-ptype-container').remove();
             $('.vip-ptype-container').show();
           } else {
             // otherwise, show publicly available ptypes that match selected reg option
+            // $('.breakaway-ptype-container, .join-team-ptype-container').remove();
             $('.start-team-ptype-container').show();
           }
         } else if(regType === 'individual'){
@@ -1569,7 +1589,7 @@
       }
 
 
-      if (eventType2 === 'Stationary') {
+      if (eventType2 === 'Stationary' || eventType2 === 'StationaryV2') {
         $('#sel_type_container').text('What time will you ride?');
       } else {
         if (regType === 'virtual') {
