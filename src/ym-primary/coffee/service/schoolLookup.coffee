@@ -48,7 +48,7 @@ angular.module 'ahaLuminateApp'
           , (response) ->
             callback.failure response
 
-      # call returns all schools within 10 miles of lat/long passed
+      # call returns address info for lat/long passed
       getGeoState: (e, callback) ->
         url = '//maps.googleapis.com/maps/api/geocode/json?sensor=true&latlng=' + e.coords.latitude + ',' + e.coords.longitude
         $http.jsonp($sce.trustAsResourceUrl(url), jsonpCallbackParam: 'callback')
