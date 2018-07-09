@@ -428,17 +428,14 @@ angular.module 'trPcControllers'
           skipLBs = 0
         sessionStorage.setItem 'PCLogin', 'yes'
         if $rootScope.participantRegistration.lastPC2Login is '0'
-          if not $scope.facebookFundraisersEnabled
-            $scope.dashboardGreeting = 'page'
-          else
-            $scope.dashboardGreeting = 'facebookFundraiser'
+          $scope.dashboardGreeting = 'page'
           if skipLBs is 0
             $scope.LBthankYouRegisteringModal = $uibModal.open
               scope: $scope
               templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBthankYouRegistering.html'
             $timeout ->
-              document.getElementById('LBupdateMyPage').onclick = ->
-                _gaq.push(['t2._trackEvent', 'HW PC', 'click', 'Update my page - thank you for registering lightbox'])
+              document.getElementById('LBmakeDonation').onclick = ->
+                _gaq.push(['t2._trackEvent', 'HW PC', 'click', 'Heck Yeah! - thank you for registering lightbox'])
             , 500
         else if $scope.facebookFundraisersEnabled and $scope.userInteractions.facebookFundraiser is 0
           $scope.dashboardGreeting = 'facebookFundraiser'
@@ -536,28 +533,28 @@ angular.module 'trPcControllers'
           $scope.dashboardGreeting = 'goal2'
         else
           $scope.dashboardGreeting = 'default'
-      
+
       $scope.LBgoalOneSubmit = ->
         logUserInt 'goal1', $scope.frId
         $location.path '/email/compose'
-      
+
       $scope.LBgoalTwoSubmit = ->
         logUserInt 'goal2', $scope.frId
         $scope.LBgoal2Modal.close()
         $scope.editGoal 'Participant'
-      
+
       $scope.notRightNow = ->
         $uibModalStack.dismissAll()
-      
+
       $scope.sendGAEvent = (event) ->
         _gaq.push(['t2._trackEvent', 'HW PC', 'click', event])
-      
+
       $scope.LBskip = (interaction) ->
         logUserInt interaction, $scope.frId
         $scope.userInteractions[interaction] = 1
         $uibModalStack.dismissAll()
         runHeaderCheck()
-      
+
       $scope.scrollToFacebookFundraiser = ->
         $timeout ->
           if jQuery('.js--facebook-fundraiser-uncompleted-section').length > 0
@@ -568,7 +565,7 @@ angular.module 'trPcControllers'
             jQuery('html, body').animate
               scrollTop: jQuery('.js--facebook-fundraiser-completed-section').offset().top - 150
             , 250
-      
+
       $scope.goSocial = ->
         logUserInt 'social', $scope.frId
         window.location.href = 'PageServer?pagename=heartwalk_fundraising_tools&amp;fr_id=' + $scope.frId
@@ -634,7 +631,7 @@ angular.module 'trPcControllers'
         $timeout ->
           reCheckProfileItems()
         , 250
-      
+
       $scope.submittedZip = false
       $scope.updateEditStreet = ($event) ->
         $scope.LBstreetProfileModal.close()
@@ -642,7 +639,7 @@ angular.module 'trPcControllers'
         $timeout ->
           reCheckProfileItems()
         , 250
-      
+
       $scope.LBprofileLinks = (section) ->
         switch section
           #save for future Why Profile Box
@@ -723,7 +720,7 @@ angular.module 'trPcControllers'
                     $scope.teamInfo = team
             response
         $scope.dashboardPromises.push updateGoalPromise
-      
+
       if $scope.facebookFundraisersEnabled and $rootScope.facebookFundraiserId and $rootScope.facebookFundraiserId isnt ''
         $rootScope.facebookFundraiserConfirmedStatus = 'pending'
         FacebookFundraiserService.confirmFundraiserStatus()
@@ -733,7 +730,7 @@ angular.module 'trPcControllers'
               $rootScope.facebookFundraiserConfirmedStatus = 'deleted'
             else
               $rootScope.facebookFundraiserConfirmedStatus = 'confirmed'
-      
+
       $scope.participantProgress =
         raised: 0
         raisedFormatted: '$0'
@@ -1521,13 +1518,13 @@ angular.module 'trPcControllers'
                   if $scope.editPageUrlOptions.updateUrlInput isnt $scope.prevShortcut.text
                     $scope.editPageUrlOptions.updateUrlFailure = true;
                     return $scope.editPageUrlOptions.updateUrlFailureMessage = response.data.errorResponse.message or 'An unexpected error occurred while updating your personal page URL.';
-                  else 
+                  else
                     updateUrlPromise = TeamraiserShortcutURLService.updateShortcut("text=",$rootScope.prevFrIdForShortcut)
                       .then (response) ->
                         if (response.data.errorResponse)
                           $scope.editPageUrlOptions.updateUrlFailure = true
                           return $scope.editPageUrlOptions.updateUrlFailureMessage = response.data.errorResponse.message or 'An unexpected error occurred while updating your personal page URL.';
-                        else 
+                        else
                           $scope.updatePageUrl("Participant")
                 else
                   $scope.editPageUrlModal.close()
