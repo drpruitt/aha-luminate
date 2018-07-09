@@ -57,8 +57,8 @@ angular.module 'ahaLuminateApp'
 
         # if getLoc is passed as true
         # ask for geolocation and load all schools within 10 miles of geolocation
-        if getLoc == true
-          getLocation()
+        # if getLoc == true
+        #   getLocation()
         
         $scope.filterByLocation = ->
           $scope.schoolList.ng_nameFilter = ''
@@ -120,33 +120,53 @@ angular.module 'ahaLuminateApp'
             $scope.getSchoolSearchResultsNew()
         # END new Geo locate code for KHC
 
+        #
+        # New Alt Geo Locate code for KHC to get state
+        getSchoolState = (e) ->
+          SchoolLookupService.getGeoState e,
+            failure: (response) ->
+            success: (response) ->
+              $scope.schoolList.stateFilter = response.results[0].address_components[4].shortname
+              $scope.getSchoolSearchResults()
+
+        # ask or retrieve current lat/long
+        getLocationAlt = ->
+          e = 
+            enableHighAccuracy: !0
+            timeout: 1e4
+            maximumAge: 'infinity'
+          if navigator.geolocation then navigator.geolocation.getCurrentPosition(getSchoolState, showGEOError, e) else console.log('Geolocation is not supported by this browser.')
+          return
+
         #if getLoc not set or set to false then do normal load process of old search
-        if getLoc != true 
-          SchoolLookupService.getSchoolData()
-            .then (response) ->
-              schoolDataRows = response.data.getSchoolSearchDataResponse.schoolData
-              schoolDataHeaders = {}
-              schoolDataMap = {}
-              angular.forEach schoolDataRows[0], (schoolDataHeader, schoolDataHeaderIndex) ->
-                schoolDataHeaders[schoolDataHeader] = schoolDataHeaderIndex
-              angular.forEach schoolDataRows, (schoolDataRow, schoolDataRowIndex) ->
-                if schoolDataRowIndex > 0
-                  schoolDataMap['id' + schoolDataRow[schoolDataHeaders.COMPANY_ID]] =
-                    SCHOOL_CITY: schoolDataRow[schoolDataHeaders.SCHOOL_CITY]
-                    SCHOOL_STATE: schoolDataRow[schoolDataHeaders.SCHOOL_STATE]
-                    COORDINATOR_FIRST_NAME: schoolDataRow[schoolDataHeaders.COORDINATOR_FIRST_NAME]
-                    COORDINATOR_LAST_NAME: schoolDataRow[schoolDataHeaders.COORDINATOR_LAST_NAME]
-            
-              $scope.schoolDataMap = schoolDataMap
-              if $scope.schoolList.schools?.length > 0
-                angular.forEach $scope.schoolList.schools, (school, schoolIndex) ->
-                  schoolData = $scope.schoolDataMap['id' + school.COMPANY_ID]
-                  if schoolData
-                    school.SCHOOL_CITY = schoolData.SCHOOL_CITY
-                    school.SCHOOL_STATE = schoolData.SCHOOL_STATE
-                    school.COORDINATOR_FIRST_NAME = schoolData.COORDINATOR_FIRST_NAME
-                    school.COORDINATOR_LAST_NAME = schoolData.COORDINATOR_LAST_NAME
-                    $scope.schoolList.schools[schoolIndex] = school
+        if getLoc == true
+          getLocationAlt()
+          
+        SchoolLookupService.getSchoolData()
+          .then (response) ->
+            schoolDataRows = response.data.getSchoolSearchDataResponse.schoolData
+            schoolDataHeaders = {}
+            schoolDataMap = {}
+            angular.forEach schoolDataRows[0], (schoolDataHeader, schoolDataHeaderIndex) ->
+              schoolDataHeaders[schoolDataHeader] = schoolDataHeaderIndex
+            angular.forEach schoolDataRows, (schoolDataRow, schoolDataRowIndex) ->
+              if schoolDataRowIndex > 0
+                schoolDataMap['id' + schoolDataRow[schoolDataHeaders.COMPANY_ID]] =
+                  SCHOOL_CITY: schoolDataRow[schoolDataHeaders.SCHOOL_CITY]
+                  SCHOOL_STATE: schoolDataRow[schoolDataHeaders.SCHOOL_STATE]
+                  COORDINATOR_FIRST_NAME: schoolDataRow[schoolDataHeaders.COORDINATOR_FIRST_NAME]
+                  COORDINATOR_LAST_NAME: schoolDataRow[schoolDataHeaders.COORDINATOR_LAST_NAME]
+          
+            $scope.schoolDataMap = schoolDataMap
+            if $scope.schoolList.schools?.length > 0
+              angular.forEach $scope.schoolList.schools, (school, schoolIndex) ->
+                schoolData = $scope.schoolDataMap['id' + school.COMPANY_ID]
+                if schoolData
+                  school.SCHOOL_CITY = schoolData.SCHOOL_CITY
+                  school.SCHOOL_STATE = schoolData.SCHOOL_STATE
+                  school.COORDINATOR_FIRST_NAME = schoolData.COORDINATOR_FIRST_NAME
+                  school.COORDINATOR_LAST_NAME = schoolData.COORDINATOR_LAST_NAME
+                  $scope.schoolList.schools[schoolIndex] = school
 
         $scope.submitSchoolSearch = ->
           nameFilter = jQuery.trim $scope.schoolList.ng_nameFilter
