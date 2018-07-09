@@ -50,10 +50,10 @@ angular.module 'ahaLuminateApp'
 
       # call returns address info for lat/long passed
       getGeoState: (e, callback) ->
-        url = '//maps.googleapis.com/maps/api/geocode/json?sensor=true&latlng=' + e.coords.latitude + ',' + e.coords.longitude
-        $http.jsonp($sce.trustAsResourceUrl(url), jsonpCallbackParam: 'callback')
-          .then (response) ->
-            callback.success response
-          , (response) ->
-            callback.failure response
+        requestUrl = '//maps.googleapis.com/maps/api/geocode/json?sensor=true&latlng=' + e.coords.latitude + ',' + e.coords.longitude
+        $http
+          method: 'GET'
+          url: $sce.trustAsResourceUrl(requestUrl)
+          headers:
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
 ]
