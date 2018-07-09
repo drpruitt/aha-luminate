@@ -123,9 +123,8 @@ angular.module 'ahaLuminateApp'
         #
         # New Alt Geo Locate code for KHC to get state
         getSchoolState = (e) ->
-          SchoolLookupService.getGeoState e,
-            failure: (response) ->
-            success: (response) ->
+          SchoolLookupService.getGeoState()
+            .then (response) ->
               $scope.schoolList.stateFilter = response.results[0].address_components[4].shortname
               $scope.getSchoolSearchResults()
 
