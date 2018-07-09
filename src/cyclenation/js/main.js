@@ -1362,6 +1362,7 @@
                     if(!promoCode){
                       // show a custom message if a promo code is not already in session and someone manually enters a promo code and we DO retrieve an available ptype
                       $('.js__promo-code-success').removeClass('hidden');
+                      $('html, body').animate({ scrollTop: 0 }, "slow");
                     }
                     $('.js__reg-options-promo-container').addClass('hidden');
                   // } else if(promo && promoCodePtypesAvailable === false && validPromo === false){
