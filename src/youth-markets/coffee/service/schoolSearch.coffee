@@ -123,11 +123,11 @@ angular.module 'ahaLuminateApp'
         #
         # New Alt Geo Locate code for KHC to get state
         getSchoolState = (e) ->
+          $scope.schoolList.searchSubmitted = true;
+          $scope.schoolList.searchPending = true;
           SchoolLookupService.getGeoState(e)
             .then (response) ->
               $scope.schoolList.stateFilter = response.data.results[0].address_components[4].short_name;
-              $scope.schoolList.searchSubmitted = true;
-              $scope.schoolList.searchPending = true;
               $scope.getSchoolSearchResults()
 
         # ask or retrieve current lat/long
