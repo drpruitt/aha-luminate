@@ -1522,6 +1522,9 @@
           if (eventType2 === 'StationaryV2' ) {
             var ptypeName = $(this).find('.part-type-name').text();
 
+            // Hide and disable participation types that don't apply to this particular registration path
+            $(this).parent().find('input[type=radio]').attr('aria-hidden', 'true').prop('checked', false).prop('disabled', true);
+            
             if(ptypeName.indexOf('VIP') > -1) {
               $(this).closest('.part-type-container').addClass('vip-ptype-container');
             } else if(ptypeName.indexOf('Breakaway') > -1) {
@@ -1550,48 +1553,64 @@
         if (regType === 'joinTeam') {
           $('#sel_type_container').text('What time will you ride?');
           if($('.join-team-ptype-container').hasClass('join-team-ptype-time')){
+            // ensure the relevant ptypes are visiable and accessible from keyboard navigation
+            $('.join-team-ptype-time').find('input[name=fr_part_radio]').attr('aria-hidden', 'false').prop('disabled', false).eq(0).prop('checked', true);
             // only display the ptype that matches the coach's ptype
-            // $('.start-team-ptype-container, .breakaway-ptype-container').remove();
-            // TODO - better target the ptypes that don't match the coaches time for removal
             $('.join-team-ptype-time').show();
           } else {
+            // ensure the relevant ptypes are visiable and accessible from keyboard navigation
+            $('.join-team-ptype-container').find('input[name=fr_part_radio]').attr('aria-hidden', 'false').prop('disabled', false).eq(0).prop('checked', true);
             // show all join team ptypes as coach's ptype time was not found
-            // $('.start-team-ptype-container, .breakaway-ptype-container').remove();
             $('.join-team-ptype-container').show();
           }
         } else if(regType === 'startTeam'){
           if($('.vip-ptype-container').length){
+            // ensure the relevant ptypes are visiable and accessible from keyboard navigation
+            $('.vip-ptype-container').find('input[name=fr_part_radio]').attr('aria-hidden', 'false').prop('disabled', false).eq(0).prop('checked', true);
             // if promo code based ptype is available on page, only show that ptype option
-            // $('.start-team-ptype-container, .breakaway-ptype-container, .join-team-ptype-container').remove();
             $('.vip-ptype-container').show();
           } else {
+            // ensure the relevant ptypes are visiable and accessible from keyboard navigation
+            $('.start-team-ptype-container').find('input[name=fr_part_radio]').attr('aria-hidden', 'false').prop('disabled', false).eq(0).prop('checked', true);
             // otherwise, show publicly available ptypes that match selected reg option
-            // $('.breakaway-ptype-container, .join-team-ptype-container').remove();
             $('.start-team-ptype-container').show();
           }
         } else if(regType === 'individual'){
           if($('.vip-ptype-container').length){
+            // ensure the relevant ptypes are visiable and accessible from keyboard navigation
+            $('.vip-ptype-container').find('input[name=fr_part_radio]').attr('aria-hidden', 'false').prop('disabled', false).eq(0).prop('checked', true);
             // if promo code based ptype is available on page, only show that ptype option
             $('.vip-ptype-container').show();
           } else {
+            // ensure the relevant ptypes are visiable and accessible from keyboard navigation
+            $('.breakaway-ptype-container').find('input[name=fr_part_radio]').attr('aria-hidden', 'false').prop('disabled', false).eq(0).prop('checked', true);
             // otherwise, show publicly available ptypes that match selected reg option
             $('.breakaway-ptype-container').show();
           }
         } else {
+          // ensure the relevant ptypes are visiable and accessible from keyboard navigation
+          $('.part-type-container').find('input[name=fr_part_radio]').attr('aria-hidden', 'false').prop('disabled', false).eq(0).prop('checked', true);
           // show all participation types in the case that a session variable has not been set for regType
           $('.part-type-container').show();
         }
-        if(promoCode){
-          console.log('promoCode in session: ', promoCode);
-          
-        } else {
 
-        }
       }
-
 
       if (eventType2 === 'Stationary' || eventType2 === 'StationaryV2') {
         $('#sel_type_container').text('What time will you ride?');
+        // $('.part-type-container.selected input').prop('checked', false).removeClass('selected');
+        $('.part-type-container').on('click focus', function (e) {
+            $('.part-type-container').removeClass('selected');
+            $(this).addClass('selected');
+            $(this).find('input[type="radio"]').prop('checked', true);
+        });
+
+        // add accessibility events for keyboard navigation
+        $('input[name=fr_part_radio]').on('click focus', function (e) {
+          $('.part-type-container').removeClass('selected');
+          $(this).closest('.part-type-container').addClass('selected');
+        });
+
       } else {
         if (regType === 'virtual') {
           $('.part-type-name:contains("Virtual")').closest('.part-type-container').show();
@@ -1976,21 +1995,27 @@
     //// This won't run because the JanRain scripts are at very bottom of body tag.
     $('#janrain-amazon, #janrain-facebook').removeAttr('role');
 
+    $('.list-component-sort-select-text').attr('id', 'team_sort_label');
+    $('.list-component-sort-select').attr('aria-labelledby', 'team_sort_label');
     // tr-06-join-or-form-a-team
     $('#team_find_new_team_company label.input-label').attr('for', 'fr_co_list');
 
     $('#team_find_new_team_recruiting_goal label.input-label').attr('for', 'fr_team_member_goal');
 
     // ptype
-    $('#part_type_selection_container').wrapInner('<fieldset role="radiogroup" class="ptype-selection" />');
+    $('#part_type_selection_container').wrapInner('<fieldset role="radiogroup" class="ptype-selection" aria-labelledby="sel_type_container"/>');
     
-    $('input[name=fr_part_radio]').attr('aria-labelledby', 'sel_type_container');
+    // $('input[name=fr_part_radio]').attr('aria-labelledby', 'sel_type_container');
     
     // wrap donation options in a fieldset with legend
-    $('#part_type_donation_level_input_container').wrapInner('<fieldset role="radiogroup" class="donation-form-fields" />');
-    $('.donation-form-fields').prepend('<legend id="reg_donation_label" class="sr-only">Make a donation</legend>');
+    // $('#part_type_additional_gift_container').wrapInner('<fieldset role="radiogroup" class="donation-form-fields" aria-lablledby="part_type_additional_gift_section_header"/>');
 
-    $('.donation-level-container input[type=radio]').attr('aria-labelledby', 'reg_donation_label');
+
+    // $('#part_type_donation_level_input_container').wrapInner('<fieldset role="radiogroup" class="donation-form-fields" aria-lablledby="part_type_additional_gift_section_header"/>');
+    $('.donation-level-container').before('<legend id="reg_donation_label" class="sr-only">Make a donation</legend>');
+
+    $('#part_type_donation_level_input_container').wrapInner('<fieldset role="radiogroup" class="donation-form-fields" aria-labelledby="reg_donation_label"/>');
+    // $('.donation-level-container input[type=radio]').attr('aria-labelledby', 'reg_donation_label');
 
     // associate ptype label with input
     $('.part-type-container label').each(function (i) {
