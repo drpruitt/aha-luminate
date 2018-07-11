@@ -114,7 +114,6 @@ angular.module 'trPcControllers'
             addressBookContacts = [addressBookContacts] if not angular.isArray addressBookContacts
             if (page==currentPage)
               $scope.addressBookContacts.contacts = [];
-            $scope.addressBookContacts.contacts = []
             angular.forEach addressBookContacts, (contact) ->
               if contact?
                 contactString = getContactString contact
