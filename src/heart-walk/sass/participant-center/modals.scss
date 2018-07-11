@@ -26,16 +26,16 @@
 
   .modal-header-red {
     background: $brand-primary;
-    color: #ffffff;
+    color: $brand-white;
     border-bottom: none;
   }
 
   .modal-body-red {
     background: $brand-primary;
-    color: #ffffff;
+    color: $brand-white;
 
     a, a:link, a:visited, a:hover, a:focus {
-      color: #ffffff;
+      color: $brand-white;
     }
 
     .input-group {
@@ -43,26 +43,30 @@
     }
 
     .profile_icon_checklist i.fa {
-      color: #ffffff;
-      -moz-box-shadow: 0px 0px 2px #ffffff;
-      -webkit-box-shadow: 0px 0px 2px #ffffff;
-      box-shadow: 0px 0px 2px #ffffff;
+      color: $brand-white;
+      -moz-box-shadow: 0px 0px 2px $brand-white;
+      -webkit-box-shadow: 0px 0px 2px $brand-white;
+      box-shadow: 0px 0px 2px $brand-white;
     }
 
     .profile_progress h3 {
-      color: #ffffff;
+      color: $brand-white;
     }
   }
-
+  
   .modal-footer-red {
     background: $brand-primary;
     border-top: none;
-
-    .lb_skip_link a {
-      color: #ffffff;
+    
+    .lb_skip_link {
+      color: $brand-white;
+      
+      a {
+        color: inherit;
+      }
     }
   }
-
+  
   .modal-text-center {
     text-align: center;
   }
@@ -75,15 +79,15 @@
     &:hover, 
     &:focus, 
     &:active {
-      background: #4260b4;
-      border-color: #4260b4;
-      color: #ffffff;
+      background: $brand-white;
+      border-color: $brand-white;
+      color: $brand-primary;
     }
     
     .hidden-text-xxs {
       display: none;
       
-      @media (min-width: 375px) {
+      @media (min-width: 414px) {
         display: inline;
       }
     }
