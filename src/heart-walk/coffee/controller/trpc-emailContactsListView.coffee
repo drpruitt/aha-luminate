@@ -101,7 +101,7 @@ angular.module 'trPcControllers'
       $scope.$watchGroup ['addressBookContacts.contacts', 'contactsUpdated'], () ->
         $scope.refreshSelectedContacts()
 
-      $scope.getContacts = page ->
+      $scope.getContacts = (page) ->
         if !page 
           $scope.addressBookContacts.allContacts = [];
           page=0;
