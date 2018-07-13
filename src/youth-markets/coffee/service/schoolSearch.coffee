@@ -57,8 +57,8 @@ angular.module 'ahaLuminateApp'
 
         # if getLoc is passed as true
         # ask for geolocation and load all schools within 10 miles of geolocation
-        if getLoc == true
-          getLocation()
+        # if getLoc == true
+        #   getLocation()
         
         $scope.filterByLocation = ->
           $scope.schoolList.ng_nameFilter = ''
@@ -140,8 +140,8 @@ angular.module 'ahaLuminateApp'
           return
 
         #if getLoc not set or set to false then do normal load process of old search
-        # if getLoc == true
-        #  $scope.getLocationAlt()
+        if getLoc == true
+          $scope.getLocationAlt()
           
         SchoolLookupService.getSchoolData()
           .then (response) ->
