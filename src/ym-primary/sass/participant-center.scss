@@ -6,7 +6,7 @@
 	margin: auto;
 	position: fixed;
 	right: 0;
-	top: 0;
+	top: 60%;
 	transition: all 0.2s;
 	width: 150px;
 	z-index: 99999;
@@ -46,7 +46,7 @@
 }
 
 .launch-builder-character.wink {
-	animation: wink 1.25s steps(3) infinite;
+	animation: wink 2.5s steps(3) infinite;
 	background-image: url(../image/pc_customize-wink.png);
 }
 
