@@ -647,4 +647,25 @@ angular.module 'trPcControllers'
               avatarURL = 'https://hearttools.heart.org/aha_ym19_dev/virtualworld/img/avatar-charger.png'
             $scope.personalInfo.avatar = avatarURL
       $scope.getPersonalAvatar()
+      
+      $scope.heroPopup = false
+      heartHeros = heroPopup: ->
+        $scope.heroPopup = true
+        WAIT_TIME = 8000
+        POP_TIME = 2500
+        popup_timer = undefined
+        popup_container = angular.element('.launch-builder-popup')
+
+        doPopup = ->
+          popup_container.addClass 'pop'
+          setTimeout (->
+            popup_container.addClass 'pop'
+            return
+          ), POP_TIME
+          return
+
+        pop_timer = setInterval(doPopup, WAIT_TIME)
+        return
+
+      $scope.heartHeros.heroPopup()
   ]
