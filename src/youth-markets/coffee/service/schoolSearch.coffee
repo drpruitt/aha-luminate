@@ -19,7 +19,9 @@ angular.module 'ahaLuminateApp'
           ng_nameFilter: ''
           stateFilter: ''
           showHelp: false
+        $scope.schoolListByState = {}
         $scope.schoolDataMap = {}
+        $scope.schoolDataMapByState = {}
         
         #
         # New Geo Locate code for KHC
@@ -127,8 +129,24 @@ angular.module 'ahaLuminateApp'
           $scope.schoolList.searchPending = true;
           SchoolLookupService.getGeoState(e)
             .then (response) ->
-              $scope.schoolList.stateFilter = response.data.results[0].address_components[4].short_name;
-              $scope.getSchoolSearchResults()
+              $scope.schoolList.stateFilter = stateFilter = response.data.results[0].address_components[4].short_name;
+              SchoolLookupService.getSchoolDataByState(stateFilter)
+                .then (response) ->
+                  schoolDataRows = response.data.getSchoolSearchDataResponse.schoolData
+                  schoolDataHeaders = {}
+                  schoolDataMapByState = {}
+                  angular.forEach schoolDataRows[0], (schoolDataHeader, schoolDataHeaderIndex) ->
+                    schoolDataHeaders[schoolDataHeader] = schoolDataHeaderIndex
+                  angular.forEach schoolDataRows, (schoolDataRow, schoolDataRowIndex) ->
+                    if schoolDataRowIndex > 0
+                      schoolDataMapByState['id' + schoolDataRow[schoolDataHeaders.COMPANY_ID]] =
+                        SCHOOL_CITY: schoolDataRow[schoolDataHeaders.SCHOOL_CITY]
+                        SCHOOL_STATE: schoolDataRow[schoolDataHeaders.SCHOOL_STATE]
+                        COORDINATOR_FIRST_NAME: schoolDataRow[schoolDataHeaders.COORDINATOR_FIRST_NAME]
+                        COORDINATOR_LAST_NAME: schoolDataRow[schoolDataHeaders.COORDINATOR_LAST_NAME]
+          
+                  $scope.schoolDataMapByState = schoolDataMapByState
+                  $scope.getSchoolSearchResults(true)
 
         # ask or retrieve current lat/long
         $scope.getLocationAlt = ->
@@ -210,6 +228,16 @@ angular.module 'ahaLuminateApp'
                 COORDINATOR_ID: company.coordinatorId
           schools
         
+        setSchoolsDataByState = (schools) ->
+          angular.forEach schools, (school, schoolIndex) ->
+            schoolData = $scope.schoolDataMapByState['id' + school.COMPANY_ID]
+            if schoolData
+              schools[schoolIndex].SCHOOL_CITY = schoolData.SCHOOL_CITY
+              schools[schoolIndex].SCHOOL_STATE = schoolData.SCHOOL_STATE
+              schools[schoolIndex].COORDINATOR_FIRST_NAME = schoolData.COORDINATOR_FIRST_NAME
+              schools[schoolIndex].COORDINATOR_LAST_NAME = schoolData.COORDINATOR_LAST_NAME
+          schools
+        
         setSchoolsData = (schools) ->
           angular.forEach schools, (school, schoolIndex) ->
             schoolData = $scope.schoolDataMap['id' + school.COMPANY_ID]
@@ -279,7 +307,7 @@ angular.module 'ahaLuminateApp'
           if not $scope.$$phase
             $scope.$apply()
         
-        $scope.getSchoolSearchResults = ->
+        $scope.getSchoolSearchResults = (bystate) ->
           delete $scope.schoolList.schools
           $scope.schoolList.searchPending = true
           $scope.schoolList.currentPage = 1
@@ -301,7 +329,10 @@ angular.module 'ahaLuminateApp'
             setResults = ->
               if companies.length > 0
                 schools = setSchools companies
-                schools = setSchoolsData schools
+                if bystate == true
+                  schools = setSchoolsDataByState schools
+                else
+                  schools = setSchoolsData schools
                 $scope.schoolList.totalItems = schools.length
                 $scope.schoolList.totalNumberResults = schools.length
                 $scope.schoolList.schools = schools
@@ -330,7 +361,10 @@ angular.module 'ahaLuminateApp'
                     moreCompanies = [moreCompanies] if not angular.isArray moreCompanies
                     if moreCompanies.length > 0
                       moreSchools = setSchools moreCompanies
-                      moreSchools = setSchoolsData moreSchools
+                      if bystate == true
+                        moreSchools = setSchoolsDataByState moreSchools
+                      else
+                        moreSchools = setSchoolsData moreSchools
                       if $scope.schoolList.stateFilter isnt ''
                         moreSchools = $filter('filter') moreSchools, SCHOOL_STATE: $scope.schoolList.stateFilter
                   schools = schools.concat moreSchools
