@@ -649,7 +649,7 @@ angular.module 'trPcControllers'
       $scope.getPersonalAvatar()
       
       $scope.heroPopup = false
-      heartHeros = heroPopup: ->
+      $scope.heartHeros = heroPopup: ->
         $scope.heroPopup = true
         WAIT_TIME = 8000
         POP_TIME = 2500
