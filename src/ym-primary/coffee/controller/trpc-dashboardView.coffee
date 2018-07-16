@@ -659,7 +659,7 @@ angular.module 'trPcControllers'
         doPopup = ->
           popup_container.addClass 'pop'
           setTimeout (->
-            popup_container.addClass 'pop'
+            popup_container.removeClass 'pop'
             return
           ), POP_TIME
           return
