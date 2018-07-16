@@ -26,6 +26,17 @@ angular.module 'ahaLuminateApp'
           , (response) ->
             response
       
+      getSchoolDataByState: (requestData) ->
+        requestUrl = luminateExtend.global.path.nonsecure
+        if window.location.protocol is 'https:'
+          requestUrl = luminateExtend.global.path.secure + 'S'
+        requestUrl += 'PageServer?pagename=reus_ym_school_data_csv&state='+requestData+'&pgwrap=n'
+        $http.jsonp($sce.trustAsResourceUrl(requestUrl), jsonpCallbackParam: 'callback')
+          .then (response) ->
+            response
+          , (response) ->
+            response
+      
       # call returns data from DB matching filter criteria passed - school name and optionally the state      
       getSchoolDataNew: (requestData, callback) ->
         url = '//hearttools.heart.org/ym-khc-schools/schoolProcessing.php?method=getSchoolsByFilter' + requestData
