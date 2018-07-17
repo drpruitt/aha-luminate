@@ -670,7 +670,7 @@ angular.module 'trPcControllers'
     
       $scope.monsterEdit = ->
         url = ''
-        if $rootScope.tablePrefix === 'heartdev'
+        if $rootScope.tablePrefix == 'heartdev'
           url = "https://khc.staging.ootqa.org"
         else
           url = "https://jumphoops.heart.org"
