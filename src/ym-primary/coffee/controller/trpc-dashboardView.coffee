@@ -654,9 +654,8 @@ angular.module 'trPcControllers'
         WAIT_TIME = 8000
         POP_TIME = 2500
         popup_timer = undefined
-        popup_container = angular.element('.launch-builder-popup')
-
         doPopup = ->
+          popup_container = angular.element('.launch-builder-popup')
           popup_container.addClass 'pop'
           setTimeout (->
             popup_container.removeClass 'pop'
