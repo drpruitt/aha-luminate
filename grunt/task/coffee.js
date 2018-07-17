@@ -4,7 +4,7 @@ module.exports = {
   options: {
     join: true
   },
-
+  
   "general": {
     files: {
       'dist/general/js/main.js': [
@@ -20,7 +20,7 @@ module.exports = {
       ]
     }
   },
-
+  
   "heart-walk": {
     files: {
       'dist/heart-walk/js/main.js': [
@@ -56,7 +56,7 @@ module.exports = {
       ]
     }
   },
-
+  
   "jump-hoops": {
     files: {
       'dist/jump-hoops/js/main.js': [
@@ -85,7 +85,36 @@ module.exports = {
       ]
     }
   },
-
+  
+  "ym-primary": {
+    files: {
+      'dist/ym-primary/js/main.js': [
+        'src/ym-primary/coffee/init.coffee',
+        'src/ym-primary/coffee/config/*.*',
+        '!src/ym-primary/coffee/config/trpc-*.*',
+        'src/global/coffee/service/*.*',
+        '!src/global/coffee/service/trpc-*.*',
+        'src/youth-markets/coffee/service/*.*',
+        'src/youth-markets/coffee/controller/*.*',
+        '!src/youth-markets/coffee/service/trpc-*.*',
+        'src/ym-primary/coffee/service/*.*',
+        '!src/ym-primary/coffee/service/trpc-*.*',
+        'src/global/coffee/directive/*.*',
+        'src/ym-primary/coffee/directive/*.*',
+        '!src/ym-primary/coffee/directive/trpc-*.*',
+        'src/ym-primary/coffee/**/*.*',
+        '!src/ym-primary/coffee/**/trpc-*.*'
+      ],
+      'dist/ym-primary/js/participant.js': [
+        'src/ym-primary/coffee/trpc-init.coffee',
+        'src/ym-primary/coffee/config/trpc-*.*',
+        'src/global/coffee/service/trpc-*.*',
+        'src/youth-markets/coffee/service/trpc-*.*',
+        'src/ym-primary/coffee/**/trpc-*.*'
+      ]
+    }
+  },
+  
   "middle-school": {
     files: {
       'dist/middle-school/js/main.js': [
@@ -114,7 +143,7 @@ module.exports = {
       ]
     }
   },
-
+  
   "high-school": {
     files: {
       'dist/high-school/js/main.js': [
@@ -143,7 +172,7 @@ module.exports = {
       ]
     }
   },
-
+  
   "district-heart": {
     files: {
       'dist/district-heart/js/main.js': [
@@ -169,6 +198,22 @@ module.exports = {
         'src/global/coffee/service/trpc-*.*',
         'src/youth-markets/coffee/service/trpc-*.*',
         'src/district-heart/coffee/**/trpc-*.*'
+      ]
+    }
+  },
+  
+  "heartchase": {
+    files: {
+      'dist/heartchase/js/main.js': [
+        'src/jump-hoops/coffee/init.coffee',
+        'src/jump-hoops/coffee/config/*.*',
+        'src/global/coffee/service/*.*',
+        'src/youth-markets/coffee/service/*.*',
+        'src/youth-markets/coffee/controller/*.*',
+        'src/jump-hoops/coffee/service/*.*',
+        'src/global/coffee/directive/*.*',
+        'src/jump-hoops/coffee/directive/*.*',
+        'src/jump-hoops/coffee/**/*.*',
       ]
     }
   }

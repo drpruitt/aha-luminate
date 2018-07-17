@@ -52,6 +52,23 @@ module.exports = {
     ]
   }, 
   
+  "ym-primary": {
+    files: [
+      {
+        src: [
+          'dist/ym-primary/js/main.js'
+        ], 
+        dest: 'dist/ym-primary/js/main.' + '<%= timestamp %>' + '.min.js'
+      }, 
+      {
+        src: [
+          'dist/ym-primary/js/participant.js'
+        ], 
+        dest: 'dist/ym-primary/js/participant.' + '<%= timestamp %>' + '.min.js'
+      }
+    ]
+  }, 
+  
   "middle-school": {
     files: [
       {
@@ -101,5 +118,36 @@ module.exports = {
         dest: 'dist/district-heart/js/participant.' + '<%= timestamp %>' + '.min.js'
       }
     ]
-  }
+  },
+  
+  "nchw": {
+    files: [
+      {
+        src: ["src/nchw/js/main.js"],
+        dest: "dist/nchw/js/main." + "<%= timestamp %>" + ".min.js"
+      }
+    ]
+  },
+  
+  "heartchase": {
+    files: [
+      {
+        src: ["src/heartchase/js/main.js"],
+        dest: "dist/heartchase/js/main." + "<%= timestamp %>" + ".min.js"
+      }
+    ]
+  },
+  
+  "cyclenation": {
+    files: [
+      {
+        src: ["src/cyclenation/js/main.js"],
+        dest: "dist/cyclenation/js/main." + "<%= timestamp %>" + ".min.js"
+      },
+      {
+        src: ["src/cyclenation/js/pushy.js"],
+        dest: "dist/cyclenation/js/pushy.min.js"
+      }
+    ]
+  }  
 }

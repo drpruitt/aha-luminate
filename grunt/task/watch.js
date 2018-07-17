@@ -100,6 +100,26 @@ module.exports = {
     ]
   }, 
   
+  "ym-primary": {
+    files: [
+      'src/youth-markets/sass/**/*', 
+      'src/global/coffee/**/*', 
+      'src/youth-markets/coffee/**/*', 
+      'src/ym-primary/html/**/*', 
+      'src/ym-primary/image/**/*', 
+      'src/ym-primary/sass/**/*', 
+      'src/ym-primary/coffee/**/*'
+    ], 
+    tasks: [
+      'clean:ym-primary',  
+      'css-dist:ym-primary', 
+      'js-dist:ym-primary', 
+      'html-dist:ym-primary', 
+      'img-copy:ym-primary-images', 
+      'notify:ym-primary'
+    ]
+  }, 
+  
   "middle-school": {
     files: [
       'src/youth-markets/sass/**/*', 
@@ -157,6 +177,57 @@ module.exports = {
       'html-dist:district-heart', 
       'img-copy:district-heart-images', 
       'notify:district-heart'
+    ]
+  },
+  
+  "nchw": {
+    files: [
+      'src/nchw/html/**/*',
+      'src/nchw/image/**/*',
+      'src/nchw/sass/**/*',
+      'src/nchw/js/**/*'
+    ],
+    tasks: [
+      'clean:nchw',
+      'css-dist:nchw',
+      'js-dist:nchw',
+      'html-dist:nchw',
+      'img-copy:nchw-images',
+      'notify:nchw'
+    ]
+  },
+  
+  "heartchase": {
+    files: [
+      'src/heartchase/html/**/*',
+      'src/heartchase/image/**/*',
+      'src/heartchase/sass/**/*',
+      'src/heartchase/js/**/*'
+    ],
+    tasks: [
+      'clean:heartchase',
+      'css-dist:heartchase',
+      'js-dist:heartchase',
+      'html-dist:heartchase',
+      'img-copy:heartchase-images',
+      'notify:heartchase'
+    ]
+  },
+  
+  "cyclenation": {
+    files: [
+      'src/cyclenation/html/**/*',
+      'src/cyclenation/image/**/*',
+      'src/cyclenation/sass/**/*',
+      'src/cyclenation/js/**/*'
+    ],
+    tasks: [
+      'clean:cyclenation',
+      'css-dist:cyclenation',
+      'js-dist:cyclenation',
+      'html-dist:cyclenation',
+      'img-copy:cyclenation-images',
+      'notify:cyclenation'
     ]
   }
 }

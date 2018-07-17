@@ -75,11 +75,11 @@ angular.module 'trPageEditControllers'
           success: (response) ->
             $scope.registration = response.getRegistrationResponse?.registration
 
-        $personalPhoto2 = angular.element '.kd-user-cover__bg'
+        $personalPhoto2 = angular.element '.user-cover__bg'
 
         # make cover photo dynamic
         $scope.setPersonalPhoto2Url = (photoUrl) ->
-          defaultPhotoUrl = angular.element('.kd-user-cover__bg').attr('data-defaultphoto') or ''
+          defaultPhotoUrl = angular.element('.user-cover__bg').attr('data-defaultphoto') or ''
           $scope.personalPhoto2Url = photoUrl or defaultPhotoUrl
           if defaultPhotoUrl isnt ''
             $scope.personalPhoto2IsDefault = $scope.personalPhoto2Url.indexOf(defaultPhotoUrl.replace('..', '')) isnt -1
@@ -88,7 +88,7 @@ angular.module 'trPageEditControllers'
         if $personalPhoto2.css('background-image') and $personalPhoto2.css('background-image').indexOf('(') isnt -1
           $scope.setPersonalPhoto2Url $personalPhoto2.css('background-image').split('(')[1].split(')')[0]
           $personalPhoto2.replaceWith $compile($personalPhoto2.clone().attr('ng-style', "{'background-image': 'url(' + personalPhoto2Url + ')'}"))($scope)
-          $personalPhoto2 = angular.element '.kd-user-cover__bg'
+          $personalPhoto2 = angular.element '.user-cover__bg'
 
         # insert cover photo edit button
         $scope.editPersonalPhoto2 = ->
@@ -146,7 +146,7 @@ angular.module 'trPageEditControllers'
           if $event
             $event.preventDefault()
           angular.element('.js--delete-personal-photo-1-form').submit()
-          $scope.setPersonalPhoto1Url "../aha-luminate/dist/heart-walk/image/default-personal.png"
+          $scope.setPersonalPhoto1Url angular.element('.heart-user-image-wrap-inner[data-defaultphoto]').attr('data-defaultphoto')
           false
         $scope.cancelEditPersonalPhoto1 = ->
           $scope.closePersonalPhoto1Modal()
@@ -159,7 +159,7 @@ angular.module 'trPageEditControllers'
             $scope.$apply()
         $personalPhoto1.find('.heart-user-image-wrap-inner').prepend $compile('<button type="button" class="btn btn-primary-inverted btn-raised" ng-click="editPersonalPhoto1()" id="edit_personal_photo"><span class="glyphicon glyphicon-camera"></span> Edit Photo</button>')($scope)
 
-        $personalHeader = angular.element '.kd-user-story__headline'
+        $personalHeader = angular.element '.user-story__headline'
         $personalHeadline = $personalHeader.find '> h2'
 
         # make headline dynamica
@@ -263,7 +263,7 @@ angular.module 'trPageEditControllers'
                 success: (data) ->
                   # TODO
             $scope.submitVidyard = ->
-              jQuery.ajax 'http://blender.vidyard.com/forms/pd5MsBtKJwfrReeWz7d8v4/submit.json',
+              jQuery.ajax 'https://blender.vidyard.com/forms/pd5MsBtKJwfrReeWz7d8v4/submit.json',
                 type: 'POST'
                 data: JSON.stringify( { auth_token: "Jep8QrDjpqwOnI5rpsAbJw", email: $rootScope.email, fields: {firstname: $rootScope.firstName, why: $scope.personalMedia.myWhy, cons_id: '"' + $rootScope.consId + '"'} } ),
                 contentType: 'application/json',
@@ -364,6 +364,7 @@ angular.module 'trPageEditControllers'
           if $event
             $event.preventDefault()
           angular.element('.js--delete-team-photo-1-form').submit()
+          $scope.setTeamPhoto1Url angular.element('.heart-user-image-wrap-inner[data-defaultphoto]').attr('data-defaultphoto')
           false
         $scope.cancelEditTeamPhoto1 = ->
           $scope.closeTeamPhoto1Modal()
@@ -465,6 +466,7 @@ angular.module 'trPageEditControllers'
                   if $event
                     $event.preventDefault()
                   angular.element('.js--delete-company-photo-1-form').submit()
+                  $scope.setCompanyPhoto1Url angular.element('.heart-user-image-wrap-inner[data-defaultphoto]').attr('data-defaultphoto')
                   false
                 $scope.cancelEditCompanyPhoto1 = ->
                   $scope.closeCompanyPhoto1Modal()

@@ -77,6 +77,27 @@ module.exports = {
     ]
   }, 
   
+  "ym-primary": {
+    files: [
+      {
+        expand: true, 
+        cwd: 'dist/ym-primary/css/', 
+        src: [
+          'main.css'
+        ], 
+        dest: 'dist/ym-primary/css/'
+      }, 
+      {
+        expand: true, 
+        cwd: 'dist/ym-primary/css/', 
+        src: [
+          'participant.css'
+        ], 
+        dest: 'dist/ym-primary/css/'
+      }
+    ]
+  }, 
+  
   "middle-school": {
     files: [
       {
@@ -136,6 +157,45 @@ module.exports = {
           'participant.css'
         ], 
         dest: 'dist/district-heart/css/'
+      }
+    ]
+  },
+  
+  "nchw": {
+    files: [
+      {
+        expand: true,
+        cwd: 'dist/nchw/css/',
+        src: [
+          'main.css'
+        ],
+        dest: 'dist/nchw/css/'
+      }
+    ]
+  },
+  
+  "heartchase": {
+    files: [
+      {
+        expand: true,
+        cwd: 'dist/heartchase/css/',
+        src: [
+          'main.css'
+        ],
+        dest: 'dist/heartchase/css/'
+      }
+    ]
+  },
+  
+  "cyclenation": {
+    files: [
+      {
+        expand: true,
+        cwd: 'dist/cyclenation/css/',
+        src: [
+          'main.css'
+        ],
+        dest: 'dist/cyclenation/css/'
       }
     ]
   }

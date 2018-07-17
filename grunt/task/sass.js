@@ -34,6 +34,17 @@ module.exports = {
     }
   }, 
   
+  "ym-primary": {
+    files: {
+      'dist/ym-primary/css/main.css': [
+        'src/ym-primary/sass/main.scss'
+      ], 
+      'dist/ym-primary/css/participant.css': [
+        'src/ym-primary/sass/participant.scss'
+      ]
+    }
+  }, 
+  
   "middle-school": {
     files: {
       'dist/middle-school/css/main.css': [
@@ -63,6 +74,30 @@ module.exports = {
       ], 
       'dist/district-heart/css/participant.css': [
         'src/district-heart/sass/participant.scss'
+      ]
+    }
+  },
+  
+  "nchw": {
+    files: {
+      'dist/nchw/css/main.css': [
+        'src/nchw/sass/main.scss'
+      ]
+    }
+  },
+  
+  "heartchase": {
+    files: {
+      'dist/heartchase/css/main.css': [
+        'src/heartchase/sass/main.scss'
+      ]
+    }
+  },
+  
+  "cyclenation": {
+    files: {
+      'dist/cyclenation/css/main.css': [
+        'src/cyclenation/sass/main.scss'
       ]
     }
   }
