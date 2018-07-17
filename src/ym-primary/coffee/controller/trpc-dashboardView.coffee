@@ -653,10 +653,16 @@ angular.module 'trPcControllers'
         $scope.heroPopup = true
         WAIT_TIME = 8000
         POP_TIME = 2500
-        popup_timer = undefined
+        NUM_POPS = 3
+        i = 0
+        pop_timer = ''
         doPopup = ->
           popup_container = angular.element('.launch-builder-popup')
-          popup_container.addClass 'pop'
+          if i == NUM_POPS
+            clearInterval(pop_timer)
+          else
+            popup_container.addClass 'pop'
+            i++
           setTimeout (->
             popup_container.removeClass 'pop'
             return
