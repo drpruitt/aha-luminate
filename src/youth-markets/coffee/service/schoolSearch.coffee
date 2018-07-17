@@ -10,6 +10,7 @@ angular.module 'ahaLuminateApp'
           searchPending: false
           searchByLocation: false
           geoLocationEnabled: false
+          geoLocateError: ''
           sortProp: 'SCHOOL_NAME'
           sortDesc: false
           totalItems: 0
@@ -41,13 +42,13 @@ angular.module 'ahaLuminateApp'
         showGEOError = (e) ->
           switch e.code
             when e.PERMISSION_DENIED
-              console.log 'User denied the request for Geolocation.'
+              $scope.schoolList.geoLocationError = 'User denied the request for Geolocation or not in https.'
             when e.POSITION_UNAVAILABLE
-              alert 'Location information is currently unavailable.'
+              $scope.schoolList.geoLocationError = 'Location information is currently unavailable.'
             when e.TIMEOUT
-              alert 'The request to get location timed out. Please refresh the page to use this feature.'
+              $scope.schoolList.geoLocationError = 'The request to get location timed out. Please refresh the page to use this feature.'
             when e.UNKNOWN_ERROR
-              alert 'An unknown error occurred.'
+              $scope.schoolList.geoLocationError = 'An unknown error occurred.'
           return
 
         # ask or retrieve current lat/long
@@ -314,6 +315,7 @@ angular.module 'ahaLuminateApp'
         $scope.getSchoolSearchResults = (bystate) ->
           delete $scope.schoolList.schools
           $scope.schoolList.searchPending = true
+          $scope.schoolList.geoLocationError = ''
           $scope.schoolList.currentPage = 1
           nameFilter = $scope.schoolList.nameFilter or '%'
           companies = []
