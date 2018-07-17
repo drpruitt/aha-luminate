@@ -667,4 +667,12 @@ angular.module 'trPcControllers'
         return
 
       $scope.heartHeros.heroPopup()
+    
+      $scope.monsterEdit = ->
+        url = ''
+        if $rootScope.tablePrefix === 'heartdev'
+          url = "https://khc.staging.ootqa.org"
+        else
+          url = "https://jumphoops.heart.org"
+        window.open url + "/student/login/"+$scope.authToken+"/"+$scope.sessionCookie
   ]
