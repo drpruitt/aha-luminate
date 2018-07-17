@@ -10,7 +10,7 @@ angular.module 'ahaLuminateApp'
           searchPending: false
           searchByLocation: false
           geoLocationEnabled: false
-          geoLocateError: ''
+          geoLocationError: ''
           sortProp: 'SCHOOL_NAME'
           sortDesc: false
           totalItems: 0
