@@ -49,13 +49,15 @@
 .launch-builder-character.wink {
 	animation: wink 2.5s steps(3) infinite;
 	background-image: url(../image/pc_customize-wink.png);
+        transform-origin: 100% 60%;
+	transition: all 0.667s;
 }
 
 .launch-builder-character.pop {
 	background-image: url(../image/pc_customize-pop.png);
 	transform: scale(0);
 	transform-origin: 100% 60%;
-	transition: all 0.2s;
+	transition: all 0.667s;
 }
 
 .launch-builder-popup.pop .launch-builder-character.wink,
