@@ -130,6 +130,7 @@ angular.module 'ahaLuminateApp'
           $scope.schoolList.searchSubmitted = true;
           $scope.schoolList.searchPending = true;
           $scope.schoolList.searchByLocation = true
+          $scope.schoolList.geoLocationEnabled = true
           SchoolLookupService.getGeoState(e)
             .then (response) ->
               $scope.schoolList.stateFilter = stateFilter = response.data.results[0].address_components[4].short_name;
