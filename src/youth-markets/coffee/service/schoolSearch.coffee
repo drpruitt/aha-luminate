@@ -9,6 +9,7 @@ angular.module 'ahaLuminateApp'
           searchSubmitted: false
           searchPending: false
           searchByLocation: false
+          geoLocationEnabled: false
           sortProp: 'SCHOOL_NAME'
           sortDesc: false
           totalItems: 0
@@ -30,6 +31,7 @@ angular.module 'ahaLuminateApp'
           $scope.schoolList.searchPending = true
           $scope.schoolList.searchSubmitted = true
           $scope.schoolList.searchByLocation = true
+          $scope.schoolList.geoLocationEnabled = true
           SchoolLookupService.getGeoSchoolData e,
             failure: (response) ->
             success: (response) ->
