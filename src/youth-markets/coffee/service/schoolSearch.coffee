@@ -39,7 +39,6 @@ angular.module 'ahaLuminateApp'
 
         # gelocate call error
         showGEOError = (e) ->
-          $scope.schoolList.searchSubmitted = false
           $scope.schoolList.searchPending = false
           switch e.code
             when e.PERMISSION_DENIED
