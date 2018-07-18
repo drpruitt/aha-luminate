@@ -40,15 +40,17 @@ angular.module 'ahaLuminateApp'
 
         # gelocate call error
         showGEOError = (e) ->
+          $scope.schoolList.searchSubmitted = false
+          $scope.schoolList.searchPending = false
           switch e.code
             when e.PERMISSION_DENIED
-              $scope.schoolList.geoLocationError = 'User denied the request for Geolocation or not in https.'
+              $scope.schoolList.geoLocationError = 'User denied the request for Geolocation or not in https. Try Again.'
             when e.POSITION_UNAVAILABLE
-              $scope.schoolList.geoLocationError = 'Location information is currently unavailable.'
+              $scope.schoolList.geoLocationError = 'Location information is currently unavailable. Try Again.'
             when e.TIMEOUT
               $scope.schoolList.geoLocationError = 'The request to get location timed out. Please refresh the page to use this feature.'
             when e.UNKNOWN_ERROR
-              $scope.schoolList.geoLocationError = 'An unknown error occurred.'
+              $scope.schoolList.geoLocationError = 'An unknown error occurred. Try Again.'
           return
 
         # ask or retrieve current lat/long
