@@ -9,6 +9,7 @@ angular.module 'ahaLuminateApp'
           searchSubmitted: false
           searchPending: false
           searchByLocation: false
+          geoLocationEnabled: false
           sortProp: 'SCHOOL_NAME'
           sortDesc: false
           totalItems: 0
@@ -30,6 +31,7 @@ angular.module 'ahaLuminateApp'
           $scope.schoolList.searchPending = true
           $scope.schoolList.searchSubmitted = true
           $scope.schoolList.searchByLocation = true
+          $scope.schoolList.geoLocationEnabled = true
           SchoolLookupService.getGeoSchoolData e,
             failure: (response) ->
             success: (response) ->
@@ -37,15 +39,16 @@ angular.module 'ahaLuminateApp'
 
         # gelocate call error
         showGEOError = (e) ->
+          $scope.schoolList.searchPending = false
           switch e.code
             when e.PERMISSION_DENIED
-              console.log 'User denied the request for Geolocation.'
+              $scope.schoolList.searchErrorMessage = 'User denied the request for Geolocation or not in https. Try Again.'
             when e.POSITION_UNAVAILABLE
-              alert 'Location information is currently unavailable.'
+              $scope.schoolList.searchErrorMessage = 'Location information is currently unavailable. Try Again.'
             when e.TIMEOUT
-              alert 'The request to get location timed out. Please refresh the page to use this feature.'
+              $scope.schoolList.searchErrorMessage = 'The request to get location timed out. Please refresh the page to use this feature.'
             when e.UNKNOWN_ERROR
-              alert 'An unknown error occurred.'
+              $scope.schoolList.searchErrorMessage = 'An unknown error occurred. Try Again.'
           return
 
         # ask or retrieve current lat/long
@@ -125,9 +128,7 @@ angular.module 'ahaLuminateApp'
         #
         # New Alt Geo Locate code for KHC to get state
         getSchoolState = (e) ->
-          $scope.schoolList.searchSubmitted = true;
-          $scope.schoolList.searchPending = true;
-          $scope.schoolList.searchByLocation = true
+          $scope.schoolList.geoLocationEnabled = true
           SchoolLookupService.getGeoState(e)
             .then (response) ->
               $scope.schoolList.stateFilter = stateFilter = response.data.results[0].address_components[4].short_name;
@@ -151,6 +152,9 @@ angular.module 'ahaLuminateApp'
 
         # ask or retrieve current lat/long
         $scope.getLocationAlt = ->
+          $scope.schoolList.searchSubmitted = true
+          $scope.schoolList.searchPending = true
+          $scope.schoolList.searchByLocation = true
           e = 
             enableHighAccuracy: !0
             timeout: 1e4
