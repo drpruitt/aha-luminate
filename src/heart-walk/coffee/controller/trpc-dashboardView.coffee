@@ -427,7 +427,7 @@ angular.module 'trPcControllers'
         if not PCLogin
           skipLBs = 0
         sessionStorage.setItem 'PCLogin', 'yes'
-        if $rootScope.participantRegistration.lastPC2Login is '0' and not $rootScope.isSelfDonor
+        if $rootScope.participantRegistration.lastPC2Login is '0' and $rootScope.isSelfDonor is not "TRUE"
           $scope.dashboardGreeting = 'page'
           if skipLBs is 0
             $scope.LBthankYouRegisteringModal = $uibModal.open
