@@ -41,6 +41,7 @@ angular.module 'ahaLuminateApp'
       $rootScope.facebookFundraisersEndDate = if $dataRoot.data('facebook-fundraisers-end-date') is '' then '' else $dataRoot.data('facebook-fundraisers-end-date')
       $rootScope.facebookCharityId = if $dataRoot.data('facebook-charity-id') is '' then '' else $dataRoot.data('facebook-charity-id')
       $rootScope.facebookFundraiserId = $dataRoot.data('facebook-fundraiser-id') if $dataRoot.data('facebook-fundraiser-id') isnt ''
+      $rootScope.isSelfDonor = $dataRoot.data('is-self-donor') is 'TRUE'
   ]
 
 angular.element(document).ready ->
