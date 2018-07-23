@@ -3,9 +3,10 @@ angular.module 'ahaLuminateControllers'
     '$rootScope'
     '$scope'
     '$filter'
+    '$uibModal'
     'TeamraiserCompanyService'
     'TeamraiserRegistrationService'
-    ($rootScope, $scope, $filter, TeamraiserCompanyService, TeamraiserRegistrationService) ->
+    ($rootScope, $scope, $filter, $uibModal, TeamraiserCompanyService, TeamraiserRegistrationService) ->
       $rootScope.companyName = ''
       regCompanyId = luminateExtend.global.regCompanyId
       setCompanyName = (companyName) ->
