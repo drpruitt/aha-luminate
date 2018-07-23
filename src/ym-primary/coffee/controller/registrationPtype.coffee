@@ -94,6 +94,8 @@ angular.module 'ahaLuminateControllers'
           else
             window.scrollTo 0, 0
         else
+          if $scope.donationLevels.activeLevel == undefined
+            $scope.toggleDonationLevel "$0.00"
           angular.element('.js--default-ptype-form').submit()
           false
   ]
