@@ -478,7 +478,9 @@ angular.module 'trPcControllers'
         
       $scope.personalChallenge = {}
       $scope.updatedPersonalChallenge = {}
-      setPersonalChallenge = (id = '-1', name = '', numCompleted = 0, completedToday = false) ->
+      setPersonalChallenge = (id, name = '', numCompleted = 0, completedToday = false) ->
+        if id == null or id == ''
+          id = '-1'
         if id is '-1' and $scope.challengeTaken and $scope.challengeTaken isnt ''
           if $scope.challengeTaken.indexOf('1. ') isnt -1
             id = '1'
