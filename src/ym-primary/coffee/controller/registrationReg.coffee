@@ -230,6 +230,10 @@ angular.module 'ahaLuminateControllers'
         , 500
         false
       
+      $scope.familyChallengePopup = false
+      $scope.submitFamilyChallengePopup = ->
+        angular.element('.js--default-reg-form').submit()
+      
       $scope.submitReg = ->
         if $scope.acceptWaiver isnt 'yes' and not $scope.ng_go_back
           window.scrollTo 0, 0
@@ -239,6 +243,12 @@ angular.module 'ahaLuminateControllers'
             }
           ]
         else
-          angular.element('.js--default-reg-form').submit()
+          if not $scope.familyChallengePopup
+            $scope.familyChallengePopup = true
+            $scope.showFamilyChallengePopup = $uibModal.open
+              scope: $scope
+              templateUrl: APP_INFO.rootPath + 'dist/ym-primary/html/modal/showFamilyChallengePopup.html'
+          else 
+            angular.element('.js--default-reg-form').submit()
         false
   ]
