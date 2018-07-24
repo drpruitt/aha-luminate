@@ -1518,6 +1518,8 @@
         $(ptypeBlocks).each(function(){
           if($(this).hasClass('part-type-full')){
             $(this).parent().removeClass('selected').addClass('ptype-full').find('input[type=radio]').remove();
+            var disabledLabel = $(this).find('label');
+            $(disabledLabel).replaceWith('<div>' + $(disabledLabel).html() + '</div>');
           }
           if (eventType2 === 'StationaryV2' ) {
             var ptypeName = $(this).find('.part-type-name').text();
