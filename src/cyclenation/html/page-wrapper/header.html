@@ -44,9 +44,11 @@
               <div class="d-flex align-items-end flex-column text-white">
                 <div class="p-3 small">
                 [[?xx::x[[S1:first_name]]x::
+                [[?x27x::x[[S4]]x::::
                 <a href="UserLogin?NEXTURL=[[T1:https://[[S29:SECURE_DOMAIN]][[S29:SECURE_PATH]]SPageServer?pagename=MyEvents]]">Fundraisers, log in
                     <i class="fas fa-angle-right"></i>
                   </a>
+                  ::]]
                 ::
                 Hi, [[S1:first_name]]!&nbsp;<a href="https://[[S29:SECURE_DOMAIN]][[S29:SECURE_PATH]]SPageServer?pagename=MyEvents">My Participant Center </a> | <a href="ConsProfileUser?dispMode=edit">My Profile</a> | <a href="UserLogin?logout=&amp;NEXTURL=[[T1:[[E130:[[T8:[[S8]]]] [[T8:&amp;]] [[T8:&]] replaceall]]]]">Log Out</a>
                   ]]
@@ -88,27 +90,27 @@
                         [[?x[[S334:pagename]]x::xcn_homex::T::]]
                         [[?x[[S334:pg]]x::xentryx::T::]]
                       ::T::
-                        <a class="nav-link scroll-link" href="#fundraiserSearch">
+                        <a class="nav-link scroll-link" href="#fundraiserSearch" aria-label="Donate to CycleNation">
                           <strong>Donate</strong>
                         </a>
                       ::
                         [[?x[[S334:pg]]x::xpersonalx::
-                          <a class="nav-link" href="Donation2?df_id=[[E42:[[S334:fr_id]]:form-ID]]&amp;PROXY_ID=[[E48:[[S334:fr_id]]:participant-id]]&amp;PROXY_TYPE=20&amp;FR_ID=[[S334:fr_id]]" ><strong>Donate</strong></a>
+                          <a class="nav-link" href="Donation2?df_id=[[E42:[[S334:fr_id]]:form-ID]]&amp;PROXY_ID=[[E48:[[S334:fr_id]]:participant-id]]&amp;PROXY_TYPE=20&amp;FR_ID=[[S334:fr_id]]" aria-label="Donate to CycleNation"><strong>Donate</strong></a>
                         ::
                           [[?x[[S334:pg]]x::xteamx::
-                            <a class="nav-link" href="Donation2?df_id=[[E42:[[S334:fr_id]]:form-ID]]&amp;PROXY_ID=[[S334:team_id]]&amp;PROXY_TYPE=22&amp;FR_ID=[[S334:fr_id]]" ><strong>Donate</strong></a>
+                            <a class="nav-link" href="Donation2?df_id=[[E42:[[S334:fr_id]]:form-ID]]&amp;PROXY_ID=[[S334:team_id]]&amp;PROXY_TYPE=22&amp;FR_ID=[[S334:fr_id]]" aria-label="Donate to CycleNation"><strong>Donate</strong></a>
                           ::
                             [[?x[[S334:pg]]x::xcompanyx::
-                              <a class="nav-link" href="Donation2?df_id=[[E42:[[S334:fr_id]]:form-ID]]&amp;PROXY_ID=[[E48:[[S334:fr_id]]:participant-id]]&amp;PROXY_TYPE=22&amp;FR_ID=[[S334:fr_id]]" ><strong>Donate</strong></a>
+                              <a class="nav-link" href="Donation2?df_id=[[E42:[[S334:fr_id]]:form-ID]]&amp;PROXY_ID=[[E48:[[S334:fr_id]]:participant-id]]&amp;PROXY_TYPE=22&amp;FR_ID=[[S334:fr_id]]" aria-label="Donate to CycleNation"><strong>Donate</strong></a>
                             ::
                             [[?x[[S334:fr_id]]x::xx::
                               <!-- not a tr page, redirect to CN home page and scroll to cross-event fundraiserSearch -->
-                              <a class="nav-link" href="SPageServer/?pagename=cn_home#fundraiserSearch">
+                              <a class="nav-link" href="SPageServer/?pagename=cn_home#fundraiserSearch" aria-label="Donate to CycleNation">
                                 <strong>Donate</strong>
                               </a>
                             ::
                             <!-- on a tr page, redirect to tr greeting page and scroll to event-specific fundraiserSearch -->
-                              <a class="nav-link" href="TR/CycleNation/General?fr_id=[[S334:fr_id]]&amp;pg=entry#fundraiserSearch">
+                              <a class="nav-link" href="TR/CycleNation/General?fr_id=[[S334:fr_id]]&amp;pg=entry#fundraiserSearch" aria-label="Donate to CycleNation">
                                 <strong>Donate</strong>
                               </a>
                             ]]
@@ -221,16 +223,16 @@
                   </a>
                 ::
                   [[?x[[S334:pg]]x::xpersonalx::
-                    <a href="Donation2?df_id=[[E42:[[S334:fr_id]]:form-ID]]&amp;PROXY_ID=[[E48:[[S334:fr_id]]:participant-id]]&amp;PROXY_TYPE=20&amp;FR_ID=[[S334:fr_id]]" >Donate</a>
+                    <a href="Donation2?df_id=[[E42:[[S334:fr_id]]:form-ID]]&amp;PROXY_ID=[[E48:[[S334:fr_id]]:participant-id]]&amp;PROXY_TYPE=20&amp;FR_ID=[[S334:fr_id]]" aria-label="Donate to CycleNation">Donate</a>
                   ::
                     [[?x[[S334:pg]]x::xteamx::
-                      <a href="Donation2?df_id=[[E42:[[S334:fr_id]]:form-ID]]&amp;PROXY_ID=[[S334:team_id]]&amp;PROXY_TYPE=22&amp;FR_ID=[[S334:fr_id]]" >Donate</a>
+                      <a href="Donation2?df_id=[[E42:[[S334:fr_id]]:form-ID]]&amp;PROXY_ID=[[S334:team_id]]&amp;PROXY_TYPE=22&amp;FR_ID=[[S334:fr_id]]" aria-label="Donate to CycleNation">Donate</a>
                     ::
                       [[?x[[S334:pg]]x::xcompanyx::
-                        <a href="Donation2?df_id=[[E42:[[S334:fr_id]]:form-ID]]&amp;PROXY_ID=[[E48:[[S334:fr_id]]:participant-id]]&amp;PROXY_TYPE=22&amp;FR_ID=[[S334:fr_id]]" >Donate</a>
+                        <a href="Donation2?df_id=[[E42:[[S334:fr_id]]:form-ID]]&amp;PROXY_ID=[[E48:[[S334:fr_id]]:participant-id]]&amp;PROXY_TYPE=22&amp;FR_ID=[[S334:fr_id]]" aria-label="Donate to CycleNation">Donate</a>
                       ::
                       <!-- on a tr page, redirect to tr greeting page and scroll to event-specific fundraiserSearch -->
-                      <a href="TR/CycleNation/General?fr_id=[[S334:fr_id]]&amp;pg=entry#fundraiserSearch">
+                      <a href="TR/CycleNation/General?fr_id=[[S334:fr_id]]&amp;pg=entry#fundraiserSearch" aria-label="Donate to CycleNation">
                         Donate
                       </a>
                       ]]
