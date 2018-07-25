@@ -6,14 +6,14 @@ angular.module 'ahaLuminateApp'
     ($rootScope, $http, $sce) ->
       getBadges: (requestData) ->
         if $rootScope.tablePrefix is 'heartdev'
-          url = 'AjaxProxy?cnv_url=' + encodeURIComponent('https://khc.staging.ootqa.org/api/badges/student/' + requestData) + '?auth=' + luminateExtend.global.ajaxProxyAuth
+          url = 'https://khc.staging.ootqa.org/api/badges/student/' + requestData 
         else
-          url = 'AjaxProxy?cnv_url=' + encodeURIComponent('https://jumphoops.heart.org/api/badges/student/' + requestData) + '?auth=' + luminateExtend.global.ajaxProxyAuth
-        $http
-          method: 'GET'
-          url: url
-          headers:
-            'Content-Type': 'application/json'
+          url = 'https://jumphoops.heart.org/api/badges/student/' + requestData
+        $http.jsonp($sce.trustAsResourceUrl(url), jsonpCallbackParam: 'callback')
+          .then (response) ->
+            response
+          , (response) ->
+            response
       
       getRollupTotals: ->
         if $rootScope.tablePrefix is 'heartdev'
