@@ -28,21 +28,23 @@ angular.module 'ahaLuminateApp'
       
       logEmailSent: ->
         if $rootScope.tablePrefix is 'heartdev'
-          url = 'AjaxProxy?cnv_url=' + encodeURIComponent('https://khc.staging.ootqa.org/api/webhooks/student/emails-sent/' + $rootScope.frId + '/' + $rootScope.consId) + '?auth=' + luminateExtend.global.ajaxProxyAuth
+          url = 'https://khc.staging.ootqa.org/api/webhooks/student/emails-sent/' + $rootScope.frId + '/' + $rootScope.consId 
         else
-          url = 'AjaxProxy?cnv_url=' + encodeURIComponent('https://jumphoops.heart.org/api/webhooks/student/emails-sent/' + $rootScope.frId + '/' + $rootScope.consId) + '?auth=' + luminateExtend.global.ajaxProxyAuth
-        $http
-          url: url
-          headers:
-            'Content-Type': 'application/json'
+          url = 'https://jumphoops.heart.org/api/webhooks/student/emails-sent/' + $rootScope.frId + '/' + $rootScope.consId
+        $http.jsonp($sce.trustAsResourceUrl(url), jsonpCallbackParam: 'callback')
+          .then (response) ->
+            response
+          , (response) ->
+            response
       
       logPersonalPageUpdated: ->
         if $rootScope.tablePrefix is 'heartdev'
-          url = 'AjaxProxy?cnv_url=' + encodeURIComponent('https://khc.staging.ootqa.org/api/webhooks/student/personal-page-updated/' + $rootScope.frId + '/' + $rootScope.consId) + '?auth=' + luminateExtend.global.ajaxProxyAuth
+          url = 'https://khc.staging.ootqa.org/api/webhooks/student/personal-page-updated/' + $rootScope.frId + '/' + $rootScope.consId 
         else
-          url = 'AjaxProxy?cnv_url=' + encodeURIComponent('https://jumphoops.heart.org/api/webhooks/student/personal-page-updated/' + $rootScope.frId + '/' + $rootScope.consId) + '?auth=' + luminateExtend.global.ajaxProxyAuth
-        $http
-          url: url
-          headers:
-            'Content-Type': 'application/json'
+          url = 'https://jumphoops.heart.org/api/webhooks/student/personal-page-updated/' + $rootScope.frId + '/' + $rootScope.consId
+        $http.jsonp($sce.trustAsResourceUrl(url), jsonpCallbackParam: 'callback')
+          .then (response) ->
+            response
+          , (response) ->
+            response
   ]
