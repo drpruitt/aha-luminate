@@ -99,8 +99,10 @@
           Check Out My Badges
         </h2>
         <div class="ym-badges__item" ng-repeat="prize in prizes" ng-cloak> <!--  ng-repeat="prize in prizes | limitTo: 3" -->
-          <img class="img-responsive" ng-src="https://s3.amazonaws.com/aha-oot-production/fy19/assets/badges/khc/{{prize.id}}_delivered.png" alt="{{prize.label}}">
-          <div>
+          <div ng-if="prize.earned">
+            <img class="img-responsive" ng-src="//s3.amazonaws.com/aha-oot-production/fy19/assets/badges/khc/{{prize.id}}_delivered.png" alt="">
+          </div>
+          <div ng-if="prize.earned">
             <span ng-bind-html="prize.label"></span> <span class="sr-only">(earned)</span>
           </div>
         </div>
