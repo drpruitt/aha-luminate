@@ -8,7 +8,7 @@ angular.module 'ahaLuminateApp'
         if $rootScope.tablePrefix is 'heartdev'
           url = 'https://khc.staging.ootqa.org/api/badges/student/' + requestData 
         else
-          url = 'https://jumphoops.heart.org/api/badges/student/' + requestData
+          url = 'https://kidsheartchallenge.heart.org/api/badges/student/' + requestData
         $http.jsonp($sce.trustAsResourceUrl(url), jsonpCallbackParam: 'callback')
           .then (response) ->
             response
@@ -19,7 +19,7 @@ angular.module 'ahaLuminateApp'
         if $rootScope.tablePrefix is 'heartdev'
           url = 'https://khc.staging.ootqa.org/api/schools/totals/'
         else
-          url = 'https://jumphoops.heart.org/api/schools/totals/'
+          url = 'https://kidsheartchallenge.heart.org/api/schools/totals/'
         $http.jsonp($sce.trustAsResourceUrl(url), jsonpCallbackParam: 'callback')
           .then (response) ->
             response
@@ -30,7 +30,7 @@ angular.module 'ahaLuminateApp'
         if $rootScope.tablePrefix is 'heartdev'
           url = 'https://khc.staging.ootqa.org/api/webhooks/student/emails-sent/' + $rootScope.frId + '/' + $rootScope.consId 
         else
-          url = 'https://jumphoops.heart.org/api/webhooks/student/emails-sent/' + $rootScope.frId + '/' + $rootScope.consId
+          url = 'https://kidsheartchallenge.heart.org/api/webhooks/student/emails-sent/' + $rootScope.frId + '/' + $rootScope.consId
         $http.jsonp($sce.trustAsResourceUrl(url), jsonpCallbackParam: 'callback')
           .then (response) ->
             response
@@ -41,7 +41,7 @@ angular.module 'ahaLuminateApp'
         if $rootScope.tablePrefix is 'heartdev'
           url = 'https://khc.staging.ootqa.org/api/webhooks/student/personal-page-updated/' + $rootScope.frId + '/' + $rootScope.consId 
         else
-          url = 'https://jumphoops.heart.org/api/webhooks/student/personal-page-updated/' + $rootScope.frId + '/' + $rootScope.consId
+          url = 'https://kidsheartchallenge.heart.org/api/webhooks/student/personal-page-updated/' + $rootScope.frId + '/' + $rootScope.consId
         $http.jsonp($sce.trustAsResourceUrl(url), jsonpCallbackParam: 'callback')
           .then (response) ->
             response
