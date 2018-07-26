@@ -53,7 +53,7 @@ angular.module 'trPcControllers'
       getContactById = (contactId) ->
         contact = null
         if $scope.addressBookContacts.contacts.length > 0
-          angular.forEach $scope.addressBookContacts.contacts, (currContact) ->
+          angular.forEach $scope.addressBookContacts.allContacts, (currContact) ->
             if currContact.id is contactId
               contact = angular.copy currContact
         contact
@@ -101,22 +101,30 @@ angular.module 'trPcControllers'
       $scope.$watchGroup ['addressBookContacts.contacts', 'contactsUpdated'], () ->
         $scope.refreshSelectedContacts()
 
-      $scope.getContacts = ->
-        pageNumber = $scope.addressBookContacts.page - 1
+      $scope.getContacts = (page) ->
+        if !page 
+          $scope.addressBookContacts.allContacts = [];
+          page=0;
+        currentPage = $scope.addressBookContacts.page - 1
         numPerPage = $scope.addressBookContacts.numPerPage
-        requestData = 'tr_ab_filter=' + $scope.filter + '&skip_groups=true&list_page_size=' + numPerPage + '&list_page_offset=' + pageNumber
+        requestData = 'tr_ab_filter=' + $scope.filter + '&skip_groups=true&list_page_size=' + numPerPage + '&list_page_offset=' + page
         contactsPromise = ContactService.getTeamraiserAddressBookContacts requestData
           .then (response) ->
             addressBookContacts = response.data.getTeamraiserAddressBookContactsResponse.addressBookContact
             addressBookContacts = [addressBookContacts] if not angular.isArray addressBookContacts
-            $scope.addressBookContacts.contacts = []
+            if (page==currentPage)
+              $scope.addressBookContacts.contacts = [];
             angular.forEach addressBookContacts, (contact) ->
               if contact?
                 contactString = getContactString contact
                 contactIndex = $rootScope.selectedContacts.contacts.indexOf contactString
                 contact.selected = contactIndex isnt -1
-                $scope.addressBookContacts.contacts.push contact
+                $scope.addressBookContacts.allContacts.push(contact);
+                if (page==currentPage)
+                  $scope.addressBookContacts.contacts.push(contact);
             $scope.addressBookContacts.totalNumber = response.data.getTeamraiserAddressBookContactsResponse.totalNumberResults
+            if ( $scope.addressBookContacts.totalNumber >  $scope.addressBookContacts.allContacts.length )
+              $scope.getContacts(page+1);
             response
         $scope.emailPromises.push contactsPromise
       $scope.getContacts()
@@ -573,7 +581,7 @@ angular.module 'trPcControllers'
 
       $scope.toggleAllContacts = () ->
         selectToggle = $scope.contactsSelected.all()
-        angular.forEach $scope.addressBookContacts.contacts, (contact) ->
+        angular.forEach $scope.addressBookContacts.allContacts, (contact) ->
           if contact.selected isnt selectToggle
             contact.selected = selectToggle
             $scope.toggleContact contact.id

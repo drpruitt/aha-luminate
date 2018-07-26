@@ -478,7 +478,9 @@ angular.module 'trPcControllers'
         
       $scope.personalChallenge = {}
       $scope.updatedPersonalChallenge = {}
-      setPersonalChallenge = (id = '-1', name = '', numCompleted = 0, completedToday = false) ->
+      setPersonalChallenge = (id, name = '', numCompleted = 0, completedToday = false) ->
+        if id == null or id == ''
+          id = '-1'
         if id is '-1' and $scope.challengeTaken and $scope.challengeTaken isnt ''
           if $scope.challengeTaken.indexOf('1. ') isnt -1
             id = '1'
@@ -647,4 +649,38 @@ angular.module 'trPcControllers'
               avatarURL = 'https://hearttools.heart.org/aha_ym19_dev/virtualworld/img/avatar-charger.png'
             $scope.personalInfo.avatar = avatarURL
       $scope.getPersonalAvatar()
+      
+      $scope.heroPopup = false
+      $scope.heartHeros = heroPopup: ->
+        $scope.heroPopup = true
+        WAIT_TIME = 8000
+        POP_TIME = 2500
+        NUM_POPS = 3
+        i = 0
+        pop_timer = ''
+        doPopup = ->
+          popup_container = angular.element('.launch-builder-popup')
+          if i == NUM_POPS
+            clearInterval(pop_timer)
+          else
+            popup_container.addClass 'pop'
+            i++
+          setTimeout (->
+            popup_container.removeClass 'pop'
+            return
+          ), POP_TIME
+          return
+
+        pop_timer = setInterval(doPopup, WAIT_TIME)
+        return
+
+      $scope.heartHeros.heroPopup()
+    
+      $scope.monsterEdit = ->
+        url = ''
+        if $rootScope.tablePrefix == 'heartdev'
+          url = "https://khc.staging.ootqa.org"
+        else
+          url = "https://jumphoops.heart.org"
+        window.open url + "/student/login/"+$scope.authToken+"/"+$scope.sessionCookie
   ]
