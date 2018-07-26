@@ -9,6 +9,7 @@ angular.module 'ahaLuminateControllers'
       $dataRoot = angular.element '[data-aha-luminate-root]'
       consId = $dataRoot.data('cons-id') if $dataRoot.data('cons-id') isnt ''
       $scope.regEventId = ''
+      $scope.protocol = window.location.protocol
       
       setRegEventId = (numberEvents = 0, regEventId = '') ->
         $scope.numberEvents = numberEvents
