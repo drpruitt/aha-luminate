@@ -3,17 +3,15 @@ angular.module 'trPcControllers'
     '$rootScope'
     '$scope'
     '$sce'
-    '$routeParams'
-    '$timeout'
-    '$location'
-    '$anchorScroll'
-    '$httpParamSerializer'
-    '$uibModal'
-    'APP_INFO'
-    'TeamraiserEventService'
-    'ConstituentService'
-    ($rootScope, $scope, $sce, $routeParams, $timeout, $location, $anchorScroll, $httpParamSerializer, $uibModal, APP_INFO, TeamraiserEventService, ConstituentService) ->
-
-      $scope.socialURL = $sce.trustAsResourceUrl 'https://bfapps1.boundlessfundraising.com/applications/ahahw/social/app/ui/#/addsocial/'+$scope.consId+'/'+$scope.frId+'?source=PCSocial'
-
+    ($rootScope, $scope, $sce) ->
+      console.log 'hello xxxxxxxxxxx'
+      urlPrefix = ''
+      if $scope.tablePrefix == 'heartdev'
+        urlPrefix = 'bfstage'
+      else
+        urlPrefix = 'bfapps1'
+      consId = $scope.consId
+      frId = $scope.frId
+      url = 'https://' + urlPrefix + '.boundlessfundraising.com/applications/ahahw/social/app/ui/#/addsocial/' + consId + '/' + frId + '?source=PCSocial'
+      $scope.socialURL = $sce.trustAsResourceUrl(url)
   ]

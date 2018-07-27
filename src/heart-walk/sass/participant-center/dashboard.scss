@@ -566,6 +566,9 @@ div#send_via_FC {
 
 .ng-pc-container #social-frame iframe {
     min-height: 1000px;
+    width:100%;
+    height:100%;
+    border:1px solid #cccccc;
 }
 
 .ng-pc-container .pc-facebook-fundraiser-connected {
