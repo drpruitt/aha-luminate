@@ -146,7 +146,7 @@
         api: 'teamraiser',
         data: 'method=getTeamsByInfo' +
           '&team_name=' + teamName +
-          '&event_type=' + eventType +
+          (isCrossEvent === true ? '&event_type=' + eventType : '&fr_id=' + evID) +
           '&list_page_size=499' +
           '&list_page_offset=0' +
           '&response_format=json' +
@@ -191,7 +191,7 @@
         api: 'teamraiser',
         data: 'method=getCompaniesByInfo' +
           '&company_name=' + companyName +
-          '&event_type=' + eventType +
+          (isCrossEvent === true ? '&event_type=' + eventType : '&fr_id=' + evID) +
           '&list_page_size=499' +
           '&list_page_offset=0' +
           '&include_cross_event=true' +
