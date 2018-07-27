@@ -187,17 +187,17 @@
         console.log(err);
       });
 
-setTimeout(function(){
-  console.log(partP+' '+teamP+' '+compP);
-  if ( teamP == false) {
-    $('.top-participants-list').addClass('col-md-offset-2 col-md-8');
-    $('.top-participants-list').removeClass('col-md-offset-0').removeClass('col-md-4');
-  }
-  else if ( compP == false) {
-    $('.top-participants-list').addClass('col-md-offset-2');
-    $('.top-participants-list').removeClass('col-md-offset-0');
-  }
-}, 1000);
+// setTimeout(function(){
+//   console.log(partP+' '+teamP+' '+compP);
+//   if ( teamP == false) {
+//     $('.top-participants-list').addClass('col-md-offset-2 col-md-8');
+//     $('.top-participants-list').removeClass('col-md-offset-0').removeClass('col-md-4');
+//   }
+//   else if ( compP == false) {
+//     $('.top-participants-list').addClass('col-md-offset-2');
+//     $('.top-participants-list').removeClass('col-md-offset-0');
+//   }
+// }, 1000);
 
       Number.prototype.formatMoney = function (c, d, t) {
         var n = this,
