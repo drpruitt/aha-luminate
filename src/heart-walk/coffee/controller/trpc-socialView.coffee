@@ -4,7 +4,6 @@ angular.module 'trPcControllers'
     '$scope'
     '$sce'
     ($rootScope, $scope, $sce) ->
-      console.log 'hello xxxxxxxxxxx'
       urlPrefix = ''
       if $scope.tablePrefix == 'heartdev'
         urlPrefix = 'bfstage'
