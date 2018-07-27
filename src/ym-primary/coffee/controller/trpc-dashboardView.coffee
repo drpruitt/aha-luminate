@@ -478,7 +478,9 @@ angular.module 'trPcControllers'
         
       $scope.personalChallenge = {}
       $scope.updatedPersonalChallenge = {}
-      setPersonalChallenge = (id = '-1', name = '', numCompleted = 0, completedToday = false) ->
+      setPersonalChallenge = (id, name = '', numCompleted = 0, completedToday = false) ->
+        if id == null or id == ''
+          id = '-1'
         if id is '-1' and $scope.challengeTaken and $scope.challengeTaken isnt ''
           if $scope.challengeTaken.indexOf('1. ') isnt -1
             id = '1'
@@ -539,7 +541,7 @@ angular.module 'trPcControllers'
       challengeOptions =
         "1": "Be physically active for 60 minutes everyday"
         "2": "Choose water over sugar drinks"
-        "3": "Eat at least one serving of fruit and vegetables at every meal"
+        "3": "Do a good deed daily"
       angular.forEach challengeOptions, (challenge, challengeIndex) ->
         $scope.challenges.push
           id: challengeIndex
