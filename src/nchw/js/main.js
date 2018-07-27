@@ -147,7 +147,7 @@
       participantPromise.then(function() {
         if( !$.trim( $('.insert_top-participants-list').html() ).length ) {
           console.log('parts empty');
-          $('#top_lists').hide();
+          $('.top-participants-list').hide();
           partP = false;
         }
         else {
@@ -161,7 +161,7 @@
       teamPromise.then(function() {
         if( !$.trim( $('.insert_top-teams-list').html() ).length ) {
           console.log('teams empty');
-          $('.top-teams-list, .top-companies-list').hide();
+          $('.top-teams-list').hide();
           teamP = false;
         }
         else {
