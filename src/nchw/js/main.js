@@ -43,6 +43,7 @@
           $(this).parent().addClass('show_icon');
         }
       });
+      $('#top_lists').hide();
 
       // getTopParticipantsData
       var participantPromise = new Promise(function(resolve, reject) {
@@ -147,7 +148,7 @@
       participantPromise.then(function() {
         if( !$.trim( $('.insert_top-participants-list').html() ).length ) {
           console.log('parts empty');
-          $('.top-participants-list').hide();
+          $('#top_lists').show();
           partP = false;
         }
         else {
@@ -161,7 +162,7 @@
       teamPromise.then(function() {
         if( !$.trim( $('.insert_top-teams-list').html() ).length ) {
           console.log('teams empty');
-          $('.top-teams-list').hide();
+          $('#top_lists').show();
           teamP = false;
         }
         else {
@@ -175,7 +176,7 @@
       companyPromise.then(function() {
         if( !$.trim( $('.insert_top-companies-list').html() ).length ) {
           console.log('comps empty');
-          $('.top-companies-list').hide();
+          $('#top_lists').show();
           compP = false;
         }
         else {
