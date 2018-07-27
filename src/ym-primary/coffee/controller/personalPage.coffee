@@ -28,12 +28,13 @@ angular.module 'ahaLuminateControllers'
       .then (response) ->
         prizes = response.data.prizes
         angular.forEach prizes, (prize) ->
-          $scope.prizes.push
-            id: prize.id
-            label: prize.label
-            sku: prize.sku
-            status: prize.status
-            earned: prize.earned_datetime
+          if prize.status  == 1
+            $scope.prizes.push
+              id: prize.id
+              label: prize.label
+              sku: prize.sku
+              status: prize.status
+              earned: prize.earned_datetime
       , (response) ->
         # TODO
 
