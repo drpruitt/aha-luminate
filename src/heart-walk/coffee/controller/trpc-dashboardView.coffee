@@ -568,7 +568,12 @@ angular.module 'trPcControllers'
 
       $scope.goSocial = ->
         logUserInt 'social', $scope.frId
-        window.location.href = 'PageServer?pagename=heartwalk_fundraising_tools&amp;fr_id=' + $scope.frId
+        if jQuery('body').attr('data-device-is-mobile') and jQuery('body').attr('data-device-mobile-type') == 'android'
+          window.location = 'https://play.google.com/store/apps/details?id=com.aha.cyclenation'
+        else if jQuery('body').attr('data-device-is-mobile') and jQuery('body').attr('data-device-mobile-type') == 'ios'
+          window.location = 'https://itunes.apple.com/us/app/cyclenation/id1155979191?mt=8'
+        else
+          window.location.href = 'PageServer?pagename=heartwalk_fundraising_tools&amp;pc2_page=center&amp;fr_id=' + $scope.frId + '#/social'
 
       $scope.profileProgress = 0
       $scope.profileChecklist = ->
