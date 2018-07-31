@@ -58,4 +58,5 @@ angular.module 'trPcApp'
       $rootScope.interactionTypeId = $embedRoot.data 'checklist-interaction-id' if $embedRoot.data('checklist-interaction-id') isnt ''
       $rootScope.frIdMultidate = $embedRoot.data 'tr-id-multidate' if $embedRoot.data('tr-id-multidate') isnt ''
       $rootScope.eventLocation = $embedRoot.data 'event-location' if $embedRoot.data('event-location') isnt ''
+      $rootScope.hasBoundlessApp = $embedRoot.data('has-bf-app') if $embedRoot.data('has-bf-app') isnt ''
   ]

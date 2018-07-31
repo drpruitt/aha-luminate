@@ -41,7 +41,6 @@ angular.module 'ahaLuminateApp'
       $rootScope.facebookFundraisersEndDate = if $dataRoot.data('facebook-fundraisers-end-date') is '' then '' else $dataRoot.data('facebook-fundraisers-end-date')
       $rootScope.facebookCharityId = if $dataRoot.data('facebook-charity-id') is '' then '' else $dataRoot.data('facebook-charity-id')
       $rootScope.facebookFundraiserId = $dataRoot.data('facebook-fundraiser-id') if $dataRoot.data('facebook-fundraiser-id') isnt ''
-      $rootScope.hasBoundlessApp = $dataRoot.data('has-bf-app') if $dataRoot.data('has-bf-app') isnt ''
   ]
 
 angular.element(document).ready ->
