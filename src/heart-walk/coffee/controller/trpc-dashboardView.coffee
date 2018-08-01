@@ -340,6 +340,7 @@ angular.module 'trPcControllers'
         profile: 0
         goal1: 0
         goal2: 0
+        bfapp: 0
       }
       $scope.profileChecklistItems = {
         mobile: 0
@@ -398,9 +399,9 @@ angular.module 'trPcControllers'
               if $rootScope.updatedProfile is 'TRUE' and $scope.userInteractions.page is 0
                 $scope.userInteractions.page = 1
                 logUserInt 'page', $scope.frId
-              # if $rootScope.isSelfDonor is 'TRUE' and $scope.userInteractions.donate is 0
-              #   $scope.userInteractions.donate = 1
-              #   logUserInt 'donate', $scope.frId
+              if $rootScope.isSelfDonor is 'TRUE' and $scope.userInteractions.donate is 0
+                $scope.userInteractions.donate = 1
+                logUserInt 'donate', $scope.frId
               if $scope.messageCounts.sentMessages > 0 and $scope.userInteractions.email is 0
                 $scope.userInteractions.email = 1
                 logUserInt 'email', $scope.frId
@@ -453,7 +454,7 @@ angular.module 'trPcControllers'
               document.getElementById('update_my_story_welcome_back_lb').onclick = ->
                 _gaq.push(['t2._trackEvent', 'HW PC', 'click', 'Update my story - welcome back lightbox'])
             , 500
-        else if $scope.userInteractions.donate is 0
+        else if $scope.userInteractions.bfapp is 0
           $scope.dashboardGreeting = 'donate'
           if skipLBs is 0
             $scope.LBdonateModal = $uibModal.open
