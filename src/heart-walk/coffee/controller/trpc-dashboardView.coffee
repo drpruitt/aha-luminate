@@ -398,9 +398,9 @@ angular.module 'trPcControllers'
               if $rootScope.updatedProfile is 'TRUE' and $scope.userInteractions.page is 0
                 $scope.userInteractions.page = 1
                 logUserInt 'page', $scope.frId
-              if $rootScope.isSelfDonor is 'TRUE' and $scope.userInteractions.donate is 0
-                $scope.userInteractions.donate = 1
-                logUserInt 'donate', $scope.frId
+              # if $rootScope.isSelfDonor is 'TRUE' and $scope.userInteractions.donate is 0
+              #   $scope.userInteractions.donate = 1
+              #   logUserInt 'donate', $scope.frId
               if $scope.messageCounts.sentMessages > 0 and $scope.userInteractions.email is 0
                 $scope.userInteractions.email = 1
                 logUserInt 'email', $scope.frId
