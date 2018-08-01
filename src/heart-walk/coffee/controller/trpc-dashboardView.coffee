@@ -519,7 +519,7 @@ angular.module 'trPcControllers'
         else if $scope.userInteractions.page is 0
           $scope.dashboardGreeting = 'page'
         else if $scope.userInteractions.bfapp is 0
-          $scope.dashboardGreeting = 'donate'
+          $scope.dashboardGreeting = 'social'
         else if $scope.userInteractions.email is 0
           $scope.dashboardGreeting = 'email'
         else if $scope.userInteractions.why is 0
