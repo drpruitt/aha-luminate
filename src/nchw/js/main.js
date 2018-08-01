@@ -148,12 +148,14 @@
       participantPromise.then(function() {
         if( !$.trim( $('.insert_top-participants-list').html() ).length ) {
           console.log('parts empty');
-          $('#top_lists').show();
           partP = false;
+          $('.insert_top-participants-list').hide();
         }
         else {
           console.log("parts no empty");
           partP = true;
+          $('#top_lists').show();
+          $('.insert_top-participants-list').show();
         }
       }, function(err) {
         console.log(err);
@@ -162,12 +164,14 @@
       teamPromise.then(function() {
         if( !$.trim( $('.insert_top-teams-list').html() ).length ) {
           console.log('teams empty');
-          $('#top_lists').show();
           teamP = false;
+          $('.insert_top-teams-list').hide();
         }
         else {
           console.log("teams no empty");
           teamP = true;
+          $('#top_lists').show();
+          $('.insert_top-teams-list').show();
         }
       }, function(err) {
         console.log(err);
@@ -176,28 +180,30 @@
       companyPromise.then(function() {
         if( !$.trim( $('.insert_top-companies-list').html() ).length ) {
           console.log('comps empty');
-          $('#top_lists').show();
           compP = false;
+          $('.insert_top-companies-list').hide();
         }
         else {
           console.log("comps no empty");
           compP = true;
+          $('#top_lists').show();
+          $('.insert_top-companies-list').show();
         }
       }, function(err) {
         console.log(err);
       });
 
-// setTimeout(function(){
-//   console.log(partP+' '+teamP+' '+compP);
-//   if ( teamP == false) {
-//     $('.top-participants-list').addClass('col-md-offset-2 col-md-8');
-//     $('.top-participants-list').removeClass('col-md-offset-0').removeClass('col-md-4');
-//   }
-//   else if ( compP == false) {
-//     $('.top-participants-list').addClass('col-md-offset-2');
-//     $('.top-participants-list').removeClass('col-md-offset-0');
-//   }
-// }, 1000);
+      setTimeout(function(){
+        console.log(partP+' '+teamP+' '+compP);
+        if ( teamP == false) {
+          $('.top-participants-list').addClass('col-md-offset-2 col-md-8');
+          $('.top-participants-list').removeClass('col-md-offset-0').removeClass('col-md-4');
+        }
+        else if ( compP == false) {
+          $('.top-participants-list').addClass('col-md-offset-2');
+          $('.top-participants-list').removeClass('col-md-offset-0');
+        }
+      }, 1000);
 
       Number.prototype.formatMoney = function (c, d, t) {
         var n = this,
