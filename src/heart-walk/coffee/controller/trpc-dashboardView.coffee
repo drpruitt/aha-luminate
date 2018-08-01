@@ -367,7 +367,7 @@ angular.module 'trPcControllers'
                             when 'page'
                               $scope.userInteractions.page = 1
                             when 'donate'
-                              $scope.userInteractions.donate = 1
+                              $scope.userInteractions.bfapp = 1
                             when 'email'
                               $scope.userInteractions.email = 1
                             when 'why'
@@ -518,7 +518,7 @@ angular.module 'trPcControllers'
           $scope.dashboardGreeting = 'facebookFundraiser'
         else if $scope.userInteractions.page is 0
           $scope.dashboardGreeting = 'page'
-        else if $scope.userInteractions.donate is 0
+        else if $scope.userInteractions.bfapp is 0
           $scope.dashboardGreeting = 'donate'
         else if $scope.userInteractions.email is 0
           $scope.dashboardGreeting = 'email'
