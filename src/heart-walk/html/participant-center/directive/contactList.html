@@ -4,7 +4,7 @@
       <div class="contact-select pull-left">
         <div class="checkbox">
           <label>
-            <input type="checkbox" value="{{contact.id}}" ng-checked="contact.selected" ng-click="toggleContact(contact)"> 
+            <input type="checkbox" value="{{contact.id}}" ng-checked="contact.selected" ng-click="toggleContact(contact)" title="Click contact to edit."> 
             <a ng-click="selectContact(contact)">
               <span ng-if="contact.firstName">
                 {{contact.firstName}}{{contact.lastName ? ' ' + contact.lastName : ''}}{{contact.email ? ' &lt;' + contact.email + '&gt;' : ''}}
