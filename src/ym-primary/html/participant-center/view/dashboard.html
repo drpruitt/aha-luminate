@@ -123,7 +123,7 @@
                 <a ng-href="{{baseUrl}}#/email">
                   <img ng-src="../{{dev_branch != '' ? dev_branch+'/' : ''}}aha-luminate/dist/ym-primary/image/pc-challenge-animated-email.gif" alt="Send Email">
                 </a> 
-                <a ng-href="https://hearttools.heart.org/aha_ym19{{tablePrefix == 'heartdev' ? '_dev' : ''}}/?eid={{frId}}&amp;sid={{consId}}&amp;name={{consName}}" target="_blank">
+                <a ng-href="https://hearttools.heart.org/aha_ym19{{tablePrefix == 'heartdev' ? '_dev' : ''}}/?eid={{frId}}&amp;sid={{consId}}&amp;name={{consNameFirst}}" target="_blank">
                   <img ng-src="../{{dev_branch != '' ? dev_branch+'/' : ''}}aha-luminate/dist/ym-primary/image/pc-challenge-animated-ecard.gif" alt="Send Ecard">
                 </a>
               </div>
@@ -131,7 +131,7 @@
                 <a class="btn btn-md-wide btn-primary" ng-href="{{baseUrl}}#/email">
                   <strong>Send Email</strong>
                 </a> 
-                <a class="btn btn-md-wide btn-primary" ng-href="https://hearttools.heart.org/aha_ym19{{tablePrefix == 'heartdev' ? '_dev' : ''}}/?eid={{frId}}&amp;sid={{consId}}&amp;name={{consName}}" target="_blank">
+                <a class="btn btn-md-wide btn-primary" ng-href="https://hearttools.heart.org/aha_ym19{{tablePrefix == 'heartdev' ? '_dev' : ''}}/?eid={{frId}}&amp;sid={{consId}}&amp;name={{consNameFirst}}" target="_blank">
                   <strong>Send Ecard</strong>
                 </a>
               </div>
@@ -164,7 +164,7 @@
       </div>
       <div class="text-center">
         <p>
-          <strong>You can also <a href="http://american.heart.org/kidsheartchallenge/for-students/adoption-certificates/monster-adoption-certificates.pdf" target="_blank">download Adoption Certificates</a> for each badge level!</strong>
+          <strong>You can also <a href="http://american.heart.org/kidsheartchallenge/for-students/adoption-certificates/heart-hero-adoption-certificates.pdf" target="_blank">download Adoption Certificates</a> for each badge level!</strong>
         </p>
       </div>
     </section>
@@ -757,7 +757,7 @@
             <a class="btn btn-md-wide btn-primary" ng-href="https://khc.staging.ootqa.org/coordinator/login/{{authToken}}/{{sessionCookie}}" target="_blank" ng-if="tablePrefix == 'heartdev'" ng-cloak>
               <strong>Thank You Gifts</strong>
             </a>
-            <a class="btn btn-md-wide btn-primary" ng-href="https://jumphoops.heart.org/coordinator/login/{{authToken}}/{{sessionCookie}}" target="_blank" ng-if="tablePrefix == 'heart'" ng-cloak> 
+            <a class="btn btn-md-wide btn-primary" ng-href="https://kidsheartchallenge.heart.org/coordinator/login/{{authToken}}/{{sessionCookie}}" target="_blank" ng-if="tablePrefix == 'heart'" ng-cloak> 
               <strong>Thank You Gifts</strong>
             </a>
           </div>

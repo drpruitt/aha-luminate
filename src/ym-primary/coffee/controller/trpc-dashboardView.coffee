@@ -681,6 +681,6 @@ angular.module 'trPcControllers'
         if $rootScope.tablePrefix == 'heartdev'
           url = "https://khc.staging.ootqa.org"
         else
-          url = "https://jumphoops.heart.org"
+          url = "https://kidsheartchallenge.heart.org"
         window.open url + "/student/login/"+$scope.authToken+"/"+$scope.sessionCookie
   ]
