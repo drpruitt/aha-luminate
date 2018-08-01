@@ -18,13 +18,13 @@
     </div>
     <div class="pull-right">
       <span ng-if="device.isMobile && device.mobileType == 'ios'">
-        <a class="btn btn-outline-white text-uppercase" href="https://itunes.apple.com/us/app/cyclenation/id1155979191?mt=8" target="blank">Get the App</a>
+        <a class="btn pc-white-btn text-uppercase" href="https://itunes.apple.com/us/app/cyclenation/id1155979191?mt=8" target="blank">Get the App</a>
       </span>
       <span ng-if="device.isMobile && device.mobileType == 'android'">
-        <a class="btn btn-outline-white text-uppercase" href="https://play.google.com/store/apps/details?id=com.aha.cyclenation" target="blank">Get the App</a>
+        <a class="btn pc-white-btn text-uppercase" href="https://play.google.com/store/apps/details?id=com.aha.cyclenation" target="blank">Get the App</a>
       </span>
       <span ng-if="!device.isMobile">
-        <a class="btn btn-outline-white text-uppercase" id="LBmakeDonation" ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{consId}}">Get the App</a>
+        <a class="btn pc-white-btn text-uppercase" id="LBmakeDonation" ng-href="PageServer?pagename=heartwalk_fundraising_tools&amp;fr_id={{frId}}">Get the App</a>
       </span>
     </div>
   </div>
