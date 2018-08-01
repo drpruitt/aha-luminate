@@ -399,9 +399,9 @@ angular.module 'trPcControllers'
               if $rootScope.updatedProfile is 'TRUE' and $scope.userInteractions.page is 0
                 $scope.userInteractions.page = 1
                 logUserInt 'page', $scope.frId
-              if $rootScope.isSelfDonor is 'TRUE' and $scope.userInteractions.donate is 0
-                $scope.userInteractions.donate = 1
-                logUserInt 'donate', $scope.frId
+              if $scope.userInteractions.bfapp is 0
+                $scope.userInteractions.bfapp = 1
+                logUserInt 'bfapp', $scope.frId
               if $scope.messageCounts.sentMessages > 0 and $scope.userInteractions.email is 0
                 $scope.userInteractions.email = 1
                 logUserInt 'email', $scope.frId
@@ -455,7 +455,7 @@ angular.module 'trPcControllers'
                 _gaq.push(['t2._trackEvent', 'HW PC', 'click', 'Update my story - welcome back lightbox'])
             , 500
         else if $scope.userInteractions.bfapp is 0
-          $scope.dashboardGreeting = 'donate'
+          $scope.dashboardGreeting = 'social'
           if skipLBs is 0
             $scope.LBdonateModal = $uibModal.open
               scope: $scope
