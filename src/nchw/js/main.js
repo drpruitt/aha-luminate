@@ -149,13 +149,13 @@
         if( !$.trim( $('.insert_top-participants-list').html() ).length ) {
           console.log('parts empty');
           partP = false;
-          $('.insert_top-participants-list').hide();
+          $('.top-participants-list').hide();
         }
         else {
           console.log("parts no empty");
           partP = true;
           $('#top_lists').show();
-          $('.insert_top-participants-list').show();
+          $('.top-participants-list').show();
         }
       }, function(err) {
         console.log(err);
@@ -165,13 +165,13 @@
         if( !$.trim( $('.insert_top-teams-list').html() ).length ) {
           console.log('teams empty');
           teamP = false;
-          $('.insert_top-teams-list').hide();
+          $('.top-teams-list').hide();
         }
         else {
           console.log("teams no empty");
           teamP = true;
           $('#top_lists').show();
-          $('.insert_top-teams-list').show();
+          $('.top-teams-list').show();
         }
       }, function(err) {
         console.log(err);
@@ -181,13 +181,13 @@
         if( !$.trim( $('.insert_top-companies-list').html() ).length ) {
           console.log('comps empty');
           compP = false;
-          $('.insert_top-companies-list').hide();
+          $('.top-companies-list').hide();
         }
         else {
           console.log("comps no empty");
           compP = true;
           $('#top_lists').show();
-          $('.insert_top-companies-list').show();
+          $('.top-companies-list').show();
         }
       }, function(err) {
         console.log(err);
