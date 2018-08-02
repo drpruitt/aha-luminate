@@ -333,7 +333,6 @@ angular.module 'trPcControllers'
       $scope.userInteractions = {
         facebookFundraiser: 0
         page: 0
-        donate: 0
         email: 0
         why: 0
         social: 0
@@ -366,7 +365,7 @@ angular.module 'trPcControllers'
                               $scope.userInteractions.facebookFundraiser = 1
                             when 'page'
                               $scope.userInteractions.page = 1
-                            when 'donate'
+                            when 'bfapp'
                               $scope.userInteractions.bfapp = 1
                             when 'email'
                               $scope.userInteractions.email = 1
