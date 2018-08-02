@@ -620,3 +620,22 @@ div#send_via_FC {
     margin: 0;
   }
 }
+
+.heart-pc-achievements {
+  &-badge-list {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 2em 0;
+  }
+
+  &-badges-item img{
+    width: 100px;
+  }
+
+  &-badges-item span{
+    display: block;
+    font-size: 16px;
+  }
+}
