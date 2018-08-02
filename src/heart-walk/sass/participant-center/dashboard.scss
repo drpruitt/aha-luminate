@@ -622,6 +622,10 @@ div#send_via_FC {
 }
 
 .heart_pc_achievements {
+  &_container {
+    border-bottom: 1px solid #dfe0e0;
+  }
+
   &_badge_list {
     list-style: none;
     padding-left: 0;
