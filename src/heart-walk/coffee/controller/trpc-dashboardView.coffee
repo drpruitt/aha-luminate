@@ -355,6 +355,7 @@ angular.module 'trPcControllers'
               if interactions
                 interactions = [interactions] if not angular.isArray interactions
                 if interactions.length > 0
+                  console.log interactions
                   angular.forEach interactions, (interaction) ->
                     if interaction.note
                       if interaction.note.text
