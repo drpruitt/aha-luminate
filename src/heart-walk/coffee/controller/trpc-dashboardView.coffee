@@ -513,6 +513,7 @@ angular.module 'trPcControllers'
               templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBgoal2.html'
 
       runHeaderCheck = ->
+        console log $scope.userInteractions
         if $scope.userInteractions.facebookFundraiser is 0
           $scope.dashboardGreeting = 'facebookFundraiser'
         else if $scope.userInteractions.page is 0
@@ -567,7 +568,7 @@ angular.module 'trPcControllers'
             , 250
 
       $scope.goSocial = ->
-        # logUserInt 'social', $scope.frId
+        logUserInt 'social', $scope.frId
         if jQuery('body').attr('data-device-is-mobile') == 'true' and jQuery('body').attr('data-device-mobile-type') == 'android'
           window.location = 'https://play.google.com/store/apps/details?id=com.aha.cyclenation'
         else if jQuery('body').attr('data-device-is-mobile') == 'true' and jQuery('body').attr('data-device-mobile-type') == 'ios'
