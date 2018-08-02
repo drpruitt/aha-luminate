@@ -333,13 +333,13 @@ angular.module 'trPcControllers'
       $scope.userInteractions = {
         facebookFundraiser: 0
         page: 0
+        donate: 0
         email: 0
         why: 0
         social: 0
         profile: 0
         goal1: 0
         goal2: 0
-        bfapp: 0
       }
       $scope.profileChecklistItems = {
         mobile: 0
@@ -365,8 +365,8 @@ angular.module 'trPcControllers'
                               $scope.userInteractions.facebookFundraiser = 1
                             when 'page'
                               $scope.userInteractions.page = 1
-                            when 'bfapp'
-                              $scope.userInteractions.bfapp = 1
+                            when 'donate'
+                              $scope.userInteractions.donate = 1
                             when 'email'
                               $scope.userInteractions.email = 1
                             when 'why'
@@ -398,9 +398,9 @@ angular.module 'trPcControllers'
               if $rootScope.updatedProfile is 'TRUE' and $scope.userInteractions.page is 0
                 $scope.userInteractions.page = 1
                 logUserInt 'page', $scope.frId
-              if $scope.userInteractions.bfapp is 0
-                $scope.userInteractions.bfapp = 1
-                logUserInt 'bfapp', $scope.frId
+              if $rootScope.isSelfDonor is 'TRUE' and $scope.userInteractions.donate is 0
+                $scope.userInteractions.donate = 1
+                logUserInt 'donate', $scope.frId
               if $scope.messageCounts.sentMessages > 0 and $scope.userInteractions.email is 0
                 $scope.userInteractions.email = 1
                 logUserInt 'email', $scope.frId
@@ -453,8 +453,8 @@ angular.module 'trPcControllers'
               document.getElementById('update_my_story_welcome_back_lb').onclick = ->
                 _gaq.push(['t2._trackEvent', 'HW PC', 'click', 'Update my story - welcome back lightbox'])
             , 500
-        else if $scope.userInteractions.bfapp is 0
-          $scope.dashboardGreeting = 'social'
+        else if $scope.userInteractions.donate is 0
+          $scope.dashboardGreeting = 'donate'
           if skipLBs is 0
             $scope.LBdonateModal = $uibModal.open
               scope: $scope
@@ -513,13 +513,12 @@ angular.module 'trPcControllers'
               templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/LBgoal2.html'
 
       runHeaderCheck = ->
-        console log $scope.userInteractions
         if $scope.userInteractions.facebookFundraiser is 0
           $scope.dashboardGreeting = 'facebookFundraiser'
         else if $scope.userInteractions.page is 0
           $scope.dashboardGreeting = 'page'
-        else if $scope.userInteractions.bfapp is 0
-          $scope.dashboardGreeting = 'social'
+        else if $scope.userInteractions.donate is 0
+          $scope.dashboardGreeting = 'donate'
         else if $scope.userInteractions.email is 0
           $scope.dashboardGreeting = 'email'
         else if $scope.userInteractions.why is 0
