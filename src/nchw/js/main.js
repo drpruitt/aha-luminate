@@ -195,13 +195,58 @@
 
       setTimeout(function(){
         console.log(partP+' '+teamP+' '+compP);
-        if ( teamP == false) {
-          $('.top-participants-list').addClass('col-md-offset-2 col-md-8');
-          $('.top-participants-list').removeClass('col-md-offset-0').removeClass('col-md-4');
-        }
-        else if ( compP == false) {
-          $('.top-participants-list').addClass('col-md-offset-2');
-          $('.top-participants-list').removeClass('col-md-offset-0');
+        if ( partP == false) {
+            if ( teamP == false) {
+                // No part list and no team list
+                if ( compP == false) {
+                    // No lists are showing
+                    // No adjustments necessary
+                } else {
+                    // Only company list is showing
+                    $('.top-companies-list').addClass('col-md-offset-2 col-md-8');
+                    $('.top-companies-list').removeClass('col-md-offset-0 col-md-4');
+                }
+            } else {
+                // No part list but yes team list
+                if ( compP == false) {
+                    // Only team list is showing
+                    $('.top-teams-list').addClass('col-md-offset-2 col-md-8');
+                    $('.top-teams-list').removeClass('col-md-offset-0 col-md-4');
+                } else {
+                    // Team list and company list
+                    $('.top-companies-list').addClass('col-md-6');
+                    $('.top-companies-list').removeClass('col-md-4');
+                    $('.top-teams-list').addClass('col-md-6');
+                    $('.top-teams-list').removeClass('col-md-4');
+                }
+            }
+        } else {
+            if ( teamP == false) {
+                // Yes part list and no team list
+                if ( compP == false) {
+                    // Only part list is showing
+                    $('.top-participants-list').addClass('col-md-offset-2 col-md-8');
+                    $('.top-participants-list').removeClass('col-md-offset-0 col-md-4');
+                } else {
+                    // Part list and company list are showing
+                    $('.top-companies-list').addClass('col-md-6');
+                    $('.top-companies-list').removeClass('col-md-4');
+                    $('.top-participants-list').addClass('col-md-6');
+                    $('.top-participants-list').removeClass('col-md-4');
+                }
+            } else {
+                // Part list and team list
+                if ( compP == false) {
+                    // Part list and team list
+                    $('.top-participants-list').addClass('col-md-6');
+                    $('.top-participants-list').removeClass('col-md-4');
+                    $('.top-teams-list').addClass('col-md-6');
+                    $('.top-teams-list').removeClass('col-md-4');
+                } else {
+                    // Part list and team list and comp list
+                    // No adjustments necessary
+                }
+            }
         }
       }, 1000);
 
