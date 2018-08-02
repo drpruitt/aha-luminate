@@ -593,16 +593,15 @@ angular.module 'trPcControllers'
         if $scope.editContactSuccess
           delete $scope.editContactSuccess
       
-      $scope.selectContact = (contactId) ->
+      $scope.selectContact = (contact) ->
         $scope.clearAllContactAlerts()
-        contact = getContactById contactId
         $scope.editContactMode = false
         $scope.viewContact = angular.copy contact
         $scope.updatedContact = 
-          contact_id: $scope.selectedContact.id
-          first_name: $scope.selectedContact.firstName
-          last_name: $scope.selectedContact.lastName
-          email: $scope.selectedContact.email
+          contact_id:contact.id
+          first_name: contact.firstName
+          last_name: contact.lastName
+          email: contact.email
         $scope.editContactModal = $uibModal.open
           scope: $scope
           templateUrl: APP_INFO.rootPath + 'dist/heart-walk/html/participant-center/modal/editContact.html'
