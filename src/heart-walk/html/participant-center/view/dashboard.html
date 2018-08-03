@@ -233,7 +233,7 @@
         <h2>My Achievements</h2>
         <p>Earn as you reach for your goal. Curious what badges you get? <a href="">Read more to learn all about achievement badges.</a></p>
         <ul class="heart_pc_achievements_badge_list">
-          <li class="heart_pc_achievements_badge_item">
+          <li class="heart_pc_achievements_badge_item" ng-if="userInteractions.donate == '1'">
             <img src="../images/content/pagebuilder/heart-walk-personal-donation-no-text.svg" alt="Heart Walk personal donation badge">
             <span>I donated<br>towards my goal</span>
           </li>
@@ -241,7 +241,7 @@
             <img src="../images/content/pagebuilder/heart-walk-5-donations-no-text.svg" alt="Heart Walk 5+ donations badge">
             <span>I've received<br>5+ donations</span>
           </li>
-          <li class="heart_pc_achievements_badge_item">
+          <li class="heart_pc_achievements_badge_item" ng-if="dashboardGreeting == 'goal2'">
             <img src="../images/content/pagebuilder/heart-walk-hit-goal-no-text.svg" alt="Heart Walk Fundraising Goal badge">
             <span>I hit my<br>fundraising goal</span>
           </li>
@@ -249,7 +249,7 @@
             <img src="../images/content/pagebuilder/heart-walk-$250-milestone-no-text.svg" alt="Heart Walk Milestone badge">
             <span>$250<br>milestone</span>
           </li>
-          <li class="heart_pc_achievements_badge_item">
+          <li class="heart_pc_achievements_badge_item" ng-if="participantRegistration.aTeamCaptain == 'true'">
             <img src="../images/content/pagebuilder/heart-walk-coach-no-text.svg" alt="Heart Walk Coach badge">
             <span>I'm a<br>coach</span>
           </li>
