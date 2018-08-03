@@ -567,10 +567,9 @@ angular.module 'trPcControllers'
             , 250
 
       $scope.goSocial = ->
-        logUserInt 'social', $scope.frId
-        if jQuery('body').attr('data-device-is-mobile') == 'true' and jQuery('body').attr('data-device-mobile-type') == 'android'
+        if $rootScope.device.mobileType == 'android'
           window.location = 'https://play.google.com/store/apps/details?id=com.aha.cyclenation'
-        else if jQuery('body').attr('data-device-is-mobile') == 'true' and jQuery('body').attr('data-device-mobile-type') == 'ios'
+        else if $rootScope.device.mobileType == 'ios'
           window.location = 'https://itunes.apple.com/us/app/cyclenation/id1155979191?mt=8'
         else
           window.location = 'PageServer?pagename=heartwalk_fundraising_tools&amp;pc2_page=center&amp;fr_id=' + $scope.frId + '#/social'
@@ -760,9 +759,6 @@ angular.module 'trPcControllers'
         fundraisingProgressPromise = TeamraiserProgressService.getProgress()
           .then (response) ->
             participantProgress = response.data.getParticipantProgressResponse?.personalProgress
-
-            console.log participantProgress
-
             if participantProgress
               participantProgress.raised = Number participantProgress.raised
               participantProgress.raisedFormatted = if participantProgress.raised then $filter('currency')(participantProgress.raised / 100, '$', 0) else '$0'

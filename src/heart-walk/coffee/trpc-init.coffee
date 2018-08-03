@@ -59,4 +59,5 @@ angular.module 'trPcApp'
       $rootScope.frIdMultidate = $embedRoot.data 'tr-id-multidate' if $embedRoot.data('tr-id-multidate') isnt ''
       $rootScope.eventLocation = $embedRoot.data 'event-location' if $embedRoot.data('event-location') isnt ''
       $rootScope.hasBoundlessApp = $embedRoot.data('has-bf-app') if $embedRoot.data('has-bf-app') isnt ''
+      $rootScope.overFiveDonations = $embedRoot.data('over-five-donations') if $embedRoot.data('over-five-donations') isnt ''
   ]
