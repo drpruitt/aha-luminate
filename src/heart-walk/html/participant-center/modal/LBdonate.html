@@ -1,31 +1,23 @@
 <div class="modal-header modal-header-red modal-text-center">
   <h2 class="modal-title">
-    Welcome back!
+    <span ng-if="constituent.name && constituent.name.first">{{constituent.name.first}}</span><span ng-if="!constituent.name.first">Participant</span>, welcome back!
   </h2>
 </div>
 <div class="modal-body modal-body-red modal-text-center">
   <p>
-    <span ng-if="constituent.name && constituent.name.first">{{constituent.name.first}}</span><span ng-if="!constituent.name.first">Participant</span>, we are THRILLED to have you back!
+    Did you know that science says doing good for others actually makes your heart healthier too? It&rsquo;s true. Giving back lowers blood pressure and cortisol levels.
   </p>
   <p>
-    Awesome tip of the day: download the Heart Walk fundraising mobile app! It&rsquo;ll make sharing your story and fundraising oh so easy.
+    Be selfless-ish and donate now. It&rsquo;ll help fund lifesaving research. It&rsquo;ll also help your heart too. Sounds win-win to us.
   </p>
 </div>
 <div class="modal-footer modal-footer-red">
   <div class="clearfix">
     <div class="pull-left">
-      <a class="btn pc-white-btn text-uppercase" href ng-click="sendGAEvent('Not Right Now - Boundless Fundraising lightbox'); notRightNow();">Not Right Now</a>
+      <a class="btn btn-outline-white text-uppercase" href ng-click="sendGAEvent('Not Right Now - donate lightbox'); notRightNow();">Not Right Now</a>
     </div>
     <div class="pull-right">
-      <span ng-if="device.isMobile && device.mobileType == 'ios'">
-        <a class="btn pc-white-btn text-uppercase" href="https://itunes.apple.com/us/app/cyclenation/id1155979191?mt=8" target="blank">Get the App</a>
-      </span>
-      <span ng-if="device.isMobile && device.mobileType == 'android'">
-        <a class="btn pc-white-btn text-uppercase" href="https://play.google.com/store/apps/details?id=com.aha.cyclenation" target="blank">Get the App</a>
-      </span>
-      <span ng-if="!device.isMobile">
-        <a class="btn pc-white-btn text-uppercase" id="LBmakeDonation" ng-href="PageServer?pagename=heartwalk_fundraising_tools&amp;fr_id={{frId}}">Get the App</a>
-      </span>
+      <a class="btn btn-outline-white text-uppercase" id="LBmakeDonation" ng-href="Donation2?df_id={{eventInfo.donationFormId}}&amp;FR_ID={{frId}}&amp;PROXY_TYPE=20&amp;PROXY_ID={{consId}}">Donate Now</a>
     </div>
   </div>
   <div class="lb_skip_link">
