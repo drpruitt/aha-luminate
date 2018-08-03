@@ -185,6 +185,10 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   }
   .profile_box_icon {
     font-size: 48px;
+
+    .mobile_app_icon {
+      max-width: 84px;
+    }
   }
   .row.profile_box_row {
     border: 0;
