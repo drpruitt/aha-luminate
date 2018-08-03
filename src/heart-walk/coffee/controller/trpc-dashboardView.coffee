@@ -760,6 +760,7 @@ angular.module 'trPcControllers'
           percent: 0
       $scope.refreshFundraisingProgress = ->
         fundraisingProgressPromise = TeamraiserProgressService.getProgress()
+          console.log participantProgress.raised 
           .then (response) ->
             participantProgress = response.data.getParticipantProgressResponse?.personalProgress
             if participantProgress
