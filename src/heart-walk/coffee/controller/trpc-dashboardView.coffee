@@ -762,7 +762,6 @@ angular.module 'trPcControllers'
         fundraisingProgressPromise = TeamraiserProgressService.getProgress()
           .then (response) ->
             participantProgress = response.data.getParticipantProgressResponse?.personalProgress
-            console.log participantProgress.raised, 'participant raised'
             if participantProgress
               participantProgress.raised = Number participantProgress.raised
               participantProgress.raisedFormatted = if participantProgress.raised then $filter('currency')(participantProgress.raised / 100, '$', 0) else '$0'
