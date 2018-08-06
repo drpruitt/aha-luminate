@@ -14,8 +14,9 @@
       <a class="btn pc-white-btn text-uppercase" href ng-click="sendGAEvent('Not Right Now - social lightbox'); notRightNow();">Not Right Now</a>
     </div>
     <div class="pull-right">
-      <a class="btn pc-white-btn text-uppercase" ng-if="device.isMobile" ng-click="sendGAEvent('Go Social - social lightbox'); goSocial();">Get The App</a>
-      <a class="btn pc-white-btn text-uppercase" ng-if="!device.isMobile" ng-href="{{baseUrl}}#/social" ng-click="sendGAEvent('Go Social - social lightbox');">Get The App</a>
+      <a class="btn pc-white-btn text-uppercase" ng-if="device.isMobile && device.mobileType == 'android'" href="https://play.google.com/store/apps/details?id=com.aha.cyclenation" ng-click="sendGAEvent('Go Social Android- social lightbox');">Get the App</a>
+      <a class="btn pc-white-btn text-uppercase" ng-if="device.isMobile && device.mobileType == 'ios'" href="https://itunes.apple.com/us/app/cyclenation/id1155979191?mt=8" ng-click="sendGAEvent('Go Social ios - social lightbox');">Get the App</a>
+      <a class="btn pc-white-btn text-uppercase" ng-if="!device.isMobile" ng-href="{{baseUrl}}#/social" ng-click="sendGAEvent('Go Social - social lightbox');">Get the App</a>
     </div>
   </div>
   <div class="lb_skip_link">
