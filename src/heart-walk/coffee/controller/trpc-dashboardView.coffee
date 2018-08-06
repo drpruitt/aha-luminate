@@ -401,9 +401,6 @@ angular.module 'trPcControllers'
               if $rootScope.isSelfDonor is 'TRUE' and $scope.userInteractions.donate is 0
                 $scope.userInteractions.donate = 1
                 logUserInt 'donate', $scope.frId
-              if $rootScope.hasBoundlessApp is 'true'
-                $scope.userInteractions.social = 1
-                logUserInt 'social', $scope.frId
               if $scope.messageCounts.sentMessages > 0 and $scope.userInteractions.email is 0
                 $scope.userInteractions.email = 1
                 logUserInt 'email', $scope.frId
