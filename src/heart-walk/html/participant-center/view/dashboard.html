@@ -130,7 +130,9 @@
               <div class="profile_box_text">
                 Download our mobile app to fundraise on the go! Our app makes fundraising easy.
               </div>
-              <a id="go_social" class="btn btn-primary" href ng-click="goSocial()">Get the Heart Walk App</a>
+              <a id="go_social" class="btn pc-white-btn text-uppercase" ng-if="device.isMobile && device.mobileType == 'android'" href="https://play.google.com/store/apps/details?id=com.aha.cyclenation" ng-click="sendGAEvent('Go Social Android- social lightbox');">Get The Heart Walk App</a>
+              <a id="go_social" class="btn pc-white-btn text-uppercase" ng-if="device.isMobile && device.mobileType == 'ios'" href="https://itunes.apple.com/us/app/cyclenation/id1155979191?mt=8" ng-click="sendGAEvent('Go Social Android- social lightbox');">Get The Heart Walk App</a>
+              <a id="go_social" class="btn pc-white-btn text-uppercase" ng-if="!device.isMobile" ng-href="{{baseUrl}}#/social" ng-click="sendGAEvent('Go Social - social lightbox');">Get the Heart Walk App</a>
             </div>
           </div>
           <div class="col-sm-4 profile_box" ng-if="hasBoundlessApp">
@@ -139,9 +141,11 @@
             </div>
             <div class="profile_box_info pull-right">
               <div class="profile_box_text">
-                You've downloaded the app, so now use it! It'll make fundraising easy peasy!
+                You&rsquo;ve downloaded the app, so now use it! It&rsquo;ll make fundraising easy peasy!
               </div>
-              <a id="go_social_again" class="btn btn-primary" href ng-click="goSocial()">Use the Heart Walk App</a>
+              <a id="go_social_again" class="btn pc-white-btn text-uppercase" ng-if="device.isMobile && device.mobileType == 'android'" href="https://play.google.com/store/apps/details?id=com.aha.cyclenation" ng-click="sendGAEvent('Go Social Android- social lightbox');">Use The Heart Walk App</a>
+              <a id="go_social_again" class="btn pc-white-btn text-uppercase" ng-if="device.isMobile && device.mobileType == 'ios'" href="https://itunes.apple.com/us/app/cyclenation/id1155979191?mt=8" ng-click="sendGAEvent('Go Social Android- social lightbox');">Use The Heart Walk App</a>
+              <a id="go_social_again" class="btn pc-white-btn text-uppercase" ng-if="!device.isMobile" ng-href="{{baseUrl}}#/social" ng-click="sendGAEvent('Go Social - social lightbox');">Use the Heart Walk App</a>              
             </div>
           </div>
 
@@ -273,7 +277,7 @@
             <img src="../images/content/pagebuilder/heart-walk-mobile-app-no-text.svg" alt="You've Downloaded the Mobile App badge">
             <span>I downloaded the<br>Heart Walk app</span>
           </li>
-          <li class="heart_pc_achievements_badge_item" ng-if="userInteractions.social == '1'">
+          <li class="heart_pc_achievements_badge_item" ng-if="isOnSocial">
             <img src="../images/content/pagebuilder/heart-walk-bf-social-no-text.svg" alt="You're fundraising on Social badge">
             <span>I'm fundraising<br>on social</span>
           </li>
